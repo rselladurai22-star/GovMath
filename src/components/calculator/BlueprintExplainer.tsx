@@ -33,8 +33,28 @@ export default function BlueprintExplainer({
   faqs,
   disclaimer,
 }: BlueprintExplainerProps) {
+  const faqJsonLd =
+    faqs && faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqs
+            .filter((f) => typeof f.answer === "string")
+            .map((f) => ({
+              "@type": "Question",
+              name: f.question,
+              acceptedAnswer: { "@type": "Answer", text: f.answer as string },
+            })),
+        }
+      : null;
   return (
     <>
+      {faqJsonLd && faqJsonLd.mainEntity.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <section>
         <h2 className="text-2xl font-bold text-primary-dark mb-3">
           How we calculated your result
