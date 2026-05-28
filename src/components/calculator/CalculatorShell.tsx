@@ -1,0 +1,88 @@
+import Link from "next/link";
+import type { ReactNode } from "react";
+import AdSlot from "@/components/AdSlot";
+
+type Crumb = { href: string; label: string };
+
+type CalculatorShellProps = {
+  category: string;
+  title: string;
+  intro: string;
+  breadcrumbs: Crumb[];
+  /** Interactive calculator (usually a Client Component). */
+  calculator: ReactNode;
+  /** Plain-English explainer rendered below the calculator. */
+  explainer: ReactNode;
+  /** Optional last-updated label, e.g. "Updated for 2025/26". */
+  updatedLabel?: string;
+};
+
+export default function CalculatorShell({
+  category,
+  title,
+  intro,
+  breadcrumbs,
+  calculator,
+  explainer,
+  updatedLabel,
+}: CalculatorShellProps) {
+  return (
+    <>
+      {/* Page header */}
+      <section className="bg-primary-dark text-white">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
+          <nav
+            aria-label="Breadcrumb"
+            className="text-sm text-white/80 mb-4"
+          >
+            <ol className="flex flex-wrap items-center gap-1">
+              {breadcrumbs.map((c, i) => (
+                <li key={c.href} className="flex items-center gap-1">
+                  {i > 0 && <span aria-hidden>/</span>}
+                  <Link href={c.href} className="hover:underline">
+                    {c.label}
+                  </Link>
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <p className="inline-block text-xs font-semibold uppercase tracking-wider bg-white/10 border border-white/20 rounded-full px-3 py-1 mb-4">
+            {category}
+            {updatedLabel ? ` · ${updatedLabel}` : ""}
+          </p>
+          <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight max-w-3xl">
+            {title}
+          </h1>
+          <p className="mt-4 text-lg text-white/85 max-w-2xl">{intro}</p>
+        </div>
+      </section>
+
+      {/* Calculator + sidebar */}
+      <section className="mx-auto max-w-6xl px-4 sm:px-6 py-10 grid gap-8 lg:grid-cols-[1fr_300px]">
+        <div className="min-w-0">{calculator}</div>
+        <aside className="space-y-6">
+          <AdSlot size="mpu" />
+          <div className="rounded-xl bg-surface border border-border p-5">
+            <h3 className="font-bold text-primary-dark mb-2">
+              Plain-English promise
+            </h3>
+            <p className="text-sm text-text/75">
+              We translate HMRC and DWP rules into clear answers. Figures are
+              estimates — always check your personal tax code.
+            </p>
+          </div>
+        </aside>
+      </section>
+
+      {/* Ad: leaderboard between calc and explainer */}
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <AdSlot size="leaderboard" />
+      </div>
+
+      {/* Explainer */}
+      <section className="mx-auto max-w-3xl px-4 sm:px-6 py-12">
+        <div className="prose-like space-y-6 text-text">{explainer}</div>
+      </section>
+    </>
+  );
+}
