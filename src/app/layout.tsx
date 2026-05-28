@@ -24,7 +24,6 @@ export const metadata: Metadata = {
     "HMRC calculator",
   ],
   authors: [{ name: "GovMath" }],
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_GB",

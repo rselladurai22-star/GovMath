@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import AdSlot from "@/components/AdSlot";
 import CalculatorCard from "@/components/CalculatorCard";
 import {
@@ -6,6 +7,10 @@ import {
   CATEGORIES,
   getPopularCalculators,
 } from "@/lib/calculators";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   const popular = getPopularCalculators().slice(0, 6);

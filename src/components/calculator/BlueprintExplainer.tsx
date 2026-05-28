@@ -1,5 +1,16 @@
-import type { ReactNode } from "react";
+import { isValidElement, type ReactNode } from "react";
 import Disclosure from "./Disclosure";
+
+function nodeToText(node: ReactNode): string {
+  if (node == null || typeof node === "boolean") return "";
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(nodeToText).join(" ");
+  if (isValidElement(node)) {
+    const children = (node.props as { children?: ReactNode }).children;
+    return nodeToText(children);
+  }
+  return "";
+}
 
 type Pitfall = {
   title: string;
@@ -39,11 +50,12 @@ export default function BlueprintExplainer({
           "@context": "https://schema.org",
           "@type": "FAQPage",
           mainEntity: faqs
-            .filter((f) => typeof f.answer === "string")
+            .map((f) => ({ q: f.question, a: nodeToText(f.answer).replace(/\s+/g, " ").trim() }))
+            .filter((f) => f.a.length > 0)
             .map((f) => ({
               "@type": "Question",
-              name: f.question,
-              acceptedAnswer: { "@type": "Answer", text: f.answer as string },
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
             })),
         }
       : null;
