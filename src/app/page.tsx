@@ -10,6 +10,11 @@ import {
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
+  openGraph: {
+    title: "GovMath — UK government rules, in plain English",
+    description: "Free UK tax, salary, mortgage, benefits and pension calculators. 2025/26 rates, no signup, plain-English explanations.",
+    url: "/",
+  },
 };
 
 export default function Home() {
