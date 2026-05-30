@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import AdSlot from "@/components/AdSlot";
+import { CALCULATORS } from "@/lib/calculators";
 
 type Crumb = { href: string; label: string };
 
@@ -36,6 +37,16 @@ export default function CalculatorShell({
       item: `https://govmath.co.uk${c.href}`,
     })),
   };
+  const currentHref = breadcrumbs[breadcrumbs.length - 1]?.href;
+  const currentCalc = CALCULATORS.find((c) => c.href === currentHref);
+  const related = currentCalc
+    ? CALCULATORS.filter(
+        (c) =>
+          c.category === currentCalc.category &&
+          c.status === "live" &&
+          c.href !== currentHref,
+      ).slice(0, 6)
+    : [];
   return (
     <>
       <script
@@ -97,6 +108,35 @@ export default function CalculatorShell({
       <section className="mx-auto max-w-3xl px-4 sm:px-6 py-12">
         <div className="prose-like space-y-6 text-text">{explainer}</div>
       </section>
+
+      {/* Related calculators */}
+      {related.length > 0 && (
+        <section className="bg-surface border-t border-border">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
+            <h2 className="text-2xl font-extrabold text-primary-dark mb-2">
+              Related calculators
+            </h2>
+            <p className="text-text/75 mb-6">
+              More tools in {category}.
+            </p>
+            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {related.map((c) => (
+                <li key={c.href}>
+                  <Link
+                    href={c.href}
+                    className="block h-full rounded-xl bg-white border border-border p-5 hover:border-primary hover:shadow-sm transition"
+                  >
+                    <h3 className="font-bold text-primary-dark mb-1">
+                      {c.title}
+                    </h3>
+                    <p className="text-sm text-text/75">{c.blurb}</p>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
     </>
   );
 }
