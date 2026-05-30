@@ -152,7 +152,7 @@ export const CALCULATORS: Calculator[] = [
   live("tax-code-decoder", "tax-and-salary", "Tax Code Decoder", "What does 1257L, BR or NT actually mean on your payslip?"),
   live("national-insurance", "tax-and-salary", "National Insurance Calculator", "Class 1, 2 and 4 NI — explained without the jargon.", true),
   live("scottish-tax", "tax-and-salary", "Scottish Income Tax Calculator", "The six-band Scottish system, calculated cleanly."),
-  cs("p45-p60-explainer", "tax-and-salary", "P45 & P60 Explainer", "Field-by-field breakdown of your payroll documents."),
+  live("p45-p60-explainer", "tax-and-salary", "P45 & P60 Explainer", "Field-by-field breakdown of your payroll documents."),
   live("statutory-sick-pay", "tax-and-salary", "Statutory Sick Pay (SSP)", "Check your minimum SSP entitlement."),
   live("redundancy", "tax-and-salary", "Redundancy Pay Calculator", "Statutory pay based on age and length of service."),
   live("holiday-entitlement", "tax-and-salary", "Holiday Entitlement Calculator", "Statutory holiday days, pro-rated for any working pattern."),
@@ -214,7 +214,7 @@ export const CALCULATORS: Calculator[] = [
   live("shared-parental-leave", "benefits", "Shared Parental Leave", "Split leave and pay between two parents."),
   live("tax-free-childcare", "benefits", "Tax-Free Childcare Calculator", "Up to £2,000/year per child top-up — see your match."),
   live("free-childcare-hours", "benefits", "Free Childcare Hours Checker", "15 or 30 free hours — eligibility by age and income."),
-  cs("pip-points", "benefits", "PIP Points Self-Check", "Daily living + mobility scores against thresholds."),
+  live("pip-points", "benefits", "PIP Points Self-Check", "Daily living + mobility scores against thresholds."),
   live("carers-earnings", "benefits", "Carer's Allowance Earnings Check", "Stay within the weekly limit to keep your claim."),
   live("pension-credit", "benefits", "Pension Credit Estimator", "Top-up for low-income pensioners."),
   live("attendance-allowance", "benefits", "Attendance Allowance", "Help with care costs for over-65s."),
@@ -229,9 +229,9 @@ export const CALCULATORS: Calculator[] = [
   live("petrol-vs-ev-cost", "vehicles", "Petrol vs EV Running Cost", "Compare per-mile costs of petrol, diesel and EV."),
   live("commuter-comparison", "vehicles", "Commuter Cost Comparison", "Rail season ticket vs driving the same route."),
   live("clean-air-zones", "vehicles", "Clean Air Zone Charge", "Daily charges in ULEZ, CAZ and similar schemes."),
-  cs("mot-history-checker", "vehicles", "MOT History Checker", "Look up MOT history via the DVSA service."),
-  cs("licence-at-70", "vehicles", "Driving Licence at 70", "What to do when your licence needs renewing."),
-  cs("sorn-declaration", "vehicles", "SORN Declaration", "Take your vehicle off the road, the right way."),
+  live("mot-history-checker", "vehicles", "MOT History Checker", "Look up MOT history via the DVSA service."),
+  live("licence-at-70", "vehicles", "Driving Licence at 70", "What to do when your licence needs renewing."),
+  live("sorn-declaration", "vehicles", "SORN Declaration", "Take your vehicle off the road, the right way."),
 
   // ── Students ───────────────────────────────────────────────────────────
   live("plan-1-student-loan", "students", "Plan 1 Student Loan Calculator", "Pre-2012 loan repayments."),
@@ -240,7 +240,7 @@ export const CALCULATORS: Calculator[] = [
   live("plan-5-student-loan", "students", "Plan 5 Student Loan Calculator", "Post-2023 loans with the 40-year write-off."),
   live("postgrad-loan", "students", "Postgraduate Loan Calculator", "Repayments on a Master's or Doctoral loan."),
   live("maintenance-loan", "students", "Maintenance Loan Estimator", "Support based on household income.", true),
-  cs("student-council-tax", "students", "Student Council Tax Exemption", "Who counts as a full-time student — and who doesn't."),
+  live("student-council-tax", "students", "Student Council Tax Exemption", "Who counts as a full-time student — and who doesn't."),
 
   // ── Life ───────────────────────────────────────────────────────────────
   live("percentage-calculator", "life", "Percentage Calculator", "Add, subtract or compare percentages — fast.", true),
@@ -252,10 +252,10 @@ export const CALCULATORS: Calculator[] = [
   live("care-home-means-test", "life", "Care Home Means Test", "Will the state cover any of your care costs?"),
   live("nhs-prescription-saver", "life", "NHS Prescription Saver", "Is a Prepayment Certificate cheaper for you?"),
   live("bmi-uk-nhs", "life", "BMI Calculator (NHS)", "Your BMI against NHS healthy-weight bands."),
-  cs("healthy-start", "life", "Healthy Start Vouchers", "Eligibility for free vouchers and vitamins."),
+  live("healthy-start", "life", "Healthy Start Vouchers", "Eligibility for free vouchers and vitamins."),
   live("bank-holidays", "life", "Bank Holidays Calculator", "Working days excluding bank holidays in your region."),
-  cs("right-to-rent", "life", "Right to Rent Checker", "Documents landlords must check."),
-  cs("power-of-attorney", "life", "Power of Attorney Fees", "Application fees and process overview."),
+  live("right-to-rent", "life", "Right to Rent Checker", "Documents landlords must check."),
+  live("power-of-attorney", "life", "Power of Attorney Fees", "Application fees and process overview."),
 ];
 
 export function getCategory(slug: CategorySlug): Category {
