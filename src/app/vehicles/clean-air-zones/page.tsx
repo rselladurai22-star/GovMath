@@ -19,7 +19,7 @@ export default function CleanAirZonesPage() {
         { href: "/vehicles/clean-air-zones", label: "Clean Air Zones" },
       ]}
       title="Clean Air Zone & ULEZ Cost Calculator"
-      intro="If your car or van doesn&rsquo;t meet the emission standard, every day inside a Clean Air Zone or London&rsquo;s ULEZ adds up fast. Estimate the annual cost before you commit to a daily commute."
+      intro="If your car or van doesn’t meet the emission standard, every day inside a Clean Air Zone or London’s ULEZ adds up fast. Estimate the annual cost before you commit to a daily commute."
       calculator={<CleanAirZonesCalculator />}
       explainer={
         <BlueprintExplainer
@@ -39,14 +39,14 @@ export default function CleanAirZonesPage() {
           pitfalls={[
             { title: "Auto-pay still needs registration", body: "TfL Auto Pay charges your card daily but you must register the vehicle first — driving in unregistered means a PCN." },
             { title: "Hire and lease vehicles count", body: "The registered keeper is liable. Hire firms usually pass the charge on plus an admin fee of £20–£40." },
-            { title: "Class C zones don&rsquo;t charge cars", body: "Bath and Sheffield only charge vans, taxis, coaches and HGVs — most private cars drive in free." },
+            { title: "Class C zones don’t charge cars", body: "Bath and Sheffield only charge vans, taxis, coaches and HGVs — most private cars drive in free." },
           ]}
           faqs={[
             { question: "How do I check if my car is compliant?", answer: "Use the free checker at gov.uk/clean-air-zones or tfl.gov.uk — enter the number plate and it tells you instantly." },
             { question: "Can I claim it back from my employer?", answer: "Only if driving is wholly for work (not commuting). Daily charges paid for business mileage are an allowable expense." },
-            { question: "What about the Congestion Charge?", answer: "London&rsquo;s £15 Congestion Charge is separate and stacks on top of the ULEZ charge — total £27.50/day for a non-compliant car." },
+            { question: "What about the Congestion Charge?", answer: "London’s £15 Congestion Charge is separate and stacks on top of the ULEZ charge — total £27.50/day for a non-compliant car." },
           ]}
-          disclaimer="Charges shown are the published daily rates. Penalty rates and exemptions change — always verify on the operating authority&rsquo;s website."
+          disclaimer="Charges shown are the published daily rates. Penalty rates and exemptions change — always verify on the operating authority’s website."
         />
       }
     />

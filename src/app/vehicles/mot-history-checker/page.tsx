@@ -19,12 +19,12 @@ export default function MotHistoryPage() {
         { href: "/vehicles/mot-history-checker", label: "MOT History Checker" },
       ]}
       title="MOT History Checker"
-      intro="Enter any UK registration and we&rsquo;ll take you straight to the official DVSA MOT history service — free, instant, and goes back to 2005."
+      intro="Enter any UK registration and we’ll take you straight to the official DVSA MOT history service — free, instant, and goes back to 2005."
       calculator={<MotHistoryChecker />}
       explainer={
         <BlueprintExplainer
           howWeCalculated={
-            <p>We validate the plate format and link you directly to the DVSA&rsquo;s free MOT history service. We don&rsquo;t store or relay your search.</p>
+            <p>We validate the plate format and link you directly to the DVSA’s free MOT history service. We don’t store or relay your search.</p>
           }
           officialRules={
             <ul>
@@ -35,15 +35,15 @@ export default function MotHistoryPage() {
           }
           pitfalls={[
             { title: "Recurring advisories", body: "If the same advisory appears year after year, the seller has been ignoring a problem. Negotiate or walk." },
-            { title: "Mileage gaps", body: "A jump where the car &quot;forgot&quot; to do 30k miles for two years is a red flag for a clocked odometer." },
-            { title: "Recent fail then pass", body: "Check what was fixed. A &quot;corrosion to chassis&quot; major often comes back." },
+            { title: "Mileage gaps", body: "A jump where the car ”forgot” to do 30k miles for two years is a red flag for a clocked odometer." },
+            { title: "Recent fail then pass", body: "Check what was fixed. A ”corrosion to chassis” major often comes back." },
           ]}
           faqs={[
             { question: "Is the DVSA service free?", answer: "Completely free. Any third-party site charging for MOT history is just re-selling free public data." },
-            { question: "What if no history shows?", answer: "Cars under 3 years old won&rsquo;t have an MOT yet. Vehicles imported recently may show partial history." },
+            { question: "What if no history shows?", answer: "Cars under 3 years old won’t have an MOT yet. Vehicles imported recently may show partial history." },
             { question: "Does it show service history?", answer: "No — MOT history only. Service history must come from the seller or main dealer." },
           ]}
-          disclaimer="We link to gov.uk — we don&rsquo;t store registrations. Always verify directly on the DVSA service."
+          disclaimer="We link to gov.uk — we don’t store registrations. Always verify directly on the DVSA service."
         />
       }
     />

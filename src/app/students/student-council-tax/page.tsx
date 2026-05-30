@@ -36,11 +36,11 @@ export default function StudentCouncilTaxPage() {
           }
           pitfalls={[
             { title: "Summer break", body: "You stay enrolled — and exempt — over summer. Drop out and the exemption ends from that day." },
-            { title: "PhD writing-up year", body: "You may be classed as part-time after your funded period — check with your uni&rsquo;s registry." },
+            { title: "PhD writing-up year", body: "You may be classed as part-time after your funded period — check with your uni’s registry." },
             { title: "Mid-tenancy changes", body: "If a non-student moves in or out, tell the council within 21 days or risk a penalty." },
           ]}
           faqs={[
-            { question: "What if my partner isn&rsquo;t a student?", answer: "They&rsquo;ll get the 25% single-person discount. If you take a year out, they lose it." },
+            { question: "What if my partner isn’t a student?", answer: "They’ll get the 25% single-person discount. If you take a year out, they lose it." },
             { question: "Do international students qualify?", answer: "Yes — student status is based on the course, not nationality." },
             { question: "Halls of residence?", answer: "Usually exempt as Class N — the bill never even reaches you." },
           ]}

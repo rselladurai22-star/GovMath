@@ -15,7 +15,7 @@ export default function FIREPage() {
       updatedLabel="Trinity Study"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/investing", label: "Investing" }, { href: "/investing/fire-calculator", label: "FIRE" }]}
       title="FIRE Calculator"
-      intro="Financial Independence, Retire Early — the FIRE movement targets a pot 25× annual spend, then withdraws 4% per year. This shows when you&rsquo;d get there at your current savings rate."
+      intro="Financial Independence, Retire Early — the FIRE movement targets a pot 25× annual spend, then withdraws 4% per year. This shows when you’d get there at your current savings rate."
       calculator={<FIRECalculator />}
       explainer={
         <BlueprintExplainer
@@ -36,7 +36,7 @@ export default function FIREPage() {
             { question: "Why 25×?", answer: "1/0.04 = 25. The 25× rule is just the 4% SWR restated as a multiplier." },
             { question: "Is FIRE realistic on UK salaries?", answer: "Aggressive savers (50%+ of income) can hit it in 15–20 years. Standard 15% pensioners get there at the State Pension age." },
           ]}
-          disclaimer="Educational. Investment returns aren&rsquo;t guaranteed — speak to a financial planner."
+          disclaimer="Educational. Investment returns aren’t guaranteed — speak to a financial planner."
         />
       }
     />

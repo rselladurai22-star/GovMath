@@ -5,7 +5,7 @@ import CommuterComparisonCalculator from "./CommuterComparisonCalculator";
 
 export const metadata: Metadata = {
   title: "Commuter Comparison: Train vs Car (UK)",
-  description: "Compare the true annual cost of a rail season ticket against driving — fuel, parking and wear &amp; tear.",
+  description: "Compare the true annual cost of a rail season ticket against driving — fuel, parking and wear & tear.",
 };
 
 export default function CommuterComparisonPage() {
@@ -25,7 +25,7 @@ export default function CommuterComparisonPage() {
         <BlueprintExplainer
           howWeCalculated={
             <p>
-              Driving cost = annual miles ÷ mpg × 4.546 L per gallon × pump price, plus daily parking and 12p/mile for wear &amp; tear (the residual once HMRC AMAP fuel is stripped out).
+              Driving cost = annual miles ÷ mpg × 4.546 L per gallon × pump price, plus daily parking and 12p/mile for wear & tear (the residual once HMRC AMAP fuel is stripped out).
               Rail cost is whatever you enter for your annual season ticket.
             </p>
           }
@@ -34,7 +34,7 @@ export default function CommuterComparisonPage() {
               <li>UK fuel prices include 52.95p/L duty + 20% VAT — the pump price drives the calc.</li>
               <li>Annual season tickets cost ~40× the weekly fare on most national rail routes.</li>
               <li>Salary-sacrifice season ticket loans are interest-free up to £10,000.</li>
-              <li>HMRC&rsquo;s 45p/mile (first 10k) covers fuel + running costs for business travel only — not commuting.</li>
+              <li>HMRC’s 45p/mile (first 10k) covers fuel + running costs for business travel only — not commuting.</li>
             </ul>
           }
           pitfalls={[
@@ -45,9 +45,9 @@ export default function CommuterComparisonPage() {
           faqs={[
             { question: "Can I salary-sacrifice my train ticket?", answer: "Most employers offer interest-free season ticket loans repaid over 12 months — saves the upfront sting and keeps the season ticket discount." },
             { question: "What mpg should I use?", answer: "Use your real-world figure, not the official combined. Most petrol cars manage 70–85% of the WLTP number; diesels are closer to 90%." },
-            { question: "Does this include car insurance and tax?", answer: "No — those are fixed costs you pay whether you drive or not. Add them only if you&rsquo;d genuinely give up the car." },
+            { question: "Does this include car insurance and tax?", answer: "No — those are fixed costs you pay whether you drive or not. Add them only if you’d genuinely give up the car." },
           ]}
-          disclaimer="Estimates only. Wear &amp; tear varies hugely by vehicle age. Always check your actual season ticket price at nationalrail.co.uk."
+          disclaimer="Estimates only. Wear & tear varies hugely by vehicle age. Always check your actual season ticket price at nationalrail.co.uk."
         />
       }
     />

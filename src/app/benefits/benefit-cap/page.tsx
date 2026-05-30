@@ -32,14 +32,14 @@ export default function BenefitCapPage() {
             <ul>
               <li>Greater London: £18,837.36 (single, no kids) or £28,116.72 (family) per year.</li>
               <li>Outside London: £16,395.66 (single, no kids) or £24,496.32 (family) per year.</li>
-              <li>Cap is applied weekly — earnings over £846/month (post-tax) trigger the &quot;in work&quot; exemption.</li>
+              <li>Cap is applied weekly — earnings over £846/month (post-tax) trigger the ”in work” exemption.</li>
               <li>9-month grace period after losing a job, if previously worked 50 of last 52 weeks.</li>
             </ul>
           }
           pitfalls={[
-            { title: "Carer&rsquo;s Allowance exempts you", body: "Receiving Carer&rsquo;s Allowance or the UC carer element removes the cap entirely — many people miss this." },
+            { title: "Carer’s Allowance exempts you", body: "Receiving Carer’s Allowance or the UC carer element removes the cap entirely — many people miss this." },
             { title: "PIP exemption is per household", body: "If anyone in the household (including children) gets PIP or DLA, the whole household is exempt." },
-            { title: "Housing Benefit isn&rsquo;t always cut", body: "On legacy benefits the cap reduces Housing Benefit. On UC it reduces the standard allowance — your rent payment stays the same." },
+            { title: "Housing Benefit isn’t always cut", body: "On legacy benefits the cap reduces Housing Benefit. On UC it reduces the standard allowance — your rent payment stays the same." },
           ]}
           faqs={[
             { question: "Which benefits count towards the cap?", answer: "UC, Housing Benefit, Child Benefit, Child Tax Credit, JSA, ESA (assessment phase or work-related activity group), Income Support, Maternity Allowance, Bereavement Allowance." },

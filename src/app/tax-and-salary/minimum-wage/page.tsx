@@ -30,13 +30,13 @@ export default function MinWagePage() {
             </ul>
           }
           pitfalls={[
-            { title: "Tronc isn't pay for NMW", body: "Tips paid via tronc don&rsquo;t count towards minimum wage. Your base pay must independently hit the floor." },
-            { title: "Deductions can take you under", body: "Uniform charges, till shortages, accommodation deductions above the offset (£10.66/day) can put your effective rate below minimum — that&rsquo;s illegal." },
-            { title: "Salaried at the wage floor? Watch the hours", body: "If your salary works out below minimum when divided by actual hours, you&rsquo;re underpaid. Common in retail/hospitality manager roles." },
+            { title: "Tronc isn't pay for NMW", body: "Tips paid via tronc don’t count towards minimum wage. Your base pay must independently hit the floor." },
+            { title: "Deductions can take you under", body: "Uniform charges, till shortages, accommodation deductions above the offset (£10.66/day) can put your effective rate below minimum — that’s illegal." },
+            { title: "Salaried at the wage floor? Watch the hours", body: "If your salary works out below minimum when divided by actual hours, you’re underpaid. Common in retail/hospitality manager roles." },
           ]}
           faqs={[
-            { question: "Can I report underpayment?", answer: "Yes — confidentially via ACAS (0300 123 1100) or directly to HMRC. You can&rsquo;t be sacked for it." },
-            { question: "What about volunteers and interns?", answer: "Genuine volunteers are exempt. But if you have set hours, contracted duties or get any reward beyond expenses, you&rsquo;re a worker and NMW applies." },
+            { question: "Can I report underpayment?", answer: "Yes — confidentially via ACAS (0300 123 1100) or directly to HMRC. You can’t be sacked for it." },
+            { question: "What about volunteers and interns?", answer: "Genuine volunteers are exempt. But if you have set hours, contracted duties or get any reward beyond expenses, you’re a worker and NMW applies." },
           ]}
           disclaimer="2025/26 rates. Rates change every April."
         />

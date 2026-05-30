@@ -19,7 +19,7 @@ export default function FuelCostPage() {
       calculator={<FuelCostCalculator />}
       explainer={
         <BlueprintExplainer
-          howWeCalculated={<p>Gallons = miles ÷ MPG. UK MPG is imperial gallons (4.546 L). Cost = litres × pump price. Cost-per-mile lets you compare against HMRC&rsquo;s 45p/mile mileage allowance.</p>}
+          howWeCalculated={<p>Gallons = miles ÷ MPG. UK MPG is imperial gallons (4.546 L). Cost = litres × pump price. Cost-per-mile lets you compare against HMRC’s 45p/mile mileage allowance.</p>}
           officialRules={
             <ul>
               <li>HMRC AMAP rate: 45p/mile for first 10,000 business miles.</li>

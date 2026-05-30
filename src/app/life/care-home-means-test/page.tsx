@@ -25,7 +25,7 @@ export default function CareHomeMeansTestPage() {
         <BlueprintExplainer
           howWeCalculated={
             <p>
-              We apply the England thresholds. If capital is above the upper limit, you self-fund. Otherwise we add tariff income (£1/wk per £250 of capital above £14,250) to your weekly income, subtract the £30.65 Personal Expenses Allowance, and that&rsquo;s your share — the council pays the rest.
+              We apply the England thresholds. If capital is above the upper limit, you self-fund. Otherwise we add tariff income (£1/wk per £250 of capital above £14,250) to your weekly income, subtract the £30.65 Personal Expenses Allowance, and that’s your share — the council pays the rest.
             </p>
           }
           officialRules={
@@ -33,12 +33,12 @@ export default function CareHomeMeansTestPage() {
               <li>Upper capital limit £23,250; lower £14,250 (England, 2025/26).</li>
               <li>Personal Expenses Allowance £30.65/wk kept for pocket money.</li>
               <li>Tariff income £1/wk per £250 above the lower limit.</li>
-              <li>If you own a home and there&rsquo;s no spouse remaining, its value usually counts after 12 weeks.</li>
+              <li>If you own a home and there’s no spouse remaining, its value usually counts after 12 weeks.</li>
             </ul>
           }
           pitfalls={[
-            { title: "Deprivation of assets", body: "Giving money away to fall below the threshold backfires — the council can include &quot;notional capital&quot; if they think it was deliberate." },
-            { title: "Top-up fees", body: "If you pick a more expensive home than the council&rsquo;s usual rate, a third party (family) must pay the top-up — care recipient can&rsquo;t use their own savings for this." },
+            { title: "Deprivation of assets", body: "Giving money away to fall below the threshold backfires — the council can include ”notional capital” if they think it was deliberate." },
+            { title: "Top-up fees", body: "If you pick a more expensive home than the council’s usual rate, a third party (family) must pay the top-up — care recipient can’t use their own savings for this." },
             { title: "12-week disregard", body: "Your home is ignored for the first 12 weeks of a permanent placement, giving time to consider deferred payments." },
           ]}
           faqs={[

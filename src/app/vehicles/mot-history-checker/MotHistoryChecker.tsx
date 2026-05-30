@@ -20,7 +20,7 @@ export default function MotHistoryChecker() {
               placeholder="AB12 CDE"
               className="w-full rounded-lg border-2 border-yellow-400 bg-yellow-100 px-4 py-3 text-xl font-bold uppercase tracking-widest text-center"
             />
-            {reg && !r.valid && <p className="mt-2 text-sm text-red-600">That doesn&rsquo;t look like a valid UK plate.</p>}
+            {reg && !r.valid && <p className="mt-2 text-sm text-red-600">That doesn’t look like a valid UK plate.</p>}
           </div>
         </div>
         <div className="rounded-xl bg-white border-2 border-primary p-6 space-y-3">

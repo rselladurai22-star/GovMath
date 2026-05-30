@@ -27,7 +27,7 @@ export default function TaxAndSalaryLandingPage() {
           </p>
           <p>
             Every figure here is for the <strong>2025/26 tax year</strong> in
-            England, Wales &amp; Northern Ireland. Scotland-specific
+            England, Wales & Northern Ireland. Scotland-specific
             calculators are in the section below.
           </p>
         </>

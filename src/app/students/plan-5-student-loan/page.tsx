@@ -34,7 +34,7 @@ export default function Plan5Page() {
           }
           pitfalls={[
             { title: "Most Plan 5 borrowers will repay in full", body: "The combination of a low threshold, 9% rate and 40-year window means high earners may overpay significantly. IFS estimates 65%+ will repay fully." },
-            { title: "Overpayments may now be worthwhile", body: "Unlike Plan 2, Plan 5&rsquo;s longer window changes the math — high earners can save serious interest by paying down early." },
+            { title: "Overpayments may now be worthwhile", body: "Unlike Plan 2, Plan 5’s longer window changes the math — high earners can save serious interest by paying down early." },
           ]}
           faqs={[
             { question: "Why is the threshold so much lower than Plan 2?", answer: "Policy change in 2022 to recover more loan value. Plan 5 borrowers pay more, sooner." },

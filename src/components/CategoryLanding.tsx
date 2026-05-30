@@ -83,9 +83,9 @@ export default function CategoryLanding({
               Calculators landing soon
             </h3>
             <p className="text-sm text-text/70 max-w-md mx-auto">
-              We&apos;re actively building this section. The first{" "}
+              We’re actively building this section. The first{" "}
               {category.title.toLowerCase()} calculators ship in the next
-              release — see what&apos;s on the way below.
+              release — see what’s on the way below.
             </p>
           </div>
         )}

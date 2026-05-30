@@ -29,7 +29,7 @@ export default function EmployerNIPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Director-only Ltd Co misses out", body: "Single-director companies can&rsquo;t claim Employment Allowance. The standard tax-efficient salary is therefore £5,000 (no NI either side)." },
+            { title: "Director-only Ltd Co misses out", body: "Single-director companies can’t claim Employment Allowance. The standard tax-efficient salary is therefore £5,000 (no NI either side)." },
             { title: "Apprentices under 25", body: "Zero employer NI on earnings up to £50,270. Same for under-21s." },
             { title: "Pension salary sacrifice", body: "Reduces NIable pay — saves both employer (15%) and employee (8%) NI. Huge total comp lever." },
           ]}

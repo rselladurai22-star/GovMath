@@ -28,7 +28,7 @@ export default function OverpaymentPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Tell your lender to reduce the term, not the payment", body: "By default many lenders keep the term and just lower future payments. You save less interest. Always specify &lsquo;reduce term&rsquo;." },
+            { title: "Tell your lender to reduce the term, not the payment", body: "By default many lenders keep the term and just lower future payments. You save less interest. Always specify ‘reduce term’." },
             { title: "Watch the 10% allowance", body: "Going £1 over can trigger an ERC on the entire overpayment. Track the calendar year." },
             { title: "Compare with savings rates", body: "If your mortgage is 4% and your easy-access savings pay 5% (after tax), saving wins. Overpay only when mortgage rate &gt; net savings rate." },
           ]}

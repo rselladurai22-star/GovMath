@@ -2,13 +2,13 @@
  * Shared Parental Leave & Pay (ShPL/ShPP) — UK 2025/26.
  *
  * The mother / primary adopter can curtail their maternity / adoption leave and pay
- * to share what&apos;s left with the partner:
+ * to share what’s left with the partner:
  *  - Up to 50 weeks of leave to share (52 minus the compulsory first 2 weeks).
  *  - Up to 37 weeks of statutory pay (39 SMP weeks minus 2 mandatory weeks at SMP).
  *
  * Statutory Shared Parental Pay (ShPP) for 2025/26 is the lower of:
  *  - £187.18 per week, OR
- *  - 90% of the parent&apos;s average weekly earnings.
+ *  - 90% of the parent’s average weekly earnings.
  *
  * Both parents must have continuous service of 26 weeks with their employer
  * by the 15th week before the due date.

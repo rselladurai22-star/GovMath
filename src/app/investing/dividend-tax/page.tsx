@@ -30,7 +30,7 @@ export default function DividendPage() {
               <ol>
                 <li>
                   <strong>Personal Allowance absorption</strong>: if your
-                  other income doesn&apos;t use all £12,570, the remainder
+                  other income doesn’t use all £12,570, the remainder
                   covers dividends tax-free.
                 </li>
                 <li>
@@ -80,7 +80,7 @@ export default function DividendPage() {
           pitfalls={[
             {
               title: "The £500 allowance hasn't kept up with inflation",
-              body: "From £2,000 in 2022/23 to £500 today. A typical retail investor with £20k in a yielding portfolio now pays dividend tax — where they wouldn&rsquo;t have three years ago. ISA wrappers matter more than ever.",
+              body: "From £2,000 in 2022/23 to £500 today. A typical retail investor with £20k in a yielding portfolio now pays dividend tax — where they wouldn’t have three years ago. ISA wrappers matter more than ever.",
             },
             {
               title: "Dividend tax is always settled annually",
@@ -88,18 +88,18 @@ export default function DividendPage() {
             },
             {
               title: "Dividends count toward bands but pay their own rates",
-              body: "Imagine you have £49k salary and £5k dividends. The dividends push your total above the £50,270 basic-rate top. The portion in the higher band is taxed at 33.75%, not 8.75% — but the salary itself isn&rsquo;t reclassified.",
+              body: "Imagine you have £49k salary and £5k dividends. The dividends push your total above the £50,270 basic-rate top. The portion in the higher band is taxed at 33.75%, not 8.75% — but the salary itself isn’t reclassified.",
             },
             {
               title: "Salary-then-dividend optimisers can be over-egged",
-              body: "Director extraction strategies often quote &ldquo;optimal&rdquo; figures from 2017 that no longer hold. With the allowance now £500 and CT now 25%/26.5%/19%, run a fresh check via the Salary vs Dividend optimiser before banking on stale advice.",
+              body: "Director extraction strategies often quote “optimal” figures from 2017 that no longer hold. With the allowance now £500 and CT now 25%/26.5%/19%, run a fresh check via the Salary vs Dividend optimiser before banking on stale advice.",
             },
           ]}
           faqs={[
             {
               question: "Do I pay tax on reinvested dividends in a fund?",
               answer:
-                "Yes — even if the dividends are automatically reinvested (an &lsquo;accumulation&rsquo; fund), you&rsquo;re treated as having received and re-spent them. Inside an ISA or pension, that doesn&rsquo;t matter.",
+                "Yes — even if the dividends are automatically reinvested (an ‘accumulation’ fund), you’re treated as having received and re-spent them. Inside an ISA or pension, that doesn’t matter.",
             },
             {
               question: "What about foreign dividends?",

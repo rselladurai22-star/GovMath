@@ -19,7 +19,7 @@ export default function PensionReliefPage() {
       calculator={<PensionReliefCalculator />}
       explainer={
         <BlueprintExplainer
-          howWeCalculated={<p>For a gross contribution of £X, you actually pay £X × 80% (relief at source). HMRC tops up the other 20% into the pot. If you&rsquo;re a 40% taxpayer, you claim a further 20% refund through Self Assessment — making a £100 pension contribution cost you only £60.</p>}
+          howWeCalculated={<p>For a gross contribution of £X, you actually pay £X × 80% (relief at source). HMRC tops up the other 20% into the pot. If you’re a 40% taxpayer, you claim a further 20% refund through Self Assessment — making a £100 pension contribution cost you only £60.</p>}
           officialRules={
             <ul>
               <li>Basic-rate relief (20%) added automatically by provider.</li>
@@ -29,7 +29,7 @@ export default function PensionReliefPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Higher-rate relief is opt-in", body: "Around £1bn/year is unclaimed by higher-rate taxpayers who don&rsquo;t complete Self Assessment." },
+            { title: "Higher-rate relief is opt-in", body: "Around £1bn/year is unclaimed by higher-rate taxpayers who don’t complete Self Assessment." },
             { title: "Net pay scheme = no extra claim", body: "Some workplace schemes (net pay) deduct gross from salary — your relief is automatic at marginal rate, nothing to claim." },
             { title: "Carry forward 3 years", body: "Unused allowance from the previous 3 tax years can be used if you have the earnings to support it." },
           ]}

@@ -32,18 +32,18 @@ export default function SharedParentalLeavePage() {
             <ul>
               <li>Maximum 50 weeks of leave to share (52 − 2 compulsory maternity weeks).</li>
               <li>Maximum 37 weeks of statutory pay to share (39 SMP weeks − 2 mandatory weeks at SMP).</li>
-              <li>Both parents need 26 weeks&rsquo; continuous service by the 15th week before the due date.</li>
+              <li>Both parents need 26 weeks’ continuous service by the 15th week before the due date.</li>
               <li>Mother must curtail SMP or maternity leave for SPL to start.</li>
             </ul>
           }
           pitfalls={[
-            { title: "Notice is fiddly", body: "Each block of leave needs 8 weeks&rsquo; written notice (a SPLIT form). Max 3 separate blocks per parent unless employer agrees more." },
-            { title: "&lsquo;Discontinuous&rsquo; leave can be refused", body: "Employers must accept continuous blocks but can refuse split-up leave within 2 weeks of the request." },
-            { title: "Enhanced maternity pay doesn&rsquo;t always transfer", body: "Some employers pay above statutory for maternity but only statutory for ShPP — check both contracts before deciding." },
+            { title: "Notice is fiddly", body: "Each block of leave needs 8 weeks’ written notice (a SPLIT form). Max 3 separate blocks per parent unless employer agrees more." },
+            { title: "‘Discontinuous’ leave can be refused", body: "Employers must accept continuous blocks but can refuse split-up leave within 2 weeks of the request." },
+            { title: "Enhanced maternity pay doesn’t always transfer", body: "Some employers pay above statutory for maternity but only statutory for ShPP — check both contracts before deciding." },
           ]}
           faqs={[
             { question: "Can we both be off at the same time?", answer: "Yes — overlapping leave is allowed. The 50-week pool just covers total time off the two of you take." },
-            { question: "What if I&rsquo;m self-employed?", answer: "Self-employed parents can&rsquo;t take SPL but may qualify for Maternity Allowance instead — up to £187.18/week for 39 weeks." },
+            { question: "What if I’m self-employed?", answer: "Self-employed parents can’t take SPL but may qualify for Maternity Allowance instead — up to £187.18/week for 39 weeks." },
             { question: "Does this affect my pension?", answer: "Pension contributions during ShPP are usually based on actual ShPP earnings, not full pay. Check your scheme rules." },
           ]}
           disclaimer="Estimate of statutory pay only. Many employers offer enhanced ShPP — always check your contract."

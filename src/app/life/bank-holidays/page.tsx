@@ -25,14 +25,14 @@ export default function BankHolidaysPage() {
         <BlueprintExplainer
           howWeCalculated={
             <p>
-              We loop day-by-day between your start and end dates (inclusive), counting any day that&rsquo;s Monday–Friday and not in the official UK bank holiday list for your chosen nation. Data covers 2025 and 2026 from gov.uk/bank-holidays.
+              We loop day-by-day between your start and end dates (inclusive), counting any day that’s Monday–Friday and not in the official UK bank holiday list for your chosen nation. Data covers 2025 and 2026 from gov.uk/bank-holidays.
             </p>
           }
           officialRules={
             <ul>
-              <li>England &amp; Wales has 8 bank holidays a year, Scotland has 9, Northern Ireland has 10 (including St Patrick&rsquo;s Day and the Twelfth).</li>
-              <li>When a bank holiday falls at the weekend, the &quot;substitute&quot; day is the next Monday (or Tuesday for Boxing Day clashes).</li>
-              <li>Bank holidays aren&rsquo;t a statutory right to paid leave — your contract decides.</li>
+              <li>England & Wales has 8 bank holidays a year, Scotland has 9, Northern Ireland has 10 (including St Patrick’s Day and the Twelfth).</li>
+              <li>When a bank holiday falls at the weekend, the ”substitute” day is the next Monday (or Tuesday for Boxing Day clashes).</li>
+              <li>Bank holidays aren’t a statutory right to paid leave — your contract decides.</li>
               <li>Statutory holiday entitlement (5.6 weeks = 28 days for a 5-day week) can include the 8 bank holidays.</li>
             </ul>
           }
@@ -43,7 +43,7 @@ export default function BankHolidaysPage() {
           ]}
           faqs={[
             { question: "Does this include school holidays?", answer: "No — only statutory UK bank holidays. School holidays vary by local authority." },
-            { question: "What about Royal funerals or one-off holidays?", answer: "One-off bank holidays (e.g. Coronation 8 May 2023) are added in the year they happen. Future one-offs aren&rsquo;t included." },
+            { question: "What about Royal funerals or one-off holidays?", answer: "One-off bank holidays (e.g. Coronation 8 May 2023) are added in the year they happen. Future one-offs aren’t included." },
             { question: "Can I export the working days?", answer: "Not yet — but the list of bank holidays falling inside your range is shown so you can copy them into a project plan." },
           ]}
           disclaimer="Bank holiday dates change year to year. Always verify long-range plans against gov.uk/bank-holidays."

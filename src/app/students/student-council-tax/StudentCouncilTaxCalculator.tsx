@@ -26,7 +26,7 @@ export default function StudentCouncilTaxCalculator() {
           <p className="text-xl font-bold text-primary-dark">{r.exempt ? "Exempt" : `${r.discountPct}% discount`}</p>
           <p className="text-sm text-text/70">{r.status}</p>
           <ResultBreakdown
-            title="What you&rsquo;ll pay"
+            title="What you’ll pay"
             rows={[
               { label: "Full bill", value: bill },
               { label: `Discount (${r.discountPct}%)`, value: bill * r.discountPct / 100, variant: "deduction" },

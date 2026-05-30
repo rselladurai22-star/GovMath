@@ -19,12 +19,12 @@ export default function AffordabilityPage() {
       calculator={<AffordabilityCalculator />}
       explainer={
         <BlueprintExplainer
-          howWeCalculated={<p>Max loan = household income × multiplier. Max purchase price = max loan + deposit. We don&rsquo;t deduct outgoings here — real lender affordability scoring includes credit-card balances, school fees, childcare and pension contributions.</p>}
+          howWeCalculated={<p>Max loan = household income × multiplier. Max purchase price = max loan + deposit. We don’t deduct outgoings here — real lender affordability scoring includes credit-card balances, school fees, childcare and pension contributions.</p>}
           officialRules={
             <ul>
-              <li>FCA limits over-4.5× lending to 15% of any lender&rsquo;s book.</li>
+              <li>FCA limits over-4.5× lending to 15% of any lender’s book.</li>
               <li>Stress tests typically check repayment at 7–8% rates.</li>
-              <li>First-time buyers may access higher LTI under schemes like Nationwide&rsquo;s Helping Hand.</li>
+              <li>First-time buyers may access higher LTI under schemes like Nationwide’s Helping Hand.</li>
             </ul>
           }
           pitfalls={[

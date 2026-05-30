@@ -18,7 +18,7 @@ export default function BreakEvenCalculator() {
     <div className="space-y-6">
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
         <div className="rounded-xl bg-surface border border-border p-6 space-y-5">
-          <NumberInput label="Fixed costs / year" value={fixed} onChange={setFixed} step={1000} hint="Rent, salaries, insurance — costs that don&rsquo;t change with units sold." />
+          <NumberInput label="Fixed costs / year" value={fixed} onChange={setFixed} step={1000} hint="Rent, salaries, insurance — costs that don’t change with units sold." />
           <NumberInput label="Price per unit" value={price} onChange={setPrice} step={1} />
           <NumberInput label="Variable cost per unit" value={varCost} onChange={setVarCost} step={1} hint="Direct materials, packaging, shipping — costs that scale with each sale." />
         </div>

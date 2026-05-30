@@ -37,14 +37,14 @@ export default function NhsPrescriptionSaverPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Direct debit isn&rsquo;t a saving", body: "The DD just spreads the cost over 10 monthly payments of £10.08. Same total — just easier on cashflow." },
-            { title: "Forgetting to renew", body: "Set a calendar reminder a fortnight before your PPC expires. There&rsquo;s no grace period — items dispensed after lapse cost £9.90 each." },
+            { title: "Direct debit isn’t a saving", body: "The DD just spreads the cost over 10 monthly payments of £10.08. Same total — just easier on cashflow." },
+            { title: "Forgetting to renew", body: "Set a calendar reminder a fortnight before your PPC expires. There’s no grace period — items dispensed after lapse cost £9.90 each." },
             { title: "Holidays & travel", body: "PPC covers England only. NHS prescriptions are free in Wales, Scotland and NI — but only if dispensed there." },
           ]}
           faqs={[
-            { question: "Can my employer pay for a PPC?", answer: "Some salary-sacrifice health schemes cover them. Personally-bought PPCs aren&rsquo;t tax-deductible." },
+            { question: "Can my employer pay for a PPC?", answer: "Some salary-sacrifice health schemes cover them. Personally-bought PPCs aren’t tax-deductible." },
             { question: "Do over-60s pay?", answer: "No — once you turn 60, NHS prescriptions are free in England automatically. No application needed." },
-            { question: "What about hospital prescriptions?", answer: "Hospital outpatient prescriptions are free for NHS patients — the PPC isn&rsquo;t needed." },
+            { question: "What about hospital prescriptions?", answer: "Hospital outpatient prescriptions are free for NHS patients — the PPC isn’t needed." },
           ]}
           disclaimer="England prices only. Apply for PPCs at nhsbsa.nhs.uk or any pharmacy. Always check exemption eligibility before paying."
         />

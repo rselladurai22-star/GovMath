@@ -15,11 +15,11 @@ export default function RentVsBuyPage() {
       updatedLabel="With opportunity cost"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/property", label: "Property" }, { href: "/property/rent-vs-buy", label: "Rent vs Buy" }]}
       title="Rent vs Buy Calculator"
-      intro="Buying isn&rsquo;t automatically better. We compare the net cost of owning (interest + maintenance − equity built) against renting (rent − investment growth on your would-be deposit)."
+      intro="Buying isn’t automatically better. We compare the net cost of owning (interest + maintenance − equity built) against renting (rent − investment growth on your would-be deposit)."
       calculator={<RentVsBuyCalculator />}
       explainer={
         <BlueprintExplainer
-          howWeCalculated={<p>Buying side: amortise the mortgage, add maintenance at ~1%/year, subtract the equity built (paid principal + appreciation). Renting side: total rent paid, minus the investment growth on your would-be deposit at your chosen real return. Excludes SDLT &amp; transaction costs.</p>}
+          howWeCalculated={<p>Buying side: amortise the mortgage, add maintenance at ~1%/year, subtract the equity built (paid principal + appreciation). Renting side: total rent paid, minus the investment growth on your would-be deposit at your chosen real return. Excludes SDLT & transaction costs.</p>}
           officialRules={
             <ul>
               <li>Owning costs include: SDLT, legal fees, surveys, maintenance (~1%/yr), insurance.</li>
@@ -31,7 +31,7 @@ export default function RentVsBuyPage() {
           pitfalls={[
             { title: "Excluded SDLT could change the answer", body: "On a £350k second-home purchase, SDLT alone is £20k+. Add to ownership cost." },
             { title: "Maintenance is bigger than you think", body: "Roof, boiler, kitchen, bathroom — 1%/yr is a long-run average but real spend is lumpy." },
-            { title: "Optionality has value", body: "Renting lets you move for jobs cheaply. Don&rsquo;t buy if your time horizon is &lt;3 years." },
+            { title: "Optionality has value", body: "Renting lets you move for jobs cheaply. Don’t buy if your time horizon is &lt;3 years." },
           ]}
           faqs={[
             { question: "Are you including imputed rent for owners?", answer: "No — both scenarios assume the same housing services consumed. Just financial flows differ." },

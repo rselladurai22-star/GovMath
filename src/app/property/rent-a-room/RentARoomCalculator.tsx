@@ -22,7 +22,7 @@ export default function RentARoomCalculator() {
             <>
               <p className="text-sm font-semibold uppercase tracking-wide opacity-70">Tax-free</p>
               <p className="text-3xl font-bold text-emerald-900">✓ Under the £7,500 allowance</p>
-              <p className="text-sm text-emerald-900/80">No tax to pay and you don&rsquo;t need to declare it (unless you fill in Self Assessment for other reasons).</p>
+              <p className="text-sm text-emerald-900/80">No tax to pay and you don’t need to declare it (unless you fill in Self Assessment for other reasons).</p>
             </>
           ) : (
             <>

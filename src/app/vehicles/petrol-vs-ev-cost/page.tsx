@@ -29,7 +29,7 @@ export default function PetrolVsEVPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Public charging breaks the maths", body: "If you don&rsquo;t have off-street parking, rapid charging at 75p/kWh costs roughly the same as petrol per mile." },
+            { title: "Public charging breaks the maths", body: "If you don’t have off-street parking, rapid charging at 75p/kWh costs roughly the same as petrol per mile." },
             { title: "Cold-weather range", body: "EV efficiency drops 20–30% in winter — adjust mi/kWh for realistic figures." },
             { title: "Tyres and servicing", body: "EVs are gentler on brakes but harder on tyres (weight + torque). Service savings ~30%." },
           ]}

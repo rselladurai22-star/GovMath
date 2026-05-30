@@ -38,7 +38,7 @@ export default function IHTPage() {
                   Residence NRB</strong> on top.
                 </li>
                 <li>
-                  If you&rsquo;re a widow(er) and your spouse used none of
+                  If you’re a widow(er) and your spouse used none of
                   their allowances, you inherit theirs too — up to £1m
                   combined.
                 </li>
@@ -46,7 +46,7 @@ export default function IHTPage() {
               </ol>
               <p>
                 NB: the RNRB tapers when the estate exceeds £2m — losing £1
-                of RNRB per £2 of excess. It&rsquo;s fully gone at £2.35m
+                of RNRB per £2 of excess. It’s fully gone at £2.35m
                 (single) or £2.7m (combined).
               </p>
             </>
@@ -87,7 +87,7 @@ export default function IHTPage() {
           pitfalls={[
             {
               title: "The £2m taper is a cliff for property-rich estates",
-              body: "A £2.5m estate (very common in London/SE) loses the entire £175k RNRB — that&rsquo;s £70,000 of extra IHT just from crossing the threshold. Lifetime gifts to bring the estate under £2m at death can recover the RNRB.",
+              body: "A £2.5m estate (very common in London/SE) loses the entire £175k RNRB — that’s £70,000 of extra IHT just from crossing the threshold. Lifetime gifts to bring the estate under £2m at death can recover the RNRB.",
             },
             {
               title: "RNRB only applies to direct descendants",
@@ -106,7 +106,7 @@ export default function IHTPage() {
             {
               question: "Who pays the IHT bill?",
               answer:
-                "Normally the executor pays IHT from estate funds before distributing the inheritance. For gifts within 7 years, the recipient may be liable if the estate can&rsquo;t cover it.",
+                "Normally the executor pays IHT from estate funds before distributing the inheritance. For gifts within 7 years, the recipient may be liable if the estate can’t cover it.",
             },
             {
               question: "When is IHT due?",

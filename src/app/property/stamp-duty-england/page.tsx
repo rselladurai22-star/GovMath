@@ -63,15 +63,15 @@ export default async function StampDutyPage({
               <ol>
                 <li>Split your purchase price into the official HMRC bands.</li>
                 <li>
-                  Apply each band&rsquo;s rate only to the slice of the price
+                  Apply each band’s rate only to the slice of the price
                   that falls inside it.
                 </li>
                 <li>
-                  Add a 5% surcharge to every band if you ticked &ldquo;additional
-                  property&rdquo; (second home or buy-to-let).
+                  Add a 5% surcharge to every band if you ticked “additional
+                  property” (second home or buy-to-let).
                 </li>
                 <li>
-                  Use the first-time buyer rates instead if you&rsquo;re buying
+                  Use the first-time buyer rates instead if you’re buying
                   for £500,000 or less and have never owned a home before.
                 </li>
               </ol>

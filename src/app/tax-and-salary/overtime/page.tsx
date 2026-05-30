@@ -15,7 +15,7 @@ export default function OvertimePage() {
       updatedLabel="Updated 2025"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax & Salary" }, { href: "/tax-and-salary/overtime", label: "Overtime" }]}
       title="Overtime Calculator"
-      intro="Most UK workers don&rsquo;t have a legal right to enhanced overtime pay — it depends on your contract. But where time-and-a-half or double-time applies, the maths is straightforward."
+      intro="Most UK workers don’t have a legal right to enhanced overtime pay — it depends on your contract. But where time-and-a-half or double-time applies, the maths is straightforward."
       calculator={<OvertimeCalculator />}
       explainer={
         <BlueprintExplainer
@@ -31,11 +31,11 @@ export default function OvertimePage() {
           pitfalls={[
             { title: "Regular overtime affects holiday pay", body: "If you regularly do paid OT, your statutory 4 weeks of holiday must be paid at a 52-week average — not just basic rate." },
             { title: "Tax bracket creep on big OT months", body: "A heavy OT month can push you into the 40% band — temporary, but feels painful. Sort out at tax-year-end via SA if owed." },
-            { title: "Salaried staff often have no claim to OT", body: "Salary means salary — if your contract says &lsquo;such hours as required to do the job&rsquo;, you may have no entitlement to extra pay." },
+            { title: "Salaried staff often have no claim to OT", body: "Salary means salary — if your contract says ‘such hours as required to do the job’, you may have no entitlement to extra pay." },
           ]}
           faqs={[
-            { question: "What's standard overtime in the UK?", answer: "There&rsquo;s no standard — common arrangements are time-and-a-half (×1.5) on weekdays and double time (×2) on Sundays/bank holidays." },
-            { question: "Do agencies pay overtime?", answer: "Often only at single rate after 8 hours. Check the Agency Worker Regulations once you&rsquo;ve been on placement 12+ weeks." },
+            { question: "What's standard overtime in the UK?", answer: "There’s no standard — common arrangements are time-and-a-half (×1.5) on weekdays and double time (×2) on Sundays/bank holidays." },
+            { question: "Do agencies pay overtime?", answer: "Often only at single rate after 8 hours. Check the Agency Worker Regulations once you’ve been on placement 12+ weeks." },
           ]}
           disclaimer="Calculator estimates gross pay only. Net depends on tax code and NI category."
         />

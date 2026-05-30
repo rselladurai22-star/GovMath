@@ -5,7 +5,7 @@ import IsaVsGiaCalculator from "./IsaVsGiaCalculator";
 
 export const metadata: Metadata = {
   title: "ISA vs GIA Tax Calculator (UK)",
-  description: "How much UK tax you save by holding investments inside a Stocks &amp; Shares ISA instead of a general investment account.",
+  description: "How much UK tax you save by holding investments inside a Stocks & Shares ISA instead of a general investment account.",
 };
 
 export default function IsaVsGiaPage() {
@@ -29,9 +29,9 @@ export default function IsaVsGiaPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Fill ISA first, every year", body: "You can&rsquo;t backdate. Unused allowance disappears every 5 April." },
-            { title: "Bed &amp; ISA for existing GIA holdings", body: "Sell GIA → buy back inside ISA. Crystallises gain (within AEA) but shelters future growth." },
-            { title: "Flexible vs non-flexible ISA", body: "A flexible ISA lets you withdraw and replace in the same year. Non-flexible doesn&rsquo;t — withdrawal eats your annual allowance." },
+            { title: "Fill ISA first, every year", body: "You can’t backdate. Unused allowance disappears every 5 April." },
+            { title: "Bed & ISA for existing GIA holdings", body: "Sell GIA → buy back inside ISA. Crystallises gain (within AEA) but shelters future growth." },
+            { title: "Flexible vs non-flexible ISA", body: "A flexible ISA lets you withdraw and replace in the same year. Non-flexible doesn’t — withdrawal eats your annual allowance." },
           ]}
           faqs={[
             { question: "What about Lifetime ISA?", answer: "Separate £4k allowance with 25% gov bonus — for first home or age 60+." },

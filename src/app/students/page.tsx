@@ -20,7 +20,7 @@ export default function StudentsLandingPage() {
             Loans, maintenance and council tax
           </h2>
           <p>
-            UK student loans are unlike any other debt — they&apos;re
+            UK student loans are unlike any other debt — they’re
             effectively a graduate tax with a fixed lifespan. Use these tools
             to plan repayments, estimate maintenance support and check
             council-tax exemptions.

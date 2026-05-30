@@ -47,13 +47,13 @@ export default async function SalaryCalculatorPage({
               <p>
                 We take your gross salary and subtract two things HMRC takes:
                 <strong> Income Tax</strong> and <strong>National Insurance</strong>.
-                Whatever&apos;s left is your take-home.
+                Whatever’s left is your take-home.
               </p>
               <p>The maths in plain English:</p>
               <ol className="list-decimal pl-5 space-y-1">
                 <li>
                   Your first <strong>£12,570</strong> is tax-free — your
-                  &ldquo;Personal Allowance&rdquo;.
+                  “Personal Allowance”.
                 </li>
                 <li>
                   The next slice up to <strong>£50,270</strong> is taxed at{" "}
@@ -82,7 +82,7 @@ export default async function SalaryCalculatorPage({
           officialRules={
             <>
               <p>
-                <strong>HMRC</strong> (His Majesty&apos;s Revenue and Customs —
+                <strong>HMRC</strong> (His Majesty’s Revenue and Customs —
                 the government tax office) sets the bands once a year. For the{" "}
                 <strong>2025/26 tax year</strong> in England, Wales and
                 Northern Ireland:
@@ -132,7 +132,7 @@ export default async function SalaryCalculatorPage({
               body: (
                 <p>
                   This calculator assumes the standard <code>1257L</code>{" "}
-                  code. If you&apos;re on <code>BR</code>, <code>0T</code>,
+                  code. If you’re on <code>BR</code>, <code>0T</code>,
                   <code> K</code> or have an emergency code, your real
                   take-home will look very different — sometimes by hundreds
                   of pounds a month.
@@ -181,7 +181,7 @@ export default async function SalaryCalculatorPage({
                   Close, but not identical. Real payslips reflect tax-code
                   quirks, student loans, salary-sacrifice and month-to-month
                   PAYE adjustments. Use this for planning, not as a
-                  substitute for HMRC&apos;s figures.
+                  substitute for HMRC’s figures.
                 </p>
               ),
             },

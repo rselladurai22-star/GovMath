@@ -81,7 +81,7 @@ export default function SalaryCalculator({
         </div>
 
         <p className="text-xs text-text/60">
-          Based on England, Wales &amp; Northern Ireland for the 2025/26 tax
+          Based on England, Wales & Northern Ireland for the 2025/26 tax
           year. Assumes the standard 1257L tax code, no student loan and no
           salary-sacrifice pension.
         </p>

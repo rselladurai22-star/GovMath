@@ -20,7 +20,7 @@ export default function PercentPage() {
         { href: "/life/percentage-calculator", label: "Percentage Calculator" },
       ]}
       title="Percentage Calculator"
-      intro="Five percentage questions, one calculator. Pick what you&rsquo;re trying to do, type the two numbers, and read the answer in a sentence."
+      intro="Five percentage questions, one calculator. Pick what you’re trying to do, type the two numbers, and read the answer in a sentence."
       calculator={<PercentCalculator />}
       explainer={
         <BlueprintExplainer
@@ -50,13 +50,13 @@ export default function PercentPage() {
           officialRules={
             <>
               <p>
-                There&apos;s no &ldquo;official&rdquo; UK percentage rule, but
+                There’s no “official” UK percentage rule, but
                 a few conventions trip people up:
               </p>
               <ul>
                 <li>
                   <strong>Percentage points vs percent.</strong> If a tax rate
-                  rises from 20% to 25%, that&rsquo;s a 5 percentage-point
+                  rises from 20% to 25%, that’s a 5 percentage-point
                   increase but a 25% increase in the rate itself. Both
                   framings are correct; choose deliberately.
                 </li>
@@ -74,7 +74,7 @@ export default function PercentPage() {
                   <a className="text-primary underline" href="/business/vat-calculator">
                     VAT calculator
                   </a>{" "}
-                  if that&rsquo;s what you&rsquo;re actually trying to do.
+                  if that’s what you’re actually trying to do.
                 </li>
               </ul>
             </>
@@ -86,32 +86,32 @@ export default function PercentPage() {
             },
             {
               title: "Reversed direction matters",
-              body: "If something costs £80 now and £100 last year, that&rsquo;s a 20% decrease year-on-year. £100 to £80 is a 20% decrease; £80 to £100 is a 25% increase. The denominator is always the starting point.",
+              body: "If something costs £80 now and £100 last year, that’s a 20% decrease year-on-year. £100 to £80 is a 20% decrease; £80 to £100 is a 25% increase. The denominator is always the starting point.",
             },
             {
               title: "Adding 20% then taking 20% off ≠ original",
-              body: "£100 + 20% = £120. £120 − 20% = £96. The percentages are taken from different bases, so they don&rsquo;t cancel.",
+              body: "£100 + 20% = £120. £120 − 20% = £96. The percentages are taken from different bases, so they don’t cancel.",
             },
             {
               title: "Discount stacking isn't additive",
-              body: "&ldquo;30% off, then an extra 10% at the till&rdquo; isn&rsquo;t 40% off. £100 → £70 → £63 is a 37% total discount, not 40%.",
+              body: "“30% off, then an extra 10% at the till” isn’t 40% off. £100 → £70 → £63 is a 37% total discount, not 40%.",
             },
           ]}
           faqs={[
             {
               question: "How do I work out a tip?",
               answer:
-                "Use the &lsquo;Add X% to Y&rsquo; mode. For a £60 bill with a 12.5% service charge: 60 + 12.5% = £67.50. In the UK, service is often already added to restaurant bills — check before tipping again.",
+                "Use the ‘Add X% to Y’ mode. For a £60 bill with a 12.5% service charge: 60 + 12.5% = £67.50. In the UK, service is often already added to restaurant bills — check before tipping again.",
             },
             {
               question: "How do I work out a discount?",
               answer:
-                "Use &lsquo;Subtract X% from Y.&rsquo; A £120 jacket at 30% off is 120 − 30% = £84. If you want to know the saving as a number, that&rsquo;s the difference: £36.",
+                "Use ‘Subtract X% from Y.’ A £120 jacket at 30% off is 120 − 30% = £84. If you want to know the saving as a number, that’s the difference: £36.",
             },
             {
               question: "What about percentages of percentages?",
               answer:
-                "Use &lsquo;X% of Y&rsquo; and put a percentage as Y. For example, 50% of 20% = 10%. Useful for partial pay rises (e.g. &ldquo;I got half of a 4% rise&rdquo; = 2%).",
+                "Use ‘X% of Y’ and put a percentage as Y. For example, 50% of 20% = 10%. Useful for partial pay rises (e.g. “I got half of a 4% rise” = 2%).",
             },
           ]}
         />

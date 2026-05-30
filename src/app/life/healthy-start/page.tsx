@@ -36,12 +36,12 @@ export default function HealthyStartPage() {
           }
           pitfalls={[
             { title: "Use it or lose it", body: "Balance not used within 16 weeks is removed from the card. Spend regularly." },
-            { title: "What you can buy", body: "Plain fresh, frozen or tinned fruit and veg; plain cow&rsquo;s milk; infant formula; pulses. Not juice, smoothies, or flavoured milk." },
+            { title: "What you can buy", body: "Plain fresh, frozen or tinned fruit and veg; plain cow’s milk; infant formula; pulses. Not juice, smoothies, or flavoured milk." },
             { title: "Free vitamins", body: "Healthy Start also entitles you to free vitamins from NHS clinics — many parents forget to ask." },
           ]}
           faqs={[
             { question: "Where can I use the card?", answer: "Most major supermarkets, local shops and pharmacies that accept Mastercard prepaid." },
-            { question: "Does the card show I&rsquo;m on benefits?", answer: "No — it looks like a normal prepaid card." },
+            { question: "Does the card show I’m on benefits?", answer: "No — it looks like a normal prepaid card." },
             { question: "What if my UC income changes?", answer: "If it goes over £408/month you stop getting top-ups. Reapply if income drops back." },
           ]}
           disclaimer="Apply via healthystart.nhs.uk — never via third-party sites. The NHS does not charge."

@@ -42,7 +42,7 @@ export default function Plan1Page() {
             { title: "Overseas earnings still count", body: "Notify SLC if leaving UK — penalties for non-disclosure." },
           ]}
           faqs={[
-            { question: "Can I have Plan 1 and a Postgrad Loan?", answer: "Yes. They&rsquo;re collected as separate deductions." },
+            { question: "Can I have Plan 1 and a Postgrad Loan?", answer: "Yes. They’re collected as separate deductions." },
             { question: "When does it get written off?", answer: "25 years after the first April you became liable to repay." },
           ]}
           disclaimer="Estimate based on 2025/26 thresholds. Actual PAYE deductions calculated monthly."

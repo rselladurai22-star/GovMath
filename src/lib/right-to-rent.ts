@@ -5,7 +5,7 @@
  *
  * Landlords in England must verify every adult tenant has the right to live in
  * the UK before granting a tenancy. Failure = civil penalty up to £20,000 per
- * tenant (or criminal liability if &quot;knowing&quot;).
+ * tenant (or criminal liability if ”knowing”).
  *
  * Two document lists:
  *  - List A: time-unlimited right (UK/Irish citizen, ILR holders, etc.)

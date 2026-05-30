@@ -35,7 +35,7 @@ export default function Plan2Page() {
               </p>
               <p>
                 Interest accrues at <strong>RPI + up to 3%</strong>{" "}
-                depending on income, but interest doesn&rsquo;t affect
+                depending on income, but interest doesn’t affect
                 what you <em>pay</em> — only the balance. Repayments are
                 income-driven, not balance-driven.
               </p>
@@ -58,7 +58,7 @@ export default function Plan2Page() {
                 <li>
                   Interest: RPI if you earn under £28,470; RPI + sliding
                   up to RPI + 3% at £51,245+. Currently capped to keep
-                  rates fair vs commercial loans (the &ldquo;Prevailing Market Rate Cap&rdquo;).
+                  rates fair vs commercial loans (the “Prevailing Market Rate Cap”).
                 </li>
               </ul>
             </>
@@ -66,19 +66,19 @@ export default function Plan2Page() {
           pitfalls={[
             {
               title: "Voluntary overpayments rarely make sense",
-              body: "Because Plan 2 is income-driven and writes off after 30 years, paying it down early often means throwing money at a debt that would have been forgiven. Only worth it if you&rsquo;re on a strong high-income trajectory and will clear it fully.",
+              body: "Because Plan 2 is income-driven and writes off after 30 years, paying it down early often means throwing money at a debt that would have been forgiven. Only worth it if you’re on a strong high-income trajectory and will clear it fully.",
             },
             {
               title: "Bonuses trigger one-off deductions",
-              body: "If a single month&rsquo;s pay × 12 lands above £28,470, PAYE will deduct 9% on the excess that month — even if you&rsquo;re under £28,470 annually. You can reclaim via HMRC after year-end if you genuinely earned under the threshold.",
+              body: "If a single month’s pay × 12 lands above £28,470, PAYE will deduct 9% on the excess that month — even if you’re under £28,470 annually. You can reclaim via HMRC after year-end if you genuinely earned under the threshold.",
             },
             {
               title: "You don't pay it after leaving the UK — but you must tell SLC",
-              body: "Going abroad? You must notify the Student Loans Company and set up an overseas repayment plan based on the country&rsquo;s thresholds, or face penalties added to the balance.",
+              body: "Going abroad? You must notify the Student Loans Company and set up an overseas repayment plan based on the country’s thresholds, or face penalties added to the balance.",
             },
             {
               title: "Don't confuse Plan 2 with Plan 5",
-              body: "If you started uni in or after August 2023, you&rsquo;re on Plan 5 — threshold £25,000 and 40-year write-off. Big difference. Check your SLC account.",
+              body: "If you started uni in or after August 2023, you’re on Plan 5 — threshold £25,000 and 40-year write-off. Big difference. Check your SLC account.",
             },
           ]}
           faqs={[
@@ -90,12 +90,12 @@ export default function Plan2Page() {
             {
               question: "Can I have multiple plans?",
               answer:
-                "Yes — most commonly Plan 2 (or 5) plus a Postgraduate Loan. They&rsquo;re calculated separately, each with their own threshold.",
+                "Yes — most commonly Plan 2 (or 5) plus a Postgraduate Loan. They’re calculated separately, each with their own threshold.",
             },
             {
               question: "Why doesn't my balance go down even though I pay?",
               answer:
-                "Interest accrues monthly at potentially RPI + 3%. For most middle-earners, repayments barely cover interest, so balances grow. That&rsquo;s by design — the 30-year write-off is the real mechanism.",
+                "Interest accrues monthly at potentially RPI + 3%. For most middle-earners, repayments barely cover interest, so balances grow. That’s by design — the 30-year write-off is the real mechanism.",
             },
           ]}
           disclaimer="Estimate based on 2025/26 thresholds. Actual PAYE deductions are calculated monthly, not annually."

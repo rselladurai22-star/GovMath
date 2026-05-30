@@ -22,7 +22,7 @@ export default function CarersEarningsCalculator() {
             <div className="flex justify-between"><span>Earnings limit</span><span className="font-medium">£{r.earningsLimit.toFixed(2)}</span></div>
             {r.eligible && (
               <>
-                <div className="flex justify-between"><span>Annual Carer&rsquo;s Allowance</span><span className="font-medium">£{r.annualPay.toFixed(0)}</span></div>
+                <div className="flex justify-between"><span>Annual Carer’s Allowance</span><span className="font-medium">£{r.annualPay.toFixed(0)}</span></div>
               </>
             )}
           </div>

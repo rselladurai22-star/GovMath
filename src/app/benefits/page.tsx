@@ -26,7 +26,7 @@ export default function BenefitsLandingPage() {
             circumstances change.
           </p>
           <p>
-            These are estimates. For an official figure, you&apos;ll need to
+            These are estimates. For an official figure, you’ll need to
             apply through{" "}
             <a
               href="https://www.gov.uk"
@@ -35,7 +35,7 @@ export default function BenefitsLandingPage() {
             >
               GOV.UK
             </a>{" "}
-            — but use these tools to check whether it&apos;s worth your time
+            — but use these tools to check whether it’s worth your time
             first.
           </p>
         </>

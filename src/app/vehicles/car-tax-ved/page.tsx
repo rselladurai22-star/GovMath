@@ -20,7 +20,7 @@ export default function VEDPage() {
         { href: "/vehicles/car-tax-ved", label: "Car Tax (VED) Calculator" },
       ]}
       title="Car Tax (VED) Calculator"
-      intro="Vehicle Excise Duty in the UK has two phases — a CO₂-banded &lsquo;showroom rate&rsquo; in year one, then a flat £195/year (with a £425 surcharge for cars over £40k for 5 years)."
+      intro="Vehicle Excise Duty in the UK has two phases — a CO₂-banded ‘showroom rate’ in year one, then a flat £195/year (with a £425 surcharge for cars over £40k for 5 years)."
       calculator={<VEDCalculator />}
       explainer={
         <BlueprintExplainer
@@ -75,11 +75,11 @@ export default function VEDPage() {
           pitfalls={[
             {
               title: "The £40k threshold catches even mid-range trims",
-              body: "A Tesla Model 3 Long Range, BMW iX1, or VW ID.4 in mid-trim with options easily lands over £40k — adding £2,125 over 5 years on top of standard VED. Even &ldquo;practical&rdquo; family cars regularly cross the line.",
+              body: "A Tesla Model 3 Long Range, BMW iX1, or VW ID.4 in mid-trim with options easily lands over £40k — adding £2,125 over 5 years on top of standard VED. Even “practical” family cars regularly cross the line.",
             },
             {
               title: "The list price is what you'd have paid new, not what you paid",
-              body: "Buying second-hand doesn&rsquo;t escape the expensive-car supplement. If the car was over £40k when new, you pay it for years 2–6 from first registration — even if you got a bargain.",
+              body: "Buying second-hand doesn’t escape the expensive-car supplement. If the car was over £40k when new, you pay it for years 2–6 from first registration — even if you got a bargain.",
             },
             {
               title: "EV VED change caught a lot of buyers off-guard",

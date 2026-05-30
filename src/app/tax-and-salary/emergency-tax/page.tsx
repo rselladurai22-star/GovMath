@@ -11,9 +11,9 @@ export const metadata: Metadata = {
 export default function EmergencyTaxPage() {
   return (
     <CalculatorShell
-      category="Tax &amp; Salary"
+      category="Tax & Salary"
       updatedLabel="2025/26"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax &amp; Salary" }, { href: "/tax-and-salary/emergency-tax", label: "Emergency Tax" }]}
+      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax & Salary" }, { href: "/tax-and-salary/emergency-tax", label: "Emergency Tax" }]}
       title="Emergency Tax Refund Estimator"
       intro="Starting a new job without a P45? Pulling a pension lump sum? HMRC often defaults to an emergency tax code (BR, 0T or 1257L W1/M1), over-taxing you until they catch up."
       calculator={<EmergencyTaxCalculator />}
@@ -30,7 +30,7 @@ export default function EmergencyTaxPage() {
           }
           pitfalls={[
             { title: "Pension lump sums always emergency-coded", body: "First pension drawdown uses 1257L M1 — almost always over-taxes large lump sums by thousands." },
-            { title: "Use forms P55 / P53Z / P50Z", body: "For pension overpayments, claim back immediately — don&rsquo;t wait for end-of-year reconciliation." },
+            { title: "Use forms P55 / P53Z / P50Z", body: "For pension overpayments, claim back immediately — don’t wait for end-of-year reconciliation." },
             { title: "Update your tax code", body: "Once HMRC gets P45 details, code updates automatically. Otherwise call 0300 200 3300." },
           ]}
           faqs={[

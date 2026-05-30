@@ -36,7 +36,7 @@ export function checkRegistration(input: MotInput): MotResult {
 export const MOT_STATUSES = [
   { code: "PASS", plain: "MOT passed — vehicle is road-legal until the expiry date shown." },
   { code: "PASS with advisories", plain: "Passed, but the tester noted things to monitor before they become failures." },
-  { code: "FAIL — major defect", plain: "Vehicle cannot be driven until the defect is fixed and it&apos;s retested." },
+  { code: "FAIL — major defect", plain: "Vehicle cannot be driven until the defect is fixed and it’s retested." },
   { code: "FAIL — dangerous defect", plain: "Do not drive away. You can be fined £2,500 and get 3 points." },
-  { code: "Refusal to test", plain: "Vehicle couldn&apos;t be tested — usually missing documents or unsafe to drive into the bay." },
+  { code: "Refusal to test", plain: "Vehicle couldn’t be tested — usually missing documents or unsafe to drive into the bay." },
 ];

@@ -34,7 +34,7 @@ export default function BTLYieldPage() {
           ]}
           faqs={[
             { question: "What yield is good?", answer: "Rule of thumb: 6%+ gross outside London, 4%+ in London. Anything under inflation + mortgage rate is loss-making in real terms." },
-            { question: "Should I form a Ltd company?", answer: "If you&rsquo;re a higher-rate taxpayer with multiple BTLs, yes — Corporation Tax + mortgage interest deductibility usually beats personal ownership." },
+            { question: "Should I form a Ltd company?", answer: "If you’re a higher-rate taxpayer with multiple BTLs, yes — Corporation Tax + mortgage interest deductibility usually beats personal ownership." },
           ]}
           disclaimer="Illustrative. Property is illiquid and tax-sensitive — speak to an accountant."
         />

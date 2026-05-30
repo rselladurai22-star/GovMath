@@ -69,7 +69,7 @@ export default function TaxBracketCalculator({
             What a £1,000 pay rise really gives you
           </div>
           <div className="mt-1 flex justify-between">
-            <span className="text-text/70">You&apos;d keep</span>
+            <span className="text-text/70">You’d keep</span>
             <span className="font-mono tabular-nums font-bold text-success">
               {GBP.format(marginalKept)}
             </span>
@@ -88,7 +88,7 @@ export default function TaxBracketCalculator({
         </div>
 
         <p className="text-xs text-text/60">
-          England, Wales &amp; Northern Ireland · 2025/26 tax year. Excludes
+          England, Wales & Northern Ireland · 2025/26 tax year. Excludes
           dividend income, which is taxed at separate rates.
         </p>
       </div>

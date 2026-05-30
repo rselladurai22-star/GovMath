@@ -19,7 +19,7 @@ export default function P45P60Page() {
         { href: "/tax-and-salary/p45-p60-explainer", label: "P45 & P60 Explainer" },
       ]}
       title="P45 & P60 Explainer"
-      intro="Your P45 lands when you leave a job; your P60 arrives by 31 May after the tax year ends. Here&rsquo;s what every box actually means."
+      intro="Your P45 lands when you leave a job; your P60 arrives by 31 May after the tax year ends. Here’s what every box actually means."
       calculator={<P45P60Explainer />}
       explainer={
         <BlueprintExplainer
@@ -34,14 +34,14 @@ export default function P45P60Page() {
             </ul>
           }
           pitfalls={[
-            { title: "Lost P45 panic", body: "You can&rsquo;t get a replacement. Your new employer fills in a starter checklist instead — same outcome." },
-            { title: "Two P60s, one missing", body: "If you had two jobs and only one P60 arrived, chase the missing employer. HMRC won&rsquo;t issue them." },
+            { title: "Lost P45 panic", body: "You can’t get a replacement. Your new employer fills in a starter checklist instead — same outcome." },
+            { title: "Two P60s, one missing", body: "If you had two jobs and only one P60 arrived, chase the missing employer. HMRC won’t issue them." },
             { title: "Tax code drift", body: "The code on your P45 is the leaving code. HMRC usually updates the new employer within a few weeks — check your first payslip carefully." },
           ]}
           faqs={[
             { question: "What if my P60 is wrong?", answer: "Ask your employer to issue a corrected one. If they refuse, contact HMRC with payslip evidence." },
             { question: "Do I need a P45 to start a new job?", answer: "No — your new employer can use the HMRC starter checklist instead." },
-            { question: "What about a P11D?", answer: "That&rsquo;s a separate document listing benefits in kind (company car, medical insurance). Not the same as a P60." },
+            { question: "What about a P11D?", answer: "That’s a separate document listing benefits in kind (company car, medical insurance). Not the same as a P60." },
           ]}
           disclaimer="General explanation only. For specific tax questions, contact HMRC or a qualified accountant."
         />

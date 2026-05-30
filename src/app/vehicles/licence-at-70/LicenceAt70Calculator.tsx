@@ -40,7 +40,7 @@ export default function LicenceAt70Calculator() {
             ]}
           />
           {r.must70Renew && (
-            <p className="text-sm text-amber-700 font-semibold">You&rsquo;re past 70 — make sure your current licence is still valid.</p>
+            <p className="text-sm text-amber-700 font-semibold">You’re past 70 — make sure your current licence is still valid.</p>
           )}
         </div>
       </div>

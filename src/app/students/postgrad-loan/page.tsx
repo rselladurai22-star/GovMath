@@ -19,7 +19,7 @@ export default function PostgradPage() {
         { href: "/students/postgrad-loan", label: "Postgraduate Loan" },
       ]}
       title="Postgraduate Loan Calculator"
-      intro="The PG Loan covers Master&rsquo;s and Doctoral degrees in England & Wales — 6% of income above £21,000, calculated separately from any undergraduate loan."
+      intro="The PG Loan covers Master’s and Doctoral degrees in England & Wales — 6% of income above £21,000, calculated separately from any undergraduate loan."
       calculator={<GenericLoanCalculator plan="postgrad" />}
       explainer={
         <BlueprintExplainer
@@ -27,7 +27,7 @@ export default function PostgradPage() {
           officialRules={
             <ul>
               <li>Threshold £21,000 (frozen until 2027).</li>
-              <li>Rate <strong>6%</strong> — lower than undergrad&rsquo;s 9%, but stacks with it.</li>
+              <li>Rate <strong>6%</strong> — lower than undergrad’s 9%, but stacks with it.</li>
               <li>Interest: RPI + 3% throughout the loan.</li>
               <li>Written off 30 years after first April due.</li>
             </ul>

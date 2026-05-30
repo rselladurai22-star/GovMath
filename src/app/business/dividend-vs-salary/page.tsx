@@ -6,7 +6,7 @@ import DivVsSalCalculator from "./DivVsSalCalculator";
 export const metadata: Metadata = {
   title: "Dividend vs Salary Calculator UK 2025/26 (Director Optimiser)",
   description:
-    "Find the optimal director&rsquo;s salary vs dividend mix for a UK limited company — accounting for Corporation Tax, employer NI, Income Tax, employee NI and dividend tax.",
+    "Find the optimal director’s salary vs dividend mix for a UK limited company — accounting for Corporation Tax, employer NI, Income Tax, employee NI and dividend tax.",
 };
 
 export default function DivVsSalPage() {
@@ -20,7 +20,7 @@ export default function DivVsSalPage() {
         { href: "/business/dividend-vs-salary", label: "Dividend vs Salary" },
       ]}
       title="Dividend vs Salary Calculator"
-      intro="For one-person limited companies, the cheapest way to extract profit changed in April 2025 — employer NI now hits 15% above £5k, and dividend allowances shrank to £500. The old &lsquo;£12,570 + dividends&rsquo; rule still wins for most, but the maths is closer than ever."
+      intro="For one-person limited companies, the cheapest way to extract profit changed in April 2025 — employer NI now hits 15% above £5k, and dividend allowances shrank to £500. The old ‘£12,570 + dividends’ rule still wins for most, but the maths is closer than ever."
       calculator={<DivVsSalCalculator />}
       explainer={
         <BlueprintExplainer
@@ -29,8 +29,8 @@ export default function DivVsSalPage() {
               <p>For each scenario we run a complete cashflow:</p>
               <ol>
                 <li>
-                  Director&rsquo;s salary is deducted from profit before
-                  Corporation Tax, along with the employer&rsquo;s NI on it.
+                  Director’s salary is deducted from profit before
+                  Corporation Tax, along with the employer’s NI on it.
                 </li>
                 <li>
                   Corporation Tax is applied at 19% (≤£50k), marginal
@@ -85,7 +85,7 @@ export default function DivVsSalPage() {
             },
             {
               title: "Single-director companies can't claim Employment Allowance",
-              body: "If you&rsquo;re the sole employee + sole director, you cannot claim the £10,500 NI relief. Add a spouse/partner on a real (audited) salary to qualify — but only if their role is genuine.",
+              body: "If you’re the sole employee + sole director, you cannot claim the £10,500 NI relief. Add a spouse/partner on a real (audited) salary to qualify — but only if their role is genuine.",
             },
             {
               title: "Drawing too much can push you into 60% effective rate",
@@ -105,7 +105,7 @@ export default function DivVsSalPage() {
             {
               question: "What about pension contributions?",
               answer:
-                "Employer pension contributions are CT-deductible and not capped by salary — but limited by &ldquo;wholly and exclusively&rdquo; commercial reasonableness. Often the most tax-efficient extraction over £100k.",
+                "Employer pension contributions are CT-deductible and not capped by salary — but limited by “wholly and exclusively” commercial reasonableness. Often the most tax-efficient extraction over £100k.",
             },
             {
               question: "When should I take dividends?",

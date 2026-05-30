@@ -35,7 +35,7 @@ export default function DaysBetweenPage() {
               <ul>
                 <li>
                   <strong>Exclusive days</strong> — same date returns 0; useful
-                  for &ldquo;days from / days until&rdquo;.
+                  for “days from / days until”.
                 </li>
                 <li>
                   <strong>Inclusive days</strong> — same date returns 1; useful
@@ -46,8 +46,8 @@ export default function DaysBetweenPage() {
                   inclusive of both endpoints. Bank holidays not deducted.
                 </li>
                 <li>
-                  <strong>Calendar Y/M/D</strong> — the natural &ldquo;3 years,
-                  2 months, 17 days&rdquo; breakdown.
+                  <strong>Calendar Y/M/D</strong> — the natural “3 years,
+                  2 months, 17 days” breakdown.
                 </li>
               </ul>
             </>
@@ -59,7 +59,7 @@ export default function DaysBetweenPage() {
                 <li>
                   <strong>Notice periods</strong> usually count from the day
                   after notice is given; check your contract for
-                  &ldquo;clear days&rdquo; vs &ldquo;calendar days&rdquo;.
+                  “clear days” vs “calendar days”.
                 </li>
                 <li>
                   <strong>Court deadlines</strong> generally exclude weekends
@@ -72,7 +72,7 @@ export default function DaysBetweenPage() {
                 </li>
                 <li>
                   <strong>Tenancy break clauses</strong> typically require
-                  &ldquo;two clear months&rdquo; notice — meaning the notice
+                  “two clear months” notice — meaning the notice
                   period excludes both the day given and the move-out day.
                 </li>
               </ul>
@@ -81,7 +81,7 @@ export default function DaysBetweenPage() {
           pitfalls={[
             {
               title: "Inclusive vs exclusive matters legally",
-              body: "&ldquo;30 days from today&rdquo; could mean day 30 or day 31, depending on context. Banking, court and tenancy conventions all differ. Always re-read the original document.",
+              body: "“30 days from today” could mean day 30 or day 31, depending on context. Banking, court and tenancy conventions all differ. Always re-read the original document.",
             },
             {
               title: "Working days here don't exclude bank holidays",
@@ -89,11 +89,11 @@ export default function DaysBetweenPage() {
             },
             {
               title: "Months are imprecise",
-              body: "A &ldquo;month&rdquo; can mean 28, 29, 30 or 31 days. Our Y/M/D breakdown uses calendar arithmetic, which gives the natural answer most people expect — but for legal/contract use, count exact days where possible.",
+              body: "A “month” can mean 28, 29, 30 or 31 days. Our Y/M/D breakdown uses calendar arithmetic, which gives the natural answer most people expect — but for legal/contract use, count exact days where possible.",
             },
             {
               title: "Time zones can shift by a day",
-              body: "If you&rsquo;re comparing dates from emails or systems in different time zones, a 23:00 UTC timestamp can appear as &ldquo;next day&rdquo; in BST. We assume both inputs are UK calendar dates.",
+              body: "If you’re comparing dates from emails or systems in different time zones, a 23:00 UTC timestamp can appear as “next day” in BST. We assume both inputs are UK calendar dates.",
             },
           ]}
           faqs={[
@@ -105,7 +105,7 @@ export default function DaysBetweenPage() {
             {
               question: "Can I enter past dates?",
               answer:
-                "Yes — the calculator works in either direction. Order of inputs doesn&rsquo;t matter.",
+                "Yes — the calculator works in either direction. Order of inputs doesn’t matter.",
             },
             {
               question: "Are bank holidays excluded from working days?",

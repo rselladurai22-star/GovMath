@@ -74,8 +74,8 @@ export default async function NIPage({
               </ol>
               <p>
                 The total at the top is what HMRC takes over the tax year — via
-                PAYE if you&rsquo;re an employee, or via Self Assessment if
-                you&rsquo;re self-employed.
+                PAYE if you’re an employee, or via Self Assessment if
+                you’re self-employed.
               </p>
             </>
           }
@@ -114,14 +114,14 @@ export default async function NIPage({
               <p>
                 Class 2 NI (the flat £3.50/week rate for self-employed
                 workers) was effectively abolished from 6 April 2024. You only
-                need it now if you&rsquo;re below the small-profits threshold
+                need it now if you’re below the small-profits threshold
                 and want to <em>voluntarily</em> protect your State Pension
                 record.
               </p>
               <p>
                 Employers also pay <strong>Class 1 secondary NI</strong> on
-                your salary — but that comes out of the employer&rsquo;s budget,
-                not yours, so it&rsquo;s not shown here.
+                your salary — but that comes out of the employer’s budget,
+                not yours, so it’s not shown here.
               </p>
             </>
           }

@@ -211,7 +211,7 @@ export default function Home() {
             </div>
             <h3 className="font-bold text-primary-dark">Plain English</h3>
             <p className="text-sm text-text/75 mt-1">
-              Every rule explained the way you&apos;d explain it to a friend.
+              Every rule explained the way you’d explain it to a friend.
             </p>
           </li>
           <li className="text-center">

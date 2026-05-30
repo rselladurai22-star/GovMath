@@ -50,7 +50,7 @@ export default function CompoundPage() {
           }
           officialRules={
             <>
-              <p>There aren&apos;t any &ldquo;official&rdquo; UK rules for compound interest — the maths is the maths. What changes in real life is how the wrapper around it is taxed:</p>
+              <p>There aren’t any “official” UK rules for compound interest — the maths is the maths. What changes in real life is how the wrapper around it is taxed:</p>
               <ul>
                 <li>
                   <strong>Stocks & Shares ISA:</strong> £20,000/year allowance.
@@ -79,11 +79,11 @@ export default function CompoundPage() {
           pitfalls={[
             {
               title: "Past returns are not a forecast",
-              body: "UK equities have averaged ~5% real long-term, but with decades of underperformance and outperformance in between. Don&rsquo;t plug in 10% and treat the output as a guarantee — model 4–6% and consider what happens at 0%.",
+              body: "UK equities have averaged ~5% real long-term, but with decades of underperformance and outperformance in between. Don’t plug in 10% and treat the output as a guarantee — model 4–6% and consider what happens at 0%.",
             },
             {
               title: "Inflation eats nominal growth",
-              body: "A £500,000 pot in 30 years sounds enormous, but if inflation runs at 3% a year, that&rsquo;s worth roughly £206,000 in today&rsquo;s money. Always sense-check long projections against inflation.",
+              body: "A £500,000 pot in 30 years sounds enormous, but if inflation runs at 3% a year, that’s worth roughly £206,000 in today’s money. Always sense-check long projections against inflation.",
             },
             {
               title: "Fees compound too — in the wrong direction",
@@ -91,7 +91,7 @@ export default function CompoundPage() {
             },
             {
               title: "Sequence of returns matters near withdrawal",
-              body: "Two portfolios with the same average return can end up very differently if one suffers a crash early in withdrawal vs late. Compound interest is a useful planning tool — not a withdrawal strategy. Look up &ldquo;sequence risk&rdquo; before you retire.",
+              body: "Two portfolios with the same average return can end up very differently if one suffers a crash early in withdrawal vs late. Compound interest is a useful planning tool — not a withdrawal strategy. Look up “sequence risk” before you retire.",
             },
           ]}
           faqs={[

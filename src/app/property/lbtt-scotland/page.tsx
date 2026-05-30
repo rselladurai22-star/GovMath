@@ -32,12 +32,12 @@ export default function LBTTPage() {
           }
           pitfalls={[
             { title: "ADS jumped to 8%", body: "From December 2024 the surcharge rose from 6% to 8% — a major hit for landlords and holiday-home buyers." },
-            { title: "FTB relief only if under £175k nil rate is genuinely applicable", body: "If you&rsquo;ve ever owned property anywhere (including overseas) you lose FTB status." },
-            { title: "ADS refund window if replacing main home", body: "Buy first, sell within 36 months → reclaim ADS. Miss the window and it&rsquo;s gone." },
+            { title: "FTB relief only if under £175k nil rate is genuinely applicable", body: "If you’ve ever owned property anywhere (including overseas) you lose FTB status." },
+            { title: "ADS refund window if replacing main home", body: "Buy first, sell within 36 months → reclaim ADS. Miss the window and it’s gone." },
           ]}
           faqs={[
             { question: "Does LBTT apply to commercial property?", answer: "Yes, but with different bands. This calculator covers residential only." },
-            { question: "What about non-UK residents?", answer: "Scotland has no equivalent of England&rsquo;s 2% non-resident SDLT surcharge." },
+            { question: "What about non-UK residents?", answer: "Scotland has no equivalent of England’s 2% non-resident SDLT surcharge." },
           ]}
           disclaimer="Residential freehold purchases only. Excludes leasehold premium + rent NPV."
         />

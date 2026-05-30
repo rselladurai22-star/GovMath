@@ -29,9 +29,9 @@ export default function LTTPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Higher rates start from £1", body: "Unlike LBTT or SDLT, Welsh higher rates don&rsquo;t have a £40k threshold below which surcharge is skipped. Even a £30k second flat triggers LTT." },
-            { title: "No first-time buyer break", body: "Welsh policy chose a higher universal nil band instead. If you&rsquo;re a FTB buying above £225k, no extra relief." },
-            { title: "Mixed-use bargain has shrunk", body: "Some buyers used to declare residential property &lsquo;mixed-use&rsquo; for lower commercial rates — WRA challenges this aggressively now." },
+            { title: "Higher rates start from £1", body: "Unlike LBTT or SDLT, Welsh higher rates don’t have a £40k threshold below which surcharge is skipped. Even a £30k second flat triggers LTT." },
+            { title: "No first-time buyer break", body: "Welsh policy chose a higher universal nil band instead. If you’re a FTB buying above £225k, no extra relief." },
+            { title: "Mixed-use bargain has shrunk", body: "Some buyers used to declare residential property ‘mixed-use’ for lower commercial rates — WRA challenges this aggressively now." },
           ]}
           faqs={[
             { question: "Can I claim a refund if I sell my old home later?", answer: "Yes — if you replace your main residence within 3 years, you can reclaim the higher-rate element." },

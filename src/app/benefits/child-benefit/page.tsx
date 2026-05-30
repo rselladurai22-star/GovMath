@@ -30,13 +30,13 @@ export default function ChildBenefitPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Always claim, even if HICBC will take it all", body: "Claiming earns you NI credits towards State Pension. Tick &lsquo;I don&rsquo;t want payment&rsquo; if you don&rsquo;t want the cashflow back-and-forth." },
+            { title: "Always claim, even if HICBC will take it all", body: "Claiming earns you NI credits towards State Pension. Tick ‘I don’t want payment’ if you don’t want the cashflow back-and-forth." },
             { title: "Higher earner is the partner liable, not the claimant", body: "Even if your partner claims, if YOU earn over £60k, YOU pay the charge — through Self Assessment." },
             { title: "Lose it when child leaves school", body: "Must update HMRC by 31 August after child turns 16 to keep claim going through sixth form/college." },
           ]}
           faqs={[
-            { question: "Does it count for Universal Credit?", answer: "No — Child Benefit is in addition to UC and doesn&rsquo;t affect the calculation." },
-            { question: "Can I claim if my child lives abroad?", answer: "Usually no, unless they&rsquo;re temporarily abroad (e.g. uni placement) or special EU cases." },
+            { question: "Does it count for Universal Credit?", answer: "No — Child Benefit is in addition to UC and doesn’t affect the calculation." },
+            { question: "Can I claim if my child lives abroad?", answer: "Usually no, unless they’re temporarily abroad (e.g. uni placement) or special EU cases." },
           ]}
           disclaimer="Estimate based on April 2025 rates."
         />

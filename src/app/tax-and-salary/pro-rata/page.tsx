@@ -20,14 +20,14 @@ export default function ProRataPage() {
         { href: "/tax-and-salary/pro-rata", label: "Pro Rata Salary Calculator" },
       ]}
       title="Pro Rata Salary Calculator"
-      intro="A job is advertised at a full-time rate but you&rsquo;re working fewer hours. This tells you the actual gross salary in your contract — and what it works out to per month, week and day."
+      intro="A job is advertised at a full-time rate but you’re working fewer hours. This tells you the actual gross salary in your contract — and what it works out to per month, week and day."
       calculator={<ProRataCalculator />}
       explainer={
         <BlueprintExplainer
           howWeCalculated={
             <>
               <p>
-                Pro-rata means &ldquo;in proportion.&rdquo; The calculation
+                Pro-rata means “in proportion.” The calculation
                 is simple:
               </p>
               <p>
@@ -49,7 +49,7 @@ export default function ProRataPage() {
           officialRules={
             <>
               <p>
-                There&apos;s no single statutory definition of full-time in
+                There’s no single statutory definition of full-time in
                 the UK, but the common-law and ACAS expectation is:
               </p>
               <ul>
@@ -74,11 +74,11 @@ export default function ProRataPage() {
           pitfalls={[
             {
               title: "Lunch breaks aren't usually paid",
-              body: "A &ldquo;9-to-5&rdquo; job with a 1-hour unpaid lunch is 35 paid hours/week, not 40. Check whether the advertised hours include or exclude breaks before you calculate.",
+              body: "A “9-to-5” job with a 1-hour unpaid lunch is 35 paid hours/week, not 40. Check whether the advertised hours include or exclude breaks before you calculate.",
             },
             {
               title: "Compressed hours ≠ part time",
-              body: "Working a full-time job&rsquo;s hours over four longer days (e.g. 4×9.25h = 37 hours) is still full time — you&rsquo;re entitled to the full salary, not 80% of it.",
+              body: "Working a full-time job’s hours over four longer days (e.g. 4×9.25h = 37 hours) is still full time — you’re entitled to the full salary, not 80% of it.",
             },
             {
               title: "Tax thresholds don't pro-rate",
@@ -86,7 +86,7 @@ export default function ProRataPage() {
             },
             {
               title: "Holiday and bank holidays should also be pro-rated",
-              body: "Don&rsquo;t accept the same paid leave as full-time colleagues by default — but equally, employers shouldn&rsquo;t under-count it. The fair calculation is 5.6 weeks × the fraction of full-time hours you work.",
+              body: "Don’t accept the same paid leave as full-time colleagues by default — but equally, employers shouldn’t under-count it. The fair calculation is 5.6 weeks × the fraction of full-time hours you work.",
             },
           ]}
           faqs={[

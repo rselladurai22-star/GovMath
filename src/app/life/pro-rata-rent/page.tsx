@@ -19,7 +19,7 @@ export default function ProRataRentPage() {
       calculator={<ProRataRentCalculator />}
       explainer={
         <BlueprintExplainer
-          howWeCalculated={<p>Daily rate = monthly rent ÷ days in that month. Multiply by number of days you&rsquo;ll be in occupation that month.</p>}
+          howWeCalculated={<p>Daily rate = monthly rent ÷ days in that month. Multiply by number of days you’ll be in occupation that month.</p>}
           officialRules={
             <ul>
               <li>Most ASTs use the calendar-day method (rent ÷ days in actual month).</li>
@@ -33,7 +33,7 @@ export default function ProRataRentPage() {
           ]}
           faqs={[
             { question: "What about leap years?", answer: "If using annual method, divide by 366 in a leap year." },
-            { question: "Does deposit get pro-rated?", answer: "No — deposit is a fixed amount regardless of move-in date. Capped at 5 weeks&rsquo; rent under Tenant Fees Act 2019." },
+            { question: "Does deposit get pro-rated?", answer: "No — deposit is a fixed amount regardless of move-in date. Capped at 5 weeks’ rent under Tenant Fees Act 2019." },
           ]}
           disclaimer="Calendar-day method shown. Check your tenancy for the agreed approach."
         />

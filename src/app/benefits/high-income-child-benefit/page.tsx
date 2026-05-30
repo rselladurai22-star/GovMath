@@ -15,7 +15,7 @@ export default function HICBCPage() {
       updatedLabel="2025/26 thresholds"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/benefits", label: "Family & Benefits" }, { href: "/benefits/high-income-child-benefit", label: "HICBC" }]}
       title="High Income Child Benefit Charge"
-      intro="If you or your partner earn over £60,000, HMRC starts clawing back Child Benefit. By £80,000 it&rsquo;s all gone. The charge is on the higher earner — even if the other parent claims."
+      intro="If you or your partner earn over £60,000, HMRC starts clawing back Child Benefit. By £80,000 it’s all gone. The charge is on the higher earner — even if the other parent claims."
       calculator={<HICBCCalculator />}
       explainer={
         <BlueprintExplainer
@@ -35,7 +35,7 @@ export default function HICBCPage() {
           ]}
           faqs={[
             { question: "What if both partners earn over £60k?", answer: "The higher earner pays the charge. If both equal, either can — agree between yourselves." },
-            { question: "Does my partner's income matter to HICBC?", answer: "Only when comparing &lsquo;who&rsquo;s the higher earner&rsquo;. Otherwise no — it&rsquo;s strictly individual." },
+            { question: "Does my partner's income matter to HICBC?", answer: "Only when comparing ‘who’s the higher earner’. Otherwise no — it’s strictly individual." },
             { question: "Is it really worth claiming if I'll lose it all?", answer: "Yes — for NI credits towards State Pension. Just opt out of payment to avoid the SA hassle." },
           ]}
           disclaimer="Based on 2024+ thresholds. Adjusted net income is your responsibility — check with HMRC if unsure."

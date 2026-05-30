@@ -30,7 +30,7 @@ export default async function Image() {
           in plain English.
         </div>
         <div style={{ fontSize: 36, opacity: 0.85, fontWeight: 500 }}>
-          Free tax, salary, mortgage &amp; benefits calculators · 2025/26
+          Free tax, salary, mortgage & benefits calculators · 2025/26
         </div>
         <div
           style={{

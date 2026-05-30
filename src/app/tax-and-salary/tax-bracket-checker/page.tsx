@@ -45,7 +45,7 @@ export default async function TaxBracketCheckerPage({
           howWeCalculated={
             <>
               <p>
-                The UK uses a <strong>band system</strong>: you don&apos;t pay
+                The UK uses a <strong>band system</strong>: you don’t pay
                 one flat rate on everything. Each slice of your income gets
                 taxed at the rate for that band.
               </p>
@@ -60,7 +60,7 @@ export default async function TaxBracketCheckerPage({
                 <li>Anything above £125,140 — taxed at 45%.</li>
               </ol>
               <p>
-                The &ldquo;pay rise&rdquo; figure shows what you&apos;d
+                The “pay rise” figure shows what you’d
                 actually keep from an extra £1,000 — your marginal rate, not
                 your average rate.
               </p>
@@ -69,7 +69,7 @@ export default async function TaxBracketCheckerPage({
           officialRules={
             <>
               <p>
-                <strong>HMRC</strong> (His Majesty&apos;s Revenue and Customs)
+                <strong>HMRC</strong> (His Majesty’s Revenue and Customs)
                 publishes the bands once a year. For{" "}
                 <strong>2025/26</strong> in England, Wales and Northern
                 Ireland:
@@ -130,7 +130,7 @@ export default async function TaxBracketCheckerPage({
                 <p>
                   A bonus or rise that lifts you over £50,270 has 40% taken
                   off the top. Use the pay-rise box to see exactly how much
-                  you&apos;d keep before you negotiate.
+                  you’d keep before you negotiate.
                 </p>
               ),
             },

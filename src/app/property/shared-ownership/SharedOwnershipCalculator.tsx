@@ -25,7 +25,7 @@ export default function SharedOwnershipCalculator() {
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
         <div className="rounded-xl bg-surface border border-border p-6 space-y-5">
           <NumberInput label="Full property value" value={propertyValue} onChange={setPropertyValue} step={5000} />
-          <NumberInput label="Share you&rsquo;re buying" value={sharePct} onChange={setSharePct} step={5} min={10} max={75} prefix="" suffix=" %" />
+          <NumberInput label="Share you’re buying" value={sharePct} onChange={setSharePct} step={5} min={10} max={75} prefix="" suffix=" %" />
           <NumberInput label="Mortgage rate" value={mortgageRate} onChange={setMortgageRate} step={0.1} prefix="" suffix=" %" />
           <NumberInput label="Mortgage term" value={termYears} onChange={setTermYears} step={1} min={5} max={40} prefix="" suffix=" yrs" />
           <NumberInput label="Rent rate (% of unowned share/yr)" value={rentRatePct} onChange={setRentRatePct} step={0.25} prefix="" suffix=" %" />

@@ -33,7 +33,7 @@ export default function Plan4Page() {
             </ul>
           }
           pitfalls={[
-            { title: "Don't accidentally pay Plan 1", body: "Some employers default to Plan 1 if SLC hasn&rsquo;t notified them. Check your payslip." },
+            { title: "Don't accidentally pay Plan 1", body: "Some employers default to Plan 1 if SLC hasn’t notified them. Check your payslip." },
             { title: "Moving south doesn't change plan", body: "Once on Plan 4, always Plan 4 — even if you live and work in England." },
           ]}
           faqs={[

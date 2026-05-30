@@ -20,7 +20,7 @@ export default function EVSalSacPage() {
         { href: "/vehicles/ev-salary-sacrifice", label: "EV Salary Sacrifice" },
       ]}
       title="EV Salary Sacrifice Calculator"
-      intro="Electric cars through salary sacrifice can cost half what you&rsquo;d pay leasing privately — because you swap gross pay (taxed) for a lease (untaxed bar a small BIK)."
+      intro="Electric cars through salary sacrifice can cost half what you’d pay leasing privately — because you swap gross pay (taxed) for a lease (untaxed bar a small BIK)."
       calculator={<EVSalSacCalculator />}
       explainer={
         <BlueprintExplainer
@@ -52,7 +52,7 @@ export default function EVSalSacPage() {
           }
           officialRules={
             <>
-              <p>HMRC&apos;s rules for EV salary sacrifice:</p>
+              <p>HMRC’s rules for EV salary sacrifice:</p>
               <ul>
                 <li>
                   <strong>BIK rate for pure EVs</strong>: 2% (2024/25), 3%
@@ -67,7 +67,7 @@ export default function EVSalSacPage() {
                 </li>
                 <li>
                   <strong>Minimum Wage check</strong>: your post-sacrifice
-                  salary can&apos;t take you below National Minimum Wage.
+                  salary can’t take you below National Minimum Wage.
                 </li>
                 <li>
                   <strong>Lease length</strong>: typically 36–48 months,
@@ -79,7 +79,7 @@ export default function EVSalSacPage() {
           pitfalls={[
             {
               title: "Sacrificing salary affects pension and mortgage",
-              body: "Your gross salary drops on paper, which can reduce auto-enrolment pension contributions and what mortgage lenders will offer. Many schemes use &lsquo;notional&rsquo; salary for benefits — check the employer&rsquo;s policy.",
+              body: "Your gross salary drops on paper, which can reduce auto-enrolment pension contributions and what mortgage lenders will offer. Many schemes use ‘notional’ salary for benefits — check the employer’s policy.",
             },
             {
               title: "Early termination charges can sting",
@@ -87,18 +87,18 @@ export default function EVSalSacPage() {
             },
             {
               title: "BIK is rising every year",
-              body: "The 2% rate that hooked everyone in 2024/25 is gone. By 2029/30 it&rsquo;s 9% — still much better than a petrol car&rsquo;s 30%+ BIK, but the gap narrows. Lock in 3-year leases now to fix the rate.",
+              body: "The 2% rate that hooked everyone in 2024/25 is gone. By 2029/30 it’s 9% — still much better than a petrol car’s 30%+ BIK, but the gap narrows. Lock in 3-year leases now to fix the rate.",
             },
             {
               title: "Not all employers offer schemes",
-              body: "EV sal sac requires the employer to set up an arrangement with a provider. Many SMEs don&rsquo;t bother. If yours doesn&rsquo;t, you can ask — but it can take months to roll out.",
+              body: "EV sal sac requires the employer to set up an arrangement with a provider. Many SMEs don’t bother. If yours doesn’t, you can ask — but it can take months to roll out.",
             },
           ]}
           faqs={[
             {
               question: "Can I sacrifice down to National Minimum Wage?",
               answer:
-                "No. The post-sacrifice gross salary must remain at or above NMW for your hours. Higher earners aren&rsquo;t affected; this mainly blocks part-timers and lower-paid full-timers from the most expensive cars.",
+                "No. The post-sacrifice gross salary must remain at or above NMW for your hours. Higher earners aren’t affected; this mainly blocks part-timers and lower-paid full-timers from the most expensive cars.",
             },
             {
               question: "What about hybrids?",

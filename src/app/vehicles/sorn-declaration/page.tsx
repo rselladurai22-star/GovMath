@@ -5,7 +5,7 @@ import SornCalculator from "./SornCalculator";
 
 export const metadata: Metadata = {
   title: "SORN Declaration — VED Refund Calculator",
-  description: "See how much VED refund you&rsquo;ll get when you take your vehicle off the road with a SORN.",
+  description: "See how much VED refund you’ll get when you take your vehicle off the road with a SORN.",
 };
 
 export default function SornPage() {
@@ -19,7 +19,7 @@ export default function SornPage() {
         { href: "/vehicles/sorn-declaration", label: "SORN Declaration" },
       ]}
       title="SORN Declaration"
-      intro="A SORN takes your vehicle legally off the road — you stop paying VED and the unused months are refunded. The vehicle must be kept on private property and can&rsquo;t be driven."
+      intro="A SORN takes your vehicle legally off the road — you stop paying VED and the unused months are refunded. The vehicle must be kept on private property and can’t be driven."
       calculator={<SornCalculator />}
       explainer={
         <BlueprintExplainer
@@ -36,13 +36,13 @@ export default function SornPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Insurance still required?", body: "Continuous Insurance Enforcement doesn&rsquo;t apply to SORNed vehicles — so you can drop insurance. But check for fire/theft coverage if it&rsquo;s in a garage." },
+            { title: "Insurance still required?", body: "Continuous Insurance Enforcement doesn’t apply to SORNed vehicles — so you can drop insurance. But check for fire/theft coverage if it’s in a garage." },
             { title: "Driving while SORN", body: "£2,500 fine and possible prosecution. The car is seen by ANPR every time it leaves the drive." },
-            { title: "Selling a SORNed car", body: "The SORN doesn&rsquo;t transfer. The new owner must tax it before driving away." },
+            { title: "Selling a SORNed car", body: "The SORN doesn’t transfer. The new owner must tax it before driving away." },
           ]}
           faqs={[
             { question: "Can I refund a part-month?", answer: "No — DVLA only refunds full unused months from when the SORN takes effect." },
-            { question: "Do I need an MOT while SORN?", answer: "No, but you&rsquo;ll need a current MOT to re-tax it when you want to drive again." },
+            { question: "Do I need an MOT while SORN?", answer: "No, but you’ll need a current MOT to re-tax it when you want to drive again." },
             { question: "Can the council ticket a SORNed car on the road?", answer: "Yes — and DVLA will reverse the SORN and fine you." },
           ]}
           disclaimer="Indicative refund only. Actual refund depends on the exact date DVLA processes your SORN."

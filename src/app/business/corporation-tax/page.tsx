@@ -21,8 +21,8 @@ export default function CorpTaxPage() {
         <BlueprintExplainer
           howWeCalculated={
             <>
-              <p>The marginal-relief band works by giving small-profits relief that tapers away between £50k and £250k. The net effect: every £1 of profit between those limits is taxed at 26.5% — the &ldquo;marginal effective rate&rdquo;.</p>
-              <p>So a £100k-profit company doesn&rsquo;t pay 25% × £100k. It pays 19% × £50k + 26.5% × £50k = £22,750.</p>
+              <p>The marginal-relief band works by giving small-profits relief that tapers away between £50k and £250k. The net effect: every £1 of profit between those limits is taxed at 26.5% — the “marginal effective rate”.</p>
+              <p>So a £100k-profit company doesn’t pay 25% × £100k. It pays 19% × £50k + 26.5% × £50k = £22,750.</p>
             </>
           }
           officialRules={
@@ -36,11 +36,11 @@ export default function CorpTaxPage() {
           }
           pitfalls={[
             { title: "Associated companies divide your bands", body: "Two trading companies under common control? Each gets only £25k small-profits / £125k upper. Easy way to land in marginal relief unexpectedly." },
-            { title: "Salary, pension and dividends interact", body: "Director&rsquo;s salary is deductible against CT — pension contributions even more so. Strategic extraction can drop you below £50k." },
+            { title: "Salary, pension and dividends interact", body: "Director’s salary is deductible against CT — pension contributions even more so. Strategic extraction can drop you below £50k." },
             { title: "Don't confuse with Income Tax bands", body: "CT is on company profit, not your personal pay. Dividends are then taxed personally on top." },
           ]}
           faqs={[
-            { question: "Can I time profits to stay in the small-profits band?", answer: "Yes — pension contributions, capital allowances, or accruing genuine expenses can keep you below £50k. Don&rsquo;t backdate." },
+            { question: "Can I time profits to stay in the small-profits band?", answer: "Yes — pension contributions, capital allowances, or accruing genuine expenses can keep you below £50k. Don’t backdate." },
             { question: "What about ring-fence (oil & gas) rates?", answer: "30% / 19% with a separate supplementary charge. Out of scope here." },
           ]}
           disclaimer="Excludes associated companies, ring-fence profits and patent box. Talk to an accountant for real numbers."

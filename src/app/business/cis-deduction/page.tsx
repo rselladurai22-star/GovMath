@@ -15,7 +15,7 @@ export default function CISPage() {
       updatedLabel="CIS"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/business", label: "Business" }, { href: "/business/cis-deduction", label: "CIS" }]}
       title="CIS Deduction Calculator"
-      intro="Under the Construction Industry Scheme, contractors deduct tax from subcontractor payments before paying out. 20% if you&rsquo;re registered, 30% if you&rsquo;re not."
+      intro="Under the Construction Industry Scheme, contractors deduct tax from subcontractor payments before paying out. 20% if you’re registered, 30% if you’re not."
       calculator={<CISCalculator />}
       explainer={
         <BlueprintExplainer
@@ -34,10 +34,10 @@ export default function CISPage() {
             { title: "Penalties for late returns", body: "£100 per missed monthly CIS return, escalating fast." },
           ]}
           faqs={[
-            { question: "Do I have to register?", answer: "If you&rsquo;re a subcontractor in construction, yes — to avoid the 30% rate." },
+            { question: "Do I have to register?", answer: "If you’re a subcontractor in construction, yes — to avoid the 30% rate." },
             { question: "Can I claim materials VAT?", answer: "Yes if VAT-registered, via your normal VAT return." },
           ]}
-          disclaimer="Educational. Always file CIS returns through HMRC&rsquo;s online service or commercial software."
+          disclaimer="Educational. Always file CIS returns through HMRC’s online service or commercial software."
         />
       }
     />

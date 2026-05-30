@@ -7,7 +7,7 @@
  *  - Survey (Level 1 basic, Level 2 homebuyer, Level 3 building)
  *  - Mortgage arrangement / valuation fee
  *  - Removals
- *  - EPC (only needed if selling and don&apos;t already have one)
+ *  - EPC (only needed if selling and don’t already have one)
  *  - Estate agent fees (only for sellers, default 1.2% of sale price)
  *  - Misc contingency (10% default)
  */

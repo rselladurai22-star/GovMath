@@ -28,12 +28,12 @@ export default function TimesheetPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Don&rsquo;t treat 7:30 as 7.30", body: "Common bug — 7.30 = 7.3 hrs (7h 18m), not 7.5 hrs. Always divide minutes by 60." },
+            { title: "Don’t treat 7:30 as 7.30", body: "Common bug — 7.30 = 7.3 hrs (7h 18m), not 7.5 hrs. Always divide minutes by 60." },
             { title: "Beware compounding rounding", body: "Rounding each shift to 0.25 then totalling can drift several minutes per week. Total exact, then round once." },
           ]}
           faqs={[
             { question: "What about hh:mm:ss?", answer: "seconds ÷ 3600. So 7:30:45 = 7 + 30/60 + 45/3600 ≈ 7.5125 hrs." },
-            { question: "Why 60?", answer: "Sexagesimal time inherited from Babylonia. We&rsquo;re stuck with it." },
+            { question: "Why 60?", answer: "Sexagesimal time inherited from Babylonia. We’re stuck with it." },
           ]}
           disclaimer="Pure math utility."
         />

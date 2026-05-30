@@ -19,10 +19,10 @@ export default function PaternityPage() {
       calculator={<PaternityCalculator />}
       explainer={
         <BlueprintExplainer
-          howWeCalculated={<p>HMRC sets the flat rate (£187.18/week from April 2025). You get 90% of your average weekly earnings (AWE) if that&rsquo;s lower. From April 2024 you can take the 2 weeks separately within the first year.</p>}
+          howWeCalculated={<p>HMRC sets the flat rate (£187.18/week from April 2025). You get 90% of your average weekly earnings (AWE) if that’s lower. From April 2024 you can take the 2 weeks separately within the first year.</p>}
           officialRules={
             <ul>
-              <li>Must have 26 weeks&rsquo; service by the 15th week before the due date.</li>
+              <li>Must have 26 weeks’ service by the 15th week before the due date.</li>
               <li>AWE must be at least £125/week (lower earnings limit).</li>
               <li>Tax and NI are deducted from SPP.</li>
               <li>Adoption pay follows similar rules.</li>
@@ -30,7 +30,7 @@ export default function PaternityPage() {
           }
           pitfalls={[
             { title: "Notify by the 15th week", body: "You must tell your employer at least 15 weeks before the due date, in writing if asked." },
-            { title: "Shared Parental Leave is different", body: "If you both qualify, SPL lets you split the mother&rsquo;s maternity leave up to 50 weeks." },
+            { title: "Shared Parental Leave is different", body: "If you both qualify, SPL lets you split the mother’s maternity leave up to 50 weeks." },
             { title: "Self-employed = no SPP", body: "You may qualify for Maternity Allowance instead — but no equivalent for fathers." },
           ]}
           faqs={[

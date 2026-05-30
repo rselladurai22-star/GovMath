@@ -5,7 +5,7 @@ import SmallBusinessRatesCalculator from "./SmallBusinessRatesCalculator";
 
 export const metadata: Metadata = {
   title: "Small Business Rates Relief Calculator (England 2025/26)",
-  description: "Work out your business rates bill and the Small Business Rate Relief you&rsquo;re entitled to in England.",
+  description: "Work out your business rates bill and the Small Business Rate Relief you’re entitled to in England.",
 };
 
 export default function SmallBusinessRatesPage() {
@@ -38,13 +38,13 @@ export default function SmallBusinessRatesPage() {
             </ul>
           }
           pitfalls={[
-            { title: "You have to apply", body: "SBRR is not automatic. Even though it&rsquo;s the same form every year, councils don&rsquo;t reapply it without a request." },
+            { title: "You have to apply", body: "SBRR is not automatic. Even though it’s the same form every year, councils don’t reapply it without a request." },
             { title: "Empty rates kick in fast", body: "Empty office/shop pays full rates after 3 months (6 for industrial). Plan exits to avoid the cliff." },
             { title: "Working from home", body: "If part of your home is used exclusively for business, the VOA can split it and assign rates — usually a bad outcome." },
           ]}
           faqs={[
-            { question: "What if my rateable value changes?", answer: "Bills update next 1 April. You can challenge an RV via the &quot;Check, Challenge, Appeal&quot; process on gov.uk." },
-            { question: "Are pubs and shops on the high street treated differently?", answer: "Yes — Retail, Hospitality &amp; Leisure Relief currently gives a 75% discount on bills (capped at £110k per business) for 2024/25." },
+            { question: "What if my rateable value changes?", answer: "Bills update next 1 April. You can challenge an RV via the ”Check, Challenge, Appeal” process on gov.uk." },
+            { question: "Are pubs and shops on the high street treated differently?", answer: "Yes — Retail, Hospitality & Leisure Relief currently gives a 75% discount on bills (capped at £110k per business) for 2024/25." },
             { question: "Does this work in Scotland/Wales/NI?", answer: "No — each nation has its own scheme. The Small Business Bonus Scheme (Scotland) and Small Business Rate Relief (Wales) work differently." },
           ]}
           disclaimer="England only, 2025/26 multipliers. Always confirm with your local billing authority before relying on a figure."

@@ -22,11 +22,11 @@ export default function InvestingLandingPage() {
           <p>
             The State Pension covers the basics; the rest is up to you and
             your employer. ISAs shelter growth from tax, while general
-            accounts don&apos;t. These tools help you forecast both — and
+            accounts don’t. These tools help you forecast both — and
             decide how much to put away.
           </p>
           <p>
-            We update these calculators each tax year to match HMRC&apos;s
+            We update these calculators each tax year to match HMRC’s
             latest allowances, ISA limits and the State Pension uplift.
           </p>
         </>

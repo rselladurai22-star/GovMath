@@ -40,7 +40,7 @@ export default function LocalHousingAllowanceCalculator() {
           <NumberInput label="Children 10+" value={over10} onChange={setOver10} step={1} min={0} max={8} prefix="" suffix="" />
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" checked={singleUnder35} onChange={(e) => setSingleUnder35(e.target.checked)} />
-            <span>I&rsquo;m single and under 35</span>
+            <span>I’m single and under 35</span>
           </label>
           <NumberInput label="Weekly contractual rent" value={weeklyRent} onChange={setRent} step={10} />
         </div>

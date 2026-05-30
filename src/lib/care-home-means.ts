@@ -11,7 +11,7 @@
  *  - Capital ≤ £14,250:   Capital ignored; income alone determines your contribution.
  *
  * Weekly contribution = (weekly income + tariff income − Personal Expenses Allowance £30.65)
- * If less than the council&apos;s usual rate, the council pays the gap.
+ * If less than the council’s usual rate, the council pays the gap.
  *
  * Wales and Scotland have higher thresholds; this calculator covers England.
  */
@@ -24,7 +24,7 @@ export const TARIFF_BAND = 250;
 export type CareMeansInput = {
   capital: number;
   weeklyIncome: number;
-  /** Weekly cost of the care home (the council&apos;s usual or your chosen home). */
+  /** Weekly cost of the care home (the council’s usual or your chosen home). */
   weeklyCareCost: number;
 };
 

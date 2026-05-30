@@ -52,7 +52,7 @@ export default function ScottishPage() {
             <>
               <p>
                 You pay Scottish Income Tax if HMRC has flagged your tax
-                code with an &quot;S&quot; prefix (e.g.{" "}
+                code with an ”S” prefix (e.g.{" "}
                 <code>S1257L</code>) based on your address being in
                 Scotland.
               </p>
@@ -65,7 +65,7 @@ export default function ScottishPage() {
                   £50,270 in rUK) and is 42% instead of 40%.
                 </li>
                 <li>
-                  <strong>NI is UK-wide</strong> — Scotland doesn&apos;t
+                  <strong>NI is UK-wide</strong> — Scotland doesn’t
                   control it. The crunch zone where 42% IT + 8% NI both
                   apply is between £43,662 and £50,270, giving a 50% marginal
                   rate over £6,608 of earnings.

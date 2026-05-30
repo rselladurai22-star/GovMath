@@ -24,13 +24,13 @@ export default function ChildcarePage() {
             <ul>
               <li>Child must be under 12 (or 17 if disabled).</li>
               <li>Both parents must each earn at least £166/week and under £100k.</li>
-              <li>Can&rsquo;t combine with Universal Credit childcare or vouchers.</li>
+              <li>Can’t combine with Universal Credit childcare or vouchers.</li>
               <li>Reconfirm eligibility every 3 months.</li>
             </ul>
           }
           pitfalls={[
             { title: "£100k cliff edge", body: "If either parent earns over £100k, the entire account closes — even for kids already in it." },
-            { title: "Vouchers vs TFC", body: "Childcare vouchers are closed to new entrants but if you&rsquo;re already in, often better for basic-rate taxpayers." },
+            { title: "Vouchers vs TFC", body: "Childcare vouchers are closed to new entrants but if you’re already in, often better for basic-rate taxpayers." },
             { title: "Forgot to reconfirm", body: "Miss the 3-monthly reconfirmation and the account suspends — no top-ups until renewed." },
           ]}
           faqs={[

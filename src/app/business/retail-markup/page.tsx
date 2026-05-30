@@ -30,9 +30,9 @@ export default function MarkupPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Markup math is easier; margin math drives profit", body: "Retailers often think in markup (it&rsquo;s a simple multiplier). Finance teams think in margin (P&L line)." },
+            { title: "Markup math is easier; margin math drives profit", body: "Retailers often think in markup (it’s a simple multiplier). Finance teams think in margin (P&L line)." },
             { title: "Multiple stages compound", body: "Manufacturer 30% margin → distributor 25% markup → retailer 50% margin. End consumer pays a lot more than cost." },
-            { title: "Don&rsquo;t forget VAT at point of sale", body: "Add 20% VAT to your ex-VAT price for consumer-facing display. Margin should never include VAT." },
+            { title: "Don’t forget VAT at point of sale", body: "Add 20% VAT to your ex-VAT price for consumer-facing display. Margin should never include VAT." },
           ]}
           faqs={[
             { question: "Why are these different?", answer: "Margin uses price as the denominator; markup uses cost. Same profit, different base." },

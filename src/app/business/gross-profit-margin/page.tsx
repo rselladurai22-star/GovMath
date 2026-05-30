@@ -15,7 +15,7 @@ export default function MarginPage() {
       updatedLabel="Pricing tool"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/business", label: "Business" }, { href: "/business/gross-profit-margin", label: "Gross Profit Margin" }]}
       title="Gross Profit Margin Calculator"
-      intro="Margin and markup are different beasts. Margin is profit as a share of selling price; markup is profit as a share of cost. Confuse them and you&rsquo;ll underprice."
+      intro="Margin and markup are different beasts. Margin is profit as a share of selling price; markup is profit as a share of cost. Confuse them and you’ll underprice."
       calculator={<MarginCalculator />}
       explainer={
         <BlueprintExplainer
@@ -30,9 +30,9 @@ export default function MarginPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Don&rsquo;t confuse margin with markup", body: "&lsquo;A 30% markup&rsquo; means cost × 1.3. &lsquo;A 30% margin&rsquo; means cost ÷ 0.7. The latter is much higher pricing." },
-            { title: "VAT trips up new traders", body: "If you&rsquo;re VAT-registered, charge VAT on top of your ex-VAT price. Don&rsquo;t calculate margin on the VAT-inclusive figure." },
-            { title: "Gross margin isn&rsquo;t profit", body: "From gross you still have to pay rent, staff, ads, tax. Healthy retail gross margins are 40–60%; net might be 5–10%." },
+            { title: "Don’t confuse margin with markup", body: "‘A 30% markup’ means cost × 1.3. ‘A 30% margin’ means cost ÷ 0.7. The latter is much higher pricing." },
+            { title: "VAT trips up new traders", body: "If you’re VAT-registered, charge VAT on top of your ex-VAT price. Don’t calculate margin on the VAT-inclusive figure." },
+            { title: "Gross margin isn’t profit", body: "From gross you still have to pay rent, staff, ads, tax. Healthy retail gross margins are 40–60%; net might be 5–10%." },
           ]}
           faqs={[
             { question: "What's a good gross margin?", answer: "Depends on sector: software 70–90%, restaurants 60–70%, retail 30–50%, wholesale 15–25%." },

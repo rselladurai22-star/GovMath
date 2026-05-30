@@ -19,19 +19,19 @@ export default function CouncilTaxBandsPage() {
         { href: "/property/council-tax-bands", label: "Council Tax Bands" },
       ]}
       title="Council Tax Bands Calculator"
-      intro="Council tax is set by each local authority, but the band ratio is fixed nationally. We multiply your band&rsquo;s share by the national Band D average — close enough for budgeting."
+      intro="Council tax is set by each local authority, but the band ratio is fixed nationally. We multiply your band’s share by the national Band D average — close enough for budgeting."
       calculator={<CouncilTaxBandsCalculator />}
       explainer={
         <BlueprintExplainer
           howWeCalculated={
             <p>
-              Each band has a fixed share of a Band D bill (A = 6/9, B = 7/9, … H = 18/9 in England &amp; Wales; Scotland uses a different 2017 schedule). We multiply your nation&rsquo;s national Band D average by your band&rsquo;s ratio.
+              Each band has a fixed share of a Band D bill (A = 6/9, B = 7/9, … H = 18/9 in England & Wales; Scotland uses a different 2017 schedule). We multiply your nation’s national Band D average by your band’s ratio.
             </p>
           }
           officialRules={
             <ul>
               <li>Bands set on 1 April 1991 values (England, Scotland) or 1 April 2003 (Wales).</li>
-              <li>England &amp; Scotland: 8 bands (A–H). Wales: 9 bands (A–I).</li>
+              <li>England & Scotland: 8 bands (A–H). Wales: 9 bands (A–I).</li>
               <li>25% single-person discount; 50% if all residents are disregarded (e.g. all full-time students).</li>
               <li>Empty homes can attract a 100–300% premium after 1–10 years.</li>
             </ul>

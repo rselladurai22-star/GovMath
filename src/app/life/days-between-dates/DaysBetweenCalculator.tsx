@@ -50,7 +50,7 @@ export default function DaysBetweenCalculator() {
             />
           </div>
           <p className="text-xs text-text/60">
-            Works in either order. Dates are treated as UTC midnight so DST changes don&rsquo;t affect the count.
+            Works in either order. Dates are treated as UTC midnight so DST changes don’t affect the count.
           </p>
         </div>
         <div className="rounded-xl bg-white border-2 border-primary p-6 space-y-4">

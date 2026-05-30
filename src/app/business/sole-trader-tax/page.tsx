@@ -41,7 +41,7 @@ export default function SoleTraderPage() {
               </ul>
               <p>
                 Both are settled through Self Assessment by 31 January each
-                year, plus a Payment on Account in July for the next year&apos;s
+                year, plus a Payment on Account in July for the next year’s
                 expected liability.
               </p>
             </>
@@ -70,7 +70,7 @@ export default function SoleTraderPage() {
                 </li>
                 <li>
                   <strong>Payment on Account</strong>: if your bill is over
-                  £1,000, HMRC asks for 50% of the next year&apos;s estimated
+                  £1,000, HMRC asks for 50% of the next year’s estimated
                   liability in January, and another 50% in July.
                 </li>
               </ul>
@@ -79,11 +79,11 @@ export default function SoleTraderPage() {
           pitfalls={[
             {
               title: "The first January is a triple bill",
-              body: "In your first Self Assessment, you pay last year&rsquo;s tax in full PLUS 50% Payment on Account for the new year — effectively 150% of last year. Set aside cash for it from day one.",
+              body: "In your first Self Assessment, you pay last year’s tax in full PLUS 50% Payment on Account for the new year — effectively 150% of last year. Set aside cash for it from day one.",
             },
             {
               title: "Allowable expenses are narrower than you think",
-              body: "Mileage, home office, professional subscriptions, marketing, tools — yes. Entertainment, fines, your own salary (you can&rsquo;t pay yourself), and most clothing — no. HMRC&rsquo;s &ldquo;wholly and exclusively&rdquo; test is strict.",
+              body: "Mileage, home office, professional subscriptions, marketing, tools — yes. Entertainment, fines, your own salary (you can’t pay yourself), and most clothing — no. HMRC’s “wholly and exclusively” test is strict.",
             },
             {
               title: "Class 4 NI plus Class 1 can double-charge",
@@ -111,7 +111,7 @@ export default function SoleTraderPage() {
                 "By 5 October following the end of the tax year in which your trading income first exceeded £1,000. So if you started in June 2025, you have until 5 October 2026 to register. Tax is due 31 January 2027.",
             },
           ]}
-          disclaimer="Doesn't include VAT, pension contributions, student loan, Class 2 voluntary, or interaction with employment income. For full Self Assessment guidance, see HMRC&rsquo;s helpsheets."
+          disclaimer="Doesn't include VAT, pension contributions, student loan, Class 2 voluntary, or interaction with employment income. For full Self Assessment guidance, see HMRC’s helpsheets."
         />
       }
     />

@@ -39,12 +39,12 @@ export default function LocalHousingAllowancePage() {
           }
           pitfalls={[
             { title: "BRMA boundaries are weird", body: "Look up your postcode at gov.uk/lha-direct — neighbouring streets can fall into different BRMAs with very different caps." },
-            { title: "Frozen rates", body: "LHA rates didn&rsquo;t rise in April 2025 — they sit at April 2024 levels. Many areas have rents rising faster than the cap." },
-            { title: "Shortfall = your problem", body: "Anything above the LHA cap comes from your standard allowance. If you can&rsquo;t cover it, apply for a Discretionary Housing Payment." },
+            { title: "Frozen rates", body: "LHA rates didn’t rise in April 2025 — they sit at April 2024 levels. Many areas have rents rising faster than the cap." },
+            { title: "Shortfall = your problem", body: "Anything above the LHA cap comes from your standard allowance. If you can’t cover it, apply for a Discretionary Housing Payment." },
           ]}
           faqs={[
             { question: "What if my rent is below the cap?", answer: "You get your actual rent paid. The cap only kicks in when rent exceeds it." },
-            { question: "Can I get a Discretionary Housing Payment?", answer: "Yes — apply at your local council for short-term top-ups when LHA doesn&rsquo;t stretch. Pots are limited." },
+            { question: "Can I get a Discretionary Housing Payment?", answer: "Yes — apply at your local council for short-term top-ups when LHA doesn’t stretch. Pots are limited." },
             { question: "Does this work for social housing?", answer: "No — social tenants are subject to the bedroom tax / size criteria, not LHA. Different rules apply." },
           ]}
           disclaimer="Sample rates by area band. Always confirm the exact LHA rate for your postcode at gov.uk/lha-direct."

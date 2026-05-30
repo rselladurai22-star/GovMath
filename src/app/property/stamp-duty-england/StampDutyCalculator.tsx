@@ -91,7 +91,7 @@ export default function StampDutyCalculator({
         </fieldset>
 
         <p className="text-xs text-text/60">
-          England &amp; Northern Ireland only. Scotland uses LBTT, Wales uses
+          England & Northern Ireland only. Scotland uses LBTT, Wales uses
           LTT — different rules and rates apply.
         </p>
       </div>

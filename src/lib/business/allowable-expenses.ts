@@ -2,7 +2,7 @@
  * Self-employed allowable expenses estimator (UK 2025/26).
  *
  * For sole traders using Self Assessment. Adds up the most common allowable
- * categories and applies HMRC&apos;s simplified-expense flat rates where helpful:
+ * categories and applies HMRC’s simplified-expense flat rates where helpful:
  *
  *   - Working from home (simplified): £10/mo (25–50h), £18/mo (51–100h), £26/mo (101+h)
  *   - Mileage (own vehicle):          45p/mile first 10k, 25p/mile thereafter

@@ -35,9 +35,9 @@ export default function LicenceAt70Page() {
             </ul>
           }
           pitfalls={[
-            { title: "Driving on an expired licence", body: "Up to £1,000 fine and your insurance is void. Don&rsquo;t put off the post." },
+            { title: "Driving on an expired licence", body: "Up to £1,000 fine and your insurance is void. Don’t put off the post." },
             { title: "Not declaring medical conditions", body: "Fines up to £1,000 and prosecution if you have an accident. Always declare — most conditions are still compatible with driving." },
-            { title: "Photo card vs paper counterpart", body: "The paper counterpart was abolished in 2015 — you don&rsquo;t need it. The photocard is the licence." },
+            { title: "Photo card vs paper counterpart", body: "The paper counterpart was abolished in 2015 — you don’t need it. The photocard is the licence." },
           ]}
           faqs={[
             { question: "Does it cost anything?", answer: "Renewal at 70+ is free. The standard 10-year renewal under 70 costs £14 online." },

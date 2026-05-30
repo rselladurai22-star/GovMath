@@ -38,7 +38,7 @@ export default function StatePensionAgePage() {
           }
           pitfalls={[
             { title: "Not the same as your private pension", body: "Workplace and personal pensions can usually be accessed from age 55 (rising to 57 in 2028). SPA only governs the State Pension." },
-            { title: "Future law changes", body: "The rise to 68 may be brought forward. Plan for it but don&rsquo;t budget on it changing." },
+            { title: "Future law changes", body: "The rise to 68 may be brought forward. Plan for it but don’t budget on it changing." },
             { title: "NI gaps cost more than you think", body: "Each missing year cuts ~£6/week from your eventual pension — £312/year, for the rest of your life. Voluntary Class 3 NI top-up is £907.40/year." },
           ]}
           faqs={[

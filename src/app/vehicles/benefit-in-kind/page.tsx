@@ -31,7 +31,7 @@ export default function BIKPage() {
           pitfalls={[
             { title: "Diesel supplement", body: "Most diesels add 4pp — confirm RDE2 certification to avoid." },
             { title: "List price, not paid price", body: "BIK uses P11D (RRP + options + VAT), even if the company got a fleet discount." },
-            { title: "Private fuel pays more tax than it&rsquo;s worth", body: "Employer-paid private fuel triggers a separate large BIK — almost never beneficial unless you do massive private mileage." },
+            { title: "Private fuel pays more tax than it’s worth", body: "Employer-paid private fuel triggers a separate large BIK — almost never beneficial unless you do massive private mileage." },
           ]}
           faqs={[
             { question: "Hybrid rates?", answer: "PHEV BIK depends on CO₂ and electric range — anywhere from 5% to 15%." },

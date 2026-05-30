@@ -5,7 +5,7 @@ import SharedOwnershipCalculator from "./SharedOwnershipCalculator";
 
 export const metadata: Metadata = {
   title: "Shared Ownership Calculator (UK)",
-  description: "Monthly mortgage plus rent on the share of a Shared Ownership home you don&rsquo;t own yet.",
+  description: "Monthly mortgage plus rent on the share of a Shared Ownership home you don’t own yet.",
 };
 
 export default function SharedOwnershipPage() {
@@ -24,20 +24,20 @@ export default function SharedOwnershipPage() {
             <ul>
               <li>Minimum share usually 10–25%; max 75%.</li>
               <li>Rent capped at 3% of unowned share, but most schemes use 2.75%.</li>
-              <li>You can &lsquo;staircase&rsquo; — buy more shares over time, reducing rent.</li>
+              <li>You can ‘staircase’ — buy more shares over time, reducing rent.</li>
               <li>Stamp Duty: pay on the share you buy, or on the full value (one-off).</li>
             </ul>
           }
           pitfalls={[
             { title: "Service charges on top", body: "Most SO is leasehold flats with ground rent + service charge. Add £100–300/month." },
-            { title: "Selling is harder", body: "Housing association has first refusal &amp; nominate buyers — can take months." },
-            { title: "100% staircased? Still leasehold", body: "Unless freehold from day one, you&rsquo;ll deal with the lease forever." },
+            { title: "Selling is harder", body: "Housing association has first refusal & nominate buyers — can take months." },
+            { title: "100% staircased? Still leasehold", body: "Unless freehold from day one, you’ll deal with the lease forever." },
           ]}
           faqs={[
             { question: "What deposit do I need?", answer: "Usually 5–10% of the share, not the full property — making SO accessible at lower deposits." },
             { question: "Rent goes up?", answer: "Yes — usually RPI + 0.5% annually, fixed in your lease." },
           ]}
-          disclaimer="Illustrative. Always check the specific scheme&rsquo;s rent formula, service charge and staircasing terms."
+          disclaimer="Illustrative. Always check the specific scheme’s rent formula, service charge and staircasing terms."
         />
       }
     />

@@ -15,7 +15,7 @@ export default function PropertyCGTPage() {
       updatedLabel="Oct 2024 rates"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/property", label: "Property" }, { href: "/property/property-capital-gains", label: "Property CGT" }]}
       title="Property Capital Gains Tax Calculator"
-      intro="Selling a second home, BTL or property you&rsquo;ve inherited? CGT applies on the gain above £3,000. Since 30 October 2024, residential and other assets share the same 18/24% rates."
+      intro="Selling a second home, BTL or property you’ve inherited? CGT applies on the gain above £3,000. Since 30 October 2024, residential and other assets share the same 18/24% rates."
       calculator={<PropertyCGTCalculator />}
       explainer={
         <BlueprintExplainer
@@ -25,12 +25,12 @@ export default function PropertyCGTPage() {
               <li>Annual Exempt Amount: £3,000 (down from £12,300 in 2022/23).</li>
               <li>Rates: 18% basic / 24% higher (residential and other unified Oct 2024).</li>
               <li>Allowable costs: stamp duty paid, legal fees, agent fees, capital improvements (not maintenance).</li>
-              <li>Pay within 60 days of completion via HMRC&rsquo;s online service.</li>
+              <li>Pay within 60 days of completion via HMRC’s online service.</li>
             </ul>
           }
           pitfalls={[
             { title: "60-day reporting trap", body: "Late returns trigger penalties even if no tax is due." },
-            { title: "Improvements vs maintenance", body: "A new extension counts. Replacing the boiler doesn&rsquo;t." },
+            { title: "Improvements vs maintenance", body: "A new extension counts. Replacing the boiler doesn’t." },
             { title: "PPR relief only on main home", body: "If you ever lived in the property, Private Residence Relief reduces the gain pro-rata." },
           ]}
           faqs={[

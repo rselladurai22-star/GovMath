@@ -5,7 +5,7 @@ import RentARoomCalculator from "./RentARoomCalculator";
 
 export const metadata: Metadata = {
   title: "Rent-a-Room Scheme Calculator (UK £7,500 Allowance)",
-  description: "Earn up to £7,500/year tax-free from a lodger under HMRC&rsquo;s Rent-a-Room Scheme — see what&rsquo;s taxable.",
+  description: "Earn up to £7,500/year tax-free from a lodger under HMRC’s Rent-a-Room Scheme — see what’s taxable.",
 };
 
 export default function RentARoomPage() {
@@ -24,12 +24,12 @@ export default function RentARoomPage() {
             <ul>
               <li>£7,500/year tax-free (£3,750 if shared).</li>
               <li>Lodger must live in your main residence — not a separate flat or BTL.</li>
-              <li>Furnished room only — bare rooms don&rsquo;t count.</li>
-              <li>Lodger has &lsquo;excluded occupier&rsquo; status — easy to remove with reasonable notice.</li>
+              <li>Furnished room only — bare rooms don’t count.</li>
+              <li>Lodger has ‘excluded occupier’ status — easy to remove with reasonable notice.</li>
             </ul>
           }
           pitfalls={[
-            { title: "Bills included counts as rent", body: "If lodger pays £500/mo &lsquo;all in&rsquo;, the whole £6,000 counts — not just the rent slice." },
+            { title: "Bills included counts as rent", body: "If lodger pays £500/mo ‘all in’, the whole £6,000 counts — not just the rent slice." },
             { title: "Capital gains hit if you rent the whole house", body: "Rent-a-Room only works while the property is your main home. Move out and let it, and you lose the allowance plus risk CGT on sale." },
             { title: "Alternative scheme: actual expenses", body: "If rent is below £7,500, just elect into Rent-a-Room. Above, compare: actual rent − actual expenses might beat (rent − £7,500). Calculate both ways." },
           ]}

@@ -20,7 +20,7 @@ export default function FlatRateVATCalculator() {
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
         <div className="rounded-xl bg-surface border border-border p-6 space-y-5">
           <NumberInput label="Annual VAT-inclusive turnover" value={grossTurnover} onChange={setGrossTurnover} step={1000} />
-          <NumberInput label="Your industry&rsquo;s flat rate" value={frsRate} onChange={setFrsRate} step={0.5} prefix="" suffix=" %" />
+          <NumberInput label="Your industry’s flat rate" value={frsRate} onChange={setFrsRate} step={0.5} prefix="" suffix=" %" />
           <NumberInput label="Annual input VAT (standard scheme)" value={inputVAT} onChange={setInputVAT} step={100} />
         </div>
         <div className={`rounded-xl border-2 p-6 space-y-3 ${r.difference > 0 ? "bg-emerald-50 border-emerald-500" : "bg-amber-50 border-amber-500"}`}>

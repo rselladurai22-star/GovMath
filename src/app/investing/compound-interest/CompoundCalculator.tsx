@@ -80,7 +80,7 @@ export default function CompoundCalculator() {
           </div>
 
           <p className="text-xs text-text/60">
-            Assumes monthly compounding. All numbers are in today&apos;s pounds
+            Assumes monthly compounding. All numbers are in today’s pounds
             — inflation will erode real-terms value over time.
           </p>
         </div>

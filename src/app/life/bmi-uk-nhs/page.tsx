@@ -15,7 +15,7 @@ export default function BMIPage() {
       updatedLabel="NHS thresholds"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/life", label: "Everyday" }, { href: "/life/bmi-uk-nhs", label: "BMI Calculator" }]}
       title="NHS BMI Calculator"
-      intro="Body Mass Index is the NHS&rsquo; quick screening for whether you&rsquo;re a healthy weight for your height. It&rsquo;s imperfect — it doesn&rsquo;t distinguish muscle from fat — but it&rsquo;s a useful first signal."
+      intro="Body Mass Index is the NHS’ quick screening for whether you’re a healthy weight for your height. It’s imperfect — it doesn’t distinguish muscle from fat — but it’s a useful first signal."
       calculator={<BMICalculator />}
       explainer={
         <BlueprintExplainer
@@ -24,12 +24,12 @@ export default function BMIPage() {
             <ul>
               <li>Standard: under 18.5 underweight; 18.5–24.9 healthy; 25–29.9 overweight; 30+ obese.</li>
               <li>NICE NG7 recommends lower thresholds (23 / 27.5) for South Asian, Chinese, Black African, Caribbean and Middle Eastern adults.</li>
-              <li>Children, pregnant women, athletes — BMI isn&rsquo;t valid.</li>
+              <li>Children, pregnant women, athletes — BMI isn’t valid.</li>
             </ul>
           }
           pitfalls={[
-            { title: "Muscular? BMI is misleading", body: "Rugby players, bodybuilders, regular gym-goers can hit &lsquo;obese&rsquo; while being healthy. Combine with waist-to-height ratio for a better picture." },
-            { title: "Doesn&rsquo;t track location of fat", body: "Central (belly) fat is metabolically worse than peripheral. Waist circumference matters too — under 94cm (men) / 80cm (women) is the NHS guideline." },
+            { title: "Muscular? BMI is misleading", body: "Rugby players, bodybuilders, regular gym-goers can hit ‘obese’ while being healthy. Combine with waist-to-height ratio for a better picture." },
+            { title: "Doesn’t track location of fat", body: "Central (belly) fat is metabolically worse than peripheral. Waist circumference matters too — under 94cm (men) / 80cm (women) is the NHS guideline." },
             { title: "Not for under-18s", body: "Children use BMI-for-age percentiles. Talk to your GP." },
           ]}
           faqs={[

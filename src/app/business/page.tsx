@@ -22,7 +22,7 @@ export default function BusinessLandingPage() {
           <p>
             Working for yourself means doing your own maths — Self-Assessment,
             VAT returns, IR35 status, payments on account. These calculators
-            give you straight answers without an accountant&apos;s clock
+            give you straight answers without an accountant’s clock
             running.
           </p>
         </>

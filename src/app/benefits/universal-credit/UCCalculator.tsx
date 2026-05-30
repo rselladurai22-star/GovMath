@@ -130,7 +130,7 @@ export default function UCCalculator() {
               className="mt-1 accent-primary"
             />
             <span>
-              I have a <strong>work allowance</strong> — either I&apos;m
+              I have a <strong>work allowance</strong> — either I’m
               responsible for a child, or I have limited capability for work.
             </span>
           </label>
@@ -196,7 +196,7 @@ export default function UCCalculator() {
 
           <p className="text-xs text-text/60">
             DWP uses your actual assessment-period earnings reported via PAYE.
-            This estimator does not include LCWRA additions, carer&apos;s
+            This estimator does not include LCWRA additions, carer’s
             element, transitional protection, or sanctions.
           </p>
         </div>

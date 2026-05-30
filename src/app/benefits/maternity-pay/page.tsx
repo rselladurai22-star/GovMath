@@ -33,13 +33,13 @@ export default function MaternityPage() {
             </ul>
           }
           pitfalls={[
-            { title: "AWE includes bonuses but timing matters", body: "If a bonus lands inside the 8-week reference period, AWE jumps. Outside it, it doesn&rsquo;t count. Some women time conception to maximise this." },
+            { title: "AWE includes bonuses but timing matters", body: "If a bonus lands inside the 8-week reference period, AWE jumps. Outside it, it doesn’t count. Some women time conception to maximise this." },
             { title: "Salary sacrifice can hurt AWE", body: "If you sacrifice salary for childcare vouchers or pension, AWE is calculated on the post-sacrifice figure — reducing SMP." },
             { title: "Employer top-up rarely matches contractual", body: "Many employers offer enhanced maternity pay (e.g. full pay for 13 weeks). Check your contract — could mean thousands extra." },
           ]}
           faqs={[
             { question: "What if I don't qualify for SMP?", answer: "You may qualify for Maternity Allowance (£187.18/wk for 39 weeks) via DWP — slightly different eligibility, often for self-employed." },
-            { question: "Can I take leave and return early?", answer: "Yes — must give 8 weeks&rsquo; notice of return date. You can claim Shared Parental Leave with your partner from week 2 onwards." },
+            { question: "Can I take leave and return early?", answer: "Yes — must give 8 weeks’ notice of return date. You can claim Shared Parental Leave with your partner from week 2 onwards." },
           ]}
           disclaimer="Statutory minimum only. Many employers offer enhanced maternity pay schemes."
         />

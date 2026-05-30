@@ -39,7 +39,7 @@ export default function UCPage() {
               <p>
                 The <strong>standard allowance</strong> depends only on your
                 age and whether you claim as a single person or a couple.
-                Adding a partner does <em>not</em> double it — it&apos;s a
+                Adding a partner does <em>not</em> double it — it’s a
                 joint household figure.
               </p>
               <p>
@@ -55,7 +55,7 @@ export default function UCPage() {
                 your <strong>Local Housing Allowance</strong> (LHA) rate —
                 the LHA is published per region and per bedroom-entitlement,
                 so a single person in a four-bed house only gets the one-bed
-                LHA. Mortgage interest isn&apos;t covered through UC; the
+                LHA. Mortgage interest isn’t covered through UC; the
                 separate SMI loan covers that.
               </p>
             </>
@@ -79,8 +79,8 @@ export default function UCPage() {
                 </li>
                 <li>
                   <strong>Work allowance (monthly):</strong> £411 if you
-                  receive a housing element; £684 if you don&apos;t. You only
-                  get a work allowance if you&apos;re responsible for a child{" "}
+                  receive a housing element; £684 if you don’t. You only
+                  get a work allowance if you’re responsible for a child{" "}
                   <em>or</em> you have limited capability for work.
                 </li>
                 <li>
@@ -98,7 +98,7 @@ export default function UCPage() {
           pitfalls={[
             {
               title: "The two-child limit catches a lot of larger families",
-              body: "If you have three or more children and the third was born on or after 6 April 2017, you get no child element for them — unless you qualify for a specific exception. That can be £290+/month you might assume you&rsquo;ll get and won&rsquo;t.",
+              body: "If you have three or more children and the third was born on or after 6 April 2017, you get no child element for them — unless you qualify for a specific exception. That can be £290+/month you might assume you’ll get and won’t.",
             },
             {
               title: "Savings of £16,000+ end your claim immediately",
@@ -106,7 +106,7 @@ export default function UCPage() {
             },
             {
               title: "Earnings count when paid, not when earned",
-              body: "UC is calculated on a one-month rolling 'assessment period.' If you happen to be paid two months&rsquo; wages inside one assessment period (common with weekly pay or shifted paydays), your award can drop to zero that month and reset the next.",
+              body: "UC is calculated on a one-month rolling 'assessment period.' If you happen to be paid two months’ wages inside one assessment period (common with weekly pay or shifted paydays), your award can drop to zero that month and reset the next.",
             },
             {
               title: "The work allowance only applies to some claimants",
@@ -117,7 +117,7 @@ export default function UCPage() {
             {
               question: "Will overtime or a bonus stop my Universal Credit?",
               answer:
-                "One-off spikes get caught by the assessment period and can wipe out that month&rsquo;s award entirely. UC re-starts automatically the next month once your earnings drop back, so you don&rsquo;t need to re-apply, but DWP will pay nothing in the spike month.",
+                "One-off spikes get caught by the assessment period and can wipe out that month’s award entirely. UC re-starts automatically the next month once your earnings drop back, so you don’t need to re-apply, but DWP will pay nothing in the spike month.",
             },
             {
               question: "Does pension contribution reduce my UC earnings?",
@@ -130,7 +130,7 @@ export default function UCPage() {
                 "Universal Credit is for working-age claimants. Once you reach State Pension age (and your partner too, if you have one), you move onto Pension Credit instead — different rates, no work-allowance concept, and different capital rules.",
             },
           ]}
-          disclaimer="This is an estimate based on the gov.uk 2025/26 published rates. DWP&rsquo;s actual calculation may differ — particularly for LCWRA, carer&rsquo;s element, sanctions, transitional protection from legacy benefits, and the various two-child-limit exceptions. Always claim on gov.uk for a binding figure."
+          disclaimer="This is an estimate based on the gov.uk 2025/26 published rates. DWP’s actual calculation may differ — particularly for LCWRA, carer’s element, sanctions, transitional protection from legacy benefits, and the various two-child-limit exceptions. Always claim on gov.uk for a binding figure."
         />
       }
     />

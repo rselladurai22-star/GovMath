@@ -15,7 +15,7 @@ export default function HolidayPage() {
       updatedLabel="Statutory rules"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax & Salary" }, { href: "/tax-and-salary/holiday-entitlement", label: "Holiday Entitlement" }]}
       title="UK Holiday Entitlement Calculator"
-      intro="Every worker in the UK gets at least 5.6 weeks&rsquo; paid holiday per year (capped at 28 days). That includes part-time, agency, zero-hours and irregular workers — pro-rated."
+      intro="Every worker in the UK gets at least 5.6 weeks’ paid holiday per year (capped at 28 days). That includes part-time, agency, zero-hours and irregular workers — pro-rated."
       calculator={<HolidayCalculator />}
       explainer={
         <BlueprintExplainer
@@ -29,7 +29,7 @@ export default function HolidayPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Bank holidays aren't extra by law", body: "If your contract says &lsquo;28 days including bank holidays&rsquo;, that&rsquo;s the statutory minimum — no extra." },
+            { title: "Bank holidays aren't extra by law", body: "If your contract says ‘28 days including bank holidays’, that’s the statutory minimum — no extra." },
             { title: "Carry-over usually only 1.6 weeks", body: "Only the 1.6 weeks of UK-specific leave (above the 4-week EU minimum) can be carried into next year — and only with employer agreement." },
             { title: "Term-time-only workers got Brazel'd", body: "Pre-2024, term-time workers got the full 5.6 weeks even though they only worked 39 weeks. New rules from April 2024 align this with the 12.07% method." },
           ]}

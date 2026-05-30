@@ -29,7 +29,7 @@ export default function CGTAssetsPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Bed &amp; ISA every year", body: "Sell up to £3k of gains, repurchase inside ISA — washes future gains tax-free." },
+            { title: "Bed & ISA every year", body: "Sell up to £3k of gains, repurchase inside ISA — washes future gains tax-free." },
             { title: "Section 104 holding rules", body: "Same-class shares are pooled for cost — not FIFO. Sell some Apple? Average cost across all your shares." },
             { title: "Crypto wash sales", body: "Same-day and 30-day rules apply — selling and buying back the same coin within 30 days uses the new cost, defeating the loss claim." },
           ]}

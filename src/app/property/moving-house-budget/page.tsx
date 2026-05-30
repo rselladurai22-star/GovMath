@@ -37,13 +37,13 @@ export default function MovingHouseBudgetPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Forgetting disbursements", body: "Conveyancers quote &lsquo;our fee&rsquo; — searches, Land Registry, ID checks and SDLT submission add another £300–£500." },
+            { title: "Forgetting disbursements", body: "Conveyancers quote ‘our fee’ — searches, Land Registry, ID checks and SDLT submission add another £300–£500." },
             { title: "EPC validity", body: "Old EPCs from 10 years ago expire — sellers need a valid one before marketing. £60–£120 new." },
             { title: "Removals on a Friday", body: "Friday is the most popular completion day and removal firms charge ~30% more. Mid-week saves real money." },
           ]}
           faqs={[
             { question: "What contingency should I use?", answer: "10% covers small surprises (extra searches, gifting paperwork). Older or non-standard property: budget 20%." },
-            { question: "Do I need a survey on a new build?", answer: "Most lenders accept the developer&rsquo;s snagging report, but an independent snagging survey (£300–£600) usually pays for itself." },
+            { question: "Do I need a survey on a new build?", answer: "Most lenders accept the developer’s snagging report, but an independent snagging survey (£300–£600) usually pays for itself." },
             { question: "Can I add fees to my mortgage?", answer: "Yes — most lenders let you add £999 product and valuation fees. Be aware: 25 years of interest on £999 adds about £1,400 at 5%." },
           ]}
           disclaimer="Costs vary hugely by region and property. Always get fixed quotes before exchanging contracts."

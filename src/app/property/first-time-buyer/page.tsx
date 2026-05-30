@@ -32,8 +32,8 @@ export default function FTBPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Joint purchase ruins it if your partner has owned property", body: "Bought a flat with an ex 5 years ago? Even if you sold, you&rsquo;re no longer a FTB. Both must qualify or relief is denied entirely." },
-            { title: "Overseas property counts", body: "Inherited a share of a holiday flat in Spain at 21? You&rsquo;ve technically owned residential property and lose FTB status forever." },
+            { title: "Joint purchase ruins it if your partner has owned property", body: "Bought a flat with an ex 5 years ago? Even if you sold, you’re no longer a FTB. Both must qualify or relief is denied entirely." },
+            { title: "Overseas property counts", body: "Inherited a share of a holiday flat in Spain at 21? You’ve technically owned residential property and lose FTB status forever." },
             { title: "The £500k cliff is brutal", body: "At £500,000 you pay £10,000 SDLT (5% on £200k). At £500,001 you pay £12,500 (standard rates). That extra £1 of price costs £2,500." },
           ]}
           faqs={[
