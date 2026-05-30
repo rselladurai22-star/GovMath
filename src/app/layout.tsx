@@ -53,18 +53,28 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "GovMath",
-              url: "https://govmath.co.uk",
-              description: "Free UK tax, salary, mortgage and benefits calculators in plain English.",
-              potentialAction: {
-                "@type": "SearchAction",
-                target: "https://govmath.co.uk/calculators?q={search_term_string}",
-                "query-input": "required name=search_term_string",
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "GovMath",
+                url: "https://govmath.co.uk",
+                description: "Free UK tax, salary, mortgage and benefits calculators in plain English.",
+                potentialAction: {
+                  "@type": "SearchAction",
+                  target: "https://govmath.co.uk/calculators?q={search_term_string}",
+                  "query-input": "required name=search_term_string",
+                },
               },
-            }),
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                name: "GovMath",
+                url: "https://govmath.co.uk",
+                logo: "https://govmath.co.uk/icon.png",
+                description: "GovMath publishes free UK calculators that translate HMRC, DWP and DVLA rules into plain English.",
+              },
+            ]),
           }}
         />
         <a

@@ -26,8 +26,22 @@ export default function CalculatorShell({
   explainer,
   updatedLabel,
 }: CalculatorShellProps) {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbs.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.label,
+      item: `https://govmath.co.uk${c.href}`,
+    })),
+  };
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Page header */}
       <section className="bg-primary-dark text-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
