@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { CALCULATORS, CATEGORIES } from "@/lib/calculators";
 
-const BASE = "https://gov-math.vercel.app";
+const BASE = "https://govmath.co.uk";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

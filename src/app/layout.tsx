@@ -5,7 +5,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gov-math.vercel.app"),
+  metadataBase: new URL("https://govmath.co.uk"),
   title: {
     default: "GovMath — UK government rules, in plain English",
     template: "%s | GovMath",
@@ -57,11 +57,11 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "GovMath",
-              url: "https://gov-math.vercel.app",
+              url: "https://govmath.co.uk",
               description: "Free UK tax, salary, mortgage and benefits calculators in plain English.",
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://gov-math.vercel.app/calculators?q={search_term_string}",
+                target: "https://govmath.co.uk/calculators?q={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             }),
