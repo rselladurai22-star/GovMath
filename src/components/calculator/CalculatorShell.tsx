@@ -54,11 +54,12 @@ export default function CalculatorShell({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Page header */}
-      <section className="bg-primary-dark text-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
+      <section className="ink-panel text-white relative overflow-hidden">
+        <div className="grid-overlay pointer-events-none absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-10 sm:py-14">
           <nav
             aria-label="Breadcrumb"
-            className="text-sm text-white/80 mb-4"
+            className="text-sm text-white/70 mb-4"
           >
             <ol className="flex flex-wrap items-center gap-1">
               {breadcrumbs.map((c, i) => (
@@ -87,11 +88,11 @@ export default function CalculatorShell({
         <div className="min-w-0">{calculator}</div>
         <aside className="space-y-6">
           <AdSlot size="mpu" />
-          <div className="rounded-xl bg-surface border border-border p-5">
+          <div className="card p-5">
             <h3 className="font-bold text-primary-dark mb-2">
               Plain-English promise
             </h3>
-            <p className="text-sm text-text/75">
+            <p className="text-sm text-muted">
               We translate HMRC and DWP rules into clear answers. Figures are
               estimates — always check your personal tax code.
             </p>
@@ -124,12 +125,12 @@ export default function CalculatorShell({
                 <li key={c.href}>
                   <Link
                     href={c.href}
-                    className="block h-full rounded-xl bg-white border border-border p-5 hover:border-primary hover:shadow-sm transition"
+                    className="card card-interactive group block h-full p-5"
                   >
-                    <h3 className="font-bold text-primary-dark mb-1">
+                    <h3 className="font-bold text-primary-dark mb-1 group-hover:text-primary transition-colors">
                       {c.title}
                     </h3>
-                    <p className="text-sm text-text/75">{c.blurb}</p>
+                    <p className="text-sm text-muted">{c.blurb}</p>
                   </Link>
                 </li>
               ))}

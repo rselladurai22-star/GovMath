@@ -29,28 +29,31 @@ export default function CategoryLanding({
 
   return (
     <>
-      <section className="bg-primary-dark text-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
-          <nav aria-label="Breadcrumb" className="text-sm text-white/80 mb-4">
-            <ol className="flex flex-wrap items-center gap-1">
+      <section className="ink-panel text-white relative overflow-hidden">
+        <div className="grid-overlay pointer-events-none absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-14 sm:py-20">
+          <nav aria-label="Breadcrumb" className="text-sm text-white/70 mb-5">
+            <ol className="flex flex-wrap items-center gap-1.5">
               <li>
-                <Link href="/" className="hover:underline">
+                <Link href="/" className="hover:text-white transition-colors">
                   Home
                 </Link>
               </li>
-              <li aria-hidden>/</li>
-              <li className="font-semibold">{category.title}</li>
+              <li aria-hidden className="text-white/40">
+                /
+              </li>
+              <li className="font-semibold text-white">{category.title}</li>
             </ol>
           </nav>
           {heroBadge && (
-            <p className="inline-block text-xs font-semibold uppercase tracking-wider bg-white/10 border border-white/20 rounded-full px-3 py-1 mb-4">
+            <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider bg-white/10 border border-white/20 rounded-full px-3 py-1.5 mb-5 backdrop-blur">
               {heroBadge}
             </p>
           )}
-          <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight max-w-3xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight max-w-3xl">
             {heading ?? `UK ${category.title.toLowerCase()} calculators, in plain English`}
           </h1>
-          <p className="mt-4 text-lg text-white/85 max-w-2xl">
+          <p className="mt-5 text-lg text-white/80 max-w-2xl leading-relaxed">
             {category.description}
           </p>
         </div>

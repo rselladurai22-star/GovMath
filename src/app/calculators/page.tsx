@@ -15,23 +15,24 @@ export default function AllCalculatorsPage() {
 
   return (
     <>
-      <section className="bg-primary-dark text-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-16">
-          <nav aria-label="Breadcrumb" className="text-sm text-white/80 mb-4">
-            <ol className="flex flex-wrap items-center gap-1">
+      <section className="ink-panel text-white relative overflow-hidden">
+        <div className="grid-overlay pointer-events-none absolute inset-0" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-14 sm:py-20">
+          <nav aria-label="Breadcrumb" className="text-sm text-white/70 mb-4">
+            <ol className="flex flex-wrap items-center gap-1.5">
               <li>
-                <Link href="/" className="hover:underline">
+                <Link href="/" className="hover:text-white transition-colors">
                   Home
                 </Link>
               </li>
-              <li aria-hidden>/</li>
+              <li aria-hidden className="text-white/40">/</li>
               <li className="font-semibold">All calculators</li>
             </ol>
           </nav>
-          <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.1]">
             Every GovMath calculator
           </h1>
-          <p className="mt-4 text-lg text-white/85 max-w-2xl">
+          <p className="mt-4 text-lg text-white/80 max-w-2xl">
             {liveCount} live, more on the way. Jump to a category below or
             scroll to browse the lot.
           </p>

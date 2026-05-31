@@ -31,7 +31,7 @@ export default function SalaryCalculator({
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-      <div className="rounded-xl bg-surface border border-border p-6 space-y-5">
+      <div className="card p-6 space-y-5">
         <h2 className="text-lg font-bold text-primary-dark">Your salary</h2>
 
         <NumberInput
@@ -88,7 +88,7 @@ export default function SalaryCalculator({
       </div>
 
       <div className="space-y-5">
-        <div className="rounded-xl bg-primary-dark text-white p-6">
+        <div className="ink-panel relative overflow-hidden rounded-2xl text-white p-6 shadow-[var(--shadow-lg)]">
           <div className="text-xs font-semibold uppercase tracking-wider text-white/70">
             Annual take-home
           </div>

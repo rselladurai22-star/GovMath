@@ -1,31 +1,61 @@
 @import "tailwindcss";
 
+/* ──────────────────────────────────────────────────────────────
+   GovMath — modern fintech theme
+   One polished light theme. Deep navy ink + electric indigo,
+   cyan accent, cool neutrals, soft elevation.
+   ────────────────────────────────────────────────────────────── */
 :root {
-  --primary: #1d70b8;
-  --primary-dark: #003078;
-  --bg: #f3f2f1;
-  --surface: #ffffff;
-  --text: #0b0c0c;
-  --border: #b1b4b6;
-  --success: #00703c;
-  --error: #d4351c;
-  --card-hover: #e5f1f9;
-  --ad-bg: #e5e5e5;
+  --primary: #4f46e5; /* indigo-600 — actions, links */
+  --primary-dark: #0b1020; /* near-black navy — dark panels + heading ink */
+  --accent: #06b6d4; /* cyan-500 — highlights, gradient end */
+
+  --bg: #f5f7fb; /* cool app background */
+  --surface: #ffffff; /* cards, panels */
+  --text: #0f172a; /* slate-900 body text */
+  --muted: #64748b; /* slate-500 secondary text */
+  --border: #e6eaf2; /* hairline borders */
+
+  --success: #059669;
+  --error: #dc2626;
+  --card-hover: #eef2ff; /* indigo-50 tint */
+  --ad-bg: #eef1f6;
+
+  --ring: #6366f1;
+
+  --radius: 1rem;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04),
+    0 1px 3px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06),
+    0 2px 4px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 18px 40px -12px rgba(15, 23, 42, 0.18),
+    0 6px 14px -8px rgba(15, 23, 42, 0.12);
+  --shadow-glow: 0 24px 60px -20px rgba(79, 70, 229, 0.45);
 }
 
 @theme inline {
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-text: var(--text);
+  --color-muted: var(--muted);
   --color-border: var(--border);
   --color-success: var(--success);
   --color-error: var(--error);
   --color-card-hover: var(--card-hover);
   --color-ad-bg: var(--ad-bg);
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
+
+  --radius-xl: var(--radius);
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.75rem;
+
+  --shadow-soft: var(--shadow-md);
+  --shadow-elevated: var(--shadow-lg);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
@@ -34,6 +64,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -42,15 +73,185 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  letter-spacing: -0.011em;
 }
 
+::selection {
+  background: color-mix(in srgb, var(--primary) 22%, transparent);
+  color: var(--primary-dark);
+}
+
+/* Modern indigo focus ring (replaces GOV.UK yellow) */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
-textarea:focus-visible {
-  outline: 3px solid #ffdd00;
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--ring);
   outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ── Reusable surface utilities ──────────────────────────────── */
+
+/* Elevated card with a soft hover lift */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+}
+
+/* Frosted glass (sticky header) */
+.glass {
+  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+}
+
+/* Gradient ink panel used for hero / footer / CTA */
+.ink-panel {
+  background:
+    radial-gradient(
+      circle at 12% -10%,
+      color-mix(in srgb, var(--primary) 55%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      color-mix(in srgb, var(--accent) 40%, transparent),
+      transparent 48%
+    ),
+    var(--primary-dark);
+}
+
+/* Subtle dotted grid overlay for dark panels */
+.grid-overlay {
+  background-image:
+    linear-gradient(to right, #fff 1px, transparent 1px),
+    linear-gradient(to bottom, #fff 1px, transparent 1px);
+  background-size: 44px 44px;
+  opacity: 0.06;
+  -webkit-mask-image: radial-gradient(circle at 50% 0%, black, transparent 75%);
+  mask-image: radial-gradient(circle at 50% 0%, black, transparent 75%);
+}
+
+/* Indigo → cyan gradient text */
+.text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    #c7d2fe 0%,
+    #ffffff 45%,
+    #67e8f9 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated availability dot */
+@keyframes gm-ping {
+  75%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+.dot-ping {
+  animation: gm-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Readable long-form prose (About, legal, blog) */
+.gm-prose {
+  color: color-mix(in srgb, var(--text) 88%, transparent);
+  line-height: 1.75;
+  font-size: 1.0625rem;
+}
+.gm-prose > * + * {
+  margin-top: 1.1rem;
+}
+.gm-prose h2 {
+  color: var(--primary-dark);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin-top: 2.4rem;
+}
+.gm-prose h3 {
+  color: var(--primary-dark);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 1.8rem;
+}
+.gm-prose a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.gm-prose a:hover {
+  color: var(--primary-dark);
+}
+.gm-prose ul,
+.gm-prose ol {
+  padding-left: 1.4rem;
+}
+.gm-prose ul {
+  list-style: disc;
+}
+.gm-prose ol {
+  list-style: decimal;
+}
+.gm-prose li + li {
+  margin-top: 0.4rem;
+}
+.gm-prose blockquote {
+  border-left: 4px solid var(--primary);
+  background: var(--card-hover);
+  padding: 0.85rem 1.1rem;
+  border-radius: 0 0.75rem 0.75rem 0;
+  color: var(--text);
+}
+.gm-prose code {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  padding: 0.1rem 0.35rem;
+  font-size: 0.9em;
+}
+.gm-prose strong {
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+.gm-prose hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
+}
+.gm-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.gm-prose th,
+.gm-prose td {
+  border: 1px solid var(--border);
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+}
+.gm-prose th {
+  background: var(--bg);
+  font-weight: 700;
+  color: var(--primary-dark);
 }
 
 /* Reserved-space ad slot to guarantee zero CLS */
@@ -59,9 +260,18 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #6f777b;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  color: #94a3b8;
+  font-size: 11px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  border: 1px solid var(--border);
+  border: 1px dashed var(--border);
+  border-radius: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

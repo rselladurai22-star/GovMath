@@ -20,9 +20,9 @@ export default function ResultBreakdown({
   rows: Row[];
 }) {
   return (
-    <div className="rounded-xl bg-surface border border-border overflow-hidden">
+    <div className="card overflow-hidden">
       <div className="px-5 py-3 border-b border-border bg-bg">
-        <h3 className="text-sm font-semibold uppercase tracking-wider text-text/70">
+        <h3 className="text-sm font-semibold uppercase tracking-wider text-muted">
           {title}
         </h3>
       </div>
