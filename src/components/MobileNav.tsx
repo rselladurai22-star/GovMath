@@ -64,8 +64,8 @@ export default function MobileNav() {
         }`}
       >
         <div className="flex items-center justify-between px-5 h-16 border-b border-border">
-          <span className="font-bold text-lg text-primary-dark tracking-tight">
-            GovMath<span className="text-accent">.</span>
+          <span className="rk-serif text-xl text-primary-dark">
+            GovMath<span style={{ color: "#1e5c45" }}>.</span>
           </span>
           <button
             type="button"

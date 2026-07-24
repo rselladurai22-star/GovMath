@@ -1,15 +1,33 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Source_Serif_4, Figtree, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
-const inter = Inter({
+// Reckon type system, applied site-wide: Source Serif 4 (display/headings),
+// Figtree (UI/body — the default sans), IBM Plex Mono (figures, eyebrows).
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+});
+
+const figtree = Figtree({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-figtree",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "600", "700"],
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -56,7 +74,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-GB" className={`h-full antialiased ${inter.variable}`}>
+    <html
+      lang="en-GB"
+      className={`h-full antialiased ${sourceSerif.variable} ${figtree.variable} ${plexMono.variable}`}
+    >
       <body className="min-h-full flex flex-col bg-bg text-text">
         <script
           type="application/ld+json"

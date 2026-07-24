@@ -1,36 +1,36 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────────────────────
-   GovMath — modern fintech theme
-   One polished light theme. Deep navy ink + electric indigo,
-   cyan accent, cool neutrals, soft elevation.
+   GovMath — "Reckon" theme
+   Bright, high-separation directory. Brand green + near-black green
+   ink, warm neutral hairlines, serif display type, mono figures.
    ────────────────────────────────────────────────────────────── */
 :root {
-  --primary: #4f46e5; /* indigo-600 — actions, links */
-  --primary-dark: #0b1020; /* near-black navy — dark panels + heading ink */
-  --accent: #06b6d4; /* cyan-500 — highlights, gradient end */
+  --primary: #1e5c45; /* brand green — actions, links */
+  --primary-dark: #0f1a15; /* near-black green — dark panels + heading ink */
+  --accent: #3f7d63; /* mid green — highlights, gradient end */
 
-  --bg: #f5f7fb; /* cool app background */
+  --bg: #ffffff; /* clean white canvas */
   --surface: #ffffff; /* cards, panels */
-  --text: #0f172a; /* slate-900 body text */
-  --muted: #64748b; /* slate-500 secondary text */
-  --border: #e6eaf2; /* hairline borders */
+  --text: #0d1712; /* ink body text */
+  --muted: #566860; /* secondary text */
+  --border: #dde4e0; /* clearly visible hairline borders */
 
-  --success: #059669;
-  --error: #dc2626;
-  --card-hover: #eef2ff; /* indigo-50 tint */
-  --ad-bg: #eef1f6;
+  --success: #1f5c45;
+  --error: #b0492f;
+  --card-hover: #eaf4ee; /* green tint */
+  --ad-bg: #eef2ee;
 
-  --ring: #6366f1;
+  --ring: #1e5c45;
 
   --radius: 1rem;
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04),
-    0 1px 3px rgba(15, 23, 42, 0.06);
-  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06),
-    0 2px 4px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 18px 40px -12px rgba(15, 23, 42, 0.18),
-    0 6px 14px -8px rgba(15, 23, 42, 0.12);
-  --shadow-glow: 0 24px 60px -20px rgba(79, 70, 229, 0.45);
+  --shadow-sm: 0 1px 2px rgba(15, 26, 21, 0.04),
+    0 1px 3px rgba(15, 26, 21, 0.06);
+  --shadow-md: 0 4px 12px rgba(15, 26, 21, 0.06),
+    0 2px 4px rgba(15, 26, 21, 0.04);
+  --shadow-lg: 0 18px 40px -12px rgba(15, 26, 21, 0.18),
+    0 6px 14px -8px rgba(15, 26, 21, 0.12);
+  --shadow-glow: 0 24px 60px -20px rgba(30, 92, 69, 0.4);
 }
 
 @theme inline {
@@ -54,7 +54,7 @@
   --shadow-soft: var(--shadow-md);
   --shadow-elevated: var(--shadow-lg);
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -73,7 +73,15 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  letter-spacing: -0.011em;
+}
+
+/* Serif display type for headings site-wide (Reckon). Weight/tracking set by
+   each element's own utilities still win; this only supplies the family. */
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
+  letter-spacing: -0.01em;
 }
 
 ::selection {
@@ -144,13 +152,13 @@ textarea:focus-visible,
   mask-image: radial-gradient(circle at 50% 0%, black, transparent 75%);
 }
 
-/* Indigo → cyan gradient text */
+/* Mint gradient text (on dark green panels) */
 .text-gradient {
   background-image: linear-gradient(
     100deg,
-    #c7d2fe 0%,
+    #d9ebe1 0%,
     #ffffff 45%,
-    #67e8f9 100%
+    #8fd6b1 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -266,6 +274,158 @@ textarea:focus-visible,
   text-transform: uppercase;
   border: 1px dashed var(--border);
   border-radius: 0.75rem;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Reckon directory redesign — home page + chrome
+   Bright, high-separation directory. Category identity is passed in
+   per element via the --cat-color / --cat-tint / --cat-edge custom
+   properties so a single set of hover rules serves every category.
+   ────────────────────────────────────────────────────────────── */
+.rk {
+  font-family: var(--font-figtree), system-ui, sans-serif;
+  color: #141a16;
+}
+.rk-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+.rk-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+.rk-navlink {
+  padding: 7px 12px;
+  border-radius: 8px;
+  color: #4a534d;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.rk-navlink:hover {
+  background: #eef2ee;
+  color: #141a16;
+}
+
+.rk-card {
+  border: 1px solid #dde4e0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(11, 20, 15, 0.03);
+  transition: box-shadow 0.22s ease, border-color 0.22s ease;
+}
+.rk-card:hover {
+  border-color: var(--cat-edge, #c9d5ce);
+}
+
+/* Premium data primitives — the design language of the Decision Engines.
+   High-contrast, scannable, consistent across every calculator. */
+.rk-eyebrow {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #2f7a5b;
+}
+.rk-note {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 11px;
+  color: #6b7873;
+}
+.rk-figure {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: #0d1712;
+  letter-spacing: -0.01em;
+}
+/* Dark result panel — the anchor of every engine. Soft gradient + rim light. */
+.rk-panel {
+  background: linear-gradient(158deg, #14261d 0%, #0b130f 100%);
+  color: #eef4ef;
+  border: 1px solid rgba(143, 214, 177, 0.12);
+  border-radius: 22px;
+  box-shadow: 0 30px 60px -30px rgba(11, 20, 15, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.rk-tool {
+  transition: color 0.12s ease, transform 0.12s ease;
+}
+.rk-tool:hover {
+  color: var(--cat-color, #1e5c45);
+  transform: translateX(3px);
+}
+
+.rk-pill {
+  transition: opacity 0.15s ease;
+}
+.rk-pill:hover {
+  opacity: 0.85;
+}
+
+.rk-foot {
+  transition: background 0.15s ease;
+}
+.rk-foot:hover {
+  background: var(--cat-tint, #f3f8f5);
+}
+
+.rk-chip {
+  transition: background 0.15s ease;
+}
+.rk-chip:hover {
+  background: #d9ebe1;
+}
+
+.rk-searchbtn {
+  transition: background 0.15s ease;
+}
+.rk-searchbtn:hover {
+  background: #0f1a15;
+}
+
+.rk-inklink {
+  transition: color 0.15s ease;
+}
+.rk-inklink:hover {
+  color: #1e5c45;
+}
+
+/* Brand-styled range slider (pension control) */
+.rk-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: #e4e9e5;
+  outline-offset: 4px;
+}
+.rk-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1e5c45;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(15, 26, 21, 0.28);
+  cursor: pointer;
+}
+.rk-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1e5c45;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(15, 26, 21, 0.28);
+  cursor: pointer;
+}
+.rk-details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.rk-details > summary::-webkit-details-marker {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

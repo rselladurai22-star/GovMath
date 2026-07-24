@@ -1,73 +1,68 @@
 import Link from "next/link";
-import { CATEGORIES } from "@/lib/calculators";
 import MobileNav from "@/components/MobileNav";
 
-// Top-level nav surfaces the 5 most-trafficked categories; the rest live
-// behind "All calculators". Keeps the header from becoming a wall of text.
-const PRIMARY_NAV = CATEGORIES.filter((c) =>
-  ["tax-and-salary", "property", "business", "investing", "benefits"].includes(
-    c.slug
-  )
-);
+// Compact directory nav: eight short category labels anchored to their routes.
+const NAV: { href: string; label: string }[] = [
+  { href: "/tax-and-salary", label: "Tax & Salary" },
+  { href: "/property", label: "Property" },
+  { href: "/business", label: "Business" },
+  { href: "/benefits", label: "Benefits" },
+  { href: "/investing", label: "Pensions" },
+  { href: "/vehicles", label: "Vehicles" },
+  { href: "/students", label: "Students" },
+  { href: "/life", label: "Life" },
+];
 
 export default function SiteHeader() {
   return (
-    <header className="glass sticky top-0 z-40 border-b border-border/70">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+    <header
+      className="rk sticky top-0 z-40"
+      style={{
+        background: "rgba(255,255,255,0.92)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+        borderBottom: "1px solid #e4e9e5",
+      }}
+    >
+      <div
+        style={{ maxWidth: 1200, height: 58 }}
+        className="mx-auto flex items-center justify-between gap-5 px-7"
+      >
         <Link
           href="/"
-          className="group flex items-center gap-2.5 text-primary-dark font-bold text-lg shrink-0"
+          className="rk-serif shrink-0"
+          style={{ fontSize: 24, color: "#141a16" }}
         >
-          <span
-            aria-hidden
-            className="relative inline-grid place-items-center w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-accent text-white font-extrabold shadow-[0_6px_16px_-6px_rgba(79,70,229,0.7)] transition-transform group-hover:scale-105"
-          >
-            G
-            <span className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/25" />
-          </span>
-          <span className="tracking-tight">
-            GovMath<span className="text-accent">.</span>
-          </span>
+          GovMath<span style={{ color: "#1e5c45" }}>.</span>
         </Link>
 
         <nav
           aria-label="Primary"
-          className="hidden lg:flex items-center gap-1 text-sm font-medium"
+          className="hidden lg:flex items-center"
+          style={{ fontSize: 13.5, fontWeight: 500 }}
         >
-          {PRIMARY_NAV.map((c) => (
-            <Link
-              key={c.slug}
-              href={c.href}
-              className="relative px-3 py-2 rounded-lg text-text/80 hover:text-primary-dark hover:bg-card-hover transition-colors"
-            >
-              {c.title}
+          {NAV.map((item) => (
+            <Link key={item.href} href={item.href} className="rk-navlink">
+              {item.label}
             </Link>
           ))}
-          <Link
-            href="/blog"
-            className="relative px-3 py-2 rounded-lg text-text/80 hover:text-primary-dark hover:bg-card-hover transition-colors"
-          >
-            Blog
-          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link
-            href="/calculators"
-            className="hidden sm:inline-flex items-center gap-1.5 rounded-xl bg-primary-dark text-white text-sm font-semibold px-4 py-2.5 shadow-sm hover:bg-primary transition-colors shrink-0"
+          <span
+            className="rk-mono hidden sm:inline-block"
+            style={{
+              fontSize: 10.5,
+              letterSpacing: "0.06em",
+              color: "#1e5c45",
+              border: "1px solid #cfe0d6",
+              borderRadius: 999,
+              padding: "5px 11px",
+              background: "#f3f8f5",
+            }}
           >
-            All calculators
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2.2}
-              aria-hidden="true"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
+            2025/26
+          </span>
           <MobileNav />
         </div>
       </div>
