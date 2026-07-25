@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Figtree, IBM_Plex_Mono } from "next/font/google";
+import { Source_Serif_4, Figtree, IBM_Plex_Mono, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
@@ -28,6 +28,15 @@ const plexMono = IBM_Plex_Mono({
   display: "swap",
   weight: ["400", "600", "700"],
   variable: "--font-mono",
+});
+
+// Inter — the most legible neutral UI sans, used by the interactive calculators
+// where dense figures and labels need maximum on-screen readability.
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -76,7 +85,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={`h-full antialiased ${sourceSerif.variable} ${figtree.variable} ${plexMono.variable}`}
+      className={`h-full antialiased ${sourceSerif.variable} ${figtree.variable} ${plexMono.variable} ${inter.variable}`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text">
         <script

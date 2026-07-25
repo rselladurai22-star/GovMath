@@ -406,7 +406,7 @@ textarea:focus-visible,
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #1e5c45;
+  background: var(--rk-accent, #1e5c45);
   border: 3px solid #fff;
   box-shadow: 0 1px 4px rgba(15, 26, 21, 0.28);
   cursor: pointer;
@@ -415,7 +415,7 @@ textarea:focus-visible,
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #1e5c45;
+  background: var(--rk-accent, #1e5c45);
   border: 3px solid #fff;
   box-shadow: 0 1px 4px rgba(15, 26, 21, 0.28);
   cursor: pointer;
@@ -426,6 +426,104 @@ textarea:focus-visible,
 }
 .rk-details > summary::-webkit-details-marker {
   display: none;
+}
+
+/* Filled input — the value-entry area reads as clearly distinct from labels,
+   with a premium focus state. */
+.rk-input {
+  width: 100%;
+  background: #f4f6f8;
+  border: 1.5px solid #e4e7ea;
+  border-radius: 11px;
+  color: #0c1611;
+  font-weight: 700;
+  outline: none;
+  transition: background 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+  font-variant-numeric: tabular-nums;
+}
+.rk-input:focus {
+  background: #ffffff;
+  border-color: var(--rk-accent, #0f9a5e);
+  box-shadow: 0 0 0 3px var(--rk-accent-ring, rgba(15, 154, 94, 0.14));
+}
+.rk-input::placeholder {
+  color: #9aa39d;
+  font-weight: 500;
+}
+
+/* ──────────────────────────────────────────────────────────────
+   Mortgage engine — premium control-panel primitives
+   Desktop: the inputs card becomes a fixed-height panel with a
+   scrollable body and a permanently-pinned action footer, so the
+   Calculate button never requires page scrolling.
+   ────────────────────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .gm-inputs-panel {
+    display: flex;
+    flex-direction: column;
+    max-height: calc(100vh - 88px);
+  }
+  .gm-inputs-panel > .gm-inputs-head,
+  .gm-inputs-panel > .gm-inputs-foot {
+    flex: 0 0 auto;
+  }
+  .gm-inputs-panel > .gm-inputs-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+/* Slim, self-effacing scrollbar — only visible on hover-capable devices */
+.gm-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #cfd8e3 transparent;
+}
+.gm-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+.gm-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.gm-scroll::-webkit-scrollbar-thumb {
+  background: #d7dee7;
+  border-radius: 999px;
+  border: 3px solid #fff;
+}
+.gm-scroll::-webkit-scrollbar-thumb:hover {
+  background: #bcc7d4;
+}
+/* Frosted, pinned action footer */
+.gm-inputs-foot {
+  background: color-mix(in srgb, #ffffff 88%, transparent);
+  backdrop-filter: saturate(180%) blur(8px);
+  -webkit-backdrop-filter: saturate(180%) blur(8px);
+  border-top: 1px solid #eef1f5;
+}
+/* Result cards lift subtly on hover — quiet, premium motion */
+.gm-card {
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.gm-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04),
+    0 18px 40px -22px rgba(15, 23, 42, 0.22);
+  border-color: #d7dee7;
+}
+/* Primary CTA — layered depth + crisp press feedback */
+.gm-cta {
+  background: linear-gradient(180deg, #1a72ff 0%, #0a66ff 100%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    0 10px 22px -10px rgba(10, 102, 255, 0.65);
+  transition: filter 0.14s ease, transform 0.08s ease, box-shadow 0.14s ease;
+}
+.gm-cta:hover {
+  filter: brightness(1.05);
+}
+.gm-cta:active {
+  transform: translateY(1px);
+  box-shadow: 0 6px 14px -10px rgba(10, 102, 255, 0.65);
 }
 
 @media (prefers-reduced-motion: reduce) {
