@@ -6,31 +6,31 @@
    ink, warm neutral hairlines, serif display type, mono figures.
    ────────────────────────────────────────────────────────────── */
 :root {
-  --primary: #1e5c45; /* brand green — actions, links */
-  --primary-dark: #0f1a15; /* near-black green — dark panels + heading ink */
-  --accent: #3f7d63; /* mid green — highlights, gradient end */
+  --primary: #0d66f4; /* brand blue — actions, links */
+  --primary-dark: #0b1739; /* ink navy — dark panels + heading ink */
+  --accent: #3aa0ff; /* electric blue — highlights, gradient end */
 
   --bg: #ffffff; /* clean white canvas */
   --surface: #ffffff; /* cards, panels */
-  --text: #0d1712; /* ink body text */
-  --muted: #566860; /* secondary text */
-  --border: #dde4e0; /* clearly visible hairline borders */
+  --text: #172033; /* ink body text (slate navy) */
+  --muted: #5e6b85; /* secondary text (blue-grey) */
+  --border: #e5eaf2; /* clearly visible hairline borders */
 
-  --success: #1f5c45;
+  --success: #18b063; /* positive results stay green (semantic) */
   --error: #b0492f;
-  --card-hover: #eaf4ee; /* green tint */
-  --ad-bg: #eef2ee;
+  --card-hover: #eef5ff; /* blue tint */
+  --ad-bg: #eef2f8;
 
-  --ring: #1e5c45;
+  --ring: #0d66f4;
 
   --radius: 1rem;
-  --shadow-sm: 0 1px 2px rgba(15, 26, 21, 0.04),
-    0 1px 3px rgba(15, 26, 21, 0.06);
-  --shadow-md: 0 4px 12px rgba(15, 26, 21, 0.06),
-    0 2px 4px rgba(15, 26, 21, 0.04);
-  --shadow-lg: 0 18px 40px -12px rgba(15, 26, 21, 0.18),
-    0 6px 14px -8px rgba(15, 26, 21, 0.12);
-  --shadow-glow: 0 24px 60px -20px rgba(30, 92, 69, 0.4);
+  --shadow-sm: 0 1px 2px rgba(16, 32, 64, 0.04),
+    0 1px 3px rgba(16, 32, 64, 0.06);
+  --shadow-md: 0 4px 12px rgba(16, 32, 64, 0.06),
+    0 2px 4px rgba(16, 32, 64, 0.04);
+  --shadow-lg: 0 18px 40px -12px rgba(16, 32, 64, 0.18),
+    0 6px 14px -8px rgba(16, 32, 64, 0.12);
+  --shadow-glow: 0 24px 60px -20px rgba(13, 102, 244, 0.35);
 }
 
 @theme inline {
@@ -152,13 +152,13 @@ textarea:focus-visible,
   mask-image: radial-gradient(circle at 50% 0%, black, transparent 75%);
 }
 
-/* Mint gradient text (on dark green panels) */
+/* Light-blue gradient text (on dark navy panels) */
 .text-gradient {
   background-image: linear-gradient(
     100deg,
-    #d9ebe1 0%,
+    #dbe9ff 0%,
     #ffffff 45%,
-    #8fd6b1 100%
+    #9ec6ff 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -324,7 +324,7 @@ textarea:focus-visible,
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #2f7a5b;
+  color: #2f6ad4;
 }
 .rk-note {
   font-family: var(--font-mono), ui-monospace, monospace;
@@ -340,19 +340,19 @@ textarea:focus-visible,
 }
 /* Dark result panel — the anchor of every engine. Soft gradient + rim light. */
 .rk-panel {
-  background: linear-gradient(158deg, #14261d 0%, #0b130f 100%);
-  color: #eef4ef;
-  border: 1px solid rgba(143, 214, 177, 0.12);
+  background: linear-gradient(158deg, #142a52 0%, #0a1730 100%);
+  color: #eef3fb;
+  border: 1px solid rgba(58, 160, 255, 0.16);
   border-radius: 22px;
-  box-shadow: 0 30px 60px -30px rgba(11, 20, 15, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  box-shadow: 0 30px 60px -30px rgba(8, 20, 44, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .rk-tool {
   transition: color 0.12s ease, transform 0.12s ease;
 }
 .rk-tool:hover {
-  color: var(--cat-color, #1e5c45);
+  color: var(--cat-color, #0d66f4);
   transform: translateX(3px);
 }
 
@@ -367,28 +367,28 @@ textarea:focus-visible,
   transition: background 0.15s ease;
 }
 .rk-foot:hover {
-  background: var(--cat-tint, #f3f8f5);
+  background: var(--cat-tint, #eef5ff);
 }
 
 .rk-chip {
   transition: background 0.15s ease;
 }
 .rk-chip:hover {
-  background: #d9ebe1;
+  background: #dceaff;
 }
 
 .rk-searchbtn {
   transition: background 0.15s ease;
 }
 .rk-searchbtn:hover {
-  background: #0f1a15;
+  background: #0b1739;
 }
 
 .rk-inklink {
   transition: color 0.15s ease;
 }
 .rk-inklink:hover {
-  color: #1e5c45;
+  color: #0d66f4;
 }
 
 /* Brand-styled range slider (pension control) */
@@ -406,18 +406,18 @@ textarea:focus-visible,
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--rk-accent, #1e5c45);
+  background: var(--rk-accent, #0d66f4);
   border: 3px solid #fff;
-  box-shadow: 0 1px 4px rgba(15, 26, 21, 0.28);
+  box-shadow: 0 1px 4px rgba(16, 32, 64, 0.28);
   cursor: pointer;
 }
 .rk-range::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--rk-accent, #1e5c45);
+  background: var(--rk-accent, #0d66f4);
   border: 3px solid #fff;
-  box-shadow: 0 1px 4px rgba(15, 26, 21, 0.28);
+  box-shadow: 0 1px 4px rgba(16, 32, 64, 0.28);
   cursor: pointer;
 }
 .rk-details > summary {
@@ -443,8 +443,8 @@ textarea:focus-visible,
 }
 .rk-input:focus {
   background: #ffffff;
-  border-color: var(--rk-accent, #0f9a5e);
-  box-shadow: 0 0 0 3px var(--rk-accent-ring, rgba(15, 154, 94, 0.14));
+  border-color: var(--rk-accent, #0d66f4);
+  box-shadow: 0 0 0 3px var(--rk-accent-ring, rgba(13, 102, 244, 0.14));
 }
 .rk-input::placeholder {
   color: #9aa39d;

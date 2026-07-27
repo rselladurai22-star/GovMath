@@ -66,10 +66,10 @@ export type MortgageSnapshot = {
 };
 
 export const MORTGAGE_COLORS = {
-  capital: "#3f7d63",
+  capital: "#12a566",
   interest: "#b0492f",
   interestDominant: "#c98a72",
-  capitalDominant: "#7fa892",
+  capitalDominant: "#5fb98e",
 };
 
 function clamp(raw: MortgageInputs): MortgageInputs {

@@ -1,130 +1,196 @@
 import Link from "next/link";
-import AdSlot from "@/components/AdSlot";
-import CalculatorCard from "@/components/CalculatorCard";
+import Image from "next/image";
 import {
+  CATEGORIES,
+  CALCULATORS,
   getCalculatorsByCategory,
   getCategory,
   type CategorySlug,
 } from "@/lib/calculators";
+import { CAT, ICON, iconForTitle, LineIcon } from "@/components/category-style";
+import CategoryTools, { type ToolItem } from "@/components/CategoryTools";
+import AdSlot from "@/components/AdSlot";
+import styles from "./CategoryLanding.module.css";
 
 type CategoryLandingProps = {
   slug: CategorySlug;
+  /** Kept for compatibility with existing route pages (rendered as eyebrow). */
   heroBadge?: string;
-  /** Heading text shown as the H1 (overrides the default). */
+  /** Optional H1 override. */
   heading?: string;
-  /** Optional footer prose block under the lists. */
+  /** Optional long-form SEO prose rendered under the grid. */
   longCopy?: React.ReactNode;
 };
 
+const WHY = [
+  { title: "Accurate & Reliable", body: "All calculations use official UK data and trusted sources.", color: "#126CF3", bg: "#eaf2fe", path: "M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z", inner: "M9 12l2 2 4-4" },
+  { title: "Fast & Easy", body: "Get answers in seconds with simple and intuitive tools.", color: "#18B063", bg: "#e7f7ef", path: "M13 3L4 14h6l-1 7 9-11h-6l1-7z" },
+  { title: "Private & Secure", body: "We don't store your personal information — ever.", color: "#8647F1", bg: "#f2ebfe", path: "M6 10V8a6 6 0 1112 0v2m-8 4h4M7 10h10a1 1 0 011 1v7a1 1 0 01-1 1H7a1 1 0 01-1-1v-7a1 1 0 011-1z" },
+  { title: "Built for Real Life", body: "Designed for students, workers, families and homeowners.", color: "#FF7A0A", bg: "#fff1e3", path: "M12 21s-7-4.35-7-10a4 4 0 017-2.65A4 4 0 0119 11c0 5.65-7 10-7 10z" },
+];
+
+function ArrowRight() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} aria-hidden="true">
+      <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
 export default function CategoryLanding({
   slug,
-  heroBadge,
   heading,
   longCopy,
 }: CategoryLandingProps) {
   const category = getCategory(slug);
+  const meta = CAT[slug];
   const items = getCalculatorsByCategory(slug);
-  const live = items.filter((c) => c.status === "live");
-  const upcoming = items.filter((c) => c.status === "coming-soon");
+  const total = CALCULATORS.length;
+
+  const tools: ToolItem[] = items.map((c) => ({
+    title: c.title,
+    href: c.href,
+    blurb: c.blurb,
+    popular: c.popular,
+    iconPath: iconForTitle(c.title, slug),
+  }));
 
   return (
-    <>
-      <section className="ink-panel text-white relative overflow-hidden">
-        <div className="grid-overlay pointer-events-none absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-14 sm:py-20">
-          <nav aria-label="Breadcrumb" className="text-sm text-white/70 mb-5">
-            <ol className="flex flex-wrap items-center gap-1.5">
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden className="text-white/40">
-                /
-              </li>
-              <li className="font-semibold text-white">{category.title}</li>
-            </ol>
-          </nav>
-          {heroBadge && (
-            <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider bg-white/10 border border-white/20 rounded-full px-3 py-1.5 mb-5 backdrop-blur">
-              {heroBadge}
-            </p>
-          )}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-[1.1] tracking-tight max-w-3xl">
-            {heading ?? `UK ${category.title.toLowerCase()} calculators, in plain English`}
-          </h1>
-          <p className="mt-5 text-lg text-white/80 max-w-2xl leading-relaxed">
-            {category.description}
-          </p>
-        </div>
-      </section>
+    <div className={styles.page}>
+      <div className={styles.container}>
+        {/* Breadcrumb */}
+        <nav className={styles.breadcrumb} aria-label="Breadcrumb">
+          <Link href="/">Home</Link>
+          <span className={styles.sep}>›</span>
+          <Link href="/calculators">Calculators</Link>
+          <span className={styles.sep}>›</span>
+          <span aria-current="page">{meta.short}</span>
+        </nav>
 
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-8">
-        <AdSlot size="leaderboard" />
-      </div>
-
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
-        <div className="flex items-baseline justify-between mb-6">
-          <h2 className="text-2xl font-bold text-primary-dark">
-            Available now
-          </h2>
-          <span className="text-sm text-text/60">
-            {live.length} calculator{live.length === 1 ? "" : "s"}
-          </span>
-        </div>
-        {live.length > 0 ? (
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {live.map((c) => (
-              <li key={c.slug}>
-                <CalculatorCard c={c} />
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div className="rounded-xl border border-dashed border-border bg-surface p-8 text-center">
-            <h3 className="font-bold text-primary-dark mb-1">
-              Calculators landing soon
-            </h3>
-            <p className="text-sm text-text/70 max-w-md mx-auto">
-              We’re actively building this section. The first{" "}
-              {category.title.toLowerCase()} calculators ship in the next
-              release — see what’s on the way below.
-            </p>
-          </div>
-        )}
-      </section>
-
-      {upcoming.length > 0 && (
-        <section className="bg-surface border-y border-border">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
-            <div className="flex items-baseline justify-between mb-6">
-              <h2 className="text-2xl font-bold text-primary-dark">
-                Coming soon
-              </h2>
-              <span className="text-sm text-text/60">
-                {upcoming.length} on the way
+        {/* Hero */}
+        <section className={styles.hero}>
+          <div>
+            <div className={styles.heroHead}>
+              <span className={styles.heroIcon} style={{ background: meta.tint, color: meta.color }}>
+                <LineIcon path={meta.icon} size={30} />
               </span>
+              <h1 className={styles.heroTitle}>
+                {heading ?? `${meta.short} Calculators`}
+              </h1>
             </div>
-            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {upcoming.map((c) => (
-                <li key={c.slug}>
-                  <CalculatorCard c={c} />
-                </li>
+            <p className={styles.heroSub}>{category.description}</p>
+            <div className={styles.trustRow}>
+              {["100% Free", "UK Focused", "No Sign Up", "Always Up to Date"].map((t) => (
+                <span key={t} className={styles.trustItem}>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#18B063" strokeWidth="2.4" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M8.5 12.5l2.5 2.5 4.5-5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {t}
+                </span>
               ))}
-            </ul>
+            </div>
+          </div>
+          <Image
+            className={styles.heroArt}
+            src="/brand/hero-house.png"
+            alt=""
+            width={290}
+            height={250}
+            priority
+          />
+        </section>
+
+        {/* Two-column body */}
+        <div className={styles.grid}>
+          <aside className={styles.sidebar}>
+            <div className={styles.sideCard}>
+              <div className={styles.sideTitle}>All Categories</div>
+              <nav className={styles.catNav} aria-label="Categories">
+                {CATEGORIES.map((c) => {
+                  const m = CAT[c.slug];
+                  const count = getCalculatorsByCategory(c.slug).length;
+                  const active = c.slug === slug;
+                  return (
+                    <Link
+                      key={c.slug}
+                      href={c.href}
+                      className={`${styles.catNavItem} ${active ? styles.active : ""}`}
+                      style={{ ["--cat" as string]: m.color, ["--cat-tint" as string]: m.tint }}
+                      aria-current={active ? "page" : undefined}
+                    >
+                      <span className={styles.catNavIcon} style={{ color: m.color }}>
+                        <LineIcon path={m.icon} size={19} />
+                      </span>
+                      <span className={styles.catNavText}>
+                        <span className={styles.catNavName}>{m.short}</span>
+                        <span className={styles.catNavCount}>{count} calculators</span>
+                      </span>
+                    </Link>
+                  );
+                })}
+                <Link
+                  href="/calculators"
+                  className={styles.catNavItem}
+                  style={{ ["--cat" as string]: "#0d66f4", ["--cat-tint" as string]: "#eef5ff" }}
+                >
+                  <span className={styles.catNavIcon} style={{ color: "#0d66f4" }}>
+                    <LineIcon path={ICON.grid} size={19} />
+                  </span>
+                  <span className={styles.catNavText}>
+                    <span className={styles.catNavName}>All Calculators</span>
+                    <span className={styles.catNavCount}>{total}+ calculators</span>
+                  </span>
+                </Link>
+              </nav>
+            </div>
+
+            <div className={styles.promo}>
+              <Image className={styles.promoArt} src="/brand/request-calculator-illustration.png" alt="" width={300} height={124} />
+              <div className={styles.promoTitle}>Plan better. Save more.</div>
+              <p className={styles.promoBody}>
+                Get expert guides and tools to help you make confident financial
+                decisions.
+              </p>
+              <Link href="/blog" className={styles.btnPrimary}>
+                Explore guides <ArrowRight />
+              </Link>
+            </div>
+
+            <div className={styles.sideAd}>
+              <AdSlot size="mpu" />
+            </div>
+          </aside>
+
+          <CategoryTools label={meta.short} color={meta.color} tint={meta.tint} tools={tools} />
+        </div>
+
+        {/* Ad */}
+        <div className={styles.adRow}>
+          <AdSlot size="leaderboard" />
+        </div>
+
+        {/* Why Govmath */}
+        <section className={styles.whySection}>
+          <div className={styles.whyTitleRow}>Why Govmath?</div>
+          <div className={styles.whyGrid}>
+            {WHY.map((w) => (
+              <div key={w.title} className={styles.whyCard}>
+                <span className={styles.whyIcon} style={{ background: w.bg, color: w.color }}>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d={w.path} />
+                    {w.inner && <path d={w.inner} />}
+                  </svg>
+                </span>
+                <h3 className={styles.whyCardTitle}>{w.title}</h3>
+                <p className={styles.whyBody}>{w.body}</p>
+              </div>
+            ))}
           </div>
         </section>
-      )}
 
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-10">
-        <AdSlot size="billboard" />
+        {longCopy && <section className={`gm-prose ${styles.longCopy}`}>{longCopy}</section>}
       </div>
-
-      {longCopy && (
-        <section className="mx-auto max-w-3xl px-4 sm:px-6 py-12 space-y-4 text-text/85 leading-relaxed">
-          {longCopy}
-        </section>
-      )}
-    </>
+    </div>
   );
 }

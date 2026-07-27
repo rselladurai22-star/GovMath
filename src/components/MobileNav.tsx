@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CATEGORIES } from "@/lib/calculators";
+import { LogoWordmark } from "@/components/Logo";
 
 const SECONDARY = [
   { href: "/calculators", label: "All calculators" },
@@ -64,9 +65,7 @@ export default function MobileNav() {
         }`}
       >
         <div className="flex items-center justify-between px-5 h-16 border-b border-border">
-          <span className="rk-serif text-xl text-primary-dark">
-            GovMath<span style={{ color: "#1e5c45" }}>.</span>
-          </span>
+          <LogoWordmark iconSize={28} />
           <button
             type="button"
             onClick={close}

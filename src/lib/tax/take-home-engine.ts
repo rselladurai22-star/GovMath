@@ -113,7 +113,7 @@ export type AllocationSegment = {
 };
 
 export const ALLOCATION_COLORS: Record<AllocationKey, string> = {
-  takeHome: "#3f7d63",
+  takeHome: "#12a566",
   incomeTax: "#b0492f",
   ni: "#c9a35c",
   studentLoan: "#7d6a9e",

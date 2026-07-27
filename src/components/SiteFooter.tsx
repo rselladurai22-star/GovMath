@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LogoWordmark } from "@/components/Logo";
 
 const LINKS = [
   { href: "/about", label: "About" },
@@ -21,16 +22,14 @@ export default function SiteFooter() {
         style={{ maxWidth: 1200 }}
         className="mx-auto flex flex-wrap items-baseline justify-between gap-4 px-7 py-6"
       >
-        <span className="rk-serif" style={{ fontSize: 19 }}>
-          GovMath<span style={{ color: "#1e5c45" }}>.</span>
-        </span>
+        <LogoWordmark iconSize={26} />
         <div className="flex gap-5" style={{ fontSize: 12.5 }}>
           {LINKS.map((l) => (
             <Link
               key={l.href}
               href={l.href}
               className="rk-inklink"
-              style={{ color: "#5b645e" }}
+              style={{ color: "#5e6b85" }}
             >
               {l.label}
             </Link>

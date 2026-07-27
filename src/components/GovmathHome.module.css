@@ -1,0 +1,564 @@
+/* Govmath homepage — blue/white fintech design system.
+   Scoped to the homepage; colours per the brand design tokens. */
+
+.page {
+  --navy: #0b1739;
+  --blue: #0d66f4;
+  --blue-dark: #075de6;
+  --ink: #071b4d;
+  --text: #253555;
+  --muted: #65738f;
+  --border: #e5eaf2;
+  --soft-blue: #eef5ff;
+  --shadow-card: 0 8px 28px rgba(24, 55, 100, 0.06);
+  --shadow-btn: 0 7px 18px rgba(13, 102, 244, 0.18);
+
+  background: #f7f9fc;
+  color: var(--text);
+  font-family: var(--font-inter), Inter, Arial, sans-serif;
+  padding-bottom: 40px;
+}
+
+/* Override the site-wide serif heading rule — the homepage is all Inter. */
+.page :is(h1, h2, h3) {
+  font-family: var(--font-inter), Inter, Arial, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 28px;
+}
+
+.section {
+  margin-top: 20px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--shadow-card);
+  padding: 22px 24px;
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+.sectionTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+.viewAll {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--blue);
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+/* ── Hero ─────────────────────────────────────────────── */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding-top: 44px;
+  padding-bottom: 34px;
+}
+.heroTitle {
+  margin: 0;
+  font-size: 46px;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+}
+.heroTitle em {
+  font-style: normal;
+  color: var(--blue);
+}
+.heroSub {
+  margin: 18px 0 0;
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 500;
+  color: var(--text);
+  max-width: 440px;
+}
+.heroCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #dfeaff 0%, #eef4ff 55%, #f4f8ff 100%);
+  border: 1px solid #dbe6fb;
+  padding: 30px 28px;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.heroCard .heroArt {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 300px;
+  max-width: 58%;
+  pointer-events: none;
+  user-select: none;
+  /* Blend the illustration's pale backdrop into the card gradient. */
+  mix-blend-mode: multiply;
+}
+
+/* ── Trust row ────────────────────────────────────────── */
+.trustRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-top: 16px;
+}
+.trustItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ── Category grid ────────────────────────────────────── */
+.catGrid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 12px;
+}
+.catCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  min-height: 116px;
+  padding: 16px 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fff 0%, #fbfcfe 100%);
+  transition: transform 0.16s ease, box-shadow 0.16s ease,
+    border-color 0.16s ease;
+}
+.catCard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+  border-color: color-mix(in srgb, var(--cat) 45%, var(--border));
+}
+.catName {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.catCount {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* ── Popular calculators ──────────────────────────────── */
+.popGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+.popCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 128px;
+  padding: 14px 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  transition: transform 0.16s ease, box-shadow 0.16s ease,
+    border-color 0.16s ease;
+}
+.popCard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+  border-color: color-mix(in srgb, var(--cat) 40%, var(--border));
+}
+.popTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.iconTile {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  flex: none;
+}
+.popTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.25;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.popDesc {
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: var(--muted);
+  flex: 1;
+}
+.popFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9.5px;
+  font-weight: 700;
+  color: #17935a;
+  background: #e6f7ee;
+  border-radius: 999px;
+  padding: 3px 9px;
+}
+.arrow {
+  color: #6a7a99;
+  transition: transform 0.16s ease;
+}
+.popCard:hover .arrow,
+.exploreRow:hover .arrow {
+  transform: translateX(3px);
+  color: var(--cat);
+}
+
+/* ── Explore by category ──────────────────────────────── */
+.exploreGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+.exploreCard {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 15px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(24, 55, 100, 0.05);
+}
+.exploreHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.exploreCat {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.exploreViewAll {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.exploreViewAll:hover {
+  color: var(--cat);
+}
+.exploreRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 0;
+  border-top: 1px solid #f1f4fa;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text);
+}
+.exploreRow > span:first-child,
+.exploreRow > svg {
+  flex: none;
+}
+.exploreRow:first-of-type {
+  border-top: 0;
+}
+.exploreRow:hover {
+  color: var(--cat);
+}
+.exploreRow .rowName {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Why Govmath ──────────────────────────────────────── */
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.whyCard {
+  text-align: center;
+  padding: 8px 20px 4px;
+  border-left: 1px solid var(--border);
+}
+.whyCard:first-child {
+  border-left: 0;
+}
+.whyIcon {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+.whyTitle {
+  margin: 0 0 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+.whyBody {
+  margin: 0;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* ── Request a calculator CTA ─────────────────────────── */
+.cta {
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
+  border-radius: 16px;
+  border: 1px solid #d8e6ff;
+  background: linear-gradient(100deg, #e6f0ff 0%, #eff5ff 60%, #f5f9ff 100%);
+  padding: 26px 28px;
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ctaArt {
+  position: absolute;
+  right: 24px;
+  bottom: -4px;
+  width: 260px;
+  max-width: 40%;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* ── Buttons + search ─────────────────────────────────── */
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  min-height: 40px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(180deg, var(--blue), var(--blue-dark));
+  box-shadow: var(--shadow-btn);
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(13, 102, 244, 0.26);
+}
+
+.search {
+  position: relative;
+  margin-top: 22px;
+  max-width: 460px;
+}
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 46px;
+  padding: 0 14px;
+  background: #fff;
+  border: 1px solid #d7dfea;
+  border-radius: 11px;
+  box-shadow: 0 1px 2px rgba(15, 26, 21, 0.04);
+}
+.searchBox:focus-within {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(13, 102, 244, 0.12);
+}
+.searchInput {
+  flex: 1;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--navy);
+  min-width: 0;
+}
+.searchInput::placeholder {
+  color: #6f7f9e;
+}
+.results {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px -12px rgba(24, 55, 100, 0.22);
+  padding: 6px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.resultRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 11px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+.resultRow:hover {
+  background: var(--soft-blue);
+  color: var(--blue);
+}
+.resultCat {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--muted);
+}
+.resultEmpty {
+  padding: 16px;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+@media (max-width: 1120px) {
+  .catGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .popGrid,
+  .exploreGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    padding-top: 30px;
+  }
+  .heroTitle {
+    font-size: 36px;
+  }
+  /* Stack the hero-card illustration below the copy so it never
+     overlaps the text on narrow screens. */
+  .heroCard {
+    padding-bottom: 0;
+  }
+  .heroCard > div {
+    order: 1;
+    max-width: none !important;
+  }
+  .heroCard .heroArt {
+    order: 2;
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: 240px;
+    max-width: 80%;
+    margin: 14px auto -4px;
+    display: block;
+  }
+  .whyGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .whyCard {
+    border-left: 0;
+    padding: 18px 16px;
+  }
+  .whyCard:nth-child(odd) {
+    border-left: 0;
+  }
+  .whyCard:nth-child(n + 3) {
+    border-top: 1px solid var(--border);
+  }
+  .whyCard:nth-child(even) {
+    border-left: 1px solid var(--border);
+  }
+}
+@media (max-width: 680px) {
+  .popGrid,
+  .exploreGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .catGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .container {
+    padding-inline: 18px;
+  }
+  .heroTitle {
+    font-size: 30px;
+  }
+  .section {
+    padding: 18px 16px;
+  }
+  .sectionTitle {
+    font-size: 17px;
+  }
+  .catGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .popGrid,
+  .exploreGrid {
+    grid-template-columns: 1fr;
+  }
+  .whyGrid {
+    grid-template-columns: 1fr;
+  }
+  .whyCard:nth-child(n) {
+    border-left: 0;
+    border-top: 1px solid var(--border);
+  }
+  .whyCard:first-child {
+    border-top: 0;
+  }
+}

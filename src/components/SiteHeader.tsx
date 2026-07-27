@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MobileNav from "@/components/MobileNav";
+import { LogoLink } from "@/components/Logo";
 
 // Compact directory nav: eight short category labels anchored to their routes.
 const NAV: { href: string; label: string }[] = [
@@ -28,13 +29,7 @@ export default function SiteHeader() {
         style={{ maxWidth: 1200, height: 58 }}
         className="mx-auto flex items-center justify-between gap-5 px-7"
       >
-        <Link
-          href="/"
-          className="rk-serif shrink-0"
-          style={{ fontSize: 24, color: "#141a16" }}
-        >
-          GovMath<span style={{ color: "#1e5c45" }}>.</span>
-        </Link>
+        <LogoLink iconSize={30} />
 
         <nav
           aria-label="Primary"
@@ -54,11 +49,11 @@ export default function SiteHeader() {
             style={{
               fontSize: 10.5,
               letterSpacing: "0.06em",
-              color: "#1e5c45",
-              border: "1px solid #cfe0d6",
+              color: "#0d66f4",
+              border: "1px solid #cfe0f8",
               borderRadius: 999,
               padding: "5px 11px",
-              background: "#f3f8f5",
+              background: "#eef5ff",
             }}
           >
             2025/26

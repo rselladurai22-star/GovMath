@@ -16,8 +16,8 @@ export const C = {
   subtle: "#7c847f",
   line: "#e6e8ea",
   tint: "#f4f5f6",
-  accent: "#0f9a5e",
-  accentDeep: "#0a6f43",
+  accent: "#0d66f4",
+  accentDeep: "#075de6",
   shadow: "0 1px 3px rgba(12,22,17,0.05), 0 14px 32px -16px rgba(12,22,17,0.14)",
 };
 

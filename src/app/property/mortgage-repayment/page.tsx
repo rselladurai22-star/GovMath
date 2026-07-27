@@ -191,7 +191,7 @@ export default async function MortgagePage({ searchParams }: { searchParams: Sea
               </div>
             </div>
             <div style={{ background: "#0c1611", color: "#eef4ef", borderRadius: 16, padding: 22 }}>
-              <div style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#8fd6b1" }}>Good to know</div>
+              <div style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9ec6ff" }}>Good to know</div>
               <p style={{ fontSize: 15, color: "#b9c6bf", marginTop: 10, lineHeight: 1.65 }}>
                 Every figure here is an estimate. The exact amount your lender quotes depends on their product fees, any
                 cashback and how interest is calculated (daily vs monthly). Always check the official Key Facts
