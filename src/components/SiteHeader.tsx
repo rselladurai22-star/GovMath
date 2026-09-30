@@ -1,63 +1,35 @@
 import Link from "next/link";
 import MobileNav from "@/components/MobileNav";
+import HeaderNav, { type NavTopic } from "@/components/HeaderNav";
 import { LogoLink } from "@/components/Logo";
-
-// Compact directory nav: eight short category labels anchored to their routes.
-const NAV: { href: string; label: string }[] = [
-  { href: "/tax-and-salary", label: "Tax & Salary" },
-  { href: "/property", label: "Property" },
-  { href: "/business", label: "Business" },
-  { href: "/benefits", label: "Benefits" },
-  { href: "/investing", label: "Pensions" },
-  { href: "/vehicles", label: "Vehicles" },
-  { href: "/students", label: "Students" },
-  { href: "/life", label: "Life" },
-];
+import { CAT } from "@/components/category-style";
+import { CALCULATORS, CATEGORIES, getCalculatorsByCategory } from "@/lib/calculators";
+import styles from "./SiteChrome.module.css";
 
 export default function SiteHeader() {
+  const topics: NavTopic[] = CATEGORIES.map((c) => ({
+    href: c.href,
+    label: CAT[c.slug].label,
+    desc: CAT[c.slug].desc,
+    icon: CAT[c.slug].icon,
+    count: getCalculatorsByCategory(c.slug).length,
+  }));
+
   return (
-    <header
-      className="rk sticky top-0 z-40"
-      style={{
-        background: "rgba(255,255,255,0.92)",
-        backdropFilter: "blur(14px)",
-        WebkitBackdropFilter: "blur(14px)",
-        borderBottom: "1px solid #e4e9e5",
-      }}
-    >
-      <div
-        style={{ maxWidth: 1200, height: 58 }}
-        className="mx-auto flex items-center justify-between gap-5 px-7"
-      >
-        <LogoLink iconSize={30} />
-
-        <nav
-          aria-label="Primary"
-          className="hidden lg:flex items-center"
-          style={{ fontSize: 13.5, fontWeight: 500 }}
-        >
-          {NAV.map((item) => (
-            <Link key={item.href} href={item.href} className="rk-navlink">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <span
-            className="rk-mono hidden sm:inline-block"
-            style={{
-              fontSize: 10.5,
-              letterSpacing: "0.06em",
-              color: "#0d66f4",
-              border: "1px solid #cfe0f8",
-              borderRadius: 999,
-              padding: "5px 11px",
-              background: "#eef5ff",
-            }}
-          >
-            2025/26
-          </span>
+    <header className={`rk ${styles.header}`}>
+      <div className={`gm-wrap ${styles.headerInner}`}>
+        <LogoLink iconSize={34} />
+        <HeaderNav topics={topics} total={CALCULATORS.length} />
+        <div className={styles.headerActions}>
+          <Link href="/calculators#search" className={styles.iconBtn} aria-label="Search calculators" title="Search calculators">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <path d="m20 20-3.5-3.5" />
+            </svg>
+          </Link>
+          <Link href="/calculators" className={`gm-btn ${styles.headerCta}`}>
+            All calculators
+          </Link>
           <MobileNav />
         </div>
       </div>

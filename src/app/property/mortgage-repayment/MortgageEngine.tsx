@@ -116,9 +116,9 @@ export default function MortgageEngine(props: Partial<MortgageInputs>) {
 
       {/* Mobile sticky Calculate bar (design doc §6) — only before results */}
       {!showResults && (
-        <div className="lg:hidden" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, background: "#fff", borderTop: `1px solid ${T.line}`, boxShadow: "0 -6px 20px -12px rgba(15,23,42,0.25)", padding: "12px 16px calc(12px + env(safe-area-inset-bottom))" }}>
+        <div className="lg:hidden" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, background: "#fff", borderTop: `1px solid ${T.line}`, boxShadow: "0 -6px 20px -12px rgba(16,24,40,0.25)", padding: "12px 16px calc(12px + env(safe-area-inset-bottom))" }}>
           <button type="button" onClick={calculate}
-            style={{ width: "100%", padding: "14px 12px", borderRadius: 12, background: BLUE, color: "#fff", fontWeight: 700, fontSize: 15.5, border: 0, cursor: "pointer" }}
+            style={{ width: "100%", padding: "14px 12px", borderRadius: 6, background: BLUE, color: "#fff", fontWeight: 700, fontSize: 15.5, border: 0, cursor: "pointer" }}
             className="flex items-center justify-center gap-2">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="2" width="16" height="20" rx="2" /><path strokeLinecap="round" d="M8 6h8M8 10h8M8 14h4" /></svg>
             Calculate Mortgage
@@ -142,7 +142,7 @@ function DetailsCard({ state, dispatch, snap, sdlt, onCalculate, onReset, calcul
       {/* Header */}
       <div className="gm-inputs-head flex items-center justify-between" style={{ padding: "13px 18px 12px", borderBottom: `1px solid ${T.line}` }}>
         <div className="flex items-center gap-2">
-          <span style={{ width: 28, height: 28, display: "grid", placeItems: "center", borderRadius: 9, background: BLUE_SOFT, color: BLUE }}>{IconHome}</span>
+          <span style={{ width: 28, height: 28, display: "grid", placeItems: "center", borderRadius: 4, background: BLUE_SOFT, color: BLUE }}>{IconHome}</span>
           <h2 style={{ fontSize: 15.5, fontWeight: 700, color: T.ink, margin: 0, letterSpacing: "-0.01em", fontFamily: FONT }}>Your Mortgage Details</h2>
         </div>
         <button type="button" onClick={onReset} className="flex items-center gap-1.5" style={{ fontSize: 12.5, fontWeight: 600, color: T.mute, background: "none", border: 0, cursor: "pointer" }}>
@@ -167,7 +167,7 @@ function DetailsCard({ state, dispatch, snap, sdlt, onCalculate, onReset, calcul
             </div>
             <Range value={state.deposit} min={0} max={Math.max(1, state.price)} step={5000} onChange={(v) => dispatch({ type: "deposit", value: v })} minLabel="£0" maxLabel={money(state.price)} />
           </Field>
-          <div className="flex items-center justify-between" style={{ background: BLUE_SOFT, border: `1px solid ${BLUE_EDGE}`, borderRadius: 11, padding: "11px 14px" }}>
+          <div className="flex items-center justify-between" style={{ background: BLUE_SOFT, border: `1px solid ${BLUE_EDGE}`, borderRadius: 6, padding: "11px 14px" }}>
             <div>
               <div style={{ fontSize: 11.5, color: T.mute, fontWeight: 600 }}>Mortgage Amount</div>
               <div style={{ fontSize: 20, fontWeight: 800, color: BLUE, fontVariantNumeric: "tabular-nums", letterSpacing: "-0.01em", marginTop: 1 }}>{money(snap.loan)}</div>
@@ -188,7 +188,7 @@ function DetailsCard({ state, dispatch, snap, sdlt, onCalculate, onReset, calcul
                 const on = state.termYears === t;
                 return (
                   <button key={t} type="button" onClick={() => dispatch({ type: "term", value: t })}
-                    style={{ fontSize: 12.5, fontWeight: 700, padding: "8px 2px", borderRadius: 9, border: `1.5px solid ${on ? BLUE : T.line}`, background: on ? BLUE : "#fff", color: on ? "#fff" : T.body, cursor: "pointer", transition: "all .12s", lineHeight: 1.15 }}>
+                    style={{ fontSize: 12.5, fontWeight: 700, padding: "8px 2px", borderRadius: 4, border: `1.5px solid ${on ? BLUE : T.line}`, background: on ? BLUE : "#fff", color: on ? "#fff" : T.body, cursor: "pointer", transition: "all .12s", lineHeight: 1.15 }}>
                     {t}<div style={{ fontSize: 9, fontWeight: 600, opacity: on ? 0.85 : 0.55 }}>years</div>
                   </button>
                 );
@@ -204,7 +204,7 @@ function DetailsCard({ state, dispatch, snap, sdlt, onCalculate, onReset, calcul
                 const on = state.type === o.v;
                 return (
                   <button key={o.v} type="button" onClick={() => dispatch({ type: "mode", value: o.v })}
-                    style={{ padding: "10px 6px", borderRadius: 10, border: `1.5px solid ${on ? BLUE : T.line}`, background: on ? BLUE : "#fff", color: on ? "#fff" : T.body, fontWeight: 700, fontSize: 13.5, cursor: "pointer", transition: "all .12s" }}>
+                    style={{ padding: "10px 6px", borderRadius: 6, border: `1.5px solid ${on ? BLUE : T.line}`, background: on ? BLUE : "#fff", color: on ? "#fff" : T.body, fontWeight: 700, fontSize: 13.5, cursor: "pointer", transition: "all .12s" }}>
                     {o.l}
                   </button>
                 );
@@ -239,7 +239,7 @@ function DetailsCard({ state, dispatch, snap, sdlt, onCalculate, onReset, calcul
       <div className="gm-inputs-foot" style={{ padding: "12px 18px" }}>
         <button type="button" onClick={onCalculate}
           className="gm-cta flex items-center justify-center gap-2"
-          style={{ width: "100%", padding: "12px 12px", borderRadius: 11, color: "#fff", fontWeight: 700, fontSize: 14.5, border: 0, cursor: "pointer" }}>
+          style={{ width: "100%", padding: "12px 12px", borderRadius: 6, color: "#fff", fontWeight: 700, fontSize: 14.5, border: 0, cursor: "pointer" }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="2" width="16" height="20" rx="2" /><path strokeLinecap="round" d="M8 6h8M8 10h8M8 14h4" /></svg>
           {calculated ? "Update Results" : "Calculate Mortgage"}
         </button>
@@ -263,7 +263,7 @@ function EmptyState({ onCalculate }: { onCalculate: () => void }) {
   return (
     <Card hover={false} radius={R_LG} style={{ padding: "28px 24px" }}>
       <div className="flex flex-col items-center text-center" style={{ maxWidth: 440, margin: "0 auto" }}>
-        <span style={{ width: 52, height: 52, display: "grid", placeItems: "center", borderRadius: 15, background: BLUE_SOFT, color: BLUE, marginBottom: 14 }}>
+        <span style={{ width: 52, height: 52, display: "grid", placeItems: "center", borderRadius: 6, background: BLUE_SOFT, color: BLUE, marginBottom: 14 }}>
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><rect x="4" y="2" width="16" height="20" rx="2.5" /><path strokeLinecap="round" d="M8 6h8M8 10h3M13 10h3M8 14h3M13 14h3M8 18h3" /></svg>
         </span>
         <h3 style={{ fontSize: 20, fontWeight: 800, color: T.ink, margin: 0, letterSpacing: "-0.02em", fontFamily: FONT }}>See your mortgage results</h3>
@@ -273,7 +273,7 @@ function EmptyState({ onCalculate }: { onCalculate: () => void }) {
 
         <div className="grid grid-cols-2 gap-2" style={{ width: "100%", marginTop: 18 }}>
           {points.map((p) => (
-            <div key={p.label} className="flex items-center gap-2.5" style={{ border: `1px solid ${T.line}`, borderRadius: 10, padding: "10px 12px", background: T.tint, textAlign: "left" }}>
+            <div key={p.label} className="flex items-center gap-2.5" style={{ border: `1px solid ${T.line}`, borderRadius: 6, padding: "10px 12px", background: T.tint, textAlign: "left" }}>
               <span style={{ fontSize: 16 }}>{p.icon}</span>
               <span style={{ fontSize: 12.5, fontWeight: 600, color: T.body }}>{p.label}</span>
             </div>
@@ -282,7 +282,7 @@ function EmptyState({ onCalculate }: { onCalculate: () => void }) {
 
         <button type="button" onClick={onCalculate}
           className="gm-cta flex items-center justify-center gap-2"
-          style={{ marginTop: 18, padding: "12px 28px", borderRadius: 11, color: "#fff", fontWeight: 700, fontSize: 14.5, border: 0, cursor: "pointer" }}>
+          style={{ marginTop: 18, padding: "12px 28px", borderRadius: 6, color: "#fff", fontWeight: 700, fontSize: 14.5, border: 0, cursor: "pointer" }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="4" y="2" width="16" height="20" rx="2" /><path strokeLinecap="round" d="M8 6h8M8 10h8M8 14h4" /></svg>
           Calculate Mortgage
         </button>
@@ -302,7 +302,7 @@ function DepositPercent({ price, deposit, onChange }: { price: number; deposit: 
         aria-label="Deposit as a percentage of property value"
         value={inList ? String(current) : "custom"}
         onChange={(e) => { const p = Number(e.target.value); if (!Number.isNaN(p)) onChange(Math.round((price * p) / 100)); }}
-        style={{ height: "100%", appearance: "none", WebkitAppearance: "none", background: T.tint, border: `1.5px solid ${T.line}`, borderRadius: 11, padding: "0 30px 0 13px", fontSize: 14, fontWeight: 700, color: T.ink, cursor: "pointer", outline: "none", fontVariantNumeric: "tabular-nums" }}>
+        style={{ height: "100%", appearance: "none", WebkitAppearance: "none", background: T.tint, border: `1.5px solid ${T.line}`, borderRadius: 6, padding: "0 30px 0 13px", fontSize: 14, fontWeight: 700, color: T.ink, cursor: "pointer", outline: "none", fontVariantNumeric: "tabular-nums" }}>
         {!inList && <option value="custom">{current}%</option>}
         {DEPOSIT_PCTS.map((p) => <option key={p} value={p}>{p}%</option>)}
       </select>
@@ -315,8 +315,8 @@ function RateStepper({ value, onChange }: { value: number; onChange: (v: number)
   return (
     <div className="relative">
       <input type="number" step={0.05} min={0} max={15} value={value} onChange={(e) => onChange(Number(e.target.value))}
-        style={{ width: "100%", background: "#fff", border: `1.5px solid ${T.line}`, borderRadius: 11, padding: "11px 44px 11px 14px", fontSize: 16, fontWeight: 700, color: T.ink, outline: "none", fontVariantNumeric: "tabular-nums" }}
-        onFocus={(e) => { e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(10,102,255,0.12)"; }}
+        style={{ width: "100%", background: "#fff", border: `1.5px solid ${T.line}`, borderRadius: 6, padding: "11px 44px 11px 14px", fontSize: 16, fontWeight: 700, color: T.ink, outline: "none", fontVariantNumeric: "tabular-nums" }}
+        onFocus={(e) => { e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(47,91,234,0.12)"; }}
         onBlur={(e) => { e.currentTarget.style.borderColor = T.line; e.currentTarget.style.boxShadow = "none"; }} />
       <span style={{ position: "absolute", right: 40, top: "50%", transform: "translateY(-50%)", color: T.mute, fontSize: 15, fontWeight: 700 }}>%</span>
       <div style={{ position: "absolute", right: 6, top: "50%", transform: "translateY(-50%)", display: "flex", flexDirection: "column", gap: 2 }}>
@@ -361,7 +361,7 @@ function SummaryCard({ snap, sdlt, fees, state }: { snap: MortgageSnapshot; sdlt
     <Card radius={R_LG} style={{ padding: 18 }}>
       <Head icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 10.5L12 3l9 7.5M5 9.5V20a1 1 0 001 1h12a1 1 0 001-1V9.5" /></svg>}
         title="Your Mortgage Summary"
-        right={<button type="button" className="flex items-center gap-1.5" style={{ fontSize: 12.5, fontWeight: 600, color: T.mute, background: "#fff", border: `1px solid ${T.line}`, borderRadius: 9, padding: "7px 12px", cursor: "pointer" }}>
+        right={<button type="button" className="flex items-center gap-1.5" style={{ fontSize: 12.5, fontWeight: 600, color: T.mute, background: "#fff", border: `1px solid ${T.line}`, borderRadius: 4, padding: "7px 12px", cursor: "pointer" }}>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" /></svg>
           Download PDF
         </button>} />
@@ -371,17 +371,17 @@ function SummaryCard({ snap, sdlt, fees, state }: { snap: MortgageSnapshot; sdlt
           <span style={{ fontSize: 46, fontWeight: 800, color: GREEN, letterSpacing: "-0.03em", fontVariantNumeric: "tabular-nums", lineHeight: 1 }}>{money(animated)}</span>
           <span style={{ fontSize: 15, fontWeight: 500, color: T.mute }}>/ {basis === "monthly" ? "month" : "year"}{io ? " · interest-only" : ""}</span>
         </div>
-        <div style={{ display: "inline-flex", background: T.tint, borderRadius: 9, padding: 3, gap: 2 }}>
+        <div style={{ display: "inline-flex", background: T.tint, borderRadius: 4, padding: 3, gap: 2 }}>
           {(["monthly", "yearly"] as const).map((b) => (
             <button key={b} type="button" onClick={() => setBasis(b)}
-              style={{ fontSize: 13, fontWeight: 600, padding: "6px 14px", borderRadius: 7, border: 0, cursor: "pointer", textTransform: "capitalize", background: basis === b ? "#fff" : "transparent", color: basis === b ? BLUE : T.mute, boxShadow: basis === b ? "0 1px 2px rgba(15,23,42,0.12)" : "none" }}>{b}</button>
+              style={{ fontSize: 13, fontWeight: 600, padding: "6px 14px", borderRadius: 4, border: 0, cursor: "pointer", textTransform: "capitalize", background: basis === b ? "#fff" : "transparent", color: basis === b ? BLUE : T.mute, boxShadow: basis === b ? "0 1px 2px rgba(16,24,40,0.12)" : "none" }}>{b}</button>
           ))}
         </div>
       </div>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3" style={{ marginTop: 18 }}>
         {stats.map((s) => (
-          <div key={s.label} style={{ border: `1px solid ${T.line}`, borderRadius: 12, padding: "13px 14px", background: T.tint }}>
+          <div key={s.label} style={{ border: `1px solid ${T.line}`, borderRadius: 6, padding: "13px 14px", background: T.tint }}>
             <div style={{ fontSize: 12, color: T.mute, fontWeight: 600 }}>{s.label}</div>
             <div style={{ fontSize: 20, fontWeight: 800, color: s.color || T.ink, marginTop: 4, fontVariantNumeric: "tabular-nums", letterSpacing: "-0.01em" }}>{s.value}</div>
             {s.sub && <div style={{ fontSize: 11, color: T.subtle, marginTop: 2 }}>{s.sub}</div>}
@@ -423,7 +423,7 @@ function BreakdownCard({ snap }: { snap: MortgageSnapshot }) {
         </div>
       </div>
       {snap.inputs.type === "repayment" && extraInterestSaved > 300 && (
-        <div className="flex items-start gap-2.5" style={{ marginTop: 18, background: BLUE_SOFT, border: `1px solid ${BLUE_EDGE}`, borderRadius: 12, padding: "13px 15px" }}>
+        <div className="flex items-start gap-2.5" style={{ marginTop: 18, background: BLUE_SOFT, border: `1px solid ${BLUE_EDGE}`, borderRadius: 6, padding: "13px 15px" }}>
           <span style={{ fontSize: 15 }}>💡</span>
           <span style={{ fontSize: 13.5, color: "#1e40af", lineHeight: 1.55 }}>
             By overpaying just <strong>£200 per month</strong>{snap.overpayment.active ? " more" : ""}, you could save <strong>{money(extraInterestSaved)}</strong> in interest and pay off your mortgage <strong>{formatMonths(extraMonthsSaved)} earlier</strong>.
@@ -488,10 +488,10 @@ function BalanceCard({ snap }: { snap: MortgageSnapshot }) {
     <Card radius={R_LG} style={{ padding: 18 }}>
       <Head icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 3v18h18M7 14l4-4 4 4 5-6" /></svg>}
         title="Balance Over Time"
-        right={<div style={{ display: "inline-flex", background: T.tint, borderRadius: 9, padding: 3, gap: 2 }}>
+        right={<div style={{ display: "inline-flex", background: T.tint, borderRadius: 4, padding: 3, gap: 2 }}>
           {(["balance", "interest", "equity"] as const).map((k) => (
             <button key={k} type="button" onClick={() => setTab(k)}
-              style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 7, border: 0, cursor: "pointer", textTransform: "capitalize", background: tab === k ? "#fff" : "transparent", color: tab === k ? BLUE : T.mute, boxShadow: tab === k ? "0 1px 2px rgba(15,23,42,0.12)" : "none" }}>{k}</button>
+              style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 4, border: 0, cursor: "pointer", textTransform: "capitalize", background: tab === k ? "#fff" : "transparent", color: tab === k ? BLUE : T.mute, boxShadow: tab === k ? "0 1px 2px rgba(16,24,40,0.12)" : "none" }}>{k}</button>
           ))}
         </div>} />
 
@@ -524,7 +524,7 @@ function BalanceCard({ snap }: { snap: MortgageSnapshot }) {
           {ticks.map((yr) => <text key={yr} x={x(yr)} y={H - 8} textAnchor="middle" style={{ fontSize: 10.5, fontWeight: 600 }} fill={T.subtle}>Year {yr}</text>)}
         </svg>
         {hover != null && (
-          <div style={{ position: "absolute", top: 0, left: `clamp(0px, ${(x(hover) / W) * 100}%, calc(100% - 150px))`, background: "#fff", border: `1px solid ${T.line}`, borderRadius: 10, padding: "9px 12px", pointerEvents: "none", boxShadow: "0 8px 24px -8px rgba(15,23,42,0.25)" }}>
+          <div style={{ position: "absolute", top: 0, left: `clamp(0px, ${(x(hover) / W) * 100}%, calc(100% - 150px))`, background: "#fff", border: `1px solid ${T.line}`, borderRadius: 6, padding: "9px 12px", pointerEvents: "none", boxShadow: "0 8px 24px -8px rgba(16,24,40,0.25)" }}>
             <div style={{ fontSize: 11, color: T.mute, fontWeight: 600 }}>Year {hover}</div>
             <div style={{ fontSize: 15, fontWeight: 800, color: T.ink, fontVariantNumeric: "tabular-nums" }}>{money(data[hover])}</div>
             <div style={{ fontSize: 11, color: T.subtle, marginTop: 1 }}>{label}</div>
@@ -611,7 +611,7 @@ function AffordabilityCard({ snap }: { snap: MortgageSnapshot }) {
             <label style={{ fontSize: 12.5, fontWeight: 600, color: T.mute, display: "block", marginBottom: 6 }}>Household income (used for the ratios)</label>
             <MoneyInput value={salary} onChange={setSalary} />
           </div>
-          <div style={{ background: T.tint, border: `1px solid ${T.line}`, borderRadius: 12, padding: "14px 16px" }}>
+          <div style={{ background: T.tint, border: `1px solid ${T.line}`, borderRadius: 6, padding: "14px 16px" }}>
             <div style={{ fontSize: 13, color: T.mute, fontWeight: 600 }}>Your Loan to Income Ratio</div>
             <div className="flex items-baseline gap-2.5" style={{ marginTop: 2 }}>
               <span style={{ fontSize: 28, fontWeight: 800, color: lti <= 4.5 ? GREEN : CORAL, fontVariantNumeric: "tabular-nums", letterSpacing: "-0.02em" }}>{lti.toFixed(1)}x</span>
@@ -670,7 +670,7 @@ function RateComparisonCard({ state, snap }: { state: State; snap: MortgageSnaps
         {rows.map((r) => {
           const selected = r.delta === 0;
           return (
-            <div key={r.name} className="flex items-center justify-between" style={{ padding: "9px 10px", borderRadius: 10, background: selected ? BLUE_SOFT : "transparent", border: selected ? `1px solid ${BLUE_EDGE}` : "1px solid transparent" }}>
+            <div key={r.name} className="flex items-center justify-between" style={{ padding: "9px 10px", borderRadius: 6, background: selected ? BLUE_SOFT : "transparent", border: selected ? `1px solid ${BLUE_EDGE}` : "1px solid transparent" }}>
               <div style={{ minWidth: 0 }}>
                 <div style={{ fontSize: 13.5, fontWeight: 700, color: T.ink }}>{r.name}</div>
                 <div style={{ fontSize: 12, color: T.mute, fontVariantNumeric: "tabular-nums" }}>{r.rate.toFixed(2)}%</div>
@@ -712,7 +712,7 @@ function ScenariosCard({ state, snap }: { state: State; snap: MortgageSnapshot }
         {rows.map((r) => {
           const up = r.pctChange > 0;
           return (
-            <div key={r.label} className="flex items-center justify-between gap-3" style={{ padding: "10px 12px", borderRadius: 10, background: T.tint }}>
+            <div key={r.label} className="flex items-center justify-between gap-3" style={{ padding: "10px 12px", borderRadius: 6, background: T.tint }}>
               <span style={{ fontSize: 13, fontWeight: 600, color: T.ink, minWidth: 0 }}>{r.label}</span>
               <span className="flex items-center gap-2.5" style={{ flex: "none" }}>
                 <span style={{ fontSize: 13.5, fontWeight: 700, color: T.ink, fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>{money(r.payment)}/mo</span>
@@ -754,9 +754,9 @@ function InsightsCard({ state, snap }: { state: State; snap: MortgageSnapshot })
       </div>
       <div className="grid gap-3 grid-cols-1 sm:grid-cols-3">
         {items.map((it) => (
-          <div key={it.title} className="flex flex-col" style={{ border: `1px solid ${T.line}`, borderRadius: 12, padding: "14px 15px", background: T.tint }}>
+          <div key={it.title} className="flex flex-col" style={{ border: `1px solid ${T.line}`, borderRadius: 6, padding: "14px 15px", background: T.tint }}>
             <div className="flex items-center gap-2.5" style={{ marginBottom: 8 }}>
-              <span style={{ width: 30, height: 30, flex: "none", display: "grid", placeItems: "center", borderRadius: 9, background: "#fff", border: `1px solid ${T.line}`, fontSize: 15 }}>{it.icon}</span>
+              <span style={{ width: 30, height: 30, flex: "none", display: "grid", placeItems: "center", borderRadius: 4, background: "#fff", border: `1px solid ${T.line}`, fontSize: 15 }}>{it.icon}</span>
               <div style={{ fontSize: 13.5, fontWeight: 700, color: T.ink, lineHeight: 1.25 }}>{it.title}</div>
             </div>
             <div style={{ fontSize: 12.5, color: T.mute, lineHeight: 1.45, flex: 1 }}>{it.body}</div>
@@ -773,10 +773,10 @@ function InsightsCard({ state, snap }: { state: State; snap: MortgageSnapshot })
    ══════════════════════════════════════════════════════════════════ */
 const TOOLS = [
   { href: "/property/stamp-duty-england", label: "Stamp Duty Calculator" },
-  { href: "/property/mortgage-affordability", label: "Rent Affordability" },
-  { href: "/property/first-time-buyer", label: "First Time Buyer Guide" },
-  { href: "/property/rent-vs-buy", label: "Buy vs Rent Calculator" },
-  { href: "/property/mortgage-overpayment", label: "Remortgage Calculator" },
+  { href: "/property/mortgage-affordability", label: "Mortgage Affordability" },
+  { href: "/property/first-time-buyer", label: "First-Time Buyer" },
+  { href: "/property/rent-vs-buy", label: "Rent vs Buy Calculator" },
+  { href: "/property/mortgage-overpayment", label: "Overpayment Calculator" },
   { href: "/calculators", label: "All Calculators" },
 ];
 function ToolsRow() {
@@ -786,10 +786,10 @@ function ToolsRow() {
       <div className="grid gap-2.5 grid-cols-2 sm:grid-cols-3 md:grid-cols-6">
         {TOOLS.map((t) => (
           <Link key={t.href} href={t.href} className="flex flex-col items-center gap-2 text-center"
-            style={{ border: `1px solid ${T.line}`, borderRadius: 12, padding: "16px 10px", transition: "all .14s" }}
+            style={{ border: `1px solid ${T.line}`, borderRadius: 6, padding: "16px 10px", transition: "all .14s" }}
             onMouseEnter={(e) => { e.currentTarget.style.borderColor = BLUE_EDGE; e.currentTarget.style.background = BLUE_SOFT; }}
             onMouseLeave={(e) => { e.currentTarget.style.borderColor = T.line; e.currentTarget.style.background = "#fff"; }}>
-            <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 10, background: BLUE_SOFT, color: BLUE }}>
+            <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 6, background: BLUE_SOFT, color: BLUE }}>
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 10.5L12 3l9 7.5M5 9.5V20a1 1 0 001 1h12a1 1 0 001-1V9.5" /></svg>
             </span>
             <span style={{ fontSize: 12, fontWeight: 600, color: T.body, lineHeight: 1.3 }}>{t.label}</span>

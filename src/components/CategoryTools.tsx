@@ -58,10 +58,10 @@ export default function CategoryTools({
     <div className={styles.content} style={{ ["--cat" as string]: color }}>
       <div className={styles.toolsHead}>
         <h2 className={styles.toolsTitle}>
-          {label} Calculators <span>({tools.length})</span>
+          All {label.toLowerCase()} calculators <span>({tools.length})</span>
         </h2>
         <div className={styles.search}>
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#6f7f9e" strokeWidth="2" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
             <circle cx="11" cy="11" r="7" />
             <path d="M21 21l-4.3-4.3" strokeLinecap="round" />
           </svg>
@@ -73,7 +73,7 @@ export default function CategoryTools({
             className={styles.searchInput}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder={`Search in ${label} calculators…`}
+            placeholder={`Filter ${tools.length} calculators…`}
             autoComplete="off"
           />
         </div>
@@ -88,7 +88,7 @@ export default function CategoryTools({
           {visible.map((t) => (
             <Link key={t.href} href={t.href} className={styles.toolCard}>
               <span className={styles.toolIcon} style={{ background: tint, color }}>
-                <LineIcon path={t.iconPath} size={22} />
+                <LineIcon path={t.iconPath} size={20} />
               </span>
               <div className={styles.toolBody}>
                 <h3 className={styles.toolTitle}>{t.title}</h3>

@@ -1,3 +1,4 @@
+import type React from "react";
 import type { CategorySlug } from "@/lib/calculators";
 
 /** Line-icon path library (24×24, stroke). Shared by home + category pages. */
@@ -29,22 +30,59 @@ export const ICON = {
 export type CatMeta = {
   label: string;
   short: string;
+  /** Short descriptor line used on topic tabs and panels. */
+  desc: string;
   color: string;
   tint: string;
   icon: string;
 };
 
+/** Category glyphs from the brand icon set (24×24, stroke). */
+const CAT_ICON = {
+  receipt: "M6 3h12v18l-3-2-3 2-3-2-3 2V3z M9 7h6M9 11h6M9 15h3",
+  home: "m3 11 9-8 9 8M5 10v11h14V10M9 21v-8h6v8",
+  briefcase: "M8 7V4h8v3M3 7h18v14H3V7zM3 12h18M10 12v3h4v-3",
+  chart: "M4 3v17h17M8 16v-5M13 16V7M18 16V4",
+  heart: "M12 21 3 12C-2 4 8 0 12 7c4-7 14-3 9 5l-9 9z",
+  car: "m5 4-2 8v7h3v-3h12v3h3v-7l-2-8H5zM3 12h18M6 13v1M18 13v1",
+  school: "m2 8 10-5 10 5-10 5L2 8zM6 10v7l6 4 6-4v-7M22 8v8",
+  calendar: "M4 5h16v16H4V5zM8 3v4M16 3v4M4 10h16M8 14h2M14 14h2M8 17h2",
+} as const;
+
+// One brand colour for every topic: identity comes from the icon and name,
+// never from a rainbow of accents (clearer, calmer, more premium).
+const BRAND = "var(--blue)";
+const TINT = "var(--ice-blue)";
+
 /** Per-category identity (real GovMath categories). */
 export const CAT: Record<CategorySlug, CatMeta> = {
-  "tax-and-salary": { label: "Tax & Salary", short: "Tax & Salary", color: "#126CF3", tint: "#eaf2fe", icon: ICON.receipt },
-  property: { label: "Property", short: "Property", color: "#18B063", tint: "#e7f7ef", icon: ICON.house },
-  business: { label: "Business", short: "Business", color: "#FF7A0A", tint: "#fff1e3", icon: ICON.briefcase },
-  investing: { label: "Pensions & Investing", short: "Pensions", color: "#8647F1", tint: "#f2ebfe", icon: ICON.bars },
-  benefits: { label: "Family & Benefits", short: "Benefits", color: "#EE5CA0", tint: "#fdecf5", icon: ICON.heart },
-  vehicles: { label: "Vehicles", short: "Vehicles", color: "#09AAB0", tint: "#e3f6f6", icon: ICON.car },
-  students: { label: "Students", short: "Students", color: "#2D9AF3", tint: "#e8f4fe", icon: ICON.cap },
-  life: { label: "Everyday Life", short: "Everyday Life", color: "#8A46F0", tint: "#f0eafe", icon: ICON.calendar },
+  "tax-and-salary": { label: "Tax & salary", short: "Tax & Salary", desc: "Pay, deductions & tax", color: BRAND, tint: TINT, icon: CAT_ICON.receipt },
+  property: { label: "Mortgages & property", short: "Property", desc: "Buying, renting & moving", color: BRAND, tint: TINT, icon: CAT_ICON.home },
+  business: { label: "Freelance & business", short: "Business", desc: "Tax, VAT & running costs", color: BRAND, tint: TINT, icon: CAT_ICON.briefcase },
+  investing: { label: "Pensions & investing", short: "Pensions", desc: "Savings & your future", color: BRAND, tint: TINT, icon: CAT_ICON.chart },
+  benefits: { label: "Family & benefits", short: "Benefits", desc: "Support, childcare & leave", color: BRAND, tint: TINT, icon: CAT_ICON.heart },
+  vehicles: { label: "Vehicles & transport", short: "Vehicles", desc: "Car tax, fuel & travel", color: BRAND, tint: TINT, icon: CAT_ICON.car },
+  students: { label: "Students", short: "Students", desc: "Loans & student finances", color: BRAND, tint: TINT, icon: CAT_ICON.school },
+  life: { label: "Everyday life", short: "Everyday Life", desc: "Health, dates & useful maths", color: BRAND, tint: TINT, icon: CAT_ICON.calendar },
 };
+
+/** CSS custom properties that paint an element in a category's colours. */
+export function catVars(slug: CategorySlug): React.CSSProperties {
+  return { ["--c" as string]: CAT[slug].color, ["--t" as string]: CAT[slug].tint };
+}
+
+/** Find a category from a free-text label (e.g. a blog post's category). */
+export function catFromLabel(label: string): CategorySlug | undefined {
+  const l = label.toLowerCase();
+  return (Object.keys(CAT) as CategorySlug[]).find(
+    (k) => CAT[k].label.toLowerCase() === l || CAT[k].short.toLowerCase() === l,
+  );
+}
+
+/** Drop the redundant trailing "Calculator" from a tool title for display. */
+export function shortTitle(title: string): string {
+  return title.replace(/\s+Calculator$/i, "");
+}
 
 /** Keyword → icon, so cards get varied art without a per-calculator map. */
 const ICON_RULES: [RegExp, string][] = [
@@ -76,7 +114,7 @@ export function iconForTitle(title: string, slug: CategorySlug): string {
 }
 
 /** SVG line icon rendered in `currentColor`. */
-export function LineIcon({ path, size = 22 }: { path: string; size?: number }) {
+export function LineIcon({ path, size = 22, stroke = 1.7 }: { path: string; size?: number; stroke?: number }) {
   return (
     <svg
       width={size}
@@ -84,7 +122,7 @@ export function LineIcon({ path, size = 22 }: { path: string; size?: number }) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth={1.9}
+      strokeWidth={stroke}
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"

@@ -157,6 +157,7 @@ export const CALCULATORS: Calculator[] = [
   live("redundancy", "tax-and-salary", "Redundancy Pay Calculator", "Statutory pay based on age and length of service."),
   live("holiday-entitlement", "tax-and-salary", "Holiday Entitlement Calculator", "Statutory holiday days, pro-rated for any working pattern."),
   live("minimum-wage", "tax-and-salary", "Minimum Wage Checker", "Are you being paid at least the current UK minimum?"),
+  live("ir35-take-home", "tax-and-salary", "IR35 Take-Home Calculator", "Inside vs outside IR35 contractor income."),
 
   // ── Property ────────────────────────────────────────────────────────────
   live("stamp-duty-england", "property", "Stamp Duty (England & NI)", "SDLT on your next home, including the additional-property surcharge.", true),
@@ -182,7 +183,6 @@ export const CALCULATORS: Calculator[] = [
   live("vat-calculator", "business", "VAT Calculator", "Add or remove VAT at 20%, 5% or 0% — instantly.", true),
   live("flat-rate-vat", "business", "Flat Rate VAT Calculator", "Compare standard vs flat-rate VAT for your trade."),
   live("cis-deduction", "business", "CIS Deduction Calculator", "Construction Industry Scheme net pay after deductions."),
-  live("ir35-take-home", "business", "IR35 Take-Home Calculator", "Inside vs outside IR35 contractor income."),
   live("business-mileage", "business", "Business Mileage Calculator", "HMRC-approved mileage rates for cars and bikes."),
   live("allowable-expenses", "business", "Allowable Expenses Checker", "Quick check on what's actually deductible."),
   live("employer-ni-costs", "business", "Employer NI Calculator", "True cost of hiring including secondary Class 1."),

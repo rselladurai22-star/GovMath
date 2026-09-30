@@ -1,115 +1,161 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useId, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import styles from "./GovmathHome.module.css";
 
 export type SearchItem = { title: string; href: string; category: string };
 
-/** Hero search with a live results dropdown over every calculator. */
-export default function HomeSearch({ items }: { items: SearchItem[] }) {
+const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+
+/**
+ * The page's primary action: one large search over every calculator, with
+ * live results and popular shortcuts underneath.
+ */
+export default function HomeSearch({
+  items,
+  shortcuts = [],
+  autoFocus = false,
+}: {
+  items: SearchItem[];
+  shortcuts?: { label: string; href: string }[];
+  autoFocus?: boolean;
+}) {
+  const router = useRouter();
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(0);
   const boxRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const listId = useId();
 
-  // "/" focuses search unless already typing in a field.
+  const matches = useMemo(() => {
+    const terms = normalize(query).split(" ").filter(Boolean);
+    if (!terms.length) return [];
+    return items
+      .filter((i) => {
+        const text = normalize(`${i.title} ${i.category}`);
+        return terms.every((t) => text.includes(t));
+      })
+      .slice(0, 8);
+  }, [query, items]);
+
+  const showResults = open && query.trim().length > 0;
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const el = document.activeElement;
       const typing =
         el instanceof HTMLElement &&
-        (el.tagName === "INPUT" ||
-          el.tagName === "TEXTAREA" ||
-          el.isContentEditable);
+        (el.tagName === "INPUT" || el.tagName === "TEXTAREA" || el.isContentEditable);
       if (e.key === "/" && !typing) {
         e.preventDefault();
         inputRef.current?.focus();
       }
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
-
-  // Close on outside click.
-  useEffect(() => {
     const onClick = (e: MouseEvent) => {
-      if (boxRef.current && !boxRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
+      if (!boxRef.current?.contains(e.target as Node)) setOpen(false);
     };
+    window.addEventListener("keydown", onKey);
     document.addEventListener("mousedown", onClick);
-    return () => document.removeEventListener("mousedown", onClick);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onClick);
+    };
   }, []);
-
-  const q = query.trim().toLowerCase();
-  const matches = useMemo(() => {
-    if (!q) return [];
-    return items
-      .filter((i) => i.title.toLowerCase().includes(q))
-      .slice(0, 8);
-  }, [q, items]);
 
   return (
     <div className={styles.search} ref={boxRef}>
       <form
         className={styles.searchBox}
+        role="search"
         onSubmit={(e) => {
           e.preventDefault();
-          if (matches[0]) window.location.href = matches[0].href;
+          const hit = matches[active] ?? matches[0];
+          if (hit) router.push(hit.href);
+          else inputRef.current?.focus();
         }}
       >
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="#6f7f9e"
-          strokeWidth="2"
-          aria-hidden="true"
-        >
-          <circle cx="11" cy="11" r="7" />
-          <path d="M21 21l-4.3-4.3" strokeLinecap="round" />
-        </svg>
         <label htmlFor="gm-search" className="sr-only">
           Search calculators
         </label>
+        <svg className={styles.searchIcon} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" />
+          <path d="m20 20-3.5-3.5" />
+        </svg>
         <input
           id="gm-search"
           ref={inputRef}
-          className={styles.searchInput}
+          type="search"
           value={query}
+          autoFocus={autoFocus}
+          placeholder="What do you want to work out? e.g. salary, stamp duty"
+          autoComplete="off"
+          role="combobox"
+          aria-controls={listId}
+          aria-expanded={showResults}
+          aria-autocomplete="list"
+          aria-activedescendant={showResults && matches[active] ? `${listId}-${active}` : undefined}
           onChange={(e) => {
             setQuery(e.target.value);
+            setActive(0);
             setOpen(true);
           }}
           onFocus={() => setOpen(true)}
-          placeholder="Search calculators, e.g. mortgage, salary, tax…"
-          autoComplete="off"
+          onKeyDown={(e) => {
+            if (!showResults || !matches.length) return;
+            if (e.key === "ArrowDown") {
+              e.preventDefault();
+              setActive((a) => (a + 1) % matches.length);
+            } else if (e.key === "ArrowUp") {
+              e.preventDefault();
+              setActive((a) => (a + matches.length - 1) % matches.length);
+            } else if (e.key === "Escape") {
+              setOpen(false);
+            }
+          }}
         />
+        <button type="submit" className={`gm-btn ${styles.searchBtn}`}>
+          Search
+        </button>
+
+        {showResults && (
+          <div className={styles.results}>
+            {matches.length ? (
+              <ul id={listId} role="listbox" aria-label="Matching calculators">
+                {matches.map((m, i) => (
+                  <li key={m.href} id={`${listId}-${i}`} role="option" aria-selected={i === active}>
+                    <Link
+                      href={m.href}
+                      className={i === active ? styles.resultActive : undefined}
+                      onMouseEnter={() => setActive(i)}
+                      onClick={() => setOpen(false)}
+                    >
+                      <span>{m.title}</span>
+                      <small>{m.category}</small>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className={styles.resultEmpty}>
+                No calculator matches &ldquo;{query.trim()}&rdquo;. Try &ldquo;salary&rdquo;, &ldquo;mortgage&rdquo; or{" "}
+                <Link href="/calculators">browse all calculators</Link>.
+              </p>
+            )}
+          </div>
+        )}
       </form>
 
-      {open && q.length > 0 && (
-        <div className={styles.results} role="listbox">
-          {matches.length === 0 ? (
-            <div className={styles.resultEmpty}>
-              No calculator matches “{query.trim()}”. Try “salary”, “stamp” or
-              “pension”.
-            </div>
-          ) : (
-            matches.map((m) => (
-              <Link
-                key={m.href}
-                href={m.href}
-                className={styles.resultRow}
-                role="option"
-                onClick={() => setOpen(false)}
-              >
-                <span>{m.title}</span>
-                <span className={styles.resultCat}>{m.category}</span>
-              </Link>
-            ))
-          )}
+      {shortcuts.length > 0 && (
+        <div className={styles.chips}>
+          <span>Popular:</span>
+          {shortcuts.map((s) => (
+            <Link key={s.href} href={s.href}>
+              {s.label}
+            </Link>
+          ))}
         </div>
       )}
     </div>

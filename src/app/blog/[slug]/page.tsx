@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdSlot from "@/components/AdSlot";
+import PageHero from "@/components/PageHero";
 import { BLOG_POSTS, getAllPosts, getPost } from "@/lib/blog";
 
 type Params = Promise<{ slug: string }>;
@@ -67,43 +68,28 @@ export default async function BlogPostPage({ params }: { params: Params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
 
-      <section className="ink-panel text-white relative overflow-hidden">
-        <div className="grid-overlay pointer-events-none absolute inset-0" />
-        <div className="relative mx-auto max-w-3xl px-4 sm:px-6 py-12 sm:py-16">
-          <nav aria-label="Breadcrumb" className="text-sm text-white/70 mb-5">
-            <ol className="flex flex-wrap items-center gap-1.5">
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden className="text-white/40">/</li>
-              <li>
-                <Link href="/blog" className="hover:text-white transition-colors">
-                  Blog
-                </Link>
-              </li>
-            </ol>
-          </nav>
-          <span className="inline-flex items-center rounded-full bg-white/10 border border-white/20 px-3 py-1 text-xs font-semibold uppercase tracking-wider backdrop-blur">
-            {post.category}
-          </span>
-          <h1 className="mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight leading-[1.12]">
-            {post.title}
-          </h1>
-          <div className="mt-4 flex items-center gap-3 text-sm text-white/70">
-            <span>{post.dateLabel}</span>
-            <span aria-hidden>·</span>
-            <span>{post.readingTime}</span>
-          </div>
+      <PageHero
+        breadcrumbs={[
+          { href: "/", label: "Home" },
+          { href: "/blog", label: "Guides" },
+          { href: `/blog/${post.slug}`, label: post.title },
+        ]}
+        eyebrow={post.category}
+        title={post.title}
+        icon="M4 5a2 2 0 012-2h5v17H6a2 2 0 00-2 2V5zm16 0a2 2 0 00-2-2h-5v17h5a2 2 0 012 2V5z"
+      >
+        <div className="flex items-center gap-3 text-sm text-muted">
+          <span>{post.dateLabel}</span>
+          <span aria-hidden>·</span>
+          <span>{post.readingTime}</span>
         </div>
-      </section>
+      </PageHero>
 
       <div className="mx-auto max-w-3xl px-4 sm:px-6 mt-8">
         <AdSlot size="leaderboard" />
       </div>
 
-      <article className="mx-auto max-w-3xl px-4 sm:px-6 py-12 gm-prose">
+      <article className="mx-auto max-w-3xl px-6 py-14 gm-prose">
         {post.body}
       </article>
 
@@ -112,25 +98,24 @@ export default async function BlogPostPage({ params }: { params: Params }) {
       </div>
 
       {more.length > 0 && (
-        <section className="bg-surface border-t border-border">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 py-12">
-            <h2 className="text-2xl font-extrabold text-primary-dark mb-6">
-              More from the blog
-            </h2>
-            <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <section className="bg-ice py-16">
+          <div className="gm-wrap">
+            <span className="gm-eyebrow">Keep reading</span>
+            <h2 className="gm-section-title mt-2 mb-8">More guides</h2>
+            <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {more.map((p) => (
                 <li key={p.slug}>
                   <Link
                     href={`/blog/${p.slug}`}
                     className="card card-interactive group flex h-full flex-col p-6"
                   >
-                    <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                    <span className="gm-eyebrow" style={{ fontSize: 12 }}>
                       {p.category}
                     </span>
-                    <h3 className="mt-2 font-bold text-primary-dark group-hover:text-primary transition-colors">
+                    <h3 className="mt-2 text-[1.15rem] font-bold leading-snug text-navy group-hover:text-primary transition-colors">
                       {p.title}
                     </h3>
-                    <p className="mt-2 text-sm text-muted flex-1">
+                    <p className="mt-2 text-[15px] leading-relaxed text-muted flex-1">
                       {p.description}
                     </p>
                   </Link>
@@ -141,22 +126,16 @@ export default async function BlogPostPage({ params }: { params: Params }) {
         </section>
       )}
 
-      <section className="mx-auto max-w-3xl px-4 sm:px-6 py-12 text-center">
-        <h2 className="text-2xl font-bold text-primary-dark">
-          Ready to run your own numbers?
-        </h2>
-        <p className="mt-2 text-muted">
-          Every GovMath calculator is free, plain-English and updated for
-          2025/26.
-        </p>
-        <Link
-          href="/calculators"
-          className="mt-6 inline-flex items-center gap-2 rounded-xl bg-primary-dark text-white px-6 py-3 text-sm font-semibold hover:bg-primary transition-colors"
-        >
+      <section className="gm-wrap flex flex-wrap items-center justify-between gap-6 py-16">
+        <div>
+          <span className="gm-eyebrow">Run the numbers</span>
+          <h2 className="mt-2 text-[clamp(2.2rem,3.6vw,2.7rem)]">Ready to run your own numbers?</h2>
+          <p className="gm-section-lead">
+            Every GovMath calculator is free, plain-English and updated for 2025/26.
+          </p>
+        </div>
+        <Link href="/calculators" className="gm-btn">
           Browse all calculators
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
         </Link>
       </section>
     </>

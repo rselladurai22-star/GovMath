@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AdSlot from "@/components/AdSlot";
+import PageHero from "@/components/PageHero";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -15,35 +16,22 @@ export default function BlogIndexPage() {
 
   return (
     <>
-      <section className="ink-panel text-white relative overflow-hidden">
-        <div className="grid-overlay pointer-events-none absolute inset-0" />
-        <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-14 sm:py-20">
-          <nav aria-label="Breadcrumb" className="text-sm text-white/70 mb-5">
-            <ol className="flex flex-wrap items-center gap-1.5">
-              <li>
-                <Link href="/" className="hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li aria-hidden className="text-white/40">/</li>
-              <li className="font-semibold text-white">Blog</li>
-            </ol>
-          </nav>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.1]">
-            The GovMath blog
-          </h1>
-          <p className="mt-5 text-lg text-white/80 max-w-2xl leading-relaxed">
-            Clear, in-depth guides to the UK rules that affect your money —
-            written the way we&apos;d explain them to a friend.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        breadcrumbs={[
+          { href: "/", label: "Home" },
+          { href: "/blog", label: "Guides" },
+        ]}
+        eyebrow="Guides"
+        title="UK money rules, explained"
+        lead="Clear, in-depth guides to the UK rules that affect your money — written the way we'd explain them to a friend."
+        icon="M4 5a2 2 0 012-2h5v17H6a2 2 0 00-2 2V5zm16 0a2 2 0 00-2-2h-5v17h5a2 2 0 012 2V5z"
+      />
 
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 mt-8">
+      <div className="gm-wrap mt-10">
         <AdSlot size="leaderboard" />
       </div>
 
-      <section className="mx-auto max-w-6xl px-4 sm:px-6 py-14">
+      <section className="gm-wrap py-14">
         <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {posts.map((post) => (
             <li key={post.slug}>
@@ -51,16 +39,16 @@ export default function BlogIndexPage() {
                 href={`/blog/${post.slug}`}
                 className="card card-interactive group flex h-full flex-col p-6"
               >
-                <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary">
+                <div className="gm-eyebrow" style={{ fontSize: 12 }}>
                   {post.category}
                 </div>
-                <h2 className="mt-3 text-xl font-bold text-primary-dark group-hover:text-primary transition-colors">
+                <h2 className="mt-3 text-[1.6rem] leading-tight text-navy group-hover:text-primary transition-colors">
                   {post.title}
                 </h2>
-                <p className="mt-2 text-sm text-muted flex-1">
+                <p className="mt-2 text-[15px] leading-relaxed text-muted flex-1">
                   {post.description}
                 </p>
-                <div className="mt-4 flex items-center gap-3 text-xs text-muted">
+                <div className="mt-4 flex items-center gap-3 border-t border-[#e9eef4] pt-3 text-[13px] text-muted">
                   <span>{post.dateLabel}</span>
                   <span aria-hidden>·</span>
                   <span>{post.readingTime}</span>

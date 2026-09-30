@@ -1,42 +1,27 @@
 import type { Metadata } from "next";
-import { Source_Serif_4, Figtree, IBM_Plex_Mono, Inter } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
-// Reckon type system, applied site-wide: Source Serif 4 (display/headings),
-// Figtree (UI/body — the default sans), IBM Plex Mono (figures, eyebrows).
-const sourceSerif = Source_Serif_4({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
-});
-
-const figtree = Figtree({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-figtree",
-});
-
-const plexMono = IBM_Plex_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "600", "700"],
-  variable: "--font-mono",
-});
-
-// Inter — the most legible neutral UI sans, used by the interactive calculators
-// where dense figures and labels need maximum on-screen readability.
+// Type pairing: Plus Jakarta Sans (headings, nav, buttons, card titles) for a
+// modern, confident voice; Inter (body, labels, figures) for maximum on-screen
+// legibility with tabular numbers. Legacy font variables alias onto these in
+// globals.css.
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+});
+
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-jakarta",
 });
 
 export const metadata: Metadata = {
@@ -85,7 +70,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={`h-full antialiased ${sourceSerif.variable} ${figtree.variable} ${plexMono.variable} ${inter.variable}`}
+      className={`h-full antialiased ${inter.variable} ${jakarta.variable}`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text">
         <script

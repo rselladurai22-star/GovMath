@@ -1,14 +1,14 @@
 /** National Insurance — visual, plain-English guide. Pure server component. */
 
-const ink = "#0f172a", body = "#334155", mute = "#64748b", subtle = "#94a3b8", line = "#e2e8f0", tint = "#f8fafc";
-const blue = "#0a66ff", green = "#16a34a", amber = "#f59e0b", violet = "#8b5cf6", teal = "#0ea5a5";
+const ink = "#101828", body = "#1d2939", mute = "#475467", subtle = "#98a2b3", line = "#e4e7ec", tint = "#f8fafc";
+const blue = "#2f5bea", green = "#16a34a", amber = "#f59e0b", violet = "#8b5cf6", teal = "#0ea5a5";
 const gbp = (n: number) => "£" + Math.round(n).toLocaleString("en-GB");
 
 function Section({ n, kicker, title, children }: { n: string; kicker: string; title: string; children: React.ReactNode }) {
   return (
     <section style={{ paddingTop: 44, paddingBottom: 44, borderTop: `1px solid ${line}` }}>
       <div className="flex items-center gap-3" style={{ marginBottom: 6 }}>
-        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 10, background: "#eff6ff", color: blue, fontWeight: 800, fontSize: 15 }}>{n}</span>
+        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 6, background: "#eef2ff", color: blue, fontWeight: 800, fontSize: 15 }}>{n}</span>
         <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: blue }}>{kicker}</span>
       </div>
       <h2 style={{ fontSize: 27, fontWeight: 800, color: ink, letterSpacing: "-0.02em", margin: "0 0 14px", lineHeight: 1.12 }}>{title}</h2>
@@ -21,7 +21,7 @@ function P({ children }: { children: React.ReactNode }) {
 }
 function Viz({ label, children }: { label?: string; children: React.ReactNode }) {
   return (
-    <div style={{ border: `1px solid ${line}`, borderRadius: 16, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(15,23,42,0.04), 0 14px 32px -20px rgba(15,23,42,0.12)", margin: "18px 0" }}>
+    <div style={{ border: `1px solid ${line}`, borderRadius: 6, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(16,24,40,0.04), 0 14px 32px -20px rgba(16,24,40,0.12)", margin: "18px 0" }}>
       {label && <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: subtle, marginBottom: 16 }}>{label}</div>}
       {children}
     </div>
@@ -92,7 +92,7 @@ export default function NIGuide() {
             { t: "35 years", d: "Qualifying years for the full State Pension" },
             { t: "~15%", d: "Employer's secondary NI on your salary" },
           ].map((g) => (
-            <div key={g.d} style={{ border: `1px solid ${line}`, borderRadius: 14, padding: "15px 16px", background: "#fff" }}>
+            <div key={g.d} style={{ border: `1px solid ${line}`, borderRadius: 6, padding: "15px 16px", background: "#fff" }}>
               <div style={{ fontSize: 18, fontWeight: 800, color: ink, fontVariantNumeric: "tabular-nums" }}>{g.t}</div>
               <div style={{ fontSize: 14, color: mute, marginTop: 5, lineHeight: 1.5 }}>{g.d}</div>
             </div>
@@ -106,14 +106,14 @@ export default function NIGuide() {
 /* NI band chart — rate steps across earnings. */
 function NiBands() {
   const bands = [
-    { from: 0, to: 12570, rate: 0, c: "#e2e8f0", label: "0% · NI-free" },
+    { from: 0, to: 12570, rate: 0, c: "#e4e7ec", label: "0% · NI-free" },
     { from: 12570, to: 50270, rate: 8, c: blue, label: "8% · main band" },
     { from: 50270, to: 80000, rate: 2, c: amber, label: "2% · upper band" },
   ];
   const MAX = 80000;
   return (
     <div>
-      <div style={{ display: "flex", height: 44, borderRadius: 10, overflow: "hidden", border: `1px solid ${line}` }}>
+      <div style={{ display: "flex", height: 44, borderRadius: 6, overflow: "hidden", border: `1px solid ${line}` }}>
         {bands.map((b) => (
           <div key={b.from} style={{ width: `${((b.to - b.from) / MAX) * 100}%`, background: b.c, display: "grid", placeItems: "center", color: b.rate === 0 ? mute : "#fff" }}>
             <span style={{ fontSize: 13, fontWeight: 700 }}>{b.rate}%</span>
@@ -142,7 +142,7 @@ function Compare() {
   return (
     <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))" }}>
       {cols.map((col) => (
-        <div key={col.name} style={{ border: `1px solid ${line}`, borderRadius: 14, overflow: "hidden" }}>
+        <div key={col.name} style={{ border: `1px solid ${line}`, borderRadius: 6, overflow: "hidden" }}>
           <div style={{ padding: "12px 16px", background: tint, borderBottom: `1px solid ${line}` }}>
             <span style={{ fontSize: 16, fontWeight: 800, color: col.accent }}>{col.name}</span>
           </div>
@@ -167,7 +167,7 @@ function Allocation() {
   ];
   return (
     <div>
-      <div style={{ display: "flex", height: 30, borderRadius: 8, overflow: "hidden", border: `1px solid ${line}` }}>
+      <div style={{ display: "flex", height: 30, borderRadius: 4, overflow: "hidden", border: `1px solid ${line}` }}>
         {parts.map((p) => <div key={p.k} style={{ width: `${p.v}%`, background: p.c }} />)}
       </div>
       <div className="grid gap-2.5" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(190px,1fr))", marginTop: 16 }}>

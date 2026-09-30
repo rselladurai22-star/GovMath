@@ -137,8 +137,8 @@ export default function BonusEngine({ initialSalary = 40000 }: { initialSalary?:
       </div>
 
       {!showResults && (
-        <div className="lg:hidden" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, background: "#fff", borderTop: `1px solid ${T.line}`, boxShadow: "0 -6px 20px -12px rgba(15,23,42,0.25)", padding: "12px 16px calc(12px + env(safe-area-inset-bottom))" }}>
-          <button type="button" onClick={calculate} className="gm-cta flex items-center justify-center gap-2" style={{ width: "100%", padding: "14px 12px", borderRadius: 12, color: "#fff", fontWeight: 700, fontSize: 15.5, border: 0, cursor: "pointer" }}>
+        <div className="lg:hidden" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, background: "#fff", borderTop: `1px solid ${T.line}`, boxShadow: "0 -6px 20px -12px rgba(16,24,40,0.25)", padding: "12px 16px calc(12px + env(safe-area-inset-bottom))" }}>
+          <button type="button" onClick={calculate} className="gm-cta flex items-center justify-center gap-2" style={{ width: "100%", padding: "14px 12px", borderRadius: 6, color: "#fff", fontWeight: 700, fontSize: 15.5, border: 0, cursor: "pointer" }}>
             <IconGift /> Calculate Bonus
           </button>
         </div>
@@ -155,7 +155,7 @@ function DetailsCard({ state, dispatch, onCalculate, onReset, calculated }: { st
     <Card hover={false} className="gm-inputs-panel lg:sticky lg:top-[74px]" radius={R_LG} style={{ padding: 0 }}>
       <div className="gm-inputs-head flex items-center justify-between" style={{ padding: "13px 18px 12px", borderBottom: `1px solid ${T.line}` }}>
         <div className="flex items-center gap-2">
-          <span style={{ width: 28, height: 28, display: "grid", placeItems: "center", borderRadius: 9, background: BLUE_SOFT, color: BLUE }}><IconGift /></span>
+          <span style={{ width: 28, height: 28, display: "grid", placeItems: "center", borderRadius: 4, background: BLUE_SOFT, color: BLUE }}><IconGift /></span>
           <h2 style={{ fontSize: 15.5, fontWeight: 700, color: T.ink, margin: 0, letterSpacing: "-0.01em", fontFamily: FONT }}>Your Details</h2>
         </div>
         <button type="button" onClick={onReset} className="flex items-center gap-1.5" style={{ fontSize: 12.5, fontWeight: 600, color: T.mute, background: "none", border: 0, cursor: "pointer" }}>
@@ -187,7 +187,7 @@ function DetailsCard({ state, dispatch, onCalculate, onReset, calculated }: { st
               {STUDENT_PLAN_ORDER.map((p) => {
                 const on = state.plan === p;
                 return (
-                  <button key={p} type="button" onClick={() => dispatch({ type: "plan", value: p })} style={{ fontSize: 12.5, fontWeight: 700, padding: "9px 3px", borderRadius: 9, border: `1.5px solid ${on ? BLUE : T.line}`, background: on ? BLUE : "#fff", color: on ? "#fff" : T.body, cursor: "pointer", transition: "all .12s" }}>
+                  <button key={p} type="button" onClick={() => dispatch({ type: "plan", value: p })} style={{ fontSize: 12.5, fontWeight: 700, padding: "9px 3px", borderRadius: 4, border: `1.5px solid ${on ? BLUE : T.line}`, background: on ? BLUE : "#fff", color: on ? "#fff" : T.body, cursor: "pointer", transition: "all .12s" }}>
                     {STUDENT_PLANS[p].short}
                   </button>
                 );
@@ -198,7 +198,7 @@ function DetailsCard({ state, dispatch, onCalculate, onReset, calculated }: { st
       </div>
 
       <div className="gm-inputs-foot" style={{ padding: "12px 18px" }}>
-        <button type="button" onClick={onCalculate} className="gm-cta flex items-center justify-center gap-2" style={{ width: "100%", padding: "12px 12px", borderRadius: 11, color: "#fff", fontWeight: 700, fontSize: 14.5, border: 0, cursor: "pointer" }}>
+        <button type="button" onClick={onCalculate} className="gm-cta flex items-center justify-center gap-2" style={{ width: "100%", padding: "12px 12px", borderRadius: 6, color: "#fff", fontWeight: 700, fontSize: 14.5, border: 0, cursor: "pointer" }}>
           <IconGift /> {calculated ? "Update Results" : "Calculate Bonus"}
         </button>
         <div className="flex items-center justify-center gap-1.5" style={{ fontSize: 12, color: T.mute, marginTop: 8 }}>
@@ -221,20 +221,20 @@ function EmptyState({ onCalculate }: { onCalculate: () => void }) {
   return (
     <Card hover={false} radius={R_LG} style={{ padding: "28px 24px" }}>
       <div className="flex flex-col items-center text-center" style={{ maxWidth: 440, margin: "0 auto" }}>
-        <span style={{ width: 52, height: 52, display: "grid", placeItems: "center", borderRadius: 15, background: BLUE_SOFT, color: BLUE, marginBottom: 14 }}><IconGift /></span>
+        <span style={{ width: 52, height: 52, display: "grid", placeItems: "center", borderRadius: 6, background: BLUE_SOFT, color: BLUE, marginBottom: 14 }}><IconGift /></span>
         <h3 style={{ fontSize: 20, fontWeight: 800, color: T.ink, margin: 0, letterSpacing: "-0.02em", fontFamily: FONT }}>See your real bonus</h3>
         <p style={{ fontSize: 14, color: T.mute, marginTop: 7, lineHeight: 1.5, maxWidth: 380 }}>
           Enter your salary and bonus on the left, then press <strong style={{ color: T.body }}>Calculate</strong> to see what actually lands in your bank.
         </p>
         <div className="grid grid-cols-2 gap-2" style={{ width: "100%", marginTop: 18 }}>
           {points.map((p) => (
-            <div key={p.label} className="flex items-center gap-2.5" style={{ border: `1px solid ${T.line}`, borderRadius: 10, padding: "10px 12px", background: T.tint, textAlign: "left" }}>
+            <div key={p.label} className="flex items-center gap-2.5" style={{ border: `1px solid ${T.line}`, borderRadius: 6, padding: "10px 12px", background: T.tint, textAlign: "left" }}>
               <span style={{ fontSize: 16 }}>{p.icon}</span>
               <span style={{ fontSize: 12.5, fontWeight: 600, color: T.body }}>{p.label}</span>
             </div>
           ))}
         </div>
-        <button type="button" onClick={onCalculate} className="gm-cta flex items-center justify-center gap-2" style={{ marginTop: 18, padding: "12px 28px", borderRadius: 11, color: "#fff", fontWeight: 700, fontSize: 14.5, border: 0, cursor: "pointer" }}>
+        <button type="button" onClick={onCalculate} className="gm-cta flex items-center justify-center gap-2" style={{ marginTop: 18, padding: "12px 28px", borderRadius: 6, color: "#fff", fontWeight: 700, fontSize: 14.5, border: 0, cursor: "pointer" }}>
           <IconGift /> Calculate Bonus
         </button>
       </div>
@@ -260,7 +260,7 @@ function SummaryCard({ pic }: { pic: BonusPicture }) {
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3" style={{ marginTop: 18 }}>
         {stats.map((s) => (
-          <div key={s.label} style={{ border: `1px solid ${T.line}`, borderRadius: 12, padding: "13px 14px", background: T.tint }}>
+          <div key={s.label} style={{ border: `1px solid ${T.line}`, borderRadius: 6, padding: "13px 14px", background: T.tint }}>
             <div style={{ fontSize: 12, color: T.mute, fontWeight: 600 }}>{s.label}</div>
             <div style={{ fontSize: 20, fontWeight: 800, color: s.color || T.ink, marginTop: 4, fontVariantNumeric: "tabular-nums", letterSpacing: "-0.01em" }}>{s.value}</div>
             {s.sub && <div style={{ fontSize: 11, color: T.subtle, marginTop: 2 }}>{s.sub}</div>}
@@ -318,12 +318,12 @@ function SacrificeCard({ state, pic }: { state: State; pic: BonusPicture }) {
     <Card radius={R_LG} style={{ padding: 18 }}>
       <Head icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M4 7c0-1.7 3.6-3 8-3s8 1.3 8 3-3.6 3-8 3-8-1.3-8-3zm0 0v10c0 1.7 3.6 3 8 3s8-1.3 8-3V7" /></svg>} title="Take Cash or Sacrifice?" />
       <div className="grid grid-cols-2 gap-3">
-        <div style={{ border: `1px solid ${T.line}`, borderRadius: 12, padding: "13px 14px", background: T.tint }}>
+        <div style={{ border: `1px solid ${T.line}`, borderRadius: 6, padding: "13px 14px", background: T.tint }}>
           <div style={{ fontSize: 12, color: T.mute, fontWeight: 600 }}>Take as cash</div>
           <div style={{ fontSize: 22, fontWeight: 800, color: GREEN, marginTop: 4, fontVariantNumeric: "tabular-nums" }}>{money(pic.cash)}</div>
           <div style={{ fontSize: 11.5, color: T.subtle, marginTop: 2 }}>in your bank now</div>
         </div>
-        <div style={{ border: `1px solid ${BLUE_EDGE}`, borderRadius: 12, padding: "13px 14px", background: BLUE_SOFT }}>
+        <div style={{ border: `1px solid ${BLUE_EDGE}`, borderRadius: 6, padding: "13px 14px", background: BLUE_SOFT }}>
           <div style={{ fontSize: 12, color: T.mute, fontWeight: 600 }}>Sacrifice to pension</div>
           <div style={{ fontSize: 22, fontWeight: 800, color: BLUE, marginTop: 4, fontVariantNumeric: "tabular-nums" }}>{money(sacrificed)}</div>
           <div style={{ fontSize: 11.5, color: T.subtle, marginTop: 2 }}>into your pot</div>
@@ -425,10 +425,10 @@ function ToolsRow() {
       <h3 style={{ fontSize: 15, fontWeight: 700, color: T.ink, margin: "0 0 14px", fontFamily: FONT }}>Explore More Salary Tools</h3>
       <div className="grid gap-2.5 grid-cols-2 sm:grid-cols-3 md:grid-cols-6">
         {TOOLS.map((t) => (
-          <Link key={t.href} href={t.href} className="flex flex-col items-center gap-2 text-center" style={{ border: `1px solid ${T.line}`, borderRadius: 12, padding: "16px 10px", transition: "all .14s" }}
+          <Link key={t.href} href={t.href} className="flex flex-col items-center gap-2 text-center" style={{ border: `1px solid ${T.line}`, borderRadius: 6, padding: "16px 10px", transition: "all .14s" }}
             onMouseEnter={(e) => { e.currentTarget.style.borderColor = BLUE_EDGE; e.currentTarget.style.background = BLUE_SOFT; }}
             onMouseLeave={(e) => { e.currentTarget.style.borderColor = T.line; e.currentTarget.style.background = "#fff"; }}>
-            <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 10, background: BLUE_SOFT, color: BLUE }}><IconGift /></span>
+            <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 6, background: BLUE_SOFT, color: BLUE }}><IconGift /></span>
             <span style={{ fontSize: 12, fontWeight: 600, color: T.body, lineHeight: 1.3 }}>{t.label}</span>
           </Link>
         ))}

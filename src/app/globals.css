@@ -1,42 +1,65 @@
 @import "tailwindcss";
 
 /* ──────────────────────────────────────────────────────────────
-   GovMath — "Reckon" theme
-   Bright, high-separation directory. Brand green + near-black green
-   ink, warm neutral hairlines, serif display type, mono figures.
+   GovMath — site-wide design system
+   Navy ink, clear institutional blue, teal eyebrows and an ice-blue
+   surface tint. Rajdhani display headings over Manrope UI/body text.
    ────────────────────────────────────────────────────────────── */
 :root {
-  --primary: #0d66f4; /* brand blue — actions, links */
-  --primary-dark: #0b1739; /* ink navy — dark panels + heading ink */
-  --accent: #3aa0ff; /* electric blue — highlights, gradient end */
+  /* Jakarta for display/UI emphasis, Inter for reading. */
+  --font-heading: var(--font-jakarta);
+  --font-inter: var(--font-body);
+  --font-figtree: var(--font-body);
+  --font-mono: var(--font-body);
+  --font-serif: var(--font-jakarta);
+  --font-display: var(--font-jakarta), var(--font-body), -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-ui: var(--font-body), -apple-system, "Segoe UI", Arial, sans-serif;
 
-  --bg: #ffffff; /* clean white canvas */
-  --surface: #ffffff; /* cards, panels */
-  --text: #172033; /* ink body text (slate navy) */
-  --muted: #5e6b85; /* secondary text (blue-grey) */
-  --border: #e5eaf2; /* clearly visible hairline borders */
+  /* Four colours plus neutrals. */
+  --navy: #101828; /* ink — headings */
+  --navy-deep: #0c1322;
+  --blue: #2f5bea; /* the one brand + action colour */
+  --blue-bright: #4f7bff; /* focus rings */
+  --teal: #2f5bea; /* legacy alias → brand blue */
+  --ice: #f8fafc; /* pale surface */
+  --ice-blue: #eef2ff; /* brand tint — icons, selected */
+  --ink: #1d2939; /* body text */
+  --line: #e4e7ec;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
-  --success: #18b063; /* positive results stay green (semantic) */
-  --error: #b0492f;
-  --card-hover: #eef5ff; /* blue tint */
-  --ad-bg: #eef2f8;
+  --primary: var(--blue);
+  --primary-dark: var(--navy);
+  --accent: var(--blue-bright);
 
-  --ring: #0d66f4;
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --text: var(--ink);
+  --muted: #475467; /* secondary text — 7:1 on white */
+  --border: var(--line);
 
-  --radius: 1rem;
-  --shadow-sm: 0 1px 2px rgba(16, 32, 64, 0.04),
-    0 1px 3px rgba(16, 32, 64, 0.06);
-  --shadow-md: 0 4px 12px rgba(16, 32, 64, 0.06),
-    0 2px 4px rgba(16, 32, 64, 0.04);
-  --shadow-lg: 0 18px 40px -12px rgba(16, 32, 64, 0.18),
-    0 6px 14px -8px rgba(16, 32, 64, 0.12);
-  --shadow-glow: 0 24px 60px -20px rgba(13, 102, 244, 0.35);
+  --success: #12855a; /* "money you keep" — the only green */
+  --error: #b42a2a;
+  --card-hover: var(--ice-blue);
+  --ad-bg: var(--ice);
+
+  --ring: var(--blue-bright);
+  /* Emphasis surfaces (topic bars, result panels, promos) — white text ≥5:1. */
+  --brand-gradient: linear-gradient(120deg, #2f5bea 0%, #2748d4 100%);
+
+  --radius: 8px;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 6px 18px rgba(16, 24, 40, 0.07);
+  --shadow-lg: 0 12px 32px rgba(16, 24, 40, 0.1);
+  --shadow-glow: 0 12px 30px -16px rgba(47, 91, 234, 0.4);
 }
 
 @theme inline {
   --color-primary: var(--primary);
   --color-primary-dark: var(--primary-dark);
   --color-accent: var(--accent);
+  --color-teal: var(--teal);
+  --color-ice: var(--ice);
+  --color-navy: var(--navy);
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-text: var(--text);
@@ -47,125 +70,133 @@
   --color-card-hover: var(--card-hover);
   --color-ad-bg: var(--ad-bg);
 
-  --radius-xl: var(--radius);
-  --radius-2xl: 1.25rem;
-  --radius-3xl: 1.75rem;
+  --radius-md: 4px;
+  --radius-lg: 5px;
+  --radius-xl: 6px;
+  --radius-2xl: 8px;
+  --radius-3xl: 12px;
 
   --shadow-soft: var(--shadow-md);
   --shadow-elevated: var(--shadow-lg);
 
-  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, -apple-system,
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-body), system-ui, sans-serif;
+  --font-mono: var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }
 
-* {
-  box-sizing: border-box;
+/* Element defaults live in the base layer so Tailwind utilities (e.g.
+   text-white on a heading) always win. */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    /* Inter legibility alternates: open digits (ss01), tailed l (cv05). */
+    font-feature-settings: "ss01", "cv05";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Headings: Inter bold, tight tracking, navy ink. */
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.022em;
+    line-height: 1.2;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--navy);
+    letter-spacing: -0.011em;
+    text-wrap: pretty;
+  }
 }
 
-html {
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
+.font-display {
+  font-family: var(--font-display);
 }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-
-/* Serif display type for headings site-wide (Reckon). Weight/tracking set by
-   each element's own utilities still win; this only supplies the family. */
-h1,
-h2,
-h3 {
-  font-family: var(--font-serif), Georgia, "Times New Roman", serif;
-  letter-spacing: -0.01em;
+.font-mono,
+.tabular {
+  font-variant-numeric: tabular-nums;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--primary) 22%, transparent);
-  color: var(--primary-dark);
+  background: #cfe0f7;
+  color: var(--navy);
 }
 
-/* Modern indigo focus ring (replaces GOV.UK yellow) */
+/* Bright, generous focus ring */
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--ring);
-  outline-offset: 2px;
-  border-radius: 6px;
+  outline: 3px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 /* ── Reusable surface utilities ──────────────────────────────── */
 
-/* Elevated card with a soft hover lift */
+/* Hairline card with a quiet hover lift and a blue top rule. */
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.18s ease, box-shadow 0.18s ease,
-    border-color 0.18s ease;
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px -16px rgba(16, 24, 40, 0.14);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.card-interactive {
+  position: relative;
+  overflow: hidden;
+}
+.card-interactive::before {
+  content: none;
 }
 .card-interactive:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
-  border-color: color-mix(in srgb, var(--primary) 35%, var(--border));
+  transform: translateY(-4px);
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 22px 44px -22px color-mix(in srgb, var(--c, #2f5bea) 55%, transparent);
+  border-color: color-mix(in srgb, var(--c, #2f5bea) 30%, var(--line));
 }
-
-/* Frosted glass (sticky header) */
 .glass {
-  background: color-mix(in srgb, var(--surface) 72%, transparent);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
   backdrop-filter: saturate(180%) blur(12px);
   -webkit-backdrop-filter: saturate(180%) blur(12px);
 }
 
-/* Gradient ink panel used for hero / footer / CTA */
+/* Navy panel with the brand's large ring motif. */
 .ink-panel {
-  background:
-    radial-gradient(
-      circle at 12% -10%,
-      color-mix(in srgb, var(--primary) 55%, transparent),
-      transparent 55%
-    ),
-    radial-gradient(
-      circle at 100% 0%,
-      color-mix(in srgb, var(--accent) 40%, transparent),
-      transparent 48%
-    ),
-    var(--primary-dark);
+  position: relative;
+  background: var(--brand-gradient);
 }
-
-/* Subtle dotted grid overlay for dark panels */
 .grid-overlay {
-  background-image:
-    linear-gradient(to right, #fff 1px, transparent 1px),
-    linear-gradient(to bottom, #fff 1px, transparent 1px);
-  background-size: 44px 44px;
-  opacity: 0.06;
-  -webkit-mask-image: radial-gradient(circle at 50% 0%, black, transparent 75%);
-  mask-image: radial-gradient(circle at 50% 0%, black, transparent 75%);
+  display: none;
 }
-
-/* Light-blue gradient text (on dark navy panels) */
 .text-gradient {
-  background-image: linear-gradient(
-    100deg,
-    #dbe9ff 0%,
-    #ffffff 45%,
-    #9ec6ff 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #9cc4f5;
 }
 
-/* Animated availability dot */
 @keyframes gm-ping {
   75%,
   100% {
@@ -177,89 +208,240 @@ textarea:focus-visible,
   animation: gm-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
-/* Readable long-form prose (About, legal, blog) */
+/* ── Shared page primitives (used across every template) ──────── */
+.gm-wrap {
+  width: calc(100% - 2.5rem);
+  max-width: 1200px;
+  margin-inline: auto;
+}
+@media (min-width: 701px) {
+  .gm-wrap {
+    width: calc(100% - 4rem);
+  }
+}
+@media (min-width: 1151px) {
+  .gm-wrap {
+    width: calc(100% - 6rem);
+  }
+}
+
+.gm-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--blue);
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+.gm-eyebrow.rule::before {
+  content: none;
+}
+
+.gm-btn,
+.gm-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.6rem 1.15rem;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.3;
+  border-radius: 8px;
+  white-space: nowrap;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
+.gm-btn {
+  border: 1px solid transparent;
+  background: var(--blue);
+  color: #fff;
+}
+.gm-btn:hover {
+  background: var(--navy);
+}
+.gm-btn-outline {
+  border: 1px solid #d0d5dd;
+  color: var(--navy);
+  background: #fff;
+}
+.gm-btn-outline:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+.gm-btn:active,
+.gm-btn-outline:active {
+  transform: translateY(1px);
+}
+
+.gm-textlink {
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: #c7d2fe;
+  text-underline-offset: 3px;
+  transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+.gm-textlink:hover {
+  color: var(--navy);
+  text-decoration-color: currentColor;
+}
+
+.gm-icon-tile {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--ice-blue);
+  color: var(--blue);
+}
+
+/* Section header: eyebrow, display h2, supporting line. */
+.gm-section-title {
+  margin: 0;
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.032em;
+}
+@media (max-width: 640px) {
+  .gm-section-title {
+    font-size: 1.75rem;
+  }
+}
+.gm-section-lead {
+  margin-top: 0.6rem;
+  color: var(--muted);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+/* Readable long-form prose (About, legal, blog, calculator explainers) */
 .gm-prose {
-  color: color-mix(in srgb, var(--text) 88%, transparent);
-  line-height: 1.75;
+  color: var(--ink);
+  line-height: 1.7;
   font-size: 1.0625rem;
 }
 .gm-prose > * + * {
   margin-top: 1.1rem;
 }
 .gm-prose h2 {
-  color: var(--primary-dark);
+  color: var(--navy);
   font-size: 1.6rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
   line-height: 1.25;
   margin-top: 2.4rem;
 }
 .gm-prose h3 {
-  color: var(--primary-dark);
+  color: var(--navy);
   font-size: 1.2rem;
   font-weight: 700;
   margin-top: 1.8rem;
 }
 .gm-prose a {
-  color: var(--primary);
+  color: var(--blue);
   font-weight: 600;
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-decoration-color: #b2cfe5;
+  text-underline-offset: 3px;
 }
 .gm-prose a:hover {
-  color: var(--primary-dark);
+  color: var(--navy);
+  text-decoration-color: var(--blue);
 }
 .gm-prose ul,
 .gm-prose ol {
   padding-left: 1.4rem;
 }
 .gm-prose ul {
-  list-style: disc;
+  list-style: none;
+  padding-left: 0;
+}
+.gm-prose ul > li {
+  position: relative;
+  padding-left: 1.3rem;
+}
+.gm-prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blue);
 }
 .gm-prose ol {
   list-style: decimal;
 }
+.gm-prose ol > li::marker {
+  color: var(--navy);
+  font-weight: 700;
+}
 .gm-prose li + li {
-  margin-top: 0.4rem;
+  margin-top: 0.45rem;
 }
 .gm-prose blockquote {
-  border-left: 4px solid var(--primary);
-  background: var(--card-hover);
-  padding: 0.85rem 1.1rem;
-  border-radius: 0 0.75rem 0.75rem 0;
-  color: var(--text);
+  border-left: 3px solid var(--blue);
+  background: var(--ice);
+  padding: 1rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  color: var(--ink);
 }
 .gm-prose code {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 0.4rem;
+  background: var(--ice);
+  border: 1px solid var(--line);
+  border-radius: 3px;
   padding: 0.1rem 0.35rem;
   font-size: 0.9em;
 }
 .gm-prose strong {
-  color: var(--primary-dark);
+  color: var(--navy);
   font-weight: 700;
 }
 .gm-prose hr {
   border: 0;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--line);
   margin: 2rem 0;
 }
 .gm-prose table {
   width: 100%;
   border-collapse: collapse;
   font-size: 0.95rem;
+  font-variant-numeric: tabular-nums;
 }
 .gm-prose th,
 .gm-prose td {
-  border: 1px solid var(--border);
-  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid var(--line);
+  padding: 0.7rem 0.8rem;
   text-align: left;
 }
 .gm-prose th {
-  background: var(--bg);
+  background: var(--ice);
   font-weight: 700;
-  color: var(--primary-dark);
+  color: var(--navy);
+}
+
+/* Legacy explainer wrapper used by CalculatorShell pages. */
+.prose-like h2 {
+  font-size: 1.6rem;
+  line-height: 1.25;
+  color: var(--navy);
+}
+.prose-like h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.prose-like p,
+.prose-like li {
+  line-height: 1.8;
 }
 
 /* Reserved-space ad slot to guarantee zero CLS */
@@ -268,136 +450,142 @@ textarea:focus-visible,
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #94a3b8;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border: 1px dashed var(--border);
-  border-radius: 0.75rem;
+  color: #8a98a8;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
 }
 
 /* ──────────────────────────────────────────────────────────────
-   Reckon directory redesign — home page + chrome
-   Bright, high-separation directory. Category identity is passed in
-   per element via the --cat-color / --cat-tint / --cat-edge custom
-   properties so a single set of hover rules serves every category.
+   Legacy "rk-*" primitives, re-themed. Category identity is passed
+   in per element via --cat-color / --cat-tint / --cat-edge.
    ────────────────────────────────────────────────────────────── */
 .rk {
-  font-family: var(--font-figtree), system-ui, sans-serif;
-  color: #141a16;
+  font-family: var(--font-ui);
+  color: var(--ink);
 }
 .rk-serif {
-  font-family: var(--font-serif), Georgia, serif;
+  font-family: var(--font-display);
 }
 .rk-mono {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-ui);
+  font-variant-numeric: tabular-nums;
 }
 
 .rk-navlink {
-  padding: 7px 12px;
-  border-radius: 8px;
-  color: #4a534d;
-  transition: background 0.15s ease, color 0.15s ease;
+  position: relative;
+  padding: 0.6rem 0;
+  color: var(--ink);
+  transition: color 0.15s ease;
 }
-.rk-navlink:hover {
-  background: #eef2ee;
-  color: #141a16;
+.rk-navlink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 2px;
+  height: 2px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease-out);
+}
+.rk-navlink:hover,
+.rk-navlink[aria-current="page"] {
+  color: var(--blue);
+}
+.rk-navlink:hover::after,
+.rk-navlink[aria-current="page"]::after {
+  transform: scaleX(1);
 }
 
 .rk-card {
-  border: 1px solid #dde4e0;
-  border-radius: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 1px 2px rgba(11, 20, 15, 0.03);
   transition: box-shadow 0.22s ease, border-color 0.22s ease;
 }
 .rk-card:hover {
-  border-color: var(--cat-edge, #c9d5ce);
+  border-color: var(--cat-edge, #82bae2);
 }
 
-/* Premium data primitives — the design language of the Decision Engines.
-   High-contrast, scannable, consistent across every calculator. */
 .rk-eyebrow {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 10px;
+  font-family: var(--font-ui);
+  font-size: 13px;
   font-weight: 600;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: #2f6ad4;
+  letter-spacing: 0;
+  color: var(--blue);
 }
 .rk-note {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 11px;
-  color: #6b7873;
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  color: var(--muted);
 }
 .rk-figure {
-  font-family: var(--font-mono), ui-monospace, monospace;
+  font-family: var(--font-ui);
   font-variant-numeric: tabular-nums;
   font-weight: 700;
-  color: #0d1712;
-  letter-spacing: -0.01em;
+  color: var(--navy);
+  letter-spacing: -0.03em;
 }
-/* Dark result panel — the anchor of every engine. Soft gradient + rim light. */
+/* Dark result panel — navy with the brand ring. */
 .rk-panel {
-  background: linear-gradient(158deg, #142a52 0%, #0a1730 100%);
-  color: #eef3fb;
-  border: 1px solid rgba(58, 160, 255, 0.16);
-  border-radius: 22px;
-  box-shadow: 0 30px 60px -30px rgba(8, 20, 44, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  position: relative;
+  background: var(--brand-gradient);
+  color: #eef3f9;
+  border: 1px solid #2748d4;
+  border-radius: 10px;
+  box-shadow: var(--shadow-lg);
 }
-
 .rk-tool {
   transition: color 0.12s ease, transform 0.12s ease;
 }
 .rk-tool:hover {
-  color: var(--cat-color, #0d66f4);
+  color: var(--cat-color, var(--blue));
   transform: translateX(3px);
 }
-
 .rk-pill {
   transition: opacity 0.15s ease;
 }
 .rk-pill:hover {
   opacity: 0.85;
 }
-
 .rk-foot {
   transition: background 0.15s ease;
 }
 .rk-foot:hover {
-  background: var(--cat-tint, #eef5ff);
+  background: var(--cat-tint, var(--ice));
 }
-
 .rk-chip {
-  transition: background 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 .rk-chip:hover {
-  background: #dceaff;
+  background: var(--blue);
+  color: #fff;
 }
-
 .rk-searchbtn {
   transition: background 0.15s ease;
 }
 .rk-searchbtn:hover {
-  background: #0b1739;
+  background: var(--navy);
 }
-
 .rk-inklink {
   transition: color 0.15s ease;
 }
 .rk-inklink:hover {
-  color: #0d66f4;
+  color: var(--blue);
 }
 
-/* Brand-styled range slider (pension control) */
+/* Brand range slider */
 .rk-range {
   -webkit-appearance: none;
   appearance: none;
   height: 6px;
   border-radius: 999px;
-  background: #e4e9e5;
+  background: var(--line);
   outline-offset: 4px;
 }
 .rk-range::-webkit-slider-thumb {
@@ -406,18 +594,18 @@ textarea:focus-visible,
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--rk-accent, #0d66f4);
+  background: var(--rk-accent, var(--blue));
   border: 3px solid #fff;
-  box-shadow: 0 1px 4px rgba(16, 32, 64, 0.28);
+  box-shadow: 0 1px 4px rgba(16, 24, 40, 0.3);
   cursor: pointer;
 }
 .rk-range::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: var(--rk-accent, #0d66f4);
+  background: var(--rk-accent, var(--blue));
   border: 3px solid #fff;
-  box-shadow: 0 1px 4px rgba(16, 32, 64, 0.28);
+  box-shadow: 0 1px 4px rgba(16, 24, 40, 0.3);
   cursor: pointer;
 }
 .rk-details > summary {
@@ -428,40 +616,63 @@ textarea:focus-visible,
   display: none;
 }
 
-/* Filled input — the value-entry area reads as clearly distinct from labels,
-   with a premium focus state. */
+/* Input — clear value-entry box distinct from its label. */
 .rk-input {
   width: 100%;
-  background: #f4f6f8;
-  border: 1.5px solid #e4e7ea;
-  border-radius: 11px;
-  color: #0c1611;
-  font-weight: 700;
+  background: #fff;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  color: var(--navy);
+  font-weight: 600;
   outline: none;
-  transition: background 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   font-variant-numeric: tabular-nums;
 }
 .rk-input:focus {
-  background: #ffffff;
-  border-color: var(--rk-accent, #0d66f4);
-  box-shadow: 0 0 0 3px var(--rk-accent-ring, rgba(13, 102, 244, 0.14));
+  border-color: var(--rk-accent, var(--blue));
+  box-shadow: 0 0 0 3px rgba(47, 91, 234, 0.16);
 }
 .rk-input::placeholder {
-  color: #9aa39d;
+  color: #7f93a7;
   font-weight: 500;
 }
 
+/* Result panels in the older calculators use the brand emphasis surface. */
+.gm-calc .bg-primary-dark {
+  background: var(--brand-gradient);
+  box-shadow: 0 14px 30px -18px rgba(47, 91, 234, 0.8);
+}
+
+/* Plain form controls inside calculators get the same field treatment. */
+.gm-calc input[type="number"],
+.gm-calc input[type="text"],
+.gm-calc input[type="date"],
+.gm-calc input[type="time"],
+.gm-calc select {
+  border-color: #d0d5dd;
+  border-radius: 8px;
+  color: var(--navy);
+  font-weight: 500;
+  min-height: 48px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.gm-calc input:focus,
+.gm-calc select:focus {
+  border-color: var(--blue);
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
 /* ──────────────────────────────────────────────────────────────
-   Mortgage engine — premium control-panel primitives
+   Decision-engine control panel
    Desktop: the inputs card becomes a fixed-height panel with a
-   scrollable body and a permanently-pinned action footer, so the
-   Calculate button never requires page scrolling.
+   scrollable body and a permanently-pinned action footer.
    ────────────────────────────────────────────────────────────── */
 @media (min-width: 1024px) {
   .gm-inputs-panel {
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - 88px);
+    max-height: calc(100vh - 32px);
   }
   .gm-inputs-panel > .gm-inputs-head,
   .gm-inputs-panel > .gm-inputs-foot {
@@ -474,10 +685,9 @@ textarea:focus-visible,
     overscroll-behavior: contain;
   }
 }
-/* Slim, self-effacing scrollbar — only visible on hover-capable devices */
 .gm-scroll {
   scrollbar-width: thin;
-  scrollbar-color: #cfd8e3 transparent;
+  scrollbar-color: #cdd7e3 transparent;
 }
 .gm-scroll::-webkit-scrollbar {
   width: 10px;
@@ -486,48 +696,56 @@ textarea:focus-visible,
   background: transparent;
 }
 .gm-scroll::-webkit-scrollbar-thumb {
-  background: #d7dee7;
+  background: #dbe2eb;
   border-radius: 999px;
   border: 3px solid #fff;
 }
 .gm-scroll::-webkit-scrollbar-thumb:hover {
-  background: #bcc7d4;
+  background: #a9c3d8;
 }
-/* Frosted, pinned action footer */
 .gm-inputs-foot {
-  background: color-mix(in srgb, #ffffff 88%, transparent);
+  background: color-mix(in srgb, #ffffff 90%, transparent);
   backdrop-filter: saturate(180%) blur(8px);
   -webkit-backdrop-filter: saturate(180%) blur(8px);
-  border-top: 1px solid #eef1f5;
+  border-top: 1px solid var(--line);
 }
-/* Result cards lift subtly on hover — quiet, premium motion */
 .gm-card {
-  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 .gm-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04),
-    0 18px 40px -22px rgba(15, 23, 42, 0.22);
-  border-color: #d7dee7;
+  box-shadow: var(--shadow-md);
+  border-color: #d0d5dd;
 }
-/* Primary CTA — layered depth + crisp press feedback */
+/* Primary CTA */
 .gm-cta {
-  background: linear-gradient(180deg, #1a72ff 0%, #0a66ff 100%);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.25) inset,
-    0 10px 22px -10px rgba(10, 102, 255, 0.65);
-  transition: filter 0.14s ease, transform 0.08s ease, box-shadow 0.14s ease;
+  background: var(--blue);
+  transition: background 0.18s ease, transform 0.12s ease;
 }
 .gm-cta:hover {
-  filter: brightness(1.05);
+  background: var(--navy);
 }
 .gm-cta:active {
-  transform: translateY(1px);
-  box-shadow: 0 6px 14px -10px rgba(10, 102, 255, 0.65);
+  transform: translateY(1px) scale(0.985);
+}
+
+/* Entrance motion shared by hero copy across templates. */
+@keyframes gm-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;

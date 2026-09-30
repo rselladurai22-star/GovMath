@@ -4,9 +4,9 @@ import GovmathHome from "@/components/GovmathHome";
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Govmath — Smart calculations for life's big decisions",
+    title: "GovMath — Know your numbers. Plan with confidence.",
     description:
-      "100+ free UK calculators across money, property, tax, benefits and more. Accurate, up to date, no sign-up — with the maths shown step by step.",
+      "100 free UK calculators for salary, mortgages, taxes, benefits and everyday life. Find the numbers you need for your next decision.",
     url: "/",
   },
 };
