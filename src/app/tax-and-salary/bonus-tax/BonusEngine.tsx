@@ -112,7 +112,7 @@ export default function BonusEngine({ initialSalary = 40000 }: { initialSalary?:
 
   return (
     <div style={{ fontFamily: FONT, color: T.body, background: CANVAS }}>
-      <div className="mx-auto max-w-6xl px-4 sm:px-6" style={{ paddingTop: 24, paddingBottom: showResults ? 32 : 96 }}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-6" style={{ paddingTop: 24, paddingBottom: showResults ? 32 : 96 }}>
         <div className="grid gap-4 grid-cols-1 lg:grid-cols-[360px_minmax(0,1fr)] items-start">
           <DetailsCard state={state} dispatch={dispatch} onCalculate={calculate} onReset={clear} calculated={showResults} />
 

@@ -74,11 +74,11 @@ export default async function NationalInsurancePage({ searchParams }: { searchPa
       <div id="calculator" style={{ scrollMarginTop: 74 }} />
       <NIEngine initialIncome={parseIncome(income)} />
 
-      <div className="mx-auto max-w-6xl px-4 sm:px-6" style={{ marginTop: 8, marginBottom: 8 }}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-6" style={{ marginTop: 8, marginBottom: 8 }}>
         <AdSlot size="leaderboard" />
       </div>
 
-      <section className="mx-auto max-w-5xl px-4 sm:px-6">
+      <section className="mx-auto max-w-5xl px-5 sm:px-6">
         <NIGuide />
       </section>
 

@@ -115,7 +115,7 @@ export default async function SalaryCalculatorPage({ searchParams }: { searchPar
       <TakeHomeEngine initialSalary={parseSalary(salary)} />
 
       {/* Visual guide */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6">
+      <section className="mx-auto max-w-5xl px-5 sm:px-6">
         <TakeHomeGuide />
       </section>
 

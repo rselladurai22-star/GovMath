@@ -198,7 +198,7 @@ function AmortBars() {
   const W = 640, H = 200, padB = 26, top = 8, bh = H - padB - top;
   const bw = 58, gap = (W - AMORT.length * bw) / (AMORT.length + 1);
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block" }}>
+    <svg className="gm-chart" viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block" }}>
       {AMORT.map((d, i) => {
         const x = gap + i * (bw + gap);
         const iH = d.i * bh, cH = bh - iH;
@@ -308,7 +308,7 @@ function FixedVsSvr() {
   const yFix = 96, ySvr = 44; // higher on screen = higher rate
   const xBreak = padL + (W - padL - 10) * 0.55;
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block" }}>
+    <svg className="gm-chart" viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block" }}>
       <text x={4} y={ySvr + 4} style={{ fontSize: 11, fontWeight: 600 }} fill={mute}>SVR</text>
       <text x={4} y={yFix + 4} style={{ fontSize: 11, fontWeight: 600 }} fill={mute}>Fix</text>
       <line x1={padL} y1={H - padB} x2={W - 6} y2={H - padB} stroke={line} strokeWidth="1" />

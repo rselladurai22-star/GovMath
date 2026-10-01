@@ -948,6 +948,20 @@ textarea:focus-visible,
   transform: translateY(1px);
 }
 
+/* Guide charts: keep them legible on phones by letting the chart scroll
+   sideways inside its card instead of shrinking to unreadable text. */
+@media (max-width: 640px) {
+  :has(> svg.gm-chart) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  svg.gm-chart {
+    width: 560px;
+    max-width: none;
+  }
+}
+
 /* Scroll reveal — active only once a page's motion script switches it on,
    so content is never hidden without JS or with reduced motion. */
 [data-motion="on"] [data-reveal] {

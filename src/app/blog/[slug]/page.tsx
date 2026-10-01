@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import AdSlot from "@/components/AdSlot";
 import PageHero from "@/components/PageHero";
@@ -121,20 +120,6 @@ export default async function BlogPostPage({ params }: { params: Params }) {
         </section>
       )}
 
-      <section className={`gm-wrap ${styles.ctaWrap}`} data-reveal>
-        <div className={styles.cta}>
-          <div>
-            <h2>Ready to run your own numbers?</h2>
-            <p>Every GovMath calculator is free, plain-English and updated for 2025/26.</p>
-          </div>
-          <Link href="/calculators" className={styles.ctaBtn}>
-            Browse all calculators
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
-              <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
-        </div>
-      </section>
     </div>
   );
 }

@@ -464,90 +464,320 @@
 
 /* ── Footer ─────────────────────────────────────────────── */
 .footer {
-  margin-top: 0;
-  background: var(--ice);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: 72px;
   border-top: 1px solid var(--line);
-  padding-top: 44px;
+  background: linear-gradient(180deg, #f7f8ff 0%, #fff 55%);
 }
-.footerTop {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
-  gap: 2rem;
-  padding-bottom: 2rem;
+.footer::before {
+  /* gradient hairline */
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #4353ff 25%, #8b5cf6 50%, #22d3ee 75%, transparent);
+  opacity: 0.6;
 }
-.footerBrand p {
-  margin-top: 0.75rem;
-  color: var(--muted);
-  font-size: 0.9375rem;
-  line-height: 1.55;
-  max-width: 32ch;
+.footerGlow {
+  position: absolute;
+  left: 50%;
+  bottom: -340px;
+  z-index: -1;
+  width: 900px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(139, 92, 246, 0.16), transparent);
+  transform: translateX(-50%);
+  pointer-events: none;
 }
-.footerCol h2 {
-  font-family: var(--font-ui);
-  font-size: 0.9375rem;
-  font-weight: 700;
-  letter-spacing: 0;
-  color: var(--navy);
-  margin: 0 0 0.75rem;
-}
-.footerCol ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  gap: 0.45rem;
-}
-.footerCol a {
-  font-size: 0.9375rem;
-  color: var(--ink);
-  transition: color 0.15s ease;
-}
-.footerCol a:hover {
-  color: var(--blue);
-}
-.footerBottom {
+
+.footerCta {
+  position: relative;
+  isolation: isolate;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  padding: 1.25rem 0;
+  overflow: hidden;
+  margin-bottom: 56px;
+  padding: 2.25rem 2.5rem;
+  border-radius: 28px;
+  background: linear-gradient(130deg, #4353ff 0%, #7c3aed 55%, #c026d3 120%);
+  color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 40px 70px -36px rgba(87, 70, 245, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.footerCta::before,
+.footerCta::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(44px);
+}
+.footerCta::before {
+  top: -90px;
+  right: 12%;
+  width: 260px;
+  height: 260px;
+  background: rgba(34, 211, 238, 0.5);
+  animation: footBlobA 12s ease-in-out infinite alternate;
+}
+.footerCta::after {
+  bottom: -110px;
+  left: 6%;
+  width: 240px;
+  height: 240px;
+  background: rgba(244, 114, 182, 0.45);
+  animation: footBlobB 14s ease-in-out infinite alternate;
+}
+@keyframes footBlobA {
+  to {
+    transform: translate(-80px, 50px) scale(1.15);
+  }
+}
+@keyframes footBlobB {
+  to {
+    transform: translate(90px, -40px) scale(1.1);
+  }
+}
+.footerCta h2 {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(1.4rem, 2.6vw, 1.875rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+.footerCta p {
+  margin: 0.45rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+.footerCtaBtn {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 52px;
+  padding: 0 1.5rem;
+  border-radius: 14px;
+  background: #fff;
+  color: #3a2fd0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: 0 14px 28px -14px rgba(13, 19, 48, 0.6);
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease;
+}
+.footerCtaBtn svg {
+  transition: transform 0.25s var(--ease-out);
+}
+.footerCtaBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 36px -16px rgba(13, 19, 48, 0.7);
+}
+.footerCtaBtn:hover svg {
+  transform: translateX(5px);
+}
+
+.footerTop {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.15fr) minmax(0, 1.15fr) minmax(0, 0.75fr);
+  gap: 2.5rem;
+  padding-bottom: 3rem;
+}
+.footerBrand p {
+  margin: 1rem 0 0;
+  max-width: 34ch;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+}
+.footerFacts {
+  display: grid;
+  gap: 0.5rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+.footerFacts li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.footerFacts svg {
+  flex-shrink: 0;
+  padding: 3px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: #dcfce9;
+  color: #0a7a52;
+}
+.footerCol h2 {
+  margin: 0 0 1rem;
+  color: var(--navy);
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.footerCol ul {
+  display: grid;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.footerCol a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-inline: -0.5rem;
+  padding: 0.4rem 0.5rem;
+  border-radius: 10px;
+  color: var(--ink);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.25s var(--ease-out);
+}
+.footerCol a:hover {
+  background: var(--ice-blue);
+  color: var(--blue);
+  transform: translateX(3px);
+}
+.footerTopics a:hover {
+  background: var(--t);
+  color: var(--c);
+}
+.footerIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: var(--t);
+  color: var(--c);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.footerTopics a:hover .footerIcon {
+  background: linear-gradient(135deg, var(--c), var(--g));
+  color: #fff;
+}
+.footerCol small {
+  margin-left: auto;
+  padding: 0 0.45rem;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  box-shadow: inset 0 0 0 1px #e8eaf6;
+}
+
+.footerBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  padding: 1.4rem 0 1.75rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.875rem;
   line-height: 1.55;
 }
-.footerBottom > span {
+.footerBottom nav {
+  display: flex;
   flex-shrink: 0;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.4rem;
+  font-weight: 600;
 }
-.footerBottom > p {
-  margin: 0;
-  text-align: right;
-  max-width: 640px;
+.footerBottom a {
+  color: var(--ink);
+  transition: color 0.18s ease;
+}
+.footerBottom a:hover {
+  color: var(--blue);
+}
+.toTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid #dfe2f3;
+  border-radius: 999px;
+  background: #fff;
+}
+.toTop svg {
+  transition: transform 0.25s var(--ease-out);
+}
+.toTop:hover svg {
+  transform: translateY(-3px);
 }
 
-@media (max-width: 930px) {
+@media (max-width: 1023px) {
   .footerTop {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 2.5rem;
   }
   .footerBrand {
     grid-column: 1 / -1;
   }
+  .footerBrand p {
+    max-width: 52ch;
+  }
+  .footerFacts {
+    grid-template-columns: repeat(3, auto);
+    justify-content: start;
+    gap: 0.5rem 1.5rem;
+  }
 }
-@media (max-width: 640px) {
+@media (max-width: 700px) {
+  .footer {
+    padding-top: 48px;
+  }
+  .footerCta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    margin-bottom: 40px;
+    padding: 1.6rem;
+    border-radius: 22px;
+  }
+  .footerCtaBtn {
+    width: 100%;
+    justify-content: center;
+  }
   .footerTop {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding-bottom: 2rem;
+  }
+  .footerFacts {
+    grid-template-columns: 1fr;
   }
   .footerBottom {
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: flex-start;
+    gap: 1rem;
   }
-  .footerBottom > p {
-    text-align: left;
+  .footerCol a {
+    padding-block: 0.6rem;
   }
 }
-@media (pointer: coarse) {
-  .footerCol a {
-    display: inline-block;
-    padding: 0.3rem 0;
+@media (prefers-reduced-motion: reduce) {
+  .footerCta::before,
+  .footerCta::after {
+    animation: none;
   }
 }

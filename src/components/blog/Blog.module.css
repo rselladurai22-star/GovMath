@@ -251,6 +251,9 @@
 .article :global(tr:last-child td) {
   border-bottom: 0;
 }
+.articleLast {
+  padding-bottom: 88px;
+}
 .adRow {
   max-width: 820px;
   margin-inline: auto;
@@ -260,7 +263,7 @@
 /* ── More guides + CTA ────────────────────────────────── */
 .more {
   margin-top: 40px;
-  padding-block: 80px;
+  padding-block: 80px 96px;
   border-top: 1px solid var(--line);
   background: linear-gradient(180deg, #f7f8ff 0%, #fff 100%);
 }

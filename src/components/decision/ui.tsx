@@ -42,10 +42,10 @@ export function Card({ children, className = "", radius = R_MD, hover = true, st
 
 export function Head({ icon, title, right }: { icon: ReactNode; title: string; right?: ReactNode }) {
   return (
-    <div className="flex items-center justify-between gap-3" style={{ marginBottom: 16 }}>
+    <div className="flex flex-wrap items-center justify-between" style={{ marginBottom: 16, gap: "10px 12px" }}>
       <div className="flex items-center gap-2.5" style={{ minWidth: 0 }}>
         <span style={{ width: 30, height: 30, flex: "none", display: "grid", placeItems: "center", borderRadius: 10, background: "var(--brand-gradient)", color: "#fff", boxShadow: "0 10px 18px -10px rgba(87,70,245,0.8)" }}>{icon}</span>
-        <h3 style={{ fontSize: 16, fontWeight: 700, color: T.ink, margin: 0, letterSpacing: "-0.01em", fontFamily: FONT }}>{title}</h3>
+        <h3 style={{ fontSize: 16, fontWeight: 700, color: T.ink, margin: 0, letterSpacing: "-0.01em", fontFamily: FONT, whiteSpace: "nowrap" }}>{title}</h3>
       </div>
       {right && <div style={{ flex: "none" }}>{right}</div>}
     </div>

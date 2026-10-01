@@ -286,7 +286,7 @@ function Waterfall() {
   const bw = 108, gap = (W - cols.length * bw) / (cols.length + 1);
   const cx = (i: number) => gap + i * (bw + gap);
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", overflow: "visible" }}>
+    <svg className="gm-chart" viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", overflow: "visible" }}>
       {cols.map((c, i) => {
         const yt = y(c.top), yb = y(c.bottom), h = Math.max(2, yb - yt);
         return (
@@ -316,7 +316,7 @@ function TaxLadder() {
   const x = (v: number) => (v / MAX) * W;
   return (
     <div>
-      <svg viewBox={`0 0 ${W} ${bands.length * (rowH + gap)}`} width="100%" style={{ display: "block" }}>
+      <svg className="gm-chart" viewBox={`0 0 ${W} ${bands.length * (rowH + gap)}`} width="100%" style={{ display: "block" }}>
         {bands.map((b, i) => {
           const w = x(b.to) - x(b.from);
           const yy = i * (rowH + gap);
@@ -377,8 +377,8 @@ function EffectiveVsMarginal() {
     <div className="space-y-5">
       {rows.map((r) => (
         <div key={r.label}>
-          <div className="flex items-baseline justify-between" style={{ marginBottom: 6 }}>
-            <span style={{ fontSize: 15, fontWeight: 700, color: ink }}>{r.label} <span style={{ fontSize: 12.5, fontWeight: 500, color: subtle }}>· {r.sub}</span></span>
+          <div className="flex items-center justify-between gap-3" style={{ marginBottom: 8 }}>
+            <span style={{ fontSize: 15, fontWeight: 700, color: ink, lineHeight: 1.35 }}>{r.label}<span style={{ display: "block", fontSize: 13, fontWeight: 500, color: subtle }}>{r.sub}</span></span>
             <span style={{ fontSize: 20, fontWeight: 800, color: r.color, fontVariantNumeric: "tabular-nums" }}>{r.val}%</span>
           </div>
           <div style={{ height: 16, borderRadius: 999, background: tint, overflow: "hidden" }}>
@@ -411,7 +411,7 @@ function MarginalCurve() {
   const yTicks = [0, 0.2, 0.4, 0.6];
   const xTicks = [{ v: 12570, l: "£12.5k" }, { v: 50270, l: "£50k" }, { v: 100000, l: "£100k" }, { v: 125140, l: "£125k" }];
   return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", overflow: "visible" }}>
+    <svg className="gm-chart" viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", overflow: "visible" }}>
       {/* trap zone */}
       <rect x={x(100000)} y={padT} width={x(125140) - x(100000)} height={H - padT - padB} fill="#fef2f2" />
       {yTicks.map((t) => (
@@ -464,7 +464,7 @@ function StudentLoanViz() {
   const x = (v: number) => (v / MAX) * W;
   return (
     <div>
-      <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", overflow: "visible" }}>
+      <svg className="gm-chart" viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", overflow: "visible" }}>
         <rect x={0} y={pt} width={x(THRESH)} height={barH} rx={7} fill="#d0d5dd" />
         <rect x={x(THRESH)} y={pt} width={x(SAL) - x(THRESH)} height={barH} rx={7} fill={violet} />
         <line x1={x(THRESH)} y1={pt - 6} x2={x(THRESH)} y2={pt + barH + 6} stroke={ink} strokeWidth="1.5" strokeDasharray="3 3" />

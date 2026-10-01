@@ -85,7 +85,7 @@ export default function MortgageEngine(props: Partial<MortgageInputs>) {
 
   return (
     <div style={{ fontFamily: FONT, color: T.body, background: CANVAS }}>
-      <div className="mx-auto max-w-6xl px-4 sm:px-6" style={{ paddingTop: 24, paddingBottom: showResults ? 32 : 96 }}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-6" style={{ paddingTop: 24, paddingBottom: showResults ? 32 : 96 }}>
         <div className="grid gap-4 grid-cols-1 lg:grid-cols-[360px_minmax(0,1fr)] items-start">
           {/* LEFT — inputs */}
           <DetailsCard state={state} dispatch={dispatch} snap={snap} sdlt={sdlt} onCalculate={calculate} onReset={clear} calculated={showResults} />
@@ -496,7 +496,7 @@ function BalanceCard({ snap }: { snap: MortgageSnapshot }) {
         </div>} />
 
       <div style={{ position: "relative" }}>
-        <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", overflow: "visible" }} onMouseLeave={() => setHover(null)}>
+        <svg className="gm-chart" viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", overflow: "visible" }} onMouseLeave={() => setHover(null)}>
           <defs>
             <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor={color} stopOpacity="0.18" />

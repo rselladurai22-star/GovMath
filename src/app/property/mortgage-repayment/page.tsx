@@ -111,17 +111,17 @@ export default async function MortgagePage({ searchParams }: { searchParams: Sea
       />
 
       {/* Ad */}
-      <div className="mx-auto max-w-6xl px-4 sm:px-6" style={{ marginTop: 8, marginBottom: 8 }}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-6" style={{ marginTop: 8, marginBottom: 8 }}>
         <AdSlot size="leaderboard" />
       </div>
 
       {/* Visual guide */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6">
+      <section className="mx-auto max-w-5xl px-5 sm:px-6">
         <MortgageGuide />
       </section>
 
       {/* Ad */}
-      <div className="mx-auto max-w-6xl px-4 sm:px-6" style={{ marginTop: 24 }}>
+      <div className="mx-auto max-w-6xl px-5 sm:px-6" style={{ marginTop: 24 }}>
         <AdSlot size="billboard" />
       </div>
 
