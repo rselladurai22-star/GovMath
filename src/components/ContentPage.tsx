@@ -1,5 +1,8 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 import PageHero, { type Crumb } from "@/components/PageHero";
+import { HomeMotion } from "@/components/home/Motion";
+import styles from "@/components/blog/Blog.module.css";
 
 type ContentPageProps = {
   title: string;
@@ -14,8 +17,8 @@ type ContentPageProps = {
 const DOC_ICON = "M7 3h7l5 5v12a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1zm7 0v5h5M9 13h6M9 17h4";
 
 /**
- * Shared shell for prose pages (About, legal, contact, blog posts):
- * the site hero followed by a readable content column.
+ * Shared shell for prose pages (About, legal, contact): the site hero, a
+ * premium reading card and a closing call-to-action.
  */
 export default function ContentPage({
   title,
@@ -26,7 +29,8 @@ export default function ContentPage({
   children,
 }: ContentPageProps) {
   return (
-    <>
+    <div id="gm-content">
+      <HomeMotion rootId="gm-content" />
       <PageHero
         breadcrumbs={[...breadcrumbs, { href: "#", label: title }]}
         eyebrow={eyebrow}
@@ -36,13 +40,30 @@ export default function ContentPage({
         compact
       >
         {updated && (
-          <p className="text-sm text-muted">Last updated: {updated}</p>
+          <div className={styles.metaRow}>
+            <span>Last updated: {updated}</span>
+          </div>
         )}
       </PageHero>
 
-      <article className="mx-auto max-w-3xl px-6 py-14 gm-prose">
-        {children}
-      </article>
-    </>
+      <div className={styles.articleWrap}>
+        <article className={`gm-prose ${styles.article}`}>{children}</article>
+      </div>
+
+      <section className={`gm-wrap ${styles.ctaWrap}`} data-reveal>
+        <div className={styles.cta}>
+          <div>
+            <h2>Ready to run your own numbers?</h2>
+            <p>Every GovMath calculator is free, plain-English and updated for 2025/26.</p>
+          </div>
+          <Link href="/calculators" className={styles.ctaBtn}>
+            Browse all calculators
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+              <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
+        </div>
+      </section>
+    </div>
   );
 }

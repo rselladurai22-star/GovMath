@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import EngineOutro from "@/components/calculator/EngineOutro";
+import { HomeMotion } from "@/components/home/Motion";
 import PageHero, { HeroPills } from "@/components/PageHero";
 import { CAT } from "@/components/category-style";
-import Link from "next/link";
 import MortgageEngine from "./MortgageEngine";
 import MortgageGuide from "./MortgageGuide";
 import AdSlot from "@/components/AdSlot";
@@ -86,7 +87,8 @@ export default async function MortgagePage({ searchParams }: { searchParams: Sea
   ];
 
   return (
-    <div style={{ background: "#ffffff", color: "var(--ink)" }}>
+    <div id="gm-engine-page" style={{ background: "#ffffff", color: "var(--ink)" }}>
+      <HomeMotion rootId="gm-engine-page" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <PageHero
@@ -123,46 +125,7 @@ export default async function MortgagePage({ searchParams }: { searchParams: Sea
         <AdSlot size="billboard" />
       </div>
 
-      {/* FAQ + related */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6" style={{ paddingTop: 44, paddingBottom: 40 }}>
-        <div style={{ borderTop: "1px solid #e6e8f2", paddingTop: 32 }}>
-          <div className="rk-eyebrow" style={{ color: "#12a566" }}>FAQ</div>
-          <h2 style={{ fontSize: 27, fontWeight: 800, color: "#0d1330", letterSpacing: "-0.02em", margin: "8px 0 16px" }}>Frequently asked</h2>
-          <div className="space-y-2.5" style={{ maxWidth: 760 }}>
-            {FAQS.map((f) => (
-              <details key={f.q} className="rk-details" style={{ border: "1px solid #e6e8f2", borderRadius: 14, padding: "15px 17px", background: "#fff" }}>
-                <summary className="flex items-center justify-between gap-3" style={{ fontWeight: 700, fontSize: 15.5, color: "#0d1330" }}>
-                  {f.q}
-                  <span style={{ color: "#12a566", fontSize: 20, lineHeight: 1, fontWeight: 700 }}>+</span>
-                </summary>
-                <p style={{ marginTop: 11, fontSize: 15, color: "#1a2040", lineHeight: 1.65 }}>{f.a}</p>
-              </details>
-            ))}
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2" style={{ marginTop: 32 }}>
-            <div style={{ border: "1px solid #e6e8f2", borderRadius: 14, padding: 20 }}>
-              <div className="rk-eyebrow" style={{ color: "#12a566" }}>Related decisions</div>
-              <h3 style={{ fontSize: 17, fontWeight: 700, color: "#0d1330", marginTop: 4, marginBottom: 10 }}>Keep exploring</h3>
-              <div>
-                {related.map((c, i) => (
-                  <Link key={c.href} href={c.href} className="rk-tool flex items-center justify-between" style={{ fontSize: 14.5, color: "#1a2040", padding: "10px 0", borderBottom: i < related.length - 1 ? "1px solid #eef0f2" : "none", ["--cat-color" as string]: "#12a566" }}>
-                    <span>{c.title}</span><span style={{ color: "#12a566", fontWeight: 700 }}>→</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div style={{ background: "#0d1330", color: "#eef4ef", borderRadius: 14, padding: 22 }}>
-              <div style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#9ec6ff" }}>Good to know</div>
-              <p style={{ fontSize: 15, color: "#b9c6bf", marginTop: 10, lineHeight: 1.65 }}>
-                Every figure here is an estimate. The exact amount your lender quotes depends on their product fees, any
-                cashback and how interest is calculated (daily vs monthly). Always check the official Key Facts
-                Illustration before you commit.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <EngineOutro faqs={FAQS} related={related} note="Every figure here is an estimate. The exact amount your lender quotes depends on their product fees, any cashback and how interest is calculated (daily vs monthly). Always check the official Key Facts Illustration before you commit." />
     </div>
   );
 }

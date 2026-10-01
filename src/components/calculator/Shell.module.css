@@ -257,6 +257,27 @@
   line-height: 1.6;
 }
 
+.note {
+  margin-top: 1.25rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px solid #e0e3fb;
+  border-radius: 22px;
+  background:
+    radial-gradient(120% 120% at 100% 0%, rgba(139, 92, 246, 0.16) 0%, transparent 60%),
+    linear-gradient(160deg, #eef0ff 0%, #f7f8ff 100%);
+}
+.note strong {
+  color: var(--blue);
+  font-size: 0.875rem;
+  font-weight: 800;
+}
+.note p {
+  margin: 0.35rem 0 0;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
 /* FAQ disclosure */
 .faq {
   border: 1px solid #e3e6f6;

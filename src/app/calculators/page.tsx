@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AdSlot from "@/components/AdSlot";
-import TopicBar from "@/components/TopicBar";
 import PageHero from "@/components/PageHero";
 import HomeSearch, { type SearchItem } from "@/components/HomeSearch";
-import { CAT, catVars, iconForTitle, LineIcon, shortTitle } from "@/components/category-style";
+import { HomeMotion } from "@/components/home/Motion";
+import { accentVars, CAT, LineIcon } from "@/components/category-style";
 import { CALCULATORS, CATEGORIES } from "@/lib/calculators";
+import styles from "@/components/GovmathHome.module.css";
 
 export const metadata: Metadata = {
   title: "All Calculators",
@@ -21,82 +22,80 @@ export default function AllCalculatorsPage() {
   }));
 
   return (
-    <>
+    <div id="gm-all" className={styles.page}>
+      <HomeMotion rootId="gm-all" />
       <PageHero
         breadcrumbs={[
           { href: "/", label: "Home" },
           { href: "/calculators", label: "All calculators" },
         ]}
+        eyebrow={`${CALCULATORS.length} calculators · 2025/26 rates`}
         title="All calculators"
-        lead={`${CALCULATORS.length} free UK calculators across ${CATEGORIES.length} topics, updated for 2025/26.`}
+        lead={`Every free UK calculator on GovMath, across ${CATEGORIES.length} topics. Search, or jump to a topic.`}
       >
-        <div id="search" className="max-w-[640px] scroll-mt-24">
+        <div id="search" className="relative z-10 max-w-[660px] scroll-mt-24">
           <HomeSearch items={searchItems} />
         </div>
       </PageHero>
 
-      {/* Topic jump links */}
-      <nav aria-label="Jump to topic" className="gm-wrap pt-6">
-        <ul className="flex flex-wrap gap-2">
+      <div className={`gm-wrap ${styles.allBody}`}>
+        <nav aria-label="Jump to topic" className={styles.jump}>
           {CATEGORIES.map((c) => (
-            <li key={c.slug}>
-              <a
-                href={`#${c.slug}`}
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-3 py-1.5 text-sm font-medium text-navy transition-colors hover:border-primary hover:text-primary"
-              >
-                <span className="h-2 w-2 rounded-full" style={{ background: CAT[c.slug].color }} aria-hidden="true" />
-                {CAT[c.slug].label}
-              </a>
-            </li>
+            <a key={c.slug} href={`#${c.slug}`} style={accentVars(c.slug)}>
+              <LineIcon path={CAT[c.slug].icon} size={17} />
+              {CAT[c.slug].label}
+            </a>
           ))}
-        </ul>
-      </nav>
+        </nav>
 
-      {CATEGORIES.map((cat, idx) => {
-        const items = CALCULATORS.filter((c) => c.category === cat.slug);
-        if (items.length === 0) return null;
-        return (
-          <section key={cat.slug} id={cat.slug} aria-labelledby={`${cat.slug}-heading`} className="gm-wrap scroll-mt-24 pt-12" style={catVars(cat.slug)}>
-            <TopicBar
-              id={`${cat.slug}-heading`}
-              title={cat.title}
-              subtitle={cat.tagline}
-              icon={CAT[cat.slug].icon}
-              href={cat.href}
-              linkLabel="Topic page"
-            />
-            <ul className="mt-4 grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
-              {items.map((c) => (
-                <li key={c.href}>
-                  <Link
-                    href={c.href}
-                    className="group flex items-start gap-3 rounded-lg px-2 py-2.5 transition-colors hover:bg-ice"
-                  >
-                    <span className="mt-0.5" style={{ color: "var(--c)" }}>
-                      <LineIcon path={iconForTitle(c.title, c.category)} size={18} />
+        <div className={styles.panels}>
+          {CATEGORIES.map((cat, idx) => {
+            const items = CALCULATORS.filter((c) => c.category === cat.slug);
+            if (items.length === 0) return null;
+            return (
+              <div key={cat.slug} className={styles.panelGroup}>
+                <section id={cat.slug} aria-labelledby={`${cat.slug}-heading`} className={styles.panel} style={accentVars(cat.slug)} data-reveal>
+                  <header className={styles.panelHead}>
+                    <span className={styles.panelIcon}>
+                      <LineIcon path={CAT[cat.slug].icon} size={26} />
                     </span>
-                    <span className="min-w-0">
-                      <span className="block text-[15px] font-semibold leading-snug text-navy group-hover:text-primary">
-                        {shortTitle(c.title)}
-                      </span>
-                      <span className="block text-sm leading-snug text-muted">{c.blurb}</span>
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            {idx === 3 && (
-              <div className="mt-10">
-                <AdSlot size="leaderboard" />
+                    <div>
+                      <h2 id={`${cat.slug}-heading`}>{cat.title}</h2>
+                      <p>{cat.tagline}</p>
+                    </div>
+                    <Link href={cat.href} className={styles.panelPill}>
+                      {items.length} calculators
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true" className={styles.arrow}>
+                        <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </Link>
+                  </header>
+                  <ul className={`${styles.tiles} ${styles.tilesRich}`}>
+                    {items.map((c) => (
+                      <li key={c.href}>
+                        <Link href={c.href}>
+                          <span>
+                            <strong>{c.title}</strong>
+                            <small>{c.blurb}</small>
+                          </span>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+                            <path d="m9 18 6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+                {idx === 3 && <AdSlot size="leaderboard" />}
               </div>
-            )}
-          </section>
-        );
-      })}
+            );
+          })}
+        </div>
 
-      <div className="gm-wrap py-12">
-        <AdSlot size="billboard" />
+        <div className={styles.adRow}>
+          <AdSlot size="billboard" />
+        </div>
       </div>
-    </>
+    </div>
   );
 }
