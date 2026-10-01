@@ -21,7 +21,7 @@ function Section({ n, kicker, title, children }: { n: string; kicker: string; ti
   return (
     <section style={{ paddingTop: 44, paddingBottom: 44, borderTop: `1px solid ${line}` }}>
       <div className="flex items-center gap-3" style={{ marginBottom: 6 }}>
-        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 6, background: "#e7f6ee", color: greenDeep, fontWeight: 800, fontSize: 15 }}>{n}</span>
+        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 14, background: "#e7f6ee", color: greenDeep, fontWeight: 800, fontSize: 15 }}>{n}</span>
         <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: green }}>{kicker}</span>
       </div>
       <h2 style={{ fontSize: 27, fontWeight: 800, color: ink, letterSpacing: "-0.02em", margin: "0 0 14px", lineHeight: 1.12 }}>{title}</h2>
@@ -34,7 +34,7 @@ function P({ children }: { children: React.ReactNode }) {
 }
 function VizCard({ label, children }: { label?: string; children: React.ReactNode }) {
   return (
-    <div style={{ border: `1px solid ${line}`, borderRadius: 6, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(12,22,17,0.04), 0 14px 32px -20px rgba(12,22,17,0.12)", margin: "18px 0" }}>
+    <div style={{ border: `1px solid ${line}`, borderRadius: 14, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(12,22,17,0.04), 0 14px 32px -20px rgba(12,22,17,0.12)", margin: "18px 0" }}>
       {label && <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: subtle, marginBottom: 16 }}>{label}</div>}
       {children}
     </div>
@@ -174,7 +174,7 @@ export default function MortgageGuide() {
       <Section n="8" kicker="Speak the language" title="The seven terms worth knowing">
         <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", marginTop: 6 }}>
           {GLOSSARY.map((g) => (
-            <div key={g.t} style={{ border: `1px solid ${line}`, borderRadius: 6, padding: "15px 16px", background: "#fff" }}>
+            <div key={g.t} style={{ border: `1px solid ${line}`, borderRadius: 14, padding: "15px 16px", background: "#fff" }}>
               <div style={{ fontSize: 15, fontWeight: 700, color: ink }}>{g.t}</div>
               <div style={{ fontSize: 14, color: mute, marginTop: 5, lineHeight: 1.5 }}>{g.d}</div>
             </div>
@@ -223,7 +223,7 @@ function PoundBars() {
       {POUND.map((d) => (
         <div key={d.yr} className="flex items-center gap-4">
           <div style={{ width: 66, fontSize: 14, fontWeight: 700, color: ink, flex: "none" }}>{d.yr}</div>
-          <div style={{ flex: 1, height: 30, borderRadius: 4, overflow: "hidden", display: "flex", border: `1px solid ${line}` }}>
+          <div style={{ flex: 1, height: 30, borderRadius: 10, overflow: "hidden", display: "flex", border: `1px solid ${line}` }}>
             <div style={{ width: `${d.i}%`, background: coral, display: "grid", placeItems: "center" }}>
               {d.i > 14 && <span style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}>{d.i}p interest</span>}
             </div>
@@ -267,7 +267,7 @@ function OverpayCompare() {
 }
 function Badge({ value, label }: { value: string; label: string }) {
   return (
-    <div style={{ background: "#e7f6ee", border: "1px solid #cdeadd", borderRadius: 6, padding: "12px 16px" }}>
+    <div style={{ background: "#e7f6ee", border: "1px solid #cdeadd", borderRadius: 14, padding: "12px 16px" }}>
       <div style={{ fontSize: 20, fontWeight: 800, color: greenDeep, fontVariantNumeric: "tabular-nums" }}>{value}</div>
       <div style={{ fontSize: 13, color: greenDeep, opacity: 0.85 }}>{label}</div>
     </div>
@@ -289,7 +289,7 @@ function LtvLadder() {
       {LTV.map((d) => (
         <div key={d.ltv} className="flex items-center gap-3">
           <div style={{ width: 48, fontSize: 15, fontWeight: 800, color: ink, fontVariantNumeric: "tabular-nums", flex: "none" }}>{d.ltv}</div>
-          <div style={{ width: `${d.w}%`, minWidth: 90, height: 34, borderRadius: 4, background: d.c, display: "flex", alignItems: "center", paddingLeft: 12 }}>
+          <div style={{ width: `${d.w}%`, minWidth: 90, height: 34, borderRadius: 10, background: d.c, display: "flex", alignItems: "center", paddingLeft: 12 }}>
             <span style={{ fontSize: 13, fontWeight: 600, color: "#fff", whiteSpace: "nowrap" }}>{d.note}</span>
           </div>
         </div>
@@ -333,7 +333,7 @@ function RepayVsIo() {
   return (
     <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))" }}>
       {[{ name: "Repayment", accent: green, key: "r" as const }, { name: "Interest-only", accent: blue, key: "i" as const }].map((col) => (
-        <div key={col.name} style={{ border: `1px solid ${line}`, borderRadius: 6, overflow: "hidden" }}>
+        <div key={col.name} style={{ border: `1px solid ${line}`, borderRadius: 14, overflow: "hidden" }}>
           <div style={{ padding: "12px 16px", background: tint, borderBottom: `1px solid ${line}` }}>
             <span style={{ fontSize: 16, fontWeight: 800, color: col.accent }}>{col.name}</span>
           </div>
@@ -371,7 +371,7 @@ function CostBar() {
   const total = COSTS.reduce((a, c) => a + c.v, 0);
   return (
     <div>
-      <div style={{ display: "flex", height: 30, borderRadius: 4, overflow: "hidden", border: `1px solid ${line}` }}>
+      <div style={{ display: "flex", height: 30, borderRadius: 10, overflow: "hidden", border: `1px solid ${line}` }}>
         {COSTS.map((c) => <div key={c.k} style={{ width: `${(c.v / total) * 100}%`, background: c.c }} title={`${c.k}: ${gbp(c.v)}`} />)}
       </div>
       <div className="grid gap-2.5" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", marginTop: 16 }}>

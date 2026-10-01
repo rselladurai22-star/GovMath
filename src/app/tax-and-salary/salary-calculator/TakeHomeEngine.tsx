@@ -105,7 +105,7 @@ export default function TakeHomeEngine({ initialSalary = 35000 }: { initialSalar
       {!showResults && (
         <div className="lg:hidden" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, background: "#fff", borderTop: `1px solid ${T.line}`, boxShadow: "0 -6px 20px -12px rgba(13,19,48,0.25)", padding: "12px 16px calc(12px + env(safe-area-inset-bottom))" }}>
           <button type="button" onClick={calculate} className="gm-cta flex items-center justify-center gap-2"
-            style={{ width: "100%", padding: "14px 12px", borderRadius: 6, color: "#fff", fontWeight: 700, fontSize: 15.5, border: 0, cursor: "pointer" }}>
+            style={{ width: "100%", padding: "14px 12px", borderRadius: 14, color: "#fff", fontWeight: 700, fontSize: 15.5, border: 0, cursor: "pointer" }}>
             <IconCoin />
             Calculate Take-Home
           </button>
@@ -129,7 +129,7 @@ function DetailsCard({ state, dispatch, snap, onCalculate, onReset, calculated }
     <Card hover={false} className="gm-inputs-panel lg:sticky lg:top-[74px]" radius={R_LG} style={{ padding: 0 }}>
       <div className="gm-inputs-head flex items-center justify-between" style={{ padding: "13px 18px 12px", borderBottom: `1px solid ${T.line}` }}>
         <div className="flex items-center gap-2">
-          <span style={{ width: 28, height: 28, display: "grid", placeItems: "center", borderRadius: 4, background: BLUE_SOFT, color: BLUE }}><IconCoin /></span>
+          <span style={{ width: 28, height: 28, display: "grid", placeItems: "center", borderRadius: 10, background: BLUE_SOFT, color: BLUE }}><IconCoin /></span>
           <h2 style={{ fontSize: 15.5, fontWeight: 700, color: T.ink, margin: 0, letterSpacing: "-0.01em", fontFamily: FONT }}>Your Details</h2>
         </div>
         <button type="button" onClick={onReset} className="flex items-center gap-1.5" style={{ fontSize: 12.5, fontWeight: 600, color: T.mute, background: "none", border: 0, cursor: "pointer" }}>
@@ -161,7 +161,7 @@ function DetailsCard({ state, dispatch, snap, onCalculate, onReset, calculated }
                 const on = state.plan === p;
                 return (
                   <button key={p} type="button" onClick={() => dispatch({ type: "plan", value: p })}
-                    style={{ fontSize: 12.5, fontWeight: 700, padding: "9px 3px", borderRadius: 4, border: `1.5px solid ${on ? BLUE : T.line}`, background: on ? BLUE : "#fff", color: on ? "#fff" : T.body, cursor: "pointer", transition: "all .12s" }}>
+                    style={{ fontSize: 12.5, fontWeight: 700, padding: "9px 3px", borderRadius: 10, border: `1.5px solid ${on ? BLUE : T.line}`, background: on ? BLUE : "#fff", color: on ? "#fff" : T.body, cursor: "pointer", transition: "all .12s" }}>
                     {STUDENT_PLANS[p].short}
                   </button>
                 );
@@ -173,7 +173,7 @@ function DetailsCard({ state, dispatch, snap, onCalculate, onReset, calculated }
 
       <div className="gm-inputs-foot" style={{ padding: "12px 18px" }}>
         <button type="button" onClick={onCalculate} className="gm-cta flex items-center justify-center gap-2"
-          style={{ width: "100%", padding: "12px 12px", borderRadius: 6, color: "#fff", fontWeight: 700, fontSize: 14.5, border: 0, cursor: "pointer" }}>
+          style={{ width: "100%", padding: "12px 12px", borderRadius: 14, color: "#fff", fontWeight: 700, fontSize: 14.5, border: 0, cursor: "pointer" }}>
           <IconCoin />
           {calculated ? "Update Results" : "Calculate Take-Home"}
         </button>
@@ -198,7 +198,7 @@ function EmptyState({ onCalculate }: { onCalculate: () => void }) {
   return (
     <Card hover={false} radius={R_LG} style={{ padding: "28px 24px" }}>
       <div className="flex flex-col items-center text-center" style={{ maxWidth: 440, margin: "0 auto" }}>
-        <span style={{ width: 52, height: 52, display: "grid", placeItems: "center", borderRadius: 6, background: BLUE_SOFT, color: BLUE, marginBottom: 14 }}>
+        <span style={{ width: 52, height: 52, display: "grid", placeItems: "center", borderRadius: 14, background: BLUE_SOFT, color: BLUE, marginBottom: 14 }}>
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="12" cy="12" r="9" /><path strokeLinecap="round" strokeLinejoin="round" d="M14.5 9.5a2.5 2.5 0 00-2.5-1.5c-1.4 0-2.5.9-2.5 2s1.1 2 2.5 2 2.5.9 2.5 2-1.1 2-2.5 2a2.5 2.5 0 01-2.5-1.5M12 6.5v11" /></svg>
         </span>
         <h3 style={{ fontSize: 20, fontWeight: 800, color: T.ink, margin: 0, letterSpacing: "-0.02em", fontFamily: FONT }}>See your take-home pay</h3>
@@ -207,14 +207,14 @@ function EmptyState({ onCalculate }: { onCalculate: () => void }) {
         </p>
         <div className="grid grid-cols-2 gap-2" style={{ width: "100%", marginTop: 18 }}>
           {points.map((p) => (
-            <div key={p.label} className="flex items-center gap-2.5" style={{ border: `1px solid ${T.line}`, borderRadius: 6, padding: "10px 12px", background: T.tint, textAlign: "left" }}>
+            <div key={p.label} className="flex items-center gap-2.5" style={{ border: `1px solid ${T.line}`, borderRadius: 14, padding: "10px 12px", background: T.tint, textAlign: "left" }}>
               <span style={{ fontSize: 16 }}>{p.icon}</span>
               <span style={{ fontSize: 12.5, fontWeight: 600, color: T.body }}>{p.label}</span>
             </div>
           ))}
         </div>
         <button type="button" onClick={onCalculate} className="gm-cta flex items-center justify-center gap-2"
-          style={{ marginTop: 18, padding: "12px 28px", borderRadius: 6, color: "#fff", fontWeight: 700, fontSize: 14.5, border: 0, cursor: "pointer" }}>
+          style={{ marginTop: 18, padding: "12px 28px", borderRadius: 14, color: "#fff", fontWeight: 700, fontSize: 14.5, border: 0, cursor: "pointer" }}>
           <IconCoin />
           Calculate Take-Home
         </button>
@@ -245,10 +245,10 @@ function SummaryCard({ snap }: { snap: TakeHomeSnapshot }) {
   return (
     <Card radius={R_LG} style={{ padding: 18 }}>
       <Head icon={<IconCoin />} title="Your Take-Home Pay"
-        right={<div style={{ display: "inline-flex", background: T.tint, borderRadius: 4, padding: 3, gap: 2 }}>
+        right={<div style={{ display: "inline-flex", background: T.tint, borderRadius: 10, padding: 3, gap: 2 }}>
           {PERIOD.map((x) => (
             <button key={x.key} type="button" onClick={() => setBasis(x.key)}
-              style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 4, border: 0, cursor: "pointer", background: basis === x.key ? "#fff" : "transparent", color: basis === x.key ? BLUE : T.mute, boxShadow: basis === x.key ? "0 1px 2px rgba(13,19,48,0.12)" : "none" }}>{x.label}</button>
+              style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 10, border: 0, cursor: "pointer", background: basis === x.key ? "#fff" : "transparent", color: basis === x.key ? BLUE : T.mute, boxShadow: basis === x.key ? "0 1px 2px rgba(13,19,48,0.12)" : "none" }}>{x.label}</button>
           ))}
         </div>} />
 
@@ -259,7 +259,7 @@ function SummaryCard({ snap }: { snap: TakeHomeSnapshot }) {
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3" style={{ marginTop: 18 }}>
         {stats.map((s) => (
-          <div key={s.label} style={{ border: `1px solid ${T.line}`, borderRadius: 6, padding: "13px 14px", background: T.tint }}>
+          <div key={s.label} style={{ border: `1px solid ${T.line}`, borderRadius: 14, padding: "13px 14px", background: T.tint }}>
             <div style={{ fontSize: 12, color: T.mute, fontWeight: 600 }}>{s.label}</div>
             <div style={{ fontSize: 20, fontWeight: 800, color: s.color || T.ink, marginTop: 4, fontVariantNumeric: "tabular-nums", letterSpacing: "-0.01em" }}>{s.value}</div>
             {s.sub && <div style={{ fontSize: 11, color: T.subtle, marginTop: 2 }}>{s.sub}</div>}
@@ -327,10 +327,10 @@ function CurveCard({ inputs, annualSalary, dispatch }: { inputs: EngineInputs; a
     <Card radius={R_LG} style={{ padding: 18 }}>
       <Head icon={<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M3 3v18h18M7 14l4-4 4 4 5-6" /></svg>}
         title="Explore Any Salary"
-        right={<div style={{ display: "inline-flex", background: T.tint, borderRadius: 4, padding: 3, gap: 2 }}>
+        right={<div style={{ display: "inline-flex", background: T.tint, borderRadius: 10, padding: 3, gap: 2 }}>
           {([{ v: "takeHome", l: "Take-home" }, { v: "keep", l: "Keep-rate" }] as const).map((o) => (
             <button key={o.v} type="button" onClick={() => setMode(o.v)}
-              style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 4, border: 0, cursor: "pointer", background: mode === o.v ? "#fff" : "transparent", color: mode === o.v ? BLUE : T.mute, boxShadow: mode === o.v ? "0 1px 2px rgba(13,19,48,0.12)" : "none" }}>{o.l}</button>
+              style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 10, border: 0, cursor: "pointer", background: mode === o.v ? "#fff" : "transparent", color: mode === o.v ? BLUE : T.mute, boxShadow: mode === o.v ? "0 1px 2px rgba(13,19,48,0.12)" : "none" }}>{o.l}</button>
           ))}
         </div>} />
       <div style={{ position: "relative" }}>
@@ -351,7 +351,7 @@ function CurveCard({ inputs, annualSalary, dispatch }: { inputs: EngineInputs; a
           <line x1={mx} y1={padT} x2={mx} y2={H - padB} stroke={T.ink} strokeWidth="1.5" />
           <circle cx={mx} cy={my} r="6.5" fill="#fff" stroke={T.ink} strokeWidth="2.5" /><circle cx={mx} cy={my} r="3" fill={BLUE} />
         </svg>
-        <div style={{ position: "absolute", top: 2, left: `clamp(4px, ${(mx / W) * 100}%, calc(100% - 150px))`, background: "#fff", border: `1px solid ${T.line}`, borderRadius: 6, padding: "7px 11px", pointerEvents: "none", boxShadow: "0 8px 24px -8px rgba(13,19,48,0.25)" }}>
+        <div style={{ position: "absolute", top: 2, left: `clamp(4px, ${(mx / W) * 100}%, calc(100% - 150px))`, background: "#fff", border: `1px solid ${T.line}`, borderRadius: 14, padding: "7px 11px", pointerEvents: "none", boxShadow: "0 8px 24px -8px rgba(13,19,48,0.25)" }}>
           <div style={{ fontSize: 11, color: T.mute, fontWeight: 600 }}>{money(annualSalary)} gross</div>
           <div style={{ fontSize: 15, fontWeight: 800, color: BLUE, fontVariantNumeric: "tabular-nums" }}>{mode === "takeHome" ? money(here.takeHome) : `${Math.round(here.keepRate * 100)}p / £1`}</div>
         </div>
@@ -380,7 +380,7 @@ function ScenariosCard({ inputs, snap }: { inputs: EngineInputs; snap: TakeHomeS
         {rows.map((s) => {
           const d = s.snap.takeHome - snap.takeHome; const up = d >= 0;
           return (
-            <div key={s.id} className="flex items-center justify-between gap-3" style={{ padding: "10px 12px", borderRadius: 6, background: T.tint }}>
+            <div key={s.id} className="flex items-center justify-between gap-3" style={{ padding: "10px 12px", borderRadius: 14, background: T.tint }}>
               <div style={{ minWidth: 0 }}>
                 <div style={{ fontSize: 13.5, fontWeight: 600, color: T.ink }}>{s.label}</div>
                 <div style={{ fontSize: 12.5, color: T.mute, fontVariantNumeric: "tabular-nums" }}>{money(s.snap.takeHome)} take-home</div>
@@ -483,10 +483,10 @@ function ToolsRow() {
       <div className="grid gap-2.5 grid-cols-2 sm:grid-cols-3 md:grid-cols-6">
         {TOOLS.map((t) => (
           <Link key={t.href} href={t.href} className="flex flex-col items-center gap-2 text-center"
-            style={{ border: `1px solid ${T.line}`, borderRadius: 6, padding: "16px 10px", transition: "all .14s" }}
+            style={{ border: `1px solid ${T.line}`, borderRadius: 14, padding: "16px 10px", transition: "all .14s" }}
             onMouseEnter={(e) => { e.currentTarget.style.borderColor = BLUE_EDGE; e.currentTarget.style.background = BLUE_SOFT; }}
             onMouseLeave={(e) => { e.currentTarget.style.borderColor = T.line; e.currentTarget.style.background = "#fff"; }}>
-            <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 6, background: BLUE_SOFT, color: BLUE }}>
+            <span style={{ width: 34, height: 34, display: "grid", placeItems: "center", borderRadius: 14, background: BLUE_SOFT, color: BLUE }}>
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9" /><path strokeLinecap="round" strokeLinejoin="round" d="M14.5 9.5a2.5 2.5 0 00-2.5-1.5c-1.4 0-2.5.9-2.5 2s1.1 2 2.5 2 2.5.9 2.5 2-1.1 2-2.5 2a2.5 2.5 0 01-2.5-1.5M12 6.5v11" /></svg>
             </span>
             <span style={{ fontSize: 12, fontWeight: 600, color: T.body, lineHeight: 1.3 }}>{t.label}</span>

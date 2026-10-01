@@ -8,7 +8,7 @@ function Section({ n, kicker, title, children }: { n: string; kicker: string; ti
   return (
     <section style={{ paddingTop: 44, paddingBottom: 44, borderTop: `1px solid ${line}` }}>
       <div className="flex items-center gap-3" style={{ marginBottom: 6 }}>
-        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 6, background: "#eef0ff", color: blue, fontWeight: 800, fontSize: 15 }}>{n}</span>
+        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 14, background: "#eef0ff", color: blue, fontWeight: 800, fontSize: 15 }}>{n}</span>
         <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: blue }}>{kicker}</span>
       </div>
       <h2 style={{ fontSize: 27, fontWeight: 800, color: ink, letterSpacing: "-0.02em", margin: "0 0 14px", lineHeight: 1.12 }}>{title}</h2>
@@ -21,7 +21,7 @@ function P({ children }: { children: React.ReactNode }) {
 }
 function Viz({ label, children }: { label?: string; children: React.ReactNode }) {
   return (
-    <div style={{ border: `1px solid ${line}`, borderRadius: 6, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(13,19,48,0.04), 0 14px 32px -20px rgba(13,19,48,0.12)", margin: "18px 0" }}>
+    <div style={{ border: `1px solid ${line}`, borderRadius: 14, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(13,19,48,0.04), 0 14px 32px -20px rgba(13,19,48,0.12)", margin: "18px 0" }}>
       {label && <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: subtle, marginBottom: 16 }}>{label}</div>}
       {children}
     </div>
@@ -92,7 +92,7 @@ export default function NIGuide() {
             { t: "35 years", d: "Qualifying years for the full State Pension" },
             { t: "~15%", d: "Employer's secondary NI on your salary" },
           ].map((g) => (
-            <div key={g.d} style={{ border: `1px solid ${line}`, borderRadius: 6, padding: "15px 16px", background: "#fff" }}>
+            <div key={g.d} style={{ border: `1px solid ${line}`, borderRadius: 14, padding: "15px 16px", background: "#fff" }}>
               <div style={{ fontSize: 18, fontWeight: 800, color: ink, fontVariantNumeric: "tabular-nums" }}>{g.t}</div>
               <div style={{ fontSize: 14, color: mute, marginTop: 5, lineHeight: 1.5 }}>{g.d}</div>
             </div>
@@ -113,7 +113,7 @@ function NiBands() {
   const MAX = 80000;
   return (
     <div>
-      <div style={{ display: "flex", height: 44, borderRadius: 6, overflow: "hidden", border: `1px solid ${line}` }}>
+      <div style={{ display: "flex", height: 44, borderRadius: 14, overflow: "hidden", border: `1px solid ${line}` }}>
         {bands.map((b) => (
           <div key={b.from} style={{ width: `${((b.to - b.from) / MAX) * 100}%`, background: b.c, display: "grid", placeItems: "center", color: b.rate === 0 ? mute : "#fff" }}>
             <span style={{ fontSize: 13, fontWeight: 700 }}>{b.rate}%</span>
@@ -142,7 +142,7 @@ function Compare() {
   return (
     <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))" }}>
       {cols.map((col) => (
-        <div key={col.name} style={{ border: `1px solid ${line}`, borderRadius: 6, overflow: "hidden" }}>
+        <div key={col.name} style={{ border: `1px solid ${line}`, borderRadius: 14, overflow: "hidden" }}>
           <div style={{ padding: "12px 16px", background: tint, borderBottom: `1px solid ${line}` }}>
             <span style={{ fontSize: 16, fontWeight: 800, color: col.accent }}>{col.name}</span>
           </div>
@@ -167,7 +167,7 @@ function Allocation() {
   ];
   return (
     <div>
-      <div style={{ display: "flex", height: 30, borderRadius: 4, overflow: "hidden", border: `1px solid ${line}` }}>
+      <div style={{ display: "flex", height: 30, borderRadius: 10, overflow: "hidden", border: `1px solid ${line}` }}>
         {parts.map((p) => <div key={p.k} style={{ width: `${p.v}%`, background: p.c }} />)}
       </div>
       <div className="grid gap-2.5" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(190px,1fr))", marginTop: 16 }}>

@@ -14,7 +14,7 @@ function Section({ n, kicker, title, children }: { n: number; kicker: string; ti
   return (
     <section style={{ marginTop: 34 }}>
       <div className="flex items-center gap-3" style={{ marginBottom: 12 }}>
-        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 6, background: "#eaf2fe", color: blue, fontWeight: 800, fontSize: 15 }}>{n}</span>
+        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 14, background: "#eaf2fe", color: blue, fontWeight: 800, fontSize: 15 }}>{n}</span>
         <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: blue }}>{kicker}</span>
       </div>
       <h3 style={{ fontSize: 22, fontWeight: 800, color: ink, letterSpacing: "-0.02em", margin: "0 0 10px" }}>{title}</h3>
@@ -34,9 +34,9 @@ function BandBar() {
   ];
   const MAX = 150000;
   return (
-    <div style={{ border: `1px solid ${line}`, borderRadius: 6, padding: 18, background: "#fff", marginTop: 14 }}>
+    <div style={{ border: `1px solid ${line}`, borderRadius: 14, padding: 18, background: "#fff", marginTop: 14 }}>
       <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: mute, marginBottom: 12 }}>Marginal Income-Tax rate by earnings</div>
-      <div style={{ display: "flex", height: 46, borderRadius: 4, overflow: "hidden" }}>
+      <div style={{ display: "flex", height: 46, borderRadius: 10, overflow: "hidden" }}>
         {bands.map((b) => (
           <div key={b.label} style={{ width: `${((b.to - b.from) / MAX) * 100}%`, background: b.color, color: b.text, display: "grid", placeItems: "center", fontSize: 13, fontWeight: 800 }}>{b.label}</div>
         ))}
@@ -75,7 +75,7 @@ export default function BonusGuide() {
             { r: "60%", b: "£100k–£125k", c: coral },
             { r: "45%", b: "£125k+", c: "#b91c1c" },
           ].map((x) => (
-            <div key={x.b} style={{ border: `1px solid ${line}`, borderRadius: 6, padding: "14px 15px", background: "#fff" }}>
+            <div key={x.b} style={{ border: `1px solid ${line}`, borderRadius: 14, padding: "14px 15px", background: "#fff" }}>
               <div style={{ fontSize: 24, fontWeight: 800, color: x.c, fontVariantNumeric: "tabular-nums" }}>{x.r}</div>
               <div style={{ fontSize: 13, color: mute, marginTop: 2 }}>{x.b}</div>
             </div>
@@ -88,12 +88,12 @@ export default function BonusGuide() {
           Instead of taking the bonus as cash, you can ask your employer to pay it straight into your pension. Because it never counts as pay, you dodge Income Tax and NI on the whole amount — so <strong>£5,000</strong> of bonus becomes <strong style={{ color: blue }}>£5,000</strong> in your pot rather than roughly <strong>£2,900</strong> in your bank. Many employers even add their saved NI on top.
         </p>
         <div style={{ display: "flex", gap: 12, marginTop: 14, flexWrap: "wrap" }}>
-          <div style={{ flex: "1 1 180px", border: `1px solid ${line}`, borderRadius: 6, padding: 16, background: "#f7f8ff" }}>
+          <div style={{ flex: "1 1 180px", border: `1px solid ${line}`, borderRadius: 14, padding: 16, background: "#f7f8ff" }}>
             <div style={{ fontSize: 13, fontWeight: 700, color: mute }}>Take as cash (40% taxpayer)</div>
             <div style={{ fontSize: 26, fontWeight: 800, color: greenDeep, marginTop: 4 }}>~£2,900</div>
             <div style={{ fontSize: 12.5, color: mute }}>after 40% tax + 2% NI</div>
           </div>
-          <div style={{ flex: "1 1 180px", border: `1px solid #e6e8f2`, borderRadius: 6, padding: 16, background: "#eef0ff" }}>
+          <div style={{ flex: "1 1 180px", border: `1px solid #e6e8f2`, borderRadius: 14, padding: 16, background: "#eef0ff" }}>
             <div style={{ fontSize: 13, fontWeight: 700, color: mute }}>Sacrifice to pension</div>
             <div style={{ fontSize: 26, fontWeight: 800, color: blue, marginTop: 4 }}>£5,000</div>
             <div style={{ fontSize: 12.5, color: mute }}>full amount invested</div>
@@ -105,7 +105,7 @@ export default function BonusGuide() {
         <p>
           In the month your bonus is paid, PAYE often over-deducts. The system assumes that bigger pay-packet will repeat every month for the rest of the year, so it taxes you as if you earn far more. Over the following months the cumulative calculation rebalances and you get the excess back. Annually, the take-home figure the calculator shows is what you truly keep — don&rsquo;t panic at the first slip.
         </p>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 12, border: `1px solid ${line}`, borderRadius: 6, padding: "12px 15px", background: "#fffbeb" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 12, border: `1px solid ${line}`, borderRadius: 14, padding: "12px 15px", background: "#fffbeb" }}>
           <span style={{ color: amber, fontSize: 18 }}>⚠️</span>
           <span style={{ fontSize: 14, color: body }}>The month-of-bonus deduction is not your final tax. It self-corrects across the tax year.</span>
         </div>

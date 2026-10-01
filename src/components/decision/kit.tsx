@@ -76,7 +76,7 @@ export function useAnimatedNumber(target: number, duration = 460) {
 
 /* ── surfaces ───────────────────────────────────────────────────── */
 export function Card({ children, className = "", pad = 18, style }: { children: React.ReactNode; className?: string; pad?: number; style?: React.CSSProperties }) {
-  return <div className={className} style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 6, boxShadow: C.shadow, padding: pad, ...style }}>{children}</div>;
+  return <div className={className} style={{ background: "#fff", border: `1px solid ${C.line}`, borderRadius: 14, boxShadow: C.shadow, padding: pad, ...style }}>{children}</div>;
 }
 
 export function CardTitle({ children, right }: { children: React.ReactNode; right?: React.ReactNode }) {
@@ -99,10 +99,10 @@ export function Explain({ children }: { children: React.ReactNode }) {
 /* ── controls ───────────────────────────────────────────────────── */
 export function Segmented({ value, onChange, options, className = "" }: { value: string; onChange: (v: string) => void; options: { value: string; label: string }[]; className?: string }) {
   return (
-    <div role="radiogroup" className={className} style={{ display: "grid", gridTemplateColumns: `repeat(${options.length},1fr)`, gap: 2, background: C.tint, borderRadius: 4, padding: 2 }}>
+    <div role="radiogroup" className={className} style={{ display: "grid", gridTemplateColumns: `repeat(${options.length},1fr)`, gap: 2, background: C.tint, borderRadius: 10, padding: 2 }}>
       {options.map((o) => {
         const on = value === o.value;
-        return <button key={o.value} type="button" role="radio" aria-checked={on} onClick={() => onChange(o.value)} style={{ fontSize: 14.5, fontWeight: 600, padding: "9px 4px", borderRadius: 4, border: 0, cursor: "pointer", background: on ? "#fff" : "transparent", color: on ? C.ink : C.mute, boxShadow: on ? "0 1px 2px rgba(13,19,48,0.12)" : "none", transition: "all .15s" }}>{o.label}</button>;
+        return <button key={o.value} type="button" role="radio" aria-checked={on} onClick={() => onChange(o.value)} style={{ fontSize: 14.5, fontWeight: 600, padding: "9px 4px", borderRadius: 10, border: 0, cursor: "pointer", background: on ? "#fff" : "transparent", color: on ? C.ink : C.mute, boxShadow: on ? "0 1px 2px rgba(13,19,48,0.12)" : "none", transition: "all .15s" }}>{o.label}</button>;
       })}
     </div>
   );
@@ -143,7 +143,7 @@ export function MoneyField({ value, onChange, big }: { value: number; onChange: 
     <div className="relative">
       <span style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: C.mute, fontSize: big ? 18 : 17, fontWeight: 600 }}>£</span>
       <input type="number" inputMode="numeric" min={0} value={value === 0 ? "" : value} placeholder="0" onChange={(e) => onChange(Number(e.target.value))}
-        style={{ width: "100%", border: `1.5px solid ${C.line}`, borderRadius: 6, padding: big ? "13px 12px 13px 28px" : "12px 12px 12px 27px", fontSize: big ? 20 : 17, fontWeight: 700, color: C.ink, outline: "none", fontVariantNumeric: "tabular-nums" }} />
+        style={{ width: "100%", border: `1.5px solid ${C.line}`, borderRadius: 14, padding: big ? "13px 12px 13px 28px" : "12px 12px 12px 27px", fontSize: big ? 20 : 17, fontWeight: 700, color: C.ink, outline: "none", fontVariantNumeric: "tabular-nums" }} />
     </div>
   );
 }

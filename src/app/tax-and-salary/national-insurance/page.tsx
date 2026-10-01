@@ -86,7 +86,7 @@ export default async function NationalInsurancePage({ searchParams }: { searchPa
           <h2 style={{ fontSize: 27, fontWeight: 800, color: "#0d1330", letterSpacing: "-0.02em", margin: "8px 0 16px" }}>Frequently asked</h2>
           <div className="space-y-2.5" style={{ maxWidth: 760 }}>
             {FAQS.map((f) => (
-              <details key={f.q} style={{ border: "1px solid #e6e8f2", borderRadius: 6, padding: "15px 17px", background: "#fff" }}>
+              <details key={f.q} style={{ border: "1px solid #e6e8f2", borderRadius: 14, padding: "15px 17px", background: "#fff" }}>
                 <summary className="flex items-center justify-between gap-3" style={{ fontWeight: 700, fontSize: 15.5, color: "#0d1330", cursor: "pointer", listStyle: "none" }}>
                   {f.q}
                   <span style={{ color: "#4353ff", fontSize: 20, lineHeight: 1, fontWeight: 700 }}>+</span>
@@ -97,7 +97,7 @@ export default async function NationalInsurancePage({ searchParams }: { searchPa
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2" style={{ marginTop: 32 }}>
-            <div style={{ border: "1px solid #e6e8f2", borderRadius: 6, padding: 20 }}>
+            <div style={{ border: "1px solid #e6e8f2", borderRadius: 14, padding: 20 }}>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4353ff" }}>Related tools</div>
               <h3 style={{ fontSize: 17, fontWeight: 700, color: "#0d1330", marginTop: 4, marginBottom: 10 }}>Keep exploring</h3>
               <div>
@@ -108,7 +108,7 @@ export default async function NationalInsurancePage({ searchParams }: { searchPa
                 ))}
               </div>
             </div>
-            <div style={{ background: "#0d1330", color: "#e6e8f2", borderRadius: 6, padding: 22 }}>
+            <div style={{ background: "#0d1330", color: "#e6e8f2", borderRadius: 14, padding: 22 }}>
               <div style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#7fb3ff" }}>Good to know</div>
               <p style={{ fontSize: 15, color: "#d0d5dd", marginTop: 10, lineHeight: 1.65 }}>
                 Figures are estimates for the 2025/26 tax year. National Insurance is UK-wide. GovMath is not affiliated

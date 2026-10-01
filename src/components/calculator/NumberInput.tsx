@@ -40,7 +40,7 @@ export default function NumberInput({
       </label>
       <div className="relative">
         {prefix && (
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-text/60">
+          <span className="absolute left-3.5 top-1/2 -translate-y-1/2 font-bold text-primary">
             {prefix}
           </span>
         )}
@@ -59,17 +59,17 @@ export default function NumberInput({
             onChange(v === "" ? 0 : Number(v));
           }}
           className={`w-full rounded-md border border-border bg-white py-3 text-base focus:border-primary ${
-            prefix ? "pl-7" : "pl-3"
+            prefix ? "pl-8" : "pl-3.5"
           } ${suffix ? "pr-10" : "pr-3"}`}
         />
         {suffix && (
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-text/60">
+          <span className="absolute right-3.5 top-1/2 -translate-y-1/2 text-sm font-semibold text-muted">
             {suffix}
           </span>
         )}
       </div>
       {hint && (
-        <p id={hintId} className="text-xs text-text/60 mt-1">
+        <p id={hintId} className="text-xs text-muted mt-1.5">
           {hint}
         </p>
       )}

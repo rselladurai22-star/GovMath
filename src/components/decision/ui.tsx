@@ -28,13 +28,13 @@ export const T = {
   tint: "#f7f8ff",
 };
 export const CANVAS = "#f7f8ff";
-export const R_LG = 10;
-export const R_MD = 10;
+export const R_LG = 24;
+export const R_MD = 22;
 
 /* ── surfaces ───────────────────────────────────────────────────── */
 export function Card({ children, className = "", radius = R_MD, hover = true, style }: { children: ReactNode; className?: string; radius?: number; hover?: boolean; style?: CSSProperties }) {
   return (
-    <div className={`${hover ? "gm-card " : ""}${className}`} style={{ background: "#fff", border: `1px solid ${T.line}`, borderRadius: radius, boxShadow: "0 1px 2px rgba(13,19,48,0.04), 0 12px 28px -24px rgba(13,19,48,0.14)", ...style }}>
+    <div className={`${hover ? "gm-card " : ""}${className}`} style={{ background: "#fff", border: `1px solid ${T.line}`, borderRadius: radius, boxShadow: "0 1px 2px rgba(13,19,48,0.04), 0 30px 60px -44px rgba(87,70,245,0.55)", ...style }}>
       {children}
     </div>
   );
@@ -44,7 +44,7 @@ export function Head({ icon, title, right }: { icon: ReactNode; title: string; r
   return (
     <div className="flex items-center justify-between gap-3" style={{ marginBottom: 16 }}>
       <div className="flex items-center gap-2.5" style={{ minWidth: 0 }}>
-        <span style={{ width: 30, height: 30, flex: "none", display: "grid", placeItems: "center", borderRadius: 8, background: BLUE_SOFT, color: BLUE }}>{icon}</span>
+        <span style={{ width: 30, height: 30, flex: "none", display: "grid", placeItems: "center", borderRadius: 10, background: "var(--brand-gradient)", color: "#fff", boxShadow: "0 10px 18px -10px rgba(87,70,245,0.8)" }}>{icon}</span>
         <h3 style={{ fontSize: 16, fontWeight: 700, color: T.ink, margin: 0, letterSpacing: "-0.01em", fontFamily: FONT }}>{title}</h3>
       </div>
       {right && <div style={{ flex: "none" }}>{right}</div>}
@@ -89,9 +89,9 @@ export function MoneyInput({ value, onChange, icon, big }: { value: number; onCh
       <span style={{ position: "absolute", left: 14, top: "50%", transform: "translateY(-50%)", color: T.mute, fontSize: big ? 17 : 16, fontWeight: 600, zIndex: 1 }}>£</span>
       <input type="text" inputMode="numeric" value={display} placeholder="0"
         onChange={(e) => { const digits = e.target.value.replace(/[^\d]/g, ""); onChange(digits === "" ? 0 : Number(digits)); }}
-        style={{ width: "100%", background: "#fff", border: "1px solid #d0d5dd", borderRadius: 8, padding: big ? "12px 40px 12px 27px" : "11px 40px 11px 26px", fontSize: big ? 18 : 16, fontWeight: 700, color: T.ink, outline: "none", fontVariantNumeric: "tabular-nums" }}
+        style={{ width: "100%", background: "#fff", border: "1.5px solid #d5d9ee", borderRadius: 14, padding: big ? "12px 40px 12px 27px" : "11px 40px 11px 26px", fontSize: big ? 18 : 16, fontWeight: 700, color: T.ink, outline: "none", fontVariantNumeric: "tabular-nums" }}
         onFocus={(e) => { e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(67,83,255,0.12)"; }}
-        onBlur={(e) => { e.currentTarget.style.borderColor = "#d0d5dd"; e.currentTarget.style.boxShadow = "none"; }} />
+        onBlur={(e) => { e.currentTarget.style.borderColor = "#d5d9ee"; e.currentTarget.style.boxShadow = "none"; }} />
       {icon && <span style={{ position: "absolute", right: 13, top: "50%", transform: "translateY(-50%)", color: T.subtle }}>{icon}</span>}
     </div>
   );

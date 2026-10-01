@@ -660,30 +660,208 @@ textarea:focus-visible,
   font-weight: 500;
 }
 
-/* Result panels in the older calculators use the brand emphasis surface. */
-.gm-calc .bg-primary-dark {
-  background: var(--brand-gradient);
-  box-shadow: 0 14px 30px -18px rgba(67, 83, 255, 0.8);
+/* ──────────────────────────────────────────────────────────────
+   Calculator premium layer
+   Every CalculatorShell page wraps its tool in `.gm-calc`. The tools
+   share a handful of utility-class patterns, so these scoped rules
+   lift all of them at once: glass input card, gradient-bordered result
+   card, gradient headline figure, refined labels and form controls.
+   ────────────────────────────────────────────────────────────── */
+@property --gm-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes gm-spin {
+  to {
+    --gm-angle: 360deg;
+  }
+}
+@keyframes gm-glide {
+  0%,
+  35% {
+    left: -70%;
+  }
+  75%,
+  100% {
+    left: 130%;
+  }
 }
 
-/* Plain form controls inside calculators get the same field treatment. */
+/* Input card */
+.gm-calc .rounded-xl.bg-surface.border,
+.gm-calc .card {
+  border: 1px solid #e3e6f6;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(13, 19, 48, 0.04), 0 30px 60px -44px rgba(87, 70, 245, 0.55);
+  transition: box-shadow 0.4s ease, border-color 0.3s ease;
+}
+.gm-calc .rounded-xl.bg-surface.border:hover {
+  border-color: #d3d8f7;
+  box-shadow: 0 1px 2px rgba(13, 19, 48, 0.04), 0 36px 70px -42px rgba(87, 70, 245, 0.7);
+}
+.gm-calc .rounded-xl.bg-surface.border.p-6 {
+  padding: 1.75rem;
+}
+
+/* Result card — rotating gradient border */
+.gm-calc .rounded-xl.border-2.border-primary {
+  position: relative;
+  border: 2px solid transparent;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, #fbfbff 0%, #fff 55%) padding-box,
+    conic-gradient(from var(--gm-angle), #4353ff, #a78bfa, #22d3ee, #34d399, #4353ff) border-box;
+  box-shadow: 0 40px 80px -46px rgba(87, 70, 245, 0.75);
+  animation: gm-spin 9s linear infinite;
+}
+.gm-calc .rounded-xl.border-2.border-primary.p-6 {
+  padding: 1.75rem;
+}
+
+/* Headline figure */
+.gm-calc .text-4xl,
+.gm-calc .text-3xl.font-bold {
+  width: fit-content;
+  max-width: 100%;
+  background: linear-gradient(100deg, #4353ff 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.gm-calc .text-4xl {
+  font-size: 2.75rem;
+}
+.gm-calc .text-4xl span,
+.gm-calc .text-3xl.font-bold span {
+  -webkit-text-fill-color: var(--muted);
+  letter-spacing: 0;
+}
+/* …but stay white on the gradient emphasis panel */
+.gm-calc .bg-primary-dark .text-4xl,
+.gm-calc .bg-primary-dark .text-3xl {
+  background: none;
+  color: #fff;
+}
+
+/* Small caps labels → calm captions */
+.gm-calc .uppercase.tracking-wide,
+.gm-calc .uppercase.tracking-wider {
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.gm-calc .bg-primary-dark .uppercase {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Card headings */
+.gm-calc h2.text-lg,
+.gm-calc h3.text-lg {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+/* Helper text: keep it readable */
+.gm-calc .text-xs {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+/* Emphasis panel (gradient with moving highlight) */
+.gm-calc .bg-primary-dark {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  background: linear-gradient(125deg, #4353ff 0%, #7c3aed 60%, #a855f7 100%);
+  box-shadow: 0 30px 56px -26px rgba(87, 70, 245, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.gm-calc .bg-primary-dark::before {
+  content: "";
+  position: absolute;
+  top: -60%;
+  left: -70%;
+  width: 55%;
+  height: 220%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: rotate(12deg);
+  animation: gm-glide 6s ease-in-out infinite;
+  pointer-events: none;
+}
+.gm-calc .bg-primary-dark > * {
+  position: relative;
+}
+.gm-calc .bg-white\/10 {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Form controls */
 .gm-calc input[type="number"],
 .gm-calc input[type="text"],
 .gm-calc input[type="date"],
 .gm-calc input[type="time"],
 .gm-calc select {
-  border-color: #d0d5dd;
-  border-radius: 8px;
+  min-height: 52px;
+  border: 1.5px solid #d5d9ee;
+  border-radius: 14px;
+  background: #fff;
   color: var(--navy);
-  font-weight: 500;
-  min-height: 48px;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  transition: border-color 0.2s ease, box-shadow 0.3s ease;
+}
+.gm-calc select {
+  padding-inline: 0.9rem;
+  font-weight: 600;
 }
 .gm-calc input:focus,
 .gm-calc select:focus {
   border-color: var(--blue);
-  outline: 2px solid var(--blue);
-  outline-offset: 2px;
+  outline: 0;
+  box-shadow: 0 0 0 5px rgba(67, 83, 255, 0.15);
+}
+.gm-calc input[type="checkbox"],
+.gm-calc input[type="radio"],
+.gm-calc input[type="range"] {
+  accent-color: var(--blue);
+}
+.gm-calc label.block {
+  margin-bottom: 0.45rem;
+  color: var(--navy);
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+/* Choice buttons inside calculators */
+.gm-calc button {
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s var(--ease-out), box-shadow 0.25s ease;
+}
+.gm-calc button.bg-primary,
+.gm-calc a.bg-primary {
+  border-color: transparent;
+  background: var(--brand-gradient);
+  box-shadow: var(--brand-glow);
+}
+.gm-calc button.rounded-md,
+.gm-calc button.rounded-lg,
+.gm-calc button.rounded {
+  border-radius: 12px;
+}
+
+/* Tables inside calculators */
+.gm-calc table {
+  font-variant-numeric: tabular-nums;
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -733,24 +911,53 @@ textarea:focus-visible,
   border-top: 1px solid var(--line);
 }
 .gm-card {
-  transition: transform 0.3s var(--ease-out), box-shadow 0.25s ease,
-    border-color 0.25s ease;
+  transition: transform 0.4s var(--ease-out), box-shadow 0.4s ease, border-color 0.3s ease;
 }
 .gm-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: #d0d5dd;
+  transform: translateY(-3px);
+  box-shadow: 0 1px 2px rgba(13, 19, 48, 0.04), 0 36px 70px -42px rgba(87, 70, 245, 0.75);
+  border-color: #d3d8f7;
 }
-/* Primary CTA */
+/* Primary CTA — gradient, glow, light sweep */
 .gm-cta {
-  background: var(--blue);
-  transition: background 0.18s ease, transform 0.12s ease;
+  position: relative;
+  overflow: hidden;
+  background: var(--brand-gradient);
+  box-shadow: var(--brand-glow), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease, filter 0.2s ease;
+}
+.gm-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s var(--ease-out);
+  pointer-events: none;
 }
 .gm-cta:hover {
-  background: var(--navy);
+  transform: translateY(-2px);
+  filter: saturate(1.1);
+  box-shadow: 0 18px 36px -12px rgba(87, 70, 245, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.gm-cta:hover::after {
+  transform: translateX(120%);
 }
 .gm-cta:active {
-  transform: translateY(1px) scale(0.985);
+  transform: translateY(1px);
+}
+
+/* Scroll reveal — active only once a page's motion script switches it on,
+   so content is never hidden without JS or with reduced motion. */
+[data-motion="on"] [data-reveal] {
+  opacity: 0;
+  transform: translateY(26px) scale(0.985);
+  transition: opacity 0.7s var(--ease-out), transform 0.8s var(--ease-out);
+  transition-delay: var(--d, 0ms);
+}
+[data-motion="on"] [data-reveal][data-in] {
+  opacity: 1;
+  transform: none;
 }
 
 /* Entrance motion shared by hero copy across templates. */

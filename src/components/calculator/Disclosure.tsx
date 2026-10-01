@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import styles from "./Shell.module.css";
 
 export default function Disclosure({
   question,
@@ -10,22 +11,12 @@ export default function Disclosure({
   defaultOpen?: boolean;
 }) {
   return (
-    <details
-      open={defaultOpen}
-      className="group rounded-lg border border-border bg-surface p-4 open:bg-card-hover/30"
-    >
-      <summary className="cursor-pointer list-none flex items-center justify-between gap-3 font-semibold text-primary-dark">
+    <details open={defaultOpen} className={styles.faq}>
+      <summary>
         <span>{question}</span>
-        <span
-          aria-hidden
-          className="text-primary transition-transform group-open:rotate-45 text-xl leading-none"
-        >
-          +
-        </span>
+        <span aria-hidden className={styles.faqPlus} />
       </summary>
-      <div className="mt-3 text-text/80 text-[15px] leading-relaxed space-y-3">
-        {children}
-      </div>
+      <div className={styles.faqBody}>{children}</div>
     </details>
   );
 }

@@ -29,7 +29,7 @@ function Section({ n, kicker, title, children }: { n: string; kicker: string; ti
   return (
     <section style={{ paddingTop: 44, paddingBottom: 44, borderTop: `1px solid ${line}` }}>
       <div className="flex items-center gap-3" style={{ marginBottom: 6 }}>
-        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 6, background: blueSoft, color: blue, fontWeight: 800, fontSize: 15 }}>{n}</span>
+        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 14, background: blueSoft, color: blue, fontWeight: 800, fontSize: 15 }}>{n}</span>
         <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: blue }}>{kicker}</span>
       </div>
       <h2 style={{ fontSize: 27, fontWeight: 800, color: ink, letterSpacing: "-0.02em", margin: "0 0 14px", lineHeight: 1.14, fontFamily: FONT }}>{title}</h2>
@@ -42,7 +42,7 @@ function P({ children }: { children: React.ReactNode }) {
 }
 function VizCard({ label, children }: { label?: string; children: React.ReactNode }) {
   return (
-    <div style={{ border: `1px solid ${line}`, borderRadius: 6, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(13,19,48,0.04), 0 14px 32px -24px rgba(13,19,48,0.14)", margin: "18px 0" }}>
+    <div style={{ border: `1px solid ${line}`, borderRadius: 14, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(13,19,48,0.04), 0 14px 32px -24px rgba(13,19,48,0.14)", margin: "18px 0" }}>
       {label && <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: subtle, marginBottom: 16 }}>{label}</div>}
       {children}
     </div>
@@ -56,7 +56,7 @@ function Badge({ value, label, tone = "blue" }: { value: string; label: string; 
   const edge = tone === "green" ? "#bbf7d0" : blueEdge;
   const fg = tone === "green" ? "#0a6f43" : "#1e40af";
   return (
-    <div style={{ background: bg, border: `1px solid ${edge}`, borderRadius: 6, padding: "12px 16px" }}>
+    <div style={{ background: bg, border: `1px solid ${edge}`, borderRadius: 14, padding: "12px 16px" }}>
       <div style={{ fontSize: 20, fontWeight: 800, color: fg, fontVariantNumeric: "tabular-nums" }}>{value}</div>
       <div style={{ fontSize: 13, color: fg, opacity: 0.85 }}>{label}</div>
     </div>
@@ -257,7 +257,7 @@ export default function TakeHomeGuide() {
       <Section n="9" kicker="Speak the language" title="The words on your payslip, decoded">
         <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", marginTop: 6 }}>
           {GLOSSARY.map((g) => (
-            <div key={g.t} style={{ border: `1px solid ${line}`, borderRadius: 6, padding: "15px 16px", background: "#fff" }}>
+            <div key={g.t} style={{ border: `1px solid ${line}`, borderRadius: 14, padding: "15px 16px", background: "#fff" }}>
               <div style={{ fontSize: 15, fontWeight: 700, color: ink }}>{g.t}</div>
               <div style={{ fontSize: 14, color: mute, marginTop: 5, lineHeight: 1.5 }}>{g.d}</div>
             </div>
@@ -355,7 +355,7 @@ function StackedRates() {
         return (
           <div key={r.band} className="flex items-center gap-3">
             <div style={{ width: 150, fontSize: 13, fontWeight: 600, color: ink, flex: "none", fontVariantNumeric: "tabular-nums" }}>{r.band}</div>
-            <div style={{ flex: 1, height: 26, borderRadius: 4, background: tint, overflow: "hidden", display: "flex" }}>
+            <div style={{ flex: 1, height: 26, borderRadius: 10, background: tint, overflow: "hidden", display: "flex" }}>
               <div style={{ width: `${(r.tax / maxR) * 100}%`, background: coral, height: "100%" }} />
               <div style={{ width: `${(r.ni / maxR) * 100}%`, background: amber, height: "100%" }} />
             </div>
@@ -445,7 +445,7 @@ function PensionWedge() {
       {rows.map((r) => (
         <div key={r.label}>
           <div style={{ fontSize: 14.5, fontWeight: 700, color: ink, marginBottom: 6 }}>{r.label}</div>
-          <div style={{ height: 34, borderRadius: 4, overflow: "hidden", display: "flex", border: `1px solid ${line}` }}>
+          <div style={{ height: 34, borderRadius: 10, overflow: "hidden", display: "flex", border: `1px solid ${line}` }}>
             {r.pocket > 0 && <div style={{ width: `${r.pocket}%`, background: green, display: "grid", placeItems: "center" }}><span style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}>£{r.pocket} in your pocket</span></div>}
             {r.tax > 0 && <div style={{ width: `${r.tax}%`, background: coral, display: "grid", placeItems: "center" }}><span style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}>£{r.tax} tax + NI</span></div>}
             {r.pension > 0 && <div style={{ width: `${r.pension}%`, background: blue, display: "grid", placeItems: "center" }}><span style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}>£{r.pension} in your pension</span></div>}
@@ -486,7 +486,7 @@ function BonusViz() {
   const total = basic + higher;
   return (
     <div>
-      <div style={{ height: 40, borderRadius: 4, overflow: "hidden", display: "flex", border: `1px solid ${line}` }}>
+      <div style={{ height: 40, borderRadius: 10, overflow: "hidden", display: "flex", border: `1px solid ${line}` }}>
         <div style={{ width: `${(basic / total) * 100}%`, background: "#7fb3ff", display: "grid", placeItems: "center" }}>
           <span style={{ fontSize: 12.5, fontWeight: 700, color: "#0b3d91" }}>{gbp(basic)} @ 28%</span>
         </div>

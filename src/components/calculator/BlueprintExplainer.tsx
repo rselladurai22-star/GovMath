@@ -1,4 +1,5 @@
 import { isValidElement, type ReactNode } from "react";
+import styles from "./Shell.module.css";
 import Disclosure from "./Disclosure";
 
 function nodeToText(node: ReactNode): string {
@@ -67,37 +68,38 @@ export default function BlueprintExplainer({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
         />
       )}
-      <section>
-        <h2 className="text-2xl font-bold text-primary-dark mb-3">
-          How we calculated your result
-        </h2>
-        <div className="space-y-3 text-text/85 leading-relaxed">
-          {howWeCalculated}
+      <section className={styles.section} data-reveal>
+        <div className={styles.sectionHead}>
+          <span className={styles.num} aria-hidden="true">1</span>
+          <h2>How we calculated your result</h2>
         </div>
+        <div className={styles.prose}>{howWeCalculated}</div>
       </section>
 
-      <section>
-        <h2 className="text-2xl font-bold text-primary-dark mb-3">
-          Official UK rules in simple English
-        </h2>
-        <div className="space-y-3 text-text/85 leading-relaxed">
-          {officialRules}
+      <section className={styles.section} data-reveal>
+        <div className={styles.sectionHead}>
+          <span className={styles.num} aria-hidden="true">2</span>
+          <h2>Official UK rules in simple English</h2>
         </div>
+        <div className={styles.prose}>{officialRules}</div>
       </section>
 
-      <section>
-        <h2 className="text-2xl font-bold text-primary-dark mb-3">
-          Common pitfalls to watch out for
-        </h2>
-        <ul className="space-y-3">
+      <section className={styles.section} data-reveal>
+        <div className={styles.sectionHead}>
+          <span className={styles.num} aria-hidden="true">3</span>
+          <h2>Common pitfalls to watch out for</h2>
+        </div>
+        <ul className={styles.pitfalls}>
           {pitfalls.map((p) => (
-            <li
-              key={p.title}
-              className="rounded-lg border-l-4 border-error bg-surface border border-border p-4"
-            >
-              <h3 className="font-bold text-error mb-1">⚠ {p.title}</h3>
-              <div className="text-text/85 text-[15px] leading-relaxed">
-                {p.body}
+            <li key={p.title} className={styles.pitfall}>
+              <span className={styles.pitfallIcon} aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4}>
+                  <path d="M12 8v5M12 16.5v.5M10.3 3.9 2.6 17.2A2 2 0 0 0 4.3 20h15.4a2 2 0 0 0 1.7-2.8L13.7 3.9a2 2 0 0 0-3.4 0z" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              <div>
+                <h3>{p.title}</h3>
+                <div>{p.body}</div>
               </div>
             </li>
           ))}
@@ -105,11 +107,12 @@ export default function BlueprintExplainer({
       </section>
 
       {faqs && faqs.length > 0 && (
-        <section>
-          <h2 className="text-2xl font-bold text-primary-dark mb-3">
-            Frequently asked questions
-          </h2>
-          <div className="space-y-3">
+        <section className={styles.section} data-reveal>
+          <div className={styles.sectionHead}>
+            <span className={styles.num} aria-hidden="true">4</span>
+            <h2>Frequently asked questions</h2>
+          </div>
+          <div className={styles.faqs}>
             {faqs.map((f) => (
               <Disclosure key={f.question} question={f.question}>
                 {f.answer}
@@ -119,11 +122,7 @@ export default function BlueprintExplainer({
         </section>
       )}
 
-      {disclaimer && (
-        <p className="text-xs text-text/60 border-t border-border pt-4">
-          {disclaimer}
-        </p>
-      )}
+      {disclaimer && <p className={styles.disclaimer}>{disclaimer}</p>}
     </>
   );
 }

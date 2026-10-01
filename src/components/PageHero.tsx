@@ -41,6 +41,11 @@ export default function PageHero({
       className={`${styles.hero} ${compact ? styles.compact : ""}`}
       style={tone ? catVars(tone) : undefined}
     >
+      <div className={styles.aurora} aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
       <div className={`gm-wrap ${styles.inner}`}>
         {breadcrumbs && breadcrumbs.length > 0 && (
           <nav aria-label="Breadcrumb" className={styles.crumbs}>
@@ -60,7 +65,7 @@ export default function PageHero({
         <div className={styles.head}>
           {icon && (
             <span className={styles.icon} aria-hidden="true">
-              <LineIcon path={icon} size={26} />
+              <LineIcon path={icon} size={32} stroke={1.6} />
             </span>
           )}
           <div className={styles.copy}>

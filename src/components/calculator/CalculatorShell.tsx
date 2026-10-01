@@ -2,7 +2,9 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import AdSlot from "@/components/AdSlot";
 import PageHero from "@/components/PageHero";
-import { catVars, iconForTitle, LineIcon, shortTitle } from "@/components/category-style";
+import { iconForTitle, LineIcon, shortTitle } from "@/components/category-style";
+import { HomeMotion } from "@/components/home/Motion";
+import styles from "./Shell.module.css";
 import { CALCULATORS } from "@/lib/calculators";
 
 type Crumb = { href: string; label: string };
@@ -50,7 +52,8 @@ export default function CalculatorShell({
       ).slice(0, 6)
     : [];
   return (
-    <>
+    <div id="gm-calc-page">
+      <HomeMotion rootId="gm-calc-page" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
@@ -65,54 +68,70 @@ export default function CalculatorShell({
       />
 
       {/* Calculator + sidebar */}
-      <section className="gm-wrap py-10 grid gap-8 lg:grid-cols-[1fr_300px]">
+      <section className={`gm-wrap ${styles.body}`}>
         <div className="gm-calc min-w-0">{calculator}</div>
-        <aside className="space-y-6">
+        <aside className={styles.aside}>
           <AdSlot size="mpu" />
-          <div className="rounded-[10px] border border-border bg-ice p-5">
-            <h2 className="text-base font-bold text-navy">Plain-English promise</h2>
-            <p className="mt-2 text-[15px] leading-relaxed text-muted">
-              We translate HMRC and DWP rules into clear answers. Figures are
-              estimates — always check your personal tax code.
-            </p>
+          <div className={styles.promise}>
+            <span className={styles.promiseIcon} aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2}>
+                <path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3zM9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+            <h2>Plain-English promise</h2>
+            <p>We translate HMRC and DWP rules into clear answers. Figures are estimates — always check your own circumstances.</p>
+            <ul>
+              {["Official 2025/26 rates", "Free, no sign-up", "Nothing you type is stored"].map((t) => (
+                <li key={t}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.6} aria-hidden="true">
+                    <path d="M5 12.5l4.5 4.5L19 7.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  {t}
+                </li>
+              ))}
+            </ul>
           </div>
         </aside>
       </section>
 
       {/* Ad: leaderboard between calc and explainer */}
-      <div className="gm-wrap">
+      <div className={`gm-wrap ${styles.adRow}`}>
         <AdSlot size="leaderboard" />
       </div>
 
       {/* Explainer */}
-      <section className="mx-auto max-w-3xl px-6 py-14">
-        <div className="prose-like space-y-6 text-text">{explainer}</div>
+      <section className={styles.explainer}>
+        <div data-reveal>
+          <span className={styles.kicker}>The maths, explained</span>
+          <p className={styles.explainerTitle}>How this calculator works</p>
+        </div>
+        <div className={styles.sections}>{explainer}</div>
       </section>
 
       {/* Related calculators */}
       {related.length > 0 && (
-        <section className="bg-ice py-16">
+        <section className={styles.related}>
           <div className="gm-wrap">
-            <span className="gm-eyebrow">Keep going</span>
-            <h2 className="gm-section-title mt-2">Related calculators</h2>
-            <p className="gm-section-lead mb-8">More tools in {category}.</p>
-            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {related.map((c) => (
-                <li key={c.href}>
-                  <Link
-                    href={c.href}
-                    className="card card-interactive group flex h-full flex-col p-5"
-                    style={catVars(c.category)}
-                  >
-                    <span className="gm-icon-tile mb-4" style={{ width: 44, height: 44, background: "var(--t)", color: "var(--c)" }}>
+            <div data-reveal>
+              <span className={styles.kicker}>Keep going</span>
+              <h2 className={styles.explainerTitle} style={{ marginBottom: 0 }}>
+                More {category} calculators
+              </h2>
+            </div>
+            <ul className={styles.relatedGrid}>
+              {related.map((c, i) => (
+                <li key={c.href} data-reveal style={{ ["--d" as string]: `${i * 60}ms` }}>
+                  <Link href={c.href} className={styles.relatedCard} data-spot>
+                    <span className={styles.relatedIcon}>
                       <LineIcon path={iconForTitle(c.title, c.category)} size={24} />
                     </span>
-                    <h3 className="text-[1.15rem] font-bold leading-snug text-navy mb-2">
-                      {shortTitle(c.title)}
-                    </h3>
-                    <p className="flex-1 text-[15px] leading-relaxed text-muted">{c.blurb}</p>
-                    <span className="mt-4 border-t border-[#e9eef4] pt-3 text-[15px] font-bold text-primary group-hover:text-navy">
+                    <strong>{shortTitle(c.title)}</strong>
+                    <p>{c.blurb}</p>
+                    <span className={styles.relatedGo}>
                       Open calculator
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+                        <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
                     </span>
                   </Link>
                 </li>
@@ -121,6 +140,6 @@ export default function CalculatorShell({
           </div>
         </section>
       )}
-    </>
+    </div>
   );
 }

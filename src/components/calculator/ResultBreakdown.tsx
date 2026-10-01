@@ -21,7 +21,7 @@ export default function ResultBreakdown({
 }) {
   return (
     <div className="card overflow-hidden">
-      <div className="px-5 py-3 border-b border-border bg-bg">
+      <div className="px-5 py-3.5 border-b border-border bg-ice">
         <h3 className="text-sm font-semibold uppercase tracking-wider text-muted">
           {title}
         </h3>
@@ -36,14 +36,14 @@ export default function ResultBreakdown({
           return (
             <li
               key={r.label}
-              className={`flex items-baseline justify-between gap-4 px-5 py-3 ${
-                isTotal ? "bg-card-hover" : ""
+              className={`flex items-baseline justify-between gap-4 px-5 py-3.5 transition-colors ${
+                isTotal ? "bg-[#e9fbf3]" : "hover:bg-ice"
               }`}
             >
               <div>
                 <div
                   className={`text-sm ${
-                    isTotal ? "font-bold text-primary-dark" : "text-text"
+                    isTotal ? "font-extrabold text-[#0a7a52]" : "font-medium text-text"
                   }`}
                 >
                   {r.label}
@@ -55,7 +55,7 @@ export default function ResultBreakdown({
               <div
                 className={`font-mono tabular-nums ${
                   isTotal
-                    ? "text-lg font-bold text-success"
+                    ? "text-lg font-extrabold text-[#0a7a52]"
                     : isDeduction
                     ? "text-error font-semibold"
                     : "text-text font-semibold"
