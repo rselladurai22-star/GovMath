@@ -6,7 +6,8 @@ import {
   getCategory,
   type CategorySlug,
 } from "@/lib/calculators";
-import { CAT, catVars, ICON, iconForTitle, LineIcon, shortTitle } from "@/components/category-style";
+import { accentVars, CAT, ICON, iconForTitle, LineIcon, shortTitle } from "@/components/category-style";
+import { HomeMotion } from "@/components/home/Motion";
 import CategoryTools, { type ToolItem } from "@/components/CategoryTools";
 import AdSlot from "@/components/AdSlot";
 import PageHero, { HeroPills } from "@/components/PageHero";
@@ -49,7 +50,8 @@ export default function CategoryLanding({
   }));
 
   return (
-    <div className={styles.page}>
+    <div className={styles.page} id="gm-cat-page" style={accentVars(slug)}>
+      <HomeMotion rootId="gm-cat-page" />
       <PageHero
         breadcrumbs={[
           { href: "/", label: "Home" },
@@ -66,7 +68,7 @@ export default function CategoryLanding({
       </PageHero>
 
       <div className={`gm-wrap ${styles.grid}`}>
-        <aside className={styles.sidebar}>
+        <aside className={styles.sidebar} data-reveal>
           <div className={styles.sideCard}>
             <div className={styles.sideTitle}>Topics</div>
             <nav className={styles.catNav} aria-label="Topics">
@@ -79,7 +81,7 @@ export default function CategoryLanding({
                     key={c.slug}
                     href={c.href}
                     className={`${styles.catNavItem} ${active ? styles.active : ""}`}
-                    style={catVars(c.slug)}
+                    style={accentVars(c.slug)}
                     aria-current={active ? "page" : undefined}
                   >
                     <span className={styles.catNavIcon}>
@@ -105,13 +107,16 @@ export default function CategoryLanding({
           </div>
 
           <div className={styles.promo}>
-            <span className="gm-eyebrow">Guides</span>
+            <span className={styles.promoTag}>Guides</span>
             <div className={styles.promoTitle}>Plan better. Save more.</div>
             <p className={styles.promoBody}>
               Plain-English guides to the rules behind the numbers.
             </p>
             <Link href="/blog" className={styles.promoLink}>
               Explore guides
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
             </Link>
           </div>
 
@@ -120,7 +125,7 @@ export default function CategoryLanding({
           </div>
         </aside>
 
-        <CategoryTools label={meta.short} color={meta.color} tint={meta.tint} tools={tools} />
+        <CategoryTools label={meta.short} tools={tools} />
       </div>
 
       <div className={`gm-wrap ${styles.adRow}`}>
@@ -129,15 +134,17 @@ export default function CategoryLanding({
 
       <section className={styles.whySection} aria-labelledby="why-heading">
         <div className="gm-wrap">
-          <span className="gm-eyebrow">Why GovMath</span>
-          <h2 id="why-heading" className="gm-section-title">
-            Clearer numbers, every time
-          </h2>
+          <div data-reveal>
+            <span className={styles.kicker}>Why GovMath</span>
+            <h2 id="why-heading" className={styles.blockTitle}>
+              Clearer numbers, every time
+            </h2>
+          </div>
           <div className={styles.whyGrid}>
-            {WHY.map((w) => (
-              <div key={w.title} className={styles.whyCard}>
-                <span className="gm-icon-tile">
-                  <LineIcon path={w.path} size={21} />
+            {WHY.map((w, i) => (
+              <div key={w.title} className={styles.whyCard} data-reveal data-spot style={{ ["--d" as string]: `${i * 70}ms` }}>
+                <span className={styles.whyIcon}>
+                  <LineIcon path={w.path} size={24} />
                 </span>
                 <h3 className={styles.whyCardTitle}>{w.title}</h3>
                 <p className={styles.whyBody}>{w.body}</p>
@@ -148,7 +155,7 @@ export default function CategoryLanding({
       </section>
 
       {longCopy && (
-        <section className={`gm-wrap ${styles.longWrap}`}>
+        <section className={`gm-wrap ${styles.longWrap}`} data-reveal>
           <div className={`gm-prose ${styles.longCopy}`}>{longCopy}</div>
         </section>
       )}

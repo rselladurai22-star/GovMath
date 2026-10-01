@@ -1,29 +1,14 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
-import { CATEGORIES, CALCULATORS, getCalculatorsByCategory, type CategorySlug } from "@/lib/calculators";
-import { CAT, iconForTitle, LineIcon } from "@/components/category-style";
+import { CATEGORIES, CALCULATORS, getCalculatorsByCategory } from "@/lib/calculators";
+import { accentVars, CAT, iconForTitle, LineIcon } from "@/components/category-style";
 import HomeSearch, { type SearchItem } from "@/components/HomeSearch";
 import TakeHomeSimulator from "@/components/home/TakeHomeSimulator";
 import { CountUp, HomeMotion } from "@/components/home/Motion";
 import AdSlot from "@/components/AdSlot";
 import styles from "./GovmathHome.module.css";
 
-/**
- * Each topic's accent: `c` is text-safe on white (≥4.5:1), `g` is the second
- * gradient stop for icon tiles, `t` a soft tint for surfaces.
- */
-const ACCENT: Record<CategorySlug, { c: string; g: string; t: string }> = {
-  "tax-and-salary": { c: "#4353ff", g: "#7c3aed", t: "#eef0ff" },
-  property: { c: "#0a8f7a", g: "#22c1c3", t: "#e6f8f5" },
-  business: { c: "#d9610b", g: "#f7a531", t: "#fff3e6" },
-  investing: { c: "#6d3df0", g: "#b06cf7", t: "#f2edff" },
-  benefits: { c: "#d92c69", g: "#fb7aa1", t: "#ffedf3" },
-  vehicles: { c: "#0b7fc7", g: "#35c3f3", t: "#e8f6fe" },
-  students: { c: "#8a34d9", g: "#d066f0", t: "#f6edff" },
-  life: { c: "#2f8f2f", g: "#8ccf3f", t: "#eef9e8" },
-};
-const accent = (slug: CategorySlug) =>
-  ({ ["--c" as string]: ACCENT[slug].c, ["--g" as string]: ACCENT[slug].g, ["--t" as string]: ACCENT[slug].t }) as CSSProperties;
+const accent = accentVars;
 const stagger = (i: number) => ({ ["--d" as string]: `${i * 70}ms` }) as CSSProperties;
 
 const SHORTCUTS = [

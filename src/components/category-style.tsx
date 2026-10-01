@@ -66,6 +66,27 @@ export const CAT: Record<CategorySlug, CatMeta> = {
   life: { label: "Everyday life", short: "Everyday Life", desc: "Health, dates & useful maths", color: BRAND, tint: TINT, icon: CAT_ICON.calendar },
 };
 
+/**
+ * Premium per-topic accent: `c` is text-safe on white (≥4.5:1), `g` the
+ * second gradient stop for icon tiles, `t` a soft surface tint.
+ */
+export const ACCENT: Record<CategorySlug, { c: string; g: string; t: string }> = {
+  "tax-and-salary": { c: "#4353ff", g: "#7c3aed", t: "#eef0ff" },
+  property: { c: "#0a8f7a", g: "#22c1c3", t: "#e6f8f5" },
+  business: { c: "#d9610b", g: "#f7a531", t: "#fff3e6" },
+  investing: { c: "#6d3df0", g: "#b06cf7", t: "#f2edff" },
+  benefits: { c: "#d92c69", g: "#fb7aa1", t: "#ffedf3" },
+  vehicles: { c: "#0b7fc7", g: "#35c3f3", t: "#e8f6fe" },
+  students: { c: "#8a34d9", g: "#d066f0", t: "#f6edff" },
+  life: { c: "#2f8f2f", g: "#8ccf3f", t: "#eef9e8" },
+};
+
+/** CSS custom properties (--c, --g, --t) for a topic's premium accent. */
+export function accentVars(slug: CategorySlug): React.CSSProperties {
+  const a = ACCENT[slug];
+  return { ["--c" as string]: a.c, ["--g" as string]: a.g, ["--t" as string]: a.t };
+}
+
 /** CSS custom properties that paint an element in a category's colours. */
 export function catVars(slug: CategorySlug): React.CSSProperties {
   return { ["--c" as string]: CAT[slug].color, ["--t" as string]: CAT[slug].tint };

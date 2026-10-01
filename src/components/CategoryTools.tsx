@@ -23,17 +23,7 @@ function ArrowRight() {
   );
 }
 
-export default function CategoryTools({
-  label,
-  color,
-  tint,
-  tools,
-}: {
-  label: string;
-  color: string;
-  tint: string;
-  tools: ToolItem[];
-}) {
+export default function CategoryTools({ label, tools }: { label: string; tools: ToolItem[] }) {
   const [query, setQuery] = useState("");
   const [expanded, setExpanded] = useState(false);
 
@@ -55,7 +45,7 @@ export default function CategoryTools({
   const hiddenCount = filtered.length - visible.length;
 
   return (
-    <div className={styles.content} style={{ ["--cat" as string]: color }}>
+    <div className={styles.content}>
       <div className={styles.toolsHead}>
         <h2 className={styles.toolsTitle}>
           All {label.toLowerCase()} calculators <span>({tools.length})</span>
@@ -86,8 +76,8 @@ export default function CategoryTools({
       ) : (
         <div className={styles.toolGrid}>
           {visible.map((t) => (
-            <Link key={t.href} href={t.href} className={styles.toolCard}>
-              <span className={styles.toolIcon} style={{ background: tint, color }}>
+            <Link key={t.href} href={t.href} className={styles.toolCard} data-spot>
+              <span className={styles.toolIcon}>
                 <LineIcon path={t.iconPath} size={20} />
               </span>
               <div className={styles.toolBody}>
