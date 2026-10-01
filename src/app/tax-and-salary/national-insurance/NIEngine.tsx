@@ -181,7 +181,7 @@ function SummaryCard({ snap }: { snap: Snap }) {
       <Head icon={<IconCoin />} title="Your National Insurance"
         right={<div style={{ display: "inline-flex", background: T.tint, borderRadius: 4, padding: 3, gap: 2 }}>
           {PERIOD.map((x) => (
-            <button key={x.key} type="button" onClick={() => setBasis(x.key)} style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 4, border: 0, cursor: "pointer", background: basis === x.key ? "#fff" : "transparent", color: basis === x.key ? BLUE : T.mute, boxShadow: basis === x.key ? "0 1px 2px rgba(16,24,40,0.12)" : "none" }}>{x.label}</button>
+            <button key={x.key} type="button" onClick={() => setBasis(x.key)} style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 4, border: 0, cursor: "pointer", background: basis === x.key ? "#fff" : "transparent", color: basis === x.key ? BLUE : T.mute, boxShadow: basis === x.key ? "0 1px 2px rgba(13,19,48,0.12)" : "none" }}>{x.label}</button>
           ))}
         </div>} />
       <div style={{ display: "flex", alignItems: "baseline", gap: 9, flexWrap: "wrap" }}>
@@ -248,7 +248,7 @@ function InsightsCard({ snap }: { snap: Snap }) {
     items.push({ tone: "info", title: "What it costs you monthly", figure: money(monthly), body: `Your NI works out at about ${money(monthly)} a month — a separate deduction from Income Tax, and it funds the State Pension and NHS.` });
   }
   if (snap.mode === "employee") items.push({ tone: "info", title: "Your employer pays too", body: `On top of your NI, your employer pays a further ~15% secondary Class 1 NI on your salary above the threshold — a hidden cost of employing you.` });
-  const tone = { info: { bar: BLUE, chip: "#101828", bg: BLUE_SOFT, label: "Worth knowing" }, good: { bar: GREEN, chip: "#15803d", bg: "#f0fdf4", label: "Good news" }, warn: { bar: AMBER, chip: "#b45309", bg: "#fffbeb", label: "Note" } };
+  const tone = { info: { bar: BLUE, chip: "#0d1330", bg: BLUE_SOFT, label: "Worth knowing" }, good: { bar: GREEN, chip: "#15803d", bg: "#f0fdf4", label: "Good news" }, warn: { bar: AMBER, chip: "#b45309", bg: "#fffbeb", label: "Note" } };
   return (
     <Card radius={R_LG} style={{ padding: 18 }}>
       <Head icon={IconChart} title="What This Means" />

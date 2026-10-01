@@ -81,34 +81,34 @@ export default async function NationalInsurancePage({ searchParams }: { searchPa
       </section>
 
       <section className="mx-auto max-w-5xl px-4 sm:px-6" style={{ paddingTop: 44, paddingBottom: 48 }}>
-        <div style={{ borderTop: "1px solid #e4e7ec", paddingTop: 32 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#2f5bea" }}>FAQ</div>
-          <h2 style={{ fontSize: 27, fontWeight: 800, color: "#101828", letterSpacing: "-0.02em", margin: "8px 0 16px" }}>Frequently asked</h2>
+        <div style={{ borderTop: "1px solid #e6e8f2", paddingTop: 32 }}>
+          <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4353ff" }}>FAQ</div>
+          <h2 style={{ fontSize: 27, fontWeight: 800, color: "#0d1330", letterSpacing: "-0.02em", margin: "8px 0 16px" }}>Frequently asked</h2>
           <div className="space-y-2.5" style={{ maxWidth: 760 }}>
             {FAQS.map((f) => (
-              <details key={f.q} style={{ border: "1px solid #e4e7ec", borderRadius: 6, padding: "15px 17px", background: "#fff" }}>
-                <summary className="flex items-center justify-between gap-3" style={{ fontWeight: 700, fontSize: 15.5, color: "#101828", cursor: "pointer", listStyle: "none" }}>
+              <details key={f.q} style={{ border: "1px solid #e6e8f2", borderRadius: 6, padding: "15px 17px", background: "#fff" }}>
+                <summary className="flex items-center justify-between gap-3" style={{ fontWeight: 700, fontSize: 15.5, color: "#0d1330", cursor: "pointer", listStyle: "none" }}>
                   {f.q}
-                  <span style={{ color: "#2f5bea", fontSize: 20, lineHeight: 1, fontWeight: 700 }}>+</span>
+                  <span style={{ color: "#4353ff", fontSize: 20, lineHeight: 1, fontWeight: 700 }}>+</span>
                 </summary>
-                <p style={{ marginTop: 11, fontSize: 15, color: "#1d2939", lineHeight: 1.65 }}>{f.a}</p>
+                <p style={{ marginTop: 11, fontSize: 15, color: "#1a2040", lineHeight: 1.65 }}>{f.a}</p>
               </details>
             ))}
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2" style={{ marginTop: 32 }}>
-            <div style={{ border: "1px solid #e4e7ec", borderRadius: 6, padding: 20 }}>
-              <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#2f5bea" }}>Related tools</div>
-              <h3 style={{ fontSize: 17, fontWeight: 700, color: "#101828", marginTop: 4, marginBottom: 10 }}>Keep exploring</h3>
+            <div style={{ border: "1px solid #e6e8f2", borderRadius: 6, padding: 20 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4353ff" }}>Related tools</div>
+              <h3 style={{ fontSize: 17, fontWeight: 700, color: "#0d1330", marginTop: 4, marginBottom: 10 }}>Keep exploring</h3>
               <div>
                 {related.map((c, i) => (
-                  <Link key={c.href} href={c.href} className="flex items-center justify-between" style={{ fontSize: 14.5, color: "#1d2939", padding: "10px 0", borderBottom: i < related.length - 1 ? "1px solid #eef2f6" : "none" }}>
-                    <span>{c.title}</span><span style={{ color: "#2f5bea", fontWeight: 700 }}>→</span>
+                  <Link key={c.href} href={c.href} className="flex items-center justify-between" style={{ fontSize: 14.5, color: "#1a2040", padding: "10px 0", borderBottom: i < related.length - 1 ? "1px solid #eef2f6" : "none" }}>
+                    <span>{c.title}</span><span style={{ color: "#4353ff", fontWeight: 700 }}>→</span>
                   </Link>
                 ))}
               </div>
             </div>
-            <div style={{ background: "#101828", color: "#e4e7ec", borderRadius: 6, padding: 22 }}>
+            <div style={{ background: "#0d1330", color: "#e6e8f2", borderRadius: 6, padding: 22 }}>
               <div style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "#7fb3ff" }}>Good to know</div>
               <p style={{ fontSize: 15, color: "#d0d5dd", marginTop: 10, lineHeight: 1.65 }}>
                 Figures are estimates for the 2025/26 tax year. National Insurance is UK-wide. GovMath is not affiliated

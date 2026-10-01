@@ -1,10 +1,10 @@
 /* Bonus Tax — visual guide (server component, no client imports). */
 
-const ink = "#101828";
-const body = "#1d2939";
+const ink = "#0d1330";
+const body = "#1a2040";
 const mute = "#65748c";
-const line = "#e4e7ec";
-const blue = "#2f5bea";
+const line = "#e6e8f2";
+const blue = "#4353ff";
 const green = "#12a566";
 const greenDeep = "#0a6f43";
 const coral = "#ef4444";
@@ -26,8 +26,8 @@ function Section({ n, kicker, title, children }: { n: number; kicker: string; ti
 /** Marginal Income-Tax bands across earnings, so the "which band is my bonus in" story is visual. */
 function BandBar() {
   const bands = [
-    { label: "0%", from: 0, to: 12570, color: "#e4e7ec", text: "#344054" },
-    { label: "20%", from: 12570, to: 50270, color: "#9cc4f5", text: "#101828" },
+    { label: "0%", from: 0, to: 12570, color: "#e6e8f2", text: "#343b5c" },
+    { label: "20%", from: 12570, to: 50270, color: "#9cc4f5", text: "#0d1330" },
     { label: "40%", from: 50270, to: 100000, color: blue, text: "#fff" },
     { label: "60%", from: 100000, to: 125140, color: coral, text: "#fff" },
     { label: "45%", from: 125140, to: 150000, color: "#b91c1c", text: "#fff" },
@@ -88,12 +88,12 @@ export default function BonusGuide() {
           Instead of taking the bonus as cash, you can ask your employer to pay it straight into your pension. Because it never counts as pay, you dodge Income Tax and NI on the whole amount — so <strong>£5,000</strong> of bonus becomes <strong style={{ color: blue }}>£5,000</strong> in your pot rather than roughly <strong>£2,900</strong> in your bank. Many employers even add their saved NI on top.
         </p>
         <div style={{ display: "flex", gap: 12, marginTop: 14, flexWrap: "wrap" }}>
-          <div style={{ flex: "1 1 180px", border: `1px solid ${line}`, borderRadius: 6, padding: 16, background: "#f8fafc" }}>
+          <div style={{ flex: "1 1 180px", border: `1px solid ${line}`, borderRadius: 6, padding: 16, background: "#f7f8ff" }}>
             <div style={{ fontSize: 13, fontWeight: 700, color: mute }}>Take as cash (40% taxpayer)</div>
             <div style={{ fontSize: 26, fontWeight: 800, color: greenDeep, marginTop: 4 }}>~£2,900</div>
             <div style={{ fontSize: 12.5, color: mute }}>after 40% tax + 2% NI</div>
           </div>
-          <div style={{ flex: "1 1 180px", border: `1px solid #e4e7ec`, borderRadius: 6, padding: 16, background: "#eef2ff" }}>
+          <div style={{ flex: "1 1 180px", border: `1px solid #e6e8f2`, borderRadius: 6, padding: 16, background: "#eef0ff" }}>
             <div style={{ fontSize: 13, fontWeight: 700, color: mute }}>Sacrifice to pension</div>
             <div style={{ fontSize: 26, fontWeight: 800, color: blue, marginTop: 4 }}>£5,000</div>
             <div style={{ fontSize: 12.5, color: mute }}>full amount invested</div>

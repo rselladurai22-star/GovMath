@@ -2,7 +2,7 @@
 
 .hero {
   background:
-    radial-gradient(55% 90% at 100% 0%, #eef2ff 0%, transparent 60%),
+    radial-gradient(55% 90% at 100% 0%, #eef0ff 0%, transparent 60%),
     #fff;
   border-bottom: 1px solid var(--line);
 }

@@ -5,21 +5,21 @@
  * matching the calculator above.
  */
 
-const ink = "#101828";
-const body = "#1d2939";
-const mute = "#475467";
+const ink = "#0d1330";
+const body = "#1a2040";
+const mute = "#4a5170";
 const subtle = "#98a2b3";
-const line = "#e4e7ec";
-const tint = "#f8fafc";
-const blue = "#2f5bea";
-const blueSoft = "#eef2ff";
-const blueEdge = "#e4e7ec";
+const line = "#e6e8f2";
+const tint = "#f7f8ff";
+const blue = "#4353ff";
+const blueSoft = "#eef0ff";
+const blueEdge = "#e6e8f2";
 const green = "#16a34a";
 const greenSoft = "#f0fdf4";
 const coral = "#ef4444";
 const amber = "#f59e0b";
 const violet = "#8b5cf6";
-const slate = "#475467";
+const slate = "#4a5170";
 
 const FONT = "var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif";
 const gbp = (n: number) => "£" + Math.round(n).toLocaleString("en-GB");
@@ -42,7 +42,7 @@ function P({ children }: { children: React.ReactNode }) {
 }
 function VizCard({ label, children }: { label?: string; children: React.ReactNode }) {
   return (
-    <div style={{ border: `1px solid ${line}`, borderRadius: 6, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(16,24,40,0.04), 0 14px 32px -24px rgba(16,24,40,0.14)", margin: "18px 0" }}>
+    <div style={{ border: `1px solid ${line}`, borderRadius: 6, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(13,19,48,0.04), 0 14px 32px -24px rgba(13,19,48,0.14)", margin: "18px 0" }}>
       {label && <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: subtle, marginBottom: 16 }}>{label}</div>}
       {children}
     </div>
@@ -422,7 +422,7 @@ function MarginalCurve() {
       ))}
       {xTicks.map((t) => (
         <g key={t.v}>
-          <line x1={x(t.v)} y1={padT} x2={x(t.v)} y2={H - padB} stroke="#e4e7ec" strokeWidth="1" strokeDasharray="3 3" />
+          <line x1={x(t.v)} y1={padT} x2={x(t.v)} y2={H - padB} stroke="#e6e8f2" strokeWidth="1" strokeDasharray="3 3" />
           <text x={x(t.v)} y={H - 10} textAnchor="middle" style={{ fontSize: 10.5, fontWeight: 600 }} fill={subtle}>{t.l}</text>
         </g>
       ))}

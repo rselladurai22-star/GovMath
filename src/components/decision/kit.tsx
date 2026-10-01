@@ -10,14 +10,14 @@ import { useEffect, useRef, useState } from "react";
 
 /* ── theme ──────────────────────────────────────────────────────── */
 export const C = {
-  ink: "#101828",
-  body: "#1d2939",
-  mute: "#475467",
+  ink: "#0d1330",
+  body: "#1a2040",
+  mute: "#4a5170",
   subtle: "#98a2b3",
-  line: "#e4e7ec",
-  tint: "#f8fafc",
-  accent: "#2f5bea",
-  accentDeep: "#101828",
+  line: "#e6e8f2",
+  tint: "#f7f8ff",
+  accent: "#4353ff",
+  accentDeep: "#0d1330",
   shadow: "0 1px 3px rgba(12,22,17,0.05), 0 14px 32px -16px rgba(12,22,17,0.14)",
 };
 
@@ -29,7 +29,7 @@ export const PALETTE = {
   amber: "#f6a723",
   violet: "#7c6cf0",
   teal: "#0ea5a5",
-  slate: "#475467",
+  slate: "#4a5170",
 };
 
 /* ── format ─────────────────────────────────────────────────────── */
@@ -102,7 +102,7 @@ export function Segmented({ value, onChange, options, className = "" }: { value:
     <div role="radiogroup" className={className} style={{ display: "grid", gridTemplateColumns: `repeat(${options.length},1fr)`, gap: 2, background: C.tint, borderRadius: 4, padding: 2 }}>
       {options.map((o) => {
         const on = value === o.value;
-        return <button key={o.value} type="button" role="radio" aria-checked={on} onClick={() => onChange(o.value)} style={{ fontSize: 14.5, fontWeight: 600, padding: "9px 4px", borderRadius: 4, border: 0, cursor: "pointer", background: on ? "#fff" : "transparent", color: on ? C.ink : C.mute, boxShadow: on ? "0 1px 2px rgba(16,24,40,0.12)" : "none", transition: "all .15s" }}>{o.label}</button>;
+        return <button key={o.value} type="button" role="radio" aria-checked={on} onClick={() => onChange(o.value)} style={{ fontSize: 14.5, fontWeight: 600, padding: "9px 4px", borderRadius: 4, border: 0, cursor: "pointer", background: on ? "#fff" : "transparent", color: on ? C.ink : C.mute, boxShadow: on ? "0 1px 2px rgba(13,19,48,0.12)" : "none", transition: "all .15s" }}>{o.label}</button>;
       })}
     </div>
   );

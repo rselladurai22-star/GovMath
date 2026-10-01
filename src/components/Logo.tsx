@@ -14,8 +14,9 @@ export function LogoIcon({ size = 32 }: { size?: number }) {
         flexShrink: 0,
         width: size,
         height: size,
-        borderRadius: Math.round(size * 0.24),
-        background: "var(--blue)",
+        borderRadius: Math.round(size * 0.3),
+        background: "var(--brand-gradient)",
+        boxShadow: "0 8px 18px -8px rgba(87, 70, 245, 0.7), inset 0 1px 0 rgba(255,255,255,0.3)",
         color: "#fff",
       }}
     >

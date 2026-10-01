@@ -1,14 +1,14 @@
 /** National Insurance — visual, plain-English guide. Pure server component. */
 
-const ink = "#101828", body = "#1d2939", mute = "#475467", subtle = "#98a2b3", line = "#e4e7ec", tint = "#f8fafc";
-const blue = "#2f5bea", green = "#16a34a", amber = "#f59e0b", violet = "#8b5cf6", teal = "#0ea5a5";
+const ink = "#0d1330", body = "#1a2040", mute = "#4a5170", subtle = "#98a2b3", line = "#e6e8f2", tint = "#f7f8ff";
+const blue = "#4353ff", green = "#16a34a", amber = "#f59e0b", violet = "#8b5cf6", teal = "#0ea5a5";
 const gbp = (n: number) => "£" + Math.round(n).toLocaleString("en-GB");
 
 function Section({ n, kicker, title, children }: { n: string; kicker: string; title: string; children: React.ReactNode }) {
   return (
     <section style={{ paddingTop: 44, paddingBottom: 44, borderTop: `1px solid ${line}` }}>
       <div className="flex items-center gap-3" style={{ marginBottom: 6 }}>
-        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 6, background: "#eef2ff", color: blue, fontWeight: 800, fontSize: 15 }}>{n}</span>
+        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 6, background: "#eef0ff", color: blue, fontWeight: 800, fontSize: 15 }}>{n}</span>
         <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: blue }}>{kicker}</span>
       </div>
       <h2 style={{ fontSize: 27, fontWeight: 800, color: ink, letterSpacing: "-0.02em", margin: "0 0 14px", lineHeight: 1.12 }}>{title}</h2>
@@ -21,7 +21,7 @@ function P({ children }: { children: React.ReactNode }) {
 }
 function Viz({ label, children }: { label?: string; children: React.ReactNode }) {
   return (
-    <div style={{ border: `1px solid ${line}`, borderRadius: 6, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(16,24,40,0.04), 0 14px 32px -20px rgba(16,24,40,0.12)", margin: "18px 0" }}>
+    <div style={{ border: `1px solid ${line}`, borderRadius: 6, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(13,19,48,0.04), 0 14px 32px -20px rgba(13,19,48,0.12)", margin: "18px 0" }}>
       {label && <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: subtle, marginBottom: 16 }}>{label}</div>}
       {children}
     </div>
@@ -106,7 +106,7 @@ export default function NIGuide() {
 /* NI band chart — rate steps across earnings. */
 function NiBands() {
   const bands = [
-    { from: 0, to: 12570, rate: 0, c: "#e4e7ec", label: "0% · NI-free" },
+    { from: 0, to: 12570, rate: 0, c: "#e6e8f2", label: "0% · NI-free" },
     { from: 12570, to: 50270, rate: 8, c: blue, label: "8% · main band" },
     { from: 50270, to: 80000, rate: 2, c: amber, label: "2% · upper band" },
   ];

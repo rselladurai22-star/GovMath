@@ -6,29 +6,46 @@ import { usePathname } from "next/navigation";
 import { LineIcon } from "@/components/category-style";
 import styles from "./SiteChrome.module.css";
 
-export type NavTopic = { href: string; label: string; desc: string; icon: string; count: number };
+export type NavTool = { title: string; href: string; popular: boolean };
+export type NavTopic = {
+  slug: string;
+  href: string;
+  label: string;
+  title: string;
+  desc: string;
+  icon: string;
+  tools: NavTool[];
+};
 
-/** Direct links to the most-visited topics, beside the full Calculators menu. */
-const QUICK = [
-  { href: "/tax-and-salary", label: "Tax & Salary" },
-  { href: "/property", label: "Property" },
-  { href: "/benefits", label: "Benefits" },
-  { href: "/blog", label: "Guides" },
-];
-
-/** Desktop primary nav: Calculators mega-menu plus quick topic links. */
-export default function HeaderNav({ topics, total }: { topics: NavTopic[]; total: number }) {
+/**
+ * Desktop primary nav: one item per category, each opening a mega-menu that
+ * lists every calculator in it. Opens on hover (with intent delay), click,
+ * or keyboard; closes on Escape, outside click or navigation.
+ */
+export default function HeaderNav({ topics }: { topics: NavTopic[] }) {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  const wrapRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState<string | null>(null);
+  const navRef = useRef<HTMLElement>(null);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Close on outside click and Escape (menu links close it on click).
+  const clear = () => {
+    if (timer.current) clearTimeout(timer.current);
+  };
+  const openSoon = (slug: string) => {
+    clear();
+    timer.current = setTimeout(() => setOpen(slug), open ? 0 : 90);
+  };
+  const closeSoon = () => {
+    clear();
+    timer.current = setTimeout(() => setOpen(null), 160);
+  };
+
   useEffect(() => {
     if (!open) return;
     const onClick = (e: MouseEvent) => {
-      if (!wrapRef.current?.contains(e.target as Node)) setOpen(false);
+      if (!navRef.current?.contains(e.target as Node)) setOpen(null);
     };
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(null);
     document.addEventListener("mousedown", onClick);
     document.addEventListener("keydown", onKey);
     return () => {
@@ -36,63 +53,67 @@ export default function HeaderNav({ topics, total }: { topics: NavTopic[]; total
       document.removeEventListener("keydown", onKey);
     };
   }, [open]);
+  useEffect(() => clear, []);
 
   const current = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
-  const quickActive = QUICK.some((q) => current(q.href));
-  const menuActive = !quickActive && (topics.some((t) => current(t.href)) || current("/calculators"));
+  const active = topics.find((t) => t.slug === open);
 
   return (
-    <nav aria-label="Main navigation" className={styles.nav}>
-      <div className={styles.menuWrap} ref={wrapRef}>
+    <nav aria-label="Main navigation" className={styles.nav} ref={navRef} onMouseLeave={closeSoon}>
+      {topics.map((t) => (
         <button
+          key={t.slug}
           type="button"
           className={styles.navItem}
-          aria-expanded={open}
-          aria-controls="calc-menu"
-          data-active={menuActive || undefined}
-          onClick={() => setOpen((o) => !o)}
+          aria-expanded={open === t.slug}
+          aria-controls="mega-menu"
+          data-active={current(t.href) || undefined}
+          onMouseEnter={() => openSoon(t.slug)}
+          onFocus={() => setOpen((o) => (o ? t.slug : o))}
+          onClick={() => {
+            clear();
+            setOpen((o) => (o === t.slug ? null : t.slug));
+          }}
         >
-          Calculators
-          <svg className={styles.chev} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} aria-hidden="true">
+          {t.label}
+          <svg className={styles.chev} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.6} aria-hidden="true">
             <path d="M6 9l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </button>
-        {open && (
-          <div id="calc-menu" className={styles.menu}>
-            <div className={styles.menuHead}>
-              <strong>Browse {total} calculators</strong>
-              <Link href="/calculators" onClick={() => setOpen(false)}>
-                View all →
+      ))}
+      <Link href="/blog" className={styles.navItem} aria-current={current("/blog") ? "page" : undefined} onMouseEnter={closeSoon}>
+        Guides
+      </Link>
+
+      {active && (
+        <div id="mega-menu" className={styles.mega} onMouseEnter={clear}>
+          <div key={active.slug} className={`gm-wrap ${styles.megaInner}`}>
+            <div className={styles.megaIntro}>
+              <span className={styles.megaIcon}>
+                <LineIcon path={active.icon} size={26} />
+              </span>
+              <strong>{active.title}</strong>
+              <p>{active.desc}</p>
+              <Link href={active.href} className={styles.megaAll} onClick={() => setOpen(null)}>
+                View all {active.tools.length} calculators
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
               </Link>
             </div>
-            <div className={styles.menuGrid}>
-              {topics.map((t) => (
-                <Link key={t.href} href={t.href} className={styles.menuItem} onClick={() => setOpen(false)}>
-                  <span className={styles.menuIcon}>
-                    <LineIcon path={t.icon} size={20} />
-                  </span>
-                  <span>
-                    <strong>{t.label}</strong>
-                    <small>
-                      {t.desc} · {t.count}
-                    </small>
-                  </span>
-                </Link>
+            <ul className={styles.megaTools}>
+              {active.tools.map((tool, i) => (
+                <li key={tool.href} style={{ ["--i" as string]: i }}>
+                  <Link href={tool.href} onClick={() => setOpen(null)} aria-current={pathname === tool.href ? "page" : undefined}>
+                    <span>{tool.title}</span>
+                    {tool.popular && <em>Popular</em>}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
-        )}
-      </div>
-      {QUICK.map((q) => (
-        <Link
-          key={q.href}
-          href={q.href}
-          className={styles.navItem}
-          aria-current={current(q.href) ? "page" : undefined}
-        >
-          {q.label}
-        </Link>
-      ))}
+        </div>
+      )}
     </nav>
   );
 }

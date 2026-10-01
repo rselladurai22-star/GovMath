@@ -9,10 +9,10 @@ import type { ReactNode, CSSProperties } from "react";
    ══════════════════════════════════════════════════════════════════ */
 
 export const FONT = "var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif";
-export const BLUE = "#2f5bea";
-export const BLUE_HOVER = "#101828";
-export const BLUE_SOFT = "#eef2ff";
-export const BLUE_EDGE = "#e4e7ec";
+export const BLUE = "#4353ff";
+export const BLUE_HOVER = "#0d1330";
+export const BLUE_SOFT = "#eef0ff";
+export const BLUE_EDGE = "#e6e8f2";
 export const GREEN = "#16a34a";
 export const GREEN_SOFT = "#f0fdf4";
 export const VIOLET = "#8b5cf6";
@@ -20,21 +20,21 @@ export const AMBER = "#f59e0b";
 export const CORAL = "#ef4444";
 
 export const T = {
-  ink: "#101828",
-  body: "#344054",
-  mute: "#475467",
+  ink: "#0d1330",
+  body: "#343b5c",
+  mute: "#4a5170",
   subtle: "#98a2b3",
-  line: "#e4e7ec",
-  tint: "#f8fafc",
+  line: "#e6e8f2",
+  tint: "#f7f8ff",
 };
-export const CANVAS = "#f8fafc";
+export const CANVAS = "#f7f8ff";
 export const R_LG = 10;
 export const R_MD = 10;
 
 /* ── surfaces ───────────────────────────────────────────────────── */
 export function Card({ children, className = "", radius = R_MD, hover = true, style }: { children: ReactNode; className?: string; radius?: number; hover?: boolean; style?: CSSProperties }) {
   return (
-    <div className={`${hover ? "gm-card " : ""}${className}`} style={{ background: "#fff", border: `1px solid ${T.line}`, borderRadius: radius, boxShadow: "0 1px 2px rgba(16,24,40,0.04), 0 12px 28px -24px rgba(16,24,40,0.14)", ...style }}>
+    <div className={`${hover ? "gm-card " : ""}${className}`} style={{ background: "#fff", border: `1px solid ${T.line}`, borderRadius: radius, boxShadow: "0 1px 2px rgba(13,19,48,0.04), 0 12px 28px -24px rgba(13,19,48,0.14)", ...style }}>
       {children}
     </div>
   );
@@ -55,7 +55,7 @@ export function Head({ icon, title, right }: { icon: ReactNode; title: string; r
 export function Group({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div>
-      <div style={{ fontSize: 13, fontWeight: 600, color: "#475467", marginBottom: 12 }}>{label}</div>
+      <div style={{ fontSize: 13, fontWeight: 600, color: "#4a5170", marginBottom: 12 }}>{label}</div>
       <div className="space-y-4">{children}</div>
     </div>
   );
@@ -90,7 +90,7 @@ export function MoneyInput({ value, onChange, icon, big }: { value: number; onCh
       <input type="text" inputMode="numeric" value={display} placeholder="0"
         onChange={(e) => { const digits = e.target.value.replace(/[^\d]/g, ""); onChange(digits === "" ? 0 : Number(digits)); }}
         style={{ width: "100%", background: "#fff", border: "1px solid #d0d5dd", borderRadius: 8, padding: big ? "12px 40px 12px 27px" : "11px 40px 11px 26px", fontSize: big ? 18 : 16, fontWeight: 700, color: T.ink, outline: "none", fontVariantNumeric: "tabular-nums" }}
-        onFocus={(e) => { e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(47,91,234,0.12)"; }}
+        onFocus={(e) => { e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(67,83,255,0.12)"; }}
         onBlur={(e) => { e.currentTarget.style.borderColor = "#d0d5dd"; e.currentTarget.style.boxShadow = "none"; }} />
       {icon && <span style={{ position: "absolute", right: 13, top: "50%", transform: "translateY(-50%)", color: T.subtle }}>{icon}</span>}
     </div>

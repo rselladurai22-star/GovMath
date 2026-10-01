@@ -116,7 +116,7 @@ export default function MortgageEngine(props: Partial<MortgageInputs>) {
 
       {/* Mobile sticky Calculate bar (design doc §6) — only before results */}
       {!showResults && (
-        <div className="lg:hidden" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, background: "#fff", borderTop: `1px solid ${T.line}`, boxShadow: "0 -6px 20px -12px rgba(16,24,40,0.25)", padding: "12px 16px calc(12px + env(safe-area-inset-bottom))" }}>
+        <div className="lg:hidden" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, background: "#fff", borderTop: `1px solid ${T.line}`, boxShadow: "0 -6px 20px -12px rgba(13,19,48,0.25)", padding: "12px 16px calc(12px + env(safe-area-inset-bottom))" }}>
           <button type="button" onClick={calculate}
             style={{ width: "100%", padding: "14px 12px", borderRadius: 6, background: BLUE, color: "#fff", fontWeight: 700, fontSize: 15.5, border: 0, cursor: "pointer" }}
             className="flex items-center justify-center gap-2">
@@ -316,7 +316,7 @@ function RateStepper({ value, onChange }: { value: number; onChange: (v: number)
     <div className="relative">
       <input type="number" step={0.05} min={0} max={15} value={value} onChange={(e) => onChange(Number(e.target.value))}
         style={{ width: "100%", background: "#fff", border: `1.5px solid ${T.line}`, borderRadius: 6, padding: "11px 44px 11px 14px", fontSize: 16, fontWeight: 700, color: T.ink, outline: "none", fontVariantNumeric: "tabular-nums" }}
-        onFocus={(e) => { e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(47,91,234,0.12)"; }}
+        onFocus={(e) => { e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.boxShadow = "0 0 0 3px rgba(67,83,255,0.12)"; }}
         onBlur={(e) => { e.currentTarget.style.borderColor = T.line; e.currentTarget.style.boxShadow = "none"; }} />
       <span style={{ position: "absolute", right: 40, top: "50%", transform: "translateY(-50%)", color: T.mute, fontSize: 15, fontWeight: 700 }}>%</span>
       <div style={{ position: "absolute", right: 6, top: "50%", transform: "translateY(-50%)", display: "flex", flexDirection: "column", gap: 2 }}>
@@ -374,7 +374,7 @@ function SummaryCard({ snap, sdlt, fees, state }: { snap: MortgageSnapshot; sdlt
         <div style={{ display: "inline-flex", background: T.tint, borderRadius: 4, padding: 3, gap: 2 }}>
           {(["monthly", "yearly"] as const).map((b) => (
             <button key={b} type="button" onClick={() => setBasis(b)}
-              style={{ fontSize: 13, fontWeight: 600, padding: "6px 14px", borderRadius: 4, border: 0, cursor: "pointer", textTransform: "capitalize", background: basis === b ? "#fff" : "transparent", color: basis === b ? BLUE : T.mute, boxShadow: basis === b ? "0 1px 2px rgba(16,24,40,0.12)" : "none" }}>{b}</button>
+              style={{ fontSize: 13, fontWeight: 600, padding: "6px 14px", borderRadius: 4, border: 0, cursor: "pointer", textTransform: "capitalize", background: basis === b ? "#fff" : "transparent", color: basis === b ? BLUE : T.mute, boxShadow: basis === b ? "0 1px 2px rgba(13,19,48,0.12)" : "none" }}>{b}</button>
           ))}
         </div>
       </div>
@@ -491,7 +491,7 @@ function BalanceCard({ snap }: { snap: MortgageSnapshot }) {
         right={<div style={{ display: "inline-flex", background: T.tint, borderRadius: 4, padding: 3, gap: 2 }}>
           {(["balance", "interest", "equity"] as const).map((k) => (
             <button key={k} type="button" onClick={() => setTab(k)}
-              style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 4, border: 0, cursor: "pointer", textTransform: "capitalize", background: tab === k ? "#fff" : "transparent", color: tab === k ? BLUE : T.mute, boxShadow: tab === k ? "0 1px 2px rgba(16,24,40,0.12)" : "none" }}>{k}</button>
+              style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 4, border: 0, cursor: "pointer", textTransform: "capitalize", background: tab === k ? "#fff" : "transparent", color: tab === k ? BLUE : T.mute, boxShadow: tab === k ? "0 1px 2px rgba(13,19,48,0.12)" : "none" }}>{k}</button>
           ))}
         </div>} />
 
@@ -524,7 +524,7 @@ function BalanceCard({ snap }: { snap: MortgageSnapshot }) {
           {ticks.map((yr) => <text key={yr} x={x(yr)} y={H - 8} textAnchor="middle" style={{ fontSize: 10.5, fontWeight: 600 }} fill={T.subtle}>Year {yr}</text>)}
         </svg>
         {hover != null && (
-          <div style={{ position: "absolute", top: 0, left: `clamp(0px, ${(x(hover) / W) * 100}%, calc(100% - 150px))`, background: "#fff", border: `1px solid ${T.line}`, borderRadius: 6, padding: "9px 12px", pointerEvents: "none", boxShadow: "0 8px 24px -8px rgba(16,24,40,0.25)" }}>
+          <div style={{ position: "absolute", top: 0, left: `clamp(0px, ${(x(hover) / W) * 100}%, calc(100% - 150px))`, background: "#fff", border: `1px solid ${T.line}`, borderRadius: 6, padding: "9px 12px", pointerEvents: "none", boxShadow: "0 8px 24px -8px rgba(13,19,48,0.25)" }}>
             <div style={{ fontSize: 11, color: T.mute, fontWeight: 600 }}>Year {hover}</div>
             <div style={{ fontSize: 15, fontWeight: 800, color: T.ink, fontVariantNumeric: "tabular-nums" }}>{money(data[hover])}</div>
             <div style={{ fontSize: 11, color: T.subtle, marginTop: 1 }}>{label}</div>

@@ -103,7 +103,7 @@ export default function TakeHomeEngine({ initialSalary = 35000 }: { initialSalar
       </div>
 
       {!showResults && (
-        <div className="lg:hidden" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, background: "#fff", borderTop: `1px solid ${T.line}`, boxShadow: "0 -6px 20px -12px rgba(16,24,40,0.25)", padding: "12px 16px calc(12px + env(safe-area-inset-bottom))" }}>
+        <div className="lg:hidden" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, background: "#fff", borderTop: `1px solid ${T.line}`, boxShadow: "0 -6px 20px -12px rgba(13,19,48,0.25)", padding: "12px 16px calc(12px + env(safe-area-inset-bottom))" }}>
           <button type="button" onClick={calculate} className="gm-cta flex items-center justify-center gap-2"
             style={{ width: "100%", padding: "14px 12px", borderRadius: 6, color: "#fff", fontWeight: 700, fontSize: 15.5, border: 0, cursor: "pointer" }}>
             <IconCoin />
@@ -248,7 +248,7 @@ function SummaryCard({ snap }: { snap: TakeHomeSnapshot }) {
         right={<div style={{ display: "inline-flex", background: T.tint, borderRadius: 4, padding: 3, gap: 2 }}>
           {PERIOD.map((x) => (
             <button key={x.key} type="button" onClick={() => setBasis(x.key)}
-              style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 4, border: 0, cursor: "pointer", background: basis === x.key ? "#fff" : "transparent", color: basis === x.key ? BLUE : T.mute, boxShadow: basis === x.key ? "0 1px 2px rgba(16,24,40,0.12)" : "none" }}>{x.label}</button>
+              style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 4, border: 0, cursor: "pointer", background: basis === x.key ? "#fff" : "transparent", color: basis === x.key ? BLUE : T.mute, boxShadow: basis === x.key ? "0 1px 2px rgba(13,19,48,0.12)" : "none" }}>{x.label}</button>
           ))}
         </div>} />
 
@@ -330,7 +330,7 @@ function CurveCard({ inputs, annualSalary, dispatch }: { inputs: EngineInputs; a
         right={<div style={{ display: "inline-flex", background: T.tint, borderRadius: 4, padding: 3, gap: 2 }}>
           {([{ v: "takeHome", l: "Take-home" }, { v: "keep", l: "Keep-rate" }] as const).map((o) => (
             <button key={o.v} type="button" onClick={() => setMode(o.v)}
-              style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 4, border: 0, cursor: "pointer", background: mode === o.v ? "#fff" : "transparent", color: mode === o.v ? BLUE : T.mute, boxShadow: mode === o.v ? "0 1px 2px rgba(16,24,40,0.12)" : "none" }}>{o.l}</button>
+              style={{ fontSize: 12.5, fontWeight: 600, padding: "6px 12px", borderRadius: 4, border: 0, cursor: "pointer", background: mode === o.v ? "#fff" : "transparent", color: mode === o.v ? BLUE : T.mute, boxShadow: mode === o.v ? "0 1px 2px rgba(13,19,48,0.12)" : "none" }}>{o.l}</button>
           ))}
         </div>} />
       <div style={{ position: "relative" }}>
@@ -351,7 +351,7 @@ function CurveCard({ inputs, annualSalary, dispatch }: { inputs: EngineInputs; a
           <line x1={mx} y1={padT} x2={mx} y2={H - padB} stroke={T.ink} strokeWidth="1.5" />
           <circle cx={mx} cy={my} r="6.5" fill="#fff" stroke={T.ink} strokeWidth="2.5" /><circle cx={mx} cy={my} r="3" fill={BLUE} />
         </svg>
-        <div style={{ position: "absolute", top: 2, left: `clamp(4px, ${(mx / W) * 100}%, calc(100% - 150px))`, background: "#fff", border: `1px solid ${T.line}`, borderRadius: 6, padding: "7px 11px", pointerEvents: "none", boxShadow: "0 8px 24px -8px rgba(16,24,40,0.25)" }}>
+        <div style={{ position: "absolute", top: 2, left: `clamp(4px, ${(mx / W) * 100}%, calc(100% - 150px))`, background: "#fff", border: `1px solid ${T.line}`, borderRadius: 6, padding: "7px 11px", pointerEvents: "none", boxShadow: "0 8px 24px -8px rgba(13,19,48,0.25)" }}>
           <div style={{ fontSize: 11, color: T.mute, fontWeight: 600 }}>{money(annualSalary)} gross</div>
           <div style={{ fontSize: 15, fontWeight: 800, color: BLUE, fontVariantNumeric: "tabular-nums" }}>{mode === "takeHome" ? money(here.takeHome) : `${Math.round(here.keepRate * 100)}p / £1`}</div>
         </div>

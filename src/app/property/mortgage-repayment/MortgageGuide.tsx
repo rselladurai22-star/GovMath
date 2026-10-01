@@ -4,11 +4,11 @@
  * concepts are shown, not just described. Apple-clean, crystal clear.
  */
 
-const ink = "#101828";
-const body = "#1d2939";
+const ink = "#0d1330";
+const body = "#1a2040";
 const mute = "#5c6b63";
 const subtle = "#8a938d";
-const line = "#e4e7ec";
+const line = "#e6e8f2";
 const tint = "#f4f6f7";
 const green = "#12a566";
 const greenDeep = "#0a6f43";

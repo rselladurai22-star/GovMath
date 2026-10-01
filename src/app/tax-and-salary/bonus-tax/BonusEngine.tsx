@@ -137,7 +137,7 @@ export default function BonusEngine({ initialSalary = 40000 }: { initialSalary?:
       </div>
 
       {!showResults && (
-        <div className="lg:hidden" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, background: "#fff", borderTop: `1px solid ${T.line}`, boxShadow: "0 -6px 20px -12px rgba(16,24,40,0.25)", padding: "12px 16px calc(12px + env(safe-area-inset-bottom))" }}>
+        <div className="lg:hidden" style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 40, background: "#fff", borderTop: `1px solid ${T.line}`, boxShadow: "0 -6px 20px -12px rgba(13,19,48,0.25)", padding: "12px 16px calc(12px + env(safe-area-inset-bottom))" }}>
           <button type="button" onClick={calculate} className="gm-cta flex items-center justify-center gap-2" style={{ width: "100%", padding: "14px 12px", borderRadius: 6, color: "#fff", fontWeight: 700, fontSize: 15.5, border: 0, cursor: "pointer" }}>
             <IconGift /> Calculate Bonus
           </button>
