@@ -159,7 +159,7 @@
   .stage[data-ready] > * > [class*="lg:grid-cols-["] > :first-child {
     position: sticky;
     top: 88px;
-    max-height: calc(100vh - 104px);
+    max-height: calc(100vh / var(--page-scale) - 104px);
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-width: thin;

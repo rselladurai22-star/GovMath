@@ -202,7 +202,7 @@
   top: 88px;
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - 104px);
+  max-height: calc(100vh / var(--page-scale) - 104px);
   border: 1px solid var(--fs-card-line);
   border-radius: 22px;
   background: #fff;
@@ -291,7 +291,7 @@
   justify-content: space-between;
   gap: 0.75rem;
   color: var(--navy);
-  font-size: var(--fs-sm);
+  font-size: 0.9375rem;
   font-weight: 700;
 }
 .fieldAside {
@@ -303,7 +303,7 @@
 .hint {
   margin: 0;
   color: var(--muted);
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   line-height: 1.45;
 }
 
@@ -430,7 +430,7 @@
   justify-content: space-between;
   margin-top: 0.15rem;
   color: #858ab0;
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   font-weight: 600;
 }
 
