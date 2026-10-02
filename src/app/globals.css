@@ -47,9 +47,9 @@
   --ring: var(--blue-bright);
 
   /* ── Type scale ─────────────────────────────────────────
-     One scale for the whole site. rem follows the fluid root size set on
-     <html> below, and the display sizes also ease with viewport width so a
-     laptop, a big monitor and a tablet all feel the same. */
+     One scale for the whole site, on a 16px root. The page-wide
+     --page-scale (below) sets how large it renders, so every screen keeps
+     the same proportions; display sizes also ease with viewport width. */
   --fs-display: clamp(2.25rem, 1.5rem + 1.5vw, 3rem); /* homepage hero */
   --fs-h1: clamp(1.75rem, 1.35rem + 0.8vw, 2.25rem); /* page titles */
   --fs-h2: clamp(1.5rem, 1.2rem + 0.6vw, 1.875rem); /* section titles */
@@ -110,7 +110,7 @@
   }
 
   html {
-    font-size: clamp(15px, 0.35vw + 10px, 16.5px);
+    font-size: 16px;
     overflow-x: clip;
     scroll-behavior: smooth;
     scroll-padding-top: 2rem;
@@ -126,26 +126,33 @@
     font-variant-numeric: lining-nums;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    /* One page scale for every screen, so type, spacing and icons keep the
+       same proportions on a phone, tablet, laptop and large monitor. Media
+       queries still match the real viewport, so layouts adapt as usual. */
+    zoom: var(--page-scale);
   }
 
-  /* Phones: the desktop proportions read oversized on a ~390px screen, so
-     scale the whole page down uniformly (type, spacing, icons alike). Media
-     queries still match the real viewport, so layouts stay mobile. */
-  @media (max-width: 700px) {
+  :root {
+    --page-scale: 0.85;
+  }
+  /* Large monitors are viewed from further away: ease the scale up. */
+  @media (min-width: 1920px) {
     :root {
-      --mobile-scale: 0.85;
+      --page-scale: 0.9;
     }
-    html {
-      font-size: 16px;
+  }
+  @media (min-width: 2560px) {
+    :root {
+      --page-scale: 1;
     }
-    body {
-      zoom: var(--mobile-scale);
-    }
-    /* Keep form fields at a real 16px so iOS doesn't zoom in on focus. */
+  }
+
+  /* Phones: keep form fields at a real 16px so iOS doesn't zoom in on focus. */
+  @media (max-width: 700px) {
     input,
     select,
     textarea {
-      font-size: calc(16px / var(--mobile-scale)) !important;
+      font-size: calc(16px / var(--page-scale)) !important;
     }
   }
 
@@ -261,6 +268,17 @@ textarea:focus-visible,
 @media (min-width: 1151px) {
   .gm-wrap {
     width: calc(100% - 6rem);
+  }
+}
+/* Big monitors: widen the content so it fills a similar share of the screen. */
+@media (min-width: 1920px) {
+  .gm-wrap {
+    max-width: 1280px;
+  }
+}
+@media (min-width: 2560px) {
+  .gm-wrap {
+    max-width: 1400px;
   }
 }
 
@@ -871,7 +889,7 @@ textarea:focus-visible,
 .gm-calc label.block {
   margin-bottom: 0.35rem;
   color: var(--navy);
-  font-size: var(--fs-sm);
+  font-size: 0.9375rem;
   font-weight: 700;
 }
 
@@ -905,7 +923,7 @@ textarea:focus-visible,
   .gm-inputs-panel {
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - 32px);
+    max-height: calc(100vh / var(--page-scale) - 32px);
   }
   .gm-inputs-panel > .gm-inputs-head,
   .gm-inputs-panel > .gm-inputs-foot {

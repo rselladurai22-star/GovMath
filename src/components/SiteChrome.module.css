@@ -336,8 +336,8 @@
   flex-direction: column;
   width: min(92%, 400px);
   height: 100dvh;
-  /* Undo the mobile page zoom so the drawer still spans the full screen. */
-  height: calc(100dvh / var(--mobile-scale, 1));
+  /* Undo the page zoom so the drawer still spans the full screen. */
+  height: calc(100dvh / var(--page-scale, 1));
   background: #fff;
   box-shadow: -30px 0 60px -20px rgba(13, 19, 48, 0.35);
   transform: translateX(100%);
