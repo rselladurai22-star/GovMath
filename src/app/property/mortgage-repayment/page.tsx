@@ -1,11 +1,7 @@
 import type { Metadata } from "next";
-import EngineOutro from "@/components/calculator/EngineOutro";
-import { HomeMotion } from "@/components/home/Motion";
-import PageHero, { HeroPills } from "@/components/PageHero";
-import { CAT } from "@/components/category-style";
-import MortgageEngine from "./MortgageEngine";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import MortgageStudio from "./MortgageStudio";
 import MortgageGuide from "./MortgageGuide";
-import AdSlot from "@/components/AdSlot";
 import { CALCULATORS } from "@/lib/calculators";
 
 export const metadata: Metadata = {
@@ -66,66 +62,24 @@ export default async function MortgagePage({ searchParams }: { searchParams: Sea
     ].includes(c.href)
   );
 
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: BREADCRUMBS.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.label, item: `https://govmath.co.uk${c.href}` })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: FAQS.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-    },
-  ];
-
-  const FEATURES = [
-    { icon: "✓", label: "Based on UK rates" },
-    { icon: "📊", label: "Advanced affordability" },
-    { icon: "🏷️", label: "Stamp Duty estimate" },
-    { icon: "🔒", label: "100% Free & Private" },
-  ];
-
   return (
-    <div id="gm-engine-page" style={{ background: "#ffffff", color: "var(--ink)" }}>
-      <HomeMotion rootId="gm-engine-page" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-
-      <PageHero
-        breadcrumbs={BREADCRUMBS}
-        eyebrow="2025/26 rates · Updated for this tax year"
-        title="UK Mortgage Calculator"
-        lead="Plan smarter. See your monthly payment, total cost and affordability in seconds."
-        icon={CAT.property.icon}
-        tone="property"
-      >
-        <HeroPills items={FEATURES.map((f) => f.label)} />
-      </PageHero>
-
-      <div id="calculator" style={{ scrollMarginTop: 74 }} />
-      <MortgageEngine
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2025/26"
+      title="Mortgage Repayment Calculator"
+      lead="See your monthly payment, what the mortgage really costs and how to pay less, as you type."
+      points={["Live results", "Overpayments and rate rises", "Stamp Duty and upfront costs", "Free and private"]}
+      guide={<MortgageGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Every figure here is an estimate. The exact amount your lender quotes depends on their product fees, any cashback and how interest is calculated (daily vs monthly). Always check the official Key Facts Illustration before you commit."
+    >
+      <MortgageStudio
         price={parseNumber(price, 350_000, 50_000_000)}
         deposit={parseNumber(deposit, 70_000, 50_000_000)}
-        ratePct={parseNumber(rate, 4.75, 25)}
-        termYears={parseNumber(term, 25, 40)}
+        rate={parseNumber(rate, 4.75, 15)}
+        term={Math.max(1, Math.round(parseNumber(term, 25, 40)))}
       />
-
-      {/* Ad */}
-      <div className="mx-auto max-w-6xl px-5 sm:px-6" style={{ marginTop: 8, marginBottom: 8 }}>
-        <AdSlot size="leaderboard" />
-      </div>
-
-      {/* Visual guide */}
-      <section className="mx-auto max-w-5xl px-5 sm:px-6">
-        <MortgageGuide />
-      </section>
-
-      {/* Ad */}
-      <div className="mx-auto max-w-6xl px-5 sm:px-6" style={{ marginTop: 24 }}>
-        <AdSlot size="billboard" />
-      </div>
-
-      <EngineOutro faqs={FAQS} related={related} note="Every figure here is an estimate. The exact amount your lender quotes depends on their product fees, any cashback and how interest is calculated (daily vs monthly). Always check the official Key Facts Illustration before you commit." />
-    </div>
+    </FlagshipPage>
   );
 }
