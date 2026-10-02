@@ -1,44 +1,48 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import AffordabilityCalculator from "./AffordabilityCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import AffordabilityStudio from "./AffordabilityStudio";
+import AffordabilityGuide from "./AffordabilityGuide";
 
 export const metadata: Metadata = {
-  title: "Mortgage Affordability Calculator (UK Lender Multiples)",
-  description: "How much UK lenders might offer you, based on income multiples and your deposit.",
+  title: "Mortgage Affordability Calculator (UK, 2026)",
+  description:
+    "How much could you borrow? Income multiples, bonus income, debts and childcare, a rate-rise stress test, monthly payments and the Stamp Duty on the home you could buy.",
+  alternates: { canonical: "/property/mortgage-affordability" },
 };
 
-export default function AffordabilityPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/property", label: "Mortgages & Property" },
+  { href: "/property/mortgage-affordability", label: "Mortgage Affordability" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much can I borrow for a mortgage?", a: "Most UK lenders lend around 4 to 4.5 times your yearly income before tax, less if you have debts or childcare costs. Some lend 5 to 5.5 times to higher earners." },
+  { q: "Do lenders count my bonus?", a: "Often 50% of bonus, overtime or commission, more if it is regular and proven over two years." },
+  { q: "How do debts affect what I can borrow?", a: "Regular commitments reduce your borrowing. At 4.5 times income, each £100 a month of debt or childcare cuts the loan by roughly £5,400." },
+  { q: "What is a mortgage stress test?", a: "Lenders check you could still afford payments if interest rates rose, often by a few percentage points above your rate." },
+  { q: "What deposit do I need?", a: "At least 5% with most lenders. A deposit of 10%, 15% or 25% usually unlocks lower rates." },
+];
+
+export default async function AffordabilityPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) =>
+    ["/property/mortgage-repayment", "/property/first-time-buyer", "/property/stamp-duty-england", "/property/shared-ownership", "/property/rent-vs-buy", "/tax-and-salary/salary-calculator"].includes(c.href),
+  );
   return (
-    <CalculatorShell
-      category="Property"
-      updatedLabel="Indicative"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/property", label: "Property" }, { href: "/property/mortgage-affordability", label: "Affordability" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026"
       title="Mortgage Affordability Calculator"
-      intro="UK lenders cap most mortgages at around 4.5× household income, with some going up to 5.5× under newer FCA stress-test rules. This is a fast first-pass."
-      calculator={<AffordabilityCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Max loan = household income × multiplier. Max purchase price = max loan + deposit. We don’t deduct outgoings here — real lender affordability scoring includes credit-card balances, school fees, childcare and pension contributions.</p>}
-          officialRules={
-            <ul>
-              <li>FCA limits over-4.5× lending to 15% of any lender’s book.</li>
-              <li>Stress tests typically check repayment at 7–8% rates.</li>
-              <li>First-time buyers may access higher LTI under schemes like Nationwide’s Helping Hand.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Bonuses count partially", body: "Most lenders take 50–100% of guaranteed bonuses, less for irregular ones." },
-            { title: "Self-employed needs 2–3 yrs accounts", body: "And lenders typically use the average net profit, not turnover." },
-            { title: "Childcare kills affordability", body: "£1,500/mo of childcare can cut your max loan by £80–100k." },
-          ]}
-          faqs={[
-            { question: "What multiple should I use?", answer: "4.5× is the common cap. Use 5.5× only for sole income over £75k or joint over £100k — and expect a stress test." },
-            { question: "Does this include Stamp Duty?", answer: "No — keep an additional 3–5% in cash for SDLT, legal fees and surveys." },
-          ]}
-          disclaimer="Indicative only. Run a proper Decision in Principle with a broker or lender."
-        />
-      }
-    />
+      lead="See how much you could borrow, what it would cost each month, and whether it would still be affordable if rates rose."
+      points={["Joint incomes and bonuses", "Debts and childcare", "Rate-rise stress test", "Free and private"]}
+      guide={<AffordabilityGuide />}
+      faqs={FAQS}
+      related={related}
+      note="An estimate based on common lender rules. Lenders use their own models, credit checks and full details of your outgoings. Get a decision in principle before making offers."
+    >
+      <AffordabilityStudio query={query} />
+    </FlagshipPage>
   );
 }

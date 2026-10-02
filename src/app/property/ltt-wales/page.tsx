@@ -1,45 +1,48 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import LTTCalculator from "./LTTCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import LandTaxStudio from "@/components/property/LandTaxStudio";
+import { CALCULATORS } from "@/lib/calculators";
+import LTTGuide from "./LTTGuide";
 
 export const metadata: Metadata = {
-  title: "LTT Calculator (Wales 2026/27)",
-  description: "Welsh Land Transaction Tax — main residential bands and the higher-rate surcharge for additional dwellings.",
+  title: "LTT Calculator (Wales, 2026/27)",
+  description:
+    "Work out Land Transaction Tax on a home in Wales: main rates with the £225,000 0% band, higher rates for second homes and buy-to-let, and refunds when you replace your main home.",
+  alternates: { canonical: "/property/ltt-wales" },
 };
 
-export default function LTTPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/property", label: "Mortgages & Property" },
+  { href: "/property/ltt-wales", label: "LTT (Wales)" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What are the LTT rates for 2026/27?", a: "Main rates: 0% up to £225,000, 6% to £400,000, 7.5% to £750,000, 10% to £1.5 million and 12% above. Each rate applies only to the part of the price in that band." },
+  { q: "Is there first-time buyer relief in Wales?", a: "No. Everyone buying an only or main home gets the £225,000 0% band instead." },
+  { q: "What are the higher rates for second homes?", a: "5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. They do not apply to homes bought for under £40,000." },
+  { q: "Can I get the higher rates back?", a: "Yes, if the new home replaces your main home and you sell your previous main home within 3 years. Claim the difference from the Welsh Revenue Authority." },
+  { q: "When do I pay LTT?", a: "Your solicitor files the return and pays the Welsh Revenue Authority within 30 days of completion." },
+];
+
+export default async function LTTPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) =>
+    ["/property/stamp-duty-england", "/property/lbtt-scotland", "/property/mortgage-repayment", "/property/mortgage-affordability", "/property/buy-to-let-yield", "/property/moving-house-budget"].includes(c.href),
+  );
   return (
-    <CalculatorShell
-      category="Mortgages & Property"
-      updatedLabel="April 2025 rates"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/property", label: "Mortgages & Property" }, { href: "/property/ltt-wales", label: "LTT (Wales)" }]}
-      title="LTT (Wales) Calculator"
-      intro="Land Transaction Tax replaced UK Stamp Duty in Wales in 2018. It has the highest nil-rate threshold in the UK — £225,000 — but no first-time buyer relief."
-      calculator={<LTTCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>LTT works band-by-band like LBTT or SDLT. Wales is unique in not offering a first-time buyer rate — but the £225k nil band already covers most starter homes outside Cardiff.</p>}
-          officialRules={
-            <ul>
-              <li>Nil: up to £225,000. 6% to £400k; 7.5% to £750k; 10% to £1.5m; 12% above.</li>
-              <li>Higher residential rates apply to second homes/buy-to-let: +5% added to every main band, starting from £1 of price (no nil rate).</li>
-              <li>Filed via the WRA within 30 days of completion.</li>
-              <li>No first-time buyer relief in Wales.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Higher rates start from £1", body: "Unlike LBTT or SDLT, Welsh higher rates don’t have a £40k threshold below which surcharge is skipped. Even a £30k second flat triggers LTT." },
-            { title: "No first-time buyer break", body: "Welsh policy chose a higher universal nil band instead. If you’re a FTB buying above £225k, no extra relief." },
-            { title: "Mixed-use bargain has shrunk", body: "Some buyers used to declare residential property ‘mixed-use’ for lower commercial rates — WRA challenges this aggressively now." },
-          ]}
-          faqs={[
-            { question: "Can I claim a refund if I sell my old home later?", answer: "Yes — if you replace your main residence within 3 years, you can reclaim the higher-rate element." },
-            { question: "Does LTT apply to commercial purchases?", answer: "Yes, but different bands. This calculator is residential only." },
-          ]}
-          disclaimer="Residential freehold purchases only."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026/27"
+      title="LTT Calculator (Wales)"
+      lead="Land Transaction Tax on a home in Wales, band by band, including the higher rates for second homes and how to claim them back."
+      points={["2026/27 rates", "£225,000 0% band", "Higher rates and refunds", "Free and private"]}
+      guide={<LTTGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Residential purchases in Wales. An estimate: your solicitor will confirm the figure on your LTT return to the Welsh Revenue Authority."
+    >
+      <LandTaxStudio nation="wales" query={query} />
+    </FlagshipPage>
   );
 }

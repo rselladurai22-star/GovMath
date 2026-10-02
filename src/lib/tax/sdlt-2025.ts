@@ -38,6 +38,9 @@ const FIRST_TIME_RELIEF_CAP = 500_000;
 /** Surcharge added to every band for additional/second properties. */
 const ADDITIONAL_SURCHARGE = 0.05;
 
+/** Purchases under £40,000 never pay the higher rates. */
+export const HIGHER_RATES_MIN_PRICE = 40_000;
+
 export type SdltBreakdownRow = {
   band: string;
   rate: number;
@@ -112,13 +115,13 @@ export function stampDuty(
     };
   }
 
-  const surcharge = buyerType === "additional" ? ADDITIONAL_SURCHARGE : 0;
-  const { total, breakdown } = applyBands(safePrice, STANDARD_BANDS, surcharge);
+  const higher = buyerType === "additional" && safePrice >= HIGHER_RATES_MIN_PRICE;
+  const { total, breakdown } = applyBands(safePrice, STANDARD_BANDS, higher ? ADDITIONAL_SURCHARGE : 0);
 
   return {
     price: safePrice,
     buyerType,
-    appliedScheme: buyerType === "additional" ? "additional" : "standard",
+    appliedScheme: higher ? "additional" : "standard",
     total,
     effectiveRate: safePrice > 0 ? total / safePrice : 0,
     breakdown,

@@ -1,44 +1,48 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import OverpaymentCalculator from "./OverpaymentCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import OverpaymentStudio from "./OverpaymentStudio";
+import OverpaymentGuide from "./OverpaymentGuide";
 
 export const metadata: Metadata = {
-  title: "Mortgage Overpayment Calculator (UK)",
-  description: "How much time and interest you save by overpaying your mortgage.",
+  title: "Mortgage Overpayment Calculator (UK, 2026)",
+  description:
+    "See how much interest and time you save by overpaying your mortgage: monthly overpayments, lump sums, shorter term or lower payment, the 10% allowance, and whether saving would earn more.",
+  alternates: { canonical: "/property/mortgage-overpayment" },
 };
 
-export default function OverpaymentPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/property", label: "Mortgages & Property" },
+  { href: "/property/mortgage-overpayment", label: "Mortgage Overpayment" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much do I save by overpaying my mortgage?", a: "On a £200,000 mortgage at 4.5% over 25 years, £200 a month extra saves about £36,000 of interest and clears the mortgage about 6 years early." },
+  { q: "How much can I overpay without a penalty?", a: "Most fixed and discounted deals allow 10% of the balance a year. Above that, an early repayment charge usually applies to the excess." },
+  { q: "Should I shorten my term or lower my payment?", a: "Shortening the term saves the most interest. Lowering the payment gives you more room in your monthly budget but saves less." },
+  { q: "Is it better to overpay or save?", a: "Compare your mortgage rate with your after-tax savings rate. If your mortgage rate is higher, overpaying usually wins, but keep an emergency fund first." },
+  { q: "Is a lump sum better than monthly overpayments?", a: "Pound for pound, money paid earlier saves more interest, so a lump sum now beats the same total spread over time." },
+];
+
+export default async function OverpaymentPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) =>
+    ["/property/mortgage-repayment", "/property/mortgage-affordability", "/investing/compound-interest", "/investing/isa-vs-gia", "/investing/pension-tax-relief", "/property/rent-vs-buy"].includes(c.href),
+  );
   return (
-    <CalculatorShell
-      category="Property"
-      updatedLabel="Amortisation"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/property", label: "Property" }, { href: "/property/mortgage-overpayment", label: "Overpayment" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026"
       title="Mortgage Overpayment Calculator"
-      intro="Overpaying chips capital off your balance directly — every £1 paid early saves you years of interest. This is one of the highest risk-free returns most UK households can get."
-      calculator={<OverpaymentCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>We simulate the original amortisation, then re-simulate with the extra payments applied each month and the lump sum deducted immediately. Interest saved = original total interest − new total interest.</p>}
-          officialRules={
-            <ul>
-              <li>Most fixed-rate UK mortgages allow up to 10% of the outstanding balance per year as a penalty-free overpayment.</li>
-              <li>Variable-rate / tracker mortgages usually have no overpayment cap.</li>
-              <li>Early Repayment Charges (ERCs) typically range 1–5% on a fixed deal.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Tell your lender to reduce the term, not the payment", body: "By default many lenders keep the term and just lower future payments. You save less interest. Always specify ‘reduce term’." },
-            { title: "Watch the 10% allowance", body: "Going £1 over can trigger an ERC on the entire overpayment. Track the calendar year." },
-            { title: "Compare with savings rates", body: "If your mortgage is 4% and your easy-access savings pay 5% (after tax), saving wins. Overpay only when mortgage rate &gt; net savings rate." },
-          ]}
-          faqs={[
-            { question: "Lump sum or monthly?", answer: "Lump sum saves more interest (capital reduced immediately). Monthly is more disciplined." },
-            { question: "Does this affect my LTV?", answer: "Yes — overpaying drops your balance, lowering LTV, which can unlock better rates at remortgage." },
-          ]}
-          disclaimer="Illustrative. Check your mortgage deal for ERCs before overpaying significantly."
-        />
-      }
-    />
+      lead="See how much interest and time you save by paying extra, and whether the money would do more in savings."
+      points={["Monthly and lump sums", "Shorter term or lower payment", "10% allowance check", "Free and private"]}
+      guide={<OverpaymentGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Illustrative. Assumes the rate stays the same for the whole term. Check your mortgage offer for overpayment limits and early repayment charges."
+    >
+      <OverpaymentStudio query={query} />
+    </FlagshipPage>
   );
 }

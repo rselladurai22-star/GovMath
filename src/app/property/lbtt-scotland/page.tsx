@@ -1,47 +1,48 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import LBTTCalculator from "./LBTTCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import LandTaxStudio from "@/components/property/LandTaxStudio";
+import { CALCULATORS } from "@/lib/calculators";
+import LBTTGuide from "./LBTTGuide";
 
 export const metadata: Metadata = {
-  title: "LBTT Calculator (Scotland 2026/27)",
-  description: "Scottish Land & Buildings Transaction Tax — by band, including first-time buyer relief and the 8% Additional Dwelling Supplement.",
+  title: "LBTT Calculator (Scotland, 2026/27)",
+  description:
+    "Work out Land and Buildings Transaction Tax on a home in Scotland: band by band, first-time buyer relief, the 8% Additional Dwelling Supplement and how to reclaim it.",
+  alternates: { canonical: "/property/lbtt-scotland" },
 };
 
-export default function LBTTPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/property", label: "Mortgages & Property" },
+  { href: "/property/lbtt-scotland", label: "LBTT (Scotland)" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What are the LBTT rates for 2026/27?", a: "0% up to £145,000, 2% from £145,001 to £250,000, 5% to £325,000, 10% to £750,000 and 12% above. Each rate applies only to the part of the price in that band." },
+  { q: "How much is first-time buyer relief in Scotland?", a: "The 0% band rises to £175,000, saving up to £600. Every buyer must be a first-time buyer, and there is no upper price limit." },
+  { q: "How much is the Additional Dwelling Supplement?", a: "8% of the whole price for purchases of £40,000 or more, on top of normal LBTT, if you will own more than one home." },
+  { q: "Can I get ADS back?", a: "Yes, if the new home replaces your main home and you sell the previous one within 36 months. Claim the refund from Revenue Scotland after the sale." },
+  { q: "When do I pay LBTT?", a: "Your solicitor files the return and pays Revenue Scotland within 30 days of the date of entry, usually on settlement day." },
+];
+
+export default async function LBTTPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) =>
+    ["/property/stamp-duty-england", "/property/ltt-wales", "/property/mortgage-repayment", "/property/mortgage-affordability", "/property/moving-house-budget", "/tax-and-salary/scottish-tax"].includes(c.href),
+  );
   return (
-    <CalculatorShell
-      category="Mortgages & Property"
-      updatedLabel="2026/27 rates"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/property", label: "Mortgages & Property" }, { href: "/property/lbtt-scotland", label: "LBTT (Scotland)" }]}
-      title="LBTT (Scotland) Calculator"
-      intro="Land & Buildings Transaction Tax replaced UK Stamp Duty in Scotland in 2015. The bands differ — but the principle is the same: progressive percentage rates on residential property purchases."
-      calculator={<LBTTCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>LBTT is calculated band by band, like Income Tax. Each slice of the price falls into one rate. First-time buyers get the nil-rate band extended to £175,000. Additional-property buyers pay an extra 8% Additional Dwelling Supplement (ADS) on the full price.</p>
-          }
-          officialRules={
-            <ul>
-              <li>Nil rate: up to £145,000 (£175,000 for first-time buyers).</li>
-              <li>2% £145,001–£250,000; 5% to £325,000; 10% to £750,000; 12% above.</li>
-              <li>ADS: 8% on full price for any second home/buy-to-let purchase ≥ £40,000 (raised from 6% in Dec 2024).</li>
-              <li>Filed and paid via Revenue Scotland within 30 days of completion.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "ADS jumped to 8%", body: "From December 2024 the surcharge rose from 6% to 8% — a major hit for landlords and holiday-home buyers." },
-            { title: "FTB relief only if under £175k nil rate is genuinely applicable", body: "If you’ve ever owned property anywhere (including overseas) you lose FTB status." },
-            { title: "ADS refund window if replacing main home", body: "Buy first, sell within 36 months → reclaim ADS. Miss the window and it’s gone." },
-          ]}
-          faqs={[
-            { question: "Does LBTT apply to commercial property?", answer: "Yes, but with different bands. This calculator covers residential only." },
-            { question: "What about non-UK residents?", answer: "Scotland has no equivalent of England’s 2% non-resident SDLT surcharge." },
-          ]}
-          disclaimer="Residential freehold purchases only. Excludes leasehold premium + rent NPV."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026/27"
+      title="LBTT Calculator (Scotland)"
+      lead="Land and Buildings Transaction Tax on a home in Scotland, band by band, with first-time buyer relief and the 8% supplement."
+      points={["2026/27 rates", "First-time buyer relief", "8% ADS and refunds", "Free and private"]}
+      guide={<LBTTGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Residential purchases in Scotland. An estimate: your solicitor will confirm the figure on your LBTT return to Revenue Scotland."
+    >
+      <LandTaxStudio nation="scotland" query={query} />
+    </FlagshipPage>
   );
 }
