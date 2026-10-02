@@ -237,3 +237,46 @@ export function DataTable({
     </details>
   );
 }
+
+export type StatementRow = {
+  label: ReactNode;
+  values: string[];
+  /** deduction rows read in muted red; total is the bold bottom line. */
+  kind?: "deduction" | "total";
+  swatch?: string;
+};
+
+/** Always-visible statement, e.g. a payslip across pay periods. */
+export function Statement({ columns, rows }: { columns: string[]; rows: StatementRow[] }) {
+  return (
+    <div className={s.statementScroll}>
+      <table className={s.statement}>
+        <thead>
+          <tr>
+            <th scope="col">
+              <span className="sr-only">Item</span>
+            </th>
+            {columns.map((c) => (
+              <th key={c} scope="col">
+                {c}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={i} data-kind={r.kind}>
+              <th scope="row">
+                {r.swatch && <i style={{ background: r.swatch }} aria-hidden="true" />}
+                {r.label}
+              </th>
+              {r.values.map((v, j) => (
+                <td key={j}>{v}</td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}

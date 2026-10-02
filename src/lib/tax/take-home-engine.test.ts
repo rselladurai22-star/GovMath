@@ -4,6 +4,7 @@ import {
   marginalRate,
   studentLoanRepayment,
   nextThreshold,
+  taxBands,
 } from "./take-home-engine";
 
 describe("take-home engine", () => {
@@ -46,5 +47,45 @@ describe("take-home engine", () => {
     const n = nextThreshold(45000);
     expect(n?.at).toBe(50270);
     expect(n?.away).toBeCloseTo(5270, 2);
+  });
+});
+
+describe("region-aware tax", () => {
+  it("defaults to England, Wales & NI", () => {
+    const s = computeTakeHome({ gross: 35000, bonus: 0, pensionPct: 0, plan: "none" });
+    expect(s.incomeTaxTotal).toBeCloseTo(4486, 2);
+  });
+
+  it("uses Scottish bands when asked", () => {
+    // £35k in Scotland: 2,827 @19% + 11,485 @20% + 8,118 @21% = 4,538.91.
+    const s = computeTakeHome({ gross: 35000, bonus: 0, pensionPct: 0, plan: "none", region: "scotland" });
+    expect(s.incomeTaxTotal).toBeCloseTo(4538.91, 2);
+    expect(s.takeHome).toBeCloseTo(35000 - 4538.91 - 1794.4, 2);
+  });
+
+  it("Scottish marginal rate on £60k is 42% tax + 2% NI", () => {
+    expect(marginalRate({ gross: 60000, bonus: 0, pensionPct: 0, plan: "none", region: "scotland" })).toBeCloseTo(0.44, 2);
+  });
+});
+
+describe("taxBands", () => {
+  it("splits £60k into allowance, basic and higher bands that sum to the total", () => {
+    const bands = taxBands(60000);
+    expect(bands.map((b) => b.label)).toEqual(["Tax-free allowance", "Basic rate", "Higher rate"]);
+    expect(bands[0].income).toBe(12570);
+    expect(bands[1].income).toBeCloseTo(37700, 2);
+    expect(bands[2].income).toBeCloseTo(60000 - 50270, 2);
+    const total = bands.reduce((a, b) => a + b.tax, 0);
+    expect(total).toBeCloseTo(computeTakeHome({ gross: 60000, bonus: 0, pensionPct: 0, plan: "none" }).incomeTaxTotal, 2);
+  });
+
+  it("covers every Scottish band used", () => {
+    const bands = taxBands(35000, "scotland");
+    expect(bands.map((b) => b.label)).toEqual(["Tax-free allowance", "Starter rate", "Basic rate", "Intermediate rate"]);
+    expect(bands.reduce((a, b) => a + b.income, 0)).toBeCloseTo(35000, 2);
+  });
+
+  it("keeps the allowance row even on a zero salary", () => {
+    expect(taxBands(0)).toEqual([{ label: "Tax-free allowance", rate: 0, income: 0, tax: 0 }]);
   });
 });

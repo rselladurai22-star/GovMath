@@ -27,6 +27,7 @@ export default function AreaChart({
   readout,
   ariaLabel,
   initial = null,
+  hint = "Drag across the chart, or use the arrow keys, to read any year.",
 }: {
   series: Series[];
   /** Label for index i on the x axis. */
@@ -35,6 +36,7 @@ export default function AreaChart({
   readout: (i: number) => ReactNode;
   ariaLabel: string;
   initial?: number | null;
+  hint?: string;
 }) {
   const gid = useId().replace(/:/g, "");
   const ref = useRef<HTMLDivElement>(null);
@@ -149,7 +151,7 @@ export default function AreaChart({
           </span>
         ))}
       </div>
-      <p className={s.chartHint}>Drag across the chart, or use the arrow keys, to read any year.</p>
+      <p className={s.chartHint}>{hint}</p>
     </div>
   );
 }
