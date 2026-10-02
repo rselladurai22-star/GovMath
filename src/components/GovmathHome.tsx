@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
-import { CATEGORIES, CALCULATORS, getCalculatorsByCategory } from "@/lib/calculators";
+import { CATEGORIES, CALCULATORS, getCalculatorsByCategory, getHomeCalculators } from "@/lib/calculators";
 import { accentVars, CAT, iconForTitle, LineIcon } from "@/components/category-style";
 import HomeSearch, { type SearchItem } from "@/components/HomeSearch";
 import QuickCalcs from "@/components/home/QuickCalcs";
@@ -168,19 +168,21 @@ export default function GovmathHome() {
       </section>
 
       {/* ── Quick calculators ───────────────────────────── */}
-      <section id="calculator" aria-labelledby="quick-heading" className={`gm-wrap ${styles.block}`}>
-        <div className={styles.blockHead} data-reveal>
-          <div>
-            <span className={styles.kicker}>Quick calculators</span>
-            <h2 id="quick-heading" className={styles.blockTitle}>
-              Get an answer in seconds
-            </h2>
+      <div className={`${styles.band} ${styles.bandTint}`} data-band>
+        <section id="calculator" aria-labelledby="quick-heading" className={`gm-wrap ${styles.block}`}>
+          <div className={styles.blockHead} data-reveal>
+            <div>
+              <span className={styles.kicker}>Quick calculators</span>
+              <h2 id="quick-heading" className={styles.blockTitle}>
+                Get an answer in seconds
+              </h2>
+            </div>
           </div>
-        </div>
-        <div data-reveal>
-          <QuickCalcs />
-        </div>
-      </section>
+          <div data-reveal>
+            <QuickCalcs />
+          </div>
+        </section>
+      </div>
 
       {/* ── Most-used ──────────────────────────────────── */}
       <section aria-labelledby="featured-heading" className={`gm-wrap ${styles.block}`}>
@@ -222,60 +224,66 @@ export default function GovmathHome() {
         <AdSlot size="leaderboard" />
       </div>
 
-      {/* ── Every topic, every calculator ──────────────── */}
-      <section id="topics" aria-labelledby="topics-heading" className={`gm-wrap ${styles.block}`}>
-        <div className={styles.blockHead} data-reveal>
-          <div>
-            <span className={styles.kicker}>Browse</span>
-            <h2 id="topics-heading" className={styles.blockTitle}>
-              All {total} calculators, by topic
-            </h2>
+      {/* ── Every topic, top tools ─────────────────────── */}
+      <div className={`${styles.band} ${styles.bandMist}`} data-band>
+        <section id="topics" aria-labelledby="topics-heading" className={`gm-wrap ${styles.block}`}>
+          <div className={styles.blockHead} data-reveal>
+            <div>
+              <span className={styles.kicker}>Browse</span>
+              <h2 id="topics-heading" className={styles.blockTitle}>
+                Top calculators in every topic
+              </h2>
+            </div>
+            <Link href="/calculators" className="gm-btn-outline">
+              View all {total} calculators
+            </Link>
           </div>
-        </div>
 
-        <nav aria-label="Jump to topic" className={styles.jump} data-reveal>
-          {CATEGORIES.map((c) => (
-            <a key={c.slug} href={`#${c.slug}`} style={accent(c.slug)}>
-              <LineIcon path={CAT[c.slug].icon} size={17} />
-              {CAT[c.slug].label}
-            </a>
-          ))}
-        </nav>
+          <nav aria-label="Jump to topic" className={styles.jump} data-reveal>
+            {CATEGORIES.map((c) => (
+              <a key={c.slug} href={`#${c.slug}`} style={accent(c.slug)}>
+                <LineIcon path={CAT[c.slug].icon} size={17} />
+                {CAT[c.slug].label}
+              </a>
+            ))}
+          </nav>
 
-        <div className={styles.panels}>
-          {CATEGORIES.map((c) => {
-            const tools = getCalculatorsByCategory(c.slug);
-            return (
-              <section key={c.slug} id={c.slug} aria-labelledby={`${c.slug}-heading`} className={styles.panel} style={accent(c.slug)} data-reveal>
-                <header className={styles.panelHead}>
-                  <span className={styles.panelIcon}>
-                    <LineIcon path={CAT[c.slug].icon} size={26} />
-                  </span>
-                  <div>
-                    <h3 id={`${c.slug}-heading`}>{c.title}</h3>
-                    <p>{c.tagline}</p>
-                  </div>
-                  <Link href={c.href} className={styles.panelPill}>
-                    {tools.length} calculators <Arrow />
+          <div className={`${styles.panels} ${styles.panelsHome}`}>
+            {CATEGORIES.map((c) => {
+              const count = getCalculatorsByCategory(c.slug).length;
+              const tools = getHomeCalculators(c.slug);
+              return (
+                <section key={c.slug} id={c.slug} aria-labelledby={`${c.slug}-heading`} className={styles.panel} style={accent(c.slug)} data-reveal>
+                  <header className={styles.panelHead}>
+                    <span className={styles.panelIcon}>
+                      <LineIcon path={CAT[c.slug].icon} size={26} />
+                    </span>
+                    <div>
+                      <h3 id={`${c.slug}-heading`}>{c.title}</h3>
+                      <p>{c.tagline}</p>
+                    </div>
+                  </header>
+                  <ul className={styles.tiles}>
+                    {tools.map((t, i) => (
+                      <li key={t.href} style={{ ["--i" as string]: i } as CSSProperties}>
+                        <Link href={t.href}>
+                          <span>{t.title}</span>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+                            <path d="m9 18 6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href={c.href} className={styles.panelMore}>
+                    {count > tools.length ? `See all ${count} calculators` : `Explore ${c.title}`} <Arrow />
                   </Link>
-                </header>
-                <ul className={styles.tiles}>
-                  {tools.map((t) => (
-                    <li key={t.href}>
-                      <Link href={t.href}>
-                        <span>{t.title}</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
-                          <path d="m9 18 6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            );
-          })}
-        </div>
-      </section>
+                </section>
+              );
+            })}
+          </div>
+        </section>
+      </div>
 
       {/* ── Reassurance + request ──────────────────────── */}
       <section className={`gm-wrap ${styles.block} ${styles.faqGrid}`} aria-labelledby="free-heading">

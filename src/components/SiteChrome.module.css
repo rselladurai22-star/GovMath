@@ -9,6 +9,21 @@
   backdrop-filter: saturate(180%) blur(16px);
   border-bottom: 1px solid rgba(13, 19, 48, 0.07);
 }
+/* Header gains depth as the page scrolls under it (where supported). */
+@supports (animation-timeline: scroll()) {
+  .header {
+    animation: headerLift linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 140px;
+  }
+}
+@keyframes headerLift {
+  to {
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom-color: rgba(13, 19, 48, 0.1);
+    box-shadow: 0 12px 32px -20px rgba(13, 19, 48, 0.3);
+  }
+}
 .headerInner {
   display: flex;
   align-items: center;
