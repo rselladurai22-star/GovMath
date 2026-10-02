@@ -1,401 +1,397 @@
-/**
- * The Mortgage Guide — a visual, plain-English explainer that sits beneath the
- * calculator. Pure server component: every diagram is hand-built SVG/CSS so the
- * concepts are shown, not just described. Apple-clean, crystal clear.
- */
+import {
+  Bars,
+  Callout,
+  CompareCards,
+  DataTable,
+  Guide,
+  GuideSection,
+  KeyStats,
+  Timeline,
+  WorkedExample,
+  type Source,
+  type TocItem,
+} from "@/components/guide/Guide";
 
-const ink = "#0d1330";
-const body = "#1a2040";
-const mute = "#5c6b63";
-const subtle = "#8a938d";
-const line = "#e6e8f2";
-const tint = "#f4f6f7";
-const green = "#12a566";
-const greenDeep = "#0a6f43";
-const coral = "#f2663c";
-const amber = "#e6971a";
-const blue = "#2f80ed";
+/** Mortgage repayments — the full guide. Pure server component. */
 
-/* ── layout helpers ─────────────────────────────────────────────── */
-function Section({ n, kicker, title, children }: { n: string; kicker: string; title: string; children: React.ReactNode }) {
-  return (
-    <section style={{ paddingTop: 44, paddingBottom: 44, borderTop: `1px solid ${line}` }}>
-      <div className="flex items-center gap-3" style={{ marginBottom: 6 }}>
-        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 14, background: "#e7f6ee", color: greenDeep, fontWeight: 800, fontSize: 15 }}>{n}</span>
-        <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: green }}>{kicker}</span>
-      </div>
-      <h2 style={{ fontSize: 27, fontWeight: 800, color: ink, letterSpacing: "-0.02em", margin: "0 0 14px", lineHeight: 1.12 }}>{title}</h2>
-      {children}
-    </section>
-  );
-}
-function P({ children }: { children: React.ReactNode }) {
-  return <p style={{ fontSize: 16, lineHeight: 1.7, color: body, margin: "0 0 14px", maxWidth: 720 }}>{children}</p>;
-}
-function VizCard({ label, children }: { label?: string; children: React.ReactNode }) {
-  return (
-    <div style={{ border: `1px solid ${line}`, borderRadius: 14, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(12,22,17,0.04), 0 14px 32px -20px rgba(12,22,17,0.12)", margin: "18px 0" }}>
-      {label && <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: subtle, marginBottom: 16 }}>{label}</div>}
-      {children}
-    </div>
-  );
-}
-const gbp = (n: number) => "£" + Math.round(n).toLocaleString("en-GB");
+const TOC: TocItem[] = [
+  { id: "how", title: "How a repayment mortgage works" },
+  { id: "example", title: "A worked example" },
+  { id: "split", title: "Interest and capital over time" },
+  { id: "term", title: "How the term changes the cost" },
+  { id: "rate", title: "How the rate changes the cost" },
+  { id: "ltv", title: "Your deposit and loan to value" },
+  { id: "fixed", title: "Fixed, tracker and variable rates" },
+  { id: "interest-only", title: "Repayment or interest-only" },
+  { id: "overpaying", title: "Overpaying" },
+  { id: "upfront", title: "Costs beyond the monthly payment" },
+  { id: "remortgage", title: "Remortgaging" },
+  { id: "struggling", title: "If you struggle to pay" },
+  { id: "terms", title: "Terms worth knowing" },
+  { id: "borrow", title: "How much you can borrow" },
+  { id: "compare-deals", title: "Comparing deals with fees" },
+  { id: "life", title: "Mortgages and life changes" },
+  { id: "protection", title: "Protecting your payments" },
+  { id: "end", title: "When the term ends" },
+  { id: "five-years", title: "Your first five years" },
+  { id: "questions", title: "Common questions" },
+  { id: "key-numbers", title: "Key numbers" },
+];
 
-/* ════════════════════════════════════════════════════════════════ */
+const SOURCES: Source[] = [
+  { label: "MoneyHelper — Mortgages", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home" },
+  { label: "FCA — Mortgages: what to expect", href: "https://www.fca.org.uk/consumers/mortgages" },
+  { label: "Bank of England — Bank Rate", href: "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate" },
+  { label: "GOV.UK — Stamp Duty Land Tax", href: "https://www.gov.uk/stamp-duty-land-tax" },
+];
+
 export default function MortgageGuide() {
   return (
-    <div style={{ fontFamily: "var(--font-figtree), system-ui, sans-serif" }}>
-      <div style={{ marginBottom: 8 }}>
-        <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: green }}>The Mortgage Guide</span>
-        <h2 style={{ fontSize: 34, fontWeight: 800, color: ink, letterSpacing: "-0.03em", margin: "8px 0 12px", lineHeight: 1.08 }}>Everything a first-time buyer actually needs to understand</h2>
-        <P>
-          A mortgage is the biggest number most of us will ever sign for — yet the way it works is rarely explained clearly.
-          This guide walks through it visually, one idea at a time: how your payment is built, why the timing of an overpayment
-          matters so much, how your deposit changes the rate you&rsquo;re offered, and the real costs that sit alongside it. No
-          jargon, no assumed knowledge. All examples use a <strong style={{ color: body }}>{gbp(270000)} loan at 4.5% over 25 years</strong> unless noted.
-        </P>
-      </div>
+    <Guide
+      kicker="The mortgage guide"
+      title="Mortgage repayments, explained"
+      intro={
+        <>
+          Your monthly payment is only the start. This guide explains how a repayment mortgage pays itself off, why early payments
+          are mostly interest, how the term, rate and deposit change what you pay, and how fixed rates, interest-only and
+          overpayments affect the total cost of your home.
+        </>
+      }
+      meta={["Updated for 2026", "12 min read", "Reviewed October 2026"]}
+      toc={TOC}
+      sources={SOURCES}
+    >
+      <GuideSection id="how" n={1} kicker="The basics" title="How a repayment mortgage works">
+        <p>
+          With a repayment mortgage, each monthly payment covers that month&apos;s interest and repays a little of the loan, called
+          the capital. The payment is set so that, if the rate stays the same, the loan is cleared exactly at the end of the term.
+        </p>
+        <p>
+          Interest is charged on what you still owe. Early on the balance is high, so most of each payment is interest. As the
+          balance falls, the interest shrinks and more of each payment goes to capital. That is why the balance falls slowly at
+          first and then faster towards the end.
+        </p>
+      </GuideSection>
 
-      <Section n="1" kicker="The mechanics" title="How a repayment mortgage is actually built">
-        <P>
-          Every month you pay the <strong style={{ color: body }}>same fixed amount</strong>. But that single payment is quietly doing two
-          different jobs at once. Part of it is <span style={{ color: coral, fontWeight: 700 }}>interest</span> — the lender&rsquo;s charge for
-          letting you borrow the money. The rest is <span style={{ color: green, fontWeight: 700 }}>capital</span> — the bit that actually
-          reduces what you owe. Interest is always calculated on the balance that&rsquo;s still outstanding, so in the early years — when the
-          balance is huge — most of your payment is interest. As the balance shrinks, the interest shrinks with it, and more of the same
-          payment goes to clearing capital. The mix flips slowly, year after year.
-        </P>
-        <VizCard label="Where each monthly payment goes, by year">
-          <AmortBars />
-          <div className="flex items-center gap-6" style={{ marginTop: 16 }}>
-            <LegendKey color={coral} label="Interest — the lender's charge" />
-            <LegendKey color={green} label="Capital — clears your debt" />
-          </div>
-        </VizCard>
-        <P>
-          This is why a mortgage feels slow to move at first. In year one, only around a fifth of what you pay is chipping away at the
-          debt. By the final years, almost all of it is. Nothing about your payment changes — only the invisible split inside it.
-        </P>
-      </Section>
+      <GuideSection id="example" n={2} kicker="Worked example" title="A worked example">
+        <p>A £350,000 home with a £70,000 deposit (20%), borrowing £280,000 at 4.75% over 25 years:</p>
+        <WorkedExample
+          title="£280,000 at 4.75% over 25 years"
+          steps={[
+            { label: "Monthly payment", value: "£1,596.33" },
+            { label: "Paid over 25 years", value: "£478,899" },
+            { label: "Of which the loan", value: "£280,000" },
+          ]}
+          total={{ label: "Total interest", value: "£198,899" }}
+        />
+        <p>
+          Interest makes up 41.5% of everything you repay. Every £100,000 borrowed at this rate costs about £570 a month over 25
+          years.
+        </p>
+      </GuideSection>
 
-      <Section n="2" kicker="The crossover" title="What £1 of your payment really buys">
-        <P>
-          Zoom into a single pound of a single payment and the story becomes obvious. Early on, most of that pound vanishes as interest.
-          Somewhere near the middle of the term, the balance tips and the pound starts pulling its weight against the debt. By the end,
-          nearly the whole pound is capital.
-        </P>
-        <VizCard label="Of every £1 you pay…">
-          <PoundBars />
-        </VizCard>
-        <P>
-          Understanding this one picture explains almost every smart mortgage decision: shortening the term, overpaying, or remortgaging
-          all work by <strong style={{ color: body }}>attacking the balance sooner</strong>, so less of your money is lost to interest along the way.
-        </P>
-      </Section>
+      <GuideSection id="split" n={3} kicker="Over time" title="Interest and capital over time">
+        <DataTable
+          caption="The same £280,000 mortgage, year by year"
+          head={["Year", "Interest paid", "Capital repaid", "Balance at year end"]}
+          numeric={[1, 2, 3]}
+          rows={[
+            ["1", "£13,171", "£5,985", "£274,015"],
+            ["5", "£11,921", "£7,235", "£247,024"],
+            ["10", "£9,986", "£9,170", "£205,228"],
+            ["11", "£9,541", "£9,615", "£195,613"],
+            ["15", "£7,533", "£11,623", "£152,252"],
+            ["20", "£4,424", "£14,732", "£85,106"],
+            ["25", "£484", "£18,672", "£0"],
+          ]}
+        />
+        <p>
+          In year one, about 69p of every £1 goes on interest. It is not until year 11 that more of each payment goes to capital
+          than to interest. After 10 years you still owe £205,228, nearly three-quarters of the original loan.
+        </p>
+      </GuideSection>
 
-      <Section n="3" kicker="The biggest lever you control" title="Why overpaying early saves so much more">
-        <P>
-          Because interest is charged on the outstanding balance, a pound of capital removed in year one avoids interest for the next
-          twenty-four years. The same pound removed in year twenty avoids almost nothing. Overpayments are a compounding force, and
-          time is what makes them powerful — which is why a modest, steady overpayment early beats a large one later.
-        </P>
-        <VizCard label="Example · £150 extra every month, from day one">
-          <OverpayCompare />
-        </VizCard>
-        <P>
-          Most UK lenders let you overpay up to <strong style={{ color: body }}>10% of the balance each year</strong> with no early-repayment
-          charge. Even rounding your payment up by £50 or £100 quietly rewrites the second half of your mortgage. Always check your
-          lender&rsquo;s specific overpayment limit first — the calculator above lets you model any amount.
-        </P>
-      </Section>
+      <GuideSection id="term" n={4} kicker="The term" title="How the term changes the cost">
+        <p>A longer term lowers the monthly payment but adds a lot of interest:</p>
+        <DataTable
+          caption="£280,000 at 4.75%"
+          head={["Term", "Monthly payment", "Total interest"]}
+          numeric={[1, 2]}
+          rows={[
+            ["20 years", "£1,809", "£154,262"],
+            ["25 years", "£1,596", "£198,899"],
+            ["30 years", "£1,461", "£245,821"],
+            ["35 years", "£1,369", "£294,896"],
+          ]}
+        />
+        <p>
+          Stretching from 25 to 35 years saves £228 a month but costs £95,997 more in interest. A longer term can make sense to keep
+          payments affordable, especially if you plan to overpay later or shorten the term when you remortgage.
+        </p>
+      </GuideSection>
 
-      <Section n="4" kicker="Your deposit decides your rate" title="The LTV ladder — and why crossing a rung matters">
-        <P>
-          <strong style={{ color: body }}>Loan-to-value (LTV)</strong> is simply your loan divided by the property price. Borrow {gbp(270000)} on a
-          {" "}{gbp(300000)} home and you&rsquo;re at 90% LTV. Lenders price risk in bands, and the rate they offer improves sharply each time
-          you drop under a threshold — typically at 90%, 85%, 80%, 75% and 60%. Nudging your deposit just over one of these rungs can
-          cut your interest rate for the entire deal, which is often worth far more than the extra deposit itself.
-        </P>
-        <VizCard label="Loan-to-value bands · lower is cheaper">
-          <LtvLadder />
-        </VizCard>
-        <P>
-          A worked example: lifting your deposit on that {gbp(300000)} home from {gbp(30000)} (90% LTV) to {gbp(45000)} (85% LTV) might drop
-          your rate by around 0.3–0.5%. On a {gbp(255000)} loan that&rsquo;s roughly {gbp(50)}–{gbp(80)} a month, every month, for the length of
-          the fix — many times the {gbp(15000)} of extra deposit over the years. If you&rsquo;re close to a band, it&rsquo;s almost always worth
-          stretching for it.
-        </P>
-      </Section>
+      <GuideSection id="rate" n={5} kicker="The rate" title="How the rate changes the cost">
+        <p>Small changes in rate make a big difference on a large loan:</p>
+        <Bars
+          items={[
+            { label: "3.75%", value: 1_440 },
+            { label: "4.75%", value: 1_596 },
+            { label: "5.75%", value: 1_762 },
+            { label: "6.75%", value: 1_935 },
+          ]}
+          format={(n) => `£${n.toLocaleString("en-GB")} a month`}
+        />
+        <p>
+          Each 1 point rise adds roughly £155 to £175 a month on £280,000 over 25 years, and around £50,000 in interest over the full
+          term. That is why lenders test whether you could afford a higher rate before they lend.
+        </p>
+      </GuideSection>
 
-      <Section n="5" kicker="The rate you see isn't forever" title="Fixed rates, and the reversion cliff">
-        <P>
-          The headline rate you&rsquo;re quoted almost never lasts the whole term. Most UK mortgages are <strong style={{ color: body }}>fixed for
-          2, 5 or 10 years</strong>, and when that fix ends the loan reverts to the lender&rsquo;s <strong style={{ color: body }}>Standard Variable
-          Rate (SVR)</strong> — usually several percentage points higher. That&rsquo;s the moment to remortgage onto a new deal.
-        </P>
-        <VizCard label="A typical 5-year fix, then reversion">
-          <FixedVsSvr />
-        </VizCard>
-        <P>
-          This is also why lenders <strong style={{ color: body }}>stress-test</strong> you: before they lend, they check you could still afford
-          the payment if rates rose by two or three percent. Budget the same way. The &ldquo;If rates move&rdquo; panel in the calculator shows
-          exactly what a 1% or 2% rise would add to your monthly payment — treat that higher figure as your real ceiling.
-        </P>
-      </Section>
+      <GuideSection id="ltv" n={6} kicker="Your deposit" title="Your deposit and loan to value">
+        <p>
+          Loan to value (LTV) is the mortgage as a share of the price. Lenders set rates in bands, typically at 95%, 90%, 85%, 80%,
+          75% and 60%. Moving into a lower band usually brings a lower rate.
+        </p>
+        <DataTable
+          caption="A £350,000 home at 4.75% over 25 years"
+          head={["Deposit", "Loan", "LTV", "Monthly payment"]}
+          numeric={[1, 3]}
+          rows={[
+            ["£17,500", "£332,500", "95%", "£1,896"],
+            ["£35,000", "£315,000", "90%", "£1,796"],
+            ["£52,500", "£297,500", "85%", "£1,696"],
+            ["£70,000", "£280,000", "80%", "£1,596"],
+            ["£87,500", "£262,500", "75%", "£1,497"],
+          ]}
+        />
+        <p>
+          These figures use the same rate throughout. In practice, a 95% mortgage usually has a higher rate than a 75% one, so the
+          difference in payments is larger still.
+        </p>
+      </GuideSection>
 
-      <Section n="6" kicker="Two ways to borrow" title="Repayment vs interest-only, side by side">
-        <P>
-          Almost every residential mortgage today is <strong style={{ color: body }}>repayment</strong>: your payments clear the whole loan by the
-          end of the term. <strong style={{ color: body }}>Interest-only</strong> keeps monthly payments much lower because you only pay the
-          interest — but you still owe the entire loan at the end and need a separate plan (savings, investments, or selling) to clear it.
-          It&rsquo;s now mostly a buy-to-let product.
-        </P>
-        <VizCard>
-          <RepayVsIo />
-        </VizCard>
-      </Section>
+      <GuideSection id="fixed" n={7} kicker="Deal types" title="Fixed, tracker and variable rates">
+        <CompareCards
+          columns={[
+            { name: "Fixed rate", rows: [{ label: "Rate", value: "Set for 2, 3, 5 or 10 years" }, { label: "Good for", value: "Certainty and budgeting" }, { label: "Watch for", value: "Early repayment charges" }] },
+            { name: "Tracker", rows: [{ label: "Rate", value: "Bank Rate plus a margin" }, { label: "Good for", value: "Benefiting when rates fall" }, { label: "Watch for", value: "Payments rise with Bank Rate" }] },
+            { name: "Standard variable", rows: [{ label: "Rate", value: "Set by the lender" }, { label: "Good for", value: "Flexibility, no tie-in" }, { label: "Watch for", value: "Usually the most expensive" }] },
+          ]}
+        />
+        <p>
+          When a fixed or tracker deal ends, you move to the lender&apos;s standard variable rate unless you switch. That rate is
+          often much higher, so most people remortgage or take a new deal with their lender a few months before the end.
+        </p>
+      </GuideSection>
 
-      <Section n="7" kicker="Budget for the whole thing" title="The true upfront cost, beyond the deposit">
-        <P>
-          Your deposit is the big number, but it isn&rsquo;t the only one due on completion. On a typical {gbp(300000)} purchase, plan for a few
-          thousand pounds of extras on top — get these wrong and a deal that looked affordable suddenly isn&rsquo;t.
-        </P>
-        <VizCard label="Example upfront costs on a £300,000 home (excl. deposit)">
-          <CostBar />
-        </VizCard>
-        <P>
-          Stamp Duty is usually the largest, and it depends on price and whether you&rsquo;re a first-time buyer — use our Stamp Duty
-          calculator for the exact figure. Legal (conveyancing) fees, a survey, the lender&rsquo;s product/arrangement fee and removals fill in
-          the rest. A sensible rule of thumb is to keep a cushion of {gbp(3000)}–{gbp(8000)} beyond your deposit.
-        </P>
-      </Section>
+      <GuideSection id="interest-only" n={8} kicker="Mortgage types" title="Repayment or interest-only">
+        <p>
+          With interest-only, you pay only the interest each month and repay the whole loan at the end. On £280,000 at 4.75%, that
+          is £1,108 a month instead of £1,596, but after 25 years you still owe £280,000 and will have paid £332,500 in interest.
+        </p>
+        <Callout tone="warn" title="You need a plan to repay">
+          Lenders only offer interest-only on a home you live in if you have a credible plan to repay, such as investments, a
+          pension lump sum or selling. Part-and-part mortgages combine the two.
+        </Callout>
+      </GuideSection>
 
-      <Section n="8" kicker="Speak the language" title="The seven terms worth knowing">
-        <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", marginTop: 6 }}>
-          {GLOSSARY.map((g) => (
-            <div key={g.t} style={{ border: `1px solid ${line}`, borderRadius: 14, padding: "15px 16px", background: "#fff" }}>
-              <div style={{ fontSize: 15, fontWeight: 700, color: ink }}>{g.t}</div>
-              <div style={{ fontSize: 14, color: mute, marginTop: 5, lineHeight: 1.5 }}>{g.d}</div>
-            </div>
-          ))}
-        </div>
-      </Section>
-    </div>
+      <GuideSection id="overpaying" n={9} kicker="Paying less" title="Overpaying">
+        <p>
+          Paying extra reduces the balance straight away, so you pay less interest from then on. On the £280,000 example, £200 a
+          month extra saves £42,508 of interest and clears the mortgage 4 years 9 months early. Most fixed deals let you overpay up
+          to 10% of the balance a year without a charge.
+        </p>
+        <p>Our mortgage overpayment calculator models monthly and lump-sum overpayments in detail.</p>
+      </GuideSection>
+
+      <GuideSection id="upfront" n={10} kicker="Budget" title="Costs beyond the monthly payment">
+        <ul>
+          <li><strong>Stamp Duty</strong> in England and Northern Ireland, LBTT in Scotland or LTT in Wales.</li>
+          <li><strong>Mortgage fees</strong>, such as an arrangement fee, which can sometimes be added to the loan.</li>
+          <li><strong>Legal fees, searches and a survey.</strong></li>
+          <li><strong>Buildings insurance</strong>, which lenders require from exchange of contracts.</li>
+          <li><strong>Ongoing costs</strong> such as maintenance, service charges and council tax.</li>
+        </ul>
+        <p>A £350,000 home bought by a home mover in England carries £7,500 of Stamp Duty; a first-time buyer pays £2,500.</p>
+      </GuideSection>
+
+      <GuideSection id="remortgage" n={11} kicker="Switching" title="Remortgaging">
+        <Timeline
+          items={[
+            { when: "6 months before", what: "Start looking", detail: "Many lenders let you lock in a new deal up to six months before your current one ends." },
+            { when: "3 months before", what: "Compare", detail: "Compare a product transfer with your lender against deals elsewhere, including fees." },
+            { when: "At the end of the deal", what: "Switch", detail: "Move without an early repayment charge. Consider overpaying or shortening the term at this point." },
+          ]}
+        />
+        <p>
+          Your balance will have fallen and your home may be worth more, so your LTV is often lower when you remortgage, which can
+          mean a better rate.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="struggling" n={12} kicker="Help" title="If you struggle to pay">
+        <p>
+          Contact your lender as soon as you think you might miss a payment. Lenders must treat you fairly and consider options such
+          as a temporary switch to interest-only, extending the term or a payment plan for arrears. Free debt advice is available
+          from MoneyHelper and debt charities. Missing payments without talking to your lender can lead to fees, damage to your
+          credit file and, in the worst case, repossession.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="terms" n={13} kicker="Jargon" title="Terms worth knowing">
+        <DataTable
+          caption="Mortgage terms in plain English"
+          head={["Term", "What it means"]}
+          rows={[
+            ["Capital", "The amount you borrowed and still owe"],
+            ["LTV", "Loan to value: the mortgage as a share of the home's value"],
+            ["ERC", "Early repayment charge for leaving or overpaying a deal early"],
+            ["SVR", "Standard variable rate, the lender's default rate"],
+            ["Product transfer", "Moving to a new deal with your current lender"],
+            ["Porting", "Taking your mortgage deal with you to a new home"],
+            ["Decision in principle", "A lender's early indication of how much it might lend"],
+          ]}
+        />
+      </GuideSection>
+
+      <GuideSection id="borrow" n={14} kicker="Borrowing" title="How much you can borrow">
+        <p>
+          Most lenders lend up to about 4 to 4.5 times your yearly income, less if you have debts or childcare costs, and check
+          that you could still afford the payments if rates rose. Two incomes usually mean a bigger loan. Our mortgage
+          affordability calculator estimates your limit, the payment, and how a rate rise would affect it.
+        </p>
+        <p>
+          The amount you can borrow is not always the amount you should. A payment that only just fits your budget today leaves no
+          room for higher rates when your fix ends.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="compare-deals" n={15} kicker="Choosing a deal" title="Comparing deals with fees">
+        <p>
+          A deal with a lower rate often comes with a higher fee. Compare the total cost over the fixed period, not just the rate.
+          On £280,000 over 25 years with a 2-year fix:
+        </p>
+        <DataTable
+          caption="Two 2-year fixed deals on £280,000"
+          head={["", "4.49% with £999 fee", "4.89% with no fee"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Monthly payment", "£1,554.74", "£1,618.96"],
+            ["Payments over 2 years plus fee", "£38,313", "£38,855"],
+            ["Balance after 2 years", "£267,292", "£267,975"],
+          ]}
+        />
+        <p>
+          Here the lower rate wins despite the fee: it costs £542 less over the two years and leaves £683 less to repay. On a much
+          smaller loan, the no-fee deal is often cheaper. Adding the fee to the loan means paying interest on it too.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="life" n={16} kicker="Life events" title="Mortgages and life changes">
+        <ul>
+          <li>
+            <strong>Moving home.</strong> Many deals are portable, so you can take the rate to a new home and top up with extra
+            borrowing, avoiding an early repayment charge.
+          </li>
+          <li>
+            <strong>A fall in income.</strong> Talk to your lender early. Extending the term or a temporary arrangement can lower
+            payments.
+          </li>
+          <li>
+            <strong>Separation.</strong> One person can take over the mortgage only if the lender agrees they can afford it alone.
+          </li>
+          <li>
+            <strong>Retirement.</strong> Lenders check affordability on your expected pension income if the term runs past
+            retirement.
+          </li>
+        </ul>
+      </GuideSection>
+
+      <GuideSection id="protection" n={17} kicker="Insurance" title="Protecting your payments">
+        <p>
+          Life insurance can pay off the mortgage if you die, protecting anyone you live with. Critical illness cover pays out on
+          diagnosis of a serious illness, and income protection replaces part of your income if you cannot work. None is
+          compulsory, though lenders require buildings insurance. Check what your employer already provides before you buy cover.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="end" n={18} kicker="The finish line" title="When the term ends">
+        <p>
+          On a repayment mortgage, your last payment clears the loan. The lender sends a closing statement and removes its charge
+          from your property&apos;s title, and you own your home outright. Keep the closing letter with your property documents.
+        </p>
+        <p>
+          On interest-only, the whole loan is due at the end. Lenders contact you in the years before to check your repayment plan.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="five-years" n={19} kicker="A typical fix" title="Your first five years">
+        <p>
+          Many borrowers take a 5-year fix. On the £280,000 example at 4.75%, here is where the money goes over those five years:
+        </p>
+        <WorkedExample
+          title="The first five years"
+          steps={[
+            { label: "Payments made", note: "£1,596.33 × 60", value: "£95,780" },
+            { label: "Of which interest", value: "£62,804" },
+            { label: "Of which capital", value: "£32,976" },
+          ]}
+          total={{ label: "Balance when the fix ends", value: "£247,024" }}
+        />
+        <p>
+          About two-thirds of everything paid in the first five years is interest. When you remortgage, you will be borrowing
+          £247,024 over the remaining 20 years, at whatever rates are available then. If rates are higher, you could keep the
+          payment down by extending the term back to 25 years, at the cost of more interest.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="questions" n={20} kicker="FAQs" title="Common questions">
+        <h3>Why has my balance barely moved?</h3>
+        <p>Early payments are mostly interest. On the example, only £5,985 of the first year&apos;s £19,156 of payments repays capital.</p>
+        <h3>Is a longer term a bad idea?</h3>
+        <p>
+          It costs more in interest, but lower payments can make borrowing affordable. You can overpay or shorten the term later if
+          your income rises.
+        </p>
+        <h3>How is mortgage interest worked out?</h3>
+        <p>Most UK lenders charge interest daily or monthly on the outstanding balance. The calculator uses monthly interest, so small differences are normal.</p>
+        <h3>Should I fix for 2 or 5 years?</h3>
+        <p>A longer fix gives certainty for longer but can carry higher early repayment charges. It depends on whether you value certainty or flexibility more.</p>
+        <h3>Can I pay off my mortgage early?</h3>
+        <p>Yes. During a fixed deal an early repayment charge may apply; at the end of a deal you can usually repay any amount free.</p>
+        <h3>What happens if interest rates fall during my fix?</h3>
+        <p>
+          Your payment stays the same until the fix ends. Leaving early to get a lower rate usually means an early repayment
+          charge, which often outweighs the saving.
+        </p>
+        <h3>Do I need a deposit for a remortgage?</h3>
+        <p>
+          No. Your equity in the home acts as the deposit. The more equity you have, the lower your loan-to-value and usually the
+          better the rate.
+        </p>
+        <h3>Can I borrow more when I remortgage?</h3>
+        <p>
+          Often, yes, for home improvements or other purposes, subject to affordability. Borrowing more extends the debt and the
+          interest you pay, so consider it carefully.
+        </p>
+        <h3>Does a bigger deposit lower my rate?</h3>
+        <p>
+          Usually, once it moves you into a lower loan-to-value band. Going from 90% to 85% LTV, for example, often unlocks a
+          noticeably cheaper deal, which lowers your payment on top of the smaller loan.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers">
+        <KeyStats
+          items={[
+            { value: "£570", label: "Monthly cost per £100,000 at 4.75% over 25 years" },
+            { value: "Year 11", label: "When capital overtakes interest on that loan" },
+            { value: "41.5%", label: "Share of total repayments that is interest" },
+            { value: "10%", label: "Typical yearly overpayment allowance" },
+            { value: "6 months", label: "How early you can often lock in a remortgage" },
+          ]}
+        />
+      </GuideSection>
+    </Guide>
   );
 }
-
-/* ── small pieces ───────────────────────────────────────────────── */
-function LegendKey({ color, label }: { color: string; label: string }) {
-  return <span className="inline-flex items-center gap-2" style={{ fontSize: 13.5, color: body }}><span style={{ width: 12, height: 12, borderRadius: 3, background: color }} />{label}</span>;
-}
-
-/* Amortisation bars — same payment height, shifting interest/capital split. */
-const AMORT = [
-  { yr: 1, i: 0.78 }, { yr: 5, i: 0.7 }, { yr: 10, i: 0.57 }, { yr: 15, i: 0.41 }, { yr: 20, i: 0.22 }, { yr: 25, i: 0.05 },
-];
-function AmortBars() {
-  const W = 640, H = 200, padB = 26, top = 8, bh = H - padB - top;
-  const bw = 58, gap = (W - AMORT.length * bw) / (AMORT.length + 1);
-  return (
-    <svg className="gm-chart" viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block" }}>
-      {AMORT.map((d, i) => {
-        const x = gap + i * (bw + gap);
-        const iH = d.i * bh, cH = bh - iH;
-        return (
-          <g key={d.yr}>
-            <rect x={x} y={top} width={bw} height={iH} fill={coral} rx={3} />
-            <rect x={x} y={top + iH} width={bw} height={cH} fill={green} rx={3} />
-            <text x={x + bw / 2} y={H - 8} textAnchor="middle" style={{ fontSize: 12, fontWeight: 600 }} fill={mute}>Yr {d.yr}</text>
-            <text x={x + bw / 2} y={top + 14} textAnchor="middle" style={{ fontSize: 11, fontWeight: 700 }} fill="#fff">{Math.round(d.i * 100)}%</text>
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
-
-/* £1 breakdown at three points in the term. */
-const POUND = [{ yr: "Year 1", i: 78 }, { yr: "Year 13", i: 50 }, { yr: "Year 25", i: 5 }];
-function PoundBars() {
-  return (
-    <div className="space-y-4">
-      {POUND.map((d) => (
-        <div key={d.yr} className="flex items-center gap-4">
-          <div style={{ width: 66, fontSize: 14, fontWeight: 700, color: ink, flex: "none" }}>{d.yr}</div>
-          <div style={{ flex: 1, height: 30, borderRadius: 10, overflow: "hidden", display: "flex", border: `1px solid ${line}` }}>
-            <div style={{ width: `${d.i}%`, background: coral, display: "grid", placeItems: "center" }}>
-              {d.i > 14 && <span style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}>{d.i}p interest</span>}
-            </div>
-            <div style={{ width: `${100 - d.i}%`, background: green, display: "grid", placeItems: "center" }}>
-              {100 - d.i > 14 && <span style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}>{100 - d.i}p capital</span>}
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/* Overpayment before/after comparison. */
-function OverpayCompare() {
-  const rows = [
-    { label: "No overpayment", years: "25 years", interest: 180224, w: 100, tone: mute },
-    { label: "+£150 / month", years: "≈ 20 years", interest: 145000, w: 80, tone: green },
-  ];
-  return (
-    <div>
-      <div className="space-y-4">
-        {rows.map((r) => (
-          <div key={r.label}>
-            <div className="flex items-baseline justify-between" style={{ marginBottom: 6 }}>
-              <span style={{ fontSize: 15, fontWeight: 700, color: ink }}>{r.label}</span>
-              <span style={{ fontSize: 14, color: mute }}>{r.years} · {gbp(r.interest)} interest</span>
-            </div>
-            <div style={{ height: 14, borderRadius: 999, background: tint, overflow: "hidden" }}>
-              <div style={{ width: `${r.w}%`, height: "100%", background: r.tone, borderRadius: 999 }} />
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="flex flex-wrap gap-3" style={{ marginTop: 18 }}>
-        <Badge value="≈ 5 years" label="cleared earlier" />
-        <Badge value={`≈ ${gbp(35000)}`} label="interest saved" />
-      </div>
-    </div>
-  );
-}
-function Badge({ value, label }: { value: string; label: string }) {
-  return (
-    <div style={{ background: "#e7f6ee", border: "1px solid #cdeadd", borderRadius: 14, padding: "12px 16px" }}>
-      <div style={{ fontSize: 20, fontWeight: 800, color: greenDeep, fontVariantNumeric: "tabular-nums" }}>{value}</div>
-      <div style={{ fontSize: 13, color: greenDeep, opacity: 0.85 }}>{label}</div>
-    </div>
-  );
-}
-
-/* LTV ladder. */
-const LTV = [
-  { ltv: "95%", w: 100, c: coral, note: "Priciest rates · limited choice" },
-  { ltv: "90%", w: 86, c: "#ef7a3f", note: "Higher rates" },
-  { ltv: "85%", w: 72, c: amber, note: "Mainstream rates" },
-  { ltv: "80%", w: 58, c: "#7bb35a", note: "Good rates" },
-  { ltv: "75%", w: 44, c: "#3f9e6a", note: "Strong rates" },
-  { ltv: "60%", w: 30, c: greenDeep, note: "The best rates lenders offer" },
-];
-function LtvLadder() {
-  return (
-    <div className="space-y-2.5">
-      {LTV.map((d) => (
-        <div key={d.ltv} className="flex items-center gap-3">
-          <div style={{ width: 48, fontSize: 15, fontWeight: 800, color: ink, fontVariantNumeric: "tabular-nums", flex: "none" }}>{d.ltv}</div>
-          <div style={{ width: `${d.w}%`, minWidth: 90, height: 34, borderRadius: 10, background: d.c, display: "flex", alignItems: "center", paddingLeft: 12 }}>
-            <span style={{ fontSize: 13, fontWeight: 600, color: "#fff", whiteSpace: "nowrap" }}>{d.note}</span>
-          </div>
-        </div>
-      ))}
-      <div className="flex items-center justify-between" style={{ marginTop: 10, fontSize: 12.5, color: subtle, fontWeight: 600 }}>
-        <span>← Bigger loan, higher risk to the lender</span>
-        <span>Bigger deposit, cheaper rate →</span>
-      </div>
-    </div>
-  );
-}
-
-/* Fixed vs SVR line. */
-function FixedVsSvr() {
-  const W = 640, H = 180, padL = 40, padB = 28, padT = 12;
-  const yFix = 96, ySvr = 44; // higher on screen = higher rate
-  const xBreak = padL + (W - padL - 10) * 0.55;
-  return (
-    <svg className="gm-chart" viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block" }}>
-      <text x={4} y={ySvr + 4} style={{ fontSize: 11, fontWeight: 600 }} fill={mute}>SVR</text>
-      <text x={4} y={yFix + 4} style={{ fontSize: 11, fontWeight: 600 }} fill={mute}>Fix</text>
-      <line x1={padL} y1={H - padB} x2={W - 6} y2={H - padB} stroke={line} strokeWidth="1" />
-      <path d={`M${padL},${yFix} L${xBreak},${yFix} L${xBreak},${ySvr} L${W - 6},${ySvr}`} fill="none" stroke={green} strokeWidth="3" strokeLinejoin="round" />
-      <circle cx={xBreak} cy={yFix} r="4" fill={green} />
-      <line x1={xBreak} y1={padT} x2={xBreak} y2={H - padB} stroke="#cbd3ce" strokeWidth="1" strokeDasharray="3 3" />
-      <text x={padL + 8} y={yFix - 10} style={{ fontSize: 12.5, fontWeight: 700 }} fill={greenDeep}>Your fixed rate (2–5 yrs)</text>
-      <text x={xBreak + 8} y={ySvr - 10} style={{ fontSize: 12.5, fontWeight: 700 }} fill={coral}>Reverts to SVR</text>
-      <text x={xBreak} y={H - 8} textAnchor="middle" style={{ fontSize: 11.5, fontWeight: 700 }} fill={ink}>← remortgage here</text>
-    </svg>
-  );
-}
-
-/* Repayment vs interest-only comparison. */
-function RepayVsIo() {
-  const rows = [
-    { k: "Monthly payment", r: "Higher", i: "Lower", rGood: false, iGood: true },
-    { k: "Clears the loan?", r: "Yes, by the end", i: "No — full loan still owed", rGood: true, iGood: false },
-    { k: "Needs a repayment plan?", r: "No", i: "Yes (savings, sale)", rGood: true, iGood: false },
-    { k: "Common for", r: "Residential", i: "Buy-to-let", rGood: true, iGood: true },
-  ];
-  return (
-    <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))" }}>
-      {[{ name: "Repayment", accent: green, key: "r" as const }, { name: "Interest-only", accent: blue, key: "i" as const }].map((col) => (
-        <div key={col.name} style={{ border: `1px solid ${line}`, borderRadius: 14, overflow: "hidden" }}>
-          <div style={{ padding: "12px 16px", background: tint, borderBottom: `1px solid ${line}` }}>
-            <span style={{ fontSize: 16, fontWeight: 800, color: col.accent }}>{col.name}</span>
-          </div>
-          <div style={{ padding: "6px 16px 14px" }}>
-            {rows.map((row) => {
-              const val = col.key === "r" ? row.r : row.i;
-              const good = col.key === "r" ? row.rGood : row.iGood;
-              return (
-                <div key={row.k} style={{ padding: "10px 0", borderBottom: `1px solid ${line}` }}>
-                  <div style={{ fontSize: 12.5, color: subtle, fontWeight: 600 }}>{row.k}</div>
-                  <div className="flex items-center gap-2" style={{ marginTop: 2 }}>
-                    <span style={{ color: good ? green : coral, fontWeight: 800, fontSize: 14 }}>{good ? "✓" : "✕"}</span>
-                    <span style={{ fontSize: 14.5, fontWeight: 600, color: ink }}>{val}</span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/* Upfront cost bar. */
-const COSTS = [
-  { k: "Deposit (example 10%)", v: 30000, c: green },
-  { k: "Stamp Duty", v: 2500, c: coral },
-  { k: "Legal / conveyancing", v: 1500, c: amber },
-  { k: "Survey", v: 600, c: blue },
-  { k: "Lender product fee", v: 999, c: "#7c6cf0" },
-  { k: "Removals", v: 1200, c: "#0ea5a5" },
-];
-function CostBar() {
-  const total = COSTS.reduce((a, c) => a + c.v, 0);
-  return (
-    <div>
-      <div style={{ display: "flex", height: 30, borderRadius: 10, overflow: "hidden", border: `1px solid ${line}` }}>
-        {COSTS.map((c) => <div key={c.k} style={{ width: `${(c.v / total) * 100}%`, background: c.c }} title={`${c.k}: ${gbp(c.v)}`} />)}
-      </div>
-      <div className="grid gap-2.5" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(210px,1fr))", marginTop: 16 }}>
-        {COSTS.map((c) => (
-          <div key={c.k} className="flex items-center justify-between" style={{ fontSize: 14 }}>
-            <span className="flex items-center gap-2"><span style={{ width: 11, height: 11, borderRadius: 3, background: c.c, flex: "none" }} /><span style={{ color: body }}>{c.k}</span></span>
-            <span style={{ fontWeight: 700, color: ink, fontVariantNumeric: "tabular-nums" }}>{gbp(c.v)}</span>
-          </div>
-        ))}
-      </div>
-      <div className="flex items-baseline justify-between" style={{ marginTop: 14, paddingTop: 12, borderTop: `1px solid ${line}` }}>
-        <span style={{ fontSize: 15, fontWeight: 700, color: ink }}>Typical total upfront</span>
-        <span style={{ fontSize: 20, fontWeight: 800, color: ink, fontVariantNumeric: "tabular-nums" }}>{gbp(total)}</span>
-      </div>
-    </div>
-  );
-}
-
-const GLOSSARY = [
-  { t: "LTV", d: "Loan-to-value — your loan as a percentage of the property price. Lower is cheaper." },
-  { t: "SVR", d: "Standard Variable Rate — the lender's default rate your deal reverts to when a fix ends." },
-  { t: "ERC", d: "Early Repayment Charge — a penalty for overpaying beyond the allowance or leaving a fix early." },
-  { t: "Amortisation", d: "The schedule by which each payment splits between interest and capital over the term." },
-  { t: "APRC", d: "Annual Percentage Rate of Charge — the total yearly cost including fees, for comparing deals." },
-  { t: "Product fee", d: "An arrangement fee for a specific mortgage deal — sometimes added to the loan." },
-  { t: "Stress test", d: "The lender's check that you could still afford the payment if rates rose 2–3%." },
-];
