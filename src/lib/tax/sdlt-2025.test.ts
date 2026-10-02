@@ -85,6 +85,11 @@ describe("stampDuty — additional property (+5% surcharge)", () => {
     expect(round(stampDuty(500_000, "additional").total)).toBe(40_000);
   });
 
+  it("does not apply the surcharge below £40,000", () => {
+    expect(stampDuty(39_000, "additional").total).toBe(0);
+    expect(stampDuty(40_000, "additional").total).toBe(2_000);
+  });
+
   it("flags the applied scheme as 'additional'", () => {
     expect(stampDuty(500_000, "additional").appliedScheme).toBe("additional");
   });

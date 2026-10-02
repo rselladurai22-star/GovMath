@@ -27,7 +27,10 @@ describe("LTT (Wales)", () => {
     // 225k @ 0 + 75k @ 6% = 4500
     expect(ltt(300_000).total).toBeCloseTo(4500, 2);
   });
-  it("higher rates apply from £1 on additional", () => {
+  it("higher rates do not apply below £40,000", () => {
+    expect(ltt(35_000, true).total).toBe(0);
+  });
+  it("higher rates apply to the whole price on additional", () => {
     // 180k @ 5% = 9000
     expect(ltt(180_000, true).total).toBeCloseTo(9000, 2);
   });

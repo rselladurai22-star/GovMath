@@ -1,45 +1,48 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import SharedOwnershipCalculator from "./SharedOwnershipCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import SharedOwnershipStudio from "./SharedOwnershipStudio";
+import SharedOwnershipGuide from "./SharedOwnershipGuide";
 
 export const metadata: Metadata = {
-  title: "Shared Ownership Calculator (UK)",
-  description: "Monthly mortgage plus rent on the share of a Shared Ownership home you don’t own yet.",
+  title: "Shared Ownership Calculator (England, 2026)",
+  description:
+    "Monthly mortgage, rent and service charge for a shared ownership home, compared with buying outright. Plus staircasing costs, rent rises and your Stamp Duty choices.",
+  alternates: { canonical: "/property/shared-ownership" },
 };
 
-export default function SharedOwnershipPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/property", label: "Mortgages & Property" },
+  { href: "/property/shared-ownership", label: "Shared Ownership" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How does shared ownership work?", a: "You buy a share of a home, usually 10% to 75%, with a mortgage, and pay rent to a housing provider on the rest. You can buy more shares later." },
+  { q: "How much is the rent?", a: "Often around 2.75% a year of the value of the share you don't own for new homes, rising each year by a formula in your lease." },
+  { q: "Who can buy through shared ownership?", a: "Usually households earning £80,000 or less (£90,000 in London) who are first-time buyers, used to own a home, or already own a shared ownership home." },
+  { q: "What is staircasing?", a: "Buying more shares in your home, at its market value at the time. Your rent falls as your share rises." },
+  { q: "Do I pay Stamp Duty on shared ownership?", a: "You choose: pay on your share now (with more possibly due once you own over 80%), or pay on the full value up front and nothing more later." },
+];
+
+export default async function SharedOwnershipPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) =>
+    ["/property/first-time-buyer", "/property/mortgage-affordability", "/property/mortgage-repayment", "/property/rent-vs-buy", "/property/stamp-duty-england", "/property/moving-house-budget"].includes(c.href),
+  );
   return (
-    <CalculatorShell
-      category="Property"
-      updatedLabel="Mortgage + rent"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/property", label: "Property" }, { href: "/property/shared-ownership", label: "Shared Ownership" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026"
       title="Shared Ownership Calculator"
-      intro="Shared Ownership lets you buy 10–75% of a home with a mortgage, and pay subsidised rent to a housing association on the rest. Smaller deposit, but two monthly costs."
-      calculator={<SharedOwnershipCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Mortgage is calculated on your share using standard amortisation. Rent is typically 2.75% of the unowned share value per year (set by the housing association — check your scheme). Total = mortgage + rent.</p>}
-          officialRules={
-            <ul>
-              <li>Minimum share usually 10–25%; max 75%.</li>
-              <li>Rent capped at 3% of unowned share, but most schemes use 2.75%.</li>
-              <li>You can ‘staircase’ — buy more shares over time, reducing rent.</li>
-              <li>Stamp Duty: pay on the share you buy, or on the full value (one-off).</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Service charges on top", body: "Most SO is leasehold flats with ground rent + service charge. Add £100–300/month." },
-            { title: "Selling is harder", body: "Housing association has first refusal & nominate buyers — can take months." },
-            { title: "100% staircased? Still leasehold", body: "Unless freehold from day one, you’ll deal with the lease forever." },
-          ]}
-          faqs={[
-            { question: "What deposit do I need?", answer: "Usually 5–10% of the share, not the full property — making SO accessible at lower deposits." },
-            { question: "Rent goes up?", answer: "Yes — usually RPI + 0.5% annually, fixed in your lease." },
-          ]}
-          disclaimer="Illustrative. Always check the specific scheme’s rent formula, service charge and staircasing terms."
-        />
-      }
-    />
+      lead="Your monthly mortgage, rent and service charge, how it compares with buying outright, and what staircasing would cost."
+      points={["Mortgage, rent and charges", "Against buying outright", "Staircasing and Stamp Duty", "Free and private"]}
+      guide={<SharedOwnershipGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Illustrative, England rules. Your provider's key information document and lease set the actual rent, increases and staircasing terms."
+    >
+      <SharedOwnershipStudio query={query} />
+    </FlagshipPage>
   );
 }

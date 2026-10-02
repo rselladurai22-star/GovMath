@@ -9,7 +9,7 @@
  * LTT (Land Transaction Tax) — Wales.
  *   Operates 1 April 2018 onwards via the WRA.
  *   No first-time buyer relief.
- *   Higher residential rates: +5% surcharge from Dec 2024.
+ *   Higher residential rates from Dec 2024 (not below £40,000).
  */
 
 export type RegionalBuyer = "standard" | "first-time" | "additional";
@@ -48,6 +48,8 @@ export const LTT_HIGHER_BANDS: Band[] = [
   { upTo: 1_500_000, rate: 0.15 },
   { upTo: null, rate: 0.17 },
 ];
+
+export const LTT_HIGHER_THRESHOLD = 40_000;
 
 export type BreakdownRow = {
   band: string;
@@ -125,5 +127,7 @@ export function lbtt(price: number, buyer: RegionalBuyer = "standard"): Regional
 
 export function ltt(price: number, additional = false): RegionalResult {
   const p = Math.max(0, price || 0);
-  return applyBands(p, additional ? LTT_HIGHER_BANDS : LTT_MAIN_BANDS);
+  // Higher rates do not apply to a dwelling bought for less than £40,000.
+  const higher = additional && p >= LTT_HIGHER_THRESHOLD;
+  return applyBands(p, higher ? LTT_HIGHER_BANDS : LTT_MAIN_BANDS);
 }
