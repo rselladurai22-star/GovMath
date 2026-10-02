@@ -6,7 +6,7 @@
    surface tint. Rajdhani display headings over Manrope UI/body text.
    ────────────────────────────────────────────────────────────── */
 :root {
-  /* One family (Geist): every legacy font variable resolves to it. */
+  /* One family (Inter): every legacy font variable resolves to it. */
   --font-jakarta: var(--font-body);
   --font-heading: var(--font-body);
   --font-inter: var(--font-body);
@@ -111,6 +111,24 @@
     font-variant-numeric: lining-nums;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+  }
+
+  /* Phones: the desktop proportions read oversized on a ~390px screen, so
+     scale the whole page down uniformly (type, spacing, icons alike). Media
+     queries still match the real viewport, so layouts stay mobile. */
+  @media (max-width: 700px) {
+    :root {
+      --mobile-scale: 0.75;
+    }
+    body {
+      zoom: var(--mobile-scale);
+    }
+    /* Keep form fields at a real 16px so iOS doesn't zoom in on focus. */
+    input,
+    select,
+    textarea {
+      font-size: calc(16px / var(--mobile-scale)) !important;
+    }
   }
 
   /* Headings: Inter bold, tight tracking, navy ink. */
