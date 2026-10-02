@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
 import CalculatorShell from "@/components/calculator/CalculatorShell";
-import StampDutyCalculator from "./StampDutyCalculator";
+import StampDutyStudio from "./StampDutyStudio";
 import type { BuyerType } from "@/lib/tax/sdlt-2025";
 
 export const metadata: Metadata = {
@@ -43,12 +43,15 @@ export default async function StampDutyPage({
           label: "Stamp Duty (England & NI)",
         },
       ]}
-      title="UK Stamp Duty Calculator"
-      intro="Enter your purchase price to see exactly how much Stamp Duty Land Tax (SDLT) you’ll pay on a property in England or Northern Ireland."
+      title="Stamp Duty Calculator"
+      flagship
+      points={["Rates from 1 April 2025", "First-time buyer relief", "Compare with Scotland and Wales", "Free and private"]}
+      intro="See exactly how much Stamp Duty Land Tax you’ll pay on a home in England or Northern Ireland, and how to pay less."
       calculator={
-        <StampDutyCalculator
+        <StampDutyStudio
           initialPrice={parsePrice(price)}
-          initialBuyerType={parseBuyer(buyer)}
+          initialBuyer={parseBuyer(buyer)}
+          showResults={Boolean(price || buyer)}
         />
       }
       explainer={

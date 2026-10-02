@@ -22,6 +22,11 @@ type CalculatorShellProps = {
   explainer: ReactNode;
   /** Optional last-updated label, e.g. "Updated for 2025/26". */
   updatedLabel?: string;
+  /** The calculator is a flagship Studio, which runs its own two-stage
+   *  flow and styling, so it skips the generic CalcStage wrapper. */
+  flagship?: boolean;
+  /** Hero trust points; defaults to the standard three. */
+  points?: string[];
 };
 
 export default function CalculatorShell({
@@ -32,6 +37,8 @@ export default function CalculatorShell({
   calculator,
   explainer,
   updatedLabel,
+  flagship,
+  points = ["Official 2025/26 rates", "Free, no sign-up", "Nothing you type is stored"],
 }: CalculatorShellProps) {
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
@@ -65,13 +72,19 @@ export default function CalculatorShell({
         eyebrow={updatedLabel ? `${category} · ${updatedLabel}` : category}
         title={title}
         lead={intro}
-        points={["Official 2025/26 rates", "Free, no sign-up", "Nothing you type is stored"]}
+        points={points}
       />
 
       {/* Calculator: inputs first, results after Calculate */}
-      <section id="calculator" className={`gm-wrap ${flag.studioWrap}`}>
-        <CalcStage>{calculator}</CalcStage>
-      </section>
+      {flagship ? (
+        <div id="calculator" className={flag.studioWrap}>
+          {calculator}
+        </div>
+      ) : (
+        <section id="calculator" className={`gm-wrap ${flag.studioWrap}`}>
+          <CalcStage>{calculator}</CalcStage>
+        </section>
+      )}
 
       {/* Ad: leaderboard between calc and explainer */}
       <div className={`gm-wrap ${styles.adRow}`}>

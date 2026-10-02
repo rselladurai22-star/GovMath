@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
 import CalculatorShell from "@/components/calculator/CalculatorShell";
-import VATCalculator from "./VATCalculator";
+import VatStudio from "./VatStudio";
 import type { VatRateKey } from "@/lib/tax/vat";
 
 export const metadata: Metadata = {
@@ -48,13 +48,16 @@ export default async function VATPage({
         { href: "/business", label: "Freelance & Business" },
         { href: "/business/vat-calculator", label: "VAT Calculator" },
       ]}
-      title="UK VAT Calculator"
-      intro="Add VAT to a net price, or strip it back out of a gross one — at 20%, 5% or 0%. Includes a Flat Rate Scheme comparison."
+      title="VAT Calculator"
+      flagship
+      points={["Add or remove VAT", "20%, 5% and 0% rates", "Flat Rate Scheme check", "Free and private"]}
+      intro="Add VAT to a price or take it out, at 20%, 5% or 0%, with the maths shown and a Flat Rate Scheme check for businesses."
       calculator={
-        <VATCalculator
+        <VatStudio
           initialAmount={parseAmount(amount)}
           initialDirection={parseDirection(direction)}
-          initialRateKey={parseRate(rate)}
+          initialRate={parseRate(rate)}
+          showResults={Boolean(amount || direction || rate)}
         />
       }
       explainer={
