@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import OvertimeCalculator from "./OvertimeCalculator";
 
 export const metadata: Metadata = {
-  title: "Overtime Pay Calculator UK 2025/26",
+  title: "Overtime Pay Calculator UK 2026/27",
   description: "Work out time-and-a-half, double-time and weekly gross from your overtime hours.",
 };
 
@@ -12,7 +12,7 @@ export default function OvertimePage() {
   return (
     <CalculatorShell
       category="Tax & Salary"
-      updatedLabel="Updated 2025"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax & Salary" }, { href: "/tax-and-salary/overtime", label: "Overtime" }]}
       title="Overtime Calculator"
       intro="Most UK workers don’t have a legal right to enhanced overtime pay — it depends on your contract. But where time-and-a-half or double-time applies, the maths is straightforward."

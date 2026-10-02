@@ -8,6 +8,7 @@ import { HomeMotion } from "@/components/home/Motion";
 import CalcStage from "./CalcStage";
 import styles from "./Shell.module.css";
 import { CALCULATORS } from "@/lib/calculators";
+import { TAX_YEAR } from "@/lib/rates/tax-year";
 
 type Crumb = { href: string; label: string };
 
@@ -20,7 +21,7 @@ type CalculatorShellProps = {
   calculator: ReactNode;
   /** Plain-English explainer rendered below the calculator. */
   explainer: ReactNode;
-  /** Optional last-updated label, e.g. "Updated for 2025/26". */
+  /** Optional last-updated label, e.g. "Updated for 2026/27". */
   updatedLabel?: string;
   /** The calculator is a flagship Studio, which runs its own two-stage
    *  flow and styling, so it skips the generic CalcStage wrapper. */
@@ -38,7 +39,7 @@ export default function CalculatorShell({
   explainer,
   updatedLabel,
   flagship,
-  points = ["Official 2025/26 rates", "Free, no sign-up", "Nothing you type is stored"],
+  points = [`Official ${TAX_YEAR} rates`, "Free, no sign-up", "Nothing you type is stored"],
 }: CalculatorShellProps) {
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",

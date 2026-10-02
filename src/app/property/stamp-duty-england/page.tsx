@@ -5,7 +5,7 @@ import StampDutyStudio from "./StampDutyStudio";
 import type { BuyerType } from "@/lib/tax/sdlt-2025";
 
 export const metadata: Metadata = {
-  title: "Stamp Duty Calculator (England & NI, 2025/26)",
+  title: "Stamp Duty Calculator (England & NI, 2026/27)",
   description:
     "Work out the Stamp Duty (SDLT) on your next home in England or Northern Ireland. Standard, first-time buyer and additional-property rates — explained in plain English.",
 };

@@ -13,7 +13,7 @@ export default function PaternityCalculator() {
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
         <div className="rounded-xl bg-surface border border-border p-6 space-y-5">
           <NumberInput label="Average weekly earnings" value={awe} onChange={setAwe} step={10} />
-          <p className="text-xs text-text/60">SPP is the lower of £187.18 or 90% of average weekly earnings.</p>
+          <p className="text-xs text-text/60">SPP is the lower of £194.32 or 90% of average weekly earnings.</p>
         </div>
         <div className="rounded-xl bg-white border-2 border-primary p-6 space-y-3">
           <p className="text-sm font-semibold text-text/70 uppercase tracking-wide">Total paternity pay (2 weeks)</p>

@@ -71,7 +71,7 @@ export default function EVSalSacCalculator() {
             step={1}
             prefix=""
             suffix="%"
-            hint="EV BIK: 3% in 2025/26 → 9% by 2029/30."
+            hint="EV BIK: 4% in 2026/27 → 9% by 2029/30."
           />
         </div>
         <div className="rounded-xl bg-white border-2 border-primary p-6 space-y-4">

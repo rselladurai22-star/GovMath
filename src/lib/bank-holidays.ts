@@ -2,7 +2,7 @@
  * UK bank-holiday-aware working day counter.
  *
  * Working day = Mon–Fri AND not in the bank-holiday list for the chosen nation.
- * Data covers 2025 and 2026 (gov.uk/bank-holidays). Extend BANK_HOLIDAYS to add years.
+ * Data covers 2025, 2026 and 2027 (gov.uk/bank-holidays). Extend BANK_HOLIDAYS to add years.
  */
 
 export type Nation = "england-and-wales" | "scotland" | "northern-ireland";
@@ -15,6 +15,9 @@ export const BANK_HOLIDAYS: Record<Nation, string[]> = {
     // 2026
     "2026-01-01", "2026-04-03", "2026-04-06", "2026-05-04", "2026-05-25",
     "2026-08-31", "2026-12-25", "2026-12-28",
+    // 2027
+    "2027-01-01", "2027-03-26", "2027-03-29", "2027-05-03", "2027-05-31",
+    "2027-08-30", "2027-12-27", "2027-12-28",
   ],
   "scotland": [
     // 2025
@@ -23,6 +26,9 @@ export const BANK_HOLIDAYS: Record<Nation, string[]> = {
     // 2026
     "2026-01-01", "2026-01-02", "2026-04-03", "2026-05-04", "2026-05-25",
     "2026-08-03", "2026-11-30", "2026-12-25", "2026-12-28",
+    // 2027
+    "2027-01-01", "2027-01-04", "2027-03-26", "2027-05-03", "2027-05-31",
+    "2027-08-02", "2027-11-30", "2027-12-27", "2027-12-28",
   ],
   "northern-ireland": [
     // 2025
@@ -31,6 +37,9 @@ export const BANK_HOLIDAYS: Record<Nation, string[]> = {
     // 2026
     "2026-01-01", "2026-03-17", "2026-04-03", "2026-04-06", "2026-05-04",
     "2026-05-25", "2026-07-13", "2026-08-31", "2026-12-25", "2026-12-28",
+    // 2027
+    "2027-01-01", "2027-03-17", "2027-03-26", "2027-03-29", "2027-05-03",
+    "2027-05-31", "2027-07-12", "2027-08-30", "2027-12-27", "2027-12-28",
   ],
 };
 

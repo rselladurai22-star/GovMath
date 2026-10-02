@@ -5,7 +5,7 @@ import MortgageGuide from "./MortgageGuide";
 import { CALCULATORS } from "@/lib/calculators";
 
 export const metadata: Metadata = {
-  title: "UK Mortgage Repayment Calculator (2025)",
+  title: "UK Mortgage Repayment Calculator (2026)",
   description:
     "The UK mortgage decision engine. Model overpayments, interest-only and rate rises, watch the balance melt year by year, compare scenarios and see exactly what your home really costs.",
   alternates: { canonical: "/property/mortgage-repayment" },
@@ -65,7 +65,7 @@ export default async function MortgagePage({ searchParams }: { searchParams: Sea
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}
-      eyebrow="Updated for 2025/26"
+      eyebrow="Updated for 2026/27"
       title="Mortgage Repayment Calculator"
       lead="See your monthly payment, what the mortgage really costs and how to pay less, as you type."
       points={["Live results", "Overpayments and rate rises", "Stamp Duty and upfront costs", "Free and private"]}

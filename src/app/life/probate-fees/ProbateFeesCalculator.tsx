@@ -41,7 +41,7 @@ export default function ProbateFeesCalculator() {
             £{r.totalFee.toLocaleString("en-GB", { maximumFractionDigits: 2 })}
           </p>
           <p className="text-xs text-text/60">
-            {r.feeWaived ? "No application fee — estate below £5,000 threshold." : "Includes the £300 application fee plus copies."}
+            {r.feeWaived ? "No application fee — estate below £5,000 threshold." : "Includes the £526 application fee plus copies."}
           </p>
           <ResultBreakdown
             title="Breakdown"

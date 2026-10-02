@@ -1,5 +1,5 @@
 /**
- * UK tax engine for the 2025/26 tax year.
+ * UK tax engine for the 2026/27 tax year.
  *
  * Scope of this module:
  *   - England, Wales & Northern Ireland Income Tax bands
@@ -13,8 +13,8 @@
  * Functions are pure and deterministic — safe to call on the server or client.
  */
 
-export const TAX_YEAR_2025_26 = {
-  label: "2025/26",
+export const TAX_YEAR_2026_27 = {
+  label: "2026/27",
   personalAllowance: 12570,
   /** Personal Allowance starts tapering at £1 per £2 above this income. */
   paTaperStart: 100000,
@@ -41,7 +41,7 @@ export const TAX_YEAR_2025_26 = {
 
 /** Personal Allowance after income-based taper. */
 export function personalAllowance(gross: number): number {
-  const t = TAX_YEAR_2025_26;
+  const t = TAX_YEAR_2026_27;
   if (gross <= t.paTaperStart) return t.personalAllowance;
   if (gross >= t.paTaperEnd) return 0;
   const reduction = (gross - t.paTaperStart) / 2;
@@ -57,9 +57,9 @@ export type IncomeTaxBreakdown = {
   total: number;
 };
 
-/** Income tax owed on a gross annual salary (England/Wales/NI, 2025/26). */
+/** Income tax owed on a gross annual salary (England/Wales/NI, 2026/27). */
 export function incomeTax(gross: number): IncomeTaxBreakdown {
-  const t = TAX_YEAR_2025_26.incomeTax;
+  const t = TAX_YEAR_2026_27.incomeTax;
   const pa = personalAllowance(gross);
   const taxable = Math.max(0, gross - pa);
 
@@ -95,10 +95,10 @@ export type NIBreakdown = {
   total: number;
 };
 
-/** Class 1 employee NI on a gross annual salary (2025/26). */
+/** Class 1 employee NI on a gross annual salary (2026/27). */
 export function nationalInsurance(gross: number): NIBreakdown {
   const { primaryThreshold, upperEarningsLimit, rates } =
-    TAX_YEAR_2025_26.ni;
+    TAX_YEAR_2026_27.ni;
 
   if (gross <= primaryThreshold) {
     return { mainBand: 0, upperBand: 0, total: 0 };
@@ -117,13 +117,13 @@ export function nationalInsurance(gross: number): NIBreakdown {
 }
 
 /**
- * Class 4 self-employed NI on annual trading profits (2025/26).
+ * Class 4 self-employed NI on annual trading profits (2026/27).
  * Same thresholds as Class 1, lower rates (6% / 2%).
  * Class 2 was effectively abolished from April 2024 and is out of scope.
  */
 export function selfEmployedNI(profit: number): NIBreakdown {
   const { primaryThreshold, upperEarningsLimit, class4Rates } =
-    TAX_YEAR_2025_26.ni;
+    TAX_YEAR_2026_27.ni;
 
   if (profit <= primaryThreshold) {
     return { mainBand: 0, upperBand: 0, total: 0 };
@@ -156,7 +156,7 @@ export type TakeHomeResult = {
   };
 };
 
-/** Headline take-home calculation for a PAYE employee, 2025/26. */
+/** Headline take-home calculation for a PAYE employee, 2026/27. */
 export function takeHomePay(gross: number): TakeHomeResult {
   const safeGross = Math.max(0, gross || 0);
   const tax = incomeTax(safeGross);

@@ -1,5 +1,5 @@
 /**
- * UK Student Loan repayments — 2025/26 thresholds.
+ * UK Student Loan repayments — 2026/27 thresholds.
  *
  * Plans:
  *   Plan 1 (England/Wales pre-Sep-2012, NI all): £26,065  threshold, 9%
@@ -11,18 +11,18 @@
  * Repayments are calculated on income above the threshold for each plan
  * separately. You can be on a Plan + PGL simultaneously.
  *
- * Reference: gov.uk student loan thresholds 2025/26.
+ * Reference: gov.uk student loan thresholds 2026/27.
  */
 
 export type StudentLoanPlan = "plan-1" | "plan-2" | "plan-4" | "plan-5" | "postgrad";
 
-export const STUDENT_LOAN_2025_26: Record<
+export const STUDENT_LOAN_2026_27: Record<
   StudentLoanPlan,
   { threshold: number; ratePct: number; label: string }
 > = {
-  "plan-1": { threshold: 26065, ratePct: 9, label: "Plan 1" },
-  "plan-2": { threshold: 28470, ratePct: 9, label: "Plan 2" },
-  "plan-4": { threshold: 32745, ratePct: 9, label: "Plan 4 (Scotland)" },
+  "plan-1": { threshold: 26900, ratePct: 9, label: "Plan 1" },
+  "plan-2": { threshold: 29385, ratePct: 9, label: "Plan 2" },
+  "plan-4": { threshold: 33795, ratePct: 9, label: "Plan 4 (Scotland)" },
   "plan-5": { threshold: 25000, ratePct: 9, label: "Plan 5" },
   postgrad: { threshold: 21000, ratePct: 6, label: "Postgraduate Loan" },
 };
@@ -40,7 +40,7 @@ export function studentLoanRepayment(
   plan: StudentLoanPlan,
   annualSalary: number
 ): StudentLoanResult {
-  const spec = STUDENT_LOAN_2025_26[plan];
+  const spec = STUDENT_LOAN_2026_27[plan];
   const excess = Math.max(0, annualSalary - spec.threshold);
   const annual = excess * (spec.ratePct / 100);
   return {

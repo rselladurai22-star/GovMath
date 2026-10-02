@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import NumberInput from "@/components/calculator/NumberInput";
 import ResultBreakdown from "@/components/calculator/ResultBreakdown";
-import { takeHomePay } from "@/lib/tax/2025-26";
+import { takeHomePay } from "@/lib/tax/2026-27";
 
 const GBP0 = new Intl.NumberFormat("en-GB", {
   style: "currency",

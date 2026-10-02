@@ -1,7 +1,7 @@
 /**
  * UK Employer's National Insurance (Class 1 Secondary).
  *
- * From 6 April 2025:
+ * 2026/27 (unchanged since 6 April 2025):
  *  - Secondary threshold lowered to £5,000/year (was £9,100)
  *  - Rate raised to 15% (was 13.8%)
  *  - Employment Allowance increased to £10,500 (most employers eligible)
@@ -10,9 +10,9 @@
  * Employment Allowance is a separate annual offset, applied at payroll year-end.
  */
 
-export const EMPLOYER_NI_THRESHOLD_2025 = 5_000;
-export const EMPLOYER_NI_RATE_2025 = 0.15;
-export const EMPLOYMENT_ALLOWANCE_2025 = 10_500;
+export const EMPLOYER_NI_THRESHOLD_2026 = 5_000;
+export const EMPLOYER_NI_RATE_2026 = 0.15;
+export const EMPLOYMENT_ALLOWANCE_2026 = 10_500;
 
 export type EmployerNIInput = {
   /** Annual salary paid to this employee. */
@@ -30,9 +30,9 @@ export type EmployerNIResult = {
 };
 
 export function employerNI(input: EmployerNIInput): EmployerNIResult {
-  const niableEarnings = Math.max(0, input.annualSalary - EMPLOYER_NI_THRESHOLD_2025);
-  const grossEmployerNI = niableEarnings * EMPLOYER_NI_RATE_2025;
-  const allowance = input.employmentAllowance ? Math.min(EMPLOYMENT_ALLOWANCE_2025, grossEmployerNI) : 0;
+  const niableEarnings = Math.max(0, input.annualSalary - EMPLOYER_NI_THRESHOLD_2026);
+  const grossEmployerNI = niableEarnings * EMPLOYER_NI_RATE_2026;
+  const allowance = input.employmentAllowance ? Math.min(EMPLOYMENT_ALLOWANCE_2026, grossEmployerNI) : 0;
   const totalEmploymentCost = input.annualSalary + grossEmployerNI - allowance;
   return {
     niableEarnings,

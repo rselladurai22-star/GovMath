@@ -1,5 +1,5 @@
 /**
- * Free childcare hours — England 2025/26.
+ * Free childcare hours — England 2026/27.
  *
  * Source: gov.uk/get-30-hours-free-childcare
  *
@@ -10,7 +10,7 @@
  *  - Working 3 & 4 yos:    30 hours/week (15 universal + 15 working-parent extension)
  *  - 2 year olds (low income / certain benefits): 15 hours/week
  *
- * "Working parent" criteria: each parent earns ≥ £166/week (~16h NLW) and < £100k/year.
+ * "Working parent" criteria: each parent earns ≥ £203/week (~16h NLW) and < £100k/year.
  * Funded hours apply 38 weeks/year (term time) by default; can be "stretched" to ~22h/wk over 51 weeks.
  */
 

@@ -1,5 +1,5 @@
 /**
- * Dividend tax — 2025/26.
+ * Dividend tax — 2026/27.
  *
  * Allowance: £500 of dividends tax-free.
  * Rates above allowance depend on which Income Tax band the dividends fall in,
@@ -16,11 +16,11 @@
  * "uses" any band space).
  */
 
-import { personalAllowance, TAX_YEAR_2025_26 } from "./2025-26";
+import { personalAllowance, TAX_YEAR_2026_27 } from "./2026-27";
 
-export const DIVIDEND_2025_26 = {
+export const DIVIDEND_2026_27 = {
   allowance: 500,
-  rates: { basic: 0.0875, higher: 0.3375, additional: 0.3935 },
+  rates: { basic: 0.1075, higher: 0.3575, additional: 0.3935 },
 } as const;
 
 export type DividendTaxBreakdown = {
@@ -53,13 +53,13 @@ export function dividendTax(
   const divAfterPA = div - paUsedByDividends;
 
   // Apply £500 allowance at zero rate
-  const allowanceUsed = Math.min(divAfterPA, DIVIDEND_2025_26.allowance);
+  const allowanceUsed = Math.min(divAfterPA, DIVIDEND_2026_27.allowance);
   const divToTax = divAfterPA - allowanceUsed;
 
   // Bands: basic-rate band ends at PA + £37,700.
   // Other income (above PA) consumes the band first.
-  const basicBandTop = pa + TAX_YEAR_2025_26.incomeTax.basicRateBand; // £50,270 standard
-  const higherBandTop = TAX_YEAR_2025_26.incomeTax.higherRateUpper; // £125,140
+  const basicBandTop = pa + TAX_YEAR_2026_27.incomeTax.basicRateBand; // £50,270 standard
+  const higherBandTop = TAX_YEAR_2026_27.incomeTax.higherRateUpper; // £125,140
 
   // "Income level" where dividend allowance/taxed dividends sit.
   // Other income occupies [0, other]. Allowance sits at [other, other+allowanceUsed].
@@ -83,7 +83,7 @@ export function dividendTax(
     taxedEndIncomeLevel - Math.max(taxedStartIncomeLevel, higherBandTop)
   );
 
-  const r = DIVIDEND_2025_26.rates;
+  const r = DIVIDEND_2026_27.rates;
   const basic = inBasic * r.basic;
   const higher = inHigher * r.higher;
   const additional = inAdditional * r.additional;

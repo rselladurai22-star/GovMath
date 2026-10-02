@@ -3,7 +3,7 @@ import { soleTraderTax } from "./sole-trader";
 
 const round = (n: number) => Math.round(n * 100) / 100;
 
-describe("soleTraderTax (2025/26)", () => {
+describe("soleTraderTax (2026/27)", () => {
   it("profit at PA → no tax, no NI", () => {
     const r = soleTraderTax(12_570);
     expect(r.incomeTax).toBe(0);
@@ -21,9 +21,9 @@ describe("soleTraderTax (2025/26)", () => {
     expect(round(r.netProfit)).toBe(round(30_000 - r.totalTax));
   });
 
-  it("profits ≥ SPT (£6,725) get automatic NI credit", () => {
-    expect(soleTraderTax(7_000).getsAutomaticNICredit).toBe(true);
-    expect(soleTraderTax(6_000).getsAutomaticNICredit).toBe(false);
+  it("profits ≥ SPT (£7,105) get automatic NI credit", () => {
+    expect(soleTraderTax(7_200).getsAutomaticNICredit).toBe(true);
+    expect(soleTraderTax(7_000).getsAutomaticNICredit).toBe(false);
   });
 
   it("£100k profit triggers higher-rate IT", () => {

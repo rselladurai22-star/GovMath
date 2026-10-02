@@ -24,7 +24,7 @@ export default function PensionReliefPage() {
             <ul>
               <li>Basic-rate relief (20%) added automatically by provider.</li>
               <li>40% / 45% taxpayers claim the extra 20% / 25% via Self Assessment.</li>
-              <li>Annual Allowance: £60,000 (2025/26).</li>
+              <li>Annual Allowance: £60,000 (2026/27).</li>
               <li>Tapered allowance kicks in over £260k adjusted income.</li>
             </ul>
           }

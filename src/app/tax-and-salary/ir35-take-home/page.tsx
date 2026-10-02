@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import IR35Calculator from "./IR35Calculator";
 
 export const metadata: Metadata = {
-  title: "Inside vs Outside IR35 Take-Home (UK 2025/26)",
+  title: "Inside vs Outside IR35 Take-Home (UK 2026/27)",
   description: "Net pay comparison between inside-IR35 (deemed employee) and outside-IR35 (Ltd Co) for UK contractors.",
 };
 
@@ -12,14 +12,14 @@ export default function IR35Page() {
   return (
     <CalculatorShell
       category="Tax & Salary"
-      updatedLabel="2025/26"
+      updatedLabel="2026/27"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax & Salary" }, { href: "/tax-and-salary/ir35-take-home", label: "IR35 Take-Home" }]}
       title="Inside vs Outside IR35 Take-Home"
       intro="If you’re a UK contractor through a limited company, IR35 status determines whether you pay tax like an employee (inside) or via salary + dividends (outside)."
       calculator={<IR35Calculator />}
       explainer={
         <BlueprintExplainer
-          howWeCalculated={<p>Inside-IR35: fee-payer deducts employer NI 15% first, then PAYE + employee NI on the deemed employment payment. Outside-IR35: £12,570 salary + dividends after 19/25% corporation tax. Dividend tax: 8.75% / 33.75% / 39.35%.</p>}
+          howWeCalculated={<p>Inside-IR35: fee-payer deducts employer NI 15% first, then PAYE + employee NI on the deemed employment payment. Outside-IR35: £12,570 salary + dividends after 19/25% corporation tax. Dividend tax: 10.75% / 35.75% / 39.35%.</p>}
           officialRules={
             <ul>
               <li>From April 2021, end-clients (medium/large) determine IR35 status.</li>

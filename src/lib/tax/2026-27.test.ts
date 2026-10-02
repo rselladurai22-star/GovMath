@@ -5,11 +5,11 @@ import {
   personalAllowance,
   selfEmployedNI,
   takeHomePay,
-} from "./2025-26";
+} from "./2026-27";
 
 const round = (n: number) => Math.round(n * 100) / 100;
 
-describe("personalAllowance (2025/26)", () => {
+describe("personalAllowance (2026/27)", () => {
   it("returns full PA below £100k", () => {
     expect(personalAllowance(50000)).toBe(12570);
   });
@@ -22,7 +22,7 @@ describe("personalAllowance (2025/26)", () => {
   });
 });
 
-describe("incomeTax (2025/26, rUK)", () => {
+describe("incomeTax (2026/27, rUK)", () => {
   it("no tax at or below PA", () => {
     expect(incomeTax(12570).total).toBe(0);
   });
@@ -44,7 +44,7 @@ describe("incomeTax (2025/26, rUK)", () => {
   });
 });
 
-describe("nationalInsurance (Class 1, 2025/26)", () => {
+describe("nationalInsurance (Class 1, 2026/27)", () => {
   it("zero at or below PT", () => {
     expect(nationalInsurance(12570).total).toBe(0);
   });
@@ -80,7 +80,7 @@ describe("takeHomePay", () => {
   });
 });
 
-describe("selfEmployedNI (Class 4, 2025/26)", () => {
+describe("selfEmployedNI (Class 4, 2026/27)", () => {
   it("is zero at or below the small-profits threshold (£12,570)", () => {
     expect(selfEmployedNI(12570).total).toBe(0);
     expect(selfEmployedNI(0).total).toBe(0);

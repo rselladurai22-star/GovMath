@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import CorpTaxCalculator from "./CorpTaxCalculator";
 
 export const metadata: Metadata = {
-  title: "Corporation Tax Calculator UK 2025/26 (with Marginal Relief)",
+  title: "Corporation Tax Calculator UK 2026/27 (with Marginal Relief)",
   description: "Work out UK Corporation Tax — 19% small profits rate, marginal relief band £50k–£250k, 25% main rate.",
 };
 
@@ -12,7 +12,7 @@ export default function CorpTaxPage() {
   return (
     <CalculatorShell
       category="Business & Self-Employed"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/business", label: "Business & Self-Employed" }, { href: "/business/corporation-tax", label: "Corporation Tax" }]}
       title="Corporation Tax Calculator"
       intro="From April 2023, UK Corporation Tax has two main rates — 19% for profits up to £50,000 and 25% above £250,000 — with a marginal-relief band in between that effectively taxes those middle pounds at 26.5%."

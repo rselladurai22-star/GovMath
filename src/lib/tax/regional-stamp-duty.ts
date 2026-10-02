@@ -1,5 +1,5 @@
 /**
- * Scottish LBTT and Welsh LTT — residential rates 2025/26.
+ * Scottish LBTT and Welsh LTT — residential rates 2026/27.
  *
  * LBTT (Land & Buildings Transaction Tax) — Scotland.
  *   Operates 1 April 2015 onwards via Revenue Scotland.

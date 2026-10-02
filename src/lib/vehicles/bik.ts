@@ -4,40 +4,38 @@
  * BIK value = list price × BIK% × marginal tax rate.
  *
  * BIK% depends on CO2 emissions. Electric cars (zero-emission) are taxed
- * at 3% for 2025/26 (up from 2% in 2024/25), rising 1pp per year to 9% by 2029/30.
+ * at 4% for 2026/27 (up from 3% in 2025/26), rising to 5% in 2027/28 and 9% by 2029/30.
  *
- * Petrol/diesel rates are heavily banded by CO2. We use a simplified gov.uk
- * 2025/26 lookup table.
+ * Petrol/diesel rates are banded by CO2 in 5 g/km steps (HMRC appropriate
+ * percentages for 2026/27, each 1pp higher than 2025/26, capped at 37%).
  */
 
-const RATES_2025: Array<[number, number]> = [
-  [50, 0.15], // 1–50 g/km depends on electric range; we approximate
-  [55, 0.17],
-  [60, 0.18],
-  [65, 0.19],
-  [70, 0.20],
-  [75, 0.21],
-  [80, 0.22],
-  [85, 0.23],
-  [90, 0.24],
-  [95, 0.25],
-  [100, 0.26],
-  [105, 0.27],
-  [110, 0.28],
-  [115, 0.29],
-  [120, 0.30],
-  [125, 0.31],
-  [130, 0.32],
-  [135, 0.33],
-  [140, 0.34],
-  [145, 0.35],
-  [150, 0.36],
-  [155, 0.37],
-  [160, 0.37],
-  [Infinity, 0.37],
+const RATES_2026: Array<[number, number]> = [
+  [50, 0.16], // 1–50 g/km depends on electric range; we use the under-30-mile rate
+  [54, 0.17],
+  [59, 0.18],
+  [64, 0.19],
+  [69, 0.20],
+  [74, 0.21],
+  [79, 0.22],
+  [84, 0.23],
+  [89, 0.24],
+  [94, 0.25],
+  [99, 0.26],
+  [104, 0.27],
+  [109, 0.28],
+  [114, 0.29],
+  [119, 0.30],
+  [124, 0.31],
+  [129, 0.32],
+  [134, 0.33],
+  [139, 0.34],
+  [144, 0.35],
+  [149, 0.36],
+  [Infinity, 0.37], // 150 g/km and above
 ];
 
-export const EV_BIK_RATE_2025 = 0.03;
+export const EV_BIK_RATE_2026 = 0.04;
 
 export type BIKInput = {
   listPrice: number;
@@ -57,10 +55,10 @@ export type BIKResult = {
 export function companyCarBIK(input: BIKInput): BIKResult {
   let bikPercent: number;
   if (input.fuelType === "electric") {
-    bikPercent = EV_BIK_RATE_2025;
+    bikPercent = EV_BIK_RATE_2026;
   } else {
     const co2 = input.co2gPerKm ?? 0;
-    bikPercent = RATES_2025.find(([cap]) => co2 <= cap)?.[1] ?? 0.37;
+    bikPercent = RATES_2026.find(([cap]) => co2 <= cap)?.[1] ?? 0.37;
     if (input.fuelType === "diesel") bikPercent = Math.min(0.37, bikPercent + 0.04); // 4% diesel supplement (non-RDE2)
   }
   const cashEquivalent = input.listPrice * bikPercent;

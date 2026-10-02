@@ -1,9 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { universalCredit, UC_RATES_2025_26 } from "./universal-credit";
+import { universalCredit, UC_RATES_2026_27 } from "./universal-credit";
 
 const round = (n: number) => Math.round(n * 100) / 100;
 
-describe("universalCredit (2025/26)", () => {
+describe("universalCredit (2026/27)", () => {
   it("single 25+, no children, no rent, no earnings → standard allowance only", () => {
     const r = universalCredit({
       household: "single-25-plus",
@@ -13,10 +13,10 @@ describe("universalCredit (2025/26)", () => {
       hasWorkAllowance: false,
       capital: 0,
     });
-    expect(r.standardAllowance).toBe(400.14);
+    expect(r.standardAllowance).toBe(424.90);
     expect(r.childElement).toBe(0);
     expect(r.housingElement).toBe(0);
-    expect(r.estimatedAward).toBe(400.14);
+    expect(r.estimatedAward).toBe(424.90);
   });
 
   it("couple 25+, two post-2017 children, £900 rent → max award sum", () => {
@@ -28,10 +28,10 @@ describe("universalCredit (2025/26)", () => {
       hasWorkAllowance: true,
       capital: 0,
     });
-    expect(r.standardAllowance).toBe(628.10);
-    expect(r.childElement).toBe(292.81 * 2);
+    expect(r.standardAllowance).toBe(666.97);
+    expect(r.childElement).toBe(303.94 * 2);
     expect(r.housingElement).toBe(900);
-    expect(r.maximumAward).toBe(628.10 + 292.81 * 2 + 900);
+    expect(r.maximumAward).toBe(666.97 + 303.94 * 2 + 900);
     // No earnings → no taper.
     expect(r.estimatedAward).toBe(r.maximumAward);
   });
@@ -46,10 +46,10 @@ describe("universalCredit (2025/26)", () => {
       hasWorkAllowance: true,
       capital: 0,
     });
-    expect(r.childElement).toBe(339.00);
+    expect(r.childElement).toBe(351.88);
   });
 
-  it("two-child limit: third child does not add element", () => {
+  it("no two-child limit from April 2026: every child adds an element", () => {
     const r = universalCredit({
       household: "couple-either-25-plus",
       children: 4,
@@ -58,7 +58,7 @@ describe("universalCredit (2025/26)", () => {
       hasWorkAllowance: true,
       capital: 0,
     });
-    expect(r.childElement).toBe(292.81 * 2);
+    expect(r.childElement).toBeCloseTo(303.94 * 4, 2);
   });
 
   it("earnings under the work allowance do not taper", () => {
@@ -66,11 +66,11 @@ describe("universalCredit (2025/26)", () => {
       household: "single-25-plus",
       children: 1,
       monthlyRent: 600,
-      monthlyEarnings: 400, // under £411 with-housing WA
+      monthlyEarnings: 420, // under £427 with-housing WA
       hasWorkAllowance: true,
       capital: 0,
     });
-    expect(r.workAllowance).toBe(411);
+    expect(r.workAllowance).toBe(427);
     expect(r.taperedEarnings).toBe(0);
   });
 
@@ -79,15 +79,15 @@ describe("universalCredit (2025/26)", () => {
       household: "single-25-plus",
       children: 1,
       monthlyRent: 600,
-      monthlyEarnings: 1411, // £1000 above the £411 WA
+      monthlyEarnings: 1427, // £1000 above the £427 WA
       hasWorkAllowance: true,
       capital: 0,
     });
-    expect(r.workAllowance).toBe(411);
+    expect(r.workAllowance).toBe(427);
     expect(round(r.taperedEarnings)).toBe(550);
   });
 
-  it("no housing → higher work allowance £684", () => {
+  it("no housing → higher work allowance £710", () => {
     const r = universalCredit({
       household: "single-25-plus",
       children: 1,
@@ -96,8 +96,8 @@ describe("universalCredit (2025/26)", () => {
       hasWorkAllowance: true,
       capital: 0,
     });
-    expect(r.workAllowance).toBe(684);
-    expect(round(r.taperedEarnings)).toBe(round((800 - 684) * 0.55));
+    expect(r.workAllowance).toBe(710);
+    expect(round(r.taperedEarnings)).toBe(round((800 - 710) * 0.55));
   });
 
   it("claimant without a work allowance tapers from £0", () => {
@@ -123,7 +123,7 @@ describe("universalCredit (2025/26)", () => {
       capital: 8000, // £2000 above → 8 × £4.35 = £34.80
     });
     expect(r.capitalDeduction).toBe(34.8);
-    expect(round(r.estimatedAward)).toBe(round(400.14 - 34.8));
+    expect(round(r.estimatedAward)).toBe(round(424.90 - 34.8));
   });
 
   it("capital ≥ £16k → ineligible (award is £0)", () => {
@@ -152,6 +152,6 @@ describe("universalCredit (2025/26)", () => {
   });
 
   it("uses the documented taper rate (0.55)", () => {
-    expect(UC_RATES_2025_26.taperRate).toBe(0.55);
+    expect(UC_RATES_2026_27.taperRate).toBe(0.55);
   });
 });

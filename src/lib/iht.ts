@@ -1,5 +1,5 @@
 /**
- * Inheritance Tax — UK 2025/26 simplified estimator.
+ * Inheritance Tax — UK 2026/27 simplified estimator.
  *
  * Rules modelled:
  *   - Nil-Rate Band (NRB): £325,000 per person.
@@ -13,7 +13,7 @@
  * domicile rules. This is an estimator.
  */
 
-export const IHT_2025_26 = {
+export const IHT_2026_27 = {
   nilRateBand: 325000,
   residenceNilRateBand: 175000,
   rate: 0.4,
@@ -45,23 +45,23 @@ export function inheritanceTax(input: IHTInput): IHTResult {
   const estate = Math.max(0, input.estateValue);
   const transferPct = Math.min(100, Math.max(0, input.spouseTransferPct ?? 0)) / 100;
 
-  const nrb = IHT_2025_26.nilRateBand * (1 + transferPct);
+  const nrb = IHT_2026_27.nilRateBand * (1 + transferPct);
 
   let rnrb = 0;
   if (input.passingHomeToDescendants) {
-    const baseRnrb = IHT_2025_26.residenceNilRateBand * (1 + transferPct);
+    const baseRnrb = IHT_2026_27.residenceNilRateBand * (1 + transferPct);
     // Taper: lose £1 of RNRB per £2 of estate above £2m.
-    if (estate <= IHT_2025_26.rnrbTaperStart) {
+    if (estate <= IHT_2026_27.rnrbTaperStart) {
       rnrb = baseRnrb;
     } else {
-      const taper = (estate - IHT_2025_26.rnrbTaperStart) / 2;
+      const taper = (estate - IHT_2026_27.rnrbTaperStart) / 2;
       rnrb = Math.max(0, baseRnrb - taper);
     }
   }
 
   const totalAllowance = nrb + rnrb;
   const taxable = Math.max(0, estate - totalAllowance);
-  const iht = taxable * IHT_2025_26.rate;
+  const iht = taxable * IHT_2026_27.rate;
 
   return {
     estateValue: estate,

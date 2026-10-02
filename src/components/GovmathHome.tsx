@@ -7,6 +7,7 @@ import QuickCalcs from "@/components/home/QuickCalcs";
 import { CountUp, HomeMotion } from "@/components/home/Motion";
 import AdSlot from "@/components/AdSlot";
 import styles from "./GovmathHome.module.css";
+import { TAX_YEAR } from "@/lib/rates/tax-year";
 
 const accent = accentVars;
 const stagger = (i: number) => ({ ["--d" as string]: `${i * 70}ms` }) as CSSProperties;
@@ -30,7 +31,7 @@ const MOST_POPULAR = [
 
 const FEATURED: { href: string; tag: string; title: string; blurb: string; foot: string }[] = [
   { href: "/tax-and-salary/salary-calculator", tag: "Salary & PAYE", title: "Take-Home Pay", blurb: "Your pay after Income Tax, National Insurance, pension and student loan.", foot: "Instant result" },
-  { href: "/property/stamp-duty-england", tag: "Property", title: "Stamp Duty (SDLT)", blurb: "Stamp Duty on a home in England or Northern Ireland, band by band.", foot: "2025/26 thresholds" },
+  { href: "/property/stamp-duty-england", tag: "Property", title: "Stamp Duty (SDLT)", blurb: "Stamp Duty on a home in England or Northern Ireland, band by band.", foot: "2026/27 thresholds" },
   { href: "/property/mortgage-repayment", tag: "Mortgages", title: "Mortgage Repayment", blurb: "Monthly payments, interest vs capital and total cost over the full term.", foot: "Full breakdown" },
   { href: "/business/dividend-vs-salary", tag: "Limited company", title: "Dividend vs Salary", blurb: "Find a tax-efficient split between salary and dividends for directors.", foot: "Director planning" },
 ];
@@ -85,7 +86,7 @@ export default function GovmathHome() {
           <div className={styles.heroCopy}>
             <span className={styles.pill}>
               <span className={styles.pulse} aria-hidden="true" />
-              Updated for the 2025/26 tax year
+              Updated for the {TAX_YEAR} tax year
             </span>
             <h1 id="hero-heading" className={styles.heroTitle}>
               <span>Free UK calculators</span>
@@ -152,11 +153,11 @@ export default function GovmathHome() {
               <dt>Money topics</dt>
             </div>
             <div>
-              <dd>2025/26</dd>
+              <dd>{TAX_YEAR}</dd>
               <dt>Tax-year rates</dt>
             </div>
           </dl>
-          <dl className={styles.rates} aria-label="Key 2025/26 rates">
+          <dl className={styles.rates} aria-label={`Key ${TAX_YEAR} rates`}>
             {RATES.map((r) => (
               <div key={r.label}>
                 <dt>{r.label}</dt>
@@ -297,7 +298,7 @@ export default function GovmathHome() {
             stored.
           </p>
           <p>
-            Figures use the official HMRC and GOV.UK rates for the 2025/26 tax year. They are estimates to help you plan — always
+            Figures use the official HMRC and GOV.UK rates for the {TAX_YEAR} tax year. They are estimates to help you plan — always
             check anything important against your own circumstances.
           </p>
         </div>

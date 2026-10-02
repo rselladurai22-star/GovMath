@@ -11,17 +11,17 @@ describe("benefitCap", () => {
   it("reduces weekly benefits above the family cap outside London", () => {
     const r = benefitCap({ household: "family", location: "elsewhere", weeklyBenefits: 600 });
     expect(r.capApplies).toBe(true);
-    expect(r.weeklyReduction).toBeCloseTo(600 - 24496.32 / 52, 2);
+    expect(r.weeklyReduction).toBeCloseTo(600 - 22020 / 52, 2);
   });
 
   it("uses higher London cap for families", () => {
     const r = benefitCap({ household: "family", location: "london", weeklyBenefits: 600 });
-    expect(r.annualCap).toBe(28116.72);
+    expect(r.annualCap).toBe(25323);
   });
 
   it("uses single-no-children band for single applicants", () => {
     const r = benefitCap({ household: "single-no-children", location: "elsewhere", weeklyBenefits: 400 });
-    expect(r.annualCap).toBe(16395.66);
+    expect(r.annualCap).toBe(14753);
     expect(r.capApplies).toBe(true);
   });
 });

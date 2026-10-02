@@ -14,7 +14,7 @@ export default function IsaVsGiaCalculator() {
     const dividendAnnual = pot * (yieldPct / 100);
     // GIA dividend allowance £500
     const taxableDiv = Math.max(0, dividendAnnual - 500);
-    const dividendRate = marginalRate === 20 ? 0.0875 : marginalRate === 40 ? 0.3375 : 0.3935;
+    const dividendRate = marginalRate === 20 ? 0.1075 : marginalRate === 40 ? 0.3575 : 0.3935;
     const dividendTaxAnnual = taxableDiv * dividendRate;
     const dividendTaxOverYears = dividendTaxAnnual * years;
     // Growth → CGT eventually (assume realised at end)

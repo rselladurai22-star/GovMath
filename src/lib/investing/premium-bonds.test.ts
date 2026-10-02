@@ -4,7 +4,7 @@ import { premiumBonds, DEFAULT_PRIZE_RATE } from "./premium-bonds";
 describe("premiumBonds", () => {
   it("computes expected annual prizes as rate × holding", () => {
     const r = premiumBonds({ holding: 10_000, prizeFundRate: DEFAULT_PRIZE_RATE, years: 1 });
-    expect(r.expectedAnnualPrizes).toBeCloseTo(380, 2);
+    expect(r.expectedAnnualPrizes).toBeCloseTo(435, 2);
   });
 
   it("caps holding at £50,000", () => {

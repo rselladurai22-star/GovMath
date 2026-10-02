@@ -4,22 +4,22 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import CarersEarningsCalculator from "./CarersEarningsCalculator";
 
 export const metadata: Metadata = {
-  title: "Carer's Allowance Earnings Check (UK 2025/26)",
-  description: "Are you under the £196/week earnings limit for Carer's Allowance?",
+  title: "Carer's Allowance Earnings Check (UK 2026/27)",
+  description: "Are you under the £204/week earnings limit for Carer's Allowance?",
 };
 
 export default function CarersPage() {
   return (
     <CalculatorShell
       category="Benefits"
-      updatedLabel="£196/wk limit"
+      updatedLabel="£204/wk limit"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/benefits", label: "Benefits" }, { href: "/benefits/carers-earnings", label: "Carer’s Earnings" }]}
       title="Carer’s Allowance Earnings Check"
-      intro="Carer’s Allowance is paid at £83.30/week if you care for someone at least 35 hours/week — but you must earn under £196/week (net of tax, NI and half of pension contributions)."
+      intro="Carer’s Allowance is paid at £86.45/week if you care for someone at least 35 hours/week — but you must earn under £204/week (net of tax, NI and half of pension contributions)."
       calculator={<CarersEarningsCalculator />}
       explainer={
         <BlueprintExplainer
-          howWeCalculated={<p>This is a cliff edge — £1 over the £196 limit means £0 Carer’s Allowance. Allowable deductions before checking: tax, NI, 50% of pension contributions, and reasonable care costs for the cared-for person while you work.</p>}
+          howWeCalculated={<p>This is a cliff edge — £1 over the £204 limit means £0 Carer’s Allowance. Allowable deductions before checking: tax, NI, 50% of pension contributions, and reasonable care costs for the cared-for person while you work.</p>}
           officialRules={
             <ul>
               <li>Cared-for person must get qualifying disability benefit (PIP daily living, AA, DLA middle/highest).</li>
@@ -29,7 +29,7 @@ export default function CarersPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Cliff edge, not taper", body: "Going £1 over the £196 limit loses you the entire £83.30/week. Plan pay raises carefully." },
+            { title: "Cliff edge, not taper", body: "Going £1 over the £204 limit loses you the entire £86.45/week. Plan pay raises carefully." },
             { title: "Bonus push-over", body: "A one-off bonus that takes you over the limit in one week can trigger overpayment recovery. Notify DWP immediately." },
             { title: "Affects State Pension claim", body: "Carer’s gives Class 1 NI credit — protect that record." },
           ]}

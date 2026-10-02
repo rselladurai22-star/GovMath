@@ -13,7 +13,7 @@ export default function BusinessLandingPage() {
   return (
     <CategoryLanding
       slug="business"
-      heroBadge="Sole traders · Ltd companies · 2025/26"
+      heroBadge="Sole traders · Ltd companies · 2026/27"
       longCopy={
         <>
           <h2 className="text-2xl font-bold text-primary-dark">

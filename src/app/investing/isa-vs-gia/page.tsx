@@ -19,10 +19,10 @@ export default function IsaVsGiaPage() {
       calculator={<IsaVsGiaCalculator />}
       explainer={
         <BlueprintExplainer
-          howWeCalculated={<p>Dividend allowance is £500. Above that, dividends taxed at 8.75% (basic), 33.75% (higher), 39.35% (additional). Capital gains: £3,000 AEA, then 18% / 24%. ISA pays zero on both.</p>}
+          howWeCalculated={<p>Dividend allowance is £500. Above that, dividends taxed at 10.75% (basic), 35.75% (higher), 39.35% (additional). Capital gains: £3,000 AEA, then 18% / 24%. ISA pays zero on both.</p>}
           officialRules={
             <ul>
-              <li>ISA subscription limit £20,000 (2025/26).</li>
+              <li>ISA subscription limit £20,000 (2026/27).</li>
               <li>Dividend allowance £500 in a GIA.</li>
               <li>CGT AEA £3,000.</li>
               <li>No annual reporting needed for ISAs.</li>

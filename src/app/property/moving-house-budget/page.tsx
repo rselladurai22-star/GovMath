@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import MovingBudgetCalculator from "./MovingBudgetCalculator";
 
 export const metadata: Metadata = {
-  title: "Moving House Budget Calculator (UK 2025/26)",
+  title: "Moving House Budget Calculator (UK 2026/27)",
   description: "Add up the true cost of moving: stamp duty, legal fees, survey, removals, mortgage costs and contingency.",
 };
 
@@ -12,7 +12,7 @@ export default function MovingHouseBudgetPage() {
   return (
     <CalculatorShell
       category="Property"
-      updatedLabel="2025/26"
+      updatedLabel="2026/27"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/property", label: "Property" },

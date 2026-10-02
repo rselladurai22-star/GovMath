@@ -13,7 +13,7 @@ export default function BenefitsLandingPage() {
   return (
     <CategoryLanding
       slug="benefits"
-      heroBadge="DWP & HMRC rules · 2025/26"
+      heroBadge="DWP & HMRC rules · 2026/27"
       longCopy={
         <>
           <h2 className="text-2xl font-bold text-primary-dark">

@@ -153,7 +153,7 @@ export default function HourlyCalculator() {
             </>
           )}
           <p className="text-xs text-text/60">
-            Gross figures only. National Living Wage from April 2025 is £12.21/hr (21+).
+            Gross figures only. National Living Wage from April 2026 is £12.71/hr (21+).
           </p>
         </div>
       </div>

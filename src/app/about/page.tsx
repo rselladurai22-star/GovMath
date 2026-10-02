@@ -68,7 +68,7 @@ export default function AboutPage() {
         </li>
         <li>
           <strong>Kept current.</strong> Our figures track the latest published
-          rates — currently the <strong>2025/26 tax year</strong>.
+          rates — currently the <strong>2026/27 tax year</strong>.
         </li>
       </ul>
 

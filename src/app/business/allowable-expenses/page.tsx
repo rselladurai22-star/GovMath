@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import AllowableExpensesCalculator from "./AllowableExpensesCalculator";
 
 export const metadata: Metadata = {
-  title: "Self-Employed Allowable Expenses Calculator (UK 2025/26)",
+  title: "Self-Employed Allowable Expenses Calculator (UK 2026/27)",
   description: "Total your allowable expenses using HMRC’s simplified flat rates for working from home and mileage, plus itemised categories.",
 };
 
@@ -12,7 +12,7 @@ export default function AllowableExpensesPage() {
   return (
     <CalculatorShell
       category="Business"
-      updatedLabel="2025/26"
+      updatedLabel="2026/27"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/business", label: "Business" },

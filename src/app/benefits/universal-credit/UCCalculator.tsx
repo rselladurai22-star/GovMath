@@ -99,7 +99,7 @@ export default function UCCalculator() {
               />
               <span>
                 First child born <strong>before 6 April 2017</strong>{" "}
-                (unlocks the higher first-child rate of £339.00/mo).
+                (unlocks the higher first-child rate of £351.88/mo).
               </span>
             </label>
           )}

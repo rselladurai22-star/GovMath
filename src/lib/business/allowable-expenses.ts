@@ -1,5 +1,5 @@
 /**
- * Self-employed allowable expenses estimator (UK 2025/26).
+ * Self-employed allowable expenses estimator (UK 2026/27).
  *
  * For sole traders using Self Assessment. Adds up the most common allowable
  * categories and applies HMRC’s simplified-expense flat rates where helpful:

@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import ScottishCalculator from "./ScottishCalculator";
 
 export const metadata: Metadata = {
-  title: "Scottish Income Tax Calculator (2025/26)",
+  title: "Scottish Income Tax Calculator (2026/27)",
   description:
     "Calculate your Scottish Income Tax across all six bands — starter, basic, intermediate, higher, advanced and top — plus the difference vs the rest of the UK.",
 };
@@ -13,7 +13,7 @@ export default function ScottishPage() {
   return (
     <CalculatorShell
       category="Tax & Salary"
-      updatedLabel="Scotland 2025/26"
+      updatedLabel="Scotland 2026/27"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/tax-and-salary", label: "Tax & Salary" },
@@ -39,11 +39,11 @@ export default function ScottishPage() {
               </p>
               <p>Bands measured above the Personal Allowance:</p>
               <ul>
-                <li>Starter rate: 19% on the next £2,827</li>
-                <li>Basic rate: 20% on the next £11,485</li>
-                <li>Intermediate rate: 21% on the next £18,232</li>
-                <li>Higher rate: 42% on the next £43,632 (up to £125,140)</li>
-                <li>Advanced rate: 45% on the next £49,338</li>
+                <li>Starter rate: 19% on the next £3,967 (£12,571 to £16,537)</li>
+                <li>Basic rate: 20% on the next £12,989 (£16,538 to £29,526)</li>
+                <li>Intermediate rate: 21% on the next £14,136 (£29,527 to £43,662)</li>
+                <li>Higher rate: 42% on the next £31,338 (£43,663 to £75,000)</li>
+                <li>Advanced rate: 45% from £75,001 to £125,140</li>
                 <li>Top rate: 48% above £125,140</li>
               </ul>
             </>

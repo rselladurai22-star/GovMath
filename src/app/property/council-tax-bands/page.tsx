@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import CouncilTaxBandsCalculator from "./CouncilTaxBandsCalculator";
 
 export const metadata: Metadata = {
-  title: "Council Tax Bands Calculator (UK 2025/26)",
+  title: "Council Tax Bands Calculator (UK 2026/27)",
   description: "Estimate your annual council tax from your band and nation — England, Wales or Scotland.",
 };
 
@@ -12,7 +12,7 @@ export default function CouncilTaxBandsPage() {
   return (
     <CalculatorShell
       category="Property"
-      updatedLabel="2025/26 averages"
+      updatedLabel="2026/27 averages"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/property", label: "Property" },
@@ -46,7 +46,7 @@ export default function CouncilTaxBandsPage() {
             { question: "Why is my real bill different?", answer: "Your council sets the precept on top of the Band D base. London boroughs and inner-city councils tend to be cheaper than rural ones." },
             { question: "What if I pay over 10 vs 12 months?", answer: "Default is 10 instalments (April–January). You can ask to spread over 12 months — same total, lower monthly amount." },
           ]}
-          disclaimer="Estimates based on national Band D averages (April 2025). Your actual bill is set by your local authority — check gov.uk/council-tax."
+          disclaimer="Estimates based on national Band D averages (April 2026). Your actual bill is set by your local authority — check gov.uk/council-tax."
         />
       }
     />

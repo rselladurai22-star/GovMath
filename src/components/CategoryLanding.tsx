@@ -12,6 +12,7 @@ import CategoryTools, { type ToolItem } from "@/components/CategoryTools";
 import AdSlot from "@/components/AdSlot";
 import PageHero, { HeroPills } from "@/components/PageHero";
 import styles from "./CategoryLanding.module.css";
+import { TAX_YEAR } from "@/lib/rates/tax-year";
 
 type CategoryLandingProps = {
   slug: CategorySlug;
@@ -58,13 +59,13 @@ export default function CategoryLanding({
           { href: "/calculators", label: "All calculators" },
           { href: category.href, label: meta.label },
         ]}
-        eyebrow={heroBadge ?? `${items.length} calculators · 2025/26 rates`}
+        eyebrow={heroBadge ?? `${items.length} calculators · ${TAX_YEAR} rates`}
         title={heading ?? `${category.title} calculators`}
         lead={category.description}
         icon={meta.icon}
         tone={slug}
       >
-        <HeroPills items={["Free to use", "UK rules", "No sign-up", "Updated for 2025/26"]} />
+        <HeroPills items={["Free to use", "UK rules", "No sign-up", `Updated for ${TAX_YEAR}`]} />
       </PageHero>
 
       <div className={`gm-wrap ${styles.grid}`}>

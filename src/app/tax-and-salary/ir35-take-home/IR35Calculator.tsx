@@ -31,13 +31,13 @@ export default function IR35Calculator() {
     const profitBeforeTax = annualBilling - salary;
     const corpTax = profitBeforeTax * (profitBeforeTax > 50000 ? 0.25 : 0.19);
     const dividendsAvailable = profitBeforeTax - corpTax;
-    // Dividend tax: £500 allowance, then 8.75% basic, 33.75% higher, 39.35% addl
+    // Dividend tax: £500 allowance, then 10.75% basic, 35.75% higher, 39.35% addl
     // Salary uses PA, so dividend uses remaining basic band
     const dividendAllowance = 500;
     const taxableDivs = Math.max(0, dividendsAvailable - dividendAllowance);
     const basicBandRemaining = 37700; // since salary < PA
-    const divBasic = Math.min(taxableDivs, basicBandRemaining) * 0.0875;
-    const divHigher = Math.max(0, Math.min(taxableDivs - basicBandRemaining, 125140 - 50270)) * 0.3375;
+    const divBasic = Math.min(taxableDivs, basicBandRemaining) * 0.1075;
+    const divHigher = Math.max(0, Math.min(taxableDivs - basicBandRemaining, 125140 - 50270)) * 0.3575;
     const divAddl = Math.max(0, taxableDivs - (125140 - 12570)) * 0.3935;
     const divTax = divBasic + divHigher + divAddl;
     const outsideTake = salary + dividendsAvailable - divTax;

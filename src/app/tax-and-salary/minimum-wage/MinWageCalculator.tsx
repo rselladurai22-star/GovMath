@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import NumberInput from "@/components/calculator/NumberInput";
 import ResultBreakdown from "@/components/calculator/ResultBreakdown";
-import { checkMinimumWage, NMW_2025, type NMWBand } from "@/lib/benefits/minimum-wage";
+import { checkMinimumWage, NMW_2026, type NMWBand } from "@/lib/benefits/minimum-wage";
 
 const GBP = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP", maximumFractionDigits: 2 });
 const GBP0 = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP", maximumFractionDigits: 0 });
@@ -34,7 +34,7 @@ export default function MinWageCalculator() {
                 </button>
               ))}
             </div>
-            <p className="mt-2 text-xs text-text/60">Required: {GBP.format(NMW_2025[band].hourly)}/hr</p>
+            <p className="mt-2 text-xs text-text/60">Required: {GBP.format(NMW_2026[band].hourly)}/hr</p>
           </div>
           <NumberInput label="Your hourly pay" value={pay} onChange={setPay} step={0.25} />
           <NumberInput label="Hours per week" value={hours} onChange={setHours} step={0.5} prefix="" suffix=" hrs" />

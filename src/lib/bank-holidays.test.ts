@@ -25,4 +25,9 @@ describe("workingDaysBetween", () => {
     const r = workingDaysBetween({ start: "2025-06-04", end: "2025-06-04", nation: "england-and-wales" });
     expect(r.workingDays).toBe(1);
   });
+
+  it("covers the 2027 Christmas substitute days", () => {
+    const r = workingDaysBetween({ start: "2027-12-24", end: "2027-12-31", nation: "england-and-wales" });
+    expect(r.bankHolidaysInRange).toEqual(["2027-12-27", "2027-12-28"]);
+  });
 });

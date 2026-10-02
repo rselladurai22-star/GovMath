@@ -2,6 +2,7 @@ import Link from "next/link";
 import { LogoWordmark } from "@/components/Logo";
 import { CALCULATORS, CATEGORIES } from "@/lib/calculators";
 import styles from "./SiteChrome.module.css";
+import { TAX_YEAR } from "@/lib/rates/tax-year";
 
 const LINKS = [
   { href: "/about", label: "About" },
@@ -11,7 +12,7 @@ const LINKS = [
   { href: "/disclaimer", label: "Disclaimer" },
 ];
 
-const FACTS = ["Official 2025/26 rates", "Free, no sign-up", "Nothing you type is stored"];
+const FACTS = [`Official ${TAX_YEAR} rates`, "Free, no sign-up", "Nothing you type is stored"];
 
 export default function SiteFooter() {
   return (
@@ -23,7 +24,7 @@ export default function SiteFooter() {
           <div>
             <h2>Find the right calculator in seconds</h2>
             <p>
-              {CALCULATORS.length} free UK calculators across {CATEGORIES.length} topics, updated for 2025/26.
+              {CALCULATORS.length} free UK calculators across {CATEGORIES.length} topics, updated for {TAX_YEAR}.
             </p>
           </div>
           <Link href="/calculators" className={styles.footerCtaBtn}>

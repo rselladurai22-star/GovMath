@@ -8,8 +8,12 @@ import { smallBusinessRates } from "@/lib/business/small-business-rates";
 export default function SmallBusinessRatesCalculator() {
   const [rateableValue, setRv] = useState<number>(11000);
   const [onlyProperty, setOnly] = useState<boolean>(true);
+  const [rhl, setRhl] = useState<boolean>(false);
 
-  const r = useMemo(() => smallBusinessRates({ rateableValue, onlyProperty }), [rateableValue, onlyProperty]);
+  const r = useMemo(
+    () => smallBusinessRates({ rateableValue, onlyProperty, retailHospitalityLeisure: rhl }),
+    [rateableValue, onlyProperty, rhl],
+  );
 
   return (
     <div className="space-y-6">
@@ -19,6 +23,10 @@ export default function SmallBusinessRatesCalculator() {
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" checked={onlyProperty} onChange={(e) => setOnly(e.target.checked)} />
             <span>This is my only business property in England</span>
+          </label>
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" checked={rhl} onChange={(e) => setRhl(e.target.checked)} />
+            <span>Used mainly for retail, hospitality or leisure</span>
           </label>
         </div>
         <div className="rounded-xl bg-white border-2 border-primary p-6 space-y-3">
@@ -30,8 +38,7 @@ export default function SmallBusinessRatesCalculator() {
           <ResultBreakdown
             title="Breakdown"
             rows={[
-              { label: `Multiplier (${(r.multiplier * 100).toFixed(1)}p)`, value: r.multiplier, hint: "Per £1 of rateable value" },
-              { label: "Gross rates", value: r.grossRates },
+              { label: "Gross rates", value: r.grossRates, hint: `Rateable value × ${(r.multiplier * 100).toFixed(1)}p multiplier` },
               { label: `SBRR (${r.reliefPercent.toFixed(0)}%)`, value: r.reliefAmount, variant: r.reliefAmount > 0 ? "deduction" : "default" },
               { label: "Payable", value: r.payable, variant: "total" },
             ]}

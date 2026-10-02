@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import LTTCalculator from "./LTTCalculator";
 
 export const metadata: Metadata = {
-  title: "LTT Calculator (Wales 2025/26)",
+  title: "LTT Calculator (Wales 2026/27)",
   description: "Welsh Land Transaction Tax — main residential bands and the higher-rate surcharge for additional dwellings.",
 };
 

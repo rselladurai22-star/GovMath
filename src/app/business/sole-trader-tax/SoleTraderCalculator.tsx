@@ -43,11 +43,11 @@ export default function SoleTraderCalculator() {
           />
           {r.getsAutomaticNICredit ? (
             <p className="text-xs bg-success/10 border border-success/30 text-text rounded-md p-3">
-              ✓ Profits above the £6,725 Small Profits Threshold — you receive a Class 2 NI credit toward State Pension automatically.
+              ✓ Profits above the £7,105 Small Profits Threshold — you receive a Class 2 NI credit toward State Pension automatically.
             </p>
           ) : (
             <p className="text-xs bg-error/10 border border-error/30 text-error rounded-md p-3">
-              ⚠ Profits below £6,725 — no automatic State Pension credit. Consider voluntary Class 2 (£3.45/wk) to protect future entitlement.
+              ⚠ Profits below £7,105 — no automatic State Pension credit. Consider voluntary Class 2 (£3.65/wk) to protect future entitlement.
             </p>
           )}
         </div>

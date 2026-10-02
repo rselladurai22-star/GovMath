@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import SoleTraderCalculator from "./SoleTraderCalculator";
 
 export const metadata: Metadata = {
-  title: "Sole Trader Tax Calculator (UK 2025/26)",
+  title: "Sole Trader Tax Calculator (UK 2026/27)",
   description:
     "Self-employed Income Tax + Class 4 NI on your annual trading profit. Includes Small Profits Threshold guidance for State Pension credits.",
 };
@@ -13,7 +13,7 @@ export default function SoleTraderPage() {
   return (
     <CalculatorShell
       category="Freelance & Business"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/business", label: "Freelance & Business" },
@@ -48,7 +48,7 @@ export default function SoleTraderPage() {
           }
           officialRules={
             <>
-              <p>The key thresholds for 2025/26:</p>
+              <p>The key thresholds for 2026/27:</p>
               <ul>
                 <li>
                   <strong>Trading allowance</strong>: first £1,000 of gross
@@ -56,9 +56,9 @@ export default function SoleTraderPage() {
                   Above £1,000 you must register for Self Assessment.
                 </li>
                 <li>
-                  <strong>Small Profits Threshold</strong> (£6,725): below this
+                  <strong>Small Profits Threshold</strong> (£7,105): below this
                   you get no automatic NI credit toward State Pension.
-                  Voluntary Class 2 (£3.45/week) can fill the gap.
+                  Voluntary Class 2 (£3.65/week) can fill the gap.
                 </li>
                 <li>
                   <strong>Class 4 NI</strong>: 6% main band, 2% upper band —

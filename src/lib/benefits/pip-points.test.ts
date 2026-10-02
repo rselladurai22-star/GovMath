@@ -10,12 +10,12 @@ describe("pipPoints", () => {
   it("awards standard rate at 8 points", () => {
     const r = pipPoints({ dailyLivingPoints: 8, mobilityPoints: 0 });
     expect(r.dailyLivingAward).toBe("standard");
-    expect(r.weeklyTotal).toBeCloseTo(73.90, 2);
+    expect(r.weeklyTotal).toBeCloseTo(76.70, 2);
   });
   it("awards enhanced at 12+ points", () => {
     const r = pipPoints({ dailyLivingPoints: 14, mobilityPoints: 12 });
     expect(r.dailyLivingAward).toBe("enhanced");
     expect(r.mobilityAward).toBe("enhanced");
-    expect(r.weeklyTotal).toBeCloseTo(110.40 + 77.05, 2);
+    expect(r.weeklyTotal).toBeCloseTo(114.60 + 80.0, 2);
   });
 });

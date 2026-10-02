@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import UCCalculator from "./UCCalculator";
 
 export const metadata: Metadata = {
-  title: "Universal Credit Estimator (2025/26)",
+  title: "Universal Credit Estimator (2026/27)",
   description:
     "Estimate your monthly Universal Credit award. Includes the standard allowance, child element, housing, the 55% earnings taper and the capital tariff.",
 };
@@ -13,14 +13,14 @@ export default function UCPage() {
   return (
     <CalculatorShell
       category="Family & Benefits"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/benefits", label: "Family & Benefits" },
         { href: "/benefits/universal-credit", label: "Universal Credit Estimator" },
       ]}
       title="Universal Credit Estimator"
-      intro="Estimate your monthly Universal Credit award using April 2025 rates. We add up your standard allowance, child and housing elements, then apply the 55p earnings taper and the £6k–£16k capital tariff."
+      intro="Estimate your monthly Universal Credit award using April 2026 rates. We add up your standard allowance, child and housing elements, then apply the 55p earnings taper and the £6k–£16k capital tariff."
       calculator={<UCCalculator />}
       explainer={
         <BlueprintExplainer
@@ -48,7 +48,7 @@ export default function UCPage() {
                 payment, with narrow exceptions (multiple births,
                 non-consensual conception, adoption, kinship care). Children
                 born before 6 April 2017 get the older, higher first-child rate
-                of £339.00/month.
+                of £351.88/month.
               </p>
               <p>
                 The <strong>housing element</strong> covers your rent up to
@@ -63,23 +63,23 @@ export default function UCPage() {
           officialRules={
             <>
               <p>
-                The numbers in this estimator are the gov.uk 2025/26 rates,
-                effective from April 2025:
+                The numbers in this estimator are the gov.uk 2026/27 rates,
+                effective from April 2026:
               </p>
               <ul>
                 <li>
                   <strong>Standard allowance (monthly):</strong> single under
-                  25 £316.98; single 25+ £400.14; couple both under 25
-                  £497.55; couple either 25+ £628.10.
+                  25 £338.58; single 25+ £424.90; couple both under 25
+                  £528.34; couple either 25+ £666.97.
                 </li>
                 <li>
-                  <strong>Child element (monthly):</strong> £339.00 for the
-                  eldest child born before 6 April 2017; £292.81 otherwise and
+                  <strong>Child element (monthly):</strong> £351.88 for the
+                  eldest child born before 6 April 2017; £303.94 otherwise and
                   for any additional eligible child.
                 </li>
                 <li>
-                  <strong>Work allowance (monthly):</strong> £411 if you
-                  receive a housing element; £684 if you don’t. You only
+                  <strong>Work allowance (monthly):</strong> £427 if you
+                  receive a housing element; £710 if you don’t. You only
                   get a work allowance if you’re responsible for a child{" "}
                   <em>or</em> you have limited capability for work.
                 </li>
@@ -130,7 +130,7 @@ export default function UCPage() {
                 "Universal Credit is for working-age claimants. Once you reach State Pension age (and your partner too, if you have one), you move onto Pension Credit instead — different rates, no work-allowance concept, and different capital rules.",
             },
           ]}
-          disclaimer="This is an estimate based on the gov.uk 2025/26 published rates. DWP’s actual calculation may differ — particularly for LCWRA, carer’s element, sanctions, transitional protection from legacy benefits, and the various two-child-limit exceptions. Always claim on gov.uk for a binding figure."
+          disclaimer="This is an estimate based on the gov.uk 2026/27 published rates. DWP’s actual calculation may differ — particularly for LCWRA, carer’s element, sanctions, transitional protection from legacy benefits, and the various two-child-limit exceptions. Always claim on gov.uk for a binding figure."
         />
       }
     />

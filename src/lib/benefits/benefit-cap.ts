@@ -1,15 +1,15 @@
 /**
- * UK Benefit Cap (2025/26 — gov.uk/benefit-cap).
+ * UK Benefit Cap (2026/27 — gov.uk/benefit-cap).
  *
  * Annual caps:
  *   Greater London:
- *     - Single, no children:                £18,837.36
+ *     - Single, no children:                £16,967
  *     - Couples (with or without children)
- *       OR single parents with children:   £28,116.72
+ *       OR single parents with children:   £25,323
  *   Outside Greater London:
- *     - Single, no children:                £16,395.66
+ *     - Single, no children:                £14,753
  *     - Couples (with or without children)
- *       OR single parents with children:   £24,496.32
+ *       OR single parents with children:   £22,020
  *
  * (Weekly equivalents are simply ÷ 52.)
  *
@@ -18,7 +18,7 @@
  */
 
 export const EXEMPTIONS: string[] = [
-  "You or your partner work and earn at least £846/month after tax",
+  "You or your partner work and earn at least £881/month after tax",
   "You receive Working Tax Credit (legacy)",
   "You receive PIP, DLA, AA, or Carer’s Allowance",
   "You receive Industrial Injuries Benefits or War Pensions",
@@ -30,8 +30,8 @@ export type Household = "single-no-children" | "family";
 export type Location = "london" | "elsewhere";
 
 const ANNUAL_CAP: Record<Location, Record<Household, number>> = {
-  london:    { "single-no-children": 18837.36, family: 28116.72 },
-  elsewhere: { "single-no-children": 16395.66, family: 24496.32 },
+  london:    { "single-no-children": 16967, family: 25323 },
+  elsewhere: { "single-no-children": 14753, family: 22020 },
 };
 
 export type BenefitCapInput = {

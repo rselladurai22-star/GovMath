@@ -28,11 +28,11 @@ describe("take-home engine", () => {
     expect(takeHomeDrop).toBeLessThan(5000);
   });
 
-  it("applies Plan 2 student loan at 9% above £28,470", () => {
-    expect(studentLoanRepayment(38470, "plan2")).toBeCloseTo(900, 2);
+  it("applies Plan 2 student loan at 9% above £29,385", () => {
+    expect(studentLoanRepayment(39385, "plan2")).toBeCloseTo(900, 2);
     expect(studentLoanRepayment(20000, "plan2")).toBe(0);
     const s = computeTakeHome({ gross: 40000, bonus: 0, pensionPct: 0, plan: "plan2" });
-    expect(s.studentLoan).toBeCloseTo((40000 - 28470) * 0.09, 2);
+    expect(s.studentLoan).toBeCloseTo((40000 - 29385) * 0.09, 2);
   });
 
   it("surfaces the 60% marginal trap between £100k and £125,140", () => {
@@ -57,10 +57,10 @@ describe("region-aware tax", () => {
   });
 
   it("uses Scottish bands when asked", () => {
-    // £35k in Scotland: 2,827 @19% + 11,485 @20% + 8,118 @21% = 4,538.91.
+    // £35k in Scotland: 3,967 @19% + 12,989 @20% + 5,474 @21% = 4,501.07.
     const s = computeTakeHome({ gross: 35000, bonus: 0, pensionPct: 0, plan: "none", region: "scotland" });
-    expect(s.incomeTaxTotal).toBeCloseTo(4538.91, 2);
-    expect(s.takeHome).toBeCloseTo(35000 - 4538.91 - 1794.4, 2);
+    expect(s.incomeTaxTotal).toBeCloseTo(4501.07, 2);
+    expect(s.takeHome).toBeCloseTo(35000 - 4501.07 - 1794.4, 2);
   });
 
   it("Scottish marginal rate on £60k is 42% tax + 2% NI", () => {

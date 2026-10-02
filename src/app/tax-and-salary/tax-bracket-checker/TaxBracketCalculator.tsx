@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import NumberInput from "@/components/calculator/NumberInput";
 import ResultBreakdown from "@/components/calculator/ResultBreakdown";
-import { incomeTax, TAX_YEAR_2025_26 } from "@/lib/tax/2025-26";
+import { incomeTax, TAX_YEAR_2026_27 } from "@/lib/tax/2026-27";
 
 const GBP = new Intl.NumberFormat("en-GB", {
   style: "currency",
@@ -19,9 +19,9 @@ export default function TaxBracketCalculator({
   const [income, setIncome] = useState<number>(initialIncome);
   const result = useMemo(() => incomeTax(income), [income]);
 
-  const { incomeTax: rates } = TAX_YEAR_2025_26;
+  const { incomeTax: rates } = TAX_YEAR_2026_27;
   const paLost =
-    TAX_YEAR_2025_26.personalAllowance - result.personalAllowance;
+    TAX_YEAR_2026_27.personalAllowance - result.personalAllowance;
 
   // Pay-rise comparison: what does an extra £1,000 actually deliver?
   const plus1k = useMemo(() => incomeTax(income + 1000), [income]);
@@ -88,7 +88,7 @@ export default function TaxBracketCalculator({
         </div>
 
         <p className="text-xs text-text/60">
-          England, Wales & Northern Ireland · 2025/26 tax year. Excludes
+          England, Wales & Northern Ireland · 2026/27 tax year. Excludes
           dividend income, which is taxed at separate rates.
         </p>
       </div>

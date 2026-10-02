@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import GenericLoanCalculator from "@/components/calculator/GenericLoanCalculator";
 
 export const metadata: Metadata = {
-  title: "Postgraduate Loan Calculator (UK 2025/26)",
+  title: "Postgraduate Loan Calculator (UK 2026/27)",
   description: "Postgraduate Loan repayments — 6% above £21,000, separate from any undergraduate plan.",
 };
 
@@ -12,7 +12,7 @@ export default function PostgradPage() {
   return (
     <CalculatorShell
       category="Students & Graduates"
-      updatedLabel="2025/26 threshold"
+      updatedLabel="2026/27 threshold"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/students", label: "Students & Graduates" },
@@ -40,7 +40,7 @@ export default function PostgradPage() {
             { question: "What if I drop out?", answer: "Pro-rata loan based on terms attended; same repayment terms apply." },
             { question: "Is the interest different in repayment?", answer: "No — PG loans use RPI+3% in study AND repayment (unlike undergrad which has income-tiered rates)." },
           ]}
-          disclaimer="Estimate based on 2025/26 thresholds."
+          disclaimer="Estimate based on 2026/27 thresholds."
         />
       }
     />

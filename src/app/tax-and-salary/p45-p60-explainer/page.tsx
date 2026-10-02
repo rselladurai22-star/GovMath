@@ -12,7 +12,7 @@ export default function P45P60Page() {
   return (
     <CalculatorShell
       category="Tax & Salary"
-      updatedLabel="2025/26"
+      updatedLabel="2026/27"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/tax-and-salary", label: "Tax & Salary" },

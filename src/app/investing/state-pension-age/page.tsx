@@ -30,7 +30,7 @@ export default function StatePensionAgePage() {
           }
           officialRules={
             <ul>
-              <li>State Pension is currently <strong>£221.20/week</strong> (full new State Pension, 2024/25 onwards) — uprated annually by the triple lock.</li>
+              <li>State Pension is currently <strong>£241.30/week</strong> (full new State Pension, 2026/27) — uprated annually by the triple lock.</li>
               <li>You need at least 10 qualifying years of National Insurance to get any State Pension; 35 years for the full amount.</li>
               <li>You can defer claiming — pension increases by ~5.8% for every full year deferred.</li>
               <li>SPA review every 5 years; next review reports 2026.</li>

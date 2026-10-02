@@ -146,7 +146,7 @@ export default function MortgageStudio({
               min={0}
               max={15}
               unit="%"
-              hint="Typical fixed rates in 2025 are roughly 4% to 5.5%."
+              hint="Typical fixed rates in 2026 are roughly 4% to 5.5%."
             />
             <StepperField
               label="Mortgage term"

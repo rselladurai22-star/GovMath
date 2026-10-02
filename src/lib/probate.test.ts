@@ -8,16 +8,16 @@ describe("probateFees", () => {
     expect(r.applicationFee).toBe(0);
   });
 
-  it("charges £300 for estates over the threshold", () => {
+  it("charges £526 for estates over the threshold", () => {
     const r = probateFees({ estateValue: 5001, extraCopies: 0 });
-    expect(r.applicationFee).toBe(300);
-    expect(r.totalFee).toBe(300);
+    expect(r.applicationFee).toBe(526);
+    expect(r.totalFee).toBe(526);
   });
 
   it("adds £1.50 per sealed copy", () => {
     const r = probateFees({ estateValue: 100000, extraCopies: 4 });
     expect(r.copiesFee).toBe(6);
-    expect(r.totalFee).toBe(306);
+    expect(r.totalFee).toBe(532);
   });
 
   it("clamps negative inputs", () => {

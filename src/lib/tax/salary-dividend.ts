@@ -1,5 +1,5 @@
 /**
- * Director's Salary vs Dividend optimiser — 2025/26.
+ * Director's Salary vs Dividend optimiser — 2026/27.
  *
  * Common patterns for small-company directors:
  *   (a) £0 salary, all dividends            (loses NI year for State Pension)
@@ -9,7 +9,7 @@
  * We compute net cash to the director after Corporation Tax (on remaining
  * profit) + Income Tax + dividend tax + employee/employer NI.
  *
- * Corporation Tax 2025/26:
+ * Corporation Tax 2026/27:
  *   small profits rate (≤£50k):    19%
  *   marginal relief band (£50k–£250k):  effective 26.5% on marginal £
  *   main rate (>£250k):            25%
@@ -19,10 +19,10 @@
  * salary is wholly deductible against CT.
  */
 
-import { incomeTax, nationalInsurance } from "./2025-26";
+import { incomeTax, nationalInsurance } from "./2026-27";
 import { dividendTax } from "./dividend";
 
-export const CORP_TAX_2025_26 = {
+export const CORP_TAX_2026_27 = {
   smallProfitsRate: 0.19,
   mainRate: 0.25,
   marginalRate: 0.265, // effective marginal between £50k and £250k
@@ -33,7 +33,7 @@ export const CORP_TAX_2025_26 = {
 /** Approximate CT due on annual profits. */
 export function corporationTax(profit: number): number {
   if (profit <= 0) return 0;
-  const c = CORP_TAX_2025_26;
+  const c = CORP_TAX_2026_27;
   if (profit <= c.smallProfitsLimit) return profit * c.smallProfitsRate;
   if (profit >= c.upperLimit) return profit * c.mainRate;
   const small = c.smallProfitsLimit * c.smallProfitsRate;
@@ -60,7 +60,7 @@ export type SalaryDividendResult = {
   takeHome: number;
 };
 
-const EMPLOYER_NI_RATE = 0.15; // 2025/26
+const EMPLOYER_NI_RATE = 0.15; // 2026/27
 const EMPLOYER_NI_THRESHOLD = 5000; // Secondary Threshold from April 2025
 
 function employerNI(salary: number): number {

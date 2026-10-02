@@ -5,7 +5,7 @@ import VatStudio from "./VatStudio";
 import type { VatRateKey } from "@/lib/tax/vat";
 
 export const metadata: Metadata = {
-  title: "UK VAT Calculator (Add or Remove VAT, 2025/26)",
+  title: "UK VAT Calculator (Add or Remove VAT, 2026/27)",
   description:
     "Add or remove UK VAT at 20%, 5% or 0% — instantly. Includes a Flat Rate Scheme comparison for freelancers and small businesses.",
 };

@@ -6,9 +6,9 @@ import TakeHomeGuide from "./TakeHomeGuide";
 import { CALCULATORS } from "@/lib/calculators";
 
 export const metadata: Metadata = {
-  title: "Salary & Take-Home Pay Calculator (UK, 2025/26)",
+  title: "Salary & Take-Home Pay Calculator (UK, 2026/27)",
   description:
-    "Work out your UK take-home pay after Income Tax, National Insurance, pension and student loan. Includes Scottish rates, a payslip view and what a pay rise is really worth. 2025/26.",
+    "Work out your UK take-home pay after Income Tax, National Insurance, pension and student loan. Includes Scottish rates, a payslip view and what a pay rise is really worth. 2026/27.",
   alternates: { canonical: "/tax-and-salary/salary-calculator" },
 };
 
@@ -66,14 +66,14 @@ export default async function SalaryCalculatorPage({ searchParams }: { searchPar
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}
-      eyebrow="Updated for 2025/26"
+      eyebrow="Updated for 2026/27"
       title="Salary & Take-Home Pay Calculator"
       lead="See exactly what reaches your bank after Income Tax, National Insurance, pension and student loan."
-      points={["2025/26 HMRC rates", "Scotland included", "Pension and student loans", "Free and private"]}
+      points={["2026/27 HMRC rates", "Scotland included", "Pension and student loans", "Free and private"]}
       guide={<TakeHomeGuide />}
       faqs={FAQS}
       related={related}
-      note="Figures are estimates for the 2025/26 tax year on a standard tax code. GovMath is not affiliated with HMRC. Always check your tax code and personal circumstances before making financial decisions."
+      note="Figures are estimates for the 2026/27 tax year on a standard tax code. GovMath is not affiliated with HMRC. Always check your tax code and personal circumstances before making financial decisions."
     >
       <SalaryStudio
         salary={parseNumber(salary, 35_000, 10_000_000)}

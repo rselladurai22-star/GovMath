@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import PipPointsCalculator from "./PipPointsCalculator";
 
 export const metadata: Metadata = {
-  title: "PIP Points Self-Check (UK 2025/26)",
+  title: "PIP Points Self-Check (UK 2026/27)",
   description: "Estimate your PIP award by entering your daily living and mobility points against the official thresholds.",
 };
 
@@ -12,7 +12,7 @@ export default function PipPointsPage() {
   return (
     <CalculatorShell
       category="Benefits"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/benefits", label: "Benefits" },
@@ -25,7 +25,7 @@ export default function PipPointsPage() {
         <BlueprintExplainer
           howWeCalculated={
             <p>
-              We band each component independently: 0–7 = no award, 8–11 = standard, 12+ = enhanced. We then apply the 2025/26 weekly rates: £73.90 / £110.40 for daily living, £29.20 / £77.05 for mobility.
+              We band each component independently: 0–7 = no award, 8–11 = standard, 12+ = enhanced. We then apply the 2026/27 weekly rates: £76.70 / £114.60 for daily living, £30.30 / £80.00 for mobility.
             </p>
           }
           officialRules={

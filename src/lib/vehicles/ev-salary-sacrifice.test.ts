@@ -3,7 +3,7 @@ import { evSalarySacrifice } from "./ev-salary-sacrifice";
 
 const round = (n: number) => Math.round(n * 100) / 100;
 
-describe("evSalarySacrifice (2025/26 BIK 3%)", () => {
+describe("evSalarySacrifice (2026/27 BIK 4%)", () => {
   it("basic rate saver: marginal 28% on £500 sac", () => {
     const r = evSalarySacrifice({
       grossMonthlyLease: 500,
@@ -13,8 +13,8 @@ describe("evSalarySacrifice (2025/26 BIK 3%)", () => {
     });
     expect(round(r.marginalRate)).toBe(0.28);
     expect(round(r.taxSaving)).toBe(round(500 * 12 * 0.28));
-    // BIK = 40000 × 3% × 20% = £240/yr
-    expect(round(r.bikAnnual)).toBe(240);
+    // BIK = 40000 × 4% × 20% = £320/yr
+    expect(round(r.bikAnnual)).toBe(320);
   });
 
   it("higher rate saver gets bigger tax saving but bigger BIK", () => {

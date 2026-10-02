@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import NumberInput from "@/components/calculator/NumberInput";
 import ResultBreakdown from "@/components/calculator/ResultBreakdown";
-import { corporationTax, CORP_TAX_2025_26 } from "@/lib/tax/salary-dividend";
+import { corporationTax, CORP_TAX_2026_27 } from "@/lib/tax/salary-dividend";
 
 const GBP0 = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP", maximumFractionDigits: 0 });
 const PCT = new Intl.NumberFormat("en-GB", { style: "percent", maximumFractionDigits: 1 });
@@ -30,7 +30,7 @@ export default function CorpTaxCalculator() {
             title="How the rate is applied"
             rows={[
               { label: "Pre-tax profit", value: profit },
-              { label: profit <= CORP_TAX_2025_26.smallProfitsLimit ? "Small profits rate 19%" : profit >= CORP_TAX_2025_26.upperLimit ? "Main rate 25%" : "19% + marginal 26.5%", value: ct, variant: "deduction" },
+              { label: profit <= CORP_TAX_2026_27.smallProfitsLimit ? "Small profits rate 19%" : profit >= CORP_TAX_2026_27.upperLimit ? "Main rate 25%" : "19% + marginal 26.5%", value: ct, variant: "deduction" },
               { label: "Profit after CT", value: profit - ct, variant: "total" },
             ]}
           />

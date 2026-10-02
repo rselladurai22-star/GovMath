@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import EVSalSacCalculator from "./EVSalSacCalculator";
 
 export const metadata: Metadata = {
-  title: "EV Salary Sacrifice Calculator (UK 2025/26)",
+  title: "EV Salary Sacrifice Calculator (UK 2026/27)",
   description:
     "See your true net monthly cost of an electric car through salary sacrifice — Income Tax + NI saving minus the BIK tax.",
 };
@@ -13,7 +13,7 @@ export default function EVSalSacPage() {
   return (
     <CalculatorShell
       category="Vehicles & Transport"
-      updatedLabel="BIK 3% (2025/26)"
+      updatedLabel="BIK 4% (2026/27)"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/vehicles", label: "Vehicles & Transport" },
@@ -37,8 +37,8 @@ export default function EVSalSacPage() {
                 </li>
                 <li>
                   You pay <strong>Benefit-in-Kind</strong> tax on the car —
-                  P11D × BIK rate × your Income Tax rate. For 2025/26 the BIK
-                  rate for EVs is just 3%.
+                  P11D × BIK rate × your Income Tax rate. For 2026/27 the BIK
+                  rate for EVs is just 4%.
                 </li>
                 <li>Net cost = gross lease − tax saving + BIK tax.</li>
               </ol>
@@ -55,9 +55,9 @@ export default function EVSalSacPage() {
               <p>HMRC’s rules for EV salary sacrifice:</p>
               <ul>
                 <li>
-                  <strong>BIK rate for pure EVs</strong>: 2% (2024/25), 3%
-                  (2025/26), 4% (2026/27), 5% (2027/28), 7% (2028/29), 9%
-                  (2029/30).
+                  <strong>BIK rate for pure EVs</strong>: 4% (2026/27), 5% (2027/28),
+                  7% (2028/29), 9% (2029/30). It was 2% in 2024/25 and 3% in
+                  2025/26.
                 </li>
                 <li>
                   <strong>OpRA (Optional Remuneration Arrangements)</strong>:
@@ -87,7 +87,7 @@ export default function EVSalSacPage() {
             },
             {
               title: "BIK is rising every year",
-              body: "The 2% rate that hooked everyone in 2024/25 is gone. By 2029/30 it’s 9% — still much better than a petrol car’s 30%+ BIK, but the gap narrows. Lock in 3-year leases now to fix the rate.",
+              body: "The 2% rate that hooked everyone in 2024/25 is gone, and 2026/27 is 4%. By 2029/30 it’s 9% — still much better than a petrol car’s 30%+ BIK, but the gap narrows. Lock in 3-year leases now to fix the rate.",
             },
             {
               title: "Not all employers offer schemes",

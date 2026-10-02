@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import BonusCalculator from "./BonusCalculator";
 
 export const metadata: Metadata = {
-  title: "Bonus Tax Calculator (UK 2025/26)",
+  title: "Bonus Tax Calculator (UK 2026/27)",
   description:
     "Find out exactly what a one-off bonus is worth after Income Tax and National Insurance. Watch out for the 60% trap near £100k.",
 };
@@ -13,7 +13,7 @@ export default function BonusPage() {
   return (
     <CalculatorShell
       category="Tax & Salary"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/tax-and-salary", label: "Tax & Salary" },
@@ -32,7 +32,7 @@ export default function BonusPage() {
                 We calculate it by:
               </p>
               <ol>
-                <li>Running your salary through the 2025/26 PAYE tax engine.</li>
+                <li>Running your salary through the 2026/27 PAYE tax engine.</li>
                 <li>Running salary + bonus through the same engine.</li>
                 <li>The difference is the tax on the bonus itself.</li>
               </ol>
@@ -47,7 +47,7 @@ export default function BonusPage() {
           }
           officialRules={
             <>
-              <p>The rates we apply (England, Wales, NI for 2025/26):</p>
+              <p>The rates we apply (England, Wales, NI for 2026/27):</p>
               <ul>
                 <li><strong>0%</strong> below £12,570 (Personal Allowance)</li>
                 <li><strong>20%</strong> Income Tax £12,570–£50,270</li>

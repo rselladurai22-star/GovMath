@@ -3,18 +3,18 @@
  *
  * Source: nhsbsa.nhs.uk/pharmacies-gp-practices-and-appliance-contractors/prescription-prepayment-certificates
  *
- * 2025/26 prices:
+ * 2026/27 prices (frozen since April 2023):
  *   - Single item:        £9.90
- *   - 3-month PPC:        £33.70  (break-even at 4 items in 3 months)
- *   - 12-month PPC:       £120.90 (break-even at ~13 items per year, available via direct debit at £10.08/mo)
+ *   - 3-month PPC:        £32.05  (break-even at 4 items in 3 months)
+ *   - 12-month PPC:       £114.50 (break-even at 12 items per year; or 10 monthly direct debits of £11.45)
  *
  * Wales, Scotland & NI have free prescriptions — calculator is England-only.
  */
 
 export const ITEM_COST = 9.90;
-export const PPC_3M = 33.70;
-export const PPC_12M = 120.90;
-export const PPC_12M_DD_MONTHLY = 10.08;
+export const PPC_3M = 32.05;
+export const PPC_12M = 114.5;
+export const PPC_12M_DD_MONTHLY = 11.45;
 
 export type PrescriptionInput = {
   itemsPerMonth: number;

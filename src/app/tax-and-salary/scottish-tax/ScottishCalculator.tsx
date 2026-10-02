@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import NumberInput from "@/components/calculator/NumberInput";
 import ResultBreakdown from "@/components/calculator/ResultBreakdown";
-import { scottishIncomeTax, scottishVsRukDifference } from "@/lib/tax/scottish-2025-26";
+import { scottishIncomeTax, scottishVsRukDifference } from "@/lib/tax/scottish-2026-27";
 
 const GBP0 = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP", maximumFractionDigits: 0 });
 

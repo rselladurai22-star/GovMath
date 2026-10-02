@@ -6,10 +6,10 @@ describe("UC taper", () => {
     const r = ucTaper({ monthlyMaxUC: 800, netMonthlyEarnings: 300, receivingHousingElement: true });
     expect(r.finalUC).toBe(800);
   });
-  it("£1000 earnings, no housing: WA 684, taper on 316 × 55% = 173.80", () => {
+  it("£1000 earnings, no housing: WA 710, taper on 290 × 55% = 159.50", () => {
     const r = ucTaper({ monthlyMaxUC: 400, netMonthlyEarnings: 1000, receivingHousingElement: false });
-    expect(r.taperReduction).toBeCloseTo(173.8, 2);
-    expect(r.finalUC).toBeCloseTo(400 - 173.8, 2);
+    expect(r.taperReduction).toBeCloseTo(159.5, 2);
+    expect(r.finalUC).toBeCloseTo(400 - 159.5, 2);
   });
   it("clamps at zero", () => {
     expect(ucTaper({ monthlyMaxUC: 100, netMonthlyEarnings: 5000, receivingHousingElement: true }).finalUC).toBe(0);

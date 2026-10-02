@@ -17,9 +17,9 @@ export type BlogPost = {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "uk-take-home-pay-2025-26-explained",
-    title: "How UK take-home pay works in 2025/26: a plain-English guide",
+    title: "How UK take-home pay works in 2026/27: a plain-English guide",
     description:
-      "Income Tax, National Insurance, the Personal Allowance and the hidden 60% trap — exactly what comes out of your salary in 2025/26, explained with a worked example.",
+      "Income Tax, National Insurance, the Personal Allowance and the hidden 60% trap — exactly what comes out of your salary in 2026/27, explained with a worked example.",
     date: "2026-05-20",
     dateLabel: "20 May 2026",
     readingTime: "8 min read",
@@ -33,7 +33,7 @@ export const BLOG_POSTS: BlogPost[] = [
           agreed) and your <strong>take-home</strong> pay (what hits your bank)
           comes down to two main deductions: <strong>Income Tax</strong> and{" "}
           <strong>National Insurance</strong>. This guide explains both for the{" "}
-          <strong>2025/26 tax year</strong>, in plain English, with a worked
+          <strong>2026/27 tax year</strong>, in plain English, with a worked
           example you can follow.
         </p>
         <p>
@@ -68,7 +68,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <h2>Step 1: Your Personal Allowance (the tax-free bit)</h2>
         <p>
           Everyone gets a <strong>Personal Allowance</strong> — an amount you
-          can earn before paying any Income Tax. For 2025/26 it&apos;s{" "}
+          can earn before paying any Income Tax. For 2026/27 it&apos;s{" "}
           <strong>£12,570</strong>. Earn less than that and you pay no Income
           Tax at all.
         </p>
@@ -84,7 +84,7 @@ export const BLOG_POSTS: BlogPost[] = [
           Income Tax in England, Wales and Northern Ireland is{" "}
           <em>banded</em>. You don&apos;t pay one rate on everything — you pay
           each rate only on the slice of income that falls inside its band. For
-          2025/26:
+          2026/27:
         </p>
         <table>
           <thead>
@@ -131,7 +131,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <h2>Step 3: National Insurance</h2>
         <p>
           On top of Income Tax, employees pay Class 1 National Insurance. For
-          2025/26 the employee rates are:
+          2026/27 the employee rates are:
         </p>
         <ul>
           <li>

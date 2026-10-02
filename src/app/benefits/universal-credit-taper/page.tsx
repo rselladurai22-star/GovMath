@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import UCTaperCalculator from "./UCTaperCalculator";
 
 export const metadata: Metadata = {
-  title: "Universal Credit Earnings Taper Calculator (UK 2025/26)",
+  title: "Universal Credit Earnings Taper Calculator (UK 2026/27)",
   description: "How much Universal Credit you lose for every £ you earn — 55p taper above your work allowance.",
 };
 
@@ -12,7 +12,7 @@ export default function UCTaperPage() {
   return (
     <CalculatorShell
       category="Family & Benefits"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/benefits", label: "Family & Benefits" }, { href: "/benefits/universal-credit-taper", label: "UC Earnings Taper" }]}
       title="UC Earnings Taper Calculator"
       intro="Universal Credit doesn’t cut off when you start working — it tapers down. For every £1 you earn (net) above your work allowance, your UC drops by 55p."
@@ -20,12 +20,12 @@ export default function UCTaperPage() {
       explainer={
         <BlueprintExplainer
           howWeCalculated={
-            <p>UC reduces by 55p per £1 of net earnings above the work allowance. Work allowance is £411/month if you receive housing element, £684/month if not. No work allowance applies if you don’t have children or a disability — every £1 reduces UC by 55p immediately.</p>
+            <p>UC reduces by 55p per £1 of net earnings above the work allowance. Work allowance is £427/month if you receive housing element, £710/month if not. No work allowance applies if you don’t have children or a disability — every £1 reduces UC by 55p immediately.</p>
           }
           officialRules={
             <ul>
               <li>Taper rate: 55%.</li>
-              <li>Work allowances: £411/mo (with housing), £684/mo (without housing). Applies if you have a child or are disabled (LCWRA).</li>
+              <li>Work allowances: £427/mo (with housing), £710/mo (without housing). Applies if you have a child or are disabled (LCWRA).</li>
               <li>Calculated on net earnings (after tax + NI + pension).</li>
               <li>Self-employed: subject to Minimum Income Floor after 12 months trading.</li>
             </ul>

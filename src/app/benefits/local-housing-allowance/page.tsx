@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import LocalHousingAllowanceCalculator from "./LocalHousingAllowanceCalculator";
 
 export const metadata: Metadata = {
-  title: "Local Housing Allowance Calculator (UK 2025/26)",
+  title: "Local Housing Allowance Calculator (UK 2026/27)",
   description: "Estimate the LHA cap for your household — what Universal Credit will cover towards private rent in your area.",
 };
 
@@ -39,7 +39,7 @@ export default function LocalHousingAllowancePage() {
           }
           pitfalls={[
             { title: "BRMA boundaries are weird", body: "Look up your postcode at gov.uk/lha-direct — neighbouring streets can fall into different BRMAs with very different caps." },
-            { title: "Frozen rates", body: "LHA rates didn’t rise in April 2025 — they sit at April 2024 levels. Many areas have rents rising faster than the cap." },
+            { title: "Frozen rates", body: "LHA rates didn’t rise in April 2025 or April 2026 — they sit at April 2024 levels. Many areas have rents rising faster than the cap." },
             { title: "Shortfall = your problem", body: "Anything above the LHA cap comes from your standard allowance. If you can’t cover it, apply for a Discretionary Housing Payment." },
           ]}
           faqs={[

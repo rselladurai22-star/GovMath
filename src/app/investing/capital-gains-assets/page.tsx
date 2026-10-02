@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import CGTAssetsCalculator from "./CGTAssetsCalculator";
 
 export const metadata: Metadata = {
-  title: "Capital Gains Tax on Shares & Assets (UK 2025/26)",
+  title: "Capital Gains Tax on Shares & Assets (UK 2026/27)",
   description: "CGT on gains from shares, funds, crypto and other non-property assets.",
 };
 
@@ -22,7 +22,7 @@ export default function CGTAssetsPage() {
           howWeCalculated={<p>Gain = proceeds − base cost − allowable expenses. Subtract the £3,000 AEA. Remainder taxed at 18% (basic) or 24% (higher/additional). Your other taxable income fills the basic-rate band first.</p>}
           officialRules={
             <ul>
-              <li>Annual Exempt Amount: £3,000 (2025/26).</li>
+              <li>Annual Exempt Amount: £3,000 (2026/27).</li>
               <li>Rates from 30 Oct 2024: 18% basic / 24% higher.</li>
               <li>ISAs and pensions are CGT-free entirely.</li>
               <li>Crypto is treated as a capital asset by HMRC.</li>
