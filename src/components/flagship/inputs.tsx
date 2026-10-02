@@ -2,6 +2,14 @@
 
 import { useId, useState, type ReactNode } from "react";
 import { whole } from "./format";
+
+/** 1234.5 → "1,234.50"; whole pounds stay "1,234". */
+function money2(n: number): string {
+  const v = Number.isFinite(n) ? n : 0;
+  return Number.isInteger(v)
+    ? whole(v)
+    : v.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
 import s from "./Flagship.module.css";
 
 /** A titled group of inputs inside the input panel. */
@@ -95,6 +103,7 @@ export function MoneyField({
   aside,
   hint,
   big,
+  pence,
 }: {
   label: string;
   value: number;
@@ -104,9 +113,16 @@ export function MoneyField({
   aside?: ReactNode;
   hint?: ReactNode;
   big?: boolean;
+  /** Accept and show pence, e.g. 99.99. */
+  pence?: boolean;
 }) {
   const id = useId();
   const [draft, setDraft] = useState<string | null>(null);
+  const shown = pence ? money2(value) : whole(value);
+  const parse = (raw: string) => {
+    const n = pence ? Number(raw.replace(/[^\d.]/g, "")) : Number(raw.replace(/[^\d]/g, ""));
+    return Math.min(Number.isFinite(n) ? Math.round(n * 100) / 100 : 0, max);
+  };
   return (
     <Field label={label} htmlFor={id} aside={aside} hint={hint}>
       <div className={`${s.box} ${big ? s.boxBig : ""}`}>
@@ -116,16 +132,16 @@ export function MoneyField({
         <input
           id={id}
           type="text"
-          inputMode="numeric"
+          inputMode={pence ? "decimal" : "numeric"}
           autoComplete="off"
-          value={draft ?? whole(value)}
+          value={draft ?? shown}
           onFocus={(e) => {
-            setDraft(whole(value));
+            setDraft(shown);
             e.currentTarget.select();
           }}
           onChange={(e) => {
             setDraft(e.target.value);
-            onChange(Math.min(Number(e.target.value.replace(/[^\d]/g, "") || 0), max));
+            onChange(parse(e.target.value));
           }}
           onBlur={() => setDraft(null)}
         />

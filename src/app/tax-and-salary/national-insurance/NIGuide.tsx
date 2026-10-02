@@ -60,7 +60,7 @@ export default function NIGuide() {
       <Section n="2" kicker="Employed vs self-employed" title="Two ways to pay, side by side">
         <P>
           If you work for yourself you pay <strong style={{ color: body }}>Class 4</strong> NI on your trading profits instead — same
-          thresholds as employees, but lower rates (6% and 2%). Class 2 was effectively abolished from April 2024.
+          thresholds as employees, but lower rates (6% and 2%). Compulsory Class 2 ended in April 2024; it can still be paid voluntarily to protect your State Pension.
         </P>
         <Viz>
           <Compare />
