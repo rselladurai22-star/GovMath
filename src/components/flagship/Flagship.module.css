@@ -337,6 +337,32 @@
   font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
+.selectBox {
+  position: relative;
+  padding: 0;
+}
+.selectBox select {
+  width: 100%;
+  height: 100%;
+  padding: 0 2.6rem 0 0.9rem;
+  border: 0;
+  outline: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--navy);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.selectBox svg {
+  position: absolute;
+  right: 0.85rem;
+  color: var(--muted);
+  pointer-events: none;
+}
 .boxBig {
   height: 58px;
 }
@@ -516,6 +542,9 @@
     opacity: 1;
     transform: none;
   }
+}
+.results > * {
+  min-width: 0;
 }
 .resultsHead {
   display: flex;
@@ -1172,6 +1201,65 @@
   text-align: right;
 }
 
+/* Statement (payslip) */
+.statementScroll {
+  overflow-x: auto;
+  margin: 0 -0.25rem;
+}
+.statement {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+.statement thead th {
+  padding: 0 0.6rem 0.6rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-align: right;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.statement tbody th,
+.statement tbody td {
+  padding: 0.7rem 0.6rem;
+  border-top: 1px solid #eff1f8;
+}
+.statement tbody th {
+  color: var(--ink);
+  font-weight: 600;
+  text-align: left;
+}
+.statement tbody th i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 0.55rem;
+  border-radius: 3px;
+  vertical-align: 0.02em;
+}
+.statement tbody td {
+  color: var(--navy);
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+}
+.statement tr[data-kind="deduction"] td {
+  color: #b4441a;
+}
+.statement tr[data-kind="total"] th,
+.statement tr[data-kind="total"] td {
+  border-top: 2px solid var(--navy);
+  color: var(--navy);
+  font-size: 1rem;
+  font-weight: 800;
+}
+.statement tr[data-kind="total"] td {
+  color: #0a7a52;
+}
+
 /* Mobile answer dock */
 .dock {
   display: none;
@@ -1277,6 +1365,22 @@
   .results {
     padding: 10px;
     border-radius: 22px;
+  }
+  /* Statements show their first two value columns on phones. */
+  .statement th:nth-child(n + 4),
+  .statement td:nth-child(n + 4) {
+    display: none;
+  }
+  .statement {
+    font-size: 0.875rem;
+  }
+  .statement thead th,
+  .statement tbody th,
+  .statement tbody td {
+    padding-inline: 0.35rem;
+  }
+  .statement tbody th i {
+    margin-right: 0.4rem;
   }
   .hero {
     padding: 20px 0 22px;

@@ -7,6 +7,9 @@
  * is pure and deterministic so it can drive live scenario exploration on the
  * client and be unit-tested on the server.
  *
+ * Scotland: pass `region: "scotland"` to use the six Scottish Income Tax
+ * bands; NI and student loans are UK-wide.
+ *
  * Model notes:
  *  - Salary sacrifice reduces gross *before* Income Tax and NI (its whole
  *    point) and also before student-loan assessment, matching how a sacrifice
@@ -23,6 +26,9 @@ import {
   type IncomeTaxBreakdown,
   type NIBreakdown,
 } from "./2025-26";
+import { SCOTTISH_RATES_2025_26, scottishIncomeTax } from "./scottish-2025-26";
+
+export type TaxRegion = "ruk" | "scotland";
 
 export type StudentPlan = "none" | "plan1" | "plan2" | "plan4" | "plan5" | "pg";
 
@@ -70,7 +76,12 @@ export type EngineInputs = {
   /** Salary-sacrifice pension, as a % of (salary + bonus). */
   pensionPct: number;
   plan: StudentPlan;
+  /** Where you pay Income Tax. Defaults to England, Wales & NI. */
+  region?: TaxRegion;
 };
+
+/** Income taxed in one band and the tax due on it. */
+export type TaxBand = { label: string; rate: number; income: number; tax: number };
 
 export type TakeHomeSnapshot = {
   inputs: EngineInputs;
@@ -79,7 +90,13 @@ export type TakeHomeSnapshot = {
   pensionContribution: number;
   /** totalGross − pension: the figure tax/NI/SL are assessed on. */
   adjustedGross: number;
+  /** England, Wales & NI breakdown — use `incomeTaxTotal` and `taxBands`
+   *  for region-aware figures. */
   incomeTax: IncomeTaxBreakdown;
+  /** Income Tax for the chosen region. */
+  incomeTaxTotal: number;
+  /** Region-aware band-by-band breakdown, starting with the tax-free allowance. */
+  taxBands: TaxBand[];
   ni: NIBreakdown;
   studentLoan: number;
   /** Sum of tax + NI + student loan (money that leaves for good). */
@@ -134,7 +151,41 @@ function clampInputs(raw: EngineInputs): EngineInputs {
     bonus: Math.max(0, raw.bonus || 0),
     pensionPct: Math.min(100, Math.max(0, raw.pensionPct || 0)),
     plan: raw.plan ?? "none",
+    region: raw.region === "scotland" ? "scotland" : "ruk",
   };
+}
+
+/** Income Tax for a region on an (already sacrificed) gross. */
+function regionTax(adjusted: number, region: TaxRegion | undefined): number {
+  return region === "scotland" ? scottishIncomeTax(adjusted).total : incomeTax(adjusted).total;
+}
+
+/** Band-by-band Income Tax, including the tax-free Personal Allowance. */
+export function taxBands(adjusted: number, region: TaxRegion = "ruk"): TaxBand[] {
+  const rows: TaxBand[] = [];
+  if (region === "scotland") {
+    const t = scottishIncomeTax(adjusted);
+    const r = SCOTTISH_RATES_2025_26;
+    rows.push({ label: "Tax-free allowance", rate: 0, income: Math.min(adjusted, t.personalAllowance), tax: 0 });
+    (
+      [
+        ["Starter rate", r.starter.rate, t.starter],
+        ["Basic rate", r.basic.rate, t.basic],
+        ["Intermediate rate", r.intermediate.rate, t.intermediate],
+        ["Higher rate", r.higher.rate, t.higher],
+        ["Advanced rate", r.advanced.rate, t.advanced],
+        ["Top rate", r.top.rate, t.top],
+      ] as [string, number, number][]
+    ).forEach(([label, rate, tax]) => rows.push({ label, rate, income: tax / rate, tax }));
+  } else {
+    const t = incomeTax(adjusted);
+    const r = TAX_YEAR_2025_26.incomeTax.rates;
+    rows.push({ label: "Tax-free allowance", rate: 0, income: Math.min(adjusted, t.personalAllowance), tax: 0 });
+    rows.push({ label: "Basic rate", rate: r.basic, income: t.basic / r.basic, tax: t.basic });
+    rows.push({ label: "Higher rate", rate: r.higher, income: t.higher / r.higher, tax: t.higher });
+    rows.push({ label: "Additional rate", rate: r.additional, income: t.additional / r.additional, tax: t.additional });
+  }
+  return rows.filter((b, i) => i === 0 || b.income > 0.5);
 }
 
 /** Core computation for a full pay picture. */
@@ -145,17 +196,18 @@ export function computeTakeHome(raw: EngineInputs): TakeHomeSnapshot {
   const adjustedGross = Math.max(0, totalGross - pensionContribution);
 
   const tax = incomeTax(adjustedGross);
+  const taxTotal = regionTax(adjustedGross, inputs.region);
   const ni = nationalInsurance(adjustedGross);
   const studentLoan = studentLoanRepayment(adjustedGross, inputs.plan);
 
-  const totalDeductions = tax.total + ni.total + studentLoan;
+  const totalDeductions = taxTotal + ni.total + studentLoan;
   const takeHome = Math.max(0, adjustedGross - totalDeductions);
 
   const allocation: AllocationSegment[] = (
     [
       ["takeHome", takeHome, true],
       ["pension", pensionContribution, true],
-      ["incomeTax", tax.total, false],
+      ["incomeTax", taxTotal, false],
       ["ni", ni.total, false],
       ["studentLoan", studentLoan, false],
     ] as [AllocationKey, number, boolean][]
@@ -178,6 +230,8 @@ export function computeTakeHome(raw: EngineInputs): TakeHomeSnapshot {
     pensionContribution,
     adjustedGross,
     incomeTax: tax,
+    incomeTaxTotal: taxTotal,
+    taxBands: taxBands(adjustedGross, inputs.region),
     ni,
     studentLoan,
     totalDeductions,
@@ -215,7 +269,7 @@ function takeHomeCash(inputs: EngineInputs): { takeHome: number; pension: number
   const totalGross = inputs.gross + inputs.bonus;
   const pension = (inputs.pensionPct / 100) * totalGross;
   const adjusted = Math.max(0, totalGross - pension);
-  const tax = incomeTax(adjusted).total;
+  const tax = regionTax(adjusted, inputs.region);
   const ni = nationalInsurance(adjusted).total;
   const sl = studentLoanRepayment(adjusted, inputs.plan);
   return { takeHome: Math.max(0, adjusted - tax - ni - sl), pension };

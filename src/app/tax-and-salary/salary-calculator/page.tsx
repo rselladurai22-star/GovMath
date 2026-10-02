@@ -1,26 +1,24 @@
 import type { Metadata } from "next";
-import EngineOutro from "@/components/calculator/EngineOutro";
-import { HomeMotion } from "@/components/home/Motion";
-import PageHero, { HeroPills } from "@/components/PageHero";
-import { CAT } from "@/components/category-style";
-import TakeHomeEngine from "./TakeHomeEngine";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { STUDENT_PLANS, type StudentPlan } from "@/lib/tax/take-home-engine";
+import SalaryStudio from "./SalaryStudio";
 import TakeHomeGuide from "./TakeHomeGuide";
 import { CALCULATORS } from "@/lib/calculators";
 
 export const metadata: Metadata = {
   title: "Salary & Take-Home Pay Calculator (UK, 2025/26)",
   description:
-    "The UK take-home pay decision engine. Model tax, NI, pension sacrifice and student loans, explore the income curve, compare scenarios and see exactly where every pound goes. 2025/26 rates.",
+    "Work out your UK take-home pay after Income Tax, National Insurance, pension and student loan. Includes Scottish rates, a payslip view and what a pay rise is really worth. 2025/26.",
   alternates: { canonical: "/tax-and-salary/salary-calculator" },
 };
 
-type SearchParams = Promise<{ salary?: string }>;
+type SearchParams = Promise<{ salary?: string; bonus?: string; pension?: string; loan?: string; region?: string }>;
 
-function parseSalary(raw: string | undefined): number {
-  if (!raw) return 35000;
+function parseNumber(raw: string | undefined, fallback: number, max: number): number {
+  if (!raw) return fallback;
   const n = Number(raw);
-  if (!Number.isFinite(n) || n < 0) return 35000;
-  return Math.min(n, 10_000_000);
+  if (!Number.isFinite(n) || n < 0) return fallback;
+  return Math.min(n, max);
 }
 
 const BREADCRUMBS = [
@@ -44,7 +42,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Does this include Scotland?",
-    a: "No. This engine uses the England, Wales & Northern Ireland bands. Scotland has six Income Tax bands with different rates — use the dedicated Scottish Income Tax calculator, though National Insurance is the same UK-wide.",
+    a: "Yes. Choose Scotland under 'Where you live' to use the six Scottish Income Tax bands (starter 19% up to top 48%). National Insurance and student loans are the same UK-wide.",
   },
   {
     q: "Which student loan plan am I on?",
@@ -53,7 +51,7 @@ const FAQS: { q: string; a: string }[] = [
 ];
 
 export default async function SalaryCalculatorPage({ searchParams }: { searchParams: SearchParams }) {
-  const { salary } = await searchParams;
+  const { salary, bonus, pension, loan, region } = await searchParams;
   const related = CALCULATORS.filter((c) =>
     [
       "/tax-and-salary/tax-bracket-checker",
@@ -65,61 +63,26 @@ export default async function SalaryCalculatorPage({ searchParams }: { searchPar
     ].includes(c.href)
   );
 
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: BREADCRUMBS.map((c, i) => ({
-        "@type": "ListItem",
-        position: i + 1,
-        name: c.label,
-        item: `https://govmath.co.uk${c.href}`,
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: FAQS.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    },
-  ];
-
-  const FEATURES = [
-    { icon: "✓", label: "2025/26 HMRC rates" },
-    { icon: "📊", label: "Tax, NI & pension" },
-    { icon: "🎓", label: "Student loan plans" },
-    { icon: "🔒", label: "100% Free & Private" },
-  ];
-
   return (
-    <div id="gm-engine-page" style={{ background: "#ffffff", color: "var(--ink)" }}>
-      <HomeMotion rootId="gm-engine-page" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-
-      {/* Hero */}
-      <PageHero
-        breadcrumbs={BREADCRUMBS}
-        eyebrow="2025/26 rates · Updated for this tax year"
-        title="Take-Home Pay Calculator"
-        lead="See exactly what lands in your bank after Income Tax, National Insurance, pension and student loan."
-        icon={CAT["tax-and-salary"].icon}
-        tone="tax-and-salary"
-      >
-        <HeroPills items={FEATURES.map((f) => f.label)} />
-      </PageHero>
-
-      <div id="calculator" style={{ scrollMarginTop: 74 }} />
-      <TakeHomeEngine initialSalary={parseSalary(salary)} />
-
-      {/* Visual guide */}
-      <section className="mx-auto max-w-5xl px-5 sm:px-6">
-        <TakeHomeGuide />
-      </section>
-
-      <EngineOutro faqs={FAQS} related={related} note="Figures are estimates for the 2025/26 tax year (England, Wales & NI). GovMath is not affiliated with HMRC. Always check your tax code and personal circumstances before making financial decisions." />
-    </div>
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2025/26"
+      title="Salary & Take-Home Pay Calculator"
+      lead="See exactly what reaches your bank after Income Tax, National Insurance, pension and student loan."
+      points={["2025/26 HMRC rates", "Scotland included", "Pension and student loans", "Free and private"]}
+      guide={<TakeHomeGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Figures are estimates for the 2025/26 tax year on a standard tax code. GovMath is not affiliated with HMRC. Always check your tax code and personal circumstances before making financial decisions."
+    >
+      <SalaryStudio
+        salary={parseNumber(salary, 35_000, 10_000_000)}
+        bonus={parseNumber(bonus, 0, 10_000_000)}
+        pension={Math.round(parseNumber(pension, 5, 60))}
+        plan={loan && loan in STUDENT_PLANS ? (loan as StudentPlan) : "none"}
+        region={region === "scotland" ? "scotland" : "ruk"}
+        showResults={[salary, bonus, pension, loan, region].some(Boolean)}
+      />
+    </FlagshipPage>
   );
 }

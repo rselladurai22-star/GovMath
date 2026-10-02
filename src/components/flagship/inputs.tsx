@@ -248,3 +248,36 @@ export function Segmented<T extends string>({
     </Field>
   );
 }
+
+/** Native dropdown, styled to match the other fields. */
+export function SelectField<T extends string>({
+  label,
+  value,
+  onChange,
+  options,
+  hint,
+}: {
+  label: string;
+  value: T;
+  onChange: (v: T) => void;
+  options: { value: T; label: string }[];
+  hint?: ReactNode;
+}) {
+  const id = useId();
+  return (
+    <Field label={label} htmlFor={id} hint={hint}>
+      <div className={`${s.box} ${s.selectBox}`}>
+        <select id={id} value={value} onChange={(e) => onChange(e.target.value as T)}>
+          {options.map((o) => (
+            <option key={o.value} value={o.value}>
+              {o.label}
+            </option>
+          ))}
+        </select>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+          <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </div>
+    </Field>
+  );
+}
