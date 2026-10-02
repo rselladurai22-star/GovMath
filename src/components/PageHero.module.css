@@ -195,7 +195,7 @@
 .title {
   margin: 0;
   color: var(--navy);
-  font-size: clamp(2.1rem, 4vw, 3.25rem);
+  font-size: var(--fs-h1);
   font-weight: 800;
   line-height: 1.08;
   letter-spacing: -0.04em;
@@ -204,7 +204,7 @@
   margin: 0.9rem 0 0;
   max-width: 66ch;
   color: var(--muted);
-  font-size: 1.1875rem;
+  font-size: var(--fs-lead);
   line-height: 1.6;
 }
 .extra {

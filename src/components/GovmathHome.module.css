@@ -230,7 +230,7 @@
 .heroTitle {
   margin: 1.4rem 0 0;
   color: var(--navy);
-  font-size: clamp(2.6rem, 5vw, 4.25rem);
+  font-size: var(--fs-display);
   font-weight: 800;
   line-height: 1.06;
   letter-spacing: -0.035em;
@@ -259,7 +259,7 @@
   margin: 1.4rem 0 2rem;
   max-width: 56ch;
   color: var(--muted);
-  font-size: 1.1875rem;
+  font-size: var(--fs-lead);
   line-height: 1.65;
 }
 
@@ -639,7 +639,7 @@
   margin: 0.85rem 0 0;
   color: var(--navy);
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  font-size: var(--fs-h2);
   font-weight: 800;
   line-height: 1.12;
   letter-spacing: -0.04em;
@@ -850,7 +850,7 @@
 .qResult > strong {
   margin-top: 0.15rem;
   color: var(--navy);
-  font-size: 2rem;
+  font-size: var(--fs-figure);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.03em;
@@ -939,9 +939,6 @@
   .quickTabs button {
     padding: 0.5rem 0.7rem;
     font-size: 0.875rem;
-  }
-  .qResult > strong {
-    font-size: 1.75rem;
   }
 }
 
@@ -1128,7 +1125,7 @@
 .panelHead h3 {
   margin: 0;
   color: var(--navy);
-  font-size: 1.5rem;
+  font-size: var(--fs-h3);
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.035em;
@@ -1258,7 +1255,7 @@
 .panelHead h2 {
   margin: 0;
   color: var(--navy);
-  font-size: 1.5rem;
+  font-size: var(--fs-h3);
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.035em;
@@ -1321,7 +1318,7 @@
 .request h2 {
   margin: 0;
   color: var(--navy);
-  font-size: 1.625rem;
+  font-size: var(--fs-h2);
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.035em;
@@ -1392,9 +1389,6 @@
 @media (max-width: 640px) {
   .heroGrid {
     padding-block: 32px 32px;
-  }
-  .heroTitle {
-    font-size: 2.375rem;
   }
   .popularText strong {
     white-space: normal;

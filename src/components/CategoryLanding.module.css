@@ -200,7 +200,7 @@
 }
 .toolsTitle {
   margin: 0;
-  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-size: var(--fs-h2);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.035em;
@@ -440,7 +440,7 @@
 }
 .blockTitle {
   margin: 0.85rem 0 0;
-  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  font-size: var(--fs-h2);
   font-weight: 800;
   line-height: 1.12;
   letter-spacing: -0.04em;
