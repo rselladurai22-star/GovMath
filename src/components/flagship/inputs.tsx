@@ -500,3 +500,44 @@ export function PeriodMoneyField({
     </Field>
   );
 }
+
+/** Short free-text field, such as a tax code. */
+export function TextField({
+  label,
+  value,
+  onChange,
+  placeholder,
+  hint,
+  optional,
+  big,
+  maxLength = 20,
+  uppercase,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+  placeholder?: string;
+  hint?: ReactNode;
+  optional?: boolean;
+  big?: boolean;
+  maxLength?: number;
+  uppercase?: boolean;
+}) {
+  const id = useId();
+  return (
+    <Field label={label} htmlFor={id} hint={hint} optional={optional}>
+      <div className={`${s.box} ${big ? s.boxBig : ""}`}>
+        <input
+          id={id}
+          type="text"
+          autoComplete="off"
+          spellCheck={false}
+          maxLength={maxLength}
+          placeholder={placeholder}
+          value={value}
+          onChange={(e) => onChange(uppercase ? e.target.value.toUpperCase() : e.target.value)}
+        />
+      </div>
+    </Field>
+  );
+}

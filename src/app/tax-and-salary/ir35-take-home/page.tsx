@@ -1,45 +1,48 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import IR35Calculator from "./IR35Calculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import IR35Studio from "./IR35Studio";
+import IR35Guide from "./IR35Guide";
 
 export const metadata: Metadata = {
-  title: "Inside vs Outside IR35 Take-Home (UK 2026/27)",
-  description: "Net pay comparison between inside-IR35 (deemed employee) and outside-IR35 (Ltd Co) for UK contractors.",
+  title: "IR35 Calculator: Inside vs Outside Take-Home (2026/27)",
+  description:
+    "Compare contractor take-home inside IR35 through an umbrella company and outside IR35 through your own limited company, with Corporation Tax, dividends and the equivalent permanent salary. 2026/27.",
+  alternates: { canonical: "/tax-and-salary/ir35-take-home" },
 };
 
-export default function IR35Page() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/tax-and-salary", label: "Tax & Salary" },
+  { href: "/tax-and-salary/ir35-take-home", label: "IR35 Take-Home" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much less do I take home inside IR35?", a: "On £500 a day for 220 days in 2026/27, about £65,500 inside IR35 through an umbrella company against about £69,000 outside IR35 through a limited company, before accountancy and insurance costs beyond those you enter." },
+  { q: "Who decides if my contract is inside IR35?", a: "For medium and large clients, and all public sector clients, the client decides and gives you a Status Determination Statement. For small private clients, your own company decides." },
+  { q: "Why does an umbrella company take employer NI from my rate?", a: "Inside IR35 the umbrella is your employer, and it funds employer NI (15% above £5,000) and the 0.5% Apprenticeship Levy from the contract income before paying your salary." },
+  { q: "What salary should a limited company director take?", a: "A salary of £12,570 uses the tax-free allowance and counts towards the State Pension; employer NI is due on the part above £5,000 for a sole-director company. The rest is usually taken as dividends." },
+  { q: "Can I challenge an inside IR35 decision?", a: "Yes. Write to the client explaining why you disagree. They must respond within 45 days, confirming or changing their decision with reasons." },
+];
+
+export default async function IR35Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) =>
+    ["/business/dividend-vs-salary", "/business/corporation-tax", "/investing/dividend-tax", "/tax-and-salary/salary-calculator", "/tax-and-salary/hourly-to-salary", "/business/sole-trader-tax"].includes(c.href),
+  );
   return (
-    <CalculatorShell
-      category="Tax & Salary"
-      updatedLabel="2026/27"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax & Salary" }, { href: "/tax-and-salary/ir35-take-home", label: "IR35 Take-Home" }]}
-      title="Inside vs Outside IR35 Take-Home"
-      intro="If you’re a UK contractor through a limited company, IR35 status determines whether you pay tax like an employee (inside) or via salary + dividends (outside)."
-      calculator={<IR35Calculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Inside-IR35: fee-payer deducts employer NI 15% first, then PAYE + employee NI on the deemed employment payment. Outside-IR35: £12,570 salary + dividends after 19/25% corporation tax. Dividend tax: 10.75% / 35.75% / 39.35%.</p>}
-          officialRules={
-            <ul>
-              <li>From April 2021, end-clients (medium/large) determine IR35 status.</li>
-              <li>Small companies: contractor still determines their own status.</li>
-              <li>Use HMRC’s CEST tool — though it’s widely criticised.</li>
-              <li>Mutuality, substitution and control are the key tests.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Inside vs ‘deemed employee’", body: "Inside IR35 doesn’t make you an employee — no holiday, sick or pension auto-enrolment from the client." },
-            { title: "Don’t forget Apprenticeship Levy and accountancy", body: "Real Ltd Co overhead: ~£1,200/yr accountant, IR35 insurance, dormant year compliance." },
-            { title: "Pension contributions through Ltd Co", body: "Employer pension contributions sidestep both corp tax and dividend tax — biggest legal Ltd Co advantage." },
-          ]}
-          faqs={[
-            { question: "Umbrella vs inside-IR35 PSC?", answer: "Net pay is similar; umbrella is admin-simpler but has its own fee + employer NI deducted." },
-            { question: "Is outside-IR35 ever worth it on £500/day?", answer: "Yes — typically £8–12k/year better net than inside, before pension benefits." },
-          ]}
-          disclaimer="Educational. Heavily simplified — get an accountant before changing structure."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026/27"
+      title="IR35 Take-Home Calculator"
+      lead="Compare your take-home inside and outside IR35, and the permanent salary that would match it."
+      points={["Umbrella and limited company", "Corporation Tax and dividends", "Equivalent salary", "Free and private"]}
+      guide={<IR35Guide />}
+      faqs={FAQS}
+      related={related}
+      note="Illustrative 2026/27 figures. Outside IR35 assumes all profit is paid out as dividends in the year. Not tax advice: speak to an accountant about your contracts."
+    >
+      <IR35Studio query={query} />
+    </FlagshipPage>
   );
 }

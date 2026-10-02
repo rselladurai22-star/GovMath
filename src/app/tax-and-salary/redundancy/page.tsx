@@ -1,45 +1,48 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import RedundancyCalculator from "./RedundancyCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import RedundancyStudio from "./RedundancyStudio";
+import RedundancyGuide from "./RedundancyGuide";
 
 export const metadata: Metadata = {
-  title: "Statutory Redundancy Pay Calculator (UK 2026/27)",
-  description: "Work out your statutory redundancy entitlement based on age, length of service and weekly pay.",
+  title: "Redundancy Pay Calculator (UK, 2026/27)",
+  description:
+    "Work out statutory redundancy pay with the April 2026 £751 weekly cap (£783 in NI), plus notice pay, holiday pay, enhanced payments and the £30,000 tax-free limit.",
+  alternates: { canonical: "/tax-and-salary/redundancy" },
 };
 
-export default function RedundancyPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/tax-and-salary", label: "Tax & Salary" },
+  { href: "/tax-and-salary/redundancy", label: "Redundancy Pay" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How is statutory redundancy pay calculated?", a: "You get half a week's pay for each full year under age 22, one week for each full year aged 22 to 40, and one and a half weeks for each full year aged 41 or over. Up to 20 years count, and weekly pay is capped at £751 (£783 in Northern Ireland) from April 2026." },
+  { q: "What is the most statutory redundancy pay I can get?", a: "£22,530 in England, Scotland and Wales for redundancies from 6 April 2026: 30 weeks at the £751 cap." },
+  { q: "Is redundancy pay taxed?", a: "The first £30,000 of redundancy pay is tax-free. Anything above that is subject to Income Tax but not employee National Insurance. Notice pay and holiday pay are always taxed like salary." },
+  { q: "How long do I need to work to get redundancy pay?", a: "At least 2 full years of continuous employment with the same employer, as an employee." },
+  { q: "Is notice pay part of redundancy pay?", a: "No. Notice is separate. You are entitled to your contractual notice or the statutory minimum (one week per full year of service, up to 12 weeks), whichever is longer." },
+];
+
+export default async function RedundancyPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) =>
+    ["/tax-and-salary/salary-calculator", "/tax-and-salary/p45-p60-explainer", "/tax-and-salary/emergency-tax", "/tax-and-salary/holiday-entitlement", "/benefits/universal-credit", "/investing/pension-tax-relief"].includes(c.href),
+  );
   return (
-    <CalculatorShell
-      category="Tax & Salary"
-      updatedLabel="Apr 2026 cap"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax & Salary" }, { href: "/tax-and-salary/redundancy", label: "Redundancy" }]}
-      title="Statutory Redundancy Pay Calculator"
-      intro="If you’ve worked somewhere two years or more and your role is being made redundant, you’re entitled to a statutory payment. This is the legal minimum — many employers pay more."
-      calculator={<RedundancyCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Each completed year of service is weighted by your age that year: half a week under 22, one week 22–40, one-and-a-half weeks 41+. Weekly pay is capped at £751 (Apr 2025), and only 20 years of service count — so the absolute statutory ceiling is £22,530.</p>}
-          officialRules={
-            <ul>
-              <li>You need at least 2 years’ continuous service.</li>
-              <li>Weekly-pay cap rises each April — currently £751.</li>
-              <li>First £30,000 of any redundancy payment is tax-free; balance is taxed as income.</li>
-              <li>National Insurance isn’t due on statutory redundancy.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Contractual ≠ statutory", body: "Many employers offer enhanced packages. Statutory is the floor — check your contract or staff handbook." },
-            { title: "Notice pay is separate", body: "You’re also entitled to statutory notice (1 week per year of service, capped at 12 weeks) — paid on top." },
-            { title: "PILON is taxable", body: "Pay-in-lieu-of-notice is treated as normal earnings — full Income Tax and NI." },
-          ]}
-          faqs={[
-            { question: "What if I’m offered alternative employment?", answer: "If suitable and you unreasonably refuse, you may lose redundancy rights. Use the 4-week trial period to test it." },
-            { question: "Can I be made redundant on maternity leave?", answer: "Yes — but you have priority for any alternative roles, and dismissal must be genuinely about the role, not the leave." },
-          ]}
-          disclaimer="Statutory minimum. Check ACAS or take legal advice for complex cases."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026/27"
+      title="Redundancy Pay Calculator"
+      lead="Your statutory redundancy pay, notice and holiday pay, and which parts of your package are tax-free."
+      points={["April 2026 cap", "Notice and holiday pay", "Tax-free £30,000", "Free and private"]}
+      guide={<RedundancyGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Statutory figures for redundancies from 6 April 2026. Tax is an estimate. Not legal advice: speak to Acas or an adviser about your situation."
+    >
+      <RedundancyStudio query={query} />
+    </FlagshipPage>
   );
 }
