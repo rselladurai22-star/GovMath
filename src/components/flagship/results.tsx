@@ -280,3 +280,24 @@ export function Statement({ columns, rows }: { columns: string[]; rows: Statemen
     </div>
   );
 }
+
+/**
+ * The defaults behind the answer, stated plainly so anyone can see whether
+ * the result fits them — and where to change it.
+ */
+export function Assumptions({ items, note }: { items: { label: string; value: string }[]; note?: ReactNode }) {
+  return (
+    <section className={s.assumptions} aria-label="What we assumed">
+      <h2>What we assumed</h2>
+      <dl>
+        {items.map((i) => (
+          <div key={i.label}>
+            <dt>{i.label}</dt>
+            <dd>{i.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <p>{note ?? "Not right for you? Change it under More options."}</p>
+    </section>
+  );
+}

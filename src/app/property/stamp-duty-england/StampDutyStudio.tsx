@@ -6,7 +6,7 @@ import { acrossNations, additionalSurcharge, nearThreshold, sdltCurve } from "@/
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { InputGroup, MoneyField, Segmented } from "@/components/flagship/inputs";
-import { Answer, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
+import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
 import { gbp, gbpShort, percent } from "@/components/flagship/format";
 import s from "@/components/flagship/Flagship.module.css";
 
@@ -145,6 +145,16 @@ export default function StampDutyStudio({
               ? { label: "Relief saves you", value: gbp(moverTax - r.total), note: "Versus a home mover", tone: "good" }
               : { label: "Due", value: "14 days", note: "After completion" },
         ]}
+      />
+
+      <Assumptions
+        items={[
+          { label: "Property", value: "Residential, freehold" },
+          { label: "Where", value: "England or Northern Ireland" },
+          { label: "Completion", value: "On or after 1 April 2025" },
+          { label: "Buyers", value: "UK residents" },
+        ]}
+        note="Buying leasehold, from abroad or in Scotland or Wales? The guide below explains what changes."
       />
 
       {/* 3. Band by band */}

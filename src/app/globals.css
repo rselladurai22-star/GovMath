@@ -59,6 +59,13 @@
   --fs-body: 1rem;
   --fs-sm: 0.875rem;
   --fs-xs: 0.8125rem;
+
+  /* Form text levels — kept visibly distinct so a form scans at a glance:
+     section heading → label → typed value → hint. */
+  --form-section: #7a80a6; /* small uppercase group headings */
+  --form-label: #3d4468; /* field labels: medium weight, softer ink */
+  --form-value: var(--navy); /* what the user typed: bold, darkest */
+  --form-hint: #6b7196; /* helper text: regular weight */
   /* Emphasis surfaces (topic bars, result panels, promos) — white text ≥5:1. */
   --brand-gradient: linear-gradient(120deg, #4353ff 0%, #7c3aed 100%);
   --brand-glow: 0 14px 30px -12px rgba(87, 70, 245, 0.55);
@@ -886,11 +893,22 @@ textarea:focus-visible,
 .gm-calc input[type="range"] {
   accent-color: var(--blue);
 }
-.gm-calc label.block {
+.gm-calc label.block,
+.gm-calc legend {
   margin-bottom: 0.35rem;
-  color: var(--navy);
+  color: var(--form-label);
   font-size: 0.9375rem;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+.gm-calc input[type="number"],
+.gm-calc input[type="text"] {
+  color: var(--form-value);
+}
+.gm-calc p.text-xs,
+.gm-calc .text-xs.text-muted {
+  color: var(--form-hint);
+  font-weight: 400;
 }
 
 /* Choice buttons inside calculators */
