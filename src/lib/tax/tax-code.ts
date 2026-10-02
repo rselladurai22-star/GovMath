@@ -22,6 +22,8 @@
  * 2026/27 standard personal allowance = £12,570 → standard code 1257L.
  */
 
+import { bandTax } from "./emergency-tax";
+
 export const STANDARD_PERSONAL_ALLOWANCE = 12570;
 
 export type TaxCodeAnalysis = {
@@ -69,8 +71,10 @@ export function decodeTaxCode(input: string): TaxCodeAnalysis {
   });
 
   if (body === "BR")  return base(0, "br",  "All income at basic rate (20%). Usually your second job.");
-  if (body === "D0")  return base(0, "d0",  "All income at higher rate (40%). Usually a second job above the basic-rate band.");
-  if (body === "D1")  return base(0, "d1",  "All income at additional rate (45%).");
+  if (body === "D0")  return base(0, "d0",  region === "scotland" ? "All income at the Scottish intermediate rate (21%). Usually a second job." : "All income at higher rate (40%). Usually a second job above the basic-rate band.");
+  if (body === "D1")  return base(0, "d1",  region === "scotland" ? "All income at the Scottish higher rate (42%)." : "All income at additional rate (45%).");
+  if (body === "D2" && region === "scotland") return base(0, "d1", "All income at the Scottish advanced rate (45%).");
+  if (body === "D3" && region === "scotland") return base(0, "d1", "All income at the Scottish top rate (48%).");
   if (body === "NT")  return base(0, "nt",  "No tax deducted at source.");
   if (body === "0T")  return base(0, "0t",  "No personal allowance — normal tax bands apply. Common emergency code.");
 
@@ -93,4 +97,34 @@ export function decodeTaxCode(input: string): TaxCodeAnalysis {
   }
 
   return { raw, normalised, valid: false, region, emergency, personalAllowance: 0, type: "unknown", meaning: "Code not recognised. Check the PAYE coding notice from HMRC." };
+}
+
+
+/** Flat rate for BR and D codes, by region. */
+function flatRate(normalised: string, region: TaxCodeAnalysis["region"]): number | null {
+  const body = normalised.replace(/^[SC]/, "").replace(/(W1|M1|X)$/, "");
+  const scot = region === "scotland";
+  if (body === "BR") return 0.2;
+  if (body === "D0") return scot ? 0.21 : 0.4;
+  if (body === "D1") return scot ? 0.42 : 0.45;
+  if (body === "D2" && scot) return 0.45;
+  if (body === "D3" && scot) return 0.48;
+  return null;
+}
+
+/**
+ * Income Tax for a full year of pay under a code, applied cumulatively.
+ * Uses the code's allowance as given (no £100,000 taper, as PAYE does).
+ * K codes are limited so tax never exceeds half of pay.
+ */
+export function taxUnderCode(pay: number, code: TaxCodeAnalysis): number {
+  const p = Math.max(0, pay || 0);
+  if (!code.valid) return 0;
+  if (code.type === "nt") return 0;
+  const flat = flatRate(code.normalised, code.region);
+  if (flat !== null) return p * flat;
+  const region = code.region === "scotland" ? "scotland" : "ruk";
+  const allowance = code.type === "0t" ? 0 : code.personalAllowance;
+  const tax = bandTax(p - allowance, 1, region);
+  return code.type === "k" ? Math.min(tax, p * 0.5) : tax;
 }

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { decodeTaxCode } from "./tax-code";
+import { decodeTaxCode, taxUnderCode } from "./tax-code";
 
 describe("decodeTaxCode", () => {
   it("decodes the standard 1257L code", () => {
@@ -39,5 +39,23 @@ describe("decodeTaxCode", () => {
     const r = decodeTaxCode("ZZZ999");
     expect(r.valid).toBe(false);
     expect(r.type).toBe("unknown");
+  });
+});
+
+describe("taxUnderCode", () => {
+  it("1257L on £30,000", () => {
+    expect(taxUnderCode(30_000, decodeTaxCode("1257L"))).toBeCloseTo(3_486, 2);
+  });
+  it("BR taxes all pay at 20%", () => {
+    expect(taxUnderCode(10_000, decodeTaxCode("BR"))).toBeCloseTo(2_000, 6);
+  });
+  it("K codes add to taxable pay", () => {
+    expect(taxUnderCode(30_000, decodeTaxCode("K100"))).toBeCloseTo((30_000 + 1_000) * 0.2, 2);
+  });
+  it("Scottish D0 is 21%", () => {
+    expect(taxUnderCode(10_000, decodeTaxCode("SD0"))).toBeCloseTo(2_100, 6);
+  });
+  it("NT means no tax", () => {
+    expect(taxUnderCode(50_000, decodeTaxCode("NT"))).toBe(0);
   });
 });

@@ -1,45 +1,48 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import SSPCalculator from "./SSPCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import SSPStudio from "./SSPStudio";
+import SSPGuide from "./SSPGuide";
 
 export const metadata: Metadata = {
-  title: "Statutory Sick Pay (SSP) Calculator (UK 2026/27)",
-  description: "Minimum SSP your employer must pay from your first day off sick, under the April 2026 rules.",
+  title: "Statutory Sick Pay Calculator (UK, 2026/27)",
+  description:
+    "Work out Statutory Sick Pay under the April 2026 rules: paid from day one, the lower of £123.25 a week or 80% of earnings, with daily rates, linked spells and company sick pay.",
+  alternates: { canonical: "/tax-and-salary/statutory-sick-pay" },
 };
 
-export default function SSPPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/tax-and-salary", label: "Tax & Salary" },
+  { href: "/tax-and-salary/statutory-sick-pay", label: "Statutory Sick Pay" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much is Statutory Sick Pay in 2026/27?", a: "The lower of £123.25 a week or 80% of your average weekly earnings, from 6 April 2026. For a five-day week that is up to £24.65 a day." },
+  { q: "Is SSP paid from the first day?", a: "Yes. Since 6 April 2026 there are no unpaid waiting days. SSP is paid from the first day you are off sick." },
+  { q: "Do I need to earn a minimum amount to get SSP?", a: "No. The Lower Earnings Limit test was removed in April 2026. Low earners get 80% of their average weekly earnings instead." },
+  { q: "How long is SSP paid for?", a: "Up to 28 weeks in a period of sickness. Spells less than 8 weeks apart are linked and share the same 28 weeks." },
+  { q: "Is SSP taxed?", a: "Yes. SSP is paid through payroll and Income Tax and National Insurance are deducted as normal." },
+];
+
+export default async function SSPPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) =>
+    ["/tax-and-salary/salary-calculator", "/tax-and-salary/holiday-entitlement", "/benefits/universal-credit", "/benefits/maternity-pay", "/tax-and-salary/minimum-wage", "/benefits/pip-points"].includes(c.href),
+  );
   return (
-    <CalculatorShell
-      category="Tax & Salary"
-      updatedLabel="Apr 2026 rules"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax & Salary" }, { href: "/tax-and-salary/statutory-sick-pay", label: "SSP" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="April 2026 rules"
       title="Statutory Sick Pay Calculator"
-      intro="From 6 April 2026 every employee can get SSP from their first day off sick, whatever they earn. It is 80% of your average weekly earnings or £123.25 a week, whichever is lower. This is the minimum — many employers pay contractual sick pay on top."
-      calculator={<SSPCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Weekly SSP = the lower of 80% of your average weekly earnings or £123.25 (2026/27). It is paid for up to 28 weeks. Since 6 April 2026 there are no unpaid ‘waiting days’ and no minimum earnings level.</p>}
-          officialRules={
-            <ul>
-              <li>You are an employee and have done some work under your contract.</li>
-              <li>Paid from the first day you are off sick (no waiting days from April 2026).</li>
-              <li>No minimum earnings: the Lower Earnings Limit test was removed in April 2026.</li>
-              <li>SSP1 form if your employer can’t pay — claim ESA instead.</li>
-              <li>SSP is treated as earnings — Income Tax and NI apply.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Linked periods of sickness", body: "Two sick periods within 8 weeks of each other count as one, so the 28-week limit runs across both." },
-            { title: "Self-certify for 7 days", body: "After that you need a fit note from your GP for SSP to continue." },
-          ]}
-          faqs={[
-            { question: "Does SSP affect Universal Credit?", answer: "Yes — SSP counts as earned income and reduces UC via the taper." },
-            { question: "What if I’m self-employed?", answer: "SSP doesn’t apply. You may be able to claim Employment & Support Allowance (ESA)." },
-          ]}
-          disclaimer="Statutory minimum. Check your contract for any enhanced sick-pay scheme."
-        />
-      }
-    />
+      lead="Your sick pay under the April 2026 rules, from the first day off, with daily rates and company sick pay."
+      points={["Paid from day one", "80% rule for low earners", "Company sick pay compared", "Free and private"]}
+      guide={<SSPGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Statutory minimum from 6 April 2026. Your employer may pay more under your contract. Not legal advice."
+    >
+      <SSPStudio query={query} />
+    </FlagshipPage>
   );
 }

@@ -35,3 +35,53 @@ export function statutoryPaternityPay(averageWeeklyEarnings: number) {
     flatRateApplied: SPP_WEEKLY_2026 < ninetyPct,
   };
 }
+
+export type SickPeriodInput = {
+  averageWeeklyEarnings: number;
+  /** Days you normally work each week (qualifying days). */
+  qualifyingDays: number;
+  /** Qualifying days off sick in this spell. */
+  daysOff: number;
+  /** Weeks of SSP already paid in a linked spell (within 8 weeks). */
+  weeksAlreadyPaid?: number;
+  /** Company sick pay: weeks on full pay, then weeks on half pay. */
+  fullPayWeeks?: number;
+  halfPayWeeks?: number;
+};
+
+export type SickPeriodResult = {
+  weeklyRate: number;
+  dailyRate: number;
+  daysPaid: number;
+  daysLeft: number;
+  ssp: number;
+  /** What company sick pay would give for the same days (SSP counts towards it). */
+  companyPay: number;
+  /** The better of SSP and company sick pay. */
+  youGet: number;
+  flatRateApplied: boolean;
+};
+
+export function sickPeriod(i: SickPeriodInput): SickPeriodResult {
+  const q = Math.min(7, Math.max(1, Math.round(i.qualifyingDays)));
+  const base = statutorySickPay(1, i.averageWeeklyEarnings);
+  const dailyRate = base.weeklyRate / q;
+  const maxDays = Math.max(0, 28 - Math.max(0, i.weeksAlreadyPaid ?? 0)) * q;
+  const days = Math.max(0, Math.round(i.daysOff));
+  const daysPaid = Math.min(days, maxDays);
+  const ssp = daysPaid * dailyRate;
+  const dayPay = Math.max(0, i.averageWeeklyEarnings) / q;
+  const fullDays = Math.max(0, i.fullPayWeeks ?? 0) * q;
+  const halfDays = Math.max(0, i.halfPayWeeks ?? 0) * q;
+  const companyPay = Math.min(days, fullDays) * dayPay + Math.min(Math.max(0, days - fullDays), halfDays) * dayPay * 0.5;
+  return {
+    weeklyRate: base.weeklyRate,
+    dailyRate,
+    daysPaid,
+    daysLeft: Math.max(0, maxDays - daysPaid),
+    ssp,
+    companyPay,
+    youGet: Math.max(ssp, companyPay),
+    flatRateApplied: base.flatRateApplied,
+  };
+}

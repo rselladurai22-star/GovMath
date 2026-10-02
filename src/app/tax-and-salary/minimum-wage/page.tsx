@@ -1,46 +1,48 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import MinWageCalculator from "./MinWageCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import MinWageStudio from "./MinWageStudio";
+import MinWageGuide from "./MinWageGuide";
 
 export const metadata: Metadata = {
-  title: "UK Minimum Wage Checker 2026/27 (NLW & NMW)",
-  description: "Check whether your pay meets the UK National Living Wage (£12.71) or National Minimum Wage for your age band — April 2026 rates.",
+  title: "Minimum Wage Checker (UK, April 2026 rates)",
+  description:
+    "Check whether you are paid the National Living Wage or minimum wage for your age from April 2026, counting unpaid time, work costs and accommodation, and estimate back pay owed.",
+  alternates: { canonical: "/tax-and-salary/minimum-wage" },
 };
 
-export default function MinWagePage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/tax-and-salary", label: "Tax & Salary" },
+  { href: "/tax-and-salary/minimum-wage", label: "Minimum Wage" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is the minimum wage from April 2026?", a: "£12.71 an hour for workers aged 21 and over (the National Living Wage), £10.85 for 18 to 20 year olds, and £8.00 for 16 and 17 year olds and apprentices." },
+  { q: "Can unpaid time take me below the minimum wage?", a: "Yes. Required work you are not paid for, such as opening up, security checks or travel between jobs, counts as working time. Your pay divided by all those hours must still meet the minimum." },
+  { q: "Can my employer charge me for my uniform?", a: "They can, but if the cost takes your pay below the minimum wage for the hours you work, they are breaking the law. Work costs count as a deduction from pay for minimum wage purposes." },
+  { q: "Do tips count towards the minimum wage?", a: "No. Tips, gratuities and service charges must be paid on top of at least the minimum wage." },
+  { q: "What can I do if I am underpaid?", a: "Raise it with your employer, get free advice from Acas on 0300 123 1100, or complain to HMRC, which enforces the minimum wage. Employers must pay arrears at today's rates and can be fined." },
+];
+
+export default async function MinimumWagePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) =>
+    ["/tax-and-salary/hourly-to-salary", "/tax-and-salary/salary-calculator", "/tax-and-salary/overtime", "/tax-and-salary/holiday-entitlement", "/tax-and-salary/statutory-sick-pay", "/benefits/universal-credit"].includes(c.href),
+  );
   return (
-    <CalculatorShell
-      category="Tax & Salary"
-      updatedLabel="April 2026 rates"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax & Salary" }, { href: "/tax-and-salary/minimum-wage", label: "Minimum Wage" }]}
-      title="UK Minimum Wage Checker"
-      intro="From April 2026 the National Living Wage rose to £12.71 for everyone aged 21 and over. Younger workers and apprentices have their own minimums — and you have the right to be paid at least these rates."
-      calculator={<MinWageCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>We compare your stated hourly pay to the legal minimum for your age band. Any shortfall is multiplied by hours/week and 52 to project annual underpayment.</p>}
-          officialRules={
-            <ul>
-              <li>National Living Wage (21+): £12.71/hr.</li>
-              <li>18–20: £10.85/hr.</li>
-              <li>16–17 & apprentices (1st year, or under 19): £8.00/hr.</li>
-              <li>Sleep-in shifts: count as working time per Mencap (2021) — sometimes.</li>
-              <li>Employer must keep records for 6 years; HMRC enforces with fines up to 200% of arrears.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Tronc isn't pay for NMW", body: "Tips paid via tronc don’t count towards minimum wage. Your base pay must independently hit the floor." },
-            { title: "Deductions can take you under", body: "Uniform charges, till shortages, accommodation deductions above the offset (£10.66/day) can put your effective rate below minimum — that’s illegal." },
-            { title: "Salaried at the wage floor? Watch the hours", body: "If your salary works out below minimum when divided by actual hours, you’re underpaid. Common in retail/hospitality manager roles." },
-          ]}
-          faqs={[
-            { question: "Can I report underpayment?", answer: "Yes — confidentially via ACAS (0300 123 1100) or directly to HMRC. You can’t be sacked for it." },
-            { question: "What about volunteers and interns?", answer: "Genuine volunteers are exempt. But if you have set hours, contracted duties or get any reward beyond expenses, you’re a worker and NMW applies." },
-          ]}
-          disclaimer="2026/27 rates. Rates change every April."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="April 2026 rates"
+      title="Minimum Wage Checker"
+      lead="Check your pay against the legal minimum for your age, counting unpaid time, work costs and accommodation."
+      points={["April 2026 rates", "Unpaid time and deductions", "Back pay estimate", "Free and private"]}
+      guide={<MinWageGuide />}
+      faqs={FAQS}
+      related={related}
+      note="A simplified check using rates from 1 April 2026. HMRC assesses pay over each pay reference period. Not legal advice: contact Acas for help with your situation."
+    >
+      <MinWageStudio query={query} />
+    </FlagshipPage>
   );
 }

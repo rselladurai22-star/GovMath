@@ -52,3 +52,71 @@ export function statutoryRedundancy(input: RedundancyInput): RedundancyResult {
     yearsCounted,
   };
 }
+
+/** Northern Ireland has its own, higher weekly cap. */
+export const WEEKLY_PAY_CAP_NI_2026 = 783;
+export const TAX_FREE_TERMINATION = 30_000;
+
+/** Statutory minimum notice from an employer: 1 week after a month, then 1 week a year from 2 years, up to 12. */
+export function statutoryNoticeWeeks(years: number): number {
+  const y = Math.floor(Math.max(0, years));
+  if (y < 2) return 1;
+  return Math.min(12, y);
+}
+
+export type PackageInput = {
+  age: number;
+  years: number;
+  weeklyPay: number;
+  nation?: "gb" | "ni";
+  /** Employer pays statutory weeks on full weekly pay, ignoring the cap. */
+  uncapped?: boolean;
+  /** Any extra redundancy payment on top, £. */
+  enhancedExtra?: number;
+  /** Notice in your contract, weeks (0 = statutory only). */
+  contractNoticeWeeks?: number;
+  /** Paid in lieu instead of working the notice. */
+  payInLieu?: boolean;
+  /** Holiday owed, in days, and your pay for a day. */
+  holidayDays?: number;
+  daysPerWeek?: number;
+};
+
+export type PackageResult = {
+  statutory: number;
+  redundancy: number;
+  weeksDue: number;
+  noticeWeeks: number;
+  noticePay: number;
+  holidayPay: number;
+  taxFree: number;
+  taxable: number;
+  total: number;
+  capUsed: number;
+  capApplies: boolean;
+};
+
+export function redundancyPackage(i: PackageInput): PackageResult {
+  const cap = i.nation === "ni" ? WEEKLY_PAY_CAP_NI_2026 : WEEKLY_PAY_CAP_2026;
+  const base = statutoryRedundancy({ ageAtRedundancy: i.age, yearsOfService: i.years, weeklyPay: Math.min(i.weeklyPay, cap) });
+  const statutory = base.weeksDue * Math.min(Math.max(0, i.weeklyPay), cap);
+  const redundancy = (i.uncapped ? base.weeksDue * Math.max(0, i.weeklyPay) : statutory) + Math.max(0, i.enhancedExtra ?? 0);
+  const noticeWeeks = Math.max(statutoryNoticeWeeks(i.years), Math.max(0, i.contractNoticeWeeks ?? 0));
+  const noticePay = i.payInLieu ? noticeWeeks * Math.max(0, i.weeklyPay) : 0;
+  const dayPay = Math.max(0, i.weeklyPay) / Math.max(1, i.daysPerWeek ?? 5);
+  const holidayPay = Math.max(0, i.holidayDays ?? 0) * dayPay;
+  const taxFree = Math.min(redundancy, TAX_FREE_TERMINATION);
+  return {
+    statutory,
+    redundancy,
+    weeksDue: base.weeksDue,
+    noticeWeeks,
+    noticePay,
+    holidayPay,
+    taxFree,
+    taxable: redundancy - taxFree + noticePay + holidayPay,
+    total: redundancy + noticePay + holidayPay,
+    capUsed: cap,
+    capApplies: i.weeklyPay > cap,
+  };
+}
