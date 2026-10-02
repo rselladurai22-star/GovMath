@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
-// One typeface site-wide: Inter — designed for screens, with a tall x-height,
-// open apertures and unambiguous figures (1/l/I, 0/O), so it stays crisp at
-// small mobile sizes. Legacy font variables alias onto it in globals.css.
-const inter = Inter({
+// One typeface site-wide: Plus Jakarta Sans — a modern, premium geometric sans
+// with open, highly legible letterforms. Legacy font variables alias onto it
+// in globals.css.
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
@@ -62,7 +62,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={`h-full antialiased ${inter.variable}`}
+      className={`h-full antialiased ${jakarta.variable}`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text">
         <script
