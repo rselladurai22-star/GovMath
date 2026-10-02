@@ -1,3 +1,6 @@
+import AdUnit from "@/components/AdUnit";
+import { ADSENSE_CLIENT, ADSENSE_SLOT } from "@/lib/ads";
+
 type AdSlotProps = {
   /** Standard IAB sizes; height is reserved to prevent CLS. */
   size?: "leaderboard" | "billboard" | "mpu" | "skyscraper" | "mobile-banner";
@@ -13,18 +16,23 @@ const SIZE_STYLES: Record<NonNullable<AdSlotProps["size"]>, string> = {
   "mobile-banner": "h-[50px] max-w-[320px]",
 };
 
+/**
+ * An in-page ad position. Renders nothing until AdSense is configured with a
+ * display ad unit, so visitors and reviewers never see empty boxes.
+ */
 export default function AdSlot({
   size = "leaderboard",
   label = "Advertisement",
   className = "",
 }: AdSlotProps) {
+  if (!ADSENSE_CLIENT || !ADSENSE_SLOT) return null;
   return (
     <div
       role="complementary"
       aria-label={label}
       className={`ad-slot mx-auto w-full ${SIZE_STYLES[size]} ${className}`}
     >
-      {label}
+      <AdUnit client={ADSENSE_CLIENT} slot={ADSENSE_SLOT} />
     </div>
   );
 }
