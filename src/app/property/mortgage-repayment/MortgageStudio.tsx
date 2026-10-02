@@ -5,8 +5,8 @@ import { computeMortgage, monthlyPaymentFor, nextLtvStep, yearlySeries, type Mor
 import { stampDuty, type BuyerType } from "@/lib/tax/sdlt-2025";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
-import { Chips, InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
-import { Answer, Callout, Compare, DataTable, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
+import { AdvancedOptions, Chips, InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
+import { Answer, Assumptions, Callout, Compare, DataTable, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
 import { duration, gbp, gbpShort, percent, whole } from "@/components/flagship/format";
 import s from "@/components/flagship/Flagship.module.css";
 
@@ -73,6 +73,8 @@ export default function MortgageStudio({
     }, 400);
     return () => window.clearTimeout(t);
   }, [ready, st.price, st.deposit, st.rate, st.term]);
+
+  const advancedChanged = [st.type !== DEFAULTS.type, st.overpay !== DEFAULTS.overpay, st.buyer !== DEFAULTS.buyer].filter(Boolean).length;
 
   const reset = () => {
     set({ key: "reset" });
@@ -162,6 +164,16 @@ export default function MortgageStudio({
               onChange={(v) => set({ key: "term", value: v })}
               options={[15, 20, 25, 30, 35].map((t) => ({ value: t, label: `${t} yrs` }))}
             />
+          </InputGroup>
+
+          <AdvancedOptions
+            changed={advancedChanged}
+            onReset={() => {
+              set({ key: "type", value: DEFAULTS.type });
+              set({ key: "overpay", value: DEFAULTS.overpay });
+              set({ key: "buyer", value: DEFAULTS.buyer });
+            }}
+          >
             <Segmented
               label="Mortgage type"
               value={st.type}
@@ -171,18 +183,15 @@ export default function MortgageStudio({
                 { value: "interest-only", label: "Interest-only", note: "You only pay interest. The full loan is still owed at the end of the term." },
               ]}
             />
-          </InputGroup>
-
-          <InputGroup title="Extras">
             <MoneyField
               label="Overpay each month"
               value={st.overpay}
               onChange={(v) => set({ key: "overpay", value: v })}
               max={50_000}
-              hint="Optional. Most lenders let you overpay up to 10% of the balance a year without a fee."
+              hint="Most lenders let you overpay up to 10% of the balance a year without a fee."
             />
             <Segmented
-              label="Stamp Duty: you are a"
+              label="For Stamp Duty, you are a"
               value={st.buyer}
               onChange={(v) => set({ key: "buyer", value: v })}
               options={[
@@ -191,7 +200,7 @@ export default function MortgageStudio({
                 { value: "additional", label: "2nd home" },
               ]}
             />
-          </InputGroup>
+          </AdvancedOptions>
         </>
       }
     >
@@ -249,6 +258,15 @@ export default function MortgageStudio({
                 note: snap.overpayment.monthsSaved > 0 ? `${duration(snap.overpayment.monthsSaved)} sooner` : undefined,
                 tone: snap.overpayment.monthsSaved > 0 ? "good" : undefined,
               },
+        ]}
+      />
+
+      <Assumptions
+        items={[
+          { label: "Mortgage type", value: interestOnly ? "Interest-only" : "Repayment" },
+          { label: "Interest rate", value: `${st.rate}% for the whole term` },
+          { label: "Overpayments", value: st.overpay > 0 ? `${gbp(st.overpay)} a month` : "None" },
+          { label: "Stamp Duty", value: st.buyer === "first-time" ? "First-time buyer, England & NI" : st.buyer === "additional" ? "Second home, England & NI" : "Home mover, England & NI" },
         ]}
       />
 

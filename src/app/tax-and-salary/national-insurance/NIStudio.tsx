@@ -15,7 +15,7 @@ import {
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { InputGroup, MoneyField, Segmented } from "@/components/flagship/inputs";
-import { Answer, Callout, Compare, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
+import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
 import { gbp, gbpShort, percent } from "@/components/flagship/format";
 import s from "@/components/flagship/Flagship.module.css";
 
@@ -144,6 +144,16 @@ export default function NIStudio({ initialIncome, initialMode, showResults }: { 
           { label: "A week", value: gbp(ni.total / 52) },
           { label: "Effective rate", value: percent(effective, 1), note: `Of your ${word}` },
         ]}
+      />
+
+      <Assumptions
+        items={[
+          { label: "Tax year", value: "2025/26" },
+          { label: "Age", value: "Under State Pension age" },
+          { label: employee ? "Paid" : "Profits", value: employee ? "Evenly through the year" : "For the whole tax year" },
+          { label: "Category", value: employee ? "Standard (category A)" : "Class 4" },
+        ]}
+        note="Over State Pension age, a company director or paid unevenly? The guide below explains what changes."
       />
 
       {/* 3. Band by band */}

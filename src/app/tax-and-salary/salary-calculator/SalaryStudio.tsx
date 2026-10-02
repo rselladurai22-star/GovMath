@@ -12,8 +12,8 @@ import {
 } from "@/lib/tax/take-home-engine";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
-import { InputGroup, MoneyField, Segmented, SelectField, StepperField } from "@/components/flagship/inputs";
-import { Answer, Callout, Compare, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
+import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField } from "@/components/flagship/inputs";
+import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
 import { gbp, gbpShort, percent } from "@/components/flagship/format";
 import s from "@/components/flagship/Flagship.module.css";
 
@@ -123,13 +123,6 @@ export default function SalaryStudio({
               big
               slider={{ min: 0, max: 200_000, step: 500, ends: ["£0", "£200k"] }}
             />
-            <MoneyField
-              label="Bonus this year"
-              value={st.bonus}
-              onChange={(v) => set({ key: "bonus", value: v })}
-              max={10_000_000}
-              hint="Optional. Taxed as part of your pay for the year."
-            />
             <Segmented
               label="Where you live"
               value={st.region}
@@ -165,6 +158,16 @@ export default function SalaryStudio({
               hint="Not sure? Plan 2 for English and Welsh courses started 2012 to 2023, Plan 5 from 2023."
             />
           </InputGroup>
+
+          <AdvancedOptions changed={st.bonus > 0 ? 1 : 0} onReset={() => set({ key: "bonus", value: 0 })}>
+            <MoneyField
+              label="Bonus this year"
+              value={st.bonus}
+              onChange={(v) => set({ key: "bonus", value: v })}
+              max={10_000_000}
+              hint="Taxed as part of your pay for the year. Your pension percentage applies to it too."
+            />
+          </AdvancedOptions>
         </>
       }
     >
@@ -217,6 +220,15 @@ export default function SalaryStudio({
           { label: "A month", value: gbp(snap.perPeriod.monthly) },
           { label: "A week", value: gbp(snap.perPeriod.weekly) },
           { label: "A working day", value: gbp(snap.perPeriod.daily), note: "Based on 260 days" },
+        ]}
+      />
+
+      <Assumptions
+        items={[
+          { label: "Tax code", value: scot ? "S1257L (standard)" : "1257L (standard)" },
+          { label: "Paid", value: "Monthly, evenly through the year" },
+          { label: "Pension", value: st.pension > 0 ? `${st.pension}% by salary sacrifice` : "None" },
+          { label: "Student loan", value: STUDENT_PLANS[st.plan].label },
         ]}
       />
 

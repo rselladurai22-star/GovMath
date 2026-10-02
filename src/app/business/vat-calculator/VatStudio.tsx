@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { addVat, removeVat, VAT_RATES, type VatRateKey } from "@/lib/tax/vat";
 import Studio from "@/components/flagship/Studio";
-import { InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
-import { Answer, Callout, Compare, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
+import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
+import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
 import { gbp } from "@/components/flagship/format";
 import s from "@/components/flagship/Flagship.module.css";
 
@@ -134,9 +134,9 @@ export default function VatStudio({
               options={RATES.map((x) => ({ value: x.value, label: x.label.split(" ")[0], note: `${x.label}: ${x.note}` }))}
             />
           </InputGroup>
-          <InputGroup title="For businesses">
+          <AdvancedOptions changed={flat !== DEFAULTS.flat ? 1 : 0} onReset={() => setFlat(DEFAULTS.flat)}>
             <StepperField
-              label="Your flat rate (optional)"
+              label="Your Flat Rate Scheme percentage"
               value={flat}
               onChange={setFlat}
               step={0.5}
@@ -146,7 +146,7 @@ export default function VatStudio({
               dp={1}
               hint="Only if you use the Flat Rate Scheme. Your rate depends on your trade; 16.5% if you're a limited cost trader."
             />
-          </InputGroup>
+          </AdvancedOptions>
         </>
       }
     >
@@ -188,6 +188,15 @@ export default function VatStudio({
           { label: "Including VAT", value: gbp(r.gross, true) },
           { label: "To remove VAT", value: rate > 0 ? `÷ ${(1 + rate).toFixed(2)}` : "Nothing to remove", note: rate > 0 ? `To add it, × ${(1 + rate).toFixed(2)}` : undefined },
         ]}
+      />
+
+      <Assumptions
+        items={[
+          { label: "VAT rate", value: `${pct} (${meta.label.split(" ")[1]})` },
+          { label: "Rounding", value: "To the nearest penny" },
+          { label: "Flat rate (for comparison)", value: `${flat}%` },
+        ]}
+        note="Check the rate for your goods or services on GOV.UK if you're not sure which applies."
       />
 
       {/* 3. Split */}
