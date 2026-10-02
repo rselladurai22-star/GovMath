@@ -8,7 +8,7 @@ const reduced = () => typeof window !== "undefined" && window.matchMedia("(prefe
  * Page-level motion for the homepage. Progressive: content is fully visible
  * without JS or with reduced motion. When active it
  *  - marks the root `data-motion="on"` so CSS can hide `[data-reveal]` items,
- *  - reveals them as they scroll into view,
+ *  - reveals them (and `[data-band]` section bands) as they scroll into view,
  *  - feeds cursor position to `[data-spot]` cards for the spotlight effect.
  */
 export function HomeMotion({ rootId }: { rootId: string }) {
@@ -17,7 +17,7 @@ export function HomeMotion({ rootId }: { rootId: string }) {
     if (!root || reduced()) return;
 
     root.dataset.motion = "on";
-    const items = Array.from(root.querySelectorAll<HTMLElement>("[data-reveal]"));
+    const items = Array.from(root.querySelectorAll<HTMLElement>("[data-reveal], [data-band]"));
     let io: IntersectionObserver | undefined;
     if ("IntersectionObserver" in window) {
       io = new IntersectionObserver(
