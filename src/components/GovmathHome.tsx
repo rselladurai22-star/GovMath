@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 import { CATEGORIES, CALCULATORS, getCalculatorsByCategory } from "@/lib/calculators";
 import { accentVars, CAT, iconForTitle, LineIcon } from "@/components/category-style";
 import HomeSearch, { type SearchItem } from "@/components/HomeSearch";
-import TakeHomeSimulator from "@/components/home/TakeHomeSimulator";
+import QuickCalcs from "@/components/home/QuickCalcs";
 import { CountUp, HomeMotion } from "@/components/home/Motion";
 import AdSlot from "@/components/AdSlot";
 import styles from "./GovmathHome.module.css";
@@ -167,16 +167,18 @@ export default function GovmathHome() {
         </div>
       </section>
 
-      {/* ── Live calculator ────────────────────────────── */}
-      <section id="calculator" aria-labelledby="simulator-heading" className={`gm-wrap ${styles.block}`}>
+      {/* ── Quick calculators ───────────────────────────── */}
+      <section id="calculator" aria-labelledby="quick-heading" className={`gm-wrap ${styles.block}`}>
         <div className={styles.blockHead} data-reveal>
           <div>
-            <span className={styles.kicker}>Try it now</span>
-            <p className={styles.blockTitle}>See your take-home pay in seconds</p>
+            <span className={styles.kicker}>Quick calculators</span>
+            <h2 id="quick-heading" className={styles.blockTitle}>
+              Get an answer in seconds
+            </h2>
           </div>
         </div>
         <div data-reveal>
-          <TakeHomeSimulator />
+          <QuickCalcs />
         </div>
       </section>
 
