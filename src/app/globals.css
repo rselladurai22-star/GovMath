@@ -525,17 +525,16 @@ textarea:focus-visible,
 }
 
 /* Reserved-space ad slot to guarantee zero CLS */
+/* Ad wrappers collapse when their slot renders nothing (AdSense not set up). */
+[class*="adRow"]:empty,
+[class*="sideAd"]:empty,
+.gm-wrap:empty {
+  display: none;
+}
+
 .ad-slot {
-  background: var(--ad-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #8a98a8;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  border: 1px dashed var(--line);
-  border-radius: 8px;
+  display: block;
+  overflow: hidden;
 }
 
 /* ──────────────────────────────────────────────────────────────
