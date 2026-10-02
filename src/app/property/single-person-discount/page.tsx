@@ -1,45 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import SPDCalculator from "./SPDCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import SPDStudio from "./SPDStudio";
+import SPDGuide from "./SPDGuide";
 
 export const metadata: Metadata = {
-  title: "Single Person Council Tax Discount Calculator (25%)",
-  description: "Lone adult households get 25% off Council Tax. Calculate your saving.",
+  title: "Single Person Council Tax Discount Calculator (2026/27)",
+  description:
+    "Check if you qualify for the 25% single person discount on council tax, how much you save a year and a month, and how it works if you live alone for only part of the year.",
+  alternates: { canonical: "/property/single-person-discount" },
 };
 
-export default function SPDPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/property", label: "Mortgages & Property" },
+  { href: "/property/single-person-discount", label: "Single Person Discount" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "Who gets the single person discount?", a: "Anyone 18 or over who lives alone, or whose other adult household members are all disregarded, such as full-time students or children." },
+  { q: "How much is the single person discount?", a: "25% off your council tax bill. On a £2,392 bill that is £598 a year." },
+  { q: "Can the discount be backdated?", a: "Most councils backdate it to when you became eligible, if you can show the date." },
+  { q: "What if someone moves in?", a: "Tell your council. In England you should do so within 21 days, and a penalty can apply if you do not." },
+  { q: "Does a lodger stop the discount?", a: "Yes, if your home is their main home." },
+];
+
+export default async function SPDPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/property/council-tax-bands", "/property/rent-a-room", "/benefits/universal-credit", "/students/student-council-tax", "/property/moving-house-budget", "/benefits/pension-credit"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Property"
-      updatedLabel="25% statutory discount"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/property", label: "Property" }, { href: "/property/single-person-discount", label: "Single Person Discount" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026/27"
       title="Single Person Discount Calculator"
-      intro="If you’re the only adult in your household, you get 25% off Council Tax. It’s not automatic — you have to apply. Worth doing within minutes of moving in alone."
-      calculator={<SPDCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Council Tax assumes 2 adults per home. The base bill includes a 25% ‘second adult’ loading. Remove it = 75% of full bill.</p>}
-          officialRules={
-            <ul>
-              <li>25% discount where only one resident adult (18+) lives in the dwelling.</li>
-              <li>‘Disregarded’ people don’t count: full-time students, severely mentally impaired, under-18s, live-in carers (for someone other than spouse), apprentices.</li>
-              <li>100% empty-property discount only at council discretion — most charge 100% even on empty homes, with premiums after 1 year.</li>
-              <li>2nd home: no discount in most councils.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Live-in partner = no discount", body: "Common-law partners count as the second adult. So does a returning student child after graduation." },
-            { title: "Backdate, but don’t over-claim", body: "Councils can backdate up to 6 years if eligible. But fraudulent claims (lying about who lives there) carry £70+ penalties and prosecution." },
-            { title: "Council Tax Reduction is separate", body: "Low income? You may also qualify for CT Reduction (up to 100% off). Apply for both — they stack." },
-          ]}
-          faqs={[
-            { question: "What if my flatmate is a student?", answer: "Full-time students are disregarded — so you become ‘the only countable adult’ and qualify for 25% off." },
-            { question: "Does it apply to my second home?", answer: "Usually no. Some councils give 10–50% on second homes; many now charge a 100% premium." },
-          ]}
-          disclaimer="Apply via your local council. Discount applies from the date your circumstances qualify."
-        />
-      }
-    />
+      lead="See whether you qualify for 25% off your council tax and how much it saves you."
+      points={["25% off your bill", "Who isn't counted", "Part-year discounts", "Free and private"]}
+      guide={<SPDGuide />}
+      faqs={FAQS}
+      related={related}
+      note="The 25% discount applies in England, Scotland and Wales. Your council confirms eligibility and the amount."
+    >
+      <SPDStudio query={query} />
+    </FlagshipPage>
   );
 }

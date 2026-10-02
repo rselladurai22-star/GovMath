@@ -1,54 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import CouncilTaxBandsCalculator from "./CouncilTaxBandsCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import CouncilTaxStudio from "./CouncilTaxStudio";
+import CouncilTaxGuide from "./CouncilTaxGuide";
 
 export const metadata: Metadata = {
-  title: "Council Tax Bands Calculator (UK 2026/27)",
-  description: "Estimate your annual council tax from your band and nation — England, Wales or Scotland.",
+  title: "Council Tax Calculator by Band (2026/27)",
+  description:
+    "Work out council tax for any band in England, Wales or Scotland: national averages or your council's Band D charge, the single person discount, disability reduction, second home premiums and monthly instalments.",
+  alternates: { canonical: "/property/council-tax-bands" },
 };
 
-export default function CouncilTaxBandsPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/property", label: "Mortgages & Property" },
+  { href: "/property/council-tax-bands", label: "Council Tax Bands" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How is council tax worked out?", a: "Each home is in a band based on its value on a fixed date (1991 in England and Scotland, 2003 in Wales). Your council sets a Band D charge and each band pays a fixed fraction of it, from 6/9 for Band A to 18/9 for Band H in England." },
+  { q: "What is the average council tax for 2026/27?", a: "The average Band D charge is about £2,392 in England, £2,283 in Wales and £1,662 in Scotland. Your council's charge may be higher or lower." },
+  { q: "Who gets a council tax discount?", a: "If only one adult counts you get 25% off; if no adults count, 50% off. Students, apprentices, carers and some others are not counted." },
+  { q: "Can I pay council tax over 12 months?", a: "Yes. Bills are normally split into 10 monthly instalments, but you can ask your council for 12." },
+  { q: "How do I challenge my council tax band?", a: "Ask the Valuation Office Agency (England and Wales) or your local assessor (Scotland) to review it. A review can move the band up as well as down." },
+];
+
+export default async function CouncilTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/property/single-person-discount", "/property/moving-house-budget", "/property/rent-vs-buy", "/benefits/universal-credit", "/students/student-council-tax", "/property/mortgage-affordability"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Property"
-      updatedLabel="2026/27 averages"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/property", label: "Property" },
-        { href: "/property/council-tax-bands", label: "Council Tax Bands" },
-      ]}
-      title="Council Tax Bands Calculator"
-      intro="Council tax is set by each local authority, but the band ratio is fixed nationally. We multiply your band’s share by the national Band D average — close enough for budgeting."
-      calculator={<CouncilTaxBandsCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              Each band has a fixed share of a Band D bill (A = 6/9, B = 7/9, … H = 18/9 in England & Wales; Scotland uses a different 2017 schedule). We multiply your nation’s national Band D average by your band’s ratio.
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>Bands set on 1 April 1991 values (England, Scotland) or 1 April 2003 (Wales).</li>
-              <li>England & Scotland: 8 bands (A–H). Wales: 9 bands (A–I).</li>
-              <li>25% single-person discount; 50% if all residents are disregarded (e.g. all full-time students).</li>
-              <li>Empty homes can attract a 100–300% premium after 1–10 years.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "National average is just that — average", body: "Local rates vary by 30–40% even within the same band. Always check the actual bill from your council." },
-            { title: "Wales has an extra band I", body: "Properties valued over £424,000 (2003 values) fall in Band I — pay 21/9 of Band D." },
-            { title: "Challenging your band", body: "If neighbours in identical houses are in a lower band, you can ask the VOA to review yours. It can go up as well as down." },
-          ]}
-          faqs={[
-            { question: "How do I find my band?", answer: "Search your postcode at gov.uk/council-tax-bands. The Valuation Office Agency keeps the register." },
-            { question: "Why is my real bill different?", answer: "Your council sets the precept on top of the Band D base. London boroughs and inner-city councils tend to be cheaper than rural ones." },
-            { question: "What if I pay over 10 vs 12 months?", answer: "Default is 10 instalments (April–January). You can ask to spread over 12 months — same total, lower monthly amount." },
-          ]}
-          disclaimer="Estimates based on national Band D averages (April 2026). Your actual bill is set by your local authority — check gov.uk/council-tax."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026/27"
+      title="Council Tax Band Calculator"
+      lead="Your yearly and monthly council tax for any band, with discounts, reductions and premiums."
+      points={["England, Wales and Scotland", "Discounts and reductions", "Monthly instalments", "Free and private"]}
+      guide={<CouncilTaxGuide />}
+      faqs={FAQS}
+      related={related}
+      note="2026/27. National average Band D charges are a guide: enter your council's own charge for an exact figure."
+    >
+      <CouncilTaxStudio query={query} />
+    </FlagshipPage>
   );
 }

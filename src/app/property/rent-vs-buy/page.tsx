@@ -1,45 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import RentVsBuyCalculator from "./RentVsBuyCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import RentVsBuyStudio from "./RentVsBuyStudio";
+import RentVsBuyGuide from "./RentVsBuyGuide";
 
 export const metadata: Metadata = {
-  title: "Rent vs Buy Calculator (UK)",
-  description: "Should you rent or buy in the UK? Compare the true financial outcome over a chosen period.",
+  title: "Rent vs Buy Calculator (UK, 2026)",
+  description:
+    "Compare renting and buying over time: deposit, Stamp Duty, mortgage, upkeep and selling costs against rent and investing the difference, with your wealth year by year and the break-even point.",
+  alternates: { canonical: "/property/rent-vs-buy" },
 };
 
-export default function RentVsBuyPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/property", label: "Mortgages & Property" },
+  { href: "/property/rent-vs-buy", label: "Rent vs Buy" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "Is it better to rent or buy?", a: "It depends on how long you stay, house price growth, the rent compared with the price, mortgage rates and what your savings would earn. Buying usually wins over longer periods." },
+  { q: "How long do I need to stay for buying to pay off?", a: "Often three to five years or more, because of the upfront and selling costs." },
+  { q: "Is renting dead money?", a: "No more than mortgage interest, upkeep and Stamp Duty. The fair comparison is rent against those costs." },
+  { q: "What return should I assume on investments?", a: "Long-term stock market returns have historically been higher than cash, but are not guaranteed. Try a cautious and an optimistic figure." },
+  { q: "Does the calculator include Stamp Duty?", a: "Yes, for England and Northern Ireland, including first-time buyer relief." },
+];
+
+export default async function RentVsBuyPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/property/mortgage-affordability", "/property/first-time-buyer", "/property/mortgage-repayment", "/investing/compound-interest", "/property/shared-ownership", "/property/moving-house-budget"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Property"
-      updatedLabel="With opportunity cost"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/property", label: "Property" }, { href: "/property/rent-vs-buy", label: "Rent vs Buy" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026"
       title="Rent vs Buy Calculator"
-      intro="Buying isn’t automatically better. We compare the net cost of owning (interest + maintenance − equity built) against renting (rent − investment growth on your would-be deposit)."
-      calculator={<RentVsBuyCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Buying side: amortise the mortgage, add maintenance at ~1%/year, subtract the equity built (paid principal + appreciation). Renting side: total rent paid, minus the investment growth on your would-be deposit at your chosen real return. Excludes SDLT & transaction costs.</p>}
-          officialRules={
-            <ul>
-              <li>Owning costs include: SDLT, legal fees, surveys, maintenance (~1%/yr), insurance.</li>
-              <li>UK long-run house growth ~2.5% real (Nationwide, since 1973).</li>
-              <li>UK long-run equity return ~5% real (Barclays Equity Gilt Study).</li>
-              <li>Time horizon matters — break-even is typically 5–7 years.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Excluded SDLT could change the answer", body: "On a £350k second-home purchase, SDLT alone is £20k+. Add to ownership cost." },
-            { title: "Maintenance is bigger than you think", body: "Roof, boiler, kitchen, bathroom — 1%/yr is a long-run average but real spend is lumpy." },
-            { title: "Optionality has value", body: "Renting lets you move for jobs cheaply. Don’t buy if your time horizon is &lt;3 years." },
-          ]}
-          faqs={[
-            { question: "Are you including imputed rent for owners?", answer: "No — both scenarios assume the same housing services consumed. Just financial flows differ." },
-            { question: "What about leverage?", answer: "Buying gives ~10× leverage on the deposit — magnifies both gains and losses. The growth-rate input captures this." },
-          ]}
-          disclaimer="Educational. Real outcomes depend on local market, life circumstances, and luck."
-        />
-      }
-    />
+      lead="Compare your wealth year by year if you buy, or rent and invest the difference."
+      points={["Wealth year by year", "Break-even point", "Your own assumptions", "Free and private"]}
+      guide={<RentVsBuyGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Illustrative. Results depend heavily on your assumptions for house prices, rents and investment returns. Try several."
+    >
+      <RentVsBuyStudio query={query} />
+    </FlagshipPage>
   );
 }
