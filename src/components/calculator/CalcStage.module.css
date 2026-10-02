@@ -11,7 +11,7 @@
 /* ── Stage 1: inputs only ─────────────────────────────── */
 .stage:not([data-ready]) > [class*="lg:grid-cols-["],
 .stage:not([data-ready]) > * > [class*="lg:grid-cols-["] {
-  grid-template-columns: minmax(0, 760px);
+  grid-template-columns: minmax(0, 960px);
   justify-content: center;
   /* The calculator's own vertical spacing would open a gap above the
      Calculate bar while everything after the grid is hidden. */
@@ -28,6 +28,26 @@
   border-bottom: 0;
 }
 
+/* Before Calculate, fields sit two to a row so the whole form fits on
+   screen. Headings, notes and a lone wrapper span the full width. */
+@media (min-width: 768px) {
+  .stage:not([data-ready]) > [class*="lg:grid-cols-["] > :first-child,
+  .stage:not([data-ready]) > * > [class*="lg:grid-cols-["] > :first-child {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 1rem 1.75rem;
+  }
+  .stage:not([data-ready]) > [class*="lg:grid-cols-["] > :first-child > *,
+  .stage:not([data-ready]) > * > [class*="lg:grid-cols-["] > :first-child > * {
+    margin: 0;
+  }
+  .stage:not([data-ready]) > [class*="lg:grid-cols-["] > :first-child > :is(:only-child, :not(:has(input, select, textarea))),
+  .stage:not([data-ready]) > * > [class*="lg:grid-cols-["] > :first-child > :is(:only-child, :not(:has(input, select, textarea))) {
+    grid-column: 1 / -1;
+  }
+}
+
 .foot {
   position: sticky;
   bottom: 0;
@@ -35,9 +55,9 @@
   display: none;
   justify-items: center;
   gap: 0.6rem;
-  max-width: 760px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 1.15rem 1.5rem 1.3rem;
+  padding: 0.9rem 1.5rem 1rem;
   border: 1px solid #e3e6f4;
   border-top-color: #eceef8;
   border-radius: 0 0 22px 22px;
@@ -60,8 +80,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  width: min(100%, 420px);
-  min-height: 56px;
+  width: min(100%, 380px);
+  min-height: 50px;
   border: 0;
   border-radius: 16px;
   background: var(--brand-gradient);

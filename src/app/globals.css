@@ -45,6 +45,20 @@
   --ad-bg: var(--ice);
 
   --ring: var(--blue-bright);
+
+  /* ── Type scale ─────────────────────────────────────────
+     One scale for the whole site. rem follows the fluid root size set on
+     <html> below, and the display sizes also ease with viewport width so a
+     laptop, a big monitor and a tablet all feel the same. */
+  --fs-display: clamp(2.25rem, 1.5rem + 1.5vw, 3rem); /* homepage hero */
+  --fs-h1: clamp(1.75rem, 1.35rem + 0.8vw, 2.25rem); /* page titles */
+  --fs-h2: clamp(1.5rem, 1.2rem + 0.6vw, 1.875rem); /* section titles */
+  --fs-h3: 1.125rem; /* card titles */
+  --fs-figure: clamp(2.125rem, 1.6rem + 1vw, 2.625rem); /* headline results */
+  --fs-lead: 1.0625rem; /* intro paragraphs */
+  --fs-body: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xs: 0.8125rem;
   /* Emphasis surfaces (topic bars, result panels, promos) — white text ≥5:1. */
   --brand-gradient: linear-gradient(120deg, #4353ff 0%, #7c3aed 100%);
   --brand-glow: 0 14px 30px -12px rgba(87, 70, 245, 0.55);
@@ -96,6 +110,7 @@
   }
 
   html {
+    font-size: clamp(15px, 0.35vw + 10px, 16.5px);
     overflow-x: clip;
     scroll-behavior: smooth;
     scroll-padding-top: 2rem;
@@ -119,6 +134,9 @@
   @media (max-width: 700px) {
     :root {
       --mobile-scale: 0.85;
+    }
+    html {
+      font-size: 16px;
     }
     body {
       zoom: var(--mobile-scale);
@@ -347,20 +365,15 @@ textarea:focus-visible,
 /* Section header: eyebrow, display h2, supporting line. */
 .gm-section-title {
   margin: 0;
-  font-size: 2.25rem;
+  font-size: var(--fs-h2);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.032em;
 }
-@media (max-width: 640px) {
-  .gm-section-title {
-    font-size: 1.75rem;
-  }
-}
 .gm-section-lead {
   margin-top: 0.6rem;
   color: var(--muted);
-  font-size: 1.0625rem;
+  font-size: var(--fs-lead);
   line-height: 1.6;
   max-width: 60ch;
 }
@@ -376,7 +389,7 @@ textarea:focus-visible,
 }
 .gm-prose h2 {
   color: var(--navy);
-  font-size: 1.6rem;
+  font-size: var(--fs-h2);
   font-weight: 700;
   line-height: 1.25;
   margin-top: 2.4rem;
@@ -473,7 +486,7 @@ textarea:focus-visible,
 
 /* Legacy explainer wrapper used by CalculatorShell pages. */
 .prose-like h2 {
-  font-size: 1.6rem;
+  font-size: var(--fs-h2);
   line-height: 1.25;
   color: var(--navy);
 }
@@ -721,7 +734,7 @@ textarea:focus-visible,
   box-shadow: 0 1px 2px rgba(13, 19, 48, 0.04), 0 36px 70px -42px rgba(87, 70, 245, 0.7);
 }
 .gm-calc .rounded-xl.bg-surface.border.p-6 {
-  padding: 1.75rem;
+  padding: 1.4rem 1.5rem;
 }
 
 /* Result card — rotating gradient border */
@@ -755,7 +768,7 @@ textarea:focus-visible,
   font-variant-numeric: tabular-nums;
 }
 .gm-calc .text-4xl {
-  font-size: 2.75rem;
+  font-size: var(--fs-figure);
 }
 .gm-calc .text-4xl span,
 .gm-calc .text-3xl.font-bold span {
@@ -830,12 +843,12 @@ textarea:focus-visible,
 .gm-calc input[type="date"],
 .gm-calc input[type="time"],
 .gm-calc select {
-  min-height: 52px;
+  min-height: 46px;
   border: 1.5px solid #d5d9ee;
-  border-radius: 14px;
+  border-radius: 12px;
   background: #fff;
   color: var(--navy);
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   transition: border-color 0.2s ease, box-shadow 0.3s ease;
@@ -856,9 +869,9 @@ textarea:focus-visible,
   accent-color: var(--blue);
 }
 .gm-calc label.block {
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.35rem;
   color: var(--navy);
-  font-size: 0.9375rem;
+  font-size: var(--fs-sm);
   font-weight: 700;
 }
 

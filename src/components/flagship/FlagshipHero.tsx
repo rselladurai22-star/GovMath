@@ -20,19 +20,21 @@ export default function FlagshipHero({
   return (
     <section className={s.hero}>
       <div className="gm-wrap">
-        <nav aria-label="Breadcrumb" className={s.crumbs}>
-          <ol>
-            {breadcrumbs.map((c, i) => (
-              <li key={c.href}>
-                {i === breadcrumbs.length - 1 ? <span aria-current="page">{c.label}</span> : <Link href={c.href}>{c.label}</Link>}
-              </li>
-            ))}
-          </ol>
-        </nav>
-        <span className={s.heroEyebrow}>
-          <i aria-hidden="true" />
-          {eyebrow}
-        </span>
+        <div className={s.heroTop}>
+          <nav aria-label="Breadcrumb" className={s.crumbs}>
+            <ol>
+              {breadcrumbs.map((c, i) => (
+                <li key={c.href}>
+                  {i === breadcrumbs.length - 1 ? <span aria-current="page">{c.label}</span> : <Link href={c.href}>{c.label}</Link>}
+                </li>
+              ))}
+            </ol>
+          </nav>
+          <span className={s.heroEyebrow}>
+            <i aria-hidden="true" />
+            {eyebrow}
+          </span>
+        </div>
         <h1 className={s.heroTitle}>{title}</h1>
         <p className={s.heroLead}>{lead}</p>
         <ul className={s.heroPoints}>
