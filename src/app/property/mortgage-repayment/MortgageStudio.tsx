@@ -35,8 +35,19 @@ function reducer(st: State, a: Action): State {
   return next;
 }
 
-export default function MortgageStudio(initial: { price: number; deposit: number; rate: number; term: number }) {
+export default function MortgageStudio({
+  showResults,
+  ...initial
+}: {
+  price: number;
+  deposit: number;
+  rate: number;
+  term: number;
+  /** Open with results showing, e.g. when arriving from a shared link. */
+  showResults: boolean;
+}) {
   const [st, set] = useReducer(reducer, { ...DEFAULTS, ...initial });
+  const [ready, setReady] = useState(showResults);
   const [copied, setCopied] = useState(false);
 
   const inputs = { price: st.price, deposit: st.deposit, ratePct: st.rate, termYears: st.term, type: st.type };
@@ -52,14 +63,22 @@ export default function MortgageStudio(initial: { price: number; deposit: number
   const depositPct = st.price > 0 ? st.deposit / st.price : 0;
   const freeYear = new Date().getFullYear() + Math.ceil(snap.payoffMonths / 12);
 
-  // Keep the address bar in step so the page can be bookmarked or shared.
+  // Once there are results, keep the address bar in step so the page can be
+  // bookmarked or shared.
   useEffect(() => {
+    if (!ready) return;
     const t = window.setTimeout(() => {
       const q = new URLSearchParams({ price: String(st.price), deposit: String(st.deposit), rate: String(st.rate), term: String(st.term) });
       window.history.replaceState(null, "", `${window.location.pathname}?${q}`);
     }, 400);
     return () => window.clearTimeout(t);
-  }, [st.price, st.deposit, st.rate, st.term]);
+  }, [ready, st.price, st.deposit, st.rate, st.term]);
+
+  const reset = () => {
+    set({ key: "reset" });
+    setReady(false);
+    window.history.replaceState(null, "", window.location.pathname);
+  };
 
   const share = async () => {
     try {
@@ -86,7 +105,10 @@ export default function MortgageStudio(initial: { price: number; deposit: number
   return (
     <Studio
       title="Your mortgage"
-      onReset={() => set({ key: "reset" })}
+      ready={ready}
+      onCalculate={() => setReady(true)}
+      calculateLabel="Calculate my mortgage"
+      onReset={reset}
       dock={{ label: "Monthly payment", value: gbp(snap.monthlyOutgoing, true) }}
       inputs={
         <>
