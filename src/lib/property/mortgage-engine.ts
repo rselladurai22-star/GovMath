@@ -249,3 +249,38 @@ export function formatMonths(months: number): string {
   if (m === 0) return `${y} yr`;
   return `${y} yr ${m} mo`;
 }
+
+/** LTV thresholds lenders price around, highest first. */
+const LTV_STEPS = [0.95, 0.9, 0.85, 0.8, 0.75, 0.6];
+
+/**
+ * The next LTV threshold below your current one and the extra deposit
+ * (rounded up to £100) needed to reach it, or null if you're already in the
+ * best band or there's no loan.
+ */
+export function nextLtvStep(price: number, deposit: number): { threshold: number; extraDeposit: number } | null {
+  if (price <= 0) return null;
+  const ltv = Math.max(0, price - deposit) / price;
+  const threshold = LTV_STEPS.find((t) => t < ltv - 1e-9);
+  if (threshold === undefined) return null;
+  const extra = price * (1 - threshold) - deposit;
+  return { threshold, extraDeposit: Math.max(100, Math.ceil(extra / 100) * 100) };
+}
+
+/**
+ * Year-indexed series for charts: index 0 is today (full loan, nothing paid),
+ * index i is the end of year i. Padded to `years` so a mortgage that clears
+ * early lines up against the full-term baseline.
+ */
+export function yearlySeries(snap: MortgageSnapshot, years = snap.inputs.termYears): { balance: number[]; interestPaid: number[] } {
+  const balance = [snap.loan];
+  const interestPaid = [0];
+  let cum = 0;
+  for (let y = 1; y <= years; y++) {
+    const row = snap.schedule[y - 1];
+    if (row) cum += row.interest;
+    balance.push(row ? row.balance : 0);
+    interestPaid.push(cum);
+  }
+  return { balance, interestPaid };
+}

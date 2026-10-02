@@ -5,6 +5,8 @@ import {
   monthlyPaymentFor,
   paymentAtRateShift,
   nextLtvBand,
+  nextLtvStep,
+  yearlySeries,
   type MortgageInputs,
 } from "./mortgage-engine";
 
@@ -58,5 +60,38 @@ describe("mortgage engine", () => {
   it("total repaid = loan + total interest for a repayment mortgage", () => {
     const snap = computeMortgage(base);
     expect(snap.totalRepaid).toBeCloseTo(snap.loan + snap.totalInterest, 0);
+  });
+});
+
+describe("nextLtvStep", () => {
+  it("finds the next threshold and the extra deposit to reach it", () => {
+    // £350k at 80% LTV (£70k deposit) → next step is 75%, needing £87,500.
+    expect(nextLtvStep(350000, 70000)).toEqual({ threshold: 0.75, extraDeposit: 17500 });
+  });
+  it("rounds the extra deposit up to £100", () => {
+    // 90.1% LTV → 90% needs £300 more on £300k.
+    expect(nextLtvStep(300000, 29700)).toEqual({ threshold: 0.9, extraDeposit: 300 });
+  });
+  it("returns null in the best band or with no price", () => {
+    expect(nextLtvStep(300000, 150000)).toBeNull();
+    expect(nextLtvStep(0, 0)).toBeNull();
+  });
+});
+
+describe("yearlySeries", () => {
+  it("starts at the full loan and ends at zero for a repayment mortgage", () => {
+    const snap = computeMortgage(base);
+    const { balance, interestPaid } = yearlySeries(snap);
+    expect(balance).toHaveLength(base.termYears + 1);
+    expect(balance[0]).toBe(snap.loan);
+    expect(balance.at(-1)).toBeCloseTo(0, 2);
+    expect(interestPaid.at(-1)).toBeCloseTo(snap.totalInterest, 2);
+  });
+  it("pads an early payoff to the full term", () => {
+    const snap = computeMortgage({ ...base, overpayment: 1000 });
+    const { balance, interestPaid } = yearlySeries(snap, base.termYears);
+    expect(balance).toHaveLength(base.termYears + 1);
+    expect(balance.at(-1)).toBe(0);
+    expect(interestPaid.at(-1)).toBeCloseTo(snap.totalInterest, 2);
   });
 });
