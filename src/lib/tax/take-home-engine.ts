@@ -1,7 +1,7 @@
 /**
- * Take-Home Decision Engine — 2025/26 (England, Wales & NI).
+ * Take-Home Decision Engine — 2026/27 (England, Wales & NI).
  *
- * Composes the pure band functions in `2025-26.ts` and layers on the three
+ * Composes the pure band functions in `2026-27.ts` and layers on the three
  * things a real payslip has that the headline calculator omits: salary-
  * sacrifice pension, student-loan plans, and one-off bonuses. Everything here
  * is pure and deterministic so it can drive live scenario exploration on the
@@ -22,11 +22,11 @@
 import {
   incomeTax,
   nationalInsurance,
-  TAX_YEAR_2025_26,
+  TAX_YEAR_2026_27,
   type IncomeTaxBreakdown,
   type NIBreakdown,
-} from "./2025-26";
-import { SCOTTISH_RATES_2025_26, scottishIncomeTax } from "./scottish-2025-26";
+} from "./2026-27";
+import { SCOTTISH_RATES_2026_27, scottishIncomeTax } from "./scottish-2026-27";
 
 export type TaxRegion = "ruk" | "scotland";
 
@@ -40,12 +40,12 @@ export type StudentPlanSpec = {
   rate: number;
 };
 
-/** Student-loan repayment plans, 2025/26 annual thresholds. */
+/** Student-loan repayment plans, 2026/27 annual thresholds. */
 export const STUDENT_PLANS: Record<StudentPlan, StudentPlanSpec> = {
   none: { id: "none", label: "No student loan", short: "None", threshold: Infinity, rate: 0 },
-  plan1: { id: "plan1", label: "Plan 1 (pre-2012)", short: "Plan 1", threshold: 26065, rate: 0.09 },
-  plan2: { id: "plan2", label: "Plan 2 (2012–2023)", short: "Plan 2", threshold: 28470, rate: 0.09 },
-  plan4: { id: "plan4", label: "Plan 4 (Scotland)", short: "Plan 4", threshold: 32745, rate: 0.09 },
+  plan1: { id: "plan1", label: "Plan 1 (pre-2012)", short: "Plan 1", threshold: 26900, rate: 0.09 },
+  plan2: { id: "plan2", label: "Plan 2 (2012–2023)", short: "Plan 2", threshold: 29385, rate: 0.09 },
+  plan4: { id: "plan4", label: "Plan 4 (Scotland)", short: "Plan 4", threshold: 33795, rate: 0.09 },
   plan5: { id: "plan5", label: "Plan 5 (from 2023)", short: "Plan 5", threshold: 25000, rate: 0.09 },
   pg: { id: "pg", label: "Postgraduate Loan", short: "Postgrad", threshold: 21000, rate: 0.06 },
 };
@@ -165,7 +165,7 @@ export function taxBands(adjusted: number, region: TaxRegion = "ruk"): TaxBand[]
   const rows: TaxBand[] = [];
   if (region === "scotland") {
     const t = scottishIncomeTax(adjusted);
-    const r = SCOTTISH_RATES_2025_26;
+    const r = SCOTTISH_RATES_2026_27;
     rows.push({ label: "Tax-free allowance", rate: 0, income: Math.min(adjusted, t.personalAllowance), tax: 0 });
     (
       [
@@ -179,7 +179,7 @@ export function taxBands(adjusted: number, region: TaxRegion = "ruk"): TaxBand[]
     ).forEach(([label, rate, tax]) => rows.push({ label, rate, income: tax / rate, tax }));
   } else {
     const t = incomeTax(adjusted);
-    const r = TAX_YEAR_2025_26.incomeTax.rates;
+    const r = TAX_YEAR_2026_27.incomeTax.rates;
     rows.push({ label: "Tax-free allowance", rate: 0, income: Math.min(adjusted, t.personalAllowance), tax: 0 });
     rows.push({ label: "Basic rate", rate: r.basic, income: t.basic / r.basic, tax: t.basic });
     rows.push({ label: "Higher rate", rate: r.higher, income: t.higher / r.higher, tax: t.higher });
@@ -304,7 +304,7 @@ export type ThresholdMarker = {
 
 /** Key band edges on the gross axis, for annotating the income curve. */
 export function thresholdMarkers(): ThresholdMarker[] {
-  const t = TAX_YEAR_2025_26;
+  const t = TAX_YEAR_2026_27;
   return [
     { id: "pa", gross: t.personalAllowance, label: "Tax-free ends", note: "Personal Allowance — £12,570" },
     { id: "higher", gross: t.ni.upperEarningsLimit, label: "40% band", note: "Higher-rate threshold — £50,270" },
@@ -324,7 +324,7 @@ export type Insight = {
 
 /** Distance (in gross £) to the next meaningful tax threshold above you. */
 export function nextThreshold(adjustedGross: number): { label: string; at: number; away: number } | null {
-  const t = TAX_YEAR_2025_26;
+  const t = TAX_YEAR_2026_27;
   const edges = [
     { label: "the 40% higher-rate band", at: t.ni.upperEarningsLimit },
     { label: "the £100k 60% trap", at: t.paTaperStart },

@@ -3,7 +3,7 @@ import { corporationTax, salaryDividendPlan } from "./salary-dividend";
 
 const round = (n: number) => Math.round(n * 100) / 100;
 
-describe("corporationTax (2025/26)", () => {
+describe("corporationTax (2026/27)", () => {
   it("zero or negative profit → no tax", () => {
     expect(corporationTax(0)).toBe(0);
     expect(corporationTax(-100)).toBe(0);

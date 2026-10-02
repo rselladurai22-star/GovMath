@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { inheritanceTax } from "./iht";
 
-describe("inheritanceTax (2025/26)", () => {
+describe("inheritanceTax (2026/27)", () => {
   it("estate below NRB → no tax", () => {
     const r = inheritanceTax({
       estateValue: 300_000,

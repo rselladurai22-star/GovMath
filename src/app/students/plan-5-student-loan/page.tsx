@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import GenericLoanCalculator from "@/components/calculator/GenericLoanCalculator";
 
 export const metadata: Metadata = {
-  title: "Plan 5 Student Loan Calculator (UK 2025/26)",
+  title: "Plan 5 Student Loan Calculator (UK 2026/27)",
   description: "Plan 5 covers English undergrads starting from August 2023 — 9% above £25,000, with a 40-year write-off.",
 };
 
@@ -12,7 +12,7 @@ export default function Plan5Page() {
   return (
     <CalculatorShell
       category="Students & Graduates"
-      updatedLabel="2025/26 threshold"
+      updatedLabel="2026/27 threshold"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/students", label: "Students & Graduates" },
@@ -40,7 +40,7 @@ export default function Plan5Page() {
             { question: "Why is the threshold so much lower than Plan 2?", answer: "Policy change in 2022 to recover more loan value. Plan 5 borrowers pay more, sooner." },
             { question: "Can I still defer to age 67?", answer: "No — Plan 5 has no age-based write-off, only the 40-year clock." },
           ]}
-          disclaimer="Estimate based on 2025/26 thresholds."
+          disclaimer="Estimate based on 2026/27 thresholds."
         />
       }
     />

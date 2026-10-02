@@ -3,14 +3,14 @@
 import { useMemo, useState } from "react";
 import NumberInput from "@/components/calculator/NumberInput";
 import ResultBreakdown from "@/components/calculator/ResultBreakdown";
-import { studentLoanRepayment, STUDENT_LOAN_2025_26, type StudentLoanPlan } from "@/lib/students/student-loan";
+import { studentLoanRepayment, STUDENT_LOAN_2026_27, type StudentLoanPlan } from "@/lib/students/student-loan";
 
 const GBP0 = new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP", maximumFractionDigits: 0 });
 
 export default function GenericLoanCalculator({ plan }: { plan: StudentLoanPlan }) {
   const [salary, setSalary] = useState<number>(35_000);
   const r = useMemo(() => studentLoanRepayment(plan, salary), [plan, salary]);
-  const spec = STUDENT_LOAN_2025_26[plan];
+  const spec = STUDENT_LOAN_2026_27[plan];
 
   return (
     <div className="space-y-6">
@@ -19,7 +19,7 @@ export default function GenericLoanCalculator({ plan }: { plan: StudentLoanPlan 
           <h2 className="text-lg font-bold text-primary-dark">Your salary</h2>
           <NumberInput label="Gross annual salary" value={salary} onChange={setSalary} step={500} />
           <p className="text-xs text-text/60">
-            {spec.label} threshold: {GBP0.format(spec.threshold)} (2025/26). Rate {spec.ratePct}% on the excess.
+            {spec.label} threshold: {GBP0.format(spec.threshold)} (2026/27). Rate {spec.ratePct}% on the excess.
           </p>
         </div>
         <div className="rounded-xl bg-white border-2 border-primary p-6 space-y-4">

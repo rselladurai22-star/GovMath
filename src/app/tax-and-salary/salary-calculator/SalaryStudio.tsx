@@ -377,7 +377,7 @@ export default function SalaryStudio({
       </ResultCard>
 
       <p className={s.hint} style={{ textAlign: "center" }}>
-        Estimates for the 2025/26 tax year on a standard {scot ? "S1257L" : "1257L"} tax code, paid in 12 equal monthly amounts. Your payslip may differ slightly.
+        Estimates for the 2026/27 tax year on a standard {scot ? "S1257L" : "1257L"} tax code, paid in 12 equal monthly amounts. Your payslip may differ slightly.
       </p>
     </Studio>
   );

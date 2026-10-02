@@ -3,7 +3,7 @@ import { dividendTax } from "./dividend";
 
 const round = (n: number) => Math.round(n * 100) / 100;
 
-describe("dividendTax (2025/26)", () => {
+describe("dividendTax (2026/27)", () => {
   it("zero dividends → zero tax", () => {
     expect(dividendTax(50_000, 0).total).toBe(0);
   });
@@ -15,11 +15,11 @@ describe("dividendTax (2025/26)", () => {
     expect(r.total).toBe(0);
   });
 
-  it("basic-rate dividends above allowance at 8.75%", () => {
-    // Salary 30k uses full PA. £1,500 dividends: £500 allowance, £1,000 at 8.75%
+  it("basic-rate dividends above allowance at 10.75%", () => {
+    // Salary 30k uses full PA. £1,500 dividends: £500 allowance, £1,000 at 10.75%
     const r = dividendTax(30_000, 1_500);
     expect(r.allowanceUsed).toBe(500);
-    expect(round(r.basic)).toBe(round(1_000 * 0.0875));
+    expect(round(r.basic)).toBe(round(1_000 * 0.1075));
     expect(r.higher).toBe(0);
   });
 
@@ -32,7 +32,7 @@ describe("dividendTax (2025/26)", () => {
     const r = dividendTax(50_000, 20_000);
     expect(r.allowanceUsed).toBe(500);
     expect(round(r.basic)).toBe(0);
-    expect(round(r.higher)).toBe(round(19_500 * 0.3375));
+    expect(round(r.higher)).toBe(round(19_500 * 0.3575));
   });
 
   it("dividends entirely above £125,140 → 39.35%", () => {

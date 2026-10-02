@@ -4,9 +4,9 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import TaxBracketCalculator from "./TaxBracketCalculator";
 
 export const metadata: Metadata = {
-  title: "Tax Bracket Checker (UK Income Tax, 2025/26)",
+  title: "Tax Bracket Checker (UK Income Tax, 2026/27)",
   description:
-    "See your UK Income Tax band by band — and find out exactly what a £1,000 pay rise actually delivers after tax. 2025/26 rates.",
+    "See your UK Income Tax band by band — and find out exactly what a £1,000 pay rise actually delivers after tax. 2026/27 rates.",
 };
 
 type SearchParams = Promise<{ income?: string }>;
@@ -28,7 +28,7 @@ export default async function TaxBracketCheckerPage({
   return (
     <CalculatorShell
       category="Tax & Salary"
-      updatedLabel="2025/26"
+      updatedLabel="2026/27"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/tax-and-salary", label: "Tax & Salary" },
@@ -71,7 +71,7 @@ export default async function TaxBracketCheckerPage({
               <p>
                 <strong>HMRC</strong> (His Majesty’s Revenue and Customs)
                 publishes the bands once a year. For{" "}
-                <strong>2025/26</strong> in England, Wales and Northern
+                <strong>2026/27</strong> in England, Wales and Northern
                 Ireland:
               </p>
               <div className="overflow-x-auto rounded-lg border border-border">
@@ -138,7 +138,7 @@ export default async function TaxBracketCheckerPage({
               title: "Dividends and savings interest aren't included",
               body: (
                 <p>
-                  Dividend income has its own rates (8.75%, 33.75%, 39.35%)
+                  Dividend income has its own rates (10.75%, 35.75%, 39.35%)
                   and savings interest has its own allowance. This page only
                   covers earned income.
                 </p>
@@ -165,7 +165,7 @@ export default async function TaxBracketCheckerPage({
               ),
             },
           ]}
-          disclaimer="Figures are estimates for the 2025/26 tax year (England, Wales & Northern Ireland). GovMath is not affiliated with HMRC."
+          disclaimer="Figures are estimates for the 2026/27 tax year (England, Wales & Northern Ireland). GovMath is not affiliated with HMRC."
         />
       }
     />

@@ -36,8 +36,8 @@ export default function DividendCalculator() {
             rows={[
               { label: "Used by Personal Allowance (0%)", value: r.paUsedByDividends },
               { label: "Used by £500 dividend allowance (0%)", value: r.allowanceUsed },
-              { label: "Taxed at basic 8.75%", value: r.basic },
-              { label: "Taxed at higher 33.75%", value: r.higher },
+              { label: "Taxed at basic 10.75%", value: r.basic },
+              { label: "Taxed at higher 35.75%", value: r.higher },
               { label: "Taxed at additional 39.35%", value: r.additional },
               { label: "Total dividend tax", value: r.total, variant: "total" },
             ]}

@@ -4,27 +4,27 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import MinWageCalculator from "./MinWageCalculator";
 
 export const metadata: Metadata = {
-  title: "UK Minimum Wage Checker 2025/26 (NLW & NMW)",
-  description: "Check whether your pay meets the UK National Living Wage (£12.21) or National Minimum Wage for your age band — April 2025 rates.",
+  title: "UK Minimum Wage Checker 2026/27 (NLW & NMW)",
+  description: "Check whether your pay meets the UK National Living Wage (£12.71) or National Minimum Wage for your age band — April 2026 rates.",
 };
 
 export default function MinWagePage() {
   return (
     <CalculatorShell
       category="Tax & Salary"
-      updatedLabel="April 2025 rates"
+      updatedLabel="April 2026 rates"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax & Salary" }, { href: "/tax-and-salary/minimum-wage", label: "Minimum Wage" }]}
       title="UK Minimum Wage Checker"
-      intro="From April 2025 the National Living Wage rose to £12.21 for everyone aged 21 and over. Younger workers and apprentices have their own minimums — and you have the right to be paid at least these rates."
+      intro="From April 2026 the National Living Wage rose to £12.71 for everyone aged 21 and over. Younger workers and apprentices have their own minimums — and you have the right to be paid at least these rates."
       calculator={<MinWageCalculator />}
       explainer={
         <BlueprintExplainer
           howWeCalculated={<p>We compare your stated hourly pay to the legal minimum for your age band. Any shortfall is multiplied by hours/week and 52 to project annual underpayment.</p>}
           officialRules={
             <ul>
-              <li>National Living Wage (21+): £12.21/hr.</li>
-              <li>18–20: £10.00/hr.</li>
-              <li>16–17 & apprentices (1st year, or under 19): £7.55/hr.</li>
+              <li>National Living Wage (21+): £12.71/hr.</li>
+              <li>18–20: £10.85/hr.</li>
+              <li>16–17 & apprentices (1st year, or under 19): £8.00/hr.</li>
               <li>Sleep-in shifts: count as working time per Mencap (2021) — sometimes.</li>
               <li>Employer must keep records for 6 years; HMRC enforces with fines up to 200% of arrears.</li>
             </ul>
@@ -38,7 +38,7 @@ export default function MinWagePage() {
             { question: "Can I report underpayment?", answer: "Yes — confidentially via ACAS (0300 123 1100) or directly to HMRC. You can’t be sacked for it." },
             { question: "What about volunteers and interns?", answer: "Genuine volunteers are exempt. But if you have set hours, contracted duties or get any reward beyond expenses, you’re a worker and NMW applies." },
           ]}
-          disclaimer="2025/26 rates. Rates change every April."
+          disclaimer="2026/27 rates. Rates change every April."
         />
       }
     />

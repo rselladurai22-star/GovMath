@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import DivVsSalCalculator from "./DivVsSalCalculator";
 
 export const metadata: Metadata = {
-  title: "Dividend vs Salary Calculator UK 2025/26 (Director Optimiser)",
+  title: "Dividend vs Salary Calculator UK 2026/27 (Director Optimiser)",
   description:
     "Find the optimal director’s salary vs dividend mix for a UK limited company — accounting for Corporation Tax, employer NI, Income Tax, employee NI and dividend tax.",
 };
@@ -13,7 +13,7 @@ export default function DivVsSalPage() {
   return (
     <CalculatorShell
       category="Business & Self-Employed"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/business", label: "Business & Self-Employed" },
@@ -39,7 +39,7 @@ export default function DivVsSalPage() {
                 <li>Remaining profit is paid as dividends.</li>
                 <li>
                   Director pays Income Tax + employee NI on the salary,
-                  and dividend tax (8.75% / 33.75% / 39.35%) on the
+                  and dividend tax (10.75% / 35.75% / 39.35%) on the
                   dividends above the £500 allowance.
                 </li>
               </ol>
@@ -52,8 +52,8 @@ export default function DivVsSalPage() {
             <>
               <ul>
                 <li>
-                  <strong>Dividend allowance</strong> 2025/26: £500. Anything
-                  above is taxed at 8.75% (basic), 33.75% (higher), 39.35%
+                  <strong>Dividend allowance</strong> 2026/27: £500. Anything
+                  above is taxed at 10.75% (basic), 35.75% (higher), 39.35%
                   (additional).
                 </li>
                 <li>
@@ -68,7 +68,7 @@ export default function DivVsSalPage() {
                 </li>
                 <li>
                   <strong>NI credit for State Pension</strong>: salary
-                  between Lower Earnings Limit (£6,500) and Primary
+                  between Lower Earnings Limit (£6,708) and Primary
                   Threshold (£12,570) gives a qualifying year at zero NI cost.
                 </li>
                 <li>
@@ -100,7 +100,7 @@ export default function DivVsSalPage() {
             {
               question: "Can I pay myself a salary lower than £12,570?",
               answer:
-                "Yes — common alternatives are £6,500 (Lower Earnings Limit, NI credit at zero cost) and £5,000 (Employer NI Secondary Threshold). Both reduce CT deduction but eliminate employer NI.",
+                "Yes — common alternatives are £6,708 (Lower Earnings Limit, NI credit at zero cost) and £5,000 (Employer NI Secondary Threshold). Both reduce CT deduction but eliminate employer NI.",
             },
             {
               question: "What about pension contributions?",

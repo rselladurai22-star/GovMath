@@ -4,26 +4,26 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import PaternityCalculator from "./PaternityCalculator";
 
 export const metadata: Metadata = {
-  title: "Statutory Paternity Pay Calculator (UK 2025/26)",
-  description: "Two weeks of statutory paternity pay at £187.18 or 90% of average earnings, whichever is lower.",
+  title: "Statutory Paternity Pay Calculator (UK 2026/27)",
+  description: "Two weeks of statutory paternity pay at £194.32 or 90% of average earnings, whichever is lower.",
 };
 
 export default function PaternityPage() {
   return (
     <CalculatorShell
       category="Benefits"
-      updatedLabel="2025/26"
+      updatedLabel="2026/27"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/benefits", label: "Benefits" }, { href: "/benefits/paternity-pay", label: "Paternity Pay" }]}
       title="Statutory Paternity Pay Calculator"
-      intro="SPP is paid for up to 2 weeks at the lower of £187.18 per week or 90% of your average weekly earnings."
+      intro="SPP is paid for up to 2 weeks at the lower of £194.32 per week or 90% of your average weekly earnings."
       calculator={<PaternityCalculator />}
       explainer={
         <BlueprintExplainer
-          howWeCalculated={<p>HMRC sets the flat rate (£187.18/week from April 2025). You get 90% of your average weekly earnings (AWE) if that’s lower. From April 2024 you can take the 2 weeks separately within the first year.</p>}
+          howWeCalculated={<p>HMRC sets the flat rate (£194.32/week from April 2026). You get 90% of your average weekly earnings (AWE) if that’s lower. From April 2024 you can take the 2 weeks separately within the first year.</p>}
           officialRules={
             <ul>
               <li>Must have 26 weeks’ service by the 15th week before the due date.</li>
-              <li>AWE must be at least £125/week (lower earnings limit).</li>
+              <li>AWE must be at least £129/week (lower earnings limit).</li>
               <li>Tax and NI are deducted from SPP.</li>
               <li>Adoption pay follows similar rules.</li>
             </ul>

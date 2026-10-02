@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import Link from "next/link";
 import { computeTakeHome } from "@/lib/tax/take-home-engine";
-import { scottishIncomeTax } from "@/lib/tax/scottish-2025-26";
+import { scottishIncomeTax } from "@/lib/tax/scottish-2026-27";
 import { stampDuty } from "@/lib/tax/sdlt-2025";
 import { mortgageRepayment } from "@/lib/mortgage";
 import { addVat, removeVat, VAT_RATES } from "@/lib/tax/vat";

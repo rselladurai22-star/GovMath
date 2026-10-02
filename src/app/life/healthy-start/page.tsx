@@ -12,7 +12,7 @@ export default function HealthyStartPage() {
   return (
     <CalculatorShell
       category="Everyday Life"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/life", label: "Everyday Life" },
@@ -24,7 +24,7 @@ export default function HealthyStartPage() {
       explainer={
         <BlueprintExplainer
           howWeCalculated={
-            <p>£4.25/week during pregnancy, £8.50/week for each child under 1, and £4.25/week for each child aged 1–4. Loaded automatically onto a prepaid card every 4 weeks.</p>
+            <p>£4.65/week during pregnancy, £9.30/week for each child under 1, and £4.65/week for each child aged 1–4. Loaded automatically onto a prepaid card every 4 weeks.</p>
           }
           officialRules={
             <ul>

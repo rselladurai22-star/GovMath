@@ -1,17 +1,17 @@
 /**
- * Statutory Maternity Pay (SMP) — 2025/26.
+ * Statutory Maternity Pay (SMP) — 2026/27.
  *
  * 39 weeks paid:
  *   Weeks 1–6:   90% of Average Weekly Earnings (AWE), no cap.
- *   Weeks 7–39:  lower of £187.18 or 90% of AWE.
+ *   Weeks 7–39:  lower of £194.32 or 90% of AWE.
  * Final 13 weeks (40–52): unpaid.
  *
  * Eligibility (not modelled): 26 weeks continuous service by 15th week
- * before EWC, AWE ≥ Lower Earnings Limit (£125/week 2025/26).
+ * before EWC, AWE ≥ Lower Earnings Limit (£129/week 2026/27).
  */
 
-export const SMP_2025_26 = {
-  flatRate: 187.18,
+export const SMP_2026_27 = {
+  flatRate: 194.32,
   hi90Weeks: 6,
   flatWeeks: 33,
   unpaidWeeks: 13,
@@ -28,7 +28,7 @@ export type SMPResult = {
 
 export function statutoryMaternityPay(averageWeeklyEarnings: number): SMPResult {
   const awe = Math.max(0, averageWeeklyEarnings);
-  const c = SMP_2025_26;
+  const c = SMP_2026_27;
   const ninety = awe * 0.9;
   const high90 = ninety; // weeks 1–6, no cap
   const flat = Math.min(c.flatRate, ninety); // weeks 7–39

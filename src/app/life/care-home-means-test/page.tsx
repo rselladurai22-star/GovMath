@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import CareHomeMeansTestCalculator from "./CareHomeMeansTestCalculator";
 
 export const metadata: Metadata = {
-  title: "Care Home Means Test Calculator (England 2025/26)",
+  title: "Care Home Means Test Calculator (England 2026/27)",
   description: "Estimate your weekly contribution to care home fees under the England means test, plus what the council will pay.",
 };
 
@@ -12,7 +12,7 @@ export default function CareHomeMeansTestPage() {
   return (
     <CalculatorShell
       category="Everyday Life"
-      updatedLabel="2025/26 thresholds"
+      updatedLabel="2026/27 thresholds"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/life", label: "Everyday Life" },
@@ -25,13 +25,13 @@ export default function CareHomeMeansTestPage() {
         <BlueprintExplainer
           howWeCalculated={
             <p>
-              We apply the England thresholds. If capital is above the upper limit, you self-fund. Otherwise we add tariff income (£1/wk per £250 of capital above £14,250) to your weekly income, subtract the £30.65 Personal Expenses Allowance, and that’s your share — the council pays the rest.
+              We apply the England thresholds. If capital is above the upper limit, you self-fund. Otherwise we add tariff income (£1/wk per £250 of capital above £14,250) to your weekly income, subtract the £31.80 Personal Expenses Allowance, and that’s your share — the council pays the rest.
             </p>
           }
           officialRules={
             <ul>
-              <li>Upper capital limit £23,250; lower £14,250 (England, 2025/26).</li>
-              <li>Personal Expenses Allowance £30.65/wk kept for pocket money.</li>
+              <li>Upper capital limit £23,250; lower £14,250 (England, 2026/27).</li>
+              <li>Personal Expenses Allowance £31.80/wk kept for pocket money.</li>
               <li>Tariff income £1/wk per £250 above the lower limit.</li>
               <li>If you own a home and there’s no spouse remaining, its value usually counts after 12 weeks.</li>
             </ul>
@@ -42,7 +42,7 @@ export default function CareHomeMeansTestPage() {
             { title: "12-week disregard", body: "Your home is ignored for the first 12 weeks of a permanent placement, giving time to consider deferred payments." },
           ]}
           faqs={[
-            { question: "What about my pension?", answer: "State Pension counts as income (minus £30.65 PEA). Private pension income also counts. Attendance Allowance is disregarded." },
+            { question: "What about my pension?", answer: "State Pension counts as income (minus £31.80 PEA). Private pension income also counts. Attendance Allowance is disregarded." },
             { question: "What if my spouse still lives at home?", answer: "Your home is fully disregarded as long as a spouse, partner or dependent relative still lives in it." },
             { question: "Can I take out a deferred payment agreement?", answer: "Yes — the council pays your fees against the equity in your home, repaid when the property is sold. Interest at a low statutory rate." },
           ]}

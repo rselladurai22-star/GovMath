@@ -1,16 +1,16 @@
 /**
- * National Minimum / Living Wage — rates from 1 April 2025.
- * Source: gov.uk minimum wage rates 2025.
+ * National Minimum / Living Wage — rates from 1 April 2026.
+ * Source: gov.uk National Minimum Wage and National Living Wage rates.
  */
 
-export const NMW_2025 = {
-  "national-living-wage": { age: "21 and over", hourly: 12.21 },
-  "18-20": { age: "18 to 20", hourly: 10.0 },
-  "16-17": { age: "16 to 17", hourly: 7.55 },
-  apprentice: { age: "Apprentice (under 19, or in 1st year)", hourly: 7.55 },
+export const NMW_2026 = {
+  "national-living-wage": { age: "21 and over", hourly: 12.71 },
+  "18-20": { age: "18 to 20", hourly: 10.85 },
+  "16-17": { age: "16 to 17", hourly: 8.0 },
+  apprentice: { age: "Apprentice (under 19, or in 1st year)", hourly: 8.0 },
 } as const;
 
-export type NMWBand = keyof typeof NMW_2025;
+export type NMWBand = keyof typeof NMW_2026;
 
 export type NMWCheckInput = {
   band: NMWBand;
@@ -28,7 +28,7 @@ export type NMWCheckResult = {
 };
 
 export function checkMinimumWage(input: NMWCheckInput): NMWCheckResult {
-  const required = NMW_2025[input.band].hourly;
+  const required = NMW_2026[input.band].hourly;
   const shortfall = Math.max(0, required - input.hourlyPay);
   return {
     band: input.band,

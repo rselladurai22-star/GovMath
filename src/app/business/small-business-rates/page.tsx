@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import SmallBusinessRatesCalculator from "./SmallBusinessRatesCalculator";
 
 export const metadata: Metadata = {
-  title: "Small Business Rates Relief Calculator (England 2025/26)",
+  title: "Small Business Rates Relief Calculator (England 2026/27)",
   description: "Work out your business rates bill and the Small Business Rate Relief you’re entitled to in England.",
 };
 
@@ -12,7 +12,7 @@ export default function SmallBusinessRatesPage() {
   return (
     <CalculatorShell
       category="Business"
-      updatedLabel="2025/26 multipliers"
+      updatedLabel="2026/27 multipliers"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/business", label: "Business" },
@@ -25,7 +25,7 @@ export default function SmallBusinessRatesPage() {
         <BlueprintExplainer
           howWeCalculated={
             <p>
-              Gross rates = rateable value × multiplier (49.9p for small premises, 54.6p for standard).
+              Gross rates = rateable value × multiplier. For 2026/27: 43.2p for small premises (under £51,000), 48p for standard and 50.8p for properties at £500,000 or more. Retail, hospitality and leisure premises get lower rates: 38.2p (small) and 43p (standard).
               If you only occupy one property, we apply SBRR: 100% off below £12,000, sliding to 0% at £15,000.
             </p>
           }
@@ -44,10 +44,10 @@ export default function SmallBusinessRatesPage() {
           ]}
           faqs={[
             { question: "What if my rateable value changes?", answer: "Bills update next 1 April. You can challenge an RV via the ”Check, Challenge, Appeal” process on gov.uk." },
-            { question: "Are pubs and shops on the high street treated differently?", answer: "Yes — Retail, Hospitality & Leisure Relief currently gives a 75% discount on bills (capped at £110k per business) for 2024/25." },
+            { question: "Are pubs and shops on the high street treated differently?", answer: "Yes. From April 2026 the old 40% Retail, Hospitality & Leisure Relief was replaced by permanently lower multipliers for those properties: 38.2p for small premises and 43p for standard ones, against 43.2p and 48p for everyone else." },
             { question: "Does this work in Scotland/Wales/NI?", answer: "No — each nation has its own scheme. The Small Business Bonus Scheme (Scotland) and Small Business Rate Relief (Wales) work differently." },
           ]}
-          disclaimer="England only, 2025/26 multipliers. Always confirm with your local billing authority before relying on a figure."
+          disclaimer="England only, 2026/27 multipliers. Always confirm with your local billing authority before relying on a figure."
         />
       }
     />

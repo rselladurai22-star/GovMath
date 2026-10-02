@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import HICBCCalculator from "./HICBCCalculator";
 
 export const metadata: Metadata = {
-  title: "High Income Child Benefit Charge Calculator (UK 2025/26)",
+  title: "High Income Child Benefit Charge Calculator (UK 2026/27)",
   description: "How much Child Benefit you lose to HICBC — clawback starts at £60,000 and reaches 100% at £80,000.",
 };
 
@@ -12,7 +12,7 @@ export default function HICBCPage() {
   return (
     <CalculatorShell
       category="Family & Benefits"
-      updatedLabel="2025/26 thresholds"
+      updatedLabel="2026/27 thresholds"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/benefits", label: "Family & Benefits" }, { href: "/benefits/high-income-child-benefit", label: "HICBC" }]}
       title="High Income Child Benefit Charge"
       intro="If you or your partner earn over £60,000, HMRC starts clawing back Child Benefit. By £80,000 it’s all gone. The charge is on the higher earner — even if the other parent claims."

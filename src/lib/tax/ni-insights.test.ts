@@ -36,10 +36,10 @@ describe("niMarginalRate", () => {
 
 describe("qualifyingYear", () => {
   it("uses the Lower Earnings Limit for employees and Small Profits Threshold for the self-employed", () => {
-    expect(qualifyingYear(6_500, "employee")).toBe(true);
-    expect(qualifyingYear(6_499, "employee")).toBe(false);
-    expect(qualifyingYear(6_845, "self-employed")).toBe(true);
-    expect(qualifyingYear(6_800, "self-employed")).toBe(false);
+    expect(qualifyingYear(6_708, "employee")).toBe(true);
+    expect(qualifyingYear(6_707, "employee")).toBe(false);
+    expect(qualifyingYear(7_105, "self-employed")).toBe(true);
+    expect(qualifyingYear(7_000, "self-employed")).toBe(false);
   });
 });
 

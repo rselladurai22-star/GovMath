@@ -2,9 +2,9 @@ import { describe, it, expect } from "vitest";
 import { pensionCredit } from "./pension-credit";
 
 describe("pensionCredit", () => {
-  it("tops up to £227.10/wk for singles below threshold", () => {
+  it("tops up to £238.00/wk for singles below threshold", () => {
     const r = pensionCredit({ household: "single", weeklyIncome: 180, capital: 5000 });
-    expect(r.weeklyAward).toBeCloseTo(47.10, 2);
+    expect(r.weeklyAward).toBeCloseTo(58, 2);
   });
 
   it("returns 0 if income already above guarantee", () => {
@@ -19,7 +19,7 @@ describe("pensionCredit", () => {
 
   it("uses higher threshold for couples", () => {
     const r = pensionCredit({ household: "couple", weeklyIncome: 300, capital: 5000 });
-    expect(r.threshold).toBe(346.60);
-    expect(r.weeklyAward).toBeCloseTo(46.60, 2);
+    expect(r.threshold).toBe(363.25);
+    expect(r.weeklyAward).toBeCloseTo(63.25, 2);
   });
 });

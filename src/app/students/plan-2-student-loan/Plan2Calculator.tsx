@@ -18,7 +18,7 @@ export default function Plan2Calculator() {
           <h2 className="text-lg font-bold text-primary-dark">Your salary</h2>
           <NumberInput label="Gross annual salary" value={salary} onChange={setSalary} step={500} />
           <p className="text-xs text-text/60">
-            Plan 2 covers English/Welsh undergrads who started 2012–2023. Threshold £28,470 (2025/26), rate 9% on the excess.
+            Plan 2 covers English/Welsh undergrads who started 2012–2023. Threshold £29,385 (2026/27), rate 9% on the excess.
           </p>
         </div>
         <div className="rounded-xl bg-white border-2 border-primary p-6 space-y-4">
@@ -31,14 +31,14 @@ export default function Plan2Calculator() {
             title="Calculation"
             rows={[
               { label: "Annual salary", value: salary },
-              { label: "Plan 2 threshold (2025/26)", value: r.threshold, variant: "deduction" },
+              { label: "Plan 2 threshold (2026/27)", value: r.threshold, variant: "deduction" },
               { label: "Income above threshold", value: r.excessIncome },
               { label: `Annual repayment (${r.ratePct}%)`, value: r.annualRepayment, variant: "total" },
             ]}
           />
           {salary < r.threshold && (
             <p className="text-xs bg-success/10 border border-success/30 text-text rounded-md p-3">
-              ✓ Below the £28,470 threshold — no repayments due this year. Interest still accrues but the loan is written off after 30 years.
+              ✓ Below the £29,385 threshold — no repayments due this year. Interest still accrues but the loan is written off after 30 years.
             </p>
           )}
         </div>

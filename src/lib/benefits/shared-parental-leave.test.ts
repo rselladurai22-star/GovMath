@@ -2,14 +2,14 @@ import { describe, it, expect } from "vitest";
 import { sharedParentalLeave } from "./shared-parental-leave";
 
 describe("sharedParentalLeave", () => {
-  it("caps statutory pay at £187.18/week for high earners", () => {
+  it("caps statutory pay at £194.32/week for high earners", () => {
     const r = sharedParentalLeave({
       parent1Weeks: 20, parent2Weeks: 10,
       parent1WeeklyEarnings: 1000, parent2WeeklyEarnings: 800,
       parent1PaidWeeks: 20, parent2PaidWeeks: 10,
     });
-    expect(r.parent1WeeklyPay).toBe(187.18);
-    expect(r.parent2WeeklyPay).toBe(187.18);
+    expect(r.parent1WeeklyPay).toBe(194.32);
+    expect(r.parent2WeeklyPay).toBe(194.32);
   });
 
   it("uses 90% of earnings for low earners", () => {

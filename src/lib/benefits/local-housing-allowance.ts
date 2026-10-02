@@ -1,9 +1,9 @@
 /**
- * Local Housing Allowance (LHA) — UK 2025/26.
+ * Local Housing Allowance (LHA) — UK 2026/27.
  *
  * LHA sets the maximum housing element of Universal Credit / Housing Benefit
  * for private tenants. Rates are set by BRMA (Broad Rental Market Area) and
- * frozen at April 2024 levels for 2025/26.
+ * frozen at April 2024 levels for 2025/26 and 2026/27.
  *
  * Bedroom entitlement rules:
  *   - Shared accommodation rate: single under 35 (some exceptions)

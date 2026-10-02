@@ -1,5 +1,5 @@
 /**
- * HMRC Approved Mileage Allowance Payments (AMAP) — 2025/26.
+ * HMRC Approved Mileage Allowance Payments (AMAP) — 2026/27.
  *
  * Cars & vans:    45p first 10,000 business miles, 25p thereafter
  * Motorcycles:    24p flat

@@ -12,7 +12,7 @@ export default function NhsPrescriptionSaverPage() {
   return (
     <CalculatorShell
       category="Everyday Life"
-      updatedLabel="2025/26 prices"
+      updatedLabel="2026/27 prices"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/life", label: "Everyday Life" },
@@ -25,7 +25,7 @@ export default function NhsPrescriptionSaverPage() {
         <BlueprintExplainer
           howWeCalculated={
             <p>
-              We compare three options: pay as you go (£9.90/item), 3-month PPC (£33.70, break-even at 4 items per 3 months), and 12-month PPC (£120.90 or £10.08/mo direct debit, break-even at ~13 items/year).
+              We compare three options: pay as you go (£9.90/item), 3-month PPC (£32.05, break-even at 4 items per 3 months), and 12-month PPC (£114.50, or 10 monthly direct debits of £11.45, break-even at 12 items a year).
             </p>
           }
           officialRules={
@@ -37,7 +37,7 @@ export default function NhsPrescriptionSaverPage() {
             </ul>
           }
           pitfalls={[
-            { title: "Direct debit isn’t a saving", body: "The DD just spreads the cost over 10 monthly payments of £10.08. Same total — just easier on cashflow." },
+            { title: "Direct debit isn’t a saving", body: "The DD just spreads the cost over 10 monthly payments of £11.45. Same total — just easier on cashflow." },
             { title: "Forgetting to renew", body: "Set a calendar reminder a fortnight before your PPC expires. There’s no grace period — items dispensed after lapse cost £9.90 each." },
             { title: "Holidays & travel", body: "PPC covers England only. NHS prescriptions are free in Wales, Scotland and NI — but only if dispensed there." },
           ]}

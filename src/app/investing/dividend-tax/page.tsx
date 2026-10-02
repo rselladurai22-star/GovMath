@@ -4,16 +4,16 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import DividendCalculator from "./DividendCalculator";
 
 export const metadata: Metadata = {
-  title: "Dividend Tax Calculator (UK 2025/26)",
+  title: "Dividend Tax Calculator (UK 2026/27)",
   description:
-    "Tax on dividends in the UK: £500 allowance, then 8.75%, 33.75% or 39.35% depending on your total income.",
+    "Tax on dividends in the UK: £500 allowance, then 10.75%, 35.75% or 39.35% depending on your total income.",
 };
 
 export default function DividendPage() {
   return (
     <CalculatorShell
       category="Pensions & Investing"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/investing", label: "Pensions & Investing" },
@@ -39,7 +39,7 @@ export default function DividendPage() {
                 </li>
                 <li>
                   <strong>Banded rates</strong>: the rest is taxed at
-                  8.75% / 33.75% / 39.35% depending on which Income Tax band
+                  10.75% / 35.75% / 39.35% depending on which Income Tax band
                   the dividends fall into when stacked on top of other income.
                 </li>
               </ol>
@@ -52,18 +52,18 @@ export default function DividendPage() {
           }
           officialRules={
             <>
-              <p>2025/26 rates and thresholds:</p>
+              <p>2026/27 rates and thresholds:</p>
               <ul>
                 <li>
                   <strong>Dividend allowance</strong>: £500/year tax-free.
                   Was £2,000 in 2022/23 — slashed since.
                 </li>
                 <li>
-                  <strong>Basic rate</strong> 8.75%: dividends falling in the
+                  <strong>Basic rate</strong> 10.75%: dividends falling in the
                   £12,570–£50,270 band.
                 </li>
                 <li>
-                  <strong>Higher rate</strong> 33.75%: dividends in the
+                  <strong>Higher rate</strong> 35.75%: dividends in the
                   £50,270–£125,140 band.
                 </li>
                 <li>
@@ -88,7 +88,7 @@ export default function DividendPage() {
             },
             {
               title: "Dividends count toward bands but pay their own rates",
-              body: "Imagine you have £49k salary and £5k dividends. The dividends push your total above the £50,270 basic-rate top. The portion in the higher band is taxed at 33.75%, not 8.75% — but the salary itself isn’t reclassified.",
+              body: "Imagine you have £49k salary and £5k dividends. The dividends push your total above the £50,270 basic-rate top. The portion in the higher band is taxed at 35.75%, not 10.75% — but the salary itself isn’t reclassified.",
             },
             {
               title: "Salary-then-dividend optimisers can be over-egged",

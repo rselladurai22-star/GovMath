@@ -13,7 +13,7 @@ export default function HourlyPage() {
   return (
     <CalculatorShell
       category="Tax & Salary"
-      updatedLabel="National Living Wage 2025"
+      updatedLabel="National Living Wage 2026"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/tax-and-salary", label: "Tax & Salary" },
@@ -50,12 +50,12 @@ export default function HourlyPage() {
               <p>The two UK floors you can’t legally fall under:</p>
               <ul>
                 <li>
-                  <strong>National Living Wage (21+):</strong> £12.21/hr from
-                  April 2025.
+                  <strong>National Living Wage (21+):</strong> £12.71/hr from
+                  April 2026.
                 </li>
                 <li>
-                  <strong>National Minimum Wage:</strong> £10.00/hr for ages
-                  18–20; £7.55/hr for under-18s and apprentices in year 1.
+                  <strong>National Minimum Wage:</strong> £10.85/hr for ages
+                  18–20; £8.00/hr for under-18s and apprentices in year 1.
                 </li>
                 <li>
                   <strong>Working Time Regulations 1998</strong>: most workers

@@ -5,12 +5,12 @@ describe("attendanceAllowance", () => {
   it("pays lower rate for day-only care needs", () => {
     const r = attendanceAllowance({ careNeeded: "day-only", terminallyIll: false });
     expect(r.rate).toBe("lower");
-    expect(r.weekly).toBe(73.90);
+    expect(r.weekly).toBe(76.70);
   });
 
   it("pays higher rate for day-and-night care", () => {
     const r = attendanceAllowance({ careNeeded: "day-and-night", terminallyIll: false });
-    expect(r.weekly).toBe(110.40);
+    expect(r.weekly).toBe(114.60);
   });
 
   it("always pays higher rate when terminally ill", () => {
@@ -20,6 +20,6 @@ describe("attendanceAllowance", () => {
 
   it("computes annual award correctly", () => {
     const r = attendanceAllowance({ careNeeded: "night-only", terminallyIll: false });
-    expect(r.annual).toBeCloseTo(73.90 * 52, 2);
+    expect(r.annual).toBeCloseTo(76.70 * 52, 2);
   });
 });

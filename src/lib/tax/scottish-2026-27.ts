@@ -1,27 +1,27 @@
 /**
- * Scottish Income Tax — 2025/26 bands.
+ * Scottish Income Tax — 2026/27 bands.
  * Six bands: starter, basic, intermediate, higher, advanced, top.
  * Personal Allowance (£12,570) is set by Westminster and applies UK-wide.
  *
  * Bands measured against income ABOVE the Personal Allowance:
- *   starter      next £2,827    at 19%
- *   basic        next £11,485   at 20%
- *   intermediate next £18,232   at 21%
- *   higher       next £43,632   at 42%
- *   advanced     next £49,338   at 45%
+ *   starter      next £3,967    at 19%   (£12,571 – £16,537 gross)
+ *   basic        next £12,989   at 20%   (£16,538 – £29,526)
+ *   intermediate next £14,136   at 21%   (£29,527 – £43,662)
+ *   higher       next £31,338   at 42%   (£43,663 – £75,000)
+ *   advanced     next £62,710   at 45%   (£75,001 – £125,140)
  *   top          remainder      at 48%
  *
- * Source: gov.scot 2025/26 Scottish Budget rates.
+ * Source: gov.scot Scottish Income Tax 2026 to 2027.
  */
 
-import { incomeTax, personalAllowance, TAX_YEAR_2025_26 } from "./2025-26";
+import { incomeTax, personalAllowance, TAX_YEAR_2026_27 } from "./2026-27";
 
-export const SCOTTISH_RATES_2025_26 = {
-  starter: { width: 2827, rate: 0.19 },
-  basic: { width: 11485, rate: 0.2 },
-  intermediate: { width: 18232, rate: 0.21 },
-  higher: { width: 43632, rate: 0.42 },
-  advanced: { width: 49338, rate: 0.45 },
+export const SCOTTISH_RATES_2026_27 = {
+  starter: { width: 3967, rate: 0.19 },
+  basic: { width: 12989, rate: 0.2 },
+  intermediate: { width: 14136, rate: 0.21 },
+  higher: { width: 31338, rate: 0.42 },
+  advanced: { width: 62710, rate: 0.45 },
   top: { rate: 0.48 },
 } as const;
 
@@ -40,7 +40,7 @@ export type ScottishTaxBreakdown = {
 export function scottishIncomeTax(gross: number): ScottishTaxBreakdown {
   const pa = personalAllowance(gross);
   let remaining = Math.max(0, gross - pa);
-  const r = SCOTTISH_RATES_2025_26;
+  const r = SCOTTISH_RATES_2026_27;
 
   const take = (width: number, rate: number) => {
     const amt = Math.min(remaining, width);
@@ -76,4 +76,4 @@ export function scottishVsRukDifference(gross: number): number {
 }
 
 // Re-export for convenience.
-export { TAX_YEAR_2025_26 };
+export { TAX_YEAR_2026_27 };

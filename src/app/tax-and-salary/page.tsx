@@ -5,7 +5,7 @@ import { getCategory } from "@/lib/calculators";
 const category = getCategory("tax-and-salary");
 
 export const metadata: Metadata = {
-  title: `${category.title} Calculators (UK, 2025/26)`,
+  title: `${category.title} Calculators (UK, 2026/27)`,
   description: category.description,
 };
 
@@ -13,7 +13,7 @@ export default function TaxAndSalaryLandingPage() {
   return (
     <CategoryLanding
       slug="tax-and-salary"
-      heroBadge="UK 2025/26 tax year"
+      heroBadge="UK 2026/27 tax year"
       longCopy={
         <>
           <h2 className="text-2xl font-bold text-primary-dark">
@@ -26,7 +26,7 @@ export default function TaxAndSalaryLandingPage() {
             confident financial decisions.
           </p>
           <p>
-            Every figure here is for the <strong>2025/26 tax year</strong> in
+            Every figure here is for the <strong>2026/27 tax year</strong> in
             England, Wales & Northern Ireland. Scotland-specific
             calculators are in the section below.
           </p>

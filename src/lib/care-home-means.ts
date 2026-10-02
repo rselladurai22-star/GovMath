@@ -1,5 +1,5 @@
 /**
- * Care Home Means Test — England 2025/26.
+ * Care Home Means Test — England 2026/27.
  *
  * Source: gov.uk/care-home-financial-help
  *
@@ -10,7 +10,7 @@
  *                              of £1/week per £250 (or part of) above £14,250.
  *  - Capital ≤ £14,250:   Capital ignored; income alone determines your contribution.
  *
- * Weekly contribution = (weekly income + tariff income − Personal Expenses Allowance £30.65)
+ * Weekly contribution = (weekly income + tariff income − Personal Expenses Allowance £31.80)
  * If less than the council’s usual rate, the council pays the gap.
  *
  * Wales and Scotland have higher thresholds; this calculator covers England.
@@ -18,7 +18,7 @@
 
 export const UPPER_CAPITAL = 23250;
 export const LOWER_CAPITAL = 14250;
-export const PEA_WEEKLY = 30.65;
+export const PEA_WEEKLY = 31.8;
 export const TARIFF_BAND = 250;
 
 export type CareMeansInput = {

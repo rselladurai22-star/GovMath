@@ -11,8 +11,8 @@ const NATIONS: { key: Nation; label: string }[] = [
 ];
 
 export default function BankHolidaysCalculator() {
-  const [start, setStart] = useState<string>("2025-04-14");
-  const [end, setEnd] = useState<string>("2025-04-25");
+  const [start, setStart] = useState<string>("2026-12-21");
+  const [end, setEnd] = useState<string>("2027-01-08");
   const [nation, setNation] = useState<Nation>("england-and-wales");
 
   const r = useMemo(

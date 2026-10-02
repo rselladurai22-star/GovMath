@@ -21,7 +21,7 @@ export default function UCTaperCalculator() {
           <NumberInput label="Net monthly earnings" value={earnings} onChange={setEarnings} step={50} hint="After tax & NI." />
           <label className="flex items-center gap-3 text-sm cursor-pointer">
             <input type="checkbox" checked={housing} onChange={(e) => setHousing(e.target.checked)} className="accent-primary" />
-            <span>I receive the housing element (work allowance £411/mo)</span>
+            <span>I receive the housing element (work allowance £427/mo)</span>
           </label>
         </div>
         <div className="rounded-xl bg-white border-2 border-primary p-6 space-y-4">

@@ -6,13 +6,13 @@ describe("childBenefit", () => {
     expect(childBenefit(0).weekly).toBe(0);
   });
   it("first child weekly rate", () => {
-    expect(childBenefit(1).weekly).toBeCloseTo(26.05, 2);
+    expect(childBenefit(1).weekly).toBeCloseTo(27.05, 2);
   });
   it("3 children", () => {
-    expect(childBenefit(3).weekly).toBeCloseTo(26.05 + 17.25 * 2, 2);
+    expect(childBenefit(3).weekly).toBeCloseTo(27.05 + 17.90 * 2, 2);
   });
   it("annualises × 52", () => {
-    expect(childBenefit(1).annual).toBeCloseTo(26.05 * 52, 2);
+    expect(childBenefit(1).annual).toBeCloseTo(27.05 * 52, 2);
   });
 });
 

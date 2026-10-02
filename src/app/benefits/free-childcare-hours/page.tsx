@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import FreeChildcareCalculator from "./FreeChildcareCalculator";
 
 export const metadata: Metadata = {
-  title: "Free Childcare Hours Calculator (England 2025/26)",
+  title: "Free Childcare Hours Calculator (England 2026/27)",
   description: "Check whether your child qualifies for 15 or 30 hours of funded childcare, and what those hours are worth at your nursery rate.",
 };
 
@@ -12,7 +12,7 @@ export default function FreeChildcareHoursPage() {
   return (
     <CalculatorShell
       category="Benefits"
-      updatedLabel="September 2025 expansion"
+      updatedLabel="2026/27 entitlements"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/benefits", label: "Benefits" },
@@ -30,7 +30,7 @@ export default function FreeChildcareHoursPage() {
           }
           officialRules={
             <ul>
-              <li>Working = each parent earns ≥ £166/week (~16h × NLW) and &lt; £100,000/year.</li>
+              <li>Working = each parent earns ≥ £203/week (~16h × NLW) and &lt; £100,000/year.</li>
               <li>Funded hours apply 38 weeks/year (term time) by default.</li>
               <li>Can be ”stretched” to ~22 hours/week across 51 weeks if your nursery supports it.</li>
               <li>Apply via childcarechoices.gov.uk — get an 11-digit code each quarter.</li>

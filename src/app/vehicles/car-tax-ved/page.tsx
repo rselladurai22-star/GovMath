@@ -4,23 +4,23 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import VEDCalculator from "./VEDCalculator";
 
 export const metadata: Metadata = {
-  title: "Car Tax (VED) Calculator UK 2025/26",
+  title: "Car Tax (VED) Calculator UK 2026/27",
   description:
-    "UK Vehicle Excise Duty by CO2 band and fuel type, plus the expensive-car supplement and EV changes from April 2025.",
+    "UK Vehicle Excise Duty by CO2 band and fuel type, plus the expensive-car supplement and EV rules for 2026/27.",
 };
 
 export default function VEDPage() {
   return (
     <CalculatorShell
       category="Vehicles & Transport"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/vehicles", label: "Vehicles & Transport" },
         { href: "/vehicles/car-tax-ved", label: "Car Tax (VED) Calculator" },
       ]}
       title="Car Tax (VED) Calculator"
-      intro="Vehicle Excise Duty in the UK has two phases — a CO₂-banded ‘showroom rate’ in year one, then a flat £195/year (with a £425 surcharge for cars over £40k for 5 years)."
+      intro="Vehicle Excise Duty in the UK has two phases — a CO₂-banded ‘showroom rate’ in year one, then a flat £200/year (with a £440 surcharge for 5 years on cars over £40k, or £50k for EVs)."
       calculator={<VEDCalculator />}
       explainer={
         <BlueprintExplainer
@@ -31,34 +31,34 @@ export default function VEDPage() {
                 <li>
                   <strong>Year 1</strong>: based on CO₂ emissions from the
                   type approval certificate (on your V5C). Bands range from
-                  £10 (≤0g) up to £5,490 (255g+).
+                  £10 (≤0g) up to £5,690 (255g+).
                 </li>
                 <li>
                   <strong>Years 2 onwards</strong>: flat standard rate of
-                  £195/year for petrol/diesel; £185 for alternative fuel; £195
-                  for EVs (from April 2025).
+                  £200/year for petrol, diesel, hybrid and electric cars
+                  (2026/27).
                 </li>
                 <li>
-                  <strong>Expensive car supplement</strong>: extra £425/year
+                  <strong>Expensive car supplement</strong>: extra £440/year
                   for years 2–6 if the list price (with options) was over
-                  £40,000.
+                  £40,000 (£50,000 for electric cars).
                 </li>
               </ul>
             </>
           }
           officialRules={
             <>
-              <p>Key changes effective from April 2025:</p>
+              <p>Key rules for 2026/27 (from 1 April 2026):</p>
               <ul>
                 <li>
                   EVs <strong>no longer pay £0 VED</strong>. New EVs pay £10
-                  first year then £195 standard. Existing EVs (registered
-                  pre-April 2025) move to £195 standard.
+                  first year then the £200 standard rate. Older EVs pay the
+                  £200 standard rate too.
                 </li>
                 <li>
-                  The <strong>expensive-car supplement now applies to EVs</strong>{" "}
-                  too — a £45,000 EV will cost £620/year (£195 + £425) for
-                  years 2–6.
+                  The <strong>expensive-car supplement applies to EVs</strong>{" "}
+                  priced over £50,000 — a £55,000 EV costs £640/year (£200 +
+                  £440) for years 2–6.
                 </li>
                 <li>
                   Cars registered between 2001 and March 2017 use the
@@ -83,7 +83,7 @@ export default function VEDPage() {
             },
             {
               title: "EV VED change caught a lot of buyers off-guard",
-              body: "Before April 2025, EVs paid £0. From April 2025, they pay normal VED — and the expensive-car supplement. A £50k EV costs ~£3,510 in VED over years 1–6, vs £0 for the same model registered a year earlier.",
+              body: "Before April 2025, EVs paid £0. Now they pay normal VED — and, above £50,000, the expensive-car supplement. A £55k EV costs £3,210 in VED over years 1–6.",
             },
             {
               title: "Not paying = automatic fine + clamp",

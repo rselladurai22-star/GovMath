@@ -1,5 +1,5 @@
 /**
- * Tax-Free Childcare and Carer's Allowance helpers (2025/26).
+ * Tax-Free Childcare and Carer's Allowance helpers (2026/27).
  */
 
 // Tax-Free Childcare: parent pays £8 → gov adds £2 (top-up = 25% of gross spend),
@@ -15,18 +15,18 @@ export function taxFreeChildcare(annualSpend: number, disabled = false) {
   };
 }
 
-// Carer's Allowance: £83.30/week (2025/26), earnings limit £196/week (after allowed deductions).
-export const CA_WEEKLY_2025 = 83.30;
-export const CA_EARNINGS_LIMIT_2025 = 196;
+// Carer's Allowance: £86.45/week (2026/27), earnings limit £204/week (after allowed deductions).
+export const CA_WEEKLY_2026 = 86.45;
+export const CA_EARNINGS_LIMIT_2026 = 204;
 
 export function carersAllowanceCheck(weeklyEarnings: number) {
-  const eligible = weeklyEarnings <= CA_EARNINGS_LIMIT_2025;
+  const eligible = weeklyEarnings <= CA_EARNINGS_LIMIT_2026;
   return {
     weeklyEarnings,
-    earningsLimit: CA_EARNINGS_LIMIT_2025,
+    earningsLimit: CA_EARNINGS_LIMIT_2026,
     eligible,
-    weeklyPay: eligible ? CA_WEEKLY_2025 : 0,
-    annualPay: eligible ? CA_WEEKLY_2025 * 52 : 0,
-    excess: Math.max(0, weeklyEarnings - CA_EARNINGS_LIMIT_2025),
+    weeklyPay: eligible ? CA_WEEKLY_2026 : 0,
+    annualPay: eligible ? CA_WEEKLY_2026 * 52 : 0,
+    excess: Math.max(0, weeklyEarnings - CA_EARNINGS_LIMIT_2026),
   };
 }

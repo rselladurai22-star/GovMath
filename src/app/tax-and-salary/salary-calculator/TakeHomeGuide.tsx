@@ -77,7 +77,7 @@ export default function TakeHomeGuide() {
           bends the whole thing in your favour, and student loans that behave nothing like a normal loan. This guide walks
           through all of it one picture at a time. Wherever a single figure helps, the worked examples use a{" "}
           <strong style={{ color: body }}>{gbp(50000)} salary</strong> on the standard tax code, England, Wales and Northern
-          Ireland, 2025/26 rates.
+          Ireland, 2026/27 rates.
         </P>
       </div>
 
@@ -117,7 +117,7 @@ export default function TakeHomeGuide() {
           The slice from there to {gbp(50270)} is taxed at 20%. The slice above that up to {gbp(125140)} is taxed at 40%, and
           anything beyond is taxed at 45%.
         </P>
-        <VizCard label="The 2025/26 Income Tax bands (England, Wales & NI)">
+        <VizCard label="The 2026/27 Income Tax bands (England, Wales & NI)">
           <TaxLadder />
         </VizCard>
         <P>
@@ -220,8 +220,8 @@ export default function TakeHomeGuide() {
           A UK student loan is repaid like a tax, not a debt. You pay a fixed percentage of everything you earn{" "}
           <em>above a threshold</em>, the balance is written off after a set number of years, and the monthly amount depends
           only on your income — never on how much you borrowed. Most graduates from 2012 to 2023 are on{" "}
-          <strong style={{ color: body }}>Plan 2</strong>, which takes 9% of income above {gbp(28470)}. Earn {gbp(35000)} and
-          you repay 9% of the {gbp(6530)} slice above the threshold: about {gbp(588)} a year, or {gbp(49)} a month.
+          <strong style={{ color: body }}>Plan 2</strong>, which takes 9% of income above {gbp(29385)}. Earn {gbp(35000)} and
+          you repay 9% of the {gbp(5615)} slice above the threshold: about {gbp(505)} a year, or {gbp(42)} a month.
         </P>
         <VizCard label="Plan 2 repayment on a £35,000 salary">
           <StudentLoanViz />
@@ -458,7 +458,7 @@ function PensionWedge() {
 
 /* Student loan: 9% of the slice above the threshold. */
 function StudentLoanViz() {
-  const SAL = 35000, THRESH = 28470, MAX = 40000;
+  const SAL = 35000, THRESH = 29385, MAX = 40000;
   const above = SAL - THRESH, repay = above * 0.09;
   const W = 640, H = 96, pt = 10, barH = 42;
   const x = (v: number) => (v / MAX) * W;
@@ -514,5 +514,5 @@ const GLOSSARY = [
   { t: "Marginal rate", d: "The tax and NI charged on your next pound of income — the rate that governs decisions." },
   { t: "Effective rate", d: "Your average rate: total deductions divided by total pay. Always lower than the marginal rate." },
   { t: "Salary sacrifice", d: "Swapping pay for a pension contribution before tax and NI, so each £1 in costs you less." },
-  { t: "Student loan plan", d: "Which repayment rules apply. Plan 2 takes 9% of income over £28,470; postgrad takes 6%." },
+  { t: "Student loan plan", d: "Which repayment rules apply. Plan 2 takes 9% of income over £29,385; postgrad takes 6%." },
 ];

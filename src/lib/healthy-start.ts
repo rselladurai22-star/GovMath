@@ -9,14 +9,14 @@
  *    Income Support, JSA, ESA, Pension Credit (with child element), Child Tax Credit, etc.
  *  - Under 18 and pregnant — qualifies regardless of income.
  *
- * Values (2025/26):
- *  - £4.25/week during pregnancy
- *  - £8.50/week for each child under 1
- *  - £4.25/week for each child aged 1–4
+ * Values (from April 2026):
+ *  - £4.65/week during pregnancy
+ *  - £9.30/week for each child under 1
+ *  - £4.65/week for each child aged 1–4
  *  - Plus free vitamins from NHS clinics.
  */
 
-export const RATES = { pregnancy: 4.25, under1: 8.50, age1to4: 4.25 };
+export const RATES = { pregnancy: 4.65, under1: 9.30, age1to4: 4.65 };
 
 export type HealthyStartInput = {
   pregnant: boolean;

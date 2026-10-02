@@ -5,7 +5,7 @@
  *   - Gross monthly lease fee is sacrificed from your gross salary.
  *   - You save Income Tax + employee NI at your marginal rate on the sacrificed amount.
  *   - You pay Benefit-in-Kind (BIK) tax on the car at the appropriate BIK %.
- *   - BIK rate for EVs: 3% in 2025/26, rising 1% per year to 9% by 2029/30.
+ *   - BIK rate for EVs: 4% in 2026/27, 5% in 2027/28, rising to 9% by 2029/30.
  *
  * Net monthly cost = gross sacrifice × (1 − marginal rate)
  *                  + (P11D value × BIK % × marginal rate) ÷ 12
@@ -13,10 +13,9 @@
  * "Marginal rate" here means Income Tax + employee NI combined.
  */
 
-export const EV_BIK_2025_26 = {
-  bikRatePct: 3,
+export const EV_BIK_2026_27 = {
+  bikRatePct: 4,
   futureRates: {
-    "2025/26": 3,
     "2026/27": 4,
     "2027/28": 5,
     "2028/29": 7,
@@ -33,7 +32,7 @@ export type EVSalSacInput = {
   incomeTaxRate: number;
   /** Employee NI rate as a decimal (0.08 main band, 0.02 upper). */
   niRate: number;
-  /** BIK percentage to apply, e.g. 3 for 2025/26. */
+  /** BIK percentage to apply, e.g. 4 for 2026/27. */
   bikRatePct?: number;
 };
 
@@ -52,7 +51,7 @@ export type EVSalSacResult = {
 };
 
 export function evSalarySacrifice(input: EVSalSacInput): EVSalSacResult {
-  const bikRate = (input.bikRatePct ?? EV_BIK_2025_26.bikRatePct) / 100;
+  const bikRate = (input.bikRatePct ?? EV_BIK_2026_27.bikRatePct) / 100;
   const marginal = input.incomeTaxRate + input.niRate;
 
   const grossAnnual = input.grossMonthlyLease * 12;

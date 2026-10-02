@@ -7,8 +7,8 @@ import { prescriptionSaver } from "@/lib/nhs-prescription";
 
 const LABELS: Record<string, string> = {
   "pay-as-you-go": "Pay as you go (£9.90/item)",
-  "3-month-ppc": "3-month PPC (£33.70)",
-  "12-month-ppc": "12-month PPC (£120.90)",
+  "3-month-ppc": "3-month PPC (£32.05)",
+  "12-month-ppc": "12-month PPC (£114.50)",
 };
 
 export default function NhsPrescriptionCalculator() {

@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import SharedParentalLeaveCalculator from "./SharedParentalLeaveCalculator";
 
 export const metadata: Metadata = {
-  title: "Shared Parental Leave & Pay Calculator (UK 2025/26)",
+  title: "Shared Parental Leave & Pay Calculator (UK 2026/27)",
   description: "Plan how to split up to 50 weeks of Shared Parental Leave and 37 weeks of ShPP between you and your partner.",
 };
 
@@ -12,7 +12,7 @@ export default function SharedParentalLeavePage() {
   return (
     <CalculatorShell
       category="Benefits"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/benefits", label: "Benefits" },
@@ -25,7 +25,7 @@ export default function SharedParentalLeavePage() {
         <BlueprintExplainer
           howWeCalculated={
             <p>
-              Statutory Shared Parental Pay (ShPP) is the lower of £187.18/week or 90% of average weekly earnings. We apply that rate to the paid weeks each parent claims, then total the two.
+              Statutory Shared Parental Pay (ShPP) is the lower of £194.32/week or 90% of average weekly earnings. We apply that rate to the paid weeks each parent claims, then total the two.
             </p>
           }
           officialRules={
@@ -43,7 +43,7 @@ export default function SharedParentalLeavePage() {
           ]}
           faqs={[
             { question: "Can we both be off at the same time?", answer: "Yes — overlapping leave is allowed. The 50-week pool just covers total time off the two of you take." },
-            { question: "What if I’m self-employed?", answer: "Self-employed parents can’t take SPL but may qualify for Maternity Allowance instead — up to £187.18/week for 39 weeks." },
+            { question: "What if I’m self-employed?", answer: "Self-employed parents can’t take SPL but may qualify for Maternity Allowance instead — up to £194.32/week for 39 weeks." },
             { question: "Does this affect my pension?", answer: "Pension contributions during ShPP are usually based on actual ShPP earnings, not full pay. Check your scheme rules." },
           ]}
           disclaimer="Estimate of statutory pay only. Many employers offer enhanced ShPP — always check your contract."

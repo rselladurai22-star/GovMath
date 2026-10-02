@@ -13,7 +13,7 @@ export default function PropertyLandingPage() {
   return (
     <CategoryLanding
       slug="property"
-      heroBadge="UK property · 2025/26"
+      heroBadge="UK property · 2026/27"
       longCopy={
         <>
           <h2 className="text-2xl font-bold text-primary-dark">

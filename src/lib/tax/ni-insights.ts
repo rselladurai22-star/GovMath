@@ -1,26 +1,26 @@
 /**
- * National Insurance, explained band by band — 2025/26.
+ * National Insurance, explained band by band — 2026/27.
  *
  * Wraps the Class 1 (employee) and Class 4 (self-employed) functions in
- * `2025-26.ts` with a display-ready breakdown, the thresholds that decide
+ * `2026-27.ts` with a display-ready breakdown, the thresholds that decide
  * whether a year counts towards the State Pension, and a sampled curve.
  */
 
-import { nationalInsurance, selfEmployedNI, TAX_YEAR_2025_26 } from "./2025-26";
+import { nationalInsurance, selfEmployedNI, TAX_YEAR_2026_27 } from "./2026-27";
 
 export type NIMode = "employee" | "self-employed";
 
-/** Earnings at or above this (£125 a week) give an employee a qualifying year. */
-export const NI_LOWER_EARNINGS_LIMIT = 6_500;
+/** Earnings at or above this (£129 a week) give an employee a qualifying year. */
+export const NI_LOWER_EARNINGS_LIMIT = 6_708;
 /** Profits at or above this give the self-employed a qualifying year for free. */
-export const NI_SMALL_PROFITS_THRESHOLD = 6_845;
+export const NI_SMALL_PROFITS_THRESHOLD = 7_105;
 /** Voluntary Class 2 contributions for the self-employed below the threshold. */
-export const CLASS2_VOLUNTARY_WEEKLY = 3.5;
+export const CLASS2_VOLUNTARY_WEEKLY = 3.65;
 
 export type NIBand = { label: string; rate: number; income: number; ni: number };
 
 export function niBreakdown(income: number, mode: NIMode): { total: number; bands: NIBand[] } {
-  const t = TAX_YEAR_2025_26.ni;
+  const t = TAX_YEAR_2026_27.ni;
   const rates = mode === "employee" ? t.rates : t.class4Rates;
   const r = mode === "employee" ? nationalInsurance(income) : selfEmployedNI(income);
   const safe = Math.max(0, income || 0);
@@ -39,7 +39,7 @@ export function niBreakdown(income: number, mode: NIMode): { total: number; band
 
 /** Rate on the next £1 of earnings or profit. */
 export function niMarginalRate(income: number, mode: NIMode): number {
-  const t = TAX_YEAR_2025_26.ni;
+  const t = TAX_YEAR_2026_27.ni;
   const rates = mode === "employee" ? t.rates : t.class4Rates;
   if (income < t.primaryThreshold) return 0;
   return income < t.upperEarningsLimit ? rates.main : rates.upper;

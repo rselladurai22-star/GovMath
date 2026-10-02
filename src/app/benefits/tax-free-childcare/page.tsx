@@ -23,7 +23,7 @@ export default function ChildcarePage() {
           officialRules={
             <ul>
               <li>Child must be under 12 (or 17 if disabled).</li>
-              <li>Both parents must each earn at least £166/week and under £100k.</li>
+              <li>Both parents must each earn at least £203/week and under £100k.</li>
               <li>Can’t combine with Universal Credit childcare or vouchers.</li>
               <li>Reconfirm eligibility every 3 months.</li>
             </ul>

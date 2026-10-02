@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import PensionCreditCalculator from "./PensionCreditCalculator";
 
 export const metadata: Metadata = {
-  title: "Pension Credit Calculator (UK 2025/26)",
+  title: "Pension Credit Calculator (UK 2026/27)",
   description: "Estimate your weekly Guarantee Credit top-up for pensioners on a low income, including capital tariff rules.",
 };
 
@@ -12,14 +12,14 @@ export default function PensionCreditPage() {
   return (
     <CalculatorShell
       category="Benefits"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/benefits", label: "Benefits" },
         { href: "/benefits/pension-credit", label: "Pension Credit" },
       ]}
       title="Pension Credit Calculator"
-      intro="Pension Credit tops up weekly income for pensioners — £227.10 single, £346.60 couple. It’s often missed: around 800,000 eligible pensioners don’t claim. Even £1 of Pension Credit unlocks a free TV licence, Cold Weather Payments and council tax help."
+      intro="Pension Credit tops up weekly income for pensioners — £238.00 single, £363.25 couple. It’s often missed: around 800,000 eligible pensioners don’t claim. Even £1 of Pension Credit unlocks a free TV licence, Cold Weather Payments and council tax help."
       calculator={<PensionCreditCalculator />}
       explainer={
         <BlueprintExplainer
@@ -31,7 +31,7 @@ export default function PensionCreditPage() {
           officialRules={
             <ul>
               <li>Must be over State Pension Age and live in the UK.</li>
-              <li>Single threshold £227.10/wk; couple threshold £346.60/wk.</li>
+              <li>Single threshold £238.00/wk; couple threshold £363.25/wk.</li>
               <li>Capital under £10,000 is ignored; above that, £1 tariff income per £500.</li>
               <li>State Pension and most private pension income counts; Attendance Allowance and PIP don’t.</li>
             </ul>

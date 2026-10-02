@@ -4,15 +4,15 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import AttendanceAllowanceCalculator from "./AttendanceAllowanceCalculator";
 
 export const metadata: Metadata = {
-  title: "Attendance Allowance Calculator (UK 2025/26)",
-  description: "See whether your care needs qualify for the lower (£73.90/wk) or higher (£110.40/wk) rate of Attendance Allowance.",
+  title: "Attendance Allowance Calculator (UK 2026/27)",
+  description: "See whether your care needs qualify for the lower (£76.70/wk) or higher (£114.60/wk) rate of Attendance Allowance.",
 };
 
 export default function AttendanceAllowancePage() {
   return (
     <CalculatorShell
       category="Benefits"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/benefits", label: "Benefits" },
@@ -25,7 +25,7 @@ export default function AttendanceAllowancePage() {
         <BlueprintExplainer
           howWeCalculated={
             <p>
-              Two rates. Lower rate £73.90/week if you need help (or supervision) during the day OR night. Higher rate £110.40/week if you need help both day AND night, or are terminally ill.
+              Two rates. Lower rate £76.70/week if you need help (or supervision) during the day OR night. Higher rate £114.60/week if you need help both day AND night, or are terminally ill.
             </p>
           }
           officialRules={

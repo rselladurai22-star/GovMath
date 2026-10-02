@@ -14,16 +14,25 @@ describe("smallBusinessRates", () => {
     expect(r.reliefPercent).toBe(50);
   });
 
-  it("uses small multiplier 49.9p up to RV £50,999", () => {
+  it("uses small multiplier 43.2p up to RV £50,999", () => {
     const r = smallBusinessRates({ rateableValue: 30000, onlyProperty: false });
-    expect(r.multiplier).toBe(0.499);
-    expect(r.grossRates).toBeCloseTo(30000 * 0.499, 2);
+    expect(r.multiplier).toBe(0.432);
+    expect(r.grossRates).toBeCloseTo(30000 * 0.432, 2);
     expect(r.payable).toBeCloseTo(r.grossRates, 2);
   });
 
-  it("uses standard multiplier 54.6p at RV £51,000+", () => {
+  it("uses standard multiplier 48p at RV £51,000+", () => {
     const r = smallBusinessRates({ rateableValue: 60000, onlyProperty: false });
-    expect(r.multiplier).toBe(0.546);
+    expect(r.multiplier).toBe(0.48);
+  });
+
+  it("uses the lower retail, hospitality and leisure multipliers", () => {
+    expect(smallBusinessRates({ rateableValue: 30000, onlyProperty: false, retailHospitalityLeisure: true }).multiplier).toBe(0.382);
+    expect(smallBusinessRates({ rateableValue: 60000, onlyProperty: false, retailHospitalityLeisure: true }).multiplier).toBe(0.43);
+  });
+
+  it("uses the large property multiplier at RV £500,000+", () => {
+    expect(smallBusinessRates({ rateableValue: 500000, onlyProperty: false, retailHospitalityLeisure: true }).multiplier).toBe(0.508);
   });
 
   it("denies relief if applicant has other properties", () => {

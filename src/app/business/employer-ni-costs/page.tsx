@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import EmployerNICalculator from "./EmployerNICalculator";
 
 export const metadata: Metadata = {
-  title: "Employer NI Calculator (UK 2025/26 — 15% / £5k)",
+  title: "Employer NI Calculator (UK 2026/27 — 15% / £5k)",
   description: "True cost of hiring including Class 1 Secondary NI and Employment Allowance.",
 };
 
@@ -12,7 +12,7 @@ export default function EmployerNIPage() {
   return (
     <CalculatorShell
       category="Business"
-      updatedLabel="Apr 2025"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/business", label: "Business" }, { href: "/business/employer-ni-costs", label: "Employer NI" }]}
       title="Employer NI Calculator"
       intro="From 6 April 2025, Employer NI jumped to 15% (was 13.8%) and the threshold dropped to £5,000 (was £9,100). This is the change that hit small businesses hardest in 2025."

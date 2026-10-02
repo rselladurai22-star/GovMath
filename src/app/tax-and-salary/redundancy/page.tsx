@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import RedundancyCalculator from "./RedundancyCalculator";
 
 export const metadata: Metadata = {
-  title: "Statutory Redundancy Pay Calculator (UK 2025/26)",
+  title: "Statutory Redundancy Pay Calculator (UK 2026/27)",
   description: "Work out your statutory redundancy entitlement based on age, length of service and weekly pay.",
 };
 
@@ -12,18 +12,18 @@ export default function RedundancyPage() {
   return (
     <CalculatorShell
       category="Tax & Salary"
-      updatedLabel="Apr 2025 cap"
+      updatedLabel="Apr 2026 cap"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax & Salary" }, { href: "/tax-and-salary/redundancy", label: "Redundancy" }]}
       title="Statutory Redundancy Pay Calculator"
       intro="If you’ve worked somewhere two years or more and your role is being made redundant, you’re entitled to a statutory payment. This is the legal minimum — many employers pay more."
       calculator={<RedundancyCalculator />}
       explainer={
         <BlueprintExplainer
-          howWeCalculated={<p>Each completed year of service is weighted by your age that year: half a week under 22, one week 22–40, one-and-a-half weeks 41+. Weekly pay is capped at £719 (Apr 2025), and only 20 years of service count — so the absolute statutory ceiling is £21,570.</p>}
+          howWeCalculated={<p>Each completed year of service is weighted by your age that year: half a week under 22, one week 22–40, one-and-a-half weeks 41+. Weekly pay is capped at £751 (Apr 2025), and only 20 years of service count — so the absolute statutory ceiling is £22,530.</p>}
           officialRules={
             <ul>
               <li>You need at least 2 years’ continuous service.</li>
-              <li>Weekly-pay cap rises each April — currently £719.</li>
+              <li>Weekly-pay cap rises each April — currently £751.</li>
               <li>First £30,000 of any redundancy payment is tax-free; balance is taxed as income.</li>
               <li>National Insurance isn’t due on statutory redundancy.</li>
             </ul>

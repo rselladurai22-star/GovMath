@@ -1,15 +1,15 @@
 /**
- * Attendance Allowance (UK) — 2025/26 rates.
+ * Attendance Allowance (UK) — 2026/27 rates.
  *
  * Tax-free benefit for those over State Pension Age who need help with personal care
  * because of a physical or mental disability. Not means-tested.
  *
- *   Lower rate: £73.90/week  (help with care during the day OR night)
- *   Higher rate: £110.40/week (help with care during the day AND night, or terminally ill)
+ *   Lower rate: £76.70/week  (help with care during the day OR night)
+ *   Higher rate: £114.60/week (help with care during the day AND night, or terminally ill)
  */
 
-export const AA_LOWER = 73.90;
-export const AA_HIGHER = 110.40;
+export const AA_LOWER = 76.70;
+export const AA_HIGHER = 114.60;
 
 export type AaRate = "none" | "lower" | "higher";
 

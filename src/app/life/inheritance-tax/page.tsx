@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import IHTCalculator from "./IHTCalculator";
 
 export const metadata: Metadata = {
-  title: "Inheritance Tax Calculator UK 2025/26",
+  title: "Inheritance Tax Calculator UK 2026/27",
   description:
     "Estimate UK Inheritance Tax — Nil-Rate Band, Residence NRB, spousal transfer and the £2m taper.",
 };
@@ -13,7 +13,7 @@ export default function IHTPage() {
   return (
     <CalculatorShell
       category="Life Events"
-      updatedLabel="2025/26 thresholds"
+      updatedLabel="2026/27 thresholds"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/life", label: "Life Events" },

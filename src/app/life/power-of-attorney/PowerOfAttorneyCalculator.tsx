@@ -32,7 +32,7 @@ export default function PowerOfAttorneyCalculator() {
           <ResultBreakdown
             title="Breakdown"
             rows={[
-              { label: `Standard fee (${count} × £82)`, value: r.standardFee },
+              { label: `Standard fee (${count} × £92)`, value: r.standardFee },
               { label: "Remission/exemption", value: r.discount, variant: "deduction" },
               { label: "Payable", value: r.payable, variant: "total" },
             ]}

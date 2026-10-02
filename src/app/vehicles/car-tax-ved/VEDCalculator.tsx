@@ -65,7 +65,7 @@ export default function VEDCalculator() {
             value={listPrice}
             onChange={setListPrice}
             step={1000}
-            hint="Includes options. >£40k triggers the £425/yr expensive-car supplement for 5 years."
+            hint="Includes options. >£40k (>£50k for EVs) triggers the £440/yr expensive-car supplement for 5 years."
           />
         </div>
         <div className="rounded-xl bg-white border-2 border-primary p-6 space-y-4">

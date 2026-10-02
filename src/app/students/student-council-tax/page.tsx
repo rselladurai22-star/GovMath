@@ -12,7 +12,7 @@ export default function StudentCouncilTaxPage() {
   return (
     <CalculatorShell
       category="Students"
-      updatedLabel="2025/26"
+      updatedLabel="2026/27"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/students", label: "Students" },

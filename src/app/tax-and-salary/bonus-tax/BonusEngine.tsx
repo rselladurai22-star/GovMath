@@ -17,7 +17,7 @@ import {
 
 /* ══════════════════════════════════════════════════════════════════
    Bonus Tax Engine — what a one-off bonus is really worth after HMRC.
-   Reuses the tested 2025/26 take-home engine; the bonus figures are the
+   Reuses the tested 2026/27 take-home engine; the bonus figures are the
    marginal difference between "salary only" and "salary + bonus".
    ══════════════════════════════════════════════════════════════════ */
 
@@ -203,7 +203,7 @@ function DetailsCard({ state, dispatch, onCalculate, onReset, calculated }: { st
         </button>
         <div className="flex items-center justify-center gap-1.5" style={{ fontSize: 12, color: T.mute, marginTop: 8 }}>
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke={GREEN} strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M20 6L9 17l-5-5" /></svg>
-          {calculated ? "Results update as you edit" : "England, Wales & NI · 2025/26"}
+          {calculated ? "Results update as you edit" : "England, Wales & NI · 2026/27"}
         </div>
       </div>
     </Card>
@@ -439,7 +439,7 @@ function ToolsRow() {
 function FootBar() {
   return (
     <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2" style={{ fontSize: 11.5, color: T.subtle, padding: "4px 0" }}>
-      <span className="flex items-center gap-1.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9" /><path strokeLinecap="round" d="M12 8v4l3 2" /></svg>Source: HMRC · 2025/26 rates</span>
+      <span className="flex items-center gap-1.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="9" /><path strokeLinecap="round" d="M12 8v4l3 2" /></svg>Source: HMRC · 2026/27 rates</span>
       <span>England, Wales & NI · tax code 1257L</span>
       <span className="flex items-center gap-1.5"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="11" width="14" height="10" rx="2" /><path strokeLinecap="round" d="M8 11V7a4 4 0 018 0v4" /></svg>We respect your privacy. No data is stored.</span>
     </div>

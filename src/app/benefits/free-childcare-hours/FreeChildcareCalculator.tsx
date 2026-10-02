@@ -36,7 +36,7 @@ export default function FreeChildcareCalculator() {
           </div>
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" checked={parentWorking} onChange={(e) => setWorking(e.target.checked)} />
-            <span>Both parents working (≥ £166/wk, &lt; £100k/yr)</span>
+            <span>Both parents working (≥ £203/wk, &lt; £100k/yr)</span>
           </label>
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" checked={lowIncomeFamily} onChange={(e) => setLowIncome(e.target.checked)} />

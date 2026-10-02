@@ -37,7 +37,7 @@ export default function NIGuide() {
         <P>
           National Insurance (NI) is the second deduction on your payslip, sitting alongside Income Tax. It funds the
           State Pension, the NHS and certain benefits — and it&rsquo;s charged in bands, just like Income Tax, but with its
-          own thresholds and a surprising twist for higher earners. Here&rsquo;s exactly how it works in 2025/26.
+          own thresholds and a surprising twist for higher earners. Here&rsquo;s exactly how it works in 2026/27.
         </P>
       </div>
 

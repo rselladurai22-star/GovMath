@@ -29,7 +29,7 @@ export default function AllCalculatorsPage() {
           { href: "/", label: "Home" },
           { href: "/calculators", label: "All calculators" },
         ]}
-        eyebrow={`${CALCULATORS.length} calculators · 2025/26 rates`}
+        eyebrow={`${CALCULATORS.length} calculators · 2026/27 rates`}
         title="All calculators"
         lead={`Every free UK calculator on GovMath, across ${CATEGORIES.length} topics. Search, or jump to a topic.`}
       >

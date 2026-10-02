@@ -4,7 +4,7 @@
  * The prize fund rate is the average return across all bondholders.
  * Each £1 bond is one entry into the monthly draw. Prizes range £25 → £1m.
  *
- * Current rate (as at June 2025): 3.80% AER tax-free.
+ * Prize fund rate (from the September 2026 draw): 4.35% tax-free.
  * Min holding £25, max £50,000.
  *
  * This calculator gives the EXPECTED win (rate × holding ÷ 12 × 12 = rate × holding),
@@ -13,7 +13,7 @@
 
 export const MIN_BONDS = 25;
 export const MAX_BONDS = 50_000;
-export const DEFAULT_PRIZE_RATE = 0.038; // 3.80%
+export const DEFAULT_PRIZE_RATE = 0.0435; // 4.35%
 
 export type PremiumBondsInput = {
   holding: number;

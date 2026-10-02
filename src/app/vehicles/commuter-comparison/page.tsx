@@ -12,7 +12,7 @@ export default function CommuterComparisonPage() {
   return (
     <CalculatorShell
       category="Vehicles"
-      updatedLabel="2025/26"
+      updatedLabel="2026/27"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/vehicles", label: "Vehicles" },

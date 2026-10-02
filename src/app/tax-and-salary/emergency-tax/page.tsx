@@ -12,7 +12,7 @@ export default function EmergencyTaxPage() {
   return (
     <CalculatorShell
       category="Tax & Salary"
-      updatedLabel="2025/26"
+      updatedLabel="2026/27"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/tax-and-salary", label: "Tax & Salary" }, { href: "/tax-and-salary/emergency-tax", label: "Emergency Tax" }]}
       title="Emergency Tax Refund Estimator"
       intro="Starting a new job without a P45? Pulling a pension lump sum? HMRC often defaults to an emergency tax code (BR, 0T or 1257L W1/M1), over-taxing you until they catch up."

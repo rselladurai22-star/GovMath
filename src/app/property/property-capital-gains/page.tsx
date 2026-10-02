@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import PropertyCGTCalculator from "./PropertyCGTCalculator";
 
 export const metadata: Metadata = {
-  title: "Property Capital Gains Tax Calculator (UK 2025/26)",
+  title: "Property Capital Gains Tax Calculator (UK 2026/27)",
   description: "CGT on selling a second home, BTL or inherited property — at the unified 18/24% post-Oct 2024 rates.",
 };
 

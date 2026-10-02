@@ -1,7 +1,7 @@
 /**
  * Workplace pension (auto-enrolment) contributions.
  *
- * Minimum auto-enrolment (2025/26):
+ * Minimum auto-enrolment (2026/27, thresholds unchanged):
  *  - Total 8% of qualifying earnings
  *  - Employer min 3%, employee min 5% (incl tax relief)
  *  - Qualifying earnings band: £6,240 – £50,270

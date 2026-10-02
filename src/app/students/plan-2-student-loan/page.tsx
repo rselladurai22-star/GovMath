@@ -4,30 +4,30 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import Plan2Calculator from "./Plan2Calculator";
 
 export const metadata: Metadata = {
-  title: "Plan 2 Student Loan Repayment Calculator (UK 2025/26)",
+  title: "Plan 2 Student Loan Repayment Calculator (UK 2026/27)",
   description:
-    "Work out your Plan 2 student loan repayment — 9% of income above £28,470 for English and Welsh undergrads who started 2012 to 2023.",
+    "Work out your Plan 2 student loan repayment — 9% of income above £29,385 for English and Welsh undergrads who started 2012 to 2023.",
 };
 
 export default function Plan2Page() {
   return (
     <CalculatorShell
       category="Students & Graduates"
-      updatedLabel="2025/26 threshold"
+      updatedLabel="2026/27 threshold"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/students", label: "Students & Graduates" },
         { href: "/students/plan-2-student-loan", label: "Plan 2 Student Loan" },
       ]}
       title="Plan 2 Student Loan Calculator"
-      intro="Plan 2 is the loan plan for English and Welsh undergrads who started university between September 2012 and August 2023 — 9% of income above £28,470 (2025/26)."
+      intro="Plan 2 is the loan plan for English and Welsh undergrads who started university between September 2012 and August 2023 — 9% of income above £29,385 (2026/27)."
       calculator={<Plan2Calculator />}
       explainer={
         <BlueprintExplainer
           howWeCalculated={
             <>
               <p>
-                Repayment = 9% × (annual salary − £28,470). Below the
+                Repayment = 9% × (annual salary − £29,385). Below the
                 threshold you owe £0 for that year. The threshold is
                 pro-rated through the year via PAYE — so a December
                 bonus that lifts you over could trigger a one-month
@@ -44,7 +44,7 @@ export default function Plan2Page() {
           officialRules={
             <>
               <ul>
-                <li>Threshold £28,470 from 6 April 2025 (frozen until at least April 2027).</li>
+                <li>Threshold £29,385 from 6 April 2026.</li>
                 <li>
                   Repayment rate 9% on the excess. Collected via PAYE
                   alongside Income Tax and NI, or via Self Assessment for
@@ -56,7 +56,7 @@ export default function Plan2Page() {
                   borrowers never repay in full.
                 </li>
                 <li>
-                  Interest: RPI if you earn under £28,470; RPI + sliding
+                  Interest: RPI if you earn under £29,385; RPI + sliding
                   up to RPI + 3% at £51,245+. Currently capped to keep
                   rates fair vs commercial loans (the “Prevailing Market Rate Cap”).
                 </li>
@@ -70,7 +70,7 @@ export default function Plan2Page() {
             },
             {
               title: "Bonuses trigger one-off deductions",
-              body: "If a single month’s pay × 12 lands above £28,470, PAYE will deduct 9% on the excess that month — even if you’re under £28,470 annually. You can reclaim via HMRC after year-end if you genuinely earned under the threshold.",
+              body: "If a single month’s pay × 12 lands above £29,385, PAYE will deduct 9% on the excess that month — even if you’re under £29,385 annually. You can reclaim via HMRC after year-end if you genuinely earned under the threshold.",
             },
             {
               title: "You don't pay it after leaving the UK — but you must tell SLC",
@@ -98,7 +98,7 @@ export default function Plan2Page() {
                 "Interest accrues monthly at potentially RPI + 3%. For most middle-earners, repayments barely cover interest, so balances grow. That’s by design — the 30-year write-off is the real mechanism.",
             },
           ]}
-          disclaimer="Estimate based on 2025/26 thresholds. Actual PAYE deductions are calculated monthly, not annually."
+          disclaimer="Estimate based on 2026/27 thresholds. Actual PAYE deductions are calculated monthly, not annually."
         />
       }
     />

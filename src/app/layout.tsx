@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | GovMath",
   },
   description:
-    "Free UK calculators for tax, take-home pay, benefits, property and pensions. Government jargon translated into plain English. 2025/26 rates.",
+    "Free UK calculators for tax, take-home pay, benefits, property and pensions. Government jargon translated into plain English. 2026/27 rates.",
   keywords: [
     "UK tax calculator",
     "take home pay calculator UK",

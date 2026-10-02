@@ -19,7 +19,7 @@
  *  - Suffixes W1 / M1 / X: non-cumulative (emergency), applied to that pay period only.
  *  - Prefix "S" (Scotland) or "C" (Wales) — uses regional rates.
  *
- * 2025/26 standard personal allowance = £12,570 → standard code 1257L.
+ * 2026/27 standard personal allowance = £12,570 → standard code 1257L.
  */
 
 export const STANDARD_PERSONAL_ALLOWANCE = 12570;

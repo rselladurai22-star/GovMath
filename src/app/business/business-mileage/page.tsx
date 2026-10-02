@@ -37,7 +37,7 @@ export default function MileagePage() {
             { question: "Can I claim instead of taking a company car?", answer: "Yes — ‘cash for car’ schemes use AMAP. Often more tax-efficient for low-mileage drivers." },
             { question: "What about electric vehicles?", answer: "Same AMAP rates apply for your own EV. Company EVs get the separate Advisory Electricity Rate (currently 7p/mile)." },
           ]}
-          disclaimer="HMRC AMAP rates as of 2025. Self-employed must use the same rates if using simplified expenses."
+          disclaimer="HMRC AMAP rates for 2026/27 (unchanged since 2011). Self-employed must use the same rates if using simplified expenses."
         />
       }
     />

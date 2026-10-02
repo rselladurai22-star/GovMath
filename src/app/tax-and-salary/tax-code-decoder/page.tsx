@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import TaxCodeDecoderCalculator from "./TaxCodeDecoderCalculator";
 
 export const metadata: Metadata = {
-  title: "UK Tax Code Decoder (2025/26)",
+  title: "UK Tax Code Decoder (2026/27)",
   description: "Type your PAYE tax code and see your personal allowance, what each letter means, and whether you’re on an emergency code.",
 };
 
@@ -12,7 +12,7 @@ export default function TaxCodeDecoderPage() {
   return (
     <CalculatorShell
       category="Tax & Salary"
-      updatedLabel="2025/26"
+      updatedLabel="2026/27"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/tax-and-salary", label: "Tax & Salary" },
@@ -31,7 +31,7 @@ export default function TaxCodeDecoderPage() {
           }
           officialRules={
             <ul>
-              <li>2025/26 standard personal allowance is £12,570 → standard code <code>1257L</code>.</li>
+              <li>2026/27 standard personal allowance is £12,570 → standard code <code>1257L</code>.</li>
               <li>Allowance tapers by £1 for every £2 of income over £100,000 — gone entirely at £125,140.</li>
               <li>BR, D0, D1 codes mean no allowance — usually a second income source.</li>
               <li>S prefix = Scottish rates; C prefix = Welsh rates (currently mirror rUK).</li>
@@ -47,7 +47,7 @@ export default function TaxCodeDecoderPage() {
             { question: "Does this work for Scotland?", answer: "Yes — prefix S codes are recognised. Scottish income tax rates differ but the allowance maths is the same." },
             { question: "Why is mine 1257L but I’m still paying tax?", answer: "1257L gives £12,570 tax-free per year — about £1,048/month. Anything over that is taxed at your marginal rate." },
           ]}
-          disclaimer="Decoder reflects HMRC tax code rules for 2025/26. Always confirm with HMRC or your PAYE coding notice."
+          disclaimer="Decoder reflects HMRC tax code rules for 2026/27. Always confirm with HMRC or your PAYE coding notice."
         />
       }
     />

@@ -11,7 +11,7 @@ describe("careHomeMeansTest", () => {
   it("uses income only when capital below £14,250", () => {
     const r = careHomeMeansTest({ capital: 10000, weeklyIncome: 250, weeklyCareCost: 700 });
     expect(r.tariffIncome).toBe(0);
-    expect(r.yourContribution).toBeCloseTo(250 - 30.65, 2);
+    expect(r.yourContribution).toBeCloseTo(250 - 31.8, 2);
   });
 
   it("applies tariff income £1/wk per £250 above £14,250", () => {
@@ -21,6 +21,6 @@ describe("careHomeMeansTest", () => {
 
   it("council pays the shortfall when contribution is less than cost", () => {
     const r = careHomeMeansTest({ capital: 5000, weeklyIncome: 200, weeklyCareCost: 800 });
-    expect(r.councilContribution).toBeCloseTo(800 - (200 - 30.65), 2);
+    expect(r.councilContribution).toBeCloseTo(800 - (200 - 31.8), 2);
   });
 });

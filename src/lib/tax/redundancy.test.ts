@@ -8,9 +8,9 @@ describe("statutoryRedundancy", () => {
     expect(r.statutoryPayment).toBe(2500);
   });
 
-  it("caps weekly pay at £719", () => {
+  it("caps weekly pay at £751", () => {
     const r = statutoryRedundancy({ ageAtRedundancy: 30, yearsOfService: 1, weeklyPay: 1500 });
-    expect(r.cappedWeeklyPay).toBe(719);
+    expect(r.cappedWeeklyPay).toBe(751);
   });
 
   it("uses 1.5 weeks for service while 41+", () => {

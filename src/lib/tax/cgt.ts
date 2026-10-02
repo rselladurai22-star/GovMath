@@ -1,5 +1,5 @@
 /**
- * UK Capital Gains Tax (2024/25 post-Autumn Budget rules, applied 30 Oct 2024).
+ * UK Capital Gains Tax (2026/27; main rates unchanged since 30 Oct 2024).
  *
  * Rates after 30 Oct 2024:
  *  - Non-residential assets: 18% basic / 24% higher

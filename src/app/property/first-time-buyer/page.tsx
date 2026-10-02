@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import FTBCalculator from "./FTBCalculator";
 
 export const metadata: Metadata = {
-  title: "First-Time Buyer SDLT Calculator (England & NI, 2025/26)",
+  title: "First-Time Buyer SDLT Calculator (England & NI, 2026/27)",
   description: "Stamp Duty for first-time buyers in England & Northern Ireland — nil rate to £300k, 5% to £500k, no relief above.",
 };
 

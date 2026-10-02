@@ -12,14 +12,14 @@
  *   8–11 points: standard rate
  *   12+ points:  enhanced rate
  *
- * 2025/26 weekly rates:
- *   Daily Living standard: £73.90  enhanced: £110.40
- *   Mobility     standard: £29.20  enhanced: £77.05
+ * 2026/27 weekly rates:
+ *   Daily Living standard: £76.70  enhanced: £114.60
+ *   Mobility     standard: £30.30  enhanced: £80.00
  */
 
-export const RATES_2025_26 = {
-  dailyLiving: { standard: 73.90, enhanced: 110.40 },
-  mobility:    { standard: 29.20, enhanced: 77.05 },
+export const RATES_2026_27 = {
+  dailyLiving: { standard: 76.70, enhanced: 114.60 },
+  mobility:    { standard: 30.30, enhanced: 80.00 },
 };
 
 export type Award = "none" | "standard" | "enhanced";
@@ -45,7 +45,7 @@ function bandFor(points: number): Award {
 
 function rateFor(award: Award, kind: "dailyLiving" | "mobility"): number {
   if (award === "none") return 0;
-  return RATES_2025_26[kind][award];
+  return RATES_2026_27[kind][award];
 }
 
 export function pipPoints(input: PipInput): PipResult {

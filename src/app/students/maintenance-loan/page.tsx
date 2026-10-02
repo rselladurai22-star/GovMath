@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import MaintenanceLoanCalculator from "./MaintenanceLoanCalculator";
 
 export const metadata: Metadata = {
-  title: "Maintenance Loan Calculator (Plan 5, 2025/26)",
+  title: "Maintenance Loan Calculator (Plan 5, 2026/27)",
   description: "Estimate your Plan 5 Maintenance Loan based on household income and where you’ll live during term-time.",
 };
 
@@ -12,7 +12,7 @@ export default function MaintenanceLoanPage() {
   return (
     <CalculatorShell
       category="Students"
-      updatedLabel="2025/26 Plan 5"
+      updatedLabel="2026/27 Plan 5"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/students", label: "Students" },
@@ -30,7 +30,7 @@ export default function MaintenanceLoanPage() {
           }
           officialRules={
             <ul>
-              <li>2025/26 maximums: £8,877 (home), £10,544 (away), £13,762 (London), £12,070 (abroad).</li>
+              <li>2026/27 maximums: £9,118 (home), £10,830 (away), £14,135 (London), £12,070 (abroad).</li>
               <li>Household income = parents’ combined taxable income, or your own if estranged / over 25.</li>
               <li>Paid in 3 instalments at the start of each term.</li>
               <li>Plan 5 repayment: 9% of earnings over £25,000, written off after 40 years.</li>

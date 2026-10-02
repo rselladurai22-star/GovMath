@@ -4,7 +4,7 @@ import CalculatorShell from "@/components/calculator/CalculatorShell";
 import LBTTCalculator from "./LBTTCalculator";
 
 export const metadata: Metadata = {
-  title: "LBTT Calculator (Scotland 2025/26)",
+  title: "LBTT Calculator (Scotland 2026/27)",
   description: "Scottish Land & Buildings Transaction Tax — by band, including first-time buyer relief and the 8% Additional Dwelling Supplement.",
 };
 
@@ -12,7 +12,7 @@ export default function LBTTPage() {
   return (
     <CalculatorShell
       category="Mortgages & Property"
-      updatedLabel="2025/26 rates"
+      updatedLabel="2026/27 rates"
       breadcrumbs={[{ href: "/", label: "Home" }, { href: "/property", label: "Mortgages & Property" }, { href: "/property/lbtt-scotland", label: "LBTT (Scotland)" }]}
       title="LBTT (Scotland) Calculator"
       intro="Land & Buildings Transaction Tax replaced UK Stamp Duty in Scotland in 2015. The bands differ — but the principle is the same: progressive percentage rates on residential property purchases."

@@ -1,11 +1,11 @@
 /**
- * Pension Credit — Guarantee Credit element (UK 2025/26).
+ * Pension Credit — Guarantee Credit element (UK 2026/27).
  *
  * Source: gov.uk/pension-credit
  *
  * Guarantee Credit tops up weekly income to:
- *   - Single:  £227.10/week
- *   - Couple:  £346.60/week (both over State Pension Age)
+ *   - Single:  £238.00/week
+ *   - Couple:  £363.25/week (both over State Pension Age)
  *
  * Above the guarantee, "Savings Credit" gives a small reward to those who saved,
  * but is closed to people who reached SPA after 6 Apr 2016. We focus on Guarantee Credit.
@@ -14,8 +14,8 @@
  * Capital over £10,000: counts as £1/week of "tariff income" per £500 (or part of £500).
  */
 
-export const SINGLE_GUARANTEE = 227.10;
-export const COUPLE_GUARANTEE = 346.60;
+export const SINGLE_GUARANTEE = 238.0;
+export const COUPLE_GUARANTEE = 363.25;
 export const CAPITAL_FLOOR = 10_000;
 
 export type PensionCreditInput = {

@@ -12,7 +12,7 @@ export default function BankHolidaysPage() {
   return (
     <CalculatorShell
       category="Everyday Life"
-      updatedLabel="2025 & 2026 dates"
+      updatedLabel="2025 to 2027 dates"
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/life", label: "Everyday Life" },
@@ -25,7 +25,7 @@ export default function BankHolidaysPage() {
         <BlueprintExplainer
           howWeCalculated={
             <p>
-              We loop day-by-day between your start and end dates (inclusive), counting any day that’s Monday–Friday and not in the official UK bank holiday list for your chosen nation. Data covers 2025 and 2026 from gov.uk/bank-holidays.
+              We loop day-by-day between your start and end dates (inclusive), counting any day that’s Monday–Friday and not in the official UK bank holiday list for your chosen nation. Data covers 2025, 2026 and 2027 from gov.uk/bank-holidays.
             </p>
           }
           officialRules={

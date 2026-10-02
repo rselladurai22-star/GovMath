@@ -1,16 +1,16 @@
 /**
- * UK Probate application fees (2025/26).
+ * UK Probate application fees (from 13 July 2026).
  *
  * Source: gov.uk/applying-for-probate
  *  - Estate worth £5,000 or less: £0 application fee
- *  - Estate worth over £5,000:    £300 application fee
+ *  - Estate worth over £5,000:    £526 application fee (was £300)
  *  - Extra "sealed" copies of the grant: £1.50 each
  *
  * Same fee applies whether you apply yourself (PA1P/PA1A) or via a solicitor.
  */
 
 export const PROBATE_THRESHOLD = 5000;
-export const PROBATE_FEE_OVER_THRESHOLD = 300;
+export const PROBATE_FEE_OVER_THRESHOLD = 526;
 export const SEALED_COPY_FEE = 1.5;
 
 export type ProbateInput = {

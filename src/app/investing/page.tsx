@@ -13,7 +13,7 @@ export default function InvestingLandingPage() {
   return (
     <CategoryLanding
       slug="investing"
-      heroBadge="UK pensions & investments · 2025/26"
+      heroBadge="UK pensions & investments · 2026/27"
       longCopy={
         <>
           <h2 className="text-2xl font-bold text-primary-dark">

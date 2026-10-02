@@ -12,7 +12,7 @@ export default function CarersEarningsCalculator() {
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
         <div className="rounded-xl bg-surface border border-border p-6 space-y-5">
           <NumberInput label="Weekly earnings (after tax, NI, allowable expenses)" value={weekly} onChange={setWeekly} step={5} />
-          <p className="text-xs text-text/60">Earnings limit (2025/26): £196/week.</p>
+          <p className="text-xs text-text/60">Earnings limit (2026/27): £204/week.</p>
         </div>
         <div className={`rounded-xl border-2 p-6 space-y-3 ${r.eligible ? "bg-emerald-50 border-emerald-500" : "bg-rose-50 border-rose-500"}`}>
           <p className={`text-sm font-semibold uppercase tracking-wide ${r.eligible ? "text-emerald-900" : "text-rose-900"}`}>{r.eligible ? "Eligible for Carer's Allowance" : "Over the earnings limit"}</p>

@@ -148,7 +148,7 @@ export default function NIStudio({ initialIncome, initialMode, showResults }: { 
 
       <Assumptions
         items={[
-          { label: "Tax year", value: "2025/26" },
+          { label: "Tax year", value: "2026/27" },
           { label: "Age", value: "Under State Pension age" },
           { label: employee ? "Paid" : "Profits", value: employee ? "Evenly through the year" : "For the whole tax year" },
           { label: "Category", value: employee ? "Standard (category A)" : "Class 4" },
@@ -202,7 +202,7 @@ export default function NIStudio({ initialIncome, initialMode, showResults }: { 
               You need <b>35 qualifying years</b> for the full new State Pension, and at least 10 to get any.
             </Callout>
           ) : employee ? (
-            <Callout tone="warn" title="Below £6,500 this year won't count automatically">
+            <Callout tone="warn" title={`Below ${gbp(NI_LOWER_EARNINGS_LIMIT)} this year won't count automatically`}>
               Earnings under the Lower Earnings Limit (<b>{gbp(NI_LOWER_EARNINGS_LIMIT)}</b>) don&apos;t build your State Pension. You may get National Insurance
               credits, for example if you claim Child Benefit for a child under 12, or you can pay voluntary contributions.
             </Callout>
@@ -271,7 +271,7 @@ export default function NIStudio({ initialIncome, initialMode, showResults }: { 
       </ResultCard>
 
       <p className={s.hint} style={{ textAlign: "center" }}>
-        2025/26 rates, worked out on a yearly basis. Payroll works pay period by pay period, so monthly payslips can vary slightly.
+        2026/27 rates, worked out on a yearly basis. Payroll works pay period by pay period, so monthly payslips can vary slightly.
       </p>
     </Studio>
   );

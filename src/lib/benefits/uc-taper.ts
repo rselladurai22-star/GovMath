@@ -1,10 +1,10 @@
 /**
- * Universal Credit earnings taper — 2025/26.
+ * Universal Credit earnings taper — 2026/27.
  * Taper rate 55%: for every £1 of net earnings above your work allowance,
  * you lose £0.55 of UC.
  */
 
-import { UC_RATES_2025_26 } from "./universal-credit";
+import { UC_RATES_2026_27 } from "./universal-credit";
 
 export type UCTaperInput = {
   monthlyMaxUC: number;
@@ -21,11 +21,11 @@ export type UCTaperResult = {
 
 export function ucTaper(input: UCTaperInput): UCTaperResult {
   const wa = input.receivingHousingElement
-    ? UC_RATES_2025_26.workAllowance.withHousing
-    : UC_RATES_2025_26.workAllowance.withoutHousing;
+    ? UC_RATES_2026_27.workAllowance.withHousing
+    : UC_RATES_2026_27.workAllowance.withoutHousing;
 
   const above = Math.max(0, input.netMonthlyEarnings - wa);
-  const reduction = above * UC_RATES_2025_26.taperRate;
+  const reduction = above * UC_RATES_2026_27.taperRate;
   const finalUC = Math.max(0, input.monthlyMaxUC - reduction);
 
   return {
