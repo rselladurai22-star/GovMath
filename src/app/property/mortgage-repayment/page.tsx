@@ -79,6 +79,7 @@ export default async function MortgagePage({ searchParams }: { searchParams: Sea
         deposit={parseNumber(deposit, 70_000, 50_000_000)}
         rate={parseNumber(rate, 4.75, 15)}
         term={Math.max(1, Math.round(parseNumber(term, 25, 40)))}
+        showResults={[price, deposit, rate, term].some(Boolean)}
       />
     </FlagshipPage>
   );
