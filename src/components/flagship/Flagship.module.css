@@ -624,6 +624,17 @@
 .advancedReset:hover {
   color: var(--blue);
 }
+/* A calculator with a single group of core inputs uses the full width,
+   with its fields side by side. */
+.studio:not([data-ready]) .panelBody > .group:only-of-type {
+  grid-column: 1 / -1;
+}
+.studio:not([data-ready]) .panelBody > .group:only-of-type > .groupBody {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  align-items: start;
+  gap: 1rem 2rem;
+}
 /* Before Calculate the panel is wide: the advanced panel spans it and lays
    its fields out in columns too. */
 .studio:not([data-ready]) .panelBody > .advanced {

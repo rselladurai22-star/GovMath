@@ -1,114 +1,48 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import ProRataCalculator from "./ProRataCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import ProRataStudio from "./ProRataStudio";
+import ProRataGuide from "./ProRataGuide";
 
 export const metadata: Metadata = {
-  title: "Pro Rata Salary Calculator (UK)",
+  title: "Pro Rata Salary Calculator (UK, 2026/27)",
   description:
-    "Convert a full-time advertised salary into the pro-rata equivalent for your hours, per year, month, week and day.",
+    "Work out your pro-rata salary, take-home pay and holiday for part-time or part-year work, by hours or days a week. 2026/27 tax rates.",
+  alternates: { canonical: "/tax-and-salary/pro-rata" },
 };
 
-export default function ProRataPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/tax-and-salary", label: "Tax & Salary" },
+  { href: "/tax-and-salary/pro-rata", label: "Pro Rata" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How do I work out a pro-rata salary?", a: "Multiply the full-time salary by your hours and divide by the full-time hours. For example, £40,000 pro rata for 30 hours where full time is 37.5 hours is £40,000 × 30 ÷ 37.5 = £32,000 a year." },
+  { q: "What does FTE mean?", a: "Full-time equivalent: your hours as a share of full time. 30 hours out of 37.5 is 0.8 FTE, or 80%." },
+  { q: "How much holiday do part-time workers get?", a: "The same 5.6 weeks a year as full-timers, made up of your own working days. On three days a week the statutory minimum is 16.8 days, including bank holidays." },
+  { q: "Do part-time workers pay less tax?", a: "As a share of pay, usually yes. The £12,570 tax-free allowance is the same whatever you earn, so it covers a bigger share of a smaller salary. Working 80% of full time typically leaves you with around 82% of the full-time take-home." },
+  { q: "What if I start a job part-way through the year?", a: "You only earn for the months you work, but you still have the whole year's tax-free allowance. If you had no other income that year, you may be due a tax refund after 5 April." },
+];
+
+export default async function ProRataPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) =>
+    ["/tax-and-salary/salary-calculator", "/tax-and-salary/hourly-to-salary", "/tax-and-salary/holiday-entitlement", "/tax-and-salary/overtime", "/benefits/universal-credit", "/tax-and-salary/tax-code-decoder"].includes(c.href),
+  );
   return (
-    <CalculatorShell
-      category="Tax & Salary"
-      updatedLabel="UK 37.5h default"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/tax-and-salary", label: "Tax & Salary" },
-        { href: "/tax-and-salary/pro-rata", label: "Pro Rata Salary Calculator" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026/27"
       title="Pro Rata Salary Calculator"
-      intro="A job is advertised at a full-time rate but you’re working fewer hours. This tells you the actual gross salary in your contract — and what it works out to per month, week and day."
-      calculator={<ProRataCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <>
-              <p>
-                Pro-rata means “in proportion.” The calculation
-                is simple:
-              </p>
-              <p>
-                <code>
-                  Pro-rata salary = Full-time salary × (Your hours ÷ Full-time
-                  hours)
-                </code>
-              </p>
-              <p>
-                We then divide the annual figure by 12 for monthly, 52 for
-                weekly, and 260 (52 × 5) for a daily working-day rate.
-              </p>
-              <p>
-                For example: a £40,000 full-time role at 37.5 hours/week, done
-                at 30 hours/week, is 30 ÷ 37.5 = 0.8 = 80%, giving £32,000.
-              </p>
-            </>
-          }
-          officialRules={
-            <>
-              <p>
-                There’s no single statutory definition of full-time in
-                the UK, but the common-law and ACAS expectation is:
-              </p>
-              <ul>
-                <li>
-                  <strong>Full-time</strong> is usually 35–40 hours/week.
-                  Civil service and many offices use 37 or 37.5; healthcare
-                  often uses 37.5; finance and law commonly use 40.
-                </li>
-                <li>
-                  <strong>Part-time workers</strong> have the legal right not
-                  to be treated less favourably than comparable full-timers
-                  on a pro-rata basis (Part-time Workers Regulations 2000).
-                </li>
-                <li>
-                  <strong>Holiday entitlement</strong> is also pro-rated.
-                  The statutory minimum is 5.6 weeks (28 days for a 5-day
-                  full-time week), reduced proportionally for fewer days.
-                </li>
-              </ul>
-            </>
-          }
-          pitfalls={[
-            {
-              title: "Lunch breaks aren't usually paid",
-              body: "A “9-to-5” job with a 1-hour unpaid lunch is 35 paid hours/week, not 40. Check whether the advertised hours include or exclude breaks before you calculate.",
-            },
-            {
-              title: "Compressed hours ≠ part time",
-              body: "Working a full-time job’s hours over four longer days (e.g. 4×9.25h = 37 hours) is still full time — you’re entitled to the full salary, not 80% of it.",
-            },
-            {
-              title: "Tax thresholds don't pro-rate",
-              body: "Your Personal Allowance (£12,570) and NI thresholds are annual figures. If your pro-rata salary lands you below them, you pay no tax at all on that income.",
-            },
-            {
-              title: "Holiday and bank holidays should also be pro-rated",
-              body: "Don’t accept the same paid leave as full-time colleagues by default — but equally, employers shouldn’t under-count it. The fair calculation is 5.6 weeks × the fraction of full-time hours you work.",
-            },
-          ]}
-          faqs={[
-            {
-              question: "Is pro-rata always based on hours, or can it be days?",
-              answer:
-                "Either is valid. Many employers calculate pro-rata by days (e.g. 4 days out of 5 = 80%), which usually matches hours-based when daily hours are equal. Always confirm in the offer letter.",
-            },
-            {
-              question: "Does my pension contribution rate change?",
-              answer:
-                "No — auto-enrolment uses the percentage of your actual qualifying earnings, which are already lower because you earn less. The 8% combined minimum applies the same way.",
-            },
-            {
-              question: "What about overtime above my contracted hours?",
-              answer:
-                "Overtime is paid on top of your pro-rata salary, usually at your normal hourly rate up to full-time hours and at an enhanced rate (1.25× or 1.5×) beyond that. Check your contract for the specifics.",
-            },
-          ]}
-          disclaimer="Gross figures only. Use the salary calculator for take-home pay after Income Tax, NI and pension."
-        />
-      }
-    />
+      lead="Turn a full-time salary into your part-time pay, take-home and holiday, by hours or days."
+      points={["Hours or days", "Pro-rata holiday", "Part-year starters", "Free and private"]}
+      guide={<ProRataGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Estimates for the 2026/27 tax year, assuming a standard tax code. GovMath is not affiliated with HMRC. Check your contract for your exact hours and holiday."
+    >
+      <ProRataStudio query={query} />
+    </FlagshipPage>
   );
 }

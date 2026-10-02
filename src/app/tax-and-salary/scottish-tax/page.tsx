@@ -1,120 +1,48 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import ScottishCalculator from "./ScottishCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import ScottishStudio from "./ScottishStudio";
+import ScottishGuide from "./ScottishGuide";
 
 export const metadata: Metadata = {
   title: "Scottish Income Tax Calculator (2026/27)",
   description:
-    "Calculate your Scottish Income Tax across all six bands — starter, basic, intermediate, higher, advanced and top — plus the difference vs the rest of the UK.",
+    "Work out your Scottish Income Tax and take-home pay for 2026/27 across all six bands, and compare it with the rest of the UK. Includes Plan 4 student loans and pensions.",
+  alternates: { canonical: "/tax-and-salary/scottish-tax" },
 };
 
-export default function ScottishPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/tax-and-salary", label: "Tax & Salary" },
+  { href: "/tax-and-salary/scottish-tax", label: "Scottish Tax" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What are the Scottish tax bands for 2026/27?", a: "After the £12,570 Personal Allowance: 19% starter rate to £16,537, 20% basic to £29,526, 21% intermediate to £43,662, 42% higher to £75,000, 45% advanced to £125,140 and 48% top rate above that." },
+  { q: "Do I pay Scottish tax if I work in Scotland but live in England?", a: "No. Scottish Income Tax depends on where you live, not where you work. If your main home is in England you pay the rest-of-UK rates." },
+  { q: "Do people in Scotland pay more tax?", a: "Above about £33,500 a year, yes. Below that the 19% starter rate means slightly less Income Tax than elsewhere in the UK. On £55,000 a Scottish taxpayer pays about £1,650 more a year." },
+  { q: "Is National Insurance different in Scotland?", a: "No. National Insurance is the same across the UK, which is why Scottish taxpayers pay a combined 50% between £43,663 and £50,270: 42% Income Tax and 8% NI." },
+  { q: "Are savings and dividends taxed at Scottish rates?", a: "No. Savings interest, dividends and capital gains are taxed at UK rates using UK bands, even for Scottish taxpayers." },
+];
+
+export default async function ScottishTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) =>
+    ["/tax-and-salary/salary-calculator", "/tax-and-salary/tax-bracket-checker", "/students/plan-4-student-loan", "/property/lbtt-scotland", "/tax-and-salary/national-insurance", "/investing/pension-tax-relief"].includes(c.href),
+  );
   return (
-    <CalculatorShell
-      category="Tax & Salary"
-      updatedLabel="Scotland 2026/27"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/tax-and-salary", label: "Tax & Salary" },
-        { href: "/tax-and-salary/scottish-tax", label: "Scottish Income Tax Calculator" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026/27"
       title="Scottish Income Tax Calculator"
-      intro="Scotland has its own Income Tax rates set by Holyrood — six bands ranging from 19% to 48%. We work out what you owe and how it compares to the rest of the UK."
-      calculator={<ScottishCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <>
-              <p>
-                Scottish Income Tax is set by the Scottish Government and
-                applies to non-savings, non-dividend income (i.e. salary,
-                self-employment, pensions, rent). Other income types still
-                use UK-wide rates.
-              </p>
-              <p>
-                The Personal Allowance (£12,570) is reserved to Westminster
-                and remains the same. We taper it £1-per-£2 above £100k just
-                like rUK.
-              </p>
-              <p>Bands measured above the Personal Allowance:</p>
-              <ul>
-                <li>Starter rate: 19% on the next £3,967 (£12,571 to £16,537)</li>
-                <li>Basic rate: 20% on the next £12,989 (£16,538 to £29,526)</li>
-                <li>Intermediate rate: 21% on the next £14,136 (£29,527 to £43,662)</li>
-                <li>Higher rate: 42% on the next £31,338 (£43,663 to £75,000)</li>
-                <li>Advanced rate: 45% from £75,001 to £125,140</li>
-                <li>Top rate: 48% above £125,140</li>
-              </ul>
-            </>
-          }
-          officialRules={
-            <>
-              <p>
-                You pay Scottish Income Tax if HMRC has flagged your tax
-                code with an ”S” prefix (e.g.{" "}
-                <code>S1257L</code>) based on your address being in
-                Scotland.
-              </p>
-              <p>
-                Key features that diverge from rUK:
-              </p>
-              <ul>
-                <li>
-                  <strong>Higher rate starts earlier</strong> (£43,662 vs
-                  £50,270 in rUK) and is 42% instead of 40%.
-                </li>
-                <li>
-                  <strong>NI is UK-wide</strong> — Scotland doesn’t
-                  control it. The crunch zone where 42% IT + 8% NI both
-                  apply is between £43,662 and £50,270, giving a 50% marginal
-                  rate over £6,608 of earnings.
-                </li>
-                <li>
-                  <strong>Lower-earner relief</strong>: the 19% starter rate
-                  means low earners pay slightly less than in rUK.
-                </li>
-              </ul>
-            </>
-          }
-          pitfalls={[
-            {
-              title: "The 50%+ marginal rate at £43,662–£50,270",
-              body: "In this band, Scottish IT is 42% and UK-wide NI is still 8% — a 50% marginal rate. Pension contributions are unusually valuable in this band.",
-            },
-            {
-              title: "Tax code 'S' prefix matters",
-              body: "If you've moved to or from Scotland mid-year, check that HMRC has updated your tax code. The wrong prefix can leave you under- or over-taxed for months.",
-            },
-            {
-              title: "Dividends and savings still use UK rates",
-              body: "Scottish rates only apply to earned income. £20k in dividend income is taxed at UK dividend rates regardless of where you live. This matters for company directors choosing salary vs dividend.",
-            },
-            {
-              title: "Higher rate kicks in earlier than south of the border",
-              body: "A £50,000 earner in Scotland pays roughly £1,500 more Income Tax per year than in the rest of the UK — entirely because the 42% band starts at £43,662 vs £50,270.",
-            },
-          ]}
-          faqs={[
-            {
-              question: "Do I pay Scottish or rUK tax if I work in England but live in Scotland?",
-              answer:
-                "Where you live decides — not where you work. HMRC determines your tax residency from your main home address. Cross-border commuters and remote workers from Scotland use Scottish rates.",
-            },
-            {
-              question: "What about pension contributions?",
-              answer:
-                "Tax relief is given at your marginal rate, including the higher Scottish rates. A £100 contribution from net salary costs a 42%-band Scottish taxpayer only £58 net — better than the £60 in rUK.",
-            },
-            {
-              question: "Can I avoid Scottish tax by saying I live elsewhere?",
-              answer:
-                "No. HMRC requires you to declare your main residence honestly and can investigate. Even if you have a property in England, if Scotland is your principal home, you pay Scottish rates.",
-            },
-          ]}
-          disclaimer="This calculator covers Scottish Income Tax only. National Insurance, dividend tax and savings tax use UK-wide rates."
-        />
-      }
-    />
+      lead="Your Scottish Income Tax and take-home pay across all six bands, side by side with the rest of the UK."
+      points={["2026/27 Scottish rates", "Compared with rest of UK", "Plan 4 student loans", "Free and private"]}
+      guide={<ScottishGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Estimates for the 2026/27 tax year with an S1257L tax code. GovMath is not affiliated with HMRC or the Scottish Government."
+    >
+      <ScottishStudio query={query} />
+    </FlagshipPage>
   );
 }
