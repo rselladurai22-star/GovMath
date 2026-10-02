@@ -68,14 +68,14 @@ export function LogoWordmark({
 }
 
 /** Convenience: the wordmark wrapped in a home link, as used in the header. */
-export function LogoLink({ iconSize = 32 }: { iconSize?: number }) {
+export function LogoLink({ iconSize = 32, tone = "dark" }: { iconSize?: number; tone?: "dark" | "light" }) {
   return (
     <Link
       href="/"
       aria-label="GovMath home"
       className="shrink-0 inline-flex items-center"
     >
-      <LogoWordmark iconSize={iconSize} />
+      <LogoWordmark iconSize={iconSize} tone={tone} />
     </Link>
   );
 }

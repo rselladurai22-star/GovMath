@@ -1,26 +1,11 @@
 import Link from "next/link";
 import { LogoWordmark } from "@/components/Logo";
-import { accentVars, CAT, LineIcon } from "@/components/category-style";
-import { CALCULATORS, CATEGORIES, getCalculatorsByCategory } from "@/lib/calculators";
+import { CALCULATORS, CATEGORIES } from "@/lib/calculators";
 import styles from "./SiteChrome.module.css";
 
-const POPULAR = [
-  "/tax-and-salary/salary-calculator",
-  "/property/mortgage-repayment",
-  "/property/stamp-duty-england",
-  "/business/vat-calculator",
-  "/tax-and-salary/national-insurance",
-  "/benefits/child-benefit",
-];
-
-const COMPANY = [
-  { href: "/about", label: "About GovMath" },
-  { href: "/blog", label: "Guides" },
-  { href: "/calculators", label: "All calculators" },
+const LINKS = [
+  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
-];
-
-const LEGAL = [
   { href: "/privacy", label: "Privacy" },
   { href: "/terms", label: "Terms" },
   { href: "/disclaimer", label: "Disclaimer" },
@@ -29,8 +14,6 @@ const LEGAL = [
 const FACTS = ["Official 2025/26 rates", "Free, no sign-up", "Nothing you type is stored"];
 
 export default function SiteFooter() {
-  const popular = POPULAR.flatMap((href) => CALCULATORS.find((c) => c.href === href) ?? []);
-
   return (
     <footer className={`rk ${styles.footer}`}>
       <div className={styles.footerGlow} aria-hidden="true" />
@@ -54,65 +37,26 @@ export default function SiteFooter() {
         <div className={styles.footerTop}>
           <div className={styles.footerBrand}>
             <Link href="/" aria-label="GovMath home" className="inline-flex">
-              <LogoWordmark iconSize={36} />
+              <LogoWordmark iconSize={36} tone="light" />
             </Link>
             <p>Free, independent UK calculators for tax, pay, property and benefits — with the maths explained in plain English.</p>
-            <ul className={styles.footerFacts}>
-              {FACTS.map((f) => (
-                <li key={f}>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.6} aria-hidden="true">
-                    <path d="M5 12.5l4.5 4.5L19 7.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  {f}
-                </li>
-              ))}
-            </ul>
           </div>
-
-          <nav className={`${styles.footerCol} ${styles.footerTopics}`} aria-label="Topics">
-            <h2>Topics</h2>
-            <ul>
-              {CATEGORIES.map((c) => (
-                <li key={c.slug}>
-                  <Link href={c.href} style={accentVars(c.slug)}>
-                    <span className={styles.footerIcon}>
-                      <LineIcon path={CAT[c.slug].icon} size={16} />
-                    </span>
-                    {c.title}
-                    <small>{getCalculatorsByCategory(c.slug).length}</small>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav className={styles.footerCol} aria-label="Popular calculators">
-            <h2>Popular calculators</h2>
-            <ul>
-              {popular.map((c) => (
-                <li key={c.href}>
-                  <Link href={c.href}>{c.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <nav className={styles.footerCol} aria-label="Company">
-            <h2>Company</h2>
-            <ul>
-              {COMPANY.map((l) => (
-                <li key={l.href}>
-                  <Link href={l.href}>{l.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <ul className={styles.footerFacts}>
+            {FACTS.map((f) => (
+              <li key={f}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.6} aria-hidden="true">
+                  <path d="M5 12.5l4.5 4.5L19 7.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {f}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div className={styles.footerBottom}>
           <span>© {new Date().getFullYear()} GovMath. Independent tools — not a government website and not affiliated with HMRC.</span>
-          <nav aria-label="Legal">
-            {LEGAL.map((l) => (
+          <nav aria-label="Site information">
+            {LINKS.map((l) => (
               <Link key={l.href} href={l.href}>
                 {l.label}
               </Link>

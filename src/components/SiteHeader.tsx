@@ -22,7 +22,7 @@ export default function SiteHeader() {
   return (
     <header className={`rk ${styles.header}`}>
       <div className={`gm-wrap ${styles.headerInner}`}>
-        <LogoLink iconSize={36} />
+        <LogoLink iconSize={36} tone="light" />
         <HeaderNav topics={topics} />
         <div className={styles.headerActions}>
           <Link href="/calculators#search" className={styles.searchPill} aria-label="Search all calculators">
