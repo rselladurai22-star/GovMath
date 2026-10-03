@@ -1,121 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import DivVsSalCalculator from "./DivVsSalCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import DivSalaryStudio from "./DivSalaryStudio";
+import DivSalaryGuide from "./DivSalaryGuide";
 
 export const metadata: Metadata = {
-  title: "Dividend vs Salary Calculator UK 2026/27 (Director Optimiser)",
+  title: "Dividend vs Salary Calculator for Directors (2026/27)",
   description:
-    "Find the optimal director’s salary vs dividend mix for a UK limited company — accounting for Corporation Tax, employer NI, Income Tax, employee NI and dividend tax.",
+    "Find the most tax-efficient salary and dividend split for a company director in 2026/27, with the Employment Allowance, pension contributions and a sole trader comparison.",
+  alternates: { canonical: "/business/dividend-vs-salary" },
 };
 
-export default function DivVsSalPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/business", label: "Business" },
+  { href: "/business/dividend-vs-salary", label: "Dividend vs Salary" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is the best director's salary for 2026/27?", a: "For most single-director companies, £12,570 with the rest as dividends. If the company can claim the Employment Allowance, a higher salary is often better." },
+  { q: "What are the dividend tax rates for 2026/27?", a: "10.75% in the basic rate band, 35.75% in the higher rate band and 39.35% in the additional rate band, after a £500 allowance." },
+  { q: "Does a £12,570 salary cost employer National Insurance?", a: "Yes, 15% on the £7,570 above £5,000, which is £1,135.50, unless the Employment Allowance covers it. The salary and NI both reduce Corporation Tax." },
+  { q: "What salary do I need for a State Pension year?", a: "At least the Lower Earnings Limit, £6,708 for 2026/27. No NI is paid on a salary between that and £12,570, but the year still counts." },
+  { q: "Is a limited company better than being a sole trader?", a: "Not always. In 2026/27, if all profit is paid out, a sole trader often keeps more. The company route helps most when profit is left in the company or paid into a pension." },
+];
+
+export default async function DivSalaryPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/business/corporation-tax", "/business/employer-ni-costs", "/business/sole-trader-tax", "/investing/dividend-tax", "/business/payment-on-account", "/investing/pension-tax-relief"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Business & Self-Employed"
-      updatedLabel="2026/27 rates"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/business", label: "Business & Self-Employed" },
-        { href: "/business/dividend-vs-salary", label: "Dividend vs Salary" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Updated for 2026/27"
       title="Dividend vs Salary Calculator"
-      intro="For one-person limited companies, the cheapest way to extract profit changed in April 2025 — employer NI now hits 15% above £5k, and dividend allowances shrank to £500. The old ‘£12,570 + dividends’ rule still wins for most, but the maths is closer than ever."
-      calculator={<DivVsSalCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <>
-              <p>For each scenario we run a complete cashflow:</p>
-              <ol>
-                <li>
-                  Director’s salary is deducted from profit before
-                  Corporation Tax, along with the employer’s NI on it.
-                </li>
-                <li>
-                  Corporation Tax is applied at 19% (≤£50k), marginal
-                  effective 26.5% (£50k–£250k), or 25% (£250k+).
-                </li>
-                <li>Remaining profit is paid as dividends.</li>
-                <li>
-                  Director pays Income Tax + employee NI on the salary,
-                  and dividend tax (10.75% / 35.75% / 39.35%) on the
-                  dividends above the £500 allowance.
-                </li>
-              </ol>
-              <p>
-                Take-home = salary − Income Tax − employee NI + dividends − dividend tax.
-              </p>
-            </>
-          }
-          officialRules={
-            <>
-              <ul>
-                <li>
-                  <strong>Dividend allowance</strong> 2026/27: £500. Anything
-                  above is taxed at 10.75% (basic), 35.75% (higher), 39.35%
-                  (additional).
-                </li>
-                <li>
-                  <strong>Employer NI</strong>: 15% on salary above £5,000
-                  Secondary Threshold (was 13.8% above £9,100 before April 2025).
-                </li>
-                <li>
-                  <strong>Employment Allowance</strong>: £10,500 against
-                  employer NI — but <em>not available</em> for single-director
-                  companies with no other employees. Two-employee setups can
-                  claim it.
-                </li>
-                <li>
-                  <strong>NI credit for State Pension</strong>: salary
-                  between Lower Earnings Limit (£6,708) and Primary
-                  Threshold (£12,570) gives a qualifying year at zero NI cost.
-                </li>
-                <li>
-                  Dividends must come from <strong>distributable reserves</strong>
-                  — post-CT retained profits, not just current-year profit.
-                </li>
-              </ul>
-            </>
-          }
-          pitfalls={[
-            {
-              title: "£12,570 salary now costs employer NI",
-              body: "Under old rules, a £12,570 salary paid no NI at all. From April 2025, the employer pays 15% on the £7,570 above £5k = £1,135.50 employer NI. Still usually worth it for the Corporation Tax deduction and pension credit, but the margin narrowed.",
-            },
-            {
-              title: "Single-director companies can't claim Employment Allowance",
-              body: "If you’re the sole employee + sole director, you cannot claim the £10,500 NI relief. Add a spouse/partner on a real (audited) salary to qualify — but only if their role is genuine.",
-            },
-            {
-              title: "Drawing too much can push you into 60% effective rate",
-              body: "Total income (salary + dividends) above £100k starts losing your Personal Allowance — every extra £1 effectively costs £0.60. Dividend strategies that look optimal at low income become punishing here.",
-            },
-            {
-              title: "Ignoring State Pension is a long-term mistake",
-              body: "A £0 salary year is a £0 NI year — costing 1/35th of the State Pension permanently (~£230/year). 10 missing years = ~£2,300/year less in retirement. Class 3 voluntary NICs cost £907.40/year to fix later.",
-            },
-          ]}
-          faqs={[
-            {
-              question: "Can I pay myself a salary lower than £12,570?",
-              answer:
-                "Yes — common alternatives are £6,708 (Lower Earnings Limit, NI credit at zero cost) and £5,000 (Employer NI Secondary Threshold). Both reduce CT deduction but eliminate employer NI.",
-            },
-            {
-              question: "What about pension contributions?",
-              answer:
-                "Employer pension contributions are CT-deductible and not capped by salary — but limited by “wholly and exclusively” commercial reasonableness. Often the most tax-efficient extraction over £100k.",
-            },
-            {
-              question: "When should I take dividends?",
-              answer:
-                "Time them across tax years to stay in basic-rate band. Each tax year resets the £500 allowance and the £37,700 basic-rate dividend band.",
-            },
-          ]}
-          disclaimer="Simplified single-director model. Excludes Employment Allowance, multiple income sources, pension contributions, BIK and student loans. Not tax advice — speak to an accountant."
-        />
-      }
-    />
+      lead="Find the salary and dividend split that leaves you the most from your company's profit, after every layer of tax."
+      points={["Best salary found for you", "Employment Allowance", "Sole trader comparison", "Free and private"]}
+      guide={<DivSalaryGuide />}
+      faqs={FAQS}
+      related={related}
+      note="2026/27 tax rules, single director and shareholder. Not tax advice."
+    >
+      <DivSalaryStudio query={query} />
+    </FlagshipPage>
   );
 }

@@ -267,6 +267,8 @@ export default function SoleTraderGuide() {
           A return filed late gets an automatic £100 penalty, with more after three, six and twelve months. Interest is
           charged on late tax at the Bank of England base rate plus 4%. The{" "}
           <a href="/business/payment-on-account">payment on account calculator</a> sets out every date for your own figures.
+          If you are in Making Tax Digital, late submissions earn penalty points instead, and late payment penalties are a
+          percentage of the tax unpaid after 15 and 30 days.
         </p>
       </GuideSection>
 

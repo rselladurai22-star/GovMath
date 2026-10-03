@@ -21,6 +21,7 @@ const SCHEMA = {
   first: bool(false),
 };
 const ADVANCED = ["ta", "other", "scot", "plan", "pension", "class2", "first"] as const;
+const minus = (n: number, pence = false) => (n > 0.005 ? `−${gbp(n, pence)}` : "£0");
 const COLORS = { tax: "#e11d48", ni: "#f59e0b", sl: "#a855f7", keep: "#0f9f6e", class2: "#94a3b8" };
 
 export default function SoleTraderStudio({ query }: { query: Query }) {
@@ -148,11 +149,11 @@ export default function SoleTraderStudio({ query }: { query: Query }) {
             columns={["A year"]}
             rows={[
               { label: "Turnover", values: [gbp(r.turnover)] },
-              { label: v.ta ? "Trading allowance" : "Allowable expenses", values: [`−${gbp(r.deduction)}`], kind: "deduction" },
+              { label: v.ta ? "Trading allowance" : "Allowable expenses", values: [minus(r.deduction)], kind: "deduction" },
               { label: "Profit", values: [gbp(r.profit)], kind: "total" },
-              { label: "Income Tax", values: [`−${gbp(r.incomeTaxOnProfit)}`], kind: "deduction" },
+              { label: "Income Tax", values: [minus(r.incomeTaxOnProfit)], kind: "deduction" },
               { label: "Class 4 National Insurance", values: [`−${gbp(r.class4)}`], kind: "deduction" },
-              ...(r.studentLoan > 0 ? [{ label: "Student loan", values: [`−${gbp(r.studentLoan)}`], kind: "deduction" as const }] : []),
+              ...(r.studentLoan > 0 ? [{ label: "Student loan", values: [minus(r.studentLoan)], kind: "deduction" as const }] : []),
               ...(r.class2 > 0 ? [{ label: "Voluntary Class 2", values: [`−${gbp(r.class2, true)}`], kind: "deduction" as const }] : []),
               { label: "You keep", values: [gbp(r.keep)], kind: "total" },
             ]}

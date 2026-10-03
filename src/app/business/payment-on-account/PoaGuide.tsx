@@ -263,6 +263,8 @@ export default function PoaGuide() {
         <p>
           Filing late is penalised separately: £100 straight away, then daily penalties after three months and further
           penalties at six and twelve months. File on time even if you cannot pay, and contact HMRC about a payment plan.
+          Sole traders and landlords within Making Tax Digital move to a newer system from 2026/27: penalty points for late submissions, and late payment
+          penalties of 3% of tax unpaid after 15 days and a further 3% after 30 days, then a daily rate.
         </p>
       </GuideSection>
 
