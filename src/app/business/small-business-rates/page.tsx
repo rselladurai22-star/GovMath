@@ -1,55 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import SmallBusinessRatesCalculator from "./SmallBusinessRatesCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import RatesStudio from "./RatesStudio";
+import RatesGuide from "./RatesGuide";
 
 export const metadata: Metadata = {
   title: "Small Business Rates Relief Calculator (England 2026/27)",
-  description: "Work out your business rates bill and the Small Business Rate Relief you’re entitled to in England.",
+  description:
+    "Work out your 2026/27 business rates bill in England with the new multipliers, small business rate relief, retail and hospitality rates, charity relief and part-year occupation.",
+  alternates: { canonical: "/business/small-business-rates" },
 };
 
-export default function SmallBusinessRatesPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/business", label: "Business" },
+  { href: "/business/small-business-rates", label: "Small Business Rates" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How are business rates calculated?", a: "Rateable value times the multiplier for the year, less any reliefs. For 2026/27 the small business multiplier is 43.2p, or 38.2p for retail, hospitality and leisure." },
+  { q: "Who gets small business rate relief?", a: "Businesses using one property in England with a rateable value under £15,000. Up to £12,000 the relief is 100%; between £12,000 and £15,000 it tapers." },
+  { q: "What changed for shops and pubs in April 2026?", a: "The 40% retail, hospitality and leisure relief was replaced by permanently lower multipliers: 38.2p for properties under £51,000 and 43p up to £500,000." },
+  { q: "Can I keep relief with a second property?", a: "Yes, if each other property has a rateable value under £2,900 and the total is under £20,000, or £28,000 in London." },
+  { q: "My bill went up a lot after the revaluation. Is there help?", a: "Transitional relief and Supporting Small Business relief limit increases for many businesses. Councils usually apply them automatically." },
+];
+
+export default async function RatesPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/business/break-even", "/business/gross-profit-margin", "/business/allowable-expenses", "/business/corporation-tax", "/business/sole-trader-tax", "/property/council-tax-bands"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Business"
-      updatedLabel="2026/27 multipliers"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/business", label: "Business" },
-        { href: "/business/small-business-rates", label: "Small Business Rates" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="England 2026/27"
       title="Small Business Rates Relief Calculator"
-      intro="Most shops, offices and workshops pay business rates based on their rateable value. Small Business Rate Relief can wipe the bill entirely if your only property has an RV of £12,000 or less."
-      calculator={<SmallBusinessRatesCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              Gross rates = rateable value × multiplier. For 2026/27: 43.2p for small premises (under £51,000), 48p for standard and 50.8p for properties at £500,000 or more. Retail, hospitality and leisure premises get lower rates: 38.2p (small) and 43p (standard).
-              If you only occupy one property, we apply SBRR: 100% off below £12,000, sliding to 0% at £15,000.
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>Rateable value is set every 5 years by the VOA — current list from 1 April 2023.</li>
-              <li>SBRR is only for occupied properties used wholly or mainly for business.</li>
-              <li>You can keep SBRR if you take a second property worth less than £2,899 RV (and total RV under £20,000 / £28,000 in London).</li>
-              <li>Charities get 80% mandatory relief; rural premises get further reliefs.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "You have to apply", body: "SBRR is not automatic. Even though it’s the same form every year, councils don’t reapply it without a request." },
-            { title: "Empty rates kick in fast", body: "Empty office/shop pays full rates after 3 months (6 for industrial). Plan exits to avoid the cliff." },
-            { title: "Working from home", body: "If part of your home is used exclusively for business, the VOA can split it and assign rates — usually a bad outcome." },
-          ]}
-          faqs={[
-            { question: "What if my rateable value changes?", answer: "Bills update next 1 April. You can challenge an RV via the ”Check, Challenge, Appeal” process on gov.uk." },
-            { question: "Are pubs and shops on the high street treated differently?", answer: "Yes. From April 2026 the old 40% Retail, Hospitality & Leisure Relief was replaced by permanently lower multipliers for those properties: 38.2p for small premises and 43p for standard ones, against 43.2p and 48p for everyone else." },
-            { question: "Does this work in Scotland/Wales/NI?", answer: "No — each nation has its own scheme. The Small Business Bonus Scheme (Scotland) and Small Business Rate Relief (Wales) work differently." },
-          ]}
-          disclaimer="England only, 2026/27 multipliers. Always confirm with your local billing authority before relying on a figure."
-        />
-      }
-    />
+      lead="Work out your business rates bill with the new 2026/27 multipliers and see how much small business rate relief takes off."
+      points={["2026 multipliers", "Small business relief", "Retail and hospitality", "Free and private"]}
+      guide={<RatesGuide />}
+      faqs={FAQS}
+      related={related}
+      note="England, rates year 2026/27. Not financial advice."
+    >
+      <RatesStudio query={query} />
+    </FlagshipPage>
   );
 }

@@ -1,45 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import EmployerNICalculator from "./EmployerNICalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import EmployerCostStudio from "./EmployerCostStudio";
+import EmployerCostGuide from "./EmployerCostGuide";
 
 export const metadata: Metadata = {
-  title: "Employer NI Calculator (UK 2026/27 — 15% / £5k)",
-  description: "True cost of hiring including Class 1 Secondary NI and Employment Allowance.",
+  title: "Employer NI Calculator: True Cost of an Employee (2026/27)",
+  description:
+    "Work out employer National Insurance at 15% above £5,000, workplace pension and the full cost of an employee or team, with the Employment Allowance and salary sacrifice.",
+  alternates: { canonical: "/business/employer-ni-costs" },
 };
 
-export default function EmployerNIPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/business", label: "Business" },
+  { href: "/business/employer-ni-costs", label: "Employer NI" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is the employer NI rate for 2026/27?", a: "15% on each employee's earnings above £5,000 a year (£417 a month)." },
+  { q: "How much does a £30,000 employee cost?", a: "About £34,463 a year: £3,750 employer NI and £712.80 minimum pension on top of the salary." },
+  { q: "What is the Employment Allowance?", a: "Up to £10,500 a year off your employer NI bill. Most employers can claim it, but not a company whose only employee is a single director." },
+  { q: "Is there employer NI on under-21s?", a: "No employer NI on earnings up to £50,270 for employees under 21 or apprentices under 25." },
+  { q: "Does salary sacrifice save employer NI?", a: "Yes. Pay sacrificed into a pension is not earnings, so you save 15% employer NI on it and the employee saves their NI too." },
+];
+
+export default async function EmployerCostPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/business/dividend-vs-salary", "/business/corporation-tax", "/tax-and-salary/national-insurance", "/tax-and-salary/salary-calculator", "/tax-and-salary/minimum-wage", "/business/break-even"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Business"
-      updatedLabel="2026/27 rates"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/business", label: "Business" }, { href: "/business/employer-ni-costs", label: "Employer NI" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2026/27 employer rates"
       title="Employer NI Calculator"
-      intro="From 6 April 2025, Employer NI jumped to 15% (was 13.8%) and the threshold dropped to £5,000 (was £9,100). This is the change that hit small businesses hardest in 2025."
-      calculator={<EmployerNICalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Class 1 Secondary NI = 15% × (salary − £5,000). Employment Allowance offsets the bill by up to £10,500/year — covering ~2 full-time minimum-wage roles entirely, but not available to one-employee director-only companies.</p>}
-          officialRules={
-            <ul>
-              <li>Secondary threshold: £5,000/yr (was £9,100 pre-Apr 2025).</li>
-              <li>Rate: 15% (was 13.8%).</li>
-              <li>Employment Allowance: £10,500 (was £5,000) — claim via your payroll.</li>
-              <li>Not available to one-director-only companies, public bodies, or those with prior-year employer NI &gt;£100k.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Director-only Ltd Co misses out", body: "Single-director companies can’t claim Employment Allowance. The standard tax-efficient salary is therefore £5,000 (no NI either side)." },
-            { title: "Apprentices under 25", body: "Zero employer NI on earnings up to £50,270. Same for under-21s." },
-            { title: "Pension salary sacrifice", body: "Reduces NIable pay — saves both employer (15%) and employee (8%) NI. Huge total comp lever." },
-          ]}
-          faqs={[
-            { question: "How do I claim Employment Allowance?", answer: "Tick the box on your first EPS submission of the tax year via your payroll software." },
-            { question: "What about Apprenticeship Levy?", answer: "0.5% on annual paybill over £3m — separate from Employer NI." },
-          ]}
-          disclaimer="Educational. Always confirm with your payroll provider or accountant."
-        />
-      }
-    />
+      lead="See the true cost of an employee or a team: employer National Insurance, pension and the reliefs that cut the bill."
+      points={["15% above £5,000", "Employment Allowance", "Pension and sacrifice", "Free and private"]}
+      guide={<EmployerCostGuide />}
+      faqs={FAQS}
+      related={related}
+      note="2026/27 employer rates. Not tax advice."
+    >
+      <EmployerCostStudio query={query} />
+    </FlagshipPage>
   );
 }

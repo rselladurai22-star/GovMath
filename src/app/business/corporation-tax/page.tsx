@@ -1,51 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import CorpTaxCalculator from "./CorpTaxCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import CorpTaxStudio from "./CorpTaxStudio";
+import CorpTaxGuide from "./CorpTaxGuide";
 
 export const metadata: Metadata = {
-  title: "Corporation Tax Calculator UK 2026/27 (with Marginal Relief)",
-  description: "Work out UK Corporation Tax — 19% small profits rate, marginal relief band £50k–£250k, 25% main rate.",
+  title: "Corporation Tax Calculator with Marginal Relief (2026/27)",
+  description:
+    "Work out UK Corporation Tax at 19% to 25% with marginal relief, associated companies, short accounting periods, losses and your payment deadline.",
+  alternates: { canonical: "/business/corporation-tax" },
 };
 
-export default function CorpTaxPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/business", label: "Business" },
+  { href: "/business/corporation-tax", label: "Corporation Tax" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is the Corporation Tax rate for 2026/27?", a: "19% on profits up to £50,000, 25% on profits of £250,000 or more, and 25% less marginal relief in between." },
+  { q: "How is marginal relief worked out?", a: "Tax at 25% minus 3/200 of the difference between £250,000 and your profits. It means profits between the limits are taxed at an effective 26.5% on each extra pound." },
+  { q: "How do associated companies affect Corporation Tax?", a: "The £50,000 and £250,000 limits are divided by the number of associated companies plus one, so two connected companies get £25,000 and £125,000 each." },
+  { q: "When is Corporation Tax due?", a: "Nine months and one day after the end of the accounting period. The company tax return is due 12 months after it." },
+  { q: "Do dividends reduce Corporation Tax?", a: "No. Dividends are paid from profit after tax. Salaries, employer NI and employer pension contributions are deductible." },
+];
+
+export default async function CorpTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/business/dividend-vs-salary", "/business/employer-ni-costs", "/business/sole-trader-tax", "/business/vat-calculator", "/business/gross-profit-margin", "/investing/dividend-tax"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Business & Self-Employed"
-      updatedLabel="2026/27 rates"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/business", label: "Business & Self-Employed" }, { href: "/business/corporation-tax", label: "Corporation Tax" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Financial year 2026"
       title="Corporation Tax Calculator"
-      intro="From April 2023, UK Corporation Tax has two main rates — 19% for profits up to £50,000 and 25% above £250,000 — with a marginal-relief band in between that effectively taxes those middle pounds at 26.5%."
-      calculator={<CorpTaxCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <>
-              <p>The marginal-relief band works by giving small-profits relief that tapers away between £50k and £250k. The net effect: every £1 of profit between those limits is taxed at 26.5% — the “marginal effective rate”.</p>
-              <p>So a £100k-profit company doesn’t pay 25% × £100k. It pays 19% × £50k + 26.5% × £50k = £22,750.</p>
-            </>
-          }
-          officialRules={
-            <ul>
-              <li><strong>Small profits rate</strong>: 19% on profits ≤ £50,000.</li>
-              <li><strong>Main rate</strong>: 25% on profits ≥ £250,000 (applied to the whole profit, not just the excess).</li>
-              <li><strong>Marginal relief</strong>: between £50k and £250k, effective rate 26.5% on the excess above £50k.</li>
-              <li>Limits divided by number of <strong>associated companies</strong>: two companies share £50k/£250k thresholds.</li>
-              <li>Payable 9 months and 1 day after year-end; large companies (£1.5m+) pay quarterly instalments.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Associated companies divide your bands", body: "Two trading companies under common control? Each gets only £25k small-profits / £125k upper. Easy way to land in marginal relief unexpectedly." },
-            { title: "Salary, pension and dividends interact", body: "Director’s salary is deductible against CT — pension contributions even more so. Strategic extraction can drop you below £50k." },
-            { title: "Don't confuse with Income Tax bands", body: "CT is on company profit, not your personal pay. Dividends are then taxed personally on top." },
-          ]}
-          faqs={[
-            { question: "Can I time profits to stay in the small-profits band?", answer: "Yes — pension contributions, capital allowances, or accruing genuine expenses can keep you below £50k. Don’t backdate." },
-            { question: "What about ring-fence (oil & gas) rates?", answer: "30% / 19% with a separate supplementary charge. Out of scope here." },
-          ]}
-          disclaimer="Excludes associated companies, ring-fence profits and patent box. Talk to an accountant for real numbers."
-        />
-      }
-    />
+      lead="Work out your company's Corporation Tax with marginal relief, and see when it has to be paid."
+      points={["19% to 25% with marginal relief", "Associated companies", "Payment deadlines", "Free and private"]}
+      guide={<CorpTaxGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Corporation Tax rates for financial years 2025 and 2026. Not tax advice."
+    >
+      <CorpTaxStudio query={query} />
+    </FlagshipPage>
   );
 }

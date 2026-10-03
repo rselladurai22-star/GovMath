@@ -21,6 +21,7 @@ const SCHEMA = {
   scot: bool(false),
 };
 const ADVANCED = ["vat", "rc", "yLabour", "yMaterials", "yCosts", "other", "scot"] as const;
+const minus = (n: number, pence = false) => (n > 0.005 ? `−${gbp(n, pence)}` : "£0");
 const COLORS = { labour: "#4353ff", materials: "#94a3b8", cis: "#e11d48", vat: "#f59e0b" };
 const STATUS_LABEL: Record<CisStatus, string> = { registered: "Registered: 20%", unregistered: "Not registered: 30%", gross: "Gross payment status: 0%" };
 
@@ -124,7 +125,7 @@ export default function CisStudio({ query }: { query: Query }) {
               ...(r.vat > 0 ? [{ label: "VAT at 20%", values: [gbp(r.vat, true)] }] : []),
               ...(r.reverseChargeVat > 0 ? [{ label: "VAT: reverse charge, contractor accounts for it", values: [`(${gbp(r.reverseChargeVat, true)})`] }] : []),
               { label: "Invoice total", values: [gbp(r.invoiceTotal, true)], kind: "total" },
-              { label: `CIS at ${percent(r.rate)} on labour`, values: [`−${gbp(r.deduction, true)}`], kind: "deduction" },
+              { label: `CIS at ${percent(r.rate)} on labour`, values: [minus(r.deduction, true)], kind: "deduction" },
               { label: "Paid to you", values: [gbp(r.paid, true)], kind: "total" },
             ]}
           />
@@ -139,7 +140,7 @@ export default function CisStudio({ query }: { query: Query }) {
               label: STATUS_LABEL[k],
               value: gbp(x.paid, true),
               delta: x.deduction > 0 ? `−${gbp(x.deduction, true)}` : undefined,
-              deltaTone: "down",
+              deltaTone: "up",
               bar: x.paid / maxPaid,
               current: k === v.status,
             }))}
