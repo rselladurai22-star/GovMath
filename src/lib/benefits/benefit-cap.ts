@@ -64,3 +64,37 @@ export function benefitCap(input: BenefitCapInput): BenefitCapResult {
     capApplies: weeklyReduction > 0,
   };
 }
+
+/** Housing Benefit must be left with at least 50p a week after the cap. */
+export const HB_MINIMUM_WEEKLY = 0.5;
+
+export type HousingBenefitCapInput = BenefitCapInput & {
+  /** Housing Benefit a week, included in weeklyBenefits. */
+  weeklyHousingBenefit: number;
+};
+
+export type HousingBenefitCapResult = BenefitCapResult & {
+  /** Housing Benefit left after the cap. */
+  housingBenefitAfter: number;
+  /** Part of the excess that cannot be taken because Housing Benefit runs out. */
+  unrecovered: number;
+};
+
+/**
+ * The legacy route: the cap is taken from Housing Benefit, which cannot fall
+ * below 50p a week. Anything above that is not recovered.
+ */
+export function housingBenefitCap(input: HousingBenefitCapInput): HousingBenefitCapResult {
+  const base = benefitCap(input);
+  const hb = Math.max(0, Math.min(input.weeklyHousingBenefit, base.weeklyBenefits));
+  const maxCut = Math.max(0, hb - HB_MINIMUM_WEEKLY);
+  const cut = Math.min(base.weeklyReduction, maxCut);
+  return {
+    ...base,
+    weeklyReduction: cut,
+    annualReduction: cut * 52,
+    capApplies: cut > 0,
+    housingBenefitAfter: hb - cut,
+    unrecovered: base.weeklyReduction - cut,
+  };
+}

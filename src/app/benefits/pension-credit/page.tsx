@@ -1,54 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import PensionCreditCalculator from "./PensionCreditCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import PcStudio from "./PcStudio";
+import PcGuide from "./PcGuide";
 
 export const metadata: Metadata = {
-  title: "Pension Credit Calculator (UK 2026/27)",
-  description: "Estimate your weekly Guarantee Credit top-up for pensioners on a low income, including capital tariff rules.",
+  title: "Pension Credit Calculator (2026/27 Rates)",
+  description:
+    "Estimate your Pension Credit for 2026/27: the £238 single and £363.25 couple guarantee, severe disability, carer and child additions, savings over £10,000 and Savings Credit.",
+  alternates: { canonical: "/benefits/pension-credit" },
 };
 
-export default function PensionCreditPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/benefits", label: "Family & Benefits" },
+  { href: "/benefits/pension-credit", label: "Pension Credit" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much is Pension Credit in 2026/27?", a: "It tops weekly income up to £238.00 for a single person and £363.25 for a couple, with more for disability, caring or children." },
+  { q: "Is there a savings limit for Pension Credit?", a: "No. The first £10,000 is ignored, and each £500 above that counts as £1 a week of income." },
+  { q: "Can I get Pension Credit if I own my home?", a: "Yes. The home you live in does not count." },
+  { q: "How far back can Pension Credit be backdated?", a: "Up to three months, if you met the conditions during that time." },
+];
+
+export default async function PcPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/benefits/attendance-allowance", "/benefits/carers-earnings", "/benefits/local-housing-allowance", "/investing/state-pension-age", "/life/care-home-means-test"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Benefits"
-      updatedLabel="2026/27 rates"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/benefits", label: "Benefits" },
-        { href: "/benefits/pension-credit", label: "Pension Credit" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2026/27 rates"
       title="Pension Credit Calculator"
-      intro="Pension Credit tops up weekly income for pensioners — £238.00 single, £363.25 couple. It’s often missed: around 800,000 eligible pensioners don’t claim. Even £1 of Pension Credit unlocks a free TV licence, Cold Weather Payments and council tax help."
-      calculator={<PensionCreditCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              We compare your weekly income (including any ”tariff income” from capital over £10,000) to the Guarantee Credit threshold. The gap is your weekly award.
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>Must be over State Pension Age and live in the UK.</li>
-              <li>Single threshold £238.00/wk; couple threshold £363.25/wk.</li>
-              <li>Capital under £10,000 is ignored; above that, £1 tariff income per £500.</li>
-              <li>State Pension and most private pension income counts; Attendance Allowance and PIP don’t.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Capital includes ISA money", body: "Cash and stocks & shares ISAs count towards the £10,000 floor — many pensioners are surprised." },
-            { title: "Backdating is limited", body: "Claims can only be backdated 3 months. Don’t delay if you’re close to the threshold." },
-            { title: "Free TV licence over 75", body: "Now linked to Pension Credit, not age alone. Without Pension Credit, the over-75 licence is no longer free." },
-          ]}
-          faqs={[
-            { question: "What other benefits does it unlock?", answer: "Council Tax Reduction, free TV licence over 75, Cold Weather Payments, Housing Benefit, NHS dental/optical, Warm Home Discount." },
-            { question: "Does PIP count as income?", answer: "No — PIP, DLA and Attendance Allowance are disregarded for Pension Credit." },
-            { question: "Can I work and still get it?", answer: "Yes — earnings count as income. First £5/wk single, £10/wk couple is ignored, then pound-for-pound reduction." },
-          ]}
-          disclaimer="Estimate only. Apply via gov.uk/pension-credit/how-to-claim or call 0800 99 1234 for a full assessment."
-        />
-      }
-    />
+      lead="Check whether you could get Pension Credit, how much, and the extra help it unlocks."
+      points={["Guarantee and Savings Credit", "Every addition", "Savings over £10,000", "Free and private"]}
+      guide={<PcGuide />}
+      faqs={FAQS}
+      related={related}
+      note="2026/27 rates. Not financial advice."
+    >
+      <PcStudio query={query} />
+    </FlagshipPage>
   );
 }

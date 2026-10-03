@@ -1,54 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import SharedParentalLeaveCalculator from "./SharedParentalLeaveCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import SharedStudio from "./SharedStudio";
+import SharedGuide from "./SharedGuide";
 
 export const metadata: Metadata = {
-  title: "Shared Parental Leave & Pay Calculator (UK 2026/27)",
-  description: "Plan how to split up to 50 weeks of Shared Parental Leave and 37 weeks of ShPP between you and your partner.",
+  title: "Shared Parental Leave and Pay Calculator (2026/27)",
+  description:
+    "Plan Shared Parental Leave: see how up to 50 weeks of leave and 37 weeks of pay split between parents, what each gets, and how switching early affects the total.",
+  alternates: { canonical: "/benefits/shared-parental-leave" },
 };
 
-export default function SharedParentalLeavePage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/benefits", label: "Family & Benefits" },
+  { href: "/benefits/shared-parental-leave", label: "Shared Parental Leave" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much Shared Parental Leave can we take?", a: "Up to 50 weeks of leave and 37 weeks of pay, shared between both parents, after the mother's compulsory first two weeks." },
+  { q: "How much is Shared Parental Pay?", a: "£194.32 a week, or 90% of average weekly earnings if that is less, in 2026/27." },
+  { q: "Who qualifies for Shared Parental Leave?", a: "The parent taking leave needs 26 weeks with their employer by the 15th week before the due week; the other parent must have worked 26 of the 66 weeks before and earned £390 in 13 of them." },
+  { q: "Can both parents be off at the same time?", a: "Yes, as long as the total weeks taken stay within the shared allowance." },
+  { q: "Does sharing leave reduce the total pay?", a: "Usually not on statutory pay, unless the mother switches before 6 weeks and loses the 90% weeks, or paid weeks go unused." },
+];
+
+export default async function SharedPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/benefits/maternity-pay", "/benefits/paternity-pay", "/benefits/child-benefit", "/benefits/free-childcare-hours", "/benefits/tax-free-childcare", "/tax-and-salary/holiday-entitlement"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Benefits"
-      updatedLabel="2026/27 rates"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/benefits", label: "Benefits" },
-        { href: "/benefits/shared-parental-leave", label: "Shared Parental Leave" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2026/27 rates"
       title="Shared Parental Leave Calculator"
-      intro="Shared Parental Leave lets parents split up to 50 weeks of leave and 37 weeks of statutory pay. Both parents can be off together, or take it back-to-back."
-      calculator={<SharedParentalLeaveCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              Statutory Shared Parental Pay (ShPP) is the lower of £194.32/week or 90% of average weekly earnings. We apply that rate to the paid weeks each parent claims, then total the two.
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>Maximum 50 weeks of leave to share (52 − 2 compulsory maternity weeks).</li>
-              <li>Maximum 37 weeks of statutory pay to share (39 SMP weeks − 2 mandatory weeks at SMP).</li>
-              <li>Both parents need 26 weeks’ continuous service by the 15th week before the due date.</li>
-              <li>Mother must curtail SMP or maternity leave for SPL to start.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Notice is fiddly", body: "Each block of leave needs 8 weeks’ written notice (a SPLIT form). Max 3 separate blocks per parent unless employer agrees more." },
-            { title: "‘Discontinuous’ leave can be refused", body: "Employers must accept continuous blocks but can refuse split-up leave within 2 weeks of the request." },
-            { title: "Enhanced maternity pay doesn’t always transfer", body: "Some employers pay above statutory for maternity but only statutory for ShPP — check both contracts before deciding." },
-          ]}
-          faqs={[
-            { question: "Can we both be off at the same time?", answer: "Yes — overlapping leave is allowed. The 50-week pool just covers total time off the two of you take." },
-            { question: "What if I’m self-employed?", answer: "Self-employed parents can’t take SPL but may qualify for Maternity Allowance instead — up to £194.32/week for 39 weeks." },
-            { question: "Does this affect my pension?", answer: "Pension contributions during ShPP are usually based on actual ShPP earnings, not full pay. Check your scheme rules." },
-          ]}
-          disclaimer="Estimate of statutory pay only. Many employers offer enhanced ShPP — always check your contract."
-        />
-      }
-    />
+      lead="Plan how to share leave and pay after a birth or adoption, and see what each parent gets."
+      points={["50 weeks to share", "Pay for each parent", "Compare plans", "Free and private"]}
+      guide={<SharedGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Great Britain, 2026/27 rates. Not financial advice."
+    >
+      <SharedStudio query={query} />
+    </FlagshipPage>
   );
 }

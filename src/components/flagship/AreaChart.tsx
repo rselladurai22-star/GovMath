@@ -55,7 +55,8 @@ export default function AreaChart({
 
   const ticks = [0.25, 0.5, 0.75, 1].map((t) => t * (max / 1.08));
   const step = n > 30 ? 10 : n > 12 ? 5 : n > 6 ? 2 : 1;
-  const xTicks = Array.from({ length: n }, (_, i) => i).filter((i) => i % step === 0 || i === n - 1);
+  // Regular ticks plus the last point, unless the last would crowd the tick before it.
+  const xTicks = Array.from({ length: n }, (_, i) => i).filter((i) => i % step === 0 || (i === n - 1 && i % step >= step / 2));
   const shown = active ?? n - 1;
 
   return (
