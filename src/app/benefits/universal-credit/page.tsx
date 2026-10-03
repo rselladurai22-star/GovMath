@@ -1,138 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import UCCalculator from "./UCCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import UcStudio from "./UcStudio";
+import UcGuide from "./UcGuide";
 
 export const metadata: Metadata = {
-  title: "Universal Credit Estimator (2026/27)",
+  title: "Universal Credit Calculator (2026/27 Rates)",
   description:
-    "Estimate your monthly Universal Credit award. Includes the standard allowance, child element, housing, the 55% earnings taper and the capital tariff.",
+    "Estimate your monthly Universal Credit for 2026/27: standard allowance, children, rent with real Local Housing Allowance rates, health, carer and childcare elements, the 55% taper, savings and the benefit cap.",
+  alternates: { canonical: "/benefits/universal-credit" },
 };
 
-export default function UCPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/benefits", label: "Family & Benefits" },
+  { href: "/benefits/universal-credit", label: "Universal Credit" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much is Universal Credit in 2026/27?", a: "The standard allowance is £424.90 a month for a single person aged 25 or over and £666.97 for a couple. Children, rent, health conditions, caring and childcare add more." },
+  { q: "Is there still a two-child limit?", a: "No. From April 2026 every child adds £303.94 a month, or £351.88 for an eldest child born before 6 April 2017." },
+  { q: "How much can I earn on Universal Credit?", a: "There is no fixed limit. Above any work allowance of £427 or £710 a month, your award falls by 55p for each £1 of take-home pay until it reaches zero." },
+  { q: "Can I get Universal Credit with savings?", a: "Yes, up to £16,000. Savings between £6,000 and £16,000 reduce your award by £4.35 a month for each £250." },
+  { q: "Does the benefit cap affect Universal Credit?", a: "Yes, unless your household earns at least £881 a month or someone gets a disability or carer's benefit, the health element or the carer element." },
+];
+
+export default async function UniversalCreditPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/benefits/universal-credit-taper", "/benefits/benefit-cap", "/benefits/local-housing-allowance", "/benefits/tax-free-childcare", "/benefits/child-benefit", "/benefits/carers-earnings"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Family & Benefits"
-      updatedLabel="2026/27 rates"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/benefits", label: "Family & Benefits" },
-        { href: "/benefits/universal-credit", label: "Universal Credit Estimator" },
-      ]}
-      title="Universal Credit Estimator"
-      intro="Estimate your monthly Universal Credit award using April 2026 rates. We add up your standard allowance, child and housing elements, then apply the 55p earnings taper and the £6k–£16k capital tariff."
-      calculator={<UCCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <>
-              <p>
-                Universal Credit is paid <strong>monthly in arrears</strong>{" "}
-                and calculated as:
-              </p>
-              <p>
-                <code>
-                  Award = (Standard allowance + Child + Housing) − (Earnings
-                  above the work allowance × 55%) − Capital tariff
-                </code>
-              </p>
-              <p>
-                The <strong>standard allowance</strong> depends only on your
-                age and whether you claim as a single person or a couple.
-                Adding a partner does <em>not</em> double it — it’s a
-                joint household figure.
-              </p>
-              <p>
-                The <strong>child element</strong> is currently subject to the
-                two-child limit: only the first two children attract a
-                payment, with narrow exceptions (multiple births,
-                non-consensual conception, adoption, kinship care). Children
-                born before 6 April 2017 get the older, higher first-child rate
-                of £351.88/month.
-              </p>
-              <p>
-                The <strong>housing element</strong> covers your rent up to
-                your <strong>Local Housing Allowance</strong> (LHA) rate —
-                the LHA is published per region and per bedroom-entitlement,
-                so a single person in a four-bed house only gets the one-bed
-                LHA. Mortgage interest isn’t covered through UC; the
-                separate SMI loan covers that.
-              </p>
-            </>
-          }
-          officialRules={
-            <>
-              <p>
-                The numbers in this estimator are the gov.uk 2026/27 rates,
-                effective from April 2026:
-              </p>
-              <ul>
-                <li>
-                  <strong>Standard allowance (monthly):</strong> single under
-                  25 £338.58; single 25+ £424.90; couple both under 25
-                  £528.34; couple either 25+ £666.97.
-                </li>
-                <li>
-                  <strong>Child element (monthly):</strong> £351.88 for the
-                  eldest child born before 6 April 2017; £303.94 otherwise and
-                  for any additional eligible child.
-                </li>
-                <li>
-                  <strong>Work allowance (monthly):</strong> £427 if you
-                  receive a housing element; £710 if you don’t. You only
-                  get a work allowance if you’re responsible for a child{" "}
-                  <em>or</em> you have limited capability for work.
-                </li>
-                <li>
-                  <strong>Taper:</strong> 55p of UC is withdrawn for every £1
-                  of net earnings above your work allowance.
-                </li>
-                <li>
-                  <strong>Capital:</strong> first £6,000 ignored; £4.35/month
-                  tariff per £250 (or part of £250) above that; £16,000+ ends
-                  entitlement entirely.
-                </li>
-              </ul>
-            </>
-          }
-          pitfalls={[
-            {
-              title: "The two-child limit catches a lot of larger families",
-              body: "If you have three or more children and the third was born on or after 6 April 2017, you get no child element for them — unless you qualify for a specific exception. That can be £290+/month you might assume you’ll get and won’t.",
-            },
-            {
-              title: "Savings of £16,000+ end your claim immediately",
-              body: "Capital includes ISAs, premium bonds, second properties, and most investments — but excludes pension pots if you're under State Pension age. One inheritance can stop a long-running claim overnight.",
-            },
-            {
-              title: "Earnings count when paid, not when earned",
-              body: "UC is calculated on a one-month rolling 'assessment period.' If you happen to be paid two months’ wages inside one assessment period (common with weekly pay or shifted paydays), your award can drop to zero that month and reset the next.",
-            },
-            {
-              title: "The work allowance only applies to some claimants",
-              body: "You get a work allowance only if you have dependent children or are assessed as having limited capability for work. Working-age adults without either taper from £0 — meaning the first £1 you earn already reduces your UC by 55p.",
-            },
-          ]}
-          faqs={[
-            {
-              question: "Will overtime or a bonus stop my Universal Credit?",
-              answer:
-                "One-off spikes get caught by the assessment period and can wipe out that month’s award entirely. UC re-starts automatically the next month once your earnings drop back, so you don’t need to re-apply, but DWP will pay nothing in the spike month.",
-            },
-            {
-              question: "Does pension contribution reduce my UC earnings?",
-              answer:
-                "Yes — UC uses your earnings net of tax, NI and pension contributions. Salary-sacrificing into a workplace pension can both increase your UC award and reduce your income tax at the same time.",
-            },
-            {
-              question: "What's the difference between UC and Pension Credit?",
-              answer:
-                "Universal Credit is for working-age claimants. Once you reach State Pension age (and your partner too, if you have one), you move onto Pension Credit instead — different rates, no work-allowance concept, and different capital rules.",
-            },
-          ]}
-          disclaimer="This is an estimate based on the gov.uk 2026/27 published rates. DWP’s actual calculation may differ — particularly for LCWRA, carer’s element, sanctions, transitional protection from legacy benefits, and the various two-child-limit exceptions. Always claim on gov.uk for a binding figure."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2026/27 rates"
+      title="Universal Credit Calculator"
+      lead="Estimate your monthly Universal Credit with every element, real Local Housing Allowance rates, the earnings taper, savings and the benefit cap."
+      points={["Every element", "Real LHA rates", "Benefit cap check", "Free and private"]}
+      guide={<UcGuide />}
+      faqs={FAQS}
+      related={related}
+      note="2026/27 Universal Credit rates. An estimate, not a decision on your claim."
+    >
+      <UcStudio query={query} />
+    </FlagshipPage>
   );
 }

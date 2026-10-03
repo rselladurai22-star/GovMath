@@ -382,7 +382,7 @@ export default function DivSalaryGuide() {
         <h3>Does the Employment Allowance apply if my spouse is also a director?</h3>
         <p>Not if the only people paid are directors and there is just one of them. With two directors on the payroll, the company can usually claim it.</p>
         <h3>Is it worth paying myself through payroll every month?</h3>
-        <p>Yes for the salary part. A director's salary must go through PAYE, and a regular monthly salary keeps the records simple. Dividends can be paid when profits allow.</p>
+        <p>Yes for the salary part. A director&rsquo;s salary must go through PAYE, and a regular monthly salary keeps the records simple. Dividends can be paid when profits allow.</p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={16} kicker="Summary" title="Key numbers for 2026/27">
