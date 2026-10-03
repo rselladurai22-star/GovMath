@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { addVat, removeVat, VAT_RATES, type VatRateKey } from "@/lib/tax/vat";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
+import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
 import { gbp } from "@/components/flagship/format";
+import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 import s from "@/components/flagship/Flagship.module.css";
 
 type Direction = "add" | "remove";
@@ -16,7 +16,6 @@ const RATES: { value: VatRateKey; label: string; note: string; fraction: string 
   { value: "zero", label: "0% zero", note: "Most food, books, children's clothes, public transport.", fraction: "none" },
 ];
 const COLORS = { net: "#4353ff", vat: "#f59e0b" };
-const DEFAULTS = { amount: 100, direction: "add" as Direction, rate: "standard" as VatRateKey, flat: 14.5 };
 
 /** Round to whole pence once, keeping net + VAT = gross exactly. */
 function toPence(v: { net: number; vat: number; gross: number }, direction: Direction) {
@@ -31,23 +30,21 @@ function toPence(v: { net: number; vat: number; gross: number }, direction: Dire
   return { net, vat: p(gross - net), gross };
 }
 
-export default function VatStudio({
-  initialAmount,
-  initialDirection,
-  initialRate,
-  showResults,
-}: {
-  initialAmount: number;
-  initialDirection: Direction;
-  initialRate: VatRateKey;
-  showResults: boolean;
-}) {
-  const [amount, setAmount] = useState(initialAmount);
-  const [direction, setDirection] = useState<Direction>(initialDirection);
-  const [rateKey, setRateKey] = useState<VatRateKey>(initialRate);
-  const [flat, setFlat] = useState(DEFAULTS.flat);
-  const [ready, setReady] = useState(showResults);
-  const [copied, setCopied] = useState(false);
+const SCHEMA = {
+  amount: num(100, 0, 100_000_000),
+  direction: oneOf<Direction>("add", ["add", "remove"]),
+  rate: oneOf<VatRateKey>("standard", ["standard", "reduced", "zero"]),
+  qty: num(1, 1, 100_000),
+  flat: num(14.5, 0, 20),
+  turnover: num(0, 0, 100_000_000),
+};
+const ADVANCED = ["qty", "flat", "turnover"] as const;
+const THRESHOLD = 90_000;
+
+export default function VatStudio({ query }: { query: Query }) {
+  const st = useStudio(SCHEMA, query);
+  const { amount: each, direction, rate: rateKey, qty, flat, turnover } = st.values;
+  const amount = each * qty;
 
   const rate = VAT_RATES[rateKey];
   const meta = RATES.find((r) => r.value === rateKey)!;
@@ -68,43 +65,16 @@ export default function VatStudio({
     difference: r.vat - flatVat,
     betterScheme: Math.abs(r.vat - flatVat) < 0.005 ? "tie" : r.vat > flatVat ? "flat" : "standard",
   };
-
-  useEffect(() => {
-    if (!ready) return;
-    const t = window.setTimeout(() => {
-      const q = new URLSearchParams({ amount: String(amount) });
-      if (direction !== "add") q.set("direction", direction);
-      if (rateKey !== "standard") q.set("rate", rateKey);
-      window.history.replaceState(null, "", `${window.location.pathname}?${q}`);
-    }, 400);
-    return () => window.clearTimeout(t);
-  }, [ready, amount, direction, rateKey]);
-
-  const reset = () => {
-    setAmount(DEFAULTS.amount);
-    setDirection(DEFAULTS.direction);
-    setRateKey(DEFAULTS.rate);
-    setFlat(DEFAULTS.flat);
-    setReady(false);
-    window.history.replaceState(null, "", window.location.pathname);
-  };
-  const share = async () => {
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2000);
-    } catch {
-      /* clipboard blocked — the URL is still in the address bar */
-    }
-  };
+  const unit = qty > 1 ? toPence(direction === "add" ? addVat(each, rate) : removeVat(each, rate), direction) : null;
+  const overThreshold = turnover > THRESHOLD;
 
   return (
     <Studio
       title="Your amount"
-      ready={ready}
-      onCalculate={() => setReady(true)}
+      ready={st.ready}
+      onCalculate={st.calculate}
       calculateLabel="Calculate VAT"
-      onReset={reset}
+      onReset={st.reset}
       dock={{ label: direction === "add" ? "Including VAT" : "Before VAT", value: gbp(answer, true) }}
       inputs={
         <>
@@ -112,7 +82,7 @@ export default function VatStudio({
             <Segmented
               label="What do you want to do?"
               value={direction}
-              onChange={setDirection}
+              onChange={st.bind("direction")}
               options={[
                 { value: "add", label: "Add VAT", note: "You have a price before VAT and want the total." },
                 { value: "remove", label: "Remove VAT", note: "You have a price that includes VAT and want to take it out." },
@@ -120,8 +90,8 @@ export default function VatStudio({
             />
             <MoneyField
               label={direction === "add" ? "Price before VAT" : "Price including VAT"}
-              value={amount}
-              onChange={setAmount}
+              value={each}
+              onChange={st.bind("amount")}
               big
               pence
             />
@@ -130,22 +100,25 @@ export default function VatStudio({
             <Segmented
               label="Which rate applies?"
               value={rateKey}
-              onChange={setRateKey}
+              onChange={st.bind("rate")}
               options={RATES.map((x) => ({ value: x.value, label: x.label.split(" ")[0], note: `${x.label}: ${x.note}` }))}
             />
           </InputGroup>
-          <AdvancedOptions changed={flat !== DEFAULTS.flat ? 1 : 0} onReset={() => setFlat(DEFAULTS.flat)}>
+          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
+            <StepperField label="Quantity" value={qty} onChange={(n) => st.set("qty", Math.max(1, Math.round(n)))} step={1} min={1} max={100_000} unit="items" dp={0} optional hint="For several of the same item. VAT is worked out on the total, as on an invoice." />
             <StepperField
               label="Your Flat Rate Scheme percentage"
               value={flat}
-              onChange={setFlat}
+              onChange={st.bind("flat")}
               step={0.5}
               min={0}
               max={20}
               unit="%"
               dp={1}
+              optional
               hint="Only if you use the Flat Rate Scheme. Your rate depends on your trade; 16.5% if you're a limited cost trader."
             />
+            <MoneyField label="Your taxable sales in the last 12 months" value={turnover} onChange={st.bind("turnover")} optional hint="To check against the £90,000 registration threshold." />
           </AdvancedOptions>
         </>
       }
@@ -154,14 +127,7 @@ export default function VatStudio({
       <Answer
         eyebrow={direction === "add" ? "Price including VAT" : "Price before VAT"}
         value={gbp(answer, true)}
-        actions={
-          <button type="button" className={s.ghostBtn} onClick={share}>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7" />
-            </svg>
-            {copied ? "Link copied" : "Share"}
-          </button>
-        }
+        actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           rate === 0 ? (
             <>
@@ -177,7 +143,7 @@ export default function VatStudio({
             </>
           )
         }
-        badges={[`${pct} VAT rate`, ...(rate > 0 ? [`VAT is ${meta.fraction} of the VAT-inclusive price`] : []), "UK rates"]}
+        badges={[`${pct} VAT rate`, ...(qty > 1 ? [`${qty} items`] : []), ...(rate > 0 ? [`VAT is ${meta.fraction} of the VAT-inclusive price`] : []), "UK rates"]}
       />
 
       {/* 2. Key figures */}
@@ -193,11 +159,30 @@ export default function VatStudio({
       <Assumptions
         items={[
           { label: "VAT rate", value: `${pct} (${meta.label.split(" ")[1]})` },
-          { label: "Rounding", value: "To the nearest penny" },
+          { label: "Rounding", value: qty > 1 ? "On the invoice total, to the nearest penny" : "To the nearest penny" },
+          { label: "Quantity", value: qty > 1 ? `${qty} items at ${gbp(each, true)}` : "One item" },
           { label: "Flat rate (for comparison)", value: `${flat}%` },
         ]}
         note="Check the rate for your goods or services on GOV.UK if you're not sure which applies."
       />
+
+      {unit && (
+        <ResultCard title={`${qty} items`} sub="Each item and the invoice total.">
+          <Statement
+            columns={["Each", `× ${qty}`]}
+            rows={[
+              { label: "Before VAT", values: [gbp(unit.net, true), gbp(r.net, true)] },
+              { label: `VAT at ${pct}`, values: [gbp(unit.vat, true), gbp(r.vat, true)] },
+              { label: "Including VAT", values: [gbp(unit.gross, true), gbp(r.gross, true)], kind: "total" },
+            ]}
+          />
+          {Math.abs(unit.vat * qty - r.vat) >= 0.005 && (
+            <p className={s.hint} style={{ marginTop: "0.9rem" }}>
+              Rounding each item&apos;s VAT gives {gbp(unit.vat * qty, true)} instead. HMRC accepts either method if you use it consistently.
+            </p>
+          )}
+        </ResultCard>
+      )}
 
       {/* 3. Split */}
       {r.gross > 0 && rate > 0 && (
@@ -229,6 +214,13 @@ export default function VatStudio({
             <Callout title="Zero-rated isn't the same as exempt">
               Zero-rated sales still count towards the £90,000 registration threshold, and you can reclaim VAT on related costs. Exempt sales (such as
               most insurance) do neither.
+            </Callout>
+          )}
+          {turnover > 0 && (
+            <Callout tone={overThreshold ? "warn" : "good"} title={overThreshold ? "You are over the registration threshold" : `${gbp(THRESHOLD - turnover)} below the threshold`}>
+              {overThreshold
+                ? "Taxable sales of more than £90,000 in a rolling 12 months mean you must register within 30 days of the end of the month you went over."
+                : "Keep checking every month. The test is any rolling 12 months, not your tax year."}
             </Callout>
           )}
           <Callout title="You must register once sales pass £90,000">

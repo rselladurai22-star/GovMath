@@ -1,46 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import MarginCalculator from "./MarginCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import MarginStudio from "./MarginStudio";
+import MarginGuide from "./MarginGuide";
 
 export const metadata: Metadata = {
-  title: "Gross Profit Margin Calculator UK",
-  description: "Profit, margin %, and markup % from cost and selling price — instant pricing maths.",
+  title: "Gross Profit Margin Calculator (Margin, Markup and Discounts)",
+  description:
+    "Work out gross margin and markup from a price and cost, with VAT taken out, yearly profit after overheads and what a discount does to your profit.",
+  alternates: { canonical: "/business/gross-profit-margin" },
 };
 
-export default function MarginPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/business", label: "Business" },
+  { href: "/business/gross-profit-margin", label: "Gross Profit Margin" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How do I calculate gross profit margin?", a: "Take the direct cost away from the selling price to get gross profit, then divide by the selling price. £60 profit on a £100 sale is a 60% margin." },
+  { q: "What is the difference between margin and markup?", a: "Margin is profit as a share of the selling price. Markup is profit as a share of the cost. A 50% margin is the same as a 100% markup." },
+  { q: "Should margin include VAT?", a: "No. If you are VAT-registered, use the price and costs before VAT, because the VAT is collected for HMRC." },
+  { q: "What is a good gross margin?", a: "It depends on your overheads and sales volume. Add your overheads to the profit you want and divide by your expected sales to find the margin you need." },
+  { q: "How much extra do I need to sell after a discount?", a: "At a 40% margin, a 10% discount needs a third more sales to make the same gross profit, and a 20% discount needs twice as many." },
+];
+
+export default async function MarginPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/business/retail-markup", "/business/break-even", "/business/vat-calculator", "/business/sole-trader-tax", "/business/corporation-tax", "/business/flat-rate-vat"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Business & Self-Employment"
-      updatedLabel="Pricing tool"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/business", label: "Business" }, { href: "/business/gross-profit-margin", label: "Gross Profit Margin" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Pricing tool"
       title="Gross Profit Margin Calculator"
-      intro="Margin and markup are different beasts. Margin is profit as a share of selling price; markup is profit as a share of cost. Confuse them and you’ll underprice."
-      calculator={<MarginCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>Profit = price − cost. Margin % = profit ÷ price. Markup % = profit ÷ cost. A 50% margin equals 100% markup — they grow apart fast.</p>
-          }
-          officialRules={
-            <ul>
-              <li>Both figures should be ex-VAT for a fair comparison.</li>
-              <li>Cost = direct cost of goods sold (COGS). Excludes overheads, marketing, salaries.</li>
-              <li>Gross profit funds overheads → operating profit → net profit.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Don’t confuse margin with markup", body: "‘A 30% markup’ means cost × 1.3. ‘A 30% margin’ means cost ÷ 0.7. The latter is much higher pricing." },
-            { title: "VAT trips up new traders", body: "If you’re VAT-registered, charge VAT on top of your ex-VAT price. Don’t calculate margin on the VAT-inclusive figure." },
-            { title: "Gross margin isn’t profit", body: "From gross you still have to pay rent, staff, ads, tax. Healthy retail gross margins are 40–60%; net might be 5–10%." },
-          ]}
-          faqs={[
-            { question: "What's a good gross margin?", answer: "Depends on sector: software 70–90%, restaurants 60–70%, retail 30–50%, wholesale 15–25%." },
-            { question: "Can margin exceed 100%?", answer: "No — margin is capped at 100% (when cost is zero). Markup has no cap." },
-          ]}
-          disclaimer="Pricing model only. Strategic pricing also considers competition, elasticity and positioning."
-        />
-      }
-    />
+      lead="See your margin and markup on any sale, your profit for the year after overheads, and what a discount would really cost you."
+      points={["Margin and markup", "VAT taken out", "Discount check", "Free and private"]}
+      guide={<MarginGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Figures before tax. A pricing guide, not financial advice."
+    >
+      <MarginStudio query={query} />
+    </FlagshipPage>
   );
 }
