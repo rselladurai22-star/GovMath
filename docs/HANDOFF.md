@@ -1,7 +1,7 @@
 # GovMath project memory
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 3 October 2026 (Phase 3 built, awaiting review).
+Last updated: 3 October 2026 (Phase 3 live; Phase 4 in progress).
 
 ## Goal
 
@@ -83,8 +83,8 @@ Use any `src/app/property/*` or `src/app/tax-and-salary/*` page as the template.
 | 0 | Shared kit, guide template, 2026/27 rates | ✅ Live | — |
 | 1 | Tax & Salary (16) | ✅ Live | All done |
 | 2 | Mortgages & Property (15) | ✅ Live | All done |
-| 3 | Business (14) | 🔍 In review | All done. Engines: `src/lib/business/self-employed.ts` (sole trader, payments on account, CIS), `company.ts` (Corporation Tax, director salary/dividends, employer costs), `flat-rate-vat.ts`, `margins.ts` (pricing, break-even), `mileage.ts`, `allowable-expenses.ts`, `small-business-rates.ts` |
-| 4 | Benefits (15) | Pending | attendance-allowance, benefit-cap, carers-earnings, child-benefit, free-childcare-hours, high-income-child-benefit, local-housing-allowance, maternity-pay, paternity-pay, pension-credit, pip-points, shared-parental-leave, tax-free-childcare, universal-credit, universal-credit-taper |
+| 3 | Business (14) | ✅ Live | All done. Engines: `src/lib/business/self-employed.ts` (sole trader, payments on account, CIS), `company.ts` (Corporation Tax, director salary/dividends, employer costs), `flat-rate-vat.ts`, `margins.ts` (pricing, break-even), `mileage.ts`, `allowable-expenses.ts`, `small-business-rates.ts` |
+| 4 | Benefits (15) | ⏳ In progress | attendance-allowance, benefit-cap, carers-earnings, child-benefit, free-childcare-hours, high-income-child-benefit, local-housing-allowance, maternity-pay, paternity-pay, pension-credit, pip-points, shared-parental-leave, tax-free-childcare, universal-credit, universal-credit-taper |
 | 5 | Everyday Life (13) | Pending | bank-holidays, bmi-uk-nhs, care-home-means-test, days-between-dates, healthy-start, inheritance-tax, nhs-prescription-saver, percentage-calculator, power-of-attorney, pro-rata-rent, probate-fees, right-to-rent, timesheet-decimal |
 | 6 | Investing & Pensions (10) | Pending | capital-gains-assets, compound-interest, dividend-tax, fire-calculator, inflation-impact, isa-vs-gia, pension-tax-relief, premium-bonds, state-pension-age, workplace-pension |
 | 7 | Vehicles (10) | Pending | benefit-in-kind, car-tax-ved, clean-air-zones, commuter-comparison, ev-salary-sacrifice, fuel-cost-journey, licence-at-70, mot-history-checker, petrol-vs-ev-cost, sorn-declaration |

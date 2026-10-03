@@ -1,45 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import ChildcareCalculator from "./ChildcareCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import TfcStudio from "./TfcStudio";
+import TfcGuide from "./TfcGuide";
 
 export const metadata: Metadata = {
-  title: "Tax-Free Childcare Calculator (UK)",
-  description: "Government adds 25% to childcare costs — up to £2,000 per child per year (£4,000 if disabled).",
+  title: "Tax-Free Childcare Calculator (2026/27)",
+  description:
+    "Work out your Tax-Free Childcare top-up: £2 for every £8 you pay, up to £2,000 a year per child or £4,000 if disabled, and compare it with Universal Credit childcare help.",
+  alternates: { canonical: "/benefits/tax-free-childcare" },
 };
 
-export default function ChildcarePage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/benefits", label: "Family & Benefits" },
+  { href: "/benefits/tax-free-childcare", label: "Tax-Free Childcare" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How does Tax-Free Childcare work?", a: "You pay into an online account and the government adds £2 for every £8, which is 20% of your childcare costs." },
+  { q: "What is the most I can get?", a: "£2,000 a year per child, or £4,000 for a disabled child, paid as up to £500 or £1,000 a quarter." },
+  { q: "Who can get Tax-Free Childcare?", a: "Working parents of children aged 11 or under (16 if disabled), each earning at least 16 hours a week at their minimum wage and under £100,000." },
+  { q: "Can I use it with 30 hours free childcare?", a: "Yes. Tax-Free Childcare can pay for hours and charges not covered by the funded hours." },
+  { q: "Can I get it on Universal Credit?", a: "No. You must choose one. Universal Credit can pay back up to 85% of childcare costs, which is often better for lower earners." },
+];
+
+export default async function TfcPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/benefits/free-childcare-hours", "/benefits/universal-credit", "/benefits/child-benefit", "/benefits/high-income-child-benefit", "/benefits/maternity-pay", "/tax-and-salary/salary-calculator"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Benefits"
-      updatedLabel="25% top-up"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/benefits", label: "Benefits" }, { href: "/benefits/tax-free-childcare", label: "Tax-Free Childcare" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="UK-wide 2026/27"
       title="Tax-Free Childcare Calculator"
-      intro="For every £8 you pay into a Tax-Free Childcare account, the government adds £2 — up to £2,000 per child per year (£4,000 for disabled children)."
-      calculator={<ChildcareCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>The 25% top-up applies until you hit the annual cap. £10k of paid-in funds gets you the maximum £2k top-up; anything beyond is unmatched.</p>}
-          officialRules={
-            <ul>
-              <li>Child must be under 12 (or 17 if disabled).</li>
-              <li>Both parents must each earn at least £203/week and under £100k.</li>
-              <li>Can’t combine with Universal Credit childcare or vouchers.</li>
-              <li>Reconfirm eligibility every 3 months.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "£100k cliff edge", body: "If either parent earns over £100k, the entire account closes — even for kids already in it." },
-            { title: "Vouchers vs TFC", body: "Childcare vouchers are closed to new entrants but if you’re already in, often better for basic-rate taxpayers." },
-            { title: "Forgot to reconfirm", body: "Miss the 3-monthly reconfirmation and the account suspends — no top-ups until renewed." },
-          ]}
-          faqs={[
-            { question: "Does it work with the 30 free hours?", answer: "Yes, you can use both together for hours beyond the 30 free." },
-            { question: "Per child or per family cap?", answer: "Per child. £2k cap applies to each child individually." },
-          ]}
-          disclaimer="Educational. Eligibility rules change — confirm on GOV.UK."
-        />
-      }
-    />
+      lead="See how much the government adds to your childcare costs, and whether Universal Credit would pay more."
+      points={["20% top-up", "Up to three children", "Universal Credit comparison", "Free and private"]}
+      guide={<TfcGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Tax-Free Childcare, 2026/27. Not financial advice."
+    >
+      <TfcStudio query={query} />
+    </FlagshipPage>
   );
 }
