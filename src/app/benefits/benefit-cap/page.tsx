@@ -1,54 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import BenefitCapCalculator from "./BenefitCapCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import CapStudio from "./CapStudio";
+import CapGuide from "./CapGuide";
 
 export const metadata: Metadata = {
-  title: "Benefit Cap Calculator (UK 2026/27)",
-  description: "Check whether your total weekly benefits exceed the UK Benefit Cap for inside or outside Greater London.",
+  title: "Benefit Cap Calculator (2026/27)",
+  description:
+    "Check whether the benefit cap reduces your Universal Credit or Housing Benefit in 2026/27. £22,020 for families and £14,753 for single people outside London, with every exemption and the £881 earnings test.",
+  alternates: { canonical: "/benefits/benefit-cap" },
 };
 
-export default function BenefitCapPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/benefits", label: "Family & Benefits" },
+  { href: "/benefits/benefit-cap", label: "Benefit Cap" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is the benefit cap in 2026/27?", a: "£22,020 a year for couples and families and £14,753 for single people outside London. In Greater London it is £25,323 and £16,967." },
+  { q: "How do I avoid the benefit cap?", a: "Earn at least £881 a month after tax as a household, or have someone in the household getting PIP, DLA, Attendance Allowance, Carer's Allowance, the LCWRA health element or the carer element." },
+  { q: "Does Child Benefit count towards the cap?", a: "Yes. Child Benefit counts in full. The Universal Credit childcare element does not." },
+  { q: "Is there a grace period?", a: "Yes. If you earned enough before losing your job, the cap does not apply for nine months." },
+];
+
+export default async function BenefitCapPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/benefits/universal-credit", "/benefits/universal-credit-taper", "/benefits/local-housing-allowance", "/benefits/child-benefit", "/benefits/pip-points"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Benefits"
-      updatedLabel="2026/27 caps"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/benefits", label: "Benefits" },
-        { href: "/benefits/benefit-cap", label: "Benefit Cap" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2026/27 limits"
       title="Benefit Cap Calculator"
-      intro="The Benefit Cap limits the total weekly benefits a working-age household can receive — unless you qualify for an exemption. We show you the cap that applies and how much would be cut."
-      calculator={<BenefitCapCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              We compare your total weekly benefits to the annual cap (÷52). Any excess is the weekly reduction the DWP applies — usually by cutting your Universal Credit. The cap is higher in Greater London and higher again for families.
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>Greater London: £18,837.36 (single, no kids) or £28,116.72 (family) per year.</li>
-              <li>Outside London: £16,395.66 (single, no kids) or £24,496.32 (family) per year.</li>
-              <li>Cap is applied weekly — earnings over £881/month (post-tax) trigger the ”in work” exemption.</li>
-              <li>9-month grace period after losing a job, if previously worked 50 of last 52 weeks.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Carer’s Allowance exempts you", body: "Receiving Carer’s Allowance or the UC carer element removes the cap entirely — many people miss this." },
-            { title: "PIP exemption is per household", body: "If anyone in the household (including children) gets PIP or DLA, the whole household is exempt." },
-            { title: "Housing Benefit isn’t always cut", body: "On legacy benefits the cap reduces Housing Benefit. On UC it reduces the standard allowance — your rent payment stays the same." },
-          ]}
-          faqs={[
-            { question: "Which benefits count towards the cap?", answer: "UC, Housing Benefit, Child Benefit, Child Tax Credit, JSA, ESA (assessment phase or work-related activity group), Income Support, Maternity Allowance, Bereavement Allowance." },
-            { question: "What if my circumstances change?", answer: "Report changes to DWP within a month — moving in/out of London or starting work above the threshold immediately changes your cap position." },
-            { question: "Does the cap apply to pensioners?", answer: "No — the Benefit Cap only applies to working-age households. Anyone over State Pension Age is exempt." },
-          ]}
-          disclaimer="Estimate only. Use turn2us.org.uk or contact your local Jobcentre for a full assessment."
-        />
-      }
-    />
+      lead="Check whether the benefit cap cuts your Universal Credit or Housing Benefit, by how much, and what would lift it."
+      points={["Universal Credit or Housing Benefit", "Every exemption", "£881 earnings test", "Free and private"]}
+      guide={<CapGuide />}
+      faqs={FAQS}
+      related={related}
+      note="2026/27 benefit cap. Not financial advice."
+    >
+      <CapStudio query={query} />
+    </FlagshipPage>
   );
 }
