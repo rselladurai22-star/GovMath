@@ -1,7 +1,7 @@
 # GovMath project memory
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 2 October 2026 (after Phase 2 went live).
+Last updated: 3 October 2026 (Phase 3 built, awaiting review).
 
 ## Goal
 
@@ -65,7 +65,9 @@ Use any `src/app/property/*` or `src/app/tax-and-salary/*` page as the template.
   - End with sections `questions` then `key-numbers`.
 - **Logic** goes in pure, tested libraries under `src/lib/<area>/`. **Compute every figure quoted in a guide from these libraries** using a temporary test, never by hand. Hand arithmetic caused errors several times.
 - `git rm` the old `*Calculator.tsx` once it is replaced.
-- Adding sections to a guide: a helper that inserted sections before "questions" and renumbered the rest was used. It is easy to recreate.
+- Adding sections to a guide: a helper that inserted sections before "questions" and renumbered the rest was used. It is easy to recreate. Write `'` as `&rsquo;` in any inserted JSX text, or ESLint fails.
+- Vitest does not resolve the `@/` alias, so `src/lib` files must use relative imports.
+- Playwright is not a project dependency: install `playwright-core` in a scratch folder and launch with `executablePath`.
 
 ## Ads (waiting on the owner)
 
@@ -81,7 +83,7 @@ Use any `src/app/property/*` or `src/app/tax-and-salary/*` page as the template.
 | 0 | Shared kit, guide template, 2026/27 rates | ✅ Live | — |
 | 1 | Tax & Salary (16) | ✅ Live | All done |
 | 2 | Mortgages & Property (15) | ✅ Live | All done |
-| 3 | Business (14) | ⏳ Next | allowable-expenses, break-even, business-mileage, cis-deduction, corporation-tax, dividend-vs-salary, employer-ni-costs, flat-rate-vat, gross-profit-margin, payment-on-account, retail-markup, small-business-rates, sole-trader-tax, vat-calculator (VAT already uses the studio but needs a FlagshipPage and a 2,000-word guide) |
+| 3 | Business (14) | 🔍 In review | All done. Engines: `src/lib/business/self-employed.ts` (sole trader, payments on account, CIS), `company.ts` (Corporation Tax, director salary/dividends, employer costs), `flat-rate-vat.ts`, `margins.ts` (pricing, break-even), `mileage.ts`, `allowable-expenses.ts`, `small-business-rates.ts` |
 | 4 | Benefits (15) | Pending | attendance-allowance, benefit-cap, carers-earnings, child-benefit, free-childcare-hours, high-income-child-benefit, local-housing-allowance, maternity-pay, paternity-pay, pension-credit, pip-points, shared-parental-leave, tax-free-childcare, universal-credit, universal-credit-taper |
 | 5 | Everyday Life (13) | Pending | bank-holidays, bmi-uk-nhs, care-home-means-test, days-between-dates, healthy-start, inheritance-tax, nhs-prescription-saver, percentage-calculator, power-of-attorney, pro-rata-rent, probate-fees, right-to-rent, timesheet-decimal |
 | 6 | Investing & Pensions (10) | Pending | capital-gains-assets, compound-interest, dividend-tax, fire-calculator, inflation-impact, isa-vs-gia, pension-tax-relief, premium-bonds, state-pension-age, workplace-pension |
@@ -91,6 +93,9 @@ Use any `src/app/property/*` or `src/app/tax-and-salary/*` page as the template.
 The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
+
+- `src/lib/tax/salary-dividend.ts` is superseded by `src/lib/business/company.ts`, but `src/lib/tax/ir35.ts` still uses its simplified `corporationTax`. It gives the same answer for a single company with a 12-month period. Move IR35 over when it is next touched.
+- Business guides cite 2026 changes: Corporation Tax late filing penalties doubled (£200/£400), the VOA duty to notify is a pilot until April 2029, and Making Tax Digital penalties use points. Recheck these in April 2027.
 
 - Clean air zone charges are still labelled "2025 charges" (`src/app/vehicles/clean-air-zones/page.tsx`). Verify the 2026 figures in Phase 7.
 - Some student maintenance loan minimums are unverified. Check them in Phase 8.
