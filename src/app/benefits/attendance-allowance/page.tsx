@@ -1,54 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import AttendanceAllowanceCalculator from "./AttendanceAllowanceCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import AaStudio from "./AaStudio";
+import AaGuide from "./AaGuide";
 
 export const metadata: Metadata = {
-  title: "Attendance Allowance Calculator (UK 2026/27)",
-  description: "See whether your care needs qualify for the lower (£76.70/wk) or higher (£114.60/wk) rate of Attendance Allowance.",
+  title: "Attendance Allowance Calculator (2026/27 Rates)",
+  description:
+    "Check whether you could get Attendance Allowance at £76.70 or £114.60 a week in 2026/27, and how much extra Pension Credit it could unlock through the severe disability addition.",
+  alternates: { canonical: "/benefits/attendance-allowance" },
 };
 
-export default function AttendanceAllowancePage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/benefits", label: "Family & Benefits" },
+  { href: "/benefits/attendance-allowance", label: "Attendance Allowance" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much is Attendance Allowance in 2026/27?", a: "£76.70 a week at the lower rate and £114.60 a week at the higher rate." },
+  { q: "Is Attendance Allowance means-tested?", a: "No. Your income and savings make no difference, and it is tax-free." },
+  { q: "Who can claim Attendance Allowance?", a: "People over State Pension age who have needed help with personal care or supervision for six months because of an illness or disability." },
+  { q: "Does Attendance Allowance affect Pension Credit?", a: "It can increase it. If you live alone and nobody gets Carer's Allowance for you, it adds £86.05 a week to the Pension Credit guarantee." },
+];
+
+export default async function AaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/benefits/pension-credit", "/benefits/carers-earnings", "/benefits/pip-points", "/life/care-home-means-test", "/investing/state-pension-age"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Benefits"
-      updatedLabel="2026/27 rates"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/benefits", label: "Benefits" },
-        { href: "/benefits/attendance-allowance", label: "Attendance Allowance" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2026/27 rates"
       title="Attendance Allowance Calculator"
-      intro="Attendance Allowance helps people over State Pension Age with the extra costs of disability. It’s not means-tested — savings and income don’t matter."
-      calculator={<AttendanceAllowanceCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              Two rates. Lower rate £76.70/week if you need help (or supervision) during the day OR night. Higher rate £114.60/week if you need help both day AND night, or are terminally ill.
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>Must be over State Pension Age and have needed help for at least 6 months.</li>
-              <li>6-month qualifying period waived for terminally ill claimants (under Special Rules SR1).</li>
-              <li>Tax-free; doesn’t count for the Benefit Cap.</li>
-              <li>Receiving AA can unlock Council Tax Reduction, Pension Credit and a Carer’s Allowance for whoever helps you.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "‘Help’ includes supervision", body: "You don’t need physical assistance — needing someone to prompt or supervise you to stay safe also counts." },
-            { title: "Don’t under-claim", body: "Many people understate their needs. Use a Citizens Advice or Age UK adviser before submitting the AA1 form." },
-            { title: "It doesn’t cover hospital stays", body: "AA stops after 28 days in NHS hospital. Resumes on discharge — let DWP know straight away." },
-          ]}
-          faqs={[
-            { question: "Will AA reduce my Pension Credit?", answer: "No — AA is disregarded for Pension Credit, Housing Benefit and Council Tax Reduction. It can actually INCREASE those awards." },
-            { question: "Do I have to spend it on care?", answer: "No — it’s your money to spend as you choose. Most claimants use it for cleaning, transport, gardening or extra heating." },
-            { question: "Can I get PIP instead?", answer: "If you’re under State Pension Age, claim PIP. AA is the pensioner equivalent — but PIP has both daily living and mobility components." },
-          ]}
-          disclaimer="Estimate of statutory rates only. The DWP assessment of care needs is the deciding factor — get help from Age UK or Citizens Advice."
-        />
-      }
-    />
+      lead="Check which rate of Attendance Allowance your care needs point to, and how much extra Pension Credit it could bring."
+      points={["Day and night needs", "Special rules", "Pension Credit boost", "Free and private"]}
+      guide={<AaGuide />}
+      faqs={FAQS}
+      related={related}
+      note="2026/27 rates. A self-check, not a decision."
+    >
+      <AaStudio query={query} />
+    </FlagshipPage>
   );
 }
