@@ -1,46 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import MarkupCalculator from "./MarkupCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import MarkupStudio from "./MarkupStudio";
+import MarkupGuide from "./MarkupGuide";
 
 export const metadata: Metadata = {
-  title: "Retail Markup Calculator — Required Selling Price",
-  description: "What price do you need to charge to hit a target margin or markup? Instant retail pricing.",
+  title: "Retail Markup Calculator: Selling Price from Cost",
+  description:
+    "Find the selling price that hits a target markup or margin, with marketplace fees, postage, VAT and price rounding built in.",
+  alternates: { canonical: "/business/retail-markup" },
 };
 
-export default function MarkupPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/business", label: "Business" },
+  { href: "/business/retail-markup", label: "Retail Markup" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How do I work out a selling price from a markup?", a: "Multiply the cost by one plus the markup. A £25 item with a 50% markup sells for £37.50 before VAT." },
+  { q: "How do I price for a target margin?", a: "Divide the cost by one minus the margin. A £25 item priced for a 50% margin sells for £50 before VAT." },
+  { q: "What is keystone pricing?", a: "Doubling the wholesale cost: a 100% markup, which gives a 50% margin." },
+  { q: "How do I cover marketplace fees in my price?", a: "Divide the cost by one minus the margin minus the fee percentage, so the fee is paid without reducing your margin." },
+  { q: "Do I add VAT before or after markup?", a: "After. Work out your price before VAT, then add VAT on top if you are VAT-registered." },
+];
+
+export default async function MarkupPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/business/gross-profit-margin", "/business/break-even", "/business/vat-calculator", "/business/flat-rate-vat", "/business/sole-trader-tax", "/business/small-business-rates"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Business & Self-Employment"
-      updatedLabel="Pricing tool"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/business", label: "Business" }, { href: "/business/retail-markup", label: "Retail Markup" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Pricing tool"
       title="Retail Markup Calculator"
-      intro="Set the selling price from cost + target margin OR cost + target markup. Toggle between the two — they are NOT the same."
-      calculator={<MarkupCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>For target margin m: price = cost ÷ (1 − m). For target markup k: price = cost × (1 + k). A 50% margin needs a 100% markup; the formulas diverge fast as percentages rise.</p>
-          }
-          officialRules={
-            <ul>
-              <li>Margins above 100% are impossible (price would be infinite).</li>
-              <li>Markup can be any positive value.</li>
-              <li>Both should be calculated ex-VAT.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Markup math is easier; margin math drives profit", body: "Retailers often think in markup (it’s a simple multiplier). Finance teams think in margin (P&L line)." },
-            { title: "Multiple stages compound", body: "Manufacturer 30% margin → distributor 25% markup → retailer 50% margin. End consumer pays a lot more than cost." },
-            { title: "Don’t forget VAT at point of sale", body: "Add 20% VAT to your ex-VAT price for consumer-facing display. Margin should never include VAT." },
-          ]}
-          faqs={[
-            { question: "Why are these different?", answer: "Margin uses price as the denominator; markup uses cost. Same profit, different base." },
-            { question: "Convert markup to margin?", answer: "Margin = markup ÷ (1 + markup). So 50% markup = 33% margin. 100% markup = 50% margin." },
-          ]}
-          disclaimer="Pricing utility. Market positioning, competitor analysis and price elasticity are equally important."
-        />
-      }
-    />
+      lead="Turn a cost into a selling price that hits your target markup or margin, with fees, postage and VAT covered."
+      points={["Markup or margin", "Fees priced in", "VAT and rounding", "Free and private"]}
+      guide={<MarkupGuide />}
+      faqs={FAQS}
+      related={related}
+      note="A pricing guide, not financial advice."
+    >
+      <MarkupStudio query={query} />
+    </FlagshipPage>
   );
 }

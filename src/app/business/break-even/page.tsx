@@ -1,46 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import BreakEvenCalculator from "./BreakEvenCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import BreakEvenStudio from "./BreakEvenStudio";
+import BreakEvenGuide from "./BreakEvenGuide";
 
 export const metadata: Metadata = {
-  title: "Break-Even Calculator (Units & Revenue)",
-  description: "How many units (and what revenue) you need to sell to cover fixed costs.",
+  title: "Break-Even Calculator: Sales Needed to Cover Your Costs",
+  description:
+    "Find how many sales you need to cover your costs, the sales for a profit target, your margin of safety and what a price change does to break-even.",
+  alternates: { canonical: "/business/break-even" },
 };
 
-export default function BreakEvenPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/business", label: "Business" },
+  { href: "/business/break-even", label: "Break-Even" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How do I calculate my break-even point?", a: "Divide your fixed costs by the contribution from each sale: the price minus the variable cost of that sale." },
+  { q: "What is the difference between fixed and variable costs?", a: "Fixed costs, such as rent and insurance, stay the same however much you sell. Variable costs, such as stock and card fees, come with each sale." },
+  { q: "How do I include the profit I want?", a: "Add the profit to your fixed costs before dividing by the contribution per sale." },
+  { q: "What is a margin of safety?", a: "How far your expected sales are above break-even, as a share of expected sales. It shows how much sales could fall before you make a loss." },
+  { q: "Should I use prices with or without VAT?", a: "Without VAT if you are VAT-registered. If you are not registered, include the VAT you pay in your costs." },
+];
+
+export default async function BreakEvenPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/business/gross-profit-margin", "/business/retail-markup", "/business/sole-trader-tax", "/business/corporation-tax", "/business/allowable-expenses", "/business/small-business-rates"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Business & Self-Employment"
-      updatedLabel="Planning tool"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/business", label: "Business" }, { href: "/business/break-even", label: "Break-Even" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Planning tool"
       title="Break-Even Calculator"
-      intro="The minimum sales volume that covers your fixed costs. Below break-even you lose money; above, every extra unit is pure contribution to profit."
-      calculator={<BreakEvenCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>Contribution per unit = price − variable cost. Break-even units = fixed costs ÷ contribution per unit. Break-even revenue = break-even units × price.</p>
-          }
-          officialRules={
-            <ul>
-              <li>Fixed costs don’t scale with sales (rent, salaries, software).</li>
-              <li>Variable costs scale 1:1 with units (materials, packaging, payment fees).</li>
-              <li>Some costs are semi-variable (e.g. utilities) — judgment call.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Your own salary is a fixed cost", body: "If you’re a sole trader paying yourself £30k, include it. Otherwise the calculator says you’ve broken even when you actually haven’t paid yourself a penny." },
-            { title: "Variable cost &lt; price (or you’re doomed)", body: "If shipping + materials + payment fees exceed sale price, no volume helps. Fix the unit economics first." },
-            { title: "Break-even ignores growth, taxes, capex", body: "It’s a survival number — not a target. Aim well above to actually build a business." },
-          ]}
-          faqs={[
-            { question: "What about safety margin?", answer: "Industry rule of thumb: aim for actual sales 30–50% above break-even, to give you slack for downturns." },
-            { question: "How do I know my fixed vs variable split?", answer: "Look at last year’s P&L. Any cost line that didn’t change much month-on-month, regardless of sales, is fixed." },
-          ]}
-          disclaimer="Simple linear model. Real costs often step (e.g. hiring an extra person), and prices vary by channel."
-        />
-      }
-    />
+      lead="Find how many sales you need to cover your costs, what you need for a profit target, and how much room you have."
+      points={["Sales and income", "Profit target", "Margin of safety", "Free and private"]}
+      guide={<BreakEvenGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Figures before VAT and tax. A planning guide, not financial advice."
+    >
+      <BreakEvenStudio query={query} />
+    </FlagshipPage>
   );
 }
