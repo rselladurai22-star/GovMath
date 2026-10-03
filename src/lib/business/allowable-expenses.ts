@@ -1,3 +1,4 @@
+import { selfEmployedTax, TRADING_ALLOWANCE } from "./self-employed";
 /**
  * Self-employed allowable expenses estimator (UK 2026/27).
  *
@@ -78,5 +79,79 @@ export function allowableExpenses(input: AllowableInput): AllowableResult {
     itemised,
     total,
     taxSavedApprox: total * 0.28,
+  };
+}
+
+/* ── Flagship: expenses against your tax bill ─────────────────── */
+
+
+export const WFH_FLAT_RATES = WFH_RATE;
+
+export type ExpenseCategory =
+  | "office"
+  | "travel"
+  | "stock"
+  | "marketing"
+  | "finance"
+  | "premises"
+  | "staff"
+  | "training"
+  | "clothing"
+  | "other";
+
+export type ExpensesStudyInput = {
+  turnover: number;
+  /** Itemised costs a year by category. */
+  costs: Partial<Record<ExpenseCategory, number>>;
+  /** Business miles by car or van, claimed at 45p / 25p. */
+  miles: number;
+  wfhBand: WfhHoursBand;
+  wfhMonths: number;
+  otherIncome: number;
+  scottish: boolean;
+};
+
+export type ExpensesStudy = {
+  itemised: number;
+  mileage: number;
+  wfh: number;
+  total: number;
+  /** Income Tax + Class 4 NI with no expenses at all. */
+  taxWithout: number;
+  taxWith: number;
+  /** Tax and NI saved by claiming the expenses. */
+  saved: number;
+  /** Tax with the £1,000 trading allowance instead. */
+  taxWithAllowance: number;
+  /** True when the trading allowance beats the expenses. */
+  allowanceBetter: boolean;
+  profit: number;
+};
+
+export function expensesStudy(i: ExpensesStudyInput): ExpensesStudy {
+  const itemised = Object.values(i.costs).reduce<number>((a, b) => a + Math.max(0, b ?? 0), 0);
+  const miles = Math.max(0, i.miles);
+  const mileage = Math.min(miles, 10_000) * MILEAGE_FIRST_10K + Math.max(0, miles - 10_000) * MILEAGE_AFTER_10K;
+  const wfh = WFH_RATE[i.wfhBand] * Math.max(0, Math.min(12, i.wfhMonths));
+  const total = itemised + mileage + wfh;
+  const base = { turnover: i.turnover, otherIncome: i.otherIncome, scottish: i.scottish, plan: "none" as const, pension: 0, voluntaryClass2: false };
+  const bill = (expenses: number, tradingAllowance = false) => {
+    const r = selfEmployedTax({ ...base, expenses, tradingAllowance });
+    return { tax: r.incomeTaxOnProfit + r.class4, profit: r.profit };
+  };
+  const without = bill(0);
+  const withExp = bill(total);
+  const withTa = bill(0, true);
+  return {
+    itemised,
+    mileage,
+    wfh,
+    total,
+    taxWithout: without.tax,
+    taxWith: withExp.tax,
+    saved: without.tax - withExp.tax,
+    taxWithAllowance: withTa.tax,
+    allowanceBetter: total < TRADING_ALLOWANCE && withTa.tax < withExp.tax,
+    profit: withExp.profit,
   };
 }

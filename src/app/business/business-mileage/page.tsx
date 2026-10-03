@@ -1,45 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import MileageCalculator from "./MileageCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import MileageStudio from "./MileageStudio";
+import MileageGuide from "./MileageGuide";
 
 export const metadata: Metadata = {
-  title: "HMRC Business Mileage Calculator (45p Approved Rates)",
-  description: "Tax-free mileage allowance for using your own car, motorcycle or bike for business — 45p first 10k, 25p after.",
+  title: "Business Mileage Calculator: HMRC 45p and 25p Rates (2026/27)",
+  description:
+    "Work out your business mileage claim at HMRC's approved rates, the tax it saves, and Mileage Allowance Relief if your employer pays less than 45p a mile.",
+  alternates: { canonical: "/business/business-mileage" },
 };
 
-export default function MileagePage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/business", label: "Business" },
+  { href: "/business/business-mileage", label: "Business Mileage" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is the HMRC mileage rate for 2026/27?", a: "45p a mile for the first 10,000 business miles in a car or van, then 25p. Motorcycles are 24p and bicycles 20p." },
+  { q: "Does commuting count as business mileage?", a: "No. Travel between home and a permanent workplace is private. Journeys to clients, suppliers and temporary workplaces usually count." },
+  { q: "What if my employer pays less than 45p a mile?", a: "You can claim Mileage Allowance Relief on the difference, online, with form P87 or on your tax return." },
+  { q: "Can sole traders claim mileage?", a: "Yes. The approved rates can be claimed as simplified expenses for cars, vans and motorcycles, instead of actual running costs." },
+  { q: "Do electric cars get a different rate?", a: "Not if you own the car. The 45p and 25p rates apply to all fuel types. Company cars use separate advisory fuel and electricity rates." },
+];
+
+export default async function MileagePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/business/allowable-expenses", "/business/sole-trader-tax", "/business/cis-deduction", "/vehicles/fuel-cost-journey", "/vehicles/benefit-in-kind", "/business/payment-on-account"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Business & Self-Employment"
-      updatedLabel="HMRC AMAP rates"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/business", label: "Business" }, { href: "/business/business-mileage", label: "Business Mileage" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="HMRC rates 2026/27"
       title="Business Mileage Calculator"
-      intro="If you use your own vehicle for work, you can claim a tax-free allowance from your employer — or as an expense if self-employed. HMRC’s Approved Mileage Allowance Payments (AMAP) haven’t changed since 2011."
-      calculator={<MileageCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Car/van: 45p for the first 10,000 business miles in the tax year, 25p after that. Motorcycle: 24p flat. Bicycle: 20p flat. Plus 5p per passenger mile when you carry a fellow employee on the same business trip (car only).</p>}
-          officialRules={
-            <ul>
-              <li>45p / 25p split is the AMAP rate.</li>
-              <li>Mileage = business journeys only. Commuting to your normal workplace does NOT count.</li>
-              <li>If employer pays less than AMAP, claim the shortfall as Mileage Allowance Relief via Self Assessment or P87.</li>
-              <li>If employer pays more, the excess is taxable.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Commuting doesn’t count", body: "Home → permanent workplace is private travel. Home → temporary workplace (under 24 months / less than 40% of your time) usually counts." },
-            { title: "AMAP rates haven’t risen since 2011", body: "Fuel costs have doubled but the 45p rate hasn’t budged. Many drivers genuinely lose money — write to your MP." },
-            { title: "Logs matter — HMRC can ask", body: "Keep dates, postcodes, business reason, miles. Apps like Tripcatcher / MileIQ make this painless." },
-          ]}
-          faqs={[
-            { question: "Can I claim instead of taking a company car?", answer: "Yes — ‘cash for car’ schemes use AMAP. Often more tax-efficient for low-mileage drivers." },
-            { question: "What about electric vehicles?", answer: "Same AMAP rates apply for your own EV. Company EVs get the separate Advisory Electricity Rate (currently 7p/mile)." },
-          ]}
-          disclaimer="HMRC AMAP rates for 2026/27 (unchanged since 2011). Self-employed must use the same rates if using simplified expenses."
-        />
-      }
-    />
+      lead="Work out what you can claim for business journeys in your own vehicle, and how much tax it saves."
+      points={["45p and 25p rates", "Self-employed or employee", "Mileage Allowance Relief", "Free and private"]}
+      guide={<MileageGuide />}
+      faqs={FAQS}
+      related={related}
+      note="HMRC approved mileage rates for 2026/27. Not tax advice."
+    >
+      <MileageStudio query={query} />
+    </FlagshipPage>
   );
 }
