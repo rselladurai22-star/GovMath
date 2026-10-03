@@ -386,7 +386,7 @@ export default function ExpensesGuide() {
           You can amend your return within 12 months of the 31 January deadline. If HMRC finds an error first, you pay the tax
           plus interest, and possibly a penalty if you were careless.
         </p>
-        <h3>Can I claim my accountant's fees?</h3>
+        <h3>Can I claim my accountant&rsquo;s fees?</h3>
         <p>Yes. Accountancy and bookkeeping for the business are allowable, including software for keeping your records.</p>
         <h3>Do I need a receipt for every expense?</h3>
         <p>You need evidence for every claim. A receipt or invoice is best; a bank or card statement can do for small items if it shows what was bought.</p>
