@@ -1,45 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import CISCalculator from "./CISCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import CisStudio from "./CisStudio";
+import CisGuide from "./CisGuide";
 
 export const metadata: Metadata = {
   title: "CIS Deduction Calculator (Construction Industry Scheme)",
-  description: "Work out the 20% or 30% CIS deduction on a subcontractor invoice.",
+  description:
+    "Work out the 20% or 30% CIS deduction on a subcontractor invoice, with materials, VAT and the reverse charge, and estimate your refund at the end of the year.",
+  alternates: { canonical: "/business/cis-deduction" },
 };
 
-export default function CISPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/business", label: "Business" },
+  { href: "/business/cis-deduction", label: "CIS Deduction" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much is the CIS deduction?", a: "20% of labour for a registered subcontractor, 30% if not registered or not verified, and nothing with gross payment status." },
+  { q: "Is CIS deducted from materials?", a: "No. The deduction is on labour only. Materials, plant hire and VAT are taken out first, so show them separately on your invoice." },
+  { q: "Can I get CIS deductions back?", a: "Yes. They count towards your Income Tax and National Insurance, and most sole traders get a refund after their tax return because of expenses and the Personal Allowance." },
+  { q: "Does the VAT reverse charge apply to CIS work?", a: "For most construction services between VAT-registered businesses, yes. The subcontractor does not charge VAT and the contractor accounts for it instead." },
+  { q: "How do I get gross payment status?", a: "A sole trader needs at least £30,000 a year of construction turnover, excluding VAT and materials, a good compliance record and a business run through a bank account." },
+];
+
+export default async function CisPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/business/sole-trader-tax", "/business/allowable-expenses", "/business/business-mileage", "/business/payment-on-account", "/business/vat-calculator", "/business/flat-rate-vat"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Business"
-      updatedLabel="CIS"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/business", label: "Business" }, { href: "/business/cis-deduction", label: "CIS" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Construction Industry Scheme"
       title="CIS Deduction Calculator"
-      intro="Under the Construction Industry Scheme, contractors deduct tax from subcontractor payments before paying out. 20% if you’re registered, 30% if you’re not."
-      calculator={<CISCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>CIS is deducted on the labour element only — materials, plant hire, fuel and VAT are excluded. Registered subcontractors are taxed at 20%; unregistered at 30%. Gross-status subcontractors get nothing deducted.</p>}
-          officialRules={
-            <ul>
-              <li>Applies to mainstream construction work in the UK.</li>
-              <li>Contractor files a monthly CIS return (CIS300).</li>
-              <li>Subcontractor reclaims deductions via Self Assessment / Corporation Tax return.</li>
-              <li>Gross payment status requires turnover &gt;£30k and a clean tax record.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Materials must be itemised", body: "If not separated on the invoice, HMRC may treat the whole figure as labour." },
-            { title: "VAT reverse charge", body: "Since 2021, B2B construction services use the VAT reverse charge — recipient accounts for VAT." },
-            { title: "Penalties for late returns", body: "£100 per missed monthly CIS return, escalating fast." },
-          ]}
-          faqs={[
-            { question: "Do I have to register?", answer: "If you’re a subcontractor in construction, yes — to avoid the 30% rate." },
-            { question: "Can I claim materials VAT?", answer: "Yes if VAT-registered, via your normal VAT return." },
-          ]}
-          disclaimer="Educational. Always file CIS returns through HMRC’s online service or commercial software."
-        />
-      }
-    />
+      lead="See what a contractor will deduct and pay on your invoice, and whether you are heading for a refund at the end of the year."
+      points={["20%, 30% or gross", "Materials and VAT", "Year-end refund", "Free and private"]}
+      guide={<CisGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Construction Industry Scheme, 2026/27. Not tax advice."
+    >
+      <CisStudio query={query} />
+    </FlagshipPage>
   );
 }
