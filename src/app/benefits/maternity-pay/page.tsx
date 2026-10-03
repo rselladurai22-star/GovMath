@@ -1,49 +1,46 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import MaternityCalculator from "./MaternityCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import MaternityStudio from "./MaternityStudio";
+import MaternityGuide from "./MaternityGuide";
 
 export const metadata: Metadata = {
-  title: "Statutory Maternity Pay (SMP) Calculator UK 2026/27",
-  description: "Work out 39 weeks of UK Statutory Maternity Pay — 90% of AWE for 6 weeks, then £194.32/week or 90% (whichever lower) for 33 weeks.",
+  title: "Maternity Pay Calculator (SMP 2026/27)",
+  description:
+    "Work out Statutory Maternity Pay week by week: 90% of earnings for 6 weeks then £194.32, with enhanced employer schemes, Maternity Allowance and key dates from your due date.",
+  alternates: { canonical: "/benefits/maternity-pay" },
 };
 
-export default function MaternityPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/benefits", label: "Family & Benefits" },
+  { href: "/benefits/maternity-pay", label: "Maternity Pay" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much is Statutory Maternity Pay in 2026/27?", a: "90% of your average weekly earnings for the first 6 weeks, then £194.32 a week or 90% of earnings if lower for the next 33 weeks." },
+  { q: "Who qualifies for SMP?", a: "Employees with 26 weeks' continuous service by the 15th week before the due week, earning at least £129 a week on average." },
+  { q: "What if I do not qualify for SMP?", a: "You may get Maternity Allowance: up to £194.32 a week for 39 weeks if you worked 26 of the 66 weeks before your due date." },
+  { q: "Is maternity pay taxed?", a: "SMP and employer maternity pay are taxed through payroll. Maternity Allowance is not taxed." },
+  { q: "When can maternity leave start?", a: "From 11 weeks before the week your baby is due, or earlier if the baby arrives early." },
+];
+
+export default async function MaternityPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/benefits/shared-parental-leave", "/benefits/paternity-pay", "/benefits/child-benefit", "/benefits/free-childcare-hours", "/benefits/universal-credit", "/tax-and-salary/holiday-entitlement"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Family & Benefits"
-      updatedLabel="April 2026 rate"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/benefits", label: "Family & Benefits" }, { href: "/benefits/maternity-pay", label: "Maternity Pay" }]}
-      title="Statutory Maternity Pay Calculator"
-      intro="SMP runs 39 weeks: the first 6 at 90% of your average weekly pay, then 33 weeks at the lower of £194.32/week or 90%. Total leave can be 52 weeks, but the final 13 are unpaid."
-      calculator={<MaternityCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              AWE = total earnings over the 8 weeks ending with the qualifying week (15th week before expected childbirth), divided by 8. Weeks 1–6: 90% × AWE, no cap. Weeks 7–39: lesser of £194.32 or 90% × AWE. Final 13 weeks of leave: unpaid (or contractual maternity pay if your employer offers more).
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>SMP rate £194.32/week from April 2026.</li>
-              <li>Eligibility: 26 weeks continuous service by qualifying week; AWE ≥ £129/wk Lower Earnings Limit.</li>
-              <li>Employer pays SMP, then reclaims 92% (or 103% for small employers).</li>
-              <li>Tax & NI deducted as normal income.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "AWE includes bonuses but timing matters", body: "If a bonus lands inside the 8-week reference period, AWE jumps. Outside it, it doesn’t count. Some women time conception to maximise this." },
-            { title: "Salary sacrifice can hurt AWE", body: "If you sacrifice salary for childcare vouchers or pension, AWE is calculated on the post-sacrifice figure — reducing SMP." },
-            { title: "Employer top-up rarely matches contractual", body: "Many employers offer enhanced maternity pay (e.g. full pay for 13 weeks). Check your contract — could mean thousands extra." },
-          ]}
-          faqs={[
-            { question: "What if I don't qualify for SMP?", answer: "You may qualify for Maternity Allowance (£194.32/wk for 39 weeks) via DWP — slightly different eligibility, often for self-employed." },
-            { question: "Can I take leave and return early?", answer: "Yes — must give 8 weeks’ notice of return date. You can claim Shared Parental Leave with your partner from week 2 onwards." },
-          ]}
-          disclaimer="Statutory minimum only. Many employers offer enhanced maternity pay schemes."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2026/27 rates"
+      title="Maternity Pay Calculator"
+      lead="See your maternity pay week by week, what your employer adds, and the key dates from your due date."
+      points={["SMP week by week", "Enhanced schemes", "Maternity Allowance", "Free and private"]}
+      guide={<MaternityGuide />}
+      faqs={FAQS}
+      related={related}
+      note="2026/27 rates. Not financial advice."
+    >
+      <MaternityStudio query={query} />
+    </FlagshipPage>
   );
 }
