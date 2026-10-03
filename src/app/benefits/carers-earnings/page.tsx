@@ -1,45 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import CarersEarningsCalculator from "./CarersEarningsCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import CarersStudio from "./CarersStudio";
+import CarersGuide from "./CarersGuide";
 
 export const metadata: Metadata = {
-  title: "Carer's Allowance Earnings Check (UK 2026/27)",
-  description: "Are you under the £204/week earnings limit for Carer's Allowance?",
+  title: "Carer's Allowance Earnings Limit Calculator (2026/27)",
+  description:
+    "Check whether your pay keeps you within the £204 a week Carer's Allowance earnings limit for 2026/27. Applies tax, NI, half of pension contributions and care costs, and shows how many hours you can work.",
+  alternates: { canonical: "/benefits/carers-earnings" },
 };
 
-export default function CarersPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/benefits", label: "Family & Benefits" },
+  { href: "/benefits/carers-earnings", label: "Carer's Allowance Earnings" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is the Carer's Allowance earnings limit in 2026/27?", a: "£204 a week after Income Tax, National Insurance, half of your pension contributions and some care costs." },
+  { q: "How much is Carer's Allowance in 2026/27?", a: "£86.45 a week, or £4,495.40 a year." },
+  { q: "How many hours can I work on Carer's Allowance?", a: "About 16 hours a week at the £12.71 National Living Wage. At higher pay, fewer hours." },
+  { q: "What happens if I earn over the limit?", a: "You lose the whole week's Carer's Allowance. There is no taper, so even a small amount over costs £86.45." },
+];
+
+export default async function CarersPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/benefits/attendance-allowance", "/benefits/pip-points", "/benefits/universal-credit", "/benefits/pension-credit", "/tax-and-salary/minimum-wage"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Benefits"
-      updatedLabel="£204/wk limit"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/benefits", label: "Benefits" }, { href: "/benefits/carers-earnings", label: "Carer’s Earnings" }]}
-      title="Carer’s Allowance Earnings Check"
-      intro="Carer’s Allowance is paid at £86.45/week if you care for someone at least 35 hours/week — but you must earn under £204/week (net of tax, NI and half of pension contributions)."
-      calculator={<CarersEarningsCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>This is a cliff edge — £1 over the £204 limit means £0 Carer’s Allowance. Allowable deductions before checking: tax, NI, 50% of pension contributions, and reasonable care costs for the cared-for person while you work.</p>}
-          officialRules={
-            <ul>
-              <li>Cared-for person must get qualifying disability benefit (PIP daily living, AA, DLA middle/highest).</li>
-              <li>You must provide 35+ hours of care per week.</li>
-              <li>You can’t be in full-time education (21+ hours/wk).</li>
-              <li>Overpayments are pursued aggressively by DWP.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Cliff edge, not taper", body: "Going £1 over the £204 limit loses you the entire £86.45/week. Plan pay raises carefully." },
-            { title: "Bonus push-over", body: "A one-off bonus that takes you over the limit in one week can trigger overpayment recovery. Notify DWP immediately." },
-            { title: "Affects State Pension claim", body: "Carer’s gives Class 1 NI credit — protect that record." },
-          ]}
-          faqs={[
-            { question: "Can a couple both claim?", answer: "Only one Carer’s per cared-for person." },
-            { question: "Does it affect Universal Credit?", answer: "Treated as income for UC — but you get a carer element which usually offsets." },
-          ]}
-          disclaimer="Educational. DWP rules change — always confirm via GOV.UK or a Citizens Advice."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2026/27 rates"
+      title="Carer's Allowance Earnings Calculator"
+      lead="Check whether your pay keeps you within the £204 earnings limit, and how many hours you can work without losing Carer's Allowance."
+      points={["Real deductions", "Hours limit", "Pension and care costs", "Free and private"]}
+      guide={<CarersGuide />}
+      faqs={FAQS}
+      related={related}
+      note="2026/27 rates. Not financial advice."
+    >
+      <CarersStudio query={query} />
+    </FlagshipPage>
   );
 }

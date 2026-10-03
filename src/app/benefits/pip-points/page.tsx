@@ -1,54 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import PipPointsCalculator from "./PipPointsCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import PipStudio from "./PipStudio";
+import PipGuide from "./PipGuide";
 
 export const metadata: Metadata = {
-  title: "PIP Points Self-Check (UK 2026/27)",
-  description: "Estimate your PIP award by entering your daily living and mobility points against the official thresholds.",
+  title: "PIP Points Calculator (2026/27 Rates)",
+  description:
+    "Score yourself against all 12 official PIP activities and descriptors. See your daily living and mobility points, the rate they point to, and what 2026/27 PIP is worth a week and a year.",
+  alternates: { canonical: "/benefits/pip-points" },
 };
 
-export default function PipPointsPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/benefits", label: "Family & Benefits" },
+  { href: "/benefits/pip-points", label: "PIP Points" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How many points do I need for PIP?", a: "8 points in a component for the standard rate and 12 for the enhanced rate. Daily living and mobility are scored separately." },
+  { q: "How much is PIP in 2026/27?", a: "Daily living is £76.70 or £114.60 a week. Mobility is £30.30 or £80.00 a week. The most you can get is £194.60 a week." },
+  { q: "Is PIP means-tested?", a: "No. Your income, savings and whether you work make no difference." },
+  { q: "Which descriptor should I choose?", a: "The one that applies on more than half of days, judged on whether you can do the activity safely, well, repeatedly and in a reasonable time." },
+];
+
+export default async function PipPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/benefits/attendance-allowance", "/benefits/carers-earnings", "/benefits/universal-credit", "/benefits/benefit-cap", "/vehicles/car-tax-ved"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Benefits"
-      updatedLabel="2026/27 rates"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/benefits", label: "Benefits" },
-        { href: "/benefits/pip-points", label: "PIP Points" },
-      ]}
-      title="PIP Points Self-Check"
-      intro="PIP has two components — daily living and mobility — each scored from 12 activity descriptors. 8 points gets the standard rate, 12+ the enhanced rate. This self-check estimates your award."
-      calculator={<PipPointsCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              We band each component independently: 0–7 = no award, 8–11 = standard, 12+ = enhanced. We then apply the 2026/27 weekly rates: £76.70 / £114.60 for daily living, £30.30 / £80.00 for mobility.
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>10 daily living activities: preparing food, eating, managing therapy, washing, dressing, etc.</li>
-              <li>2 mobility activities: planning a journey, moving around.</li>
-              <li>You must score against descriptors that apply ”safely, to an acceptable standard, repeatedly, and in a reasonable time” — on the majority of days.</li>
-              <li>Condition must have lasted 3 months and be expected to last 9 more.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Underscoring yourself", body: "PIP is about how your condition affects you on a bad day — not your best day. Many people undersell their difficulties." },
-            { title: "”Reliably” matters", body: "If you can do something but not safely, not repeatedly, or it takes you twice as long, you score points." },
-            { title: "Mandatory reconsideration", body: "Most successful PIP awards involve a mandatory reconsideration or tribunal. Don’t give up after the first decision." },
-          ]}
-          faqs={[
-            { question: "Does PIP affect other benefits?", answer: "PIP usually increases other benefits like Universal Credit and Housing Benefit — it’s a passport benefit." },
-            { question: "Is PIP taxable?", answer: "No — PIP is tax-free and not counted as income for most means-tested benefits." },
-            { question: "Can I appeal?", answer: "Yes — ask for mandatory reconsideration within 1 month, then appeal to the tribunal. Around 70% of tribunal appeals succeed." },
-          ]}
-          disclaimer="Self-check estimate only. Apply at gov.uk/pip and get help from Citizens Advice or a welfare rights advisor before scoring yourself."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2026/27 rates"
+      title="PIP Points Calculator"
+      lead="Check your Personal Independence Payment points against all 12 official activities, and see the rate and amount they point to."
+      points={["All 12 activities", "Official descriptors", "Daily living and mobility", "Free and private"]}
+      guide={<PipGuide />}
+      faqs={FAQS}
+      related={related}
+      note="2026/27 PIP rates. A self-check, not a decision."
+    >
+      <PipStudio query={query} />
+    </FlagshipPage>
   );
 }
