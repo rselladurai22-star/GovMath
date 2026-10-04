@@ -1,119 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import EVSalSacCalculator from "./EVSalSacCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import EvSalSacStudio from "./EvSalSacStudio";
+import EvSalSacGuide from "./EvSalSacGuide";
 
 export const metadata: Metadata = {
-  title: "EV Salary Sacrifice Calculator (UK 2026/27)",
+  title: "EV Salary Sacrifice Calculator UK 2026/27",
   description:
-    "See your true net monthly cost of an electric car through salary sacrifice — Income Tax + NI saving minus the BIK tax.",
+    "See what an electric car through salary sacrifice really costs after income tax, National Insurance and 4% company car tax, and how much you save compared with leasing privately.",
+  alternates: { canonical: "/vehicles/ev-salary-sacrifice" },
 };
 
-export default function EVSalSacPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/vehicles", label: "Vehicles" },
+  { href: "/vehicles/ev-salary-sacrifice", label: "EV Salary Sacrifice" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much can I save with EV salary sacrifice?", a: "Typically 20% to 45% compared with leasing privately. On £45,000, a £450-a-month sacrifice for a £40,000 car costs about £351 a month in take-home pay." },
+  { q: "Do I pay tax on a salary sacrifice electric car?", a: "Yes, company car tax at 4% of the list price in 2026/27, rising to 9% by 2029/30, taxed at your income tax rate." },
+  { q: "Does salary sacrifice affect my pension?", a: "It can if your pension contributions are based on your salary after the sacrifice. Ask your employer which salary they use." },
+  { q: "Why is salary sacrifice not worth it for petrol cars?", a: "Cars over 75 g/km are taxed on the salary given up under the optional remuneration rules, so there is no saving." },
+];
+
+export default async function EvSalSacPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/vehicles/benefit-in-kind", "/vehicles/petrol-vs-ev-cost", "/vehicles/car-tax-ved", "/tax-and-salary/salary-sacrifice", "/tax-and-salary/salary-calculator"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Vehicles & Transport"
-      updatedLabel="BIK 4% (2026/27)"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/vehicles", label: "Vehicles & Transport" },
-        { href: "/vehicles/ev-salary-sacrifice", label: "EV Salary Sacrifice" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Electric cars"
       title="EV Salary Sacrifice Calculator"
-      intro="Electric cars through salary sacrifice can cost half what you’d pay leasing privately — because you swap gross pay (taxed) for a lease (untaxed bar a small BIK)."
-      calculator={<EVSalSacCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <>
-              <p>
-                Salary sacrifice EV schemes work by reducing your gross
-                salary by the monthly lease amount. The mechanics:
-              </p>
-              <ol>
-                <li>
-                  You save Income Tax + employee NI on the sacrificed amount
-                  (~28% for basic rate, ~42% for higher rate).
-                </li>
-                <li>
-                  You pay <strong>Benefit-in-Kind</strong> tax on the car —
-                  P11D × BIK rate × your Income Tax rate. For 2026/27 the BIK
-                  rate for EVs is just 4%.
-                </li>
-                <li>Net cost = gross lease − tax saving + BIK tax.</li>
-              </ol>
-              <p>
-                Most schemes (Octopus, Tusker, LoveElectric etc.) bundle in
-                insurance, servicing, breakdown and tyres — so the true
-                like-for-like comparison vs renting a car privately is
-                normally even more favourable than this number suggests.
-              </p>
-            </>
-          }
-          officialRules={
-            <>
-              <p>HMRC’s rules for EV salary sacrifice:</p>
-              <ul>
-                <li>
-                  <strong>BIK rate for pure EVs</strong>: 4% (2026/27), 5% (2027/28),
-                  7% (2028/29), 9% (2029/30). It was 2% in 2024/25 and 3% in
-                  2025/26.
-                </li>
-                <li>
-                  <strong>OpRA (Optional Remuneration Arrangements)</strong>:
-                  most company-car benefits lost their tax break in 2017, but
-                  ULEVs (≤75g/km CO2) were specifically exempted — which is
-                  why EV sal sac still works.
-                </li>
-                <li>
-                  <strong>Minimum Wage check</strong>: your post-sacrifice
-                  salary can’t take you below National Minimum Wage.
-                </li>
-                <li>
-                  <strong>Lease length</strong>: typically 36–48 months,
-                  with mileage allowance built in.
-                </li>
-              </ul>
-            </>
-          }
-          pitfalls={[
-            {
-              title: "Sacrificing salary affects pension and mortgage",
-              body: "Your gross salary drops on paper, which can reduce auto-enrolment pension contributions and what mortgage lenders will offer. Many schemes use ‘notional’ salary for benefits — check the employer’s policy.",
-            },
-            {
-              title: "Early termination charges can sting",
-              body: "Leaving the job or being made redundant usually triggers an early-termination fee — often the remaining months of lease, or a fixed sum. Some schemes offer protection insurance, often worth taking.",
-            },
-            {
-              title: "BIK is rising every year",
-              body: "The 2% rate that hooked everyone in 2024/25 is gone, and 2026/27 is 4%. By 2029/30 it’s 9% — still much better than a petrol car’s 30%+ BIK, but the gap narrows. Lock in 3-year leases now to fix the rate.",
-            },
-            {
-              title: "Not all employers offer schemes",
-              body: "EV sal sac requires the employer to set up an arrangement with a provider. Many SMEs don’t bother. If yours doesn’t, you can ask — but it can take months to roll out.",
-            },
-          ]}
-          faqs={[
-            {
-              question: "Can I sacrifice down to National Minimum Wage?",
-              answer:
-                "No. The post-sacrifice gross salary must remain at or above NMW for your hours. Higher earners aren’t affected; this mainly blocks part-timers and lower-paid full-timers from the most expensive cars.",
-            },
-            {
-              question: "What about hybrids?",
-              answer:
-                "Plug-in hybrids (PHEVs) have BIK rates based on electric range — 8–14% for cars with 30–69 mile range. Much less attractive than pure EVs. Mild hybrids (no plug) are treated as petrols.",
-            },
-            {
-              question: "Can I keep the car at end of lease?",
-              answer:
-                "Usually not directly — but most schemes let you buy at fair market value at the end. Some employers run novated leases that work differently. Check the small print.",
-            },
-          ]}
-          disclaimer="Estimate only. Real schemes vary in what they bundle (insurance, tyres, charging credits). Always ask for a full quote in writing."
-        />
-      }
-    />
+      lead="See what an electric car through salary sacrifice really costs you, and how it compares with leasing privately."
+      points={["Tax and NI saving", "4% company car tax", "Future rates", "Free and private"]}
+      guide={<EvSalSacGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Estimate only. Use your scheme's quote before you sign."
+    >
+      <EvSalSacStudio query={query} />
+    </FlagshipPage>
   );
 }
