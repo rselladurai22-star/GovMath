@@ -1,44 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import FuelCostCalculator from "./FuelCostCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import FuelStudio from "./FuelStudio";
+import FuelGuide from "./FuelGuide";
 
 export const metadata: Metadata = {
-  title: "Fuel Cost per Journey Calculator (UK)",
-  description: "Cost of fuel for any journey from miles, MPG and pump price.",
+  title: "Fuel Cost Calculator UK: Journey Cost by MPG",
+  description:
+    "Work out what a car journey costs in petrol, diesel or electricity, split the cost between passengers, and see what you can claim for business mileage. Autumn 2026 prices.",
+  alternates: { canonical: "/vehicles/fuel-cost-journey" },
 };
 
-export default function FuelCostPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/vehicles", label: "Vehicles" },
+  { href: "/vehicles/fuel-cost-journey", label: "Fuel Cost" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How do I work out the fuel cost of a journey?", a: "Miles ÷ mpg × 4.546 gives litres. Multiply by the price per litre. 240 miles at 45 mpg and 173.8p costs about £42.14." },
+  { q: "How much does an electric car cost per mile?", a: "At 3.5 miles per kWh, about 2.3p a mile on an 8p overnight tariff, 7.5p at the 26.32p price cap, and over 21p on 75p rapid chargers." },
+  { q: "What is the business mileage rate?", a: "45p a mile for the first 10,000 business miles a year in your own car, then 25p, tax-free." },
+  { q: "Is it legal to share fuel costs?", a: "Yes, as long as you do not make a profit from your passengers." },
+];
+
+export default async function FuelPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/vehicles/petrol-vs-ev-cost", "/vehicles/commuter-comparison", "/business/business-mileage", "/vehicles/clean-air-zones"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Vehicles"
-      updatedLabel="Per journey"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/vehicles", label: "Vehicles" }, { href: "/vehicles/fuel-cost-journey", label: "Fuel Cost" }]}
-      title="Fuel Cost per Journey Calculator"
-      intro="How much will that drive actually cost in fuel? Plug in miles, MPG and pump price."
-      calculator={<FuelCostCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Gallons = miles ÷ MPG. UK MPG is imperial gallons (4.546 L). Cost = litres × pump price. Cost-per-mile lets you compare against HMRC’s 45p/mile mileage allowance.</p>}
-          officialRules={
-            <ul>
-              <li>HMRC AMAP rate: 45p/mile for first 10,000 business miles.</li>
-              <li>Advisory Fuel Rates (AFR) published quarterly for company-car drivers.</li>
-              <li>UK uses imperial gallons (4.54609 L), not US gallons (3.785 L).</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Manufacturer MPG is optimistic", body: "Real-world MPG is typically 20–30% lower than WLTP figures. Use historical fill-up data." },
-            { title: "Motorway vs town", body: "City driving can halve MPG on a small petrol — adjust if mostly stop-start." },
-            { title: "AFR vs AMAP confusion", body: "AMAP is for using your own car for work (45p). AFR is for fuel reimbursement on company cars (much lower)." },
-          ]}
-          faqs={[
-            { question: "What price per litre to use?", answer: "Check Petrol Prices UK or your local supermarket. UK average ~145p petrol / 155p diesel mid-2025." },
-            { question: "Why imperial gallons?", answer: "UK historical convention. MPG figures on adverts are always imperial." },
-          ]}
-          disclaimer="Educational. Estimates only — actual fuel consumption varies."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Running costs"
+      title="Fuel Cost Calculator"
+      lead="Work out what a journey costs in petrol, diesel or electricity, and split it between passengers."
+      points={["Autumn 2026 prices", "Petrol, diesel and electric", "Cost sharing", "Free and private"]}
+      guide={<FuelGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Estimate only. Real economy varies with speed, traffic and weather."
+    >
+      <FuelStudio query={query} />
+    </FlagshipPage>
   );
 }

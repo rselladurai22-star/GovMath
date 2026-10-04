@@ -1,45 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import PetrolVsEVCalculator from "./PetrolVsEVCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import PetrolEvStudio from "./PetrolEvStudio";
+import PetrolEvGuide from "./PetrolEvGuide";
 
 export const metadata: Metadata = {
-  title: "Petrol vs EV Running Cost Calculator (UK)",
-  description: "Compare annual fuel costs between a petrol car and an EV.",
+  title: "Petrol vs Electric Car Cost Calculator UK (2026)",
+  description:
+    "Compare the full cost of a petrol and an electric car over the years you keep it: fuel versus home and public charging, servicing, tax, insurance, the 2028 mileage charge and resale value.",
+  alternates: { canonical: "/vehicles/petrol-vs-ev-cost" },
 };
 
-export default function PetrolVsEVPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/vehicles", label: "Vehicles" },
+  { href: "/vehicles/petrol-vs-ev-cost", label: "Petrol vs Electric" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "Is an electric car cheaper to run than petrol?", a: "Usually, if you charge at home. 8,000 miles costs about £1,405 in petrol at 45 mpg, against £183 on an 8p overnight tariff, but £1,714 on 75p rapid chargers." },
+  { q: "How much does it cost to charge an electric car at home?", a: "At the 26.32p price cap, about 7.5p a mile for a car doing 3.5 miles per kWh. On an overnight EV tariff around 8p, about 2.3p a mile." },
+  { q: "Do electric cars pay road tax?", a: "Yes, since April 2025: £10 in the first year then £200 a year, and from April 2028 a 3p a mile charge is planned." },
+  { q: "How long does an electric car take to pay back?", a: "It depends on mileage and the price gap. In our example, at 15,000 miles a year a £5,000 dearer electric car pays back in the fourth year." },
+];
+
+export default async function PetrolEvPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/vehicles/fuel-cost-journey", "/vehicles/ev-salary-sacrifice", "/vehicles/car-tax-ved", "/vehicles/benefit-in-kind"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Vehicles"
-      updatedLabel="Running costs"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/vehicles", label: "Vehicles" }, { href: "/vehicles/petrol-vs-ev-cost", label: "Petrol vs EV" }]}
-      title="Petrol vs EV Running Cost Calculator"
-      intro="Fuel is the biggest running cost difference between an EV and a petrol car. With a home overnight tariff, EVs are often 4–5× cheaper per mile."
-      calculator={<PetrolVsEVCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Petrol cost = (miles/MPG) × 4.546 × £/litre. EV cost = (miles/mi-per-kWh) × £/kWh. We just compare totals. Maintenance and depreciation are excluded.</p>}
-          officialRules={
-            <ul>
-              <li>EV charging at home off-peak: 7–10p/kWh (Octopus Go, Intelligent).</li>
-              <li>Public rapid: 60–80p/kWh.</li>
-              <li>Petrol UK average: ~145p/litre (mid-2025).</li>
-              <li>VED for EVs from April 2025: standard rate applies.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Public charging breaks the maths", body: "If you don’t have off-street parking, rapid charging at 75p/kWh costs roughly the same as petrol per mile." },
-            { title: "Cold-weather range", body: "EV efficiency drops 20–30% in winter — adjust mi/kWh for realistic figures." },
-            { title: "Tyres and servicing", body: "EVs are gentler on brakes but harder on tyres (weight + torque). Service savings ~30%." },
-          ]}
-          faqs={[
-            { question: "What about depreciation?", answer: "EV residuals fell sharply 2023–24. Currently petrol holds value better — factor in for total cost." },
-            { question: "Is the salary sacrifice route still good?", answer: "Yes — 3% BIK on EVs makes salary sacrifice extremely tax-efficient for higher-rate earners." },
-          ]}
-          disclaimer="Educational. Real running costs vary by driving style, weather and tariff."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Running costs"
+      title="Petrol vs Electric Car Calculator"
+      lead="Compare the full cost of owning a petrol and an electric car, year by year."
+      points={["Home and public charging", "2028 mileage charge", "Break-even year", "Free and private"]}
+      guide={<PetrolEvGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Illustration only. Prices, resale values and running costs vary."
+    >
+      <PetrolEvStudio query={query} />
+    </FlagshipPage>
   );
 }
