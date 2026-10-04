@@ -330,6 +330,10 @@ export default function EvSalSacGuide() {
         <p>The car is inspected and collected. You can usually choose a new car through the scheme, and your salary returns to normal if you do not.</p>
         <h3>Is the saving guaranteed?</h3>
         <p>The tax and National Insurance rates and company car percentages can change. The rates for electric cars up to 2029/30 have already been set.</p>
+        <h3>Can part-time workers join a scheme?</h3>
+        <p>Usually yes, as long as your pay after the sacrifice stays above the National Living Wage for the hours you work. Schemes check this when you apply.</p>
+        <h3>Is my car insured if I change jobs?</h3>
+        <p>Cover usually continues until the car is returned or the lease is transferred. Check the early termination terms with the provider.</p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={23} kicker="Summary" title="Key numbers">

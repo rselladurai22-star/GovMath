@@ -333,6 +333,8 @@ export default function BikGuide() {
         <p>An electric company car usually is: a £40,000 model costs £640 a year in tax at 40%, far less than owning or leasing a similar car from taxed income. A petrol car at 30% costs £4,800 a year at the same price, so the sums are much closer.</p>
         <h3>What if I only use the car for work?</h3>
         <p>If private use is genuinely banned and the ban is enforced, there is no benefit. Driving from home to a permanent workplace counts as private use.</p>
+        <h3>Does a company car affect my student loan?</h3>
+        <p>No. Student loan repayments are based on your pay, not on benefits in kind, so a company car does not increase them.</p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers">
