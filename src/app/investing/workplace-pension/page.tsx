@@ -1,45 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import WorkplacePensionCalculator from "./WorkplacePensionCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import WorkplaceStudio from "./WorkplaceStudio";
+import WorkplaceGuide from "./WorkplaceGuide";
 
 export const metadata: Metadata = {
-  title: "Workplace Pension Calculator (Auto-Enrolment, UK)",
-  description: "Annual workplace pension contributions split between you and your employer.",
+  title: "Workplace Pension Calculator UK (Auto-Enrolment 2026/27)",
+  description:
+    "Work out your workplace pension contributions, your employer's share and tax relief under auto-enrolment, and see how big your pot could grow by retirement.",
+  alternates: { canonical: "/investing/workplace-pension" },
 };
 
-export default function WorkplacePensionPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/investing", label: "Pensions & Investing" },
+  { href: "/investing/workplace-pension", label: "Workplace Pension" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is the minimum workplace pension contribution?", a: "8% of qualifying earnings in total, with at least 3% from your employer. Qualifying earnings are pay between £6,240 and £50,270 in 2026/27." },
+  { q: "How much will I pay on £35,000?", a: "On the minimum, you pay £119.83 a month and your employer £71.90. After tax relief, your share costs you about £95.87." },
+  { q: "Who is auto-enrolled?", a: "Workers aged 22 to State Pension age earning over £10,000 a year from one job." },
+  { q: "Should I opt out?", a: "Usually not. Opting out means losing your employer's contributions and tax relief." },
+];
+
+export default async function WorkplacePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/investing/pension-tax-relief", "/investing/state-pension-age", "/investing/fire-calculator", "/tax-and-salary/salary-calculator", "/tax-and-salary/salary-sacrifice"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Investing"
-      updatedLabel="Auto-enrolment"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/investing", label: "Investing" }, { href: "/investing/workplace-pension", label: "Workplace Pension" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Pensions"
       title="Workplace Pension Calculator"
-      intro="Auto-enrolment means most UK employees have a workplace pension. The 8% minimum (3% employer + 5% employee, including tax relief) is the floor — many employers match higher."
-      calculator={<WorkplacePensionCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Qualifying-earnings basis takes pay between £6,240 and £50,270. Total-salary basis applies to all earnings. Your % comes from gross pay (before tax) under most schemes — tax relief is added by HMRC or via salary sacrifice.</p>}
-          officialRules={
-            <ul>
-              <li>Auto-enrolled at age 22+ earning £10,000+.</li>
-              <li>Min total contribution 8% on qualifying earnings.</li>
-              <li>Employer min 3%, employee min 5%.</li>
-              <li>You can opt out — but you lose free employer money.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Opt-out costs you tens of thousands", body: "On a £35k salary, the employer 3% alone is ~£860/year. Compound over 40 years = a six-figure shortfall." },
-            { title: "Net pay vs relief at source", body: "Net pay schemes deduct before tax (effective tax relief upfront). Relief at source claims 20% back into the pot — higher-rate taxpayers must claim the extra 20–25% via Self Assessment." },
-            { title: "Salary sacrifice is gold", body: "Sacrifice saves you 8% employee NI and your employer 15% — often shared back as extra contribution." },
-          ]}
-          faqs={[
-            { question: "Should I contribute more than 5%?", answer: "Almost always yes — especially if your employer matches. Match-up to the max first." },
-            { question: "Where is it invested?", answer: "Default fund unless you choose. Check the costs — anything over 0.75% AMC is expensive." },
-          ]}
-          disclaimer="Educational. Pensions are long-term and complex — consider regulated advice for big decisions."
-        />
-      }
-    />
+      lead="See what you and your employer pay in, what it costs you after tax relief, and what your pot could be worth."
+      points={["2026/27 thresholds", "Employer match", "Pot projection", "Free and private"]}
+      guide={<WorkplaceGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Illustration only. Investment returns are not guaranteed. Not financial advice."
+    >
+      <WorkplaceStudio query={query} />
+    </FlagshipPage>
   );
 }

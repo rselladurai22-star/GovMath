@@ -1,44 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import FIRECalculator from "./FIRECalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import FireStudio from "./FireStudio";
+import FireGuide from "./FireGuide";
 
 export const metadata: Metadata = {
-  title: "FIRE Calculator (4% Rule, UK)",
-  description: "When could you retire early? The classic Trinity Study safe-withdrawal-rate calculator.",
+  title: "FIRE Calculator UK: When Can I Retire Early?",
+  description:
+    "Find your financial independence number and the age you could retire early, with the 4% rule, the UK State Pension, real returns and Coast FI.",
+  alternates: { canonical: "/investing/fire-calculator" },
 };
 
-export default function FIREPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/investing", label: "Pensions & Investing" },
+  { href: "/investing/fire-calculator", label: "FIRE Calculator" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much do I need to retire early?", a: "A common rule is 25 times your yearly spending, which is a 4% withdrawal rate. Spending £30,000 a year, that is £750,000 before counting the State Pension." },
+  { q: "Does the State Pension count?", a: "Yes. The full new State Pension is £12,547.60 a year in 2026/27. It reduces the pot you need, but you must bridge the years before it starts." },
+  { q: "When can I access my pension?", a: "From 55, rising to 57 on 6 April 2028. ISAs can be used at any age." },
+  { q: "What is Coast FI?", a: "The pot that would grow, with no more saving, to cover your retirement by State Pension age." },
+];
+
+export default async function FirePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/investing/compound-interest", "/investing/inflation-impact", "/investing/pension-tax-relief", "/investing/state-pension-age", "/investing/workplace-pension"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Investing"
-      updatedLabel="Trinity Study"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/investing", label: "Investing" }, { href: "/investing/fire-calculator", label: "FIRE" }]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Retirement planning"
       title="FIRE Calculator"
-      intro="Financial Independence, Retire Early — the FIRE movement targets a pot 25× annual spend, then withdraws 4% per year. This shows when you’d get there at your current savings rate."
-      calculator={<FIRECalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Target pot = annual spend ÷ SWR. We then solve the future-value equation analytically: how many years until current invested + monthly savings × growth = target. Returns are in real (after-inflation) terms.</p>}
-          officialRules={
-            <ul>
-              <li>Trinity Study (1998, US): 4% withdrawal had a 95%+ 30-year success rate.</li>
-              <li>UK studies (Pfau, Cooley) suggest 3.0–3.5% is safer due to lower equity returns.</li>
-              <li>SIPP + ISA combo gives the most tax-efficient path in the UK.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "4% is US-data; UK is lower", body: "UK equity returns have historically been ~1pp lower than US. Use 3.5% for a margin of safety." },
-            { title: "Sequence-of-returns risk", body: "A bear market in years 1–5 of retirement is devastating. Hold 2 years of cash as a buffer." },
-            { title: "State Pension lifts SWR", body: "Once SP kicks in (age 67/68), your pot only has to cover the gap. Often the harder bridge is age 50–67." },
-          ]}
-          faqs={[
-            { question: "Why 25×?", answer: "1/0.04 = 25. The 25× rule is just the 4% SWR restated as a multiplier." },
-            { question: "Is FIRE realistic on UK salaries?", answer: "Aggressive savers (50%+ of income) can hit it in 15–20 years. Standard 15% pensioners get there at the State Pension age." },
-          ]}
-          disclaimer="Educational. Investment returns aren’t guaranteed — speak to a financial planner."
-        />
-      }
-    />
+      lead="Find your financial independence number and the age you could stop needing to work."
+      points={["4% rule", "UK State Pension", "Coast FI", "Free and private"]}
+      guide={<FireGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Illustration only. Returns are not guaranteed. Not financial advice."
+    >
+      <FireStudio query={query} />
+    </FlagshipPage>
   );
 }
