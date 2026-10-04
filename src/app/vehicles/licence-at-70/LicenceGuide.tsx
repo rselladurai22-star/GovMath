@@ -165,6 +165,8 @@ export default function LicenceGuide() {
         <p>Only if your photo is more than 10 years old or no longer looks like you. Online, the DVLA can often use your passport photo.</p>
         <h3>Can someone renew for me?</h3>
         <p>A family member or friend can help you fill in the form, but you must sign the declaration yourself, as it is about your own fitness to drive.</p>
+        <h3>Will I get a reminder before 70?</h3>
+        <p>Yes. The DVLA usually sends a D46P reminder about 90 days before your 70th birthday, and before each three-yearly renewal after that.</p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={13} kicker="Summary" title="Key numbers">

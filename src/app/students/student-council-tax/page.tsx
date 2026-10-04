@@ -1,52 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import StudentCouncilTaxCalculator from "./StudentCouncilTaxCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import CouncilTaxStudio from "./CouncilTaxStudio";
+import CouncilTaxGuide from "./CouncilTaxGuide";
 
 export const metadata: Metadata = {
-  title: "Student Council Tax Exemption Checker (UK)",
-  description: "See if your student household qualifies for a council tax exemption or discount.",
+  title: "Student Council Tax Calculator: Exemptions and Discounts",
+  description:
+    "Check whether your student household pays council tax: exempt if everyone is a full-time student, 25% off with one non-student, and what to do when your course ends.",
+  alternates: { canonical: "/students/student-council-tax" },
 };
 
-export default function StudentCouncilTaxPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/students", label: "Students & Graduates" },
+  { href: "/students/student-council-tax", label: "Student Council Tax" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "Do students pay council tax?", a: "Not if everyone in the home is a full-time student: the property is exempt." },
+  { q: "What if I live with someone who is not a student?", a: "With one non-student, they get a 25% single person discount. With two or more, the full bill is due." },
+  { q: "Who counts as a full-time student?", a: "Someone on a course of at least a year, studying at least 24 weeks a year and 21 hours a week." },
+  { q: "When does the exemption end?", a: "The day after your course finishes. It continues over summer holidays between years." },
+];
+
+export default async function CouncilTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/students/maintenance-loan", "/students/plan-5-student-loan", "/property/council-tax-bands"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Students"
-      updatedLabel="2026/27"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/students", label: "Students" },
-        { href: "/students/student-council-tax", label: "Council Tax Exemption" },
-      ]}
-      title="Student Council Tax Exemption"
-      intro="Full-time students are disregarded for council tax. Whether your household pays anything depends on who else lives there."
-      calculator={<StudentCouncilTaxCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>We count full-time students vs other adults in the property. All-student households are exempt. One non-student gets the 25% single-person discount. Two or more non-students = full bill.</p>
-          }
-          officialRules={
-            <ul>
-              <li>Full-time = 21+ study hours per week, course at least 24 weeks long.</li>
-              <li>Apply directly to your local council with a Council Tax Exemption Certificate from your university.</li>
-              <li>Student nurses, apprentices and youth trainees may also be disregarded.</li>
-              <li>16–17-year-olds in full-time non-advanced education count as students.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Summer break", body: "You stay enrolled — and exempt — over summer. Drop out and the exemption ends from that day." },
-            { title: "PhD writing-up year", body: "You may be classed as part-time after your funded period — check with your uni’s registry." },
-            { title: "Mid-tenancy changes", body: "If a non-student moves in or out, tell the council within 21 days or risk a penalty." },
-          ]}
-          faqs={[
-            { question: "What if my partner isn’t a student?", answer: "They’ll get the 25% single-person discount. If you take a year out, they lose it." },
-            { question: "Do international students qualify?", answer: "Yes — student status is based on the course, not nationality." },
-            { question: "Halls of residence?", answer: "Usually exempt as Class N — the bill never even reaches you." },
-          ]}
-          disclaimer="Council tax rules vary slightly between England, Wales, Scotland and Northern Ireland. Always confirm with your local council."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Student housing"
+      title="Student Council Tax Calculator"
+      lead="Check whether your household pays council tax, and how much you save."
+      points={["Exemptions", "25% discount", "Part-year bills", "Free and private"]}
+      guide={<CouncilTaxGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Check with your council: local rules and support can apply."
+    >
+      <CouncilTaxStudio query={query} />
+    </FlagshipPage>
   );
 }

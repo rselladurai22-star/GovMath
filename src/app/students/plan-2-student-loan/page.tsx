@@ -1,106 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import Plan2Calculator from "./Plan2Calculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import LoanStudio from "@/components/students/LoanStudio";
+import { CALCULATORS } from "@/lib/calculators";
+import Plan2Guide from "./Plan2Guide";
 
 export const metadata: Metadata = {
-  title: "Plan 2 Student Loan Repayment Calculator (UK 2026/27)",
+  title: "Plan 2 Student Loan Calculator 2026/27",
   description:
-    "Work out your Plan 2 student loan repayment — 9% of income above £29,385 for English and Welsh undergrads who started 2012 to 2023.",
+    "Work out your Plan 2 student loan repayments: 9% above £29,385, interest from 4.1% to the 6% cap, the freeze to 2030, and whether you will repay before the 30-year write-off.",
+  alternates: { canonical: "/students/plan-2-student-loan" },
 };
 
-export default function Plan2Page() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/students", label: "Students & Graduates" },
+  { href: "/students/plan-2-student-loan", label: "Plan 2 Student Loan" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is the Plan 2 threshold for 2026/27?", a: "£29,385 a year, or £2,448.75 a month. It is frozen at this level from April 2027 until April 2030." },
+  { q: "How much will I repay on £35,000?", a: "9% of £5,615, which is £505.35 a year or £42.11 a month." },
+  { q: "What is the Plan 2 interest rate?", a: "From September 2026, 4.1% if you earn £29,385 or less, rising to a capped 6% for higher earners." },
+  { q: "When is Plan 2 written off?", a: "30 years after the April you were first due to repay." },
+];
+
+export default async function Plan2Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/students/plan-5-student-loan", "/students/postgrad-loan", "/students/plan-1-student-loan", "/tax-and-salary/salary-calculator"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Students & Graduates"
-      updatedLabel="2026/27 threshold"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/students", label: "Students & Graduates" },
-        { href: "/students/plan-2-student-loan", label: "Plan 2 Student Loan" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Student loans"
       title="Plan 2 Student Loan Calculator"
-      intro="Plan 2 is the loan plan for English and Welsh undergrads who started university between September 2012 and August 2023 — 9% of income above £29,385 (2026/27)."
-      calculator={<Plan2Calculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <>
-              <p>
-                Repayment = 9% × (annual salary − £29,385). Below the
-                threshold you owe £0 for that year. The threshold is
-                pro-rated through the year via PAYE — so a December
-                bonus that lifts you over could trigger a one-month
-                deduction even if your annual salary is under.
-              </p>
-              <p>
-                Interest accrues at <strong>RPI + up to 3%</strong>{" "}
-                depending on income, but interest doesn’t affect
-                what you <em>pay</em> — only the balance. Repayments are
-                income-driven, not balance-driven.
-              </p>
-            </>
-          }
-          officialRules={
-            <>
-              <ul>
-                <li>Threshold £29,385 from 6 April 2026.</li>
-                <li>
-                  Repayment rate 9% on the excess. Collected via PAYE
-                  alongside Income Tax and NI, or via Self Assessment for
-                  self-employed.
-                </li>
-                <li>
-                  <strong>Written off 30 years</strong> after the April
-                  you first became eligible to repay — most Plan 2
-                  borrowers never repay in full.
-                </li>
-                <li>
-                  Interest: RPI if you earn under £29,385; RPI + sliding
-                  up to RPI + 3% at £51,245+. Currently capped to keep
-                  rates fair vs commercial loans (the “Prevailing Market Rate Cap”).
-                </li>
-              </ul>
-            </>
-          }
-          pitfalls={[
-            {
-              title: "Voluntary overpayments rarely make sense",
-              body: "Because Plan 2 is income-driven and writes off after 30 years, paying it down early often means throwing money at a debt that would have been forgiven. Only worth it if you’re on a strong high-income trajectory and will clear it fully.",
-            },
-            {
-              title: "Bonuses trigger one-off deductions",
-              body: "If a single month’s pay × 12 lands above £29,385, PAYE will deduct 9% on the excess that month — even if you’re under £29,385 annually. You can reclaim via HMRC after year-end if you genuinely earned under the threshold.",
-            },
-            {
-              title: "You don't pay it after leaving the UK — but you must tell SLC",
-              body: "Going abroad? You must notify the Student Loans Company and set up an overseas repayment plan based on the country’s thresholds, or face penalties added to the balance.",
-            },
-            {
-              title: "Don't confuse Plan 2 with Plan 5",
-              body: "If you started uni in or after August 2023, you’re on Plan 5 — threshold £25,000 and 40-year write-off. Big difference. Check your SLC account.",
-            },
-          ]}
-          faqs={[
-            {
-              question: "Do I pay if I'm self-employed?",
-              answer:
-                "Yes — calculated on your Self Assessment net profit, paid alongside your Income Tax bill on 31 January.",
-            },
-            {
-              question: "Can I have multiple plans?",
-              answer:
-                "Yes — most commonly Plan 2 (or 5) plus a Postgraduate Loan. They’re calculated separately, each with their own threshold.",
-            },
-            {
-              question: "Why doesn't my balance go down even though I pay?",
-              answer:
-                "Interest accrues monthly at potentially RPI + 3%. For most middle-earners, repayments barely cover interest, so balances grow. That’s by design — the 30-year write-off is the real mechanism.",
-            },
-          ]}
-          disclaimer="Estimate based on 2026/27 thresholds. Actual PAYE deductions are calculated monthly, not annually."
-        />
-      }
-    />
+      lead="See your Plan 2 repayments for 2026/27 and whether you are likely to repay before the write-off."
+      points={["2026/27 threshold", "Interest with 6% cap", "30-year projection", "Free and private"]}
+      guide={<Plan2Guide />}
+      faqs={FAQS}
+      related={related}
+      note="Projection only. Your SLC account has your exact balance."
+    >
+      <LoanStudio query={query} plan="plan2" defaults={{ salary: 35_000, balance: 45_000 }} />
+    </FlagshipPage>
   );
 }

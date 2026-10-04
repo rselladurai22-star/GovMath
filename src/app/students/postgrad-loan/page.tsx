@@ -1,48 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import GenericLoanCalculator from "@/components/calculator/GenericLoanCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import LoanStudio from "@/components/students/LoanStudio";
+import { CALCULATORS } from "@/lib/calculators";
+import PostgradGuide from "./PostgradGuide";
 
 export const metadata: Metadata = {
-  title: "Postgraduate Loan Calculator (UK 2026/27)",
-  description: "Postgraduate Loan repayments — 6% above £21,000, separate from any undergraduate plan.",
+  title: "Postgraduate Loan Repayment Calculator 2026/27",
+  description:
+    "Work out your Master's or Doctoral Loan repayments: 6% of income above \u00a321,000, alongside any undergraduate loan, with interest capped at 6% from September 2026.",
+  alternates: { canonical: "/students/postgrad-loan" },
 };
 
-export default function PostgradPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/students", label: "Students & Graduates" },
+  { href: "/students/postgrad-loan", label: "Postgraduate Loan" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is the Postgraduate Loan threshold?", a: "\u00a321,000 a year, unchanged for 2026/27." },
+  { q: "How much will I repay on \u00a335,000?", a: "6% of \u00a314,000: \u00a3840 a year or \u00a370 a month." },
+  { q: "Do I repay it with my undergraduate loan?", a: "Yes. You repay both at the same time: 9% above your undergraduate threshold and 6% above \u00a321,000." },
+  { q: "What is the interest rate?", a: "RPI plus 3%, which would be 7.1%, capped at 6% from September 2026 to August 2027." },
+];
+
+export default async function PostgradPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/students/plan-2-student-loan", "/students/plan-5-student-loan", "/students/plan-1-student-loan", "/tax-and-salary/salary-calculator"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Students & Graduates"
-      updatedLabel="2026/27 threshold"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/students", label: "Students & Graduates" },
-        { href: "/students/postgrad-loan", label: "Postgraduate Loan" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Student loans"
       title="Postgraduate Loan Calculator"
-      intro="The PG Loan covers Master’s and Doctoral degrees in England & Wales — 6% of income above £21,000, calculated separately from any undergraduate loan."
-      calculator={<GenericLoanCalculator plan="postgrad" />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Repayment = 6% × (annual salary − £21,000). PG repayments sit alongside Plan 1/2/5 — both can be deducted simultaneously.</p>}
-          officialRules={
-            <ul>
-              <li>Threshold £21,000 (frozen until 2027).</li>
-              <li>Rate <strong>6%</strong> — lower than undergrad’s 9%, but stacks with it.</li>
-              <li>Interest: RPI + 3% throughout the loan.</li>
-              <li>Written off 30 years after first April due.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "PG + undergrad = 15% combined", body: "Earn £30k? You pay 6% on £9k PG + 9% on Plan-2 excess separately. Can sting at higher incomes." },
-            { title: "Only Master's/Doctoral", body: "PGCE (teacher training) is funded via undergraduate loans, not PG loans. Different rules." },
-          ]}
-          faqs={[
-            { question: "What if I drop out?", answer: "Pro-rata loan based on terms attended; same repayment terms apply." },
-            { question: "Is the interest different in repayment?", answer: "No — PG loans use RPI+3% in study AND repayment (unlike undergrad which has income-tiered rates)." },
-          ]}
-          disclaimer="Estimate based on 2026/27 thresholds."
-        />
-      }
-    />
+      lead="See your Master's or Doctoral Loan repayments and when the loan will be cleared."
+      points={["\u00a321,000 threshold", "6% interest cap", "Payoff projection", "Free and private"]}
+      guide={<PostgradGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Projection only. Your SLC account has your exact balance."
+    >
+      <LoanStudio query={query} plan="postgrad" defaults={{ salary: 35_000, balance: 12_500 }} />
+    </FlagshipPage>
   );
 }

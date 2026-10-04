@@ -334,6 +334,8 @@ export default function EvSalSacGuide() {
         <p>Usually yes, as long as your pay after the sacrifice stays above the National Living Wage for the hours you work. Schemes check this when you apply.</p>
         <h3>Is my car insured if I change jobs?</h3>
         <p>Cover usually continues until the car is returned or the lease is transferred. Check the early termination terms with the provider.</p>
+        <h3>Does the car count towards my income for mortgage applications?</h3>
+        <p>Lenders usually look at your salary after the sacrifice, and some also count the monthly cost. Tell your lender about the scheme.</p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={23} kicker="Summary" title="Key numbers">

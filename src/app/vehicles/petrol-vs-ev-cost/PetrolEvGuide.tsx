@@ -294,6 +294,14 @@ export default function PetrolEvGuide() {
         <p>The Electric Car Grant has offered discounts of up to £3,750 on some new electric cars under £37,000. Check whether the car you want qualifies, and enter the discounted price.</p>
         <h3>Do electric cars cost more to insure?</h3>
         <p>Often a little more, because repairs and parts can be dearer. The gap has narrowed as more insurers and repairers handle electric cars.</p>
+        <h3>How long do electric car batteries last?</h3>
+        <p>Most are designed to outlast the car, losing capacity slowly over many years. Manufacturers usually guarantee the battery for 8 years or around 100,000 miles.</p>
+        <h3>Is an electric car cheaper to service?</h3>
+        <p>Usually. There is no oil, spark plugs, clutch or exhaust, and brakes wear more slowly. Tyres may need replacing sooner because of the extra weight.</p>
+        <h3>What if I mostly drive short trips?</h3>
+        <p>Short trips suit electric cars well, as petrol engines are least efficient when cold. But at low mileage, the savings take longer to cover any higher purchase price.</p>
+        <h3>Does cold weather affect electric cars?</h3>
+        <p>Yes. Range can fall by a fifth or more in winter, as batteries are less efficient and heating uses energy. Pre-heating while plugged in at home helps.</p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers">

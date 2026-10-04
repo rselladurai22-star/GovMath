@@ -176,6 +176,8 @@ export default function MotGuide() {
         <p>No. It only shows the car met the minimum standard on the day. A service and a proper inspection are still worth doing, especially when buying.</p>
         <h3>What if I lose my MOT certificate?</h3>
         <p>You do not need it. The result is recorded online, and you can print a copy from the GOV.UK MOT history service.</p>
+        <h3>Can I drive to the MOT if it has expired?</h3>
+        <p>Yes, but only to a test booked in advance, or to a garage for repairs needed to pass. You still need insurance and tax.</p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={14} kicker="Summary" title="Key numbers">
