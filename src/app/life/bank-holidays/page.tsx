@@ -1,54 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import BankHolidaysCalculator from "./BankHolidaysCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import BankHolidaysStudio from "./BankHolidaysStudio";
+import BankHolidaysGuide from "./BankHolidaysGuide";
 
 export const metadata: Metadata = {
-  title: "UK Bank Holiday Working Day Calculator",
-  description: "Count working days between two dates, automatically excluding weekends and UK bank holidays.",
+  title: "UK Bank Holidays 2026, 2027 and 2028 (with Leave Planner)",
+  description:
+    "Every UK bank holiday for England and Wales, Scotland and Northern Ireland from 2025 to 2030, the next bank holiday, working days in each year, and the best ways to turn annual leave into long breaks.",
+  alternates: { canonical: "/life/bank-holidays" },
 };
 
-export default function BankHolidaysPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/life", label: "Everyday Life" },
+  { href: "/life/bank-holidays", label: "Bank Holidays" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How many bank holidays are there in the UK?", a: "8 a year in England and Wales, 9 in Scotland and 10 in Northern Ireland." },
+  { q: "When is Easter 2027?", a: "Good Friday is 26 March 2027 and Easter Monday is 29 March 2027." },
+  { q: "What happens if a bank holiday falls on a weekend?", a: "A substitute bank holiday is given on the next weekday." },
+  { q: "Do I have a right to bank holidays off?", a: "No. Bank holidays can count towards your 5.6 weeks of statutory paid holiday, and your contract decides whether you work them." },
+];
+
+export default async function BankHolidaysPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/life/days-between-dates", "/tax-and-salary/holiday-entitlement", "/life/timesheet-decimal", "/life/pro-rata-rent"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Everyday Life"
-      updatedLabel="2025 to 2027 dates"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/life", label: "Everyday Life" },
-        { href: "/life/bank-holidays", label: "Bank Holidays" },
-      ]}
-      title="UK Bank Holiday Working Day Calculator"
-      intro="Plan project deadlines, holiday cover or contract end-dates by counting actual working days between two dates — weekends and bank holidays automatically stripped out."
-      calculator={<BankHolidaysCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              We loop day-by-day between your start and end dates (inclusive), counting any day that’s Monday–Friday and not in the official UK bank holiday list for your chosen nation. Data covers 2025, 2026 and 2027 from gov.uk/bank-holidays.
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>England & Wales has 8 bank holidays a year, Scotland has 9, Northern Ireland has 10 (including St Patrick’s Day and the Twelfth).</li>
-              <li>When a bank holiday falls at the weekend, the ”substitute” day is the next Monday (or Tuesday for Boxing Day clashes).</li>
-              <li>Bank holidays aren’t a statutory right to paid leave — your contract decides.</li>
-              <li>Statutory holiday entitlement (5.6 weeks = 28 days for a 5-day week) can include the 8 bank holidays.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Scotland is different", body: "Scottish bank holidays vary by employer and local council. The list shown is the national gov.uk set, not a guarantee your office is closed." },
-            { title: "Working day counts inclusive of start and end", body: "If you start and finish on the same Monday, that counts as 1 working day. Adjust the end date if your contract excludes the last day." },
-            { title: "Calendar days vs working days", body: "Notice periods are usually calendar days; payroll deadlines are usually working days. Read the small print." },
-          ]}
-          faqs={[
-            { question: "Does this include school holidays?", answer: "No — only statutory UK bank holidays. School holidays vary by local authority." },
-            { question: "What about Royal funerals or one-off holidays?", answer: "One-off bank holidays (e.g. Coronation 8 May 2023) are added in the year they happen. Future one-offs aren’t included." },
-            { question: "Can I export the working days?", answer: "Not yet — but the list of bank holidays falling inside your range is shown so you can copy them into a project plan." },
-          ]}
-          disclaimer="Bank holiday dates change year to year. Always verify long-range plans against gov.uk/bank-holidays."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2025 to 2030"
+      title="UK Bank Holidays"
+      lead="See every bank holiday in England and Wales, Scotland and Northern Ireland, count the working days in a year, and plan your leave."
+      points={["All three nations", "Next bank holiday", "Leave planner", "Free and private"]}
+      guide={<BankHolidaysGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Dates follow GOV.UK. Future years can change."
+    >
+      <BankHolidaysStudio query={query} />
+    </FlagshipPage>
   );
 }

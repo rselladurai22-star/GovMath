@@ -1,6 +1,7 @@
 "use client";
 
 import { CHECK_WINDOW_DAYS, maxPenalty, R2R_PENALTY, rightToRentPlan, type Status } from "@/lib/life/right-to-rent";
+import { formatDate } from "@/lib/life/calendar";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, DateField, InputGroup, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, Statement } from "@/components/flagship/results";
@@ -20,11 +21,7 @@ const SCHEMA = {
 };
 const ADVANCED = ["occupiers", "lodgers", "repeat", "agent", "wales"] as const;
 
-const nice = (iso?: string) => {
-  if (!iso) return "";
-  const [y, m, d] = iso.split("-").map(Number);
-  return new Date(Date.UTC(y, m - 1, d)).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
-};
+const nice = (iso?: string) => (iso ? formatDate(iso, "medium") : "");
 
 export default function RightToRentStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
