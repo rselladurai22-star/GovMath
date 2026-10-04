@@ -1,44 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import BMICalculator from "./BMICalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import BmiStudio from "./BmiStudio";
+import BmiGuide from "./BmiGuide";
 
 export const metadata: Metadata = {
-  title: "NHS BMI Calculator (UK Adult, Higher-Risk Bands)",
-  description: "Body Mass Index and NHS-recommended healthy-weight categories — with lower thresholds for higher-risk ethnic backgrounds.",
+  title: "BMI Calculator UK (NHS Healthy Weight Ranges)",
+  description:
+    "Calculate your BMI in metric or imperial units with NHS ranges, the lower NICE thresholds for some ethnic groups, your healthy weight range and your waist-to-height ratio.",
+  alternates: { canonical: "/life/bmi-uk-nhs" },
 };
 
-export default function BMIPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/life", label: "Everyday Life" },
+  { href: "/life/bmi-uk-nhs", label: "BMI Calculator" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is a healthy BMI in the UK?", a: "18.5 to 24.9 for most adults. For people of South Asian, Chinese, other Asian, Middle Eastern, Black African or African-Caribbean background, overweight starts at 23." },
+  { q: "How do I calculate BMI?", a: "Divide your weight in kilograms by your height in metres, then divide by your height in metres again." },
+  { q: "What waist size is healthy?", a: "Keep your waist to less than half your height, a waist-to-height ratio below 0.5." },
+  { q: "Can children use this BMI calculator?", a: "No. Children's BMI is compared with centile charts for their age and sex." },
+];
+
+export default async function BmiPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/life/nhs-prescription-saver", "/life/healthy-start", "/life/percentage-calculator", "/life/days-between-dates"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Everyday & Life"
-      updatedLabel="NHS thresholds"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/life", label: "Everyday" }, { href: "/life/bmi-uk-nhs", label: "BMI Calculator" }]}
-      title="NHS BMI Calculator"
-      intro="Body Mass Index is the NHS’ quick screening for whether you’re a healthy weight for your height. It’s imperfect — it doesn’t distinguish muscle from fat — but it’s a useful first signal."
-      calculator={<BMICalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>BMI = weight (kg) ÷ height² (m²). NHS thresholds for adults: 18.5 / 25 / 30. For higher-risk backgrounds, the overweight threshold drops to 23 and obese to 27.5.</p>}
-          officialRules={
-            <ul>
-              <li>Standard: under 18.5 underweight; 18.5–24.9 healthy; 25–29.9 overweight; 30+ obese.</li>
-              <li>NICE NG7 recommends lower thresholds (23 / 27.5) for South Asian, Chinese, Black African, Caribbean and Middle Eastern adults.</li>
-              <li>Children, pregnant women, athletes — BMI isn’t valid.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Muscular? BMI is misleading", body: "Rugby players, bodybuilders, regular gym-goers can hit ‘obese’ while being healthy. Combine with waist-to-height ratio for a better picture." },
-            { title: "Doesn’t track location of fat", body: "Central (belly) fat is metabolically worse than peripheral. Waist circumference matters too — under 94cm (men) / 80cm (women) is the NHS guideline." },
-            { title: "Not for under-18s", body: "Children use BMI-for-age percentiles. Talk to your GP." },
-          ]}
-          faqs={[
-            { question: "Why the lower threshold for some backgrounds?", answer: "Research (NICE NG7) shows people of South Asian, Black African and similar heritage develop type 2 diabetes and heart disease at lower BMIs than white Europeans." },
-            { question: "What's a healthy waist size?", answer: "Under half your height. Quick test: piece of string folded to your height — should reach around your waist with slack." },
-          ]}
-          disclaimer="Screening tool, not a diagnosis. Talk to your GP for personal advice."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="NHS ranges"
+      title="BMI Calculator"
+      lead="Work out your body mass index, your healthy weight range and your waist-to-height ratio, using the ranges the NHS uses."
+      points={["Metric or imperial", "NICE ethnicity thresholds", "Waist-to-height ratio", "Free and private"]}
+      guide={<BmiGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Adult thresholds from the NHS and NICE. Not medical advice."
+    >
+      <BmiStudio query={query} />
+    </FlagshipPage>
   );
 }
