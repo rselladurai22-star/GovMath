@@ -1,45 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import IsaVsGiaCalculator from "./IsaVsGiaCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import IsaStudio from "./IsaStudio";
+import IsaGuide from "./IsaGuide";
 
 export const metadata: Metadata = {
-  title: "ISA vs GIA Tax Calculator (UK)",
-  description: "How much UK tax you save by holding investments inside a Stocks & Shares ISA instead of a general investment account.",
+  title: "ISA vs GIA Calculator: How Much Tax an ISA Saves (2026/27)",
+  description:
+    "Compare a stocks and shares ISA with a general investment account over any number of years, with dividend tax, savings tax, Capital Gains Tax and the 2027 changes.",
+  alternates: { canonical: "/investing/isa-vs-gia" },
 };
 
-export default function IsaVsGiaPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/investing", label: "Pensions & Investing" },
+  { href: "/investing/isa-vs-gia", label: "ISA vs GIA" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "Is an ISA better than a general investment account?", a: "Yes, for most people, because dividends, interest and gains in an ISA are tax-free. A GIA pays tax once you pass the small allowances." },
+  { q: "What is the ISA allowance for 2026/27?", a: "£20,000 a year across all your ISAs." },
+  { q: "What changes to ISAs are coming?", a: "From 6 April 2027, savers under 65 can put at most £12,000 a year into cash ISAs. The overall limit stays at £20,000." },
+  { q: "What is bed and ISA?", a: "Selling investments in a general account and buying them back inside an ISA, so future growth is tax-free." },
+];
+
+export default async function IsaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/investing/dividend-tax", "/investing/capital-gains-assets", "/investing/compound-interest", "/investing/pension-tax-relief"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Investing"
-      updatedLabel="£20k ISA limit"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/investing", label: "Investing" }, { href: "/investing/isa-vs-gia", label: "ISA vs GIA" }]}
-      title="ISA vs GIA Tax Calculator"
-      intro="ISAs shelter dividends and capital gains entirely. Outside an ISA (in a General Investment Account), dividends and gains above tiny allowances are taxed. Compare the bill."
-      calculator={<IsaVsGiaCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Dividend allowance is £500. Above that, dividends taxed at 10.75% (basic), 35.75% (higher), 39.35% (additional). Capital gains: £3,000 AEA, then 18% / 24%. ISA pays zero on both.</p>}
-          officialRules={
-            <ul>
-              <li>ISA subscription limit £20,000 (2026/27).</li>
-              <li>Dividend allowance £500 in a GIA.</li>
-              <li>CGT AEA £3,000.</li>
-              <li>No annual reporting needed for ISAs.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Fill ISA first, every year", body: "You can’t backdate. Unused allowance disappears every 5 April." },
-            { title: "Bed & ISA for existing GIA holdings", body: "Sell GIA → buy back inside ISA. Crystallises gain (within AEA) but shelters future growth." },
-            { title: "Flexible vs non-flexible ISA", body: "A flexible ISA lets you withdraw and replace in the same year. Non-flexible doesn’t — withdrawal eats your annual allowance." },
-          ]}
-          faqs={[
-            { question: "What about Lifetime ISA?", answer: "Separate £4k allowance with 25% gov bonus — for first home or age 60+." },
-            { question: "Can I have multiple ISAs?", answer: "Yes — from April 2024 you can subscribe to multiple ISAs of the same type in one year." },
-          ]}
-          disclaimer="Educational. ISA rules change frequently — confirm current limits before subscribing."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2026/27 rules"
+      title="ISA vs GIA Calculator"
+      lead="See how much more you keep by investing through an ISA rather than a general investment account, year by year."
+      points={["All three taxes", "Year-by-year chart", "2027 changes", "Free and private"]}
+      guide={<IsaGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Illustration only. Not financial advice."
+    >
+      <IsaStudio query={query} />
+    </FlagshipPage>
   );
 }
