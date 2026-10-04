@@ -1,7 +1,7 @@
 # GovMath project memory
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 4 October 2026 (Phase 4 live; Phases 5 and 6 in progress).
+Last updated: 4 October 2026 (Phases 5 and 6 built, awaiting review).
 
 ## Goal
 
@@ -85,8 +85,8 @@ Use any `src/app/property/*` or `src/app/tax-and-salary/*` page as the template.
 | 2 | Mortgages & Property (15) | ✅ Live | All done |
 | 3 | Business (14) | ✅ Live | All done. Engines: `src/lib/business/self-employed.ts` (sole trader, payments on account, CIS), `company.ts` (Corporation Tax, director salary/dividends, employer costs), `flat-rate-vat.ts`, `margins.ts` (pricing, break-even), `mileage.ts`, `allowable-expenses.ts`, `small-business-rates.ts` |
 | 4 | Benefits (15) | ✅ Live | All done. Engines: `src/lib/benefits/family.ts` (Child Benefit, HICBC, funded hours, Tax-Free Childcare, maternity, paternity, shared parental), `uc-engine.ts` (Universal Credit 2026/27 incl. benefit cap), `uc-work.ts` (gross pay to UC, taper), `lha-engine.ts` + `lha-england.ts` (bedroom rules, 152 English BRMAs, April 2024 rates frozen), `benefit-cap.ts` (Housing Benefit route), `later-life.ts` (Pension Credit, Attendance Allowance), `carers.ts` (Carer's Allowance earnings), `pip-assessment.ts` (all 12 PIP activities) |
-| 5 | Everyday Life (13) | ⏳ In progress | bank-holidays, bmi-uk-nhs, care-home-means-test, days-between-dates, healthy-start, inheritance-tax, nhs-prescription-saver, percentage-calculator, power-of-attorney, pro-rata-rent, probate-fees, right-to-rent, timesheet-decimal |
-| 6 | Investing & Pensions (10) | ⏳ In progress | capital-gains-assets, compound-interest, dividend-tax, fire-calculator, inflation-impact, isa-vs-gia, pension-tax-relief, premium-bonds, state-pension-age, workplace-pension |
+| 5 | Everyday Life (13) | 🔍 In review | All done. Engines: `src/lib/life/estate.ts` (inheritance tax with taper, gift taper relief, BPR/APR £2.5m cap, probate fees, LPA fees, deputyship), `care.ts` (care home means test for all four nations, tariff income, spend-down), `health.ts` (BMI, waist-to-height, Healthy Start, prescription prepayment), `right-to-rent.ts`, `calendar.ts` (rule-based bank holidays for each nation, working days, date differences, `formatDate` without Intl), `everyday.ts` (percentages, pro-rata rent, timesheets) |
+| 6 | Investing & Pensions (10) | 🔍 In review | All done. Engines: `src/lib/investing/tax.ts` (income tax by source incl. savings and dividends, Scotland, 2027 savings rates; CGT with losses and BADR), `wrappers.ts` (pension tax relief by method, annual allowance taper, ISA vs GIA), `growth.ts` (compound growth, AER, inflation, FIRE with State Pension bridge, Premium Bonds seeded simulation), `retirement.ts` (State Pension age with 6th-to-5th periods and 2044–46 fixed dates, new State Pension, deferral, auto-enrolment projection) |
 | 7 | Vehicles (10) | Pending | benefit-in-kind, car-tax-ved, clean-air-zones, commuter-comparison, ev-salary-sacrifice, fuel-cost-journey, licence-at-70, mot-history-checker, petrol-vs-ev-cost, sorn-declaration |
 | 8 | Students (7) | Pending | maintenance-loan, plan-1/2/4/5-student-loan, postgrad-loan, student-council-tax |
 
@@ -94,6 +94,10 @@ The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
 
+- Phase 5 and 6 figures to recheck: probate fee £526 (from 13 July 2026), Healthy Start £4.65/£9.30, prescription charge £9.90 and PPC prices, Premium Bonds prize rate 4.35% and the prize table (`PREMIUM_BONDS` in `growth.ts`), CPI (`CPI_LATEST`, 3.1% for August 2026), Class 3 NI £18.40 a week, LEL £129 a week and small profits threshold £7,105 (quoted in the State Pension age guide).
+- Due April 2027: savings tax rates rise to 22/42/47%, cash ISA limit of £12,000 for under-65s, and pensions enter the estate for inheritance tax. Update the investing and IHT guides when these take effect.
+- The third State Pension age review is under way. Update `retirement.ts` and the guide if the timetable for 68 changes. The salary sacrifice NI cap (£2,000 from April 2029) is mentioned in the workplace pension guide.
+- `src/lib/tax/cgt.ts` and `src/lib/tax/dividend.ts` are still used by other modules; the investing pages use `src/lib/investing/tax.ts`.
 - `src/lib/tax/salary-dividend.ts` is superseded by `src/lib/business/company.ts`, but `src/lib/tax/ir35.ts` still uses its simplified `corporationTax`. It gives the same answer for a single company with a 12-month period. Move IR35 over when it is next touched.
 - Business guides cite 2026 changes: Corporation Tax late filing penalties doubled (£200/£400), the VOA duty to notify is a pilot until April 2029, and Making Tax Digital penalties use points. Recheck these in April 2027.
 
