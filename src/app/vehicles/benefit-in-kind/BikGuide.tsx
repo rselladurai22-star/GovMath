@@ -335,6 +335,8 @@ export default function BikGuide() {
         <p>If private use is genuinely banned and the ban is enforced, there is no benefit. Driving from home to a permanent workplace counts as private use.</p>
         <h3>Does a company car affect my student loan?</h3>
         <p>No. Student loan repayments are based on your pay, not on benefits in kind, so a company car does not increase them.</p>
+        <h3>Can I reduce the tax by choosing a cheaper model?</h3>
+        <p>Yes. The tax is a percentage of the list price, so a lower-priced car or fewer options means less tax.</p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers">

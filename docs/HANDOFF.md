@@ -1,7 +1,7 @@
 # GovMath project memory
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 4 October 2026 (Phases 5 and 6 built, awaiting review).
+Last updated: 4 October 2026 (Phases 5 and 6 live; Phases 7 and 8 built, awaiting review).
 
 ## Goal
 
@@ -85,15 +85,17 @@ Use any `src/app/property/*` or `src/app/tax-and-salary/*` page as the template.
 | 2 | Mortgages & Property (15) | ✅ Live | All done |
 | 3 | Business (14) | ✅ Live | All done. Engines: `src/lib/business/self-employed.ts` (sole trader, payments on account, CIS), `company.ts` (Corporation Tax, director salary/dividends, employer costs), `flat-rate-vat.ts`, `margins.ts` (pricing, break-even), `mileage.ts`, `allowable-expenses.ts`, `small-business-rates.ts` |
 | 4 | Benefits (15) | ✅ Live | All done. Engines: `src/lib/benefits/family.ts` (Child Benefit, HICBC, funded hours, Tax-Free Childcare, maternity, paternity, shared parental), `uc-engine.ts` (Universal Credit 2026/27 incl. benefit cap), `uc-work.ts` (gross pay to UC, taper), `lha-engine.ts` + `lha-england.ts` (bedroom rules, 152 English BRMAs, April 2024 rates frozen), `benefit-cap.ts` (Housing Benefit route), `later-life.ts` (Pension Credit, Attendance Allowance), `carers.ts` (Carer's Allowance earnings), `pip-assessment.ts` (all 12 PIP activities) |
-| 5 | Everyday Life (13) | 🔍 In review | All done. Engines: `src/lib/life/estate.ts` (inheritance tax with taper, gift taper relief, BPR/APR £2.5m cap, probate fees, LPA fees, deputyship), `care.ts` (care home means test for all four nations, tariff income, spend-down), `health.ts` (BMI, waist-to-height, Healthy Start, prescription prepayment), `right-to-rent.ts`, `calendar.ts` (rule-based bank holidays for each nation, working days, date differences, `formatDate` without Intl), `everyday.ts` (percentages, pro-rata rent, timesheets) |
-| 6 | Investing & Pensions (10) | 🔍 In review | All done. Engines: `src/lib/investing/tax.ts` (income tax by source incl. savings and dividends, Scotland, 2027 savings rates; CGT with losses and BADR), `wrappers.ts` (pension tax relief by method, annual allowance taper, ISA vs GIA), `growth.ts` (compound growth, AER, inflation, FIRE with State Pension bridge, Premium Bonds seeded simulation), `retirement.ts` (State Pension age with 6th-to-5th periods and 2044–46 fixed dates, new State Pension, deferral, auto-enrolment projection) |
-| 7 | Vehicles (10) | Pending | benefit-in-kind, car-tax-ved, clean-air-zones, commuter-comparison, ev-salary-sacrifice, fuel-cost-journey, licence-at-70, mot-history-checker, petrol-vs-ev-cost, sorn-declaration |
-| 8 | Students (7) | Pending | maintenance-loan, plan-1/2/4/5-student-loan, postgrad-loan, student-council-tax |
+| 5 | Everyday Life (13) | ✅ Live | All done. Engines: `src/lib/life/estate.ts` (inheritance tax with taper, gift taper relief, BPR/APR £2.5m cap, probate fees, LPA fees, deputyship), `care.ts` (care home means test for all four nations, tariff income, spend-down), `health.ts` (BMI, waist-to-height, Healthy Start, prescription prepayment), `right-to-rent.ts`, `calendar.ts` (rule-based bank holidays for each nation, working days, date differences, `formatDate` without Intl), `everyday.ts` (percentages, pro-rata rent, timesheets) |
+| 6 | Investing & Pensions (10) | ✅ Live | All done. Engines: `src/lib/investing/tax.ts` (income tax by source incl. savings and dividends, Scotland, 2027 savings rates; CGT with losses and BADR), `wrappers.ts` (pension tax relief by method, annual allowance taper, ISA vs GIA), `growth.ts` (compound growth, AER, inflation, FIRE with State Pension bridge, Premium Bonds seeded simulation), `retirement.ts` (State Pension age with 6th-to-5th periods and 2044–46 fixed dates, new State Pension, deferral, auto-enrolment projection) |
+| 7 | Vehicles (10) | 🔍 In review | All done. Engines: `src/lib/vehicles/tax-2026.ts` (VED first-year rates, bands A to M, £440 supplement with the £50,000 line for new electric cars, eVED; HMRC appropriate percentages 2026/27, fuel benefit, EV salary sacrifice from real tax and NI; 2026 clean air zone charges, London congestion charge, Scottish LEZ penalties; SORN refunds), `running.ts` (journey cost, AMAP and advisory fuel rates, petrol vs EV over years, commuting by car/train/bus/bike, Cycle to Work), `rules.ts` (licence renewal at 70, MOT dates, plate check) |
+| 8 | Students (7) | 🔍 In review | All done. Engine: `src/lib/students/loans.ts` (Plans 1, 2, 4, 5 and Postgraduate 2026/27 thresholds, interest from September 2026 with the 6% cap and Plan 2 sliding scale, lifetime projection with write-off and threshold freeze to 2030; SFE maintenance loan 2026/27 matching the official table; student council tax). Loan pages share `src/components/students/LoanStudio.tsx` |
 
 The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
 
+- Phase 7 figures to recheck: fuel prices (`PRICES_2026` in `running.ts`: petrol 173.8p, diesel 198.9p for late September 2026; price cap 26.32p for October to December 2026), advisory fuel rates (quarterly), clean air zone charges and the London congestion charge (`ZONES_2026`, `LONDON_CC`), the bus fare cap (£3 to December 2026, then £2), the rail fare freeze (to March 2027), and VED/BIK rates each April. The proposed compulsory eye tests for over-70s (January 2026 road safety strategy) are not yet law; update the licence page if they come in.
+- Phase 8 figures to recheck each year: loan thresholds (April) and interest (September; the 6% cap is for 2026/27 only), maintenance loan amounts (August). The maintenance loan minimums for living at home and in London come from published 2026/27 guides; the studying-abroad minimum and its income point are estimates.
 - Phase 5 and 6 figures to recheck: probate fee £526 (from 13 July 2026), Healthy Start £4.65/£9.30, prescription charge £9.90 and PPC prices, Premium Bonds prize rate 4.35% and the prize table (`PREMIUM_BONDS` in `growth.ts`), CPI (`CPI_LATEST`, 3.1% for August 2026), Class 3 NI £18.40 a week, LEL £129 a week and small profits threshold £7,105 (quoted in the State Pension age guide).
 - Due April 2027: savings tax rates rise to 22/42/47%, cash ISA limit of £12,000 for under-65s, and pensions enter the estate for inheritance tax. Update the investing and IHT guides when these take effect.
 - The third State Pension age review is under way. Update `retirement.ts` and the guide if the timetable for 68 changes. The salary sacrifice NI cap (£2,000 from April 2029) is mentioned in the workplace pension guide.
@@ -101,8 +103,6 @@ The order of phases 4 to 8 is flexible; ask the owner.
 - `src/lib/tax/salary-dividend.ts` is superseded by `src/lib/business/company.ts`, but `src/lib/tax/ir35.ts` still uses its simplified `corporationTax`. It gives the same answer for a single company with a 12-month period. Move IR35 over when it is next touched.
 - Business guides cite 2026 changes: Corporation Tax late filing penalties doubled (£200/£400), the VOA duty to notify is a pilot until April 2029, and Making Tax Digital penalties use points. Recheck these in April 2027.
 
-- Clean air zone charges are still labelled "2025 charges" (`src/app/vehicles/clean-air-zones/page.tsx`). Verify the 2026 figures in Phase 7.
-- Some student maintenance loan minimums are unverified. Check them in Phase 8.
 - Benefits rates were checked against the DWP "Benefit and pension rates 2026 to 2027" PDF. Recheck everything in April 2027, including whether LHA rates stay frozen and the benefit cap is still £22,020/£14,753.
 - Benefits guides state that the two-child limit ended in April 2026 and that the UC health element is £217.26 for new claims (£429.80 protected). PIP guide says the assessment is under review; update if the rules change.
 - LHA rates cover England only; Scotland and Wales users enter a weekly rate by hand. Adding their tables would be a nice extra.

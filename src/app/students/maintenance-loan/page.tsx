@@ -1,54 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import MaintenanceLoanCalculator from "./MaintenanceLoanCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import MaintenanceStudio from "./MaintenanceStudio";
+import MaintenanceGuide from "./MaintenanceGuide";
 
 export const metadata: Metadata = {
-  title: "Maintenance Loan Calculator (Plan 5, 2026/27)",
-  description: "Estimate your Plan 5 Maintenance Loan based on household income and where you’ll live during term-time.",
+  title: "Maintenance Loan Calculator 2026/27 (Student Finance England)",
+  description:
+    "Work out your 2026/27 maintenance loan from household income and where you will live: up to £10,830 away from home, £14,135 in London or £9,118 living with parents.",
+  alternates: { canonical: "/students/maintenance-loan" },
 };
 
-export default function MaintenanceLoanPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/students", label: "Students & Graduates" },
+  { href: "/students/maintenance-loan", label: "Maintenance Loan" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is the maximum maintenance loan for 2026/27?", a: "£10,830 living away from home outside London, £14,135 in London and £9,118 living with parents." },
+  { q: "What household income gets the full loan?", a: "£25,000 or less. Above that, the loan falls until it reaches the minimum." },
+  { q: "What is the minimum maintenance loan?", a: "£5,048 away from home outside London, £7,039 in London and £4,013 living with parents." },
+  { q: "How much will I get with £40,000 household income?", a: "About £8,512 a year living away from home outside London." },
+];
+
+export default async function MaintenancePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/students/plan-5-student-loan", "/students/student-council-tax", "/students/plan-2-student-loan"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Students"
-      updatedLabel="2026/27 Plan 5"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/students", label: "Students" },
-        { href: "/students/maintenance-loan", label: "Maintenance Loan" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Student finance"
       title="Maintenance Loan Calculator"
-      intro="Plan 5 applies to new English undergraduates from September 2023. The loan depends on household income and where you’ll live during term-time."
-      calculator={<MaintenanceLoanCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              Each accommodation type has a maximum loan. Above a £25,000 household income, the loan tapers by £1 for every £8.42 of extra income, down to a minimum (means-tested floor) — never below it.
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>2026/27 maximums: £9,118 (home), £10,830 (away), £14,135 (London), £12,070 (abroad).</li>
-              <li>Household income = parents’ combined taxable income, or your own if estranged / over 25.</li>
-              <li>Paid in 3 instalments at the start of each term.</li>
-              <li>Plan 5 repayment: 9% of earnings over £25,000, written off after 40 years.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Income drops mid-year", body: "If household income falls by 15%+ during the year, ask SFE for a Current Year Income assessment — could unlock thousands more." },
-            { title: "Sibling at uni boosts your loan", body: "Having a brother or sister also in higher education reduces the income that counts towards your assessment." },
-            { title: "Loan doesn’t cover everything", body: "Even the London maximum rarely covers rent + bills + food. Plan for a part-time job or top-up from family." },
-          ]}
-          faqs={[
-            { question: "Is this Plan 2 or Plan 5?", answer: "Plan 5 — for new English students from 2023/24 onwards. Plan 2 (pre-2023 starters) has different repayment thresholds." },
-            { question: "What counts as household income?", answer: "Your parents’ combined taxable income from the previous tax year, less pension contributions and any other dependent children allowance." },
-            { question: "Does the loan affect benefits?", answer: "Maintenance Loan counts as income for Universal Credit purposes (with some disregards). Always tell your work coach." },
-          ]}
-          disclaimer="Estimate only — Student Finance England’s final assessment depends on your full circumstances. Apply at gov.uk/student-finance."
-        />
-      }
-    />
+      lead="Work out your 2026/27 maintenance loan from household income and where you will live."
+      points={["2026/27 amounts", "Household income test", "Total borrowing", "Free and private"]}
+      guide={<MaintenanceGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Estimate only. Student Finance England confirms your amount."
+    >
+      <MaintenanceStudio query={query} />
+    </FlagshipPage>
   );
 }

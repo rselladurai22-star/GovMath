@@ -1,48 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import GenericLoanCalculator from "@/components/calculator/GenericLoanCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import LoanStudio from "@/components/students/LoanStudio";
+import { CALCULATORS } from "@/lib/calculators";
+import Plan5Guide from "./Plan5Guide";
 
 export const metadata: Metadata = {
-  title: "Plan 5 Student Loan Calculator (UK 2026/27)",
-  description: "Plan 5 covers English undergrads starting from August 2023 — 9% above £25,000, with a 40-year write-off.",
+  title: "Plan 5 Student Loan Calculator 2026/27",
+  description:
+    "Work out your Plan 5 student loan repayments: 9% of income above \u00a325,000, interest at RPI (4.1%), and what you are likely to repay before the 40-year write-off.",
+  alternates: { canonical: "/students/plan-5-student-loan" },
 };
 
-export default function Plan5Page() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/students", label: "Students & Graduates" },
+  { href: "/students/plan-5-student-loan", label: "Plan 5 Student Loan" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "What is the Plan 5 threshold?", a: "\u00a325,000 a year in 2026/27, rising with RPI from April 2027." },
+  { q: "How much will I repay on \u00a330,000?", a: "9% of \u00a35,000: \u00a3450 a year or \u00a337.50 a month." },
+  { q: "What is the Plan 5 interest rate?", a: "RPI only: 4.1% from September 2026." },
+  { q: "When is Plan 5 written off?", a: "40 years after the April you were first due to repay." },
+];
+
+export default async function Plan5Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/students/plan-2-student-loan", "/students/maintenance-loan", "/students/postgrad-loan", "/tax-and-salary/salary-calculator"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Students & Graduates"
-      updatedLabel="2026/27 threshold"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/students", label: "Students & Graduates" },
-        { href: "/students/plan-5-student-loan", label: "Plan 5 Student Loan" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Student loans"
       title="Plan 5 Student Loan Calculator"
-      intro="Plan 5 is for English undergrads who started in or after August 2023 — lower threshold (£25,000) but a much longer 40-year write-off window."
-      calculator={<GenericLoanCalculator plan="plan-5" />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Repayment = 9% × (annual salary − £25,000). Lower threshold than Plan 2 means more borrowers will pay sooner — and for longer.</p>}
-          officialRules={
-            <ul>
-              <li>Threshold £25,000 (frozen until at least April 2027).</li>
-              <li>Interest capped at RPI (no income-tier sliding scale).</li>
-              <li><strong>40-year write-off</strong> instead of 30 — much more debt will be repaid in full.</li>
-              <li>Same 9% rate as other undergrad plans.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Most Plan 5 borrowers will repay in full", body: "The combination of a low threshold, 9% rate and 40-year window means high earners may overpay significantly. IFS estimates 65%+ will repay fully." },
-            { title: "Overpayments may now be worthwhile", body: "Unlike Plan 2, Plan 5’s longer window changes the math — high earners can save serious interest by paying down early." },
-          ]}
-          faqs={[
-            { question: "Why is the threshold so much lower than Plan 2?", answer: "Policy change in 2022 to recover more loan value. Plan 5 borrowers pay more, sooner." },
-            { question: "Can I still defer to age 67?", answer: "No — Plan 5 has no age-based write-off, only the 40-year clock." },
-          ]}
-          disclaimer="Estimate based on 2026/27 thresholds."
-        />
-      }
-    />
+      lead="See your Plan 5 repayments and what you are likely to repay over 40 years."
+      points={["2026/27 threshold", "RPI interest", "40-year projection", "Free and private"]}
+      guide={<Plan5Guide />}
+      faqs={FAQS}
+      related={related}
+      note="Projection only. Your SLC account has your exact balance."
+    >
+      <LoanStudio query={query} plan="plan5" defaults={{ salary: 30_000, balance: 50_000 }} />
+    </FlagshipPage>
   );
 }

@@ -327,6 +327,8 @@ export default function CazGuide() {
         <p>Only in London, where motorbikes that do not meet Euro 3, usually those made before July 2007, pay the £12.50 ULEZ charge. English clean air zones do not charge motorbikes.</p>
         <h3>Do I pay if I live inside a zone?</h3>
         <p>Usually yes, if your vehicle is not compliant and you drive it. Some zones offered residents a temporary exemption when they opened, which has now ended in most places.</p>
+        <h3>Are vans treated differently from cars?</h3>
+        <p>Yes. Vans are charged in more zones than cars, including Bath, Bradford, Sheffield and Tyneside, where private cars are not charged.</p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={23} kicker="Summary" title="Key numbers">

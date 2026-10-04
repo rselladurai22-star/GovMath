@@ -274,6 +274,16 @@ export default function CommuteGuide() {
         <p>Around 10p to 15p a mile covers tyres, servicing and extra wear for a typical car. Electric cars are usually at the lower end.</p>
         <h3>Is a longer commute cheaper by train?</h3>
         <p>Often. At 25 miles each way with £6 parking, driving costs £4,779 a year against a £4,500 season ticket in our example.</p>
+        <h3>Does working from home save money?</h3>
+        <p>Every day at home saves the cost of that day&rsquo;s commute, though heating and electricity at home rise a little. At £13.09 a day by car in the example, two days a week at home saves about £1,205 a year.</p>
+        <h3>Should I count the cost of buying a bike?</h3>
+        <p>Yes, spread over the years you expect to use it, plus servicing, lights and a lock. The calculator includes a yearly figure for this.</p>
+        <h3>Is the train always more reliable?</h3>
+        <p>Not always. Check your route&rsquo;s punctuality and how often services are cancelled, and compare with typical traffic delays on your drive.</p>
+        <h3>Can I claim the cost of my commute on tax?</h3>
+        <p>No. Commuting to a permanent workplace is not tax-deductible, whatever transport you use.</p>
+        <h3>What about a company car?</h3>
+        <p>If you have a company car, fuel for commuting paid by your employer counts as private fuel and can trigger the fuel benefit charge.</p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={23} kicker="Summary" title="Key numbers">
