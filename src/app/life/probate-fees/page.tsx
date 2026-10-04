@@ -1,55 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import ProbateFeesCalculator from "./ProbateFeesCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import ProbateStudio from "./ProbateStudio";
+import ProbateGuide from "./ProbateGuide";
 
 export const metadata: Metadata = {
-  title: "Probate Fees Calculator (UK 2026/27)",
-  description: "Work out the probate application fee plus the cost of extra sealed copies of the grant.",
+  title: "Probate Fees Calculator (£526 from July 2026)",
+  description:
+    "Work out the probate fees for an estate in England and Wales: £526 for estates over £5,000 from 13 July 2026, copies at £2 or £16, and professional fees if you use a solicitor.",
+  alternates: { canonical: "/life/probate-fees" },
 };
 
-export default function ProbateFeesPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/life", label: "Everyday Life" },
+  { href: "/life/probate-fees", label: "Probate Fees" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much is probate in 2026?", a: "£526 for estates over £5,000 in England and Wales, from 13 July 2026. There is no fee for estates of £5,000 or less." },
+  { q: "How much are extra copies of the grant?", a: "£2 each if you order them with the application, or £16 each if you order them later." },
+  { q: "Is probate cheaper if I apply myself?", a: "The court fee is the same. Applying yourself saves professional fees, which can be several thousand pounds." },
+  { q: "Who pays probate fees?", a: "They are paid from the estate." },
+];
+
+export default async function ProbatePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/life/inheritance-tax", "/life/power-of-attorney", "/life/care-home-means-test", "/investing/capital-gains-assets"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Everyday Life"
-      updatedLabel="2026/27 fees"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/life", label: "Everyday Life" },
-        { href: "/life/probate-fees", label: "Probate Fees" },
-      ]}
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Fees from July 2026"
       title="Probate Fees Calculator"
-      intro="Probate is the legal right to deal with someone’s estate after they die. Estates over £5,000 pay a flat £526 application fee — plus £1.50 for each extra sealed copy of the grant."
-      calculator={<ProbateFeesCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              Estates worth £5,000 or less pay nothing. Above £5,000 it’s a flat £526, regardless of estate size.
-              Extra sealed copies of the grant cost £1.50 each — useful for sending to banks, registrars and pension providers in parallel.
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>Same £526 fee whether you apply yourself (PA1P/PA1A) or through a solicitor.</li>
-              <li>Solicitor’s own fees are separate and not regulated.</li>
-              <li>Fee waivers are available if paying causes financial hardship (form EX160).</li>
-              <li>Excepted estates with no IHT due can be applied for online.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Order enough copies up-front", body: "Banks and pension providers usually want their own sealed copy. Getting more later means another application." },
-            { title: "Estate value ≠ IHT value", body: "The probate fee is based on the gross estate before debts. IHT uses a different (net) calculation." },
-            { title: "Joint assets bypass probate", body: "Anything held as joint tenants passes automatically and doesn’t count towards the probate threshold." },
-          ]}
-          faqs={[
-            { question: "Do I always need probate?", answer: "Not always — small estates or those held entirely in joint names may not need it. Banks set their own thresholds (usually £5,000–£50,000)." },
-            { question: "How long does probate take?", answer: "Around 16 weeks from a complete online application in 2025. Paper or complex estates can take 6+ months." },
-            { question: "Can I pay the fee from the estate?", answer: "Yes — most banks release funds directly to the Probate Registry to cover the fee before the grant is issued." },
-          ]}
-          disclaimer="Fees current from 13 July 2026, when the application fee rose from £300 to £526. Check gov.uk/applying-for-probate for the latest figures before applying."
-        />
-      }
-    />
+      lead="Work out the court fees for probate in England and Wales, the cost of copies, and what professional help adds."
+      points={["£526 court fee", "Copies now or later", "Professional fees", "Free and private"]}
+      guide={<ProbateGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Court fees from 13 July 2026. Not legal advice."
+    >
+      <ProbateStudio query={query} />
+    </FlagshipPage>
   );
 }

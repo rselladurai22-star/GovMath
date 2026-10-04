@@ -1,53 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import PowerOfAttorneyCalculator from "./PowerOfAttorneyCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import LpaStudio from "./LpaStudio";
+import LpaGuide from "./LpaGuide";
 
 export const metadata: Metadata = {
-  title: "Power of Attorney Fees Calculator (England & Wales)",
-  description: "Work out the total cost of registering Lasting Powers of Attorney — including fee remission and exemption.",
+  title: "Power of Attorney Cost Calculator (LPA Fees 2026)",
+  description:
+    "Work out what Lasting Powers of Attorney cost in England and Wales: £92 per LPA, fee reductions and exemptions, solicitor fees, and how it compares with a Court of Protection deputyship.",
+  alternates: { canonical: "/life/power-of-attorney" },
 };
 
-export default function PowerOfAttorneyPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/life", label: "Everyday Life" },
+  { href: "/life/power-of-attorney", label: "Power of Attorney" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much does a Lasting Power of Attorney cost?", a: "£92 to register each LPA in England and Wales. Both types cost £184, and a couple making both pays £368." },
+  { q: "Can I get the LPA fee reduced?", a: "Yes. The fee is halved if your income is under £12,000, and may be waived if you get certain means-tested benefits." },
+  { q: "What happens if there is no LPA?", a: "Your family may need to apply to the Court of Protection to become a deputy, which costs £532 to apply and £320 a year in supervision fees." },
+  { q: "Do I need a solicitor?", a: "No. You can make and register an LPA yourself online." },
+];
+
+export default async function LpaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/life/inheritance-tax", "/life/probate-fees", "/life/care-home-means-test", "/benefits/attendance-allowance"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Everyday Life"
-      updatedLabel="2026/27 OPG fees"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/life", label: "Everyday Life" },
-        { href: "/life/power-of-attorney", label: "Power of Attorney Fees" },
-      ]}
-      title="Power of Attorney Fees"
-      intro="A Lasting Power of Attorney (LPA) lets someone make decisions for you if you lose mental capacity. The Office of the Public Guardian charges £92 per LPA — but many people qualify for a discount."
-      calculator={<PowerOfAttorneyCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>£92 per LPA. Most couples register 4 LPAs (one Property & Finance, one Health & Welfare, each). Half-off if your gross income is under £12,000. Free if on certain means-tested benefits.</p>
-          }
-          officialRules={
-            <ul>
-              <li>Two LPA types: Property & Financial Affairs, and Health & Welfare. Each needs separate registration.</li>
-              <li>Register at gov.uk/power-of-attorney — process takes 8–10 weeks.</li>
-              <li>50% fee remission if gross income under £12,000.</li>
-              <li>Full exemption if on UC, Income Support, JSA, ESA, Pension Credit guarantee or Housing Benefit.</li>
-              <li>Solicitor drafting is optional — many people use the OPG’s free online tool.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Property LPA without Health LPA", body: "If you lose capacity without a Health & Welfare LPA, even your spouse can’t override medical decisions. Most experts recommend both." },
-            { title: "Solicitor fees on top", body: "Lawyers typically charge £150–£500 per LPA. The £92 is just the OPG registration." },
-            { title: "Re-registration on changes", body: "Want to add or remove an attorney? You can’t amend — you must revoke and re-register, paying again." },
-          ]}
-          faqs={[
-            { question: "When does an LPA take effect?", answer: "Property LPA can be used as soon as registered (with your permission). Health LPA only kicks in if you lose capacity." },
-            { question: "Can I do it myself?", answer: "Yes — gov.uk has a free step-by-step tool. The £92 is the only mandatory cost." },
-            { question: "Scotland and NI?", answer: "Different rules: Continuing/Welfare Power of Attorney in Scotland (£86), Enduring Power of Attorney in NI." },
-          ]}
-          disclaimer="England & Wales only. Apply at gov.uk/power-of-attorney; always check OPG’s current fee before paying."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2026 fees"
+      title="Power of Attorney Cost Calculator"
+      lead="Work out what Lasting Powers of Attorney cost, with fee help and solicitor fees, and how that compares with a court deputyship."
+      points={["£92 per LPA", "Fee reductions", "Deputyship comparison", "Free and private"]}
+      guide={<LpaGuide />}
+      faqs={FAQS}
+      related={related}
+      note="England and Wales fees. Not legal advice."
+    >
+      <LpaStudio query={query} />
+    </FlagshipPage>
   );
 }
