@@ -1,121 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import DaysBetweenCalculator from "./DaysBetweenCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import DaysStudio from "./DaysStudio";
+import DaysGuide from "./DaysGuide";
 
 export const metadata: Metadata = {
-  title: "Days Between Two Dates Calculator (UK)",
+  title: "Days Between Dates Calculator (with UK Working Days)",
   description:
-    "Calculate the number of days, working days, weeks, months and years between any two dates — UK calendar.",
+    "Count the days, weeks, months and working days between two dates, allowing for UK bank holidays in England and Wales, Scotland or Northern Ireland, and add days or working days to a date.",
+  alternates: { canonical: "/life/days-between-dates" },
 };
 
-export default function DaysBetweenPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/life", label: "Everyday Life" },
+  { href: "/life/days-between-dates", label: "Days Between Dates" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How do I count the days between two dates?", a: "Subtract the start date from the end date. By convention the end date is not counted, so Monday to Wednesday is 2 days." },
+  { q: "How many working days are there in 2027?", a: "253 in England and Wales, 252 in Scotland and 251 in Northern Ireland." },
+  { q: "Does the calculator include bank holidays?", a: "Yes. Working days leave out weekends and the bank holidays for the nation you choose." },
+  { q: "Can I add working days to a date?", a: "Yes. Use the option under More options to add or subtract calendar or working days." },
+];
+
+export default async function DaysPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/life/bank-holidays", "/life/timesheet-decimal", "/life/pro-rata-rent", "/tax-and-salary/holiday-entitlement"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Life Events"
-      updatedLabel="UK calendar"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/life", label: "Life Events" },
-        { href: "/life/days-between-dates", label: "Days Between Dates" },
-      ]}
-      title="Days Between Two Dates"
-      intro="Count the days, working days, weeks, or full Y/M/D breakdown between any two dates — useful for notice periods, contract end dates, visa overstays and tenancy calculations."
-      calculator={<DaysBetweenCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <>
-              <p>
-                Dates are normalised to midnight UTC, then the difference is
-                divided by exactly 86,400,000 ms. Using UTC avoids the
-                off-by-one errors that British Summer Time creates around
-                March and October date arithmetic.
-              </p>
-              <ul>
-                <li>
-                  <strong>Exclusive days</strong> — same date returns 0; useful
-                  for “days from / days until”.
-                </li>
-                <li>
-                  <strong>Inclusive days</strong> — same date returns 1; useful
-                  for counting nights stayed, days served, etc.
-                </li>
-                <li>
-                  <strong>Working days</strong> — counts Monday–Friday only,
-                  inclusive of both endpoints. Bank holidays not deducted.
-                </li>
-                <li>
-                  <strong>Calendar Y/M/D</strong> — the natural “3 years,
-                  2 months, 17 days” breakdown.
-                </li>
-              </ul>
-            </>
-          }
-          officialRules={
-            <>
-              <p>Common UK date-counting conventions:</p>
-              <ul>
-                <li>
-                  <strong>Notice periods</strong> usually count from the day
-                  after notice is given; check your contract for
-                  “clear days” vs “calendar days”.
-                </li>
-                <li>
-                  <strong>Court deadlines</strong> generally exclude weekends
-                  and bank holidays for periods of 5 days or less (CPR 2.8).
-                </li>
-                <li>
-                  <strong>UK Visa overstay</strong> calculated from the day
-                  after leave expires; a 1-day overstay can ban re-entry for
-                  10 years in some routes.
-                </li>
-                <li>
-                  <strong>Tenancy break clauses</strong> typically require
-                  “two clear months” notice — meaning the notice
-                  period excludes both the day given and the move-out day.
-                </li>
-              </ul>
-            </>
-          }
-          pitfalls={[
-            {
-              title: "Inclusive vs exclusive matters legally",
-              body: "“30 days from today” could mean day 30 or day 31, depending on context. Banking, court and tenancy conventions all differ. Always re-read the original document.",
-            },
-            {
-              title: "Working days here don't exclude bank holidays",
-              body: "We count Mon–Fri only. UK bank holidays (8 a year in England/Wales, 9 in Scotland, 10 in NI) need to be deducted manually if your purpose requires it.",
-            },
-            {
-              title: "Months are imprecise",
-              body: "A “month” can mean 28, 29, 30 or 31 days. Our Y/M/D breakdown uses calendar arithmetic, which gives the natural answer most people expect — but for legal/contract use, count exact days where possible.",
-            },
-            {
-              title: "Time zones can shift by a day",
-              body: "If you’re comparing dates from emails or systems in different time zones, a 23:00 UTC timestamp can appear as “next day” in BST. We assume both inputs are UK calendar dates.",
-            },
-          ]}
-          faqs={[
-            {
-              question: "Does it count today?",
-              answer:
-                "The exclusive count does not. The inclusive count does. Pick whichever matches your purpose.",
-            },
-            {
-              question: "Can I enter past dates?",
-              answer:
-                "Yes — the calculator works in either direction. Order of inputs doesn’t matter.",
-            },
-            {
-              question: "Are bank holidays excluded from working days?",
-              answer:
-                "No. We only exclude weekends. Bank holidays vary by UK nation and would need to be deducted manually.",
-            },
-          ]}
-          disclaimer="Calendar arithmetic only. For legal deadlines, check whether your context uses clear days, working days excluding bank holidays, or another convention."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="UK working days"
+      title="Days Between Dates Calculator"
+      lead="Count the days, weeks, months and working days between two dates, and add days to a date for deadlines."
+      points={["Working days", "UK bank holidays", "Add or subtract days", "Free and private"]}
+      guide={<DaysGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Bank holidays follow GOV.UK."
+    >
+      <DaysStudio query={query} />
+    </FlagshipPage>
   );
 }
