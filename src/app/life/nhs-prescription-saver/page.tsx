@@ -1,54 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import NhsPrescriptionCalculator from "./NhsPrescriptionCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import PrescriptionStudio from "./PrescriptionStudio";
+import PrescriptionGuide from "./PrescriptionGuide";
 
 export const metadata: Metadata = {
-  title: "NHS Prescription Saver: PPC Calculator (England)",
-  description: "See whether a 3-month or 12-month Prescription Prepayment Certificate would save you money on NHS prescriptions in England.",
+  title: "NHS Prescription Cost Calculator: Is a PPC Worth It? (2026/27)",
+  description:
+    "Compare paying £9.90 per item with a 3-month (£32.05) or 12-month (£114.50) prescription prepayment certificate or the £19.80 HRT PPC, and check whether you get free prescriptions.",
+  alternates: { canonical: "/life/nhs-prescription-saver" },
 };
 
-export default function NhsPrescriptionSaverPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/life", label: "Everyday Life" },
+  { href: "/life/nhs-prescription-saver", label: "NHS Prescription Saver" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much is a prescription in England in 2026?", a: "£9.90 per item. Prescriptions are free in Scotland, Wales and Northern Ireland." },
+  { q: "Is a prepayment certificate worth it?", a: "A 12-month PPC costs £114.50 and is cheaper if you need 12 or more items a year. A 3-month PPC costs £32.05 and pays off from 4 items in 3 months." },
+  { q: "How much is the HRT PPC?", a: "£19.80 for 12 months of listed HRT medicines." },
+  { q: "Who gets free prescriptions?", a: "People aged 60 or over or under 16, 16 to 18-year-olds in full-time education, pregnant women and new mothers, people with certain medical conditions and people on certain benefits." },
+];
+
+export default async function PrescriptionPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/life/bmi-uk-nhs", "/life/healthy-start", "/benefits/universal-credit", "/benefits/pension-credit"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Everyday Life"
-      updatedLabel="2026/27 prices"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/life", label: "Everyday Life" },
-        { href: "/life/nhs-prescription-saver", label: "NHS Prescription Saver" },
-      ]}
-      title="NHS Prescription Saver"
-      intro="In England, prescriptions cost £9.90 per item. If you need 4+ items in 3 months or 13+ in a year, a Prescription Prepayment Certificate (PPC) saves real money."
-      calculator={<NhsPrescriptionCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              We compare three options: pay as you go (£9.90/item), 3-month PPC (£32.05, break-even at 4 items per 3 months), and 12-month PPC (£114.50, or 10 monthly direct debits of £11.45, break-even at 12 items a year).
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>Free prescriptions: under 16, 16–18 in full-time education, 60+, pregnancy, maternity exemption certificate, certain medical conditions.</li>
-              <li>HC2 certificate for low-income households (free) or HC3 (partial help).</li>
-              <li>Buy a PPC from any pharmacy or nhsbsa.nhs.uk.</li>
-              <li>The PPC covers unlimited NHS prescriptions during its term.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Direct debit isn’t a saving", body: "The DD just spreads the cost over 10 monthly payments of £11.45. Same total — just easier on cashflow." },
-            { title: "Forgetting to renew", body: "Set a calendar reminder a fortnight before your PPC expires. There’s no grace period — items dispensed after lapse cost £9.90 each." },
-            { title: "Holidays & travel", body: "PPC covers England only. NHS prescriptions are free in Wales, Scotland and NI — but only if dispensed there." },
-          ]}
-          faqs={[
-            { question: "Can my employer pay for a PPC?", answer: "Some salary-sacrifice health schemes cover them. Personally-bought PPCs aren’t tax-deductible." },
-            { question: "Do over-60s pay?", answer: "No — once you turn 60, NHS prescriptions are free in England automatically. No application needed." },
-            { question: "What about hospital prescriptions?", answer: "Hospital outpatient prescriptions are free for NHS patients — the PPC isn’t needed." },
-          ]}
-          disclaimer="England prices only. Apply for PPCs at nhsbsa.nhs.uk or any pharmacy. Always check exemption eligibility before paying."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="2026/27 charges"
+      title="NHS Prescription Cost Calculator"
+      lead="Find the cheapest way to pay for your prescriptions in England, and check whether you should be paying at all."
+      points={["PPC break-even", "HRT PPC", "Exemption check", "Free and private"]}
+      guide={<PrescriptionGuide />}
+      faqs={FAQS}
+      related={related}
+      note="England prescription charges for 2026/27."
+    >
+      <PrescriptionStudio query={query} />
+    </FlagshipPage>
   );
 }
