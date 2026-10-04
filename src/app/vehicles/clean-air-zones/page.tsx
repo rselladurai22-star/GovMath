@@ -1,54 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import CleanAirZonesCalculator from "./CleanAirZonesCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import CazStudio from "./CazStudio";
+import CazGuide from "./CazGuide";
 
 export const metadata: Metadata = {
-  title: "Clean Air Zone & ULEZ Cost Calculator (UK)",
-  description: "Estimate your weekly and annual cost of driving a non-compliant vehicle in London ULEZ or a UK Clean Air Zone.",
+  title: "Clean Air Zone and ULEZ Charge Calculator (2026)",
+  description:
+    "Check whether your car or van meets the standard and what London's ULEZ and congestion charge, Birmingham, Bristol and other clean air zones would cost you in 2026.",
+  alternates: { canonical: "/vehicles/clean-air-zones" },
 };
 
-export default function CleanAirZonesPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/vehicles", label: "Vehicles" },
+  { href: "/vehicles/clean-air-zones", label: "Clean Air Zones" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much is the ULEZ charge?", a: "£12.50 a day for non-compliant cars, vans and motorbikes, every day except Christmas Day." },
+  { q: "Which cities charge private cars?", a: "London (ULEZ), Birmingham (£8) and Bristol (£9). Other English zones charge vans, taxis and larger vehicles only." },
+  { q: "Is my car compliant?", a: "Usually yes if it is a petrol car registered from 2006 or a diesel from September 2015. Use the official checker with your registration to be sure." },
+  { q: "Do electric cars pay the congestion charge?", a: "Yes, since January 2026, with a 25% discount on Auto Pay: £13.50 a day. They remain exempt from the ULEZ." },
+];
+
+export default async function CazPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/vehicles/commuter-comparison", "/vehicles/petrol-vs-ev-cost", "/vehicles/car-tax-ved", "/vehicles/fuel-cost-journey"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Vehicles"
-      updatedLabel="2025 charges"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/vehicles", label: "Vehicles" },
-        { href: "/vehicles/clean-air-zones", label: "Clean Air Zones" },
-      ]}
-      title="Clean Air Zone & ULEZ Cost Calculator"
-      intro="If your car or van doesn’t meet the emission standard, every day inside a Clean Air Zone or London’s ULEZ adds up fast. Estimate the annual cost before you commit to a daily commute."
-      calculator={<CleanAirZonesCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>
-              We multiply the daily charge for your vehicle class by the number of days you enter the zone each week, then by the weeks you do that over the year. The charge applies once per calendar day, not per trip.
-            </p>
-          }
-          officialRules={
-            <ul>
-              <li>Compliant cars (petrol Euro 4+ / diesel Euro 6+) pay nothing.</li>
-              <li>Pay or check compliance at gov.uk/clean-air-zones or tfl.gov.uk/ulez.</li>
-              <li>Charges run midnight to midnight — a 23:30 → 00:30 trip is two days.</li>
-              <li>Missed payment penalties start at £120 (London), £60–£120 elsewhere.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Auto-pay still needs registration", body: "TfL Auto Pay charges your card daily but you must register the vehicle first — driving in unregistered means a PCN." },
-            { title: "Hire and lease vehicles count", body: "The registered keeper is liable. Hire firms usually pass the charge on plus an admin fee of £20–£40." },
-            { title: "Class C zones don’t charge cars", body: "Bath and Sheffield only charge vans, taxis, coaches and HGVs — most private cars drive in free." },
-          ]}
-          faqs={[
-            { question: "How do I check if my car is compliant?", answer: "Use the free checker at gov.uk/clean-air-zones or tfl.gov.uk — enter the number plate and it tells you instantly." },
-            { question: "Can I claim it back from my employer?", answer: "Only if driving is wholly for work (not commuting). Daily charges paid for business mileage are an allowable expense." },
-            { question: "What about the Congestion Charge?", answer: "London’s £15 Congestion Charge is separate and stacks on top of the ULEZ charge — total £27.50/day for a non-compliant car." },
-          ]}
-          disclaimer="Charges shown are the published daily rates. Penalty rates and exemptions change — always verify on the operating authority’s website."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Driving charges"
+      title="Clean Air Zone Charge Calculator"
+      lead="Check what London's ULEZ, the congestion charge and other clean air zones would cost you in 2026."
+      points={["2026 charges", "All English zones", "Scottish LEZ penalties", "Free and private"]}
+      guide={<CazGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Use the official checker with your registration for a definite answer."
+    >
+      <CazStudio query={query} />
+    </FlagshipPage>
   );
 }

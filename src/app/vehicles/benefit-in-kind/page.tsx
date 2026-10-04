@@ -1,45 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import BIKCalculator from "./BIKCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import BikStudio from "./BikStudio";
+import BikGuide from "./BikGuide";
 
 export const metadata: Metadata = {
-  title: "Company Car Benefit-in-Kind Tax Calculator (UK 2026/27)",
-  description: "Annual BIK tax on a company car based on list price, CO₂ and your tax band.",
+  title: "Company Car Tax Calculator 2026/27 (BIK Rates)",
+  description:
+    "Work out company car tax for 2026/27 from the list price, CO2, fuel and your salary. Electric cars at 4%, plug-in hybrid rates by range, fuel benefit and future rates.",
+  alternates: { canonical: "/vehicles/benefit-in-kind" },
 };
 
-export default function BIKPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/vehicles", label: "Vehicles" },
+  { href: "/vehicles/benefit-in-kind", label: "Company Car Tax" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How is company car tax worked out?", a: "List price × the appropriate percentage for the car's CO2 and fuel gives the taxable benefit. You pay income tax on that at your marginal rate." },
+  { q: "What is the BIK rate for electric cars in 2026/27?", a: "4%, rising to 5% in 2027/28, 7% in 2028/29 and 9% in 2029/30." },
+  { q: "How much tax on a £40,000 electric company car?", a: "£320 a year for a basic-rate taxpayer and £640 for a higher-rate taxpayer in 2026/27." },
+  { q: "What is the fuel benefit charge?", a: "If your employer pays for private fuel, you are also taxed on the car's percentage × £29,200." },
+];
+
+export default async function BikPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/vehicles/ev-salary-sacrifice", "/vehicles/car-tax-ved", "/vehicles/petrol-vs-ev-cost", "/tax-and-salary/salary-calculator"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Vehicles"
-      updatedLabel="2026/27 rates"
-      breadcrumbs={[{ href: "/", label: "Home" }, { href: "/vehicles", label: "Vehicles" }, { href: "/vehicles/benefit-in-kind", label: "Company Car BIK" }]}
-      title="Company Car BIK Tax Calculator"
-      intro="A company car you can use privately is taxed as a benefit. The taxable amount is list price × BIK% (set by CO₂ emissions). EVs get just 4% in 2026/27."
-      calculator={<BIKCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={<p>Cash equivalent = P11D list price × BIK%. We multiply that by your marginal tax rate. Diesel cars not meeting RDE2 add a 4% supplement (capped at 37%).</p>}
-          officialRules={
-            <ul>
-              <li>EV BIK rate: 4% in 2026/27 (5% in 2027/28, rising to 9% by 2029/30).</li>
-              <li>Petrol BIK scales by CO₂ from 15% (≤50g) to 37%.</li>
-              <li>Salary sacrifice schemes still attractive for EVs.</li>
-              <li>Fuel benefit charge separate if employer pays for private fuel.</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Diesel supplement", body: "Most diesels add 4pp — confirm RDE2 certification to avoid." },
-            { title: "List price, not paid price", body: "BIK uses P11D (RRP + options + VAT), even if the company got a fleet discount." },
-            { title: "Private fuel pays more tax than it’s worth", body: "Employer-paid private fuel triggers a separate large BIK — almost never beneficial unless you do massive private mileage." },
-          ]}
-          faqs={[
-            { question: "Hybrid rates?", answer: "PHEV BIK depends on CO₂ and electric range — anywhere from 5% to 15%." },
-            { question: "What if I pay for personal contributions?", answer: "Reduces the cash equivalent £-for-£." },
-          ]}
-          disclaimer="Educational. BIK tables change each tax year — confirm via HMRC."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Company cars"
+      title="Company Car Tax Calculator"
+      lead="Work out the tax on your company car for 2026/27, and compare electric, hybrid, petrol and diesel."
+      points={["2026/27 BIK rates", "Hybrid range bands", "Fuel benefit", "Free and private"]}
+      guide={<BikGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Estimate only. Your employer's P11D or payrolled figure is final."
+    >
+      <BikStudio query={query} />
+    </FlagshipPage>
   );
 }

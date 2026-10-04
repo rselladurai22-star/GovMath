@@ -1,53 +1,45 @@
 import type { Metadata } from "next";
-import BlueprintExplainer from "@/components/calculator/BlueprintExplainer";
-import CalculatorShell from "@/components/calculator/CalculatorShell";
-import SornCalculator from "./SornCalculator";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import SornStudio from "./SornStudio";
+import SornGuide from "./SornGuide";
 
 export const metadata: Metadata = {
-  title: "SORN Declaration — VED Refund Calculator",
-  description: "See how much VED refund you’ll get when you take your vehicle off the road with a SORN.",
+  title: "SORN Refund Calculator: Car Tax Refund When Off the Road",
+  description:
+    "Work out your vehicle tax refund when you make a SORN, how timing affects it, and what you save while a car is off the road. Plus the rules and penalties.",
+  alternates: { canonical: "/vehicles/sorn-declaration" },
 };
 
-export default function SornPage() {
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/vehicles", label: "Vehicles" },
+  { href: "/vehicles/sorn-declaration", label: "SORN Refund" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "How much tax do I get back with a SORN?", a: "Every full calendar month left after the month the DVLA gets the SORN. On £200 a year, that is £16.67 a month." },
+  { q: "Does it matter what day of the month I SORN?", a: "No. The month the DVLA receives it is not refunded, so any day that month gives the same refund." },
+  { q: "Do I need insurance for a SORN car?", a: "No, but many people keep fire and theft cover while it is stored." },
+  { q: "Can I drive a SORN car?", a: "Only to a pre-booked MOT. It must be kept off public roads." },
+];
+
+export default async function SornPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/vehicles/car-tax-ved", "/vehicles/mot-history-checker", "/vehicles/petrol-vs-ev-cost"].includes(c.href));
   return (
-    <CalculatorShell
-      category="Vehicles"
-      updatedLabel="DVLA rules"
-      breadcrumbs={[
-        { href: "/", label: "Home" },
-        { href: "/vehicles", label: "Vehicles" },
-        { href: "/vehicles/sorn-declaration", label: "SORN Declaration" },
-      ]}
-      title="SORN Declaration"
-      intro="A SORN takes your vehicle legally off the road — you stop paying VED and the unused months are refunded. The vehicle must be kept on private property and can’t be driven."
-      calculator={<SornCalculator />}
-      explainer={
-        <BlueprintExplainer
-          howWeCalculated={
-            <p>We divide your annual VED by 12 to get a monthly rate, then multiply by full months remaining. DVLA rounds part-months down — only complete unused months refund.</p>
-          }
-          officialRules={
-            <ul>
-              <li>Declare a SORN at gov.uk/make-a-sorn — free and instant.</li>
-              <li>Refund cheque arrives in 6 weeks, sent to the registered keeper.</li>
-              <li>Direct debits cancel automatically.</li>
-              <li>Vehicle must be on private land (driveway, garage) — never the public road.</li>
-              <li>Re-tax it before driving — even to an MOT (with proof of pre-booked test you can drive directly there).</li>
-            </ul>
-          }
-          pitfalls={[
-            { title: "Insurance still required?", body: "Continuous Insurance Enforcement doesn’t apply to SORNed vehicles — so you can drop insurance. But check for fire/theft coverage if it’s in a garage." },
-            { title: "Driving while SORN", body: "£2,500 fine and possible prosecution. The car is seen by ANPR every time it leaves the drive." },
-            { title: "Selling a SORNed car", body: "The SORN doesn’t transfer. The new owner must tax it before driving away." },
-          ]}
-          faqs={[
-            { question: "Can I refund a part-month?", answer: "No — DVLA only refunds full unused months from when the SORN takes effect." },
-            { question: "Do I need an MOT while SORN?", answer: "No, but you’ll need a current MOT to re-tax it when you want to drive again." },
-            { question: "Can the council ticket a SORNed car on the road?", answer: "Yes — and DVLA will reverse the SORN and fine you." },
-          ]}
-          disclaimer="Indicative refund only. Actual refund depends on the exact date DVLA processes your SORN."
-        />
-      }
-    />
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Vehicle tax"
+      title="SORN Refund Calculator"
+      lead="See how much vehicle tax you get back when you take a car off the road."
+      points={["Full-month refunds", "Timing", "Insurance saving", "Free and private"]}
+      guide={<SornGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Estimate only. The DVLA works out the exact refund."
+    >
+      <SornStudio query={query} />
+    </FlagshipPage>
   );
 }
