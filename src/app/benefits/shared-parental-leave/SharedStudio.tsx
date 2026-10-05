@@ -16,7 +16,7 @@ const SCHEMA = {
   motherShared: num(0, 0, 50),
 };
 const ADVANCED = ["motherShared"] as const;
-const COLORS = { mother: "#4353ff", partner: "#0f9f6e", unpaid: "#cbd5e1" };
+const COLORS = { mother: "#5b1e6e", partner: "#0f9f6e", unpaid: "#cbd5e1" };
 
 export default function SharedStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);

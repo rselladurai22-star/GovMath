@@ -144,7 +144,7 @@ export default function IhtStudio({ query }: { query: Query }) {
         {r.net > 0 && (
           <SplitBar
             segments={[
-              { label: "To family and others", value: heirs, display: gbp(heirs), color: "#4353ff" },
+              { label: "To family and others", value: heirs, display: gbp(heirs), color: "#5b1e6e" },
               ...(r.exempt > 0 ? [{ label: "Spouse and charity", value: r.exempt, display: gbp(r.exempt), color: "#16a34a" }] : []),
               { label: "Inheritance Tax", value: r.estateTax, display: gbp(r.estateTax), color: "#f59e0b" },
             ]}

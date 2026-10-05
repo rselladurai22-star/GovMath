@@ -158,9 +158,9 @@ export default function InflationStudio({ query }: { query: Query }) {
             savings
               ? [
                   { key: "nom", label: "In pounds", color: "#94a3b8", values: p.nom, dashed: true },
-                  { key: "real", label: "In today's money", color: "#4353ff", values: p.real, fill: true },
+                  { key: "real", label: "In today's money", color: "#5b1e6e", values: p.real, fill: true },
                 ]
-              : [{ key: "cost", label: "Price", color: "#4353ff", values: p.nom.map((_, y) => futureCost(v.amount, inf, y)), fill: true }]
+              : [{ key: "cost", label: "Price", color: "#5b1e6e", values: p.nom.map((_, y) => futureCost(v.amount, inf, y)), fill: true }]
           }
           xLabel={(i) => `Yr ${i}`}
           yFormat={gbpShort}

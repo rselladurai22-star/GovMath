@@ -116,7 +116,7 @@ export default function CommuteStudio({ query }: { query: Query }) {
       <ResultCard title="What driving costs" sub="Yearly breakdown.">
         <SplitBar
           segments={[
-            { label: "Fuel", value: r.carParts.fuel, display: gbp(r.carParts.fuel), color: "#4353ff" },
+            { label: "Fuel", value: r.carParts.fuel, display: gbp(r.carParts.fuel), color: "#5b1e6e" },
             { label: "Parking", value: r.carParts.parking, display: gbp(r.carParts.parking), color: "#94a3b8" },
             { label: "Wear", value: r.carParts.wear, display: gbp(r.carParts.wear), color: "#f59e0b" },
             ...(r.carParts.zone > 0 ? [{ label: "Zone charges", value: r.carParts.zone, display: gbp(r.carParts.zone), color: "#ef4444" }] : []),

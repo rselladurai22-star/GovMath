@@ -11,7 +11,7 @@ import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/fla
 import { REGION_LABEL, TAX_KEYS, taxParams, TaxSituationFields } from "@/components/flagship/taxOptions";
 import s from "@/components/flagship/Flagship.module.css";
 
-const COLORS = { keep: "#0f9f6e", tax: "#f59e0b", ni: "#4353ff", loan: "#db2777", pension: "#7c3aed" };
+const COLORS = { keep: "#0f9f6e", tax: "#f59e0b", ni: "#5b1e6e", loan: "#db2777", pension: "#2e0a3a" };
 type Direction = "to-salary" | "to-hourly";
 const BANDS = Object.keys(NMW_2026) as NMWBand[];
 

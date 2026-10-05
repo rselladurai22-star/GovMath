@@ -12,7 +12,7 @@ import s from "@/components/flagship/Flagship.module.css";
 
 /** Typical one-off costs on top of deposit and Stamp Duty. */
 const FEES = { arrangement: 999, legal: 1500, survey: 500 };
-const COLORS = { capital: "#4353ff", interest: "#f59e0b", owed: "#94a3b8", baseline: "#9aa0bf" };
+const COLORS = { capital: "#5b1e6e", interest: "#f59e0b", owed: "#94a3b8", baseline: "#9d9d9d" };
 
 type State = {
   price: number;

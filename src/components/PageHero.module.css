@@ -9,9 +9,12 @@
   z-index: 2;
   isolation: isolate;
   border-bottom: 1px solid var(--line);
-  background: #fff;
+  background: linear-gradient(180deg, #fff 0%, #fff 45%, var(--ax-soft) 100%);
 }
+/* The decorative aurora is switched off in the plum design: heroes use a
+   clean white-to-soft-grey wash instead. */
 .aurora {
+  display: none;
   position: absolute;
   inset: 0;
   z-index: -1;
@@ -31,7 +34,7 @@
   left: -6%;
   width: 520px;
   height: 520px;
-  background: radial-gradient(circle, #c7ceff 0%, transparent 65%);
+  background: radial-gradient(circle, #e4d2ec 0%, transparent 65%);
   animation: heroDrift1 18s ease-in-out infinite alternate;
 }
 .aurora span:nth-child(2) {
@@ -39,7 +42,7 @@
   right: -4%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, #e3d3ff 0%, transparent 65%);
+  background: radial-gradient(circle, #e4d2ec 0%, transparent 65%);
   animation: heroDrift2 22s ease-in-out infinite alternate;
 }
 .aurora span:nth-child(3) {
@@ -47,14 +50,14 @@
   left: 42%;
   width: 420px;
   height: 420px;
-  background: radial-gradient(circle, #c9f3ff 0%, transparent 65%);
+  background: radial-gradient(circle, #f5edf8 0%, transparent 65%);
   animation: heroDrift1 26s ease-in-out infinite alternate-reverse;
 }
 .aurora::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(67, 83, 255, 0.13) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(91, 30, 110, 0.13) 1px, transparent 1px);
   background-size: 26px 26px;
   -webkit-mask-image: radial-gradient(70% 90% at 50% 0%, #000 0%, transparent 100%);
   mask-image: radial-gradient(70% 90% at 50% 0%, #000 0%, transparent 100%);
@@ -124,8 +127,8 @@
   content: "";
   width: 5px;
   height: 5px;
-  border-top: 1.5px solid #b3b8d0;
-  border-right: 1.5px solid #b3b8d0;
+  border-top: 1.5px solid #bdbdbd;
+  border-right: 1.5px solid #bdbdbd;
   transform: rotate(45deg);
 }
 .crumbs a {
@@ -152,16 +155,11 @@
   width: 68px;
   height: 68px;
   margin-top: 0.2rem;
-  border-radius: 20px;
-  background: var(--brand-gradient);
+  border-radius: 1rem;
+  background: var(--ax-gradient);
   color: #fff;
-  box-shadow: 0 20px 34px -16px rgba(87, 70, 245, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  animation: heroRise 0.8s var(--ease-out) both, heroFloat 7s ease-in-out 1s infinite alternate;
-}
-@keyframes heroFloat {
-  to {
-    transform: translateY(-6px) rotate(-3deg);
-  }
+  box-shadow: 0 12px 24px -14px rgba(46, 10, 58, 0.6);
+  animation: heroRise 0.8s var(--ease-out) both;
 }
 .copy {
   min-width: 0;
@@ -173,13 +171,13 @@
   gap: 0.5rem;
   margin-bottom: 0.75rem;
   padding: 0.3rem 0.85rem 0.3rem 0.7rem;
-  border: 1px solid rgba(67, 83, 255, 0.22);
+  border: 1px solid rgba(91, 30, 110, 0.22);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.72);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  box-shadow: 0 6px 18px -10px rgba(87, 70, 245, 0.5);
-  color: #2b36b8;
+  box-shadow: 0 6px 18px -10px rgba(91, 30, 110, 0.5);
+  color: #4a1659;
   font-size: 0.8125rem;
   font-weight: 700;
   line-height: 1.5;
@@ -196,9 +194,9 @@
   margin: 0;
   color: var(--navy);
   font-size: var(--fs-h1);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.08;
-  letter-spacing: -0.04em;
+  letter-spacing: normal;
 }
 .lead {
   margin: 0.9rem 0 0;

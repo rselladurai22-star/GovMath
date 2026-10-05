@@ -127,7 +127,7 @@ export default function WorkplaceStudio({ query }: { query: Query }) {
         <AreaChart
           ariaLabel="Pension pot over time"
           series={[
-            { key: "pot", label: "Pot", color: "#4353ff", values: pots, fill: true },
+            { key: "pot", label: "Pot", color: "#5b1e6e", values: pots, fill: true },
             { key: "paid", label: "Paid in", color: "#94a3b8", values: paid, dashed: true },
           ]}
           xLabel={(i) => `Age ${base.age + i}`}
@@ -142,7 +142,7 @@ export default function WorkplaceStudio({ query }: { query: Query }) {
         />
         <SplitBar
           segments={[
-            { label: "Your contributions", value: r.employee, display: `${gbp(r.employee)} a year`, color: "#4353ff" },
+            { label: "Your contributions", value: r.employee, display: `${gbp(r.employee)} a year`, color: "#5b1e6e" },
             { label: "Employer", value: r.employer, display: `${gbp(r.employer)} a year`, color: "#16a34a" },
           ]}
         />

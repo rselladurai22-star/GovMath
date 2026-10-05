@@ -154,7 +154,7 @@ export default function CgtStudio({ query }: { query: Query }) {
           <SplitBar
             segments={[
               { label: "Tax-free", value: Math.max(0, gain - r.taxableGains), display: gbp(Math.max(0, gain - r.taxableGains)), color: "#16a34a" },
-              { label: "Taxed at 18%", value: isBadr ? r.reliefTaxable : r.atBasic, display: gbp(isBadr ? r.reliefTaxable : r.atBasic), color: "#4353ff" },
+              { label: "Taxed at 18%", value: isBadr ? r.reliefTaxable : r.atBasic, display: gbp(isBadr ? r.reliefTaxable : r.atBasic), color: "#5b1e6e" },
               ...(isBadr ? [] : [{ label: "Taxed at 24%", value: r.atHigher, display: gbp(r.atHigher), color: "#f59e0b" }]),
             ]}
           />

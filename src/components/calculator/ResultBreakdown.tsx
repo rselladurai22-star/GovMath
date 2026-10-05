@@ -43,7 +43,7 @@ export default function ResultBreakdown({
               <div>
                 <div
                   className={`text-sm ${
-                    isTotal ? "font-extrabold text-[#0a7a52]" : "font-medium text-text"
+                    isTotal ? "font-bold text-[#0a7a52]" : "font-medium text-text"
                   }`}
                 >
                   {r.label}
@@ -55,7 +55,7 @@ export default function ResultBreakdown({
               <div
                 className={`font-mono tabular-nums ${
                   isTotal
-                    ? "text-lg font-extrabold text-[#0a7a52]"
+                    ? "text-lg font-bold text-[#0a7a52]"
                     : isDeduction
                     ? "text-error font-semibold"
                     : "text-text font-semibold"

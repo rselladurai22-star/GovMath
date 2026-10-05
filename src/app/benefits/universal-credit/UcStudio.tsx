@@ -231,7 +231,7 @@ export default function UcStudio({ query }: { query: Query }) {
         <ResultCard title="Universal Credit at different earnings" sub="Take-home pay a month on the bottom axis.">
           <AreaChart
             ariaLabel="Universal Credit award by monthly take-home pay"
-            series={[{ key: "uc", label: "Universal Credit", color: "#4353ff", values: curve, fill: true }]}
+            series={[{ key: "uc", label: "Universal Credit", color: "#5b1e6e", values: curve, fill: true }]}
             xLabel={(i) => gbpShort(levels[i] ?? 0)}
             yFormat={axis}
             initial={Math.min(POINTS - 1, Math.round((v.earnings / top) * (POINTS - 1)))}

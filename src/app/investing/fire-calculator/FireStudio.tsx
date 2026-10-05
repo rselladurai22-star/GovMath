@@ -121,7 +121,7 @@ export default function FireStudio({ query }: { query: Query }) {
         <AreaChart
           ariaLabel="Pot over time"
           series={[
-            { key: "pot", label: "Pot", color: "#4353ff", values: r.path, fill: true },
+            { key: "pot", label: "Pot", color: "#5b1e6e", values: r.path, fill: true },
             { key: "target", label: "Target", color: "#94a3b8", values: targets, dashed: true },
           ]}
           xLabel={(i) => `Age ${pathAges[i]}`}

@@ -23,7 +23,7 @@ const SCHEMA = {
   taxRate: oneOf<"0" | "20" | "40" | "45">("20", ["0", "20", "40", "45"]),
 };
 const ADVANCED = ["lump", "yearly", "mode", "allowance", "erc", "savings", "taxRate"] as const;
-const COLORS = { plan: "#0f9f6e", base: "#9aa0bf" };
+const COLORS = { plan: "#0f9f6e", base: "#9d9d9d" };
 
 export default function OverpaymentStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);

@@ -158,7 +158,7 @@ export default function PcStudio({ query }: { query: Query }) {
       <ResultCard title="Pension Credit at different incomes" sub="Weekly income from pensions on the bottom axis.">
         <AreaChart
           ariaLabel="Pension Credit by weekly income"
-          series={[{ key: "pc", label: "Pension Credit", color: "#4353ff", values: curve, fill: true }]}
+          series={[{ key: "pc", label: "Pension Credit", color: "#5b1e6e", values: curve, fill: true }]}
           xLabel={(i) => gbp(Math.round(levels[i] ?? 0))}
           yFormat={axis}
           initial={Math.min(POINTS - 1, Math.round(((v.sp + v.other) / top) * (POINTS - 1)))}

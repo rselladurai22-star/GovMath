@@ -145,7 +145,7 @@ export default function AaStudio({ query }: { query: Query }) {
           {totalGain > 0 && (
             <SplitBar
               segments={[
-                { label: "Attendance Allowance", value: aa.weekly, display: gbp(aa.weekly, true), color: "#4353ff" },
+                { label: "Attendance Allowance", value: aa.weekly, display: gbp(aa.weekly, true), color: "#5b1e6e" },
                 { label: "Extra Pension Credit", value: Math.max(0, pcGain), display: gbp(Math.max(0, pcGain), true), color: "#16a34a" },
               ]}
             />

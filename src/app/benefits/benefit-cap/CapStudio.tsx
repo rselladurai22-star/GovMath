@@ -245,7 +245,7 @@ export default function CapStudio({ query }: { query: Query }) {
           {!reason && r.capReduction > 0 && (
             <SplitBar
               segments={[
-                { label: "Paid", value: r.award + cb + v.newStyle, display: gbp(r.award + cb + v.newStyle, true), color: "#4353ff" },
+                { label: "Paid", value: r.award + cb + v.newStyle, display: gbp(r.award + cb + v.newStyle, true), color: "#5b1e6e" },
                 { label: "Lost to the cap", value: r.capReduction, display: gbp(r.capReduction, true), color: "#f59e0b" },
               ]}
             />
@@ -257,7 +257,7 @@ export default function CapStudio({ query }: { query: Query }) {
         <ResultCard title="Income at different earnings" sub="Take-home pay, Universal Credit and Child Benefit a month.">
           <AreaChart
             ariaLabel="Household income by monthly take-home pay"
-            series={[{ key: "income", label: "Household income", color: "#4353ff", values: income, fill: true }]}
+            series={[{ key: "income", label: "Household income", color: "#5b1e6e", values: income, fill: true }]}
             xLabel={(i) => gbpShort(levels[i] ?? 0)}
             yFormat={axis}
             initial={Math.min(POINTS - 1, Math.round((v.earnings / TOP) * (POINTS - 1)))}

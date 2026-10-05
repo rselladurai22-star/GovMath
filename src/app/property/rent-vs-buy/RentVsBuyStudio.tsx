@@ -25,7 +25,7 @@ const SCHEMA = {
   ftb: bool(true),
 };
 const ADVANCED = ["rate", "term", "growth", "rentGrowth", "invest", "maint", "fees", "sell", "ftb"] as const;
-const COLORS = { buy: "#4353ff", rent: "#f59e0b" };
+const COLORS = { buy: "#5b1e6e", rent: "#f59e0b" };
 
 export default function RentVsBuyStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);

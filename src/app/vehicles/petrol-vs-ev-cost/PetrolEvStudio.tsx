@@ -139,7 +139,7 @@ export default function PetrolEvStudio({ query }: { query: Query }) {
           ariaLabel="Total cost over time"
           series={[
             { key: "petrol", label: "Petrol", color: "#94a3b8", values: r.path.map((p) => p.petrolTotal), dashed: true },
-            { key: "ev", label: "Electric", color: "#4353ff", values: r.path.map((p) => p.evTotal), fill: true },
+            { key: "ev", label: "Electric", color: "#5b1e6e", values: r.path.map((p) => p.evTotal), fill: true },
           ]}
           xLabel={(i) => `Yr ${i}`}
           yFormat={gbpShort}

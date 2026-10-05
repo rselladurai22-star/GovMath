@@ -16,7 +16,7 @@ const SCHEMA = {
   months: oneOf<"10" | "12">("10", ["10", "12"]),
 };
 const ADVANCED = ["disregarded", "days", "months"] as const;
-const COLORS = { pay: "#4353ff", save: "#0f9f6e" };
+const COLORS = { pay: "#5b1e6e", save: "#0f9f6e" };
 
 export default function SPDStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);

@@ -19,7 +19,7 @@ const SCHEMA = {
   leave: num(52, 1, 52),
 };
 const ADVANCED = ["awe", "full", "half", "leave"] as const;
-const COLORS = { statutory: "#4353ff", employer: "#0f9f6e", normal: "#94a3b8" };
+const COLORS = { statutory: "#5b1e6e", employer: "#0f9f6e", normal: "#94a3b8" };
 
 function shift(iso: string, weeks: number): string {
   const [y, m, d] = iso.split("-").map(Number);

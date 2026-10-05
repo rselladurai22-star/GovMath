@@ -22,7 +22,7 @@ const SCHEMA = {
   ea: bool(false),
 };
 const ADVANCED = ["bonus", "pension", "full", "sacrifice", "relief", "benefits", "ea"] as const;
-const COLORS = { pay: "#4353ff", ni: "#e11d48", pension: "#0f9f6e", c1a: "#f59e0b" };
+const COLORS = { pay: "#5b1e6e", ni: "#e11d48", pension: "#0f9f6e", c1a: "#f59e0b" };
 
 export default function EmployerCostStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);

@@ -124,7 +124,7 @@ export default function DividendStudio({ query }: { query: Query }) {
           <SplitBar
             segments={[
               { label: "Tax-free", value: paCovered + full.dividendAllowanceUsed, display: gbp(paCovered + full.dividendAllowanceUsed), color: "#16a34a" },
-              { label: "Basic rate", value: bands.basic, display: gbp(bands.basic), color: "#4353ff" },
+              { label: "Basic rate", value: bands.basic, display: gbp(bands.basic), color: "#5b1e6e" },
               { label: "Higher rate", value: bands.higher, display: gbp(bands.higher), color: "#f59e0b" },
               ...(bands.additional > 0 ? [{ label: "Additional rate", value: bands.additional, display: gbp(bands.additional), color: "#ef4444" }] : []),
             ]}

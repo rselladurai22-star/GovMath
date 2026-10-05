@@ -22,7 +22,7 @@ const SCHEMA = {
 };
 const ADVANCED = ["vat", "rc", "yLabour", "yMaterials", "yCosts", "other", "scot"] as const;
 const minus = (n: number, pence = false) => (n > 0.005 ? `−${gbp(n, pence)}` : "£0");
-const COLORS = { labour: "#4353ff", materials: "#94a3b8", cis: "#e11d48", vat: "#f59e0b" };
+const COLORS = { labour: "#5b1e6e", materials: "#94a3b8", cis: "#e11d48", vat: "#f59e0b" };
 const STATUS_LABEL: Record<CisStatus, string> = { registered: "Registered: 20%", unregistered: "Not registered: 30%", gross: "Gross payment status: 0%" };
 
 export default function CisStudio({ query }: { query: Query }) {

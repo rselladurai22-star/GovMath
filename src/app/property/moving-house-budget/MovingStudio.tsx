@@ -25,7 +25,7 @@ const SCHEMA = {
   contingency: num(10, 0, 50),
 };
 const ADVANCED = ["nation", "legal", "survey", "mortgageFee", "removals", "agent", "sellLegal", "furnishing", "contingency"] as const;
-const COLORS = { tax: "#f59e0b", legal: "#4353ff", survey: "#0ea5e9", mortgage: "#7c3aed", selling: "#e11d48", moving: "#0f9f6e", contingency: "#94a3b8" };
+const COLORS = { tax: "#f59e0b", legal: "#5b1e6e", survey: "#0ea5e9", mortgage: "#2e0a3a", selling: "#e11d48", moving: "#0f9f6e", contingency: "#94a3b8" };
 
 export default function MovingStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);

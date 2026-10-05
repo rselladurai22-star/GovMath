@@ -22,7 +22,7 @@ const SCHEMA = {
 };
 const ADVANCED = ["ta", "other", "scot", "plan", "pension", "class2", "first"] as const;
 const minus = (n: number, pence = false) => (n > 0.005 ? `−${gbp(n, pence)}` : "£0");
-const COLORS = { tax: "#e11d48", ni: "#f59e0b", sl: "#a855f7", keep: "#0f9f6e", class2: "#94a3b8" };
+const COLORS = { tax: "#e11d48", ni: "#f59e0b", sl: "#a46bb8", keep: "#0f9f6e", class2: "#94a3b8" };
 
 export default function SoleTraderStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);

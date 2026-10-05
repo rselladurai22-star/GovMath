@@ -23,7 +23,7 @@ const SCHEMA = {
   ftb: bool(true),
 };
 const ADVANCED = ["multiple", "variable", "commitments", "rate", "term", "stress", "target", "ftb"] as const;
-const COLORS = { loan: "#4353ff", deposit: "#0f9f6e", tax: "#f59e0b" };
+const COLORS = { loan: "#5b1e6e", deposit: "#0f9f6e", tax: "#f59e0b" };
 const MULTIPLES = [4, 4.5, 5, 5.5];
 
 export default function AffordabilityStudio({ query }: { query: Query }) {

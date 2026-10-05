@@ -126,7 +126,7 @@ export default function CareStudio({ query }: { query: Query }) {
         />
         <SplitBar
           segments={[
-            { label: "You", value: youWeekly, display: gbp(youWeekly, true), color: "#4353ff" },
+            { label: "You", value: youWeekly, display: gbp(youWeekly, true), color: "#5b1e6e" },
             ...(r.council > 0 ? [{ label: "Council", value: r.council, display: gbp(r.council, true), color: "#16a34a" }] : []),
             ...(r.stateCare > 0 ? [{ label: "NHS or state", value: r.stateCare, display: gbp(r.stateCare, true), color: "#0ea5e9" }] : []),
             ...(r.topUp > 0 ? [{ label: "Top-up", value: r.topUp, display: gbp(r.topUp, true), color: "#f59e0b" }] : []),
@@ -137,7 +137,7 @@ export default function CareStudio({ query }: { query: Query }) {
       <ResultCard title="Your capital over 10 years" sub="Assuming fees and income stay the same.">
         <AreaChart
           ariaLabel="Capital over time"
-          series={[{ key: "cap", label: "Capital", color: "#4353ff", values: capitalSeries, fill: true }]}
+          series={[{ key: "cap", label: "Capital", color: "#5b1e6e", values: capitalSeries, fill: true }]}
           xLabel={(i) => shortMonths(i * STEP)}
           yFormat={gbpShort}
           initial={0}

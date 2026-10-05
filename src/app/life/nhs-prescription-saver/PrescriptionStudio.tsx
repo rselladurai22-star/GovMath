@@ -143,7 +143,7 @@ export default function PrescriptionStudio({ query }: { query: Query }) {
             series={[
               { key: "payg", label: "Pay per item", color: "#f59e0b", values: paygCurve },
               { key: "ppc12", label: "12-month PPC", color: "#16a34a", values: ppcCurve, dashed: true },
-              { key: "ppc3", label: "3-month PPCs", color: "#4353ff", values: ppc3Curve, dashed: true },
+              { key: "ppc3", label: "3-month PPCs", color: "#5b1e6e", values: ppc3Curve, dashed: true },
             ]}
             xLabel={(i) => `${XS[i]}`}
             yFormat={(n) => gbp(Math.round(n))}
