@@ -1934,3 +1934,280 @@
     padding: 1.25rem 1rem;
   }
 }
+
+/* ══ Bank calculator workspace (v2) ═════════════════════════════════════
+   Inputs left and a live summary card right inside one grey panel, as on
+   the reference EMI calculators; the detailed results follow below in a
+   two-column grid. */
+.studio,
+.studio[data-ready] {
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+.studio .panel {
+  position: static;
+  max-height: none;
+}
+.studio .panelBody {
+  overflow: visible;
+}
+.panelFoot {
+  position: static;
+  justify-items: stretch;
+  padding-top: 1.75rem;
+  background: transparent;
+}
+.panelFoot p {
+  text-align: center;
+}
+.calcBtn {
+  width: 100%;
+}
+
+/* Choice switches read as underlined tabs */
+.segmented {
+  gap: 1.75rem;
+  padding: 0;
+  border-bottom: 1px solid #d8d8d8;
+  border-radius: 0;
+  background: transparent;
+}
+.segmented button {
+  flex: none;
+  min-height: 0;
+  padding: 0.6rem 0 0.55rem;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  color: var(--ax-muted);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.segmented button[aria-checked="true"] {
+  border-bottom-color: var(--ax-plum);
+  background: transparent;
+  color: var(--ax-plum);
+  box-shadow: none;
+}
+
+/* Summary card */
+.summary {
+  position: sticky;
+  top: 9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 0;
+  padding: 2rem 1.75rem 1.75rem;
+  border-radius: 1rem;
+  background: #fff;
+  text-align: center;
+}
+.summary .answer,
+.summary .answerTop {
+  display: contents;
+}
+.summary .answerEyebrow {
+  order: 1;
+  color: var(--ax-muted);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+}
+.summary .answerValue {
+  order: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  margin: 0;
+}
+.summary .answerValue strong {
+  color: var(--ax-plum);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+.summary .answerValue span {
+  color: var(--ax-muted);
+  font-size: 0.9375rem;
+  font-weight: 400;
+}
+.summary .donutWrap {
+  order: 3;
+}
+.summary .answerSentence {
+  order: 4;
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ax-line);
+  color: var(--ax-muted);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+.summary .answerSentence b {
+  color: var(--ax-text);
+}
+.summary .answerBadges {
+  order: 5;
+  justify-content: center;
+  margin: 0;
+}
+.summary .answerBadges li {
+  border: 0;
+  background: var(--ax-soft);
+  color: var(--ax-text);
+}
+.summary .answerTop > :not(.answerEyebrow) {
+  order: 6;
+}
+.summary .ghostBtn {
+  border: 1px solid var(--ax-line);
+  background: #fff;
+  color: var(--ax-plum);
+}
+.summary .ghostBtn:hover {
+  border-color: var(--ax-plum);
+  background: var(--ax-plum-tint);
+}
+.donutWrap {
+  display: grid;
+  justify-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--ax-line);
+}
+.donut {
+  position: relative;
+  width: min(100%, 210px);
+}
+.donut svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.donutCentre {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.donutCentre span {
+  color: var(--ax-muted);
+  font-size: 0.875rem;
+}
+.donutCentre strong {
+  color: var(--ax-text);
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+.donutLegend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem 1.25rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+.donutLegend li {
+  display: grid;
+  gap: 0.15rem;
+  min-width: 0;
+}
+.donutLegend span {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--ax-muted);
+  font-size: 0.875rem;
+}
+.donutLegend i {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.donutLegend strong {
+  padding-left: 1.1rem;
+  color: var(--ax-text);
+  font-size: 1.0625rem;
+  font-weight: 700;
+}
+
+/* Detailed results under the panel */
+.details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  gap: 1.25rem;
+  padding-top: 3rem;
+  scroll-margin-top: 8.5rem;
+}
+.details > * {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+.details > .card:not(:has(table, svg[preserveAspectRatio], svg[role="img"])) {
+  grid-column: auto;
+}
+.detailsHead h2 {
+  margin: 0 0 0.4rem;
+  color: var(--ax-text);
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 2.5rem;
+}
+.detailsHead p {
+  margin: 0;
+  color: var(--ax-muted);
+  font-size: 1.0625rem;
+}
+.details .facts > div {
+  border-top: 3px solid var(--ax-plum);
+  border-radius: 0.5rem;
+  background: var(--ax-soft);
+}
+
+@media (max-width: 1023px) {
+  .studio,
+  .studio[data-ready] {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .summary {
+    position: static;
+  }
+}
+@media (max-width: 760px) {
+  .details {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .details > .card:not(:has(table, svg[preserveAspectRatio], svg[role="img"])) {
+    grid-column: 1 / -1;
+  }
+  .detailsHead h2 {
+    font-size: 1.625rem;
+    line-height: 2.125rem;
+  }
+  .summary {
+    padding: 1.5rem 1.25rem;
+  }
+  .summary .answerValue strong {
+    font-size: 2rem;
+  }
+}
+
+/* Guide: full content width, set apart from the results above. */
+.guide {
+  max-width: 1200px;
+  margin-top: 2.5rem;
+  padding-top: 3.5rem;
+  border-top: 1px solid var(--ax-line);
+}

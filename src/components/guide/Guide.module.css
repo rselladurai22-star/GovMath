@@ -682,3 +682,226 @@
   font-weight: 600;
   text-underline-offset: 3px;
 }
+
+/* ══ Bank blog layout (October 2026) ════════════════════════════════════
+   Follows long-form bank blog pages: a category badge, a large medium-
+   weight title, a light plum strip with reading facts, a "Table of
+   contents" rail with hairline rows and an active marker, plain section
+   headings and grey body copy with plum bullet dots. */
+.guide {
+  --g-c4: #a46bb8;
+  color: var(--ax-muted);
+}
+.head {
+  max-width: none;
+  margin-bottom: 2.5rem;
+}
+.kicker {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1.0625rem;
+  background: var(--ax-plum-tint);
+  color: var(--ax-plum);
+  font-size: 0.875rem;
+  letter-spacing: normal;
+  text-transform: none;
+}
+.title {
+  max-width: 52rem;
+  margin: 1rem 0 0.75rem;
+  color: var(--ax-text);
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 3rem;
+}
+.intro {
+  max-width: 52rem;
+  color: var(--ax-muted);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.meta {
+  gap: 0.5rem 2rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  background: var(--ax-plum-tint);
+  color: var(--ax-text);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+.meta span::before {
+  background: var(--ax-plum);
+}
+
+@media (min-width: 1100px) {
+  .layout {
+    grid-template-columns: 17.75rem minmax(0, 1fr);
+    gap: 4rem;
+  }
+  .rail {
+    top: 9rem;
+  }
+  .tocDesktop {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .tocDesktop > p {
+    margin: 0 0 1rem;
+    color: var(--ax-text);
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+}
+.tocList {
+  max-height: calc(100vh - 14rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.tocList a {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--ax-line);
+  border-left: 4px solid transparent;
+  color: var(--ax-muted);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.tocList li:last-child a {
+  border-bottom: 0;
+}
+.tocList a::before {
+  display: none;
+}
+.tocList a:hover {
+  color: var(--ax-text);
+}
+.tocList a[aria-current] {
+  border-left-color: var(--ax-plum);
+  background: var(--ax-soft);
+  color: var(--ax-text);
+  font-weight: 700;
+}
+.tocMobile {
+  border-color: var(--ax-line);
+  border-radius: 0.5rem;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+.tocMobile summary {
+  color: var(--ax-text);
+}
+
+.article {
+  max-width: 52.75rem;
+}
+.section {
+  padding: 2.5rem 0 1rem;
+  border-top: 0;
+  scroll-margin-top: 9rem;
+}
+.sectionHead {
+  display: none;
+}
+.section h2 {
+  margin: 0 0 1.25rem;
+  color: var(--ax-text);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2rem;
+}
+.section h3 {
+  color: var(--ax-text);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+.section p,
+.section li {
+  color: var(--ax-muted);
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.section p {
+  margin: 0 0 1rem;
+}
+.section ul {
+  padding-left: 1rem;
+  list-style: none;
+}
+.section ul li {
+  position: relative;
+}
+.section ul li::before {
+  content: "";
+  position: absolute;
+  top: 0.625rem;
+  left: -1rem;
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 50%;
+  background: var(--ax-plum);
+}
+.section li + li {
+  margin-top: 0.25rem;
+}
+.section strong {
+  color: var(--ax-text);
+}
+.section a {
+  color: var(--ax-plum);
+}
+
+/* Figures, tables and notes: rounded white blocks with a soft shadow */
+.figure,
+.example,
+.tableWrap {
+  border: 0;
+  border-radius: 0.75rem;
+  background: #fff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+.callout,
+.callout[data-tone="warn"],
+.callout[data-tone="good"] {
+  border: 0;
+  border-left: 4px solid var(--ax-plum);
+  border-radius: 0.5rem;
+  background: var(--ax-soft);
+}
+.callout[data-tone="warn"] {
+  border-left-color: #c26a00;
+}
+.callout[data-tone="good"] {
+  border-left-color: var(--success);
+}
+.calloutTitle,
+.figLabel {
+  color: var(--ax-text);
+}
+.callout p {
+  color: var(--ax-text);
+}
+.sources {
+  margin-top: 2rem;
+  padding: 0 0 0 1.5rem;
+  border: 0;
+  border-left: 1px solid var(--ax-plum);
+  border-radius: 0;
+  background: transparent;
+}
+.sources h2 {
+  color: var(--ax-text);
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+  }
+  .section h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}

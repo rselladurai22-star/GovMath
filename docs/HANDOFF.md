@@ -104,10 +104,20 @@ The owner asked for the look and feel of the Axis Bank calculators site, in GovM
 - **Calculator page layout** (matches the reference bank calculator pages):
   - The banner is centred (`FlagshipHero`).
   - `SectionTabs.tsx` is a sticky row of section links under the site header: Calculator, Guide, FAQs, Other calculators. It highlights the section in view. The anchors are `#calculator`, `#guide`, `#faqs` and `#related`.
-  - The calculator sits in one soft-grey rounded panel (`.studio`). Inputs sit on the grey and results on a white card.
+  - `Studio.tsx` works like the reference EMI calculators:
+    - One soft-grey panel holds the inputs on the left and a white summary card on the right, sticky on desktop.
+    - The summary card is the `Answer` (eyebrow, big plum figure, sentence, badges, share) plus a ring chart built from the first `SplitBar` anywhere in the results, with a total in the middle when the values are in pounds.
+    - Results always show and update live. The Calculate button sets `ready` (so the address stays shareable) and jumps to the detailed results.
+    - Everything else (Facts, Assumptions, cards) sits below in `#results` ("Your results in detail"), a two-column grid. Cards holding a table or chart (`table`, `svg[preserveAspectRatio]`, `svg[role=img]`) span both columns.
+  - `Segmented` choices look like underlined uppercase tabs.
   - An amount with a slider shows the label left, the value box right and the slider below (`.field:has(> .slider)`).
   - FAQs are a hairline accordion. Other calculators are white cards on `--ax-soft`.
   - These overrides sit at the end of `Flagship.module.css` and `Shell.module.css` under "Bank-calculator layout".
+- **Guides** follow long-form bank blog pages (overrides at the end of `Guide.module.css`):
+  - The guide opens with a category badge, a 2.5rem medium-weight title, and a light-plum strip of reading facts.
+  - "Table of contents" sits in a sticky left rail with hairline rows. `TocSpy.tsx` marks the section being read with a plum left bar.
+  - Section numbers and kickers are hidden. Headings are 1.5rem weight 500, body text is grey, and lists use plum dots.
+  - Tables and figures are rounded white blocks with a soft shadow; callouts are grey with a plum left bar.
 - **New colours:** use the `--ax-*` tokens, never new hex values.
 
 ## Ads (waiting on the owner)
