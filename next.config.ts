@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Two root layouts (approved design pages and the rest) need a global 404.
+  experimental: {
+    globalNotFound: true,
+  },
   async redirects() {
     return [
       // Legacy taxonomy → new 8-category structure (permanent).
