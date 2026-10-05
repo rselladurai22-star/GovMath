@@ -1,518 +1,386 @@
-/**
- * The Take-Home Pay Guide — a visual, plain-English explainer that sits beneath
- * the calculator. Pure server component: every diagram is hand-built SVG/CSS so
- * the concepts are shown, not just described. Premium blue design language,
- * matching the calculator above.
- */
+import {
+  Bars,
+  Callout,
+  CompareCards,
+  DataTable,
+  Guide,
+  GuideSection,
+  KeyStats,
+  Timeline,
+  WorkedExample,
+  type Source,
+  type TocItem,
+} from "@/components/guide/Guide";
 
-const ink = "#0d1330";
-const body = "#1a2040";
-const mute = "#4a5170";
-const subtle = "#98a2b3";
-const line = "#e6e8f2";
-const tint = "#f7f8ff";
-const blue = "#4353ff";
-const blueSoft = "#eef0ff";
-const blueEdge = "#e6e8f2";
-const green = "#16a34a";
-const greenSoft = "#f0fdf4";
-const coral = "#ef4444";
-const amber = "#f59e0b";
-const violet = "#8b5cf6";
-const slate = "#4a5170";
+/** Take-home pay — the full guide. Figures from src/lib/tax/take-home-engine.ts. Pure server component. */
 
-const FONT = "var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif";
-const gbp = (n: number) => "£" + Math.round(n).toLocaleString("en-GB");
+const TOC: TocItem[] = [
+  { id: "how", title: "How take-home pay is worked out" },
+  { id: "example", title: "A worked example" },
+  { id: "bands", title: "Income Tax bands for 2026/27" },
+  { id: "ni", title: "National Insurance" },
+  { id: "by-salary", title: "Take-home pay by salary" },
+  { id: "marginal", title: "What a pay rise is really worth" },
+  { id: "pension", title: "Pensions and salary sacrifice" },
+  { id: "student-loans", title: "Student loan repayments" },
+  { id: "trap", title: "The 60% band between £100,000 and £125,140" },
+  { id: "scotland", title: "Scottish taxpayers" },
+  { id: "tax-code", title: "Your tax code" },
+  { id: "bonus", title: "Bonuses and overtime" },
+  { id: "payslip", title: "Reading your payslip" },
+  { id: "thresholds", title: "Frozen thresholds" },
+  { id: "terms", title: "Terms worth knowing" },
+  { id: "checks", title: "Checking you pay the right tax" },
+  { id: "starting", title: "Starting a job part-way through the year" },
+  { id: "two-jobs", title: "Two jobs" },
+  { id: "marriage", title: "Marriage Allowance" },
+  { id: "self-employed", title: "Employed or self-employed" },
+  { id: "questions", title: "Common questions" },
+  { id: "key-numbers", title: "Key numbers" },
+];
 
-/* ── layout helpers ─────────────────────────────────────────────── */
-function Section({ n, kicker, title, children }: { n: string; kicker: string; title: string; children: React.ReactNode }) {
-  return (
-    <section style={{ paddingTop: 44, paddingBottom: 44, borderTop: `1px solid ${line}` }}>
-      <div className="flex items-center gap-3" style={{ marginBottom: 6 }}>
-        <span style={{ width: 34, height: 34, flex: "none", display: "grid", placeItems: "center", borderRadius: 14, background: blueSoft, color: blue, fontWeight: 800, fontSize: 15 }}>{n}</span>
-        <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: blue }}>{kicker}</span>
-      </div>
-      <h2 style={{ fontSize: 27, fontWeight: 800, color: ink, letterSpacing: "-0.02em", margin: "0 0 14px", lineHeight: 1.14, fontFamily: FONT }}>{title}</h2>
-      {children}
-    </section>
-  );
-}
-function P({ children }: { children: React.ReactNode }) {
-  return <p style={{ fontSize: 16, lineHeight: 1.7, color: body, margin: "0 0 14px", maxWidth: 720 }}>{children}</p>;
-}
-function VizCard({ label, children }: { label?: string; children: React.ReactNode }) {
-  return (
-    <div style={{ border: `1px solid ${line}`, borderRadius: 14, background: "#fff", padding: 22, boxShadow: "0 1px 3px rgba(13,19,48,0.04), 0 14px 32px -24px rgba(13,19,48,0.14)", margin: "18px 0" }}>
-      {label && <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: subtle, marginBottom: 16 }}>{label}</div>}
-      {children}
-    </div>
-  );
-}
-function LegendKey({ color, label }: { color: string; label: string }) {
-  return <span className="inline-flex items-center gap-2" style={{ fontSize: 13.5, color: body }}><span style={{ width: 12, height: 12, borderRadius: 3, background: color }} />{label}</span>;
-}
-function Badge({ value, label, tone = "blue" }: { value: string; label: string; tone?: "blue" | "green" }) {
-  const bg = tone === "green" ? greenSoft : blueSoft;
-  const edge = tone === "green" ? "#bbf7d0" : blueEdge;
-  const fg = tone === "green" ? "#0a6f43" : "#1e40af";
-  return (
-    <div style={{ background: bg, border: `1px solid ${edge}`, borderRadius: 14, padding: "12px 16px" }}>
-      <div style={{ fontSize: 20, fontWeight: 800, color: fg, fontVariantNumeric: "tabular-nums" }}>{value}</div>
-      <div style={{ fontSize: 13, color: fg, opacity: 0.85 }}>{label}</div>
-    </div>
-  );
-}
+const SOURCES: Source[] = [
+  { label: "GOV.UK — Income Tax rates and Personal Allowances", href: "https://www.gov.uk/income-tax-rates" },
+  { label: "GOV.UK — National Insurance rates and categories", href: "https://www.gov.uk/national-insurance-rates-letters" },
+  { label: "GOV.UK — Scottish Income Tax", href: "https://www.gov.uk/scottish-income-tax" },
+  { label: "GOV.UK — Repaying your student loan", href: "https://www.gov.uk/repaying-your-student-loan/what-you-pay" },
+  { label: "GOV.UK — Tax on your private pension contributions", href: "https://www.gov.uk/tax-on-your-private-pension" },
+];
 
-/* ════════════════════════════════════════════════════════════════ */
 export default function TakeHomeGuide() {
   return (
-    <div style={{ fontFamily: FONT }}>
-      <div style={{ marginBottom: 8 }}>
-        <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: blue }}>The Take-Home Pay Guide</span>
-        <h2 style={{ fontSize: 34, fontWeight: 800, color: ink, letterSpacing: "-0.03em", margin: "8px 0 12px", lineHeight: 1.08, fontFamily: FONT }}>Everything your payslip never explains, made visual</h2>
-        <P>
-          The number your employer offers you and the number that lands in your bank are two very different figures. In
-          between sits a stack of deductions that almost nobody has ever had drawn out clearly: Income Tax in slices,
-          National Insurance on top, a personal allowance that quietly disappears at high incomes, salary sacrifice that
-          bends the whole thing in your favour, and student loans that behave nothing like a normal loan. This guide walks
-          through all of it one picture at a time. Wherever a single figure helps, the worked examples use a{" "}
-          <strong style={{ color: body }}>{gbp(50000)} salary</strong> on the standard tax code, England, Wales and Northern
-          Ireland, 2026/27 rates.
-        </P>
-      </div>
+    <Guide
+      kicker="The take-home pay guide"
+      title="Take-home pay, explained"
+      intro={
+        <>
+          The salary you are offered and the amount paid into your bank are two different figures. This guide explains how Income Tax and
+          National Insurance are worked out, what pensions and student loans take, what a pay rise is really worth, and how to check your
+          payslip. Examples use 2026/27 rates for England, Wales and Northern Ireland unless they say otherwise.
+        </>
+      }
+      meta={["2026/27 rates", "12 min read", "Reviewed October 2026"]}
+      toc={TOC}
+      sources={SOURCES}
+    >
+      <GuideSection id="how" n={1} kicker="The basics" title="How take-home pay is worked out">
+        <p>
+          Your employer starts with your gross pay, takes off any salary sacrifice, then deducts Income Tax and National Insurance through PAYE.
+          If you have a student loan, a repayment comes off too. What is left is your take-home pay, sometimes called net pay.
+        </p>
+        <p>
+          Income Tax and National Insurance are each worked out separately on the same pay, using their own thresholds. They do not stack on top
+          of each other, so you can add them up to see what you pay in total.
+        </p>
+      </GuideSection>
 
-      <Section n="1" kicker="Where it goes" title="How your gross salary becomes take-home">
-        <P>
-          Think of your gross salary as water poured into the top of a funnel. Before a single pound reaches you, three
-          things are skimmed off: <span style={{ color: coral, fontWeight: 700 }}>Income Tax</span>, {" "}
-          <span style={{ color: amber, fontWeight: 700 }}>National Insurance</span>, and, if you have one, a{" "}
-          <span style={{ color: violet, fontWeight: 700 }}>student-loan</span> repayment. What survives the drop is your{" "}
-          <span style={{ color: green, fontWeight: 700 }}>take-home pay</span>. On a {gbp(50000)} salary the arithmetic is
-          surprisingly gentle: {gbp(7486)} goes to Income Tax, {gbp(2994)} to National Insurance, and {gbp(39520)} stays with
-          you. That is a keep-rate of just under 79 pence in every pound.
-        </P>
-        <VizCard label="Every £50,000 of salary, step by step">
-          <Waterfall />
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2" style={{ marginTop: 18 }}>
-            <LegendKey color={slate} label="Gross salary" />
-            <LegendKey color={coral} label="Income Tax" />
-            <LegendKey color={amber} label="National Insurance" />
-            <LegendKey color={green} label="Take-home" />
-          </div>
-        </VizCard>
-        <P>
-          The order matters more than it looks. Tax and National Insurance are each worked out on your salary independently,
-          so they stack rather than compound. And crucially, anything you sacrifice into a pension is removed{" "}
-          <em>before</em> either of them is calculated, which is the single most powerful lever on this whole page. We come
-          back to that in section six.
-        </P>
-      </Section>
+      <GuideSection id="example" n={2} kicker="Worked example" title="A worked example">
+        <p>A salary of £35,000, on the standard 1257L tax code, with no pension or student loan:</p>
+        <WorkedExample
+          title="£35,000 salary, 2026/27"
+          steps={[
+            { label: "Income Tax", note: "20% of £22,430 above the Personal Allowance", value: "£4,486.00" },
+            { label: "National Insurance", note: "8% of £22,430 above £12,570", value: "£1,794.40" },
+          ]}
+          total={{ label: "Take-home pay a year", value: "£28,719.60" }}
+        />
+        <p>That is £2,393.30 a month or £552.30 a week. You keep about 82p of every £1 you earn, and 17.9% goes in tax and National Insurance.</p>
+      </GuideSection>
 
-      <Section n="2" kicker="The ladder" title="Why your tax isn't one flat rate">
-        <P>
-          The most common misunderstanding about Income Tax is that earning more can leave you worse off. It cannot, and the
-          reason is that tax is charged in <strong style={{ color: body }}>slices</strong>, not on your whole salary at once.
-          Your income is stacked up a ladder of bands, and each slice is taxed only at the rate for the band it falls in.
-          Your first {gbp(12570)} — the <strong style={{ color: body }}>Personal Allowance</strong> — is completely tax-free.
-          The slice from there to {gbp(50270)} is taxed at 20%. The slice above that up to {gbp(125140)} is taxed at 40%, and
-          anything beyond is taxed at 45%.
-        </P>
-        <VizCard label="The 2026/27 Income Tax bands (England, Wales & NI)">
-          <TaxLadder />
-        </VizCard>
-        <P>
-          A {gbp(50000)} earner never pays 40% on anything. Their income sits entirely inside the 0% and 20% bands, so a pay
-          rise is taxed at 20p in the pound, not more. Only the pound that crosses {gbp(50270)} is touched by the higher rate,
-          and even then only that pound. This is why the &ldquo;marginal rate&rdquo; — the rate on your <em>next</em> pound —
-          is the number that actually governs decisions like overtime, a bonus, or a pension top-up.
-        </P>
-      </Section>
+      <GuideSection id="bands" n={3} kicker="Income Tax" title="Income Tax bands for 2026/27">
+        <DataTable
+          caption="England, Wales and Northern Ireland"
+          head={["Band", "Income", "Rate"]}
+          numeric={[2]}
+          rows={[
+            ["Personal Allowance", "Up to £12,570", "0%"],
+            ["Basic rate", "£12,571 to £50,270", "20%"],
+            ["Higher rate", "£50,271 to £125,140", "40%"],
+            ["Additional rate", "Over £125,140", "45%"],
+          ]}
+        />
+        <p>
+          Tax is charged in slices. Each band&apos;s rate applies only to the part of your income inside it, so a pay rise that takes you into a
+          higher band is only taxed at the higher rate on the part above the line. You can never take home less by earning more.
+        </p>
+      </GuideSection>
 
-      <Section n="3" kicker="The second tax" title="National Insurance, the deduction nobody mentions">
-        <P>
-          National Insurance is Income Tax&rsquo;s quieter twin. It uses almost the same thresholds but different rates, and
-          it runs in the opposite direction at the top: where Income Tax rises as you earn more, National Insurance{" "}
-          <em>falls</em>. You pay nothing on the first {gbp(12570)}, then <strong style={{ color: body }}>8%</strong> on
-          earnings up to {gbp(50270)}, and only <strong style={{ color: body }}>2%</strong> on everything above that. That
-          drop at {gbp(50270)} partly softens the jump to the 40% Income Tax band that happens at the very same point.
-        </P>
-        <VizCard label="Income Tax and National Insurance, stacked by band">
-          <StackedRates />
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2" style={{ marginTop: 16 }}>
-            <LegendKey color={coral} label="Income Tax rate" />
-            <LegendKey color={amber} label="National Insurance rate" />
-          </div>
-        </VizCard>
-        <P>
-          Add the two together and you get the real deduction on each slice of salary: 0% below the allowance, 28% through
-          the basic band, then 42% in the higher band. Notice that the combined rate barely changes as you cross{" "}
-          {gbp(50270)} — 28% becomes 42%, a 14-point jump, not the 20-point jump the headline 20%-to-40% leap suggests. The NI
-          drop absorbs some of the shock.
-        </P>
-      </Section>
+      <GuideSection id="ni" n={4} kicker="National Insurance" title="National Insurance">
+        <DataTable
+          caption="Employee Class 1 National Insurance, 2026/27"
+          head={["Earnings a year", "Rate"]}
+          numeric={[1]}
+          rows={[
+            ["Up to £12,570", "0%"],
+            ["£12,571 to £50,270", "8%"],
+            ["Over £50,270", "2%"],
+          ]}
+        />
+        <p>
+          National Insurance is worked out on each pay period separately, not on the year as a whole. It stops at State Pension age. Your
+          contributions build your entitlement to the State Pension and some benefits.
+        </p>
+      </GuideSection>
 
-      <Section n="4" kicker="Two rates" title="Effective rate vs marginal rate">
-        <P>
-          People talk about &ldquo;my tax rate&rdquo; as if there is one. There are two, and confusing them leads to bad
-          decisions. Your <strong style={{ color: body }}>effective rate</strong> is the average — total deductions divided by
-          total pay. Your <strong style={{ color: body }}>marginal rate</strong> is what the taxman takes from your very next
-          pound. On {gbp(50000)}, your effective rate is about 21%, because most of your income enjoyed the 0% and 20% bands.
-          But your marginal rate is 42%, because the next pound you earn lands in the higher band.
-        </P>
-        <VizCard label="At £50,000: what you've paid vs what the next £1 costs">
-          <EffectiveVsMarginal />
-        </VizCard>
-        <P>
-          The marginal rate is the one that answers real questions. &ldquo;Is this overtime worth it?&rdquo; &ldquo;Should I
-          put the bonus in my pension?&rdquo; &ldquo;What does a {gbp(3000)} rise actually add?&rdquo; All of those are decided
-          by the marginal rate, not the average. And in one strange corner of the system, the marginal rate does something no
-          band chart would lead you to expect.
-        </P>
-      </Section>
+      <GuideSection id="by-salary" n={5} kicker="Salaries" title="Take-home pay by salary">
+        <DataTable
+          caption="2026/27, 1257L tax code, no pension or student loan"
+          head={["Salary", "Income Tax", "National Insurance", "Take-home a year", "A month"]}
+          numeric={[1, 2, 3, 4]}
+          rows={[
+            ["£20,000", "£1,486", "£594", "£17,920", "£1,493"],
+            ["£25,000", "£2,486", "£994", "£21,520", "£1,793"],
+            ["£30,000", "£3,486", "£1,394", "£25,120", "£2,093"],
+            ["£35,000", "£4,486", "£1,794", "£28,720", "£2,393"],
+            ["£40,000", "£5,486", "£2,194", "£32,320", "£2,693"],
+            ["£50,000", "£7,486", "£2,994", "£39,520", "£3,293"],
+            ["£60,000", "£11,432", "£3,211", "£45,357", "£3,780"],
+            ["£75,000", "£17,432", "£3,511", "£54,057", "£4,505"],
+            ["£100,000", "£27,432", "£4,011", "£68,557", "£5,713"],
+            ["£150,000", "£53,703", "£5,011", "£91,286", "£7,607"],
+          ]}
+        />
+        <p>
+          The share taken in tax and National Insurance rises with income: 10.4% at £20,000, 21.0% at £50,000 and 39.1% at £150,000.
+        </p>
+      </GuideSection>
 
-      <Section n="5" kicker="The trap" title="The 60% zone between £100k and £125,140">
-        <P>
-          Here is the oddest rule in UK tax, and the one this calculator is proudest of surfacing. Once your income passes{" "}
-          {gbp(100000)}, your {gbp(12570)} Personal Allowance is taken away at a rate of {" "}
-          <strong style={{ color: body }}>£1 for every £2</strong> you earn above the line. That clawback is invisible on your
-          payslip, but it means each extra pound in this band is taxed at 40% <em>and</em> drags a further 50p of previously
-          tax-free allowance into the 40% band. The result is an effective <strong style={{ color: coral }}>60% marginal
-          rate</strong> on Income Tax alone, 62% once National Insurance is added, stretching all the way to {gbp(125140)}
-          where the allowance is finally gone.
-        </P>
-        <VizCard label="Marginal deduction rate as income rises (Income Tax + NI)">
-          <MarginalCurve />
-        </VizCard>
-        <P>
-          Look at the spike. Between {gbp(100000)} and {gbp(125140)} the line jumps <em>above</em> the 45% additional-rate
-          zone that follows it — a rare case where earning a little more is taxed harder than earning a lot more. Someone on
-          {gbp(110000)} keeps just 38p of their next pound. The good news is that this trap is entirely avoidable, and the tool
-          to escape it is the same one that quietly beats it everywhere else on the ladder.
-        </P>
-      </Section>
+      <GuideSection id="marginal" n={6} kicker="Pay rises" title="What a pay rise is really worth">
+        <p>The rate on your next pound, your marginal rate, decides how much of a rise you keep:</p>
+        <Bars
+          items={[
+            { label: "Up to £50,270", value: 28 },
+            { label: "£50,270 to £100,000", value: 42 },
+            { label: "£100,000 to £125,140", value: 62 },
+            { label: "Over £125,140", value: 47 },
+          ]}
+          format={(n) => `${n}% deducted`}
+        />
+        <p>
+          A £3,000 rise from £35,000 adds £2,160 to take-home pay. The same rise from £50,000 adds £1,777.80, because part of it is taxed at 40%.
+          A student loan adds a further 9% above its threshold.
+        </p>
+      </GuideSection>
 
-      <Section n="6" kicker="The big lever" title="Pension sacrifice, the closest thing to free money">
-        <P>
-          A <strong style={{ color: body }}>salary-sacrifice pension</strong> lowers your contractual pay before Income Tax
-          and National Insurance are worked out. Because the money never counts as taxable income, every pound you divert
-          into your pension costs you less than a pound of take-home. For a basic-rate taxpayer, {gbp(100)} in the pension
-          costs {gbp(72)} of take-home. For a higher-rate taxpayer it costs just <strong style={{ color: body }}>{gbp(58)}</strong>,
-          because they dodge 40% tax and 2% NI. And for someone caught in the 60% trap, {gbp(100)} of pension can cost as
-          little as {gbp(40)}.
-        </P>
-        <VizCard label="£100 of gross pay: as cash vs into a pension (higher-rate taxpayer)">
-          <PensionWedge />
-          <div className="flex flex-wrap gap-3" style={{ marginTop: 18 }}>
-            <Badge value={gbp(58)} label="cost to your take-home" tone="green" />
-            <Badge value={gbp(42)} label="tax & NI you'd have paid" />
-          </div>
-        </VizCard>
-        <P>
-          This is why pension sacrifice is the escape hatch from the 60% trap: contribute enough to bring your income back
-          under {gbp(100000)} and you reclaim your entire Personal Allowance, turning that punishing 60p on the pound into
-          roughly 40p of pension for every 60p you would otherwise have handed over. It also lowers the income used to assess
-          student-loan repayments, so the benefit can stack even further.
-        </P>
-      </Section>
+      <GuideSection id="pension" n={7} kicker="Pensions" title="Pensions and salary sacrifice">
+        <p>
+          With salary sacrifice, pension contributions come out before Income Tax and National Insurance, so each £1 in your pension costs you
+          less than £1 of take-home pay.
+        </p>
+        <WorkedExample
+          title="£35,000 salary, 5% salary sacrifice pension"
+          steps={[
+            { label: "Into your pension", value: "£1,750" },
+            { label: "Fall in take-home pay", value: "£1,260" },
+          ]}
+          total={{ label: "Tax and NI saved", value: "£490" }}
+        />
+        <p>
+          Other workplace pensions give tax relief in different ways, and some do not save National Insurance. The{" "}
+          <a href="/investing/pension-tax-relief">pension tax relief calculator</a> compares them.
+        </p>
+      </GuideSection>
 
-      <Section n="7" kicker="The graduate tax" title="Student loans behave nothing like a loan">
-        <P>
-          A UK student loan is repaid like a tax, not a debt. You pay a fixed percentage of everything you earn{" "}
-          <em>above a threshold</em>, the balance is written off after a set number of years, and the monthly amount depends
-          only on your income — never on how much you borrowed. Most graduates from 2012 to 2023 are on{" "}
-          <strong style={{ color: body }}>Plan 2</strong>, which takes 9% of income above {gbp(29385)}. Earn {gbp(35000)} and
-          you repay 9% of the {gbp(5615)} slice above the threshold: about {gbp(505)} a year, or {gbp(42)} a month.
-        </P>
-        <VizCard label="Plan 2 repayment on a £35,000 salary">
-          <StudentLoanViz />
-        </VizCard>
-        <P>
-          Because it is charged only on the slice above the threshold, a modest salary triggers a tiny repayment, and someone
-          earning below the threshold pays nothing at all. It also means the &ldquo;interest rate&rdquo; on the loan is
-          largely irrelevant for most people, since repayment is driven by salary and the remaining balance is eventually
-          cancelled. Treat it as a temporary <strong style={{ color: body }}>9% graduate tax</strong> on higher earnings, not
-          as a mortgage to be cleared as fast as possible.
-        </P>
-      </Section>
+      <GuideSection id="student-loans" n={8} kicker="Student loans" title="Student loan repayments">
+        <DataTable
+          caption="Repayment thresholds, 2026/27"
+          head={["Plan", "Threshold", "Rate"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Plan 1", "£26,900", "9%"],
+            ["Plan 2", "£29,385", "9%"],
+            ["Plan 4 (Scotland)", "£33,795", "9%"],
+            ["Plan 5", "£25,000", "9%"],
+            ["Postgraduate Loan", "£21,000", "6%"],
+          ]}
+        />
+        <p>
+          On £35,000, a Plan 2 loan takes £505.35 a year and a Plan 5 loan £900, on top of tax and National Insurance. With a Plan 2 loan, 37p
+          of each extra pound goes in deductions. See the <a href="/students/plan-2-student-loan">Plan 2 calculator</a> for interest and
+          write-off.
+        </p>
+      </GuideSection>
 
-      <Section n="8" kicker="One-off pay" title="Why a bonus feels so much smaller than it looks">
-        <P>
-          A bonus is taxed like ordinary salary, but because it lands on top of your existing pay, it is taxed at your{" "}
-          <strong style={{ color: body }}>highest</strong> bands first. Imagine a {gbp(48000)} salary with a {gbp(5000)} bonus.
-          The first {gbp(2270)} of that bonus fills the rest of your basic-rate band and is taxed at 28% (20% tax + 8% NI). The
-          remaining {gbp(2730)} spills over {gbp(50270)} into the higher band and is taxed at 42%. A single bonus can therefore
-          be taxed at two rates at once.
-        </P>
-        <VizCard label="A £5,000 bonus stacked on a £48,000 salary">
-          <BonusViz />
-        </VizCard>
-        <P>
-          That is before the payslip illusion: PAYE often over-taxes a bonus in the month it is paid, assuming that inflated
-          pay will continue all year, then corrects itself over the following months. The cash eventually settles at the
-          figures above, but the first payslip can look alarming. If a bonus tips you near {gbp(50270)} or {gbp(100000)}, a
-          pension contribution is the cleanest way to keep more of it.
-        </P>
-      </Section>
+      <GuideSection id="trap" n={9} kicker="High earners" title="The 60% band between £100,000 and £125,140">
+        <p>
+          Above £100,000, you lose £1 of Personal Allowance for every £2 of income, until it is gone at £125,140. Combined with 40% tax, that
+          creates an effective Income Tax rate of 60% in this band, or 62% with National Insurance.
+        </p>
+        <WorkedExample
+          title="£110,000 salary, 10% salary sacrifice pension"
+          steps={[
+            { label: "Into your pension", value: "£11,000" },
+            { label: "Fall in take-home pay", value: "£4,380" },
+          ]}
+          total={{ label: "Tax and NI saved", value: "£6,620" }}
+        />
+        <Callout tone="warn" title="Childcare support too">
+          Income over £100,000 also ends Tax-Free Childcare and the funded childcare hours for working parents. Pension contributions that bring
+          your income below £100,000 can restore them.
+        </Callout>
+      </GuideSection>
 
-      <Section n="9" kicker="Speak the language" title="The words on your payslip, decoded">
-        <div className="grid gap-3" style={{ gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", marginTop: 6 }}>
-          {GLOSSARY.map((g) => (
-            <div key={g.t} style={{ border: `1px solid ${line}`, borderRadius: 14, padding: "15px 16px", background: "#fff" }}>
-              <div style={{ fontSize: 15, fontWeight: 700, color: ink }}>{g.t}</div>
-              <div style={{ fontSize: 14, color: mute, marginTop: 5, lineHeight: 1.5 }}>{g.d}</div>
-            </div>
-          ))}
-        </div>
-      </Section>
-    </div>
+      <GuideSection id="scotland" n={10} kicker="Scotland" title="Scottish taxpayers">
+        <p>
+          Scotland sets its own Income Tax bands and rates on earnings, from 19% to 48%. National Insurance and student loans are the same across
+          the UK.
+        </p>
+        <CompareCards
+          columns={[
+            { name: "£35,000", rows: [{ label: "Scotland", value: "£28,704.53 take-home" }, { label: "Rest of UK", value: "£28,719.60 take-home" }] },
+            { name: "£50,000", rows: [{ label: "Scotland", value: "£38,023.55 take-home" }, { label: "Rest of UK", value: "£39,519.60 take-home" }] },
+          ]}
+        />
+        <p>
+          On lower and middle incomes, Scottish taxpayers pay about the same as elsewhere: £15 a year more on £35,000. From around £43,660, the 42% higher rate
+          applies, so a Scottish taxpayer on £50,000 takes home £1,496 less a year and pays 50% on each extra pound.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="tax-code" n={11} kicker="Tax codes" title="Your tax code">
+        <p>
+          Your tax code tells your employer how much tax-free pay to give you. The standard code is 1257L, meaning £12,570 of tax-free pay. A
+          different code can mean HMRC is collecting tax on benefits such as a company car, taking off underpaid tax, or giving you extra
+          allowances.
+        </p>
+        <DataTable
+          caption="Common tax code letters"
+          head={["Code", "What it means"]}
+          rows={[
+            ["L", "The standard Personal Allowance"],
+            ["M / N", "Marriage Allowance: you receive or give away part of the allowance"],
+            ["BR", "All pay taxed at 20%, often a second job"],
+            ["K", "Benefits or debts are larger than your allowance"],
+            ["W1, M1, X", "Emergency tax: each pay period is taxed on its own"],
+            ["S / C prefix", "Scottish or Welsh taxpayer"],
+          ]}
+        />
+        <p>Our <a href="/tax-and-salary/tax-code-decoder">tax code decoder</a> explains any code.</p>
+      </GuideSection>
+
+      <GuideSection id="bonus" n={12} kicker="Extra pay" title="Bonuses and overtime">
+        <p>
+          A bonus or overtime is taxed as ordinary pay, at your marginal rate. A £2,000 bonus on a £35,000 salary adds £1,440 to take-home pay
+          over the year. Because PAYE works on each pay period, a large bonus can look as if it is taxed heavily in the month it is paid, but
+          the tax evens out over the year on a cumulative code.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="payslip" n={13} kicker="Payslips" title="Reading your payslip">
+        <Timeline
+          items={[
+            { when: "Gross pay", what: "Salary, overtime and bonuses before deductions", detail: "" },
+            { when: "Pre-tax deductions", what: "Salary sacrifice pension and other schemes", detail: "Lower the pay used for tax and National Insurance." },
+            { when: "Statutory deductions", what: "Income Tax, National Insurance and student loan", detail: "Paid to HMRC." },
+            { when: "Net pay", what: "What reaches your bank", detail: "After any other deductions, such as a season ticket loan." },
+          ]}
+        />
+        <p>
+          Check the tax code, the tax period and the year-to-date figures. Monthly take-home can vary when you change jobs, get a bonus or move
+          to a new tax code.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="thresholds" n={14} kicker="Thresholds" title="Frozen thresholds">
+        <p>
+          The Personal Allowance of £12,570 and the higher rate threshold of £50,270 are frozen until April 2031. As pay rises with inflation,
+          more of it falls into tax and more people move into the higher rate. A pay rise that only matches inflation can leave you slightly
+          worse off after tax.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="terms" n={15} kicker="Jargon" title="Terms worth knowing">
+        <DataTable
+          caption="Payslip terms in plain English"
+          head={["Term", "What it means"]}
+          rows={[
+            ["Gross pay", "Your pay before any deductions"],
+            ["Net pay", "What you receive after deductions"],
+            ["PAYE", "Pay As You Earn: how employers collect tax and National Insurance"],
+            ["Personal Allowance", "Income you can earn before Income Tax, £12,570"],
+            ["Marginal rate", "The share of your next £1 that goes in deductions"],
+            ["Effective rate", "Total deductions as a share of your gross pay"],
+            ["P60", "Your yearly summary of pay and tax, given after 5 April"],
+          ]}
+        />
+      </GuideSection>
+
+      <GuideSection id="checks" n={16} kicker="Checks" title="Checking you pay the right tax">
+        <ul>
+          <li>Check your tax code in your HMRC personal tax account or the HMRC app.</li>
+          <li>Compare your P60 with this calculator at the end of each tax year.</li>
+          <li>If you have two jobs, make sure only one uses your Personal Allowance.</li>
+          <li>Tell HMRC about benefits, such as a company car or medical insurance, that change your code.</li>
+          <li>If you think you have overpaid, HMRC can refund it through your code or directly.</li>
+        </ul>
+      </GuideSection>
+
+      <GuideSection id="starting" n={17} kicker="New jobs" title="Starting a job part-way through the year">
+        <p>
+          When you start a job, give your new employer your P45 from your last one, or fill in a starter checklist. Without it, you may be put
+          on an emergency tax code at first, so your first payslips can show more tax than expected. Once HMRC sends the right code, the extra
+          is usually refunded through your pay. If you start your first job mid-year, you may pay little or no tax at first because the unused
+          allowance from earlier in the year is spread over your remaining pay.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="two-jobs" n={18} kicker="More than one job" title="Two jobs">
+        <p>
+          Your Personal Allowance is normally given against your main job. A second job usually gets a BR code, so all of its pay is taxed at
+          20%. National Insurance is worked out separately for each job, so if both pay under £12,570 you may pay no National Insurance at all.
+          If your main job pays less than the allowance, you can ask HMRC to split it between the two.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="marriage" n={19} kicker="Couples" title="Marriage Allowance">
+        <p>
+          If you are married or in a civil partnership and one of you earns less than the Personal Allowance, they can transfer £1,260 of
+          their allowance to the other, as long as the higher earner pays tax at the basic rate. That cuts the couple&apos;s tax by up to £252 a
+          year, and you can backdate a claim for up to four years.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="self-employed" n={20} kicker="Self-employed" title="Employed or self-employed">
+        <p>
+          Self-employed people pay the same Income Tax but a lower rate of National Insurance, 6% rather than 8%, through Self Assessment rather
+          than PAYE. They can also deduct allowable business expenses. The <a href="/business/sole-trader-tax">sole trader tax calculator</a>{" "}
+          works out take-home pay from self-employment.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="questions" n={21} kicker="FAQs" title="Common questions">
+        <h3>Why is my take-home different from the calculator?</h3>
+        <p>Your tax code, benefits in kind, pension type and the month you started a job all affect a real payslip. The calculator assumes a standard code for the full year.</p>
+        <h3>Is the take-home pay figure monthly or yearly?</h3>
+        <p>Both. The calculator shows yearly, monthly, weekly and daily figures. Monthly figures divide the year by 12.</p>
+        <h3>Does National Insurance count towards my pension?</h3>
+        <p>Yes. Each year you pay enough National Insurance counts as a qualifying year towards your State Pension.</p>
+        <h3>Do I pay tax on a pay rise in my first year?</h3>
+        <p>Yes, from the month it starts. PAYE spreads your allowance across the year, so the extra is taxed at your marginal rate.</p>
+        <h3>What if I earn under £12,570?</h3>
+        <p>You pay no Income Tax and no National Insurance, though you may still build National Insurance credits.</p>
+        <h3>Should I join my workplace pension?</h3>
+        <p>Usually yes. Your employer pays in too, and you get tax relief, so each £1 you contribute is worth much more than £1 of take-home.</p>
+        <h3>Is my take-home pay lower in my first month?</h3>
+        <p>It can be, if you are on an emergency tax code or started part-way through a month. It usually evens out once HMRC issues your correct code.</p>
+        <h3>Do I pay tax on my pension contributions?</h3>
+        <p>No. Pension contributions get tax relief, either by coming out before tax or by HMRC adding basic-rate tax to what you pay in.</p>
+        <h3>Does working from home change my take-home pay?</h3>
+        <p>Not directly. If your employer requires you to work from home, you may be able to claim tax relief on extra household costs, but only if they are not reimbursed and you meet HMRC&apos;s conditions.</p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers">
+        <KeyStats
+          items={[
+            { value: "£12,570", label: "Personal Allowance" },
+            { value: "£50,270", label: "Higher rate threshold" },
+            { value: "20% / 40% / 45%", label: "Income Tax rates" },
+            { value: "8% / 2%", label: "Employee National Insurance" },
+            { value: "£28,719.60", label: "Take-home on £35,000" },
+            { value: "60%", label: "Effective tax £100k to £125,140" },
+          ]}
+        />
+      </GuideSection>
+    </Guide>
   );
 }
-
-/* ══════════════════════════════════════════════════════════════════
-   Visuals
-   ══════════════════════════════════════════════════════════════════ */
-
-/* Waterfall: gross → −tax → −NI → take-home, for a £50,000 salary. */
-function Waterfall() {
-  const GROSS = 50000, TAX = 7486, NI = 2994, TH = GROSS - TAX - NI;
-  const W = 640, H = 264, pt = 28, pb = 42, ph = H - pt - pb;
-  const y = (v: number) => pt + (1 - v / GROSS) * ph;
-  const cols = [
-    { label: "Gross", value: GROSS, top: GROSS, bottom: 0, color: slate, amount: gbp(GROSS) },
-    { label: "Income Tax", value: TAX, top: GROSS, bottom: GROSS - TAX, color: coral, amount: "−" + gbp(TAX) },
-    { label: "Nat. Ins.", value: NI, top: GROSS - TAX, bottom: TH, color: amber, amount: "−" + gbp(NI) },
-    { label: "Take-home", value: TH, top: TH, bottom: 0, color: green, amount: gbp(TH) },
-  ];
-  const bw = 108, gap = (W - cols.length * bw) / (cols.length + 1);
-  const cx = (i: number) => gap + i * (bw + gap);
-  return (
-    <svg className="gm-chart" viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", overflow: "visible" }}>
-      {cols.map((c, i) => {
-        const yt = y(c.top), yb = y(c.bottom), h = Math.max(2, yb - yt);
-        return (
-          <g key={c.label}>
-            {i > 0 && <line x1={cx(i - 1) + bw} y1={y(cols[i - 1].label === "Gross" ? cols[i - 1].top : cols[i - 1].bottom)} x2={cx(i)} y2={yt} stroke={line} strokeWidth="1.5" strokeDasharray="3 3" />}
-            <rect x={cx(i)} y={yt} width={bw} height={h} rx={4} fill={c.color} opacity={i === 1 || i === 2 ? 0.92 : 1} />
-            <text x={cx(i) + bw / 2} y={yt - 7} textAnchor="middle" style={{ fontSize: 13, fontWeight: 800 }} fill={i === 1 || i === 2 ? coral : ink}>{c.amount}</text>
-            <text x={cx(i) + bw / 2} y={H - 20} textAnchor="middle" style={{ fontSize: 12.5, fontWeight: 600 }} fill={mute}>{c.label}</text>
-            {(i === 0 || i === 3) && <text x={cx(i) + bw / 2} y={H - 5} textAnchor="middle" style={{ fontSize: 11, fontWeight: 600 }} fill={subtle}>{i === 0 ? "100%" : "79%"}</text>}
-          </g>
-        );
-      })}
-    </svg>
-  );
-}
-
-/* Tax band ladder — widths proportional to band size on a 0→140k axis. */
-function TaxLadder() {
-  const MAX = 140000;
-  const bands = [
-    { from: 0, to: 12570, rate: "0%", label: "Personal Allowance — tax-free", color: "#d0d5dd" },
-    { from: 12570, to: 50270, rate: "20%", label: "Basic rate", color: "#7fb3ff" },
-    { from: 50270, to: 125140, rate: "40%", label: "Higher rate", color: amber },
-    { from: 125140, to: MAX, rate: "45%", label: "Additional rate", color: coral },
-  ];
-  const W = 640, rowH = 46, gap = 10;
-  const x = (v: number) => (v / MAX) * W;
-  return (
-    <div>
-      <svg className="gm-chart" viewBox={`0 0 ${W} ${bands.length * (rowH + gap)}`} width="100%" style={{ display: "block" }}>
-        {bands.map((b, i) => {
-          const w = x(b.to) - x(b.from);
-          const yy = i * (rowH + gap);
-          return (
-            <g key={b.from}>
-              <rect x={0} y={yy} width={Math.max(w, 46)} height={rowH} rx={8} fill={b.color} />
-              <text x={12} y={yy + 19} style={{ fontSize: 14, fontWeight: 800 }} fill={i === 0 ? ink : "#fff"}>{b.rate}</text>
-              <text x={12} y={yy + 35} style={{ fontSize: 11.5, fontWeight: 600 }} fill={i === 0 ? mute : "rgba(255,255,255,0.92)"}>{b.label}</text>
-              <text x={Math.max(w, 46) + 8} y={yy + 27} style={{ fontSize: 11.5, fontWeight: 600 }} fill={subtle}>
-                {b.to === MAX ? `${gbp(b.from)}+` : `${gbp(b.from)} – ${gbp(b.to)}`}
-              </text>
-            </g>
-          );
-        })}
-      </svg>
-      <div className="flex items-center justify-between" style={{ marginTop: 8, fontSize: 12, color: subtle, fontWeight: 600 }}>
-        <span>← Only the slice inside each band pays that band&rsquo;s rate</span>
-      </div>
-    </div>
-  );
-}
-
-/* Income Tax + NI stacked bars, per band. */
-function StackedRates() {
-  const rows = [
-    { band: "£0 – £12,570", tax: 0, ni: 0 },
-    { band: "£12,570 – £50,270", tax: 20, ni: 8 },
-    { band: "£50,270 – £125,140", tax: 40, ni: 2 },
-    { band: "£125,140+", tax: 45, ni: 2 },
-  ];
-  const maxR = 50;
-  return (
-    <div className="space-y-3.5">
-      {rows.map((r) => {
-        const total = r.tax + r.ni;
-        return (
-          <div key={r.band} className="flex items-center gap-3">
-            <div style={{ width: 150, fontSize: 13, fontWeight: 600, color: ink, flex: "none", fontVariantNumeric: "tabular-nums" }}>{r.band}</div>
-            <div style={{ flex: 1, height: 26, borderRadius: 10, background: tint, overflow: "hidden", display: "flex" }}>
-              <div style={{ width: `${(r.tax / maxR) * 100}%`, background: coral, height: "100%" }} />
-              <div style={{ width: `${(r.ni / maxR) * 100}%`, background: amber, height: "100%" }} />
-            </div>
-            <div style={{ width: 96, textAlign: "right", fontSize: 13, fontWeight: 700, color: total >= 60 ? coral : ink, flex: "none", fontVariantNumeric: "tabular-nums" }}>{total}% combined</div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-/* Effective vs marginal at £50,000. */
-function EffectiveVsMarginal() {
-  const rows = [
-    { label: "Effective rate", sub: "the average across all your pay", val: 21, color: blue },
-    { label: "Marginal rate", sub: "what your next £1 is taxed at", val: 42, color: coral },
-  ];
-  return (
-    <div className="space-y-5">
-      {rows.map((r) => (
-        <div key={r.label}>
-          <div className="flex items-center justify-between gap-3" style={{ marginBottom: 8 }}>
-            <span style={{ fontSize: 15, fontWeight: 700, color: ink, lineHeight: 1.35 }}>{r.label}<span style={{ display: "block", fontSize: 13, fontWeight: 500, color: subtle }}>{r.sub}</span></span>
-            <span style={{ fontSize: 20, fontWeight: 800, color: r.color, fontVariantNumeric: "tabular-nums" }}>{r.val}%</span>
-          </div>
-          <div style={{ height: 16, borderRadius: 999, background: tint, overflow: "hidden" }}>
-            <div style={{ width: `${r.val}%`, height: "100%", background: r.color, borderRadius: 999 }} />
-          </div>
-        </div>
-      ))}
-      <p style={{ fontSize: 13.5, color: mute, margin: 0, lineHeight: 1.5 }}>Same salary, same person — the average you have paid is barely half the rate on your next pound.</p>
-    </div>
-  );
-}
-
-/* Marginal rate step-curve, highlighting the 60% trap. */
-function MarginalCurve() {
-  const W = 680, H = 240, padL = 44, padR = 8, padT = 16, padB = 30, MAX = 160000, RMAX = 0.70;
-  const x = (v: number) => padL + (v / MAX) * (W - padL - padR);
-  const y = (r: number) => padT + (1 - r / RMAX) * (H - padT - padB);
-  const steps = [
-    { from: 0, to: 12570, r: 0 },
-    { from: 12570, to: 50270, r: 0.28 },
-    { from: 50270, to: 100000, r: 0.42 },
-    { from: 100000, to: 125140, r: 0.62 },
-    { from: 125140, to: MAX, r: 0.47 },
-  ];
-  let d = `M ${x(0)},${y(0)}`;
-  steps.forEach((s, i) => {
-    if (i > 0) d += ` L ${x(s.from)},${y(s.r)}`;
-    d += ` L ${x(s.to)},${y(s.r)}`;
-  });
-  const yTicks = [0, 0.2, 0.4, 0.6];
-  const xTicks = [{ v: 12570, l: "£12.5k" }, { v: 50270, l: "£50k" }, { v: 100000, l: "£100k" }, { v: 125140, l: "£125k" }];
-  return (
-    <svg className="gm-chart" viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", overflow: "visible" }}>
-      {/* trap zone */}
-      <rect x={x(100000)} y={padT} width={x(125140) - x(100000)} height={H - padT - padB} fill="#fef2f2" />
-      {yTicks.map((t) => (
-        <g key={t}>
-          <line x1={padL} y1={y(t)} x2={W - padR} y2={y(t)} stroke={line} strokeWidth="1" />
-          <text x={padL - 8} y={y(t) + 3.5} textAnchor="end" style={{ fontSize: 10.5, fontWeight: 600 }} fill={subtle}>{Math.round(t * 100)}%</text>
-        </g>
-      ))}
-      {xTicks.map((t) => (
-        <g key={t.v}>
-          <line x1={x(t.v)} y1={padT} x2={x(t.v)} y2={H - padB} stroke="#e6e8f2" strokeWidth="1" strokeDasharray="3 3" />
-          <text x={x(t.v)} y={H - 10} textAnchor="middle" style={{ fontSize: 10.5, fontWeight: 600 }} fill={subtle}>{t.l}</text>
-        </g>
-      ))}
-      <path d={d} fill="none" stroke={blue} strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" />
-      {/* trap label */}
-      <text x={(x(100000) + x(125140)) / 2} y={y(0.62) - 10} textAnchor="middle" style={{ fontSize: 12, fontWeight: 800 }} fill={coral}>62% trap</text>
-      <circle cx={x(112000)} cy={y(0.62)} r="3.5" fill={coral} />
-    </svg>
-  );
-}
-
-/* Pension sacrifice: £100 as cash vs into pension (higher-rate). */
-function PensionWedge() {
-  const rows = [
-    { label: "Take £100 as pay", pocket: 58, tax: 42, pension: 0 },
-    { label: "Sacrifice £100 to pension", pocket: 0, tax: 0, pension: 100 },
-  ];
-  return (
-    <div className="space-y-4">
-      {rows.map((r) => (
-        <div key={r.label}>
-          <div style={{ fontSize: 14.5, fontWeight: 700, color: ink, marginBottom: 6 }}>{r.label}</div>
-          <div style={{ height: 34, borderRadius: 10, overflow: "hidden", display: "flex", border: `1px solid ${line}` }}>
-            {r.pocket > 0 && <div style={{ width: `${r.pocket}%`, background: green, display: "grid", placeItems: "center" }}><span style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}>£{r.pocket} in your pocket</span></div>}
-            {r.tax > 0 && <div style={{ width: `${r.tax}%`, background: coral, display: "grid", placeItems: "center" }}><span style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}>£{r.tax} tax + NI</span></div>}
-            {r.pension > 0 && <div style={{ width: `${r.pension}%`, background: blue, display: "grid", placeItems: "center" }}><span style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}>£{r.pension} in your pension</span></div>}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-/* Student loan: 9% of the slice above the threshold. */
-function StudentLoanViz() {
-  const SAL = 35000, THRESH = 29385, MAX = 40000;
-  const above = SAL - THRESH, repay = above * 0.09;
-  const W = 640, H = 96, pt = 10, barH = 42;
-  const x = (v: number) => (v / MAX) * W;
-  return (
-    <div>
-      <svg className="gm-chart" viewBox={`0 0 ${W} ${H}`} width="100%" style={{ display: "block", overflow: "visible" }}>
-        <rect x={0} y={pt} width={x(THRESH)} height={barH} rx={7} fill="#d0d5dd" />
-        <rect x={x(THRESH)} y={pt} width={x(SAL) - x(THRESH)} height={barH} rx={7} fill={violet} />
-        <line x1={x(THRESH)} y1={pt - 6} x2={x(THRESH)} y2={pt + barH + 6} stroke={ink} strokeWidth="1.5" strokeDasharray="3 3" />
-        <text x={x(THRESH)} y={pt + barH + 22} textAnchor="middle" style={{ fontSize: 11.5, fontWeight: 700 }} fill={ink}>Threshold {gbp(THRESH)}</text>
-        <text x={x(THRESH) / 2} y={pt + 26} textAnchor="middle" style={{ fontSize: 12, fontWeight: 700 }} fill={mute}>No repayment below</text>
-        <text x={(x(THRESH) + x(SAL)) / 2} y={pt + 26} textAnchor="middle" style={{ fontSize: 12, fontWeight: 700 }} fill="#fff">{gbp(above)} @ 9%</text>
-      </svg>
-      <div className="flex flex-wrap gap-3" style={{ marginTop: 14 }}>
-        <Badge value={gbp(repay)} label="repaid per year" />
-        <Badge value={gbp(repay / 12)} label="per month" />
-      </div>
-    </div>
-  );
-}
-
-/* Bonus split across two bands. */
-function BonusViz() {
-  const basic = 2270, higher = 2730;
-  const total = basic + higher;
-  return (
-    <div>
-      <div style={{ height: 40, borderRadius: 10, overflow: "hidden", display: "flex", border: `1px solid ${line}` }}>
-        <div style={{ width: `${(basic / total) * 100}%`, background: "#7fb3ff", display: "grid", placeItems: "center" }}>
-          <span style={{ fontSize: 12.5, fontWeight: 700, color: "#0b3d91" }}>{gbp(basic)} @ 28%</span>
-        </div>
-        <div style={{ width: `${(higher / total) * 100}%`, background: amber, display: "grid", placeItems: "center" }}>
-          <span style={{ fontSize: 12.5, fontWeight: 700, color: "#7a4a06" }}>{gbp(higher)} @ 42%</span>
-        </div>
-      </div>
-      <div className="flex items-center justify-between" style={{ marginTop: 8, fontSize: 11.5, color: subtle, fontWeight: 600 }}>
-        <span>Salary £48,000</span>
-        <span>Crosses £50,270 →</span>
-        <span>Total pay £53,000</span>
-      </div>
-      <p style={{ fontSize: 13.5, color: mute, marginTop: 12, lineHeight: 1.5 }}>
-        Of the {gbp(total)} bonus, {gbp(basic)} fills the rest of your basic-rate band and {gbp(higher)} is taxed at the higher rate — so you keep roughly {gbp(basic * 0.72 + higher * 0.58)} of it.
-      </p>
-    </div>
-  );
-}
-
-const GLOSSARY = [
-  { t: "Gross pay", d: "Your headline salary before any tax, National Insurance or pension is taken off." },
-  { t: "Personal Allowance", d: "The slice of income taxed at 0% — £12,570 for most people, tapering away above £100,000." },
-  { t: "PAYE", d: "Pay As You Earn — the system that deducts tax and NI from each payslip automatically." },
-  { t: "Tax code", d: "Tells your employer your allowance. 1257L is the standard code, meaning a £12,570 allowance." },
-  { t: "Marginal rate", d: "The tax and NI charged on your next pound of income — the rate that governs decisions." },
-  { t: "Effective rate", d: "Your average rate: total deductions divided by total pay. Always lower than the marginal rate." },
-  { t: "Salary sacrifice", d: "Swapping pay for a pension contribution before tax and NI, so each £1 in costs you less." },
-  { t: "Student loan plan", d: "Which repayment rules apply. Plan 2 takes 9% of income over £29,385; postgrad takes 6%." },
-];
