@@ -94,7 +94,7 @@ export function hicbc(i: HicbcInput): HicbcResult {
 
 export type ChildStage = "under9m" | "9m-2" | "2" | "3-4";
 
-export const FUNDED = {
+const FUNDED = {
   /** Funded weeks a year; hours can be stretched over up to 52 weeks. */
   termWeeks: 38,
   workingHours: 30,
@@ -208,7 +208,7 @@ export function taxFreeChildcarePlan(children: TfcChild[]): TfcResult {
 /* ── Statutory maternity, paternity and shared parental pay ─────────────── */
 
 /** 90% of average weekly earnings, capped at the flat rate. */
-export function cappedWeekly(awe: number): number {
+function cappedWeekly(awe: number): number {
   return Math.min(STATUTORY_FLAT_RATE, 0.9 * Math.max(0, awe));
 }
 

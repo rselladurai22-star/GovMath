@@ -39,7 +39,7 @@ const TOC: TocItem[] = [
 
 const SOURCES: Source[] = [
   { label: "GOV.UK — Inheritance Tax", href: "https://www.gov.uk/inheritance-tax" },
-  { label: "GOV.UK — Inheritance Tax thresholds and interest rates", href: "https://www.gov.uk/guidance/inheritance-tax-thresholds-and-interest-rates" },
+  { label: "GOV.UK — Inheritance Tax thresholds and interest rates", href: "https://www.gov.uk/government/publications/rates-and-allowances-inheritance-tax-thresholds-and-interest-rates" },
   { label: "GOV.UK — Gifts and the 7-year rule", href: "https://www.gov.uk/inheritance-tax/gifts" },
   { label: "GOV.UK — Changes to agricultural property relief and business property relief", href: "https://www.gov.uk/government/publications/changes-to-agricultural-property-relief-and-business-property-relief" },
   { label: "GOV.UK — Residence nil rate band", href: "https://www.gov.uk/guidance/inheritance-tax-residence-nil-rate-band" },

@@ -1,20 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { checkMinimumWage, minimumWageAudit } from "./minimum-wage";
-
-describe("minimum wage", () => {
-  it("compliant at exact rate", () => {
-    const r = checkMinimumWage({ band: "national-living-wage", hourlyPay: 12.71, hoursPerWeek: 40 });
-    expect(r.compliant).toBe(true);
-    expect(r.shortfallPerHour).toBe(0);
-  });
-  it("shortfall flagged", () => {
-    const r = checkMinimumWage({ band: "national-living-wage", hourlyPay: 11, hoursPerWeek: 40 });
-    expect(r.compliant).toBe(false);
-    expect(r.shortfallPerHour).toBeCloseTo(1.71, 2);
-    expect(r.weeklyShortfall).toBeCloseTo(68.4, 2);
-  });
-});
-
+import { minimumWageAudit } from "./minimum-wage";
 
 describe("minimumWageAudit", () => {
   it("counts unpaid required time", () => {

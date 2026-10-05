@@ -18,9 +18,9 @@
 
 import { incomeTax, nationalInsurance } from "../tax/2026-27";
 import { scottishIncomeTax } from "../tax/scottish-2026-27";
-import { dividendTax, DIVIDEND_2026_27 } from "../tax/dividend";
+import { dividendTax } from "../tax/dividend";
 
-export const CT = {
+const CT = {
   smallRate: 0.19,
   mainRate: 0.25,
   lowerLimit: 50_000,
@@ -222,7 +222,7 @@ export const LOWER_EARNINGS_LIMIT = 6_708;
 
 /** All post-tax profit is paid out as dividends in the same tax year. */
 /** Highest salary the profit can pay once employer NI is added. */
-export function maxSalary(profit: number, employmentAllowance: boolean): number {
+function maxSalary(profit: number, employmentAllowance: boolean): number {
   const p = Math.max(0, profit);
   if (p <= EMPLOYER.secondaryThreshold) return p;
   const plain = (p + EMPLOYER.niRate * EMPLOYER.secondaryThreshold) / (1 + EMPLOYER.niRate);
@@ -279,4 +279,3 @@ export function bestSalary(i: Omit<DirectorInput, "salary">): DirectorPlan {
   return best;
 }
 
-export { DIVIDEND_2026_27 };

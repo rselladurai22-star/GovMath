@@ -27,19 +27,6 @@ export type NMWCheckResult = {
   compliant: boolean;
 };
 
-export function checkMinimumWage(input: NMWCheckInput): NMWCheckResult {
-  const required = NMW_2026[input.band].hourly;
-  const shortfall = Math.max(0, required - input.hourlyPay);
-  return {
-    band: input.band,
-    required,
-    shortfallPerHour: shortfall,
-    weeklyShortfall: shortfall * input.hoursPerWeek,
-    annualShortfall: shortfall * input.hoursPerWeek * 52,
-    compliant: shortfall === 0,
-  };
-}
-
 /** Most an employer can count for accommodation, from April 2026. */
 export const ACCOMMODATION_OFFSET_DAILY = 11.1;
 

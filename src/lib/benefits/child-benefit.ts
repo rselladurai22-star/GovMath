@@ -26,15 +26,6 @@ export type ChildBenefitResult = {
   annual: number;
 };
 
-export function childBenefit(children: number): ChildBenefitResult {
-  const n = Math.max(0, Math.floor(children));
-  if (n === 0) return { children: 0, weekly: 0, monthly: 0, annual: 0 };
-  const c = CHILD_BENEFIT_2026_27;
-  const weekly = c.firstChildWeekly + Math.max(0, n - 1) * c.additionalChildWeekly;
-  const annual = weekly * 52;
-  return { children: n, weekly, monthly: annual / 12, annual };
-}
-
 export type HICBCResult = {
   annualBenefit: number;
   adjustedNetIncome: number;
@@ -43,24 +34,3 @@ export type HICBCResult = {
   netRetained: number;
 };
 
-export function highIncomeChildBenefitCharge(
-  annualBenefit: number,
-  adjustedNetIncome: number
-): HICBCResult {
-  const c = CHILD_BENEFIT_2026_27;
-  if (adjustedNetIncome <= c.hicbcStart) {
-    return { annualBenefit, adjustedNetIncome, chargePct: 0, charge: 0, netRetained: annualBenefit };
-  }
-  if (adjustedNetIncome >= c.hicbcEnd) {
-    return { annualBenefit, adjustedNetIncome, chargePct: 1, charge: annualBenefit, netRetained: 0 };
-  }
-  const pct = (adjustedNetIncome - c.hicbcStart) / (c.hicbcEnd - c.hicbcStart);
-  const charge = annualBenefit * pct;
-  return {
-    annualBenefit,
-    adjustedNetIncome,
-    chargePct: pct,
-    charge,
-    netRetained: annualBenefit - charge,
-  };
-}

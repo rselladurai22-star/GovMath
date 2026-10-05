@@ -48,8 +48,8 @@ const SOURCES: Source[] = [
   { label: "NHS Healthy Start", href: "https://www.healthystart.nhs.uk/" },
   { label: "NHS Healthy Start — Get help to buy food and milk", href: "https://www.healthystart.nhs.uk/get-help-to-buy-food-and-milk/" },
   { label: "GOV.UK — Healthy Start", href: "https://www.gov.uk/healthy-start" },
-  { label: "Social Security Scotland — Best Start Foods", href: "https://www.mygov.scot/best-start-foods" },
-  { label: "NHS — Vitamins, supplements and nutrition in pregnancy", href: "https://www.nhs.uk/pregnancy/keeping-well/vitamins-supplements-and-nutrition/" },
+  { label: "Social Security Scotland — Best Start Foods", href: "https://www.mygov.scot/best-start-grant-best-start-foods" },
+  { label: "NHS — Vitamins, supplements and nutrition in pregnancy", href: "https://www.nhs.uk/pregnancy/keeping-well/pregnancy-vitamins-and-supplements/" },
 ];
 
 export default function HealthyStartGuide() {

@@ -6,29 +6,13 @@
  */
 
 :root {
-  /* Names older components still read, mapped to the design palette. */
-  --navy: #2b2028;
-  --line: #e6d8e1;
-  --blue: #510b38;
-  --blue-bright: #73164c;
-  --ice: #faf7f9;
-  --ice-blue: #faf3f7;
-  --surface: #fff;
-  --success: #0f7a52;
-  --error: #b42318;
-  --ring: 0 0 0 2px #73164c;
-  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
-  --brand-gradient: linear-gradient(135deg, #510b38, #73164c);
-  --page-scale: 1;
-  /* Guide charts: wine, gold, mauve, slate, sand. */
+  /* Guide chart colours: wine, gold, mauve, slate, sand. */
   --g-c1: #73164c;
   --g-c2: #c79a4b;
   --g-c3: #ad7198;
   --g-c4: #909aab;
   --g-c5: #e0b27a;
   --g-track: #efe6ec;
-  --g-surface: #fff;
-  --g-muted: #645c62;
 }
 
 /* ── Form groups and labels ─────────────────────────────── */
@@ -185,9 +169,8 @@
   outline-offset: 2px;
 }
 
-/* Text, date and period inputs in the design's box style. */
-.gm-input,
-.gm-select {
+/* Text and date inputs in the design's box style. */
+.gm-input {
   width: 100%;
   min-height: 44px;
   padding: 9px 12px;
@@ -198,28 +181,13 @@
   font: inherit;
   font-weight: 700;
 }
-.gm-input:focus,
-.gm-select:focus {
+.gm-input:focus {
   outline: none;
   border-color: #510b38;
   box-shadow: 0 0 0 1px #510b38;
 }
-.moreoptions .gm-input,
-.moreoptions .gm-select {
+.moreoptions .gm-input {
   margin: 0;
-}
-.gm-period {
-  display: flex;
-  gap: 8px;
-  align-items: stretch;
-}
-.gm-period .number {
-  flex: 1 1 auto;
-  width: auto;
-}
-.gm-period .gm-select {
-  width: auto;
-  flex: 0 0 auto;
 }
 
 /* ── Results panel ──────────────────────────────────────── */
@@ -812,15 +780,6 @@ a.gm-card:hover {
   font-size: 13px;
   font-weight: 700;
 }
-.gm-panel {
-  background: var(--gray);
-  border-radius: 14px;
-  padding: 30px 34px;
-  margin: 10px 0 30px;
-}
-.gm-panel > :last-child {
-  margin-bottom: 0;
-}
 .gm-meta {
   display: flex;
   flex-wrap: wrap;
@@ -837,9 +796,6 @@ a.gm-card:hover {
 @media (max-width: 650px) {
   .gm-cards {
     grid-template-columns: 1fr;
-  }
-  .gm-panel {
-    padding: 24px 20px;
   }
   .gm-prose h2 {
     font-size: 23px;

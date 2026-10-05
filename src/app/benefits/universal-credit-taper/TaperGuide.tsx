@@ -39,7 +39,7 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — Universal Credit and earnings", href: "https://www.gov.uk/universal-credit/how-your-earnings-affect-your-payments" },
   { label: "GOV.UK — Universal Credit: what you'll get", href: "https://www.gov.uk/universal-credit/what-youll-get" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
-  { label: "GOV.UK — Universal Credit and self-employment", href: "https://www.gov.uk/guidance/universal-credit-if-youre-self-employed" },
+  { label: "GOV.UK — Universal Credit and self-employment", href: "https://www.gov.uk/self-employment-and-universal-credit" },
   { label: "GOV.UK — Income Tax rates and Personal Allowances", href: "https://www.gov.uk/income-tax-rates" },
 ];
 

@@ -17,15 +17,6 @@
  * Many households are exempt — see EXEMPTIONS.
  */
 
-export const EXEMPTIONS: string[] = [
-  "You or your partner work and earn at least £881/month after tax",
-  "You receive Working Tax Credit (legacy)",
-  "You receive PIP, DLA, AA, or Carer’s Allowance",
-  "You receive Industrial Injuries Benefits or War Pensions",
-  "You receive Limited Capability for Work-Related Activity element of UC",
-  "You receive Guardian’s Allowance",
-];
-
 export type Household = "single-no-children" | "family";
 export type Location = "london" | "elsewhere";
 
@@ -66,7 +57,7 @@ export function benefitCap(input: BenefitCapInput): BenefitCapResult {
 }
 
 /** Housing Benefit must be left with at least 50p a week after the cap. */
-export const HB_MINIMUM_WEEKLY = 0.5;
+const HB_MINIMUM_WEEKLY = 0.5;
 
 export type HousingBenefitCapInput = BenefitCapInput & {
   /** Housing Benefit a week, included in weeklyBenefits. */

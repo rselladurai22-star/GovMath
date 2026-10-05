@@ -38,9 +38,9 @@ const TOC: TocItem[] = [
 
 const SOURCES: Source[] = [
   { label: "GOV.UK — Stamp Duty Land Tax: residential property rates", href: "https://www.gov.uk/stamp-duty-land-tax/residential-property-rates" },
-  { label: "GOV.UK — SDLT relief for first-time buyers", href: "https://www.gov.uk/guidance/stamp-duty-land-tax-relief-for-first-time-buyers" },
+  { label: "GOV.UK — SDLT relief for first-time buyers", href: "https://www.gov.uk/government/publications/stamp-duty-land-tax-relief-for-first-time-buyers" },
   { label: "GOV.UK — Lifetime ISA", href: "https://www.gov.uk/lifetime-isa" },
-  { label: "GOV.UK — Rates for non-UK residents", href: "https://www.gov.uk/guidance/rates-for-non-uk-residents-sdlt" },
+  { label: "GOV.UK — Rates for non-UK residents", href: "https://www.gov.uk/guidance/rates-of-stamp-duty-land-tax-for-non-uk-residents" },
 ];
 
 export default function FTBGuide() {

@@ -31,7 +31,7 @@ const TOC: TocItem[] = [
 
 const SOURCES: Source[] = [
   { label: "GOV.UK — Rent a Room Scheme", href: "https://www.gov.uk/rent-room-in-your-home" },
-  { label: "HMRC — Rent a Room relief (HS223)", href: "https://www.gov.uk/government/publications/rent-a-room-scheme-hs223-self-assessment-helpsheet" },
+  { label: "HMRC — Rent a Room relief (HS223)", href: "https://www.gov.uk/government/publications/rent-a-room-for-traders-hs223-self-assessment-helpsheet" },
   { label: "GOV.UK — Renting out a property: paying tax", href: "https://www.gov.uk/renting-out-a-property/paying-tax" },
   { label: "GOV.UK — Right to rent checks", href: "https://www.gov.uk/check-tenant-right-to-rent-documents" },
 ];

@@ -42,9 +42,9 @@ const TOC: TocItem[] = [
 const SOURCES: Source[] = [
   { label: "GOV.UK — Stamp Duty Land Tax: residential property rates", href: "https://www.gov.uk/stamp-duty-land-tax/residential-property-rates" },
   { label: "GOV.UK — Higher rates for additional properties", href: "https://www.gov.uk/guidance/stamp-duty-land-tax-buying-an-additional-residential-property" },
-  { label: "GOV.UK — Relief for first-time buyers", href: "https://www.gov.uk/guidance/stamp-duty-land-tax-relief-for-first-time-buyers" },
-  { label: "GOV.UK — Rates for non-UK residents", href: "https://www.gov.uk/guidance/rates-for-non-uk-residents-sdlt" },
-  { label: "GOV.UK — Apply for a repayment of the higher rates", href: "https://www.gov.uk/guidance/apply-for-a-repayment-of-the-higher-rates-of-stamp-duty-land-tax" },
+  { label: "GOV.UK — Relief for first-time buyers", href: "https://www.gov.uk/government/publications/stamp-duty-land-tax-relief-for-first-time-buyers" },
+  { label: "GOV.UK — Rates for non-UK residents", href: "https://www.gov.uk/guidance/rates-of-stamp-duty-land-tax-for-non-uk-residents" },
+  { label: "GOV.UK — Apply for a repayment of the higher rates", href: "https://www.gov.uk/guidance/apply-for-a-refund-of-stamp-duty-land-tax" },
 ];
 
 const BANDS = [

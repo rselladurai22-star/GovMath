@@ -13,17 +13,7 @@ export type RentARoomResult = {
   underAllowance: boolean;
 };
 
-export function rentARoom(annualRent: number): RentARoomResult {
-  const r = Math.max(0, annualRent);
-  return {
-    annualRent: r,
-    allowance: RENT_A_ROOM_ALLOWANCE,
-    taxableAmount: Math.max(0, r - RENT_A_ROOM_ALLOWANCE),
-    underAllowance: r <= RENT_A_ROOM_ALLOWANCE,
-  };
-}
-
-export const SPD_RATE = 0.25;
+const SPD_RATE = 0.25;
 
 export type SPDResult = {
   fullBill: number;

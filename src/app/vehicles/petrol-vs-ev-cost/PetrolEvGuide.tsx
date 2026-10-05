@@ -31,7 +31,7 @@ const SOURCES: Source[] = [
   { label: "Ofgem — Energy price cap", href: "https://www.ofgem.gov.uk/energy-price-cap" },
   { label: "GOV.UK — Vehicle tax for electric and low emission vehicles", href: "https://www.gov.uk/guidance/vehicle-tax-for-electric-and-low-emissions-vehicles" },
   { label: "GOV.UK — Electric Vehicle Excise Duty (eVED)", href: "https://www.gov.uk/government/publications/electric-vehicle-excise-duty-eved" },
-  { label: "Energy Saving Trust — Electric vehicles", href: "https://energysavingtrust.org.uk/advice/electric-vehicles/" },
+  { label: "Energy Saving Trust — Charging electric vehicles", href: "https://energysavingtrust.org.uk/advice/charging-electric-vehicles/" },
 ];
 
 export default function PetrolEvGuide() {

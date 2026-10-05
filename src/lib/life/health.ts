@@ -6,9 +6,9 @@
 
 export type BmiCategory = "underweight" | "healthy" | "overweight" | "obese1" | "obese2" | "obese3";
 
-export const BMI_STANDARD = { under: 18.5, over: 25, obese: 30, obese2: 35, obese3: 40 } as const;
+const BMI_STANDARD = { under: 18.5, over: 25, obese: 30, obese2: 35, obese3: 40 } as const;
 /** Lower thresholds for people of South Asian, Chinese, other Asian, Middle Eastern, Black African or African-Caribbean family background. */
-export const BMI_LOWER = { under: 18.5, over: 23, obese: 27.5, obese2: 32.5, obese3: 37.5 } as const;
+const BMI_LOWER = { under: 18.5, over: 23, obese: 27.5, obese2: 32.5, obese3: 37.5 } as const;
 
 export type BmiResult = {
   bmi: number;
@@ -146,5 +146,3 @@ export function bestPrescriptionPlan(itemsPerMonth: number, hrtItemsPerMonth = 0
   return prescriptionPlans(itemsPerMonth, hrtItemsPerMonth).reduce((a, b) => (b.annual < a.annual - 0.001 ? b : a));
 }
 
-/** Smallest number of items in the period at which a PPC is cheaper than paying per item. */
-export const ppcBreakEven = (ppcCost: number) => Math.floor(ppcCost / PRESCRIPTION.item) + 1;

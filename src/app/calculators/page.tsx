@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import AdSlot from "@/components/AdSlot";
 import { Crumbs } from "@/components/ContentPage";
-import { shortTitle } from "@/components/category-style";
 import GmShell from "@/gm/GmShell";
 import cats from "@/gm/categories.json";
-import { CALCULATORS, getCalculatorsByCategory, type CategorySlug } from "@/lib/calculators";
+import { CALCULATORS, getCalculatorsByCategory, shortTitle, type CategorySlug } from "@/lib/calculators";
 
 export const metadata: Metadata = {
   title: "All Calculators",

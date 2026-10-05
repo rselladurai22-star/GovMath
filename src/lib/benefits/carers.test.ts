@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { CA_2026, carerEarnings, maxGrossWithinLimit } from "./carers";
+import { CA_2026, carerEarnings } from "./carers";
 
 const base = { pensionWeekly: 0, careCostsWeekly: 0, scotland: false, overlapping: 0 };
 
@@ -30,10 +30,8 @@ describe("Carer's Allowance earnings", () => {
     expect(r.underlying).toBe(true);
     expect(carerEarnings({ ...base, grossWeekly: 0, overlapping: 50 }).payable).toBeCloseTo(36.45, 6);
   });
-  it("finds the most gross pay within the limit", () => {
-    const g = maxGrossWithinLimit(base);
-    expect(g).toBeCloseTo(204, 1);
-    expect(carerEarnings({ ...base, grossWeekly: g }).withinLimit).toBe(true);
-    expect(carerEarnings({ ...base, grossWeekly: g + 0.02 }).withinLimit).toBe(false);
+  it("allows earnings up to the £204 limit and no more", () => {
+    expect(carerEarnings({ ...base, grossWeekly: 204 }).withinLimit).toBe(true);
+    expect(carerEarnings({ ...base, grossWeekly: 204.02 }).withinLimit).toBe(false);
   });
 });

@@ -14,7 +14,7 @@
  * Source: gov.scot Scottish Income Tax 2026 to 2027.
  */
 
-import { incomeTax, personalAllowance, TAX_YEAR_2026_27 } from "./2026-27";
+import { personalAllowance } from "./2026-27";
 
 export const SCOTTISH_RATES_2026_27 = {
   starter: { width: 3967, rate: 0.19 },
@@ -68,12 +68,4 @@ export function scottishIncomeTax(gross: number): ScottishTaxBreakdown {
   };
 }
 
-/** Difference vs equivalent rUK (England/Wales/NI) tax on the same income. */
-export function scottishVsRukDifference(gross: number): number {
-  const scot = scottishIncomeTax(gross).total;
-  const ruk = incomeTax(gross).total;
-  return scot - ruk;
-}
-
 // Re-export for convenience.
-export { TAX_YEAR_2026_27 };

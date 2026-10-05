@@ -57,8 +57,6 @@ export const CPI_LATEST = { rate: 0.031, month: "August 2026", target: 0.02 } as
 
 /** What something costing `price` today will cost after `years` of inflation. */
 export const futureCost = (price: number, inflation: number, years: number) => price * Math.pow(1 + inflation, years);
-/** What `amount` in the future is worth in today's money. */
-export const todaysMoney = (amount: number, inflation: number, years: number) => amount / Math.pow(1 + inflation, years);
 /** Real return after inflation (Fisher). */
 export const realReturn = (nominal: number, inflation: number) => (1 + nominal) / (1 + inflation) - 1;
 /** Years for prices to double, or money to lose half its buying power. */

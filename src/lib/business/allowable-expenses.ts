@@ -22,8 +22,8 @@ const WFH_RATE: Record<WfhHoursBand, number> = {
   high: 26,
 };
 
-export const MILEAGE_FIRST_10K = 0.45;
-export const MILEAGE_AFTER_10K = 0.25;
+const MILEAGE_FIRST_10K = 0.45;
+const MILEAGE_AFTER_10K = 0.25;
 
 export type AllowableInput = {
   /** Office costs: stationery, phone, software, subscriptions. */
@@ -55,35 +55,7 @@ export type AllowableResult = {
   taxSavedApprox: number;
 };
 
-export function allowableExpenses(input: AllowableInput): AllowableResult {
-  const wfhMonths = Math.max(0, Math.min(12, input.wfhMonths));
-  const wfhFlat = WFH_RATE[input.wfhHoursBand] * wfhMonths;
-
-  const miles = Math.max(0, input.businessMiles);
-  const first = Math.min(miles, 10_000);
-  const rest = Math.max(0, miles - 10_000);
-  const mileageFlat = first * MILEAGE_FIRST_10K + rest * MILEAGE_AFTER_10K;
-
-  const itemised =
-    Math.max(0, input.officeAndAdmin) +
-    Math.max(0, input.finance) +
-    Math.max(0, input.marketing) +
-    Math.max(0, input.training) +
-    Math.max(0, input.stock) +
-    Math.max(0, input.other);
-
-  const total = wfhFlat + mileageFlat + itemised;
-  return {
-    wfhFlat,
-    mileageFlat,
-    itemised,
-    total,
-    taxSavedApprox: total * 0.28,
-  };
-}
-
 /* ── Flagship: expenses against your tax bill ─────────────────── */
-
 
 export const WFH_FLAT_RATES = WFH_RATE;
 

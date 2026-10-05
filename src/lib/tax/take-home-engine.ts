@@ -59,9 +59,6 @@ export const STUDENT_PLAN_ORDER: StudentPlan[] = [
   "pg",
 ];
 
-/** Approximate UK median full-time gross salary (ONS ASHE 2024), for context. */
-export const UK_MEDIAN_FULL_TIME = 37430;
-
 export function studentLoanRepayment(assessable: number, plan: StudentPlan): number {
   const spec = STUDENT_PLANS[plan];
   if (plan === "none" || assessable <= spec.threshold) return 0;
@@ -129,7 +126,7 @@ export type AllocationSegment = {
   yours: boolean;
 };
 
-export const ALLOCATION_COLORS: Record<AllocationKey, string> = {
+const ALLOCATION_COLORS: Record<AllocationKey, string> = {
   takeHome: "#12a566",
   incomeTax: "#b0492f",
   ni: "#c9a35c",
@@ -275,44 +272,6 @@ function takeHomeCash(inputs: EngineInputs): { takeHome: number; pension: number
   return { takeHome: Math.max(0, adjusted - tax - ni - sl), pension };
 }
 
-/** Sampled take-home curve across a gross-salary range, for the income graph. */
-export function takeHomeCurve(
-  base: EngineInputs,
-  from: number,
-  to: number,
-  steps = 120
-): { gross: number; takeHome: number; keepRate: number }[] {
-  const out: { gross: number; takeHome: number; keepRate: number }[] = [];
-  for (let i = 0; i <= steps; i++) {
-    const gross = from + ((to - from) * i) / steps;
-    const snap = computeTakeHome({ ...base, gross, bonus: 0 });
-    out.push({
-      gross,
-      takeHome: snap.takeHome,
-      keepRate: snap.keepRate,
-    });
-  }
-  return out;
-}
-
-export type ThresholdMarker = {
-  id: string;
-  gross: number;
-  label: string;
-  note: string;
-};
-
-/** Key band edges on the gross axis, for annotating the income curve. */
-export function thresholdMarkers(): ThresholdMarker[] {
-  const t = TAX_YEAR_2026_27;
-  return [
-    { id: "pa", gross: t.personalAllowance, label: "Tax-free ends", note: "Personal Allowance — £12,570" },
-    { id: "higher", gross: t.ni.upperEarningsLimit, label: "40% band", note: "Higher-rate threshold — £50,270" },
-    { id: "trap", gross: t.paTaperStart, label: "60% trap", note: "Personal Allowance starts to vanish — £100,000" },
-    { id: "paGone", gross: t.paTaperEnd, label: "45% band", note: "Additional rate; Allowance fully gone — £125,140" },
-  ];
-}
-
 export type Insight = {
   id: string;
   tone: "opportunity" | "risk" | "info" | "win";
@@ -322,16 +281,3 @@ export type Insight = {
   figure?: string;
 };
 
-/** Distance (in gross £) to the next meaningful tax threshold above you. */
-export function nextThreshold(adjustedGross: number): { label: string; at: number; away: number } | null {
-  const t = TAX_YEAR_2026_27;
-  const edges = [
-    { label: "the 40% higher-rate band", at: t.ni.upperEarningsLimit },
-    { label: "the £100k 60% trap", at: t.paTaperStart },
-    { label: "the 45% additional-rate band", at: t.paTaperEnd },
-  ];
-  for (const e of edges) {
-    if (adjustedGross < e.at) return { label: e.label, at: e.at, away: e.at - adjustedGross };
-  }
-  return null;
-}

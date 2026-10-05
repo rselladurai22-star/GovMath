@@ -16,12 +16,16 @@
 
 import { incomeTax, personalAllowance, selfEmployedNI } from "../tax/2026-27";
 import { scottishIncomeTax } from "../tax/scottish-2026-27";
-import { SELF_EMPLOYED_2026_27 } from "../tax/sole-trader";
 import { studentLoanRepayment, type StudentPlan } from "../tax/take-home-engine";
 
 export const TRADING_ALLOWANCE = 1000;
-export const VOLUNTARY_CLASS2_YEAR = Math.round(SELF_EMPLOYED_2026_27.voluntaryClass2WeeklyRate * 52 * 100) / 100;
-export const SMALL_PROFITS_THRESHOLD = SELF_EMPLOYED_2026_27.smallProfitsThreshold;
+/**
+ * Class 2 NI is no longer compulsory (from April 2024). Profits at or above the
+ * Small Profits Threshold get a State Pension credit without paying; below it,
+ * voluntary Class 2 is £3.65 a week in 2026/27.
+ */
+export const SMALL_PROFITS_THRESHOLD = 7105;
+export const VOLUNTARY_CLASS2_YEAR = Math.round(3.65 * 52 * 100) / 100;
 
 /**
  * Income Tax with a personal pension contribution paid under relief at
@@ -120,7 +124,7 @@ export function selfEmployedTax(i: SelfEmployedInput): SelfEmployedResult {
 
 /* ── Payments on account ─────────────────────────────── */
 
-export const POA = {
+const POA = {
   /** No payments on account if the Self Assessment bill is under £1,000… */
   minBill: 1000,
   /** …or more than 80% of the year's tax was collected at source. */

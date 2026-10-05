@@ -27,22 +27,6 @@ export const PRICES_2026 = {
 /** HMRC approved mileage allowance payments, pence per business mile. */
 export const AMAP = { carFirst: 45, carAfter: 25, threshold: 10_000, passenger: 5, motorcycle: 24, bicycle: 20 } as const;
 
-/** HMRC advisory fuel rates from 1 September 2026, pence per mile. */
-export const AFR_SEPT_2026 = {
-  petrol: [
-    ["1,400cc or less", 14],
-    ["1,401cc to 2,000cc", 17],
-    ["Over 2,000cc", 27],
-  ],
-  diesel: [
-    ["1,600cc or less", 15],
-    ["1,601cc to 2,000cc", 16],
-    ["Over 2,000cc", 22],
-  ],
-  electricHome: 7,
-  electricPublic: 15,
-} as const;
-
 /* ── Journey cost ───────────────────────────────────────────────── */
 
 export type Efficiency = { kind: "mpg"; value: number } | { kind: "l100"; value: number } | { kind: "mikwh"; value: number };
@@ -58,8 +42,6 @@ export function driveCost(miles: number, eff: Efficiency, pricePence: number): {
   return { cost, units, perMile: m > 0 ? cost / m : 0 };
 }
 
-export const mpgToL100 = (mpg: number) => (mpg > 0 ? (100 * UK_GALLON) / (mpg * 1.609344) : 0);
-
 export type JourneyInput = { miles: number; returnTrip: boolean; eff: Efficiency; price: number; people: number; tolls: number; parking: number };
 
 export type JourneyResult = { miles: number; fuel: number; units: number; total: number; perPerson: number; perMile: number; claim: number };
@@ -69,15 +51,6 @@ export function journeyCost(i: JourneyInput): JourneyResult {
   const d = driveCost(miles, i.eff, i.price);
   const total = d.cost + Math.max(0, i.tolls) + Math.max(0, i.parking);
   return { miles, fuel: d.cost, units: d.units, total, perPerson: total / Math.max(1, Math.round(i.people)), perMile: d.perMile, claim: (miles * AMAP.carFirst) / 100 };
-}
-
-/** Tax-free mileage allowance for business miles in a tax year. */
-export function mileageAllowance(businessMiles: number, alreadyThisYear = 0, passengers = 0): number {
-  const before = Math.max(0, alreadyThisYear);
-  const m = Math.max(0, businessMiles);
-  const first = Math.max(0, Math.min(m, AMAP.threshold - before));
-  const after = m - first;
-  return (first * AMAP.carFirst + after * AMAP.carAfter + m * Math.max(0, passengers) * AMAP.passenger) / 100;
 }
 
 /* ── Petrol versus electric ─────────────────────────────────────── */

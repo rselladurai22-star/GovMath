@@ -1,7 +1,6 @@
 import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
-import type { Calculator } from "@/lib/calculators";
-import { shortTitle } from "@/components/category-style";
+import { shortTitle, type Calculator } from "@/lib/calculators";
 import GmShell from "@/gm/GmShell";
 import cats from "@/gm/categories.json";
 

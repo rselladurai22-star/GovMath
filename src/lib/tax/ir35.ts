@@ -12,14 +12,14 @@
  */
 
 import { computeTakeHome, type StudentPlan, type TaxRegion } from "./take-home-engine";
-import { corporationTax } from "./salary-dividend";
+import { corporationTaxFull } from "../business/company";
 import { dividendTax } from "./dividend";
 import { incomeTax, nationalInsurance } from "./2026-27";
 import { scottishIncomeTax } from "./scottish-2026-27";
 
-export const EMPLOYER_NI_RATE = 0.15;
-export const SECONDARY_THRESHOLD = 5_000;
-export const APPRENTICESHIP_LEVY = 0.005;
+const EMPLOYER_NI_RATE = 0.15;
+const SECONDARY_THRESHOLD = 5_000;
+const APPRENTICESHIP_LEVY = 0.005;
 
 export type IR35Input = {
   dayRate: number;
@@ -95,7 +95,7 @@ export function outsideIR35(i: IR35Input): OutsideResult {
   const salary = Math.min(Math.max(0, i.salary ?? 12_570), Math.max(0, income - expenses - pension));
   const employerNI = Math.max(0, salary - SECONDARY_THRESHOLD) * EMPLOYER_NI_RATE;
   const profit = Math.max(0, income - expenses - pension - salary - employerNI);
-  const ct = corporationTax(profit);
+  const ct = corporationTaxFull({ profit, associated: 0, months: 12, dividendsReceived: 0 }).tax;
   const dividends = profit - ct;
   const region = i.region ?? "ruk";
   const salaryTax = region === "scotland" ? scottishIncomeTax(salary).total : incomeTax(salary).total;

@@ -11,7 +11,7 @@
  *  - Statutory redundancy pay is tax-free up to £30k
  */
 
-export const WEEKLY_PAY_CAP_2026 = 751;
+const WEEKLY_PAY_CAP_2026 = 751;
 export const MAX_YEARS = 20;
 
 export type RedundancyInput = {
@@ -54,7 +54,7 @@ export function statutoryRedundancy(input: RedundancyInput): RedundancyResult {
 }
 
 /** Northern Ireland has its own, higher weekly cap. */
-export const WEEKLY_PAY_CAP_NI_2026 = 783;
+const WEEKLY_PAY_CAP_NI_2026 = 783;
 export const TAX_FREE_TERMINATION = 30_000;
 
 /** Statutory minimum notice from an employer: 1 week after a month, then 1 week a year from 2 years, up to 12. */

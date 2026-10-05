@@ -22,7 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "weekly",
     priority: 0.8,
   }));
-  const calcPages: MetadataRoute.Sitemap = CALCULATORS.filter((c) => c.status === "live").map((c) => ({
+  const calcPages: MetadataRoute.Sitemap = CALCULATORS.map((c) => ({
     url: `${BASE}${c.href}`,
     lastModified: now,
     changeFrequency: "monthly",

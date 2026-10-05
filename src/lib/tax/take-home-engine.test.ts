@@ -1,11 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  computeTakeHome,
-  marginalRate,
-  studentLoanRepayment,
-  nextThreshold,
-  taxBands,
-} from "./take-home-engine";
+import { computeTakeHome, marginalRate, studentLoanRepayment, taxBands } from "./take-home-engine";
 
 describe("take-home engine", () => {
   it("matches the headline calc when there is no pension/loan/bonus", () => {
@@ -43,11 +37,6 @@ describe("take-home engine", () => {
     expect(belowTrap).toBeCloseTo(0.42, 2); // 40% tax + 2% NI
   });
 
-  it("reports distance to the next threshold", () => {
-    const n = nextThreshold(45000);
-    expect(n?.at).toBe(50270);
-    expect(n?.away).toBeCloseTo(5270, 2);
-  });
 });
 
 describe("region-aware tax", () => {

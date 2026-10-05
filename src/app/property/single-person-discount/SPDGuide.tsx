@@ -29,8 +29,8 @@ const TOC: TocItem[] = [
 const SOURCES: Source[] = [
   { label: "GOV.UK — Council Tax: discounts for single occupants", href: "https://www.gov.uk/council-tax/discounts-for-people-who-live-alone" },
   { label: "GOV.UK — Council Tax: people on discounts", href: "https://www.gov.uk/council-tax/who-has-to-pay" },
-  { label: "GOV.WALES — Council Tax discounts", href: "https://www.gov.wales/council-tax-discounts-and-reductions" },
-  { label: "mygov.scot — Council Tax discounts", href: "https://www.mygov.scot/council-tax-discounts" },
+  { label: "GOV.WALES — Council Tax discounts", href: "https://www.gov.wales/council-tax-discounts-disregards-exemptions-and-reductions" },
+  { label: "mygov.scot — Council Tax discounts", href: "https://www.mygov.scot/council-tax/discounts-exemptions-and-reductions" },
 ];
 
 export default function SPDGuide() {

@@ -39,9 +39,9 @@ const TOC: TocItem[] = [
 ];
 
 const SOURCES: Source[] = [
-  { label: "MoneyHelper — Costs of buying a home", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/the-costs-of-buying-a-home" },
+  { label: "MoneyHelper — First-time home buyer guide", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/first-time-buyer-money-tips" },
   { label: "GOV.UK — Stamp Duty Land Tax", href: "https://www.gov.uk/stamp-duty-land-tax" },
-  { label: "GOV.UK — Buying or selling your home", href: "https://www.gov.uk/government/publications/buying-or-selling-your-home" },
+  { label: "GOV.UK — How to buy a home", href: "https://www.gov.uk/government/publications/how-to-buy-a-home" },
   { label: "RICS — Home surveys", href: "https://www.rics.org/" },
   { label: "HM Land Registry — Registration fees", href: "https://www.gov.uk/guidance/hm-land-registry-registration-services-fees" },
 ];

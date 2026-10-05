@@ -45,7 +45,7 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — Right to rent: landlord's code of practice", href: "https://www.gov.uk/government/publications/right-to-rent-landlords-code-of-practice" },
   { label: "GOV.UK — View a tenant's right to rent", href: "https://www.gov.uk/view-right-to-rent" },
   { label: "GOV.UK — Prove your right to rent in England", href: "https://www.gov.uk/prove-right-to-rent" },
-  { label: "GOV.UK — Civil penalty fines for landlords", href: "https://www.gov.uk/government/news/fines-for-illegal-working-and-renting-to-be-increased" },
+  { label: "GOV.UK — Civil penalty fines for landlords", href: "https://www.gov.uk/government/news/tripling-of-fines-for-those-supporting-illegal-migrants" },
 ];
 
 export default function RightToRentGuide() {

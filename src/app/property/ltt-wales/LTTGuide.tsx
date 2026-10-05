@@ -38,9 +38,9 @@ const TOC: TocItem[] = [
 
 const SOURCES: Source[] = [
   { label: "GOV.WALES — Land Transaction Tax rates and bands", href: "https://www.gov.wales/land-transaction-tax-rates-and-bands" },
-  { label: "GOV.WALES — Higher rates for residential property", href: "https://www.gov.wales/land-transaction-tax-guidance-higher-rates-residential-property" },
+  { label: "GOV.WALES — Higher rates for residential property", href: "https://www.gov.wales/higher-rates-land-transaction-tax-overview" },
   { label: "Welsh Revenue Authority — Land Transaction Tax", href: "https://www.gov.wales/land-transaction-tax-guide" },
-  { label: "GOV.WALES — Claim a refund of higher rates", href: "https://www.gov.wales/claim-repayment-higher-rates-land-transaction-tax" },
+  { label: "GOV.WALES — Claim a refund of higher rates", href: "https://www.gov.wales/claim-refund-land-transaction-tax-higher-rates" },
 ];
 
 const MAIN = [

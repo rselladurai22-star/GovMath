@@ -42,8 +42,8 @@ const TOC: TocItem[] = [
 const SOURCES: Source[] = [
   { label: "GOV.UK — Local Housing Allowance rates", href: "https://www.gov.uk/government/collections/local-housing-allowance-lha-rates" },
   { label: "GOV.UK — Housing Benefit: what you'll get", href: "https://www.gov.uk/housing-benefit/what-youll-get" },
-  { label: "GOV.UK — Universal Credit housing costs", href: "https://www.gov.uk/government/publications/universal-credit-housing-costs-element-for-claimants-who-rent-privately" },
-  { label: "GOV.UK — Discretionary Housing Payments", href: "https://www.gov.uk/government/collections/discretionary-housing-payments-guidance" },
+  { label: "GOV.UK — Housing and Universal Credit", href: "https://www.gov.uk/housing-and-universal-credit" },
+  { label: "GOV.UK — Discretionary Housing Payments", href: "https://www.gov.uk/government/publications/discretionary-housing-payments-guidance-manual" },
   { label: "Valuation Office Agency — LHA rates", href: "https://lha-direct.voa.gov.uk/" },
   { label: "GOV.UK — Universal Credit LHA rates 2024 to 2025", href: "https://www.gov.uk/government/publications/universal-credit-local-housing-allowance-rates-2024-to-2025" },
   { label: "Scottish Government — Local Housing Allowance rates 2024-2025", href: "https://www.gov.scot/publications/local-housing-allowance-rates-2024-2025/" },

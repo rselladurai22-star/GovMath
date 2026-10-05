@@ -31,7 +31,7 @@ const TOC: TocItem[] = [
 const SOURCES: Source[] = [
   { label: "HMRC — Company car benefit: the appropriate percentage", href: "https://www.gov.uk/guidance/company-car-benefit-the-appropriate-percentage-480-appendix-2" },
   { label: "HMRC — Salary sacrifice for employers", href: "https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" },
-  { label: "HMRC — Optional remuneration arrangements", href: "https://www.gov.uk/guidance/optional-remuneration-arrangements" },
+  { label: "HMRC — Optional remuneration arrangements", href: "https://www.gov.uk/guidance/optional-remuneration-arrangements-480-appendix-12" },
   { label: "GOV.UK — National Minimum Wage and National Living Wage rates", href: "https://www.gov.uk/national-minimum-wage-rates" },
 ];
 

@@ -24,7 +24,7 @@ const TOC: TocItem[] = [
 ];
 
 const SOURCES: Source[] = [
-  { label: "GOV.UK — Tenant Fees Act 2019 guidance", href: "https://www.gov.uk/government/publications/tenant-fees-act" },
+  { label: "GOV.UK — Tenant Fees Act 2019 guidance", href: "https://www.gov.uk/guidance/tenant-fees-act-2019-guidance-for-tenants" },
   { label: "GOV.UK — Tenancy deposit protection", href: "https://www.gov.uk/tenancy-deposit-protection" },
   { label: "GOV.UK — Private renting: your rights", href: "https://www.gov.uk/private-renting" },
   { label: "Shelter — Rent", href: "https://england.shelter.org.uk/housing_advice/private_renting" },

@@ -39,7 +39,7 @@ const FIRST_TIME_RELIEF_CAP = 500_000;
 const ADDITIONAL_SURCHARGE = 0.05;
 
 /** Purchases under £40,000 never pay the higher rates. */
-export const HIGHER_RATES_MIN_PRICE = 40_000;
+const HIGHER_RATES_MIN_PRICE = 40_000;
 
 export type SdltBreakdownRow = {
   band: string;

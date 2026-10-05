@@ -27,7 +27,7 @@ const TOC: TocItem[] = [
 
 const SOURCES: Source[] = [
   { label: "GOV.UK — Check your State Pension age", href: "https://www.gov.uk/state-pension-age" },
-  { label: "GOV.UK — State Pension age timetables", href: "https://www.gov.uk/government/publications/state-pension-age-timetables" },
+  { label: "GOV.UK — State Pension age timetables", href: "https://www.gov.uk/government/publications/state-pension-age-timetable" },
   { label: "GOV.UK — The new State Pension", href: "https://www.gov.uk/new-state-pension" },
   { label: "GOV.UK — Voluntary National Insurance", href: "https://www.gov.uk/voluntary-national-insurance-contributions" },
   { label: "GOV.UK — Delay (defer) your State Pension", href: "https://www.gov.uk/deferring-state-pension" },

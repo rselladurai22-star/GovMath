@@ -156,23 +156,3 @@ export type TakeHomeResult = {
   };
 };
 
-/** Headline take-home calculation for a PAYE employee, 2026/27. */
-export function takeHomePay(gross: number): TakeHomeResult {
-  const safeGross = Math.max(0, gross || 0);
-  const tax = incomeTax(safeGross);
-  const ni = nationalInsurance(safeGross);
-  const takeHome = safeGross - tax.total - ni.total;
-
-  return {
-    gross: safeGross,
-    incomeTax: tax,
-    ni,
-    takeHome,
-    effectiveRate: safeGross > 0 ? (tax.total + ni.total) / safeGross : 0,
-    perPeriod: {
-      monthly: takeHome / 12,
-      weekly: takeHome / 52,
-      daily: takeHome / 260, // working days approximation
-    },
-  };
-}

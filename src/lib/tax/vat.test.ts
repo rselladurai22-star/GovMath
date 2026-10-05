@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { addVat, flatRateComparison, removeVat, VAT_RATES } from "./vat";
+import { addVat, removeVat, VAT_RATES } from "./vat";
 
 const round = (n: number) => Math.round(n * 100) / 100;
 
@@ -52,27 +52,3 @@ describe("removeVat", () => {
   });
 });
 
-describe("flatRateComparison", () => {
-  it("favours the standard scheme when the flat rate is high", () => {
-    // £10,000 net, 20% standard, 14.5% limited-cost trader rate.
-    // Gross = £12,000. FRS VAT = 12,000 * 0.145 = £1,740.
-    // Standard VAT = £2,000. Standard appears cheaper here (ignoring input VAT).
-    const r = flatRateComparison(10_000, 0.2, 0.145);
-    expect(round(r.grossSales)).toBe(12_000);
-    expect(round(r.standardSchemeVat)).toBe(2_000);
-    expect(round(r.flatSchemeVat)).toBe(1_740);
-    expect(r.betterScheme).toBe("flat");
-  });
-
-  it("favours the standard scheme when the flat rate is very high", () => {
-    // FRS at 18% on £12k gross = £2,160 > £2,000 standard.
-    const r = flatRateComparison(10_000, 0.2, 0.18);
-    expect(r.betterScheme).toBe("standard");
-  });
-
-  it("returns 'tie' when the schemes match within a penny", () => {
-    // Find a flat rate that equals standard: 0.2 / 1.2 ≈ 0.16667
-    const r = flatRateComparison(10_000, 0.2, 0.2 / 1.2);
-    expect(r.betterScheme).toBe("tie");
-  });
-});

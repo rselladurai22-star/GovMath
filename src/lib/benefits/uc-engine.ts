@@ -115,7 +115,7 @@ function standardAllowance(i: UcInput): number {
   return i.over25 ? s.single25 : s.singleUnder25;
 }
 
-export function childrenElement(children: number, firstBornPre2017: boolean): number {
+function childrenElement(children: number, firstBornPre2017: boolean): number {
   const n = Math.max(0, Math.floor(children));
   if (n === 0) return 0;
   return (firstBornPre2017 ? UC_2026.child.firstPre2017 : UC_2026.child.each) + (n - 1) * UC_2026.child.each;

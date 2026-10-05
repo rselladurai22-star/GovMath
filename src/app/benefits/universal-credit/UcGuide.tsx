@@ -39,7 +39,7 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — Universal Credit: what you'll get", href: "https://www.gov.uk/universal-credit/what-youll-get" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
   { label: "GOV.UK — Benefit cap", href: "https://www.gov.uk/benefit-cap" },
-  { label: "GOV.UK — Universal Credit and childcare", href: "https://www.gov.uk/guidance/universal-credit-and-childcare" },
+  { label: "GOV.UK — Universal Credit and childcare", href: "https://www.gov.uk/guidance/universal-credit-childcare-costs" },
 ];
 
 export default function UcGuide() {

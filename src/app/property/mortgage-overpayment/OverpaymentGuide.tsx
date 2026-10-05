@@ -39,7 +39,7 @@ const TOC: TocItem[] = [
 
 const SOURCES: Source[] = [
   { label: "MoneyHelper — Overpaying your mortgage", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/should-you-pay-off-your-mortgage-early" },
-  { label: "FCA — Mortgages", href: "https://www.fca.org.uk/consumers/mortgages" },
+  { label: "FCA — Consumer help, including mortgages", href: "https://www.fca.org.uk/consumers" },
   { label: "GOV.UK — Tax on savings interest", href: "https://www.gov.uk/apply-tax-free-interest-on-savings" },
   { label: "GOV.UK — Individual Savings Accounts", href: "https://www.gov.uk/individual-savings-accounts" },
 ];

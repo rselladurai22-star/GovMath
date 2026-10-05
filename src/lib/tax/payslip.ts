@@ -12,7 +12,7 @@ import { STUDENT_PLANS, type StudentPlan } from "./take-home-engine";
 export type PayPeriod = "month" | "week";
 
 /** HMRC Class 1 employee thresholds per pay period, 2026/27. */
-export const NI_PERIOD_THRESHOLDS: Record<PayPeriod, { pt: number; uel: number }> = {
+const NI_PERIOD_THRESHOLDS: Record<PayPeriod, { pt: number; uel: number }> = {
   month: { pt: 1048, uel: 4189 },
   week: { pt: 242, uel: 967 },
 };

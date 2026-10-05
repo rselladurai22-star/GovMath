@@ -38,9 +38,9 @@ const TOC: TocItem[] = [
 
 const SOURCES: Source[] = [
   { label: "GOV.UK — Shared Ownership homes: buying a home", href: "https://www.gov.uk/shared-ownership-scheme" },
-  { label: "GOV.UK — Shared Ownership guidance for buyers", href: "https://www.gov.uk/government/publications/shared-ownership-guide-for-buyers" },
+  { label: "GOV.UK — Affordable home ownership schemes", href: "https://www.gov.uk/affordable-home-ownership-schemes" },
   { label: "GOV.UK — SDLT: shared ownership property", href: "https://www.gov.uk/guidance/sdlt-shared-ownership-property" },
-  { label: "MoneyHelper — Shared ownership", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/shared-ownership" },
+  { label: "MoneyHelper — Government home-buying schemes", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/government-schemes-for-first-time-home-buyers-and-existing-homeowners" },
 ];
 
 export default function SharedOwnershipGuide() {

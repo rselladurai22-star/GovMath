@@ -48,7 +48,7 @@ const TOC: TocItem[] = [
 const SOURCES: Source[] = [
   { label: "GOV.UK — Get a prescription prepayment certificate", href: "https://www.gov.uk/get-a-ppc" },
   { label: "NHSBSA — HRT prescription prepayment certificate", href: "https://www.nhsbsa.nhs.uk/help-nhs-prescription-costs/nhs-hormone-replacement-therapy-prescription-prepayment-certificate-hrt-ppc" },
-  { label: "NHS — Who can get free prescriptions", href: "https://www.nhs.uk/nhs-services/prescriptions/who-can-get-free-prescriptions/" },
+  { label: "NHS — Who can get free prescriptions", href: "https://www.nhs.uk/nhs-services/prescriptions/check-if-you-can-get-free-prescriptions/" },
   { label: "NHSBSA — Medical exemption certificates", href: "https://www.nhsbsa.nhs.uk/exemption-certificates/medical-exemption-certificates" },
   { label: "NHSBSA — NHS Low Income Scheme", href: "https://www.nhsbsa.nhs.uk/nhs-low-income-scheme" },
 ];
