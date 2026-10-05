@@ -103,14 +103,11 @@ How they are built:
 
 **Checks:** to compare with the package, serve its `dist` folder (`python3 -m http.server <port> --directory dist`), take full-page screenshots of both at 1440, 768 and 375px and pixel-diff them. The 11 package pages should stay identical apart from the generated tool lists. To change them, edit the JSON (or regenerate from a new package with the same converter).
 
-## Ads (waiting on the owner)
+## Ads (AdSense)
 
-- Ads only switch on when environment variables are set (`src/lib/ads.ts`). Then every page gets the `google-adsense-account` meta tag and the AdSense script (in `src/app/layout.tsx`, which also runs Auto ads), `/ads.txt` is generated, and `AdSlot` shows in-page units if a slot ID is set. Without them nothing ad-related is output and `/ads.txt` is a 404.
-- The script was accidentally dropped in the October 2026 redesign and restored in the AdSense readiness pass; check it is still in the root layout after any layout change.
-- **The owner must:**
-  - set `NEXT_PUBLIC_ADSENSE_CLIENT` (and optionally `NEXT_PUBLIC_ADSENSE_SLOT`) in Vercel for Production, then redeploy, before applying or requesting review
-  - add the site as `govmath.co.uk` in AdSense (www redirects to it)
-  - turn on the Google-certified consent message for the UK, EEA and Switzerland under Privacy & messaging (the privacy policy already describes it); without it, UK visitors get limited or no ads
+- Publisher ID **ca-pub-3942263076624028** is the default in `src/lib/ads.ts`; `NEXT_PUBLIC_ADSENSE_CLIENT` in Vercel overrides it, and `off` switches ads off. Every page gets the `google-adsense-account` meta tag and the AdSense script (in `src/app/layout.tsx`, which also runs Auto ads), and `/ads.txt` reads `google.com, pub-3942263076624028, DIRECT, f08c47fec0942fa0`. `AdSlot` shows in-page units only once `NEXT_PUBLIC_ADSENSE_SLOT` is set.
+- The script was accidentally dropped in the October 2026 redesign and restored later; check it is still in the root layout after any layout change.
+- **The owner must:** add `govmath.co.uk` in AdSense, verify and request review; turn on the Google-certified consent message for the UK, EEA and Switzerland under Privacy & messaging (the privacy policy already describes it); after approval, turn on Auto ads.
 - The privacy policy (`src/app/privacy/page.tsx`) has the AdSense disclosures (Google cookies, Ads Settings, aboutads.info, youronlinechoices, partner-sites policy), the consent message and the ICO. Update its date when it changes.
 
 ## Status
