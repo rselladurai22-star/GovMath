@@ -104,12 +104,18 @@ The owner asked for the look and feel of the Axis Bank calculators site, in GovM
 - **Calculator page layout** (matches the reference bank calculator pages):
   - The banner is centred (`FlagshipHero`).
   - `SectionTabs.tsx` is a sticky row of section links under the site header: Calculator, Guide, FAQs, Other calculators. It highlights the section in view. The anchors are `#calculator`, `#guide`, `#faqs` and `#related`.
+  - `FlagshipPage` puts a row of tab pills at the top of the grey panel (`.calcTabs`): this calculator (plum) and the first two related calculators (white), as on the reference EMI page.
   - `Studio.tsx` works like the reference EMI calculators:
-    - One soft-grey panel holds the inputs on the left and a white summary card on the right, sticky on desktop.
-    - The summary card is the `Answer` (eyebrow, big plum figure, sentence, badges, share) plus a ring chart built from the first `SplitBar` anywhere in the results, with a total in the middle when the values are in pounds.
-    - Results always show and update live. The Calculate button sets `ready` (so the address stays shareable) and jumps to the detailed results.
+    - One soft-grey panel holds the inputs on the left and a white card on the right, sticky on desktop.
+    - There is no panel title and there are no group headings (they are visually hidden). Reset is a small link in the panel corner.
+    - Labels are 1.125rem bold, with a compact white value box on the right for amounts and steppers. The −/+ stepper buttons are hidden.
+    - The slider is a thin dark track with a white-ringed plum handle; min and max sit underneath.
+    - Every field `hint` (and `Segmented` note, `Switch` hint) shows behind an "i" `InfoTip` on hover, focus or tap, never as text under the field.
+    - The inputs end in a white `.totalBar`, "{dock.label} {dock.value}", with a "See full results" button (like "Your EMI … Apply Now"). The phone dock was removed.
+    - The right card is a ring chart built from the first `SplitBar` anywhere in the results, with a total in the middle (in pounds) and a big legend. Without a `SplitBar`, it shows the `Answer` instead.
+    - Results always show and update live. The button sets `ready` (so the address stays shareable) and jumps to the detailed results. When the ring chart is shown, the `Answer` leads the detailed results as a light card.
     - Everything else (Facts, Assumptions, cards) sits below in `#results` ("Your results in detail"), a two-column grid. Cards holding a table or chart (`table`, `svg[preserveAspectRatio]`, `svg[role=img]`) span both columns.
-  - `Segmented` choices look like underlined uppercase tabs.
+  - `Segmented` choices and quick-pick chips are small square-cornered pills; the selected one is plum.
   - An amount with a slider shows the label left, the value box right and the slider below (`.field:has(> .slider)`).
   - FAQs are a hairline accordion. Other calculators are white cards on `--ax-soft`.
   - These overrides sit at the end of `Flagship.module.css` and `Shell.module.css` under "Bank-calculator layout".

@@ -1,6 +1,6 @@
 "use client";
 
-import { Children, Fragment, isValidElement, useEffect, useRef, useState, type ReactElement, type ReactNode } from "react";
+import { Children, Fragment, isValidElement, useEffect, useRef, type ReactElement, type ReactNode } from "react";
 import { gbp } from "./format";
 import { Answer, SplitBar, type Segment } from "./results";
 import s from "./Flagship.module.css";
@@ -33,7 +33,7 @@ function Donut({ segments }: { segments: Segment[] }) {
   const parts = segments.filter((g) => g.value > 0);
   const total = parts.reduce((a, g) => a + g.value, 0);
   if (total <= 0) return null;
-  const r = 70;
+  const r = 80;
   const c = 2 * Math.PI * r;
   const arcs = parts.map((g, i) => ({
     ...g,
@@ -45,7 +45,7 @@ function Donut({ segments }: { segments: Segment[] }) {
     <div className={s.donutWrap}>
       <div className={s.donut}>
         <svg viewBox="0 0 180 180" role="img" aria-label={parts.map((g) => `${g.label} ${g.display}`).join(", ")}>
-          <circle cx="90" cy="90" r={r} fill="none" stroke="var(--ax-line)" strokeWidth="18" />
+          <circle cx="90" cy="90" r={r} fill="none" stroke="var(--ax-line)" strokeWidth="12" />
           {arcs.map((g) => (
             <circle
               key={g.label}
@@ -54,7 +54,7 @@ function Donut({ segments }: { segments: Segment[] }) {
               r={r}
               fill="none"
               stroke={g.color}
-              strokeWidth="18"
+              strokeWidth="12"
               strokeDasharray={`${g.len} ${c - g.len}`}
               strokeDashoffset={-g.before}
               transform="rotate(-90 90 90)"
@@ -86,11 +86,12 @@ function Donut({ segments }: { segments: Segment[] }) {
 /**
  * Calculator workspace, laid out like a bank calculator page.
  *
- * One soft-grey panel holds the inputs on the left and a white summary card
- * on the right: the headline answer with a ring chart of where the money
- * goes. The summary updates live. The detailed results (key figures,
- * assumptions, tables and charts) follow underneath in a two-column grid.
- * The Calculate button saves the inputs to the address and jumps to them.
+ * One soft-grey panel holds the inputs on the left, ending in a white bar
+ * with the headline figure (like "Your EMI"), and a white card on the right
+ * with a ring chart of where the money goes (or the answer, when there is
+ * no split). Everything updates live. The detailed results follow
+ * underneath in a two-column grid; the button saves the inputs to the
+ * address and jumps to them.
  */
 export default function Studio({
   title,
@@ -112,33 +113,22 @@ export default function Studio({
   dock: { label: string; value: string };
   children: ReactNode;
 }) {
-  const summary = useRef<HTMLElement>(null);
   const details = useRef<HTMLElement>(null);
   const jump = useRef(false);
-  const [showDock, setShowDock] = useState(false);
 
   const blocks = topLevel(children);
   const answer = blocks.find((b) => b.type === Answer);
-  const rest = blocks.filter((b) => b !== answer);
   const split = flatten(children).find((e) => e.type === SplitBar);
   const segments = split ? (split.props as { segments: Segment[] }).segments : null;
+  // With a ring chart in the summary card, the full answer (sentence,
+  // badges, share) leads the detailed results instead.
+  const rest = segments ? blocks : blocks.filter((b) => b !== answer);
 
   useEffect(() => {
     if (!ready || !jump.current) return;
     jump.current = false;
     requestAnimationFrame(() => details.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
   }, [ready]);
-
-  // On phones the summary sits under the inputs: keep the answer in a dock.
-  useEffect(() => {
-    const el = summary.current;
-    if (!el || !("IntersectionObserver" in window)) return;
-    const io = new IntersectionObserver(([e]) => setShowDock(!e.isIntersecting && e.boundingClientRect.top > 0), {
-      rootMargin: "0px 0px -20% 0px",
-    });
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
 
   return (
     <>
@@ -156,28 +146,28 @@ export default function Studio({
             )}
           </header>
           <div className={s.panelBody}>{inputs}</div>
-          <footer className={s.panelFoot}>
+          <footer className={s.totalBar}>
+            <p aria-live="polite">
+              <span>{dock.label}</span>
+              <strong>{dock.value}</strong>
+            </p>
             <button
               type="button"
               className={s.calcBtn}
+              aria-label={`${calculateLabel}: see full results`}
               onClick={() => {
                 jump.current = true;
                 if (ready) details.current?.scrollIntoView({ behavior: "smooth", block: "start" });
                 else onCalculate();
               }}
             >
-              {calculateLabel}
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} aria-hidden="true">
-                <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              See full results
             </button>
-            <p>Results update as you type. Nothing you enter is stored.</p>
           </footer>
         </aside>
 
-        <section ref={summary} className={s.summary} aria-label="Summary">
-          {answer}
-          {segments && <Donut segments={segments} />}
+        <section className={s.summary} aria-label="Summary">
+          {segments ? <Donut segments={segments} /> : answer}
         </section>
       </div>
 
@@ -191,25 +181,6 @@ export default function Studio({
         </section>
       )}
 
-      <button
-        type="button"
-        className={s.dock}
-        data-show={showDock || undefined}
-        tabIndex={showDock ? 0 : -1}
-        aria-hidden={!showDock}
-        onClick={() => summary.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
-      >
-        <span>
-          <small>{dock.label}</small>
-          <strong>{dock.value}</strong>
-        </span>
-        <em>
-          See results
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} aria-hidden="true">
-            <path d="M12 5v14M6 13l6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </em>
-      </button>
     </>
   );
 }
