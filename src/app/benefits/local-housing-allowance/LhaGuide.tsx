@@ -27,7 +27,7 @@ const TOC: TocItem[] = [
   { id: "freeze", title: "The freeze and what it means" },
   { id: "shortfall", title: "If your rent is more than the LHA" },
   { id: "uc-hb", title: "LHA on Universal Credit and Housing Benefit" },
-  { id: "nations", title: "Scotland and Wales" },
+  { id: "nations", title: "Scotland, Wales and Northern Ireland" },
   { id: "landlord", title: "Paying your landlord directly" },
   { id: "finding", title: "Finding a home within the LHA" },
   { id: "changes", title: "Changes you must report" },
@@ -70,8 +70,8 @@ export default function LhaGuide() {
         <ul>
           <li>Local Housing Allowance (LHA) is the most rent Universal Credit or Housing Benefit pays for a private tenancy.</li>
           <li>
-            There is a rate for each of 192 areas: 152 in England, 18 in Scotland and 22 in Wales, for shared accommodation and for one to
-            four bedrooms.
+            There is a rate for each of 200 areas: 152 in England, 18 in Scotland, 22 in Wales and 8 in Northern Ireland, for shared
+            accommodation and for one to four bedrooms.
           </li>
           <li>Universal Credit uses its own monthly rates; Housing Benefit uses weekly rates.</li>
           <li>
@@ -82,7 +82,7 @@ export default function LhaGuide() {
         </ul>
         <KeyStats
           items={[
-            { value: "192", label: "Rental areas in Great Britain" },
+            { value: "200", label: "Rental areas in the UK" },
             { value: "4", label: "Most bedrooms covered" },
             { value: "35", label: "Age the shared rate stops" },
             { value: "Frozen", label: "Rates in 2026/27" },
@@ -294,13 +294,14 @@ export default function LhaGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="nations" n={12} kicker="Elsewhere in the UK" title="Scotland and Wales">
+      <GuideSection id="nations" n={12} kicker="Elsewhere in the UK" title="Scotland, Wales and Northern Ireland">
         <p>
-          Scotland and Wales use the same bedroom rules and the same freeze, but their rates are set by their own rent officers: the
-          Scottish Government for 18 areas and Rent Officers Wales for 22. Choose Scotland or Wales in the calculator to see them.
+          Scotland, Wales and Northern Ireland use the same bedroom rules and the same freeze, but their rates are set locally: by the
+          Scottish Government for 18 areas, Rent Officers Wales for 22 and the Northern Ireland Housing Executive for 8. Choose the
+          country in the calculator to see them.
         </p>
         <DataTable
-          caption="One-bedroom LHA in Scotland and Wales, 2026/27"
+          caption="One-bedroom LHA in Scotland, Wales and Northern Ireland, 2026/27"
           head={["Area", "Housing Benefit a week", "Universal Credit a month"]}
           numeric={[1, 2]}
           rows={[
@@ -310,13 +311,18 @@ export default function LhaGuide() {
             ["Cardiff", "£149.59", "£650.00"],
             ["Swansea", "£120.82", "£525.00"],
             ["North Powys", "£74.79", "£325.00"],
+            ["Belfast", "£139.34", "£605.47"],
+            ["South East (Lisburn, Bangor)", "£109.62", "£476.33"],
+            ["North West (Derry)", "£99.23", "£431.18"],
           ]}
         />
         <p>
           Some areas cover several councils. Lothian includes the City of Edinburgh, East Lothian and Midlothian, and Highland and Islands
-          runs from Moray to Shetland. West Cheshire crosses into Wales but uses the English rates. In Northern Ireland, the Northern
-          Ireland Housing Executive sets its own rates, so enter yours under More options. Scotland also gives Discretionary Housing
-          Payments to fully offset the removal of the spare room subsidy for social tenants.
+          runs from Moray to Shetland. West Cheshire crosses into Wales but uses the English rates. Northern Ireland&rsquo;s areas go by
+          postcode: Belfast is BT1 to BT16, for example, and South East covers Lisburn, Bangor, Newtownards and Downpatrick. There,
+          Universal Credit is normally paid twice a month and the housing element goes straight to your landlord. Scotland gives
+          Discretionary Housing Payments to fully offset the removal of the spare room subsidy for social tenants, and Northern Ireland
+          has its own welfare mitigation payments for it.
         </p>
       </GuideSection>
 
@@ -416,7 +422,7 @@ export default function LhaGuide() {
       <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
-            { value: "192", label: "Broad Rental Market Areas in Great Britain" },
+            { value: "200", label: "Broad Rental Market Areas in the UK" },
             { value: "4", label: "Maximum bedrooms" },
             { value: "35", label: "Shared rate age limit" },
             { value: "30th", label: "Percentile of rents when last set" },

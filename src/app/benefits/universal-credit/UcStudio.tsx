@@ -3,6 +3,7 @@
 import { UC_2026, universalCredit2026, type CapArea, type Health, type Tenure, type UcInput } from "@/lib/benefits/uc-engine";
 import { LHA_AREAS, LHA_AREAS_BY_NATION, LHA_DEFAULT_AREA, lhaMonthly, lhaNation, weeklyToMonthly, type LhaCategory } from "@/lib/benefits/lha-engine";
 import { SCOTLAND_AREA_COVERS } from "@/lib/benefits/lha-scotland-wales";
+import { NORTHERN_IRELAND_AREA_COVERS } from "@/lib/benefits/lha-northern-ireland";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
@@ -134,6 +135,7 @@ export default function UcStudio({ query }: { query: Query }) {
                     { value: "england", label: "England" },
                     { value: "scotland", label: "Scotland" },
                     { value: "wales", label: "Wales" },
+                { value: "ni", label: "Northern Ireland" },
                   ]}
                 />
                 <SelectField
@@ -141,7 +143,7 @@ export default function UcStudio({ query }: { query: Query }) {
                   value={area}
                   onChange={st.bind("area")}
                   optional
-                  options={LHA_AREAS_BY_NATION[nation].map((a) => ({ value: a, label: SCOTLAND_AREA_COVERS[a] ? `${a} (${SCOTLAND_AREA_COVERS[a]})` : a }))}
+                  options={LHA_AREAS_BY_NATION[nation].map((a) => { const c = SCOTLAND_AREA_COVERS[a] ?? NORTHERN_IRELAND_AREA_COVERS[a]; return { value: a, label: c ? `${a} (${c})` : a }; })}
                   hint="Your Broad Rental Market Area sets your Local Housing Allowance."
                 />
                 <SelectField
@@ -296,9 +298,17 @@ export default function UcStudio({ query }: { query: Query }) {
             meeting the severe conditions criteria or who are terminally ill.
           </Callout>
         )}
-        <Callout title="Paid monthly, in arrears">
-          Your first payment usually arrives about five weeks after you claim. You can ask for an advance, repaid from later payments.
-        </Callout>
+        {v.tenure === "private" && nation === "ni" ? (
+          <Callout title="Universal Credit in Northern Ireland">
+            It is normally paid twice a month, and the housing element is paid straight to your landlord unless you ask otherwise. Your first
+            payment usually arrives about five weeks after you claim. Northern Ireland also has its own welfare mitigation payments, which
+            have made up losses from the benefit cap: ask Advice NI whether you qualify.
+          </Callout>
+        ) : (
+          <Callout title="Paid monthly, in arrears">
+            Your first payment usually arrives about five weeks after you claim. You can ask for an advance, repaid from later payments.
+          </Callout>
+        )}
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>

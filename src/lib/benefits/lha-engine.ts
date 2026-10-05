@@ -12,6 +12,7 @@
 
 import { LHA_ENGLAND_2024, type LhaRow } from "./lha-england";
 import { LHA_SCOTLAND_2024, LHA_WALES_2024 } from "./lha-scotland-wales";
+import { LHA_NORTHERN_IRELAND_2026, niMonthlyFromWeekly } from "./lha-northern-ireland";
 import { LHA_UC_MONTHLY_2024 } from "./lha-uc-monthly";
 
 export type LhaCategory = "shared" | "1" | "2" | "3" | "4";
@@ -95,12 +96,13 @@ export function bedroomEntitlement(i: BedroomInput): BedroomResult {
   };
 }
 
-export type LhaNation = "england" | "scotland" | "wales";
+export type LhaNation = "england" | "scotland" | "wales" | "ni";
 
 const TABLES: Record<LhaNation, readonly LhaRow[]> = {
   england: LHA_ENGLAND_2024,
   scotland: LHA_SCOTLAND_2024,
   wales: LHA_WALES_2024,
+  ni: LHA_NORTHERN_IRELAND_2026,
 };
 
 /** Broad Rental Market Areas in each nation, in alphabetical order. */
@@ -108,18 +110,22 @@ export const LHA_AREAS_BY_NATION: Record<LhaNation, string[]> = {
   england: LHA_ENGLAND_2024.map((r) => r[0]),
   scotland: LHA_SCOTLAND_2024.map((r) => r[0]),
   wales: LHA_WALES_2024.map((r) => r[0]),
+  ni: LHA_NORTHERN_IRELAND_2026.map((r) => r[0]),
 };
 
-/** Every area in England, Scotland and Wales. */
-export const LHA_AREAS = [...LHA_AREAS_BY_NATION.england, ...LHA_AREAS_BY_NATION.scotland, ...LHA_AREAS_BY_NATION.wales];
+/** Every area in the UK. */
+export const LHA_AREAS = [...LHA_AREAS_BY_NATION.england, ...LHA_AREAS_BY_NATION.scotland, ...LHA_AREAS_BY_NATION.wales, ...LHA_AREAS_BY_NATION.ni];
 
 /** A sensible starting area in each nation. */
-export const LHA_DEFAULT_AREA: Record<LhaNation, string> = { england: "Bristol", scotland: "Greater Glasgow", wales: "Cardiff" };
+export const LHA_DEFAULT_AREA: Record<LhaNation, string> = { england: "Bristol", scotland: "Greater Glasgow", wales: "Cardiff", ni: "Belfast" };
+
+export const LHA_NATION_LABEL: Record<LhaNation, string> = { england: "England", scotland: "Scotland", wales: "Wales", ni: "Northern Ireland" };
 
 /** The nation an area is in (England if it is not known). */
 export function lhaNation(area: string): LhaNation {
   if (LHA_AREAS_BY_NATION.scotland.includes(area)) return "scotland";
   if (LHA_AREAS_BY_NATION.wales.includes(area)) return "wales";
+  if (LHA_AREAS_BY_NATION.ni.includes(area)) return "ni";
   return "england";
 }
 
@@ -137,6 +143,7 @@ export function lhaWeekly(area: string, category: LhaCategory): number {
  * 0 if the area is not known.
  */
 export function lhaMonthly(area: string, category: LhaCategory): number {
+  if (lhaNation(area) === "ni") return niMonthlyFromWeekly(lhaWeekly(area, category));
   const row = LHA_UC_MONTHLY_2024[area];
   return row ? row[IDX[category] - 1] : 0;
 }
