@@ -2,7 +2,7 @@
 
 import { Children, Fragment, isValidElement, useEffect, useRef, type ReactElement, type ReactNode } from "react";
 import { gbp } from "./format";
-import { Answer, SplitBar, type Segment } from "./results";
+import { Answer, SplitBar, soften, type Segment } from "./results";
 import s from "./Flagship.module.css";
 
 /** Every element in a tree of results, fragments and cards opened up. */
@@ -53,7 +53,7 @@ function Donut({ segments }: { segments: Segment[] }) {
               cy="90"
               r={r}
               fill="none"
-              stroke={g.color}
+              stroke={soften(g.color)}
               strokeWidth="12"
               strokeDasharray={`${g.len} ${c - g.len}`}
               strokeDashoffset={-g.before}
@@ -72,7 +72,7 @@ function Donut({ segments }: { segments: Segment[] }) {
         {segments.map((g) => (
           <li key={g.label}>
             <span>
-              <i style={{ background: g.color }} aria-hidden="true" />
+              <i style={{ background: soften(g.color) }} aria-hidden="true" />
               {g.label}
             </span>
             <strong>{g.display}</strong>
