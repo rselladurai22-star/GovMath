@@ -1,7 +1,7 @@
 # GovMath project memory
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 4 October 2026 (Phases 5 and 6 live; Phases 7 and 8 built, awaiting review).
+Last updated: 5 October 2026 (Phases 0 to 8 live; homepage redesign in review).
 
 ## Goal
 
@@ -22,7 +22,7 @@ We go category by category, one phase at a time.
    - Wait for Vercel to deploy and check the live pages on govmath.co.uk.
    - Reset the branch to `origin/main` and force-push.
 3. Start the next phase only when the owner says so (for example "Phase 3").
-4. **Don't change the font** (Plus Jakarta Sans).
+4. **The font is Lato** (switched from Plus Jakarta Sans in October 2026 at the owner's request for the new design). Don't change it without asking.
 5. Never send the owner's email address to any external service.
 6. Write in plain UK English. Use 2026/27 tax-year figures (`src/lib/rates/tax-year.ts`).
 
@@ -69,6 +69,33 @@ Use any `src/app/property/*` or `src/app/tax-and-salary/*` page as the template.
 - Vitest does not resolve the `@/` alias, so `src/lib` files must use relative imports.
 - Playwright is not a project dependency: install `playwright-core` in a scratch folder and launch with `executablePath`.
 
+## Design system (October 2026 redesign)
+
+The owner asked for the look and feel of the Axis Bank calculators site, in GovMath's own colours. We use deep plum, not Axis burgundy, and no Axis logo or wording, so the site never looks affiliated.
+
+- **Tokens** (`src/app/globals.css`):
+  - Text and lines: `--ax-text` #282828, `--ax-muted` #6e6e6e, `--ax-line` #e2e2e2
+  - Panels: `--ax-soft` #f1f4f7, `--ax-paper` #f9f9f9
+  - Plum: `--ax-plum` #5b1e6e, `--ax-plum-deep` #2e0a3a, `--ax-plum-ink`, `--ax-plum-tint`, `--ax-plum-soft`, `--ax-lilac`
+  - `--ax-gradient`
+- **Patterns:**
+  - 1rem card radius and .5rem button radius
+  - Badge tabs hang from the top edge of cards (radius `0 0 .5rem .5rem`)
+  - Light (`--ax-soft`) and plum-gradient feature cards alternate
+  - Uppercase pill tabs
+  - Big light-weight headings (400 to 500)
+  - Accordions for the FAQ and for the mobile footer columns
+- **Header and footer:**
+  - `SiteHeader` has a dark utility strip above a plum bar.
+  - `SiteFooter` uses `<details>` columns that act as accordions on mobile.
+  - Styles are in `SiteChrome.module.css`.
+- **Homepage:**
+  - `src/components/home/Home.tsx` (server), with styles in `Home.module.css`
+  - `HeroSearch.tsx` (search with suggestions)
+  - `PlanCalcs.tsx` (tabbed quick calculators with sliders and a donut)
+  - The global h1 to h4 rules (navy, tight tracking) are overridden inside `.page`.
+- **Still to do:** the calculator pages, category pages and the flagship kit still use the old blue (#4353ff), hard-coded in about 57 files. Move them to the `--ax-*` tokens in the next design phase.
+
 ## Ads (waiting on the owner)
 
 - Ads only show when environment variables are set (`src/lib/ads.ts`). `AdSlot` renders nothing without them, and `/ads.txt` returns 404 until a publisher ID is set.
@@ -87,8 +114,8 @@ Use any `src/app/property/*` or `src/app/tax-and-salary/*` page as the template.
 | 4 | Benefits (15) | ✅ Live | All done. Engines: `src/lib/benefits/family.ts` (Child Benefit, HICBC, funded hours, Tax-Free Childcare, maternity, paternity, shared parental), `uc-engine.ts` (Universal Credit 2026/27 incl. benefit cap), `uc-work.ts` (gross pay to UC, taper), `lha-engine.ts` + `lha-england.ts` (bedroom rules, 152 English BRMAs, April 2024 rates frozen), `benefit-cap.ts` (Housing Benefit route), `later-life.ts` (Pension Credit, Attendance Allowance), `carers.ts` (Carer's Allowance earnings), `pip-assessment.ts` (all 12 PIP activities) |
 | 5 | Everyday Life (13) | ✅ Live | All done. Engines: `src/lib/life/estate.ts` (inheritance tax with taper, gift taper relief, BPR/APR £2.5m cap, probate fees, LPA fees, deputyship), `care.ts` (care home means test for all four nations, tariff income, spend-down), `health.ts` (BMI, waist-to-height, Healthy Start, prescription prepayment), `right-to-rent.ts`, `calendar.ts` (rule-based bank holidays for each nation, working days, date differences, `formatDate` without Intl), `everyday.ts` (percentages, pro-rata rent, timesheets) |
 | 6 | Investing & Pensions (10) | ✅ Live | All done. Engines: `src/lib/investing/tax.ts` (income tax by source incl. savings and dividends, Scotland, 2027 savings rates; CGT with losses and BADR), `wrappers.ts` (pension tax relief by method, annual allowance taper, ISA vs GIA), `growth.ts` (compound growth, AER, inflation, FIRE with State Pension bridge, Premium Bonds seeded simulation), `retirement.ts` (State Pension age with 6th-to-5th periods and 2044–46 fixed dates, new State Pension, deferral, auto-enrolment projection) |
-| 7 | Vehicles (10) | 🔍 In review | All done. Engines: `src/lib/vehicles/tax-2026.ts` (VED first-year rates, bands A to M, £440 supplement with the £50,000 line for new electric cars, eVED; HMRC appropriate percentages 2026/27, fuel benefit, EV salary sacrifice from real tax and NI; 2026 clean air zone charges, London congestion charge, Scottish LEZ penalties; SORN refunds), `running.ts` (journey cost, AMAP and advisory fuel rates, petrol vs EV over years, commuting by car/train/bus/bike, Cycle to Work), `rules.ts` (licence renewal at 70, MOT dates, plate check) |
-| 8 | Students (7) | 🔍 In review | All done. Engine: `src/lib/students/loans.ts` (Plans 1, 2, 4, 5 and Postgraduate 2026/27 thresholds, interest from September 2026 with the 6% cap and Plan 2 sliding scale, lifetime projection with write-off and threshold freeze to 2030; SFE maintenance loan 2026/27 matching the official table; student council tax). Loan pages share `src/components/students/LoanStudio.tsx` |
+| 7 | Vehicles (10) | ✅ Live | All done. Engines: `src/lib/vehicles/tax-2026.ts` (VED first-year rates, bands A to M, £440 supplement with the £50,000 line for new electric cars, eVED; HMRC appropriate percentages 2026/27, fuel benefit, EV salary sacrifice from real tax and NI; 2026 clean air zone charges, London congestion charge, Scottish LEZ penalties; SORN refunds), `running.ts` (journey cost, AMAP and advisory fuel rates, petrol vs EV over years, commuting by car/train/bus/bike, Cycle to Work), `rules.ts` (licence renewal at 70, MOT dates, plate check) |
+| 8 | Students (7) | ✅ Live | All done. Engine: `src/lib/students/loans.ts` (Plans 1, 2, 4, 5 and Postgraduate 2026/27 thresholds, interest from September 2026 with the 6% cap and Plan 2 sliding scale, lifetime projection with write-off and threshold freeze to 2030; SFE maintenance loan 2026/27 matching the official table; student council tax). Loan pages share `src/components/students/LoanStudio.tsx` |
 
 The order of phases 4 to 8 is flexible; ask the owner.
 

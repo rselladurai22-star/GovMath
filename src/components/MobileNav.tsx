@@ -104,7 +104,7 @@ export default function MobileNav({ topics }: { topics: NavTopic[] }) {
             </nav>
 
             <div className={styles.drawerFoot}>
-              <Link href="/calculators" onClick={close} className="gm-btn" style={{ width: "100%" }}>
+              <Link href="/calculators" onClick={close} className={styles.drawerCta}>
                 Browse all calculators
               </Link>
             </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Lato } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import Script from "next/script";
@@ -8,13 +8,13 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { ADSENSE_CLIENT } from "@/lib/ads";
 
-// One typeface site-wide: Plus Jakarta Sans — a modern, premium geometric sans
-// with open, highly legible letterforms. Legacy font variables alias onto it
-// in globals.css.
-const jakarta = Plus_Jakarta_Sans({
+// One typeface site-wide: Lato, a warm, highly legible humanist sans. Legacy
+// font variables alias onto it in globals.css.
+const lato = Lato({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["300", "400", "700", "900"],
+  style: ["normal", "italic"],
   variable: "--font-body",
 });
 
@@ -65,7 +65,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-GB"
-      className={`h-full antialiased ${jakarta.variable}`}
+      className={`h-full antialiased ${lato.variable}`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text">
         <script

@@ -70,6 +70,21 @@
   --brand-gradient: linear-gradient(120deg, #4353ff 0%, #7c3aed 100%);
   --brand-glow: 0 14px 30px -12px rgba(87, 70, 245, 0.55);
 
+  /* Axis-style design language (plum accent): used by the site chrome and the
+     homepage, and by pages as they move to the new look. */
+  --ax-text: #282828; /* body and headings */
+  --ax-muted: #6e6e6e; /* secondary text */
+  --ax-line: #e2e2e2; /* borders */
+  --ax-soft: #f1f4f7; /* light panels */
+  --ax-paper: #f9f9f9; /* inputs, tab buttons */
+  --ax-plum: #5b1e6e; /* brand and action colour */
+  --ax-plum-deep: #2e0a3a; /* gradient start, header shade */
+  --ax-plum-ink: #4a1659; /* hover on plum */
+  --ax-plum-tint: #f5edf8; /* selected and soft fills */
+  --ax-plum-soft: #e4d2ec;
+  --ax-lilac: #d9b8e6; /* emphasis on dark plum */
+  --ax-gradient: linear-gradient(230deg, #2e0a3a 0%, #5b1e6e 92%);
+
   --radius: 8px;
   --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
   --shadow-md: 0 6px 18px rgba(16, 24, 40, 0.07);
