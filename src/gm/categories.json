@@ -1,0 +1,74 @@
+[
+ {
+  "slug": "tax-and-salary",
+  "label": "Tax &amp; salary",
+  "desc": "Understand your payslip and what you take home.",
+  "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 3h10v18H7zM10 7h4M10 11h4M10 15h1m3 0h0\"></path></svg>",
+  "heroDesc": "Understand your payslip and what you take home.",
+  "heroTitle": "Tax &amp; salary calculators",
+  "toolIcon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 3h10v18H7zM10 7h4M10 11h4M10 15h1m3 0h0\"></path></svg>"
+ },
+ {
+  "slug": "property",
+  "label": "Mortgages &amp; property",
+  "desc": "Plan the cost of buying, owning or renting a home.",
+  "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7\"></path></svg>",
+  "heroDesc": "Plan the cost of buying, owning or renting a home.",
+  "heroTitle": "Mortgages &amp; property calculators",
+  "toolIcon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m3 11 9-8 9 8M5 10v11h14V10M9 21v-7h6v7\"></path></svg>"
+ },
+ {
+  "slug": "business",
+  "label": "Freelance &amp; business",
+  "desc": "Make sense of business taxes, income and costs.",
+  "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"14\" rx=\"2\"></rect><path d=\"M8 7V3h8v4M3 12h18M10 12v3h4v-3\"></path></svg>",
+  "heroDesc": "Make sense of business taxes, income and costs.",
+  "heroTitle": "Freelance &amp; business calculators",
+  "toolIcon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"7\" width=\"18\" height=\"14\" rx=\"2\"></rect><path d=\"M8 7V3h8v4M3 12h18M10 12v3h4v-3\"></path></svg>"
+ },
+ {
+  "slug": "investing",
+  "label": "Pensions &amp; investing",
+  "desc": "Explore your savings, investments and retirement.",
+  "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 20V10m5 10V6m5 14v-9m5 9V3\"></path></svg>",
+  "heroDesc": "Explore your savings, investments and retirement.",
+  "heroTitle": "Pensions &amp; investing calculators",
+  "toolIcon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 20V10m5 10V6m5 14v-9m5 9V3\"></path></svg>"
+ },
+ {
+  "slug": "benefits",
+  "label": "Family &amp; benefits",
+  "desc": "Check support for your family and everyday life.",
+  "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21S2 15 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 7-10 13-10 13Z\"></path></svg>",
+  "heroDesc": "Check support for your family and everyday life.",
+  "heroTitle": "Family &amp; benefits calculators",
+  "toolIcon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21S2 15 2 8a5 5 0 0 1 10-1 5 5 0 0 1 10 1c0 7-10 13-10 13Z\"></path></svg>"
+ },
+ {
+  "slug": "vehicles",
+  "label": "Vehicles &amp; transport",
+  "desc": "Work out the cost of your car and your commute.",
+  "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m5 7 2-4h10l2 4 2 4v7H3v-7l2-4ZM3 11h18M7 15h1m8 0h1M5 18v3m14-3v3\"></path></svg>",
+  "heroDesc": "Work out the cost of your car and your commute.",
+  "heroTitle": "Vehicles &amp; transport calculators",
+  "toolIcon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m5 7 2-4h10l2 4 2 4v7H3v-7l2-4ZM3 11h18M7 15h1m8 0h1M5 18v3m14-3v3\"></path></svg>"
+ },
+ {
+  "slug": "students",
+  "label": "Students &amp; education",
+  "desc": "Understand student finance and loan repayments.",
+  "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m2 8 10-5 10 5-10 5-10-5ZM6 10v7q6 5 12 0v-7M22 8v9\"></path></svg>",
+  "heroDesc": "Understand student finance and loan repayments.",
+  "heroTitle": "Students &amp; education calculators",
+  "toolIcon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m2 8 10-5 10 5-10 5-10-5ZM6 10v7q6 5 12 0v-7M22 8v9\"></path></svg>"
+ },
+ {
+  "slug": "life",
+  "label": "Everyday life",
+  "desc": "Useful calculations for the things life brings.",
+  "icon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"2\"></rect><path d=\"M7 2v5m10-5v5M3 10h18M8 14h2m4 0h2M8 17h2\"></path></svg>",
+  "heroDesc": "Useful calculations for the things life brings.",
+  "heroTitle": "Everyday life calculators",
+  "toolIcon": "<svg width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"2\"></rect><path d=\"M7 2v5m10-5v5M3 10h18M8 14h2m4 0h2M8 17h2\"></path></svg>"
+ }
+]

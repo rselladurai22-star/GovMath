@@ -8,7 +8,6 @@ import { AdvancedOptions, InputGroup, MoneyField, Segmented, Switch } from "@/co
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
 import { gbp, gbpShort, percent } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
-import s from "@/components/flagship/Flagship.module.css";
 
 type Buyer = "standard" | "first-time" | "additional";
 type Nation = "scotland" | "wales";
@@ -324,7 +323,7 @@ export default function LandTaxStudio({ nation, query }: { nation: Nation; query
         />
       </ResultCard>
 
-      <p className={s.hint} style={{ textAlign: "center" }}>
+      <p className="footnote" style={{ textAlign: "center" }}>
         Residential rates for 2026/27. Your solicitor will confirm the final figure with {n.authority}.
       </p>
     </Studio>

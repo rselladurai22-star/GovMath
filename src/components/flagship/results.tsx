@@ -1,9 +1,18 @@
 import type { ReactNode } from "react";
-import s from "./Flagship.module.css";
+
+/*
+ * Calculator results in the approved GovMath design's markup (see
+ * public/gm/matching-mortgage.css and matching-calculators.css): the
+ * .ax-paymentstrip answer, .facts tiles, .resultcard cards, .splitbar with
+ * an .allocation list, .rate-row comparisons and tables in a .tablewrap.
+ * Parts the package does not include use gm-* classes from
+ * public/gm/govmath-site.css.
+ */
 
 /**
  * The headline answer: one big figure and a sentence that says what it means.
- * Every flagship calculator leads with this.
+ * Studio lifts these props into the results panel; rendered on its own it
+ * shows the same panel content without the chart.
  */
 export function Answer({
   eyebrow,
@@ -21,24 +30,24 @@ export function Answer({
   actions?: ReactNode;
 }) {
   return (
-    <section className={s.answer} aria-live="polite" aria-atomic="true">
-      <div className={s.answerTop}>
-        <span className={s.answerEyebrow}>{eyebrow}</span>
-        {actions}
+    <div className="gm-answer" aria-live="polite" aria-atomic="true">
+      <div className="ax-paymentstrip">
+        <div>
+          <span>{eyebrow}</span>
+          <strong>{value}</strong>
+          {unit && <small>{unit}</small>}
+        </div>
       </div>
-      <p className={s.answerValue}>
-        <strong>{value}</strong>
-        {unit && <span>{unit}</span>}
-      </p>
-      <p className={s.answerSentence}>{sentence}</p>
+      <p className="loan-summary">{sentence}</p>
       {badges && badges.length > 0 && (
-        <ul className={s.answerBadges}>
+        <div className="badges">
           {badges.map((b, i) => (
-            <li key={i}>{b}</li>
+            <span key={i}>{b}</span>
           ))}
-        </ul>
+        </div>
       )}
-    </section>
+      {actions}
+    </div>
   );
 }
 
@@ -47,19 +56,19 @@ export type Fact = { label: string; value: string; note?: ReactNode; tone?: "goo
 /** A row of key figures that support the answer. */
 export function Facts({ items }: { items: Fact[] }) {
   return (
-    <dl className={s.facts}>
+    <div className="facts">
       {items.map((f) => (
         <div key={f.label} data-tone={f.tone}>
-          <dt>{f.label}</dt>
-          <dd>{f.value}</dd>
-          {f.note && <span className={s.factNote}>{f.note}</span>}
+          <span>{f.label}</span>
+          <b>{f.value}</b>
+          {f.note && <small className="gm-factnote">{f.note}</small>}
         </div>
       ))}
-    </dl>
+    </div>
   );
 }
 
-/** White result card with a plain-English title and optional subtitle. */
+/** Result card with a plain-English title and optional subtitle. */
 export function ResultCard({
   title,
   sub,
@@ -73,71 +82,83 @@ export function ResultCard({
   id?: string;
   children: ReactNode;
 }) {
+  const heading = (
+    <>
+      <h3 id={id ? `${id}-title` : undefined}>{title}</h3>
+      {sub && <p>{sub}</p>}
+    </>
+  );
   return (
-    <section className={s.card} id={id} aria-labelledby={id ? `${id}-title` : undefined}>
-      <header className={s.cardHead}>
-        <div>
-          <h2 id={id ? `${id}-title` : undefined}>{title}</h2>
-          {sub && <p>{sub}</p>}
+    <section className="resultcard" id={id} aria-labelledby={id ? `${id}-title` : undefined}>
+      {action ? (
+        <div className="sectionheading">
+          <div>{heading}</div>
+          {action}
         </div>
-        {action}
-      </header>
+      ) : (
+        heading
+      )}
       {children}
     </section>
   );
 }
 
 /**
- * Chart colours in the soft palette of the reference bank calculators
- * (lilac and teal first). Studios pass their strong brand colours; the
- * ring chart, split bars and payslip swatches all soften them the same way,
- * so one series has one colour everywhere.
+ * Chart colours in the approved design's palette (as on its take-home and
+ * mortgage pages): plum for what you keep or borrow, gold for tax or
+ * interest, then mauve, sand and slate. Studios pass their own colours; the
+ * ring chart, split bars and payslip swatches all map them the same way, so
+ * one series keeps one colour.
  */
-const SOFT: Record<string, string> = {
-  "#5b1e6e": "#c47fd5",
-  "#f59e0b": "#5fd3c8",
-  "#0f9f6e": "#8f9cf0",
-  "#16a34a": "#8f9cf0",
-  "#10b981": "#8f9cf0",
-  "#0a7a52": "#8f9cf0",
-  "#2e0a3a": "#f4b860",
-  "#4a1659": "#f4b860",
-  "#db2777": "#f48fb1",
-  "#e11d48": "#f48fb1",
-  "#8e4ba3": "#e3a6ef",
-  "#a855f7": "#e3a6ef",
-  "#0ea5e9": "#7cc8f0",
-  "#f97316": "#f7a36b",
+const DESIGN: Record<string, string> = {
+  "#0f9f6e": "#73164c",
+  "#16a34a": "#73164c",
+  "#10b981": "#73164c",
+  "#0a7a52": "#73164c",
+  "#f59e0b": "#c79a4b",
+  "#5b1e6e": "#ad7198",
+  "#2e0a3a": "#ead5af",
+  "#4a1659": "#ead5af",
+  "#db2777": "#909aab",
+  "#e11d48": "#909aab",
+  "#8e4ba3": "#d8b4c9",
+  "#a855f7": "#d8b4c9",
+  "#0ea5e9": "#7ba5df",
+  "#f97316": "#e0b27a",
   "#94a3b8": "#c9ced6",
 };
 export function soften(color: string): string {
-  return SOFT[color.toLowerCase()] ?? color;
+  return DESIGN[color.toLowerCase()] ?? color;
 }
 
 export type Segment = { label: string; value: number; display: string; color: string };
 
-/** One bar split into labelled parts, with a legend that carries the numbers. */
+/** One bar split into its parts, with a list underneath. */
 export function SplitBar({ segments, caption }: { segments: Segment[]; caption?: ReactNode }) {
   const total = segments.reduce((a, b) => a + Math.max(0, b.value), 0);
   return (
-    <div className={s.split}>
-      <div className={s.splitBar} role="img" aria-label={segments.map((g) => `${g.label} ${g.display}`).join(", ")}>
+    <>
+      <div className="splitbar" role="img" aria-label={segments.map((g) => `${g.label} ${g.display}`).join(", ")}>
         {segments.map((g) => (
-          <span key={g.label} style={{ flexGrow: Math.max(0, g.value), background: soften(g.color) }} />
+          <span key={g.label} style={{ flex: Math.max(0, g.value), background: soften(g.color) }} title={`${g.label}: ${g.display}`} />
         ))}
       </div>
-      <ul className={s.legend}>
+      <div className="allocation">
         {segments.map((g) => (
-          <li key={g.label}>
-            <i style={{ background: soften(g.color) }} aria-hidden="true" />
-            <span>{g.label}</span>
-            <strong>{g.display}</strong>
-            <em>{total > 0 ? Math.round((Math.max(0, g.value) / total) * 100) : 0}%</em>
-          </li>
+          <div key={g.label}>
+            <span>
+              <i style={{ background: soften(g.color) }} aria-hidden="true" />
+              {g.label}
+            </span>
+            <b>
+              {g.display}
+              <small className="gm-share">{total > 0 ? Math.round((Math.max(0, g.value) / total) * 100) : 0}%</small>
+            </b>
+          </div>
         ))}
-      </ul>
-      {caption && <p className={s.splitCaption}>{caption}</p>}
-    </div>
+      </div>
+      {caption && <p className="footnote">{caption}</p>}
+    </>
   );
 }
 
@@ -151,33 +172,29 @@ export type CompareRow = {
   current?: boolean;
 };
 
-/** Side-by-side scenarios: label, horizontal bar, value and change. */
+/** Side-by-side scenarios, as the design's rate rows. */
 export function Compare({ rows, head }: { rows: CompareRow[]; head: [string, string] }) {
   return (
-    <div className={s.compare} role="table">
-      <div className={s.compareHead} role="row">
+    <div className="gm-compare" role="table">
+      <div className="rate-row gm-rate-head" role="row">
         <span role="columnheader">{head[0]}</span>
-        <span role="columnheader">{head[1]}</span>
+        <strong role="columnheader">{head[1]}</strong>
+        <small aria-hidden="true" />
       </div>
       {rows.map((r, i) => (
-        <div key={i} className={s.compareRow} role="row" data-current={r.current || undefined}>
-          <span className={s.compareLabel} role="cell">
-            {r.label}
-          </span>
-          <span className={s.compareBar} aria-hidden="true">
-            <i style={{ width: `${Math.max(2, Math.min(1, r.bar) * 100)}%` }} />
-          </span>
-          <span className={s.compareValue} role="cell">
-            <strong>{r.value}</strong>
-            {r.delta && <em data-tone={r.deltaTone}>{r.delta}</em>}
-          </span>
+        <div key={i} className={`rate-row${r.current ? " current" : ""}`} role="row">
+          <span role="cell">{r.label}</span>
+          <strong role="cell">{r.value}</strong>
+          <small role="cell" data-tone={r.deltaTone}>
+            {r.delta}
+          </small>
         </div>
       ))}
     </div>
   );
 }
 
-/** Highlighted tip or insight, optionally with a button. */
+/** Highlighted tip or insight, as the design's grey insight boxes. */
 export function Callout({
   tone = "info",
   title,
@@ -190,27 +207,10 @@ export function Callout({
   action?: ReactNode;
 }) {
   return (
-    <div className={s.callout} data-tone={tone}>
-      <span className={s.calloutIcon} aria-hidden="true">
-        {tone === "warn" ? (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" />
-          </svg>
-        ) : tone === "good" ? (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 12.5l4.5 4.5L19 7.5" />
-          </svg>
-        ) : (
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
-            <path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z" />
-          </svg>
-        )}
-      </span>
-      <div>
-        <strong>{title}</strong>
-        <div className={s.calloutBody}>{children}</div>
-        {action && <div className={s.calloutAction}>{action}</div>}
-      </div>
+    <div className="gm-insight" data-tone={tone}>
+      <h3>{title}</h3>
+      <div>{children}</div>
+      {action && <div className="gm-insight-action">{action}</div>}
     </div>
   );
 }
@@ -226,14 +226,9 @@ export function DataTable({
   rows: (string | number)[][];
 }) {
   return (
-    <details className={s.table}>
-      <summary>
-        {summary}
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
-          <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </summary>
-      <div className={s.tableScroll}>
+    <details className="schedule">
+      <summary>{summary}</summary>
+      <div className="tablewrap">
         <table>
           <thead>
             <tr>
@@ -247,15 +242,9 @@ export function DataTable({
           <tbody>
             {rows.map((r, i) => (
               <tr key={i}>
-                {r.map((c, j) =>
-                  j === 0 ? (
-                    <th key={j} scope="row">
-                      {c}
-                    </th>
-                  ) : (
-                    <td key={j}>{c}</td>
-                  ),
-                )}
+                {r.map((c, j) => (
+                  <td key={j}>{c}</td>
+                ))}
               </tr>
             ))}
           </tbody>
@@ -276,13 +265,11 @@ export type StatementRow = {
 /** Always-visible statement, e.g. a payslip across pay periods. */
 export function Statement({ columns, rows }: { columns: string[]; rows: StatementRow[] }) {
   return (
-    <div className={s.statementScroll}>
-      <table className={s.statement}>
+    <div className="tablewrap gm-statement">
+      <table>
         <thead>
           <tr>
-            <th scope="col">
-              <span className="sr-only">Item</span>
-            </th>
+            <th scope="col">Item</th>
             {columns.map((c) => (
               <th key={c} scope="col">
                 {c}
@@ -293,10 +280,10 @@ export function Statement({ columns, rows }: { columns: string[]; rows: Statemen
         <tbody>
           {rows.map((r, i) => (
             <tr key={i} data-kind={r.kind}>
-              <th scope="row">
-                {r.swatch && <i style={{ background: soften(r.swatch) }} aria-hidden="true" />}
+              <td>
+                {r.swatch && <i className="gm-swatch" style={{ background: soften(r.swatch) }} aria-hidden="true" />}
                 {r.label}
-              </th>
+              </td>
               {r.values.map((v, j) => (
                 <td key={j}>{v}</td>
               ))}
@@ -314,9 +301,9 @@ export function Statement({ columns, rows }: { columns: string[]; rows: Statemen
  */
 export function Assumptions({ items, note }: { items: { label: string; value: string }[]; note?: ReactNode }) {
   return (
-    <section className={s.assumptions} aria-label="What we assumed">
-      <h2>What we assumed</h2>
-      <dl>
+    <details className="ax-assumptions" open>
+      <summary>What we assumed</summary>
+      <dl className="gm-assumed">
         {items.map((i) => (
           <div key={i.label}>
             <dt>{i.label}</dt>
@@ -325,6 +312,6 @@ export function Assumptions({ items, note }: { items: { label: string; value: st
         ))}
       </dl>
       <p>{note ?? "Not right for you? Change it under More options."}</p>
-    </section>
+    </details>
   );
 }

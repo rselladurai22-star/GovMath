@@ -1,7 +1,7 @@
 "use client";
 
 import { useId, useRef, useState, type ReactNode } from "react";
-import s from "./Flagship.module.css";
+import { soften } from "./results";
 
 export type Series = {
   key: string;
@@ -60,23 +60,23 @@ export default function AreaChart({
   const shown = active ?? n - 1;
 
   return (
-    <div className={s.chart}>
-      <ul className={s.chartKey}>
+    <div className="gm-chart">
+      <div className="chartlegend">
         {series.map((x) => (
-          <li key={x.key}>
-            <i style={{ background: x.color }} data-dashed={x.dashed || undefined} aria-hidden="true" />
+          <span key={x.key}>
+            <i style={{ background: soften(x.color) }} data-dashed={x.dashed || undefined} aria-hidden="true" />
             {x.label}
-          </li>
+          </span>
         ))}
-      </ul>
+      </div>
 
-      <div className={s.chartReadout} aria-live="polite">
+      <div className="gm-readout" aria-live="polite">
         {readout(shown)}
       </div>
 
       <div
         ref={ref}
-        className={s.chartPlot}
+        className="gm-plot"
         role="slider"
         tabIndex={0}
         aria-label={ariaLabel}
@@ -100,7 +100,7 @@ export default function AreaChart({
         }}
       >
         {ticks.map((t) => (
-          <span key={t} className={s.gridline} style={{ top: `${(yAt(t) / H) * 100}%` }}>
+          <span key={t} className="gm-gridline" style={{ top: `${(yAt(t) / H) * 100}%` }}>
             <em>{yFormat(t)}</em>
           </span>
         ))}
@@ -109,8 +109,8 @@ export default function AreaChart({
           <defs>
             {series.map((x) => (
               <linearGradient key={x.key} id={`${gid}-${x.key}`} x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor={x.color} stopOpacity="0.28" />
-                <stop offset="100%" stopColor={x.color} stopOpacity="0.02" />
+                <stop offset="0%" stopColor={soften(x.color)} stopOpacity="0.28" />
+                <stop offset="100%" stopColor={soften(x.color)} stopOpacity="0.02" />
               </linearGradient>
             ))}
           </defs>
@@ -125,7 +125,7 @@ export default function AreaChart({
                 <path
                   d={line}
                   fill="none"
-                  stroke={x.color}
+                  stroke={soften(x.color)}
                   strokeWidth={x.dashed ? 2 : 3}
                   strokeDasharray={x.dashed ? "7 6" : undefined}
                   strokeLinejoin="round"
@@ -136,23 +136,23 @@ export default function AreaChart({
           })}
         </svg>
 
-        <span className={s.cursor} style={{ left: `${(shown / (n - 1)) * 100}%` }} aria-hidden="true">
+        <span className="gm-cursor" style={{ left: `${(shown / (n - 1)) * 100}%` }} aria-hidden="true">
           {series.map((x) =>
             shown < x.values.length ? (
-              <i key={x.key} style={{ top: `${(yAt(x.values[shown]) / H) * 100}%`, background: x.color }} />
+              <i key={x.key} style={{ top: `${(yAt(x.values[shown]) / H) * 100}%`, background: soften(x.color) }} />
             ) : null,
           )}
         </span>
       </div>
 
-      <div className={s.chartX} aria-hidden="true">
+      <div className="gm-xaxis" aria-hidden="true">
         {xTicks.map((i) => (
           <span key={i} style={{ left: `${(i / (n - 1)) * 100}%` }}>
             {xLabel(i)}
           </span>
         ))}
       </div>
-      <p className={s.chartHint}>{hint}</p>
+      <p className="gm-charthint">{hint}</p>
     </div>
   );
 }

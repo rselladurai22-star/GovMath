@@ -1,24 +1,28 @@
-import type { ReactNode } from "react";
-import AdSlot from "@/components/AdSlot";
-import EngineOutro from "@/components/calculator/EngineOutro";
-import { HomeMotion } from "@/components/home/Motion";
+import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
-import { CALCULATORS, type Calculator } from "@/lib/calculators";
+import type { Calculator } from "@/lib/calculators";
 import { shortTitle } from "@/components/category-style";
-import FlagshipHero, { type Crumb } from "./FlagshipHero";
-import SectionTabs, { type SectionTab } from "./SectionTabs";
-import s from "./Flagship.module.css";
+import GmShell from "@/gm/GmShell";
+import cats from "@/gm/categories.json";
+
+export type Crumb = { href: string; label: string };
+
+/** Topic names as the approved design writes them (e.g. "Mortgages & property"). */
+const TOPIC: Record<string, string> = Object.fromEntries(
+  (cats as { slug: string; label: string }[]).map((c) => [`/${c.slug}`, c.label.replace(/&amp;/g, "&")]),
+);
 
 /**
- * Page frame for flagship calculators: compact hero, the interactive studio,
- * a guide, FAQs and related tools — plus breadcrumb and FAQ structured data.
+ * Page frame for every calculator, in the approved design's markup (as on
+ * its mortgage and take-home pages): breadcrumb, intro, section links, the
+ * calculator (Studio), the guide, FAQs and related calculators, inside the
+ * design's header and footer. Adds breadcrumb and FAQ structured data.
  */
 export default function FlagshipPage({
   breadcrumbs,
   eyebrow,
   title,
   lead,
-  points,
   children,
   guide,
   faqs,
@@ -29,6 +33,7 @@ export default function FlagshipPage({
   eyebrow: string;
   title: string;
   lead: string;
+  /** Short selling points (not shown in the approved design). */
   points: string[];
   children: ReactNode;
   guide?: ReactNode;
@@ -53,59 +58,85 @@ export default function FlagshipPage({
       mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
     },
   ];
-
-  // Tabs across the top of the calculator, as on bank calculator pages:
-  // this calculator and two related ones.
-  const here = breadcrumbs[breadcrumbs.length - 1];
-  const self = CALCULATORS.find((c) => c.href === here.href);
-  const calcTabs = [
-    { href: here.href, label: shortTitle(self?.title ?? title), current: true },
-    ...related.slice(0, 2).map((c) => ({ href: c.href, label: shortTitle(c.title), current: false })),
-  ];
-
-  const tabs: SectionTab[] = [
-    { id: "calculator", label: "Calculator" },
-    ...(guide ? [{ id: "guide", label: "Guide" }] : []),
-    { id: "faqs", label: "FAQs" },
-    ...(related.length > 0 ? [{ id: "related", label: "Other calculators" }] : []),
-  ];
+  const topic = TOPIC[breadcrumbs[1]?.href ?? ""] ?? breadcrumbs[1]?.label ?? "";
+  const crumbs = breadcrumbs.map((c, i) => (i === 1 ? { ...c, label: topic || c.label } : c));
 
   return (
-    <div id="gm-flagship" className={s.page}>
-      <HomeMotion rootId="gm-flagship" />
+    <GmShell kind="calculator">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-
-      <FlagshipHero breadcrumbs={breadcrumbs} eyebrow={eyebrow} title={title} lead={lead} points={points} />
-      <SectionTabs items={tabs} />
-
-      <div id="calculator" className={s.studioWrap}>
-        <nav className={`gm-wrap ${s.calcTabs}`} aria-label="Similar calculators">
-          <ul>
-            {calcTabs.map((t) => (
-              <li key={t.href}>
-                {t.current ? (
-                  <span aria-current="page">{t.label}</span>
-                ) : (
-                  <Link href={t.href}>{t.label}</Link>
-                )}
-              </li>
-            ))}
-          </ul>
+      <div className="wrap">
+        <div className="crumb">
+          {crumbs.map((c, i) =>
+            i === crumbs.length - 1 ? (
+              <Fragment key={c.href}>{c.label}</Fragment>
+            ) : (
+              <Fragment key={c.href}>
+                <Link href={c.href}>{c.label}</Link>
+                <span>›</span>
+              </Fragment>
+            ),
+          )}
+        </div>
+        <div className="intro">
+          {topic && <p className="eyebrow">{topic.toUpperCase()}</p>}
+          <p className="eyebrow">{eyebrow.toUpperCase()}</p>
+          <h1>{title}</h1>
+          <p>{lead}</p>
+        </div>
+        <nav className="sectionnav" aria-label="On this page">
+          <a className="active" href="#calculator">
+            Calculator
+          </a>
+          <a href="#results">Your results</a>
+          {guide && <a href="#guide">Guide</a>}
+          <a href="#faqs">FAQs</a>
         </nav>
+
         {children}
-      </div>
 
-      <div className={`gm-wrap ${s.adRow}`}>
-        <AdSlot size="leaderboard" />
-      </div>
+        {guide}
 
-      {guide && (
-        <section id="guide" className={`gm-wrap ${s.guide}`}>
-          {guide}
+        <section className="fullfaq section" id="faqs">
+          <div>
+            <span className="q-kicker">Questions</span>
+            <h2 className="q-explainerTitle">Frequently asked</h2>
+          </div>
+          <div className="q-faqs">
+            {faqs.map((f) => (
+              <details key={f.q} className="q-faq">
+                <summary>
+                  <span>{f.q}</span>
+                  <span aria-hidden="true" className="q-faqPlus" />
+                </summary>
+                <div className="q-faqBody">
+                  <p>{f.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+          <div className="q-note">
+            <strong>Good to know</strong>
+            <p>{note}</p>
+          </div>
         </section>
-      )}
 
-      <EngineOutro faqs={faqs} related={related} note={note} />
-    </div>
+        {related.length > 0 && (
+          <section className="section" id="related">
+            <p className="eyebrow">KEEP EXPLORING</p>
+            <h2>Related calculators</h2>
+            <div className="relatedgrid">
+              {related.map((c) => (
+                <Link key={c.href} className="q-relatedCard" href={c.href}>
+                  <span className="q-relatedIcon" />
+                  <strong>{shortTitle(c.title)}</strong>
+                  <p>{c.blurb}</p>
+                  <span className="q-relatedGo">Open calculator</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
+    </GmShell>
   );
 }

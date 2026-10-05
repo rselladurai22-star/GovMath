@@ -1,7 +1,16 @@
 "use client";
 
-import { useId, useState, type ReactNode } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { whole } from "./format";
+
+/*
+ * Calculator inputs in the approved GovMath design's markup (see
+ * public/gm/original-layout.css, matching-mortgage.css, matching-controls.css
+ * and matching-calculators.css): a .field with a .labelrow, a .number box,
+ * a range slider with .endpoints, .chips, .ax-calctabs, the .ax-select
+ * dropdown and details.moreoptions. Parts the package does not include use
+ * gm-* classes styled in public/gm/govmath-site.css.
+ */
 
 /** 1234.5 → "1,234.50"; whole pounds stay "1,234". */
 function money2(n: number): string {
@@ -10,46 +19,27 @@ function money2(n: number): string {
     ? whole(v)
     : v.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
-import s from "./Flagship.module.css";
 
-/** A titled group of inputs inside the input panel. */
+const Optional = () => <span className="gm-optional">Optional</span>;
+
+/** A titled group of inputs (the title is for screen readers, as in the design). */
 export function InputGroup({ title, children }: { title: string; children: ReactNode }) {
   return (
-    <fieldset className={s.group}>
-      <legend>{title}</legend>
-      <div className={s.groupBody}>{children}</div>
+    <fieldset className="gm-group">
+      <legend className="sr-only">{title}</legend>
+      {children}
     </fieldset>
   );
 }
 
-/**
- * Small "i" button beside a label. Its help text shows on hover, keyboard
- * focus or tap, so the form itself stays clean.
- */
-export function InfoTip({ label, children }: { label: string; children: ReactNode }) {
-  const id = useId();
-  return (
-    <span className={s.tip}>
-      <button type="button" className={s.tipBtn} aria-label={`More about ${label.toLowerCase()}`} aria-describedby={id}>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-          <circle cx="12" cy="12" r="9.25" />
-          <path d="M12 11v5.5M12 7.6v.1" strokeLinecap="round" />
-        </svg>
-      </button>
-      <span role="tooltip" id={id} className={s.tipText}>
-        {children}
-      </span>
-    </span>
-  );
-}
-
-/** Label row (with an info tip for any hint) + control. */
+/** Label row + control + optional hint. `inline` sits at the right of the label row. */
 export function Field({
   label,
   htmlFor,
   aside,
   hint,
   optional,
+  inline,
   children,
 }: {
   label: string;
@@ -58,34 +48,35 @@ export function Field({
   hint?: ReactNode;
   /** Shows an "Optional" tag beside the label. */
   optional?: boolean;
-  children: ReactNode;
+  inline?: ReactNode;
+  children?: ReactNode;
 }) {
-  const tag = optional && <span className={s.optional}>Optional</span>;
   return (
-    <div className={s.field}>
-      <div className={s.fieldHead}>
-        <span className={s.fieldLabel}>
+    <div className="field">
+      <div className="labelrow">
+        <span className="gm-labelwrap">
           {htmlFor ? (
             <label htmlFor={htmlFor}>
               {label}
-              {tag}
+              {optional && <Optional />}
             </label>
           ) : (
-            <span>
+            <span className="gm-label">
               {label}
-              {tag}
+              {optional && <Optional />}
             </span>
           )}
-          {hint && <InfoTip label={label}>{hint}</InfoTip>}
+          {aside && <span className="gm-aside">{aside}</span>}
         </span>
-        {aside && <span className={s.fieldAside}>{aside}</span>}
+        {inline}
       </div>
       {children}
+      {hint && <p className="hint">{hint}</p>}
     </div>
   );
 }
 
-/** Range slider with a filled track. */
+/** Range slider with a filled track and its end values. */
 export function Slider({
   value,
   min,
@@ -106,24 +97,24 @@ export function Slider({
   const clamped = Math.min(Math.max(value, min), max);
   const fill = max > min ? ((clamped - min) / (max - min)) * 100 : 0;
   return (
-    <div className={s.slider}>
+    <>
       <input
         type="range"
         min={min}
         max={max}
         step={step}
         value={clamped}
-        aria-label={label}
+        aria-label={`Adjust ${label.toLowerCase()}`}
         onChange={(e) => onChange(Number(e.target.value))}
         style={{ ["--fill" as string]: `${fill}%` }}
       />
       {ends && (
-        <div className={s.sliderEnds} aria-hidden="true">
+        <div className="endpoints" aria-hidden="true">
           <span>{ends[0]}</span>
           <span>{ends[1]}</span>
         </div>
       )}
-    </div>
+    </>
   );
 }
 
@@ -139,7 +130,6 @@ export function MoneyField({
   slider,
   aside,
   hint,
-  big,
   pence,
   optional,
 }: {
@@ -162,35 +152,44 @@ export function MoneyField({
     const n = pence ? Number(raw.replace(/[^\d.]/g, "")) : Number(raw.replace(/[^\d]/g, ""));
     return Math.min(Number.isFinite(n) ? Math.round(n * 100) / 100 : 0, max);
   };
+  const box = (
+    <div className="number">
+      <span aria-hidden="true">£</span>
+      <input
+        id={id}
+        type="text"
+        inputMode={pence ? "decimal" : "numeric"}
+        autoComplete="off"
+        value={draft ?? shown}
+        onFocus={(e) => {
+          setDraft(shown);
+          e.currentTarget.select();
+        }}
+        onChange={(e) => {
+          setDraft(e.target.value);
+          onChange(parse(e.target.value));
+        }}
+        onBlur={() => setDraft(null)}
+      />
+      <span />
+    </div>
+  );
   return (
-    <Field label={label} htmlFor={id} aside={aside} hint={hint} optional={optional}>
-      <div className={`${s.box} ${big ? s.boxBig : ""}`}>
-        <span className={s.affix} aria-hidden="true">
-          £
-        </span>
-        <input
-          id={id}
-          type="text"
-          inputMode={pence ? "decimal" : "numeric"}
-          autoComplete="off"
-          value={draft ?? shown}
-          onFocus={(e) => {
-            setDraft(shown);
-            e.currentTarget.select();
-          }}
-          onChange={(e) => {
-            setDraft(e.target.value);
-            onChange(parse(e.target.value));
-          }}
-          onBlur={() => setDraft(null)}
-        />
-      </div>
+    <Field label={label} htmlFor={id} aside={aside} hint={hint} optional={optional} inline={box}>
       {slider && <Slider value={value} onChange={onChange} label={label} {...slider} />}
     </Field>
   );
 }
 
-/** Decimal field with − / + steppers and a unit (%, years…). */
+/** "12.5" with a unit: "%" sits tight, words get a space. */
+function withUnit(n: number, unit: string) {
+  const v = Number(n.toFixed(4)).toLocaleString("en-GB");
+  // "1 year", not "1 years".
+  if (n === 1 && /^[a-z]+s$/.test(unit)) unit = unit.slice(0, -1);
+  return /^[%£]/.test(unit) ? `${v}${unit}` : `${v} ${unit}`;
+}
+
+/** Decimal field with a unit (%, years…) and a slider across its range. */
 export function StepperField({
   label,
   value,
@@ -220,43 +219,37 @@ export function StepperField({
   const [draft, setDraft] = useState<string | null>(null);
   const clamp = (n: number) => Math.min(max, Math.max(min, Number(n.toFixed(dp))));
   const shown = Number(value.toFixed(dp)).toString();
+  const box = (
+    <div className="number">
+      <span />
+      <input
+        id={id}
+        type="text"
+        inputMode="decimal"
+        autoComplete="off"
+        value={draft ?? shown}
+        onFocus={(e) => {
+          setDraft(shown);
+          e.currentTarget.select();
+        }}
+        onChange={(e) => {
+          setDraft(e.target.value);
+          const n = Number(e.target.value.replace(/[^\d.]/g, ""));
+          if (Number.isFinite(n)) onChange(clamp(n));
+        }}
+        onBlur={() => setDraft(null)}
+      />
+      <span aria-hidden="true">{unit}</span>
+    </div>
+  );
   return (
-    <Field label={label} htmlFor={id} hint={hint} aside={aside} optional={optional}>
-      <div className={s.stepper}>
-        <button type="button" onClick={() => onChange(clamp(value - step))} aria-label={`Decrease ${label.toLowerCase()}`} disabled={value <= min}>
-          −
-        </button>
-        <div className={s.box}>
-          <input
-            id={id}
-            type="text"
-            inputMode="decimal"
-            autoComplete="off"
-            value={draft ?? shown}
-            onFocus={(e) => {
-              setDraft(shown);
-              e.currentTarget.select();
-            }}
-            onChange={(e) => {
-              setDraft(e.target.value);
-              const n = Number(e.target.value.replace(/[^\d.]/g, ""));
-              if (Number.isFinite(n)) onChange(clamp(n));
-            }}
-            onBlur={() => setDraft(null)}
-          />
-          <span className={s.affix} aria-hidden="true">
-            {unit}
-          </span>
-        </div>
-        <button type="button" onClick={() => onChange(clamp(value + step))} aria-label={`Increase ${label.toLowerCase()}`} disabled={value >= max}>
-          +
-        </button>
-      </div>
+    <Field label={label} htmlFor={id} hint={hint} aside={aside} optional={optional} inline={box}>
+      <Slider value={value} onChange={(n) => onChange(clamp(n))} label={label} min={min} max={max} step={step} ends={[withUnit(min, unit), withUnit(max, unit)]} />
     </Field>
   );
 }
 
-/** Pill buttons for quick picks; pressed when the value matches. */
+/** Quick-pick buttons; pressed when the value matches. */
 export function Chips<T extends string | number>({
   label,
   options,
@@ -269,7 +262,7 @@ export function Chips<T extends string | number>({
   onChange: (v: T) => void;
 }) {
   return (
-    <div className={s.chips} role="group" aria-label={label}>
+    <div className="chips" role="group" aria-label={label}>
       {options.map((o) => (
         <button key={String(o.value)} type="button" aria-pressed={value === o.value} onClick={() => onChange(o.value)}>
           {o.label}
@@ -279,7 +272,7 @@ export function Chips<T extends string | number>({
   );
 }
 
-/** Two-to-four way switch with an optional one-line description per option. */
+/** Two-to-four way choice, as the design's underlined calculator tabs. */
 export function Segmented<T extends string>({
   label,
   options,
@@ -296,9 +289,16 @@ export function Segmented<T extends string>({
   const current = options.find((o) => o.value === value);
   return (
     <Field label={label} optional={optional} hint={current?.note}>
-      <div className={s.segmented} role="radiogroup" aria-label={label}>
+      <div className="ax-calctabs gm-choice" role="radiogroup" aria-label={label}>
         {options.map((o) => (
-          <button key={o.value} type="button" role="radio" aria-checked={value === o.value} onClick={() => onChange(o.value)}>
+          <button
+            key={o.value}
+            type="button"
+            role="radio"
+            aria-checked={value === o.value}
+            className={value === o.value ? "selected" : undefined}
+            onClick={() => onChange(o.value)}
+          >
             {o.label}
           </button>
         ))}
@@ -307,7 +307,7 @@ export function Segmented<T extends string>({
   );
 }
 
-/** Native dropdown, styled to match the other fields. */
+/** The design's dropdown (.ax-select): a button and a listbox, keyboard friendly. */
 export function SelectField<T extends string>({
   label,
   value,
@@ -324,28 +324,117 @@ export function SelectField<T extends string>({
   optional?: boolean;
 }) {
   const id = useId();
+  const wrap = useRef<HTMLDivElement>(null);
+  const list = useRef<HTMLDivElement>(null);
+  const toggle = useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = useState(false);
+  const current = options.find((o) => o.value === value) ?? options[0];
+
+  useEffect(() => {
+    if (!open) return;
+    const items = [...(list.current?.querySelectorAll<HTMLElement>("[role=option]") ?? [])];
+    (items.find((i) => i.dataset.value === value) ?? items[0])?.focus();
+    const away = (e: MouseEvent) => {
+      if (!wrap.current?.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener("click", away);
+    return () => document.removeEventListener("click", away);
+  }, [open, value]);
+
+  const choose = (v: T) => {
+    onChange(v);
+    setOpen(false);
+    toggle.current?.focus();
+  };
+
   return (
-    <Field label={label} htmlFor={id} hint={hint} optional={optional}>
-      <div className={`${s.box} ${s.selectBox}`}>
-        <select id={id} value={value} onChange={(e) => onChange(e.target.value as T)}>
+    <div className="ax-select-field">
+      <label id={`${id}-label`} htmlFor={`${id}-toggle`}>
+        {label}
+        {optional && <Optional />}
+      </label>
+      <div className="ax-select" ref={wrap}>
+        <button
+          ref={toggle}
+          type="button"
+          className="ax-select-toggle"
+          id={`${id}-toggle`}
+          aria-haspopup="listbox"
+          aria-expanded={open}
+          aria-controls={`${id}-options`}
+          aria-labelledby={`${id}-label ${id}-value`}
+          onClick={() => setOpen((o) => !o)}
+          onKeyDown={(e) => {
+            if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+              e.preventDefault();
+              setOpen(true);
+            }
+          }}
+        >
+          <span id={`${id}-value`}>{current?.label}</span>
+          <span className="chevron" aria-hidden="true" />
+        </button>
+        <div
+          ref={list}
+          className="ax-options"
+          id={`${id}-options`}
+          role="listbox"
+          aria-label={label}
+          hidden={!open}
+          onKeyDown={(e) => {
+            const items = [...(list.current?.querySelectorAll<HTMLElement>("[role=option]") ?? [])];
+            const i = items.indexOf(document.activeElement as HTMLElement);
+            let n = i;
+            if (e.key === "ArrowDown") n = (i + 1) % items.length;
+            else if (e.key === "ArrowUp") n = (i - 1 + items.length) % items.length;
+            else if (e.key === "Home") n = 0;
+            else if (e.key === "End") n = items.length - 1;
+            else if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              if (items[i]) choose(items[i].dataset.value as T);
+              return;
+            } else if (e.key === "Escape") {
+              e.preventDefault();
+              setOpen(false);
+              toggle.current?.focus();
+              return;
+            } else if (e.key === "Tab") {
+              setOpen(false);
+              return;
+            } else if (e.key.length === 1) {
+              const k = e.key.toLowerCase();
+              n = items.findIndex((o, j) => j > i && (o.textContent ?? "").toLowerCase().startsWith(k));
+              if (n < 0) n = items.findIndex((o) => (o.textContent ?? "").toLowerCase().startsWith(k));
+            } else return;
+            if (n >= 0) {
+              e.preventDefault();
+              items[n].focus();
+            }
+          }}
+        >
           {options.map((o) => (
-            <option key={o.value} value={o.value}>
+            <div
+              key={o.value}
+              className="ax-option"
+              role="option"
+              tabIndex={-1}
+              data-value={o.value}
+              aria-selected={o.value === value}
+              onClick={() => choose(o.value)}
+            >
               {o.label}
-            </option>
+            </div>
           ))}
-        </select>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
-          <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        </div>
       </div>
-    </Field>
+      {hint && <p className="hint">{hint}</p>}
+    </div>
   );
 }
 
 /**
- * "More options" — the optional, advanced inputs for less common situations.
- * Closed by default so most people answer from the core fields; shows how
- * many options differ from their defaults and offers to reset them.
+ * "More options": the optional inputs for less common situations, closed by
+ * default, with how many differ from their defaults and a reset.
  */
 export function AdvancedOptions({
   title = "More options",
@@ -364,30 +453,16 @@ export function AdvancedOptions({
   children: ReactNode;
 }) {
   return (
-    <details className={s.advanced} open={defaultOpen || changed > 0 || undefined}>
+    <details className="moreoptions" open={defaultOpen || changed > 0 || undefined}>
       <summary>
-        <span className={s.advancedIcon} aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
-            <path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0" />
-            <circle cx="16" cy="6" r="2" />
-            <circle cx="10" cy="12" r="2" />
-            <circle cx="18" cy="18" r="2" />
-          </svg>
-        </span>
-        <span className={s.advancedTitle}>
-          {title}
-          <span className={s.optional}>Optional</span>
-        </span>
-        {changed > 0 && <span className={s.advancedCount}>{changed} changed</span>}
-        <svg className={s.advancedChevron} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
-          <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
+        {title}
+        {changed > 0 && <em className="gm-changed"> · {changed} changed</em>}
+        <span>{description}</span>
       </summary>
-      <div className={s.advancedBody}>
-        <p className={s.advancedNote}>{description}</p>
+      <div>
         {children}
         {onReset && changed > 0 && (
-          <button type="button" className={s.advancedReset} onClick={onReset}>
+          <button type="button" className="textbutton" onClick={onReset}>
             Reset these options
           </button>
         )}
@@ -412,19 +487,17 @@ export function Switch({
 }) {
   const id = useId();
   return (
-    <div className={s.switchRow}>
-      <button id={id} type="button" role="switch" aria-checked={checked} className={s.switch} onClick={() => onChange(!checked)}>
-        <span aria-hidden="true" />
-      </button>
-      <div>
-        <span className={s.fieldLabel}>
-          <label htmlFor={id} className={s.switchLabel}>
-            {label}
-            {optional && <span className={s.optional}>Optional</span>}
-          </label>
-          {hint && <InfoTip label={label}>{hint}</InfoTip>}
-        </span>
+    <div className="field gm-switchfield">
+      <div className="gm-switchrow">
+        <button id={id} type="button" role="switch" aria-checked={checked} className="gm-switch" onClick={() => onChange(!checked)}>
+          <span aria-hidden="true" />
+        </button>
+        <label htmlFor={id}>
+          {label}
+          {optional && <Optional />}
+        </label>
       </div>
+      {hint && <p className="hint">{hint}</p>}
     </div>
   );
 }
@@ -450,9 +523,7 @@ export function DateField({
   const id = useId();
   return (
     <Field label={label} htmlFor={id} hint={hint} optional={optional}>
-      <div className={s.box}>
-        <input id={id} type="date" value={value} min={min} max={max} onChange={(e) => onChange(e.target.value)} />
-      </div>
+      <input className="gm-input" id={id} type="date" value={value} min={min} max={max} onChange={(e) => onChange(e.target.value)} />
     </Field>
   );
 }
@@ -469,7 +540,6 @@ export function PeriodMoneyField({
   onChange,
   hint,
   optional,
-  big,
 }: {
   label: string;
   value: number;
@@ -485,11 +555,9 @@ export function PeriodMoneyField({
   const shown = money2(value);
   return (
     <Field label={label} htmlFor={id} hint={hint} optional={optional}>
-      <div className={s.periodRow}>
-        <div className={`${s.box} ${big ? s.boxBig : ""}`}>
-          <span className={s.affix} aria-hidden="true">
-            £
-          </span>
+      <div className="gm-period">
+        <div className="number">
+          <span aria-hidden="true">£</span>
           <input
             id={id}
             type="text"
@@ -507,19 +575,15 @@ export function PeriodMoneyField({
             }}
             onBlur={() => setDraft(null)}
           />
+          <span />
         </div>
-        <div className={`${s.box} ${s.selectBox} ${big ? s.boxBig : ""}`}>
-          <select aria-label={`${label}: period`} value={period} onChange={(e) => onChange(value, e.target.value as Period)}>
-            {periods.map((p) => (
-              <option key={p} value={p}>
-                {PERIOD_LABEL[p]}
-              </option>
-            ))}
-          </select>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
-            <path d="m6 9 6 6 6-6" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
+        <select className="gm-select" aria-label={`${label}: period`} value={period} onChange={(e) => onChange(value, e.target.value as Period)}>
+          {periods.map((p) => (
+            <option key={p} value={p}>
+              {PERIOD_LABEL[p]}
+            </option>
+          ))}
+        </select>
       </div>
     </Field>
   );
@@ -533,7 +597,6 @@ export function TextField({
   placeholder,
   hint,
   optional,
-  big,
   maxLength = 20,
   uppercase,
 }: {
@@ -550,18 +613,17 @@ export function TextField({
   const id = useId();
   return (
     <Field label={label} htmlFor={id} hint={hint} optional={optional}>
-      <div className={`${s.box} ${big ? s.boxBig : ""}`}>
-        <input
-          id={id}
-          type="text"
-          autoComplete="off"
-          spellCheck={false}
-          maxLength={maxLength}
-          placeholder={placeholder}
-          value={value}
-          onChange={(e) => onChange(uppercase ? e.target.value.toUpperCase() : e.target.value)}
-        />
-      </div>
+      <input
+        className="gm-input"
+        id={id}
+        type="text"
+        autoComplete="off"
+        spellCheck={false}
+        maxLength={maxLength}
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => onChange(uppercase ? e.target.value.toUpperCase() : e.target.value)}
+      />
     </Field>
   );
 }

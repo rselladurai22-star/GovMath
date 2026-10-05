@@ -2,8 +2,7 @@
 
 import { Children, Fragment, isValidElement, useEffect, useRef, type ReactElement, type ReactNode } from "react";
 import { gbp } from "./format";
-import { Answer, SplitBar, soften, type Segment } from "./results";
-import s from "./Flagship.module.css";
+import { Answer, ResultCard, SplitBar, soften, type Segment } from "./results";
 
 /** Every element in a tree of results, fragments and cards opened up. */
 function flatten(node: ReactNode): ReactElement[] {
@@ -28,70 +27,58 @@ function topLevel(node: ReactNode): ReactElement[] {
   return out;
 }
 
-/** Ring chart of the first split in the results, with the total in the middle. */
-function Donut({ segments }: { segments: Segment[] }) {
+/** The design's ring chart (.circle) and its legend (.ax-chartlegend). */
+function Ring({ segments }: { segments: Segment[] }) {
   const parts = segments.filter((g) => g.value > 0);
   const total = parts.reduce((a, g) => a + g.value, 0);
   if (total <= 0) return null;
-  const r = 80;
-  const c = 2 * Math.PI * r;
-  const arcs = parts.map((g, i) => ({
-    ...g,
-    len: (g.value / total) * c,
-    before: parts.slice(0, i).reduce((a, q) => a + (q.value / total) * c, 0),
-  }));
-  const money = segments.every((g) => g.display.trim().startsWith("£") || g.display.trim().startsWith("-£"));
+  const stops = parts
+    .map((g, i) => {
+      const before = parts.slice(0, i).reduce((a, q) => a + q.value, 0);
+      const from = (before / total) * 100;
+      const to = ((before + g.value) / total) * 100;
+      return `${soften(g.color)} ${from.toFixed(3)}% ${to.toFixed(3)}%`;
+    })
+    .join(",");
+  const money = segments.every((g) => /^-?£/.test(g.display.trim()));
   return (
-    <div className={s.donutWrap}>
-      <div className={s.donut}>
-        <svg viewBox="0 0 180 180" role="img" aria-label={parts.map((g) => `${g.label} ${g.display}`).join(", ")}>
-          <circle cx="90" cy="90" r={r} fill="none" stroke="var(--ax-line)" strokeWidth="12" />
-          {arcs.map((g) => (
-            <circle
-              key={g.label}
-              cx="90"
-              cy="90"
-              r={r}
-              fill="none"
-              stroke={soften(g.color)}
-              strokeWidth="12"
-              strokeDasharray={`${g.len} ${c - g.len}`}
-              strokeDashoffset={-g.before}
-              transform="rotate(-90 90 90)"
-            />
-          ))}
-        </svg>
-        {money && (
-          <div className={s.donutCentre}>
-            <span>Total</span>
-            <strong>{gbp(total)}</strong>
-          </div>
-        )}
+    <>
+      <div className="circle" style={{ background: `conic-gradient(${stops})` }} role="img" aria-label={parts.map((g) => `${g.label} ${g.display}`).join(", ")}>
+        <div>
+          {money ? (
+            <>
+              <span>Total</span>
+              <strong>{gbp(total)}</strong>
+            </>
+          ) : (
+            <span>How it splits</span>
+          )}
+        </div>
       </div>
-      <ul className={s.donutLegend}>
+      <div className="ax-chartlegend">
         {segments.map((g) => (
-          <li key={g.label}>
+          <div key={g.label}>
             <span>
               <i style={{ background: soften(g.color) }} aria-hidden="true" />
               {g.label}
             </span>
-            <strong>{g.display}</strong>
-          </li>
+            <b>{g.display}</b>
+          </div>
         ))}
-      </ul>
-    </div>
+      </div>
+    </>
   );
 }
 
+type AnswerProps = { eyebrow: string; value: string; unit?: string; sentence: ReactNode; badges?: ReactNode[]; actions?: ReactNode };
+
 /**
- * Calculator workspace, laid out like a bank calculator page.
- *
- * One soft-grey panel holds the inputs on the left, ending in a white bar
- * with the headline figure (like "Your EMI"), and a white card on the right
- * with a ring chart of where the money goes (or the answer, when there is
- * no split). Everything updates live. The detailed results follow
- * underneath in a two-column grid; the button saves the inputs to the
- * address and jumps to them.
+ * Calculator workspace in the approved design's markup (as on the approved
+ * mortgage and take-home pages): section.calculator with the form on the
+ * left and the results panel (.result.ax-chartpanel) on the right, then
+ * "Your results in detail" (section#results) with result cards paired in
+ * .resultgrid rows. Results update live; the submit button saves the inputs
+ * to the address (via onCalculate) and jumps to the detail.
  */
 export default function Studio({
   title,
@@ -100,7 +87,6 @@ export default function Studio({
   calculateLabel = "Calculate",
   onReset,
   inputs,
-  dock,
   children,
 }: {
   title: string;
@@ -110,6 +96,7 @@ export default function Studio({
   calculateLabel?: string;
   onReset?: () => void;
   inputs: ReactNode;
+  /** Headline figure for compact displays (kept for every studio's API). */
   dock: { label: string; value: string };
   children: ReactNode;
 }) {
@@ -118,11 +105,26 @@ export default function Studio({
 
   const blocks = topLevel(children);
   const answer = blocks.find((b) => b.type === Answer);
+  const a = answer?.props as AnswerProps | undefined;
+  const rest = blocks.filter((b) => b !== answer);
   const split = flatten(children).find((e) => e.type === SplitBar);
   const segments = split ? (split.props as { segments: Segment[] }).segments : null;
-  // With a ring chart in the summary card, the full answer (sentence,
-  // badges, share) leads the detailed results instead.
-  const rest = segments ? blocks : blocks.filter((b) => b !== answer);
+
+  // Consecutive result cards share a two-column .resultgrid, as in the design.
+  const grouped: ReactNode[] = [];
+  let run: ReactElement[] = [];
+  const flush = () => {
+    if (run.length) grouped.push(<div className="resultgrid" key={`grid-${grouped.length}`}>{run}</div>);
+    run = [];
+  };
+  rest.forEach((b, i) => {
+    if (b.type === ResultCard) run.push(b);
+    else {
+      flush();
+      grouped.push(<Fragment key={`b-${i}`}>{b}</Fragment>);
+    }
+  });
+  flush();
 
   useEffect(() => {
     if (!ready || !jump.current) return;
@@ -132,55 +134,68 @@ export default function Studio({
 
   return (
     <>
-      <div className={`gm-wrap ${s.studio}`} data-ready="">
-        <aside className={s.panel} aria-label={title}>
-          <header className={s.panelHead}>
-            <h2>{title}</h2>
-            {onReset && (
-              <button type="button" onClick={onReset} className={s.reset}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <path d="M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5" />
-                </svg>
-                Reset
-              </button>
-            )}
-          </header>
-          <div className={s.panelBody}>{inputs}</div>
-          <footer className={s.totalBar}>
-            <p aria-live="polite">
-              <span>{dock.label}</span>
-              <strong>{dock.value}</strong>
-            </p>
-            <button
-              type="button"
-              className={s.calcBtn}
-              aria-label={`${calculateLabel}: see full results`}
-              onClick={() => {
-                jump.current = true;
-                if (ready) details.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-                else onCalculate();
-              }}
-            >
-              See full results
+      <section className="calculator" id="calculator">
+        <div className="calcgrid">
+          <form
+            noValidate
+            onSubmit={(e) => {
+              e.preventDefault();
+              jump.current = true;
+              if (ready) details.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+              else onCalculate();
+            }}
+          >
+            <div className="formheading">
+              <h2>{title}</h2>
+              {onReset && (
+                <button type="button" className="textbutton" onClick={onReset}>
+                  Reset
+                </button>
+              )}
+            </div>
+            {inputs}
+            <p className="footnote">Free to use. Your details are not saved to an account.</p>
+            <button type="submit" className="button bank-calculate">
+              {calculateLabel}
             </button>
-          </footer>
-        </aside>
+          </form>
 
-        <section className={s.summary} aria-label="Summary">
-          {segments ? <Donut segments={segments} /> : answer}
-        </section>
-      </div>
+          <div className="result ax-chartpanel" aria-live="polite">
+            <p className="resultlabel">Your summary</p>
+            {a && (
+              <div className="ax-paymentstrip">
+                <div>
+                  <span>{a.eyebrow}</span>
+                  <strong>{a.value}</strong>
+                  {a.unit && <small>{a.unit}</small>}
+                </div>
+              </div>
+            )}
+            {segments && <Ring segments={segments} />}
+            {a && <p className="loan-summary">{a.sentence}</p>}
+            {a?.badges && a.badges.length > 0 && (
+              <div className="badges">
+                {a.badges.map((b, i) => (
+                  <span key={i}>{b}</span>
+                ))}
+              </div>
+            )}
+            {a?.actions}
+          </div>
+        </div>
+      </section>
 
-      {rest.length > 0 && (
-        <section ref={details} id="results" className={`gm-wrap ${s.details}`} aria-labelledby="results-title">
-          <header className={s.detailsHead}>
-            <h2 id="results-title">Your results in detail</h2>
-            <p>Every figure behind the answer, updated live as you change the inputs.</p>
-          </header>
-          {rest}
+      {grouped.length > 0 && (
+        <section ref={details} className="section gm-details" id="results" aria-labelledby="results-title">
+          <div className="sectionheading">
+            <div>
+              <p className="eyebrow">THE COMPLETE PICTURE</p>
+              <h2 id="results-title">Your results in detail</h2>
+            </div>
+          </div>
+          {grouped}
         </section>
       )}
-
     </>
   );
 }

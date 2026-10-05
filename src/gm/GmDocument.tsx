@@ -1,5 +1,7 @@
 import { createElement } from "react";
 import GmScripts, { type GmScript } from "./GmScripts";
+import { categoryGridHtml, topicMainHtml } from "./catalog";
+import type { CategorySlug } from "@/lib/calculators";
 
 export type GmPage = {
   title: string;
@@ -16,7 +18,10 @@ const PROP: Record<string, string> = { class: "className", for: "htmlFor", tabin
  * stylesheets in their original order, then each top-level body element with
  * its original tag, attributes and markup, then its scripts.
  */
-export default function GmDocument({ page }: { page: GmPage }) {
+export default function GmDocument({ page, topic }: { page: GmPage; topic?: CategorySlug }) {
+  // Calculator lists are built from the live catalogue (see catalog.ts).
+  const fill = (html: string) =>
+    html.replace("<!--GM:CATEGORYGRID-->", () => categoryGridHtml()).replace("<!--GM:TOPIC-->", () => (topic ? topicMainHtml(topic) : ""));
   return (
     <>
       {page.css.map((href) => (
@@ -26,7 +31,7 @@ export default function GmDocument({ page }: { page: GmPage }) {
         createElement(el.tag, {
           key: i,
           ...Object.fromEntries(Object.entries(el.attrs).map(([k, v]) => [PROP[k] ?? k, v])),
-          dangerouslySetInnerHTML: { __html: el.html },
+          dangerouslySetInnerHTML: { __html: fill(el.html) },
         }),
       )}
       <GmScripts scripts={page.scripts as GmScript[]} />

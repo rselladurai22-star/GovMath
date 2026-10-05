@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import s from "./Flagship.module.css";
 
 /**
  * Shared state for flagship calculators.
@@ -56,6 +55,18 @@ export function readQuery<T>(schema: Schema<T>, query: Query): { values: T; hasA
   return { values, hasAny };
 }
 
+/** This page's address with every non-default input in the query string. */
+function addressFor<T extends Record<string, unknown>>(schema: Schema<T>, values: T): string {
+  const q = new URLSearchParams();
+  for (const key in schema) {
+    const v = values[key];
+    if (v === schema[key].def) continue;
+    q.set(key, schema[key].write ? schema[key].write!(v) : String(v));
+  }
+  const qs = q.toString();
+  return qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
+}
+
 export function useStudio<T extends Record<string, unknown>>(schema: Schema<T>, query: Query) {
   const [initial] = useState(() => readQuery(schema, query));
   const [values, setValues] = useState<T>(initial.values);
@@ -65,16 +76,7 @@ export function useStudio<T extends Record<string, unknown>>(schema: Schema<T>, 
   // Keep the address bar shareable once results are showing.
   useEffect(() => {
     if (!ready) return;
-    const t = window.setTimeout(() => {
-      const q = new URLSearchParams();
-      for (const key in schema) {
-        const v = values[key];
-        if (v === schema[key].def) continue;
-        q.set(key, schema[key].write ? schema[key].write!(v) : String(v));
-      }
-      const qs = q.toString();
-      window.history.replaceState(null, "", qs ? `${window.location.pathname}?${qs}` : window.location.pathname);
-    }, 400);
+    const t = window.setTimeout(() => window.history.replaceState(null, "", addressFor(schema, values)), 400);
     return () => window.clearTimeout(t);
   }, [ready, values, schema]);
 
@@ -109,8 +111,12 @@ export function useStudio<T extends Record<string, unknown>>(schema: Schema<T>, 
     changed: (keys: (keyof T)[]) => keys.filter((k) => values[k] !== schema[k].def).length,
     copied,
     share: async () => {
+      // Copy a link to exactly these inputs, whether or not Calculate was pressed.
+      const link = window.location.origin + addressFor(schema, values);
+      window.history.replaceState(null, "", addressFor(schema, values));
+      setReady(true);
       try {
-        await navigator.clipboard.writeText(window.location.href);
+        await navigator.clipboard.writeText(link);
         setCopied(true);
         window.setTimeout(() => setCopied(false), 2000);
       } catch {
@@ -120,14 +126,11 @@ export function useStudio<T extends Record<string, unknown>>(schema: Schema<T>, 
   };
 }
 
-/** The Share button that sits in the answer card. */
+/** The design's "Copy a link to these results" button in the results panel. */
 export function ShareButton({ copied, onClick }: { copied: boolean; onClick: () => void }) {
   return (
-    <button type="button" className={s.ghostBtn} onClick={onClick}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7" />
-      </svg>
-      {copied ? "Link copied" : "Share"}
+    <button type="button" className="textbutton gm-share-link" onClick={onClick}>
+      {copied ? "Link copied" : "Copy a link to these results"}
     </button>
   );
 }
