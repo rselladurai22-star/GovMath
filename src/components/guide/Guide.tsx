@@ -1,12 +1,14 @@
 import type { ReactNode } from "react";
 import s from "./Guide.module.css";
+import TocSpy from "./TocSpy";
 
 /**
  * Shared long-form guide template and visual library.
  *
  * A guide is a <Guide> with a contents list, numbered <GuideSection>s holding
  * plain HTML prose (p, ul, strong, a), and figures from this file. Every
- * component is a server component: no client JavaScript.
+ * component is a server component; only the contents highlighter (TocSpy)
+ * runs in the browser.
  */
 
 /** Categorical chart colours, in fixed order. Validated for colour-blind separation. */
@@ -59,13 +61,14 @@ export function Guide({
       </header>
 
       <div className={s.layout}>
-        <nav aria-label="On this page" className={s.rail}>
+        <nav aria-label="Table of contents" className={s.rail} data-toc>
+          <TocSpy ids={toc.map((t) => t.id)} />
           <details className={s.tocMobile}>
-            <summary>On this page</summary>
+            <summary>Table of contents</summary>
             <TocList toc={toc} />
           </details>
           <div className={s.tocDesktop}>
-            <p>On this page</p>
+            <p>Table of contents</p>
             <TocList toc={toc} />
           </div>
         </nav>
