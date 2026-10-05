@@ -33,7 +33,8 @@ describe("LHA rates", () => {
     expect(LHA_AREAS_BY_NATION.england.length).toBe(152);
     expect(LHA_AREAS_BY_NATION.scotland.length).toBe(18);
     expect(LHA_AREAS_BY_NATION.wales.length).toBe(22);
-    expect(new Set(LHA_AREAS).size).toBe(192);
+    expect(LHA_AREAS_BY_NATION.ni.length).toBe(8);
+    expect(new Set(LHA_AREAS).size).toBe(200);
   });
   it("Scottish and Welsh weekly rates", () => {
     expect(lhaWeekly("Greater Glasgow", "1")).toBe(159.95);
@@ -44,6 +45,13 @@ describe("LHA rates", () => {
     expect(lhaNation("Fife")).toBe("scotland");
     expect(lhaNation("Bristol")).toBe("england");
     expect(lhaWeekly("Nowhere", "1")).toBe(0);
+  });
+  it("Northern Ireland weekly and Universal Credit monthly rates", () => {
+    expect(lhaNation("Belfast")).toBe("ni");
+    expect(lhaWeekly("South East", "4")).toBe(199.12);
+    expect(lhaWeekly("South West", "1")).toBe(88.68);
+    // The Housing Executive's published Belfast monthly rates.
+    expect((["shared", "1", "2", "3", "4"] as const).map((c) => lhaMonthly("Belfast", c))).toEqual([329.15, 605.47, 676.86, 752.07, 954.91]);
   });
   it("Universal Credit uses the published monthly rates", () => {
     expect(lhaMonthly("Bristol", "1")).toBe(900);

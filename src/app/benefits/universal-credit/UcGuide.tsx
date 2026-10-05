@@ -184,7 +184,7 @@ export default function UcGuide() {
           against £207.12 a week for Housing Benefit. A single person over 35 renting a £900 flat there gets a housing element of the full
           £900. If they are not working, the benefit cap then takes £95.48 off their award. The{" "}
           <a href="/benefits/local-housing-allowance">Local Housing Allowance calculator</a> works out your bedroom entitlement and the rate for
-          any area of England, Scotland or Wales.
+          any area of the UK.
         </p>
         <p>
           Each other adult living with you, such as a grown-up son or daughter, usually means a housing cost contribution of £96.55 a month is
