@@ -14,7 +14,7 @@ export default function PrivacyPage() {
     <ContentPage
       title="Privacy Policy"
       intro="What we collect, what we don't, and the choices you have."
-      updated="31 May 2026"
+      updated="6 October 2026"
     >
       <p>
         This Privacy Policy explains how GovMath (&quot;we&quot;,
@@ -113,6 +113,22 @@ export default function PrivacyPage() {
         .
       </p>
 
+      <h2>Your consent and choices</h2>
+      <p>
+        When advertising is switched on, visitors in the UK, the European Economic Area and Switzerland see a consent message from a
+        Google-certified consent management platform the first time they visit. It explains how cookies are used for ads and lets you
+        accept, reject or choose which purposes and partners you allow. Without your consent, only non-personalised ads (which still use
+        cookies for frequency capping, reporting and fraud prevention) or no ads are shown. You can change your choice at any time from
+        the privacy settings link the message adds to the page.
+      </p>
+      <p>
+        You can also opt out of interest-based advertising from many companies at{" "}
+        <a href="https://www.youronlinechoices.com/uk/" target="_blank" rel="noopener noreferrer">
+          youronlinechoices.com
+        </a>
+        .
+      </p>
+
       <h2>Analytics</h2>
       <p>
         We use privacy-conscious analytics (including Vercel Analytics and Speed
@@ -136,7 +152,17 @@ export default function PrivacyPage() {
         restrict certain processing. Because we do not hold accounts or store
         your calculator inputs, the personal data we hold is minimal. To make a
         request, contact us using the details on our{" "}
-        <Link href="/contact">contact page</Link>.
+        <Link href="/contact">contact page</Link>. We rely on your consent
+        for advertising cookies and on our legitimate interest in running a
+        secure, working website for essential processing.
+      </p>
+      <p>
+        If you are unhappy with how we handle your data, you can complain to
+        the Information Commissioner&apos;s Office at{" "}
+        <a href="https://ico.org.uk/make-a-complaint/" target="_blank" rel="noopener noreferrer">
+          ico.org.uk
+        </a>
+        .
       </p>
 
       <h2>Children</h2>
