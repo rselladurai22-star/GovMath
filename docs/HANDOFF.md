@@ -85,6 +85,7 @@ How they are built:
 - **Scripts.** The supplied scripts sit in `src/gm/scripts/*.js`, kept as delivered, wrapped in an exported `init…()` and excluded from ESLint. `src/gm/GmScripts.tsx` runs them once, in order.
 - **Engines.** The salary script's `salaryResult()` and the mortgage script's `stampDuty()` come from `src/gm/engines.ts` (site engines; tested in `engines.test.ts`).
 - **Catalogue.** `/gm/catalog.json` is built from `CALCULATORS` for the header code in `axis.js`.
+- **Logo.** The supplied 1983 × 793 logo is served as sized copies (`public/gm/govmath-logo-210.png`, `-420`, `-630`) through `srcset` with `sizes="210px"` in every page's header and footer, so each screen loads the right one (13–61 KB instead of 379 KB). Its largest display size is 210 × 84. To change the logo, regenerate all three copies from the new master.
 
 **Every other page** (98 calculators, about, contact, privacy, terms, disclaimer, blog, all calculators, 404) is React, wrapped in `src/gm/GmShell.tsx`:
 - `GmShell` renders the package's header and footer (`src/gm/chrome.json`), runs `axis.js` and loads the package's stylesheets in the same order as its pages. `kind="calculator"` uses the mortgage/take-home page order; the default uses the base order. Both end with **`public/gm/govmath-site.css`**.
