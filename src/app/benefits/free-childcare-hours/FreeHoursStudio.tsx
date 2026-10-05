@@ -4,7 +4,7 @@ import { freeHours, minimumWeeklyEarnings, taxFreeChildcarePlan, type ChildStage
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp, whole } from "@/components/flagship/format";
+import { gbp, whole, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -40,7 +40,7 @@ export default function FreeHoursStudio({ query }: { query: Query }) {
       onCalculate={st.calculate}
       calculateLabel="Check my free hours"
       onReset={st.reset}
-      dock={{ label: "Funded hours a week", value: `${r.hoursPerWeek} hours` }}
+      dock={{ label: "Funded hours a week", value: `${r.hoursPerWeek} ${per(r.hoursPerWeek, "hours")}` }}
       inputs={
         <>
           <InputGroup title="Your child">
@@ -63,7 +63,7 @@ export default function FreeHoursStudio({ query }: { query: Query }) {
     >
       <Answer
         eyebrow="Funded childcare"
-        value={`${r.hoursPerWeek} hours`}
+        value={`${r.hoursPerWeek} ${per(r.hoursPerWeek, "hours")}`}
         unit={r.hoursPerWeek > 0 ? "a week, 38 weeks a year" : undefined}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
@@ -75,7 +75,7 @@ export default function FreeHoursStudio({ query }: { query: Query }) {
             )
           ) : (
             <>
-              That is <b>{whole(r.annualHours)}</b> funded hours a year, worth about <b>{gbp(r.value)}</b> at your provider&apos;s rate. Spread over {v.weeks} weeks it is about{" "}
+              That is <b>{whole(r.annualHours)}</b> funded hours a year, worth about <b>{gbp(r.value)}</b> at your provider&apos;s rate. Spread over {v.weeks} {per(v.weeks, "weeks")} it is about{" "}
               <b>{r.stretchedWeekly.toFixed(1)}</b> hours a week. You pay about <b>{gbp(finalPay)}</b> a year for the rest{tfc && tfc.topUp > 0 ? ", after Tax-Free Childcare" : ""}.
             </>
           )
@@ -96,7 +96,7 @@ export default function FreeHoursStudio({ query }: { query: Query }) {
         items={[
           { label: "Nation", value: "England" },
           { label: "Funded weeks", value: "38 a year, can be stretched" },
-          { label: "Childcare", value: `${v.hours} hours for ${v.weeks} weeks at ${gbp(v.rate, true)}` },
+          { label: "Childcare", value: `${v.hours} ${per(v.hours, "hours")} for ${v.weeks} ${per(v.weeks, "weeks")} at ${gbp(v.rate, true)}` },
           { label: "Tax-Free Childcare", value: working ? "Used for the rest" : "Not eligible" },
         ]}
       />
@@ -113,7 +113,7 @@ export default function FreeHoursStudio({ query }: { query: Query }) {
           <Statement
             columns={["A year"]}
             rows={[
-              { label: `${v.hours} hours × ${v.weeks} weeks × ${gbp(v.rate, true)}`, values: [gbp(v.hours * v.weeks * v.rate)] },
+              { label: `${v.hours} ${per(v.hours, "hours")} × ${v.weeks} ${per(v.weeks, "weeks")} × ${gbp(v.rate, true)}`, values: [gbp(v.hours * v.weeks * v.rate)] },
               ...(v.extras > 0 ? [{ label: "Extra charges", values: [gbp(v.extras * v.weeks)] }] : []),
               ...(r.value > 0 ? [{ label: "Funded hours", values: [`−${gbp(r.value)}`], kind: "deduction" as const }] : []),
               ...(tfc && tfc.topUp > 0 ? [{ label: "Tax-Free Childcare (20%)", values: [`−${gbp(tfc.topUp)}`], kind: "deduction" as const }] : []),

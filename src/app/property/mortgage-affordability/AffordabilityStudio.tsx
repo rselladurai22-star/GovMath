@@ -5,7 +5,7 @@ import { stampDuty } from "@/lib/tax/sdlt-2025";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, Chips, Field, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
-import { gbp, percent } from "@/components/flagship/format";
+import { gbp, percent, per } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -102,8 +102,8 @@ export default function AffordabilityStudio({ query }: { query: Query }) {
       <Facts
         items={[
           { label: "Maximum price", value: gbp(r.maxPrice) },
-          { label: "Monthly payment", value: gbp(r.monthlyPayment), note: `At ${v.rate}% over ${v.term} years` },
-          { label: `If rates rise ${v.stress} points`, value: gbp(r.stressedPayment), tone: stretched ? "warn" : undefined },
+          { label: "Monthly payment", value: gbp(r.monthlyPayment), note: `At ${v.rate}% over ${v.term} ${per(v.term, "years")}` },
+          { label: `If rates rise ${v.stress} ${per(v.stress, "points")}`, value: gbp(r.stressedPayment), tone: stretched ? "warn" : undefined },
           { label: "Cash needed", value: gbp(cashNeeded), note: "Deposit and Stamp Duty" },
         ]}
       />
@@ -112,7 +112,7 @@ export default function AffordabilityStudio({ query }: { query: Query }) {
         items={[
           { label: "Income multiple", value: `${v.multiple}×` },
           { label: "Bonus counted", value: v.variable > 0 ? "Half" : "None entered" },
-          { label: "Mortgage", value: `${v.rate}%, ${v.term} years, repayment` },
+          { label: "Mortgage", value: `${v.rate}%, ${v.term} ${per(v.term, "years")}, repayment` },
           { label: "Stamp Duty", value: v.ftb ? "First-time buyer, England" : "Home mover, England" },
         ]}
       />

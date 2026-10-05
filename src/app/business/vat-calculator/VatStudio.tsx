@@ -4,7 +4,7 @@ import { addVat, removeVat, VAT_RATES, type VatRateKey } from "@/lib/tax/vat";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 type Direction = "add" | "remove";
@@ -142,7 +142,7 @@ export default function VatStudio({ query }: { query: Query }) {
             </>
           )
         }
-        badges={[`${pct} VAT rate`, ...(qty > 1 ? [`${qty} items`] : []), ...(rate > 0 ? [`VAT is ${meta.fraction} of the VAT-inclusive price`] : []), "UK rates"]}
+        badges={[`${pct} VAT rate`, ...(qty > 1 ? [`${qty} ${per(qty, "items")}`] : []), ...(rate > 0 ? [`VAT is ${meta.fraction} of the VAT-inclusive price`] : []), "UK rates"]}
       />
 
       {/* 2. Key figures */}
@@ -159,14 +159,14 @@ export default function VatStudio({ query }: { query: Query }) {
         items={[
           { label: "VAT rate", value: `${pct} (${meta.label.split(" ")[1]})` },
           { label: "Rounding", value: qty > 1 ? "On the invoice total, to the nearest penny" : "To the nearest penny" },
-          { label: "Quantity", value: qty > 1 ? `${qty} items at ${gbp(each, true)}` : "One item" },
+          { label: "Quantity", value: qty > 1 ? `${qty} ${per(qty, "items")} at ${gbp(each, true)}` : "One item" },
           { label: "Flat rate (for comparison)", value: `${flat}%` },
         ]}
         note="Check the rate for your goods or services on GOV.UK if you're not sure which applies."
       />
 
       {unit && (
-        <ResultCard title={`${qty} items`} sub="Each item and the invoice total.">
+        <ResultCard title={`${qty} ${per(qty, "items")}`} sub="Each item and the invoice total.">
           <Statement
             columns={["Each", `× ${qty}`]}
             rows={[

@@ -4,7 +4,7 @@ import { LARGE_THRESHOLD, ratesStudy, SBRR_LOWER, SBRR_UPPER_TAPER } from "@/lib
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp, percent } from "@/components/flagship/format";
+import { gbp, percent, per } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -59,7 +59,7 @@ export default function RatesStudio({ query }: { query: Query }) {
       <Answer
         eyebrow="Business rates to pay"
         value={gbp(r.bill)}
-        unit={v.days < 365 ? `for ${v.days} days` : "a year"}
+        unit={v.days < 365 ? `for ${v.days} ${per(v.days, "days")}` : "a year"}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           r.bill <= 0 && r.reliefPercent >= 100 ? (

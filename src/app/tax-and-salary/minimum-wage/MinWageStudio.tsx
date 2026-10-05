@@ -4,7 +4,7 @@ import { ACCOMMODATION_OFFSET_DAILY, minimumWageAudit, NMW_2026, type NMWBand } 
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, SelectField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const BANDS = Object.keys(NMW_2026) as NMWBand[];
@@ -116,7 +116,7 @@ export default function MinWageStudio({ query }: { query: Query }) {
             </>
           )
         }
-        badges={[`Minimum ${pounds(r.required)}`, `${r.hours} hours counted`, simple ? "Basic rate check" : "Includes deductions and unpaid time"]}
+        badges={[`Minimum ${pounds(r.required)}`, `${r.hours} ${per(r.hours, "hours")} counted`, simple ? "Basic rate check" : "Includes deductions and unpaid time"]}
       />
 
       <Facts
@@ -125,7 +125,7 @@ export default function MinWageStudio({ query }: { query: Query }) {
           { label: "Minimum for these hours", value: pounds(r.required * r.hours) },
           { label: "Short a week", value: pounds(r.weeklyShortfall), tone: r.compliant ? "good" : "bad" },
           v.weeks > 0
-            ? { label: `Owed for ${v.weeks} weeks`, value: gbp(r.owed), tone: r.owed > 0 ? "bad" : "good" }
+            ? { label: `Owed for ${v.weeks} ${per(v.weeks, "weeks")}`, value: gbp(r.owed), tone: r.owed > 0 ? "bad" : "good" }
             : { label: "Short a year", value: gbp(r.weeklyShortfall * 52), tone: r.compliant ? "good" : "bad" },
         ]}
       />

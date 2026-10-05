@@ -5,7 +5,7 @@ import { formatDate } from "@/lib/life/calendar";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, DateField, InputGroup, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, date, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -73,7 +73,7 @@ export default function RightToRentStudio({ query }: { query: Query }) {
             <>Right to Rent checks only apply in England. Landlords in Wales, Scotland and Northern Ireland do not have to do them.</>
           ) : (
             <>
-              Check this adult&apos;s right to rent between <b>{nice(plan.earliestCheck)}</b> and <b>{nice(plan.latestCheck)}</b>, no more than {CHECK_WINDOW_DAYS} days before the tenancy starts,{" "}
+              Check this adult&apos;s right to rent between <b>{nice(plan.earliestCheck)}</b> and <b>{nice(plan.latestCheck)}</b>, no more than {CHECK_WINDOW_DAYS} {per(CHECK_WINDOW_DAYS, "days")} before the tenancy starts,{" "}
               {plan.method === "manual" ? <>by seeing their original documents with them present, or using a certified identity service</> : <>using the Home Office online service with their share code</>}.
               {plan.followUp ? (
                 <>

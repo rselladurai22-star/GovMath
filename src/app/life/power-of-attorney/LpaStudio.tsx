@@ -4,7 +4,7 @@ import { DEPUTY, deputyCost, LPA, lpaFee2026 } from "@/lib/life/estate";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 type Help = "none" | "reduction" | "exemption";
@@ -34,7 +34,7 @@ export default function LpaStudio({ query }: { query: Query }) {
   const rows = [
     { label: "Registering yourself", value: fees.total },
     { label: "With a solicitor", value: fees.total + count * v.proFee * (v.vat ? 1.2 : 1) },
-    { label: `Deputyship instead, ${v.years} years`, value: deputy },
+    { label: `Deputyship instead, ${v.years} ${per(v.years, "years")}`, value: deputy },
   ];
   const maxRow = Math.max(1, ...rows.map((r) => r.value));
 

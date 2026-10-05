@@ -5,7 +5,7 @@ import { computeTakeHome, STUDENT_PLANS } from "@/lib/tax/take-home-engine";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 import { REGION_LABEL, TAX_KEYS, taxParams, TaxSituationFields } from "@/components/flagship/taxOptions";
 
@@ -82,12 +82,12 @@ export default function IR35Studio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            Billing <b>{gbp(income)}</b> a year ({gbp(v.rate)} × {v.days} days), you take home about <b>{gbp(inside.takeHome)}</b> inside IR35 through an umbrella company and{" "}
+            Billing <b>{gbp(income)}</b> a year ({gbp(v.rate)} × {v.days} {per(v.days, "days")}), you take home about <b>{gbp(inside.takeHome)}</b> inside IR35 through an umbrella company and{" "}
             <b>{gbp(outside.takeHome)}</b> outside IR35 through your own limited company. A permanent employee would need a salary of about <b>{gbp(equiv)}</b> to take home
             the outside figure.
           </>
         }
-        badges={[`${gbp(v.rate)} a day`, `${v.days} days`, REGION_LABEL[v.region]]}
+        badges={[`${gbp(v.rate)} a day`, `${v.days} ${per(v.days, "days")}`, REGION_LABEL[v.region]]}
       />
 
       <Facts

@@ -5,7 +5,7 @@ import { computeTakeHome } from "@/lib/tax/take-home-engine";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, DataTable, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const COLORS = { free: "#0f9f6e", taxable: "#f59e0b", notice: "#5b1e6e", holiday: "#2e0a3a" };
@@ -104,7 +104,7 @@ export default function RedundancyStudio({ query }: { query: Query }) {
             <>You need at least <b>2 full years</b> with your employer to qualify for statutory redundancy pay. You are still entitled to your notice and holiday pay.</>
           ) : (
             <>
-              <b>{years} years</b> of service give <b>{r.weeksDue} weeks&apos;</b> pay at <b>{gbp(Math.min(v.pay, r.capUsed))}</b> a week
+              <b>{years} {per(years, "years")}</b> of service give <b>{r.weeksDue} {per(r.weeksDue, "weeks'")}</b> pay at <b>{gbp(Math.min(v.pay, r.capUsed))}</b> a week
               {r.capApplies && !v.uncapped && <> (capped)</>}: <b>{gbp(r.statutory)}</b> statutory.{" "}
               {r.noticePay + r.holidayPay > 0 || r.redundancy > r.statutory ? (
                 <>
@@ -112,19 +112,19 @@ export default function RedundancyStudio({ query }: { query: Query }) {
                 </>
               ) : (
                 <>
-                  You are also entitled to <b>{r.noticeWeeks} weeks&apos; notice</b>, worked or paid.
+                  You are also entitled to <b>{r.noticeWeeks} {per(r.noticeWeeks, "weeks'")} notice</b>, worked or paid.
                 </>
               )}
             </>
           )
         }
-        badges={[`${r.weeksDue} weeks' pay`, `${r.noticeWeeks} weeks' notice`, r.redundancy <= TAX_FREE_TERMINATION ? "Redundancy pay tax-free" : "Above £30,000 is taxed"]}
+        badges={[`${r.weeksDue} ${per(r.weeksDue, "weeks'")} pay`, `${r.noticeWeeks} ${per(r.noticeWeeks, "weeks'")} notice`, r.redundancy <= TAX_FREE_TERMINATION ? "Redundancy pay tax-free" : "Above £30,000 is taxed"]}
       />
 
       <Facts
         items={[
           { label: "Statutory redundancy", value: gbp(r.statutory) },
-          { label: v.pilon ? "Notice pay" : "Notice period", value: v.pilon ? gbp(r.noticePay) : `${r.noticeWeeks} weeks` },
+          { label: v.pilon ? "Notice pay" : "Notice period", value: v.pilon ? gbp(r.noticePay) : `${r.noticeWeeks} ${per(r.noticeWeeks, "weeks")}` },
           { label: "Holiday pay", value: gbp(r.holidayPay) },
           { label: "After tax, about", value: gbp(netTotal), tone: "good" },
         ]}

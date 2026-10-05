@@ -5,7 +5,7 @@ import { formatDate } from "@/lib/life/calendar";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, DateField, InputGroup, MoneyField, Segmented } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { date, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 type Situation = "in" | "out" | "custom";
@@ -105,7 +105,7 @@ export default function ProRataStudio({ query }: { query: Query }) {
             </>
           )
         }
-        badges={[`${gbp(r.dailyRate, true)} a day`, `${r.days} days`, v.method === "annual" ? "Annual method" : "Calendar month method"]}
+        badges={[`${gbp(r.dailyRate, true)} a day`, `${r.days} ${per(r.days, "days")}`, v.method === "annual" ? "Annual method" : "Calendar month method"]}
       />
 
       <Facts
@@ -120,13 +120,13 @@ export default function ProRataStudio({ query }: { query: Query }) {
       <Assumptions
         items={[
           { label: "Dates", value: "Both the first and last day counted" },
-          { label: "Method", value: v.method === "annual" ? `× 12 ÷ ${r.periodDays}` : `÷ ${r.periodDays} days in the month` },
+          { label: "Method", value: v.method === "annual" ? `× 12 ÷ ${r.periodDays}` : `÷ ${r.periodDays} ${per(r.periodDays, "days")} in the month` },
           { label: "Weekly to monthly", value: "× 52 ÷ 12" },
           { label: "Check", value: "Your tenancy agreement may set a method" },
         ]}
       />
 
-      <ResultCard title="Three ways to work it out" sub={`For ${r.days} days.`}>
+      <ResultCard title="Three ways to work it out" sub={`For ${r.days} ${per(r.days, "days")}.`}>
         <Compare head={["Method", "Rent"]} rows={options.map((o) => ({ label: o.label, value: gbp(o.value, true), bar: o.value / maxOpt, current: o.method === v.method }))} />
       </ResultCard>
 
@@ -135,8 +135,8 @@ export default function ProRataStudio({ query }: { query: Query }) {
           columns={["Amount"]}
           rows={[
             { label: v.method === "annual" ? `${gbp(monthly, true)} × 12` : `${gbp(monthly, true)} a month`, values: [gbp(v.method === "annual" ? monthly * 12 : monthly, true)] },
-            { label: `÷ ${r.periodDays} days`, values: [gbp(r.dailyRate, true)] },
-            { label: `× ${r.days} days`, values: [gbp(r.amount, true)], kind: "total" as const },
+            { label: `÷ ${r.periodDays} ${per(r.periodDays, "days")}`, values: [gbp(r.dailyRate, true)] },
+            { label: `× ${r.days} ${per(r.days, "days")}`, values: [gbp(r.amount, true)], kind: "total" as const },
           ]}
         />
       </ResultCard>

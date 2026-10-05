@@ -7,7 +7,7 @@ import { NMW_2026 } from "@/lib/benefits/minimum-wage";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, Chips, Field, InputGroup, MoneyField, Segmented, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, DataTable, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp, percent } from "@/components/flagship/format";
+import { gbp, percent, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 import { REGION_LABEL, TAX_KEYS, taxParams, TaxSituationFields } from "@/components/flagship/taxOptions";
 
@@ -56,7 +56,7 @@ export default function OvertimeStudio({ query }: { query: Query }) {
 
   const ladder = [5, 10, 15, 20, 30, 40].map((h) => {
     const o = overtimeOutcome({ ...common, tiers: [{ hours: h, multiplier: v.mult }] });
-    return [`${h} hours`, gbp(o.gross), gbp(o.kept), pounds(o.keptPerHour)];
+    return [`${h} ${per(h, "hours")}`, gbp(o.gross), gbp(o.kept), pounds(o.keptPerHour)];
   });
 
   return (
@@ -191,7 +191,7 @@ export default function OvertimeStudio({ query }: { query: Query }) {
             </Callout>
           ) : null}
           {weeklyHours > 48 && (
-            <Callout tone="warn" title={`About ${Math.round(weeklyHours)} hours a week`}>
+            <Callout tone="warn" title={`About ${Math.round(weeklyHours)} ${per(Math.round(weeklyHours), "hours")} a week`}>
               Most workers cannot be required to work more than 48 hours a week on average unless they have opted out in writing.
             </Callout>
           )}

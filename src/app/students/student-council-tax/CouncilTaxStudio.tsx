@@ -4,7 +4,7 @@ import { studentCouncilTax } from "@/lib/students/loans";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, SelectField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 type Nation = "england" | "wales" | "scotland" | "ni";
@@ -74,7 +74,7 @@ export default function CouncilTaxStudio({ query }: { query: Query }) {
             </>
           )
         }
-        badges={ni ? ["Rates, not council tax"] : [r.kind === "exempt" ? "Exempt" : r.kind === "discount" ? "25% discount" : "Full bill", `${Math.round(v.months)} months`]}
+        badges={ni ? ["Rates, not council tax"] : [r.kind === "exempt" ? "Exempt" : r.kind === "discount" ? "25% discount" : "Full bill", `${Math.round(v.months)} ${per(Math.round(v.months), "months")}`]}
       />
 
       <Facts

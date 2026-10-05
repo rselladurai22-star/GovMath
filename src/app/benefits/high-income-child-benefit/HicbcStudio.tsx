@@ -5,7 +5,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort, percent } from "@/components/flagship/format";
+import { gbp, gbpShort, percent, per } from "@/components/flagship/format";
 import { num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -91,7 +91,7 @@ export default function HicbcStudio({ query }: { query: Query }) {
           { label: "Tax year", value: "2026/27" },
           { label: "Employee", value: "Income Tax and NI at rUK rates" },
           { label: "Charge", value: "1% for every £200 over £60,000" },
-          { label: "Child Benefit", value: `${v.weeks} weeks for ${v.children} ${v.children === 1 ? "child" : "children"}` },
+          { label: "Child Benefit", value: `${v.weeks} ${per(v.weeks, "weeks")} for ${v.children} ${v.children === 1 ? "child" : "children"}` },
         ]}
       />
 

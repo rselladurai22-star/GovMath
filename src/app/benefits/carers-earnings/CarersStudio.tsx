@@ -5,7 +5,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -98,11 +98,11 @@ export default function CarersStudio({ query }: { query: Query }) {
           ) : (
             <>
               Your earnings count as <b>{gbp(r.counted, true)}</b> a week, <b>{gbp(-r.headroom, true)}</b> over the {gbp(CA_2026.earningsLimit)} limit, so you would lose the whole{" "}
-              <b>{gbp(CA_2026.weekly, true)}</b>. Working up to <b>{maxHours.toFixed(1)} hours</b> a week at this rate keeps you under.
+              <b>{gbp(CA_2026.weekly, true)}</b>. Working up to <b>{maxHours.toFixed(1)} {per(maxHours.toFixed(1), "hours")}</b> a week at this rate keeps you under.
             </>
           )
         }
-        badges={[`Limit ${gbp(CA_2026.earningsLimit)} a week`, r.withinLimit ? "Within the limit" : "Over the limit", `Up to ${maxHours.toFixed(1)} hours`]}
+        badges={[`Limit ${gbp(CA_2026.earningsLimit)} a week`, r.withinLimit ? "Within the limit" : "Over the limit", `Up to ${maxHours.toFixed(1)} ${per(maxHours.toFixed(1), "hours")}`]}
       />
 
       <Facts
@@ -117,7 +117,7 @@ export default function CarersStudio({ query }: { query: Query }) {
       <Assumptions
         items={[
           { label: "Rates", value: "2026/27" },
-          { label: "Pay", value: `${gbp(v.hourly, true)} × ${v.hours} hours a week` },
+          { label: "Pay", value: `${gbp(v.hourly, true)} × ${v.hours} ${per(v.hours, "hours")} a week` },
           { label: "Tax and NI", value: "Annualised, standard tax code" },
           { label: "Pension", value: v.pensionPct > 0 ? `${v.pensionPct}% of pay, before tax` : "None" },
         ]}
@@ -154,7 +154,7 @@ export default function CarersStudio({ query }: { query: Query }) {
             if (!c) return null;
             return (
               <>
-                <b>{HOURS[i]} hours</b>: take-home <b>{gbp(c.pay, true)}</b>, total with Carer&apos;s Allowance <b>{gbp(c.total, true)}</b> a week.
+                <b>{HOURS[i]} {per(HOURS[i], "hours")}</b>: take-home <b>{gbp(c.pay, true)}</b>, total with Carer&apos;s Allowance <b>{gbp(c.total, true)}</b> a week.
               </>
             );
           }}

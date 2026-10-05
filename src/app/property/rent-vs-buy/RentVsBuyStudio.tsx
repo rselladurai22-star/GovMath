@@ -5,7 +5,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, DataTable, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort } from "@/components/flagship/format";
+import { gbp, gbpShort, per } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -81,13 +81,13 @@ export default function RentVsBuyStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow={buyWins ? `Buying comes out ahead after ${yrs} years` : `Renting comes out ahead after ${yrs} years`}
+        eyebrow={buyWins ? `Buying comes out ahead after ${yrs} ${per(yrs, "years")}` : `Renting comes out ahead after ${yrs} ${per(yrs, "years")}`}
         value={gbp(Math.abs(r.advantage))}
         unit="better off"
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            After <b>{yrs} years</b>, the buyer would have about <b>{gbp(r.final.buyerWealth)}</b> in home equity and savings, against <b>{gbp(r.final.renterWealth)}</b> for the renter
+            After <b>{yrs} {per(yrs, "years")}</b>, the buyer would have about <b>{gbp(r.final.buyerWealth)}</b> in home equity and savings, against <b>{gbp(r.final.renterWealth)}</b> for the renter
             who invested the same cash.{" "}
             {r.breakEvenYear ? (
               <>
@@ -115,7 +115,7 @@ export default function RentVsBuyStudio({ query }: { query: Query }) {
           { label: "House prices", value: `${v.growth}% a year` },
           { label: "Rents", value: `${v.rentGrowth}% a year` },
           { label: "Investments", value: `${v.invest}% a year` },
-          { label: "Mortgage", value: `${v.rate}% fixed, ${v.term} years` },
+          { label: "Mortgage", value: `${v.rate}% fixed, ${v.term} ${per(v.term, "years")}` },
         ]}
         note="Small changes to these assumptions can change the answer. Try a few under More options."
       />

@@ -5,7 +5,7 @@ import { computeTakeHome, STUDENT_PLANS } from "@/lib/tax/take-home-engine";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, DataTable, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, percent } from "@/components/flagship/format";
+import { gbp, percent, per } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 import { REGION_LABEL, TAX_KEYS, taxParams, TaxSituationFields } from "@/components/flagship/taxOptions";
 
@@ -47,12 +47,12 @@ export default function ProRataStudio({ query }: { query: Query }) {
   const yearSnap = computeTakeHome({ ...tax, gross: r.earnedThisYear });
   const keepYou = yours.takeHome / Math.max(1, r.salary);
   const keepFull = full.takeHome / Math.max(1, v.salary);
-  const shareWord = byHours ? `${oneDp(v.hours)} of ${oneDp(v.ftHours)} hours` : `${v.days} of ${v.ftDays} days`;
+  const shareWord = byHours ? `${oneDp(v.hours)} of ${oneDp(v.ftHours)} ${per(oneDp(v.ftHours), "hours")}` : `${v.days} of ${v.ftDays} ${per(v.ftDays, "days")}`;
 
   const ladder = (byHours ? [16, 20, 22.5, 25, 30, 32.5] : [1, 2, 3, 4]).map((x) => {
     const p = proRata({ fullTimeSalary: v.salary, basis: v.basis, hours: x, fullTimeHours: v.ftHours, days: x, fullTimeDays: v.ftDays });
     const t = computeTakeHome({ ...tax, gross: p.salary });
-    return [byHours ? `${x} hours` : `${x} day${x === 1 ? "" : "s"}`, percent(p.fte), gbp(p.salary), gbp(t.takeHome / 12)];
+    return [byHours ? `${x} ${per(x, "hours")}` : `${x} day${x === 1 ? "" : "s"}`, percent(p.fte), gbp(p.salary), gbp(t.takeHome / 12)];
   });
 
   return (
@@ -153,7 +153,7 @@ export default function ProRataStudio({ query }: { query: Query }) {
         items={[
           { label: "A month, before tax", value: gbp(r.salary / 12) },
           { label: "Take-home a month", value: gbp(yours.takeHome / 12), tone: "good" },
-          { label: "Holiday a year", value: `${oneDp(r.holidayDays)} days`, note: `${oneDp(r.holidayHours)} hours` },
+          { label: "Holiday a year", value: `${oneDp(r.holidayDays)} ${per(oneDp(r.holidayDays), "days")}`, note: `${oneDp(r.holidayHours)} ${per(oneDp(r.holidayHours), "hours")}` },
           { label: "Share you keep", value: percent(keepYou), note: `vs ${percent(keepFull)} full time` },
         ]}
       />
@@ -161,7 +161,7 @@ export default function ProRataStudio({ query }: { query: Query }) {
       <Assumptions
         items={[
           { label: "Tax year", value: "2026/27" },
-          { label: "Full time", value: byHours ? `${oneDp(v.ftHours)} hours a week` : `${v.ftDays} days a week` },
+          { label: "Full time", value: byHours ? `${oneDp(v.ftHours)} ${per(oneDp(v.ftHours), "hours")} a week` : `${v.ftDays} ${per(v.ftDays, "days")} a week` },
           { label: "Tax code", value: "1257L" },
           { label: "Student loan", value: STUDENT_PLANS[v.plan].label },
         ]}
@@ -200,13 +200,13 @@ export default function ProRataStudio({ query }: { query: Query }) {
       )}
 
       {partYear && v.salary > 0 && (
-        <ResultCard title={`Working ${v.months} months this tax year`} sub="What you earn between now and 5 April, and the tax on it.">
+        <ResultCard title={`Working ${v.months} ${per(v.months, "months")} this tax year`} sub="What you earn between now and 5 April, and the tax on it.">
           <Facts
             items={[
               { label: "Earned this tax year", value: gbp(r.earnedThisYear) },
               { label: "Take-home this tax year", value: gbp(yearSnap.takeHome), tone: "good" },
               { label: "Tax this tax year", value: gbp(yearSnap.incomeTaxTotal) },
-              { label: "Holiday this year", value: `${oneDp(r.holidayDays)} days` },
+              { label: "Holiday this year", value: `${oneDp(r.holidayDays)} ${per(oneDp(r.holidayDays), "days")}` },
             ]}
           />
           <Callout title="You may be due a tax refund">

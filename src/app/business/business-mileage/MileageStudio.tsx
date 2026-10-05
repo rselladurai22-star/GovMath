@@ -4,7 +4,7 @@ import { mileageClaim, MILEAGE_RATES, type MileageRole, type Vehicle } from "@/l
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, Segmented, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, whole } from "@/components/flagship/format";
+import { gbp, whole, per } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 type Band = "basic" | "higher" | "additional";
@@ -120,7 +120,7 @@ export default function MileageStudio({ query }: { query: Query }) {
       <Facts
         items={[
           { label: "Approved amount", value: gbp(r.approved, true), note: "HMRC rates" },
-          ...(v.vehicle === "car" ? [{ label: "At 45p", value: `${whole(r.atFirstRate)} miles` }, { label: "At 25p", value: `${whole(r.atSecondRate)} miles` }] : []),
+          ...(v.vehicle === "car" ? [{ label: "At 45p", value: `${whole(r.atFirstRate)} ${per(whole(r.atFirstRate), "miles")}` }, { label: "At 25p", value: `${whole(r.atSecondRate)} ${per(whole(r.atSecondRate), "miles")}` }] : []),
           employee ? { label: "Employer pays", value: gbp(r.employerPaid, true) } : { label: "Tax and NI saved", value: gbp(r.taxSaved, true), tone: "good" as const },
           ...(v.vehicle !== "car" ? [{ label: "Rate", value: v.vehicle === "motorcycle" ? "24p a mile" : "20p a mile" }] : []),
         ]}
@@ -142,10 +142,10 @@ export default function MileageStudio({ query }: { query: Query }) {
             rows={[
               ...(v.vehicle === "car"
                 ? [
-                    ...(r.atFirstRate > 0 ? [{ label: `${whole(r.atFirstRate)} miles at 45p`, values: [gbp(r.atFirstRate * MILEAGE_RATES.car.firstRate, true)] }] : []),
-                    ...(r.atSecondRate > 0 ? [{ label: `${whole(r.atSecondRate)} miles at 25p`, values: [gbp(r.atSecondRate * MILEAGE_RATES.car.secondRate, true)] }] : []),
+                    ...(r.atFirstRate > 0 ? [{ label: `${whole(r.atFirstRate)} ${per(whole(r.atFirstRate), "miles")} at 45p`, values: [gbp(r.atFirstRate * MILEAGE_RATES.car.firstRate, true)] }] : []),
+                    ...(r.atSecondRate > 0 ? [{ label: `${whole(r.atSecondRate)} ${per(whole(r.atSecondRate), "miles")} at 25p`, values: [gbp(r.atSecondRate * MILEAGE_RATES.car.secondRate, true)] }] : []),
                   ]
-                : [{ label: `${whole(v.miles)} miles at ${v.vehicle === "motorcycle" ? "24p" : "20p"}`, values: [gbp(r.approved, true)] }]),
+                : [{ label: `${whole(v.miles)} ${per(whole(v.miles), "miles")} at ${v.vehicle === "motorcycle" ? "24p" : "20p"}`, values: [gbp(r.approved, true)] }]),
               { label: "Approved amount", values: [gbp(r.approved, true)], kind: "total" as const },
               ...(employee
                 ? [
@@ -168,7 +168,7 @@ export default function MileageStudio({ query }: { query: Query }) {
         <Compare
           head={["Business miles", "Approved amount"]}
           rows={ladder.map(({ m, x }) => ({
-            label: `${whole(m)} miles`,
+            label: `${whole(m)} ${per(whole(m), "miles")}`,
             value: gbp(x.approved),
             delta: `${pence(x.averagePence)} a mile`,
             bar: x.approved / maxLadder,

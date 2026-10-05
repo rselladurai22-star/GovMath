@@ -4,7 +4,7 @@ import { singlePersonDiscountForDays } from "@/lib/property/discounts";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -74,8 +74,8 @@ export default function SPDStudio({ query }: { query: Query }) {
         sentence={
           qualifies ? (
             <>
-              25% off a <b>{gbp(v.bill)}</b> bill{r.days < 365 && <> for {r.days} days</>} saves <b>{gbp(r.discount)}</b>. You pay <b>{gbp(r.payable)}</b>, or{" "}
-              <b>{gbp(r.payable / n, true)}</b> a month over {n} months.
+              25% off a <b>{gbp(v.bill)}</b> bill{r.days < 365 && <> for {r.days} {per(r.days, "days")}</>} saves <b>{gbp(r.discount)}</b>. You pay <b>{gbp(r.payable)}</b>, or{" "}
+              <b>{gbp(r.payable / n, true)}</b> a month over {n} {per(n, "months")}.
             </>
           ) : (
             <>
@@ -100,7 +100,7 @@ export default function SPDStudio({ query }: { query: Query }) {
         items={[
           { label: "Bill", value: `${gbp(v.bill)} before discounts` },
           { label: "Discount", value: "25% for one counted adult" },
-          { label: "Period", value: r.days === 365 ? "The full year" : `${r.days} days` },
+          { label: "Period", value: r.days === 365 ? "The full year" : `${r.days} ${per(r.days, "days")}` },
           { label: "Year", value: "2026/27" },
         ]}
       />

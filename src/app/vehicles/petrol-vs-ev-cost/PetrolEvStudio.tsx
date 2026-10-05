@@ -5,7 +5,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort } from "@/components/flagship/format";
+import { gbp, gbpShort, per } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -102,13 +102,13 @@ export default function PetrolEvStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow={`Over ${years} years`}
+        eyebrow={`Over ${years} ${per(years, "years")}`}
         value={`${evCheaper ? "Electric" : "Petrol"} saves ${gbp(diff)}`}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            Driving {v.miles.toLocaleString("en-GB")} miles a year, fuel costs <b>{gbp(r.petrolEnergy)}</b> a year in the petrol car and electricity <b>{gbp(r.evEnergy)}</b> in the electric car, a saving of{" "}
-            {gbp(yearlyEnergySaving)} a year. After the purchase price, running costs and resale value, the {evCheaper ? "electric" : "petrol"} car is <b>{gbp(diff)}</b> cheaper over {years} years.
+            Driving {v.miles.toLocaleString("en-GB")} {per(v.miles.toLocaleString("en-GB"), "miles")} a year, fuel costs <b>{gbp(r.petrolEnergy)}</b> a year in the petrol car and electricity <b>{gbp(r.evEnergy)}</b> in the electric car, a saving of{" "}
+            {gbp(yearlyEnergySaving)} a year. After the purchase price, running costs and resale value, the {evCheaper ? "electric" : "petrol"} car is <b>{gbp(diff)}</b> cheaper over {years} {per(years, "years")}.
             {r.breakEven !== null && r.breakEven > 0 ? <> The electric car pays back its higher price in year {r.breakEven}.</> : null}
           </>
         }
@@ -119,8 +119,8 @@ export default function PetrolEvStudio({ query }: { query: Query }) {
         items={[
           { label: "Petrol fuel a year", value: gbp(r.petrolEnergy) },
           { label: "Electricity a year", value: gbp(r.evEnergy), tone: "good" },
-          { label: `Petrol total, ${years} years`, value: gbp(r.petrolTotal) },
-          { label: `Electric total, ${years} years`, value: gbp(r.evTotal) },
+          { label: `Petrol total, ${years} ${per(years, "years")}`, value: gbp(r.petrolTotal) },
+          { label: `Electric total, ${years} ${per(years, "years")}`, value: gbp(r.evTotal) },
         ]}
       />
 

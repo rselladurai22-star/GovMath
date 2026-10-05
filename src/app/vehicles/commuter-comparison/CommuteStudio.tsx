@@ -4,7 +4,7 @@ import { commuteCosts, cycleToWork, PRICES_2026 } from "@/lib/vehicles/running";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -85,7 +85,7 @@ export default function CommuteStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            Over {r.days} commuting days and {r.miles.toLocaleString("en-GB")} miles a year, driving costs <b>{gbp(car.yearly)}</b>, or {gbp(car.perDay, true)} a day, including fuel, parking and wear.
+            Over {r.days} commuting days and {r.miles.toLocaleString("en-GB")} {per(r.miles.toLocaleString("en-GB"), "miles")} a year, driving costs <b>{gbp(car.yearly)}</b>, or {gbp(car.perDay, true)} a day, including fuel, parking and wear.
             {cheapest.key !== "car" ? (
               <>
                 {" "}
@@ -101,7 +101,7 @@ export default function CommuteStudio({ query }: { query: Query }) {
 
       <Assumptions
         items={[
-          { label: "Days", value: `${Math.round(v.days)} a week for ${Math.round(v.weeks)} weeks` },
+          { label: "Days", value: `${Math.round(v.days)} a week for ${Math.round(v.weeks)} ${per(Math.round(v.weeks), "weeks")}` },
           { label: "Car", value: "Fuel, parking, wear and any zone charge; not insurance, tax or depreciation" },
           { label: "Train", value: v.season > 0 ? "Season ticket or daily fares, whichever is cheaper" : "Daily return fares" },
           { label: "Bike", value: v.miles <= 15 ? "Included" : "Not shown over 15 miles each way" },

@@ -5,7 +5,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort, percent } from "@/components/flagship/format";
+import { gbp, gbpShort, percent, per } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -64,7 +64,7 @@ export default function LoanStudio({ query, plan, defaults }: { query: Query; pl
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             <StepperField label="Pay rises a year" value={v.growth} onChange={st.bind("growth")} step={0.5} min={-5} max={15} unit="%" dp={1} optional />
             <StepperField label="Inflation (RPI) in future years" value={v.rpi} onChange={st.bind("rpi")} step={0.25} min={0} max={15} unit="%" dp={2} optional hint="Sets interest and threshold rises after this year." />
-            <StepperField label="Years since repayments became due" value={v.yearsRepaying} onChange={(n) => st.set("yearsRepaying", Math.round(n))} step={1} min={0} max={40} unit="years" dp={0} optional hint={`${spec.label} is written off ${spec.writeOffYears} years after the April you were first due to repay.`} />
+            <StepperField label="Years since repayments became due" value={v.yearsRepaying} onChange={(n) => st.set("yearsRepaying", Math.round(n))} step={1} min={0} max={40} unit="years" dp={0} optional hint={`${spec.label} is written off ${spec.writeOffYears} ${per(spec.writeOffYears, "years")} after the April you were first due to repay.`} />
             <MoneyField label="Extra voluntary payment a month" value={v.extra} onChange={st.bind("extra")} optional />
             {plan !== "postgrad" && <Switch label="I also have a Postgraduate Loan" checked={v.postgrad} onChange={st.bind("postgrad")} optional hint="Repaid at 6% above £21,000, on top of this plan." />}
           </AdvancedOptions>
@@ -82,7 +82,7 @@ export default function LoanStudio({ query, plan, defaults }: { query: Query; pl
             {plans.length > 1 ? <>, plus {gbp(now.lines[1]?.yearly ?? 0)} on your Postgraduate Loan</> : null}. Interest is <b>{percent(rate, 1)}</b> this year.{" "}
             {proj.clearedIn !== null ? (
               <>
-                On these assumptions you clear the loan in <b>{proj.clearedIn} years</b>, repaying {gbp(proj.totalRepaid)} in total.
+                On these assumptions you clear the loan in <b>{proj.clearedIn} {per(proj.clearedIn, "years")}</b>, repaying {gbp(proj.totalRepaid)} in total.
               </>
             ) : (
               <>
@@ -91,7 +91,7 @@ export default function LoanStudio({ query, plan, defaults }: { query: Query; pl
             )}
           </>
         }
-        badges={[`Threshold ${gbp(spec.threshold)}`, `Interest ${percent(rate, 1)}`, proj.clearedIn !== null ? `Cleared in ${proj.clearedIn} years` : "Likely written off"]}
+        badges={[`Threshold ${gbp(spec.threshold)}`, `Interest ${percent(rate, 1)}`, proj.clearedIn !== null ? `Cleared in ${proj.clearedIn} ${per(proj.clearedIn, "years")}` : "Likely written off"]}
       />
 
       <Facts
@@ -99,7 +99,7 @@ export default function LoanStudio({ query, plan, defaults }: { query: Query; pl
           { label: "A month now", value: gbp(now.monthly, true) },
           { label: "A year now", value: gbp(now.yearly) },
           { label: "Total repaid", value: gbp(proj.totalRepaid) },
-          { label: proj.clearedIn !== null ? "Paid off after" : "Written off", value: proj.clearedIn !== null ? `${proj.clearedIn} years` : gbp(proj.writtenOff) },
+          { label: proj.clearedIn !== null ? "Paid off after" : "Written off", value: proj.clearedIn !== null ? `${proj.clearedIn} ${per(proj.clearedIn, "years")}` : gbp(proj.writtenOff) },
         ]}
       />
 

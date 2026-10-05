@@ -6,6 +6,7 @@ import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, SelectField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
+import { per } from "@/components/flagship/format";
 
 const YEARS = ["2025", "2026", "2027", "2028", "2029", "2030"] as const;
 
@@ -107,12 +108,12 @@ export default function BankHolidaysStudio({ query }: { query: Query }) {
       </ResultCard>
 
       {plans.length > 0 && (
-        <ResultCard title="Make the most of your leave" sub={`The longest breaks for up to ${v.leave} days of annual leave each.`}>
+        <ResultCard title="Make the most of your leave" sub={`The longest breaks for up to ${v.leave} ${per(v.leave, "days")} of annual leave each.`}>
           <Compare
             head={["Break", "Days off"]}
             rows={plans.map((p) => ({
               label: `${short(p.from)} to ${short(p.to)}`,
-              value: `${p.daysOff} days`,
+              value: `${p.daysOff} ${per(p.daysOff, "days")}`,
               delta: `${p.leaveDays} leave`,
               bar: p.daysOff / maxOff,
             }))}

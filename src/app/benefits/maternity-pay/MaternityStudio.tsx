@@ -5,7 +5,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, DateField, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort } from "@/components/flagship/format";
+import { gbp, gbpShort, per } from "@/components/flagship/format";
 import { bool, date, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -63,7 +63,7 @@ export default function MaternityStudio({ query }: { query: Query }) {
       <Answer
         eyebrow={`${statutoryName}${scheme && r.route === "smp" ? " and employer pay" : ""}`}
         value={gbp(r.total)}
-        unit={`over ${v.leave} weeks`}
+        unit={`over ${v.leave} ${per(v.leave, "weeks")}`}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           r.route === "none" ? (
@@ -71,7 +71,7 @@ export default function MaternityStudio({ query }: { query: Query }) {
           ) : (
             <>
               You get <b>{gbp(r.firstSix, true)}</b> a week for the first 6 weeks, then <b>{gbp(r.remaining, true)}</b> a week for 33 weeks
-              {v.leave > 39 ? <>, then nothing for the last {v.leave - 39} weeks</> : null}.{" "}
+              {v.leave > 39 ? <>, then nothing for the last {v.leave - 39} {per(v.leave - 39, "weeks")}</> : null}.{" "}
               {scheme && r.route === "smp" ? <>Your employer adds <b>{gbp(r.employerTopUp)}</b>. </> : null}
               In total that is <b>{gbp(r.total)}</b>, compared with <b>{gbp(r.normalPay)}</b> of normal pay.
             </>
@@ -93,7 +93,7 @@ export default function MaternityStudio({ query }: { query: Query }) {
         items={[
           { label: "Rates", value: "2026/27: £194.32 a week" },
           { label: "Earnings", value: v.awe > 0 ? "Average weekly earnings entered" : "Salary ÷ 52" },
-          { label: "Employer scheme", value: scheme ? `${v.full} weeks full, ${v.half} weeks half pay` : "Statutory only" },
+          { label: "Employer scheme", value: scheme ? `${v.full} ${per(v.full, "weeks")} full, ${v.half} ${per(v.half, "weeks")} half pay` : "Statutory only" },
           { label: "Pay shown", value: "Before tax and NI" },
         ]}
       />

@@ -4,7 +4,7 @@ import { PIP_2026, PIP_ACTIVITIES, pipScore, type PipBand } from "@/lib/benefits
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const CODES = ["a", "b", "c", "d", "e", "f", "g"] as const;
@@ -86,12 +86,12 @@ export default function PipStudio({ query }: { query: Query }) {
         sentence={
           weekly > 0 ? (
             <>
-              You score <b>{sc.daily} points</b> for daily living and <b>{sc.mobility}</b> for mobility. That points to <b>{gbp(weekly, true)}</b> a week, <b>{gbp(weekly * 4, true)}</b> every four weeks
+              You score <b>{sc.daily} {per(sc.daily, "points")}</b> for daily living and <b>{sc.mobility}</b> for mobility. That points to <b>{gbp(weekly, true)}</b> a week, <b>{gbp(weekly * 4, true)}</b> every four weeks
               or <b>{gbp(weekly * 52)}</b> a year.
             </>
           ) : (
             <>
-              You score <b>{sc.daily} points</b> for daily living and <b>{sc.mobility}</b> for mobility. You need at least 8 points in one component for an award. Choose the descriptor that applies on most days
+              You score <b>{sc.daily} {per(sc.daily, "points")}</b> for daily living and <b>{sc.mobility}</b> for mobility. You need at least 8 points in one component for an award. Choose the descriptor that applies on most days
               for each activity.
             </>
           )

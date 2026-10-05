@@ -47,3 +47,21 @@ export function duration(months: number): string {
   if (r === 0) return ys;
   return `${ys} ${ms}`;
 }
+
+const IRREGULAR: Record<string, string> = { children: "child", people: "person" };
+
+/**
+ * A unit worded for its count: per(1, "years") is "year", per(2, "years")
+ * "years", per(1, "children") "child", per(1, "weeks'") "week's". The count
+ * can be a number or the text shown beside it; only exactly 1 is singular.
+ */
+export function per(n: number | string, unit: string): string {
+  if (typeof n === "number" ? n !== 1 : n.trim() !== "1") return unit;
+  if (unit.endsWith("'")) return `${per(1, unit.slice(0, -1))}'s`;
+  const [first, ...rest] = unit.split(" ");
+  const tail = rest.length ? ` ${rest.join(" ")}` : "";
+  if (IRREGULAR[first]) return IRREGULAR[first] + tail;
+  if (/^[a-z]+ies$/.test(first)) return first.slice(0, -3) + "y" + tail;
+  if (/^[a-z]+s$/.test(first)) return first.slice(0, -1) + tail;
+  return unit;
+}

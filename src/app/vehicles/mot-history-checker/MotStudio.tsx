@@ -6,7 +6,7 @@ import { formatDate } from "@/lib/life/calendar";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, DateField, InputGroup, Switch, TextField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, date, ShareButton, text, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -65,7 +65,7 @@ export default function MotStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           r.historic ? (
-            <>This vehicle is over {MOT.historicYears} years old, so it is usually exempt from the MOT if it has not been substantially changed. You must still keep it roadworthy.</>
+            <>This vehicle is over {MOT.historicYears} {per(MOT.historicYears, "years")} old, so it is usually exempt from the MOT if it has not been substantially changed. You must still keep it roadworthy.</>
           ) : r.overdue ? (
             <>
               The MOT ran out on <b>{formatDate(r.due)}</b>. You must not drive it except to a pre-booked MOT or for repairs. Driving without a valid MOT can lead to a fine of up to {gbp(MOT.fine)}.
@@ -74,11 +74,11 @@ export default function MotStudio({ query }: { query: Query }) {
             <>
               {r.needsFirst ? <>The first MOT is due on the {v.ni ? "fourth" : "third"} anniversary of registration, </> : <>The current MOT runs out on </>}
               <b>{formatDate(r.due)}</b>. You can have it tested from <b>{formatDate(r.earliest)}</b> and keep the same renewal date.
-              {r.daysToDue >= 0 ? <> That is {r.daysToDue.toLocaleString("en-GB")} days away.</> : null}
+              {r.daysToDue >= 0 ? <> That is {r.daysToDue.toLocaleString("en-GB")} {per(r.daysToDue.toLocaleString("en-GB"), "days")} away.</> : null}
             </>
           )
         }
-        badges={[`${r.ageYears} years old`, r.historic ? "Usually exempt" : `Max fee ${gbp(MOT.carFee, true)}`, plateOk ? normaliseReg(v.reg) : "No plate entered"]}
+        badges={[`${r.ageYears} ${per(r.ageYears, "years")} old`, r.historic ? "Usually exempt" : `Max fee ${gbp(MOT.carFee, true)}`, plateOk ? normaliseReg(v.reg) : "No plate entered"]}
       />
 
       <Facts
@@ -94,7 +94,7 @@ export default function MotStudio({ query }: { query: Query }) {
         items={[
           { label: "First MOT", value: v.ni ? "4 years after registration (Northern Ireland)" : "3 years after registration (Great Britain)" },
           { label: "Early test", value: "Up to a month minus a day before expiry keeps the same date" },
-          { label: "Historic", value: `Vehicles over ${MOT.historicYears} years old are usually exempt` },
+          { label: "Historic", value: `Vehicles over ${MOT.historicYears} ${per(MOT.historicYears, "years")} old are usually exempt` },
         ]}
       />
 

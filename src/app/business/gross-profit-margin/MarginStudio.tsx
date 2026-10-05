@@ -4,7 +4,7 @@ import { discountImpact, marginStudy } from "@/lib/business/margins";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp, percent, whole } from "@/components/flagship/format";
+import { gbp, percent, whole, per } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -121,7 +121,7 @@ export default function MarginStudio({ query }: { query: Query }) {
       )}
 
       {totals && (
-        <ResultCard title="Your year" sub={`${whole(v.units)} sales at ${gbp(r.netPrice, true)} each.`}>
+        <ResultCard title="Your year" sub={`${whole(v.units)} ${per(whole(v.units), "sales")} at ${gbp(r.netPrice, true)} each.`}>
           <Statement
             columns={["A year"]}
             rows={[
@@ -133,11 +133,11 @@ export default function MarginStudio({ query }: { query: Query }) {
             ]}
           />
           {r.overheads > 0 && (
-            <Callout tone={r.netProfit >= 0 ? "good" : "warn"} title={Number.isFinite(r.breakEvenUnits) ? `You need ${whole(Math.ceil(r.breakEvenUnits))} sales to cover overheads` : "Each sale loses money"}>
+            <Callout tone={r.netProfit >= 0 ? "good" : "warn"} title={Number.isFinite(r.breakEvenUnits) ? `You need ${whole(Math.ceil(r.breakEvenUnits))} ${per(whole(Math.ceil(r.breakEvenUnits)), "sales")} to cover overheads` : "Each sale loses money"}>
               {Number.isFinite(r.breakEvenUnits)
                 ? r.netProfit >= 0
-                  ? `You sell ${whole(v.units)}, so you are ${whole(v.units - Math.ceil(r.breakEvenUnits))} sales above break-even.`
-                  : `You sell ${whole(v.units)}, so you are ${whole(Math.ceil(r.breakEvenUnits) - v.units)} sales short of break-even.`
+                  ? `You sell ${whole(v.units)}, so you are ${whole(v.units - Math.ceil(r.breakEvenUnits))} ${per(whole(v.units - Math.ceil(r.breakEvenUnits)), "sales")} above break-even.`
+                  : `You sell ${whole(v.units)}, so you are ${whole(Math.ceil(r.breakEvenUnits) - v.units)} ${per(whole(Math.ceil(r.breakEvenUnits) - v.units), "sales")} short of break-even.`
                 : "No number of sales can cover overheads until the price is above the cost."}
             </Callout>
           )}
@@ -151,7 +151,7 @@ export default function MarginStudio({ query }: { query: Query }) {
             rows={discountRows.map((d) => ({
               label: d.discount === 0 ? "Full price" : `${Math.round(d.discount * 100)}% off`,
               value: gbp(d.profit, true),
-              delta: d.discount === 0 ? `${pct(d.marginPct)} margin` : Number.isFinite(d.extraSalesNeeded) ? `+${pct(d.extraSalesNeeded)} sales` : "Loss",
+              delta: d.discount === 0 ? `${pct(d.marginPct)} margin` : Number.isFinite(d.extraSalesNeeded) ? `+${pct(d.extraSalesNeeded)} ${per(pct(d.extraSalesNeeded), "sales")}` : "Loss",
               deltaTone: d.discount === 0 ? undefined : "up",
               bar: Math.max(0, d.profit) / maxProfit,
               current: Math.abs(d.discount - v.discount / 100) < 1e-9,
