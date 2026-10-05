@@ -8,12 +8,12 @@ type AdSlotProps = {
   className?: string;
 };
 
-const SIZE_STYLES: Record<NonNullable<AdSlotProps["size"]>, string> = {
-  leaderboard: "h-[90px] max-w-[728px]",
-  billboard: "h-[250px] max-w-[970px]",
-  mpu: "h-[250px] max-w-[300px]",
-  skyscraper: "h-[600px] max-w-[160px]",
-  "mobile-banner": "h-[50px] max-w-[320px]",
+const SIZES: Record<NonNullable<AdSlotProps["size"]>, [number, number]> = {
+  leaderboard: [90, 728],
+  billboard: [250, 970],
+  mpu: [250, 300],
+  skyscraper: [600, 160],
+  "mobile-banner": [50, 320],
 };
 
 /**
@@ -30,7 +30,8 @@ export default function AdSlot({
     <div
       role="complementary"
       aria-label={label}
-      className={`ad-slot mx-auto w-full ${SIZE_STYLES[size]} ${className}`}
+      className={`ad-slot ${className}`.trim()}
+      style={{ height: SIZES[size][0], maxWidth: SIZES[size][1], width: "100%", margin: "24px auto" }}
     >
       <AdUnit client={ADSENSE_CLIENT} slot={ADSENSE_SLOT} />
     </div>

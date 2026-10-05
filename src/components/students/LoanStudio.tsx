@@ -7,7 +7,6 @@ import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
 import { gbp, gbpShort, percent } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
-import s from "@/components/flagship/Flagship.module.css";
 
 const SCHEMA = {
   salary: num(35_000, 0, 10_000_000),
@@ -146,7 +145,7 @@ export default function LoanStudio({ query, plan, defaults }: { query: Query; pl
         <Callout title="It works like a tax">Repayments come out of your pay through PAYE and stop if your income falls below the threshold. The balance does not affect your credit score.</Callout>
       </ResultCard>
 
-      <p className={s.hint} style={{ textAlign: "center" }}>
+      <p className="footnote" style={{ textAlign: "center" }}>
         Projection only. Future pay, inflation and rules will differ.
       </p>
     </Studio>

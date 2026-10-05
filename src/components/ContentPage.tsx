@@ -1,23 +1,45 @@
-import type { ReactNode } from "react";
-import PageHero, { type Crumb } from "@/components/PageHero";
-import { HomeMotion } from "@/components/home/Motion";
-import styles from "@/components/blog/Blog.module.css";
+import { Fragment, type ReactNode } from "react";
+import Link from "next/link";
+import GmShell from "@/gm/GmShell";
+
+export type Crumb = { href: string; label: string };
 
 type ContentPageProps = {
   title: string;
-  intro?: string;
+  intro?: ReactNode;
   breadcrumbs?: Crumb[];
   updated?: string;
   /** Short context line above the title. */
   eyebrow?: string;
+  /** Extra lines under the intro (e.g. date and reading time). */
+  meta?: ReactNode;
+  /** Shown after the prose, full width (e.g. more articles). */
+  after?: ReactNode;
   children: ReactNode;
 };
 
-const DOC_ICON = "M7 3h7l5 5v12a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1zm7 0v5h5M9 13h6M9 17h4";
+/** The design's flat breadcrumb: links separated by ›, the last item as text. */
+export function Crumbs({ items }: { items: Crumb[] }) {
+  return (
+    <div className="crumb">
+      {items.map((c, i) =>
+        i === items.length - 1 ? (
+          <Fragment key={c.href + i}>{c.label}</Fragment>
+        ) : (
+          <Fragment key={c.href + i}>
+            <Link href={c.href}>{c.label}</Link>
+            <span>›</span>
+          </Fragment>
+        ),
+      )}
+    </div>
+  );
+}
 
 /**
- * Shared shell for prose pages (About, legal, contact): the site hero, a
- * premium reading card.
+ * Shared frame for prose pages (About, legal, contact, blog articles) in the
+ * approved design: its header and footer, a flat breadcrumb, the grey
+ * category hero and a readable column of prose.
  */
 export default function ContentPage({
   title,
@@ -25,30 +47,28 @@ export default function ContentPage({
   breadcrumbs = [{ href: "/", label: "Home" }],
   updated,
   eyebrow = "GovMath",
+  meta,
+  after,
   children,
 }: ContentPageProps) {
   return (
-    <div id="gm-content">
-      <HomeMotion rootId="gm-content" />
-      <PageHero
-        breadcrumbs={[...breadcrumbs, { href: "#", label: title }]}
-        eyebrow={eyebrow}
-        title={title}
-        lead={intro}
-        icon={DOC_ICON}
-        compact
-      >
-        {updated && (
-          <div className={styles.metaRow}>
-            <span>Last updated: {updated}</span>
-          </div>
-        )}
-      </PageHero>
-
-      <div className={`${styles.articleWrap} ${styles.articleLast}`}>
-        <article className={`gm-prose ${styles.article}`}>{children}</article>
+    <GmShell>
+      <div className="wrap">
+        <Crumbs items={[...breadcrumbs, { href: "#", label: title }]} />
+        <section className="categoryhero">
+          <p className="eyebrow">{eyebrow.toUpperCase()}</p>
+          <h1>{title}</h1>
+          {intro && <p>{intro}</p>}
+          {(updated || meta) && (
+            <div className="gm-meta">
+              {updated && <span>Last updated: {updated}</span>}
+              {meta}
+            </div>
+          )}
+        </section>
+        <article className="gm-prose section">{children}</article>
+        {after}
       </div>
-
-    </div>
+    </GmShell>
   );
 }

@@ -1,6 +1,4 @@
 import type { ReactNode } from "react";
-import s from "./Guide.module.css";
-import TocSpy from "./TocSpy";
 
 /**
  * Shared long-form guide template and visual library.
@@ -30,7 +28,6 @@ export function Guide({
   title,
   intro,
   toc,
-  meta = [],
   sources,
   sourcesNote,
   children,
@@ -39,44 +36,36 @@ export function Guide({
   title: string;
   intro: ReactNode;
   toc: TocItem[];
-  /** Short facts under the intro, e.g. "12 min read", "Reviewed October 2026". */
+  /** Short facts under the intro, e.g. "12 min read" (not shown in the approved design). */
   meta?: string[];
   sources?: Source[];
   sourcesNote?: string;
   children: ReactNode;
 }) {
   return (
-    <div className={s.guide}>
-      <header className={s.head}>
-        <span className={s.kicker}>{kicker}</span>
-        <h2 className={s.title}>{title}</h2>
-        <p className={s.intro}>{intro}</p>
-        {meta.length > 0 && (
-          <div className={s.meta}>
-            {meta.map((m) => (
-              <span key={m}>{m}</span>
-            ))}
-          </div>
-        )}
-      </header>
-
-      <div className={s.layout}>
-        <nav aria-label="Table of contents" className={s.rail} data-toc>
-          <TocSpy ids={toc.map((t) => t.id)} />
-          <details className={s.tocMobile}>
-            <summary>Table of contents</summary>
-            <TocList toc={toc} />
+    <>
+      <section id="guide" className="guideintro">
+        <p className="eyebrow">{kicker.toUpperCase()}</p>
+        <h2>{title}</h2>
+        <p>{intro}</p>
+      </section>
+      <div className="guide-layout">
+        <aside className="guide-nav">
+          <details open>
+            <summary>In this guide</summary>
+            <nav aria-label={`${title}: sections`}>
+              {toc.map((t) => (
+                <a key={t.id} href={`#${t.id}`}>
+                  {t.title}
+                </a>
+              ))}
+            </nav>
           </details>
-          <div className={s.tocDesktop}>
-            <p>Table of contents</p>
-            <TocList toc={toc} />
-          </div>
-        </nav>
-
-        <article className={s.article}>
+        </aside>
+        <article className="g-article">
           {children}
           {sources && sources.length > 0 && (
-            <aside className={s.sources} aria-labelledby="guide-sources">
+            <aside className="g-sources" aria-labelledby="guide-sources">
               <h2 id="guide-sources">Sources</h2>
               <p>{sourcesNote ?? "Figures are checked against these official pages."}</p>
               <ul>
@@ -92,19 +81,7 @@ export function Guide({
           )}
         </article>
       </div>
-    </div>
-  );
-}
-
-function TocList({ toc }: { toc: TocItem[] }) {
-  return (
-    <ol className={s.tocList}>
-      {toc.map((t) => (
-        <li key={t.id}>
-          <a href={`#${t.id}`}>{t.title}</a>
-        </li>
-      ))}
-    </ol>
+    </>
   );
 }
 
@@ -122,10 +99,10 @@ export function GuideSection({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className={s.section} aria-labelledby={`${id}-title`}>
-      <div className={s.sectionHead}>
-        <span className={s.num}>{n}</span>
-        <span className={s.sectionKicker}>{kicker}</span>
+    <section id={id} className="g-section" aria-labelledby={`${id}-title`}>
+      <div className="g-sectionHead">
+        <span className="g-num">{n}</span>
+        <span className="g-sectionKicker">{kicker}</span>
       </div>
       <h2 id={`${id}-title`}>{title}</h2>
       {children}
@@ -137,10 +114,10 @@ export function GuideSection({
 
 export function Figure({ label, caption, children }: { label?: string; caption?: ReactNode; children: ReactNode }) {
   return (
-    <figure className={s.figure}>
-      {label && <div className={s.figLabel}>{label}</div>}
+    <figure className="g-figure">
+      {label && <div className="g-figLabel">{label}</div>}
       {children}
-      {caption && <figcaption className={s.figCaption}>{caption}</figcaption>}
+      {caption && <figcaption className="g-figCaption">{caption}</figcaption>}
     </figure>
   );
 }
@@ -155,8 +132,8 @@ export function Callout({
   children: ReactNode;
 }) {
   return (
-    <div className={s.callout} data-tone={tone} role="note">
-      <p className={s.calloutTitle}>{title}</p>
+    <div className="g-callout" data-tone={tone} role="note">
+      <p className="g-calloutTitle">{title}</p>
       <p>{children}</p>
     </div>
   );
@@ -164,11 +141,11 @@ export function Callout({
 
 export function KeyStats({ items }: { items: { value: string; label: string }[] }) {
   return (
-    <div className={s.stats}>
+    <div className="g-stats">
       {items.map((i) => (
-        <div key={i.label} className={s.stat}>
-          <div className={s.statValue}>{i.value}</div>
-          <div className={s.statLabel}>{i.label}</div>
+        <div key={i.label} className="g-stat">
+          <div className="g-statValue">{i.value}</div>
+          <div className="g-statLabel">{i.label}</div>
         </div>
       ))}
     </div>
@@ -186,20 +163,20 @@ export function WorkedExample({
   total: { label: string; value: string };
 }) {
   return (
-    <div className={s.example}>
-      <div className={s.exampleHead}>{title}</div>
-      <ol className={s.steps}>
+    <div className="g-example">
+      <div className="g-exampleHead">{title}</div>
+      <ol className="g-steps">
         {steps.map((st) => (
           <li key={st.label}>
-            <span className={s.stepLabel}>
+            <span className="g-stepLabel">
               {st.label}
-              {st.note && <span className={s.stepNote}>{st.note}</span>}
+              {st.note && <span className="g-stepNote">{st.note}</span>}
             </span>
-            <span className={s.stepValue}>{st.value}</span>
+            <span className="g-stepValue">{st.value}</span>
           </li>
         ))}
       </ol>
-      <div className={s.exampleTotal}>
+      <div className="g-exampleTotal">
         <span>{total.label}</span>
         <span>{total.value}</span>
       </div>
@@ -220,13 +197,13 @@ export function DataTable({
   numeric?: number[];
 }) {
   return (
-    <div className={s.tableWrap}>
-      <table className={s.table}>
+    <div className="g-tableWrap">
+      <table className="g-table">
         {caption && <caption>{caption}</caption>}
         <thead>
           <tr>
             {head.map((h, i) => (
-              <th key={h} scope="col" className={numeric.includes(i) ? s.numCell : undefined}>
+              <th key={h} scope="col" className={numeric.includes(i) ? "g-numCell" : undefined}>
                 {h}
               </th>
             ))}
@@ -241,7 +218,7 @@ export function DataTable({
                     {c}
                   </th>
                 ) : (
-                  <td key={ci} className={numeric.includes(ci) ? s.numCell : undefined}>
+                  <td key={ci} className={numeric.includes(ci) ? "g-numCell" : undefined}>
                     {c}
                   </td>
                 ),
@@ -261,11 +238,11 @@ export function CompareCards({
   columns: { name: string; rows: { label: string; value: string }[] }[];
 }) {
   return (
-    <div className={s.compare}>
+    <div className="g-compare">
       {columns.map((col, i) => (
-        <div key={col.name} className={s.compareCol}>
-          <div className={s.compareHead}>
-            <span className={s.swatch} style={{ background: SERIES[i % SERIES.length] }} aria-hidden />
+        <div key={col.name} className="g-compareCol">
+          <div className="g-compareHead">
+            <span className="g-swatch" style={{ background: SERIES[i % SERIES.length] }} aria-hidden />
             {col.name}
           </div>
           <dl>
@@ -284,11 +261,11 @@ export function CompareCards({
 
 export function Timeline({ items }: { items: { when: string; what: string; detail?: ReactNode }[] }) {
   return (
-    <ol className={s.timeline}>
+    <ol className="g-timeline">
       {items.map((i) => (
         <li key={i.when + i.what}>
-          <span className={s.when}>{i.when}</span>
-          <span className={s.what}>{i.what}</span>
+          <span className="g-when">{i.when}</span>
+          <span className="g-what">{i.what}</span>
           {i.detail && <p>{i.detail}</p>}
         </li>
       ))}
@@ -313,11 +290,11 @@ export function BandBar({
   const ticks = [0, ...bands.map((b) => Math.min(b.to, max))];
   return (
     <div>
-      <div className={s.bandBar} role="img" aria-label={bands.map((b) => b.legend).join("; ")}>
+      <div className="g-bandBar" role="img" aria-label={bands.map((b) => b.legend).join("; ")}>
         {bands.map((b) => (
           <div
             key={b.from}
-            className={s.band}
+            className="g-band"
             data-light={b.light ? "" : undefined}
             style={{ flexGrow: Math.min(b.to, max) - b.from, flexBasis: 0, background: b.color }}
             title={b.legend}
@@ -326,17 +303,17 @@ export function BandBar({
           </div>
         ))}
       </div>
-      <div className={s.ticks} aria-hidden>
+      <div className="g-ticks" aria-hidden>
         {ticks.map((t, i) => (
           <span key={t} style={{ left: `${(t / max) * 100}%` }}>
             {i === ticks.length - 1 && bands[bands.length - 1].to > max ? `${moneyShort(t)}+` : moneyShort(t)}
           </span>
         ))}
       </div>
-      <div className={s.legend}>
+      <div className="g-legend">
         {bands.map((b) => (
           <span key={b.from}>
-            <span className={s.swatch} style={{ background: b.color }} aria-hidden />
+            <span className="g-swatch" style={{ background: b.color }} aria-hidden />
             {b.legend}
           </span>
         ))}
@@ -355,17 +332,17 @@ export function Bars({
 }) {
   const top = Math.max(...items.map((i) => i.value), 1);
   return (
-    <div className={s.bars}>
+    <div className="g-bars">
       {items.map((i) => (
-        <div key={i.label} className={s.barRow}>
-          <span className={s.barName}>{i.label}</span>
-          <span className={s.barTrack}>
+        <div key={i.label} className="g-barRow">
+          <span className="g-barName">{i.label}</span>
+          <span className="g-barTrack">
             <span
-              className={s.barFill}
+              className="g-barFill"
               style={{ width: `${(i.value / top) * 82}%`, background: i.color ?? SERIES[0] }}
               aria-hidden
             />
-            <span className={s.barValue}>{format(i.value)}</span>
+            <span className="g-barValue">{format(i.value)}</span>
           </span>
         </div>
       ))}
@@ -401,28 +378,28 @@ export function StepChart({
   const area = `M${x(steps[0].from)},${y(0)} L${pts.join(" L")} L${x(steps[steps.length - 1].to)},${y(0)} Z`;
   const xTicks = Array.from(new Set(steps.flatMap((st) => [st.from, Math.min(st.to, max)])));
   return (
-    <svg className={s.chart} viewBox={`0 0 ${W} ${H}`} role="img" aria-label={ariaLabel}>
+    <svg className="g-chart" viewBox={`0 0 ${W} ${H}`} role="img" aria-label={ariaLabel}>
       {yTicks.map((t) => (
         <g key={t}>
-          <line className={s.grid} x1={L} x2={W - R} y1={y(t)} y2={y(t)} />
+          <line className="g-grid" x1={L} x2={W - R} y1={y(t)} y2={y(t)} />
           <text x={L - 8} y={y(t) + 4} textAnchor="end">
             {t}
             {unit}
           </text>
         </g>
       ))}
-      <path className={s.area} d={area} fill={color} />
-      <polyline className={s.line} points={pts.join(" ")} stroke={color} />
+      <path className="g-area" d={area} fill={color} />
+      <polyline className="g-line" points={pts.join(" ")} stroke={color} />
       {steps.map((st) => {
         const mid = (x(st.from) + x(st.to)) / 2;
         const wide = x(st.to) - x(st.from) > 34;
         return (
           <g key={st.from}>
-            <rect className={s.hit} x={x(st.from)} y={T} width={x(st.to) - x(st.from)} height={H - T - B}>
+            <rect className="g-hit" x={x(st.from)} y={T} width={x(st.to) - x(st.from)} height={H - T - B}>
               <title>{`${money(st.from)} to ${st.to > max ? "above" : money(st.to)}: ${st.value}${unit}`}</title>
             </rect>
             {wide && (
-              <text className={s.chartLabel} x={mid} y={y(st.value) - 8} textAnchor="middle">
+              <text className="g-chartLabel" x={mid} y={y(st.value) - 8} textAnchor="middle">
                 {st.value}
                 {unit}
               </text>
