@@ -410,3 +410,97 @@
     animation: none;
   }
 }
+
+/* ══ Bank-calculator layout (October 2026) ══════════════════════════════
+   FAQs as a hairline accordion, flat notes and plain related cards. */
+.kicker {
+  padding: 0;
+  background: none;
+  color: var(--ax-plum);
+  font-size: 0.875rem;
+}
+.kicker::before {
+  display: none;
+}
+.explainerTitle {
+  color: var(--ax-text);
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 2.75rem;
+}
+.faqs {
+  gap: 0;
+  border-top: 1px solid var(--ax-line);
+}
+.faq,
+.faq:hover,
+.faq[open] {
+  border: 0;
+  border-bottom: 1px solid var(--ax-line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.faq summary {
+  padding: 1.25rem 0;
+  color: var(--ax-text);
+  font-size: 1.125rem;
+}
+.faqPlus,
+.faq[open] .faqPlus {
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  color: var(--ax-plum);
+}
+.faqBody {
+  padding: 0 2.5rem 1.25rem 0;
+  color: var(--ax-muted);
+}
+.note {
+  margin-top: 2rem;
+  border: 0;
+  border-radius: 1rem;
+  background: var(--ax-soft);
+}
+.note strong {
+  color: var(--ax-plum);
+}
+.note p {
+  color: var(--ax-text);
+}
+.related {
+  border-top: 0;
+  background: var(--ax-soft);
+}
+.relatedCard {
+  border: 0;
+  border-radius: 1rem;
+}
+.relatedCard::before {
+  display: none;
+}
+.relatedCard:hover {
+  box-shadow: 0 16px 32px -24px rgba(40, 40, 40, 0.45);
+  transform: none;
+}
+.relatedIcon {
+  border-radius: 50%;
+  background: var(--ax-plum-tint);
+  color: var(--ax-plum);
+  box-shadow: none;
+}
+.relatedCard:hover .relatedIcon {
+  background: var(--ax-plum);
+  color: #fff;
+  transform: none;
+}
+.relatedCard strong {
+  color: var(--ax-text);
+}
+@media (max-width: 640px) {
+  .explainerTitle {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+  }
+}

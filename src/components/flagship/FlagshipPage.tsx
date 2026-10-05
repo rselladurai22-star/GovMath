@@ -4,6 +4,7 @@ import EngineOutro from "@/components/calculator/EngineOutro";
 import { HomeMotion } from "@/components/home/Motion";
 import type { Calculator } from "@/lib/calculators";
 import FlagshipHero, { type Crumb } from "./FlagshipHero";
+import SectionTabs, { type SectionTab } from "./SectionTabs";
 import s from "./Flagship.module.css";
 
 /**
@@ -51,12 +52,20 @@ export default function FlagshipPage({
     },
   ];
 
+  const tabs: SectionTab[] = [
+    { id: "calculator", label: "Calculator" },
+    ...(guide ? [{ id: "guide", label: "Guide" }] : []),
+    { id: "faqs", label: "FAQs" },
+    ...(related.length > 0 ? [{ id: "related", label: "Other calculators" }] : []),
+  ];
+
   return (
     <div id="gm-flagship" className={s.page}>
       <HomeMotion rootId="gm-flagship" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <FlagshipHero breadcrumbs={breadcrumbs} eyebrow={eyebrow} title={title} lead={lead} points={points} />
+      <SectionTabs items={tabs} />
 
       <div id="calculator" className={s.studioWrap}>
         {children}
@@ -66,7 +75,11 @@ export default function FlagshipPage({
         <AdSlot size="leaderboard" />
       </div>
 
-      {guide && <section className={`gm-wrap ${s.guide}`}>{guide}</section>}
+      {guide && (
+        <section id="guide" className={`gm-wrap ${s.guide}`}>
+          {guide}
+        </section>
+      )}
 
       <EngineOutro faqs={faqs} related={related} note={note} />
     </div>
