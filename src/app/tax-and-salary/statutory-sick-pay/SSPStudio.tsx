@@ -4,7 +4,7 @@ import { sickPeriod, SSP_WEEKLY_2026 } from "@/lib/benefits/statutory-pay";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -90,7 +90,7 @@ export default function SSPStudio({ query }: { query: Query }) {
             )}
           </>
         }
-        badges={["Paid from day one", r.flatRateApplied ? "Flat weekly rate" : "80% of earnings", `${Math.round(r.daysLeft / v.qdays)} weeks of SSP left`]}
+        badges={["Paid from day one", r.flatRateApplied ? "Flat weekly rate" : "80% of earnings", `${Math.round(r.daysLeft / v.qdays)} ${per(Math.round(r.daysLeft / v.qdays), "weeks")} of SSP left`]}
       />
 
       <Facts

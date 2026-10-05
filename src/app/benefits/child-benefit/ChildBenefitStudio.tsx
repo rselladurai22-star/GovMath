@@ -5,7 +5,7 @@ import { CHILD_BENEFIT_2026_27 } from "@/lib/benefits/child-benefit";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, percent } from "@/components/flagship/format";
+import { gbp, percent, per } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -46,7 +46,7 @@ export default function ChildBenefitStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow={v.weeks < 52 ? `Child Benefit for ${v.weeks} weeks` : "Child Benefit a year"}
+        eyebrow={v.weeks < 52 ? `Child Benefit for ${v.weeks} ${per(v.weeks, "weeks")}` : "Child Benefit a year"}
         value={gbp(r.forWeeks, true)}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={

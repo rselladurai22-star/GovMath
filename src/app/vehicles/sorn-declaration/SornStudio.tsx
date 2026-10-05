@@ -5,7 +5,7 @@ import { formatDate } from "@/lib/life/calendar";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, DateField, InputGroup, MoneyField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { date, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -71,7 +71,7 @@ export default function SornStudio({ query }: { query: Query }) {
         items={[
           { label: "Full months refunded", value: `${r.months}` },
           { label: "Refund", value: gbp(r.refund, true), tone: "good" },
-          { label: `Tax saved over ${v.monthsOff} months`, value: gbp(r.taxSaved) },
+          { label: `Tax saved over ${v.monthsOff} ${per(v.monthsOff, "months")}`, value: gbp(r.taxSaved) },
           { label: "Insurance saved", value: gbp(r.insuranceSaved) },
         ]}
       />

@@ -5,6 +5,7 @@ import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, SelectField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, Statement } from "@/components/flagship/results";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
+import { per } from "@/components/flagship/format";
 
 type Mode = "of" | "what" | "change" | "add" | "subtract" | "reverse" | "points";
 
@@ -74,7 +75,7 @@ export default function PercentStudio({ query }: { query: Query }) {
       value = percentagePoints(v.x, v.y);
       unit = " points";
       sentence = `From ${n(v.x)}% to ${n(v.y)}% is a change of ${n(value)} percentage points, which is a ${n(Math.abs(percentChange(v.x, v.y)))}% ${v.y >= v.x ? "rise" : "fall"} in the rate itself.`;
-      steps.push({ label: `${n(v.y)} − ${n(v.x)}`, value: `${n(value)} points` }, { label: "Relative change", value: `${n(percentChange(v.x, v.y))}%` });
+      steps.push({ label: `${n(v.y)} − ${n(v.x)}`, value: `${n(value)} ${per(n(value), "points")}` }, { label: "Relative change", value: `${n(percentChange(v.x, v.y))}%` });
       break;
   }
   const thenApplies = v.then !== 0 && (v.mode === "add" || v.mode === "subtract");

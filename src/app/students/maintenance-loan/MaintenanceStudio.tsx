@@ -4,7 +4,7 @@ import { MAINTENANCE_2026, maintenanceLoan2026, STUDENT_SUPPORT_2026, type Livin
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -81,7 +81,7 @@ export default function MaintenanceStudio({ query }: { query: Query }) {
           { label: "Loan a year", value: gbp(loan) },
           { label: "Each term", value: gbp(Math.round(loan / 3)) },
           { label: "After 40 weeks' rent", value: gbp(left), tone: left < 0 ? "bad" : undefined },
-          { label: `Borrowed over ${years} years`, value: gbp(totalBorrowed) },
+          { label: `Borrowed over ${years} ${per(years, "years")}`, value: gbp(totalBorrowed) },
         ]}
       />
 

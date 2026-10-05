@@ -5,7 +5,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
-import { gbp, gbpShort, percent } from "@/components/flagship/format";
+import { gbp, gbpShort, percent, per } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -97,7 +97,7 @@ export default function WorkplaceStudio({ query }: { query: Query }) {
           ) : (
             <>
               Each year <b>{gbp(r.total)}</b> goes into your pension: {gbp(r.employee)} from you and {gbp(r.employer)} from your employer. It costs you about <b>{gbp(r.employeeNet)}</b> after basic-rate
-              tax relief. Over {years} years it could grow to <b>{gbp(r.pot)}</b> in today&apos;s money.
+              tax relief. Over {years} {per(years, "years")} it could grow to <b>{gbp(r.pot)}</b> in today&apos;s money.
             </>
           )
         }

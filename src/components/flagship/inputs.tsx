@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
-import { whole } from "./format";
+import { per, whole } from "./format";
 
 /*
  * Calculator inputs in the approved GovMath design's markup (see
@@ -184,9 +184,8 @@ export function MoneyField({
 /** "12.5" with a unit: "%" sits tight, words get a space. */
 function withUnit(n: number, unit: string) {
   const v = Number(n.toFixed(4)).toLocaleString("en-GB");
-  // "1 year", not "1 years".
-  if (n === 1 && /^[a-z]+s$/.test(unit)) unit = unit.slice(0, -1);
-  return /^[%£]/.test(unit) ? `${v}${unit}` : `${v} ${unit}`;
+  const u = per(n, unit);
+  return /^[%£]/.test(u) ? `${v}${u}` : `${v} ${u}`;
 }
 
 /** Decimal field with a unit (%, years…) and a slider across its range. */
@@ -239,7 +238,7 @@ export function StepperField({
         }}
         onBlur={() => setDraft(null)}
       />
-      <span aria-hidden="true">{unit}</span>
+      <span aria-hidden="true">{per(value, unit)}</span>
     </div>
   );
   return (

@@ -5,7 +5,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, SelectField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort, percent } from "@/components/flagship/format";
+import { gbp, gbpShort, percent, per } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -35,7 +35,7 @@ export default function CompoundStudio({ query }: { query: Query }) {
       onCalculate={st.calculate}
       calculateLabel="Calculate growth"
       onReset={st.reset}
-      dock={{ label: `After ${v.years} years`, value: gbp(r.balance) }}
+      dock={{ label: `After ${v.years} ${per(v.years, "years")}`, value: gbp(r.balance) }}
       inputs={
         <>
           <InputGroup title="Money in">
@@ -66,7 +66,7 @@ export default function CompoundStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow={`After ${v.years} years`}
+        eyebrow={`After ${v.years} ${per(v.years, "years")}`}
         value={gbp(r.balance)}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
@@ -75,7 +75,7 @@ export default function CompoundStudio({ query }: { query: Query }) {
             worth about <b>{gbp(r.real)}</b>.
           </>
         }
-        badges={[`AER ${percent(r.effectiveRate, 2)}`, d.exact === Infinity ? "Never doubles" : `Doubles in ${d.exact.toFixed(1)} years`, `${percent(r.balance > 0 ? r.interest / r.balance : 0, 0)} from interest`]}
+        badges={[`AER ${percent(r.effectiveRate, 2)}`, d.exact === Infinity ? "Never doubles" : `Doubles in ${d.exact.toFixed(1)} ${per(d.exact.toFixed(1), "years")}`, `${percent(r.balance > 0 ? r.interest / r.balance : 0, 0)} from interest`]}
       />
 
       <Facts

@@ -7,6 +7,7 @@ import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, DateField, InputGroup } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, Statement } from "@/components/flagship/results";
 import { date, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
+import { per } from "@/components/flagship/format";
 
 const SCHEMA = {
   dob: date("1956-03-10"),
@@ -63,7 +64,7 @@ export default function LicenceStudio({ query }: { query: Query }) {
               </>
             )}{" "}
             You can renew from <b>{formatDate(r.applyFrom)}</b>, 90 days before. Renewing at 70 and over is free, online or by post.
-            {r.daysToNext >= 0 ? <> That is {r.daysToNext.toLocaleString("en-GB")} days from today.</> : null}
+            {r.daysToNext >= 0 ? <> That is {r.daysToNext.toLocaleString("en-GB")} {per(r.daysToNext.toLocaleString("en-GB"), "days")} from today.</> : null}
           </>
         }
         badges={[`Age ${r.age}`, r.over70 ? "Renew every 3 years" : "Renew at 70", "Free at 70 and over"]}

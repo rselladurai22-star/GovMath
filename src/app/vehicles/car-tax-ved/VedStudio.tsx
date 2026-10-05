@@ -4,7 +4,7 @@ import { eved, VED_2026, VED_BANDS_2001, ved2026, type VedFuel } from "@/lib/veh
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -130,7 +130,7 @@ export default function VedStudio({ query }: { query: Query }) {
       <ResultCard title="Worth knowing" sub="Changes ahead.">
         {evedYear > 0 && (
           <Callout tone="warn" title="Pay-per-mile charge from April 2028">
-            Electric cars are due to pay 3p a mile and plug-in hybrids 1.5p a mile on top of car tax from April 2028. At {v.miles.toLocaleString("en-GB")} miles a year that would be about <b>{gbp(evedYear)}</b> a year.
+            Electric cars are due to pay 3p a mile and plug-in hybrids 1.5p a mile on top of car tax from April 2028. At {v.miles.toLocaleString("en-GB")} {per(v.miles.toLocaleString("en-GB"), "miles")} a year that would be about <b>{gbp(evedYear)}</b> a year.
           </Callout>
         )}
         <Callout title="Selling or scrapping?">You get a refund for full months left when you sell, scrap or SORN a car. Tax does not pass to the new keeper.</Callout>

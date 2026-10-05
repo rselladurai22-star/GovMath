@@ -4,7 +4,7 @@ import { BAND_D_AVG, BAND_RANGES, bandMultiplier, bandsFor, councilBill, type Ct
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, Field, InputGroup, MoneyField, Segmented, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const ALL_BANDS: CtBand[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I"];
@@ -113,7 +113,7 @@ export default function CouncilTaxStudio({ query }: { query: Query }) {
               </>
             )}
             {r.reduction > 0 && <>, less a disability reduction of {gbp(r.reduction)}</>}
-            {r.premium > 0 && <>, plus a premium of {gbp(r.premium)}</>}. You pay <b>{gbp(r.instalment, true)}</b> a month over {v.months} months.
+            {r.premium > 0 && <>, plus a premium of {gbp(r.premium)}</>}. You pay <b>{gbp(r.instalment, true)}</b> a month over {v.months} {per(v.months, "months")}.
           </>
         }
         badges={[`Band ${band}`, `${gbp(r.instalment, true)} × ${v.months}`, r.discountRate > 0 ? `${Math.round(r.discountRate * 100)}% discount` : "No discount"]}

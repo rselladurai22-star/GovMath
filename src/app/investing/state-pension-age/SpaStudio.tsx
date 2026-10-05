@@ -6,7 +6,7 @@ import { dateDiff, formatDate } from "@/lib/life/calendar";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, DateField, InputGroup, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { date, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -133,8 +133,8 @@ export default function SpaStudio({ query }: { query: Query }) {
         />
         {d.extra > 0 && (
           <Callout title="When deferring pays off">
-            Deferring {Math.round(v.defer)} weeks gives up {gbp(sp.weekly * Math.round(v.defer))} of pension but adds {gbp(d.extra, true)} a week. It takes about{" "}
-            <b>{d.breakEvenYears.toFixed(1)} years</b> of the higher pension to catch up, ignoring tax and future rises.
+            Deferring {Math.round(v.defer)} {per(Math.round(v.defer), "weeks")} gives up {gbp(sp.weekly * Math.round(v.defer))} of pension but adds {gbp(d.extra, true)} a week. It takes about{" "}
+            <b>{d.breakEvenYears.toFixed(1)} {per(d.breakEvenYears.toFixed(1), "years")}</b> of the higher pension to catch up, ignoring tax and future rises.
           </Callout>
         )}
       </ResultCard>

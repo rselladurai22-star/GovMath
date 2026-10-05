@@ -4,7 +4,7 @@ import { AMAP, journeyCost, PRICES_2026, type Efficiency } from "@/lib/vehicles/
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 type Fuel = "petrol" | "diesel" | "electric";
@@ -100,12 +100,12 @@ export default function FuelStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow={v.people > 1 ? `Each of ${Math.round(v.people)} people pays` : "This journey costs"}
+        eyebrow={v.people > 1 ? `Each of ${Math.round(v.people)} ${per(Math.round(v.people), "people")} pays` : "This journey costs"}
         value={gbp(v.people > 1 ? r.perPerson : r.total, true)}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            Driving <b>{r.miles.toLocaleString("en-GB")} miles</b> uses about {r.units.toFixed(1)} {unitWord}, costing <b>{gbp(r.fuel, true)}</b> in {electric ? "electricity" : "fuel"}
+            Driving <b>{r.miles.toLocaleString("en-GB")} {per(r.miles.toLocaleString("en-GB"), "miles")}</b> uses about {r.units.toFixed(1)} {unitWord}, costing <b>{gbp(r.fuel, true)}</b> in {electric ? "electricity" : "fuel"}
             {v.tolls + v.parking > 0 ? <>, plus {gbp(v.tolls + v.parking, true)} in tolls and parking</> : null}. That is {(r.perMile * 100).toFixed(1)}p a mile.
           </>
         }
@@ -114,7 +114,7 @@ export default function FuelStudio({ query }: { query: Query }) {
 
       <Facts
         items={[
-          { label: "Distance", value: `${r.miles.toLocaleString("en-GB")} miles` },
+          { label: "Distance", value: `${r.miles.toLocaleString("en-GB")} ${per(r.miles.toLocaleString("en-GB"), "miles")}` },
           { label: electric ? "Electricity" : "Fuel", value: gbp(r.fuel, true) },
           { label: "Total", value: gbp(r.total, true) },
           { label: "Business mileage at 45p", value: gbp(r.claim, true) },

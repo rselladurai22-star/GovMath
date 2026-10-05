@@ -6,7 +6,7 @@ import { NORTHERN_IRELAND_AREA_COVERS } from "@/lib/benefits/lha-northern-irelan
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, text, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -66,7 +66,7 @@ export default function LhaStudio({ query }: { query: Query }) {
   const areaRates = CATS.map((c) => ({ ...c, weekly: lhaWeekly(area, c.key), monthly: lhaMonthly(area, c.key) }));
   const maxRate = Math.max(1, ...areaRates.map((x) => x.weekly));
   const show = (m: number) => (v.period === "week" ? gbp((m * 12) / 52, true) : gbp(m, true));
-  const per = v.period === "week" ? "a week" : "a month";
+  const perLabel = v.period === "week" ? "a week" : "a month";
 
   const stepper = (key: "boysU10" | "girlsU10" | "boys10" | "girls10" | "adults" | "disabledOwn", label: string, optional = false, hint?: string) => (
     <StepperField label={label} value={v[key]} onChange={(n) => st.set(key, Math.round(n))} step={1} min={0} max={key === "adults" || key === "disabledOwn" ? 6 : 8} unit="people" dp={0} optional={optional} hint={hint} />
@@ -79,7 +79,7 @@ export default function LhaStudio({ query }: { query: Query }) {
       onCalculate={st.calculate}
       calculateLabel="Check my Local Housing Allowance"
       onReset={st.reset}
-      dock={{ label: `LHA ${per}`, value: show(h.monthlyRate) }}
+      dock={{ label: `LHA ${perLabel}`, value: show(h.monthlyRate) }}
       inputs={
         <>
           <InputGroup title="Where you rent">
@@ -142,7 +142,7 @@ export default function LhaStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow={`Local Housing Allowance ${per}`}
+        eyebrow={`Local Housing Allowance ${perLabel}`}
         value={show(h.monthlyRate)}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
@@ -150,7 +150,7 @@ export default function LhaStudio({ query }: { query: Query }) {
             {v.manual > 0 ? "Using your rate, " : <>In {area}{nation === "ni" && area !== "Belfast" ? ", Northern Ireland" : ""}, </>}your household gets the <b>{catLabel(rooms.category).toLowerCase()}</b> rate of <b>{rateText}</b>.{" "}
             {h.monthlyShortfall > 0 ? (
               <>
-                Your rent is <b>{show(h.monthlyShortfall)}</b> {per} more than that, so you would pay the difference yourself.
+                Your rent is <b>{show(h.monthlyShortfall)}</b> {perLabel} more than that, so you would pay the difference yourself.
               </>
             ) : (
               <>Your rent is within the limit, so all of it can be covered, subject to your income.</>
@@ -180,7 +180,7 @@ export default function LhaStudio({ query }: { query: Query }) {
       />
 
       {rentMonthly > 0 && (
-        <ResultCard title="Your rent" sub={`${show(rentMonthly)} ${per}.`}>
+        <ResultCard title="Your rent" sub={`${show(rentMonthly)} ${perLabel}.`}>
           <SplitBar
             segments={[
               { label: "Covered by LHA", value: h.monthlyHelp, display: show(h.monthlyHelp), color: "#5b1e6e" },
@@ -214,7 +214,7 @@ export default function LhaStudio({ query }: { query: Query }) {
         )}
         {rooms.overCap && (
           <Callout tone="warn" title="LHA stops at four bedrooms">
-            Your household needs {rooms.rooms} bedrooms, but the highest rate is for four.
+            Your household needs {rooms.rooms} {per(rooms.rooms, "bedrooms")}, but the highest rate is for four.
           </Callout>
         )}
         {h.monthlyShortfall > 0 && nextCat && v.manual === 0 && (

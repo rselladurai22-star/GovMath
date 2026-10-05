@@ -6,7 +6,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort, percent } from "@/components/flagship/format";
+import { gbp, gbpShort, percent, per } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const FULL_SP = Math.round(STATE_PENSION.newWeekly * 52);
@@ -87,7 +87,7 @@ export default function FireStudio({ query }: { query: Query }) {
               </>
             ) : (
               <>
-                You need about <b>{gbp(r.target)}</b> in today&apos;s money. Saving {gbp(v.monthly)} a month, you get there in <b>{years} years</b>, at age <b>{r.fiAge}</b>.
+                You need about <b>{gbp(r.target)}</b> in today&apos;s money. Saving {gbp(v.monthly)} a month, you get there in <b>{years} {per(years, "years")}</b>, at age <b>{r.fiAge}</b>.
               </>
             )
           ) : (

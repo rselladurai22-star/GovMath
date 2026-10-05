@@ -4,7 +4,7 @@ import { sharedOwnership } from "@/lib/property/shared-ownership";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, DataTable, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp, percent } from "@/components/flagship/format";
+import { gbp, percent, per } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -98,7 +98,7 @@ export default function SharedOwnershipStudio({ query }: { query: Query }) {
       <Assumptions
         items={[
           { label: "Where", value: "England" },
-          { label: "Mortgage", value: `${v.rate}%, ${v.term} years, repayment` },
+          { label: "Mortgage", value: `${v.rate}%, ${v.term} ${per(v.term, "years")}, repayment` },
           { label: "Rent", value: `${v.rent}% a year, rising ${v.rentRise}%` },
           { label: "Prices", value: `Rising ${v.growth}% a year` },
         ]}

@@ -4,7 +4,7 @@ import { LONDON_CC, lezPenalties, zoneCompliant, zoneCost, ZONES_2026, type Zone
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, Segmented, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 type Fuel = "petrol" | "diesel" | "hybrid" | "electric";
@@ -109,7 +109,7 @@ export default function CazStudio({ query }: { query: Query }) {
             <>
               {compliant ? null : <>Your vehicle does not meet the standard, so it pays <b>{gbp(r.daily, true)}</b> a day. </>}
               {r.congestionDaily > 0 ? <>The congestion charge adds {gbp(r.congestionDaily, true)} a day. </> : null}
-              Over {r.days} days a year, that is <b>{gbp(r.yearly)}</b>.
+              Over {r.days} {per(r.days, "days")} a year, that is <b>{gbp(r.yearly)}</b>.
             </>
           )
         }

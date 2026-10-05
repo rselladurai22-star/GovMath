@@ -4,7 +4,7 @@ import { sharedParental } from "@/lib/benefits/family";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -61,21 +61,21 @@ export default function SharedStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            The mother gets <b>{gbp(r.motherPay)}</b> over {r.maternityWeeks} weeks of maternity leave{r.motherSharedWeeks > 0 ? " and her shared weeks" : ""}. The partner gets{" "}
+            The mother gets <b>{gbp(r.motherPay)}</b> over {r.maternityWeeks} {per(r.maternityWeeks, "weeks")} of maternity leave{r.motherSharedWeeks > 0 ? " and her shared weeks" : ""}. The partner gets{" "}
             <b>{gbp(r.partnerPay)}</b> for {r.partnerPaidWeeks} paid {r.partnerPaidWeeks === 1 ? "week" : "weeks"}
             {r.partnerWeeks > r.partnerPaidWeeks ? <> and {r.partnerWeeks - r.partnerPaidWeeks} unpaid</> : null}.{" "}
             {r.unusedPay > 0 ? <>{r.unusedPay} paid weeks are left unused.</> : <>All 39 paid weeks are used.</>}
           </>
         }
-        badges={[`${r.sharedLeaveAvailable} weeks to share`, `${r.sharedPayAvailable} paid weeks to share`, `${totalWeeks} of 52 weeks used`]}
+        badges={[`${r.sharedLeaveAvailable} ${per(r.sharedLeaveAvailable, "weeks")} to share`, `${r.sharedPayAvailable} paid weeks to share`, `${totalWeeks} of 52 weeks used`]}
       />
 
       <Facts
         items={[
           { label: "Mother's pay", value: gbp(r.motherPay) },
           { label: "Partner's pay", value: gbp(r.partnerPay) },
-          { label: "Leave left unused", value: `${r.unusedLeave} weeks`, tone: r.unusedLeave > 0 ? "warn" : "good" },
-          { label: "Paid weeks unused", value: `${r.unusedPay} weeks`, tone: r.unusedPay > 0 ? "warn" : "good" },
+          { label: "Leave left unused", value: `${r.unusedLeave} ${per(r.unusedLeave, "weeks")}`, tone: r.unusedLeave > 0 ? "warn" : "good" },
+          { label: "Paid weeks unused", value: `${r.unusedPay} ${per(r.unusedPay, "weeks")}`, tone: r.unusedPay > 0 ? "warn" : "good" },
         ]}
       />
 
@@ -90,17 +90,17 @@ export default function SharedStudio({ query }: { query: Query }) {
 
       {r.overLeave && (
         <Callout tone="warn" title="That is more leave than you can share">
-          After {r.maternityWeeks} weeks of maternity leave, there are {r.sharedLeaveAvailable} weeks left to share. Reduce the shared weeks.
+          After {r.maternityWeeks} {per(r.maternityWeeks, "weeks")} of maternity leave, there are {r.sharedLeaveAvailable} {per(r.sharedLeaveAvailable, "weeks")} left to share. Reduce the shared weeks.
         </Callout>
       )}
 
       <ResultCard title="How the 52 weeks are used" sub="Weeks, not pounds.">
         <SplitBar
           segments={[
-            { label: "Mother: maternity leave", value: r.maternityWeeks, display: `${r.maternityWeeks} weeks`, color: COLORS.mother },
-            ...(r.motherSharedWeeks > 0 ? [{ label: "Mother: shared leave", value: r.motherSharedWeeks, display: `${r.motherSharedWeeks} weeks`, color: "#6366f1" }] : []),
-            ...(r.partnerWeeks > 0 ? [{ label: "Partner: shared leave", value: r.partnerWeeks, display: `${r.partnerWeeks} weeks`, color: COLORS.partner }] : []),
-            ...(r.unusedLeave > 0 ? [{ label: "Unused", value: r.unusedLeave, display: `${r.unusedLeave} weeks`, color: COLORS.unpaid }] : []),
+            { label: "Mother: maternity leave", value: r.maternityWeeks, display: `${r.maternityWeeks} ${per(r.maternityWeeks, "weeks")}`, color: COLORS.mother },
+            ...(r.motherSharedWeeks > 0 ? [{ label: "Mother: shared leave", value: r.motherSharedWeeks, display: `${r.motherSharedWeeks} ${per(r.motherSharedWeeks, "weeks")}`, color: "#6366f1" }] : []),
+            ...(r.partnerWeeks > 0 ? [{ label: "Partner: shared leave", value: r.partnerWeeks, display: `${r.partnerWeeks} ${per(r.partnerWeeks, "weeks")}`, color: COLORS.partner }] : []),
+            ...(r.unusedLeave > 0 ? [{ label: "Unused", value: r.unusedLeave, display: `${r.unusedLeave} ${per(r.unusedLeave, "weeks")}`, color: COLORS.unpaid }] : []),
           ]}
         />
         <Statement

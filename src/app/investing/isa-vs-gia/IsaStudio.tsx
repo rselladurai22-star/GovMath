@@ -6,7 +6,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort } from "@/components/flagship/format";
+import { gbp, gbpShort, per } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -80,7 +80,7 @@ export default function IsaStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            Investing <b>{gbp(r.contributed)}</b> over <b>{v.years} years</b> grows to <b>{gbp(r.isaFinal)}</b> in a stocks and shares ISA, against <b>{gbp(r.giaFinal)}</b> in a general investment account
+            Investing <b>{gbp(r.contributed)}</b> over <b>{v.years} {per(v.years, "years")}</b> grows to <b>{gbp(r.isaFinal)}</b> in a stocks and shares ISA, against <b>{gbp(r.giaFinal)}</b> in a general investment account
             {v.sell ? " after selling" : ""}. The GIA pays <b>{gbp(r.giaTaxPaid + r.giaExitTax)}</b> in tax{r.giaExitTax > 0 ? <>, including <b>{gbp(r.giaExitTax)}</b> of Capital Gains Tax at the end</> : null}.
             {r.overAllowance ? <> Contributions over £20,000 a year go into a GIA in the ISA plan too.</> : null}
           </>
@@ -125,7 +125,7 @@ export default function IsaStudio({ query }: { query: Query }) {
         />
       </ResultCard>
 
-      <ResultCard title="Where the GIA loses out" sub={`Over ${v.years} years.`}>
+      <ResultCard title="Where the GIA loses out" sub={`Over ${v.years} ${per(v.years, "years")}.`}>
         <Statement
           columns={["Amount"]}
           rows={[

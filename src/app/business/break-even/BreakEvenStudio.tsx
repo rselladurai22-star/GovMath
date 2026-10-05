@@ -5,7 +5,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort, percent, whole } from "@/components/flagship/format";
+import { gbp, gbpShort, percent, whole, per } from "@/components/flagship/format";
 import { num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -48,7 +48,7 @@ export default function BreakEvenStudio({ query }: { query: Query }) {
       onCalculate={st.calculate}
       calculateLabel="Find my break-even point"
       onReset={st.reset}
-      dock={{ label: "Break-even", value: ok ? `${units(r.units)} sales` : "Never" }}
+      dock={{ label: "Break-even", value: ok ? `${units(r.units)} ${per(units(r.units), "sales")}` : "Never" }}
       inputs={
         <>
           <InputGroup title="Your business">
@@ -89,10 +89,10 @@ export default function BreakEvenStudio({ query }: { query: Query }) {
         items={[
           { label: "Contribution per sale", value: gbp(r.contributionPerUnit, true), tone: ok ? "good" : "bad", note: "Price − variable cost" },
           { label: "Break-even sales", value: ok ? gbp(r.revenue) : "Never", note: "A year, before VAT" },
-          { label: "A month", value: ok ? `${units(r.units / 12)} sales` : "n/a" },
+          { label: "A month", value: ok ? `${units(r.units / 12)} ${per(units(r.units / 12), "sales")}` : "n/a" },
           hasExpected
             ? { label: "Profit at expected sales", value: gbp(r.profitAtExpected), tone: r.profitAtExpected >= 0 ? "good" : "bad" }
-            : { label: "A week", value: ok ? `${units(r.units / 52)} sales` : "n/a" },
+            : { label: "A week", value: ok ? `${units(r.units / 52)} ${per(units(r.units / 52), "sales")}` : "n/a" },
         ]}
       />
 
@@ -141,10 +141,10 @@ export default function BreakEvenStudio({ query }: { query: Query }) {
             ]}
           />
           {hasExpected && (
-            <Callout tone={r.marginOfSafety >= 0 ? "good" : "warn"} title={r.marginOfSafety >= 0 ? `Margin of safety: ${percent(r.marginOfSafety, 1)}` : `${whole(be - v.expected)} sales short of break-even`}>
+            <Callout tone={r.marginOfSafety >= 0 ? "good" : "warn"} title={r.marginOfSafety >= 0 ? `Margin of safety: ${percent(r.marginOfSafety, 1)}` : `${whole(be - v.expected)} ${per(whole(be - v.expected), "sales")} short of break-even`}>
               {r.marginOfSafety >= 0
-                ? `Your sales could fall by ${percent(r.marginOfSafety, 1)} before you start to make a loss. At ${whole(v.expected)} sales you make about ${gbp(r.profitAtExpected)} before tax.`
-                : `At ${whole(v.expected)} sales you lose about ${gbp(-r.profitAtExpected)}. You need ${percent(be / v.expected - 1, 1)} more sales, a higher price or lower costs.`}
+                ? `Your sales could fall by ${percent(r.marginOfSafety, 1)} before you start to make a loss. At ${whole(v.expected)} ${per(whole(v.expected), "sales")} you make about ${gbp(r.profitAtExpected)} before tax.`
+                : `At ${whole(v.expected)} ${per(whole(v.expected), "sales")} you lose about ${gbp(-r.profitAtExpected)}. You need ${percent(be / v.expected - 1, 1)} more sales, a higher price or lower costs.`}
             </Callout>
           )}
         </ResultCard>
@@ -156,7 +156,7 @@ export default function BreakEvenStudio({ query }: { query: Query }) {
             head={["Price per sale", "Break-even"]}
             rows={scenarios.map((x) => ({
               label: x.k === 0 ? `${gbp(x.price, true)} (now)` : `${gbp(x.price, true)} (${x.k > 0 ? "+" : "−"}${v.change}%)`,
-              value: Number.isFinite(x.r.units) ? `${units(x.r.units)} sales` : "Never",
+              value: Number.isFinite(x.r.units) ? `${units(x.r.units)} ${per(units(x.r.units), "sales")}` : "Never",
               delta: x.k === 0 || !Number.isFinite(x.r.units) ? undefined : `${x.r.units > r.units ? "+" : "−"}${units(Math.abs(Math.ceil(x.r.units) - be))}`,
               deltaTone: x.r.units > r.units ? "up" : "down",
               bar: Number.isFinite(x.r.units) ? x.r.units / maxUnits : 1,
@@ -164,7 +164,7 @@ export default function BreakEvenStudio({ query }: { query: Query }) {
             }))}
           />
           <Callout title={`If fixed costs rise ${v.change}%`}>
-            Fixed costs of {gbp(v.fixed * (1 + c))} would need {units(costScenario.units)} sales to break even, {units(costScenario.units - r.units)} more than now.
+            Fixed costs of {gbp(v.fixed * (1 + c))} would need {units(costScenario.units)} {per(units(costScenario.units), "sales")} to break even, {units(costScenario.units - r.units)} more than now.
           </Callout>
         </ResultCard>
       )}

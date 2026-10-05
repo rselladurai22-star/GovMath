@@ -4,7 +4,7 @@ import { holidayPlan, IRREGULAR_ACCRUAL_PCT, STATUTORY_WEEKS } from "@/lib/benef
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 type Basis = "days" | "hours" | "irregular";
@@ -117,25 +117,25 @@ export default function HolidayStudio({ query }: { query: Query }) {
       <Answer
         eyebrow="Your holiday this year"
         value={`${fmt(r.thisYear)} ${unit}`}
-        unit={v.months < 12 ? `for ${v.months} months` : "a year, including bank holidays"}
+        unit={v.months < 12 ? `for ${v.months} ${per(v.months, "months")}` : "a year, including bank holidays"}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
             Everyone who works is entitled to <b>5.6 weeks</b> of paid holiday a year.{" "}
             {byDays ? (
               <>
-                For a <b>{v.days}-day</b> week that is <b>{fmt(r.statutory)} days</b>
+                For a <b>{v.days}-day</b> week that is <b>{fmt(r.statutory)} {per(fmt(r.statutory), "days")}</b>
                 {capped && <> (capped at 28 days)</>}.
               </>
             ) : (
               <>
-                For <b>{v.hours} hours</b> a week that is <b>{fmt(r.statutory)} hours</b>.
+                For <b>{v.hours} {per(v.hours, "hours")}</b> a week that is <b>{fmt(r.statutory)} {per(fmt(r.statutory), "hours")}</b>.
               </>
             )}
             {r.fullYear > r.statutory && (
               <>
                 {" "}
-                Your contract gives <b>{fmt(r.fullYear)} days</b>.
+                Your contract gives <b>{fmt(r.fullYear)} {per(fmt(r.fullYear), "days")}</b>.
               </>
             )}
           </>
@@ -147,8 +147,8 @@ export default function HolidayStudio({ query }: { query: Query }) {
         items={[
           { label: "Legal minimum, full year", value: `${fmt(r.statutory)} ${unit}` },
           { label: "Your full year", value: `${fmt(r.fullYear)} ${unit}` },
-          { label: "Built up so far", value: `${fmt(r.accrued)} ${unit}`, note: `After ${Math.min(v.worked, v.months)} months` },
-          v.pay > 0 ? { label: "Worth", value: gbp(r.value), tone: "good" } : { label: "In weeks", value: `${fmt(r.thisYear / (byDays ? v.days : v.hours))} weeks` },
+          { label: "Built up so far", value: `${fmt(r.accrued)} ${unit}`, note: `After ${Math.min(v.worked, v.months)} ${per(Math.min(v.worked, v.months), "months")}` },
+          v.pay > 0 ? { label: "Worth", value: gbp(r.value), tone: "good" } : { label: "In weeks", value: `${fmt(r.thisYear / (byDays ? v.days : v.hours))} ${per(fmt(r.thisYear / (byDays ? v.days : v.hours)), "weeks")}` },
         ]}
       />
 
@@ -157,7 +157,7 @@ export default function HolidayStudio({ query }: { query: Query }) {
           { label: "Minimum", value: "5.6 weeks a year" },
           { label: "Bank holidays", value: "Included in the total" },
           { label: "Full-time cap", value: "28 days" },
-          { label: "Holiday year", value: v.months < 12 ? `${v.months} months employed` : "Full year" },
+          { label: "Holiday year", value: v.months < 12 ? `${v.months} ${per(v.months, "months")} employed` : "Full year" },
         ]}
       />
 
@@ -166,8 +166,8 @@ export default function HolidayStudio({ query }: { query: Query }) {
           <Compare
             head={["Entitlement", "Days a year"]}
             rows={[
-              { label: "Legal minimum", value: `${fmt(r.statutory)} days`, bar: r.statutory / r.fullYear },
-              { label: "Your contract", value: `${fmt(r.fullYear)} days`, bar: 1, current: true },
+              { label: "Legal minimum", value: `${fmt(r.statutory)} ${per(fmt(r.statutory), "days")}`, bar: r.statutory / r.fullYear },
+              { label: "Your contract", value: `${fmt(r.fullYear)} ${per(fmt(r.fullYear), "days")}`, bar: 1, current: true },
             ]}
           />
         </ResultCard>
@@ -177,8 +177,8 @@ export default function HolidayStudio({ query }: { query: Query }) {
         <ResultCard title="Holiday for irregular hours" sub="How holiday builds up when your hours change from week to week.">
           <Facts
             items={[
-              { label: "Built up a week", value: `${fmt(irregularPerWeek)} hours`, note: `${IRREGULAR_ACCRUAL_PCT}% of ${v.hours} hours` },
-              { label: "Built up a month", value: `${fmt((irregularPerWeek * 52) / 12)} hours` },
+              { label: "Built up a week", value: `${fmt(irregularPerWeek)} ${per(fmt(irregularPerWeek), "hours")}`, note: `${IRREGULAR_ACCRUAL_PCT}% of ${v.hours} ${per(v.hours, "hours")}` },
+              { label: "Built up a month", value: `${fmt((irregularPerWeek * 52) / 12)} ${per(fmt((irregularPerWeek * 52) / 12), "hours")}` },
             ]}
           />
           <Callout title="Rolled-up holiday pay">

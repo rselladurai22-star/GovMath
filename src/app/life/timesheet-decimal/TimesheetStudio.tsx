@@ -4,7 +4,7 @@ import { decimalToHhmm, timesheet, toMinutes } from "@/lib/life/everyday";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, TextField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp } from "@/components/flagship/format";
+import { gbp, per } from "@/components/flagship/format";
 import { num, ShareButton, text, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
@@ -72,7 +72,7 @@ export default function TimesheetStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            You worked <b>{r.total.toFixed(2)} hours</b>, which is <b>{decimalToHhmm(r.total)}</b> in hours and minutes, over <b>{worked.length}</b> {worked.length === 1 ? "day" : "days"}.
+            You worked <b>{r.total.toFixed(2)} {per(r.total.toFixed(2), "hours")}</b>, which is <b>{decimalToHhmm(r.total)}</b> in hours and minutes, over <b>{worked.length}</b> {worked.length === 1 ? "day" : "days"}.
             {v.hourly > 0 ? (
               <>
                 {" "}
@@ -82,7 +82,7 @@ export default function TimesheetStudio({ query }: { query: Query }) {
             {bad.length > 0 ? <> Check the times for {bad.map((d) => NAMES[d]).join(", ")}: use the 24-hour format, such as 17:30.</> : null}
           </>
         }
-        badges={[`${decimalToHhmm(r.total)} hh:mm`, `${worked.length} days`, r.overtime > 0 ? `${r.overtime.toFixed(2)} h overtime` : "No overtime"]}
+        badges={[`${decimalToHhmm(r.total)} hh:mm`, `${worked.length} ${per(worked.length, "days")}`, r.overtime > 0 ? `${r.overtime.toFixed(2)} h overtime` : "No overtime"]}
       />
 
       <Facts
@@ -98,7 +98,7 @@ export default function TimesheetStudio({ query }: { query: Query }) {
         items={[
           { label: "Times", value: "24-hour clock; a finish before the start means overnight" },
           { label: "Breaks", value: "Unpaid, taken off each day" },
-          { label: "Overtime", value: v.otAfter > 0 ? `After ${v.otAfter} hours at ${v.otRate}×` : "None" },
+          { label: "Overtime", value: v.otAfter > 0 ? `After ${v.otAfter} ${per(v.otAfter, "hours")} at ${v.otRate}×` : "None" },
           { label: "Pay", value: "Before tax and National Insurance" },
         ]}
       />

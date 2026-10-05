@@ -6,7 +6,7 @@ import { NMW_2026, type NMWBand } from "@/lib/benefits/minimum-wage";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, DataTable, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp, percent } from "@/components/flagship/format";
+import { gbp, percent, per } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 import { REGION_LABEL, TAX_KEYS, taxParams, TaxSituationFields } from "@/components/flagship/taxOptions";
 
@@ -47,7 +47,7 @@ export default function HourlyStudio({ query }: { query: Query }) {
   const ladder = [16, 20, 25, 30, 35, 37.5, 40].map((h) => {
     const p = toSalary ? fromHourly(v.rate, { ...shape, hours: h, overtimeHours: 0 }) : fromHourly(pay.hourly, { ...shape, hours: h, overtimeHours: 0 });
     const t = computeTakeHome({ gross: p.annual, bonus: 0, pensionPct: v.pension, plan: v.plan, region: v.region });
-    return [`${h} hours`, gbp(p.annual), gbp(t.takeHome / 12)];
+    return [`${h} ${per(h, "hours")}`, gbp(p.annual), gbp(t.takeHome / 12)];
   });
 
   return (
@@ -160,7 +160,7 @@ export default function HourlyStudio({ query }: { query: Query }) {
               {toSalary ? (
                 <>
                   <b>{pounds(pay.hourly)}</b> an hour for <b>{v.hours}</b> hours a week
-                  {v.ot > 0 && <> plus {v.ot} hours of overtime</>} comes to <b>{gbp(pay.annual)}</b> a year.
+                  {v.ot > 0 && <> plus {v.ot} {per(v.ot, "hours")} of overtime</>} comes to <b>{gbp(pay.annual)}</b> a year.
                 </>
               ) : (
                 <>
@@ -230,7 +230,7 @@ export default function HourlyStudio({ query }: { query: Query }) {
         <ResultCard title="Minimum wage check" sub={`The legal minimum for ${NMW_2026[v.age].age.toLowerCase()} from April 2026 is ${pounds(minimum)} an hour.`}>
           {belowMin ? (
             <Callout tone="warn" title={`${pounds(minimum - pay.hourly)} an hour below the legal minimum`}>
-              At {v.hours} hours a week that is about <b>{gbp((minimum - pay.hourly) * v.hours * v.weeks)}</b> a year short. Check what counts as working time, and
+              At {v.hours} {per(v.hours, "hours")} a week that is about <b>{gbp((minimum - pay.hourly) * v.hours * v.weeks)}</b> a year short. Check what counts as working time, and
               raise it with your employer or Acas. Use our minimum wage checker for the details.
             </Callout>
           ) : (

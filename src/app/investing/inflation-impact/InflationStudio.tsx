@@ -5,7 +5,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort, percent } from "@/components/flagship/format";
+import { gbp, gbpShort, percent, per } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
@@ -59,7 +59,7 @@ export default function InflationStudio({ query }: { query: Query }) {
       onCalculate={st.calculate}
       calculateLabel="Calculate the impact"
       onReset={st.reset}
-      dock={savings ? { label: "Worth in today's money", value: gbp(realValue) } : { label: `Cost in ${years} years`, value: gbp(cost) }}
+      dock={savings ? { label: "Worth in today's money", value: gbp(realValue) } : { label: `Cost in ${years} ${per(years, "years")}`, value: gbp(cost) }}
       inputs={
         <>
           <InputGroup title="What to work out">
@@ -97,7 +97,7 @@ export default function InflationStudio({ query }: { query: Query }) {
     >
       {savings ? (
         <Answer
-          eyebrow={`In ${years} years, in today's money`}
+          eyebrow={`In ${years} ${per(years, "years")}, in today's money`}
           value={gbp(realValue)}
           actions={<ShareButton copied={st.copied} onClick={st.share} />}
           sentence={
@@ -107,20 +107,20 @@ export default function InflationStudio({ query }: { query: Query }) {
               {lost > 0 ? <>That is a loss of <b>{gbp(lost)}</b> in buying power.</> : <>That is a real gain of <b>{gbp(-lost)}</b>.</>}
             </>
           }
-          badges={[`Real return ${percent(realRate, 2)} a year`, half === Infinity ? "No loss of value" : `Halves in ${half.toFixed(1)} years at 0%`]}
+          badges={[`Real return ${percent(realRate, 2)} a year`, half === Infinity ? "No loss of value" : `Halves in ${half.toFixed(1)} ${per(half.toFixed(1), "years")} at 0%`]}
         />
       ) : (
         <Answer
-          eyebrow={`In ${years} years`}
+          eyebrow={`In ${years} ${per(years, "years")}`}
           value={gbp(cost)}
           actions={<ShareButton copied={st.copied} onClick={st.share} />}
           sentence={
             <>
-              Something that costs <b>{gbp(v.amount)}</b> today will cost about <b>{gbp(cost)}</b> in {years} years if prices rise by {v.inflation}% a year, an
+              Something that costs <b>{gbp(v.amount)}</b> today will cost about <b>{gbp(cost)}</b> in {years} {per(years, "years")} if prices rise by {v.inflation}% a year, an
               increase of {percent(v.amount > 0 ? cost / v.amount - 1 : 0, 0)}.
             </>
           }
-          badges={[half === Infinity ? "Prices never double" : `Prices double in ${half.toFixed(1)} years`]}
+          badges={[half === Infinity ? "Prices never double" : `Prices double in ${half.toFixed(1)} ${per(half.toFixed(1), "years")}`]}
         />
       )}
 
@@ -135,9 +135,9 @@ export default function InflationStudio({ query }: { query: Query }) {
               ]
             : [
                 { label: "Price today", value: gbp(v.amount) },
-                { label: `Price in ${years} years`, value: gbp(cost) },
+                { label: `Price in ${years} ${per(years, "years")}`, value: gbp(cost) },
                 { label: "Rise", value: gbp(cost - v.amount) },
-                { label: "Prices double in", value: half === Infinity ? "Never" : `${half.toFixed(1)} years` },
+                { label: "Prices double in", value: half === Infinity ? "Never" : `${half.toFixed(1)} ${per(half.toFixed(1), "years")}` },
               ]
         }
       />
@@ -179,7 +179,7 @@ export default function InflationStudio({ query }: { query: Query }) {
         />
       </ResultCard>
 
-      <ResultCard title="If inflation is different" sub={`After ${years} years.`}>
+      <ResultCard title="If inflation is different" sub={`After ${years} ${per(years, "years")}.`}>
         <Compare
           head={["Inflation", savings ? "Worth today" : "Price"]}
           rows={scenarios.map((x) => ({
@@ -205,7 +205,7 @@ export default function InflationStudio({ query }: { query: Query }) {
           </Callout>
         )}
         <Callout title="Inflation compounds">
-          Prices rising by {v.inflation}% a year do not just add {v.inflation}% each time: each rise is on the higher price. Over {years} years that adds up to{" "}
+          Prices rising by {v.inflation}% a year do not just add {v.inflation}% each time: each rise is on the higher price. Over {years} {per(years, "years")} that adds up to{" "}
           {percent(Math.pow(1 + inf, years) - 1, 0)}.
         </Callout>
       </ResultCard>

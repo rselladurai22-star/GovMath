@@ -6,7 +6,7 @@ import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort } from "@/components/flagship/format";
+import { gbp, gbpShort, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const axis = (n: number) => (n >= 10_000 ? gbpShort(n) : gbp(Math.round(n / 10) * 10));
@@ -148,7 +148,7 @@ export default function TaperStudio({ query }: { query: Query }) {
       <Assumptions
         items={[
           { label: "Rates", value: "2026/27 tax, NI and Universal Credit" },
-          { label: "Pay", value: `${gbp(v.hourly, true)} an hour, ${v.hours} hours now` },
+          { label: "Pay", value: `${gbp(v.hourly, true)} an hour, ${v.hours} ${per(v.hours, "hours")} now` },
           { label: "Months", value: "52 weeks ÷ 12, paid monthly" },
           { label: "Benefit cap", value: "Not applied" },
         ]}
@@ -190,7 +190,7 @@ export default function TaperStudio({ query }: { query: Query }) {
             if (!p) return null;
             return (
               <>
-                <b>{HOURS[i]} hours</b> a week: take-home <b>{gbp(p.net, true)}</b>, Universal Credit <b>{gbp(p.uc, true)}</b>, total <b>{gbp(p.total, true)}</b> a month.
+                <b>{HOURS[i]} {per(HOURS[i], "hours")}</b> a week: take-home <b>{gbp(p.net, true)}</b>, Universal Credit <b>{gbp(p.uc, true)}</b>, total <b>{gbp(p.total, true)}</b> a month.
               </>
             );
           }}
@@ -203,7 +203,7 @@ export default function TaperStudio({ query }: { query: Query }) {
           rows={ladder.map(({ h, p }, i) => {
             const prev = i > 0 ? ladder[i - 1].p.total : null;
             return {
-              label: `${h} hours`,
+              label: `${h} ${per(h, "hours")}`,
               value: gbp(p.total, true),
               delta: prev === null ? undefined : `+${gbp(p.total - prev, true)}`,
               bar: p.total / maxTotal,
