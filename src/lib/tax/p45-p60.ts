@@ -30,7 +30,3 @@ export function listFields(doc?: DocType): FieldExplain[] {
   return doc ? FIELDS.filter((f) => f.doc === doc) : FIELDS;
 }
 
-export function findField(query: string): FieldExplain | undefined {
-  const q = query.trim().toLowerCase();
-  return FIELDS.find((f) => f.field.toLowerCase().includes(q));
-}

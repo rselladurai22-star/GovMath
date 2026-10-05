@@ -37,8 +37,8 @@ const TOC: TocItem[] = [
 const SOURCES: Source[] = [
   { label: "Revenue Scotland — LBTT residential rates and bands", href: "https://revenue.scot/taxes/land-buildings-transaction-tax/residential-property" },
   { label: "Revenue Scotland — Additional Dwelling Supplement", href: "https://revenue.scot/taxes/land-buildings-transaction-tax/additional-dwelling-supplement-ads" },
-  { label: "Revenue Scotland — First-time buyer relief", href: "https://revenue.scot/taxes/land-buildings-transaction-tax/residential-property/first-time-buyer-relief" },
-  { label: "mygov.scot — Land and Buildings Transaction Tax", href: "https://www.mygov.scot/land-and-buildings-transaction-tax" },
+  { label: "Revenue Scotland — First-time buyer relief", href: "https://revenue.scot/taxes/land-buildings-transaction-tax/lbtt-legislation-guidance/lbtt3001-exemptions-reliefs/lbtt3010-tax-reliefs/lbtt3048-first-time-buyer-relief" },
+  { label: "mygov.scot — Land and Buildings Transaction Tax", href: "https://www.mygov.scot/stamp-duty-land-tax-rates" },
 ];
 
 const BANDS = [
@@ -46,7 +46,7 @@ const BANDS = [
   { from: 145_000, to: 250_000, label: "2%", legend: "2% £145,001 to £250,000", color: SERIES[1] },
   { from: 250_000, to: 325_000, label: "5%", legend: "5% £250,001 to £325,000", color: SERIES[2] },
   { from: 325_000, to: 750_000, label: "10%", legend: "10% £325,001 to £750,000", color: SERIES[3] },
-  { from: 750_000, to: 1_000_000, label: "12%", legend: "12% above £750,000", color: "var(--g-c5, #64748b)" },
+  { from: 750_000, to: 1_000_000, label: "12%", legend: "12% above £750,000", color: "var(--g-c5)" },
 ];
 
 export default function LBTTGuide() {

@@ -8,9 +8,7 @@
  */
 
 export const CGT_AEA_2025 = 3_000;
-export const BASIC_RATE_BAND_2025 = 37_700; // basic-rate band size
-export const PERSONAL_ALLOWANCE_2025 = 12_570;
-
+const BASIC_RATE_BAND_2025 = 37_700; // basic-rate band size
 export type CGTInput = {
   gain: number;
   /** Other taxable income for the year (after personal allowance). */

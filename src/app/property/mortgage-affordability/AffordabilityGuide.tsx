@@ -36,8 +36,8 @@ const TOC: TocItem[] = [
 ];
 
 const SOURCES: Source[] = [
-  { label: "MoneyHelper — How much can I borrow?", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/how-much-can-i-borrow" },
-  { label: "FCA — Mortgages: what to expect", href: "https://www.fca.org.uk/consumers/mortgages" },
+  { label: "MoneyHelper — How much can I borrow?", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/how-much-can-you-afford-to-borrow-for-a-mortgage" },
+  { label: "FCA — Consumer help, including mortgages", href: "https://www.fca.org.uk/consumers" },
   { label: "Bank of England — Financial Policy Committee mortgage measures", href: "https://www.bankofengland.co.uk/financial-stability" },
   { label: "GOV.UK — Stamp Duty Land Tax rates", href: "https://www.gov.uk/stamp-duty-land-tax/residential-property-rates" },
 ];

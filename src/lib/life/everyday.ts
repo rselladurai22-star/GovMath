@@ -17,23 +17,6 @@ export const reversePercent = (final: number, pct: number) => (pct === -100 ? 0 
 export const percentagePoints = (fromPct: number, toPct: number) => toPct - fromPct;
 /** Overall change from applying several percentage changes in turn. */
 export const compoundChange = (changes: number[]) => (changes.reduce((acc, c) => acc * (1 + c / 100), 1) - 1) * 100;
-/** Split an amount in a ratio, rounding each share to pence so the shares add up exactly. */
-export function splitByRatio(amount: number, parts: number[]): number[] {
-  const total = parts.reduce((a, b) => a + Math.max(0, b), 0);
-  if (total <= 0) return parts.map(() => 0);
-  const pence = Math.round(amount * 100);
-  const raw = parts.map((p) => (Math.max(0, p) / total) * pence);
-  const floor = raw.map(Math.floor);
-  let left = pence - floor.reduce((a, b) => a + b, 0);
-  const order = raw.map((r, i) => ({ i, frac: r - Math.floor(r) })).sort((a, b) => b.frac - a.frac);
-  for (const o of order) {
-    if (left <= 0) break;
-    floor[o.i]++;
-    left--;
-  }
-  return floor.map((p) => p / 100);
-}
-
 /* ── Pro-rata rent ────────────────────────────────────────────── */
 
 export type ProRataMethod = "annual" | "month";
@@ -83,7 +66,6 @@ export function toMinutes(hhmm: string): number {
   if (!m) return NaN;
   return Number(m[1]) * 60 + Number(m[2]);
 }
-export const minutesToDecimal = (minutes: number) => minutes / 60;
 /** 7.75 → "7:45". */
 export function decimalToHhmm(hours: number): string {
   const total = Math.round(Math.max(0, hours) * 60);

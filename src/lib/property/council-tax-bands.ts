@@ -48,23 +48,6 @@ export type CouncilTaxResult = {
   payable: number;
 };
 
-export function councilTax(input: CouncilTaxInput): CouncilTaxResult {
-  const bandDAverage = BAND_D_AVG[input.nation];
-  const mults = input.nation === "scotland" ? SCOT_MULT : EW_MULT;
-  const multiplier = mults[input.band] ?? 1;
-  const annualBill = Math.round(bandDAverage * multiplier);
-  const discount = input.singlePerson ? annualBill * 0.25 : 0;
-  const payable = annualBill - discount;
-  return {
-    bandDAverage,
-    multiplier,
-    annualBill,
-    monthlyBill: payable / 12,
-    discount,
-    payable,
-  };
-}
-
 /** Property values on the valuation date that set each band. */
 export const BAND_RANGES: Record<CtNation, { band: CtBand; upTo: number | null }[]> = {
   // England: values at 1 April 1991.

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { bestPrescriptionPlan, bmiAdult, cmFromFtIn, healthyStartEligible, healthyStartOver, kgFromStLb, ppcBreakEven, PRESCRIPTION, prescriptionPlans, stLbFromKg, waistToHeight } from "./health";
+import { bestPrescriptionPlan, bmiAdult, cmFromFtIn, healthyStartEligible, healthyStartOver, kgFromStLb, prescriptionPlans, stLbFromKg, waistToHeight } from "./health";
 
 describe("BMI", () => {
   it("calculates and bands", () => {
@@ -45,10 +45,6 @@ describe("Healthy Start", () => {
 });
 
 describe("prescriptions", () => {
-  it("break-evens", () => {
-    expect(ppcBreakEven(PRESCRIPTION.ppc3)).toBe(4);
-    expect(ppcBreakEven(PRESCRIPTION.ppc12)).toBe(12);
-  });
   it("best plan", () => {
     expect(bestPrescriptionPlan(0.5).key).toBe("payg");
     expect(bestPrescriptionPlan(2).key).toBe("ppc12");

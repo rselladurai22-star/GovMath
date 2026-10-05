@@ -14,7 +14,7 @@ import type { TaxRegion } from "./take-home-engine";
 export type EmergencyCode = "M1" | "BR" | "0T";
 
 /** Monthly tax-free pay for code 1257L: (1257 × 10 + 9) ÷ 12. */
-export const MONTHLY_FREE_PAY = 12_579 / 12;
+const MONTHLY_FREE_PAY = 12_579 / 12;
 
 /** Tax on taxable pay using band widths scaled to `share` of a year. */
 export function bandTax(taxable: number, share: number, region: TaxRegion): number {

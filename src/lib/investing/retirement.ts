@@ -129,7 +129,7 @@ export type WorkplaceResult = {
   income: number;
 };
 
-export function pensionableEarnings(salary: number, basis: "qualifying" | "full"): number {
+function pensionableEarnings(salary: number, basis: "qualifying" | "full"): number {
   const s = Math.max(0, salary);
   return basis === "qualifying" ? Math.max(0, Math.min(s, AUTO_ENROL.upper) - AUTO_ENROL.lower) : s;
 }

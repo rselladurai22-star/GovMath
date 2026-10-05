@@ -17,7 +17,7 @@ export type RegionalBuyer = "standard" | "first-time" | "additional";
 export type Band = { upTo: number | null; rate: number };
 
 /** LBTT residential bands from April 2024. */
-export const LBTT_BANDS: Band[] = [
+const LBTT_BANDS: Band[] = [
   { upTo: 145_000, rate: 0 },
   { upTo: 250_000, rate: 0.02 },
   { upTo: 325_000, rate: 0.05 },
@@ -26,12 +26,12 @@ export const LBTT_BANDS: Band[] = [
 ];
 
 /** First-time buyer LBTT — nil-rate threshold raised to £175,000. */
-export const LBTT_FTB_NIL = 175_000;
+const LBTT_FTB_NIL = 175_000;
 export const LBTT_ADS_RATE = 0.08;
-export const LBTT_ADS_THRESHOLD = 40_000;
+const LBTT_ADS_THRESHOLD = 40_000;
 
 /** LTT main residential bands from April 2025. */
-export const LTT_MAIN_BANDS: Band[] = [
+const LTT_MAIN_BANDS: Band[] = [
   { upTo: 225_000, rate: 0 },
   { upTo: 400_000, rate: 0.06 },
   { upTo: 750_000, rate: 0.075 },
@@ -40,7 +40,7 @@ export const LTT_MAIN_BANDS: Band[] = [
 ];
 
 /** LTT higher residential rates (additional dwelling) — Dec 2024 onwards. */
-export const LTT_HIGHER_BANDS: Band[] = [
+const LTT_HIGHER_BANDS: Band[] = [
   { upTo: 180_000, rate: 0.05 },
   { upTo: 250_000, rate: 0.085 },
   { upTo: 400_000, rate: 0.1 },
@@ -49,7 +49,7 @@ export const LTT_HIGHER_BANDS: Band[] = [
   { upTo: null, rate: 0.17 },
 ];
 
-export const LTT_HIGHER_THRESHOLD = 40_000;
+const LTT_HIGHER_THRESHOLD = 40_000;
 
 export type BreakdownRow = {
   band: string;

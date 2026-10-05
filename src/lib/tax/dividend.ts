@@ -18,7 +18,7 @@
 
 import { personalAllowance, TAX_YEAR_2026_27 } from "./2026-27";
 
-export const DIVIDEND_2026_27 = {
+const DIVIDEND_2026_27 = {
   allowance: 500,
   rates: { basic: 0.1075, higher: 0.3575, additional: 0.3935 },
 } as const;

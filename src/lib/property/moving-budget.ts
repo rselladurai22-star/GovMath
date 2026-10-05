@@ -41,21 +41,6 @@ export type MovingResult = {
   total: number;
 };
 
-export function movingBudget(input: MovingInput): MovingResult {
-  const surveyCost = SURVEY_COSTS[input.surveyLevel] ?? 0;
-  const subtotal =
-    Math.max(0, input.stampDuty) +
-    Math.max(0, input.legalFees) +
-    surveyCost +
-    Math.max(0, input.mortgageFee) +
-    Math.max(0, input.removals) +
-    Math.max(0, input.epc) +
-    Math.max(0, input.agentFee);
-  const contingency = subtotal * (Math.max(0, input.contingencyPercent) / 100);
-  return { surveyCost, contingency, total: subtotal + contingency };
-}
-
-
 export type MoveNation = "england" | "scotland" | "wales";
 export type MoveBuyer = "first-time" | "standard" | "additional";
 
@@ -98,7 +83,7 @@ export type FullMoveResult = {
 };
 
 /** Agent fees are usually quoted before VAT at 20%. */
-export const VAT_RATE = 0.2;
+const VAT_RATE = 0.2;
 
 export function fullMovingBudget(input: FullMoveInput): FullMoveResult {
   const price = Math.max(0, input.price);

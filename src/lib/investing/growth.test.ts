@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { aer, AVERAGE_PRIZE, compound, doublingYears, fire, fireTarget, futureCost, halvingYears, PREMIUM_BONDS, premiumBondsYear, realReturn, todaysMoney } from "./growth";
+import { aer, AVERAGE_PRIZE, compound, doublingYears, fire, fireTarget, futureCost, halvingYears, PREMIUM_BONDS, premiumBondsYear, realReturn } from "./growth";
 
 describe("compound", () => {
   it("annual compounding of a lump sum", () => {
@@ -18,9 +18,8 @@ describe("compound", () => {
 });
 
 describe("inflation", () => {
-  it("future cost and today's money", () => {
+  it("future cost, real return and halving time", () => {
     expect(futureCost(100, 0.03, 10)).toBeCloseTo(134.39, 2);
-    expect(todaysMoney(100, 0.03, 10)).toBeCloseTo(74.41, 2);
     expect(realReturn(0.05, 0.03)).toBeCloseTo(0.019417, 5);
     expect(halvingYears(0.02)).toBeCloseTo(35.0, 1);
   });

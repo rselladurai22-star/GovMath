@@ -29,8 +29,8 @@ const TOC: TocItem[] = [
 
 const SOURCES: Source[] = [
   { label: "GOV.UK — Workplace pensions", href: "https://www.gov.uk/workplace-pensions" },
-  { label: "The Pensions Regulator — Automatic enrolment earnings thresholds", href: "https://www.thepensionsregulator.gov.uk/en/employers/new-employers/im-an-employer-who-has-to-provide-a-pension/declare-your-compliance/earnings-thresholds" },
-  { label: "MoneyHelper — Automatic enrolment", href: "https://www.moneyhelper.org.uk/en/pensions-and-retirement/auto-enrolment" },
+  { label: "The Pensions Regulator — Automatic enrolment earnings thresholds", href: "https://www.thepensionsregulator.gov.uk/en/employers/new-employers/im-an-employer-who-has-to-provide-a-pension/declare-your-compliance/ongoing-duties-for-employers/earnings-thresholds" },
+  { label: "MoneyHelper — Automatic enrolment", href: "https://www.moneyhelper.org.uk/en/pensions-and-retirement/pensions-basics/automatic-enrolment-an-introduction" },
   { label: "GOV.UK — Tax on your private pension contributions", href: "https://www.gov.uk/tax-on-your-private-pension" },
 ];
 

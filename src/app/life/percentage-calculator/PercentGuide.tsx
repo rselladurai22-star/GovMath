@@ -25,10 +25,9 @@ const TOC: TocItem[] = [
 ];
 
 const SOURCES: Source[] = [
-  { label: "BBC Bitesize — Percentages", href: "https://www.bbc.co.uk/bitesize/topics/z2nhvcw" },
   { label: "GOV.UK — VAT rates", href: "https://www.gov.uk/vat-rates" },
   { label: "Office for National Statistics — Inflation and price indices", href: "https://www.ons.gov.uk/economy/inflationandpriceindices" },
-  { label: "MoneyHelper — Understanding interest rates", href: "https://www.moneyhelper.org.uk/en/savings/how-to-save/how-interest-works" },
+  { label: "MoneyHelper — Interest rates explained", href: "https://www.moneyhelper.org.uk/en/savings/how-to-save/interest-rates-explained" },
 ];
 
 export default function PercentGuide() {

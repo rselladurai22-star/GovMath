@@ -18,7 +18,7 @@ export type VedFuel = "petrol" | "diesel-rde2" | "diesel" | "alternative" | "ele
 export type VedEra = "2017" | "2001";
 
 /** First-year rates for cars registered on or after 1 April 2017. [max CO2, standard, non-RDE2 diesel] */
-export const VED_FIRST_YEAR: [number, number, number][] = [
+const VED_FIRST_YEAR: [number, number, number][] = [
   [0, 10, 10],
   [50, 115, 135],
   [75, 135, 280],
@@ -177,7 +177,7 @@ export type CompanyCarResult = {
 };
 
 /** Extra income tax on a benefit, worked out from your salary. */
-export function taxOnBenefit(salary: number, benefit: number, scotland: boolean): number {
+function taxOnBenefit(salary: number, benefit: number, scotland: boolean): number {
   const t = (g: number) => (scotland ? scottishIncomeTax(g).total : incomeTax(g).total);
   return t(salary + benefit) - t(salary);
 }

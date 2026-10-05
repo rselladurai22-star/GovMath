@@ -30,8 +30,8 @@ const TOC: TocItem[] = [
 
 const SOURCES: Source[] = [
   { label: "GOV.UK — Rail fares freeze", href: "https://www.gov.uk/government/news/passengers-save-millions-as-rail-fare-freeze-starts" },
-  { label: "GOV.UK — Bus fare cap", href: "https://www.gov.uk/government/news/bus-fares-capped" },
-  { label: "GOV.UK — Cycle to Work scheme guidance", href: "https://www.gov.uk/government/publications/cyclescheme-implementation-guidance" },
+  { label: "GOV.UK — Bus fare cap", href: "https://www.gov.uk/guidance/3-national-bus-fare-cap" },
+  { label: "GOV.UK — Cycle to Work scheme guidance", href: "https://www.gov.uk/government/publications/cycle-to-work-scheme-implementation-guidance" },
   { label: "HMRC — Travel and subsistence: commuting", href: "https://www.gov.uk/hmrc-internal-manuals/employment-income-manual/eim32100" },
 ];
 

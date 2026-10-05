@@ -24,15 +24,15 @@ We go category by category, one phase at a time.
 3. Start the next phase only when the owner says so (for example "Phase 3").
 4. **The font is Lato** (switched from Plus Jakarta Sans in October 2026 at the owner's request for the new design). Don't change it without asking.
 5. Never send the owner's email address to any external service.
-6. Write in plain UK English. Use 2026/27 tax-year figures (`src/lib/rates/tax-year.ts`).
+6. Write in plain UK English. Use 2026/27 tax-year figures (each engine under `src/lib/` holds its own rates, e.g. `src/lib/tax/2026-27.ts`).
 
 ## Stack and commands
 
-- **Stack:** Next.js 16 App Router (`searchParams` is a Promise), React 19, Vitest, Playwright. All styling comes from plain stylesheets in `public/gm/` (no CSS Modules; Tailwind is still installed but nothing imports it).
+- **Stack:** Next.js 16 App Router (`searchParams` is a Promise), React 19, Vitest, Playwright. All styling comes from plain stylesheets in `public/gm/` (no CSS Modules, no Tailwind).
 - **Build:** `NODE_EXTRA_CA_CERTS=/root/.ccr/ca-bundle.crt NODE_USE_ENV_PROXY=1 npx next build --webpack`
 - **Serve:** `npx next start -p <new port>`. Use a fresh port each time.
 - **Never run `pkill -f next`.** It kills the shell.
-- **Checks:** `npx tsc --noEmit -p .`, `npx eslint .` (2 known old warnings) and `npx vitest run`.
+- **Checks:** `npx tsc --noEmit -p .`, `npx eslint .` (no warnings) and `npx vitest run`.
 - **Playwright Chromium:** `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`. Run scripts from the repo directory and delete them afterwards (the stop hook flags untracked files).
 - **Release checks:**
   - Count each guide's words by the `innerText` of `.g-article`. The target is 2,000 or more.
@@ -98,6 +98,8 @@ How they are built:
 - **Guides** (`Guide.tsx`) use the package's guide markup: `section.guideintro`, `.guide-layout` with the sticky `aside.guide-nav` ("In this guide") and `article.g-article` of `section.g-section`s with numbered `.g-sectionHead`s.
 - **Content pages** use `ContentPage.tsx` (`.crumb`, grey `.categoryhero`, `.gm-prose` column). The blog list uses `.gm-cards`; all calculators reuses the topic pages' `.categoryjump` and `.categorytool` cards.
 
+**Housekeeping (October 2026 clean-up):** keep the code free of dead files and exports. To check, install `knip` in a scratch folder and run it from the repo (`knip` and `knip --production`); only exported types, and building blocks used inside their own module and tested on their own, should remain. Crawl every sitemap page for internal links and check external links; many sites (MoneyHelper, TfL, IFS, Energy Saving Trust, SAA, Start Up Loans) block automated checkers with 403, so confirm those by search rather than replacing them.
+
 **Checks:** to compare with the package, serve its `dist` folder (`python3 -m http.server <port> --directory dist`), take full-page screenshots of both at 1440, 768 and 375px and pixel-diff them. The 11 package pages should stay identical apart from the generated tool lists. To change them, edit the JSON (or regenerate from a new package with the same converter).
 
 ## Ads (waiting on the owner)
@@ -131,10 +133,9 @@ The order of phases 4 to 8 is flexible; ask the owner.
 - Due April 2027: savings tax rates rise to 22/42/47%, cash ISA limit of £12,000 for under-65s, and pensions enter the estate for inheritance tax. Update the investing and IHT guides when these take effect.
 - The third State Pension age review is under way. Update `retirement.ts` and the guide if the timetable for 68 changes. The salary sacrifice NI cap (£2,000 from April 2029) is mentioned in the workplace pension guide.
 - `src/lib/tax/cgt.ts` and `src/lib/tax/dividend.ts` are still used by other modules; the investing pages use `src/lib/investing/tax.ts`.
-- `src/lib/tax/salary-dividend.ts` is superseded by `src/lib/business/company.ts`, but `src/lib/tax/ir35.ts` still uses its simplified `corporationTax`. It gives the same answer for a single company with a 12-month period. Move IR35 over when it is next touched.
+- IR35 (`src/lib/tax/ir35.ts`) now uses `corporationTaxFull` from `src/lib/business/company.ts`; the old `salary-dividend.ts` is gone.
 - Business guides cite 2026 changes: Corporation Tax late filing penalties doubled (£200/£400), the VOA duty to notify is a pilot until April 2029, and Making Tax Digital penalties use points. Recheck these in April 2027.
 
 - Benefits rates were checked against the DWP "Benefit and pension rates 2026 to 2027" PDF. Recheck everything in April 2027, including whether LHA rates stay frozen and the benefit cap is still £22,020/£14,753.
 - Benefits guides state that the two-child limit ended in April 2026 and that the UC health element is £217.26 for new claims (£429.80 protected). PIP guide says the assessment is under review; update if the rules change.
 - LHA covers all four nations. When the freeze ends, update all four weekly tables and the DWP monthly Universal Credit CSVs (England, Scotland, Wales) together; the engine test checks each monthly rate is within £10 of weekly × 52 ÷ 12. Northern Ireland's weekly rates come from the Housing Executive's "Current LHA rent levels" page (it blocks automated access, so ask the owner for a screenshot); its Universal Credit monthly rates are weekly × 365 ÷ 84, which matched the published Belfast monthly rates to the penny.
-- Two old lint warnings: `src/lib/benefits/free-childcare.ts` (`totalAnnualHours`) and `src/lib/calculators.ts` (`cs`).

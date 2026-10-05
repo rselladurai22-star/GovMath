@@ -10,7 +10,7 @@
  */
 
 export const STATUTORY_WEEKS = 5.6;
-export const STATUTORY_DAYS_CAP = 28;
+const STATUTORY_DAYS_CAP = 28;
 export const IRREGULAR_ACCRUAL_PCT = 12.07;
 
 export type HolidayInput = {
@@ -25,28 +25,10 @@ export type HolidayResult = {
   bankHolidaysIncluded: boolean;
 };
 
-export function holidayEntitlement(input: HolidayInput): HolidayResult {
-  const dpw = Math.max(0, Math.min(7, input.daysPerWeek));
-  let days = dpw * STATUTORY_WEEKS;
-  if (input.applyStatutoryCap !== false && days > STATUTORY_DAYS_CAP) {
-    days = STATUTORY_DAYS_CAP;
-  }
-  return {
-    daysPerWeek: dpw,
-    annualDays: days,
-    bankHolidaysIncluded: true,
-  };
-}
-
 export type IrregularHolidayResult = {
   hoursWorkedInPeriod: number;
   hoursAccrued: number;
 };
-
-export function holidayFromIrregularHours(hoursWorkedInPeriod: number): IrregularHolidayResult {
-  const hours = Math.max(0, hoursWorkedInPeriod);
-  return { hoursWorkedInPeriod: hours, hoursAccrued: hours * (IRREGULAR_ACCRUAL_PCT / 100) };
-}
 
 export type HolidayPlanInput = {
   basis: "days" | "hours";

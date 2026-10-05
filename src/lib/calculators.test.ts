@@ -1,20 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { CATEGORIES, getCalculatorsByCategory, getHomeCalculators } from "./calculators";
+import { CALCULATORS, CATEGORIES, getCalculatorsByCategory } from "./calculators";
 
-describe("getHomeCalculators", () => {
-  for (const cat of CATEGORIES) {
-    it(`${cat.slug}: up to 10 unique tools from its own category`, () => {
-      const all = getCalculatorsByCategory(cat.slug);
-      const home = getHomeCalculators(cat.slug);
-      // A mistyped slug in the shortlist would silently shrink the list.
-      expect(home).toHaveLength(Math.min(10, all.length));
-      expect(new Set(home.map((c) => c.slug)).size).toBe(home.length);
-      expect(home.every((c) => c.category === cat.slug)).toBe(true);
-    });
-  }
+describe("calculator registry", () => {
+  it("has a unique slug and address for every calculator", () => {
+    expect(new Set(CALCULATORS.map((c) => c.href)).size).toBe(CALCULATORS.length);
+    expect(CALCULATORS.every((c) => c.href === `/${c.category}/${c.slug}`)).toBe(true);
+  });
 
-  it("leads with the headline tool", () => {
-    expect(getHomeCalculators("tax-and-salary")[0].slug).toBe("salary-calculator");
-    expect(getHomeCalculators("property")[0].slug).toBe("stamp-duty-england");
+  it("puts every calculator in a known category, and every category has some", () => {
+    const slugs = new Set(CATEGORIES.map((c) => c.slug));
+    expect(CALCULATORS.every((c) => slugs.has(c.category))).toBe(true);
+    for (const cat of CATEGORIES) expect(getCalculatorsByCategory(cat.slug).length).toBeGreaterThan(0);
   });
 });

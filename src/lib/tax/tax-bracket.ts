@@ -68,7 +68,7 @@ export type BracketResult = {
   previous: { band: BandId; at: number; over: number } | null;
 };
 
-export function adjustedIncome(i: BracketInput): number {
+function adjustedIncome(i: BracketInput): number {
   const income = Math.max(0, i.income || 0);
   const sacrifice = income * Math.min(100, Math.max(0, i.sacrificePct ?? 0)) / 100;
   const gross = (Math.max(0, i.personalPensionNet ?? 0) + Math.max(0, i.giftAidNet ?? 0)) / 0.8;

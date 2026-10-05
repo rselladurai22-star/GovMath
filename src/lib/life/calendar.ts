@@ -28,7 +28,7 @@ export const parse = (iso: string) => {
   const [y, m, d] = iso.split("-").map(Number);
   return new Date(Date.UTC(y, (m || 1) - 1, d || 1));
 };
-export const fmt = (d: Date) => d.toISOString().slice(0, 10);
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
 export const addDays = (iso: string, n: number) => fmt(new Date(parse(iso).getTime() + n * DAY));
 const dow = (d: Date) => d.getUTCDay();
 const ymd = (y: number, m: number, d: number) => new Date(Date.UTC(y, m - 1, d));
@@ -133,13 +133,13 @@ export function bankHolidays(year: number, nation: Nation): Holiday[] {
   return out.sort((a, b) => a.date.localeCompare(b.date));
 }
 
-export function holidaySet(fromYear: number, toYear: number, nation: Nation): Set<string> {
+function holidaySet(fromYear: number, toYear: number, nation: Nation): Set<string> {
   const s = new Set<string>();
   for (let y = fromYear; y <= toYear; y++) for (const h of bankHolidays(y, nation)) s.add(h.date);
   return s;
 }
 
-export const isWeekend = (iso: string) => {
+const isWeekend = (iso: string) => {
   const w = dow(parse(iso));
   return w === 0 || w === 6;
 };

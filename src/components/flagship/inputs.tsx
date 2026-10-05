@@ -77,7 +77,7 @@ export function Field({
 }
 
 /** Range slider with a filled track and its end values. */
-export function Slider({
+function Slider({
   value,
   min,
   max,
@@ -524,67 +524,6 @@ export function DateField({
   return (
     <Field label={label} htmlFor={id} hint={hint} optional={optional}>
       <input className="gm-input" id={id} type="date" value={value} min={min} max={max} onChange={(e) => onChange(e.target.value)} />
-    </Field>
-  );
-}
-
-export type Period = "year" | "month" | "week" | "day" | "hour";
-const PERIOD_LABEL: Record<Period, string> = { year: "a year", month: "a month", week: "a week", day: "a day", hour: "an hour" };
-
-/** £ amount with a period picker beside it, e.g. "£2,500 a month". */
-export function PeriodMoneyField({
-  label,
-  value,
-  period,
-  periods = ["year", "month", "week"],
-  onChange,
-  hint,
-  optional,
-}: {
-  label: string;
-  value: number;
-  period: Period;
-  periods?: Period[];
-  onChange: (value: number, period: Period) => void;
-  hint?: ReactNode;
-  optional?: boolean;
-  big?: boolean;
-}) {
-  const id = useId();
-  const [draft, setDraft] = useState<string | null>(null);
-  const shown = money2(value);
-  return (
-    <Field label={label} htmlFor={id} hint={hint} optional={optional}>
-      <div className="gm-period">
-        <div className="number">
-          <span aria-hidden="true">£</span>
-          <input
-            id={id}
-            type="text"
-            inputMode="decimal"
-            autoComplete="off"
-            value={draft ?? shown}
-            onFocus={(e) => {
-              setDraft(shown);
-              e.currentTarget.select();
-            }}
-            onChange={(e) => {
-              setDraft(e.target.value);
-              const n = Number(e.target.value.replace(/[^\d.]/g, ""));
-              onChange(Number.isFinite(n) ? Math.round(n * 100) / 100 : 0, period);
-            }}
-            onBlur={() => setDraft(null)}
-          />
-          <span />
-        </div>
-        <select className="gm-select" aria-label={`${label}: period`} value={period} onChange={(e) => onChange(value, e.target.value as Period)}>
-          {periods.map((p) => (
-            <option key={p} value={p}>
-              {PERIOD_LABEL[p]}
-            </option>
-          ))}
-        </select>
-      </div>
     </Field>
   );
 }

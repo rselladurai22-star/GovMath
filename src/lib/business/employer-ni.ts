@@ -10,9 +10,9 @@
  * Employment Allowance is a separate annual offset, applied at payroll year-end.
  */
 
-export const EMPLOYER_NI_THRESHOLD_2026 = 5_000;
-export const EMPLOYER_NI_RATE_2026 = 0.15;
-export const EMPLOYMENT_ALLOWANCE_2026 = 10_500;
+const EMPLOYER_NI_THRESHOLD_2026 = 5_000;
+const EMPLOYER_NI_RATE_2026 = 0.15;
+const EMPLOYMENT_ALLOWANCE_2026 = 10_500;
 
 export type EmployerNIInput = {
   /** Annual salary paid to this employee. */

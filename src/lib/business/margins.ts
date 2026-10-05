@@ -27,17 +27,6 @@ export function margin(cost: number, price: number): MarginResult {
   };
 }
 
-/** Solve for selling price given a target margin %. */
-export function priceFromMargin(cost: number, targetMarginPct: number): number {
-  const m = Math.min(0.999, Math.max(0, targetMarginPct));
-  return cost / (1 - m);
-}
-
-/** Solve for selling price given a target markup %. */
-export function priceFromMarkup(cost: number, targetMarkupPct: number): number {
-  return cost * (1 + Math.max(0, targetMarkupPct));
-}
-
 export type BreakEvenInput = {
   fixedCosts: number;
   pricePerUnit: number;

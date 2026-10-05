@@ -2,16 +2,12 @@
  * Master registry — every calculator on GovMath.
  *
  * Architecture: 8 top-level categories, each with its own route segment.
- * Single source of truth for navigation, category landings, the homepage
- * grid, and the master /calculators index.
+ * Single source of truth for the header menus and search, the homepage and
+ * topic pages, the /calculators index and the sitemap.
  *
- * To launch a calculator:
- *   1. Build src/app/<category>/<slug>/page.tsx
- *   2. Flip `status` from "coming-soon" to "live" below.
- *   3. (Optional) Add a 301 redirect from any prior path in next.config.ts.
+ * To add a calculator, build src/app/<category>/<slug>/page.tsx and add a
+ * live(...) entry below.
  */
-
-export type CalculatorStatus = "live" | "coming-soon";
 
 export type CategorySlug =
   | "tax-and-salary"
@@ -29,7 +25,6 @@ export type Calculator = {
   title: string;
   blurb: string;
   category: CategorySlug;
-  status: CalculatorStatus;
   popular?: boolean;
 };
 
@@ -108,22 +103,6 @@ export const CATEGORIES: Category[] = [
   },
 ];
 
-const cs = (
-  slug: string,
-  category: CategorySlug,
-  title: string,
-  blurb: string,
-  popular = false
-): Calculator => ({
-  slug,
-  href: `/${category}/${slug}`,
-  title,
-  blurb,
-  category,
-  status: "coming-soon",
-  popular,
-});
-
 const live = (
   slug: string,
   category: CategorySlug,
@@ -136,7 +115,6 @@ const live = (
   title,
   blurb,
   category,
-  status: "live",
   popular,
 });
 
@@ -258,97 +236,11 @@ export const CALCULATORS: Calculator[] = [
   live("power-of-attorney", "life", "Power of Attorney Fees", "Application fees and process overview."),
 ];
 
-export function getCategory(slug: CategorySlug): Category {
-  const c = CATEGORIES.find((c) => c.slug === slug);
-  if (!c) throw new Error(`Unknown category: ${slug}`);
-  return c;
-}
-
 export function getCalculatorsByCategory(slug: CategorySlug): Calculator[] {
   return CALCULATORS.filter((c) => c.category === slug);
 }
 
-export function getLiveCalculators(): Calculator[] {
-  return CALCULATORS.filter((c) => c.status === "live");
-}
-
-export function getPopularCalculators(): Calculator[] {
-  return CALCULATORS.filter((c) => c.popular);
-}
-
-/**
- * Homepage shortlist: the most-used tools per category, in display order.
- * Categories without an entry fall back to popular-first registry order.
- */
-const HOME_PICKS: Partial<Record<CategorySlug, string[]>> = {
-  "tax-and-salary": [
-    "salary-calculator",
-    "national-insurance",
-    "tax-bracket-checker",
-    "hourly-to-salary",
-    "pro-rata",
-    "bonus-tax",
-    "tax-code-decoder",
-    "holiday-entitlement",
-    "minimum-wage",
-    "redundancy",
-  ],
-  property: [
-    "stamp-duty-england",
-    "mortgage-repayment",
-    "mortgage-affordability",
-    "first-time-buyer",
-    "mortgage-overpayment",
-    "rent-vs-buy",
-    "buy-to-let-yield",
-    "property-capital-gains",
-    "council-tax-bands",
-    "lbtt-scotland",
-  ],
-  business: [
-    "vat-calculator",
-    "sole-trader-tax",
-    "corporation-tax",
-    "dividend-vs-salary",
-    "employer-ni-costs",
-    "business-mileage",
-    "payment-on-account",
-    "allowable-expenses",
-    "gross-profit-margin",
-    "flat-rate-vat",
-  ],
-  benefits: [
-    "universal-credit",
-    "child-benefit",
-    "high-income-child-benefit",
-    "maternity-pay",
-    "tax-free-childcare",
-    "free-childcare-hours",
-    "pip-points",
-    "paternity-pay",
-    "carers-earnings",
-    "pension-credit",
-  ],
-  life: [
-    "percentage-calculator",
-    "inheritance-tax",
-    "days-between-dates",
-    "bmi-uk-nhs",
-    "bank-holidays",
-    "probate-fees",
-    "care-home-means-test",
-    "nhs-prescription-saver",
-    "pro-rata-rent",
-    "timesheet-decimal",
-  ],
-};
-
-/** Up to `limit` of a category's most important calculators for the homepage. */
-export function getHomeCalculators(slug: CategorySlug, limit = 10): Calculator[] {
-  const all = getCalculatorsByCategory(slug);
-  const picks = HOME_PICKS[slug];
-  const ordered = picks
-    ? picks.flatMap((s) => all.find((c) => c.slug === s) ?? [])
-    : [...all.filter((c) => c.popular), ...all.filter((c) => !c.popular)];
-  return ordered.slice(0, limit);
+/** Drop the redundant trailing "Calculator" from a tool title for display. */
+export function shortTitle(title: string): string {
+  return title.replace(/\s+Calculator$/i, "");
 }

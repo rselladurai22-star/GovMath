@@ -23,7 +23,7 @@ export const CARE_2026: Record<Nation, { upper: number; lower: number; allowance
 /** NHS-funded nursing care in England, a week from April 2026. */
 export const FNC_2026 = { standard: 267.68, higher: 368.24 } as const;
 /** Scotland's free personal and nursing care payments, a week. */
-export const SCOTLAND_FREE_CARE = { personal: 260.3, nursing: 117.1 } as const;
+const SCOTLAND_FREE_CARE = { personal: 260.3, nursing: 117.1 } as const;
 
 export type CareInput = {
   nation: Nation;

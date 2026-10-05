@@ -10,7 +10,7 @@
 import { capitalGainsTax, CGT_AEA_2025 } from "../tax/cgt";
 import { personalAllowance } from "../tax/2026-27";
 
-export const FINAL_PERIOD_MONTHS = 9;
+const FINAL_PERIOD_MONTHS = 9;
 
 export type PropertyCgtInput = {
   salePrice: number;

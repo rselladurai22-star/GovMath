@@ -44,7 +44,7 @@ export type CarerEarningsResult = {
 };
 
 /** Weekly Income Tax and NI on weekly gross pay, annualised. */
-export function weeklyTaxNi(grossWeekly: number, pensionWeekly: number, scotland: boolean) {
+function weeklyTaxNi(grossWeekly: number, pensionWeekly: number, scotland: boolean) {
   const annual = Math.max(0, grossWeekly - pensionWeekly) * 52;
   const tax = (scotland ? scottishIncomeTax(annual).total : incomeTax(annual).total) / 52;
   const ni = nationalInsurance(annual).total / 52;
@@ -79,17 +79,3 @@ export function carerEarnings(i: CarerEarningsInput): CarerEarningsResult {
   };
 }
 
-/**
- * Highest gross weekly pay that keeps counted earnings within the limit,
- * found by bisection (pension and care costs held fixed).
- */
-export function maxGrossWithinLimit(i: Omit<CarerEarningsInput, "grossWeekly">): number {
-  let lo = 0;
-  let hi = 5_000;
-  for (let k = 0; k < 60; k++) {
-    const mid = (lo + hi) / 2;
-    if (carerEarnings({ ...i, grossWeekly: mid }).withinLimit) lo = mid;
-    else hi = mid;
-  }
-  return Math.floor(lo * 100) / 100;
-}

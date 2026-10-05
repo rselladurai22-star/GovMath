@@ -38,7 +38,7 @@ const TOC: TocItem[] = [
 ];
 
 const SOURCES: Source[] = [
-  { label: "MoneyHelper — Should I rent or buy?", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/should-you-rent-or-buy-a-home" },
+  { label: "MoneyHelper — Is it cheaper to rent or buy?", href: "https://www.moneyhelper.org.uk/en/blog/buy-or-rent-a-home/no-place-like-home-is-it-cheaper-to-rent-or-buy" },
   { label: "ONS — House Price Index", href: "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/housepriceindex/latest" },
   { label: "ONS — Price Index of Private Rents", href: "https://www.ons.gov.uk/economy/inflationandpriceindices/bulletins/privaterentandhousepricesuk/latest" },
   { label: "GOV.UK — Stamp Duty Land Tax", href: "https://www.gov.uk/stamp-duty-land-tax" },

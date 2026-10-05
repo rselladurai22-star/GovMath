@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { addPercent, compoundChange, decimalToHhmm, percentChange, percentOf, percentagePoints, proRataRent, reversePercent, shiftHours, splitByRatio, timesheet, weeklyToMonthlyRent, whatPercent } from "./everyday";
+import { addPercent, compoundChange, decimalToHhmm, percentChange, percentOf, percentagePoints, proRataRent, reversePercent, shiftHours, timesheet, weeklyToMonthlyRent, whatPercent } from "./everyday";
 
 describe("percentages", () => {
   it("basics", () => {
@@ -16,11 +16,6 @@ describe("percentages", () => {
   it("compound changes", () => {
     expect(compoundChange([10, -10])).toBeCloseTo(-1, 9);
     expect(compoundChange([50, -50])).toBeCloseTo(-25, 9);
-  });
-  it("ratio split adds up to the penny", () => {
-    const s = splitByRatio(100, [1, 1, 1]);
-    expect(s.reduce((a, b) => a + b, 0)).toBeCloseTo(100, 9);
-    expect(s).toEqual([33.34, 33.33, 33.33]);
   });
 });
 

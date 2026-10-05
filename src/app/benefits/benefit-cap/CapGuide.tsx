@@ -43,7 +43,7 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — Benefit cap amounts", href: "https://www.gov.uk/benefit-cap/benefit-cap-amounts" },
   { label: "GOV.UK — When you're not affected by the benefit cap", href: "https://www.gov.uk/benefit-cap/when-youre-not-affected" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
-  { label: "GOV.UK — Discretionary Housing Payments", href: "https://www.gov.uk/government/collections/discretionary-housing-payments-guidance" },
+  { label: "GOV.UK — Discretionary Housing Payments", href: "https://www.gov.uk/government/publications/discretionary-housing-payments-guidance-manual" },
 ];
 
 export default function CapGuide() {

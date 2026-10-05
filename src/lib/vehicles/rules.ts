@@ -22,8 +22,8 @@ function addYears(iso: string, years: number): string {
   const last = new Date(Date.UTC(y, d.getUTCMonth() + 1, 0)).getUTCDate();
   return fmt(new Date(Date.UTC(y, d.getUTCMonth(), Math.min(d.getUTCDate(), last))));
 }
-export const addDaysIso = (iso: string, n: number) => fmt(new Date(parse(iso).getTime() + n * DAY));
-export const daysBetween = (a: string, b: string) => Math.round((parse(b).getTime() - parse(a).getTime()) / DAY);
+const addDaysIso = (iso: string, n: number) => fmt(new Date(parse(iso).getTime() + n * DAY));
+const daysBetween = (a: string, b: string) => Math.round((parse(b).getTime() - parse(a).getTime()) / DAY);
 
 function ageOn(dob: string, on: string): number {
   const a = parse(dob);

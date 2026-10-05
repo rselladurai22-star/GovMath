@@ -1,5 +1,4 @@
-import { getCalculatorsByCategory, type CategorySlug } from "@/lib/calculators";
-import { shortTitle } from "@/components/category-style";
+import { getCalculatorsByCategory, shortTitle, type CategorySlug } from "@/lib/calculators";
 import cats from "./categories.json";
 
 /**
@@ -12,6 +11,11 @@ import cats from "./categories.json";
 
 type Cat = { slug: CategorySlug; label: string; desc: string; icon: string; heroTitle: string; heroDesc: string; toolIcon: string };
 const CATS = cats as Cat[];
+
+/** A topic's name as plain text (the JSON holds it HTML-escaped). */
+export function categoryLabel(slug: CategorySlug): string {
+  return (CATS.find((c) => c.slug === slug)?.label ?? slug).replace(/&amp;/g, "&");
+}
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 

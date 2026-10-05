@@ -42,7 +42,7 @@ export function text(def: string, maxLength = 40): Param<string> {
 }
 
 /** Values from a page's searchParams, falling back to each default. */
-export function readQuery<T>(schema: Schema<T>, query: Query): { values: T; hasAny: boolean } {
+function readQuery<T>(schema: Schema<T>, query: Query): { values: T; hasAny: boolean } {
   const values = {} as T;
   let hasAny = false;
   for (const key in schema) {

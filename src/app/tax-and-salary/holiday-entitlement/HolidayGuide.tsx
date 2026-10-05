@@ -37,7 +37,7 @@ const TOC: TocItem[] = [
 const SOURCES: Source[] = [
   { label: "GOV.UK — Holiday entitlement", href: "https://www.gov.uk/holiday-entitlement-rights" },
   { label: "GOV.UK — Holiday pay: the basics", href: "https://www.gov.uk/holiday-entitlement-rights/holiday-pay-the-basics" },
-  { label: "GOV.UK — Holiday pay and entitlement reforms from 1 January 2024", href: "https://www.gov.uk/government/publications/holiday-pay-and-entitlement-reforms-from-1-january-2024" },
+  { label: "GOV.UK — Holiday pay and entitlement reforms from 1 January 2024", href: "https://www.gov.uk/government/publications/simplifying-holiday-entitlement-and-holiday-pay-calculations/holiday-pay-and-entitlement-reforms-from-1-january-2024" },
   { label: "GOV.UK — Calculate holiday entitlement", href: "https://www.gov.uk/calculate-your-holiday-entitlement" },
   { label: "Acas — Holiday, sickness and leave", href: "https://www.acas.org.uk/checking-holiday-entitlement" },
 ];

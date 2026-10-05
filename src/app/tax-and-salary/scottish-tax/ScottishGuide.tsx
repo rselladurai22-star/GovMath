@@ -37,8 +37,8 @@ const TOC: TocItem[] = [
 
 const SOURCES: Source[] = [
   { label: "GOV.UK — Scottish Income Tax", href: "https://www.gov.uk/scottish-income-tax" },
-  { label: "gov.scot — Scottish Income Tax 2026 to 2027", href: "https://www.gov.scot/publications/scottish-income-tax-2026-2027/" },
-  { label: "GOV.UK — Scottish taxpayer: who counts", href: "https://www.gov.uk/guidance/scottish-taxpayer-technical-guidance" },
+  { label: "gov.scot — Scottish Income Tax 2026 to 2027", href: "https://www.gov.scot/publications/scottish-income-tax-technical-factsheet/" },
+  { label: "GOV.UK — Scottish taxpayer: who counts", href: "https://www.gov.uk/hmrc-internal-manuals/scottish-taxpayer-technical-guidance" },
   { label: "GOV.UK — Tax relief on pension contributions", href: "https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" },
   { label: "GOV.UK — Repaying your student loan", href: "https://www.gov.uk/repaying-your-student-loan" },
 ];

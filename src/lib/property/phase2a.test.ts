@@ -3,7 +3,6 @@ import { affordability, depositForLtv, targetCheck } from "./affordability";
 import { breakEvenSavingsRate, overpaymentPlan, pmt } from "./overpayment-plan";
 import { sharedOwnership } from "./shared-ownership";
 import { buyToLet, purchaseTax } from "./buy-to-let";
-import { mortgageOverpayment } from "./overpayment";
 
 const AFF = { income1: 45_000, income2: 0, variable: 0, variableShare: 0.5, commitments: 0, multiple: 4.5, deposit: 40_000, ratePct: 4.5, termYears: 25, stressPts: 3 };
 
@@ -35,11 +34,10 @@ describe("affordability", () => {
 
 describe("overpayment plan", () => {
   const base = { balance: 200_000, ratePct: 5, years: 25, monthly: 200, lump: 0, yearlyLump: 0, mode: "term" as const };
-  it("matches the simple overpayment model in term mode", () => {
+  it("£200 a month off £200,000 at 5% over 25 years ends 74 months early", () => {
     const a = overpaymentPlan(base);
-    const b = mortgageOverpayment({ balance: 200_000, annualRatePct: 5, remainingYears: 25, monthlyOverpayment: 200 });
-    expect(a.newMonths).toBe(b.newPayoffMonths);
-    expect(a.interestSaved).toBeCloseTo(b.interestSaved, 0);
+    expect(a.newMonths).toBe(226);
+    expect(a.interestSaved).toBeCloseTo(41_842.6, 0);
   });
   it("no overpayment saves nothing", () => {
     const a = overpaymentPlan({ ...base, monthly: 0 });

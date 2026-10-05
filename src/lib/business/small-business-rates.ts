@@ -17,13 +17,13 @@
  * Welsh and Scottish reliefs differ — this calc covers England only.
  */
 
-export const SMALL_MULTIPLIER = 0.432;
-export const STANDARD_MULTIPLIER = 0.48;
+const SMALL_MULTIPLIER = 0.432;
+const STANDARD_MULTIPLIER = 0.48;
 /** Lower multipliers for retail, hospitality and leisure (RHL) properties. */
-export const SMALL_RHL_MULTIPLIER = 0.382;
-export const STANDARD_RHL_MULTIPLIER = 0.43;
+const SMALL_RHL_MULTIPLIER = 0.382;
+const STANDARD_RHL_MULTIPLIER = 0.43;
 /** Properties with a rateable value of £500,000 or more. */
-export const LARGE_MULTIPLIER = 0.508;
+const LARGE_MULTIPLIER = 0.508;
 export const LARGE_THRESHOLD = 500000;
 export const SBRR_UPPER_TAPER = 15000;
 export const SBRR_LOWER = 12000;
@@ -71,9 +71,9 @@ export function smallBusinessRates(input: RatesInput): RatesResult {
 
 /* ── Flagship: a year's bill ───────────────────────────── */
 
-export const CHARITY_RELIEF = 0.8;
+const CHARITY_RELIEF = 0.8;
 /** Supporting Small Business relief caps the rise for those losing small business relief at the 2026 revaluation. */
-export const SSB_MIN_CAP = 800;
+const SSB_MIN_CAP = 800;
 
 export type RatesStudyInput = RatesInput & {
   /** Charity or community amateur sports club: 80% mandatory relief. */

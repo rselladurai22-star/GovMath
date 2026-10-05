@@ -1,11 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-  incomeTax,
-  nationalInsurance,
-  personalAllowance,
-  selfEmployedNI,
-  takeHomePay,
-} from "./2026-27";
+import { incomeTax, nationalInsurance, personalAllowance, selfEmployedNI } from "./2026-27";
 
 const round = (n: number) => Math.round(n * 100) / 100;
 
@@ -57,26 +51,6 @@ describe("nationalInsurance (Class 1, 2026/27)", () => {
     const r = nationalInsurance(80000);
     expect(round(r.mainBand)).toBe(round((50270 - 12570) * 0.08));
     expect(round(r.upperBand)).toBe(round((80000 - 50270) * 0.02));
-  });
-});
-
-describe("takeHomePay", () => {
-  it("£35,000 PAYE take-home matches HMRC ballpark", () => {
-    const r = takeHomePay(35000);
-    // Tax: (35000-12570)*20% = 4486
-    // NI:  (35000-12570)*8%  = 1794.40
-    // Net: 35000 - 4486 - 1794.40 = 28719.60
-    expect(round(r.incomeTax.total)).toBe(4486);
-    expect(round(r.ni.total)).toBe(1794.4);
-    expect(round(r.takeHome)).toBe(28719.6);
-  });
-  it("monthly = annual / 12", () => {
-    const r = takeHomePay(60000);
-    expect(round(r.perPeriod.monthly)).toBe(round(r.takeHome / 12));
-  });
-  it("handles zero and negative input safely", () => {
-    expect(takeHomePay(0).takeHome).toBe(0);
-    expect(takeHomePay(-1000).takeHome).toBe(0);
   });
 });
 

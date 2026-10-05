@@ -1,5 +1,5 @@
 import { CATEGORIES, getCalculatorsByCategory } from "@/lib/calculators";
-import { CAT } from "@/components/category-style";
+import { categoryLabel } from "@/gm/catalog";
 
 export const dynamic = "force-static";
 
@@ -12,7 +12,7 @@ export function GET() {
   return Response.json(
     CATEGORIES.map((c) => ({
       slug: c.slug,
-      title: CAT[c.slug].label,
+      title: categoryLabel(c.slug),
       desc: c.tagline,
       tools: getCalculatorsByCategory(c.slug).map((t) => ({ url: t.href, title: t.title, desc: t.blurb })),
     })),

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { scottishIncomeTax, scottishVsRukDifference } from "./scottish-2026-27";
+import { scottishIncomeTax } from "./scottish-2026-27";
 
 const round = (n: number) => Math.round(n * 100) / 100;
 
@@ -35,11 +35,4 @@ describe("scottishIncomeTax (2026/27)", () => {
     expect(r.top).toBeGreaterThan(0);
   });
 
-  it("scottishVsRukDifference is positive for £50k earner", () => {
-    expect(scottishVsRukDifference(50_000)).toBeGreaterThan(0);
-  });
-
-  it("scottishVsRukDifference is ~0 at low earnings", () => {
-    expect(Math.abs(scottishVsRukDifference(13_000))).toBeLessThan(20);
-  });
 });

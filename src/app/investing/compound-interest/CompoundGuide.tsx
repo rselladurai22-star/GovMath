@@ -29,8 +29,8 @@ const TOC: TocItem[] = [
 ];
 
 const SOURCES: Source[] = [
-  { label: "MoneyHelper — How interest works", href: "https://www.moneyhelper.org.uk/en/savings/how-to-save/how-interest-works" },
-  { label: "Financial Conduct Authority — Savings and AER", href: "https://www.fca.org.uk/consumers/savings-accounts" },
+  { label: "MoneyHelper — Interest rates explained", href: "https://www.moneyhelper.org.uk/en/savings/how-to-save/interest-rates-explained" },
+  { label: "Financial Conduct Authority — Savings calculator", href: "https://www.fca.org.uk/consumers/savings-calculator" },
   { label: "Bank of England — Inflation", href: "https://www.bankofengland.co.uk/monetary-policy/inflation" },
   { label: "GOV.UK — Individual Savings Accounts", href: "https://www.gov.uk/individual-savings-accounts" },
 ];

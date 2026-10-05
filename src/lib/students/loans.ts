@@ -12,8 +12,8 @@
 
 export type Plan = "plan1" | "plan2" | "plan4" | "plan5" | "postgrad";
 
-export const RPI_MARCH_2026 = 0.041;
-export const INTEREST_CAP_2026 = 0.06;
+const RPI_MARCH_2026 = 0.041;
+const INTEREST_CAP_2026 = 0.06;
 
 export type PlanSpec = {
   label: string;
@@ -35,7 +35,7 @@ export const PLANS_2026: Record<Plan, PlanSpec> = {
 };
 
 /** Plan 2 interest income thresholds for 2026/27. */
-export const PLAN2_INTEREST = { lower: 29_385, upper: 52_885 } as const;
+const PLAN2_INTEREST = { lower: 29_385, upper: 52_885 } as const;
 
 /** Interest rate for a plan at a given income, using RPI and the 2026/27 rules. */
 export function interestRate(plan: Plan, income: number, rpi = RPI_MARCH_2026, bankRatePlus1 = 0.0475, cap = INTEREST_CAP_2026, studying = false): number {
@@ -56,7 +56,7 @@ export function interestRate(plan: Plan, income: number, rpi = RPI_MARCH_2026, b
 }
 
 /** Yearly repayment on a salary for one plan. */
-export function repayment(plan: Plan, salary: number, threshold = PLANS_2026[plan].threshold): number {
+function repayment(plan: Plan, salary: number, threshold = PLANS_2026[plan].threshold): number {
   const p = PLANS_2026[plan];
   return Math.max(0, salary - threshold) * p.rate;
 }

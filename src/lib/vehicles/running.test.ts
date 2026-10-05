@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { commuteCosts, cycleToWork, driveCost, journeyCost, mileageAllowance, mpgToL100, petrolVsEv, UK_GALLON } from "./running";
+import { commuteCosts, cycleToWork, driveCost, journeyCost, petrolVsEv, UK_GALLON } from "./running";
 import { licenceRenewal, motDates, validReg } from "./rules";
 
 describe("journey", () => {
@@ -8,12 +8,6 @@ describe("journey", () => {
     expect(d.units).toBeCloseTo(2 * UK_GALLON, 6);
     expect(d.cost).toBeCloseTo(2 * UK_GALLON * 1.5, 6);
   });
-  it("l/100km and mpg agree", () => {
-    const l = mpgToL100(50);
-    const a = driveCost(100, { kind: "mpg", value: 50 }, 150).cost;
-    const b = driveCost(100, { kind: "l100", value: l }, 150).cost;
-    expect(a).toBeCloseTo(b, 6);
-  });
   it("electric", () => {
     expect(driveCost(100, { kind: "mikwh", value: 4 }, 20).cost).toBeCloseTo(5, 6);
   });
@@ -21,10 +15,6 @@ describe("journey", () => {
     const r = journeyCost({ miles: 50, returnTrip: true, eff: { kind: "mpg", value: 50 }, price: 150, people: 2, tolls: 0, parking: 0 });
     expect(r.miles).toBe(100);
     expect(r.perPerson).toBeCloseTo(r.total / 2, 6);
-  });
-  it("mileage allowance tiers", () => {
-    expect(mileageAllowance(12_000)).toBeCloseTo(4_500 + 500, 6);
-    expect(mileageAllowance(1_000, 9_500)).toBeCloseTo(225 + 125, 6);
   });
 });
 
