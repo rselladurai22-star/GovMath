@@ -92,7 +92,7 @@ The owner asked for the look and feel of the Axis Bank calculators site, in GovM
 - **Homepage:**
   - `src/components/home/Home.tsx` (server), with styles in `Home.module.css`
   - `HeroSearch.tsx` (search with suggestions)
-  - `PlanCalcs.tsx` (tabbed quick calculators with sliders and a donut)
+  - The owner wants only four parts: a hero explaining the site, the most-used tools card, every category with all its tools, and the footer. The feature cards, quick calculators, trust cards and FAQ were removed at the owner's request.
   - The global h1 to h4 rules (navy, tight tracking) are overridden inside `.page`.
 - **Still to do:** the calculator pages, category pages and the flagship kit still use the old blue (#4353ff), hard-coded in about 57 files. Move them to the `--ax-*` tokens in the next design phase.
 
