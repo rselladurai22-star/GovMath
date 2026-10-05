@@ -9,7 +9,7 @@ import { gbp } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 import s from "@/components/flagship/Flagship.module.css";
 
-const COLORS = { free: "#0f9f6e", taxable: "#f59e0b", notice: "#4353ff", holiday: "#7c3aed" };
+const COLORS = { free: "#0f9f6e", taxable: "#f59e0b", notice: "#5b1e6e", holiday: "#2e0a3a" };
 const SCHEMA = {
   age: num(45, 16, 80),
   years: num(8, 0, 50),

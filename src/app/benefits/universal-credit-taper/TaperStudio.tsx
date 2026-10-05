@@ -62,9 +62,9 @@ export default function TaperStudio({ query }: { query: Query }) {
   const hourGain = v.extra > 0 ? c.gain / v.extra / (52 / 12) : 0;
   const lostSegments = [
     { label: "You keep", value: Math.max(0, c.gain), display: gbp(c.gain, true), color: "#16a34a" },
-    { label: "Universal Credit", value: Math.max(0, c.lostToUc), display: gbp(c.lostToUc, true), color: "#4353ff" },
+    { label: "Universal Credit", value: Math.max(0, c.lostToUc), display: gbp(c.lostToUc, true), color: "#5b1e6e" },
     { label: "Tax and NI", value: Math.max(0, c.lostToTaxNi), display: gbp(c.lostToTaxNi, true), color: "#f59e0b" },
-    ...(c.lostToPension > 0.005 ? [{ label: "Pension", value: c.lostToPension, display: gbp(c.lostToPension, true), color: "#8b5cf6" }] : []),
+    ...(c.lostToPension > 0.005 ? [{ label: "Pension", value: c.lostToPension, display: gbp(c.lostToPension, true), color: "#8e4ba3" }] : []),
   ];
 
   return (
@@ -179,7 +179,7 @@ export default function TaperStudio({ query }: { query: Query }) {
         <AreaChart
           ariaLabel="Household income by hours worked a week"
           series={[
-            { key: "total", label: "Pay plus Universal Credit", color: "#4353ff", values: curve.map((p) => p.total), fill: true },
+            { key: "total", label: "Pay plus Universal Credit", color: "#5b1e6e", values: curve.map((p) => p.total), fill: true },
             { key: "net", label: "Take-home pay only", color: "#16a34a", values: curve.map((p) => p.ucEarnings), dashed: true },
           ]}
           xLabel={(i) => `${HOURS[i] ?? 0}h`}

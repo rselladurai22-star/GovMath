@@ -151,7 +151,7 @@ export default function LhaStudio({ query }: { query: Query }) {
         <ResultCard title="Your rent" sub={`${show(rentMonthly)} ${per}.`}>
           <SplitBar
             segments={[
-              { label: "Covered by LHA", value: h.monthlyHelp, display: show(h.monthlyHelp), color: "#4353ff" },
+              { label: "Covered by LHA", value: h.monthlyHelp, display: show(h.monthlyHelp), color: "#5b1e6e" },
               { label: "You pay", value: h.monthlyShortfall, display: show(h.monthlyShortfall), color: "#f59e0b" },
             ]}
           />

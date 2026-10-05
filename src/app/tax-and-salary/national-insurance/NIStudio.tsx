@@ -19,7 +19,7 @@ import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar } fr
 import { gbp, gbpShort, percent } from "@/components/flagship/format";
 import s from "@/components/flagship/Flagship.module.css";
 
-const COLORS = { employee: "#4353ff", self: "#0f9f6e", employer: "#f59e0b", pay: "#94a3b8" };
+const COLORS = { employee: "#5b1e6e", self: "#0f9f6e", employer: "#f59e0b", pay: "#94a3b8" };
 const DEFAULTS = { income: 35_000, mode: "employee" as NIMode };
 
 export default function NIStudio({ initialIncome, initialMode, showResults }: { initialIncome: number; initialMode: NIMode; showResults: boolean }) {

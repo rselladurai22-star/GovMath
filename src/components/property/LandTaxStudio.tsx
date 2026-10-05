@@ -20,7 +20,7 @@ const SCHEMA = {
   replacing: bool(false),
 };
 const ADVANCED = ["fittings", "replacing"] as const;
-const COLORS = { standard: "#4353ff", firstTime: "#0f9f6e", additional: "#f59e0b" };
+const COLORS = { standard: "#5b1e6e", firstTime: "#0f9f6e", additional: "#f59e0b" };
 
 const NATION = {
   scotland: {

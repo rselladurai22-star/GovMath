@@ -16,7 +16,7 @@ const SCHEMA = {
   full: num(0, 0, 2),
 };
 const ADVANCED = ["awe", "full"] as const;
-const COLORS = { spp: "#4353ff", employer: "#0f9f6e", lost: "#e11d48" };
+const COLORS = { spp: "#5b1e6e", employer: "#0f9f6e", lost: "#e11d48" };
 
 export default function PaternityStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);

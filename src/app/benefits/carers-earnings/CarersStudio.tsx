@@ -143,7 +143,7 @@ export default function CarersStudio({ query }: { query: Query }) {
         <AreaChart
           ariaLabel="Weekly income by hours worked"
           series={[
-            { key: "total", label: "Pay plus Carer's Allowance", color: "#4353ff", values: curve.map((c) => c.total), fill: true },
+            { key: "total", label: "Pay plus Carer's Allowance", color: "#5b1e6e", values: curve.map((c) => c.total), fill: true },
             { key: "pay", label: "Take-home pay only", color: "#16a34a", values: curve.map((c) => c.pay), dashed: true },
           ]}
           xLabel={(i) => `${HOURS[i] ?? 0}h`}

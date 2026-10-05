@@ -17,7 +17,7 @@ const SCHEMA = {
   last: num(0, 0, 100_000_000),
 };
 const ADVANCED = ["charity", "days", "last"] as const;
-const COLORS = { relief: "#0f9f6e", pay: "#e11d48", charity: "#4353ff" };
+const COLORS = { relief: "#0f9f6e", pay: "#e11d48", charity: "#5b1e6e" };
 const pence = (m: number) => `${(m * 100).toFixed(1)}p`;
 
 export default function RatesStudio({ query }: { query: Query }) {

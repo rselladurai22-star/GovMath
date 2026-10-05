@@ -98,7 +98,7 @@ export default function EvSalSacStudio({ query }: { query: Query }) {
           segments={[
             { label: "Tax saved", value: r.taxSaved, display: gbp(r.taxSaved), color: "#16a34a" },
             { label: "NI saved", value: r.niSaved, display: gbp(r.niSaved), color: "#22c55e" },
-            { label: "You pay", value: Math.max(0, r.sacrifice - r.taxSaved - r.niSaved), display: gbp(r.sacrifice - r.taxSaved - r.niSaved), color: "#4353ff" },
+            { label: "You pay", value: Math.max(0, r.sacrifice - r.taxSaved - r.niSaved), display: gbp(r.sacrifice - r.taxSaved - r.niSaved), color: "#5b1e6e" },
           ]}
         />
       </ResultCard>

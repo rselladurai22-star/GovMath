@@ -112,7 +112,7 @@ export default function DaysStudio({ query }: { query: Query }) {
         {c.total > 0 && (
           <SplitBar
             segments={[
-              { label: "Working days", value: c.working, display: String(c.working), color: "#4353ff" },
+              { label: "Working days", value: c.working, display: String(c.working), color: "#5b1e6e" },
               { label: "Weekends", value: c.weekends, display: String(c.weekends), color: "#94a3b8" },
               { label: "Bank holidays", value: c.holidays.length, display: String(c.holidays.length), color: "#f59e0b" },
             ]}

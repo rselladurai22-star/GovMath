@@ -15,7 +15,7 @@ const RATES: { value: VatRateKey; label: string; note: string; fraction: string 
   { value: "reduced", label: "5% reduced", note: "Home energy, children's car seats, some home improvements.", fraction: "1/21" },
   { value: "zero", label: "0% zero", note: "Most food, books, children's clothes, public transport.", fraction: "none" },
 ];
-const COLORS = { net: "#4353ff", vat: "#f59e0b" };
+const COLORS = { net: "#5b1e6e", vat: "#f59e0b" };
 
 /** Round to whole pence once, keeping net + VAT = gross exactly. */
 function toPence(v: { net: number; vat: number; gross: number }, direction: Direction) {

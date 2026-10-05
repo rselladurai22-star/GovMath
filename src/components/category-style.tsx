@@ -67,18 +67,21 @@ export const CAT: Record<CategorySlug, CatMeta> = {
 };
 
 /**
- * Premium per-topic accent: `c` is text-safe on white (≥4.5:1), `g` the
- * second gradient stop for icon tiles, `t` a soft surface tint.
+ * Per-topic accent: `c` is text-safe on white (≥4.5:1), `g` the second
+ * gradient stop for icon tiles, `t` a soft surface tint. Every topic uses
+ * the plum brand so the site reads as one.
  */
+const PLUM_ACCENT = { c: "#5b1e6e", g: "#2e0a3a", t: "#f5edf8" };
+
 export const ACCENT: Record<CategorySlug, { c: string; g: string; t: string }> = {
-  "tax-and-salary": { c: "#4353ff", g: "#7c3aed", t: "#eef0ff" },
-  property: { c: "#0a8f7a", g: "#22c1c3", t: "#e6f8f5" },
-  business: { c: "#d9610b", g: "#f7a531", t: "#fff3e6" },
-  investing: { c: "#6d3df0", g: "#b06cf7", t: "#f2edff" },
-  benefits: { c: "#d92c69", g: "#fb7aa1", t: "#ffedf3" },
-  vehicles: { c: "#0b7fc7", g: "#35c3f3", t: "#e8f6fe" },
-  students: { c: "#8a34d9", g: "#d066f0", t: "#f6edff" },
-  life: { c: "#2f8f2f", g: "#8ccf3f", t: "#eef9e8" },
+  "tax-and-salary": PLUM_ACCENT,
+  property: PLUM_ACCENT,
+  business: PLUM_ACCENT,
+  investing: PLUM_ACCENT,
+  benefits: PLUM_ACCENT,
+  vehicles: PLUM_ACCENT,
+  students: PLUM_ACCENT,
+  life: PLUM_ACCENT,
 };
 
 /** CSS custom properties (--c, --g, --t) for a topic's premium accent. */

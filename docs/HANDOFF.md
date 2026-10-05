@@ -1,7 +1,7 @@
 # GovMath project memory
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 5 October 2026 (Phases 0 to 8 live; homepage redesign in review).
+Last updated: 5 October 2026 (Phases 0 to 8 live; site-wide plum redesign in review).
 
 ## Goal
 
@@ -94,7 +94,14 @@ The owner asked for the look and feel of the Axis Bank calculators site, in GovM
   - `HeroSearch.tsx` (search with suggestions)
   - The owner wants only four parts: a hero explaining the site, the most-used tools card, every category with all its tools, and the footer. The feature cards, quick calculators, trust cards and FAQ were removed at the owner's request.
   - The global h1 to h4 rules (navy, tight tracking) are overridden inside `.page`.
-- **Still to do:** the calculator pages, category pages and the flagship kit still use the old blue (#4353ff), hard-coded in about 57 files. Move them to the `--ax-*` tokens in the next design phase.
+- **Whole site:** every page now uses the plum design.
+  - The old blue palette (#4353ff, navy #0d1330, lavender tints) was mapped to plum and greys in every CSS and TSX file. The legacy tokens (`--blue`, `--navy`, `--ice-blue`, `--brand-gradient` and so on) now resolve to plum values, so old class names still work.
+  - Every topic accent (`ACCENT` in `category-style.tsx`) is plum.
+  - Negative letter-spacing and 800/900 weights were removed from CSS; h1 is weight 400.
+  - Page heroes use a white-to-`--ax-soft` wash instead of the aurora.
+  - The flagship answer card uses `--ax-gradient`.
+  - Green stays only for money you keep; amber and red stay for charts and warnings.
+- **New colours:** use the `--ax-*` tokens, never new hex values.
 
 ## Ads (waiting on the owner)
 

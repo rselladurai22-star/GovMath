@@ -15,7 +15,7 @@ const BUYERS: { value: BuyerType; label: string; long: string; note: string }[] 
   { value: "first-time", label: "First-time", long: "first-time buyer", note: "Every buyer has never owned a home, anywhere in the world. Relief applies up to £500,000." },
   { value: "additional", label: "2nd home", long: "second home or buy-to-let", note: "Second home or buy-to-let: you'll own more than one home after buying. A 5% surcharge applies to the whole price." },
 ];
-const COLORS = { standard: "#4353ff", firstTime: "#0f9f6e", additional: "#f59e0b" };
+const COLORS = { standard: "#5b1e6e", firstTime: "#0f9f6e", additional: "#f59e0b" };
 const DEFAULTS = { price: 295_000, buyer: "standard" as BuyerType };
 
 export default function StampDutyStudio({

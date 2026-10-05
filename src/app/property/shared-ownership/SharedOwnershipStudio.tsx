@@ -23,7 +23,7 @@ const SCHEMA = {
   ftb: bool(true),
 };
 const ADVANCED = ["term", "rent", "service", "growth", "rentRise", "stairYear", "stairTo", "ftb"] as const;
-const COLORS = { mortgage: "#4353ff", rent: "#f59e0b", service: "#7c3aed" };
+const COLORS = { mortgage: "#5b1e6e", rent: "#f59e0b", service: "#2e0a3a" };
 
 export default function SharedOwnershipStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);

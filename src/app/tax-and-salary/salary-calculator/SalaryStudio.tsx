@@ -17,7 +17,7 @@ import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar, Sta
 import { gbp, gbpShort, percent } from "@/components/flagship/format";
 import s from "@/components/flagship/Flagship.module.css";
 
-const COLORS = { keep: "#0f9f6e", pension: "#7c3aed", tax: "#f59e0b", ni: "#4353ff", loan: "#db2777" };
+const COLORS = { keep: "#0f9f6e", pension: "#2e0a3a", tax: "#f59e0b", ni: "#5b1e6e", loan: "#db2777" };
 
 type State = { salary: number; bonus: number; pension: number; plan: StudentPlan; region: TaxRegion };
 type Action = { [K in keyof State]: { key: K; value: State[K] } }[keyof State] | { key: "reset" };
@@ -356,7 +356,7 @@ export default function SalaryStudio({
         <AreaChart
           ariaLabel="Take-home pay by salary"
           series={[
-            { key: "gross", label: "Gross pay", color: "#9aa0bf", values: curve.map((c) => c.gross), dashed: true },
+            { key: "gross", label: "Gross pay", color: "#9d9d9d", values: curve.map((c) => c.gross), dashed: true },
             { key: "net", label: "Take-home", color: COLORS.keep, values: curve.map((c) => c.takeHome), fill: true },
           ]}
           xLabel={(i) => gbpShort(grossAt(i))}

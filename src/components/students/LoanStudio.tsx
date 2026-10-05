@@ -117,7 +117,7 @@ export default function LoanStudio({ query, plan, defaults }: { query: Query; pl
         <AreaChart
           ariaLabel="Loan balance over time"
           series={[
-            { key: "bal", label: "Balance", color: "#4353ff", values: balances, fill: true },
+            { key: "bal", label: "Balance", color: "#5b1e6e", values: balances, fill: true },
             { key: "paid", label: "Repaid so far", color: "#16a34a", values: paid, dashed: true },
           ]}
           xLabel={(i) => `Yr ${i}`}

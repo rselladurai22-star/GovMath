@@ -101,7 +101,7 @@ export default function CompoundStudio({ query }: { query: Query }) {
         <AreaChart
           ariaLabel="Balance over time"
           series={[
-            { key: "bal", label: "Balance", color: "#4353ff", values: bal, fill: true },
+            { key: "bal", label: "Balance", color: "#5b1e6e", values: bal, fill: true },
             { key: "paid", label: "Paid in", color: "#94a3b8", values: paid, dashed: true },
           ]}
           xLabel={(i) => `Yr ${i}`}
@@ -117,7 +117,7 @@ export default function CompoundStudio({ query }: { query: Query }) {
         <SplitBar
           segments={[
             { label: "Paid in", value: r.contributed, display: gbp(r.contributed), color: "#94a3b8" },
-            { label: "Interest", value: Math.max(0, r.interest), display: gbp(r.interest), color: "#4353ff" },
+            { label: "Interest", value: Math.max(0, r.interest), display: gbp(r.interest), color: "#5b1e6e" },
           ]}
         />
       </ResultCard>

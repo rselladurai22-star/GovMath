@@ -24,7 +24,7 @@ const SCHEMA = {
   buying: num(3_000, 0, 200_000),
 };
 const ADVANCED = ["io", "term", "agent", "voids", "costs", "other", "nation", "scot", "buying"] as const;
-const COLORS = { costs: "#94a3b8", interest: "#f59e0b", tax: "#e11d48", profit: "#0f9f6e", capital: "#4353ff" };
+const COLORS = { costs: "#94a3b8", interest: "#f59e0b", tax: "#e11d48", profit: "#0f9f6e", capital: "#5b1e6e" };
 const NATION_TAX: Record<Nation, string> = { england: "Stamp Duty", scotland: "LBTT and ADS", wales: "LTT higher rates" };
 
 export default function BTLStudio({ query }: { query: Query }) {

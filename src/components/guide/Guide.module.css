@@ -3,13 +3,13 @@
    carry direct labels, so no value relies on colour alone. */
 
 .guide {
-  --g-c1: #4353ff;
+  --g-c1: #5b1e6e;
   --g-c2: #e8890c;
   --g-c3: #0e9f8a;
-  --g-c4: #8b5cf6;
-  --g-track: #eceef7;
+  --g-c4: #8e4ba3;
+  --g-track: #e2e2e2;
   --g-surface: #fff;
-  --g-muted: #6b7196;
+  --g-muted: #6e6e6e;
   color: var(--ink);
 }
 
@@ -29,8 +29,8 @@
   margin: 8px 0 12px;
   color: var(--navy);
   font-size: var(--fs-h1);
-  font-weight: 800;
-  letter-spacing: -0.025em;
+  font-weight: 700;
+  letter-spacing: normal;
   line-height: 1.1;
 }
 .intro {
@@ -172,7 +172,7 @@
   background: var(--ice-blue);
   color: var(--blue);
   font-size: var(--fs-sm);
-  font-weight: 800;
+  font-weight: 700;
 }
 .sectionKicker {
   color: var(--blue);
@@ -185,8 +185,8 @@
   margin: 0 0 14px;
   color: var(--navy);
   font-size: var(--fs-h2);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: normal;
   line-height: 1.15;
 }
 .section h3 {
@@ -231,7 +231,7 @@
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--g-surface);
-  box-shadow: 0 1px 3px rgba(13, 19, 48, 0.04), 0 14px 32px -22px rgba(13, 19, 48, 0.14);
+  box-shadow: 0 1px 3px rgba(40, 40, 40, 0.04), 0 14px 32px -22px rgba(40, 40, 40, 0.14);
 }
 .figLabel {
   margin-bottom: 16px;
@@ -250,10 +250,10 @@
 .callout {
   margin: 18px 0;
   padding: 14px 16px 14px 18px;
-  border: 1px solid #dfe3ff;
+  border: 1px solid #e4d2ec;
   border-left: 4px solid var(--blue);
   border-radius: 12px;
-  background: #f6f7ff;
+  background: #f9f9f9;
 }
 .callout[data-tone="warn"] {
   border-color: #f7e2bd;
@@ -269,7 +269,7 @@
   margin: 0 0 4px;
   color: var(--navy);
   font-size: var(--fs-sm);
-  font-weight: 800;
+  font-weight: 700;
 }
 .callout p {
   margin: 0;
@@ -293,9 +293,9 @@
 .statValue {
   color: var(--navy);
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
-  letter-spacing: -0.01em;
+  letter-spacing: normal;
 }
 .statLabel {
   margin-top: 4px;
@@ -362,7 +362,7 @@
   border-top: 1px solid var(--line);
   background: #f3fbf7;
   color: var(--navy);
-  font-weight: 800;
+  font-weight: 700;
 }
 .exampleTotal span:last-child {
   color: var(--success);
@@ -437,7 +437,7 @@
   border-bottom: 1px solid var(--line);
   background: var(--ice);
   color: var(--navy);
-  font-weight: 800;
+  font-weight: 700;
 }
 .swatch {
   display: inline-block;
@@ -484,7 +484,7 @@
   border-radius: 4px;
   color: #fff;
   font-size: var(--fs-sm);
-  font-weight: 800;
+  font-weight: 700;
 }
 .band[data-light] {
   color: var(--navy);
@@ -578,7 +578,7 @@
 .chart .chartLabel {
   fill: var(--navy);
   font-size: 13px;
-  font-weight: 800;
+  font-weight: 700;
 }
 .chart .grid {
   stroke: var(--line);
@@ -596,7 +596,7 @@
   fill: transparent;
 }
 .chart .hit:hover {
-  fill: rgba(67, 83, 255, 0.06);
+  fill: rgba(91, 30, 110, 0.06);
 }
 
 /* ── Timeline ───────────────────────────────────────── */
@@ -634,7 +634,7 @@
   display: block;
   color: var(--blue);
   font-size: var(--fs-xs);
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -661,7 +661,7 @@
   margin: 0 0 8px;
   color: var(--navy);
   font-size: var(--fs-h3);
-  font-weight: 800;
+  font-weight: 700;
 }
 .sources p {
   margin: 0 0 10px;

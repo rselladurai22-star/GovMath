@@ -20,7 +20,7 @@ const SCHEMA = {
   other: num(0, 0, 10_000_000),
 };
 const ADVANCED = ["salary", "ea", "pension", "scot", "associated", "other"] as const;
-const COLORS = { ct: "#e11d48", eni: "#f97316", personal: "#f59e0b", div: "#a855f7", keep: "#0f9f6e", pension: "#4353ff" };
+const COLORS = { ct: "#e11d48", eni: "#f97316", personal: "#f59e0b", div: "#a46bb8", keep: "#0f9f6e", pension: "#5b1e6e" };
 const CHART_POINTS = 26;
 const minus = (n: number) => (n > 0.5 ? `−${gbp(n)}` : "£0");
 

@@ -21,7 +21,7 @@ const SCHEMA = {
   ending: oneOf<PriceEnding>("none", ["none", "99", "95", "whole"]),
 };
 const ADVANCED = ["extra", "fee", "vatReg", "vat", "ending"] as const;
-const COLORS = { cost: "#94a3b8", fee: "#a855f7", profit: "#0f9f6e", vat: "#f59e0b" };
+const COLORS = { cost: "#94a3b8", fee: "#a46bb8", profit: "#0f9f6e", vat: "#f59e0b" };
 const LADDER: Record<Mode, number[]> = { margin: [20, 30, 40, 50, 60, 70], markup: [25, 50, 75, 100, 150, 200] };
 
 const pct = (n: number) => (Number.isFinite(n) ? percent(n, 1) : "n/a");

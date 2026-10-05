@@ -19,7 +19,7 @@ const SCHEMA = {
   lisa: bool(false),
 };
 const ADVANCED = ["coOwned", "fittings", "fees", "lisa"] as const;
-const COLORS = { deposit: "#4353ff", tax: "#f59e0b", fees: "#7c3aed", ftb: "#0f9f6e", mover: "#4353ff" };
+const COLORS = { deposit: "#5b1e6e", tax: "#f59e0b", fees: "#2e0a3a", ftb: "#0f9f6e", mover: "#5b1e6e" };
 const RELIEF_CAP = 500_000;
 const LISA_CAP = 450_000;
 

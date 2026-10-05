@@ -58,13 +58,13 @@
   max-width: 960px;
   margin: 0 auto;
   padding: 0.9rem 1.5rem 1rem;
-  border: 1px solid #e3e6f4;
+  border: 1px solid #e2e2e2;
   border-top-color: #eceef8;
   border-radius: 0 0 22px 22px;
-  background: rgba(247, 248, 255, 0.95);
+  background: rgba(249, 249, 249, 0.95);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  box-shadow: 0 24px 48px -36px rgba(13, 19, 48, 0.3);
+  box-shadow: 0 24px 48px -36px rgba(40, 40, 40, 0.3);
 }
 .stage:has(> * > [class*="lg:grid-cols-["]) .foot,
 .stage:has(> [class*="lg:grid-cols-["]) .foot {
@@ -88,8 +88,8 @@
   color: #fff;
   font: inherit;
   font-size: 1.0625rem;
-  font-weight: 800;
-  box-shadow: 0 18px 32px -16px rgba(67, 83, 255, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  font-weight: 700;
+  box-shadow: 0 18px 32px -16px rgba(91, 30, 110, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.25);
   cursor: pointer;
   transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease;
 }
@@ -104,10 +104,10 @@
 /* ── Both stages: the inputs card ─────────────────────── */
 .stage > [class*="lg:grid-cols-["] > :first-child,
 .stage > * > [class*="lg:grid-cols-["] > :first-child {
-  border-color: #e3e6f4;
+  border-color: #e2e2e2;
   border-radius: 22px;
   background: #fff;
-  box-shadow: 0 1px 2px rgba(13, 19, 48, 0.04), 0 24px 48px -36px rgba(13, 19, 48, 0.3);
+  box-shadow: 0 1px 2px rgba(40, 40, 40, 0.04), 0 24px 48px -36px rgba(40, 40, 40, 0.3);
 }
 
 /* ── Stage 2: results in their own tray ───────────────── */
@@ -123,8 +123,8 @@
   border: 1px solid #dde1f3;
   border-radius: 28px;
   background:
-    radial-gradient(60% 40% at 100% 0%, rgba(199, 206, 255, 0.45), transparent 70%),
-    #eceffa;
+    radial-gradient(60% 40% at 100% 0%, rgba(217, 184, 230, 0.45), transparent 70%),
+    #f1f4f7;
   scroll-margin-top: 84px;
   animation: trayIn 0.55s var(--ease-out) both;
 }
@@ -135,8 +135,8 @@
   margin: 0.15rem 0.35rem 0.9rem;
   color: var(--navy);
   font-size: 1.1875rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: normal;
 }
 /* Cards inside the tray read as white panels on the tint. */
 .stage[data-ready] > * > [class*="lg:grid-cols-["] > :nth-child(2) > *,

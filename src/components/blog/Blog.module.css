@@ -23,14 +23,14 @@
   flex: 1;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid #e3e6f6;
+  border: 1px solid #e2e2e2;
   border-radius: 24px;
   background: #fff;
-  box-shadow: 0 1px 2px rgba(13, 19, 48, 0.04), 0 24px 50px -40px rgba(87, 70, 245, 0.55);
+  box-shadow: 0 1px 2px rgba(40, 40, 40, 0.04), 0 24px 50px -40px rgba(91, 30, 110, 0.55);
   transition: transform 0.4s var(--ease-out), box-shadow 0.4s ease, border-color 0.3s ease;
 }
 .card:hover {
-  border-color: color-mix(in srgb, var(--c) 40%, #e3e6f6);
+  border-color: color-mix(in srgb, var(--c) 40%, #e2e2e2);
   box-shadow: 0 36px 64px -32px color-mix(in srgb, var(--c) 75%, transparent);
   transform: translateY(-8px);
 }
@@ -104,15 +104,15 @@
   border-radius: 999px;
   background: var(--t);
   color: var(--c);
-  font-weight: 800;
+  font-weight: 700;
 }
 .title {
   margin: 1rem 0 0;
   color: var(--navy);
   font-size: 1.375rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.25;
-  letter-spacing: -0.03em;
+  letter-spacing: normal;
   transition: color 0.2s ease;
 }
 .card:hover .title {
@@ -131,7 +131,7 @@
   justify-content: space-between;
   margin-top: 1.3rem;
   padding-top: 1rem;
-  border-top: 1px solid #eef0f8;
+  border-top: 1px solid #f1f4f7;
   color: var(--muted);
   font-size: 0.875rem;
   font-weight: 600;
@@ -141,7 +141,7 @@
   align-items: center;
   gap: 0.4rem;
   color: var(--c);
-  font-weight: 800;
+  font-weight: 700;
 }
 .read svg {
   transition: transform 0.25s var(--ease-out);
@@ -179,7 +179,7 @@
   height: 4px;
   margin-right: 0.75rem;
   border-radius: 50%;
-  background: #b3b8d0;
+  background: #bdbdbd;
   vertical-align: middle;
 }
 .articleWrap {
@@ -189,10 +189,10 @@
 }
 .article {
   padding: 2.75rem 3rem;
-  border: 1px solid #e3e6f6;
+  border: 1px solid #e2e2e2;
   border-radius: 28px;
   background: #fff;
-  box-shadow: 0 1px 2px rgba(13, 19, 48, 0.04), 0 40px 80px -56px rgba(87, 70, 245, 0.55);
+  box-shadow: 0 1px 2px rgba(40, 40, 40, 0.04), 0 40px 80px -56px rgba(91, 30, 110, 0.55);
   font-size: 1.125rem;
   line-height: 1.8;
 }
@@ -204,9 +204,9 @@
   margin-top: 2.75rem;
   padding-top: 1.1rem;
   font-size: var(--fs-h2);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
-  letter-spacing: -0.035em;
+  letter-spacing: normal;
 }
 .article :global(h2)::before {
   content: "";
@@ -220,8 +220,8 @@
 }
 .article :global(h3) {
   font-size: 1.3125rem;
-  font-weight: 800;
-  letter-spacing: -0.025em;
+  font-weight: 700;
+  letter-spacing: normal;
 }
 .article :global(ul > li)::before {
   background: var(--brand-gradient);
@@ -233,15 +233,15 @@
   border-radius: 18px;
   padding: 1.2rem 1.4rem;
   background:
-    radial-gradient(120% 120% at 100% 0%, rgba(139, 92, 246, 0.14) 0%, transparent 60%),
-    linear-gradient(160deg, #eef0ff 0%, #f7f8ff 100%);
-  box-shadow: inset 0 0 0 1px #e0e3fb;
+    radial-gradient(120% 120% at 100% 0%, rgba(91, 30, 110, 0.14) 0%, transparent 60%),
+    linear-gradient(160deg, #f5edf8 0%, #f9f9f9 100%);
+  box-shadow: inset 0 0 0 1px #e4d2ec;
 }
 .article :global(table) {
   overflow: hidden;
   border-collapse: separate;
   border-spacing: 0;
-  border: 1px solid #e3e6f6;
+  border: 1px solid #e2e2e2;
   border-radius: 16px;
 }
 .article :global(th) {
@@ -265,7 +265,7 @@
   margin-top: 40px;
   padding-block: 80px 96px;
   border-top: 1px solid var(--line);
-  background: linear-gradient(180deg, #f7f8ff 0%, #fff 100%);
+  background: linear-gradient(180deg, #f9f9f9 0%, #fff 100%);
 }
 .kicker {
   display: inline-flex;
@@ -276,7 +276,7 @@
   background: var(--ice-blue);
   color: var(--blue);
   font-size: 0.8125rem;
-  font-weight: 800;
+  font-weight: 700;
 }
 .kicker::before {
   content: "";
@@ -288,9 +288,9 @@
 .blockTitle {
   margin: 0.85rem 0 2rem;
   font-size: var(--fs-h2);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.12;
-  letter-spacing: -0.04em;
+  letter-spacing: normal;
 }
 .ctaWrap {
   padding-block: 72px 96px;
@@ -305,9 +305,9 @@
   overflow: hidden;
   padding: 2.5rem 2.75rem;
   border-radius: 28px;
-  background: linear-gradient(130deg, #4353ff 0%, #7c3aed 55%, #c026d3 120%);
+  background: linear-gradient(130deg, #5b1e6e 0%, #2e0a3a 55%, #8e4ba3 120%);
   color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 40px 70px -34px rgba(87, 70, 245, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  box-shadow: 0 40px 70px -34px rgba(91, 30, 110, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 .cta::before,
 .cta::after {
@@ -322,7 +322,7 @@
   right: 10%;
   width: 260px;
   height: 260px;
-  background: rgba(34, 211, 238, 0.5);
+  background: rgba(217, 184, 230, 0.5);
   animation: blobA 12s ease-in-out infinite alternate;
 }
 .cta::after {
@@ -330,7 +330,7 @@
   left: 5%;
   width: 240px;
   height: 240px;
-  background: rgba(244, 114, 182, 0.45);
+  background: rgba(217, 184, 230, 0.45);
   animation: blobB 14s ease-in-out infinite alternate;
 }
 @keyframes blobA {
@@ -347,9 +347,9 @@
   margin: 0;
   color: #fff;
   font-size: var(--fs-h2);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.15;
-  letter-spacing: -0.035em;
+  letter-spacing: normal;
 }
 .cta p {
   margin: 0.6rem 0 0;
@@ -365,10 +365,10 @@
   padding: 0 1.5rem;
   border-radius: 14px;
   background: #fff;
-  color: #3a2fd0;
+  color: #4a1659;
   font-size: 1rem;
-  font-weight: 800;
-  box-shadow: 0 14px 28px -14px rgba(13, 19, 48, 0.6);
+  font-weight: 700;
+  box-shadow: 0 14px 28px -14px rgba(40, 40, 40, 0.6);
   transition: transform 0.3s var(--ease-out), box-shadow 0.3s ease;
 }
 .ctaBtn svg {
@@ -376,7 +376,7 @@
 }
 .ctaBtn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 22px 36px -16px rgba(13, 19, 48, 0.7);
+  box-shadow: 0 22px 36px -16px rgba(40, 40, 40, 0.7);
 }
 .ctaBtn:hover svg {
   transform: translateX(5px);

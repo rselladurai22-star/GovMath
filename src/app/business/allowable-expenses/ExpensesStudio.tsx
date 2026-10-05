@@ -27,7 +27,7 @@ const SCHEMA = {
   scot: bool(false),
 };
 const ADVANCED = ["premises", "staff", "training", "clothing", "other", "wfh", "months", "income", "scot"] as const;
-const PALETTE = ["#4353ff", "#0f9f6e", "#f59e0b", "#a855f7", "#e11d48", "#0ea5e9", "#64748b", "#14b8a6", "#f97316", "#84cc16", "#94a3b8", "#6366f1"];
+const PALETTE = ["#5b1e6e", "#0f9f6e", "#f59e0b", "#a46bb8", "#e11d48", "#0ea5e9", "#64748b", "#14b8a6", "#f97316", "#84cc16", "#94a3b8", "#6366f1"];
 
 export default function ExpensesStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);

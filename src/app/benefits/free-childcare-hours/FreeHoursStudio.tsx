@@ -20,7 +20,7 @@ const SCHEMA = {
   over100k: bool(false),
 };
 const ADVANCED = ["weeks", "extras", "earnings", "over100k"] as const;
-const COLORS = { funded: "#0f9f6e", tfc: "#4353ff", you: "#f59e0b" };
+const COLORS = { funded: "#0f9f6e", tfc: "#5b1e6e", you: "#f59e0b" };
 const STAGE_LABEL: Record<ChildStage, string> = { under9m: "Under 9 months", "9m-2": "9 months to 2 years", "2": "2 years old", "3-4": "3 or 4 years old" };
 const MIN_EARNINGS = minimumWeeklyEarnings("national-living-wage");
 
