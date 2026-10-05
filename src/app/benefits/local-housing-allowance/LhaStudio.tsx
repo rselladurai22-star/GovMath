@@ -1,6 +1,7 @@
 "use client";
 
-import { bedroomEntitlement, LHA_AREAS, lhaHelp, lhaWeekly, weeklyToMonthly, type LhaCategory } from "@/lib/benefits/lha-engine";
+import { bedroomEntitlement, LHA_AREAS, LHA_AREAS_BY_NATION, LHA_DEFAULT_AREA, lhaHelp, lhaMonthly, lhaNation, lhaWeekly, weeklyToMonthly, type LhaCategory, type LhaNation } from "@/lib/benefits/lha-engine";
+import { SCOTLAND_AREA_COVERS } from "@/lib/benefits/lha-scotland-wales";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
@@ -11,6 +12,7 @@ const SCHEMA = {
   area: text("Bristol", 60),
   rent: num(1_100, 0, 20_000),
   period: oneOf<"month" | "week">("month", ["month", "week"]),
+  claim: oneOf<"uc" | "hb">("uc", ["uc", "hb"]),
   couple: bool(false),
   under35: bool(false),
   boysU10: num(0, 0, 8),
@@ -32,11 +34,15 @@ const CATS: { key: LhaCategory; label: string }[] = [
   { key: "4", label: "4 bedrooms" },
 ];
 const catLabel = (c: LhaCategory) => CATS.find((x) => x.key === c)?.label ?? c;
+const NATION_LABEL: Record<LhaNation, string> = { england: "England", scotland: "Scotland", wales: "Wales" };
+const areaLabel = (a: string) => (SCOTLAND_AREA_COVERS[a] ? `${a} (${SCOTLAND_AREA_COVERS[a]})` : a);
 
 export default function LhaStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
   const area = LHA_AREAS.includes(v.area) ? v.area : "Bristol";
+  const nation = lhaNation(area);
+  const uc = v.claim === "uc";
   const rooms = bedroomEntitlement({
     couple: v.couple,
     under35: v.under35,
@@ -49,9 +55,14 @@ export default function LhaStudio({ query }: { query: Query }) {
   const weekly = v.manual > 0 ? v.manual : lhaWeekly(area, rooms.category);
   const rentMonthly = v.period === "week" ? weeklyToMonthly(v.rent) : v.rent;
   const nextCat: LhaCategory | null = rooms.category === "shared" ? "1" : rooms.category === "4" ? null : (String(Number(rooms.category) + 1) as LhaCategory);
-  const h = lhaHelp(weekly, rentMonthly, nextCat ? lhaWeekly(area, nextCat) : 0);
+  const nextWeekly = nextCat ? lhaWeekly(area, nextCat) : 0;
+  // Universal Credit has its own monthly rates; Housing Benefit uses the weekly rate.
+  const ucMonthly = v.manual > 0 ? weeklyToMonthly(v.manual) : lhaMonthly(area, rooms.category);
+  const h = uc ? lhaHelp(weekly, rentMonthly, nextWeekly, ucMonthly, nextCat ? lhaMonthly(area, nextCat) : 0) : lhaHelp(weekly, rentMonthly, nextWeekly);
+  const rateText = uc ? `${gbp(h.monthlyRate, true)} a month` : `${gbp(weekly, true)} a week`;
+  const rateOf = (c: LhaCategory) => (uc ? `${gbp(lhaMonthly(area, c), true)} a month` : `${gbp(lhaWeekly(area, c), true)} a week`);
   const kids = v.boysU10 + v.girlsU10 + v.boys10 + v.girls10;
-  const areaRates = CATS.map((c) => ({ ...c, weekly: lhaWeekly(area, c.key) }));
+  const areaRates = CATS.map((c) => ({ ...c, weekly: lhaWeekly(area, c.key), monthly: lhaMonthly(area, c.key) }));
   const maxRate = Math.max(1, ...areaRates.map((x) => x.weekly));
   const show = (m: number) => (v.period === "week" ? gbp((m * 12) / 52, true) : gbp(m, true));
   const per = v.period === "week" ? "a week" : "a month";
@@ -71,7 +82,26 @@ export default function LhaStudio({ query }: { query: Query }) {
       inputs={
         <>
           <InputGroup title="Where you rent">
-            <SelectField label="Broad Rental Market Area (England)" value={area} onChange={st.bind("area")} options={LHA_AREAS.map((a) => ({ value: a, label: a }))} hint="Your council can confirm which area you are in." />
+            <Segmented
+              label="Country"
+              value={nation}
+              onChange={(n) => st.set("area", LHA_DEFAULT_AREA[n])}
+              options={[
+                { value: "england", label: "England" },
+                { value: "scotland", label: "Scotland" },
+                { value: "wales", label: "Wales" },
+              ]}
+            />
+            <SelectField label="Broad Rental Market Area" value={area} onChange={st.bind("area")} options={LHA_AREAS_BY_NATION[nation].map((a) => ({ value: a, label: areaLabel(a) }))} hint="Your council can confirm which area you are in." />
+            <Segmented
+              label="Claiming"
+              value={v.claim}
+              onChange={st.bind("claim")}
+              options={[
+                { value: "uc", label: "Universal Credit", note: "Universal Credit has its own monthly rates." },
+                { value: "hb", label: "Housing Benefit", note: "Housing Benefit uses weekly rates. It is mostly for people over State Pension age or in supported housing." },
+              ]}
+            />
             <Segmented
               label="Rent is paid"
               value={v.period}
@@ -104,7 +134,7 @@ export default function LhaStudio({ query }: { query: Query }) {
             {!v.couple && v.under35 && kids === 0 && <Switch label="Exempt from the shared rate" checked={v.exempt} onChange={st.bind("exempt")} optional hint="For example a care leaver under 25, getting PIP daily living or DLA middle or higher care, or leaving a hostel or refuge." />}
             <Switch label="A non-resident carer stays overnight" checked={v.carer} onChange={st.bind("carer")} optional hint="Gives an extra bedroom." />
             {kids > 0 && stepper("disabledOwn", "Disabled children who cannot share", true, "Each gets their own bedroom.")}
-            <MoneyField label="Or enter a weekly LHA rate" value={v.manual} onChange={st.bind("manual")} pence optional hint="For Scotland or Wales, or a rate from your council." />
+            <MoneyField label="Or enter a weekly LHA rate" value={v.manual} onChange={st.bind("manual")} pence optional hint="A rate from your council, if you have one." />
           </AdvancedOptions>
         </>
       }
@@ -115,7 +145,7 @@ export default function LhaStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            {v.manual > 0 ? "Using your rate, " : <>In {area}, </>}your household gets the <b>{catLabel(rooms.category).toLowerCase()}</b> rate of <b>{gbp(weekly, true)}</b> a week.{" "}
+            {v.manual > 0 ? "Using your rate, " : <>In {area}, </>}your household gets the <b>{catLabel(rooms.category).toLowerCase()}</b> rate of <b>{rateText}</b>.{" "}
             {h.monthlyShortfall > 0 ? (
               <>
                 Your rent is <b>{show(h.monthlyShortfall)}</b> {per} more than that, so you would pay the difference yourself.
@@ -125,7 +155,7 @@ export default function LhaStudio({ query }: { query: Query }) {
             )}
           </>
         }
-        badges={[`${rooms.sharedRate ? "Shared rate" : `${Math.min(4, rooms.rooms)} bedroom${rooms.rooms === 1 ? "" : "s"}`}`, `${gbp(weekly, true)} a week`, h.monthlyShortfall > 0 ? `${show(h.monthlyShortfall)} shortfall` : "No shortfall"]}
+        badges={[`${rooms.sharedRate ? "Shared rate" : `${Math.min(4, rooms.rooms)} bedroom${rooms.rooms === 1 ? "" : "s"}`}`, rateText, h.monthlyShortfall > 0 ? `${show(h.monthlyShortfall)} shortfall` : "No shortfall"]}
       />
 
       <Facts
@@ -140,8 +170,9 @@ export default function LhaStudio({ query }: { query: Query }) {
       <Assumptions
         items={[
           { label: "Rates", value: "April 2024 rates, frozen for 2026/27" },
-          { label: "Area", value: v.manual > 0 ? "Your own rate" : area },
-          { label: "Monthly", value: "Weekly rate × 52 ÷ 12" },
+          { label: "Area", value: v.manual > 0 ? "Your own rate" : `${area}, ${NATION_LABEL[nation]}` },
+          { label: "Claim", value: uc ? "Universal Credit (monthly rates)" : "Housing Benefit (weekly rates)" },
+          { label: "Monthly", value: uc && v.manual === 0 ? "Universal Credit's published monthly rate" : "Weekly rate × 52 ÷ 12" },
           { label: "Means test", value: "Not applied: this is the most rent covered" },
         ]}
       />
@@ -158,13 +189,13 @@ export default function LhaStudio({ query }: { query: Query }) {
       )}
 
       {v.manual === 0 && (
-        <ResultCard title={`All rates in ${area}`} sub="A week, with the monthly figure.">
+        <ResultCard title={`All rates in ${area}`} sub="Universal Credit a month and Housing Benefit a week.">
           <Compare
-            head={["Category", "A week"]}
+            head={uc ? ["Category", "Universal Credit"] : ["Category", "Housing Benefit"]}
             rows={areaRates.map((c) => ({
               label: c.label,
-              value: gbp(c.weekly, true),
-              delta: `${gbp(weeklyToMonthly(c.weekly), true)} a month`,
+              value: uc ? `${gbp(c.monthly, true)} a month` : `${gbp(c.weekly, true)} a week`,
+              delta: uc ? `HB ${gbp(c.weekly, true)} a week` : `UC ${gbp(c.monthly, true)} a month`,
               bar: c.weekly / maxRate,
               current: c.key === rooms.category,
             }))}
@@ -175,7 +206,7 @@ export default function LhaStudio({ query }: { query: Query }) {
       <ResultCard title="Worth knowing" sub="About your entitlement.">
         {rooms.sharedRate && (
           <Callout title="The shared accommodation rate">
-            Single people under 35 without children are limited to the cost of a room in a shared house, {gbp(lhaWeekly(area, "shared"), true)} a week here. Exemptions include care leavers under 25, people getting the
+            Single people under 35 without children are limited to the cost of a room in a shared house, {rateOf("shared")} here. Exemptions include care leavers under 25, people getting the
             daily living part of PIP, and people who have lived in a homeless hostel for three months.
           </Callout>
         )}
@@ -186,7 +217,7 @@ export default function LhaStudio({ query }: { query: Query }) {
         )}
         {h.monthlyShortfall > 0 && nextCat && v.manual === 0 && (
           <Callout title="Could you need another bedroom?">
-            The {catLabel(nextCat).toLowerCase()} rate here is {gbp(lhaWeekly(area, nextCat), true)} a week. Check the rules on overnight carers, disabled children and foster carers under More options.
+            The {catLabel(nextCat).toLowerCase()} rate here is {rateOf(nextCat)}. Check the rules on overnight carers, disabled children and foster carers under More options.
           </Callout>
         )}
         {h.monthlyShortfall > 0 && (
@@ -201,7 +232,7 @@ export default function LhaStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        England rates from the Valuation Office Agency. An estimate, not a decision on your claim.
+        Rates from the Valuation Office Agency (England), the Scottish Government and Rent Officers Wales; Universal Credit monthly rates from the DWP. An estimate, not a decision on your claim.
       </p>
     </Studio>
   );

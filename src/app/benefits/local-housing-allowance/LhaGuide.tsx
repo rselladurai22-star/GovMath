@@ -23,7 +23,7 @@ const TOC: TocItem[] = [
   { id: "examples", title: "Bedroom examples" },
   { id: "shared", title: "The shared accommodation rate" },
   { id: "extra-rooms", title: "Extra bedrooms" },
-  { id: "rates", title: "Rates around England" },
+  { id: "rates", title: "Rates around Great Britain" },
   { id: "freeze", title: "The freeze and what it means" },
   { id: "shortfall", title: "If your rent is more than the LHA" },
   { id: "uc-hb", title: "LHA on Universal Credit and Housing Benefit" },
@@ -45,6 +45,9 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — Universal Credit housing costs", href: "https://www.gov.uk/government/publications/universal-credit-housing-costs-element-for-claimants-who-rent-privately" },
   { label: "GOV.UK — Discretionary Housing Payments", href: "https://www.gov.uk/government/collections/discretionary-housing-payments-guidance" },
   { label: "Valuation Office Agency — LHA rates", href: "https://lha-direct.voa.gov.uk/" },
+  { label: "GOV.UK — Universal Credit LHA rates 2024 to 2025", href: "https://www.gov.uk/government/publications/universal-credit-local-housing-allowance-rates-2024-to-2025" },
+  { label: "Scottish Government — Local Housing Allowance rates 2024-2025", href: "https://www.gov.scot/publications/local-housing-allowance-rates-2024-2025/" },
+  { label: "Welsh Government — Local Housing Allowance rates April 2024 to March 2025", href: "https://www.gov.wales/node/59785" },
 ];
 
 export default function LhaGuide() {
@@ -66,7 +69,11 @@ export default function LhaGuide() {
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
           <li>Local Housing Allowance (LHA) is the most rent Universal Credit or Housing Benefit pays for a private tenancy.</li>
-          <li>There is a rate for each of 152 areas in England, for shared accommodation and for one to four bedrooms.</li>
+          <li>
+            There is a rate for each of 192 areas: 152 in England, 18 in Scotland and 22 in Wales, for shared accommodation and for one to
+            four bedrooms.
+          </li>
+          <li>Universal Credit uses its own monthly rates; Housing Benefit uses weekly rates.</li>
           <li>
             Rates were reset in April 2024 and have been <strong>frozen</strong> since, including for 2026/27.
           </li>
@@ -75,7 +82,7 @@ export default function LhaGuide() {
         </ul>
         <KeyStats
           items={[
-            { value: "152", label: "Rental areas in England" },
+            { value: "192", label: "Rental areas in Great Britain" },
             { value: "4", label: "Most bedrooms covered" },
             { value: "35", label: "Age the shared rate stops" },
             { value: "Frozen", label: "Rates in 2026/27" },
@@ -85,8 +92,8 @@ export default function LhaGuide() {
 
       <GuideSection id="what" n={2} kicker="Basics" title="What Local Housing Allowance is">
         <p>
-          LHA is not a separate benefit. It is a limit used inside Universal Credit and Housing Benefit. The Valuation Office Agency collects
-          private rents in each area and the rates were last set at the 30th percentile of local rents, so in theory the cheapest three in ten
+          LHA is not a separate benefit. It is a limit used inside Universal Credit and Housing Benefit. Rent officers collect private rents
+          in each area (the Valuation Office Agency in England, and the rent officer services of the Scottish and Welsh Governments) and the rates were last set at the 30th percentile of local rents, so in theory the cheapest three in ten
           homes of the right size are affordable.
         </p>
         <p>
@@ -97,7 +104,7 @@ export default function LhaGuide() {
 
       <GuideSection id="areas" n={3} kicker="Where you live" title="Broad Rental Market Areas">
         <p>
-          England is divided into 152 Broad Rental Market Areas, or BRMAs. Each covers a town or city and the places around it where people
+          England is divided into 152 Broad Rental Market Areas, or BRMAs, Scotland into 18 and Wales into 22. Each covers a town or city and the places around it where people
           could reasonably live and still reach the same services. They do not follow council boundaries: a council can be split between two
           areas, and an area can cover several councils.
         </p>
@@ -157,7 +164,8 @@ export default function LhaGuide() {
       <GuideSection id="shared" n={6} kicker="Under 35s" title="The shared accommodation rate">
         <p>
           A single person under 35 with no children usually gets the shared accommodation rate, the cost of a room in a shared house, even if
-          they rent a self-contained flat. In Bristol that is £117.68 a week, compared with £207.12 for one bedroom.
+          they rent a self-contained flat. In Bristol that is £511.33 a month on Universal Credit (£117.68 a week on Housing Benefit),
+          compared with £900 a month (£207.12 a week) for one bedroom.
         </p>
         <p>You get the one-bedroom rate instead if you are under 35 and:</p>
         <ul>
@@ -198,8 +206,8 @@ export default function LhaGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="rates" n={8} kicker="The numbers" title="Rates around England">
-        <p>Rates vary widely. A one-bedroom home in Central London is covered up to four times as much as one in Darlington.</p>
+      <GuideSection id="rates" n={8} kicker="The numbers" title="Rates around Great Britain">
+        <p>Rates vary widely. A one-bedroom home in Central London is covered more than four times as much as one in North Powys.</p>
         <DataTable
           caption="Weekly LHA rates in some areas, 2026/27"
           head={["Area", "Shared", "1 bed", "2 bed", "3 bed", "4 bed"]}
@@ -210,13 +218,18 @@ export default function LhaGuide() {
             ["Central Greater Manchester", "£94.72", "£178.36", "£201.37", "£218.63", "£310.68"],
             ["Outer South London", "£131.02", "£218.63", "£276.16", "£345.21", "£448.77"],
             ["Inner North London", "£163.00", "£331.39", "£412.86", "£497.10", "£704.22"],
+            ["Greater Glasgow", "£103.56", "£159.95", "£195.62", "£223.23", "£414.25"],
+            ["Lothian (Edinburgh)", "£109.32", "£172.60", "£223.23", "£316.44", "£501.70"],
+            ["Cardiff", "£84.25", "£149.59", "£189.86", "£212.88", "£299.18"],
           ]}
         />
-        <Figure label="One-bedroom LHA a week" caption="The lowest and highest areas in England, with three big cities.">
+        <Figure label="One-bedroom LHA a week" caption="The lowest and highest areas in Great Britain, with four big cities.">
           <Bars
             items={[
-              { label: "Darlington", value: 82.85 },
+              { label: "North Powys", value: 74.79 },
+              { label: "Cardiff", value: 149.59 },
               { label: "Birmingham", value: 159.95 },
+              { label: "Glasgow", value: 159.95 },
               { label: "Manchester", value: 178.36 },
               { label: "Bristol", value: 207.12 },
               { label: "Central London", value: 331.39 },
@@ -224,8 +237,9 @@ export default function LhaGuide() {
           />
         </Figure>
         <p>
-          Universal Credit converts the weekly rate to a monthly one by multiplying by 52 and dividing by 12. The two-bedroom rate in Central
-          Greater Manchester of £201.37 a week becomes £872.60 a month.
+          Universal Credit has its own monthly rates, set from monthly rents rather than converted from the weekly ones. They are close to
+          the weekly rate × 52 ÷ 12 but often a little higher. The two-bedroom rate in Central Greater Manchester is £201.37 a week for
+          Housing Benefit, which would be £872.60 a month, but Universal Credit pays up to £875.00.
         </p>
       </GuideSection>
 
@@ -249,14 +263,14 @@ export default function LhaGuide() {
           title="A couple with two children in Bristol, rent £1,300 a month"
           steps={[
             { label: "Bedrooms allowed", value: "2 or 3" },
-            { label: "Two-bedroom LHA", note: "£252.00 × 52 ÷ 12", value: "£1,092.00" },
+            { label: "Two-bedroom LHA", note: "Universal Credit monthly rate", value: "£1,095.00" },
             { label: "Rent", value: "£1,300.00" },
           ]}
-          total={{ label: "Shortfall a month (two bedrooms)", value: "£208.00" }}
+          total={{ label: "Shortfall a month (two bedrooms)", value: "£205.00" }}
         />
         <p>
-          If the children are a boy and a girl and one is 10 or over, they need separate rooms. The three-bedroom rate of £1,296.45 a month
-          then applies and the shortfall falls to £3.55.
+          If the children are a boy and a girl and one is 10 or over, they need separate rooms. The three-bedroom rate of £1,300.00 a month
+          then applies and the whole rent is covered.
         </p>
         <p>Ways to deal with a shortfall:</p>
         <ul>
@@ -271,7 +285,8 @@ export default function LhaGuide() {
         <p>
           Most working-age tenants claim help with rent through Universal Credit, which pays the housing element monthly and usually to you.
           You can ask for it to be paid straight to your landlord if you are in arrears or would struggle to manage. Pensioners claim Housing
-          Benefit from their council instead, which uses the same LHA rates weekly.
+          Benefit from their council instead, which uses the weekly LHA rates. Universal Credit has its own monthly rates for the same
+          areas, often a few pounds a month higher than the weekly rate converted.
         </p>
         <p>
           On Universal Credit, each other adult living with you may reduce the housing element by £96.55 a month. On Housing Benefit, a
@@ -281,8 +296,26 @@ export default function LhaGuide() {
 
       <GuideSection id="nations" n={12} kicker="Elsewhere in the UK" title="Scotland and Wales">
         <p>
-          Scotland and Wales use the same rules but publish their own rates for their own areas. Enter your weekly rate in the calculator to
-          use it. In Northern Ireland, the Northern Ireland Housing Executive sets its own rates. Scotland also gives Discretionary Housing
+          Scotland and Wales use the same bedroom rules and the same freeze, but their rates are set by their own rent officers: the
+          Scottish Government for 18 areas and Rent Officers Wales for 22. Choose Scotland or Wales in the calculator to see them.
+        </p>
+        <DataTable
+          caption="One-bedroom LHA in Scotland and Wales, 2026/27"
+          head={["Area", "Housing Benefit a week", "Universal Credit a month"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Greater Glasgow", "£159.95", "£695.00"],
+            ["Lothian (Edinburgh)", "£172.60", "£750.00"],
+            ["Aberdeen and Shire", "£109.32", "£475.00"],
+            ["Cardiff", "£149.59", "£650.00"],
+            ["Swansea", "£120.82", "£525.00"],
+            ["North Powys", "£74.79", "£325.00"],
+          ]}
+        />
+        <p>
+          Some areas cover several councils. Lothian includes the City of Edinburgh, East Lothian and Midlothian, and Highland and Islands
+          runs from Moray to Shetland. West Cheshire crosses into Wales but uses the English rates. In Northern Ireland, the Northern
+          Ireland Housing Executive sets its own rates, so enter yours under More options. Scotland also gives Discretionary Housing
           Payments to fully offset the removal of the spare room subsidy for social tenants.
         </p>
       </GuideSection>
@@ -383,14 +416,14 @@ export default function LhaGuide() {
       <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
-            { value: "152", label: "Broad Rental Market Areas in England" },
+            { value: "192", label: "Broad Rental Market Areas in Great Britain" },
             { value: "4", label: "Maximum bedrooms" },
             { value: "35", label: "Shared rate age limit" },
             { value: "30th", label: "Percentile of rents when last set" },
             { value: "£331.39", label: "Highest one-bedroom rate a week" },
-            { value: "£82.85", label: "Lowest one-bedroom rate a week" },
+            { value: "£74.79", label: "Lowest one-bedroom rate a week" },
             { value: "£704.22", label: "Highest four-bedroom rate a week" },
-            { value: "52 ÷ 12", label: "Weekly to monthly" },
+            { value: "£1,439.97", label: "Highest one-bedroom rate a month on Universal Credit" },
           ]}
         />
       </GuideSection>

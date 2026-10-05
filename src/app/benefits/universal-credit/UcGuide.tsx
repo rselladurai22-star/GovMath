@@ -179,11 +179,12 @@ export default function UcGuide() {
           ]}
         />
         <p>
-          For example, the one-bedroom Local Housing Allowance in Bristol is £207.12 a week, which is £897.52 a month. A single person over 35
-          renting a £900 flat there gets a housing element of £897.52 and pays the £2.48 difference. If they are not working, the
-          benefit cap then takes another £93 off their award. The{" "}
+          Universal Credit has its own monthly Local Housing Allowance rates. They are close to the weekly Housing Benefit rate converted
+          to a month, but often a few pounds higher. For example, the one-bedroom rate in Bristol is £900 a month on Universal Credit,
+          against £207.12 a week for Housing Benefit. A single person over 35 renting a £900 flat there gets a housing element of the full
+          £900. If they are not working, the benefit cap then takes £95.48 off their award. The{" "}
           <a href="/benefits/local-housing-allowance">Local Housing Allowance calculator</a> works out your bedroom entitlement and the rate for
-          any area of England.
+          any area of England, Scotland or Wales.
         </p>
         <p>
           Each other adult living with you, such as a grown-up son or daughter, usually means a housing cost contribution of £96.55 a month is

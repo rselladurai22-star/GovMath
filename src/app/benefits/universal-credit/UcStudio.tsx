@@ -1,7 +1,8 @@
 "use client";
 
 import { UC_2026, universalCredit2026, type CapArea, type Health, type Tenure, type UcInput } from "@/lib/benefits/uc-engine";
-import { LHA_AREAS, lhaWeekly, weeklyToMonthly, type LhaCategory } from "@/lib/benefits/lha-engine";
+import { LHA_AREAS, LHA_AREAS_BY_NATION, LHA_DEFAULT_AREA, lhaMonthly, lhaNation, weeklyToMonthly, type LhaCategory } from "@/lib/benefits/lha-engine";
+import { SCOTLAND_AREA_COVERS } from "@/lib/benefits/lha-scotland-wales";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
@@ -50,7 +51,10 @@ export default function UcStudio({ query }: { query: Query }) {
   const v = st.values;
   const category = v.lhaCat === "auto" ? autoCategory(v.couple, v.children, v.under35) : v.lhaCat;
   const areaKnown = LHA_AREAS.includes(v.area);
-  const lhaWeeklyRate = v.lhaManual > 0 ? v.lhaManual : areaKnown ? lhaWeekly(v.area, category) : 0;
+  const area = areaKnown ? v.area : "Bristol";
+  const nation = lhaNation(area);
+  // Universal Credit's own monthly LHA rate, or the weekly rate you entered converted to monthly.
+  const lhaMonthlyRate = v.lhaManual > 0 ? weeklyToMonthly(v.lhaManual) : areaKnown ? lhaMonthly(v.area, category) : 0;
   const input: UcInput = {
     couple: v.couple,
     over25: v.over25,
@@ -62,7 +66,7 @@ export default function UcStudio({ query }: { query: Query }) {
     carer: v.carer,
     tenure: v.tenure,
     rent: v.rent,
-    lhaMonthly: weeklyToMonthly(lhaWeeklyRate),
+    lhaMonthly: lhaMonthlyRate,
     spareBedrooms: v.spare,
     nonDependants: v.nondeps,
     childcare: v.childcare,
@@ -121,7 +125,25 @@ export default function UcStudio({ query }: { query: Query }) {
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             {v.tenure === "private" && (
               <>
-                <SelectField label="Your area (England)" value={areaKnown ? v.area : "Bristol"} onChange={st.bind("area")} optional options={LHA_AREAS.map((a) => ({ value: a, label: a }))} hint="Your Broad Rental Market Area sets your Local Housing Allowance." />
+                <Segmented
+                  label="Country"
+                  value={nation}
+                  onChange={(n) => st.set("area", LHA_DEFAULT_AREA[n])}
+                  optional
+                  options={[
+                    { value: "england", label: "England" },
+                    { value: "scotland", label: "Scotland" },
+                    { value: "wales", label: "Wales" },
+                  ]}
+                />
+                <SelectField
+                  label="Your area"
+                  value={area}
+                  onChange={st.bind("area")}
+                  optional
+                  options={LHA_AREAS_BY_NATION[nation].map((a) => ({ value: a, label: SCOTLAND_AREA_COVERS[a] ? `${a} (${SCOTLAND_AREA_COVERS[a]})` : a }))}
+                  hint="Your Broad Rental Market Area sets your Local Housing Allowance."
+                />
                 <SelectField
                   label="Bedrooms allowed"
                   value={v.lhaCat}
@@ -138,7 +160,7 @@ export default function UcStudio({ query }: { query: Query }) {
                   hint="The Local Housing Allowance calculator works this out exactly from your children's ages."
                 />
                 {!v.couple && v.children === 0 && <Switch label="I am under 35" checked={v.under35} onChange={st.bind("under35")} optional hint="Single people under 35 usually get the lower shared accommodation rate." />}
-                <MoneyField label="Or enter your weekly LHA rate" value={v.lhaManual} onChange={st.bind("lhaManual")} pence optional hint="For Scotland or Wales, or to use a figure from your council." />
+                <MoneyField label="Or enter your weekly LHA rate" value={v.lhaManual} onChange={st.bind("lhaManual")} pence optional hint="To use a figure from your council instead." />
               </>
             )}
             {v.tenure === "social" && <StepperField label="Spare bedrooms" value={v.spare} onChange={(n) => st.set("spare", Math.round(n))} step={1} min={0} max={4} unit="rooms" dp={0} optional hint="The removal of the spare room subsidy cuts housing help by 14% for one, 25% for two or more." />}
@@ -203,7 +225,7 @@ export default function UcStudio({ query }: { query: Query }) {
       <Assumptions
         items={[
           { label: "Rates", value: "2026/27, monthly" },
-          { label: "Housing", value: v.tenure === "private" ? (lhaWeeklyRate > 0 ? `LHA ${gbp(lhaWeeklyRate, true)} a week (${category === "shared" ? "shared" : `${category} bed`})` : "No LHA rate found") : v.tenure === "social" ? "Social rent" : "No housing costs" },
+          { label: "Housing", value: v.tenure === "private" ? (lhaMonthlyRate > 0 ? `LHA ${gbp(lhaMonthlyRate, true)} a month (${category === "shared" ? "shared" : `${category} bed`})` : "No LHA rate found") : v.tenure === "social" ? "Social rent" : "No housing costs" },
           { label: "Earnings", value: `${gbp(v.earnings)} a month after tax` },
           { label: "Child Benefit", value: "Counted towards the cap only" },
         ]}
