@@ -101,21 +101,22 @@ The owner asked for the look and feel of the Axis Bank calculators site, in GovM
   - Page heroes use a white-to-`--ax-soft` wash instead of the aurora.
   - The flagship answer card uses `--ax-gradient`.
   - Green stays only for money you keep; amber and red stay for charts and warnings.
-- **Calculator page layout** (matches the reference bank calculator pages):
-  - The banner is centred (`FlagshipHero`).
-  - `SectionTabs.tsx` is a sticky row of section links under the site header: Calculator, Guide, FAQs, Other calculators. It highlights the section in view. The anchors are `#calculator`, `#guide`, `#faqs` and `#related`.
+- **Calculator page layout** (matches the reference bank calculator pages; exact values in the "v4" block at the end of `Flagship.module.css`):
+  - The banner is centred (`FlagshipHero`) on a pastel lilac and pink wash. The title is 2.5rem "medium" (Lato 400 with a 0.4px text stroke, because Lato has no 500). The tick points are hidden.
+  - `SectionTabs.tsx` is a sticky dark #282828 rounded bar with outlined pills: Calculator, Guide, FAQs, Other calculators. The pill for the section in view is filled plum. The anchors are `#calculator`, `#guide`, `#faqs` and `#related`.
   - `FlagshipPage` puts a row of tab pills at the top of the grey panel (`.calcTabs`): this calculator (plum) and the first two related calculators (white), as on the reference EMI page.
   - `Studio.tsx` works like the reference EMI calculators:
     - One soft-grey panel holds the inputs on the left and a white card on the right, sticky on desktop.
-    - There is no panel title and there are no group headings (they are visually hidden). Reset is a small link in the panel corner.
-    - Labels are 1.125rem bold, with a compact white value box on the right for amounts and steppers. The −/+ stepper buttons are hidden.
-    - The slider is a thin dark track with a white-ringed plum handle; min and max sit underneath.
+    - There is no panel title, no group headings (visually hidden) and no Reset link.
+    - Labels are 1.25rem "medium", with a compact 44px white value box (1rem text, #e2e2e2 hairline) on the right for amounts and steppers. The −/+ stepper buttons are hidden.
+    - The slider is a 4px #828282 track with a #404040 fill and a 16px white handle with a plum ring and dot. Min and max sit underneath at 1rem.
+    - Calculator tabs, `Segmented` choices and quick-pick chips all use the same pills: 0.75rem uppercase, #f9f9f9 with an #e2e2e2 border, plum when selected.
     - Every field `hint` (and `Segmented` note, `Switch` hint) shows behind an "i" `InfoTip` on hover, focus or tap, never as text under the field.
     - The inputs end in a white `.totalBar`, "{dock.label} {dock.value}", with a "See full results" button (like "Your EMI … Apply Now"). The phone dock was removed.
-    - The right card is a ring chart built from the first `SplitBar` anywhere in the results, with a total in the middle (in pounds) and a big legend. Without a `SplitBar`, it shows the `Answer` instead.
+    - The right card is a ring chart (max 16rem) built from the first `SplitBar` anywhere in the results, with "Total" in the middle (in pounds) and a legend underneath (1rem dots, 0.875rem labels, 1.125rem values). Without a `SplitBar`, it shows the `Answer` instead.
+    - Chart colours are softened to the reference palette by `soften()` in `results.tsx`: plum → lilac, amber → teal, green → periwinkle, deep plum → soft amber, pink → soft pink. The ring chart, split bars and payslip swatches all use it, so a series keeps one colour.
     - Results always show and update live. The button sets `ready` (so the address stays shareable) and jumps to the detailed results. When the ring chart is shown, the `Answer` leads the detailed results as a light card.
     - Everything else (Facts, Assumptions, cards) sits below in `#results` ("Your results in detail"), a two-column grid. Cards holding a table or chart (`table`, `svg[preserveAspectRatio]`, `svg[role=img]`) span both columns.
-  - `Segmented` choices and quick-pick chips are small square-cornered pills; the selected one is plum.
   - An amount with a slider shows the label left, the value box right and the slider below (`.field:has(> .slider)`).
   - FAQs are a hairline accordion. Other calculators are white cards on `--ax-soft`.
   - These overrides sit at the end of `Flagship.module.css` and `Shell.module.css` under "Bank-calculator layout".

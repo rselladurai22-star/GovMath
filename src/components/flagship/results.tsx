@@ -87,6 +87,33 @@ export function ResultCard({
   );
 }
 
+/**
+ * Chart colours in the soft palette of the reference bank calculators
+ * (lilac and teal first). Studios pass their strong brand colours; the
+ * ring chart, split bars and payslip swatches all soften them the same way,
+ * so one series has one colour everywhere.
+ */
+const SOFT: Record<string, string> = {
+  "#5b1e6e": "#c47fd5",
+  "#f59e0b": "#5fd3c8",
+  "#0f9f6e": "#8f9cf0",
+  "#16a34a": "#8f9cf0",
+  "#10b981": "#8f9cf0",
+  "#0a7a52": "#8f9cf0",
+  "#2e0a3a": "#f4b860",
+  "#4a1659": "#f4b860",
+  "#db2777": "#f48fb1",
+  "#e11d48": "#f48fb1",
+  "#8e4ba3": "#e3a6ef",
+  "#a855f7": "#e3a6ef",
+  "#0ea5e9": "#7cc8f0",
+  "#f97316": "#f7a36b",
+  "#94a3b8": "#c9ced6",
+};
+export function soften(color: string): string {
+  return SOFT[color.toLowerCase()] ?? color;
+}
+
 export type Segment = { label: string; value: number; display: string; color: string };
 
 /** One bar split into labelled parts, with a legend that carries the numbers. */
@@ -96,13 +123,13 @@ export function SplitBar({ segments, caption }: { segments: Segment[]; caption?:
     <div className={s.split}>
       <div className={s.splitBar} role="img" aria-label={segments.map((g) => `${g.label} ${g.display}`).join(", ")}>
         {segments.map((g) => (
-          <span key={g.label} style={{ flexGrow: Math.max(0, g.value), background: g.color }} />
+          <span key={g.label} style={{ flexGrow: Math.max(0, g.value), background: soften(g.color) }} />
         ))}
       </div>
       <ul className={s.legend}>
         {segments.map((g) => (
           <li key={g.label}>
-            <i style={{ background: g.color }} aria-hidden="true" />
+            <i style={{ background: soften(g.color) }} aria-hidden="true" />
             <span>{g.label}</span>
             <strong>{g.display}</strong>
             <em>{total > 0 ? Math.round((Math.max(0, g.value) / total) * 100) : 0}%</em>
@@ -267,7 +294,7 @@ export function Statement({ columns, rows }: { columns: string[]; rows: Statemen
           {rows.map((r, i) => (
             <tr key={i} data-kind={r.kind}>
               <th scope="row">
-                {r.swatch && <i style={{ background: r.swatch }} aria-hidden="true" />}
+                {r.swatch && <i style={{ background: soften(r.swatch) }} aria-hidden="true" />}
                 {r.label}
               </th>
               {r.values.map((v, j) => (

@@ -2673,3 +2673,354 @@
 .box input {
   font-weight: 400;
 }
+
+/* ══ Bank calculator, exact values (v4) ═════════════════════════════════
+   Sizes, colours and spacing taken from the reference calculator CSS:
+   banner heading 2.5rem medium; dark section bar #282828 with outlined
+   pills; tab-primary pills .75rem; panel 2.5rem 3.75rem; inputs 60/40;
+   input 1rem on white with an #e2e2e2 hairline; slider .25rem #828282
+   with a #404040 fill and a 1rem white handle ringed in the brand colour;
+   total bar label 1.5rem, figure 1.75rem bold; ring chart max 16rem. Lato
+   has no 500 weight, so "medium" text is 400 with a hair of stroke. */
+
+/* Banner */
+.hero {
+  padding: 1rem 0 2.5rem;
+  background:
+    radial-gradient(55% 140% at 0% 0%, rgba(205, 196, 240, 0.75) 0%, transparent 62%),
+    radial-gradient(50% 140% at 100% 0%, rgba(246, 210, 226, 0.8) 0%, transparent 62%),
+    linear-gradient(180deg, #faf6fb 0%, #fff 100%);
+}
+.heroTitle {
+  margin: 1.5rem auto 0.75rem;
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 2.75rem;
+  -webkit-text-stroke: 0.4px currentColor;
+}
+.heroLead {
+  max-width: 60rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.heroPoints {
+  display: none;
+}
+
+/* Section links: a dark rounded bar with outlined pills */
+.tabsBar {
+  padding: 0.75rem 0;
+  border-bottom: 0;
+  background: transparent;
+  box-shadow: none;
+  pointer-events: none;
+}
+.tabsBar ul {
+  width: max-content;
+  max-width: calc(100% - 2rem);
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+  background: #282828;
+  pointer-events: auto;
+}
+.tabsBar a {
+  padding: 0.25rem 1.25rem;
+  border: 1px solid #6e6e6e;
+  border-radius: 6.25rem;
+  color: #fff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0.015rem;
+}
+.tabsBar a:hover {
+  border-color: #fff;
+  color: #fff;
+}
+.tabsBar a[aria-current] {
+  border-color: #eee;
+  background: var(--ax-plum);
+  color: #fff;
+}
+
+/* Panel and calculator tabs */
+.studioWrap {
+  padding-top: 2.5rem;
+}
+.calcTabs {
+  padding: 2.5rem 3.75rem 0;
+}
+.calcTabs ul {
+  gap: 0.5rem;
+}
+.calcTabs a,
+.calcTabs span {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ax-line);
+  border-radius: 0.25rem;
+  background: var(--ax-paper);
+  color: var(--ax-muted);
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  letter-spacing: 0.02rem;
+}
+.calcTabs a:hover {
+  border-color: var(--ax-line);
+  color: var(--ax-muted);
+}
+.calcTabs [aria-current] {
+  border-color: var(--ax-plum);
+  background: var(--ax-plum);
+  color: #fff;
+}
+.studio,
+.studio[data-ready] {
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 3.125rem;
+  padding: 2.6875rem 3.75rem 2.5rem;
+}
+.studio:not(.calcTabs + .studio) {
+  padding-top: 2.5rem;
+}
+
+/* No reset link; fields spaced like the reference */
+.panelHead,
+.studio:not([data-ready]) .panelHead {
+  display: none;
+}
+.panelBody,
+.studio:not([data-ready]) .panelBody,
+.groupBody {
+  gap: 1.5rem;
+}
+.field {
+  gap: 0.9rem;
+}
+.fieldHead {
+  justify-content: flex-start;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  -webkit-text-stroke: 0.35px currentColor;
+}
+.fieldHead .optional,
+.fieldAside {
+  -webkit-text-stroke: 0;
+}
+.fieldAside {
+  padding: 0;
+  background: transparent;
+  color: var(--ax-muted);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.field:has(> .slider),
+.field:has(> .stepper) {
+  grid-template-columns: minmax(0, 1fr) minmax(6rem, 8.1875rem);
+  row-gap: 0.9rem;
+}
+.box {
+  height: 44px;
+  padding: 0 1rem;
+  border: 1px solid var(--ax-line);
+  border-radius: 0.5rem;
+  background: #fff;
+}
+.box input,
+.selectBox select {
+  color: var(--ax-text);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.01rem;
+}
+.affix {
+  color: var(--ax-text);
+  font-size: 1rem;
+}
+
+/* Slider */
+.slider {
+  padding-top: 0;
+}
+.slider input {
+  height: 16px;
+}
+.slider input::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 0;
+  background: linear-gradient(90deg, #404040 var(--fill), #828282 var(--fill));
+}
+.slider input::-moz-range-track {
+  height: 4px;
+  border-radius: 0;
+  background: linear-gradient(90deg, #404040 var(--fill), #828282 var(--fill));
+}
+.slider input::-webkit-slider-thumb {
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border: 2px solid var(--ax-plum);
+  background: radial-gradient(circle, var(--ax-plum) 0 4px, #fff 4.5px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.slider input::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--ax-plum);
+  background: radial-gradient(circle, var(--ax-plum) 0 4px, #fff 4.5px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+.sliderEnds {
+  margin-top: 0.5625rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+/* Choice pills and quick picks: the same pills as the calculator tabs */
+.segmented,
+.chips {
+  gap: 0.5rem;
+}
+.segmented button,
+.chips button {
+  min-height: 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ax-line);
+  border-radius: 0.25rem;
+  background: var(--ax-paper);
+  color: var(--ax-muted);
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 0.75rem;
+  letter-spacing: 0.02rem;
+  text-transform: uppercase;
+}
+.segmented button[aria-checked="true"],
+.chips button[aria-pressed="true"] {
+  border-color: var(--ax-plum);
+  background: var(--ax-plum);
+  color: #fff;
+}
+.advancedTitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  -webkit-text-stroke: 0.35px currentColor;
+}
+
+/* "Your …" bar */
+.totalBar {
+  margin-top: 1.5rem;
+  padding: 0.875rem 1.0625rem 0.875rem 1.5rem;
+}
+.totalBar p {
+  gap: 0.25rem 1rem;
+}
+.totalBar span {
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  -webkit-text-stroke: 0.35px currentColor;
+}
+.totalBar strong {
+  font-size: 1.75rem;
+  line-height: 2rem;
+}
+.totalBar .calcBtn {
+  min-height: 0;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+}
+
+/* Ring-chart card */
+.summary {
+  padding: 2rem 1rem;
+}
+.donutWrap {
+  gap: 0;
+}
+.donut {
+  width: min(100%, 16rem);
+  margin-bottom: 2rem;
+}
+.donutCentre span {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.donutCentre strong {
+  font-size: 1.625rem;
+  line-height: 2.25rem;
+}
+.donutLegend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 1.5rem;
+}
+.donutLegend span {
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.donutLegend i {
+  width: 1rem;
+  height: 1rem;
+}
+.donutLegend strong {
+  padding-left: 1.625rem;
+  padding-top: 0.3125rem;
+  color: #111928;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+}
+
+@media (max-width: 1023px) {
+  .studio,
+  .studio[data-ready] {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 2rem 1.75rem;
+  }
+  .calcTabs {
+    padding: 2rem 1.75rem 0;
+  }
+}
+@media (max-width: 640px) {
+  .heroTitle {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+  }
+  .heroLead {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  .tabsBar ul {
+    justify-content: flex-start;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+  }
+  .tabsBar a {
+    padding: 0.25rem 0.75rem;
+  }
+  .calcTabs {
+    padding: 1.5rem 1.25rem 0;
+  }
+  .studio,
+  .studio[data-ready] {
+    padding: 1.5rem 1.25rem;
+  }
+  .fieldHead,
+  .advancedTitle {
+    font-size: 1rem;
+  }
+  .totalBar span {
+    font-size: 1.125rem;
+  }
+  .totalBar strong {
+    font-size: 1.5rem;
+  }
+}
+/* Legends with more than two items: a tidy two-column grid */
+.donutLegend:has(> li:nth-child(3)) {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: center;
+  gap: 1rem 2rem;
+}
