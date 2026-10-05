@@ -22,7 +22,28 @@ export function InputGroup({ title, children }: { title: string; children: React
   );
 }
 
-/** Label row + control + optional hint. */
+/**
+ * Small "i" button beside a label. Its help text shows on hover, keyboard
+ * focus or tap, so the form itself stays clean.
+ */
+export function InfoTip({ label, children }: { label: string; children: ReactNode }) {
+  const id = useId();
+  return (
+    <span className={s.tip}>
+      <button type="button" className={s.tipBtn} aria-label={`More about ${label.toLowerCase()}`} aria-describedby={id}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+          <circle cx="12" cy="12" r="9.25" />
+          <path d="M12 11v5.5M12 7.6v.1" strokeLinecap="round" />
+        </svg>
+      </button>
+      <span role="tooltip" id={id} className={s.tipText}>
+        {children}
+      </span>
+    </span>
+  );
+}
+
+/** Label row (with an info tip for any hint) + control. */
 export function Field({
   label,
   htmlFor,
@@ -43,21 +64,23 @@ export function Field({
   return (
     <div className={s.field}>
       <div className={s.fieldHead}>
-        {htmlFor ? (
-          <label htmlFor={htmlFor}>
-            {label}
-            {tag}
-          </label>
-        ) : (
-          <span>
-            {label}
-            {tag}
-          </span>
-        )}
+        <span className={s.fieldLabel}>
+          {htmlFor ? (
+            <label htmlFor={htmlFor}>
+              {label}
+              {tag}
+            </label>
+          ) : (
+            <span>
+              {label}
+              {tag}
+            </span>
+          )}
+          {hint && <InfoTip label={label}>{hint}</InfoTip>}
+        </span>
         {aside && <span className={s.fieldAside}>{aside}</span>}
       </div>
       {children}
-      {hint && <p className={s.hint}>{hint}</p>}
     </div>
   );
 }
@@ -272,7 +295,7 @@ export function Segmented<T extends string>({
 }) {
   const current = options.find((o) => o.value === value);
   return (
-    <Field label={label} optional={optional}>
+    <Field label={label} optional={optional} hint={current?.note}>
       <div className={s.segmented} role="radiogroup" aria-label={label}>
         {options.map((o) => (
           <button key={o.value} type="button" role="radio" aria-checked={value === o.value} onClick={() => onChange(o.value)}>
@@ -280,7 +303,6 @@ export function Segmented<T extends string>({
           </button>
         ))}
       </div>
-      {current?.note && <p className={s.hint}>{current.note}</p>}
     </Field>
   );
 }
@@ -362,7 +384,7 @@ export function AdvancedOptions({
         </svg>
       </summary>
       <div className={s.advancedBody}>
-        <p className={s.hint}>{description}</p>
+        <p className={s.advancedNote}>{description}</p>
         {children}
         {onReset && changed > 0 && (
           <button type="button" className={s.advancedReset} onClick={onReset}>
@@ -395,11 +417,13 @@ export function Switch({
         <span aria-hidden="true" />
       </button>
       <div>
-        <label htmlFor={id} className={s.switchLabel}>
-          {label}
-          {optional && <span className={s.optional}>Optional</span>}
-        </label>
-        {hint && <p className={s.hint}>{hint}</p>}
+        <span className={s.fieldLabel}>
+          <label htmlFor={id} className={s.switchLabel}>
+            {label}
+            {optional && <span className={s.optional}>Optional</span>}
+          </label>
+          {hint && <InfoTip label={label}>{hint}</InfoTip>}
+        </span>
       </div>
     </div>
   );

@@ -2,7 +2,9 @@ import type { ReactNode } from "react";
 import AdSlot from "@/components/AdSlot";
 import EngineOutro from "@/components/calculator/EngineOutro";
 import { HomeMotion } from "@/components/home/Motion";
-import type { Calculator } from "@/lib/calculators";
+import Link from "next/link";
+import { CALCULATORS, type Calculator } from "@/lib/calculators";
+import { shortTitle } from "@/components/category-style";
 import FlagshipHero, { type Crumb } from "./FlagshipHero";
 import SectionTabs, { type SectionTab } from "./SectionTabs";
 import s from "./Flagship.module.css";
@@ -52,6 +54,15 @@ export default function FlagshipPage({
     },
   ];
 
+  // Tabs across the top of the calculator, as on bank calculator pages:
+  // this calculator and two related ones.
+  const here = breadcrumbs[breadcrumbs.length - 1];
+  const self = CALCULATORS.find((c) => c.href === here.href);
+  const calcTabs = [
+    { href: here.href, label: shortTitle(self?.title ?? title), current: true },
+    ...related.slice(0, 2).map((c) => ({ href: c.href, label: shortTitle(c.title), current: false })),
+  ];
+
   const tabs: SectionTab[] = [
     { id: "calculator", label: "Calculator" },
     ...(guide ? [{ id: "guide", label: "Guide" }] : []),
@@ -68,6 +79,19 @@ export default function FlagshipPage({
       <SectionTabs items={tabs} />
 
       <div id="calculator" className={s.studioWrap}>
+        <nav className={`gm-wrap ${s.calcTabs}`} aria-label="Similar calculators">
+          <ul>
+            {calcTabs.map((t) => (
+              <li key={t.href}>
+                {t.current ? (
+                  <span aria-current="page">{t.label}</span>
+                ) : (
+                  <Link href={t.href}>{t.label}</Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
         {children}
       </div>
 
