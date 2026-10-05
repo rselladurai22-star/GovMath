@@ -3024,3 +3024,13 @@
   justify-content: center;
   gap: 1rem 2rem;
 }
+.donutLegend:has(> li:nth-child(3)) {
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  max-width: 100%;
+}
+@media (max-width: 640px) {
+  .donutLegend:has(> li:nth-child(3)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
