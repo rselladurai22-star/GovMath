@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { bedroomEntitlement, childBedrooms, lhaHelp, lhaWeekly, LHA_AREAS } from "./lha-engine";
+import { bedroomEntitlement, childBedrooms, lhaHelp, lhaMonthly, lhaNation, lhaWeekly, LHA_AREAS, LHA_AREAS_BY_NATION } from "./lha-engine";
 
 const none = { boysUnder10: 0, girlsUnder10: 0, boys10to15: 0, girls10to15: 0 };
 const base = { couple: false, under35: false, sharedExempt: false, otherAdults: 0, children: none, overnightCarer: false, disabledChildrenOwnRoom: 0 };
@@ -29,7 +29,35 @@ describe("bedroom entitlement", () => {
 });
 
 describe("LHA rates", () => {
-  it("has the 152 English areas", () => expect(LHA_AREAS.length).toBe(152));
+  it("has 152 English, 18 Scottish and 22 Welsh areas", () => {
+    expect(LHA_AREAS_BY_NATION.england.length).toBe(152);
+    expect(LHA_AREAS_BY_NATION.scotland.length).toBe(18);
+    expect(LHA_AREAS_BY_NATION.wales.length).toBe(22);
+    expect(new Set(LHA_AREAS).size).toBe(192);
+  });
+  it("Scottish and Welsh weekly rates", () => {
+    expect(lhaWeekly("Greater Glasgow", "1")).toBe(159.95);
+    expect(lhaWeekly("Lothian", "4")).toBe(501.7);
+    expect(lhaWeekly("Cardiff", "2")).toBe(189.86);
+    expect(lhaWeekly("Flintshire", "shared")).toBe(87.5);
+    expect(lhaNation("Cardiff")).toBe("wales");
+    expect(lhaNation("Fife")).toBe("scotland");
+    expect(lhaNation("Bristol")).toBe("england");
+    expect(lhaWeekly("Nowhere", "1")).toBe(0);
+  });
+  it("Universal Credit uses the published monthly rates", () => {
+    expect(lhaMonthly("Bristol", "1")).toBe(900);
+    expect(lhaMonthly("Cardiff", "1")).toBe(650);
+    expect(lhaMonthly("West Lothian", "4")).toBe(1112.5);
+    // Every area has a monthly rate within £10 of its weekly rate × 52 ÷ 12.
+    for (const a of LHA_AREAS)
+      for (const c of ["shared", "1", "2", "3", "4"] as const) expect(Math.abs(lhaMonthly(a, c) - (lhaWeekly(a, c) * 52) / 12)).toBeLessThan(10);
+  });
+  it("help uses the monthly rate when given", () => {
+    const r = lhaHelp(207.12, 900, 0, 900);
+    expect(r.monthlyShortfall).toBe(0);
+    expect(r.monthlyHelp).toBe(900);
+  });
   it("Ashford 2 bedrooms", () => expect(lhaWeekly("Ashford", "2")).toBe(195.62));
   it("monthly help and shortfall", () => {
     const r = lhaHelp(195.62, 1000);

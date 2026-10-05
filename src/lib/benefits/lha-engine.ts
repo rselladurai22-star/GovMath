@@ -10,7 +10,9 @@
  * unless an exemption applies. LHA stops at four bedrooms.
  */
 
-import { LHA_ENGLAND_2024 } from "./lha-england";
+import { LHA_ENGLAND_2024, type LhaRow } from "./lha-england";
+import { LHA_SCOTLAND_2024, LHA_WALES_2024 } from "./lha-scotland-wales";
+import { LHA_UC_MONTHLY_2024 } from "./lha-uc-monthly";
 
 export type LhaCategory = "shared" | "1" | "2" | "3" | "4";
 
@@ -93,17 +95,53 @@ export function bedroomEntitlement(i: BedroomInput): BedroomResult {
   };
 }
 
-export const LHA_AREAS = LHA_ENGLAND_2024.map((r) => r[0]);
+export type LhaNation = "england" | "scotland" | "wales";
 
-/** Weekly LHA for an English BRMA and category. */
-export function lhaWeekly(area: string, category: LhaCategory): number {
-  const row = LHA_ENGLAND_2024.find((r) => r[0] === area);
-  if (!row) return 0;
-  const idx = { shared: 1, "1": 2, "2": 3, "3": 4, "4": 5 }[category];
-  return row[idx] as number;
+const TABLES: Record<LhaNation, readonly LhaRow[]> = {
+  england: LHA_ENGLAND_2024,
+  scotland: LHA_SCOTLAND_2024,
+  wales: LHA_WALES_2024,
+};
+
+/** Broad Rental Market Areas in each nation, in alphabetical order. */
+export const LHA_AREAS_BY_NATION: Record<LhaNation, string[]> = {
+  england: LHA_ENGLAND_2024.map((r) => r[0]),
+  scotland: LHA_SCOTLAND_2024.map((r) => r[0]),
+  wales: LHA_WALES_2024.map((r) => r[0]),
+};
+
+/** Every area in England, Scotland and Wales. */
+export const LHA_AREAS = [...LHA_AREAS_BY_NATION.england, ...LHA_AREAS_BY_NATION.scotland, ...LHA_AREAS_BY_NATION.wales];
+
+/** A sensible starting area in each nation. */
+export const LHA_DEFAULT_AREA: Record<LhaNation, string> = { england: "Bristol", scotland: "Greater Glasgow", wales: "Cardiff" };
+
+/** The nation an area is in (England if it is not known). */
+export function lhaNation(area: string): LhaNation {
+  if (LHA_AREAS_BY_NATION.scotland.includes(area)) return "scotland";
+  if (LHA_AREAS_BY_NATION.wales.includes(area)) return "wales";
+  return "england";
 }
 
-/** Universal Credit uses the monthly equivalent of the weekly rate. */
+const IDX: Record<LhaCategory, number> = { shared: 1, "1": 2, "2": 3, "3": 4, "4": 5 };
+
+/** Weekly LHA (the Housing Benefit rate) for an area and category; 0 if the area is not known. */
+export function lhaWeekly(area: string, category: LhaCategory): number {
+  const row = TABLES[lhaNation(area)].find((r) => r[0] === area);
+  return row ? (row[IDX[category]] as number) : 0;
+}
+
+/**
+ * Monthly LHA for Universal Credit. Universal Credit has its own published
+ * monthly rates, which can be a few pounds above the weekly rate × 52 ÷ 12.
+ * 0 if the area is not known.
+ */
+export function lhaMonthly(area: string, category: LhaCategory): number {
+  const row = LHA_UC_MONTHLY_2024[area];
+  return row ? row[IDX[category] - 1] : 0;
+}
+
+/** Converts a weekly amount (such as a rate you enter yourself) to a monthly one. */
 export const weeklyToMonthly = (w: number) => (w * 52) / 12;
 
 export type LhaHelp = {
@@ -116,8 +154,18 @@ export type LhaHelp = {
   nextRateMonthly: number;
 };
 
-export function lhaHelp(weeklyRate: number, monthlyRent: number, nextWeeklyRate = 0): LhaHelp {
-  const monthlyRate = weeklyToMonthly(Math.max(0, weeklyRate));
+/**
+ * Help towards rent. Pass the Universal Credit monthly rates where known
+ * (lhaMonthly); otherwise the weekly rates are converted.
+ */
+export function lhaHelp(
+  weeklyRate: number,
+  monthlyRent: number,
+  nextWeeklyRate = 0,
+  ucMonthlyRate = weeklyToMonthly(weeklyRate),
+  nextUcMonthlyRate = weeklyToMonthly(nextWeeklyRate),
+): LhaHelp {
+  const monthlyRate = Math.max(0, ucMonthlyRate);
   const rent = Math.max(0, monthlyRent);
   const monthlyHelp = Math.min(rent, monthlyRate);
   return {
@@ -125,6 +173,6 @@ export function lhaHelp(weeklyRate: number, monthlyRent: number, nextWeeklyRate 
     monthlyRate,
     monthlyHelp,
     monthlyShortfall: Math.max(0, rent - monthlyRate),
-    nextRateMonthly: weeklyToMonthly(nextWeeklyRate),
+    nextRateMonthly: Math.max(0, nextUcMonthlyRate),
   };
 }
