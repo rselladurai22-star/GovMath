@@ -1,7 +1,7 @@
 # GovMath project memory
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 5 October 2026 (Phases 0 to 8 live; site-wide plum redesign in review).
+Last updated: 5 October 2026 (Phases 0 to 8 live; approved design package integrated for home, topic pages, take-home and mortgage).
 
 ## Goal
 
@@ -69,6 +69,37 @@ Use any `src/app/property/*` or `src/app/tax-and-salary/*` page as the template.
 - Vitest does not resolve the `@/` alias, so `src/lib` files must use relative imports.
 - Playwright is not a project dependency: install `playwright-core` in a scratch folder and launch with `executablePath`.
 
+## Approved design pages (`(gm)` route group)
+
+The owner supplied a finished static design: `GovMath-Complete-Website-Source.zip`, approved live reference https://govmath-mortgage-axis-design.rselladurai22.chatgpt.site/. It must be preserved exactly. These pages use it:
+
+- `/` (home)
+- the 8 topic pages: `/tax-and-salary`, `/property`, `/business`, `/investing`, `/benefits`, `/vehicles`, `/students`, `/life`
+- `/tax-and-salary/salary-calculator`
+- `/property/mortgage-repayment`
+
+**How it is built:**
+- **Two root layouts.**
+  - `src/app/(gm)/layout.tsx` loads no site CSS.
+  - `src/app/(site)/layout.tsx` is the old layout, used by every other page.
+  - Moving between them is a full page load, so the two sets of CSS never mix.
+  - `src/app/global-not-found.tsx` (with `experimental.globalNotFound`) serves unknown URLs.
+- **Page data.** `src/gm/pages/*.json` holds each page's title, description, stylesheet order, script order and top-level body elements, converted from the supplied HTML.
+  - Links are made site-relative with no trailing slash.
+  - Images point to `/gm/`.
+- **Rendering.** `src/gm/GmDocument.tsx` renders the stylesheets as `<link precedence="gm">` in their original order. It then renders each body element with its original tag, attributes and markup.
+- **Assets.** The supplied stylesheets and images sit in `public/gm/`, unchanged. Only the files the pages link are copied: the nine CSS files plus `govmath-logo.png` and `hero.png`.
+- **Scripts.** The supplied scripts sit in `src/gm/scripts/*.js`, kept as delivered. They are wrapped in an exported `init…()` function and excluded from ESLint. `src/gm/GmScripts.tsx` runs them once, in the original order.
+- **Engines.** The salary script's `salaryResult()` and the mortgage script's `stampDuty()` come from `src/gm/engines.ts`, which uses the site engines (`computeTakeHome`, `stampDuty`). It is tested in `engines.test.ts`.
+- **Catalogue.** `/gm/catalog.json` is built from `CALCULATORS` for the header search code in `axis.js`. The current header has no search box.
+
+**Checks:**
+- After any change, compare against the supplied package by serving its `dist` folder: `python3 -m http.server <port> --directory dist`.
+- Take full-page screenshots of both versions at 1440, 768 and 375px and pixel-diff them.
+- When this was integrated, every page matched pixel for pixel. The interactive checks (mega menu, mobile menu, Scottish salary, Stamp Duty) also matched.
+
+**To change these pages,** edit the JSON (or regenerate it from a new design package with the same converter). Never restyle them with site CSS.
+
 ## Design system (October 2026 redesign)
 
 The owner asked for the look and feel of the Axis Bank calculators site, in GovMath's own colours. We use deep plum, not Axis burgundy, and no Axis logo or wording, so the site never looks affiliated.
@@ -89,12 +120,8 @@ The owner asked for the look and feel of the Axis Bank calculators site, in GovM
   - `SiteHeader` has a dark utility strip above a plum bar.
   - `SiteFooter` uses `<details>` columns that act as accordions on mobile.
   - Styles are in `SiteChrome.module.css`.
-- **Homepage:**
-  - `src/components/home/Home.tsx` (server), with styles in `Home.module.css`
-  - `HeroSearch.tsx` (search with suggestions)
-  - The owner wants only four parts: a hero explaining the site, the most-used tools card, every category with all its tools, and the footer. The feature cards, quick calculators, trust cards and FAQ were removed at the owner's request.
-  - The global h1 to h4 rules (navy, tight tracking) are overridden inside `.page`.
-- **Whole site:** every page now uses the plum design.
+- **Homepage and topic pages:** now come from the approved design package (see above). The old `Home.tsx`, `CategoryLanding` and the old salary and mortgage studios were removed.
+- **Every other page** (the `(site)` group) uses the plum design below.
   - The old blue palette (#4353ff, navy #0d1330, lavender tints) was mapped to plum and greys in every CSS and TSX file. The legacy tokens (`--blue`, `--navy`, `--ice-blue`, `--brand-gradient` and so on) now resolve to plum values, so old class names still work.
   - Every topic accent (`ACCENT` in `category-style.tsx`) is plum.
   - Negative letter-spacing and 800/900 weights were removed from CSS; h1 is weight 400.

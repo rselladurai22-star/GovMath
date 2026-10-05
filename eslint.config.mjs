@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Supplied design scripts, kept as delivered (see src/gm/scripts).
+    "src/gm/scripts/*.js",
   ]),
 ]);
 
