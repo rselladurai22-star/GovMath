@@ -1965,18 +1965,20 @@
   width: 100%;
 }
 
-/* Choice switches read as underlined tabs */
+/* Choice switches read as underlined tabs; long labels wrap on phones. */
 .segmented {
-  gap: 1.75rem;
+  flex-wrap: wrap;
+  gap: 0 1.75rem;
   padding: 0;
   border-bottom: 1px solid #d8d8d8;
   border-radius: 0;
   background: transparent;
 }
 .segmented button {
-  flex: none;
+  flex: 0 1 auto;
   min-height: 0;
   padding: 0.6rem 0 0.55rem;
+  text-align: left;
   border-bottom: 3px solid transparent;
   border-radius: 0;
   color: var(--ax-muted);
