@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 /**
- * Govmath brand mark: a blue calculator tile with a plus, minus and equals
+ * Govmath brand mark: a plum calculator tile with a plus, minus and equals
  * glyph. Inline SVG so it stays razor-sharp at any size.
  */
-export function LogoIcon({ size = 32 }: { size?: number }) {
+export function LogoIcon({ size = 32, onDark = false }: { size?: number; onDark?: boolean }) {
   return (
     <span
       aria-hidden="true"
@@ -15,9 +15,9 @@ export function LogoIcon({ size = 32 }: { size?: number }) {
         width: size,
         height: size,
         borderRadius: Math.round(size * 0.3),
-        background: "var(--brand-gradient)",
-        boxShadow: "0 8px 18px -8px rgba(87, 70, 245, 0.7), inset 0 1px 0 rgba(255,255,255,0.3)",
-        color: "#fff",
+        background: onDark ? "#fff" : "var(--ax-gradient)",
+        boxShadow: onDark ? "none" : "0 8px 18px -10px rgba(46, 10, 58, 0.6)",
+        color: onDark ? "var(--ax-plum)" : "#fff",
       }}
     >
       <svg
@@ -37,7 +37,7 @@ export function LogoIcon({ size = 32 }: { size?: number }) {
   );
 }
 
-/** Full lockup: tile + "GovMath" wordmark (Math in action blue). */
+/** Full lockup: tile + "GovMath" wordmark (Math in the brand plum). */
 export function LogoWordmark({
   iconSize = 32,
   tone = "dark",
@@ -50,18 +50,18 @@ export function LogoWordmark({
       className="inline-flex items-center"
       style={{ gap: Math.round(iconSize * 0.28) }}
     >
-      <LogoIcon size={iconSize} />
+      <LogoIcon size={iconSize} onDark={tone === "light"} />
       <span
         style={{
           fontFamily: "var(--font-display)",
-          fontWeight: 800,
+          fontWeight: 900,
           fontSize: Math.round(iconSize * 0.62),
           lineHeight: 1,
-          letterSpacing: "-0.03em",
-          color: tone === "light" ? "#fff" : "var(--navy)",
+          letterSpacing: "-0.01em",
+          color: tone === "light" ? "#fff" : "var(--ax-text)",
         }}
       >
-        Gov<span style={{ color: tone === "light" ? "#9cc4f5" : "var(--blue)" }}>Math</span>
+        Gov<span style={{ color: tone === "light" ? "var(--ax-lilac)" : "var(--ax-plum)" }}>Math</span>
       </span>
     </span>
   );

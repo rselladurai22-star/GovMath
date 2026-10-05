@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import GovmathHome from "@/components/GovmathHome";
+import Home from "@/components/home/Home";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -11,6 +11,6 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
-  return <GovmathHome />;
+export default function HomePage() {
+  return <Home />;
 }
