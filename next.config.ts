@@ -3,6 +3,19 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      // One address for the site: www goes to the bare domain.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.govmath.co.uk" }],
+        destination: "https://govmath.co.uk/:path*",
+        permanent: true,
+      },
+      // The take-home pay article's address no longer names a tax year.
+      {
+        source: "/blog/uk-take-home-pay-2025-26-explained",
+        destination: "/blog/uk-take-home-pay-explained",
+        permanent: true,
+      },
       // Legacy taxonomy → new 8-category structure (permanent).
       { source: "/tax", destination: "/tax-and-salary", permanent: true },
       {

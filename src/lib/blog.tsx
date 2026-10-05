@@ -16,7 +16,7 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    slug: "uk-take-home-pay-2025-26-explained",
+    slug: "uk-take-home-pay-explained",
     title: "How UK take-home pay works in 2026/27: a plain-English guide",
     description:
       "Income Tax, National Insurance, the Personal Allowance and the hidden 60% trap — exactly what comes out of your salary in 2026/27, explained with a worked example.",

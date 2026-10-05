@@ -104,10 +104,13 @@ How they are built:
 
 ## Ads (waiting on the owner)
 
-- Ads only show when environment variables are set (`src/lib/ads.ts`). `AdSlot` renders nothing without them, and `/ads.txt` returns 404 until a publisher ID is set.
+- Ads only switch on when environment variables are set (`src/lib/ads.ts`). Then every page gets the `google-adsense-account` meta tag and the AdSense script (in `src/app/layout.tsx`, which also runs Auto ads), `/ads.txt` is generated, and `AdSlot` shows in-page units if a slot ID is set. Without them nothing ad-related is output and `/ads.txt` is a 404.
+- The script was accidentally dropped in the October 2026 redesign and restored in the AdSense readiness pass; check it is still in the root layout after any layout change.
 - **The owner must:**
-  - set `NEXT_PUBLIC_ADSENSE_CLIENT` (and optionally `NEXT_PUBLIC_ADSENSE_SLOT`) in Vercel
-  - set up the consent banner in AdSense under Privacy & messaging
+  - set `NEXT_PUBLIC_ADSENSE_CLIENT` (and optionally `NEXT_PUBLIC_ADSENSE_SLOT`) in Vercel for Production, then redeploy, before applying or requesting review
+  - add the site as `govmath.co.uk` in AdSense (www redirects to it)
+  - turn on the Google-certified consent message for the UK, EEA and Switzerland under Privacy & messaging (the privacy policy already describes it); without it, UK visitors get limited or no ads
+- The privacy policy (`src/app/privacy/page.tsx`) has the AdSense disclosures (Google cookies, Ads Settings, aboutads.info, youronlinechoices, partner-sites policy), the consent message and the ICO. Update its date when it changes.
 
 ## Status
 

@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { ADSENSE_CLIENT } from "@/lib/ads";
 
 /**
- * Root layout for the pages built from the approved GovMath design package
- * (home, the eight topic pages, take-home pay and mortgage repayment). It
- * loads none of the site-wide CSS: each page brings the design's own
- * stylesheets in their original order (see src/gm/GmDocument.tsx).
+ * The one root layout. It loads no site-wide CSS: each page brings the
+ * approved design's stylesheets itself (src/gm/GmDocument.tsx for the pages
+ * taken straight from the design, src/gm/GmShell.tsx for the rest).
+ *
+ * When NEXT_PUBLIC_ADSENSE_CLIENT is set, every page carries the AdSense
+ * account meta tag and loads the AdSense script (which also runs Auto ads),
+ * so Google can verify the site and serve ads.
  */
 export const metadata: Metadata = {
   metadataBase: new URL("https://govmath.co.uk"),
@@ -15,11 +19,11 @@ export const metadata: Metadata = {
   },
   openGraph: { type: "website", locale: "en_GB", siteName: "GovMath" },
   twitter: { card: "summary_large_image" },
-  robots: { index: true, follow: true },
   verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
+  ...(ADSENSE_CLIENT ? { other: { "google-adsense-account": ADSENSE_CLIENT } } : {}),
 };
 
-export default function GmLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-GB">
       <body>
@@ -36,6 +40,9 @@ export default function GmLayout({ children }: Readonly<{ children: React.ReactN
           }}
         />
         {children}
+        {ADSENSE_CLIENT && (
+          <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`} crossOrigin="anonymous" />
+        )}
         <Analytics />
         <SpeedInsights />
       </body>
