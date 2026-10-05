@@ -1671,3 +1671,266 @@
     animation: none;
   }
 }
+
+/* ══ Bank-calculator layout (October 2026) ══════════════════════════════
+   Mirrors the reference bank calculator pages: a centred banner, a sticky
+   row of section tabs, the calculator inside one soft-grey rounded panel
+   (inputs on the grey, results on a white card), and flat white cards with
+   #e2e2e2 hairlines. Later rules override the earlier ones above. */
+
+.page {
+  background: #fff;
+  color: var(--ax-text);
+}
+
+/* Banner */
+.hero {
+  padding: 1rem 0 2.75rem;
+  border-bottom: 0;
+  background: linear-gradient(180deg, #fff 0%, var(--ax-soft) 100%);
+  text-align: center;
+}
+.heroTop {
+  text-align: left;
+}
+.heroTitle {
+  max-width: 52rem;
+  margin: 1.75rem auto 0.75rem;
+  color: var(--ax-text);
+  font-size: 2.875rem;
+  font-weight: 400;
+  line-height: 136%;
+  letter-spacing: normal;
+}
+.heroLead {
+  max-width: 46rem;
+  margin-inline: auto;
+  color: var(--ax-muted);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.heroPoints {
+  justify-content: center;
+  margin-top: 1.25rem;
+  color: var(--ax-text);
+  font-weight: 400;
+}
+
+/* Section tabs */
+.tabsBar {
+  position: sticky;
+  top: var(--tabs-top, 0px);
+  z-index: 30;
+  border-bottom: 1px solid var(--ax-line);
+  background: #fff;
+  box-shadow: 0 6px 14px -12px rgba(40, 40, 40, 0.35);
+}
+.tabsBar ul {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  margin-block: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tabsBar ul::-webkit-scrollbar {
+  display: none;
+}
+.tabsBar a {
+  display: block;
+  padding: 1.05rem 0 0.9rem;
+  border-bottom: 3px solid transparent;
+  color: var(--ax-muted);
+  font-size: 1rem;
+  white-space: nowrap;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.tabsBar a:hover {
+  color: var(--ax-text);
+}
+.tabsBar a[aria-current] {
+  border-bottom-color: var(--ax-plum);
+  color: var(--ax-plum);
+  font-weight: 700;
+}
+
+/* The calculator panel: one soft-grey rounded block */
+.studioWrap {
+  padding: 2.5rem 0 3rem;
+  scroll-margin-top: 8.5rem;
+}
+.studio {
+  gap: 2.5rem;
+  padding: 2.5rem 3rem;
+  border-radius: 1rem;
+  background: var(--ax-soft);
+  scroll-margin-top: 8.5rem;
+}
+.studio:not([data-ready]) {
+  grid-template-columns: minmax(0, 1fr);
+}
+.panel {
+  top: 9rem;
+  max-height: calc(100vh / var(--page-scale) - 10rem);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.panelHead,
+.studio:not([data-ready]) .panelHead {
+  padding: 0 0 1.25rem;
+  border-bottom: 0;
+}
+.panelHead h2 {
+  color: var(--ax-text);
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 2rem;
+}
+.panelBody,
+.studio:not([data-ready]) .panelBody {
+  padding: 0;
+}
+.studio:not([data-ready]) .panelBody {
+  gap: 1.5rem 3rem;
+}
+.panelFoot {
+  padding: 1.5rem 0 0;
+  border-top: 0;
+  border-radius: 0;
+  background: var(--ax-soft);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+.calcBtn {
+  width: min(100%, 22rem);
+  min-height: 48px;
+  border-radius: 0.5rem;
+  background: var(--ax-plum);
+  font-size: 1rem;
+  box-shadow: none;
+}
+.calcBtn:hover {
+  background: var(--ax-plum-ink);
+  box-shadow: none;
+  transform: none;
+}
+.reset {
+  border-color: var(--ax-line);
+  color: var(--ax-text);
+}
+
+/* Inputs: plain labels, white boxes with hairline borders */
+.group legend {
+  color: var(--ax-muted);
+}
+.group legend::after {
+  background: #d8d8d8;
+}
+.fieldHead {
+  color: var(--ax-text);
+  font-size: 1rem;
+  font-weight: 400;
+}
+.box {
+  border: 1px solid var(--ax-line);
+  border-radius: 0.5rem;
+}
+.box:hover {
+  border-color: #c9c9c9;
+}
+.box:focus-within {
+  border-color: var(--ax-plum);
+  box-shadow: 0 0 0 3px var(--ax-plum-tint);
+}
+/* An amount with a slider: label left, value box right, slider below. */
+.field:has(> .slider) {
+  grid-template-columns: minmax(0, 1fr) minmax(8.5rem, 11rem);
+  align-items: center;
+  column-gap: 1rem;
+}
+.field:has(> .slider) > * {
+  grid-column: 1 / -1;
+}
+.field:has(> .slider) > .fieldHead {
+  grid-column: 1;
+}
+.field:has(> .slider) > .box {
+  grid-column: 2;
+}
+.stepper > button,
+.chips button,
+.segmented {
+  border-radius: 0.5rem;
+}
+
+/* Results: a white card on the grey panel */
+.results {
+  gap: 1.25rem;
+  padding: 1.75rem;
+  border: 0;
+  border-radius: 1rem;
+  background: #fff;
+}
+.resultsHead h2 {
+  color: var(--ax-text);
+  font-size: 1.375rem;
+  font-weight: 700;
+}
+.facts > div {
+  border: 0;
+  border-radius: 0.5rem;
+  background: var(--ax-soft);
+}
+.card {
+  border: 1px solid var(--ax-line);
+  border-radius: 1rem;
+  box-shadow: none;
+}
+.cardHead h2 {
+  color: var(--ax-text);
+  font-size: 1.25rem;
+}
+.answer {
+  box-shadow: none;
+}
+.answer::after {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .studio {
+    padding: 2rem 1.75rem;
+  }
+}
+@media (max-width: 640px) {
+  .hero {
+    padding-bottom: 2rem;
+  }
+  .heroTitle {
+    margin-top: 1.25rem;
+    font-size: 1.875rem;
+  }
+  .heroLead {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .tabsBar ul {
+    justify-content: flex-start;
+    gap: 1.75rem;
+  }
+  .studioWrap {
+    padding-top: 1.5rem;
+  }
+  .studio {
+    width: 100%;
+    padding: 1.5rem 1.25rem;
+    border-radius: 0;
+  }
+  .results {
+    padding: 1.25rem 1rem;
+  }
+}

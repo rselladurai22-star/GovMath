@@ -101,6 +101,13 @@ The owner asked for the look and feel of the Axis Bank calculators site, in GovM
   - Page heroes use a white-to-`--ax-soft` wash instead of the aurora.
   - The flagship answer card uses `--ax-gradient`.
   - Green stays only for money you keep; amber and red stay for charts and warnings.
+- **Calculator page layout** (matches the reference bank calculator pages):
+  - The banner is centred (`FlagshipHero`).
+  - `SectionTabs.tsx` is a sticky row of section links under the site header: Calculator, Guide, FAQs, Other calculators. It highlights the section in view. The anchors are `#calculator`, `#guide`, `#faqs` and `#related`.
+  - The calculator sits in one soft-grey rounded panel (`.studio`). Inputs sit on the grey and results on a white card.
+  - An amount with a slider shows the label left, the value box right and the slider below (`.field:has(> .slider)`).
+  - FAQs are a hairline accordion. Other calculators are white cards on `--ax-soft`.
+  - These overrides sit at the end of `Flagship.module.css` and `Shell.module.css` under "Bank-calculator layout".
 - **New colours:** use the `--ax-*` tokens, never new hex values.
 
 ## Ads (waiting on the owner)

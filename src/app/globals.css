@@ -1080,3 +1080,8 @@ textarea:focus-visible,
     scroll-behavior: auto !important;
   }
 }
+
+/* Calculator pages: section links land below the sticky header and tabs. */
+#gm-flagship :is(#guide, #faqs, #related) {
+  scroll-margin-top: 8.5rem;
+}

@@ -19,7 +19,7 @@ export default function EngineOutro({
 }) {
   return (
     <>
-      <section className={styles.explainer}>
+      <section id="faqs" className={styles.explainer}>
         <div data-reveal>
           <span className={styles.kicker}>Questions</span>
           <h2 className={styles.explainerTitle}>Frequently asked</h2>
@@ -38,12 +38,12 @@ export default function EngineOutro({
       </section>
 
       {related.length > 0 && (
-        <section className={styles.related}>
+        <section id="related" className={styles.related}>
           <div className="gm-wrap">
             <div data-reveal>
               <span className={styles.kicker}>Keep going</span>
               <h2 className={styles.explainerTitle} style={{ marginBottom: 0 }}>
-                Related calculators
+                Other calculators
               </h2>
             </div>
             <ul className={styles.relatedGrid}>
