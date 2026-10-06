@@ -162,6 +162,39 @@ export function SplitBar({ segments, caption }: { segments: Segment[]; caption?:
   );
 }
 
+/**
+ * Horizontal bars for one measure across a few items, with the selected item
+ * picked out. Uses the chart palette, not the page theme, so it stands apart.
+ */
+export function BarChart({
+  rows,
+  caption,
+}: {
+  rows: { label: ReactNode; note?: string; value: number; display: string; current?: boolean }[];
+  caption?: string;
+}) {
+  const max = Math.max(1, ...rows.map((r) => r.value));
+  return (
+    <figure className="gm-barchart">
+      <div role="list">
+        {rows.map((r, i) => (
+          <div key={i} role="listitem" className={r.current ? "gm-bar current" : "gm-bar"} title={`${typeof r.label === "string" ? r.label : ""} ${r.display}`.trim()}>
+            <span className="gm-bar-label">
+              {r.label}
+              {r.note && <small>{r.note}</small>}
+            </span>
+            <span className="gm-bar-track" aria-hidden="true">
+              <span style={{ width: `${Math.max(2, (r.value / max) * 100)}%` }} />
+            </span>
+            <strong className="gm-bar-value">{r.display}</strong>
+          </div>
+        ))}
+      </div>
+      {caption && <figcaption className="footnote">{caption}</figcaption>}
+    </figure>
+  );
+}
+
 export type CompareRow = {
   label: ReactNode;
   value: string;

@@ -240,7 +240,7 @@
 .resultgrid > .resultcard {
   min-width: 0;
 }
-.resultgrid > .resultcard:has(table, .gm-chart, .tablewrap, .gm-compare, svg[role="img"]) {
+.resultgrid > .resultcard:has(table, .gm-chart, .tablewrap, .gm-compare, .gm-barchart, svg[role="img"]) {
   grid-column: 1 / -1;
 }
 .resultcard > .sectionheading {
@@ -850,4 +850,268 @@ a.gm-card:hover {
 .gm-compare .rate-row {
   grid-template-columns: minmax(0, 1fr) auto minmax(70px, auto);
   gap: 18px;
+}
+
+/* ── Clearer calculator form (trial: council tax bands) ─────────────
+   Field labels are a step quieter than section controls, explanations sit
+   behind an (i) button, and More options reads as a separate control. */
+.gm-clear .formheading.gm-notitle {
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+.gm-clear .gm-labelwrap {
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.gm-clear .labelrow label,
+.gm-clear .gm-label,
+.gm-clear .ax-select-field label,
+.gm-clear .gm-switchrow label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2b2028;
+}
+.gm-clear .field,
+.gm-clear .ax-select-field {
+  margin: 0 0 26px;
+}
+.gm-clear .ax-select-field .gm-labelwrap {
+  margin-bottom: 9px;
+}
+.gm-clear .moreoptions {
+  margin: 4px 0 8px;
+  padding: 0;
+  border: 1px solid #e6d8e1;
+  border-radius: 10px;
+  background: #fff;
+}
+.gm-clear .moreoptions > summary {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  padding: 14px 18px;
+  color: #510b38;
+  font-size: 15px;
+  font-weight: 700;
+}
+.gm-clear .moreoptions > summary::-webkit-details-marker {
+  display: none;
+}
+.gm-clear .moreoptions > summary::before {
+  content: "+";
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #faf3f7;
+  color: #510b38;
+  font-size: 16px;
+  line-height: 1;
+}
+.gm-clear .moreoptions[open] > summary::before {
+  content: "−";
+}
+.gm-clear .moreoptions > summary > span {
+  flex-basis: 100%;
+  margin: 0 0 0 32px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--muted);
+}
+.gm-clear .moreoptions[open] > summary {
+  border-bottom: 1px solid #e6d8e1;
+}
+.gm-clear .moreoptions > div {
+  padding: 20px 18px 6px;
+}
+
+/* (i) explanations */
+.gm-info {
+  position: relative;
+  display: inline-flex;
+}
+.gm-info-button {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  border: 1px solid #909aab;
+  border-radius: 50%;
+  background: #fff;
+  color: #626262;
+  font: italic 700 11px/1 Georgia, serif;
+  cursor: pointer;
+}
+.gm-info-button:hover,
+.gm-info-button[aria-expanded="true"] {
+  border-color: #510b38;
+  background: #510b38;
+  color: #fff;
+}
+.gm-info-bubble {
+  position: absolute;
+  z-index: 20;
+  top: calc(100% + 8px);
+  left: -12px;
+  width: min(280px, 75vw);
+  padding: 12px 14px;
+  border: 1px solid #e6d8e1;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(81, 11, 56, 0.12);
+  color: #2b2028;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.55;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.gm-info-bubble[hidden] {
+  display: none;
+}
+
+/* Radio buttons, one per line */
+.gm-radiogroup {
+  border: 0;
+  padding: 0;
+  min-width: 0;
+}
+.gm-radiogroup > legend {
+  padding: 0;
+  margin-bottom: 10px;
+}
+.gm-radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.gm-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 16px 10px 12px;
+  border: 1px solid #e6d8e1;
+  border-radius: 8px;
+  background: #fff;
+  font-size: 15px;
+  cursor: pointer;
+}
+.gm-radio:has(input:checked) {
+  border-color: #510b38;
+  box-shadow: 0 0 0 1px #510b38;
+}
+.gm-radio input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #510b38;
+}
+
+/* Bar chart: chart palette (blue picks out the selected item) */
+.gm-barchart {
+  margin: 0;
+}
+.gm-bar {
+  display: grid;
+  grid-template-columns: minmax(120px, 34%) 1fr 76px;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px solid #eee7ec;
+  font-size: 14px;
+}
+.gm-bar-label small {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+}
+.gm-bar-track {
+  display: block;
+  height: 14px;
+  border-radius: 4px;
+  background: #f1f2f4;
+  overflow: hidden;
+}
+.gm-bar-track > span {
+  display: block;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  background: #b9c3d1;
+}
+.gm-bar.current .gm-bar-track > span {
+  background: #2a78d6;
+}
+.gm-bar.current .gm-bar-label,
+.gm-bar.current .gm-bar-value {
+  font-weight: 700;
+  color: #2b2028;
+}
+.gm-bar-value {
+  text-align: right;
+  font-weight: 600;
+}
+@media (max-width: 650px) {
+  .gm-bar {
+    grid-template-columns: 1fr 70px;
+    gap: 6px 10px;
+  }
+  .gm-bar-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+/* Keep sliders and radios inside More options in their own shape (the package styles every input there as a text box). */
+.gm-clear .moreoptions input[type="range"] {
+  background: linear-gradient(to right, var(--wine) var(--fill, 30%), #d8dce0 var(--fill, 30%));
+  border: 0;
+  padding: 0;
+}
+.gm-clear .moreoptions .gm-radio input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  flex: 0 0 auto;
+}
+.gm-clear .gm-radio span {
+  font-weight: 400;
+}
+.gm-clear .gm-radio:has(input:checked) span {
+  font-weight: 700;
+  color: #510b38;
+}
+/* Inside More options every field is optional, so the tag is not repeated. */
+.gm-clear .moreoptions .gm-optional {
+  display: none;
+}
+.gm-clear .gm-switchrow {
+  flex-wrap: wrap;
+}
+@media (max-width: 650px) {
+  .gm-clear .labelrow {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .gm-clear .labelrow > .gm-labelwrap {
+    flex: 1 1 100%;
+  }
+  .gm-clear .labelrow > .number {
+    width: 100%;
+  }
+  .gm-clear .gm-radio {
+    flex: 1 1 140px;
+  }
+}
+.gm-clear .moreoptions label.gm-radio {
+  display: inline-flex;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
 }

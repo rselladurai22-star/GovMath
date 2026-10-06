@@ -87,9 +87,13 @@ export default function Studio({
   calculateLabel = "Calculate",
   onReset,
   inputs,
+  variant,
   children,
 }: {
+  /** Heading above the inputs. Leave empty for none. */
   title: string;
+  /** "clear": stronger label hierarchy and info icons (being trialled on the council tax page). */
+  variant?: "clear";
   /** True once the inputs have been confirmed (keeps the address shareable). */
   ready: boolean;
   onCalculate: () => void;
@@ -134,7 +138,7 @@ export default function Studio({
 
   return (
     <>
-      <section className="calculator" id="calculator">
+      <section className={variant === "clear" ? "calculator gm-clear" : "calculator"} id="calculator">
         <div className="calcgrid">
           <form
             noValidate
@@ -145,8 +149,8 @@ export default function Studio({
               else onCalculate();
             }}
           >
-            <div className="formheading">
-              <h2>{title}</h2>
+            <div className={title ? "formheading" : "formheading gm-notitle"}>
+              {title && <h2>{title}</h2>}
               {onReset && (
                 <button type="button" className="textbutton" onClick={onReset}>
                   Reset
