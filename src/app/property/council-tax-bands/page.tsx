@@ -27,7 +27,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function CouncilTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/property/single-person-discount", "/property/moving-house-budget", "/property/rent-vs-buy", "/benefits/universal-credit", "/students/student-council-tax", "/property/mortgage-affordability"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/property/single-person-discount", "/property/moving-house-budget", "/property/rent-vs-buy", "/benefits/universal-credit", "/students/student-council-tax", "/benefits/council-tax-reduction"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

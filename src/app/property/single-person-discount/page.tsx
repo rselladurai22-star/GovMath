@@ -28,7 +28,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function SPDPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/property/council-tax-bands", "/property/rent-a-room", "/benefits/universal-credit", "/students/student-council-tax", "/property/moving-house-budget", "/benefits/pension-credit"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/property/council-tax-bands", "/benefits/council-tax-reduction", "/benefits/universal-credit", "/students/student-council-tax", "/property/moving-house-budget", "/benefits/pension-credit"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

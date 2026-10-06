@@ -1,7 +1,7 @@
 # GovMath project memory
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 5 October 2026 (Phases 0 to 8 live; the approved design package now styles every page).
+Last updated: 6 October 2026 (Phases 0 to 8 live; Phase 9 under way; the approved design package now styles every page).
 
 ## Goal
 
@@ -87,7 +87,7 @@ How they are built:
 - **Catalogue.** `/gm/catalog.json` is built from `CALCULATORS` for the header code in `axis.js`.
 - **Logo.** The supplied 1983 × 793 logo is served as sized copies (`public/gm/govmath-logo-210.png`, `-420`, `-630`) through `srcset` with `sizes="210px"` in every page's header and footer, so each screen loads the right one (13–61 KB instead of 379 KB). Its largest display size is 210 × 84. To change the logo, regenerate all three copies from the new master.
 
-**Every other page** (98 calculators, about, contact, privacy, terms, disclaimer, blog, all calculators, 404) is React, wrapped in `src/gm/GmShell.tsx`:
+**Every other page** (102 calculators, about, contact, privacy, terms, disclaimer, blog, all calculators, 404) is React, wrapped in `src/gm/GmShell.tsx`:
 - `GmShell` renders the package's header and footer (`src/gm/chrome.json`), runs `axis.js` and loads the package's stylesheets in the same order as its pages. `kind="calculator"` uses the mortgage/take-home page order; the default uses the base order. Both end with **`public/gm/govmath-site.css`**.
 - **`govmath-site.css`** holds only what the package does not draw (switches, date and period inputs, compare rows, insight boxes, statements, the area chart, extra guide figures, content-page cards) and maps old variable names (`--navy`, `--blue`, `--g-c1`…) to the package palette. It uses only the package's colours: wine #510b38, #73164c, gold #c79a4b, mauve #ad7198, slate #909aab, grey #faf7f9, borders #e6d8e1. Add new styles there, never new colours.
 - There is one root layout (`src/app/layout.tsx`) and no global site CSS.
@@ -123,6 +123,7 @@ How they are built:
 | 6 | Investing & Pensions (10) | ✅ Live | All done. Engines: `src/lib/investing/tax.ts` (income tax by source incl. savings and dividends, Scotland, 2027 savings rates; CGT with losses and BADR), `wrappers.ts` (pension tax relief by method, annual allowance taper, ISA vs GIA), `growth.ts` (compound growth, AER, inflation, FIRE with State Pension bridge, Premium Bonds seeded simulation), `retirement.ts` (State Pension age with 6th-to-5th periods and 2044–46 fixed dates, new State Pension, deferral, auto-enrolment projection) |
 | 7 | Vehicles (10) | ✅ Live | All done. Engines: `src/lib/vehicles/tax-2026.ts` (VED first-year rates, bands A to M, £440 supplement with the £50,000 line for new electric cars, eVED; HMRC appropriate percentages 2026/27, fuel benefit, EV salary sacrifice from real tax and NI; 2026 clean air zone charges, London congestion charge, Scottish LEZ penalties; SORN refunds), `running.ts` (journey cost, AMAP and advisory fuel rates, petrol vs EV over years, commuting by car/train/bus/bike, Cycle to Work), `rules.ts` (licence renewal at 70, MOT dates, plate check) |
 | 8 | Students (7) | ✅ Live | All done. Engine: `src/lib/students/loans.ts` (Plans 1, 2, 4, 5 and Postgraduate 2026/27 thresholds, interest from September 2026 with the 6% cap and Plan 2 sliding scale, lifetime projection with write-off and threshold freeze to 2030; SFE maintenance loan 2026/27 matching the official table; student council tax). Loan pages share `src/components/students/LoanStudio.tsx` |
+| 9 | Topic clusters (19 planned) | 🚧 In progress | Batch A (housing): Housing Benefit, Council Tax Reduction (`src/lib/benefits/housing-support.ts`: the shared legacy means test with 2026/27 HB allowances, premiums, disregards, tariff income, HB and CTR non-dependant deductions; form fields shared in `src/components/benefits/MeansFields.tsx`), rent increase checker and deposit return (`src/lib/property/renting.ts`: notice and once-a-year rules for all four nations, deposit caps, wear-and-tear apportionment). Next: Universal Credit and work, families and childcare, students, savings |
 
 The order of phases 4 to 8 is flexible; ask the owner.
 
@@ -138,6 +139,8 @@ The order of phases 4 to 8 is flexible; ask the owner.
 - Business guides cite 2026 changes: Corporation Tax late filing penalties doubled (£200/£400), the VOA duty to notify is a pilot until April 2029, and Making Tax Digital penalties use points. Recheck these in April 2027.
 
 - Guides articles (`src/lib/blog.tsx`): the £100,000 tax trap, Plan 2 vs Plan 5 student loans and first-time buyer costs quote 2026/27 figures computed from the engines (take-home, pension relief, loan projections, Stamp Duty, LBTT, LTT, moving budget, mortgage payments). Recompute them each April, and the student loan interest figures each September.
+
+- Phase 9 housing figures to recheck: HB rates and non-dependant deductions each April (DWP rates PDF); CTR pensioner non-dependant deductions (England's prescribed-requirements amendment regulations each year); Scotland's rent control areas (none designated yet; rent officer referral period rises to 30 days from 1 April 2027); whether Welsh Ministers set a deposit cap; NI rent and deposit rules. The working-age CTR default (80% maximum, 20% taper) is an assumption the user can change.
 
 - Benefits rates were checked against the DWP "Benefit and pension rates 2026 to 2027" PDF. Recheck everything in April 2027, including whether LHA rates stay frozen and the benefit cap is still £22,020/£14,753.
 - Benefits guides state that the two-child limit ended in April 2026 and that the UC health element is £217.26 for new claims (£429.80 protected). PIP guide says the assessment is under review; update if the rules change.

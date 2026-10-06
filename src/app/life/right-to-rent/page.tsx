@@ -26,7 +26,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function RightToRentPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/life/pro-rata-rent", "/property/rent-a-room", "/benefits/local-housing-allowance", "/life/days-between-dates"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/life/pro-rata-rent", "/property/rent-a-room", "/benefits/local-housing-allowance", "/life/days-between-dates", "/property/deposit-return", "/property/rent-increase"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}
