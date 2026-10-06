@@ -29,18 +29,32 @@ const render = (el: El) =>
     dangerouslySetInnerHTML: { __html: el.html },
   });
 
-export default function GmShell({ kind = "base", children }: { kind?: "base" | "calculator"; children: ReactNode }) {
+export default function GmShell({
+  kind = "base",
+  claret,
+  children,
+}: {
+  kind?: "base" | "calculator";
+  /** Brand colour trial: claret instead of the dark wine (council tax page only for now). */
+  claret?: boolean;
+  children: ReactNode;
+}) {
   // govmath-site.css adds, in the design's own language, the parts the package does not include.
-  const css = [...(kind === "calculator" ? CALCULATOR : BASE), "govmath-site.css", "govmath-neutral.css"];
+  const css = [...(kind === "calculator" ? CALCULATOR : BASE), "govmath-site.css", "govmath-neutral.css", ...(claret ? ["govmath-claret.css"] : [])];
+  const page = (
+    <>
+      {render(chrome.skip as El)}
+      {render(chrome.header as El)}
+      <main id="main">{children}</main>
+      {render(chrome.footer as El)}
+    </>
+  );
   return (
     <>
       {css.map((href) => (
         <link key={href} rel="stylesheet" href={`/gm/${href}`} precedence="gm" />
       ))}
-      {render(chrome.skip as El)}
-      {render(chrome.header as El)}
-      <main id="main">{children}</main>
-      {render(chrome.footer as El)}
+      {claret ? <div className="gm-claret">{page}</div> : page}
       <GmScripts scripts={["axis"]} />
     </>
   );

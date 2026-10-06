@@ -29,6 +29,7 @@ export default function FlagshipPage({
   note,
   plainIntro,
   neutral,
+  claret,
 }: {
   breadcrumbs: Crumb[];
   eyebrow: string;
@@ -45,6 +46,8 @@ export default function FlagshipPage({
   plainIntro?: boolean;
   /** Neutral reading palette instead of the pink-tinted greys (being trialled on the council tax page). */
   neutral?: boolean;
+  /** Claret brand colour instead of the dark wine (being trialled on the council tax page). */
+  claret?: boolean;
 }) {
   const jsonLd = [
     {
@@ -67,7 +70,7 @@ export default function FlagshipPage({
   const crumbs = breadcrumbs.map((c, i) => (i === 1 ? { ...c, label: topic || c.label } : c));
 
   return (
-    <GmShell kind="calculator">
+    <GmShell kind="calculator" claret={claret}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className={neutral ? "wrap gm-neutral" : "wrap"}>
         <div className="crumb">
