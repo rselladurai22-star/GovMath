@@ -30,7 +30,6 @@ const TOC: TocItem[] = [
   { id: "history", title: "How LBTT has changed" },
   { id: "effective", title: "Effective rates" },
   { id: "budget", title: "The full cost of buying in Scotland" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -372,39 +371,7 @@ export default function LBTTGuide() {
         <p>Our moving house budget calculator brings these together with your LBTT and deposit.</p>
       </GuideSection>
 
-      <GuideSection id="questions" n={16} kicker="FAQs" title="Common questions">
-        <h3>Do I pay LBTT on a house under £145,000?</h3>
-        <p>
-          No, unless it is an additional home. A home mover or first-time buyer pays nothing below £145,000, and a first-time
-          buyer pays nothing up to £175,000.
-        </p>
-        <h3>Do I pay LBTT if I am buying in Scotland but live in England?</h3>
-        <p>
-          Yes. LBTT depends on where the property is, not where you live. If you keep your English home, ADS applies as well.
-        </p>
-        <h3>Is there a surcharge for overseas buyers?</h3>
-        <p>
-          No. Scotland has no equivalent of England&apos;s 2% surcharge for non-UK residents. ADS still applies if you own a home
-          anywhere else.
-        </p>
-        <h3>Can I add LBTT to my mortgage?</h3>
-        <p>
-          Not directly. You could borrow more and put down a smaller deposit, but lenders lend against the property value, so
-          you still need the cash for the tax at settlement.
-        </p>
-        <h3>What happens if I buy before selling and the sale falls through?</h3>
-        <p>
-          Nothing changes straight away, but you only get the ADS back if you sell the old home within 36 months of buying
-          the new one. After that, the supplement is not refundable.
-        </p>
-        <h3>Do I pay LBTT if I am given a home?</h3>
-        <p>
-          Not if no money changes hands. If you take over a mortgage on the home, the amount of debt you take on counts as the
-          price.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={16} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£145,000", label: "0% band for home movers" },

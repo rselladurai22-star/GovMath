@@ -24,6 +24,10 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How long does a landlord have to return a deposit?", a: "In England and Wales, within 10 days of you both agreeing how much you will get back." },
   { q: "What if my deposit was not protected?", a: "In England and Wales a court can order the landlord to pay you 1 to 3 times the deposit, as well as returning it. In Scotland it can be up to 3 times." },
   { q: "How do I dispute deductions?", a: "Use your deposit scheme's free dispute resolution service. Send your check-in and check-out reports, photos and receipts. The landlord must show each deduction is justified." },
+  { q: "Can a landlord charge for professional cleaning?", a: "Only if the home was professionally cleaned at the start and was not left in the same condition. A clause requiring it regardless is likely unfair." },
+  { q: "Can the landlord keep my deposit for unpaid rent?", a: "Yes, if rent is owed at the end. The amount must match what is actually owed." },
+  { q: "What if my landlord sold the property?", a: "The deposit should transfer to the new landlord, who becomes responsible for protecting and returning it." },
+  { q: "Do I get interest on my deposit?", a: "Usually not. Some custodial schemes keep the interest to run the service." },
 ];
 
 export default async function DepositReturnPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

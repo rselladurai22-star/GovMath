@@ -33,7 +33,6 @@ const TOC: TocItem[] = [
   { id: "checklist", title: "Before you buy: a checklist" },
   { id: "other-lets", title: "Holiday lets, HMOs and furnished lets" },
   { id: "costs-reckoner", title: "Running costs ready reckoner" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -368,30 +367,7 @@ export default function BTLGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={20} kicker="FAQs" title="Common questions">
-        <h3>Is mortgage interest tax-deductible for landlords?</h3>
-        <p>Not for individuals. You get a 20% tax credit instead. Companies can deduct it in full.</p>
-        <h3>Can I deduct my mortgage capital repayments?</h3>
-        <p>No. Capital repayments are not a cost; they reduce your debt.</p>
-        <h3>Are furnishings deductible?</h3>
-        <p>Replacing furniture, appliances and furnishings in a furnished let can be deducted. The first purchase cannot.</p>
-        <h3>Do I pay National Insurance on rent?</h3>
-        <p>Not normally. Rental income is not usually treated as trading income.</p>
-        <h3>What if my property makes a loss?</h3>
-        <p>Rental losses are carried forward and set against future rental profits, not against your salary.</p>
-        <h3>Can I claim the cost of buying the property against rental income?</h3>
-        <p>
-          No. Stamp Duty, legal fees on the purchase and the price itself are capital costs. They are deducted from the gain
-          when you sell, for Capital Gains Tax.
-        </p>
-        <h3>Do I need to tell my mortgage lender if I let my home?</h3>
-        <p>
-          Yes. A residential mortgage does not usually allow letting. You need your lender&apos;s consent to let, or a
-          buy-to-let mortgage.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "20%", label: "Tax credit for mortgage interest" },

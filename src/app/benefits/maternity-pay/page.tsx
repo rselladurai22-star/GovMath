@@ -23,6 +23,14 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What if I do not qualify for SMP?", a: "You may get Maternity Allowance: up to £194.32 a week for 39 weeks if you worked 26 of the 66 weeks before your due date." },
   { q: "Is maternity pay taxed?", a: "SMP and employer maternity pay are taxed through payroll. Maternity Allowance is not taxed." },
   { q: "When can maternity leave start?", a: "From 11 weeks before the week your baby is due, or earlier if the baby arrives early." },
+  { q: "Can I get SMP from two employers?", a: "Yes, if you qualify with each of them separately." },
+  { q: "What if my baby is born early?", a: "Leave starts the day after the birth, and SMP rules are adjusted so you are not penalised for a premature birth." },
+  { q: "Do I get SMP if I am leaving my job?", a: "Yes. If you qualified by the qualifying week, you still get SMP even if you do not return." },
+  { q: "Does SMP go up if I get a pay rise?", a: "Yes. A pay rise effective before the end of your SMP period means your employer must recalculate it." },
+  { q: "Is there help for the self-employed?", a: "Maternity Allowance, if you meet the work and earnings tests, plus Universal Credit if your household income is low." },
+  { q: "Can I get SMP if I am on a zero-hours contract?", a: "Yes, if you are an employee with 26 weeks' service and average earnings of at least £129 a week. If not, check Maternity Allowance." },
+  { q: "What happens to my car or phone allowance?", a: "Non-cash benefits in your contract, such as a company car or gym membership, normally continue during maternity leave." },
+  { q: "Can I take maternity leave if I adopt?", a: "Adopters get adoption leave and Statutory Adoption Pay instead, which follow almost the same rules and rates." },
 ];
 
 export default async function MaternityPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

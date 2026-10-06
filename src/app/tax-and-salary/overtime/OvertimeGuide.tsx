@@ -26,7 +26,6 @@ const TOC: TocItem[] = [
   { id: "premiums", title: "Shift, night and weekend premiums" },
   { id: "payslip", title: "Checking overtime on your payslip" },
   { id: "rate-table", title: "Overtime rates at common hourly rates" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -323,42 +322,7 @@ export default function OvertimeGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={13} kicker="Questions" title="Common questions">
-        <h3>Why does my overtime seem to be taxed so heavily?</h3>
-        <p>
-          Overtime is taxed at your highest rate because it sits on top of your normal pay. In a month with a lot of
-          overtime, the payslip can look heavy, but over a year you pay the same tax as if the pay had been spread out.
-        </p>
-        <h3>Can I be forced to work overtime?</h3>
-        <p>
-          Only if your contract says overtime is compulsory. Even then, your average working week must normally stay
-          within 48 hours unless you have opted out in writing.
-        </p>
-        <h3>Is overtime included in my pension?</h3>
-        <p>
-          It depends on the scheme. Auto-enrolment schemes based on qualifying earnings include overtime; others only
-          count basic salary. Your payslip will show whether a pension deduction is taken from the overtime.
-        </p>
-        <h3>Does overtime affect my tax code?</h3>
-        <p>
-          No. Your tax code sets your tax-free pay, not your rate. Overtime simply adds to your pay, and the cumulative
-          PAYE system taxes it at whatever band your total income reaches. If you also have a second job, overtime in
-          your main job can mean the second job&rsquo;s BR code is no longer enough, and HMRC may change it to D0.
-        </p>
-        <h3>Should I take overtime or time off in lieu?</h3>
-        <p>
-          Paid overtime increases your income and is taxed; time off in lieu is not taxed at all because no money
-          changes hands. If you are close to £50,270 or £100,000, time off can be worth more than the pay you would keep.
-          Check how long you have to use the time and whether it can be carried over.
-        </p>
-        <h3>Do I get overtime if I work part-time?</h3>
-        <p>
-          Usually only once you work more than the full-time hours for your job. Extra hours below that are normally
-          paid at your basic rate.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={14} kicker="Quick reference" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={13} kicker="Quick reference" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "1.5×", label: "Time and a half: the most common overtime rate" },

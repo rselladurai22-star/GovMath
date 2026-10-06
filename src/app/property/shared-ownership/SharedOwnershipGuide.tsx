@@ -32,7 +32,6 @@ const TOC: TocItem[] = [
   { id: "stair-reckoner", title: "Staircasing ready reckoner" },
   { id: "vs-renting", title: "Against renting" },
   { id: "other-schemes", title: "Older buyers and disabled buyers" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -390,36 +389,7 @@ export default function SharedOwnershipGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Can I rent out my shared ownership home?</h3>
-        <p>Usually not without your provider&apos;s permission, which is normally only given in exceptional circumstances.</p>
-        <h3>Can I extend or renovate?</h3>
-        <p>You usually need the provider&apos;s permission for major changes, as set out in the lease.</p>
-        <h3>What happens if I fall behind on rent?</h3>
-        <p>
-          Missing rent puts your home at risk, just like missing mortgage payments. Contact your provider early if you are
-          struggling.
-        </p>
-        <h3>Do I get my deposit back when I sell?</h3>
-        <p>You receive the value of your share at the time, less the mortgage still owed, so your deposit is part of your equity.</p>
-        <h3>Is shared ownership worth it?</h3>
-        <p>
-          It can be a good way onto the ladder if you cannot buy outright, especially if you plan to staircase. Compare the full
-          monthly cost, including rising rent and service charges, with renting and with buying outright.
-        </p>
-        <h3>Can I pay off my mortgage early?</h3>
-        <p>
-          Yes, subject to your mortgage terms. Paying off the mortgage does not reduce the rent, which is only reduced by
-          buying more shares.
-        </p>
-        <h3>What if the value of the home falls?</h3>
-        <p>
-          Your share falls in value too. Staircasing becomes cheaper, but if you sell, you receive less than you paid. The
-          rent is not reduced because prices fall.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "10% to 75%", label: "Typical starting share" },

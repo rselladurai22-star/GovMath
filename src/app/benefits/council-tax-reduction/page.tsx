@@ -24,6 +24,10 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Can I get Council Tax Reduction if I work?", a: "Yes. Your earnings are counted after tax and NI, with a small amount ignored. Many working people on low pay or Universal Credit get some help." },
   { q: "How much savings can I have?", a: "Up to £16,000 in most schemes, unless you get Pension Credit Guarantee Credit. Some English councils set a lower limit for working-age people." },
   { q: "Can I get Council Tax Reduction on Universal Credit?", a: "Yes, but you must claim it from your council separately. It is not part of Universal Credit." },
+  { q: "Does Council Tax Reduction affect other benefits?", a: "No. It is not counted as income for Universal Credit, Pension Credit or Housing Benefit." },
+  { q: "I own my home. Can I still claim?", a: "Yes. Unlike Housing Benefit, Council Tax Reduction is for owners as well as tenants." },
+  { q: "Can a couple claim if only one of us is a pensioner?", a: "Mixed-age couples usually count as working age if they claim Universal Credit, so the council's working-age scheme applies." },
+  { q: "Why is my reduction less than my neighbour's?", a: "Income, savings, other adults at home and your council tax band all change the amount, as do the rules of each council." },
 ];
 
 export default async function CouncilTaxReductionPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

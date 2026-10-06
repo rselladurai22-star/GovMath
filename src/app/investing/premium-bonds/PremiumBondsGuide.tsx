@@ -21,7 +21,6 @@ const TOC: TocItem[] = [
   { id: "uses", title: "Ways people use Premium Bonds" },
   { id: "children", title: "Premium Bonds for children" },
   { id: "mistakes", title: "Common mistakes" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -331,28 +330,7 @@ export default function PremiumBondsGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Can I lose money in Premium Bonds?</h3>
-        <p>You cannot lose the amount you put in, but it can lose value against inflation, and you might win nothing.</p>
-        <h3>How are winners told?</h3>
-        <p>NS&amp;I emails or texts winners if you have registered online, and you can check with the prize checker or the app.</p>
-        <h3>What happens to Bonds when someone dies?</h3>
-        <p>They stay in the draw for up to 24 months after death, and any prizes go to the estate. They are then cashed in.</p>
-        <h3>How much do I need to win regularly?</h3>
-        <p>With £20,000, you can expect about 11 prizes a year, worth £870 on average and about £725 in a typical year. Below about £5,000, many months bring nothing.</p>
-        <h3>Can NS&amp;I change the prize rate?</h3>
-        <p>Yes. NS&amp;I reviews the rate in line with other savings rates and the government&rsquo;s funding needs, and announces changes in advance. Enter a different rate under &ldquo;More options&rdquo; to see the effect.</p>
-        <h3>Do I need to declare prizes on my tax return?</h3>
-        <p>No. Premium Bond prizes are tax-free and do not need to be reported to HMRC.</p>
-        <h3>Do prizes affect benefits?</h3>
-        <p>For means-tested benefits, the Bonds themselves count as capital, like savings. A prize adds to your capital if you keep it.</p>
-        <h3>How quickly can I cash in?</h3>
-        <p>You can ask to cash in online, by phone or by post. The money usually reaches your bank account within a few working days. There is no charge and no notice period, but Bonds you cash in miss any draws after the request.</p>
-        <h3>Can I hold Premium Bonds in an ISA?</h3>
-        <p>No. Premium Bonds are a separate product, with their own £50,000 limit. They do not use any of your £20,000 ISA allowance, so you can hold both, and prizes are tax-free anyway.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "4.35%", label: "Prize fund rate" },

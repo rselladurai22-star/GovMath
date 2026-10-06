@@ -23,6 +23,12 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Do people in Scotland pay more tax?", a: "Above about £33,500 a year, yes. Below that the 19% starter rate means slightly less Income Tax than elsewhere in the UK. On £55,000 a Scottish taxpayer pays about £1,650 more a year." },
   { q: "Is National Insurance different in Scotland?", a: "No. National Insurance is the same across the UK, which is why Scottish taxpayers pay a combined 50% between £43,663 and £50,270: 42% Income Tax and 8% NI." },
   { q: "Are savings and dividends taxed at Scottish rates?", a: "No. Savings interest, dividends and capital gains are taxed at UK rates using UK bands, even for Scottish taxpayers." },
+  { q: "How do I know if I am a Scottish taxpayer?", a: "Check your tax code on your payslip or in your HMRC online account. A code starting with S, such as S1257L, means you are taxed at Scottish rates." },
+  { q: "I have moved to Scotland but my code has no S. What should I do?", a: "Update your address with HMRC online. Your employer will be sent a new code, and any tax difference for the year is corrected through later payslips or after the year ends." },
+  { q: "Are students in Scotland taxed differently?", a: "Students are taxed like anyone else on their earnings, at Scottish rates if they live in Scotland for most of the tax year. Most part-time student earnings fall within the £12,570 Personal Allowance." },
+  { q: "Do Scottish rates apply to my bonus?", a: "Yes. Bonuses, overtime and benefits in kind are employment income, so they are taxed at Scottish rates. A bonus that takes your pay above £43,662 is taxed at 42% on the part above it, with NI on top at 8% until £50,270 and 2% after." },
+  { q: "Is the Personal Allowance taper the same in Scotland?", a: "Yes. The Personal Allowance is reduced by £1 for every £2 of adjusted net income above £100,000, and is gone at £125,140. Because the advanced rate in Scotland is 45%, the effective rate in this band is 67.5% before NI." },
+  { q: "Will Scottish rates change again?", a: "The Scottish Government sets rates and bands each year in its budget. The figures in this guide and the calculator are for 2026/27 and will be updated when the 2027/28 rates are confirmed." },
 ];
 
 export default async function ScottishTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

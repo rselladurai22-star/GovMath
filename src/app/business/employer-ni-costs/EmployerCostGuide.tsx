@@ -31,7 +31,6 @@ const TOC: TocItem[] = [
   { id: "directors", title: "Directors and National Insurance" },
   { id: "paying", title: "Paying and reporting" },
   { id: "compare", title: "Employee, freelancer or director?" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -400,35 +399,7 @@ export default function EmployerCostGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={16} kicker="FAQs" title="Common questions">
-        <h3>Is employer NI deducted from the employee&rsquo;s pay?</h3>
-        <p>No. Employer NI is a cost to the business on top of pay. The employee pays their own NI separately.</p>
-        <h3>Do I pay employer NI on a director&rsquo;s salary?</h3>
-        <p>Yes, on the same basis, though directors&rsquo; NI is worked out on an annual earnings period.</p>
-        <h3>Is employer NI an allowable expense?</h3>
-        <p>Yes. It reduces your taxable profit, whether you are a sole trader or a company.</p>
-        <h3>Do I pay employer NI on pension contributions?</h3>
-        <p>No. Employer pension contributions are free of NI, which is why salary sacrifice saves money.</p>
-        <h3>What about part-time staff?</h3>
-        <p>
-          The same rules apply to what they earn. Someone on £8,000 a year costs £450 in employer NI, because pay above £5,000
-          is charged at 15%.
-        </p>
-        <h3>Do I pay employer NI on expenses I reimburse?</h3>
-        <p>Not on genuine business expenses, such as mileage at the approved rates or travel costs, as long as they are paid back at cost.</p>
-        <h3>Does employer NI apply to statutory pay such as maternity pay?</h3>
-        <p>Yes. Statutory Maternity, Paternity and Sick Pay are earnings, so employer NI applies above the threshold. Small employers can reclaim most statutory parental pay from HMRC.</p>
-        <h3>How do I claim the Employment Allowance?</h3>
-        <p>Through your payroll software, by marking it on an Employer Payment Summary. You claim it once per tax year, and it is used up against your employer NI each month.</p>
-        <h3>Can I pass the cost of employer NI on to my employees?</h3>
-        <p>
-          Not by deducting it from their pay: employer NI is a cost the business must bear. In practice, higher employer costs
-          can affect pay rises and hiring, but each employee&rsquo;s contract sets their pay, and any reduction needs their
-          agreement.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={16} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "15%", label: "Employer NI rate" },

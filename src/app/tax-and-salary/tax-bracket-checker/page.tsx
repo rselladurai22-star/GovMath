@@ -23,6 +23,10 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What is the 60% tax trap?", a: "Between £100,000 and £125,140 your Personal Allowance is reduced by £1 for every £2 of income. Combined with 40% tax, that makes an effective rate of 60%, or 62% with National Insurance." },
   { q: "How can I get into a lower tax band?", a: "Pension contributions and Gift Aid reduce your adjusted net income. Salary sacrifice reduces it directly; personal pension contributions and Gift Aid extend your basic-rate band by the grossed-up amount." },
   { q: "Do savings and dividends count towards my tax band?", a: "Yes. They are added on top of your earnings. Your band then decides your Personal Savings Allowance (£1,000 basic, £500 higher, £0 additional) and your dividend tax rate. Money in ISAs does not count." },
+  { q: "Am I a higher-rate taxpayer?", a: "In England, Wales and Northern Ireland, you are if your taxable income is above £50,270. In Scotland the equivalent 42% rate starts above £43,662. Use your income after pension contributions and Gift Aid." },
+  { q: "Does a pay rise ever leave me worse off?", a: "Not through Income Tax alone, because only the income above a threshold is taxed at the higher rate. Losing Child Benefit, childcare support or means-tested benefits can make a rise worth much less, which is why pension contributions are often used near £60,000 and £100,000." },
+  { q: "Which tax year do these bands apply to?", a: "The 2026/27 tax year, from 6 April 2026 to 5 April 2027. The main thresholds have been frozen since 2021, so they are the same as last year, but Scottish bands changed for 2026/27." },
+  { q: "Does National Insurance follow the same bands?", a: "Partly. Employee NI starts at £12,570 and drops from 8% to 2% at £50,270, matching the rest of the UK's higher-rate threshold, but it has no 45% equivalent and it is the same in Scotland." },
 ];
 
 export default async function TaxBracketPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

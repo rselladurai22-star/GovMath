@@ -24,7 +24,7 @@ const TOC: TocItem[] = [
   { id: "london", title: "Commuting in London" },
   { id: "long-view", title: "The long view" },
   { id: "checklist", title: "Working out your best option" },
-  { id: "questions", title: "Common questions" },
+  { id: "review", title: "Keeping your costs under review" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -267,23 +267,18 @@ export default function CommuteGuide() {
         </ol>
       </GuideSection>
 
-      <GuideSection id="questions" n={22} kicker="FAQs" title="Common questions">
-        <h3>Should I include insurance and car tax?</h3>
-        <p>Only if you would get rid of the car without the commute. Otherwise you pay them anyway, so they do not change the comparison.</p>
-        <h3>What wear and tear figure should I use?</h3>
-        <p>Around 10p to 15p a mile covers tyres, servicing and extra wear for a typical car. Electric cars are usually at the lower end.</p>
-        <h3>Is a longer commute cheaper by train?</h3>
-        <p>Often. At 25 miles each way with £6 parking, driving costs £4,779 a year against a £4,500 season ticket in our example.</p>
-        <h3>Does working from home save money?</h3>
-        <p>Every day at home saves the cost of that day&rsquo;s commute, though heating and electricity at home rise a little. At £13.09 a day by car in the example, two days a week at home saves about £1,205 a year.</p>
-        <h3>Should I count the cost of buying a bike?</h3>
-        <p>Yes, spread over the years you expect to use it, plus servicing, lights and a lock. The calculator includes a yearly figure for this.</p>
-        <h3>Is the train always more reliable?</h3>
-        <p>Not always. Check your route&rsquo;s punctuality and how often services are cancelled, and compare with typical traffic delays on your drive.</p>
-        <h3>Can I claim the cost of my commute on tax?</h3>
-        <p>No. Commuting to a permanent workplace is not tax-deductible, whatever transport you use.</p>
-        <h3>What about a company car?</h3>
-        <p>If you have a company car, fuel for commuting paid by your employer counts as private fuel and can trigger the fuel benefit charge.</p>
+      <GuideSection id="review" n={22} kicker="Review" title="Keeping your costs under review">
+        <p>
+          The cheapest way to get to work rarely stays the same for long. Fuel prices change every week, rail fares are
+          set each year, bus fare caps are reviewed, and your own pattern of office days shifts with your job. A choice
+          that was right when you started can quietly become the expensive one.
+        </p>
+        <ul>
+          <li>Run the comparison again whenever fares, fuel prices or your office days change.</li>
+          <li>Check renewal dates for season tickets and car insurance, and compare before you renew rather than after.</li>
+          <li>Keep a month of receipts, tickets and parking charges: real figures beat guesses.</li>
+          <li>Ask your employer each year what help is on offer, as schemes and season ticket loans come and go.</li>
+        </ul>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={23} kicker="Summary" title="Key numbers">

@@ -30,7 +30,6 @@ const TOC: TocItem[] = [
   { id: "job", title: "Starting or leaving a job" },
   { id: "landlords", title: "Landlords, partners and others" },
   { id: "statement", title: "Checking HMRC's figures" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -361,35 +360,7 @@ export default function PoaGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={15} kicker="FAQs" title="Common questions">
-        <h3>Are payments on account extra tax?</h3>
-        <p>No. They are advance payments of the same tax. Any overpayment is refunded or set against your next bill.</p>
-        <h3>Why do I have to pay tax for a year that has not finished?</h3>
-        <p>
-          The rules collect tax roughly as the year goes on, as PAYE does for employees, rather than waiting until up to 22
-          months after the income was earned.
-        </p>
-        <h3>Do I get a refund if I overpay?</h3>
-        <p>
-          Yes. If your payments on account were more than the final bill, the excess is set against your next payment or
-          refunded if you ask.
-        </p>
-        <h3>What if I stop being self-employed?</h3>
-        <p>
-          If you expect no Self Assessment bill for the year, ask HMRC to reduce your payments on account to zero. You still
-          need to file the final year&rsquo;s return.
-        </p>
-        <h3>Where can I see my payments on account?</h3>
-        <p>In your HMRC online account, under Self Assessment, along with every amount due and paid.</p>
-        <h3>Do payments on account apply to Capital Gains Tax?</h3>
-        <p>No. Capital Gains Tax is paid with the balancing payment, or within 60 days for UK residential property, and never through payments on account.</p>
-        <h3>What happens if I file my return late?</h3>
-        <p>Your payments on account are still due on 31 January and 31 July, and interest runs on anything paid late. You also get late filing penalties, and HMRC may estimate the tax you owe until your return arrives.</p>
-        <h3>Can I pay more than my payment on account?</h3>
-        <p>Yes. Any extra is held as a credit and used against your next payment, which can help if you know your bill is going up.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={16} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={15} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "31 January", label: "Balancing payment and 1st payment on account" },

@@ -24,7 +24,6 @@ const TOC: TocItem[] = [
   { id: "wrappers", title: "Using ISAs and pensions" },
   { id: "using", title: "Using the calculator well" },
   { id: "mistakes", title: "Common mistakes" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -364,24 +363,7 @@ export default function CompoundGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={22} kicker="FAQs" title="Common questions">
-        <h3>Is compound interest guaranteed?</h3>
-        <p>On a fixed savings rate, yes. On investments, returns vary and can be negative in some years.</p>
-        <h3>Does it matter when in the month I save?</h3>
-        <p>Only slightly. The calculator assumes payments at the end of each month.</p>
-        <h3>What is the difference between interest and returns?</h3>
-        <p>Interest is paid on cash. Investment returns come from dividends and changes in value, which compound in the same way.</p>
-        <h3>How much do I need to save to reach £100,000?</h3>
-        <p>It depends on the rate and time. At 5% added monthly, £10,000 plus £200 a month passes £100,000 during the 19th year (£101,675 after 19 years). Use the calculator to try your own figures.</p>
-        <h3>Is the interest on my savings taxed?</h3>
-        <p>Interest above your Personal Savings Allowance is taxed at your income tax rate unless it is in an ISA or pension. Banks pay interest without taking tax off, and HMRC collects any tax through your tax code or Self Assessment.</p>
-        <h3>Can the rate be negative?</h3>
-        <p>Yes. Investments can fall in value, and you can enter a negative rate to see the effect of a poor run of returns.</p>
-        <h3>Why does the result differ from my bank&rsquo;s figure?</h3>
-        <p>Banks may add interest on a different day, use a variable rate, or calculate on daily balances. The calculator gives a close estimate, not an exact statement.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={23} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "72 ÷ rate", label: "Years to double" },

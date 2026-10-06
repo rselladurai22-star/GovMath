@@ -31,7 +31,6 @@ const TOC: TocItem[] = [
   { id: "binding", title: "Multiple or affordability: which limits you?" },
   { id: "borrow-more", title: "Ways to borrow more, or need less" },
   { id: "after", title: "Your budget after the mortgage" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -369,39 +368,7 @@ export default function AffordabilityGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="FAQs" title="Common questions">
-        <h3>Can I borrow 5 or 6 times my salary?</h3>
-        <p>
-          Some lenders offer 5 to 5.5 times to higher earners or certain professions, and a few schemes go higher. Most
-          borrowers are limited to 4.5 times.
-        </p>
-        <h3>Does my student loan reduce what I can borrow?</h3>
-        <p>
-          It can. Student loan repayments reduce your take-home pay, and many lenders include them in the affordability check.
-        </p>
-        <h3>Do lenders count my partner&apos;s income if they are not on the mortgage?</h3>
-        <p>No. Only applicants&apos; income counts, though some lenders allow a joint borrower who is not an owner.</p>
-        <h3>Does a bigger deposit let me borrow more?</h3>
-        <p>
-          Not directly: the multiple is based on income. But you can buy a more expensive home, and a lower LTV usually means a
-          better rate.
-        </p>
-        <h3>Should I use a broker?</h3>
-        <p>
-          A broker can compare many lenders and knows which ones suit your circumstances, such as self-employment or a bonus.
-          Some charge a fee.
-        </p>
-        <h3>Will a mortgage application affect my credit score?</h3>
-        <p>
-          A decision in principle usually uses a soft search, which other lenders cannot see. A full application uses a hard
-          search, which is recorded. Several hard searches in a short time can count against you, so avoid applying to many
-          lenders at once.
-        </p>
-        <h3>How long is a mortgage offer valid?</h3>
-        <p>Usually around six months, though it varies by lender. New-build offers can sometimes be extended.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "4 to 4.5×", label: "Typical income multiple" },

@@ -26,7 +26,6 @@ const TOC: TocItem[] = [
   { id: "returns", title: "Returns, deadlines and penalties" },
   { id: "traps", title: "Rate traps to watch for" },
   { id: "records", title: "Records and Making Tax Digital" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -373,31 +372,7 @@ export default function VatGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={13} kicker="FAQs" title="Common questions">
-        <h3>How do I work out VAT backwards?</h3>
-        <p>Divide the price including VAT by 1.2 to get the price before VAT. The VAT is the difference, or one-sixth of the gross price.</p>
-        <h3>Do I charge VAT if I am not registered?</h3>
-        <p>No. You must not charge VAT or show it on invoices unless you are VAT-registered.</p>
-        <h3>Is VAT the same in Scotland, Wales and Northern Ireland?</h3>
-        <p>
-          Yes. VAT is a UK-wide tax with the same rates. Northern Ireland follows some EU rules for goods, which mainly matters
-          for businesses trading goods with the EU.
-        </p>
-        <h3>Do I pay VAT on my own wages or drawings?</h3>
-        <p>No. Wages and drawings are outside the scope of VAT.</p>
-        <h3>What is the reverse charge?</h3>
-        <p>
-          For some services, such as most construction work between VAT-registered businesses and services bought from
-          abroad, the customer accounts for the VAT instead of the supplier. The invoice shows no VAT but notes that the
-          reverse charge applies.
-        </p>
-        <h3>Can I add VAT to an invoice for work done before I registered?</h3>
-        <p>No. You can only charge VAT on sales made from your registration date. For work that spans the date, VAT depends on the tax point, usually when the work is finished or invoiced.</p>
-        <h3>Why does my receipt show a different VAT figure?</h3>
-        <p>Shops often work out VAT on each line or each item and round it, so the total can differ from one-sixth of the bill by a penny or two. Both methods are allowed.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={14} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={13} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "× 1.2", label: "Adds 20% VAT" },

@@ -23,6 +23,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What if I earn more than £7,500?", a: "Register for Self Assessment and either pay tax on the amount above £7,500, or use the normal method and deduct your actual expenses." },
   { q: "Do I need to tell HMRC if I earn under £7,500?", a: "No. The relief is automatic and you do not need to report it." },
   { q: "Does Rent a Room apply to Airbnb?", a: "It can, for furnished rooms in your main home while you live there." },
+  { q: "Does it apply to Airbnb guests?", a: "It can, if the guests stay in a furnished room in your main home while you live there. Letting the whole home while you are away does not qualify." },
+  { q: "What if my lodger only stays a few months?", a: "You still get the full £7,500 limit for the tax year. It is not divided by the number of months." },
+  { q: "Can I claim the scheme and expenses together?", a: "No. Under the scheme you cannot deduct any expenses." },
+  { q: "Do I have to protect a lodger's deposit?", a: "Not usually. Deposit protection rules apply to assured shorthold tenancies, not lodgers who live with you." },
+  { q: "Is the limit different in Scotland or Wales?", a: "No. Rent a Room is a UK-wide Income Tax relief. Scottish taxpayers pay Scottish rates on any taxable amount." },
+  { q: "Does Rent a Room affect Capital Gains Tax when I sell?", a: "Having a lodger who shares your home does not normally reduce Private Residence Relief, so you would not usually pay CGT on your home because of it." },
+  { q: "Can a lodger stay if I rent my home?", a: "Only if your tenancy allows it. Ask your landlord for written permission first." },
 ];
 
 export default async function RentARoomPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

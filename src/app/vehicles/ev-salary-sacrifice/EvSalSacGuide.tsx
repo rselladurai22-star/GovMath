@@ -24,7 +24,6 @@ const TOC: TocItem[] = [
   { id: "mistakes", title: "Common mistakes" },
   { id: "employer-view", title: "How employers set up schemes" },
   { id: "ni-cap", title: "Will the pension salary sacrifice cap affect cars?" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -317,28 +316,7 @@ export default function EvSalSacGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={22} kicker="FAQs" title="Common questions">
-        <h3>Can I get a plug-in hybrid through salary sacrifice?</h3>
-        <p>Yes. Plug-in hybrids at 75 g/km or less are also exempt from the optional remuneration rules, but they are taxed at 4% to 16% depending on electric range in 2026/27, and 18% from April 2028, so the saving is usually smaller.</p>
-        <h3>Does my employer save money too?</h3>
-        <p>Yes. They save employer National Insurance at 15% on the salary sacrificed, but pay 15% on the car benefit.</p>
-        <h3>Can I buy the car at the end?</h3>
-        <p>Not usually. The car goes back at the end of the lease, though some schemes offer a purchase option.</p>
-        <h3>Does salary sacrifice affect my tax code?</h3>
-        <p>Your salary is lower, so less tax is taken through payroll. The company car benefit is either payrolled or collected through your tax code.</p>
-        <h3>What happens at the end of the lease?</h3>
-        <p>The car is inspected and collected. You can usually choose a new car through the scheme, and your salary returns to normal if you do not.</p>
-        <h3>Is the saving guaranteed?</h3>
-        <p>The tax and National Insurance rates and company car percentages can change. The rates for electric cars up to 2029/30 have already been set.</p>
-        <h3>Can part-time workers join a scheme?</h3>
-        <p>Usually yes, as long as your pay after the sacrifice stays above the National Living Wage for the hours you work. Schemes check this when you apply.</p>
-        <h3>Is my car insured if I change jobs?</h3>
-        <p>Cover usually continues until the car is returned or the lease is transferred. Check the early termination terms with the provider.</p>
-        <h3>Does the car count towards my income for mortgage applications?</h3>
-        <p>Lenders usually look at your salary after the sacrifice, and some also count the monthly cost. Tell your lender about the scheme.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={23} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "4%", label: "Electric benefit rate 2026/27" },

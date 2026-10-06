@@ -27,7 +27,6 @@ const TOC: TocItem[] = [
   { id: "mistakes", title: "Common mistakes" },
   { id: "retirement-tax", title: "Tax relief going in, tax coming out" },
   { id: "workplace", title: "Auto-enrolment minimums" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -360,38 +359,7 @@ export default function PensionReliefGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={25} kicker="FAQs" title="Common questions">
-        <h3>Do I get tax relief on employer contributions?</h3>
-        <p>Employer contributions are not taxed as your income, which has the same effect. They count towards your annual allowance.</p>
-        <h3>How do I know which method my scheme uses?</h3>
-        <p>Check your payslip: net pay contributions reduce taxable pay; relief at source contributions are taken after tax.</p>
-        <h3>Can I get relief on contributions above my salary?</h3>
-        <p>Not on personal contributions. Relief is limited to 100% of earnings, or £3,600 gross if higher.</p>
-        <h3>Is it better to pay off my mortgage or pay into a pension?</h3>
-        <p>For higher-rate taxpayers, the 40% relief usually beats the mortgage interest saved, but pensions are locked until at least 55.</p>
-        <h3>Does pension tax relief affect my tax code?</h3>
-        <p>It can. HMRC may raise your tax code to give higher-rate relief through your pay, rather than waiting for a tax return.</p>
-        <h3>Can I get relief if I am over 75?</h3>
-        <p>No. Contributions after 75 do not get tax relief.</p>
-        <h3>Is salary sacrifice always better?</h3>
-        <p>
-          It saves the most, but it lowers your contractual salary, which can affect borrowing, some benefits and pay-linked perks. For most people the
-          saving is worth it.
-        </p>
-        <h3>What if I pay too much in?</h3>
-        <p>
-          Contributions over the annual allowance are taxed back at your marginal rate unless carry forward covers them. If the charge is over £2,000,
-          you can usually ask your scheme to pay it from your pension.
-        </p>
-        <h3>Do pension contributions reduce student loan repayments?</h3>
-        <p>Net pay and salary sacrifice contributions reduce the earnings used for student loan repayments. Relief at source contributions do not.</p>
-        <h3>Can I backdate a claim for higher-rate relief?</h3>
-        <p>Yes. You can claim for the current tax year and the four before it, by tax return or by writing to HMRC.</p>
-        <h3>Do I get tax relief on a pension for my child?</h3>
-        <p>Yes. Up to £3,600 gross a year gets 20% relief added, even though the child has no earnings.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={26} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={25} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£60,000", label: "Annual allowance" },

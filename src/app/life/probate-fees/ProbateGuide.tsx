@@ -35,7 +35,6 @@ const TOC: TocItem[] = [
   { id: "disputes", title: "Disputes and caveats" },
   { id: "costs-saving", title: "Ways to keep costs down" },
   { id: "checklist", title: "An executor's checklist" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -344,34 +343,7 @@ export default function ProbateGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={20} kicker="FAQs" title="Common questions">
-        <h3>Who pays the probate fee?</h3>
-        <p>The estate. The executor can pay it and claim it back from the estate.</p>
-        <h3>Is the fee different with a solicitor?</h3>
-        <p>No. The court fee is £526 either way. A solicitor charges their own fees on top.</p>
-        <h3>Is the fee based on the size of the estate?</h3>
-        <p>Only to decide whether it is over £5,000. Above that, every estate pays £526.</p>
-        <h3>Can I get help with the fee?</h3>
-        <p>You may be able to apply for Help with Fees if you have a low income and limited savings.</p>
-        <h3>Do I need probate for a small estate?</h3>
-        <p>
-          Often not. If there is no property in the person&rsquo;s sole name and the banks will release the balances, you may not need a grant at
-          all, and there is no fee for estates of £5,000 or less.
-        </p>
-        <h3>Can more than one executor apply?</h3>
-        <p>Yes. Up to four people can be named on the grant. One executor can apply and the others confirm online.</p>
-        <h3>What if I do not want to be an executor?</h3>
-        <p>You can step aside by signing a renunciation, or have power reserved so you can act later if needed.</p>
-        <h3>Is the probate fee refundable if the estate turns out to be small?</h3>
-        <p>Contact the probate service. Fees paid in error can sometimes be refunded.</p>
-        <h3>How long do I have to apply for probate?</h3>
-        <p>
-          There is no strict deadline, but Inheritance Tax is due six months after the death and interest is charged after that. Delays also
-          leave property empty and accounts frozen.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£526", label: "Application fee" },

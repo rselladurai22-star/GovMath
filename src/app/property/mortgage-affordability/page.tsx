@@ -23,6 +23,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How do debts affect what I can borrow?", a: "Regular commitments reduce your borrowing. At 4.5 times income, each £100 a month of debt or childcare cuts the loan by roughly £5,400." },
   { q: "What is a mortgage stress test?", a: "Lenders check you could still afford payments if interest rates rose, often by a few percentage points above your rate." },
   { q: "What deposit do I need?", a: "At least 5% with most lenders. A deposit of 10%, 15% or 25% usually unlocks lower rates." },
+  { q: "Can I borrow 5 or 6 times my salary?", a: "Some lenders offer 5 to 5.5 times to higher earners or certain professions, and a few schemes go higher. Most borrowers are limited to 4.5 times." },
+  { q: "Does my student loan reduce what I can borrow?", a: "It can. Student loan repayments reduce your take-home pay, and many lenders include them in the affordability check." },
+  { q: "Do lenders count my partner's income if they are not on the mortgage?", a: "No. Only applicants' income counts, though some lenders allow a joint borrower who is not an owner." },
+  { q: "Does a bigger deposit let me borrow more?", a: "Not directly: the multiple is based on income. But you can buy a more expensive home, and a lower LTV usually means a better rate." },
+  { q: "Should I use a broker?", a: "A broker can compare many lenders and knows which ones suit your circumstances, such as self-employment or a bonus. Some charge a fee." },
+  { q: "Will a mortgage application affect my credit score?", a: "A decision in principle usually uses a soft search, which other lenders cannot see. A full application uses a hard search, which is recorded. Several hard searches in a short time can count against you, so avoid applying to many lenders at once." },
+  { q: "How long is a mortgage offer valid?", a: "Usually around six months, though it varies by lender. New-build offers can sometimes be extended." },
 ];
 
 export default async function AffordabilityPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

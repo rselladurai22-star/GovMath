@@ -27,7 +27,6 @@ const TOC: TocItem[] = [
   { id: "scotland", title: "Scottish taxpayers" },
   { id: "mistakes", title: "Common mistakes" },
   { id: "lisa", title: "Lifetime ISA in more detail" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -345,34 +344,7 @@ export default function IsaGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={25} kicker="FAQs" title="Common questions">
-        <h3>Do I need to report my ISA to HMRC?</h3>
-        <p>No. ISA income and gains do not go on a tax return.</p>
-        <h3>Can I have more than one ISA?</h3>
-        <p>Yes. You can open several, as long as your total payments stay within £20,000 a year.</p>
-        <h3>What happens to an ISA when I die?</h3>
-        <p>It stays tax-free until the estate is settled, and a spouse can inherit an extra ISA allowance equal to its value.</p>
-        <h3>Does an ISA protect from Inheritance Tax?</h3>
-        <p>No. ISAs count towards your estate for Inheritance Tax.</p>
-        <h3>Can I lose money in a stocks and shares ISA?</h3>
-        <p>Yes. The ISA only changes the tax; the investments inside can still fall in value.</p>
-        <h3>Should I choose a cash ISA or a stocks and shares ISA?</h3>
-        <p>
-          Cash suits money you need within about five years. For longer periods, shares have usually grown faster than cash, though with ups and
-          downs along the way.
-        </p>
-        <h3>Do I get the ISA allowance if I live abroad?</h3>
-        <p>You can keep an existing ISA, but you cannot pay into one while you are not resident in the UK, with limited exceptions.</p>
-        <h3>Does it matter when in the tax year I invest?</h3>
-        <p>Investing early in the tax year gives the money longer to grow tax-free, but regular monthly investing works well too.</p>
-        <h3>Is the calculator&rsquo;s growth rate realistic?</h3>
-        <p>
-          It is your choice. Lower growth makes the ISA advantage smaller, higher growth makes it bigger. Try a range of rates to see how sensitive
-          the result is.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={26} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={25} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£20,000", label: "ISA allowance" },

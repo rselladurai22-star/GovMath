@@ -33,7 +33,6 @@ const TOC: TocItem[] = [
   { id: "trusts", title: "Trusts in brief" },
   { id: "insurance", title: "Life insurance and Inheritance Tax" },
   { id: "mistakes", title: "Mistakes executors make" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -372,27 +371,7 @@ export default function IhtGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="FAQs" title="Common questions">
-        <h3>Who pays Inheritance Tax?</h3>
-        <p>The executors pay it from the estate. Beneficiaries do not usually pay it themselves, except on lifetime gifts.</p>
-        <h3>Do I pay tax on money I inherit?</h3>
-        <p>No Income Tax is due on an inheritance itself, but you may pay tax on income or gains it produces later.</p>
-        <h3>Does Inheritance Tax apply to a home left to my partner?</h3>
-        <p>Only if you are not married or in a civil partnership. Gifts between spouses are exempt.</p>
-        <h3>Are the allowances going up?</h3>
-        <p>No. Both bands are frozen until April 2030.</p>
-        <h3>Is a home owned jointly with my spouse taxed when I die?</h3>
-        <p>Your share passes to your spouse free of Inheritance Tax. The whole home is then counted in the survivor&rsquo;s estate.</p>
-        <h3>Can I give my home to my children and keep living in it?</h3>
-        <p>
-          Not without paying them a full market rent. Otherwise it is a gift with reservation of benefit and stays in your estate, and the
-          residence nil-rate band may be affected.
-        </p>
-        <h3>Do I need to report an estate that owes no tax?</h3>
-        <p>Usually only the figures given in the probate application. A full IHT400 is needed for larger or more complex estates.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£325,000", label: "Nil-rate band" },

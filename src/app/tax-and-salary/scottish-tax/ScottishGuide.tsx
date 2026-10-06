@@ -31,7 +31,6 @@ const TOC: TocItem[] = [
   { id: "why-different", title: "Why Scotland’s tax is different" },
   { id: "beyond-tax", title: "Looking beyond Income Tax" },
   { id: "take-home-table", title: "Scottish take-home pay at common salaries" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -339,41 +338,7 @@ export default function ScottishGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={15} kicker="Questions" title="Common questions">
-        <h3>How do I know if I am a Scottish taxpayer?</h3>
-        <p>
-          Check your tax code on your payslip or in your HMRC online account. A code starting with S, such as S1257L,
-          means you are taxed at Scottish rates.
-        </p>
-        <h3>I have moved to Scotland but my code has no S. What should I do?</h3>
-        <p>
-          Update your address with HMRC online. Your employer will be sent a new code, and any tax difference for the
-          year is corrected through later payslips or after the year ends.
-        </p>
-        <h3>Are students in Scotland taxed differently?</h3>
-        <p>
-          Students are taxed like anyone else on their earnings, at Scottish rates if they live in Scotland for most of
-          the tax year. Most part-time student earnings fall within the £12,570 Personal Allowance.
-        </p>
-        <h3>Do Scottish rates apply to my bonus?</h3>
-        <p>
-          Yes. Bonuses, overtime and benefits in kind are employment income, so they are taxed at Scottish rates. A bonus
-          that takes your pay above £43,662 is taxed at 42% on the part above it, with NI on top at 8% until £50,270 and
-          2% after.
-        </p>
-        <h3>Is the Personal Allowance taper the same in Scotland?</h3>
-        <p>
-          Yes. The Personal Allowance is reduced by £1 for every £2 of adjusted net income above £100,000, and is gone at
-          £125,140. Because the advanced rate in Scotland is 45%, the effective rate in this band is 67.5% before NI.
-        </p>
-        <h3>Will Scottish rates change again?</h3>
-        <p>
-          The Scottish Government sets rates and bands each year in its budget. The figures in this guide and the
-          calculator are for 2026/27 and will be updated when the 2027/28 rates are confirmed.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={16} kicker="Quick reference" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={15} kicker="Quick reference" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£12,570", label: "Personal Allowance, same as the rest of the UK" },

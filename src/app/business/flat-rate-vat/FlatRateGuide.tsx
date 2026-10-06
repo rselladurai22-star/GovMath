@@ -29,7 +29,6 @@ const TOC: TocItem[] = [
   { id: "decide", title: "How to decide" },
   { id: "return", title: "Your VAT return on the scheme" },
   { id: "years", title: "Year one and beyond" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -367,29 +366,7 @@ export default function FlatRateGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={14} kicker="FAQs" title="Common questions">
-        <h3>Do I still charge 20% VAT on the Flat Rate Scheme?</h3>
-        <p>Yes. Your invoices look exactly the same. Only the amount you pay HMRC changes.</p>
-        <h3>Can I reclaim VAT on my phone and software?</h3>
-        <p>No. On the Flat Rate Scheme you cannot reclaim VAT on costs, except on single capital purchases of £2,000 or more.</p>
-        <h3>Which trade do I choose if I do several things?</h3>
-        <p>The one that makes up the largest share of your turnover. Keep a note of why you chose it in case HMRC asks.</p>
-        <h3>Does the scheme work with Making Tax Digital?</h3>
-        <p>Yes. You still keep digital records and file returns through compatible software.</p>
-        <h3>Can I use the scheme with cash accounting?</h3>
-        <p>
-          The Flat Rate Scheme has its own cash-based turnover option, so you can pay flat rate VAT on money received rather
-          than on invoices. You cannot also join the separate Cash Accounting Scheme.
-        </p>
-        <h3>Is the Flat Rate Scheme the same for limited companies?</h3>
-        <p>Yes. The rates, the limited cost test and the turnover limits are the same whether you trade as a sole trader, a partnership or a limited company.</p>
-        <h3>What if my goods spending changes during the year?</h3>
-        <p>Apply the test separately to each VAT return. In a quarter where you buy enough goods, use your trade rate; in a quarter where you do not, use 16.5%.</p>
-        <h3>Can I backdate joining the scheme?</h3>
-        <p>Usually only from the start of your current VAT period, though HMRC can sometimes agree an earlier date. Ask when you apply.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={15} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={14} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "16.5%", label: "Limited cost trader rate" },

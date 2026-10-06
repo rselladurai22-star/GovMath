@@ -16,7 +16,6 @@ const TOC: TocItem[] = [
   { id: "long-trips", title: "Planning a long trip" },
   { id: "loads", title: "Towing, roof boxes and full loads" },
   { id: "mistakes", title: "Common mistakes" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -209,16 +208,7 @@ export default function FuelGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={14} kicker="FAQs" title="Common questions">
-        <h3>Why is my real mpg lower than the official figure?</h3>
-        <p>Official figures come from a standard laboratory test. Real driving, with cold starts, traffic, speed and heating, usually uses more fuel.</p>
-        <h3>How do I work out my real mpg?</h3>
-        <p>Fill the tank, reset the trip counter, and at the next fill-up divide the miles driven by the litres added, then multiply by 4.546.</p>
-        <h3>Is diesel cheaper to run?</h3>
-        <p>Diesel cars usually do more miles per gallon, but diesel costs more a litre. In the example, a 55 mpg diesel costs £39.46 against £42.14 for a 45 mpg petrol car.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={15} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={14} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "4.546", label: "Litres in a UK gallon" },

@@ -27,7 +27,6 @@ const TOC: TocItem[] = [
   { id: "companies", title: "Limited companies under CIS" },
   { id: "problems", title: "When something goes wrong" },
   { id: "budget", title: "Budgeting under CIS" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -343,34 +342,7 @@ export default function CisGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={14} kicker="FAQs" title="Common questions">
-        <h3>Is CIS an extra tax?</h3>
-        <p>No. It is an advance payment of your Income Tax and National Insurance, credited on your tax return.</p>
-        <h3>Do I pay CIS on materials?</h3>
-        <p>No, as long as they are shown separately on the invoice and you bought them for the job.</p>
-        <h3>Can I claim expenses if I am under CIS?</h3>
-        <p>
-          Yes. You claim them on your tax return in the normal way. That is why most subcontractors get a refund: the 20% was
-          taken before expenses.
-        </p>
-        <h3>My contractor deducted 30%. Why?</h3>
-        <p>
-          Either you are not registered, or HMRC could not match your details when the contractor verified you. Register, or
-          check your name, UTR and NI number with the contractor.
-        </p>
-        <h3>Does CIS apply to work for homeowners?</h3>
-        <p>No. Homeowners paying for work on their own home are not contractors and do not deduct anything.</p>
-        <h3>Do I still need to pay National Insurance?</h3>
-        <p>Yes. Class 4 NI is worked out on your tax return, and your CIS deductions count towards it.</p>
-        <h3>Do I have to register for CIS?</h3>
-        <p>Registering is not compulsory for subcontractors, but if you do not, contractors must deduct 30% instead of 20%.</p>
-        <h3>Does the contractor deduct CIS from my VAT?</h3>
-        <p>No. CIS is never taken from VAT. Under the reverse charge there is no VAT on the invoice at all.</p>
-        <h3>Can I get gross payment status in my first year?</h3>
-        <p>Usually not, because HMRC needs a 12-month record of turnover and compliance. Apply once you have a year of trading behind you.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={15} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={14} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "20%", label: "Registered subcontractor" },

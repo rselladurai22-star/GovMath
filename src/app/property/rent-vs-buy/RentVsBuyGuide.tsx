@@ -33,7 +33,6 @@ const TOC: TocItem[] = [
   { id: "flat-prices", title: "Example: when prices stand still" },
   { id: "which", title: "When each choice tends to win" },
   { id: "tax", title: "Tax differences between owning and renting" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -368,35 +367,7 @@ export default function RentVsBuyGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={20} kicker="FAQs" title="Common questions">
-        <h3>Is renting dead money?</h3>
-        <p>
-          Not entirely. Rent buys a home to live in, just as mortgage interest, upkeep and Stamp Duty do. The fair comparison is rent
-          against those costs of owning, not against the whole mortgage payment.
-        </p>
-        <h3>How long do I need to stay to make buying worthwhile?</h3>
-        <p>It depends on prices, rates and rents, but often three to five years or more. The calculator shows the break-even year.</p>
-        <h3>What if house prices fall?</h3>
-        <p>
-          Buyers with small deposits are hit hardest, and could owe more than the home is worth. If you can stay until prices
-          recover, the loss is not realised.
-        </p>
-        <h3>Should I buy now or wait?</h3>
-        <p>No one can predict prices reliably. Buy when you can afford it comfortably and expect to stay for several years.</p>
-        <h3>Does the calculator include the cost of moving again?</h3>
-        <p>Selling costs at the end are included. The cost of buying your next home is not, as it would apply to either choice.</p>
-        <h3>What if I cannot afford a deposit yet?</h3>
-        <p>
-          Then the choice is about saving while you rent. A Lifetime ISA or regular investing can build a deposit faster, and
-          shared ownership needs a smaller one.
-        </p>
-        <h3>Should I include service charges?</h3>
-        <p>Yes, for a leasehold flat. Add them to the maintenance figure under More options as a share of the home&apos;s value.</p>
-        <h3>Why does the buyer start behind?</h3>
-        <p>On day one the buyer has paid fees and Stamp Duty, and would pay selling costs if they sold, so their wealth starts lower.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "1%", label: "Typical yearly upkeep, as a share of value" },

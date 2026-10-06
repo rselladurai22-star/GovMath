@@ -29,7 +29,7 @@ const TOC: TocItem[] = [
   { id: "study-elsewhere", title: "Studying in England or Wales" },
   { id: "end", title: "Planning for the end of repayments" },
   { id: "mistakes2", title: "More things to watch" },
-  { id: "questions", title: "Common questions" },
+  { id: "records", title: "Keeping good records" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -320,19 +320,17 @@ export default function Plan4Guide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={27} kicker="FAQs" title="Common questions">
-        <h3>I was on Plan 1 in Scotland. What changed?</h3>
-        <p>In April 2021 Scottish Plan 1 loans moved to Plan 4, with a higher threshold. Your balance and interest did not change.</p>
-        <h3>Do I need to do anything to switch?</h3>
-        <p>No. The change was automatic.</p>
-        <h3>Do postgraduate loans from SAAS work the same way?</h3>
-        <p>Yes. SAAS postgraduate tuition fee and living cost loans are repaid under Plan 4, not the English Postgraduate Loan.</p>
-        <h3>Do I need to tell HMRC about my loan?</h3>
-        <p>Not if you are employed: tell your employer your plan type when you start, often using a starter checklist, and they deduct repayments. If you file Self Assessment, tick the student loan box on your return.</p>
-        <h3>What if I move to England to work?</h3>
-        <p>You stay on Plan 4 and repay through PAYE as normal. Your employer just needs to know your plan type. Your income tax changes to English rates, but the loan rules do not.</p>
-        <h3>Can my loan be written off early?</h3>
-        <p>Only if you die or become permanently unable to work because of illness or disability. Otherwise it runs until the write-off date or until you clear it.</p>
+      <GuideSection id="records" n={27} kicker="Records" title="Keeping good records">
+        <p>
+          Plan 4 repayments come out through your pay, so it is easy to forget the loan exists. A few minutes each year
+          keeps the balance right and makes refunds easy to claim.
+        </p>
+        <ul>
+          <li>Keep every P60 and your final payslip from each job, as they show what was taken for your loan.</li>
+          <li>Check your online Student Loans Company account once a year against your P60s.</li>
+          <li>Keep your address and email up to date, especially if you move abroad, where you repay the Student Loans Company directly.</li>
+          <li>Note your plan type and tell a new employer it is Plan 4, so the right threshold is used from your first pay day.</li>
+        </ul>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={28} kicker="Summary" title="Key numbers">

@@ -41,7 +41,6 @@ const TOC: TocItem[] = [
   { id: "scenarios", title: "Scenarios" },
   { id: "students", title: "Students and young adults" },
   { id: "rural", title: "Dispensing doctors and online pharmacies" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -375,31 +374,7 @@ export default function PrescriptionGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={26} kicker="FAQs" title="Common questions">
-        <h3>Does a PPC cover dental charges?</h3>
-        <p>No. It only covers NHS prescription charges.</p>
-        <h3>Can I pay for a 12-month PPC monthly?</h3>
-        <p>Yes, by 10 monthly Direct Debits of £11.45.</p>
-        <h3>Do I need a PPC if I am 60?</h3>
-        <p>No. Prescriptions are free from your 60th birthday.</p>
-        <h3>What if I start a PPC and then become exempt?</h3>
-        <p>You may be able to get a refund for the unused months. Contact the NHS Business Services Authority.</p>
-        <h3>Can I share a PPC with my partner?</h3>
-        <p>No. A PPC covers one named person. Each person who needs regular prescriptions needs their own certificate.</p>
-        <h3>Does a PPC cover hospital prescriptions?</h3>
-        <p>Yes. It covers NHS prescriptions from hospitals, GPs, dentists, nurses and pharmacists in England.</p>
-        <h3>When does the 12-month PPC start?</h3>
-        <p>On the date you choose when you buy it, or up to a month earlier if you paid for prescriptions in that month and kept an FP57 receipt.</p>
-        <h3>Will prescription charges go up?</h3>
-        <p>
-          They are usually reviewed each April. The charge has been held at £9.90 since 2023. Check the latest charge before buying a long-term
-          certificate.
-        </p>
-        <h3>Do I have to pay for contraception?</h3>
-        <p>No. Prescribed contraceptives are free for everyone in England.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={27} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={26} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£9.90", label: "Per item" },

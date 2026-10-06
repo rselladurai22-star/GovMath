@@ -23,6 +23,10 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What is £15 an hour as a salary after tax?", a: "At 37.5 hours a week, £15 an hour is £29,250 a year. After Income Tax and National Insurance in 2026/27 that is about £2,048 a month in England, Wales or Northern Ireland, with no pension or student loan." },
   { q: "What is the minimum wage in 2026?", a: "From 1 April 2026 the National Living Wage for people aged 21 and over is £12.71 an hour. It is £10.85 for 18 to 20 year olds, and £8.00 for under-18s and apprentices." },
   { q: "Do I get paid more for overtime?", a: "Not by law. Overtime rates such as time and a half depend on your contract. Your average pay across all hours must still be at least the minimum wage." },
+  { q: "How many working hours are there in a year?", a: "At 37.5 hours a week there are 1,950 paid hours in a 52-week year. At 40 hours it is 2,080, and at 35 hours 1,820. These figures include paid holiday, because a salary pays you for those weeks too." },
+  { q: "How many working days are there in the 2026/27 tax year?", a: "Between 6 April 2026 and 5 April 2027 there are 261 weekdays. Take away the 9 bank holidays in England and Wales and 252 working days remain, before any personal holiday." },
+  { q: "Is an hourly rate better than a salary?", a: "Neither is better in itself. A salary gives predictable pay and usually paid holiday and sick pay. Hourly pay rewards extra hours directly, but your income can fall when hours are cut. Compare the hourly rate, the benefits and how stable your hours are likely to be." },
+  { q: "Does the tax differ for hourly and salaried workers?", a: "No. Income Tax and National Insurance are the same whether your pay is quoted by the hour or by the year. What can differ is timing: if your hours vary, each payslip is taxed on what you earned that period." },
 ];
 
 export default async function HourlyPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

@@ -19,7 +19,6 @@ const TOC: TocItem[] = [
   { id: "clocks", title: "Clock changes and time zones" },
   { id: "pregnancy", title: "Pregnancy and baby dates" },
   { id: "school", title: "School and term dates" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -249,24 +248,7 @@ export default function DaysGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={17} kicker="FAQs" title="Common questions">
-        <h3>How many days until Christmas?</h3>
-        <p>Enter today and 25 December. From 4 October 2026 it is 82 days.</p>
-        <h3>How many working days are in a year?</h3>
-        <p>253 in England and Wales in 2026 and 2027, 252 in Scotland and 251 in Northern Ireland.</p>
-        <h3>Does the calculator count bank holidays as working days?</h3>
-        <p>No. Bank holidays that fall on weekdays are left out of the working-day count.</p>
-        <h3>Can I count backwards?</h3>
-        <p>Yes. Use a minus number of days to find an earlier date.</p>
-        <h3>How many weeks are there between two dates?</h3>
-        <p>Divide the days by 7. The calculator shows whole weeks and the days left over.</p>
-        <h3>Why does my answer differ from another calculator by one day?</h3>
-        <p>Usually because one counts the end date and the other does not. Switch &ldquo;Include the end date&rdquo; to compare.</p>
-        <h3>Does the calculator know about past bank holidays?</h3>
-        <p>Yes, including one-off days such as the 2022 Platinum Jubilee and the 2023 coronation.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "365", label: "Days in a normal year" },

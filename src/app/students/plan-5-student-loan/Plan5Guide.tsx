@@ -28,7 +28,6 @@ const TOC: TocItem[] = [
   { id: "diy", title: "Working it out yourself" },
   { id: "lifetime", title: "What 40 years of repayments means" },
   { id: "choosing", title: "Thinking about university costs" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -327,20 +326,7 @@ export default function Plan5Guide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={26} kicker="FAQs" title="Common questions">
-        <h3>Will the threshold go up?</h3>
-        <p>It is £25,000 until April 2027 and is then due to rise each year with RPI.</p>
-        <h3>Do part-time jobs while studying count?</h3>
-        <p>No. Repayments only start from the April after you leave your course.</p>
-        <h3>What if I leave my course early?</h3>
-        <p>Repayments can start from the April after you leave, if you earn over the threshold.</p>
-        <h3>Do I need to tell HMRC about my loan?</h3>
-        <p>Not if you are employed: tell your employer your plan type when you start, often using a starter checklist, and they deduct repayments. If you file Self Assessment, tick the student loan box on your return.</p>
-        <h3>Is Plan 5 interest higher than Plan 2?</h3>
-        <p>No. Plan 5 charges RPI only, 4.1% from September 2026, while Plan 2 charges up to 6% this year. But Plan 5 is repaid from a lower threshold for longer.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={27} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={26} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£25,000", label: "Threshold 2026/27" },

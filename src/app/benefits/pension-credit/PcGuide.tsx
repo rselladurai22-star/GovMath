@@ -36,7 +36,6 @@ const TOC: TocItem[] = [
   { id: "documents", title: "What you need to claim" },
   { id: "state-pension", title: "Old and new State Pension" },
   { id: "deferring", title: "Deferring your State Pension" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -351,39 +350,7 @@ export default function PcGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={21} kicker="FAQs" title="Common questions">
-        <h3>Can I get Pension Credit if I own my home?</h3>
-        <p>Yes. The home you live in is ignored.</p>
-        <h3>Is Pension Credit taxable?</h3>
-        <p>No.</p>
-        <h3>Can I get it with savings over £16,000?</h3>
-        <p>Yes. Unlike Universal Credit, there is no upper savings limit. Savings above £10,000 are treated as a small weekly income.</p>
-        <h3>Does Pension Credit affect my State Pension?</h3>
-        <p>No. It is paid on top of your State Pension.</p>
-        <h3>Can I get it if I still work?</h3>
-        <p>Yes, if your income is low enough. Part of your earnings is ignored.</p>
-        <h3>What if I get Pension Credit wrong and am overpaid?</h3>
-        <p>
-          Overpayments caused by not reporting a change usually have to be repaid. Report changes in income, savings or who lives with you
-          promptly to avoid this.
-        </p>
-        <h3>Will an inheritance stop my Pension Credit?</h3>
-        <p>
-          Not necessarily. There is no upper limit on savings, but money over £10,000 adds £1 a week of income for every £500. A large sum may
-          reduce or end Guarantee Credit, so report it straight away.
-        </p>
-        <h3>Do I need to claim again each year?</h3>
-        <p>No. Your award continues and is uprated each April. You may be asked to confirm your details from time to time.</p>
-        <h3>Can someone claim for me?</h3>
-        <p>
-          Yes. A family member or friend can help you claim by phone or online, and someone with power of attorney or an appointee can manage
-          the claim if you cannot.
-        </p>
-        <h3>Is Pension Credit paid with my State Pension?</h3>
-        <p>It is paid separately, into the same or a different account, usually on the same cycle as your State Pension.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£238.00", label: "Single guarantee a week" },

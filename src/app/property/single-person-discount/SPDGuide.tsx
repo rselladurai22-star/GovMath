@@ -22,7 +22,6 @@ const TOC: TocItem[] = [
   { id: "changes", title: "When things change" },
   { id: "other-help", title: "Other help with council tax" },
   { id: "examples", title: "Examples" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -185,24 +184,7 @@ export default function SPDGuide() {
         </Callout>
       </GuideSection>
 
-      <GuideSection id="questions" n={10} kicker="FAQs" title="Common questions">
-        <h3>Can I get the discount if my partner works away?</h3>
-        <p>Usually not. If your home is still their main home, they still count.</p>
-        <h3>My adult child lives with me. Do I lose the discount?</h3>
-        <p>Yes, if they are 18 or over and not disregarded, for example once Child Benefit stops or they leave full-time education.</p>
-        <h3>Does a lodger stop the discount?</h3>
-        <p>Yes, if your home is their main home. Rent a Room income is separate and can still be tax-free.</p>
-        <h3>Can I get it on a second home?</h3>
-        <p>No. Discounts depend on who lives in a home as their main residence. A second home has no one counted there and may pay a premium instead.</p>
-        <h3>Is the discount the same in Scotland and Wales?</h3>
-        <p>Yes, it is 25% in all three nations. Northern Ireland has domestic rates instead of council tax, with its own reliefs.</p>
-        <h3>Is the discount taken into account for Council Tax Reduction?</h3>
-        <p>Yes. Council Tax Reduction is worked out on your bill after the discount, so you can receive both.</p>
-        <h3>Do I need to reapply each year?</h3>
-        <p>Usually not. The discount continues until your circumstances change, though councils may ask you to confirm periodically.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={11} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={10} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "25%", label: "Discount if only one adult counts" },

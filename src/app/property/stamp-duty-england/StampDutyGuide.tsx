@@ -35,7 +35,6 @@ const TOC: TocItem[] = [
   { id: "who-ftb", title: "Who counts as a first-time buyer" },
   { id: "non-residential", title: "Mixed-use and non-residential property" },
   { id: "deposit", title: "Stamp Duty and your deposit" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -388,24 +387,7 @@ export default function StampDutyGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={20} kicker="FAQs" title="Common questions">
-        <h3>Does Stamp Duty depend on my deposit?</h3>
-        <p>No. It is worked out on the price, whether you pay cash or borrow 95%.</p>
-        <h3>I am buying before selling. Do I pay the surcharge?</h3>
-        <p>Yes, if you own two homes at the end of the day of completion. Claim it back once you sell your old home within 3 years.</p>
-        <h3>Do I pay Stamp Duty on a garage or parking space?</h3>
-        <p>If bought with the home, it is part of the same purchase. Bought separately, non-residential rates may apply.</p>
-        <h3>Is Stamp Duty due on a house swap or part exchange?</h3>
-        <p>Each side is a purchase, but there are reliefs for part exchanges with house builders. Ask your conveyancer.</p>
-        <h3>Can I pay Stamp Duty in instalments?</h3>
-        <p>No. It is due in full within 14 days of completion.</p>
-        <h3>Do I pay Stamp Duty on a home I am given?</h3>
-        <p>Not if nothing is paid. If you take over the giver&apos;s mortgage, the amount of debt you take on counts as the price.</p>
-        <h3>Is Stamp Duty the same in Northern Ireland?</h3>
-        <p>Yes. Northern Ireland uses the same Stamp Duty Land Tax rates and rules as England.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£125,000", label: "0% band for home movers" },

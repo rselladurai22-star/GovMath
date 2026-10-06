@@ -14,7 +14,6 @@ const TOC: TocItem[] = [
   { id: "stopping", title: "Deciding when to stop driving" },
   { id: "mistakes", title: "Common mistakes" },
   { id: "renewing-tips", title: "Tips for a smooth renewal" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -152,24 +151,7 @@ export default function LicenceGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={12} kicker="FAQs" title="Common questions">
-        <h3>Do I have to take a test at 70?</h3>
-        <p>No. There is no driving test or compulsory medical for a car licence at 70, only a declaration.</p>
-        <h3>Can I keep driving while my renewal is processed?</h3>
-        <p>Usually yes, if you have applied, meet the medical standards and your doctor has not told you not to drive.</p>
-        <h3>Is it different in Northern Ireland?</h3>
-        <p>The rules are similar: renewal at 70 and every three years, through the DVA rather than the DVLA.</p>
-        <h3>What if I have moved house?</h3>
-        <p>Update your address when you renew. You must also tell the DVLA whenever you move, or you could be fined up to £1,000.</p>
-        <h3>Do I need a new photo?</h3>
-        <p>Only if your photo is more than 10 years old or no longer looks like you. Online, the DVLA can often use your passport photo.</p>
-        <h3>Can someone renew for me?</h3>
-        <p>A family member or friend can help you fill in the form, but you must sign the declaration yourself, as it is about your own fitness to drive.</p>
-        <h3>Will I get a reminder before 70?</h3>
-        <p>Yes. The DVLA usually sends a D46P reminder about 90 days before your 70th birthday, and before each three-yearly renewal after that.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={13} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={12} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "70", label: "First renewal" },

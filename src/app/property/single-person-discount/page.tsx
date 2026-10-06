@@ -24,6 +24,12 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Can the discount be backdated?", a: "Most councils backdate it to when you became eligible, if you can show the date." },
   { q: "What if someone moves in?", a: "Tell your council. In England you should do so within 21 days, and a penalty can apply if you do not." },
   { q: "Does a lodger stop the discount?", a: "Yes, if your home is their main home." },
+  { q: "Can I get the discount if my partner works away?", a: "Usually not. If your home is still their main home, they still count." },
+  { q: "My adult child lives with me. Do I lose the discount?", a: "Yes, if they are 18 or over and not disregarded, for example once Child Benefit stops or they leave full-time education." },
+  { q: "Can I get it on a second home?", a: "No. Discounts depend on who lives in a home as their main residence. A second home has no one counted there and may pay a premium instead." },
+  { q: "Is the discount the same in Scotland and Wales?", a: "Yes, it is 25% in all three nations. Northern Ireland has domestic rates instead of council tax, with its own reliefs." },
+  { q: "Is the discount taken into account for Council Tax Reduction?", a: "Yes. Council Tax Reduction is worked out on your bill after the discount, so you can receive both." },
+  { q: "Do I need to reapply each year?", a: "Usually not. The discount continues until your circumstances change, though councils may ask you to confirm periodically." },
 ];
 
 export default async function SPDPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

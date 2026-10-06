@@ -23,6 +23,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Is renting dead money?", a: "No more than mortgage interest, upkeep and Stamp Duty. The fair comparison is rent against those costs." },
   { q: "What return should I assume on investments?", a: "Long-term stock market returns have historically been higher than cash, but are not guaranteed. Try a cautious and an optimistic figure." },
   { q: "Does the calculator include Stamp Duty?", a: "Yes, for England and Northern Ireland, including first-time buyer relief." },
+  { q: "How long do I need to stay to make buying worthwhile?", a: "It depends on prices, rates and rents, but often three to five years or more. The calculator shows the break-even year." },
+  { q: "What if house prices fall?", a: "Buyers with small deposits are hit hardest, and could owe more than the home is worth. If you can stay until prices recover, the loss is not realised." },
+  { q: "Should I buy now or wait?", a: "No one can predict prices reliably. Buy when you can afford it comfortably and expect to stay for several years." },
+  { q: "Does the calculator include the cost of moving again?", a: "Selling costs at the end are included. The cost of buying your next home is not, as it would apply to either choice." },
+  { q: "What if I cannot afford a deposit yet?", a: "Then the choice is about saving while you rent. A Lifetime ISA or regular investing can build a deposit faster, and shared ownership needs a smaller one." },
+  { q: "Should I include service charges?", a: "Yes, for a leasehold flat. Add them to the maintenance figure under More options as a share of the home's value." },
+  { q: "Why does the buyer start behind?", a: "On day one the buyer has paid fees and Stamp Duty, and would pay selling costs if they sold, so their wealth starts lower." },
 ];
 
 export default async function RentVsBuyPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

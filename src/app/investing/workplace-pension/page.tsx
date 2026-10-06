@@ -22,6 +22,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much will I pay on £35,000?", a: "On the minimum, you pay £119.83 a month and your employer £71.90. After tax relief, your share costs you about £95.87." },
   { q: "Who is auto-enrolled?", a: "Workers aged 22 to State Pension age earning over £10,000 a year from one job." },
   { q: "Should I opt out?", a: "Usually not. Opting out means losing your employer's contributions and tax relief." },
+  { q: "Do I have to be in a workplace pension?", a: "No, you can opt out, but you lose your employer's contributions and the tax relief." },
+  { q: "Can I pay in more than the minimum?", a: "Yes, up to the annual allowance of £60,000 a year, including employer contributions, limited to your earnings for tax relief." },
+  { q: "What if I am self-employed?", a: "You are not auto-enrolled. You can set up a personal pension or SIPP and get the same tax relief." },
+  { q: "Can my employer pay less than 3%?", a: "No, not on qualifying earnings. If your employer uses a different basis, such as basic pay, it must still meet one of the legal tests that give at least the same overall result." },
+  { q: "What happens to my pension if I die?", a: "It can usually be passed to the people you nominate. Fill in an expression of wish form with your provider and keep it up to date. From April 2027, unused pensions count towards your estate for inheritance tax." },
+  { q: "Is my pension safe if my employer goes bust?", a: "Your pot is held by the pension provider, separately from your employer, so it is not lost if your employer fails. Contributions owed but not paid may be recoverable." },
+  { q: "Do the thresholds change each year?", a: "The government reviews them each year. For 2026/27 they are unchanged: £10,000 to be enrolled, and qualifying earnings from £6,240 to £50,270." },
 ];
 
 export default async function WorkplacePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

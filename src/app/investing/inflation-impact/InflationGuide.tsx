@@ -21,7 +21,6 @@ const TOC: TocItem[] = [
   { id: "debts", title: "Inflation and debts" },
   { id: "investing", title: "Investing and inflation" },
   { id: "mistakes", title: "Common mistakes" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -332,26 +331,7 @@ export default function InflationGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>What inflation rate should I use?</h3>
-        <p>For long-term plans, 2% to 3% is a common assumption. Test a higher figure too, as recent years show inflation can spike.</p>
-        <h3>Does inflation affect debts?</h3>
-        <p>Yes, in your favour: a fixed debt, such as a fixed-rate mortgage balance, becomes smaller in real terms as prices and pay rise.</p>
-        <h3>Is deflation good?</h3>
-        <p>Falling prices sound good, but sustained deflation can lead people to delay spending, which can harm the economy and jobs.</p>
-        <h3>Why is my personal inflation different?</h3>
-        <p>The official figure is an average. If you spend more on energy, food or rent than the typical basket, your costs may rise faster.</p>
-        <h3>When are the inflation figures published?</h3>
-        <p>The Office for National Statistics publishes CPI, CPIH and RPI each month, usually around the middle of the month, for the month before.</p>
-        <h3>Why does the calculator default to 3.1%?</h3>
-        <p>It is the latest annual CPI rate, for the year to August 2026. For plans over many years, you may prefer the 2% target or a figure between the two.</p>
-        <h3>Does inflation affect my pension?</h3>
-        <p>Yes. The State Pension rises each April under the triple lock. Workplace and personal pension pots need to grow faster than inflation to keep their value, and the income you draw later should be planned in today&rsquo;s money.</p>
-        <h3>Is the result exact?</h3>
-        <p>No. It assumes the same inflation every year, while real inflation moves around. Use it to understand the scale of the effect rather than to predict an exact figure.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "3.1%", label: "CPI, year to August 2026" },

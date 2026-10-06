@@ -31,7 +31,6 @@ const TOC: TocItem[] = [
   { id: "fiscal-drag", title: "Frozen thresholds and fiscal drag" },
   { id: "other-people", title: "Self-employed, landlords and pensioners" },
   { id: "take-home-table", title: "Tax and take-home at common incomes" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -394,31 +393,7 @@ export default function TaxBracketGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={14} kicker="Questions" title="Common questions">
-        <h3>Am I a higher-rate taxpayer?</h3>
-        <p>
-          In England, Wales and Northern Ireland, you are if your taxable income is above £50,270. In Scotland the
-          equivalent 42% rate starts above £43,662. Use your income after pension contributions and Gift Aid.
-        </p>
-        <h3>Does a pay rise ever leave me worse off?</h3>
-        <p>
-          Not through Income Tax alone, because only the income above a threshold is taxed at the higher rate. Losing
-          Child Benefit, childcare support or means-tested benefits can make a rise worth much less, which is why pension
-          contributions are often used near £60,000 and £100,000.
-        </p>
-        <h3>Which tax year do these bands apply to?</h3>
-        <p>
-          The 2026/27 tax year, from 6 April 2026 to 5 April 2027. The main thresholds have been frozen since 2021, so
-          they are the same as last year, but Scottish bands changed for 2026/27.
-        </p>
-        <h3>Does National Insurance follow the same bands?</h3>
-        <p>
-          Partly. Employee NI starts at £12,570 and drops from 8% to 2% at £50,270, matching the rest of the UK&rsquo;s
-          higher-rate threshold, but it has no 45% equivalent and it is the same in Scotland.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={15} kicker="Quick reference" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={14} kicker="Quick reference" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£12,570", label: "Personal Allowance" },

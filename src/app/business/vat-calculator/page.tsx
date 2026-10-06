@@ -23,6 +23,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much VAT is in a price that includes VAT?", a: "One-sixth of it at 20%, and one twenty-first at 5%." },
   { q: "When do I have to register for VAT?", a: "When your taxable sales go over £90,000 in any rolling 12 months, or you expect them to go over £90,000 in the next 30 days alone." },
   { q: "What is the difference between zero-rated and exempt?", a: "Zero-rated sales are taxable at 0%, count towards the threshold and let you reclaim VAT on costs. Exempt sales do neither." },
+  { q: "How do I work out VAT backwards?", a: "Divide the price including VAT by 1.2 to get the price before VAT. The VAT is the difference, or one-sixth of the gross price." },
+  { q: "Do I charge VAT if I am not registered?", a: "No. You must not charge VAT or show it on invoices unless you are VAT-registered." },
+  { q: "Is VAT the same in Scotland, Wales and Northern Ireland?", a: "Yes. VAT is a UK-wide tax with the same rates. Northern Ireland follows some EU rules for goods, which mainly matters for businesses trading goods with the EU." },
+  { q: "Do I pay VAT on my own wages or drawings?", a: "No. Wages and drawings are outside the scope of VAT." },
+  { q: "What is the reverse charge?", a: "For some services, such as most construction work between VAT-registered businesses and services bought from abroad, the customer accounts for the VAT instead of the supplier. The invoice shows no VAT but notes that the reverse charge applies." },
+  { q: "Can I add VAT to an invoice for work done before I registered?", a: "No. You can only charge VAT on sales made from your registration date. For work that spans the date, VAT depends on the tax point, usually when the work is finished or invoiced." },
+  { q: "Why does my receipt show a different VAT figure?", a: "Shops often work out VAT on each line or each item and round it, so the total can differ from one-sixth of the bill by a penny or two. Both methods are allowed." },
 ];
 
 export default async function VATPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

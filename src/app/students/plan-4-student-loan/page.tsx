@@ -22,6 +22,12 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much will I repay on \u00a345,000?", a: "9% of \u00a311,205: \u00a31,008.45 a year or \u00a384.04 a month." },
   { q: "What is the Plan 4 interest rate?", a: "4.1% from September 2026." },
   { q: "When is Plan 4 written off?", a: "30 years after you were first due to repay, for loans from 2007/08." },
+  { q: "I was on Plan 1 in Scotland. What changed?", a: "In April 2021 Scottish Plan 1 loans moved to Plan 4, with a higher threshold. Your balance and interest did not change." },
+  { q: "Do I need to do anything to switch?", a: "No. The change was automatic." },
+  { q: "Do postgraduate loans from SAAS work the same way?", a: "Yes. SAAS postgraduate tuition fee and living cost loans are repaid under Plan 4, not the English Postgraduate Loan." },
+  { q: "Do I need to tell HMRC about my loan?", a: "Not if you are employed: tell your employer your plan type when you start, often using a starter checklist, and they deduct repayments. If you file Self Assessment, tick the student loan box on your return." },
+  { q: "What if I move to England to work?", a: "You stay on Plan 4 and repay through PAYE as normal. Your employer just needs to know your plan type. Your income tax changes to English rates, but the loan rules do not." },
+  { q: "Can my loan be written off early?", a: "Only if you die or become permanently unable to work because of illness or disability. Otherwise it runs until the write-off date or until you clear it." },
 ];
 
 export default async function Plan4Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

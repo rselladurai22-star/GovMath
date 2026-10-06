@@ -23,6 +23,14 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Are the 30 hours really free?", a: "The hours themselves are, but providers can charge for meals, consumables and extra hours." },
   { q: "Can I stretch the hours over the year?", a: "Yes, if your provider offers it. The 1,140 hours can be spread over more than 38 weeks, giving fewer hours each week." },
   { q: "Can I use Tax-Free Childcare as well?", a: "Yes. Tax-Free Childcare can pay for hours and charges not covered by the funded hours." },
+  { q: "Can I use the hours with a childminder?", a: "Yes, if the childminder is registered with Ofsted or a childminder agency and offers funded places." },
+  { q: "Can I split the hours between two providers?", a: "Usually yes, though there may be limits on how many sessions a day count. Check with both providers." },
+  { q: "Do I lose the hours if I go on maternity leave with a new baby?", a: "No. Parents on statutory leave still count as working for the older child's hours." },
+  { q: "Do the hours count as income for benefits?", a: "No. Funded hours are not paid to you, so they do not affect your other benefits." },
+  { q: "What if my income changes during the year?", a: "The test is about what you expect to earn over the next three months. Reconfirm honestly each time; if you stop qualifying, a grace period usually applies." },
+  { q: "Do both parents have to work if we are separated?", a: "No. The test applies to the parents in the child's household. A single parent only needs to meet it themselves." },
+  { q: "Can I use funded hours at a nursery in another council area?", a: "Yes. Funding follows the child, so you can use a provider near your work rather than your home, as long as it offers funded places." },
+  { q: "What if my nursery is full?", a: "Your council must help you find a funded place. Contact its family information service." },
 ];
 
 export default async function FreeHoursPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

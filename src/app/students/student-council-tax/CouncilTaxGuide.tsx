@@ -17,7 +17,6 @@ const TOC: TocItem[] = [
   { id: "landlords", title: "Who pays: tenants or landlord?" },
   { id: "budgeting", title: "Budgeting as a student household" },
   { id: "mistakes", title: "Common mistakes" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -197,20 +196,7 @@ export default function CouncilTaxGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={15} kicker="FAQs" title="Common questions">
-        <h3>Do I need to apply every year?</h3>
-        <p>Usually yes: send a new certificate for each academic year, or when your household changes.</p>
-        <h3>Does a postgraduate student count?</h3>
-        <p>Yes, if the course meets the full-time rules. Writing-up periods for PhD students may be treated differently by some councils.</p>
-        <h3>What about my parents&rsquo; home?</h3>
-        <p>A student living away does not change their parents&rsquo; bill, which is based on who lives there.</p>
-        <h3>What if one housemate drops out?</h3>
-        <p>If they stay in the house but are no longer a student, they become liable, and the household may lose the exemption. Tell the council straight away.</p>
-        <h3>Can I get a refund for past bills?</h3>
-        <p>Yes, if you paid when you were exempt. Send your certificates and ask the council to backdate the exemption.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={16} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={15} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£0", label: "All-student home" },

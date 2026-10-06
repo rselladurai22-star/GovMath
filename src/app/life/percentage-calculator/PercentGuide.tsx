@@ -20,7 +20,6 @@ const TOC: TocItem[] = [
   { id: "rates", title: "APR, AER and interest rates" },
   { id: "news", title: "Reading percentages in the news" },
   { id: "spreadsheets", title: "Percentages in a spreadsheet" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key formulas" },
 ];
 
@@ -287,24 +286,7 @@ export default function PercentGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="FAQs" title="Common questions">
-        <h3>How do I calculate a percentage on a phone calculator?</h3>
-        <p>Multiply by the percentage and divide by 100. For 15% of 240, type 240 × 15 ÷ 100 = 36.</p>
-        <h3>Can a percentage be more than 100?</h3>
-        <p>Yes. A rise from 50 to 150 is a 200% increase. A fall cannot be more than 100%.</p>
-        <h3>What is the difference between margin and markup?</h3>
-        <p>Markup is profit as a percentage of cost; margin is profit as a percentage of the selling price.</p>
-        <h3>How do I work out a percentage of a percentage?</h3>
-        <p>Multiply them as decimals. 50% of 40% is 0.5 × 0.4 = 0.2, or 20%.</p>
-        <h3>How do I find what number a percentage came from?</h3>
-        <p>If 30 is 20% of a number, divide 30 by 0.2 to get 150.</p>
-        <h3>Is a 100% increase the same as doubling?</h3>
-        <p>Yes. A 100% increase doubles a number, and a 200% increase triples it.</p>
-        <h3>Why does a 10% rise then a 10% fall leave me worse off?</h3>
-        <p>Because the fall is 10% of a larger number. 100 rises to 110, then falls by 11 to 99, an overall fall of 1%.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key formulas">
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key formulas">
         <KeyStats
           items={[
             { value: "X ÷ 100 × Y", label: "X% of Y" },

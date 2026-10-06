@@ -24,6 +24,10 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Can I challenge a rent increase under the Renters' Rights Act?", a: "Yes. Apply to the First-tier Tribunal before the new rent starts. It cannot set a rent higher than your landlord asked for, and any increase only applies from its decision." },
   { q: "Can my landlord use a rent review clause?", a: "Not in England since 1 May 2026. All private rent increases must use a section 13 notice." },
   { q: "What percentage rent increase is reasonable?", a: "It depends on local rents. Compare the new rent with similar homes advertised nearby. A rise that takes your rent above the market rate can be challenged in England." },
+  { q: "Can my landlord increase the rent during a fixed term?", a: "In England fixed terms no longer exist for private tenancies: all are periodic, and rises use section 13 once a year." },
+  { q: "Does the rule apply to council and housing association homes?", a: "Social landlords have their own rent rules, usually a yearly rise in April set by government policy." },
+  { q: "What if I pay the new rent by mistake?", a: "Paying the new amount can be taken as accepting it. Get advice quickly if you think the notice was not valid." },
+  { q: "Can the landlord put the rent up when a new tenant moves in?", a: "Yes. The rules are about existing tenancies. A new tenancy can start at the advertised rent, and in England the Renters' Rights Act stops landlords accepting bids above it." },
 ];
 
 export default async function RentIncreasePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

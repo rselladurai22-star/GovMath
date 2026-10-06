@@ -104,28 +104,41 @@ export function ResultCard({
 }
 
 /**
- * Chart colours in the approved design's palette (as on its take-home and
- * mortgage pages): plum for what you keep or borrow, gold for tax or
- * interest, then mauve, sand and slate. Studios pass their own colours; the
- * ring chart, split bars and payslip swatches all map them the same way, so
- * one series keeps one colour.
+ * Chart colours, kept apart from the claret brand colour so charts never
+ * look like buttons or links: blue for what you keep or borrow, orange for
+ * tax or interest, then aqua, violet, red, magenta, yellow and grey. Studios
+ * pass their own colours; the ring chart, split bars, area charts and
+ * payslip swatches all map them the same way, so one series keeps one colour.
  */
 const DESIGN: Record<string, string> = {
-  "#0f9f6e": "#73164c",
-  "#16a34a": "#73164c",
-  "#10b981": "#73164c",
-  "#0a7a52": "#73164c",
-  "#f59e0b": "#c79a4b",
-  "#5b1e6e": "#ad7198",
-  "#2e0a3a": "#ead5af",
-  "#4a1659": "#ead5af",
-  "#db2777": "#909aab",
-  "#e11d48": "#909aab",
-  "#8e4ba3": "#d8b4c9",
-  "#a855f7": "#d8b4c9",
-  "#0ea5e9": "#7ba5df",
-  "#f97316": "#e0b27a",
-  "#94a3b8": "#c9ced6",
+  "#0f9f6e": "#2a78d6",
+  "#16a34a": "#2a78d6",
+  "#10b981": "#2a78d6",
+  "#0a7a52": "#2a78d6",
+  "#22c55e": "#2a78d6",
+  "#73164c": "#2a78d6",
+  "#f59e0b": "#eb6834",
+  "#c79a4b": "#eb6834",
+  "#5b1e6e": "#1baf7a",
+  "#ad7198": "#1baf7a",
+  "#2e0a3a": "#4a3aa7",
+  "#4a1659": "#4a3aa7",
+  "#ead5af": "#4a3aa7",
+  "#db2777": "#e34948",
+  "#e11d48": "#e34948",
+  "#ef4444": "#e34948",
+  "#8e4ba3": "#e87ba4",
+  "#a855f7": "#e87ba4",
+  "#a46bb8": "#e87ba4",
+  "#d8b4c9": "#e87ba4",
+  "#6366f1": "#e87ba4",
+  "#0ea5e9": "#eda100",
+  "#f97316": "#eda100",
+  "#e0b27a": "#eda100",
+  "#909aab": "#9aa1a9",
+  "#94a3b8": "#c3c8ce",
+  "#cbd5e1": "#c3c8ce",
+  "#c9ced6": "#c3c8ce",
 };
 export function soften(color: string): string {
   return DESIGN[color.toLowerCase()] ?? color;

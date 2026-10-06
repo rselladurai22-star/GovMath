@@ -30,7 +30,6 @@ const TOC: TocItem[] = [
   { id: "company", title: "Sole trader or limited company?" },
   { id: "year-end", title: "Your accounting year" },
   { id: "losses", title: "If you make a loss" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -368,30 +367,7 @@ export default function SoleTraderGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={15} kicker="FAQs" title="Common questions">
-        <h3>Do I pay tax on what I take out or on my profit?</h3>
-        <p>On your profit. Money you take out, called drawings, is not taxed separately and is not an expense.</p>
-        <h3>Can I make a loss?</h3>
-        <p>
-          Yes. A trading loss can usually be set against other income in the same or previous year, or carried forward against
-          future profits from the same trade.
-        </p>
-        <h3>Do I need to register if I only earn a little?</h3>
-        <p>
-          Not if your total self-employed turnover is £1,000 or less in the tax year. Above that you must register by 5 October
-          after the year ends.
-        </p>
-        <h3>Does my Class 4 NI count towards my State Pension?</h3>
-        <p>
-          Class 4 itself does not, but profit of £7,105 or more gives you a free Class 2 credit, which does count.
-        </p>
-        <h3>Can I pay my tax monthly?</h3>
-        <p>
-          Yes. HMRC&rsquo;s budget payment plan lets you pay towards your next bill by direct debit in regular amounts.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={16} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={15} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£12,570", label: "Personal Allowance" },

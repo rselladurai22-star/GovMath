@@ -29,7 +29,6 @@ const TOC: TocItem[] = [
   { id: "estimates", title: "How HMRC estimates your income" },
   { id: "untaxed", title: "Rent, savings and other untaxed income" },
   { id: "split", title: "Splitting your allowance between two jobs" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -319,45 +318,7 @@ export default function TaxCodeGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={17} kicker="Questions" title="Common questions">
-        <h3>Why has my tax code changed in the middle of the year?</h3>
-        <p>
-          Usually because HMRC has new information: a new job, a change in benefits, a pension, or an estimate of your
-          income. Your coding notice explains the change.
-        </p>
-        <h3>Is 1257L the same in Scotland?</h3>
-        <p>
-          The allowance is the same, but Scottish taxpayers have S1257L, which tells payroll to use the Scottish bands.
-        </p>
-        <h3>What does a tax code ending in X mean?</h3>
-        <p>It is an emergency code: each payment is taxed on its own, without catching up on earlier months.</p>
-        <h3>Can my tax code be wrong?</h3>
-        <p>
-          Yes, especially after a job change or if HMRC has estimated your income or benefits. Check it every time you
-          start a job or your circumstances change.
-        </p>
-        <h3>Why do I have a different code for each job?</h3>
-        <p>
-          Each employer or pension provider gets its own code. Usually your main job has your allowance and the others
-          have BR or D0, so their codes will differ.
-        </p>
-        <h3>What is a P2 coding notice?</h3>
-        <p>
-          It is the letter, or online notice in your personal tax account, that tells you your new code and explains how
-          it was worked out. Check each line, especially estimates of income or benefits.
-        </p>
-        <h3>My code has a number but no letter. Is that wrong?</h3>
-        <p>
-          Most codes end in a letter, so a code with only a number is usually a typing error on the payslip or a code
-          that has been cut off. Check the full code in the HMRC app, which always shows it correctly.
-        </p>
-        <h3>Does my tax code affect National Insurance?</h3>
-        <p>No. National Insurance does not use your tax code at all.</p>
-        <h3>Can I see my past tax codes?</h3>
-        <p>Yes. The HMRC app and your personal tax account show your codes for the current and previous years.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={18} kicker="Quick reference" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={17} kicker="Quick reference" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "1257L", label: "Standard tax code" },

@@ -23,6 +23,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Do I need to earn a minimum amount to get SSP?", a: "No. The Lower Earnings Limit test was removed in April 2026. Low earners get 80% of their average weekly earnings instead." },
   { q: "How long is SSP paid for?", a: "Up to 28 weeks in a period of sickness. Spells less than 8 weeks apart are linked and share the same 28 weeks." },
   { q: "Is SSP taxed?", a: "Yes. SSP is paid through payroll and Income Tax and National Insurance are deducted as normal." },
+  { q: "Do I get SSP for one day off sick?", a: "Yes. Since 6 April 2026 there are no waiting days, so SSP is paid from the first qualifying day." },
+  { q: "I earn less than £125 a week. Can I get SSP now?", a: "Yes. The earnings test was removed. You get 80% of your average weekly earnings." },
+  { q: "Can I get SSP from two jobs?", a: "Yes, if you are too ill to do either job, each employer pays SSP separately." },
+  { q: "Does holiday build up while I am off sick?", a: "Yes. Statutory holiday continues to build up during sick leave, and you can carry over holiday you could not take." },
+  { q: "Does SSP count towards my State Pension?", a: "Yes. SSP is treated as earnings, so it counts towards your National Insurance record in the same way as wages." },
+  { q: "Can my employer pay less than SSP?", a: "No. SSP is the legal minimum. Your contract can only give you more, not less." },
+  { q: "Is SSP paid if I am sick on a bank holiday?", a: "Only if the bank holiday is one of your qualifying days, meaning a day you would normally have worked." },
 ];
 
 export default async function SSPPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

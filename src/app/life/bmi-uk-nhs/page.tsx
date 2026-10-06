@@ -22,6 +22,12 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How do I calculate BMI?", a: "Divide your weight in kilograms by your height in metres, then divide by your height in metres again." },
   { q: "What waist size is healthy?", a: "Keep your waist to less than half your height, a waist-to-height ratio below 0.5." },
   { q: "Can children use this BMI calculator?", a: "No. Children's BMI is compared with centile charts for their age and sex." },
+  { q: "Is BMI different for men and women?", a: "No. Adult BMI uses the same formula and ranges for both." },
+  { q: "What is a healthy BMI for my age?", a: "For adults of all ages the healthy range is 18.5 to 24.9, though doctors take age into account." },
+  { q: "Why does the NHS use lower thresholds for some groups?", a: "Because the risk of type 2 diabetes and heart disease starts at a lower BMI in those groups." },
+  { q: "How often should I check my BMI?", a: "Every few months is enough. Daily weight changes are mostly water." },
+  { q: "Is the NHS BMI calculator different from this one?", a: "It uses the same formula and the same adult ranges. This calculator also shows the lower thresholds, your healthy weight range in imperial units and your waist-to-height ratio." },
+  { q: "Does BMI work if I have had an amputation?", a: "Not directly, as body weight is lower. Your healthcare team can adjust the calculation." },
 ];
 
 export default async function BmiPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

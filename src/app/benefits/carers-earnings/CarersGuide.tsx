@@ -34,7 +34,6 @@ const TOC: TocItem[] = [
   { id: "other-help", title: "Other help for carers" },
   { id: "pay-rise", title: "Before you accept a pay rise" },
   { id: "two-jobs", title: "Two jobs, or work and self-employment" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -354,29 +353,7 @@ export default function CarersGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Is Carer&rsquo;s Allowance taxable?</h3>
-        <p>Yes. It counts as taxable income, though most carers&rsquo; total income is under the Personal Allowance.</p>
-        <h3>Can two people get it for caring for the same person?</h3>
-        <p>No. Only one person can get Carer&rsquo;s Allowance for each person cared for.</p>
-        <h3>Can I care for two people to make up the 35 hours?</h3>
-        <p>No. The 35 hours must be for one person.</p>
-        <h3>What happens if the person I care for goes into hospital?</h3>
-        <p>
-          Carer&rsquo;s Allowance can continue for up to 12 weeks in any 26 while either of you is in hospital, but only while their disability
-          benefit continues, and that usually stops after 28 days.
-        </p>
-        <h3>Does my partner&rsquo;s income matter?</h3>
-        <p>No. Only your own earnings count towards the limit.</p>
-        <h3>Do I need to be related to the person I care for?</h3>
-        <p>No. You can care for a friend or neighbour, and you do not need to live with them.</p>
-        <h3>Does holiday pay count as earnings?</h3>
-        <p>Yes. Holiday pay is earnings in the week it is paid, so a large payout when you leave a job can take you over the limit for that week.</p>
-        <h3>Can I get Carer&rsquo;s Allowance if I am retired?</h3>
-        <p>You can claim, but if your State Pension is £86.45 a week or more you get underlying entitlement rather than payments.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£86.45", label: "Carer's Allowance a week" },

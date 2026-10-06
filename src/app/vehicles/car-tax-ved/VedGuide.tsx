@@ -22,7 +22,6 @@ const TOC: TocItem[] = [
   { id: "list-price", title: "Working out the list price" },
   { id: "budgeting", title: "Budgeting over the life of a car" },
   { id: "mistakes", title: "Common mistakes" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -339,24 +338,7 @@ export default function VedGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={20} kicker="FAQs" title="Common questions">
-        <h3>Do I pay the supplement on a used car?</h3>
-        <p>Yes, if its list price when new was over the threshold and it is between two and six years old.</p>
-        <h3>Do electric cars pay car tax now?</h3>
-        <p>Yes, since April 2025. Most pay £200 a year from the second year.</p>
-        <h3>Will my tax go up every year?</h3>
-        <p>The rates usually rise each April with inflation, though they are rounded to the nearest £5.</p>
-        <h3>Is car tax the same in Scotland, Wales and Northern Ireland?</h3>
-        <p>Yes. Vehicle Excise Duty is a UK-wide tax with the same rates everywhere.</p>
-        <h3>Can I get a refund if I sell my car?</h3>
-        <p>Yes. The DVLA refunds any full months left once it knows you have sold, scrapped or SORNed the car. The new keeper must tax it themselves.</p>
-        <h3>Do I need to tax a car I never drive?</h3>
-        <p>If it is kept on a public road, yes. If it is kept off the road, for example on a drive or in a garage, you can make a SORN instead and pay nothing.</p>
-        <h3>How do I find my car&rsquo;s tax band?</h3>
-        <p>Enter the registration on the GOV.UK vehicle enquiry service. It shows the CO2 figure, the date of first registration, and when the tax is due.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£200", label: "Standard rate from year 2" },

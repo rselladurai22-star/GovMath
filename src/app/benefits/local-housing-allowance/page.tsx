@@ -24,6 +24,11 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Is Local Housing Allowance different on Universal Credit?", a: "Universal Credit has its own monthly rates, set from monthly rents. They are often a few pounds a month higher than the weekly Housing Benefit rate converted to a month. In Bristol the one-bedroom rate is £900 a month on Universal Credit and £207.12 a week on Housing Benefit." },
   { q: "Does it work for Scotland, Wales and Northern Ireland?", a: "Yes. Scotland has 18 rental areas, Wales has 22 and Northern Ireland has 8, each with its own rates, and the same bedroom rules apply. In Northern Ireland the Housing Executive sets the rates and your area depends on your postcode." },
   { q: "What is the shared accommodation rate?", a: "The rate for a room in a shared house. It applies to single people under 35 without children, unless an exemption applies." },
+  { q: "Will LHA rates go up in April 2027?", a: "That depends on the government's decision in the autumn. Rates have been frozen since April 2024." },
+  { q: "Do I get the LHA rate if my rent is lower?", a: "No. You get your actual rent or the LHA rate, whichever is lower." },
+  { q: "Does the LHA include bills?", a: "No. Energy, water and food are not covered, even if your rent includes them. Some service charges are covered." },
+  { q: "What if I share a house with friends?", a: "Each tenant is assessed separately, on their own share of the rent and their own household." },
+  { q: "Does my age matter if I have children?", a: "No. Anyone with a child gets at least the one-bedroom rate, whatever their age." },
 ];
 
 export default async function LhaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

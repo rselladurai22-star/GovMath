@@ -22,6 +22,9 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Does it matter what day of the month I SORN?", a: "No. The month the DVLA receives it is not refunded, so any day that month gives the same refund." },
   { q: "Do I need insurance for a SORN car?", a: "No, but many people keep fire and theft cover while it is stored." },
   { q: "Can I drive a SORN car?", a: "Only to a pre-booked MOT. It must be kept off public roads." },
+  { q: "Does a SORN last forever?", a: "Yes, until the car is taxed, sold, scrapped or exported. You do not renew it." },
+  { q: "Can I SORN a car with no tax left?", a: "Yes. You must make a SORN or tax the car as soon as the tax runs out, or you risk the £80 penalty." },
+  { q: "Can I get a refund on a car I sold?", a: "Yes. Tell the DVLA you sold it, and any full months left are refunded automatically." },
 ];
 
 export default async function SornPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

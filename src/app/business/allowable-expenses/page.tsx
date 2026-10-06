@@ -23,6 +23,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Can I claim for working from home?", a: "Yes. Either a flat £10, £18 or £26 a month depending on hours, or a share of your actual household bills." },
   { q: "Should I claim expenses or the trading allowance?", a: "The £1,000 trading allowance is better if your real costs are under £1,000. You cannot claim both." },
   { q: "What can't I claim?", a: "Your own drawings, everyday clothes, commuting, client entertainment, fines and the capital part of loan repayments." },
+  { q: "Can I claim my mobile phone?", a: "Yes, the business share. If the contract is in the business's name and used only for work, all of it." },
+  { q: "Can I claim gym membership or health costs?", a: "No. They have a personal benefit, even if fitness helps your work." },
+  { q: "What about Christmas gifts for clients?", a: "Gifts of food, drink, tobacco or vouchers are not allowable. Other gifts carrying a conspicuous business advert and costing no more than £50 per person a year are." },
+  { q: "Can I claim costs from before I started trading?", a: "Yes. Costs in the seven years before you started can be treated as if incurred on the first day of trading, as long as they would have been allowable then." },
+  { q: "What if I claim something by mistake?", a: "You can amend your return within 12 months of the 31 January deadline. If HMRC finds an error first, you pay the tax plus interest, and possibly a penalty if you were careless." },
+  { q: "Can I claim my accountant's fees?", a: "Yes. Accountancy and bookkeeping for the business are allowable, including software for keeping your records." },
+  { q: "Do I need a receipt for every expense?", a: "You need evidence for every claim. A receipt or invoice is best; a bank or card statement can do for small items if it shows what was bought." },
 ];
 
 export default async function ExpensesPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

@@ -1,0 +1,649 @@
+/* GovMath theme: claret brand, neutral reading palette and the Axis Bank
+   type scale. Loaded last on every page, after the generated colour swaps
+   (govmath-neutral.css, govmath-claret.css). Rules are scoped to
+   .gm-neutral, which wraps each page's main content. */
+
+/* ── Neutral reading palette  ─────────────
+   Neutral greys and white instead of pink-tinted panels, as on Axis Bank
+   and the GOV.UK Design System. Wine stays for buttons, links and
+   selected states. Colour swaps are generated into govmath-neutral.css;
+   these rules set the surfaces and type. */
+.gm-neutral .calculator {
+  background: #f3f5f8;
+}
+.gm-neutral .result.ax-chartpanel {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+}
+.gm-neutral .number,
+.gm-neutral .ax-select-toggle {
+  background: #fff;
+  border: 1px solid #9aa1a9;
+  border-radius: 8px;
+  min-height: 44px;
+}
+.gm-neutral .number:focus-within,
+.gm-neutral .ax-select-toggle:focus-visible,
+.gm-neutral .ax-select-toggle[aria-expanded="true"] {
+  border-color: #510b38;
+  box-shadow: 0 0 0 2px rgba(81, 11, 56, 0.25);
+  outline: none;
+}
+.gm-neutral .gm-radio {
+  border-color: #c4cad1;
+}
+.gm-neutral .moreoptions {
+  border-color: #dfe3e8;
+}
+.gm-neutral .facts > div {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+  border-top: 3px solid #510b38;
+}
+.gm-neutral .facts span {
+  color: #5c6066;
+  font-size: 14px;
+}
+.gm-neutral .facts b {
+  color: #282828;
+}
+.gm-neutral .resultcard {
+  border-color: #dfe3e8;
+}
+.gm-neutral .resultcard > p,
+.gm-neutral .loan-summary,
+.gm-neutral .intro > p:last-child {
+  color: #5c6066;
+}
+.gm-neutral .gm-insight {
+  background: #f3f5f8;
+}
+.gm-neutral .ax-assumptions {
+  background: #f3f5f8;
+  border-color: #dfe3e8;
+}
+.gm-neutral .gm-statement th,
+.gm-neutral .gm-statement tr[data-kind="total"] td {
+  background: #f3f5f8;
+  color: #282828;
+}
+.gm-neutral .g-section p,
+.gm-neutral .g-section li,
+.gm-neutral .q-faqBody {
+  color: #3d4248;
+}
+.gm-neutral .guide-nav {
+  border-color: #dfe3e8;
+}
+.gm-neutral .q-relatedCard {
+  border-color: #dfe3e8;
+}
+.gm-neutral .q-relatedCard:hover {
+  background: #f3f5f8;
+}
+
+/* ── Guide, FAQs and section headings  ───────── */
+/* Section headings across the page share one pattern: eyebrow, then title. */
+.gm-neutral .fullfaq .q-kicker,
+.gm-neutral .section > .eyebrow,
+.gm-neutral .sectionheading .eyebrow {
+  display: block;
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--wine);
+}
+
+/* Guide intro: a clear start to the reading part of the page. */
+.gm-neutral .guideintro {
+  background: #f3f5f8;
+  border: 1px solid #dfe3e8;
+  border-left: 4px solid var(--wine);
+  border-radius: 12px;
+}
+
+/* In-guide navigation */
+.gm-neutral .guide-nav {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+}
+.gm-neutral .guide-nav a {
+  color: #3d4248;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin: 0 -8px;
+}
+.gm-neutral .guide-nav a:hover {
+  background: #f3f5f8;
+  color: var(--wine);
+}
+
+/* Each guide section opens with a numbered marker and a clear title. */
+.gm-neutral .g-section {
+  padding: 8px 0 40px;
+  margin: 0 0 40px;
+  border-bottom: 1px solid #dfe3e8;
+}
+.gm-neutral .g-sectionHead {
+  gap: 12px;
+  margin-bottom: 10px;
+  color: #5c6066;
+  letter-spacing: 1.2px;
+}
+.gm-neutral .g-num {
+  display: inline-grid;
+  place-items: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--wine);
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+.gm-neutral .g-section h2 {
+  font-size: 27px;
+  line-height: 1.25;
+  color: #1f2328;
+  margin-bottom: 16px;
+}
+.gm-neutral .g-section h3 {
+  color: #1f2328;
+}
+.gm-neutral .g-section > p,
+.gm-neutral .g-section > ul,
+.gm-neutral .g-section > ol {
+  max-width: 72ch;
+}
+
+/* Tables: a grey header row, plain rows, light striping. */
+.gm-neutral .g-tableWrap {
+  border-color: #dfe3e8;
+}
+.gm-neutral .g-tableWrap caption {
+  background: #fff;
+  color: #1f2328;
+  border-bottom: 1px solid #dfe3e8;
+}
+.gm-neutral .g-table thead th {
+  background: #f3f5f8;
+  color: #1f2328;
+}
+.gm-neutral .g-table tbody th,
+.gm-neutral .g-table tbody td {
+  background: #fff;
+}
+.gm-neutral .g-table tbody tr:nth-child(even) th,
+.gm-neutral .g-table tbody tr:nth-child(even) td {
+  background: #f9fafb;
+}
+.gm-neutral .g-table tbody th {
+  font-weight: 700;
+  color: #1f2328;
+}
+
+/* Callouts read as tips (blue), distinct from steps and examples. */
+.gm-neutral .g-callout,
+.gm-neutral .g-note {
+  background: #eef4fb;
+  border-left: 4px solid #2a78d6;
+  border-radius: 0 10px 10px 0;
+}
+.gm-neutral .g-calloutTitle {
+  color: #1f2328;
+}
+
+/* Steps: numbered white cards with a claret edge. */
+.gm-neutral .g-timeline li {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+  border-left: 4px solid var(--wine);
+  border-radius: 0 10px 10px 0;
+}
+.gm-neutral .g-when {
+  color: var(--wine);
+}
+
+/* Worked examples and key figures */
+.gm-neutral .g-example {
+  border-color: #dfe3e8;
+  border-radius: 12px;
+}
+.gm-neutral .g-exampleHead {
+  background: #f3f5f8;
+  color: #1f2328;
+}
+.gm-neutral .g-exampleTotal {
+  background: #fff;
+  border-top: 2px solid var(--wine);
+  color: var(--wine);
+}
+.gm-neutral .g-stat {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+  border-top: 3px solid var(--wine);
+}
+.gm-neutral .g-statValue {
+  color: var(--wine);
+}
+.gm-neutral .g-compareCol {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+}
+
+/* FAQs: one card per question. */
+.gm-neutral .fullfaq {
+  border-top: 0;
+}
+.gm-neutral .q-faqs {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+.gm-neutral .q-faq {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+  border-radius: 10px;
+  padding: 0 20px;
+}
+.gm-neutral .q-faq summary {
+  padding: 18px 40px 18px 0;
+  border-bottom: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2328;
+}
+.gm-neutral .q-faq summary:after {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f3f5f8;
+  color: var(--wine);
+  font-size: 20px;
+  line-height: 1;
+}
+.gm-neutral .q-faq:hover {
+  border-color: #c4cad1;
+}
+.gm-neutral .q-faq[open] {
+  border-color: #c4cad1;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.06);
+}
+.gm-neutral .q-faqBody {
+  padding: 0 0 18px;
+  border-top: 1px solid #eef0f3;
+  padding-top: 14px;
+}
+.gm-neutral .q-note {
+  background: #eef4fb;
+  border-left: 4px solid #2a78d6;
+  border-radius: 0 10px 10px 0;
+}
+
+/* ── Lato 500 and 600 (not served by Google Fonts) ───────────────── */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/gm/fonts/lato-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/gm/fonts/lato-600.woff2") format("woff2");
+}
+
+/* ── Type scale and spacing taken from Axis Bank's calculator pages ──
+   Measured from axis.bank.in/calculators/personal-loan-emi-calculator:
+   headings in Lato Medium, labels in Lato Bold, body 16/24 grey, figures
+   in Lato Semibold; smaller sizes below 650px. */
+.gm-neutral {
+  --axis-ink: #282828;
+  --axis-body: #6e6e6e;
+  letter-spacing: 0.16px;
+}
+.gm-neutral .crumb {
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.32px;
+  color: var(--axis-ink);
+}
+.gm-neutral .intro h1 {
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 500;
+  color: var(--axis-ink);
+  margin-bottom: 12px;
+}
+.gm-neutral .intro > p:last-child {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--axis-body);
+}
+/* Section titles */
+.gm-neutral .section h2,
+.gm-neutral .sectionheading h2,
+.gm-neutral .guideintro h2,
+.gm-neutral .q-explainerTitle {
+  font-size: 36px;
+  line-height: 42px;
+  font-weight: 500;
+  color: var(--axis-ink);
+  letter-spacing: 0;
+}
+.gm-neutral .guideintro > p:last-child,
+.gm-neutral .section > p:not(.eyebrow) {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--axis-body);
+}
+/* Calculator */
+.gm-neutral .calculator {
+  background: #f1f4f7;
+  padding: 40px 60px;
+  border-radius: 16px;
+}
+.gm-neutral .result.ax-chartpanel {
+  border: 0;
+  box-shadow: none;
+  border-radius: 16px;
+  padding: 32px 24px;
+}
+.gm-neutral.gm-neutral .labelrow label,
+.gm-neutral .gm-clear .gm-label,
+.gm-neutral .gm-clear .ax-select-field label,
+.gm-neutral .gm-clear .gm-switchrow label {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--axis-ink);
+  letter-spacing: 0.16px;
+}
+.gm-neutral .number input,
+.gm-neutral .ax-select-toggle,
+.gm-neutral .gm-radio {
+  font-size: 16px;
+  color: var(--axis-ink);
+}
+.gm-neutral .endpoints {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.32px;
+  color: var(--axis-body);
+}
+.gm-neutral .footnote,
+.gm-neutral .gm-clear .moreoptions > summary > span {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--axis-body);
+}
+.gm-neutral .resultlabel {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.24px;
+  color: var(--axis-body);
+}
+.gm-neutral .ax-paymentstrip span {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 500;
+  color: var(--axis-ink);
+}
+.gm-neutral .ax-paymentstrip strong {
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 700;
+  margin: 8px 0 4px;
+}
+.gm-neutral .ax-paymentstrip small,
+.gm-neutral .loan-summary {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--axis-body);
+}
+.gm-neutral .circle span {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.24px;
+  color: var(--axis-body);
+}
+.gm-neutral .circle strong {
+  font-size: 26px;
+  line-height: 36px;
+  font-weight: 600;
+  color: var(--axis-ink);
+}
+.gm-neutral .ax-chartlegend > div > span {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--axis-body);
+}
+.gm-neutral .ax-chartlegend b {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--axis-ink);
+}
+.gm-neutral .button,
+.gm-neutral .bank-calculate {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0.24px;
+  border-radius: 8px;
+  padding: 12px 24px;
+  min-height: 48px;
+}
+/* Results in detail */
+.gm-neutral .facts span {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--axis-body);
+}
+.gm-neutral .facts b {
+  font-size: 26px;
+  line-height: 36px;
+  font-weight: 600;
+}
+.gm-neutral .resultcard h3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+}
+.gm-neutral .resultcard > p,
+.gm-neutral .gm-insight div {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--axis-body);
+}
+.gm-neutral .gm-insight h3 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+}
+/* Guide */
+.gm-neutral .g-section h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+  color: var(--axis-ink);
+}
+.gm-neutral .g-section h3 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.gm-neutral .g-section p,
+.gm-neutral .g-section li {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.16px;
+  color: var(--axis-body);
+}
+.gm-neutral .g-section li {
+  margin-bottom: 8px;
+}
+.gm-neutral .g-section strong {
+  color: var(--axis-ink);
+}
+.gm-neutral .g-section a {
+  color: var(--wine);
+}
+/* Tables: claret header row, as on Axis's amortisation table */
+.gm-neutral .g-table thead th,
+.gm-neutral .gm-statement th {
+  background: var(--wine);
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0.24px;
+}
+.gm-neutral .g-table td,
+.gm-neutral .g-table tbody th,
+.gm-neutral .gm-statement td {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--axis-ink);
+  border-color: #e2e2e2;
+}
+.gm-neutral .g-table td,
+.gm-neutral .g-table th {
+  padding: 16px 20px;
+}
+/* FAQs: grey band, numbered white cards, as on Axis */
+.gm-neutral .fullfaq {
+  background: #f1f4f7;
+  border-radius: 16px;
+  padding: 40px;
+  margin: 40px 0;
+}
+.gm-neutral .fullfaq > div:first-child {
+  text-align: center;
+}
+.gm-neutral .q-faqs {
+  counter-reset: faq;
+  margin-top: 24px;
+  gap: 12px;
+}
+.gm-neutral .q-faq {
+  border: 0;
+  border-radius: 8px;
+  padding: 0 32px;
+}
+.gm-neutral .q-faq summary {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--axis-ink);
+  padding: 22px 44px 22px 0;
+}
+.gm-neutral .q-faq summary > span:first-child::before {
+  counter-increment: faq;
+  content: counter(faq) ". ";
+}
+.gm-neutral .q-faqBody {
+  border-top: 0;
+  padding: 0 0 22px;
+}
+.gm-neutral .q-faqBody p {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--axis-body);
+}
+.gm-neutral .q-note {
+  background: #fff;
+  border-radius: 8px;
+}
+@media (max-width: 650px) {
+  .gm-neutral .intro h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .gm-neutral .intro > p:last-child,
+  .gm-neutral .guideintro > p:last-child,
+  .gm-neutral .section > p:not(.eyebrow),
+  .gm-neutral .g-section p,
+  .gm-neutral .g-section li,
+  .gm-neutral .q-faqBody p,
+  .gm-neutral .resultcard > p,
+  .gm-neutral .gm-insight div {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .gm-neutral .section h2,
+  .gm-neutral .sectionheading h2,
+  .gm-neutral .guideintro h2,
+  .gm-neutral .q-explainerTitle {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .gm-neutral .g-section h2 {
+    font-size: 20px;
+    line-height: 32px;
+  }
+  .gm-neutral .calculator {
+    padding: 24px 16px;
+  }
+  .gm-neutral .result.ax-chartpanel {
+    padding: 24px 12px;
+  }
+  .gm-neutral.gm-neutral .labelrow label,
+  .gm-neutral .gm-clear .gm-label,
+  .gm-neutral .gm-clear .ax-select-field label,
+  .gm-neutral .gm-clear .gm-switchrow label {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .gm-neutral .endpoints {
+    font-size: 12px;
+  }
+  .gm-neutral .ax-paymentstrip span {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .gm-neutral .ax-paymentstrip strong,
+  .gm-neutral .circle strong,
+  .gm-neutral .facts b {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .gm-neutral .q-faq summary {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .gm-neutral .q-faq {
+    padding: 0 16px;
+  }
+  .gm-neutral .fullfaq {
+    padding: 24px 16px;
+  }
+}
+
+/* ── Chart palette on the package's own charts ─────────────
+   Kept apart from the claret brand colour: blue for what you keep or
+   repay, orange for tax or interest, grey for the comparison line. The
+   salary and mortgage scripts draw with the same colours. */
+.gm-neutral .principal-dot,
+.gm-neutral .chartlegend span:first-child i {
+  background: #2a78d6;
+}
+.gm-neutral .interest-dot,
+.gm-neutral .chartlegend span:nth-child(2) i {
+  background: #eb6834;
+}
+.gm-neutral .chartlegend span:nth-child(3) i {
+  background: #9aa1a9;
+}

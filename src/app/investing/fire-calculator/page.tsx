@@ -22,6 +22,10 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Does the State Pension count?", a: "Yes. The full new State Pension is £12,547.60 a year in 2026/27. It reduces the pot you need, but you must bridge the years before it starts." },
   { q: "When can I access my pension?", a: "From 55, rising to 57 on 6 April 2028. ISAs can be used at any age." },
   { q: "What is Coast FI?", a: "The pot that would grow, with no more saving, to cover your retirement by State Pension age." },
+  { q: "Is the 4% rule safe in the UK?", a: "It is a starting point, not a guarantee. For retirements longer than 30 years, many people use 3% to 3.5% or plan to cut spending in bad years." },
+  { q: "Should I include my partner?", a: "Enter your joint spending, joint savings and, if you both qualify, both State Pensions added together." },
+  { q: "What if I have a defined benefit pension?", a: "Treat it like the State Pension: it reduces the spending your pot must cover from the age it starts." },
+  { q: "Does the calculator include my house?", a: "No. Only include money you can draw an income from. Downsizing later could add to your pot." },
 ];
 
 export default async function FirePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

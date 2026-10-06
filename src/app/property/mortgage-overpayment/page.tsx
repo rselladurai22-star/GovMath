@@ -23,6 +23,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Should I shorten my term or lower my payment?", a: "Shortening the term saves the most interest. Lowering the payment gives you more room in your monthly budget but saves less." },
   { q: "Is it better to overpay or save?", a: "Compare your mortgage rate with your after-tax savings rate. If your mortgage rate is higher, overpaying usually wins, but keep an emergency fund first." },
   { q: "Is a lump sum better than monthly overpayments?", a: "Pound for pound, money paid earlier saves more interest, so a lump sum now beats the same total spread over time." },
+  { q: "Is it better to overpay monthly or in a lump sum?", a: "Pound for pound, the earlier the money is paid, the more it saves. A lump sum today beats the same total spread over the year, but regular overpayments are easier to sustain." },
+  { q: "Do overpayments reduce my monthly payment automatically?", a: "Some lenders recalculate your payment; others shorten the term. Ask which yours does, and tell them which you want." },
+  { q: "Can I take overpayments back?", a: "Not usually, unless you have a flexible mortgage with a payment holiday or drawdown facility." },
+  { q: "Do overpayments count towards my allowance if I am on a variable rate?", a: "Most variable and tracker deals have no overpayment limit, but check your offer." },
+  { q: "Should I overpay with interest-only?", a: "Overpaying an interest-only mortgage reduces the capital and the interest charged on it, and the amount you need at the end." },
+  { q: "Do overpayments affect my credit score?", a: "No. Overpaying is not new borrowing, and a lower balance is generally seen positively by lenders." },
+  { q: "Should I overpay if I plan to move soon?", a: "Overpaying still saves interest and increases your equity, which adds to your next deposit. But keep enough cash for the costs of moving, and check any early repayment charge if you might redeem the mortgage during a fixed deal." },
 ];
 
 export default async function OverpaymentPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

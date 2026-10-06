@@ -37,7 +37,6 @@ const TOC: TocItem[] = [
   { id: "appeal", title: "Challenging a decision" },
   { id: "home-care", title: "Care at home instead" },
   { id: "choosing", title: "Choosing a care home" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -368,27 +367,7 @@ export default function CareGuide() {
         <p>Choosing a home that accepts council funding avoids having to move later, which can be distressing for residents.</p>
       </GuideSection>
 
-      <GuideSection id="questions" n={22} kicker="FAQs" title="Common questions">
-        <h3>Will I have to sell my house to pay for care?</h3>
-        <p>Not if a partner or qualifying relative lives there. Otherwise, a deferred payment agreement can delay a sale until after death.</p>
-        <h3>Does the council take my State Pension?</h3>
-        <p>If it funds your place, most of your income goes towards fees, but you keep the personal expenses allowance.</p>
-        <h3>Are care fees the same for self-funders?</h3>
-        <p>Self-funders often pay more than councils for the same room. Ask the home for its rates for both.</p>
-        <h3>Can I get Attendance Allowance in a care home?</h3>
-        <p>Yes, if you pay your own fees. It stops after 28 days if the council funds you.</p>
-        <h3>Does the council count my partner&rsquo;s savings?</h3>
-        <p>No. Only your own capital and your share of anything held jointly is assessed.</p>
-        <h3>What if my savings run out while I am self-funding?</h3>
-        <p>
-          The council will take over funding once you are below the upper limit, but it may ask you to move if the home costs more than its rate
-          and nobody can pay a top-up.
-        </p>
-        <h3>Are care home fees the same in a nursing home?</h3>
-        <p>Nursing homes usually cost more, but in England the NHS pays £267.68 a week towards the nursing part.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={23} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£23,250", label: "Upper limit, England" },

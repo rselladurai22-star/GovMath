@@ -33,7 +33,6 @@ const TOC: TocItem[] = [
   { id: "offset", title: "Offset and flexible mortgages" },
   { id: "isa", title: "Overpay or invest in an ISA?" },
   { id: "retirement", title: "Mortgage-free by retirement" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -351,30 +350,7 @@ export default function OverpaymentGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Is it better to overpay monthly or in a lump sum?</h3>
-        <p>
-          Pound for pound, the earlier the money is paid, the more it saves. A lump sum today beats the same total spread over
-          the year, but regular overpayments are easier to sustain.
-        </p>
-        <h3>Do overpayments reduce my monthly payment automatically?</h3>
-        <p>Some lenders recalculate your payment; others shorten the term. Ask which yours does, and tell them which you want.</p>
-        <h3>Can I take overpayments back?</h3>
-        <p>Not usually, unless you have a flexible mortgage with a payment holiday or drawdown facility.</p>
-        <h3>Do overpayments count towards my allowance if I am on a variable rate?</h3>
-        <p>Most variable and tracker deals have no overpayment limit, but check your offer.</p>
-        <h3>Should I overpay with interest-only?</h3>
-        <p>Overpaying an interest-only mortgage reduces the capital and the interest charged on it, and the amount you need at the end.</p>
-        <h3>Do overpayments affect my credit score?</h3>
-        <p>No. Overpaying is not new borrowing, and a lower balance is generally seen positively by lenders.</p>
-        <h3>Should I overpay if I plan to move soon?</h3>
-        <p>
-          Overpaying still saves interest and increases your equity, which adds to your next deposit. But keep enough cash for
-          the costs of moving, and check any early repayment charge if you might redeem the mortgage during a fixed deal.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "10%", label: "Typical yearly overpayment allowance" },

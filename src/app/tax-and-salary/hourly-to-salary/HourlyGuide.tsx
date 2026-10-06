@@ -27,7 +27,6 @@ const TOC: TocItem[] = [
   { id: "variable-hours", title: "Variable and zero-hours work" },
   { id: "job-offers", title: "Comparing two job offers" },
   { id: "full-table", title: "Hourly rates to salaries: full table" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -387,31 +386,7 @@ export default function HourlyGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={13} kicker="Questions" title="Common questions">
-        <h3>How many working hours are there in a year?</h3>
-        <p>
-          At 37.5 hours a week there are 1,950 paid hours in a 52-week year. At 40 hours it is 2,080, and at 35 hours
-          1,820. These figures include paid holiday, because a salary pays you for those weeks too.
-        </p>
-        <h3>How many working days are there in the 2026/27 tax year?</h3>
-        <p>
-          Between 6 April 2026 and 5 April 2027 there are 261 weekdays. Take away the 9 bank holidays in England and
-          Wales and 252 working days remain, before any personal holiday.
-        </p>
-        <h3>Is an hourly rate better than a salary?</h3>
-        <p>
-          Neither is better in itself. A salary gives predictable pay and usually paid holiday and sick pay. Hourly pay
-          rewards extra hours directly, but your income can fall when hours are cut. Compare the hourly rate, the
-          benefits and how stable your hours are likely to be.
-        </p>
-        <h3>Does the tax differ for hourly and salaried workers?</h3>
-        <p>
-          No. Income Tax and National Insurance are the same whether your pay is quoted by the hour or by the year. What
-          can differ is timing: if your hours vary, each payslip is taxed on what you earned that period.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={14} kicker="Quick reference" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={13} kicker="Quick reference" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£12.71", label: "National Living Wage, 21 and over" },

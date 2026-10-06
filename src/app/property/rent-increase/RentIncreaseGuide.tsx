@@ -21,7 +21,6 @@ const TOC: TocItem[] = [
   { id: "benefits", title: "Rent rises and benefits" },
   { id: "records", title: "Keeping good records" },
   { id: "advice", title: "Free advice" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -306,18 +305,7 @@ export default function RentIncreaseGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Can my landlord increase the rent during a fixed term?</h3>
-        <p>In England fixed terms no longer exist for private tenancies: all are periodic, and rises use section 13 once a year.</p>
-        <h3>Does the rule apply to council and housing association homes?</h3>
-        <p>Social landlords have their own rent rules, usually a yearly rise in April set by government policy.</p>
-        <h3>What if I pay the new rent by mistake?</h3>
-        <p>Paying the new amount can be taken as accepting it. Get advice quickly if you think the notice was not valid.</p>
-        <h3>Can the landlord put the rent up when a new tenant moves in?</h3>
-        <p>Yes. The rules are about existing tenancies. A new tenancy can start at the advertised rent, and in England the Renters&rsquo; Rights Act stops landlords accepting bids above it.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Reference" title="Key numbers">
+      <GuideSection id="key-numbers" n={19} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Rent increase rules at a glance"
           head={["Rule", "England", "Wales", "Scotland", "Northern Ireland"]}

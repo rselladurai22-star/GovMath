@@ -137,7 +137,7 @@ def build(scope, mapping, files, skip, head, outfile):
 
 # Brand colour trial: the dark wine becomes a brighter claret (#8c1d40),
 # across the whole page including the header and footer.
-CLARET_FILES = ["axis-navigation.css", "reference-header.css", *FILES]
+CLARET_FILES = ["axis-navigation.css", "reference-header.css", *FILES, "govmath-theme.css"]
 CLARET = {
     "#510b38": "#8c1d40",
     "#73164c": "#6e1632",

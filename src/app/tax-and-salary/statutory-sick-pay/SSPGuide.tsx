@@ -31,7 +31,6 @@ const TOC: TocItem[] = [
   { id: "work-types", title: "Agency, zero-hours and several jobs" },
   { id: "disputes", title: "If your employer will not pay" },
   { id: "returning", title: "Returning to work" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -345,26 +344,7 @@ export default function SSPGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="Questions" title="Common questions">
-        <h3>Do I get SSP for one day off sick?</h3>
-        <p>Yes. Since 6 April 2026 there are no waiting days, so SSP is paid from the first qualifying day.</p>
-        <h3>I earn less than £125 a week. Can I get SSP now?</h3>
-        <p>Yes. The earnings test was removed. You get 80% of your average weekly earnings.</p>
-        <h3>Can I get SSP from two jobs?</h3>
-        <p>Yes, if you are too ill to do either job, each employer pays SSP separately.</p>
-        <h3>Does holiday build up while I am off sick?</h3>
-        <p>Yes. Statutory holiday continues to build up during sick leave, and you can carry over holiday you could not take.</p>
-        <h3>Does SSP count towards my State Pension?</h3>
-        <p>
-          Yes. SSP is treated as earnings, so it counts towards your National Insurance record in the same way as wages.
-        </p>
-        <h3>Can my employer pay less than SSP?</h3>
-        <p>No. SSP is the legal minimum. Your contract can only give you more, not less.</p>
-        <h3>Is SSP paid if I am sick on a bank holiday?</h3>
-        <p>Only if the bank holiday is one of your qualifying days, meaning a day you would normally have worked.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Quick reference" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={18} kicker="Quick reference" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£123.25", label: "Maximum weekly SSP" },

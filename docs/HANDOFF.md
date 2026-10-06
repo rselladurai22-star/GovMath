@@ -1,7 +1,7 @@
 # GovMath project memory
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 6 October 2026 (Phases 0 to 8 live; Phase 9 under way; the approved design package now styles every page).
+Last updated: 6 October 2026 (Phases 0 to 8 live; Phase 9 under way; the claret and neutral Axis-style design now applies to every page).
 
 ## Goal
 
@@ -9,7 +9,7 @@ govmath.co.uk is a UK calculator site. Every calculator page should be a **flags
 
 - It covers all the advanced fields, which are **optional** and sit under "More options".
 - It has a clear label hierarchy (label CSS).
-- It has a guide of **at least 2,000 words** with visuals. Very simple tools get 1,000 to 1,500 words.
+- It has a guide of **at least 2,000 words** with visuals, counting the guide and the page FAQ together (since October 2026 each page has one FAQ: the guide has no questions section). Very simple tools get 1,000 to 1,500 words.
 - It has a "What we assumed" card, shareable URLs and live results.
 
 We go category by category, one phase at a time.
@@ -71,9 +71,9 @@ Use any `src/app/property/*` or `src/app/tax-and-salary/*` page as the template.
 
 ## Design (approved package, every page)
 
-The owner supplied a finished static design: `GovMath-Complete-Website-Source.zip`, approved live reference https://govmath-mortgage-axis-design.rselladurai22.chatgpt.site/. It must be preserved exactly: header, mega menus, footer, typography (Lato), colours, spacing, cards, calculator controls and charts. Do not restyle it or add a component library.
+The owner supplied a finished static design: `GovMath-Complete-Website-Source.zip`, approved live reference https://govmath-mortgage-axis-design.rselladurai22.chatgpt.site/. Keep its layout: header, mega menus, footer, spacing, cards, calculator controls and charts. Colours and type follow the owner-approved site-wide look below. Do not add a component library.
 
-**Pages taken straight from the package** (rendered from its HTML, pixel-identical when integrated):
+**Pages taken straight from the package** (rendered from its HTML; the layout is the package's, the colours and type follow the site-wide look below):
 
 - `/` (home) and the 8 topic pages: `/tax-and-salary`, `/property`, `/business`, `/investing`, `/benefits`, `/vehicles`, `/students`, `/life`
 - `/tax-and-salary/salary-calculator` and `/property/mortgage-repayment`
@@ -88,22 +88,22 @@ How they are built:
 - **Logo.** The supplied 1983 × 793 logo is served as sized copies (`public/gm/govmath-logo-210.png`, `-420`, `-630`) through `srcset` with `sizes="210px"` in every page's header and footer, so each screen loads the right one (13–61 KB instead of 379 KB). Its largest display size is 210 × 84. To change the logo, regenerate all three copies from the new master.
 
 **Every other page** (102 calculators, about, contact, privacy, terms, disclaimer, blog, all calculators, 404) is React, wrapped in `src/gm/GmShell.tsx`:
-- `GmShell` renders the package's header and footer (`src/gm/chrome.json`), runs `axis.js` and loads the package's stylesheets in the same order as its pages. `kind="calculator"` uses the mortgage/take-home page order; the default uses the base order. Both end with **`public/gm/govmath-site.css`**.
-- **`govmath-site.css`** holds only what the package does not draw (switches, date and period inputs, compare rows, insight boxes, statements, the area chart, extra guide figures, content-page cards) and maps old variable names (`--navy`, `--blue`, `--g-c1`…) to the package palette. It uses only the package's colours: wine #510b38, #73164c, gold #c79a4b, mauve #ad7198, slate #909aab, grey #faf7f9, borders #e6d8e1. Add new styles there, never new colours.
+- `GmShell` renders the package's header and footer (`src/gm/chrome.json`), runs `axis.js` and loads the package's stylesheets in the same order as its pages. `kind="calculator"` uses the mortgage/take-home page order; the default uses the base order. Both continue with the generated `govmath-neutral.css` and `govmath-claret.css`, then **`public/gm/govmath-site.css`**, then **`govmath-theme.css`** last. `GmShell` wraps the page in `.gm-claret` and gives `main` the class `gm-neutral`; `GmDocument` does the same for the 11 package pages and loads the generated files and the theme after the page's own stylesheets.
+- **`govmath-site.css`** holds only what the package does not draw (switches, date and period inputs, compare rows, insight boxes, statements, the area chart, extra guide figures, content-page cards) and maps old variable names (`--navy`, `--blue`, `--g-c1`…) to the package palette. Add new component styles there.
 - There is one root layout (`src/app/layout.tsx`) and no global site CSS.
 - **Calculator markup** follows the package's mortgage page:
   - `FlagshipPage` renders `.crumb`, `.intro` (topic and eyebrow, h1, lead), `nav.sectionnav`, the studio, the guide, `section.fullfaq` (q-faq accordion and `.q-note`) and `.relatedgrid` of `q-relatedCard`s.
   - `Studio` renders `section.calculator#calculator` > `.calcgrid` with the form (`.formheading`, inputs, footnote, `.bank-calculate` button) and the `.result.ax-chartpanel` summary (`.ax-paymentstrip` from the `Answer`, the `.circle` ring from the first `SplitBar`, `.ax-chartlegend`, `.loan-summary`, `.badges`, share link). Below it, `section#results` ("Your results in detail") holds Facts (`.facts`), Assumptions (`details.ax-assumptions`) and cards; consecutive `ResultCard`s share a two-column `.resultgrid`, and cards with a table or chart span both columns.
-  - Inputs (`inputs.tsx`) use `.field` > `.labelrow` > label + `.number` box, the package's range slider with `--fill` and `.endpoints`, `.chips`, `.ax-calctabs` for choices, the package's custom `.ax-select` dropdown and `details.moreoptions`. Hints show as text under the field, as in the package.
-  - Chart colours go through `soften()` in `results.tsx`, which maps the studios' colours to the package palette (keep → #73164c, tax/interest → gold #c79a4b, then mauve, sand and slate).
+  - Inputs (`inputs.tsx`) use `.field` > `.labelrow` > label + `.number` box, the package's range slider with `--fill` and `.endpoints`, `.chips`, `.ax-calctabs` for choices, the package's custom `.ax-select` dropdown and `details.moreoptions`. Choices with a few options (`Segmented`, `RadioGroup`) render as radio buttons; longer lists use the dropdown. Hints (`hint` or `info`) show behind an (i) `InfoTip`, not as text. The form has no visible title (the `title` is a screen-reader heading) and `FlagshipPage` shows no eyebrow lines.
+  - Chart colours go through `soften()` in `results.tsx`, which maps the studios' colours to the chart palette, kept apart from the brand colour: keep/borrow → blue #2a78d6, tax/interest → orange #eb6834, then aqua #1baf7a, violet #4a3aa7, red #e34948, magenta #e87ba4, yellow #eda100 and greys #9aa1a9/#c3c8ce. Guide charts use the same colours (`--g-c1..5`), and `salary.js`/`mortgage.js` were edited to draw with them (the only change to the supplied scripts).
 - **Guides** (`Guide.tsx`) use the package's guide markup: `section.guideintro`, `.guide-layout` with the sticky `aside.guide-nav` ("In this guide") and `article.g-article` of `section.g-section`s with numbered `.g-sectionHead`s.
 - **Content pages** use `ContentPage.tsx` (`.crumb`, grey `.categoryhero`, `.gm-prose` column). The blog list uses `.gm-cards`; all calculators reuses the topic pages' `.categoryjump` and `.categorytool` cards.
 
-**Design trial (October 2026, `/property/council-tax-bands` only):** the owner is trialling a clearer look before rolling it out. `FlagshipPage` props `plainIntro` (no eyebrow lines), `neutral` (neutral greys instead of pink tints, Axis Bank type scale: Lato 500/600 self-hosted in `public/gm/fonts`, 40px titles, 18px labels, 16/24 body in #6e6e6e, claret table headers, numbered FAQ cards) and `claret` (#8c1d40 instead of #510b38, header included); `Studio variant="clear"` (radio buttons, dropdowns, (i) info tips via `info` props, More options as a bordered control). Colour swaps are generated by `scripts/build-neutral-css.py` into `public/gm/govmath-neutral.css` and `govmath-claret.css`: re-run it after changing any stylesheet. The guide's own FAQ section is merged into the page FAQ on this page. To roll out, set these props on every calculator page.
+**Site-wide look (October 2026, owner-approved after a trial on `/property/council-tax-bands`):** claret #8c1d40 replaces wine #510b38 (hover #6e1632, focus #b8325f, header included), pink tints become neutral greys (text #282828, body #6e6e6e, panels #f1f4f7, borders #dfe3e8, input borders #9aa1a9), with the Axis Bank type scale (Lato 500/600 self-hosted in `public/gm/fonts`, 40/44 titles, 18px labels, 16/24 body, claret table headers, numbered guide sections and numbered FAQ cards on a grey band). The colour swaps are generated by `scripts/build-neutral-css.py` into `public/gm/govmath-neutral.css` (scope `.gm-neutral`) and `govmath-claret.css` (scope `.gm-claret`): **re-run it after changing any stylesheet**. Hand-written theme rules (type scale, guide, FAQ, fonts, package chart legends) live in `public/gm/govmath-theme.css`, loaded last. Use only these colours and the chart palette; the 11 package pages are no longer pixel-identical to the supplied package, by design.
 
 **Housekeeping (October 2026 clean-up):** keep the code free of dead files and exports. To check, install `knip` in a scratch folder and run it from the repo (`knip` and `knip --production`); only exported types, and building blocks used inside their own module and tested on their own, should remain. Crawl every sitemap page for internal links and check external links; many sites (MoneyHelper, TfL, IFS, Energy Saving Trust, SAA, Start Up Loans) block automated checkers with 403, so confirm those by search rather than replacing them.
 
-**Checks:** to compare with the package, serve its `dist` folder (`python3 -m http.server <port> --directory dist`), take full-page screenshots of both at 1440, 768 and 375px and pixel-diff them. The 11 package pages should stay identical apart from the generated tool lists. To change them, edit the JSON (or regenerate from a new package with the same converter).
+**Checks:** to compare with the package, serve its `dist` folder (`python3 -m http.server <port> --directory dist`), take full-page screenshots of both at 1440, 768 and 375px and pixel-diff them. The 11 package pages should match it in layout; colours and type differ by design (site-wide look above). To change them, edit the JSON (or regenerate from a new package with the same converter).
 
 ## Ads (AdSense)
 

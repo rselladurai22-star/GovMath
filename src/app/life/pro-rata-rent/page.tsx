@@ -23,6 +23,9 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How do I convert weekly rent to monthly?", a: "Multiply by 52 and divide by 12. £300 a week is £1,300 a month." },
   { q: "How much can a landlord ask for a deposit?", a: "In England, 5 weeks' rent if the annual rent is under £50,000, or 6 weeks' if it is higher. A holding deposit is capped at 1 week's rent." },
   { q: "Do I pay rent for the day I move in?", a: "Yes. Rent is normally charged from the first day of the tenancy." },
+  { q: "Is pro-rata rent calculated on 30 days?", a: "Rarely. Most agents use 365 days a year, and some use the actual days in the month." },
+  { q: "Do I count the day I move in?", a: "Yes. Rent is usually charged from the start date of the tenancy, including that day." },
+  { q: "What about the day I move out?", a: "The last day of the tenancy is also counted." },
 ];
 
 export default async function ProRataPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

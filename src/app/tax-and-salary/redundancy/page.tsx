@@ -23,6 +23,12 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Is redundancy pay taxed?", a: "The first £30,000 of redundancy pay is tax-free. Anything above that is subject to Income Tax but not employee National Insurance. Notice pay and holiday pay are always taxed like salary." },
   { q: "How long do I need to work to get redundancy pay?", a: "At least 2 full years of continuous employment with the same employer, as an employee." },
   { q: "Is notice pay part of redundancy pay?", a: "No. Notice is separate. You are entitled to your contractual notice or the statutory minimum (one week per full year of service, up to 12 weeks), whichever is longer." },
+  { q: "Do part-time workers get redundancy pay?", a: "Yes, on the same rules. Their weekly pay is their actual part-time pay." },
+  { q: "Does voluntary redundancy pay the same?", a: "You are still entitled to at least statutory redundancy pay, and voluntary schemes are often enhanced." },
+  { q: "Does redundancy pay affect my State Pension?", a: "No. Redundancy pay does not count as earnings for National Insurance, so it neither costs nor earns State Pension credits." },
+  { q: "Can I be made redundant while on sick leave or maternity leave?", a: "Yes, if the redundancy is genuine and fair, but you must not be selected because of the leave, and extra protections apply during and after maternity leave." },
+  { q: "Is redundancy pay paid with my final salary?", a: "Usually, yes. Your employer should pay it on or soon after your leaving date, and show it separately on your final payslip with any notice and holiday pay." },
+  { q: "Can I be made redundant and then replaced?", a: "Not if the redundancy is genuine. If your job still exists and someone else is hired to do it, you may have a claim for unfair dismissal." },
 ];
 
 export default async function RedundancyPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

@@ -23,6 +23,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How do I check the tax on my P60?", a: "Subtract the tax-free amount from your tax code (£12,579 for 1257L) from your pay, then apply the tax bands to the rest. If the tax shown is hundreds of pounds different, check your tax code history in the HMRC app." },
   { q: "Can I get a replacement P60?", a: "HMRC cannot issue one, but your employer can give you a copy, and your pay and tax for past years are in the HMRC app and personal tax account." },
   { q: "When should I get my P60?", a: "By 31 May after the end of the tax year on 5 April." },
+  { q: "Do I get a P60 if I left my job before 5 April?", a: "No. You get a P45 when you leave instead. The P60 only comes from employers you work for on 5 April." },
+  { q: "Should my P45 include pay from my previous job?", a: "If your employer used your previous P45, the “total pay to date” includes it, and the form separately shows pay in that job." },
+  { q: "My P60 tax looks too high. What should I do?", a: "Check your tax code and any other income for the year, then look in the HMRC app. If you overpaid, HMRC usually refunds it automatically through a P800, or you can claim." },
+  { q: "Does my P60 show student loan repayments?", a: "Yes, P60s include student loan deductions made through payroll during the year." },
+  { q: "Do pension providers issue P60s?", a: "Yes. If you receive a pension taxed through PAYE, the provider gives you a P60 each year, just like an employer." },
+  { q: "What if the figures on my P45 look wrong?", a: "Ask your former employer to check them against your payslips. If the pay or tax to date is wrong, they can issue a corrected P45 or send updated figures to HMRC, and your next employer can then use the right numbers." },
+  { q: "Is my P60 the same as my payslip?", a: "No. A payslip covers one payment; the P60 adds up every payment in the tax year from that employer." },
 ];
 
 export default async function P45P60Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

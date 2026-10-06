@@ -20,7 +20,6 @@ const TOC: TocItem[] = [
   { id: "extra-help", title: "Benefit cap and extra help" },
   { id: "claiming", title: "How to claim and backdating" },
   { id: "changes", title: "Changes you must report" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -403,21 +402,7 @@ export default function HbGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="FAQs" title="Common questions">
-        <h3>Can I get Housing Benefit if I own my home?</h3>
-        <p>No. Homeowners on Pension Credit may get help with mortgage interest through a Support for Mortgage Interest loan instead.</p>
-        <h3>Does Housing Benefit pay service charges?</h3>
-        <p>Most building service charges are covered. Charges for your own energy, water and meals are not.</p>
-        <h3>What if I live with my partner who is under State Pension age?</h3>
-        <p>
-          Mixed-age couples usually claim Universal Credit rather than Housing Benefit, unless one of you was already getting Pension Credit
-          or Housing Benefit before May 2019.
-        </p>
-        <h3>Is Housing Benefit taxable?</h3>
-        <p>No. It is not taxable and it does not affect your State Pension.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Reference" title="Key numbers">
+      <GuideSection id="key-numbers" n={18} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Housing Benefit 2026/27 at a glance"
           head={["Item", "Figure"]}

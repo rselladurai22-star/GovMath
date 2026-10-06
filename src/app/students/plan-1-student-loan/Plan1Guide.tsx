@@ -28,7 +28,6 @@ const TOC: TocItem[] = [
   { id: "diy", title: "Working it out yourself" },
   { id: "history", title: "A short history of Plan 1" },
   { id: "budget", title: "Planning for the end of repayments" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -324,20 +323,7 @@ export default function Plan1Guide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={26} kicker="FAQs" title="Common questions">
-        <h3>Will the Plan 1 threshold go up?</h3>
-        <p>Yes. It rises each April in line with RPI.</p>
-        <h3>Does Plan 1 affect my credit score?</h3>
-        <p>No, but mortgage lenders count the repayments as an outgoing.</p>
-        <h3>I studied in Northern Ireland. Is anything different?</h3>
-        <p>Plan 1 rules apply, with loans administered by Student Finance NI and written off after 25 years for loans from 2007/08.</p>
-        <h3>Do I need to tell HMRC about my loan?</h3>
-        <p>Not if you are employed: tell your employer your plan type when you start, often using a starter checklist, and they deduct repayments. If you file Self Assessment, tick the student loan box on your return.</p>
-        <h3>Is interest on Plan 1 likely to change?</h3>
-        <p>It changes each September, based on March RPI and the Bank of England base rate. When base rate plus 1% is lower than RPI, that lower figure applies.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={27} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={26} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£26,900", label: "Threshold 2026/27" },

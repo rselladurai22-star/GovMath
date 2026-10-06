@@ -30,7 +30,6 @@ const TOC: TocItem[] = [
   { id: "employers", title: "A checklist for employers" },
   { id: "pay-reference", title: "How HMRC checks your pay" },
   { id: "output-work", title: "Piece work and commission" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -322,35 +321,7 @@ export default function MinWageGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={16} kicker="Questions" title="Common questions">
-        <h3>Is the National Living Wage the same as the real Living Wage?</h3>
-        <p>
-          No. The National Living Wage is the legal minimum for people aged 21 and over. The real Living Wage is a
-          voluntary, higher rate set by the Living Wage Foundation and paid by employers who choose to sign up.
-        </p>
-        <h3>Do tips count towards the minimum wage?</h3>
-        <p>
-          No. Tips must be paid on top of at least the minimum wage, and since October 2024 employers must pass all tips
-          on to workers fairly.
-        </p>
-        <h3>Can I agree to work for less than the minimum wage?</h3>
-        <p>
-          No. Any agreement to accept less is void, and your employer must still pay the legal minimum.
-        </p>
-        <h3>Does the minimum wage apply to zero-hours contracts?</h3>
-        <p>
-          Yes. Every hour you work must be paid at least the minimum for your age, whatever your contract type.
-        </p>
-        <h3>Does the minimum wage go up on my birthday?</h3>
-        <p>
-          Yes, if a birthday moves you into a higher band. The new rate applies from the start of your next pay reference
-          period after your birthday, so check your first payslip after turning 18 or 21.
-        </p>
-        <h3>Is the minimum wage the same across the UK?</h3>
-        <p>Yes. The same rates apply in England, Scotland, Wales and Northern Ireland.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={17} kicker="Quick reference" title="Key numbers">
+      <GuideSection id="key-numbers" n={16} kicker="Quick reference" title="Key numbers">
         <KeyStats
           items={[
             { value: "£12.71", label: "National Living Wage, 21 and over" },

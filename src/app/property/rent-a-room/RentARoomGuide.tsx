@@ -25,7 +25,6 @@ const TOC: TocItem[] = [
   { id: "practical", title: "Practical checks before taking a lodger" },
   { id: "lodger-tenant", title: "Lodger or tenant?" },
   { id: "part-year", title: "Example: a lodger for part of the year" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -223,27 +222,7 @@ export default function RentARoomGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={12} kicker="FAQs" title="Common questions">
-        <h3>Does it apply to Airbnb guests?</h3>
-        <p>It can, if the guests stay in a furnished room in your main home while you live there. Letting the whole home while you are away does not qualify.</p>
-        <h3>What if my lodger only stays a few months?</h3>
-        <p>You still get the full £7,500 limit for the tax year. It is not divided by the number of months.</p>
-        <h3>Can I claim the scheme and expenses together?</h3>
-        <p>No. Under the scheme you cannot deduct any expenses.</p>
-        <h3>Do I have to protect a lodger&apos;s deposit?</h3>
-        <p>Not usually. Deposit protection rules apply to assured shorthold tenancies, not lodgers who live with you.</p>
-        <h3>Is the limit different in Scotland or Wales?</h3>
-        <p>No. Rent a Room is a UK-wide Income Tax relief. Scottish taxpayers pay Scottish rates on any taxable amount.</p>
-        <h3>Does Rent a Room affect Capital Gains Tax when I sell?</h3>
-        <p>
-          Having a lodger who shares your home does not normally reduce Private Residence Relief, so you would not usually pay CGT
-          on your home because of it.
-        </p>
-        <h3>Can a lodger stay if I rent my home?</h3>
-        <p>Only if your tenancy allows it. Ask your landlord for written permission first.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={13} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={12} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£7,500", label: "Tax-free receipts a year" },

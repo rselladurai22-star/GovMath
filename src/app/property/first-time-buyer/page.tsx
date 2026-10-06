@@ -23,6 +23,11 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Can I get relief if my partner has owned a home?", a: "No. Every buyer must be a first-time buyer. If anyone buying has owned a home anywhere in the world, the standard rates apply." },
   { q: "Does a Lifetime ISA affect Stamp Duty?", a: "No, but you can only use a Lifetime ISA towards a first home costing £450,000 or less without a 25% withdrawal charge." },
   { q: "Do first-time buyers pay Stamp Duty in Scotland and Wales?", a: "Scotland has LBTT with a £175,000 0% band for first-time buyers. Wales has LTT with no first-time buyer relief but a £225,000 0% band for everyone." },
+  { q: "I inherited a share of a house as a child. Am I a first-time buyer?", a: "Probably not. Any interest in a residential property anywhere in the world counts as ownership, including an inherited share. Ask your conveyancer to check the details." },
+  { q: "Does it matter if I owned a home abroad?", a: "Yes. Homes outside the UK count, so previous overseas ownership rules you out." },
+  { q: "Do I need to live in the home?", a: "Yes. It must be your only or main residence. Buying a first property to let out does not qualify." },
+  { q: "What if the price changes after I agree it?", a: "Stamp Duty is worked out on the final price at completion, so a renegotiated price changes the tax." },
+  { q: "Can I add Stamp Duty to my mortgage?", a: "Not directly. You need the money at completion, though borrowing more and keeping more cash back has the same effect." },
 ];
 
 export default async function FTBPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

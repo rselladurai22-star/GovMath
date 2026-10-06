@@ -29,7 +29,6 @@ const TOC: TocItem[] = [
   { id: "foreign", title: "Foreign withholding tax" },
   { id: "drip", title: "Dividend reinvestment" },
   { id: "checklist", title: "A year-end checklist" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -383,26 +382,7 @@ export default function DividendGuide() {
         </ol>
       </GuideSection>
 
-      <GuideSection id="questions" n={27} kicker="FAQs" title="Common questions">
-        <h3>Do I pay National Insurance on dividends?</h3>
-        <p>No. Dividends are not subject to National Insurance.</p>
-        <h3>Are dividends in an ISA taxed?</h3>
-        <p>No, and they do not use up your dividend allowance.</p>
-        <h3>Do dividends count towards the £100,000 Personal Allowance taper?</h3>
-        <p>Yes. They count as income for adjusted net income, as do savings and rent.</p>
-        <h3>Do I pay tax on reinvested dividends?</h3>
-        <p>Yes. Reinvesting does not change the tax; it is still your income.</p>
-        <h3>Is there tax on dividends from shares in my employer&rsquo;s share plan?</h3>
-        <p>Dividends on shares in a Share Incentive Plan can be reinvested tax-free. Other employee shares pay taxable dividends as normal.</p>
-        <h3>When is a dividend taxed if it is declared in March but paid in April?</h3>
-        <p>In the tax year it is paid, so a dividend paid on 6 April falls into the new tax year.</p>
-        <h3>Do I get a tax credit on dividends?</h3>
-        <p>No. The old 10% dividend tax credit was abolished in April 2016 and replaced by the dividend allowance.</p>
-        <h3>Are dividends from a Venture Capital Trust taxed?</h3>
-        <p>No. Dividends from VCT shares bought within the annual limit are tax-free.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={28} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={27} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£500", label: "Dividend allowance" },

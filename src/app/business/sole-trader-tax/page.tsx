@@ -23,6 +23,11 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What is the trading allowance?", a: "A flat £1,000 deduction you can use instead of actual expenses. Turnover of £1,000 or less is tax-free and does not need reporting." },
   { q: "When do sole traders pay tax?", a: "By 31 January after the tax year ends, with payments on account on 31 January and 31 July towards the next year if the bill is £1,000 or more." },
   { q: "How much should I put aside for tax?", a: "About 15% to 20% of profit for a basic-rate sole trader, and 30% to 40% for higher-rate profit or self-employment on top of a well-paid job." },
+  { q: "Do I pay tax on what I take out or on my profit?", a: "On your profit. Money you take out, called drawings, is not taxed separately and is not an expense." },
+  { q: "Can I make a loss?", a: "Yes. A trading loss can usually be set against other income in the same or previous year, or carried forward against future profits from the same trade." },
+  { q: "Do I need to register if I only earn a little?", a: "Not if your total self-employed turnover is £1,000 or less in the tax year. Above that you must register by 5 October after the year ends." },
+  { q: "Does my Class 4 NI count towards my State Pension?", a: "Class 4 itself does not, but profit of £7,105 or more gives you a free Class 2 credit, which does count." },
+  { q: "Can I pay my tax monthly?", a: "Yes. HMRC's budget payment plan lets you pay towards your next bill by direct debit in regular amounts." },
 ];
 
 export default async function SoleTraderPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

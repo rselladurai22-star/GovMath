@@ -21,6 +21,15 @@ const CALCULATOR = [
   "reference-header.css",
 ];
 
+/**
+ * The site theme (claret brand, neutral palette, Axis type scale). The generated
+ * colour swaps load before govmath-site.css and the theme loads last, so the
+ * theme's own rules win at equal specificity. Pages are wrapped in .gm-claret
+ * and their main content in .gm-neutral.
+ */
+export const THEME_BEFORE = ["govmath-neutral.css", "govmath-claret.css"];
+export const THEME_AFTER = ["govmath-theme.css"];
+
 type El = { tag: string; attrs: Record<string, string>; html: string };
 const PROP: Record<string, string> = { class: "className", for: "htmlFor", tabindex: "tabIndex" };
 const render = (el: El) =>
@@ -29,24 +38,16 @@ const render = (el: El) =>
     dangerouslySetInnerHTML: { __html: el.html },
   });
 
-export default function GmShell({
-  kind = "base",
-  claret,
-  children,
-}: {
-  kind?: "base" | "calculator";
-  /** Brand colour trial: claret instead of the dark wine (council tax page only for now). */
-  claret?: boolean;
-  children: ReactNode;
-}) {
+export default function GmShell({ kind = "base", children }: { kind?: "base" | "calculator"; children: ReactNode }) {
   // govmath-site.css adds, in the design's own language, the parts the package does not include.
-  // The generated palette files come first so govmath-site.css's own trial rules win at equal specificity.
-  const css = [...(kind === "calculator" ? CALCULATOR : BASE), "govmath-neutral.css", ...(claret ? ["govmath-claret.css"] : []), "govmath-site.css"];
+  const css = [...(kind === "calculator" ? CALCULATOR : BASE), ...THEME_BEFORE, "govmath-site.css", ...THEME_AFTER];
   const page = (
     <>
       {render(chrome.skip as El)}
       {render(chrome.header as El)}
-      <main id="main">{children}</main>
+      <main id="main" className="gm-neutral">
+        {children}
+      </main>
       {render(chrome.footer as El)}
     </>
   );
@@ -55,7 +56,7 @@ export default function GmShell({
       {css.map((href) => (
         <link key={href} rel="stylesheet" href={`/gm/${href}`} precedence="gm" />
       ))}
-      {claret ? <div className="gm-claret">{page}</div> : page}
+      <div className="gm-claret">{page}</div>
       <GmScripts scripts={["axis"]} />
     </>
   );

@@ -22,6 +22,14 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Is a season ticket worth it if I work from home some days?", a: "Not always. At three days a week, daily returns or a flexi season ticket can be cheaper than an annual season." },
   { q: "How much is the bus fare cap?", a: "£3 for a single fare in England outside London until December 2026, then £2 from January 2027." },
   { q: "Can I claim tax relief on my commute?", a: "No. Travel to your permanent workplace is commuting, not business travel." },
+  { q: "Should I include insurance and car tax?", a: "Only if you would get rid of the car without the commute. Otherwise you pay them anyway, so they do not change the comparison." },
+  { q: "What wear and tear figure should I use?", a: "Around 10p to 15p a mile covers tyres, servicing and extra wear for a typical car. Electric cars are usually at the lower end." },
+  { q: "Is a longer commute cheaper by train?", a: "Often. At 25 miles each way with £6 parking, driving costs £4,779 a year against a £4,500 season ticket in our example." },
+  { q: "Does working from home save money?", a: "Every day at home saves the cost of that day's commute, though heating and electricity at home rise a little. At £13.09 a day by car in the example, two days a week at home saves about £1,205 a year." },
+  { q: "Should I count the cost of buying a bike?", a: "Yes, spread over the years you expect to use it, plus servicing, lights and a lock. The calculator includes a yearly figure for this." },
+  { q: "Is the train always more reliable?", a: "Not always. Check your route's punctuality and how often services are cancelled, and compare with typical traffic delays on your drive." },
+  { q: "Can I claim the cost of my commute on tax?", a: "No. Commuting to a permanent workplace is not tax-deductible, whatever transport you use." },
+  { q: "What about a company car?", a: "If you have a company car, fuel for commuting paid by your employer counts as private fuel and can trigger the fuel benefit charge." },
 ];
 
 export default async function CommutePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

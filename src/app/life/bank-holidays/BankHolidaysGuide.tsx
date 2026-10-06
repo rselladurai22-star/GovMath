@@ -21,7 +21,6 @@ const TOC: TocItem[] = [
   { id: "shift", title: "Shift workers and the self-employed" },
   { id: "schools", title: "Schools and bank holidays" },
   { id: "international", title: "Compared with other countries" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -274,26 +273,7 @@ export default function BankHolidaysGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Is Easter Monday a bank holiday in Scotland?</h3>
-        <p>No. Scotland has 2 January and St Andrew&rsquo;s Day instead, though some employers give Easter Monday off.</p>
-        <h3>Is St Patrick&rsquo;s Day a bank holiday in England?</h3>
-        <p>No, only in Northern Ireland.</p>
-        <h3>Do shops close on bank holidays?</h3>
-        <p>Most open, with shorter hours on some days. Large shops in England and Wales must close on Christmas Day and Easter Sunday.</p>
-        <h3>Will there be extra bank holidays?</h3>
-        <p>Only if the government announces one, usually for a national event.</p>
-        <h3>Is Christmas Eve a bank holiday?</h3>
-        <p>No. Christmas Eve and New Year&rsquo;s Eve are normal working days, though many employers close early.</p>
-        <h3>When is the next bank holiday?</h3>
-        <p>The calculator shows the next one for your nation, counting from today.</p>
-        <h3>Does a bank holiday count as a working day for notice periods?</h3>
-        <p>It depends on the contract or law involved. Many legal time limits count calendar days, not working days, so check the specific rule.</p>
-        <h3>Can my employer make me take annual leave on a bank holiday?</h3>
-        <p>Yes, if your contract says bank holidays come out of your annual leave, or if they give you the right notice.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "8", label: "England and Wales" },

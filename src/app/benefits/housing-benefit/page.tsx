@@ -24,6 +24,10 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Does Housing Benefit cover all my rent?", a: "Not always. Private rents are limited to the Local Housing Allowance, social tenants of working age lose 14% or 25% for spare bedrooms, and charges for heating, meals or water are not covered." },
   { q: "Can Housing Benefit be backdated?", a: "Yes. Up to 3 months if you are over State Pension age, or up to 1 month for working-age claimants who can show good cause for claiming late." },
   { q: "Is Housing Benefit paid to me or my landlord?", a: "Usually to you for a private tenancy, unless you ask or are in arrears of 8 weeks or more. For council homes it is taken off your rent account." },
+  { q: "Can I get Housing Benefit if I own my home?", a: "No. Homeowners on Pension Credit may get help with mortgage interest through a Support for Mortgage Interest loan instead." },
+  { q: "Does Housing Benefit pay service charges?", a: "Most building service charges are covered. Charges for your own energy, water and meals are not." },
+  { q: "What if I live with my partner who is under State Pension age?", a: "Mixed-age couples usually claim Universal Credit rather than Housing Benefit, unless one of you was already getting Pension Credit or Housing Benefit before May 2019." },
+  { q: "Is Housing Benefit taxable?", a: "No. It is not taxable and it does not affect your State Pension." },
 ];
 
 export default async function HousingBenefitPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

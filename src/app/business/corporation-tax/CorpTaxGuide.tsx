@@ -30,7 +30,6 @@ const TOC: TocItem[] = [
   { id: "investment", title: "Investment companies and other income" },
   { id: "losses", title: "Losses in more detail" },
   { id: "records", title: "Records, accounts and the return" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -365,28 +364,7 @@ export default function CorpTaxGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={16} kicker="FAQs" title="Common questions">
-        <h3>Is Corporation Tax charged on turnover?</h3>
-        <p>No. It is charged on taxable profit, after costs and allowances.</p>
-        <h3>Do dividends reduce Corporation Tax?</h3>
-        <p>No. Dividends are paid from profit after tax. A salary, by contrast, is deductible.</p>
-        <h3>What if my year end is not 31 March?</h3>
-        <p>
-          The rates are the same for financial years 2025 and 2026, so any 12-month period ending in 2026 or 2027 uses the
-          same figures. If rates changed between financial years, profits would be split across them.
-        </p>
-        <h3>Does a dormant company pay Corporation Tax?</h3>
-        <p>No, as long as it has no income. HMRC may not even need a return, but Companies House still needs accounts.</p>
-        <h3>What happens if I make a loss?</h3>
-        <p>
-          There is no Corporation Tax. A trading loss can be carried back against the previous year&rsquo;s profit for a
-          refund, set against other profits in the same year, or carried forward.
-        </p>
-        <h3>Can I pay Corporation Tax early?</h3>
-        <p>Yes. HMRC accepts payment before the due date, and may pay a small amount of interest on early payments. Many companies set money aside each month so the bill is ready.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={16} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "19%", label: "Small profits rate, up to £50,000" },

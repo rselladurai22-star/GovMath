@@ -23,6 +23,12 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What is keystone pricing?", a: "Doubling the wholesale cost: a 100% markup, which gives a 50% margin." },
   { q: "How do I cover marketplace fees in my price?", a: "Divide the cost by one minus the margin minus the fee percentage, so the fee is paid without reducing your margin." },
   { q: "Do I add VAT before or after markup?", a: "After. Work out your price before VAT, then add VAT on top if you are VAT-registered." },
+  { q: "What markup do I need for a 30% margin?", a: "A 42.9% markup. Divide the margin by one minus the margin: 0.3 ÷ 0.7." },
+  { q: "Is markup the same as profit?", a: "Markup is a percentage of cost; profit is an amount in pounds. A 50% markup on a £25 item is £12.50 of gross profit, before overheads and tax." },
+  { q: "Should I use the price with or without VAT?", a: "Work out markup and margin on the price before VAT if you are VAT-registered. If you are not, use your cost including the VAT you paid, and there is no VAT to add to the price." },
+  { q: "How do I price services rather than goods?", a: "The same maths works if you treat your direct costs, such as materials and subcontractors, as the cost. Many service businesses also price by the hour or day; make sure the rate covers your time, overheads and the weeks you cannot bill." },
+  { q: "Can I sell below cost?", a: "Yes, as a one-off, for example to clear old stock. Just be clear that each sale loses money and does not count towards covering overheads." },
+  { q: "How often should I review my prices?", a: "At least once a year, and whenever a supplier puts its prices up. Rerun the calculation with the new cost and check your margin is still where you need it." },
 ];
 
 export default async function MarkupPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

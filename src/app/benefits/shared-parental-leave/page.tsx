@@ -23,6 +23,19 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Who qualifies for Shared Parental Leave?", a: "The parent taking leave needs 26 weeks with their employer by the 15th week before the due week; the other parent must have worked 26 of the 66 weeks before and earned £390 in 13 of them." },
   { q: "Can both parents be off at the same time?", a: "Yes, as long as the total weeks taken stay within the shared allowance." },
   { q: "Does sharing leave reduce the total pay?", a: "Usually not on statutory pay, unless the mother switches before 6 weeks and loses the 90% weeks, or paid weeks go unused." },
+  { q: "Can we both be off at the same time?", a: "Yes. The mother can be on maternity leave while the partner takes shared leave, or both can take shared leave together." },
+  { q: "Does shared leave affect my holiday?", a: "No. Holiday keeps building up during shared parental leave." },
+  { q: "Can I go back to work and then take more leave?", a: "Yes, by booking up to three separate blocks before the child's first birthday." },
+  { q: "What if the self-employed parent wants leave?", a: "Shared Parental Leave is only for employees, but a self-employed parent can help their employed partner qualify." },
+  { q: "Is there a deadline?", a: "All shared leave must be taken within 52 weeks of the birth or placement." },
+  { q: "Can grandparents take shared parental leave?", a: "Not yet. Shared Parental Leave is only for the child's parents or the mother's partner." },
+  { q: "What happens if we change our minds?", a: "Each parent can vary or cancel a booked block with 8 weeks' notice, and each change counts towards the three notices." },
+  { q: "Does taking shared leave affect the mother's Maternity Allowance?", a: "Yes. Ending Maternity Allowance early makes the remaining weeks available as shared pay for an eligible partner." },
+  { q: "Can we use shared leave after the child's first birthday?", a: "No. All of it must be taken within 52 weeks of the birth or adoption placement." },
+  { q: "Is shared parental pay taxed?", a: "Yes. Like maternity and paternity pay, it is paid through payroll with Income Tax and National Insurance deducted." },
+  { q: "Does shared leave count as continuous employment?", a: "Yes. Your employment continues, holiday keeps building up, and you return to the same job if your total leave is 26 weeks or less." },
+  { q: "Can the partner take shared leave while the mother is still pregnant?", a: "No. Shared leave can only start after the birth, and the mother must take at least two weeks of maternity leave first." },
+  { q: "What if the baby is born early?", a: "The dates move with the birth. You can change booked leave if the baby arrives early, often with less notice than usual." },
 ];
 
 export default async function SharedPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
