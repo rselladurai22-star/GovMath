@@ -182,7 +182,7 @@ export default function RentARoomGuide() {
         <ul>
           <li><strong>Mortgage:</strong> tell your lender. Most allow a lodger, but some need consent.</li>
           <li><strong>Home insurance:</strong> tell your insurer, as a lodger can affect your cover.</li>
-          <li><strong>Tenancy:</strong> if you rent, check your tenancy allows a lodger and get your landlord&apos;s permission.</li>
+          <li><strong>Tenancy:</strong>{" "}if you rent, check your tenancy allows a lodger and get your landlord&apos;s permission.</li>
           <li><strong>Right to rent:</strong> in England you must check that an adult lodger has the right to rent.</li>
           <li><strong>Council tax:</strong> a lodger who lives with you as their main home ends any single person discount.</li>
           <li><strong>Benefits:</strong> lodger income can affect means-tested benefits; check before you start.</li>

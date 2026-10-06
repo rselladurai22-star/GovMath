@@ -3,6 +3,7 @@ import Link from "next/link";
 import { shortTitle, type Calculator } from "@/lib/calculators";
 import GmShell from "@/gm/GmShell";
 import cats from "@/gm/categories.json";
+import { trustHtml } from "@/gm/trust";
 
 export type Crumb = { href: string; label: string };
 
@@ -79,6 +80,7 @@ export default function FlagshipPage({
         <div className="intro">
           <h1>{title}</h1>
           <p>{lead}</p>
+          {guide && <div dangerouslySetInnerHTML={{ __html: trustHtml(breadcrumbs[breadcrumbs.length - 1].href, "guide-sources") }} />}
         </div>
         <nav className="sectionnav" aria-label="On this page">
           <a className="active" href="#calculator">

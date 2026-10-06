@@ -248,7 +248,7 @@ export default function LTTGuide() {
 
       <GuideSection id="paying" n={10} kicker="Paying" title="Filing and paying">
         <p>
-          Your solicitor or conveyancer files the LTT return with the WRA and pays the tax within <strong>30 days</strong> of
+          Your solicitor or conveyancer files the LTT return with the WRA and pays the tax within <strong>30 days</strong>{" "}of
           completion. In practice they collect the money from you before completion and pay on the day, because the purchase
           cannot be registered with HM Land Registry without the WRA&apos;s certificate.
         </p>

@@ -59,7 +59,7 @@ export default function HolidayGuide() {
     >
       <GuideSection id="minimum" n={1} kicker="The basics" title="The legal minimum">
         <p>
-          The Working Time Regulations give almost all workers <strong>5.6 weeks of paid holiday</strong> a year. A
+          The Working Time Regulations give almost all workers <strong>5.6 weeks of paid holiday</strong>{" "}a year. A
           &ldquo;week&rdquo; means the number of days or hours you normally work in a week, so the entitlement scales
           with your pattern. There is a cap of 28 days, so someone working six days a week still gets 28.
         </p>
@@ -151,7 +151,7 @@ export default function HolidayGuide() {
           through gives you half the year&rsquo;s holiday.
         </p>
         <p>
-          In your <strong>first year</strong> of a job, holiday builds up at one-twelfth of your annual entitlement at
+          In your <strong>first year</strong>{" "}of a job, holiday builds up at one-twelfth of your annual entitlement at
           the start of each month. Your employer can round up to the nearest half day. After the first year, you can
           take your full year&rsquo;s holiday whenever it is agreed.
         </p>

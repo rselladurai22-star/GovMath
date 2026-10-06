@@ -274,7 +274,7 @@ export default function ChildBenefitGuide() {
             working-age households can get.
           </li>
           <li>
-            <strong>Guardian&rsquo;s Allowance:</strong> if you are bringing up a child whose parents have died, you may also
+            <strong>Guardian&rsquo;s Allowance:</strong>{" "}if you are bringing up a child whose parents have died, you may also
             get Guardian&rsquo;s Allowance, but you must be getting Child Benefit for that child.
           </li>
           <li>

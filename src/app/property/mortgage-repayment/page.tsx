@@ -6,5 +6,5 @@ const page = data as GmPage;
 export const metadata = gmMetadata(page, "/property/mortgage-repayment");
 
 export default function Page() {
-  return <GmDocument page={page} />;
+  return <GmDocument page={page} trust={{ path: "/property/mortgage-repayment", sourcesId: "guide-guide-sources" }} />;
 }

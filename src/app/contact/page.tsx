@@ -47,11 +47,11 @@ export default function ContactPage() {
           looks wrong, and the correct figure or source if you have it.
         </li>
         <li>
-          <strong>For a request:</strong> the calculation you wish existed and,
+          <strong>For a request:</strong>{" "}the calculation you wish existed and,
           ideally, why it&apos;s useful.
         </li>
         <li>
-          <strong>For a general question:</strong> as much detail as you&apos;re
+          <strong>For a general question:</strong>{" "}as much detail as you&apos;re
           comfortable sharing.
         </li>
       </ul>

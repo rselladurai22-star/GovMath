@@ -130,7 +130,7 @@ export default function MileageGuide() {
 
       <GuideSection id="self-employed" n={4} kicker="Sole traders" title="Mileage for the self-employed">
         <p>
-          Sole traders and partners can claim the mileage rates as <strong>simplified expenses</strong> for cars, vans and
+          Sole traders and partners can claim the mileage rates as <strong>simplified expenses</strong>{" "}for cars, vans and
           motorcycles. Bicycles are not included: claim the business share of a bike&rsquo;s actual costs instead. The claim is a business expense, so it cuts your profit and therefore your Income Tax and Class 4
           National Insurance.
         </p>
@@ -242,7 +242,7 @@ export default function MileageGuide() {
 
       <GuideSection id="company-cars" n={9} kicker="Other vehicles" title="Company cars and electric vehicles">
         <p>
-          The approved mileage rates are for <strong>your own</strong> vehicle. If you drive a company car, different rules
+          The approved mileage rates are for <strong>your own</strong>{" "}vehicle. If you drive a company car, different rules
           apply: your employer can reimburse business fuel at HMRC&rsquo;s <strong>advisory fuel rates</strong>, which are set
           quarterly by engine size and fuel type, with a separate advisory electricity rate for fully electric company cars.
         </p>

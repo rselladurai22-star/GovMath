@@ -125,7 +125,7 @@ export default function SharedGuide() {
 
       <GuideSection id="pay" n={4} kicker="Pay" title="Shared parental pay">
         <p>
-          Statutory Shared Parental Pay (ShPP) is the lower of <strong>£194.32</strong> a week or 90% of the parent&rsquo;s
+          Statutory Shared Parental Pay (ShPP) is the lower of <strong>£194.32</strong>{" "}a week or 90% of the parent&rsquo;s
           average weekly earnings. Each parent&rsquo;s pay is based on their own earnings.
         </p>
         <DataTable

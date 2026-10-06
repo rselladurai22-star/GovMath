@@ -321,11 +321,11 @@ export default function CarersGuide() {
             <strong>Council Tax discounts</strong>, as some carers living with the person they care for are disregarded for Council Tax.
           </li>
           <li>
-            <strong>Flexible working</strong> and up to one week of unpaid carer&rsquo;s leave a year from your employer, from your first day
+            <strong>Flexible working</strong>{" "}and up to one week of unpaid carer&rsquo;s leave a year from your employer, from your first day
             in the job.
           </li>
           <li>
-            <strong>Grants and support</strong> from carers&rsquo; charities and local carers&rsquo; centres.
+            <strong>Grants and support</strong>{" "}from carers&rsquo; charities and local carers&rsquo; centres.
           </li>
         </ul>
       </GuideSection>

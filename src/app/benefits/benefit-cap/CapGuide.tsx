@@ -71,7 +71,7 @@ export default function CapGuide() {
           </li>
           <li>The limits have not changed for 2026/27, even though benefit rates went up.</li>
           <li>
-            You are exempt if your household earns at least <strong>£881 a month</strong> after tax, or someone gets a disability or carer&rsquo;s
+            You are exempt if your household earns at least <strong>£881 a month</strong>{" "}after tax, or someone gets a disability or carer&rsquo;s
             benefit.
           </li>
         </ul>
@@ -281,7 +281,7 @@ export default function CapGuide() {
       <GuideSection id="steps" n={11} kicker="Action plan" title="What to do if you are capped">
         <ol>
           <li>
-            <strong>Check every exemption.</strong> A claim for PIP, DLA for a child, or Carer&rsquo;s Allowance can lift the cap completely
+            <strong>Check every exemption.</strong>{" "}A claim for PIP, DLA for a child, or Carer&rsquo;s Allowance can lift the cap completely
             and backdate it.
           </li>
           <li>

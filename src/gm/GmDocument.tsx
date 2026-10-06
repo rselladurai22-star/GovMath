@@ -2,6 +2,7 @@ import { createElement } from "react";
 import { THEME_AFTER, THEME_BEFORE } from "./GmShell";
 import GmScripts, { type GmScript } from "./GmScripts";
 import { categoryGridHtml, topicMainHtml } from "./catalog";
+import { trustHtml } from "./trust";
 import type { CategorySlug } from "@/lib/calculators";
 
 export type GmPage = {
@@ -19,10 +20,20 @@ const PROP: Record<string, string> = { class: "className", for: "htmlFor", tabin
  * stylesheets in their original order, then each top-level body element with
  * its original tag, attributes and markup, then its scripts.
  */
-export default function GmDocument({ page, topic }: { page: GmPage; topic?: CategorySlug }) {
+export default function GmDocument({
+  page,
+  topic,
+  trust,
+}: {
+  page: GmPage;
+  topic?: CategorySlug;
+  /** For the two package calculators: the page path and the id of its guide's Sources box. */
+  trust?: { path: string; sourcesId: string };
+}) {
   // Calculator lists are built from the live catalogue (see catalog.ts).
   const fill = (html: string) =>
-    html.replace("<!--GM:CATEGORYGRID-->", () => categoryGridHtml()).replace("<!--GM:TOPIC-->", () => (topic ? topicMainHtml(topic) : ""));
+    html.replace("<!--GM:CATEGORYGRID-->", () => categoryGridHtml()).replace("<!--GM:TOPIC-->", () => (topic ? topicMainHtml(topic) : ""))
+      .replace("<!--GM:TRUST-->", () => (trust ? trustHtml(trust.path, trust.sourcesId) : ""));
   return (
     <>
       {[...page.css, ...THEME_BEFORE, ...THEME_AFTER].map((href) => (

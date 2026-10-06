@@ -35,7 +35,7 @@ export default function DisclaimerPage() {
 
       <h2>Not affiliated with the government</h2>
       <p>
-        GovMath is an independent website. We are <strong>not</strong> affiliated
+        GovMath is an independent website. We are <strong>not</strong>{" "}affiliated
         with, endorsed by, or connected to HM Revenue &amp; Customs (HMRC), the
         Department for Work and Pensions (DWP), the DVLA, or any other part of HM
         Government. Official figures and decisions always come from the relevant

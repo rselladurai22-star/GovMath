@@ -75,7 +75,7 @@ export default function FreeHoursStudio({ query }: { query: Query }) {
             )
           ) : (
             <>
-              That is <b>{whole(r.annualHours)}</b> funded hours a year, worth about <b>{gbp(r.value)}</b> at your provider&apos;s rate. Spread over {v.weeks} {per(v.weeks, "weeks")} it is about{" "}
+              That is <b>{whole(r.annualHours)}</b> funded hours a year, worth about <b>{gbp(r.value)}</b>{" "}at your provider&apos;s rate. Spread over {v.weeks} {per(v.weeks, "weeks")} it is about{" "}
               <b>{r.stretchedWeekly.toFixed(1)}</b> hours a week. You pay about <b>{gbp(finalPay)}</b> a year for the rest{tfc && tfc.topUp > 0 ? ", after Tax-Free Childcare" : ""}.
             </>
           )

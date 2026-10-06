@@ -207,7 +207,7 @@ export default function NIStudio({ initialIncome, initialMode, showResults }: { 
             </Callout>
           ) : (
             <Callout tone="warn" title="Consider voluntary Class 2 contributions">
-              Profits under <b>{gbp(NI_SMALL_PROFITS_THRESHOLD)}</b> don&apos;t earn a qualifying year. Voluntary Class 2 costs just{" "}
+              Profits under <b>{gbp(NI_SMALL_PROFITS_THRESHOLD)}</b>{" "}don&apos;t earn a qualifying year. Voluntary Class 2 costs just{" "}
               <b>£{CLASS2_VOLUNTARY_WEEKLY.toFixed(2)} a week</b> ({gbp(CLASS2_VOLUNTARY_WEEKLY * 52, true)} a year) and protects your State Pension.
             </Callout>
           )}

@@ -340,7 +340,7 @@ export default function EmployerCostGuide() {
 
       <GuideSection id="directors" n={13} kicker="Directors" title="Directors and National Insurance">
         <p>
-          Company directors pay NI on an <strong>annual earnings period</strong> rather than pay period by pay period. The
+          Company directors pay NI on an <strong>annual earnings period</strong>{" "}rather than pay period by pay period. The
           company&rsquo;s employer NI is worked out on their total pay for the year, so a director paid irregularly does not pay
           more than one paid monthly.
         </p>

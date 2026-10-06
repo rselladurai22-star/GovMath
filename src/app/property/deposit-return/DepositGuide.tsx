@@ -232,7 +232,7 @@ export default function DepositGuide() {
       <GuideSection id="nations" n={11} kicker="Elsewhere" title="Scotland, Wales and Northern Ireland">
         <ul>
           <li>
-            <strong>Scotland:</strong> deposits are limited to 2 months&rsquo; rent and must be protected within 30 working days with SafeDeposits
+            <strong>Scotland:</strong>{" "}deposits are limited to 2 months&rsquo; rent and must be protected within 30 working days with SafeDeposits
             Scotland, mydeposits Scotland or Letting Protection Service Scotland.
           </li>
           <li>
@@ -240,7 +240,7 @@ export default function DepositGuide() {
             etc.) (Wales) Act 2019 lets Welsh Ministers cap security deposits by regulations.
           </li>
           <li>
-            <strong>Northern Ireland:</strong> since April 2023 deposits are limited to 1 month&rsquo;s rent and must be protected within 28 days
+            <strong>Northern Ireland:</strong>{" "}since April 2023 deposits are limited to 1 month&rsquo;s rent and must be protected within 28 days
             in an approved scheme.
           </li>
         </ul>

@@ -293,12 +293,12 @@ export default function MaintenanceGuide() {
         </p>
         <ul>
           <li>
-            <strong>Household income falls.</strong> If your parents&rsquo; income this tax year is likely to be well below the
+            <strong>Household income falls.</strong>{" "}If your parents&rsquo; income this tax year is likely to be well below the
             year Student Finance England normally uses, you can ask for a current year income assessment. It can raise
             your loan, but you must send the actual figures once the year ends.
           </li>
           <li>
-            <strong>Your parents separate or a parent dies.</strong> The household is reassessed, often with only one
+            <strong>Your parents separate or a parent dies.</strong>{" "}The household is reassessed, often with only one
             parent&rsquo;s income counted.
           </li>
           <li>

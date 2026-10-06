@@ -67,7 +67,7 @@ export default function RentVsBuyGuide() {
         <p>At the end of the period the calculator compares:</p>
         <ul>
           <li>
-            <strong>the buyer&apos;s wealth:</strong> the home&apos;s value, minus the mortgage still owed and the cost of selling,
+            <strong>the buyer&apos;s wealth:</strong>{" "}the home&apos;s value, minus the mortgage still owed and the cost of selling,
             plus any savings; and
           </li>
           <li>
@@ -82,7 +82,7 @@ export default function RentVsBuyGuide() {
         <ul>
           <li><strong>Upfront:</strong> deposit, Stamp Duty (or LBTT or LTT), legal fees, survey and mortgage fees.</li>
           <li><strong>Monthly:</strong> mortgage payments, part interest and part capital.</li>
-          <li><strong>Upkeep:</strong> repairs, maintenance and buildings insurance, often around 1% of the home&apos;s value a year.</li>
+          <li><strong>Upkeep:</strong>{" "}repairs, maintenance and buildings insurance, often around 1% of the home&apos;s value a year.</li>
           <li><strong>Leasehold costs:</strong> service charge and ground rent for many flats.</li>
           <li><strong>Selling:</strong> estate agent and legal fees when you move on, often 1% to 2% of the value.</li>
         </ul>

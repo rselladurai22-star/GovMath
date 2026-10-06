@@ -87,7 +87,7 @@ export default function CareStudio({ query }: { query: Query }) {
             <>
               The council funds your care. You pay <b>{gbp(r.you, true)}</b> a week from income{r.tariff > 0 ? <> and tariff income of <b>{gbp(r.tariff)}</b></> : null}, keeping{" "}
               <b>{gbp(rules.allowance, true)}</b> a week for personal expenses. The council pays <b>{gbp(r.council, true)}</b>.
-              {r.topUp > 0 ? <> A top-up of <b>{gbp(r.topUp, true)}</b> a week is needed for a home above the council&apos;s rate.</> : null}
+              {r.topUp > 0 ? <> A top-up of <b>{gbp(r.topUp, true)}</b>{" "}a week is needed for a home above the council&apos;s rate.</> : null}
             </>
           )
         }

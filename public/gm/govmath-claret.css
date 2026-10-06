@@ -76,3 +76,6 @@
 .gm-claret .gm-neutral .gm-pkgradios .gm-radio.selected::before{border-color:#8c1d40;background:#8c1d40}
 .gm-claret .gm-neutral .gm-pkgradios .gm-radio.selected span{color:#8c1d40}
 .gm-claret .gm-neutral .gm-pkgradios .gm-radio:focus-visible{outline:2px solid #b8325f}
+.gm-claret .gm-neutral .gm-trust-mark{background:#8c1d40}
+.gm-claret .gm-neutral .gm-trust a{color:#8c1d40}
+.gm-claret .gm-neutral .gm-trust a:hover{color:#6e1632}

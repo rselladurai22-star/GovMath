@@ -102,7 +102,7 @@ export default function HbGuide() {
             <strong>Maximum Housing Benefit.</strong> Eligible rent less a deduction for each other adult who lives with you.
           </li>
           <li>
-            <strong>Applicable amount.</strong> A weekly figure for your household&rsquo;s needs, built from personal allowances and premiums.
+            <strong>Applicable amount.</strong>{" "}A weekly figure for your household&rsquo;s needs, built from personal allowances and premiums.
           </li>
           <li>
             <strong>Taper.</strong> If your weekly income is above the applicable amount, 65% of the difference comes off the maximum.

@@ -355,7 +355,7 @@ export default function CompoundGuide() {
 
       <GuideSection id="mistakes" n={21} kicker="Pitfalls" title="Common mistakes">
         <ul>
-          <li><strong>Ignoring inflation.</strong> A big number in 30 years is less impressive in today&rsquo;s money.</li>
+          <li><strong>Ignoring inflation.</strong>{" "}A big number in 30 years is less impressive in today&rsquo;s money.</li>
           <li><strong>Using a rate before charges.</strong> Take fund and platform charges off the expected return first.</li>
           <li><strong>Assuming a steady return.</strong> Investments rise and fall. The calculator shows a smooth path, which real markets never follow.</li>
           <li><strong>Dipping in.</strong> Withdrawing early stops the money compounding. Keep a separate emergency fund in cash.</li>
