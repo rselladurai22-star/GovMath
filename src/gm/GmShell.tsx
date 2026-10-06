@@ -40,7 +40,8 @@ export default function GmShell({
   children: ReactNode;
 }) {
   // govmath-site.css adds, in the design's own language, the parts the package does not include.
-  const css = [...(kind === "calculator" ? CALCULATOR : BASE), "govmath-site.css", "govmath-neutral.css", ...(claret ? ["govmath-claret.css"] : [])];
+  // The generated palette files come first so govmath-site.css's own trial rules win at equal specificity.
+  const css = [...(kind === "calculator" ? CALCULATOR : BASE), "govmath-neutral.css", ...(claret ? ["govmath-claret.css"] : []), "govmath-site.css"];
   const page = (
     <>
       {render(chrome.skip as El)}

@@ -1195,3 +1195,223 @@ a.gm-card:hover {
 .gm-neutral .q-relatedCard:hover {
   background: #f3f5f8;
 }
+
+/* Guide bar charts: the fill is a block, and labels get room to breathe. */
+.g-barFill {
+  display: block;
+}
+.g-barRow {
+  grid-template-columns: minmax(90px, 150px) 1fr 100px;
+}
+@media (max-width: 650px) {
+  .g-barRow {
+    grid-template-columns: 90px 1fr 80px;
+  }
+}
+
+/* ── Guide, FAQs and section headings in the neutral trial ───────── */
+/* Section headings across the page share one pattern: eyebrow, then title. */
+.gm-neutral .fullfaq .q-kicker,
+.gm-neutral .section > .eyebrow,
+.gm-neutral .sectionheading .eyebrow {
+  display: block;
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--wine);
+}
+
+/* Guide intro: a clear start to the reading part of the page. */
+.gm-neutral .guideintro {
+  background: #f3f5f8;
+  border: 1px solid #dfe3e8;
+  border-left: 4px solid var(--wine);
+  border-radius: 12px;
+}
+
+/* In-guide navigation */
+.gm-neutral .guide-nav {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+}
+.gm-neutral .guide-nav a {
+  color: #3d4248;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 6px 8px;
+  margin: 0 -8px;
+}
+.gm-neutral .guide-nav a:hover {
+  background: #f3f5f8;
+  color: var(--wine);
+}
+
+/* Each guide section opens with a numbered marker and a clear title. */
+.gm-neutral .g-section {
+  padding: 8px 0 40px;
+  margin: 0 0 40px;
+  border-bottom: 1px solid #dfe3e8;
+}
+.gm-neutral .g-sectionHead {
+  gap: 12px;
+  margin-bottom: 10px;
+  color: #5c6066;
+  letter-spacing: 1.2px;
+}
+.gm-neutral .g-num {
+  display: inline-grid;
+  place-items: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--wine);
+  color: #fff;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+.gm-neutral .g-section h2 {
+  font-size: 27px;
+  line-height: 1.25;
+  color: #1f2328;
+  margin-bottom: 16px;
+}
+.gm-neutral .g-section h3 {
+  color: #1f2328;
+}
+.gm-neutral .g-section > p,
+.gm-neutral .g-section > ul,
+.gm-neutral .g-section > ol {
+  max-width: 72ch;
+}
+
+/* Tables: a grey header row, plain rows, light striping. */
+.gm-neutral .g-tableWrap {
+  border-color: #dfe3e8;
+}
+.gm-neutral .g-tableWrap caption {
+  background: #fff;
+  color: #1f2328;
+  border-bottom: 1px solid #dfe3e8;
+}
+.gm-neutral .g-table thead th {
+  background: #f3f5f8;
+  color: #1f2328;
+}
+.gm-neutral .g-table tbody th,
+.gm-neutral .g-table tbody td {
+  background: #fff;
+}
+.gm-neutral .g-table tbody tr:nth-child(even) th,
+.gm-neutral .g-table tbody tr:nth-child(even) td {
+  background: #f9fafb;
+}
+.gm-neutral .g-table tbody th {
+  font-weight: 700;
+  color: #1f2328;
+}
+
+/* Callouts read as tips (blue), distinct from steps and examples. */
+.gm-neutral .g-callout,
+.gm-neutral .g-note {
+  background: #eef4fb;
+  border-left: 4px solid #2a78d6;
+  border-radius: 0 10px 10px 0;
+}
+.gm-neutral .g-calloutTitle {
+  color: #1f2328;
+}
+
+/* Steps: numbered white cards with a claret edge. */
+.gm-neutral .g-timeline li {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+  border-left: 4px solid var(--wine);
+  border-radius: 0 10px 10px 0;
+}
+.gm-neutral .g-when {
+  color: var(--wine);
+}
+
+/* Worked examples and key figures */
+.gm-neutral .g-example {
+  border-color: #dfe3e8;
+  border-radius: 12px;
+}
+.gm-neutral .g-exampleHead {
+  background: #f3f5f8;
+  color: #1f2328;
+}
+.gm-neutral .g-exampleTotal {
+  background: #fff;
+  border-top: 2px solid var(--wine);
+  color: var(--wine);
+}
+.gm-neutral .g-stat {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+  border-top: 3px solid var(--wine);
+}
+.gm-neutral .g-statValue {
+  color: var(--wine);
+}
+.gm-neutral .g-compareCol {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+}
+
+/* FAQs: one card per question. */
+.gm-neutral .fullfaq {
+  border-top: 0;
+}
+.gm-neutral .q-faqs {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+.gm-neutral .q-faq {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+  border-radius: 10px;
+  padding: 0 20px;
+}
+.gm-neutral .q-faq summary {
+  padding: 18px 40px 18px 0;
+  border-bottom: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1f2328;
+}
+.gm-neutral .q-faq summary:after {
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #f3f5f8;
+  color: var(--wine);
+  font-size: 20px;
+  line-height: 1;
+}
+.gm-neutral .q-faq:hover {
+  border-color: #c4cad1;
+}
+.gm-neutral .q-faq[open] {
+  border-color: #c4cad1;
+  box-shadow: 0 2px 8px rgba(16, 24, 40, 0.06);
+}
+.gm-neutral .q-faqBody {
+  padding: 0 0 18px;
+  border-top: 1px solid #eef0f3;
+  padding-top: 14px;
+}
+.gm-neutral .q-note {
+  background: #eef4fb;
+  border-left: 4px solid #2a78d6;
+  border-radius: 0 10px 10px 0;
+}

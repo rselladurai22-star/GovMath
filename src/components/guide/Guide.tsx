@@ -337,13 +337,9 @@ export function Bars({
         <div key={i.label} className="g-barRow">
           <span className="g-barName">{i.label}</span>
           <span className="g-barTrack">
-            <span
-              className="g-barFill"
-              style={{ width: `${(i.value / top) * 82}%`, background: i.color ?? SERIES[0] }}
-              aria-hidden
-            />
-            <span className="g-barValue">{format(i.value)}</span>
+            <span className="g-barFill" style={{ width: `${(i.value / top) * 100}%`, background: i.color ?? SERIES[0] }} aria-hidden />
           </span>
+          <span className="g-barValue">{format(i.value)}</span>
         </div>
       ))}
     </div>
