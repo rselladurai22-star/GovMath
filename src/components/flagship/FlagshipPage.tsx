@@ -28,6 +28,7 @@ export default function FlagshipPage({
   related,
   note,
   plainIntro,
+  neutral,
 }: {
   breadcrumbs: Crumb[];
   eyebrow: string;
@@ -42,6 +43,8 @@ export default function FlagshipPage({
   note: string;
   /** Hide the topic and eyebrow lines above the title (being trialled on the council tax page). */
   plainIntro?: boolean;
+  /** Neutral reading palette instead of the pink-tinted greys (being trialled on the council tax page). */
+  neutral?: boolean;
 }) {
   const jsonLd = [
     {
@@ -66,7 +69,7 @@ export default function FlagshipPage({
   return (
     <GmShell kind="calculator">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="wrap">
+      <div className={neutral ? "wrap gm-neutral" : "wrap"}>
         <div className="crumb">
           {crumbs.map((c, i) =>
             i === crumbs.length - 1 ? (

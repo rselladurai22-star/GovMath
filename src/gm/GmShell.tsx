@@ -31,7 +31,7 @@ const render = (el: El) =>
 
 export default function GmShell({ kind = "base", children }: { kind?: "base" | "calculator"; children: ReactNode }) {
   // govmath-site.css adds, in the design's own language, the parts the package does not include.
-  const css = [...(kind === "calculator" ? CALCULATOR : BASE), "govmath-site.css"];
+  const css = [...(kind === "calculator" ? CALCULATOR : BASE), "govmath-site.css", "govmath-neutral.css"];
   return (
     <>
       {css.map((href) => (
