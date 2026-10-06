@@ -740,6 +740,13 @@
   background: #faf3f7;
   color: #510b38;
 }
+/* Wide tables scroll sideways inside the column on small screens. */
+@media (max-width: 900px) {
+  .gm-prose table {
+    display: block;
+    overflow-x: auto;
+  }
+}
 .gm-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
