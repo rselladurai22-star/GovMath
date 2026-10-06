@@ -54,7 +54,7 @@ export default function GmShell({ kind = "base", children }: { kind?: "base" | "
   return (
     <>
       {css.map((href) => (
-        <link key={href} rel="stylesheet" href={`/gm/${href}`} precedence="gm" />
+        <link key={href} rel="stylesheet" href={`/gm/${href}?v=${process.env.GM_CSS_VERSION}`} precedence="gm" />
       ))}
       <div className="gm-claret">{page}</div>
       <GmScripts scripts={["axis"]} />

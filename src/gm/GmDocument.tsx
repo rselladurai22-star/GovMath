@@ -37,7 +37,7 @@ export default function GmDocument({
   return (
     <>
       {[...page.css, ...THEME_BEFORE, ...THEME_AFTER].map((href) => (
-        <link key={href} rel="stylesheet" href={`/gm/${href}`} precedence="gm" />
+        <link key={href} rel="stylesheet" href={`/gm/${href}?v=${process.env.GM_CSS_VERSION}`} precedence="gm" />
       ))}
       <div className="gm-claret">
         {page.elements.map((el, i) => {

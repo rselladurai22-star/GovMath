@@ -1,6 +1,19 @@
+import { createHash } from "node:crypto";
+import { readdirSync, readFileSync } from "node:fs";
 import type { NextConfig } from "next";
 
+// Version for the stylesheets in public/gm: a hash of their contents, added to
+// each <link> as ?v=… so browsers can cache them for a year and still get the
+// new file the moment any stylesheet changes.
+const cssDir = "public/gm";
+const cssHash = createHash("sha256");
+for (const file of readdirSync(cssDir).filter((f) => f.endsWith(".css")).sort()) {
+  cssHash.update(file).update(readFileSync(`${cssDir}/${file}`));
+}
+const YEAR = "public, max-age=31536000, immutable";
+
 const nextConfig: NextConfig = {
+  env: { GM_CSS_VERSION: cssHash.digest("hex").slice(0, 10) },
   async headers() {
     return [
       {
@@ -17,6 +30,15 @@ const nextConfig: NextConfig = {
             value: "frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests",
           },
         ],
+      },
+      // Fonts and images never change in place: a changed file gets a new name.
+      { source: "/gm/fonts/:file*", headers: [{ key: "Cache-Control", value: YEAR }] },
+      { source: "/gm/:file(.*\\.(?:webp|png|jpg|svg))", headers: [{ key: "Cache-Control", value: YEAR }] },
+      // Stylesheets are linked with ?v=<content hash> (GM_CSS_VERSION above).
+      {
+        source: "/gm/:file(.*\\.css)",
+        has: [{ type: "query", key: "v" }],
+        headers: [{ key: "Cache-Control", value: YEAR }],
       },
     ];
   },
