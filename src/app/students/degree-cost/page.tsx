@@ -29,6 +29,7 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Is a degree apprenticeship cheaper?", a: "Usually. Your employer and the government pay the fees, and you earn a wage, so you finish without a student loan." },
   { q: "Does the calculator cover Scotland and Wales?", a: "It uses Student Finance England rules. Use our SAAS and Welsh student finance calculators for those nations." },
   { q: "Can I pay off my student loan early?", a: "Yes, at any time and without a penalty. It only makes sense if you are likely to clear the loan before it is written off." },
+  { q: "Do I repay my student loan if I move abroad?", a: "Yes. You repay the Student Loans Company directly, at a threshold set for your country, and must tell them if you leave the UK for more than 3 months." },
 ];
 
 export default async function DegreeCostPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

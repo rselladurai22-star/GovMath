@@ -21,6 +21,7 @@ const TOC: TocItem[] = [
   { id: "nhs", title: "Health and teaching courses" },
   { id: "example-london", title: "A London example" },
   { id: "repay-example", title: "What repayments look like" },
+  { id: "disabled", title: "Disabled students" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -275,7 +276,16 @@ export default function WalesGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={19} kicker="Reference" title="Key numbers">
+      <GuideSection id="disabled" n={19} kicker="Extra support" title="Disabled students">
+        <p>
+          Disabled Students&rsquo; Allowance helps with the extra costs of studying with a disability, long-term health condition, mental health condition or
+          specific learning difficulty such as dyslexia. It pays for specialist equipment, non-medical helpers such as note-takers or mentors, and extra travel
+          costs. It is not based on household income and does not have to be repaid. You apply through Student Finance Wales, usually with medical evidence,
+          and then have a needs assessment.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={20} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Student Finance Wales, 2026/27"
           head={["Item", "Amount"]}

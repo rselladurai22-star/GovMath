@@ -32,6 +32,7 @@ const FAQS: { q: string; a: string }[] = [
   { q: "When is Welsh student finance paid?", a: "In three instalments, at the start of each term, once your university confirms you have enrolled." },
   { q: "Do Welsh students studying in Scotland get the same support?", a: "Yes, the same grant and loan wherever you study in the UK, though Scottish degrees often last 4 years." },
   { q: "Is the Welsh Learning Grant taxable or counted for benefits?", a: "It is not taxable. Student income is treated differently for benefits, so check with the DWP if you claim." },
+  { q: "Can I get Welsh student finance for a second degree?", a: "Usually not for tuition, though some courses such as healthcare and teaching have exceptions." },
 ];
 
 export default async function WelshFinancePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

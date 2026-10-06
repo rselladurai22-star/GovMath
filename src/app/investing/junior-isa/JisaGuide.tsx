@@ -21,6 +21,7 @@ const TOC: TocItem[] = [
   { id: "goals", title: "Setting a savings goal" },
   { id: "benefits", title: "Junior ISAs and benefits" },
   { id: "family-plan", title: "Making a family plan" },
+  { id: "tracking", title: "Keeping track of a Junior ISA" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -254,7 +255,16 @@ export default function JisaGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={19} kicker="Reference" title="Key numbers">
+      <GuideSection id="tracking" n={19} kicker="Practical" title="Keeping track of a Junior ISA">
+        <p>
+          Keep the account details, the provider&rsquo;s login and annual statements together, along with a note of who has paid in each year. Review the
+          investments once a year: check the fees, the fund performance against similar funds, and whether the mix still suits your child&rsquo;s age. If you
+          move house, update the provider, because lost accounts are common. Before the 18th birthday, help your child set up their own login so the
+          account passes smoothly to them.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={20} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Junior ISAs, 2026/27"
           head={["Item", "Amount"]}

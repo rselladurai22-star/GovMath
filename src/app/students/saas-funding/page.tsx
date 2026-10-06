@@ -31,6 +31,7 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Is SAAS funding paid monthly?", a: "Yes. You can choose monthly payments during term or spread over 12 months." },
   { q: "Does the bursary depend on how much loan I take?", a: "No. The bursary is paid at the full amount for your income band, whatever loan you take." },
   { q: "What if my parents are separated?", a: "SAAS usually counts the income of the parent you live with and their partner, not the other parent." },
+  { q: "Do Scottish students pay tuition fees for a second degree?", a: "Usually yes, as SAAS normally funds only a first degree, with some exceptions." },
 ];
 
 export default async function SaasPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

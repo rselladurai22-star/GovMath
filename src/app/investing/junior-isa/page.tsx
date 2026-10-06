@@ -31,6 +31,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Does a Junior ISA affect my Universal Credit?", a: "No. The money belongs to the child, so it is not counted as your savings." },
   { q: "Can I switch Junior ISA provider?", a: "Yes. Ask the new provider to arrange a transfer so the money keeps its tax-free status." },
   { q: "What is the minimum I can pay into a Junior ISA?", a: "It depends on the provider; many accept £10 or £25 a month, or one-off payments." },
+  { q: "What happens to a Junior ISA if the child dies?", a: "The money passes to the child's estate, usually to the parents, under the normal rules." },
+  { q: "Can I move a Child Trust Fund into a Junior ISA?", a: "Yes. Ask the Junior ISA provider to arrange the transfer; the Child Trust Fund then closes." },
 ];
 
 export default async function JuniorIsaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

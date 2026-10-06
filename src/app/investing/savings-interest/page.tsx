@@ -30,6 +30,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Do banks take tax off interest?", a: "No. Interest is paid gross. HMRC collects any tax due through your tax code or Self Assessment." },
   { q: "What is a notice account?", a: "A savings account where you give 30 to 120 days' notice to withdraw, usually in return for a higher rate than easy access." },
   { q: "How much should I keep in easy access?", a: "A common guide is three to six months of essential spending as an emergency fund." },
+  { q: "Is a fixed-rate bond better than a cash ISA?", a: "If your interest is within your allowances, compare the rates directly. If not, a cash ISA keeps all the interest tax-free." },
+  { q: "Can I add money to a fixed-rate bond?", a: "Usually only during a short funding window after opening. After that, the amount is fixed until the bond ends." },
 ];
 
 export default async function SavingsInterestPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

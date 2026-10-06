@@ -31,6 +31,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much do students spend a month?", a: "It varies widely by city and rent, but rent plus living costs commonly come to £900 to £1,300 a month during term." },
   { q: "Can I get help if my parents will not contribute?", a: "If you are estranged from your parents you can be assessed as independent and get the full loan. Your university may also help." },
   { q: "Is my maintenance loan paid weekly?", a: "No. It is paid in three instalments a year in England, Wales and Northern Ireland, so you need to budget each payment until the next." },
+  { q: "How much should I keep as an emergency fund at university?", a: "A few hundred pounds you do not touch helps with surprises like a broken laptop or an unexpected trip home." },
+  { q: "Can I get a part-time job in my first term?", a: "Many students wait until they have settled in. Campus jobs often fit around lectures best." },
 ];
 
 export default async function StudentBudgetPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

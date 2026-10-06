@@ -31,6 +31,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Can I buy an annuity with a small pension pot?", a: "Yes, but small pots of £10,000 or less can often be taken as cash instead, with 25% tax-free." },
   { q: "Does annuity income affect Pension Credit?", a: "Yes. It counts as income for Pension Credit, Housing Benefit and Council Tax Reduction." },
   { q: "Can I buy an annuity with part of my pension?", a: "Yes. You can use part of your pot for an annuity and keep the rest in drawdown." },
+  { q: "Can I get an annuity if I am in poor health?", a: "Yes, and often at a better rate. An enhanced annuity pays more if your health or lifestyle means a shorter life expectancy." },
+  { q: "Is an annuity protected if the insurer fails?", a: "Yes. Annuities from UK insurers are protected in full by the Financial Services Compensation Scheme." },
 ];
 
 export default async function AnnuityPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
