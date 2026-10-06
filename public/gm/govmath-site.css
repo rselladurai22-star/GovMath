@@ -380,6 +380,13 @@
   font-weight: 700;
   border-bottom: 0;
 }
+.gm-rowhint {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted, #6e6e6e);
+  font-size: 14px;
+  font-weight: 400;
+}
 .gm-swatch {
   display: inline-block;
   width: 9px;

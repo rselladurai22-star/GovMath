@@ -136,6 +136,7 @@ export const CALCULATORS: Calculator[] = [
   live("holiday-entitlement", "tax-and-salary", "Holiday Entitlement Calculator", "Statutory holiday days, pro-rated for any working pattern."),
   live("minimum-wage", "tax-and-salary", "Minimum Wage Checker", "Are you being paid at least the current UK minimum?"),
   live("ir35-take-home", "tax-and-salary", "IR35 Take-Home Calculator", "Inside vs outside IR35 contractor income."),
+  live("reverse-take-home", "tax-and-salary", "Reverse Take-Home Calculator", "The salary you need for the take-home pay you want."),
 
   // ── Property ────────────────────────────────────────────────────────────
   live("stamp-duty-england", "property", "Stamp Duty (England & NI)", "SDLT on your next home, including the additional-property surcharge.", true),
@@ -202,6 +203,10 @@ export const CALCULATORS: Calculator[] = [
   live("local-housing-allowance", "benefits", "Local Housing Allowance", "LHA rates by property size and region."),
   live("housing-benefit", "benefits", "Housing Benefit Calculator", "Weekly help with rent for pensioners and supported housing."),
   live("council-tax-reduction", "benefits", "Council Tax Reduction Calculator", "Means-tested help with your council tax bill."),
+  live("benefits-checker", "benefits", "Benefits Eligibility Checker", "See which benefits you are likely to get, in one go."),
+  live("new-style-jsa", "benefits", "New Style JSA Calculator", "Jobseeker's Allowance from your National Insurance record."),
+  live("new-style-esa", "benefits", "New Style ESA Calculator", "Employment and Support Allowance if illness limits work."),
+  live("uc-advance", "benefits", "UC Advance Repayment Calculator", "What a Universal Credit advance takes from each payment."),
 
   // ── Vehicles ───────────────────────────────────────────────────────────
   live("car-tax-ved", "vehicles", "Car Tax (VED) Calculator", "Annual road tax by emissions and list price.", true),
