@@ -6,6 +6,7 @@ Re-run it before committing changes to a calculator page:
 
     python3 scripts/build-updated.py
 """
+import datetime
 import glob
 import json
 import os
@@ -23,9 +24,8 @@ def last_change(path: str) -> str:
     out = subprocess.run(
         ["git", "log", "-1", "--format=%cs", "--", path], cwd=ROOT, capture_output=True, text=True, check=True
     ).stdout.strip()
-    if not out:
-        raise SystemExit(f"no git history for {path}")
-    return out
+    # A new page not yet committed is dated today.
+    return out or datetime.date.today().isoformat()
 
 
 dates = {}
