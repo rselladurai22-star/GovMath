@@ -31,6 +31,7 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Can I claim New Style JSA if I left my job voluntarily?", a: "Yes, but you may get a sanction, so payments could be stopped for a period unless you had a good reason for leaving." },
   { q: "How often do I have to sign on for New Style JSA?", a: "Usually every two weeks, at appointments with your work coach, in person or by phone." },
   { q: "Does New Style JSA give me National Insurance credits?", a: "Yes. You get Class 1 credits for each week you get it, which protect your State Pension record." },
+  { q: "Can I get New Style JSA while studying?", a: "Not if you are in full-time education. Part-time study may be allowed if you remain available for work." },
 ];
 
 export default async function NewStyleJsaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

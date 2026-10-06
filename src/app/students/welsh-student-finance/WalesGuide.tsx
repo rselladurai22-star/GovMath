@@ -19,6 +19,8 @@ const TOC: TocItem[] = [
   { id: "budgeting", title: "Making the money last" },
   { id: "should-borrow", title: "Should you take the full loan?" },
   { id: "nhs", title: "Health and teaching courses" },
+  { id: "example-london", title: "A London example" },
+  { id: "repay-example", title: "What repayments look like" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -248,7 +250,32 @@ export default function WalesGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={17} kicker="Reference" title="Key numbers">
+      <GuideSection id="example-london" n={17} kicker="Example" title="A London example">
+        <WorkedExample
+          title="Studying in London, household income £45,000, three-year course"
+          steps={[
+            { label: "Learning Grant each year", value: "£4,255" },
+            { label: "Maintenance Loan each year", value: "£11,465" },
+            { label: "Total support each year", value: "£15,720" },
+            { label: "Grants over 3 years (not repaid)", value: "£12,765" },
+          ]}
+          total={{ label: "Maintenance Loans over 3 years", value: "£34,395" }}
+        />
+        <p>
+          London rents are high, so even £15,720 a year may not cover everything. Check what your university offers in bursaries.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="repay-example" n={18} kicker="Monthly repayments" title="What repayments look like">
+        <p>
+          Plan 2 repayments are 9% of income over £29,385 a year, taken from your pay. On £32,000 that is £235 a year, about £20 a month; on £40,000,
+          £955 a year or £80 a month; on £50,000, £1,855 a year or £155 a month. The Plan 2 threshold is frozen at £29,385 until April 2030, so
+          repayments rise if your pay goes up. Interest is RPI plus up to 3%, depending on income, capped at 6% from September 2026, and anything left
+          after 30 years is written off.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={19} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Student Finance Wales, 2026/27"
           head={["Item", "Amount"]}

@@ -18,6 +18,7 @@ const TOC: TocItem[] = [
   { id: "two-jobs", title: "Two jobs or extra income" },
   { id: "employer-cost", title: "What it costs your employer" },
   { id: "self-employed", title: "If you are self-employed" },
+  { id: "weekly-pay", title: "Weekly and four-weekly pay" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -250,7 +251,14 @@ export default function ReverseGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={16} kicker="Reference" title="Key numbers">
+      <GuideSection id="weekly-pay" n={16} kicker="Pay frequency" title="Weekly and four-weekly pay">
+        <p>
+          If you are paid weekly or every four weeks, divide the yearly take-home by 52 or 13 instead of 12. A take-home of £36,000 a year is £692 a week
+          or £2,769 every four weeks. Four-weekly pay means 13 pay days a year, so one month each year has two.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={17} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Thresholds behind the calculation, 2026/27"
           head={["Item", "Amount"]}

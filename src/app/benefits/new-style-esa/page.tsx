@@ -31,6 +31,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How long does the ESA assessment take?", a: "The assessment phase normally lasts 13 weeks, but it can take longer. You are paid the assessment rate until a decision is made." },
   { q: "Do I need a fit note for New Style ESA?", a: "Yes. After 7 days of sickness you need fit notes from a doctor or other health professional until your assessment." },
   { q: "Can I get New Style ESA if I am self-employed?", a: "Only if you have paid enough Class 1 National Insurance as an employee in the two tax years that count, or have credits." },
+  { q: "What happens to New Style ESA at State Pension age?", a: "It stops. You may be able to get the State Pension and Pension Credit instead." },
+  { q: "Can I get New Style ESA if I am on a zero-hours contract?", a: "Yes, if you meet the National Insurance conditions and illness stops you working; Statutory Sick Pay may come first." },
 ];
 
 export default async function NewStyleEsaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

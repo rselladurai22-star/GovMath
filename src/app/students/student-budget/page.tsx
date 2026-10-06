@@ -30,6 +30,7 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Should I use my overdraft?", a: "An interest-free student overdraft is a useful safety net, but it has to be paid back after you graduate." },
   { q: "How much do students spend a month?", a: "It varies widely by city and rent, but rent plus living costs commonly come to £900 to £1,300 a month during term." },
   { q: "Can I get help if my parents will not contribute?", a: "If you are estranged from your parents you can be assessed as independent and get the full loan. Your university may also help." },
+  { q: "Is my maintenance loan paid weekly?", a: "No. It is paid in three instalments a year in England, Wales and Northern Ireland, so you need to budget each payment until the next." },
 ];
 
 export default async function StudentBudgetPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

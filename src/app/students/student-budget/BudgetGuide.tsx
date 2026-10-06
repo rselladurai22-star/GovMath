@@ -19,6 +19,9 @@ const TOC: TocItem[] = [
   { id: "first-week", title: "The first weeks of term" },
   { id: "shared-houses", title: "Living in a shared house" },
   { id: "nations", title: "Students from Scotland, Wales and Northern Ireland" },
+  { id: "food", title: "Spending less on food" },
+  { id: "travel", title: "Travel and getting home" },
+  { id: "apps", title: "Tools that help" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -242,7 +245,33 @@ export default function BudgetGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={17} kicker="Reference" title="Key numbers">
+      <GuideSection id="food" n={17} kicker="Food" title="Spending less on food">
+        <p>
+          After rent, food is usually the biggest weekly cost and the easiest to cut. Plan meals for the week before you shop, cook larger batches and
+          freeze portions, and buy supermarket own-brand staples. Shopping later in the day for reduced items, using loyalty schemes and splitting bulk
+          buys such as rice, pasta and oil with housemates all help. Eating out and takeaways can easily double a food budget, so count them under going
+          out rather than food.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="travel" n={18} kicker="Travel" title="Travel and getting home">
+        <p>
+          If your university is in a city, a student bus pass or a monthly ticket is often cheaper than paying each day. Cycling is cheaper still. For
+          trips home, a 16-25 Railcard takes a third off most rail fares and pays for itself in one or two journeys; coach travel is cheaper but slower.
+          Budget for travel home at the end of each term and over the holidays, as fares at busy times can be high.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="apps" n={19} kicker="Tools" title="Tools that help">
+        <p>
+          Most banking apps let you set up savings pots, round up purchases and see spending by category. Use them to keep each term&rsquo;s rent
+          separate from day-to-day money. Some students set up a standing order from a savings account into their current account each week, equal to
+          their weekly budget, so they cannot accidentally spend next month&rsquo;s money. If you share a house, a bill-splitting app avoids awkward
+          conversations about who owes what.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={20} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Student money, 2026/27"
           head={["Item", "Amount"]}

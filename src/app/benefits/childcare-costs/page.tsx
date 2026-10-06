@@ -30,6 +30,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Does the calculator work for Scotland or Wales?", a: "It uses England's funded hours. Tax-Free Childcare and Universal Credit work the same across the UK." },
   { q: "Can grandparents be paid with Tax-Free Childcare?", a: "Only if they are a registered childminder or provider. Informal care by family cannot be paid through the scheme." },
   { q: "What counts as working for the 30 hours?", a: "Each parent expects to earn at least 16 hours a week at their minimum wage over the next three months, and under £100,000 a year." },
+  { q: "Do funded hours cover holiday clubs?", a: "No. Funded hours are for children under 5 in early years settings. Holiday clubs for school-age children can be paid through Tax-Free Childcare or Universal Credit." },
+  { q: "Is childcare cheaper with a childminder?", a: "Often per hour, especially for babies, but it varies by area. Registered childminders can offer funded hours too." },
 ];
 
 export default async function ChildcareCostsPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
