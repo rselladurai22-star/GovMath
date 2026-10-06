@@ -67,7 +67,6 @@ export default async function BlogPostPage({ params }: { params: Params }) {
         { href: "/", label: "Home" },
         { href: "/blog", label: "Guides" },
       ]}
-      eyebrow={post.category}
       title={post.title}
       intro={post.description}
       meta={

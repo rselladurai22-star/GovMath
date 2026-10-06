@@ -9,8 +9,6 @@ type ContentPageProps = {
   intro?: ReactNode;
   breadcrumbs?: Crumb[];
   updated?: string;
-  /** Short context line above the title. */
-  eyebrow?: string;
   /** Extra lines under the intro (e.g. date and reading time). */
   meta?: ReactNode;
   /** Shown after the prose, full width (e.g. more articles). */
@@ -46,7 +44,6 @@ export default function ContentPage({
   intro,
   breadcrumbs = [{ href: "/", label: "Home" }],
   updated,
-  eyebrow = "GovMath",
   meta,
   after,
   children,
@@ -56,7 +53,6 @@ export default function ContentPage({
       <div className="wrap">
         <Crumbs items={[...breadcrumbs, { href: "#", label: title }]} />
         <section className="categoryhero">
-          <p className="eyebrow">{eyebrow.toUpperCase()}</p>
           <h1>{title}</h1>
           {intro && <p>{intro}</p>}
           {(updated || meta) && (

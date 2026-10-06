@@ -54,7 +54,7 @@ export function topicMainHtml(slug: CategorySlug): string {
     .join("");
   return (
     `<div class="wrap"><div class="crumb"><a href="/">Home</a><span>›</span><a href="/#categories">Calculators</a><span>›</span>${c.label}</div>` +
-    `<section class="categoryhero"><p class="eyebrow">${tools.length} FREE TOOLS</p><h1>${c.heroTitle}</h1><p>${c.heroDesc}</p></section>` +
+    `<section class="categoryhero"><h1>${c.heroTitle}</h1><p>${c.heroDesc}</p></section>` +
     `<nav class="categoryjump" aria-label="Calculator categories">${jump}</nav><div class="fullcategory">${items}</div>` +
     `<a class="backlink" href="/#categories">Back to all categories</a></div>`
   );
