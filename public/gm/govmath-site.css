@@ -1115,3 +1115,83 @@ a.gm-card:hover {
   font-size: 15px;
   font-weight: 400;
 }
+
+/* ── Neutral reading palette (trial: council tax bands) ─────────────
+   Neutral greys and white instead of pink-tinted panels, as on Axis Bank
+   and the GOV.UK Design System. Wine stays for buttons, links and
+   selected states. Colour swaps are generated into govmath-neutral.css;
+   these rules set the surfaces and type. */
+.gm-neutral .calculator {
+  background: #f3f5f8;
+}
+.gm-neutral .result.ax-chartpanel {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+}
+.gm-neutral .number,
+.gm-neutral .ax-select-toggle {
+  background: #fff;
+  border: 1px solid #9aa1a9;
+  border-radius: 8px;
+  min-height: 44px;
+}
+.gm-neutral .number:focus-within,
+.gm-neutral .ax-select-toggle:focus-visible,
+.gm-neutral .ax-select-toggle[aria-expanded="true"] {
+  border-color: #510b38;
+  box-shadow: 0 0 0 2px rgba(81, 11, 56, 0.25);
+  outline: none;
+}
+.gm-neutral .gm-radio {
+  border-color: #c4cad1;
+}
+.gm-neutral .moreoptions {
+  border-color: #dfe3e8;
+}
+.gm-neutral .facts > div {
+  background: #fff;
+  border: 1px solid #dfe3e8;
+  border-top: 3px solid #510b38;
+}
+.gm-neutral .facts span {
+  color: #5c6066;
+  font-size: 14px;
+}
+.gm-neutral .facts b {
+  color: #282828;
+}
+.gm-neutral .resultcard {
+  border-color: #dfe3e8;
+}
+.gm-neutral .resultcard > p,
+.gm-neutral .loan-summary,
+.gm-neutral .intro > p:last-child {
+  color: #5c6066;
+}
+.gm-neutral .gm-insight {
+  background: #f3f5f8;
+}
+.gm-neutral .ax-assumptions {
+  background: #f3f5f8;
+  border-color: #dfe3e8;
+}
+.gm-neutral .gm-statement th,
+.gm-neutral .gm-statement tr[data-kind="total"] td {
+  background: #f3f5f8;
+  color: #282828;
+}
+.gm-neutral .g-section p,
+.gm-neutral .g-section li,
+.gm-neutral .q-faqBody {
+  color: #3d4248;
+}
+.gm-neutral .guide-nav {
+  border-color: #dfe3e8;
+}
+.gm-neutral .q-relatedCard {
+  border-color: #dfe3e8;
+}
+.gm-neutral .q-relatedCard:hover {
+  background: #f3f5f8;
+}
