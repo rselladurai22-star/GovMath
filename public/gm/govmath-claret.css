@@ -72,3 +72,7 @@
 .gm-claret .gm-clear .gm-radio:has(input:checked) span{color:#8c1d40}
 .gm-claret .gm-neutral .number:focus-within,.gm-claret .gm-neutral .ax-select-toggle:focus-visible,.gm-claret .gm-neutral .ax-select-toggle[aria-expanded="true"]{border-color:#8c1d40;box-shadow:0 0 0 2px rgba(140, 29, 64, 0.25)}
 .gm-claret .gm-neutral .facts > div{border-top:3px solid #8c1d40}
+.gm-claret .gm-neutral .gm-pkgradios .gm-radio.selected{border-color:#8c1d40;box-shadow:0 0 0 1px #8c1d40}
+.gm-claret .gm-neutral .gm-pkgradios .gm-radio.selected::before{border-color:#8c1d40;background:#8c1d40}
+.gm-claret .gm-neutral .gm-pkgradios .gm-radio.selected span{color:#8c1d40}
+.gm-claret .gm-neutral .gm-pkgradios .gm-radio:focus-visible{outline:2px solid #b8325f}

@@ -647,3 +647,78 @@
 .gm-neutral .chartlegend span:nth-child(3) i {
   background: #9aa1a9;
 }
+
+/* ── Salary and mortgage pages: form title hidden, tabs as radios ──
+   The package's tabs above the form became a radio group inside it, like
+   every other calculator. The buttons keep the package's data attributes,
+   so its scripts still switch them (class "selected", aria-pressed). */
+.gm-neutral .formheading.gm-notitle {
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+.gm-neutral .gm-pkgradios {
+  border: 0;
+  padding: 0;
+  margin: 0 0 26px;
+  min-width: 0;
+}
+.gm-neutral .gm-pkgradios > legend {
+  padding: 0;
+  margin-bottom: 12px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--axis-ink, #282828);
+}
+.gm-neutral .gm-pkgradios .gm-radios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.gm-neutral .gm-pkgradios .gm-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px 11px 12px;
+  border: 1px solid #c4cad1;
+  border-radius: 8px;
+  background: #fff;
+  font: inherit;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--axis-ink, #282828);
+  text-align: left;
+  cursor: pointer;
+}
+.gm-neutral .gm-pkgradios .gm-radio::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #9aa1a9;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: #fff;
+}
+.gm-neutral .gm-pkgradios .gm-radio.selected {
+  border-color: #510b38;
+  box-shadow: 0 0 0 1px #510b38;
+}
+.gm-neutral .gm-pkgradios .gm-radio.selected::before {
+  border-color: #510b38;
+  background: #510b38;
+  box-shadow: inset 0 0 0 3px #fff;
+}
+.gm-neutral .gm-pkgradios .gm-radio.selected span {
+  font-weight: 700;
+  color: #510b38;
+}
+.gm-neutral .gm-pkgradios .gm-radio:focus-visible {
+  outline: 2px solid #8b2058;
+  outline-offset: 2px;
+}
+@media (max-width: 650px) {
+  .gm-neutral .gm-pkgradios .gm-radio {
+    flex: 1 1 auto;
+  }
+}

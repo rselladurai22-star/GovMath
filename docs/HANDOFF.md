@@ -77,6 +77,7 @@ The owner supplied a finished static design: `GovMath-Complete-Website-Source.zi
 
 - `/` (home) and the 8 topic pages: `/tax-and-salary`, `/property`, `/business`, `/investing`, `/benefits`, `/vehicles`, `/students`, `/life`
 - `/tax-and-salary/salary-calculator` and `/property/mortgage-repayment`
+  - On these two, the intro eyebrow lines and the visible form title were removed and the package's tabs (where you live; mortgage type) became a radio group inside the form (`fieldset.gm-pkgradios`, styled in `govmath-theme.css`). The buttons keep their `data-region`/`data-mortgage-type` attributes, so the supplied scripts still drive them.
 
 How they are built:
 - **Page data.** `src/gm/pages/*.json` holds each page's title, description, stylesheet order, script order and top-level body elements, converted from the supplied HTML. Links are site-relative with no trailing slash; images point to `/gm/`.
