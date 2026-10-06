@@ -1415,3 +1415,345 @@ a.gm-card:hover {
   border-left: 4px solid #2a78d6;
   border-radius: 0 10px 10px 0;
 }
+
+/* ── Lato 500 and 600 (not served by Google Fonts) ───────────────── */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/gm/fonts/lato-500.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/gm/fonts/lato-600.woff2") format("woff2");
+}
+
+/* ── Type scale and spacing taken from Axis Bank's calculator pages ──
+   Measured from axis.bank.in/calculators/personal-loan-emi-calculator:
+   headings in Lato Medium, labels in Lato Bold, body 16/24 grey, figures
+   in Lato Semibold; smaller sizes below 650px. */
+.gm-neutral {
+  --axis-ink: #282828;
+  --axis-body: #6e6e6e;
+  letter-spacing: 0.16px;
+}
+.gm-neutral .crumb {
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.32px;
+  color: var(--axis-ink);
+}
+.gm-neutral .intro h1 {
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: 500;
+  color: var(--axis-ink);
+  margin-bottom: 12px;
+}
+.gm-neutral .intro > p:last-child {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--axis-body);
+}
+/* Section titles */
+.gm-neutral .section h2,
+.gm-neutral .sectionheading h2,
+.gm-neutral .guideintro h2,
+.gm-neutral .q-explainerTitle {
+  font-size: 36px;
+  line-height: 42px;
+  font-weight: 500;
+  color: var(--axis-ink);
+  letter-spacing: 0;
+}
+.gm-neutral .guideintro > p:last-child,
+.gm-neutral .section > p:not(.eyebrow) {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--axis-body);
+}
+/* Calculator */
+.gm-neutral .calculator {
+  background: #f1f4f7;
+  padding: 40px 60px;
+  border-radius: 16px;
+}
+.gm-neutral .result.ax-chartpanel {
+  border: 0;
+  box-shadow: none;
+  border-radius: 16px;
+  padding: 32px 24px;
+}
+.gm-neutral.gm-neutral .labelrow label,
+.gm-neutral .gm-clear .gm-label,
+.gm-neutral .gm-clear .ax-select-field label,
+.gm-neutral .gm-clear .gm-switchrow label {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--axis-ink);
+  letter-spacing: 0.16px;
+}
+.gm-neutral .number input,
+.gm-neutral .ax-select-toggle,
+.gm-neutral .gm-radio {
+  font-size: 16px;
+  color: var(--axis-ink);
+}
+.gm-neutral .endpoints {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.32px;
+  color: var(--axis-body);
+}
+.gm-neutral .footnote,
+.gm-neutral .gm-clear .moreoptions > summary > span {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--axis-body);
+}
+.gm-neutral .resultlabel {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.24px;
+  color: var(--axis-body);
+}
+.gm-neutral .ax-paymentstrip span {
+  font-size: 24px;
+  line-height: 28px;
+  font-weight: 500;
+  color: var(--axis-ink);
+}
+.gm-neutral .ax-paymentstrip strong {
+  font-size: 28px;
+  line-height: 32px;
+  font-weight: 700;
+  margin: 8px 0 4px;
+}
+.gm-neutral .ax-paymentstrip small,
+.gm-neutral .loan-summary {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--axis-body);
+}
+.gm-neutral .circle span {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.24px;
+  color: var(--axis-body);
+}
+.gm-neutral .circle strong {
+  font-size: 26px;
+  line-height: 36px;
+  font-weight: 600;
+  color: var(--axis-ink);
+}
+.gm-neutral .ax-chartlegend > div > span {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--axis-body);
+}
+.gm-neutral .ax-chartlegend b {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--axis-ink);
+}
+.gm-neutral .button,
+.gm-neutral .bank-calculate {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0.24px;
+  border-radius: 8px;
+  padding: 12px 24px;
+  min-height: 48px;
+}
+/* Results in detail */
+.gm-neutral .facts span {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--axis-body);
+}
+.gm-neutral .facts b {
+  font-size: 26px;
+  line-height: 36px;
+  font-weight: 600;
+}
+.gm-neutral .resultcard h3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+}
+.gm-neutral .resultcard > p,
+.gm-neutral .gm-insight div {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--axis-body);
+}
+.gm-neutral .gm-insight h3 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+}
+/* Guide */
+.gm-neutral .g-section h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+  color: var(--axis-ink);
+}
+.gm-neutral .g-section h3 {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+}
+.gm-neutral .g-section p,
+.gm-neutral .g-section li {
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.16px;
+  color: var(--axis-body);
+}
+.gm-neutral .g-section li {
+  margin-bottom: 8px;
+}
+.gm-neutral .g-section strong {
+  color: var(--axis-ink);
+}
+.gm-neutral .g-section a {
+  color: var(--wine);
+}
+/* Tables: claret header row, as on Axis's amortisation table */
+.gm-neutral .g-table thead th,
+.gm-neutral .gm-statement th {
+  background: var(--wine);
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0.24px;
+}
+.gm-neutral .g-table td,
+.gm-neutral .g-table tbody th,
+.gm-neutral .gm-statement td {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--axis-ink);
+  border-color: #e2e2e2;
+}
+.gm-neutral .g-table td,
+.gm-neutral .g-table th {
+  padding: 16px 20px;
+}
+/* FAQs: grey band, numbered white cards, as on Axis */
+.gm-neutral .fullfaq {
+  background: #f1f4f7;
+  border-radius: 16px;
+  padding: 40px;
+  margin: 40px 0;
+}
+.gm-neutral .fullfaq > div:first-child {
+  text-align: center;
+}
+.gm-neutral .q-faqs {
+  counter-reset: faq;
+  margin-top: 24px;
+  gap: 12px;
+}
+.gm-neutral .q-faq {
+  border: 0;
+  border-radius: 8px;
+  padding: 0 32px;
+}
+.gm-neutral .q-faq summary {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--axis-ink);
+  padding: 22px 44px 22px 0;
+}
+.gm-neutral .q-faq summary > span:first-child::before {
+  counter-increment: faq;
+  content: counter(faq) ". ";
+}
+.gm-neutral .q-faqBody {
+  border-top: 0;
+  padding: 0 0 22px;
+}
+.gm-neutral .q-faqBody p {
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--axis-body);
+}
+.gm-neutral .q-note {
+  background: #fff;
+  border-radius: 8px;
+}
+@media (max-width: 650px) {
+  .gm-neutral .intro h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .gm-neutral .intro > p:last-child,
+  .gm-neutral .guideintro > p:last-child,
+  .gm-neutral .section > p:not(.eyebrow),
+  .gm-neutral .g-section p,
+  .gm-neutral .g-section li,
+  .gm-neutral .q-faqBody p,
+  .gm-neutral .resultcard > p,
+  .gm-neutral .gm-insight div {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .gm-neutral .section h2,
+  .gm-neutral .sectionheading h2,
+  .gm-neutral .guideintro h2,
+  .gm-neutral .q-explainerTitle {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .gm-neutral .g-section h2 {
+    font-size: 20px;
+    line-height: 32px;
+  }
+  .gm-neutral .calculator {
+    padding: 24px 16px;
+  }
+  .gm-neutral .result.ax-chartpanel {
+    padding: 24px 12px;
+  }
+  .gm-neutral.gm-neutral .labelrow label,
+  .gm-neutral .gm-clear .gm-label,
+  .gm-neutral .gm-clear .ax-select-field label,
+  .gm-neutral .gm-clear .gm-switchrow label {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .gm-neutral .endpoints {
+    font-size: 12px;
+  }
+  .gm-neutral .ax-paymentstrip span {
+    font-size: 16px;
+    line-height: 26px;
+  }
+  .gm-neutral .ax-paymentstrip strong,
+  .gm-neutral .circle strong,
+  .gm-neutral .facts b {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .gm-neutral .q-faq summary {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .gm-neutral .q-faq {
+    padding: 0 16px;
+  }
+  .gm-neutral .fullfaq {
+    padding: 24px 16px;
+  }
+}
