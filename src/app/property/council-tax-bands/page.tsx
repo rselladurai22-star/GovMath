@@ -23,6 +23,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Who gets a council tax discount?", a: "If only one adult counts you get 25% off; if no adults count, 50% off. Students, apprentices, carers and some others are not counted." },
   { q: "Can I pay council tax over 12 months?", a: "Yes. Bills are normally split into 10 monthly instalments, but you can ask your council for 12." },
   { q: "How do I challenge my council tax band?", a: "Ask the Valuation Office Agency (England and Wales) or your local assessor (Scotland) to review it. A review can move the band up as well as down." },
+  { q: "Do tenants pay council tax?", a: "Usually, yes. In a house in multiple occupation, the landlord is usually responsible instead." },
+  { q: "Will my band change if I extend my home?", a: "Not straight away. The band is only reviewed when the home is sold. If the extension would have put it in a higher band, the new owner may be rebanded." },
+  { q: "Do students pay council tax?", a: "A home where everyone is a full-time student is exempt. A student living with others is disregarded." },
+  { q: "Can I pay council tax weekly?", a: "Some councils allow it. Ask yours." },
+  { q: "Why is my bill different from my neighbour's in the same band?", a: "Discounts, reductions and premiums all change the amount. The starting charge for the same band in the same area is the same." },
+  { q: "Is council tax charged for the whole year if I move in March?", a: "No. It is charged by the day, so you only pay for the days you live there." },
+  { q: "Do I pay council tax on a home I am renovating and not living in?", a: "Usually yes, though some councils give a discount for homes needing major repair work. Ask yours." },
 ];
 
 export default async function CouncilTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

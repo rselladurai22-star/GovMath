@@ -33,7 +33,7 @@ const TOC: TocItem[] = [
   { id: "moving", title: "Council tax when you move" },
   { id: "renters", title: "Tenants, landlords and shared houses" },
   { id: "rises", title: "How bills rise each year" },
-  { id: "questions", title: "Common questions" },
+  { id: "mistakes", title: "Common mistakes on council tax bills" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -354,24 +354,34 @@ export default function CouncilTaxGuide() {
         <p>Scotland and Wales set their own limits and arrangements, and rises there have also been significant in recent years.</p>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Do tenants pay council tax?</h3>
-        <p>Usually, yes. In a house in multiple occupation, the landlord is usually responsible instead.</p>
-        <h3>Will my band change if I extend my home?</h3>
+      <GuideSection id="mistakes" n={19} kicker="Check your bill" title="Common mistakes on council tax bills">
+        <p>Council tax bills are usually right, but a few mistakes come up again and again. Check yours for these:</p>
+        <ul>
+          <li>
+            <strong>A missing discount.</strong> If you live alone, or everyone else in the home is disregarded, the 25% discount is not always
+            added automatically. It can usually be backdated to when you became entitled.
+          </li>
+          <li>
+            <strong>Old information about who lives there.</strong> When a student finishes their course, a partner moves out or a grown-up child
+            leaves, tell the council so the discount, or the full charge, starts from the right date.
+          </li>
+          <li>
+            <strong>Charged from the wrong date.</strong> Council tax is charged by the day. Check the start and end dates when you move, so you do
+            not pay for days the previous or next occupier lived there.
+          </li>
+          <li>
+            <strong>A premium that should not apply.</strong> Empty-home and second-home premiums have exceptions, for example homes being sold or
+            let, or annexes used as part of the main home. Ask the council if one applies to you.
+          </li>
+          <li>
+            <strong>Not claiming Council Tax Reduction.</strong> If your income is low, the reduction can cut the bill by up to 100%. It is separate
+            from Universal Credit and must be claimed from the council.
+          </li>
+        </ul>
         <p>
-          Not straight away. The band is only reviewed when the home is sold. If the extension would have put it in a higher band,
-          the new owner may be rebanded.
+          If you spot a mistake, write to the council&rsquo;s council tax team with the details and the date it started. If you are not happy
+          with the answer, you can appeal to the valuation tribunal for your nation.
         </p>
-        <h3>Do students pay council tax?</h3>
-        <p>A home where everyone is a full-time student is exempt. A student living with others is disregarded.</p>
-        <h3>Can I pay council tax weekly?</h3>
-        <p>Some councils allow it. Ask yours.</p>
-        <h3>Why is my bill different from my neighbour&apos;s in the same band?</h3>
-        <p>Discounts, reductions and premiums all change the amount. The starting charge for the same band in the same area is the same.</p>
-        <h3>Is council tax charged for the whole year if I move in March?</h3>
-        <p>No. It is charged by the day, so you only pay for the days you live there.</p>
-        <h3>Do I pay council tax on a home I am renovating and not living in?</h3>
-        <p>Usually yes, though some councils give a discount for homes needing major repair work. Ask yours.</p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers for 2026/27">
