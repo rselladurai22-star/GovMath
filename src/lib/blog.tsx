@@ -975,6 +975,912 @@ export const BLOG_POSTS: BlogPost[] = [
       </>
     ),
   },
+  {
+    slug: "sole-trader-vs-limited-company",
+    title: "Sole trader or limited company in 2026/27: which leaves you with more?",
+    description:
+      "We ran profits from £20,000 to £150,000 through the 2026/27 rules for both. With dividend tax at 10.75% and employer NI at 15%, the answer has changed. Here are the numbers, and when a company still makes sense.",
+    date: "2026-10-06",
+    dateLabel: "6 October 2026",
+    readingTime: "11 min read",
+    category: "Business",
+    body: (
+      <>
+        <p>
+          &ldquo;Should I go limited?&rdquo; is one of the first questions most self-employed people ask once their
+          profits start to grow. For years the standard answer was yes: pay yourself a small salary, take the rest as
+          dividends and keep a few thousand pounds more than a sole trader on the same profit. That answer rested on
+          particular tax rates, and most of them have moved. Employer National Insurance went up to 15% in April 2025,
+          the point where it starts fell to £5,000, and dividend tax rose by two percentage points in April 2026, to
+          10.75% at the basic rate and 35.75% at the higher rate.
+        </p>
+        <p>
+          So we went back to the numbers. This guide runs the same profit through both structures for the 2026/27 tax
+          year, using the engines behind our{" "}
+          <Link href="/business/sole-trader-tax">sole trader tax calculator</Link> and our{" "}
+          <Link href="/business/dividend-vs-salary">salary vs dividend calculator</Link>. Every figure assumes
+          England, Wales or Northern Ireland, no other income, no student loan and, for the company, a single director
+          who takes every penny of profit out in the same year. Then we look at the cases where the answer changes,
+          because they are the ones that matter in practice.
+        </p>
+
+        <h2>How each structure is taxed</h2>
+        <h3>Sole trader</h3>
+        <p>
+          As a sole trader, you and the business are the same person for tax. Your profit (turnover less allowable
+          expenses) is added to any other income and taxed through Self Assessment:
+        </p>
+        <ul>
+          <li>
+            <strong>Income Tax</strong> at 20%, 40% and 45% above the £12,570 Personal Allowance, which tapers away
+            between £100,000 and £125,140.
+          </li>
+          <li>
+            <strong>Class 4 National Insurance</strong> at 6% on profit between £12,570 and £50,270, and 2% above that.
+          </li>
+          <li>
+            <strong>Class 2 National Insurance</strong> is no longer charged. If your profit is at least £7,105 (the
+            small profits threshold) you get a State Pension credit for the year without paying. Below that you can pay
+            voluntary Class 2 at £3.65 a week.
+          </li>
+        </ul>
+        <h3>Limited company</h3>
+        <p>A company is a separate legal person, so the money passes through two layers of tax on its way to you:</p>
+        <ul>
+          <li>
+            <strong>Corporation Tax</strong> on the company&rsquo;s profit: 19% up to £50,000, 25% from £250,000, and a
+            tapered rate in between (marginal relief), where each extra pound is taxed at an effective 26.5%.
+          </li>
+          <li>
+            <strong>Salary</strong> paid to you as a director is a cost to the company, so it comes off the profit before
+            Corporation Tax. It is taxed on you through PAYE, and the company pays employer National Insurance of 15% on
+            pay above £5,000 a year.
+          </li>
+          <li>
+            <strong>Dividends</strong> are paid from profit after Corporation Tax. You pay dividend tax on them after a
+            £500 allowance: 10.75% in the basic rate band, 35.75% in the higher rate band and 39.35% above £125,140.
+          </li>
+        </ul>
+        <p>
+          The Employment Allowance, which knocks up to £10,500 a year off employer National Insurance, is not available
+          to a company whose only paid employee is a director. That rule matters a lot for one-person companies, and we
+          assume it applies throughout.
+        </p>
+
+        <h2>The best salary for a one-person company</h2>
+        <p>
+          Before comparing the two, we need the company&rsquo;s best split between salary and dividends. Our optimiser
+          tries every salary in £100 steps (and £10 steps around the best) and keeps the one that leaves the director
+          with the most cash. For every profit from £20,000 to £100,000, the winner was the same:{" "}
+          <strong>a salary of £12,570</strong>, with the rest paid as dividends.
+        </p>
+        <p>Why that figure, when employer National Insurance starts at £5,000?</p>
+        <ul>
+          <li>
+            A salary of £12,570 uses your whole Personal Allowance, so there is no Income Tax on it, and it sits exactly
+            at the employee National Insurance threshold, so you pay no employee NI either.
+          </li>
+          <li>
+            The company does pay employer NI on the £7,570 above £5,000: <strong>£1,135.50</strong>. But both the salary
+            and that NI are deductible for Corporation Tax, and every pound of salary is a pound that is not taxed again
+            as a dividend.
+          </li>
+          <li>
+            It is well above the lower earnings limit of £6,708, so the year counts towards your State Pension.
+          </li>
+        </ul>
+        <p>
+          The difference is not huge, but it is real. On £20,000 of profit, a £12,570 salary leaves the director with{" "}
+          <strong>£17,174.20</strong>; the old favourite of a £5,000 salary leaves <strong>£16,711.40</strong>, which is
+          £462.80 less. On £100,000 of profit the gap is £752.66 in favour of the higher salary. If your company has
+          another employee and can claim the Employment Allowance, the sums change again, and the{" "}
+          <Link href="/business/dividend-vs-salary">salary vs dividend calculator</Link> will find the best salary for
+          your case.
+        </p>
+
+        <h2>The head-to-head: what you keep</h2>
+        <p>
+          Here is the cash in your pocket at the end of 2026/27, for the same profit run through each structure. For the
+          company, &ldquo;profit&rdquo; means profit before your salary, employer NI and Corporation Tax, and the salary
+          is the best one found above.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Profit</th>
+              <th>Sole trader keeps</th>
+              <th>Limited company keeps</th>
+              <th>Difference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>£20,000</td>
+              <td>£18,068.20</td>
+              <td>£17,174.20</td>
+              <td>Sole trader +£894.00</td>
+            </tr>
+            <tr>
+              <td>£30,000</td>
+              <td>£25,468.20</td>
+              <td>£24,403.45</td>
+              <td>Sole trader +£1,064.75</td>
+            </tr>
+            <tr>
+              <td>£50,000</td>
+              <td>£40,268.20</td>
+              <td>£38,861.95</td>
+              <td>Sole trader +£1,406.25</td>
+            </tr>
+            <tr>
+              <td>£80,000</td>
+              <td>£57,711.40</td>
+              <td>£55,764.87</td>
+              <td>Sole trader +£1,946.53</td>
+            </tr>
+            <tr>
+              <td>£100,000</td>
+              <td>£69,311.40</td>
+              <td>£65,209.62</td>
+              <td>Sole trader +£4,101.78</td>
+            </tr>
+            <tr>
+              <td>£150,000</td>
+              <td>£92,040.40</td>
+              <td>£87,463.54</td>
+              <td>Sole trader +£4,576.86</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          At £150,000 the optimiser picks a much larger salary, £87,610, because dividends there would fall in the
+          35.75% and 39.35% bands on top of 26.5% marginal Corporation Tax. Even so, the company comes out behind.
+        </p>
+        <p>
+          That is the headline of this guide. <strong>If you take all the profit out every year, a sole trader keeps
+          more at every level we tested in 2026/27.</strong> The gap is about £900 at £20,000 of profit and grows to more
+          than £4,000 at £100,000. This is before the extra running costs of a company, which we come to below and which
+          widen the gap further.
+        </p>
+
+        <h2>Where the money goes: £50,000 of profit</h2>
+        <p>
+          To see why, it helps to follow one figure all the way through. Take £50,000 of profit.
+        </p>
+        <p>
+          <strong>As a sole trader</strong>, Income Tax is 20% of the £37,430 above the Personal Allowance,{" "}
+          <strong>£7,486</strong>, and Class 4 NI is 6% of the same slice, <strong>£2,245.80</strong>. Total tax is
+          £9,731.80, and you keep <strong>£40,268.20</strong>. That is an effective rate of 19.5%.
+        </p>
+        <p>
+          <strong>As a limited company</strong>, the money goes through four steps:
+        </p>
+        <ol>
+          <li>
+            The company pays you a £12,570 salary and £1,135.50 of employer NI. That leaves £36,294.50 of profit.
+          </li>
+          <li>
+            Corporation Tax at 19% on that is <strong>£6,895.96</strong>, leaving £29,398.55 to pay out as dividends.
+          </li>
+          <li>
+            The dividends sit on top of your salary. The first £500 is covered by the dividend allowance; the rest is in
+            the basic rate band at 10.75%: <strong>£3,106.59</strong> of dividend tax.
+          </li>
+          <li>
+            You keep the salary of £12,570 plus dividends of £29,398.55 less dividend tax: <strong>£38,861.95</strong>.
+          </li>
+        </ol>
+        <p>
+          Total tax through the company is <strong>£11,138.05</strong> (£1,135.50 employer NI, £6,895.96 Corporation Tax
+          and £3,106.59 dividend tax), against £9,731.80 as a sole trader. The company route loses mainly because 19%
+          Corporation Tax plus 10.75% dividend tax adds up to a combined rate of almost 28% on each extra pound of
+          profit, while a basic-rate sole trader pays 20% Income Tax plus 6% Class 4 NI: 26%.
+        </p>
+
+        <h2>Why the old advantage has gone</h2>
+        <p>
+          Line those two combined rates up band by band and the picture is clear. For each extra £1 of profit:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Where the pound falls</th>
+              <th>Sole trader</th>
+              <th>Company (profit under £50,000)</th>
+              <th>Company (marginal relief)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Basic rate</td>
+              <td>26p (20% + 6%)</td>
+              <td>27.7p (19%, then 10.75%)</td>
+              <td>34.4p (26.5%, then 10.75%)</td>
+            </tr>
+            <tr>
+              <td>Higher rate</td>
+              <td>42p (40% + 2%)</td>
+              <td>48.0p (19%, then 35.75%)</td>
+              <td>52.8p (26.5%, then 35.75%)</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Before April 2022 the company figures in this table were much lower: dividend tax was 7.5% and 32.5%, and
+          Corporation Tax was a flat 19% at every level of profit. The rise to a 25% main rate (with the 26.5% marginal
+          band between £50,000 and £250,000), two rises in dividend tax, the cut in the dividend allowance from £2,000
+          to £500, and the higher employer NI have together closed the gap and then reversed it.
+        </p>
+        <p>
+          Sole traders have had the opposite treatment. Class 4 NI at the main rate fell from 9% to 6% in April 2024, and
+          Class 2 was abolished as a compulsory charge. That 3-point cut alone is worth over £1,100 a year to a sole
+          trader making £50,270.
+        </p>
+
+        <h2>So when does a limited company still make sense?</h2>
+        <p>
+          The table above assumes every pound is drawn out each year. Real businesses often do something different, and
+          there are some situations where a company still comes out ahead, or where the tax is not the deciding factor.
+        </p>
+
+        <h3>1. You leave profit in the company</h3>
+        <p>
+          This is the big one. A sole trader pays Income Tax on all the profit, whether they spend it or leave it in the
+          business bank account. A company only creates personal tax when it pays you. If you can live on less than the
+          business earns, a company lets you stop at the top of the basic rate band and leave the rest inside, taxed only
+          at Corporation Tax for now.
+        </p>
+        <p>
+          Take £100,000 of profit. The director takes a £12,570 salary and £37,700 of dividends, which fills the basic
+          rate band exactly. Corporation Tax is £19,118.04 and dividend tax on the £37,700 is £3,999. The director has{" "}
+          <strong>£46,271 in hand</strong>, and <strong>£29,476.46</strong> stays in the company after tax. Total tax
+          paid so far is £24,252.54. A sole trader on the same profit pays £30,688.60.
+        </p>
+        <p>
+          That looks like a saving of about £6,400, but it is a deferral, not a saving. When the retained money is paid
+          out later it will be taxed as dividends. The company route only wins overall if you take that money out in a
+          later year when you have room in your basic rate band (for example in a lean year, a career break or early
+          retirement), use it to grow the business, or pay it into a pension (see below). If you just draw it next year
+          at the higher rate, you end up worse off than a sole trader.
+        </p>
+
+        <h3>2. You want to put a lot into a pension</h3>
+        <p>
+          A company can pay into your pension as an <em>employer contribution</em>. It is a business expense, so it
+          reduces Corporation Tax, and there is no National Insurance or Income Tax on it. A sole trader gets tax relief
+          on personal contributions instead. We compared the two at £80,000 of profit with £10,000 going into a pension:
+        </p>
+        <ul>
+          <li>
+            <strong>Company:</strong> £10,000 employer contribution, £12,570 salary, the rest as dividends. The director
+            keeps £51,042.50 in cash plus the £10,000 pension: <strong>£61,042.50</strong> in total value.
+          </li>
+          <li>
+            <strong>Sole trader:</strong> pays £8,000 into a personal pension, which the provider tops up to £10,000, and
+            claims higher rate relief through Self Assessment. Tax falls to £20,288.60. Cash left after the £8,000
+            contribution is £51,711.40, plus the £10,000 pension: <strong>£61,711.40</strong>.
+          </li>
+        </ul>
+        <p>
+          So even with a pension, the sole trader is still slightly ahead at this level of profit. The pension makes the
+          gap much smaller (£668.90 rather than £1,946.53), and the more you pay in, the closer the two get. It also
+          avoids the 26.5% marginal Corporation Tax band. Our{" "}
+          <Link href="/investing/pension-tax-relief">pension tax relief calculator</Link> shows how each method of relief
+          works for a personal contribution.
+        </p>
+
+        <h3>3. Limited liability matters to you</h3>
+        <p>
+          A sole trader is personally liable for every debt of the business. If a contract goes wrong or a customer sues,
+          your house and savings are exposed. A company&rsquo;s debts belong to the company, so your personal assets are
+          generally protected, unless you have given a personal guarantee (banks and landlords often ask for one) or have
+          traded wrongfully. For businesses with real risk, such as building work, manufacturing, or anything with large
+          contracts or stock, this protection can be worth more than any tax difference. Insurance covers some of the
+          same ground for a sole trader, so price both.
+        </p>
+
+        <h3>4. Clients insist on it</h3>
+        <p>
+          Some larger clients will only work with limited companies, especially for contracting in IT, engineering and
+          consulting. If you work through your own company for a medium or large client, the off-payroll working rules
+          (IR35) may apply. If the client decides you are &ldquo;inside IR35&rdquo;, it deducts tax and National
+          Insurance as if you were an employee, and most of the dividend planning above disappears. The{" "}
+          <Link href="/tax-and-salary/ir35-take-home">IR35 take-home calculator</Link> compares inside and outside for
+          the same day rate.
+        </p>
+
+        <h3>5. You are bringing in investors or co-owners</h3>
+        <p>
+          Shares make it easy to bring in a partner or an investor, give staff a stake, or sell the business later. A
+          sale of company shares may qualify for Business Asset Disposal Relief, which taxes the gain at a reduced Capital
+          Gains Tax rate (14% from April 2025 and 18% from April 2026) on up to £1 million over your lifetime. A sole
+          trader can also claim the relief when selling the whole business, but selling a company is usually simpler.
+        </p>
+
+        <h2>The costs of running a company</h2>
+        <p>
+          The tax comparison above does not include the extra work and cost of a company, which all push further in the
+          sole trader&rsquo;s favour:
+        </p>
+        <ul>
+          <li>
+            <strong>Accountancy fees.</strong> Statutory accounts, a Corporation Tax return, payroll and your own Self
+            Assessment return typically cost noticeably more than a sole trader&rsquo;s single return.
+          </li>
+          <li>
+            <strong>Companies House filings.</strong> Annual accounts and a confirmation statement every year, with a fee,
+            and automatic late filing penalties for accounts.
+          </li>
+          <li>
+            <strong>Payroll.</strong> Even a single director&rsquo;s salary has to be reported through PAYE in real time,
+            every time it is paid.
+          </li>
+          <li>
+            <strong>Public record.</strong> Your name, a service address and the company&rsquo;s accounts are visible on
+            the public register. Identity verification for directors is now required too.
+          </li>
+          <li>
+            <strong>Keeping money separate.</strong> The company&rsquo;s money is not yours. Taking it out other than as
+            salary or a properly declared dividend creates a director&rsquo;s loan, which has its own tax charges if it is
+            not repaid in time.
+          </li>
+        </ul>
+        <p>
+          Sole traders are not free of admin either. From April 2026, sole traders and landlords with qualifying income
+          over £50,000 must use Making Tax Digital for Income Tax, which means digital records and quarterly updates. The
+          line drops to £30,000 from April 2027 and £20,000 from April 2028. Making Tax Digital does not apply to a
+          company&rsquo;s Corporation Tax, though directors still file their own Self Assessment returns.
+        </p>
+
+        <h2>Things that are the same either way</h2>
+        <p>Some questions people expect to tip the balance are actually neutral:</p>
+        <ul>
+          <li>
+            <strong>Expenses.</strong> The same broad rule applies to both: costs incurred wholly and exclusively for the
+            business are deductible. A company can pay for some things a sole trader cannot claim easily (such as a
+            company-provided mobile phone), but it also faces benefit-in-kind rules on others, such as company cars. The{" "}
+            <Link href="/business/allowable-expenses">allowable expenses checker</Link> covers the main categories.
+          </li>
+          <li>
+            <strong>VAT.</strong> Registration depends on turnover, not structure. The threshold is £90,000 for both. See
+            the <Link href="/business/vat-calculator">VAT calculator</Link> and the{" "}
+            <Link href="/business/flat-rate-vat">Flat Rate Scheme calculator</Link>.
+          </li>
+          <li>
+            <strong>Mileage.</strong> Both can use HMRC&rsquo;s approved mileage rates of 45p a mile for the first 10,000
+            business miles and 25p after that. Our{" "}
+            <Link href="/business/business-mileage">business mileage calculator</Link> works them out.
+          </li>
+          <li>
+            <strong>Mortgages.</strong> Lenders look at both, but they often want two years of accounts or tax
+            calculations. A company director may be assessed on salary plus dividends, or on salary plus their share of
+            profit, depending on the lender.
+          </li>
+        </ul>
+
+        <h2>Timing: when the tax is due</h2>
+        <p>Cash flow is different too, which can matter as much as the total:</p>
+        <ul>
+          <li>
+            <strong>Sole traders</strong> pay through Self Assessment. Once the bill passes £1,000, payments on account
+            kick in: half of last year&rsquo;s bill on 31 January and half on 31 July, with a balancing payment the next
+            31 January. In the first year this can mean paying 150% of a year&rsquo;s tax in one January. The{" "}
+            <Link href="/business/payment-on-account">payment on account calculator</Link> sets out the dates and
+            amounts.
+          </li>
+          <li>
+            <strong>Companies</strong> pay Corporation Tax nine months and one day after the end of the accounting
+            period (unless profits are large enough for quarterly instalments). Dividend tax is paid by the director
+            through Self Assessment, with the same payment on account rules.
+          </li>
+        </ul>
+
+        <h2>Turning a sole trade into a company</h2>
+        <p>
+          If you already trade on your own and decide to incorporate, the business can be transferred to the new
+          company. A few points to check with an accountant first:
+        </p>
+        <ul>
+          <li>
+            Your final sole trader year ends on the date you stop, and its profit is taxed in the normal way.
+          </li>
+          <li>
+            Transferring goodwill or other assets to the company can create a Capital Gains Tax charge. Incorporation
+            relief can defer it if the whole business goes across in exchange for shares.
+          </li>
+          <li>
+            Contracts, insurance, the bank account, VAT registration and any licences may all need to move or be
+            reissued in the company&rsquo;s name.
+          </li>
+          <li>
+            Watch out for the Employment Allowance rule: a company whose only employee is the director cannot claim it,
+            so employer NI costs are higher than many online guides suggest.
+          </li>
+        </ul>
+
+        <h2>Checklist: which is right for you?</h2>
+        <p>Stay a sole trader if most of these are true:</p>
+        <ul>
+          <li>You spend most of what the business earns each year.</li>
+          <li>Your business has little risk of large claims or debts.</li>
+          <li>You want simple admin and low accountancy costs.</li>
+          <li>Your clients are happy to work with sole traders.</li>
+        </ul>
+        <p>Consider a company if several of these apply:</p>
+        <ul>
+          <li>You can leave a meaningful part of the profit in the business each year.</li>
+          <li>You plan to put large sums into a pension.</li>
+          <li>You want limited liability, or clients require a company.</li>
+          <li>You expect to take on investors or sell the business.</li>
+        </ul>
+
+        <h2>The bottom line</h2>
+        <p>
+          On 2026/27 rates, a one-person company that pays out all its profit leaves its owner with less than a sole
+          trader at every level of profit we tested, from about £900 less at £20,000 to more than £4,000 less at
+          £100,000, before the company&rsquo;s extra costs. A company is no longer a tax win by default. It earns its place
+          when you can leave profit inside it, use employer pension contributions, need limited liability or have clients
+          who insist on it. Run your own figures through the{" "}
+          <Link href="/business/sole-trader-tax">sole trader tax calculator</Link>, the{" "}
+          <Link href="/business/dividend-vs-salary">salary vs dividend calculator</Link> and the{" "}
+          <Link href="/business/corporation-tax">Corporation Tax calculator</Link>, and speak to an accountant before you
+          change structure. These figures are estimates for 2026/27 and general guidance, not tax advice.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "universal-credit-and-work",
+    title: "Working on Universal Credit in 2026/27: how much more do extra hours really pay?",
+    description:
+      "The work allowance, the 55% taper, tax and National Insurance all take a share of each extra pound. We follow a single parent from 0 to 37.5 hours at the National Living Wage to show what work is really worth.",
+    date: "2026-10-06",
+    dateLabel: "6 October 2026",
+    readingTime: "11 min read",
+    category: "Benefits",
+    body: (
+      <>
+        <p>
+          Universal Credit was designed so that work always pays. In one sense it does: every extra hour you work leaves
+          you better off than before. But how much better off is a question most people can&rsquo;t answer, because the
+          award changes every month with your pay, and tax, National Insurance and the Universal Credit taper all take a
+          share of each extra pound. Someone on Universal Credit can easily keep less than half of a pay rise, and the
+          rules about when that happens are not obvious.
+        </p>
+        <p>
+          This guide explains how earnings affect Universal Credit in the 2026/27 rates, then follows one household
+          from no work to full time to show what each extra hour is worth. Every figure comes from the engine behind our{" "}
+          <Link href="/benefits/universal-credit">Universal Credit calculator</Link> and our{" "}
+          <Link href="/benefits/universal-credit-taper">Universal Credit taper calculator</Link>, so you can put in your
+          own details and check them.
+        </p>
+
+        <h2>The three rules that link pay to Universal Credit</h2>
+        <p>
+          Universal Credit starts from a <strong>maximum award</strong>: the standard allowance for you (and your
+          partner), plus elements for children, housing costs, childcare, disability, health or caring. Your earnings
+          then reduce that maximum in three steps.
+        </p>
+        <h3>1. The work allowance</h3>
+        <p>
+          Some households can earn a set amount each month before their Universal Credit is touched at all. This is the{" "}
+          <strong>work allowance</strong>. You only get one if you are responsible for a child, or if you (or your
+          partner) have limited capability for work. For 2026/27 it is:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Your Universal Credit includes</th>
+              <th>Work allowance a month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Help with housing costs</td>
+              <td>£427</td>
+            </tr>
+            <tr>
+              <td>No help with housing costs</td>
+              <td>£710</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Single people and couples without children, and without a health condition that limits their work, get no work
+          allowance. For them the taper starts from the first pound of earnings.
+        </p>
+        <h3>2. The 55% taper</h3>
+        <p>
+          For every £1 of earnings above the work allowance, Universal Credit falls by <strong>55p</strong>. This is the
+          taper. It was 63% until November 2021, when it was cut to 55%.
+        </p>
+        <h3>3. It uses take-home pay</h3>
+        <p>
+          The taper is applied to your <strong>net</strong> earnings: what is left after Income Tax, National Insurance
+          and pension contributions. That matters. Once you pay tax and NI, part of each extra pound has already gone
+          before Universal Credit looks at it, so the taper bites on a smaller amount. It also means pension
+          contributions reduce the earnings Universal Credit counts, which we come back to below.
+        </p>
+
+        <h2>Our example household</h2>
+        <p>To make the numbers concrete, here is the household we will follow through the rest of this guide:</p>
+        <ul>
+          <li>A single parent aged 25 or over, with one child born after April 2017.</li>
+          <li>Rents from a housing association for £550 a month, with no spare bedrooms.</li>
+          <li>Paid the National Living Wage of £12.71 an hour, with no pension contributions.</li>
+          <li>Lives in England, has no savings over £6,000 and no other income.</li>
+        </ul>
+        <p>Their maximum Universal Credit for 2026/27 is made up of:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Element</th>
+              <th>A month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Standard allowance (single, 25 or over)</td>
+              <td>£424.90</td>
+            </tr>
+            <tr>
+              <td>Child element</td>
+              <td>£303.94</td>
+            </tr>
+            <tr>
+              <td>Housing element (rent)</td>
+              <td>£550.00</td>
+            </tr>
+            <tr>
+              <td>
+                <strong>Maximum award</strong>
+              </td>
+              <td>
+                <strong>£1,278.84</strong>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Because the award includes housing costs and there is a child, the work allowance is £427 a month. Child
+          Benefit is paid on top and does not count as income for Universal Credit, so we leave it out of the figures
+          below.
+        </p>
+
+        <h2>From 0 to 37.5 hours a week</h2>
+        <p>
+          Here is the household&rsquo;s monthly income at different weekly hours. Pay is worked out as hourly rate ×
+          hours × 52 ÷ 12. &ldquo;Total&rdquo; is take-home pay plus Universal Credit.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Hours a week</th>
+              <th>Gross pay</th>
+              <th>Take-home pay</th>
+              <th>Universal Credit</th>
+              <th>Total a month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0</td>
+              <td>£0</td>
+              <td>£0</td>
+              <td>£1,278.84</td>
+              <td>£1,278.84</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>£440.61</td>
+              <td>£440.61</td>
+              <td>£1,271.35</td>
+              <td>£1,711.97</td>
+            </tr>
+            <tr>
+              <td>16</td>
+              <td>£881.23</td>
+              <td>£881.23</td>
+              <td>£1,029.02</td>
+              <td>£1,910.24</td>
+            </tr>
+            <tr>
+              <td>20</td>
+              <td>£1,101.53</td>
+              <td>£1,086.40</td>
+              <td>£916.17</td>
+              <td>£2,002.57</td>
+            </tr>
+            <tr>
+              <td>25</td>
+              <td>£1,376.92</td>
+              <td>£1,284.68</td>
+              <td>£807.12</td>
+              <td>£2,091.80</td>
+            </tr>
+            <tr>
+              <td>30</td>
+              <td>£1,652.30</td>
+              <td>£1,482.96</td>
+              <td>£698.06</td>
+              <td>£2,181.02</td>
+            </tr>
+            <tr>
+              <td>37.5</td>
+              <td>£2,065.38</td>
+              <td>£1,780.37</td>
+              <td>£534.49</td>
+              <td>£2,314.86</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>A few things stand out.</p>
+        <ul>
+          <li>
+            <strong>The first hours pay best by far.</strong> Eight hours a week adds £433.13 to the household&rsquo;s
+            monthly income, because almost all of it falls inside the £427 work allowance. Universal Credit drops by only
+            £7.49.
+          </li>
+          <li>
+            <strong>After that, each extra hour is worth much less.</strong> Going from 8 to 16 hours adds another
+            £198.27 a month, less than half of what the first 8 hours added, because almost every extra pound is now
+            above the work allowance and loses 55p to the taper.
+          </li>
+          <li>
+            <strong>Going from 16 hours to full time adds £404.62 a month.</strong> More than doubling the hours from 16
+            to 37.5 raises total income by about a fifth.
+          </li>
+          <li>
+            <strong>Universal Credit is still paid at full time.</strong> At 37.5 hours this household still gets
+            £534.49 a month. Their award would only reach zero at take-home pay of about £2,752 a month.
+          </li>
+        </ul>
+        <p>
+          You can see the same shape for your own hours, rent and family in the{" "}
+          <Link href="/benefits/universal-credit-taper">Universal Credit taper calculator</Link>, which draws the full
+          curve from no work to the point where Universal Credit stops.
+        </p>
+
+        <h2>The real marginal rate: what you keep from a pay rise</h2>
+        <p>
+          The share of each extra pound you lose to tax, National Insurance and the taper together is your{" "}
+          <em>effective marginal rate</em>. On Universal Credit it depends on where your pay sits:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Where your earnings are</th>
+              <th>Lost from each extra £1</th>
+              <th>You keep</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Inside the work allowance, below the tax threshold</td>
+              <td>0p</td>
+              <td>£1.00</td>
+            </tr>
+            <tr>
+              <td>Above the work allowance, below the tax threshold</td>
+              <td>55p (taper)</td>
+              <td>45p</td>
+            </tr>
+            <tr>
+              <td>Above the work allowance and paying basic rate tax and NI</td>
+              <td>28p tax and NI, then 55% of the 72p left: 67.6p</td>
+              <td>32.4p</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          That last row is where most full-time workers on Universal Credit are. In our example, a £100 a month pay rise
+          at 30 hours adds just <strong>£32.40</strong> to the household&rsquo;s income: £28 goes in Income Tax and
+          National Insurance, and Universal Credit falls by £39.60. A basic rate taxpayer who is not on Universal Credit
+          would keep £72 of the same rise.
+        </p>
+        <p>
+          The step from 16 to 20 hours is in between. It adds £220.31 of gross pay a month and the household keeps
+          £92.33, about 42p in the pound, because only the hours above the tax threshold are taxed.
+        </p>
+
+        <h2>Single with no children: no work allowance</h2>
+        <p>
+          The picture is harsher for single people without children, because there is no work allowance. Take someone
+          aged 25 or over renting from a housing association for £450 a month, also on £12.71 an hour. Their maximum
+          award is £874.90 a month (£424.90 standard allowance plus £450 housing).
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Hours a week</th>
+              <th>Take-home pay</th>
+              <th>Universal Credit</th>
+              <th>Total a month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0</td>
+              <td>£0</td>
+              <td>£874.90</td>
+              <td>£874.90</td>
+            </tr>
+            <tr>
+              <td>16</td>
+              <td>£881.23</td>
+              <td>£390.23</td>
+              <td>£1,271.45</td>
+            </tr>
+            <tr>
+              <td>30</td>
+              <td>£1,482.96</td>
+              <td>£59.27</td>
+              <td>£1,542.23</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          Here the taper applies from the first pound. Sixteen hours of work adds £396.55 a month, 45p for every pound
+          earned. By 30 hours Universal Credit has almost gone, and it stops entirely at take-home pay of about £1,591 a
+          month. From that point on, this person keeps 72p of each extra pound, just like any other basic rate taxpayer.
+        </p>
+
+        <h2>Childcare: the element that changes the sums</h2>
+        <p>
+          If you are working and pay a registered childminder, nursery or after-school club, Universal Credit can pay{" "}
+          <strong>85% of the cost</strong>, up to a monthly limit of <strong>£1,071.09 for one child</strong> and{" "}
+          <strong>£1,836.16 for two or more</strong>. Every adult in the household must be in paid work (there is no
+          minimum number of hours), and the costs must be for the hours you work or prepare for work.
+        </p>
+        <p>
+          The childcare element is added to the maximum award, so as long as some Universal Credit is still being paid,
+          each £100 of childcare brings £85 more in Universal Credit. If our single parent working 30 hours paid £600 a
+          month for childcare, their Universal Credit would rise by £510, from £698.06 to £1,208.06. The childcare element
+          is also not reduced by the benefit cap.
+        </p>
+        <p>
+          There are two things to watch. First, you pay the provider and claim it back, so you need to report the costs
+          in your journal, with proof, by the end of the assessment period after the one in which you paid. Second, you
+          cannot get the childcare element and Tax-Free Childcare at the same time. For lower earners Universal Credit
+          is almost always worth more, but once your award gets small, Tax-Free Childcare (20% top-up, up to £2,000 a
+          year per child) can win. Compare both in the{" "}
+          <Link href="/benefits/tax-free-childcare">Tax-Free Childcare calculator</Link>, and check the{" "}
+          <Link href="/benefits/free-childcare-hours">free childcare hours checker</Link> too, since funded hours reduce
+          what you pay in the first place.
+        </p>
+
+        <h2>Pension contributions are cheaper on Universal Credit</h2>
+        <p>
+          Because Universal Credit uses take-home pay after pension contributions, paying into a workplace pension costs
+          you less than it seems. In our example at 30 hours, joining a pension at 5% of pay means £82.62 a month going
+          into the pension, but the household&rsquo;s spending money only falls by £26.77 (from £2,181.02 to £2,154.25).
+          Lower Income Tax and National Insurance and higher Universal Credit make up the rest, and the employer adds
+          its own contribution on top. For many people on Universal Credit, a workplace pension is one of the best-value
+          savings there is. The{" "}
+          <Link href="/investing/workplace-pension">workplace pension calculator</Link> shows what auto-enrolment
+          builds up over time.
+        </p>
+
+        <h2>The benefit cap and the 16-hour line</h2>
+        <p>
+          The benefit cap limits the total of most benefits a household of working age can receive. For 2026/27 outside
+          London it is £22,020 a year for couples and families (£1,835 a month) and £14,753 for single people without
+          children. In London it is £25,323 and £16,967.
+        </p>
+        <p>
+          The cap does not apply if household take-home earnings are at least <strong>£881 a month</strong>, which is
+          roughly 16 hours a week at the National Living Wage. Sixteen hours at £12.71 is £881.23 a month, just over the
+          line. For families with high rents in expensive areas, crossing that line can be worth far more than the extra
+          pay itself, because it can lift the cap entirely. The cap also does not apply if someone gets the health element
+          for limited capability for work and work-related activity, the carer element, or certain disability benefits.
+          Check your household with the <Link href="/benefits/benefit-cap">benefit cap calculator</Link>.
+        </p>
+
+        <h2>Monthly assessment periods and paydays</h2>
+        <p>
+          Universal Credit is worked out over monthly <strong>assessment periods</strong>, and it counts the pay you
+          actually receive in each one, not what you earn on average. If you are paid monthly, that usually works
+          smoothly. If you are paid weekly, every two weeks or every four weeks, some assessment periods will contain an
+          extra payday:
+        </p>
+        <ul>
+          <li>Weekly pay: some months have five paydays instead of four.</li>
+          <li>Four-weekly pay: once a year a month has two paydays.</li>
+        </ul>
+        <p>
+          In those months your earnings look higher and your Universal Credit drops, sometimes to zero, then goes back up
+          the next month. Over a year it roughly evens out, but it can make budgeting hard. If your award drops to nil
+          because of an extra payday, you do not usually need to make a new claim, but check your journal. A very large
+          one-off payment, such as a big bonus, can also be carried forward as &ldquo;surplus earnings&rdquo; and reduce
+          your award the following month.
+        </p>
+
+        <h2>Self-employed on Universal Credit</h2>
+        <p>
+          If you are self-employed, you report your actual business income and expenses each month, and the same taper
+          applies to the profit. After the first 12 months of a business (the start-up period), Universal Credit may
+          assume you earn at least the <strong>minimum income floor</strong>, roughly what an employee on the National
+          Living Wage would earn for the hours you are expected to work, even if your real profit is lower. This can
+          sharply reduce the award in a quiet month. It does not apply in the start-up period, or if you have limited
+          capability for work. Our <Link href="/business/sole-trader-tax">sole trader tax calculator</Link> works out the
+          tax and National Insurance side.
+        </p>
+
+        <h2>Other things that change the picture</h2>
+        <ul>
+          <li>
+            <strong>Savings.</strong> Savings between £6,000 and £16,000 reduce Universal Credit by £4.35 a month for
+            each £250 (or part of £250). Above £16,000 you can&rsquo;t usually get Universal Credit at all.
+          </li>
+          <li>
+            <strong>A partner&rsquo;s earnings.</strong> Couples are assessed together, so both incomes count, and the
+            household gets only one work allowance.
+          </li>
+          <li>
+            <strong>Private renting.</strong> If you rent privately, the housing element is capped at the Local Housing
+            Allowance for your area and bedroom size, which has been frozen since April 2024 rates. Look yours up with the{" "}
+            <Link href="/benefits/local-housing-allowance">Local Housing Allowance checker</Link>.
+          </li>
+          <li>
+            <strong>Council Tax.</strong> Universal Credit does not cover Council Tax, but your council&rsquo;s Council
+            Tax Reduction scheme might. It usually has its own earnings rules. Estimate it with the{" "}
+            <Link href="/benefits/council-tax-reduction">Council Tax Reduction calculator</Link>.
+          </li>
+          <li>
+            <strong>Under 25.</strong> The standard allowance is lower: £338.58 a month for a single person under 25.
+          </li>
+          <li>
+            <strong>Scotland.</strong> Universal Credit rules are the same, but Scottish Income Tax has different bands,
+            so take-home pay at the same gross wage is slightly different. Scotland also pays the Scottish Child Payment
+            on top, which does not affect Universal Credit.
+          </li>
+        </ul>
+
+        <h2>Ways to keep more of your pay</h2>
+        <ul>
+          <li>
+            <strong>Use the whole work allowance.</strong> If you have a work allowance, earnings up to that level are
+            not tapered at all. If you can only work a few hours, these are the most valuable ones.
+          </li>
+          <li>
+            <strong>Claim all your childcare costs.</strong> Report them every assessment period with receipts, and do
+            not let a deadline pass.
+          </li>
+          <li>
+            <strong>Join the workplace pension.</strong> On Universal Credit it costs you much less than it adds to
+            your pension.
+          </li>
+          <li>
+            <strong>Report changes on time.</strong> Overpayments are recovered from future awards, which can leave you
+            short later. Underpayments may only be backdated in limited cases.
+          </li>
+          <li>
+            <strong>Check you are on the right tax code.</strong> An emergency tax code reduces your take-home pay. Your
+            Universal Credit then rises to make up part of it, but you still lose out until it is fixed. The{" "}
+            <Link href="/tax-and-salary/tax-code-decoder">tax code decoder</Link> explains what yours means.
+          </li>
+          <li>
+            <strong>Check your wage.</strong> If you are 21 or over, you are entitled to at least £12.71 an hour from
+            April 2026. The <Link href="/tax-and-salary/minimum-wage">minimum wage checker</Link> tests your pay,
+            including deductions for uniforms and accommodation.
+          </li>
+        </ul>
+
+        <h2>The bottom line</h2>
+        <p>
+          On Universal Credit, work always pays, but the amount it pays changes sharply with your hours. The first hours
+          inside the work allowance are worth almost every penny. Above it, you keep around 45p of each extra pound, and
+          once you also pay Income Tax and National Insurance, around 32p. Childcare costs, pension contributions and the
+          benefit cap can each shift the sums by hundreds of pounds a month, so it is worth running your own figures
+          before you change your hours. Try the{" "}
+          <Link href="/benefits/universal-credit">Universal Credit calculator</Link> and the{" "}
+          <Link href="/benefits/universal-credit-taper">Universal Credit taper calculator</Link>. These figures use
+          2026/27 rates and are estimates for general guidance, not benefits advice. For help with your own claim, contact
+          Citizens Advice or your local welfare rights service.
+        </p>
+      </>
+    ),
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {
