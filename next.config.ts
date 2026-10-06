@@ -49,6 +49,11 @@ const nextConfig: NextConfig = {
         destination: "/property/stamp-duty-england",
         permanent: true,
       },
+      {
+        source: "/business/ir35-take-home",
+        destination: "/tax-and-salary/ir35-take-home",
+        permanent: true,
+      },
     ];
   },
 };
