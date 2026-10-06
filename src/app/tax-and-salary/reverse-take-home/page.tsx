@@ -28,6 +28,7 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Is the result the same for weekly pay?", a: "Yes. Choose week as the period. The calculation is yearly, so weekly and monthly pay give the same salary for the same yearly take-home." },
   { q: "What hourly rate do I need?", a: "The calculator divides the salary by 52 weeks and your paid hours a week. At 37.5 hours, £2,000 a month take-home needs about £14.59 an hour." },
   { q: "Does the calculator include benefits like Universal Credit?", a: "No. It works out pay only. If you get Universal Credit, extra take-home pay also reduces your award by 55p in the pound." },
+  { q: "Is take-home pay the same as net pay?", a: "Yes. Both mean pay after Income Tax, National Insurance, student loan and pension contributions." },
 ];
 
 export default async function ReverseTakeHomePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

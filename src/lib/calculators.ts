@@ -206,6 +206,10 @@ export const CALCULATORS: Calculator[] = [
   live("benefits-checker", "benefits", "Benefits Eligibility Checker", "See which benefits you are likely to get, in one go."),
   live("new-style-jsa", "benefits", "New Style JSA Calculator", "Jobseeker's Allowance from your National Insurance record."),
   live("new-style-esa", "benefits", "New Style ESA Calculator", "Employment and Support Allowance if illness limits work."),
+  live("child-maintenance", "benefits", "Child Maintenance Calculator", "What the Child Maintenance Service formula says is due."),
+  live("childcare-costs", "benefits", "Childcare Costs Calculator", "What childcare costs after funded hours and top-ups."),
+  live("adoption-pay", "benefits", "Adoption Pay Calculator", "Statutory Adoption Pay week by week."),
+  live("sure-start-maternity-grant", "benefits", "Sure Start Maternity Grant", "The £500 grant, or Scotland's Best Start Grant."),
   live("uc-advance", "benefits", "UC Advance Repayment Calculator", "What a Universal Credit advance takes from each payment."),
 
   // ── Vehicles ───────────────────────────────────────────────────────────
@@ -227,6 +231,10 @@ export const CALCULATORS: Calculator[] = [
   live("plan-5-student-loan", "students", "Plan 5 Student Loan Calculator", "Post-2023 loans with the 40-year write-off."),
   live("postgrad-loan", "students", "Postgraduate Loan Calculator", "Repayments on a Master's or Doctoral loan."),
   live("maintenance-loan", "students", "Maintenance Loan Estimator", "Support based on household income.", true),
+  live("degree-cost", "students", "Cost of a Degree Calculator", "Fees, loans, interest and what you will really repay."),
+  live("saas-funding", "students", "SAAS Funding Calculator", "Scottish bursary and student loan by household income."),
+  live("welsh-student-finance", "students", "Welsh Student Finance Calculator", "Learning Grant and Maintenance Loan for Welsh students."),
+  live("student-budget", "students", "Student Budget Calculator", "Will your loan cover rent and living costs?"),
   live("student-council-tax", "students", "Student Council Tax Exemption", "Who counts as a full-time student — and who doesn't."),
 
   // ── Life ───────────────────────────────────────────────────────────────

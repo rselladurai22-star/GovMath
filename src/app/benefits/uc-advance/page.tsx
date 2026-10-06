@@ -28,6 +28,9 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What is a budgeting advance?", a: "A loan for one-off costs after 6 months on Universal Credit: up to £348 single, £464 for a couple or £812 with children." },
   { q: "Can I delay advance repayments?", a: "In exceptional circumstances repayments can be delayed for up to 3 months. Ask through your journal." },
   { q: "Should I take the full advance?", a: "Only if you need it. Every pound is taken back from later payments, so a smaller advance leaves you more each month." },
+  { q: "Can I get an advance if I move to Universal Credit from another benefit?", a: "Yes. You can ask for a benefit transfer advance if you need money before your first Universal Credit payment." },
+  { q: "Does a Universal Credit advance affect my credit score?", a: "No. It is a debt to the DWP, not a loan from a lender, so it does not appear on your credit file." },
+  { q: "Can I get a second advance?", a: "You can ask for a change of circumstances advance if your award goes up, or a budgeting advance after 6 months, but not a second new claim advance." },
 ];
 
 export default async function UcAdvancePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

@@ -18,6 +18,7 @@ const TOC: TocItem[] = [
   { id: "couples", title: "Couples and mixed-age couples" },
   { id: "changes", title: "When your situation changes" },
   { id: "mistakes", title: "Common mistakes" },
+  { id: "evidence", title: "What to have ready" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -254,7 +255,17 @@ export default function CheckerGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={16} kicker="Reference" title="Key numbers">
+      <GuideSection id="evidence" n={16} kicker="Preparing" title="What to have ready">
+        <ul>
+          <li>National Insurance numbers for you and your partner;</li>
+          <li>recent payslips, or your business records if self-employed;</li>
+          <li>bank statements and details of savings and investments;</li>
+          <li>your tenancy agreement and rent, or mortgage details;</li>
+          <li>childcare invoices, if you pay for registered childcare.</li>
+        </ul>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={17} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Main rates used by the checker, 2026/27"
           head={["Help", "Rate"]}

@@ -17,6 +17,7 @@ const TOC: TocItem[] = [
   { id: "other-help", title: "Other help if you are ill or disabled" },
   { id: "fit-notes", title: "Fit notes and evidence" },
   { id: "appeals", title: "Challenging a decision" },
+  { id: "sick-pay", title: "Moving from Statutory Sick Pay" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -267,7 +268,15 @@ export default function EsaGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={15} kicker="Reference" title="Key numbers">
+      <GuideSection id="sick-pay" n={15} kicker="Sick pay" title="Moving from Statutory Sick Pay">
+        <p>
+          Statutory Sick Pay lasts up to 28 weeks. You cannot get New Style ESA for the same days, but you can claim it up to 3 months before your
+          sick pay ends so there is no gap. Weeks on Statutory Sick Pay also give you National Insurance credits, which help with the second
+          contribution condition. See the <a href="/tax-and-salary/statutory-sick-pay">Statutory Sick Pay calculator</a>.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={16} kicker="Reference" title="Key numbers">
         <DataTable
           caption="New Style ESA, 2026/27"
           head={["Item", "Amount"]}
