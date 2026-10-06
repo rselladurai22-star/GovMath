@@ -20,6 +20,8 @@ const TOC: TocItem[] = [
   { id: "placement", title: "Placement years and years abroad" },
   { id: "postgrad", title: "Adding a master&rsquo;s degree" },
   { id: "compare-routes", title: "Degree, apprenticeship or work?" },
+  { id: "monthly", title: "What repayments look like each month" },
+  { id: "self-employed", title: "If you become self-employed or work abroad" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -278,7 +280,23 @@ export default function DegreeGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={18} kicker="Reference" title="Key numbers">
+      <GuideSection id="monthly" n={18} kicker="Monthly" title="What repayments look like each month">
+        <p>
+          Repayments come straight out of your pay, so it helps to think of them monthly. On £28,000 a year, 9% of the £3,000 over the threshold is £270
+          a year, or £22.50 a month. On £35,000 it is £75 a month; on £45,000, £150 a month; on £60,000, £262.50 a month. Because the threshold rises
+          with inflation from 2027, a pay rise that only keeps up with prices does not increase what you repay in real terms.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="self-employed" n={19} kicker="Other work" title="If you become self-employed or work abroad">
+        <p>
+          If you are self-employed, student loan repayments are worked out on your Self Assessment return and paid with your tax bill. If you move
+          abroad, you repay the Student Loans Company directly, with a threshold set for the country you live in. You must tell the Student Loans
+          Company if you leave the UK for more than 3 months; if you do not, it can charge fixed repayments that may be higher.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={20} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Student finance in England, 2026/27"
           head={["Item", "Amount"]}

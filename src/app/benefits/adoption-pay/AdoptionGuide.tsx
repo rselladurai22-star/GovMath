@@ -19,6 +19,8 @@ const TOC: TocItem[] = [
   { id: "tax", title: "Tax, National Insurance and pensions" },
   { id: "planning", title: "Planning your finances for the year" },
   { id: "return", title: "Coming back to work" },
+  { id: "keeping-in-touch", title: "Keeping-in-touch days" },
+  { id: "recovering", title: "How employers recover the cost" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -253,7 +255,23 @@ export default function AdoptionGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={17} kicker="Reference" title="Key numbers">
+      <GuideSection id="keeping-in-touch" n={17} kicker="Contact" title="Keeping-in-touch days">
+        <p>
+          You can work up to 10 keeping-in-touch days during adoption leave without ending your leave or losing adoption pay for that week. They can be
+          used for training, team days or a gradual return. Both you and your employer have to agree, and you should be paid for the work, usually at
+          your normal rate, with Statutory Adoption Pay counting towards it. If you share leave through shared parental leave, you get up to 20 more.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="recovering" n={18} kicker="Employers" title="How employers recover the cost">
+        <p>
+          Employers pay Statutory Adoption Pay through payroll and claim most of it back from HMRC: 92% for most employers, or 108.5% for small
+          employers whose Class 1 National Insurance was £45,000 or less in the previous tax year. Any enhanced pay above the statutory amount is the
+          employer&rsquo;s own cost.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={19} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Adoption leave and pay, 2026/27"
           head={["Item", "Amount"]}

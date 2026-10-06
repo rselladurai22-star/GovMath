@@ -20,6 +20,8 @@ const TOC: TocItem[] = [
   { id: "should-borrow", title: "Should you take the full loan?" },
   { id: "council-tax", title: "Council tax and benefits" },
   { id: "part-time", title: "Part-time and postgraduate study" },
+  { id: "compare-uk", title: "Scotland compared with the rest of the UK" },
+  { id: "repay-example", title: "What Plan 4 repayments look like" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -255,7 +257,24 @@ export default function SaasGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={18} kicker="Reference" title="Key numbers">
+      <GuideSection id="compare-uk" n={18} kicker="Comparison" title="Scotland compared with the rest of the UK">
+        <p>
+          A Scottish student on a four-year degree at a Scottish university, from a household on £30,000, borrows £37,600 for living costs over the whole
+          course and nothing for tuition. An English student on a three-year degree in England borrows around £30,000 for tuition alone, plus a
+          maintenance loan. Scottish graduates also start repaying at a higher threshold, £33,795 rather than £25,000 for English Plan 5 loans, so they
+          usually repay less each month for longer.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="repay-example" n={19} kicker="Monthly repayments" title="What Plan 4 repayments look like">
+        <p>
+          Plan 4 repayments are 9% of income over £33,795 a year. On £35,000 that is £108 a year, about £9 a month; on £40,000, £558 a year or £47 a month;
+          on £50,000, £1,458 a year or £122 a month. The threshold rises with RPI each April, so many Scottish graduates repay little in their first
+          years of work.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={20} kicker="Reference" title="Key numbers">
         <DataTable
           caption="SAAS funding, 2026/27"
           head={["Item", "Amount"]}

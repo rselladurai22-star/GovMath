@@ -19,6 +19,7 @@ const TOC: TocItem[] = [
   { id: "changes", title: "When your situation changes" },
   { id: "mistakes", title: "Common mistakes" },
   { id: "evidence", title: "What to have ready" },
+  { id: "scams", title: "Beware of benefit scams" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -265,7 +266,15 @@ export default function CheckerGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={17} kicker="Reference" title="Key numbers">
+      <GuideSection id="scams" n={17} kicker="Safety" title="Beware of benefit scams">
+        <p>
+          You never have to pay anyone to claim a benefit. The DWP, HMRC and councils do not charge for claims or ask for your bank PIN. Be wary of
+          social media posts promising cost of living payments or grants if you click a link, and of anyone offering to make a claim for you in return
+          for a fee or your login details. Claim through GOV.UK, your council, or with help from a free advice service.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={18} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Main rates used by the checker, 2026/27"
           head={["Help", "Rate"]}

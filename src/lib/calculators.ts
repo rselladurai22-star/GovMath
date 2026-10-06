@@ -183,6 +183,11 @@ export const CALCULATORS: Calculator[] = [
   live("state-pension-age", "investing", "State Pension Age Lookup", "When can you claim your State Pension?", true),
   live("inflation-impact", "investing", "Inflation Impact Calculator", "What your savings are really worth in 10 years."),
   live("fire-calculator", "investing", "FIRE Calculator", "When could you retire early? Uses the 4% rule."),
+  live("savings-interest", "investing", "Savings Interest Calculator", "Fixed vs easy-access savings, compared after tax."),
+  live("personal-savings-allowance", "investing", "Personal Savings Allowance", "How much tax you pay on savings interest."),
+  live("junior-isa", "investing", "Junior ISA Calculator", "What saving for a child could grow to by 18."),
+  live("pension-drawdown", "investing", "Pension Drawdown Calculator", "How long your pension pot lasts in drawdown."),
+  live("annuity", "investing", "Annuity Calculator", "The guaranteed income your pension pot could buy."),
   live("premium-bonds", "investing", "Premium Bonds Return", "Expected vs guaranteed savings returns."),
 
   // ── Benefits ───────────────────────────────────────────────────────────

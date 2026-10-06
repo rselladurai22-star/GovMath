@@ -19,6 +19,7 @@ const TOC: TocItem[] = [
   { id: "moving", title: "Moving from older benefits" },
   { id: "first-months", title: "Budgeting for the first months" },
   { id: "records", title: "Checking your deductions" },
+  { id: "example-couple", title: "A couple example" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -269,7 +270,15 @@ export default function AdvanceGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={17} kicker="Reference" title="Key numbers">
+      <GuideSection id="example-couple" n={17} kicker="Example" title="A couple example">
+        <p>
+          A couple aged 30 with one child, renting at £850 a month with no income, would have a standard allowance of £666.97 a month, so the deductions
+          cap is £100.05. An advance of £1,000 repaid over 24 months is £41.67 a month, well within the cap; over 12 months it would be £83.33, still
+          within it.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={18} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Universal Credit advances, 2026/27"
           head={["Item", "Amount"]}

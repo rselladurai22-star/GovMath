@@ -30,6 +30,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Do I need to be on benefits already?", a: "You or your partner must get a qualifying benefit when you claim. If you are waiting for a decision, claim anyway within the time limit." },
   { q: "Is the Sure Start Maternity Grant taxable?", a: "No. It is tax-free and does not affect other benefits." },
   { q: "Can fathers or partners claim the grant?", a: "Yes. Either the mother or her partner can claim, as long as one of them gets a qualifying benefit." },
+  { q: "What if my baby is stillborn?", a: "You can still claim the grant if the pregnancy lasted at least 24 weeks, within the same time limit." },
+  { q: "Can I claim if I am under 16?", a: "Yes, in some cases on the strength of your parents' qualifying benefit. You do not need to be getting a benefit yourself." },
 ];
 
 export default async function MaternityGrantPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

@@ -19,6 +19,7 @@ const TOC: TocItem[] = [
   { id: "self-employed", title: "Self-employed and company directors" },
   { id: "example-second", title: "A second-family example" },
   { id: "talking", title: "Agreeing an amount yourselves" },
+  { id: "receiving", title: "If you are the receiving parent" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -282,7 +283,15 @@ export default function CmsGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={17} kicker="Reference" title="Key numbers">
+      <GuideSection id="receiving" n={17} kicker="Receiving" title="If you are the receiving parent">
+        <p>
+          If you are the receiving parent, you can apply to the CMS even if the other parent lives abroad in some countries, or you do not know where
+          they work. The CMS can find the paying parent through HMRC and DWP records. Tell the CMS straight away if payments stop. You do not need to
+          stay in contact with the other parent: with Collect and Pay, all payments go through the CMS.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={18} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Child maintenance at a glance"
           head={["Item", "Amount"]}

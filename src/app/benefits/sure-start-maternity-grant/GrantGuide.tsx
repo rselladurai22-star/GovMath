@@ -19,6 +19,7 @@ const TOC: TocItem[] = [
   { id: "evidence", title: "The evidence you need" },
   { id: "timing-uc", title: "Timing the grant with Universal Credit" },
   { id: "budget", title: "Budgeting for a new baby" },
+  { id: "nations-differences", title: "Differences across the UK" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -262,7 +263,15 @@ export default function GrantGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={17} kicker="Reference" title="Key numbers">
+      <GuideSection id="nations-differences" n={17} kicker="Nations" title="Differences across the UK">
+        <p>
+          The Sure Start Maternity Grant is the same £500 in England, Wales and Northern Ireland, with the same first-child rule. In Northern Ireland it
+          is administered by the Department for Communities rather than the DWP. Scotland replaced it in 2018 with the Best Start Grant, which pays more,
+          pays for later children too, and adds payments when the child starts nursery and school.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={18} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Maternity grants, 2026/27"
           head={["Grant", "Amount"]}
