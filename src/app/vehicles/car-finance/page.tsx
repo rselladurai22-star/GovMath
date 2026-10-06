@@ -30,6 +30,7 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Is a personal loan better than car finance?", a: "Sometimes. A loan lets you own the car outright and may have a lower rate if you have good credit. Compare the total cost." },
   { q: "Can I sell a car that is on finance?", a: "Only after paying off the finance. Ask your lender for a settlement figure and clear it from the sale proceeds." },
   { q: "Do I need gap insurance?", a: "It covers the difference between the car's value and what you owe if it is written off. Standalone policies are usually cheaper than the dealer's." },
+  { q: "Does a PCP count as a debt on my credit file?", a: "Yes. The full amount borrowed shows as a credit agreement, and on-time payments help your credit record." },
 ];
 
 export default async function CarFinancePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

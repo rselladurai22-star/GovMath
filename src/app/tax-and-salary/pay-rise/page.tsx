@@ -28,6 +28,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Is a pay rise taxed more in Scotland?", a: "From £43,663 Scottish taxpayers pay 42%, so rises between £43,663 and £50,270 keep 50p in the pound rather than 72p." },
   { q: "Why was my backdated pay rise taxed so heavily?", a: "PAYE treats a lump sum as if it were paid every month. Overpaid tax is usually corrected over the rest of the tax year." },
   { q: "Should I put my pay rise into my pension?", a: "Salary sacrifice saves tax and NI, so each £1 in the pension costs 72p at basic rate and 58p at higher rate. It suits people near a threshold." },
+  { q: "Do I get to keep a pay rise if I am on Universal Credit?", a: "Part of it. Universal Credit falls by 55p for each extra pound of take-home above any work allowance." },
+  { q: "Is a pay rise worth more than a bigger pension contribution?", a: "An employer pension contribution has no tax or NI on it, so £1 into your pension from your employer is worth more than £1 of salary." },
 ];
 
 export default async function PayRisePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

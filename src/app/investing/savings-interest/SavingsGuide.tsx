@@ -219,7 +219,7 @@ export default function SavingsGuide() {
 
       <GuideSection id="notice" n={15} kicker="Other accounts" title="Notice accounts and regular savers">
         <p>
-          <strong>Notice accounts</strong> pay a variable rate, often higher than easy access, but you must give 30, 60, 90 or 120 days&rsquo; notice
+          <strong>Notice accounts</strong>{" "}pay a variable rate, often higher than easy access, but you must give 30, 60, 90 or 120 days&rsquo; notice
           before taking money out. They suit money you might need within months but not days. <strong>Regular savers</strong> pay some of the highest
           rates, but only on a limited monthly deposit, often £200 to £500, for a year. Because the balance builds up gradually, you earn the headline
           rate on a much smaller average amount: roughly half the interest you might expect.

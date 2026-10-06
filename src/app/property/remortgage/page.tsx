@@ -30,6 +30,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What happens if I do nothing when my deal ends?", a: "You move onto your lender's standard variable rate, which is usually much higher than new deals." },
   { q: "Can I change my mortgage term when I remortgage?", a: "Yes. A shorter term raises payments but saves interest; a longer one lowers payments but costs more overall." },
   { q: "Should I fix for two or five years?", a: "A two-year fix gives flexibility if rates fall; a five-year fix gives longer certainty and fewer fees." },
+  { q: "Will remortgaging lower my credit score?", a: "A new lender's hard search shows on your file and may lower your score slightly for a short time; it recovers quickly if you keep up payments." },
+  { q: "Can I remortgage if I am self-employed?", a: "Yes. Lenders usually ask for two years of accounts or tax calculations to prove your income." },
 ];
 
 export default async function RemortgagePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

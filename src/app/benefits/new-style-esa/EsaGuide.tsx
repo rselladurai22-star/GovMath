@@ -161,7 +161,7 @@ export default function EsaGuide() {
           programme. Earn more than this and ESA stops, so tell the DWP before you start work.
         </p>
         <p>
-          <strong>Not counted:</strong> savings, a partner&rsquo;s earnings, PIP and Child Benefit.
+          <strong>Not counted:</strong>{" "}savings, a partner&rsquo;s earnings, PIP and Child Benefit.
         </p>
       </GuideSection>
 

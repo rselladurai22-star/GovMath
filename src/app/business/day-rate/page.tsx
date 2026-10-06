@@ -30,6 +30,9 @@ const FAQS: { q: string; a: string }[] = [
   { q: "When do I need to register for VAT?", a: "When your taxable turnover goes over £90,000 in any rolling 12 months." },
   { q: "How many billable days should I assume in my first year?", a: "Fewer than later: perhaps 120 to 160 days while you build up clients." },
   { q: "Do I need insurance as a freelancer?", a: "Many clients require professional indemnity insurance, and public liability cover is wise if you work on client sites." },
+  { q: "Should I quote a day rate or a project price?", a: "A day rate suits work where clients book your time; a project price suits clearly defined work. Both should rest on the same yearly income need." },
+  { q: "How do I raise my day rate with existing clients?", a: "Give notice, usually a month or two, and explain the change. Many freelancers raise rates once a year." },
+  { q: "Does my day rate need to cover a pension?", a: "Yes. With no employer contribution, include what you plan to pay into a personal pension in the income you need." },
 ];
 
 export default async function DayRatePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

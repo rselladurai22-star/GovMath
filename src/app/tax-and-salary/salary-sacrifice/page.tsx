@@ -30,6 +30,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Can I stop salary sacrifice at any time?", a: "Usually only at set times or after a life event. Pension sacrifice is often more flexible; check your scheme." },
   { q: "Does salary sacrifice reduce the Child Benefit charge?", a: "Yes. It lowers your adjusted net income, which can reduce or remove the High Income Child Benefit Charge." },
   { q: "Can I sacrifice my bonus into my pension?", a: "Often yes, if agreed before the bonus is paid. It saves tax and NI on the bonus." },
+  { q: "Does salary sacrifice affect my State Pension?", a: "Only if your pay falls below the Lower Earnings Limit of £129 a week, which would stop you building qualifying years." },
+  { q: "Is salary sacrifice the same as a net pay pension?", a: "No. Net pay saves Income Tax only; salary sacrifice also saves National Insurance for you and your employer." },
 ];
 
 export default async function SalarySacrificePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
