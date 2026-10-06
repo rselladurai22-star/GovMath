@@ -21,6 +21,7 @@ const TOC: TocItem[] = [
   { id: "emergency", title: "How big should an emergency fund be?" },
   { id: "rates-falling", title: "What if rates change?" },
   { id: "example-higher", title: "A higher-rate example" },
+  { id: "joint", title: "Joint accounts and couples" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -258,7 +259,16 @@ export default function SavingsGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={19} kicker="Reference" title="Key numbers">
+      <GuideSection id="joint" n={19} kicker="Couples" title="Joint accounts and couples">
+        <p>
+          Interest on a joint account is split equally between the account holders for tax, so each uses half of it against their own allowances. A couple
+          where both are basic-rate taxpayers can earn £2,000 of interest a year between them before paying tax. If one partner pays a higher rate, holding more
+          savings in the other partner&rsquo;s sole name can cut the tax bill, as long as the money genuinely belongs to them. Each person also has their own
+          £120,000 of FSCS protection at every bank group, and their own £20,000 ISA allowance.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={20} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Savings tax and protection, 2026/27"
           head={["Item", "Amount"]}

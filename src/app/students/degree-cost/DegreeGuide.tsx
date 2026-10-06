@@ -22,6 +22,7 @@ const TOC: TocItem[] = [
   { id: "compare-routes", title: "Degree, apprenticeship or work?" },
   { id: "monthly", title: "What repayments look like each month" },
   { id: "self-employed", title: "If you become self-employed or work abroad" },
+  { id: "nhs", title: "Nursing, teaching and other funded routes" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -296,7 +297,15 @@ export default function DegreeGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={20} kicker="Reference" title="Key numbers">
+      <GuideSection id="nhs" n={20} kicker="Special routes" title="Nursing, teaching and other funded routes">
+        <p>
+          Some courses have extra help. Nursing, midwifery and many allied health students in England can get the NHS Learning Support Fund, a grant of at
+          least £5,000 a year on top of the normal loans. Teacher training can come with bursaries or scholarships in shortage subjects. Medicine and dentistry
+          students get NHS bursaries in the later years of their course. Check your course&rsquo;s funding page, because these can reduce what you borrow.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={21} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Student finance in England, 2026/27"
           head={["Item", "Amount"]}

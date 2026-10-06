@@ -137,6 +137,9 @@ export const CALCULATORS: Calculator[] = [
   live("minimum-wage", "tax-and-salary", "Minimum Wage Checker", "Are you being paid at least the current UK minimum?"),
   live("ir35-take-home", "tax-and-salary", "IR35 Take-Home Calculator", "Inside vs outside IR35 contractor income."),
   live("reverse-take-home", "tax-and-salary", "Reverse Take-Home Calculator", "The salary you need for the take-home pay you want."),
+  live("pay-rise", "tax-and-salary", "Pay Rise Calculator", "What a pay rise adds to your take-home after tax."),
+  live("salary-sacrifice", "tax-and-salary", "Salary Sacrifice Calculator", "What a pension, bike or other sacrifice really costs."),
+  live("marriage-allowance", "tax-and-salary", "Marriage Allowance Calculator", "Transfer £1,260 of allowance and save up to £252 a year."),
 
   // ── Property ────────────────────────────────────────────────────────────
   live("stamp-duty-england", "property", "Stamp Duty (England & NI)", "SDLT on your next home, including the additional-property surcharge.", true),
@@ -156,6 +159,7 @@ export const CALCULATORS: Calculator[] = [
   live("moving-house-budget", "property", "Moving House Budget", "Surveys, legal fees, removals — the full picture."),
   live("rent-increase", "property", "Rent Increase Checker", "Is your rent rise legal, and what will it cost you?"),
   live("deposit-return", "property", "Tenancy Deposit Return Calculator", "The deposit cap, fair deductions and what you should get back."),
+  live("remortgage", "property", "Remortgage Calculator", "What a new deal saves after fees and charges."),
 
   // ── Business ────────────────────────────────────────────────────────────
   live("sole-trader-tax", "business", "Sole Trader Tax Calculator", "Self-employed Income Tax + Class 2 / 4 NI.", true),
@@ -172,6 +176,8 @@ export const CALCULATORS: Calculator[] = [
   live("break-even", "business", "Break-Even Calculator", "Find your business break-even volume."),
   live("small-business-rates", "business", "Small Business Rates Relief", "Check business-rates eligibility by rateable value."),
   live("payment-on-account", "business", "Payment on Account Estimator", "Predict your Self-Assessment January and July bills."),
+  live("vat-threshold", "business", "VAT Threshold Checker", "Rolling turnover against the £90,000 threshold."),
+  live("day-rate", "business", "Freelancer Day Rate Calculator", "The day rate you need for the take-home you want."),
 
   // ── Investing ──────────────────────────────────────────────────────────
   live("compound-interest", "investing", "Compound Interest Calculator", "Project investment growth over years and decades.", true),
@@ -228,6 +234,7 @@ export const CALCULATORS: Calculator[] = [
   live("mot-history-checker", "vehicles", "MOT History Checker", "Look up MOT history via the DVSA service."),
   live("licence-at-70", "vehicles", "Driving Licence at 70", "What to do when your licence needs renewing."),
   live("sorn-declaration", "vehicles", "SORN Declaration", "Take your vehicle off the road, the right way."),
+  live("car-finance", "vehicles", "Car Finance Calculator", "PCP and hire purchase payments and total cost."),
 
   // ── Students ───────────────────────────────────────────────────────────
   live("plan-1-student-loan", "students", "Plan 1 Student Loan Calculator", "Pre-2012 loan repayments."),

@@ -30,6 +30,7 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Should I choose drawdown or an annuity?", a: "Drawdown is flexible but not guaranteed; an annuity guarantees income for life. Many people use both." },
   { q: "Can I take all my pension as cash?", a: "Yes, from 55 (57 from 2028), but only 25% is tax-free and the rest is taxed as income in the year you take it, which can mean a large tax bill." },
   { q: "How often can I take money in drawdown?", a: "As often as your provider allows: regular monthly income, occasional lump sums, or nothing for a while." },
+  { q: "Can I go back into drawdown after buying an annuity?", a: "Not with the money used for the annuity, which cannot usually be cashed in. Keep part of your pot in drawdown if you want flexibility." },
 ];
 
 export default async function DrawdownPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

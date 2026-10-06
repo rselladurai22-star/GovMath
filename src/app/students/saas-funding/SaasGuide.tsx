@@ -22,6 +22,7 @@ const TOC: TocItem[] = [
   { id: "part-time", title: "Part-time and postgraduate study" },
   { id: "compare-uk", title: "Scotland compared with the rest of the UK" },
   { id: "repay-example", title: "What Plan 4 repayments look like" },
+  { id: "disabled", title: "Disabled students" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -274,7 +275,15 @@ export default function SaasGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={20} kicker="Reference" title="Key numbers">
+      <GuideSection id="disabled" n={20} kicker="Extra support" title="Disabled students">
+        <p>
+          Disabled Students&rsquo; Allowance in Scotland helps with the extra costs of studying with a disability, long-term illness, mental health condition
+          or learning difficulty. It can pay for equipment, non-medical personal help and extra travel costs. It is not means-tested and does not have to be
+          repaid. You apply to SAAS with evidence of your condition, and a needs assessment works out what you need.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={21} kicker="Reference" title="Key numbers">
         <DataTable
           caption="SAAS funding, 2026/27"
           head={["Item", "Amount"]}
