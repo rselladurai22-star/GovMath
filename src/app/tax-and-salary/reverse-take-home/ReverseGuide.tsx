@@ -17,6 +17,7 @@ const TOC: TocItem[] = [
   { id: "limits", title: "What the calculator leaves out" },
   { id: "two-jobs", title: "Two jobs or extra income" },
   { id: "employer-cost", title: "What it costs your employer" },
+  { id: "self-employed", title: "If you are self-employed" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -241,7 +242,15 @@ export default function ReverseGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={15} kicker="Reference" title="Key numbers">
+      <GuideSection id="self-employed" n={15} kicker="Self-employed" title="If you are self-employed">
+        <p>
+          This calculator is for employees. Self-employed people pay Income Tax on profit at the same rates, but Class 4 National Insurance of 6%
+          between £12,570 and £50,270 and 2% above, rather than 8%. So the profit you need for a given take-home is a little lower. Use the{" "}
+          <a href="/business/sole-trader-tax">sole trader tax calculator</a> to check.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={16} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Thresholds behind the calculation, 2026/27"
           head={["Item", "Amount"]}

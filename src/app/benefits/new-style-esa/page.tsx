@@ -28,6 +28,9 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Can I claim New Style ESA while on Statutory Sick Pay?", a: "Not for the same days, but you can claim up to 3 months before your SSP ends so ESA follows on." },
   { q: "What National Insurance do I need?", a: "Class 1 contributions on earnings of 26 times the Lower Earnings Limit in one of the two tax years that count, and 50 times it paid or credited in both." },
   { q: "Is New Style ESA taxable?", a: "Yes, in every group, but no tax is taken off when it is paid. Whether you owe any depends on your other income and your Personal Allowance." },
+  { q: "How long does the ESA assessment take?", a: "The assessment phase normally lasts 13 weeks, but it can take longer. You are paid the assessment rate until a decision is made." },
+  { q: "Do I need a fit note for New Style ESA?", a: "Yes. After 7 days of sickness you need fit notes from a doctor or other health professional until your assessment." },
+  { q: "Can I get New Style ESA if I am self-employed?", a: "Only if you have paid enough Class 1 National Insurance as an employee in the two tax years that count, or have credits." },
 ];
 
 export default async function NewStyleEsaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

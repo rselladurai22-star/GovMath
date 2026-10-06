@@ -28,6 +28,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What is a passport benefit?", a: "A benefit, like Universal Credit or Pension Credit, that automatically qualifies you for other help such as free prescriptions or the Warm Home Discount." },
   { q: "Can pensioners get Universal Credit?", a: "Not usually. Pensioners claim Pension Credit and Housing Benefit instead. A couple where one partner is under State Pension age claims Universal Credit." },
   { q: "Will claiming one benefit stop another?", a: "Sometimes one counts as income for another: New Style JSA reduces Universal Credit, for example. PIP, Attendance Allowance and Child Benefit do not count as income for Universal Credit." },
+  { q: "Can I get benefits if I am self-employed?", a: "Yes. Universal Credit can top up low self-employed income, though a minimum income floor may apply after the first year." },
+  { q: "Do benefits count as income for tax?", a: "Some do, such as the State Pension, Carer's Allowance and New Style JSA. Universal Credit, PIP and Child Benefit are not taxable." },
 ];
 
 export default async function BenefitsCheckerPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

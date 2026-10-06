@@ -18,6 +18,7 @@ const TOC: TocItem[] = [
   { id: "couples", title: "Advances for couples" },
   { id: "moving", title: "Moving from older benefits" },
   { id: "first-months", title: "Budgeting for the first months" },
+  { id: "records", title: "Checking your deductions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -261,7 +262,14 @@ export default function AdvanceGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={16} kicker="Reference" title="Key numbers">
+      <GuideSection id="records" n={16} kicker="Your statement" title="Checking your deductions">
+        <p>
+          Your monthly Universal Credit statement shows every deduction, including the advance repayment and how much is left to pay. Check it
+          each month: if the amount looks wrong, or a new deduction appears that you do not recognise, ask about it through your journal.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={17} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Universal Credit advances, 2026/27"
           head={["Item", "Amount"]}

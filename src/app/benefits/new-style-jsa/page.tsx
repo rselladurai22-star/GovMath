@@ -28,6 +28,9 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Does redundancy pay affect New Style JSA?", a: "No. Redundancy pay does not reduce it, though holiday pay and pay in lieu of notice can delay when it starts." },
   { q: "Is New Style JSA taxable?", a: "Yes, but no tax is taken off when it is paid. It is taken into account through your tax code or your P45." },
   { q: "Can self-employed people get New Style JSA?", a: "Only with enough Class 1 contributions from employment. Class 2 and Class 4 self-employed contributions do not count." },
+  { q: "Can I claim New Style JSA if I left my job voluntarily?", a: "Yes, but you may get a sanction, so payments could be stopped for a period unless you had a good reason for leaving." },
+  { q: "How often do I have to sign on for New Style JSA?", a: "Usually every two weeks, at appointments with your work coach, in person or by phone." },
+  { q: "Does New Style JSA give me National Insurance credits?", a: "Yes. You get Class 1 credits for each week you get it, which protect your State Pension record." },
 ];
 
 export default async function NewStyleJsaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
