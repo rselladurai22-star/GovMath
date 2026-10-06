@@ -26,7 +26,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function CarersPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/benefits/attendance-allowance", "/benefits/pip-points", "/benefits/universal-credit", "/benefits/pension-credit", "/tax-and-salary/minimum-wage"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/benefits/attendance-allowance", "/benefits/pip-points", "/benefits/universal-credit", "/benefits/pension-credit", "/tax-and-salary/minimum-wage", "/benefits/benefit-cap"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

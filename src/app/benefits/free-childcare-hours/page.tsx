@@ -5,7 +5,7 @@ import FreeHoursStudio from "./FreeHoursStudio";
 import FreeHoursGuide from "./FreeHoursGuide";
 
 export const metadata: Metadata = {
-  title: "Free Childcare Hours Calculator (England, 30 Hours)",
+  title: "Free Childcare Hours Calculator 2026/27: 15 and 30 Hours (England)",
   description:
     "Check how many funded childcare hours you can get in England, from 9 months to school age, what they are worth at your nursery's rate and what you still pay.",
   alternates: { canonical: "/benefits/free-childcare-hours" },

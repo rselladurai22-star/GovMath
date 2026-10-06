@@ -5,7 +5,7 @@ import CapStudio from "./CapStudio";
 import CapGuide from "./CapGuide";
 
 export const metadata: Metadata = {
-  title: "Benefit Cap Calculator (2026/27)",
+  title: "Benefit Cap Calculator 2026/27: Will My Benefits Be Capped?",
   description:
     "Check whether the benefit cap reduces your Universal Credit or Housing Benefit in 2026/27. £22,020 for families and £14,753 for single people outside London, with every exemption and the £881 earnings test.",
   alternates: { canonical: "/benefits/benefit-cap" },

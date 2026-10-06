@@ -28,7 +28,7 @@ const FAQS: { q: string; a: string }[] = [
 export default async function MinimumWagePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
   const related = CALCULATORS.filter((c) =>
-    ["/tax-and-salary/hourly-to-salary", "/tax-and-salary/salary-calculator", "/tax-and-salary/overtime", "/tax-and-salary/holiday-entitlement", "/tax-and-salary/statutory-sick-pay", "/benefits/universal-credit"].includes(c.href),
+    ["/tax-and-salary/hourly-to-salary", "/tax-and-salary/salary-calculator", "/tax-and-salary/overtime", "/tax-and-salary/holiday-entitlement", "/tax-and-salary/statutory-sick-pay", "/tax-and-salary/pro-rata"].includes(c.href),
   );
   return (
     <FlagshipPage

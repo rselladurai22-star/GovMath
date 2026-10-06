@@ -5,7 +5,7 @@ import PremiumBondsStudio from "./PremiumBondsStudio";
 import PremiumBondsGuide from "./PremiumBondsGuide";
 
 export const metadata: Metadata = {
-  title: "Premium Bonds Calculator: What Will I Win?",
+  title: "Premium Bonds Calculator UK: How Much Could I Win?",
   description:
     "See what you are likely to win with Premium Bonds at the 4.35% prize fund rate, in a typical, unlucky and lucky year, and compare with a savings account after tax.",
   alternates: { canonical: "/investing/premium-bonds" },

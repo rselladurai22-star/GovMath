@@ -28,7 +28,7 @@ const FAQS: { q: string; a: string }[] = [
 export default async function BonusPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
   const related = CALCULATORS.filter((c) =>
-    ["/tax-and-salary/salary-calculator", "/tax-and-salary/tax-bracket-checker", "/tax-and-salary/national-insurance", "/investing/pension-tax-relief", "/benefits/high-income-child-benefit", "/tax-and-salary/overtime"].includes(c.href),
+    ["/tax-and-salary/salary-calculator", "/tax-and-salary/tax-bracket-checker", "/tax-and-salary/emergency-tax", "/investing/pension-tax-relief", "/benefits/high-income-child-benefit", "/tax-and-salary/overtime"].includes(c.href),
   );
   return (
     <FlagshipPage

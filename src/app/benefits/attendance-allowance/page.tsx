@@ -26,7 +26,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function AaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/benefits/pension-credit", "/benefits/carers-earnings", "/benefits/pip-points", "/life/care-home-means-test", "/investing/state-pension-age"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/benefits/pension-credit", "/benefits/carers-earnings", "/benefits/pip-points", "/life/care-home-means-test", "/investing/state-pension-age", "/benefits/benefit-cap"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}
