@@ -294,6 +294,27 @@
 @font-face {
   font-family: "Lato";
   font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/gm/fonts/lato-400.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/gm/fonts/lato-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/gm/fonts/lato-900.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
   font-weight: 500;
   font-display: swap;
   src: url("/gm/fonts/lato-500.woff2") format("woff2");
@@ -780,5 +801,85 @@
   }
   .gm-neutral .gm-trust-mark {
     margin-right: -8px;
+  }
+}
+
+/* ── Calculator search in the header ─────────────────────────
+   axis.js already searches /gm/catalog.json as you type; this box gives it
+   the #tool-search input and #tool-search-results list it looks for.
+   Desktop: in place of the old "Browse calculators" button. Phones: a full
+   row under the logo and Menu button. */
+.header .gm-headsearch {
+  position: relative;
+  flex: 0 1 260px;
+  max-width: 260px;
+  height: 46px;
+  padding: 0 14px;
+  gap: 10px;
+  border: 1px solid #9aa1a9;
+  border-radius: 8px;
+  box-shadow: none;
+  background: #fff;
+  color: #5c6066;
+}
+.header .gm-headsearch:focus-within {
+  border-color: #510b38;
+  outline: 2px solid #510b38;
+  outline-offset: 1px;
+}
+.header .gm-headsearch svg {
+  flex: 0 0 auto;
+}
+.header .gm-headsearch input {
+  font-size: 15px;
+  color: #282828;
+  background: transparent;
+}
+.header .gm-headsearch input::placeholder {
+  color: #6e6e6e;
+}
+.header .gm-headsearch input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+.header .gm-headsearch .ax-search-results {
+  top: 52px;
+  min-width: 300px;
+  right: 0;
+  left: auto;
+  width: max(100%, 320px);
+}
+.header .gm-headsearch .ax-search-results a {
+  color: #282828;
+}
+.header .gm-headsearch .ax-search-results a:hover,
+.header .gm-headsearch .ax-search-results a:focus {
+  background: #f1f4f7;
+  color: #510b38;
+  outline: none;
+}
+@media (max-width: 1100px) {
+  .header .gm-headsearch {
+    flex-basis: 210px;
+  }
+}
+@media (max-width: 850px) {
+  .reference-header .header:has(.gm-headsearch),
+  .header:has(.gm-headsearch) {
+    flex-wrap: wrap;
+    height: auto;
+    row-gap: 10px;
+    padding-bottom: 12px;
+  }
+  .header .gm-headsearch {
+    display: flex;
+    order: 3;
+    flex: 1 1 100%;
+    max-width: none;
+  }
+  .header .gm-headsearch .ax-search-results {
+    left: 0;
+    right: 0;
+    width: auto;
+    min-width: 0;
   }
 }
