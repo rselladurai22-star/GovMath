@@ -27,6 +27,7 @@ export default function FlagshipPage({
   faqs,
   related,
   note,
+  plainIntro,
 }: {
   breadcrumbs: Crumb[];
   eyebrow: string;
@@ -39,6 +40,8 @@ export default function FlagshipPage({
   faqs: { q: string; a: string }[];
   related: Calculator[];
   note: string;
+  /** Hide the topic and eyebrow lines above the title (being trialled on the council tax page). */
+  plainIntro?: boolean;
 }) {
   const jsonLd = [
     {
@@ -77,8 +80,8 @@ export default function FlagshipPage({
           )}
         </div>
         <div className="intro">
-          {topic && <p className="eyebrow">{topic.toUpperCase()}</p>}
-          <p className="eyebrow">{eyebrow.toUpperCase()}</p>
+          {!plainIntro && topic && <p className="eyebrow">{topic.toUpperCase()}</p>}
+          {!plainIntro && <p className="eyebrow">{eyebrow.toUpperCase()}</p>}
           <h1>{title}</h1>
           <p>{lead}</p>
         </div>

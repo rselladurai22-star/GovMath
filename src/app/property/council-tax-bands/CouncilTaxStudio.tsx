@@ -2,8 +2,8 @@
 
 import { BAND_D_AVG, BAND_RANGES, bandMultiplier, bandsFor, councilBill, type CtBand, type CtNation } from "@/lib/property/council-tax-bands";
 import Studio from "@/components/flagship/Studio";
-import { AdvancedOptions, Field, InputGroup, MoneyField, Segmented, StepperField, Switch } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
+import { AdvancedOptions, InputGroup, MoneyField, RadioGroup, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
+import { Answer, Assumptions, BarChart, Callout, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
 import { gbp, per } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
@@ -46,11 +46,12 @@ export default function CouncilTaxStudio({ query }: { query: Query }) {
   });
   const usingAverage = v.bandD <= 0;
   const all = bands.map((b) => ({ band: b, bill: r.bandD * bandMultiplier(v.nation, b) }));
-  const maxBill = Math.max(...all.map((x) => x.bill), 1);
+  const saved = Math.max(0, r.discount + r.reduction);
 
   return (
     <Studio
-      title="Your home"
+      title=""
+      variant="clear"
       ready={st.ready}
       onCalculate={st.calculate}
       calculateLabel="Work out my council tax"
@@ -59,7 +60,7 @@ export default function CouncilTaxStudio({ query }: { query: Query }) {
       inputs={
         <>
           <InputGroup title="Your home">
-            <Segmented
+            <RadioGroup
               label="Where you live"
               value={v.nation}
               onChange={st.bind("nation")}
@@ -68,23 +69,60 @@ export default function CouncilTaxStudio({ query }: { query: Query }) {
                 { value: "wales", label: "Wales" },
                 { value: "scotland", label: "Scotland" },
               ]}
+              info="Each nation has its own bands and valuation date. Northern Ireland has domestic rates instead of council tax."
             />
-            <Field label="Council tax band" hint={`Band ${band}: valued at ${rangeLabel(v.nation, band)} on ${VALUATION[v.nation]}.`}>
-              <div className="chips" role="group" aria-label="Council tax band">
-                {bands.map((b) => (
-                  <button key={b} type="button" aria-pressed={band === b} onClick={() => st.set("band", b)}>
-                    {b}
-                  </button>
-                ))}
-              </div>
-            </Field>
-            <StepperField label="Adults living there" value={v.adults} onChange={st.bind("adults")} step={1} min={0} max={10} unit="" dp={0} hint="Aged 18 or over. Leave out students, carers and others who are disregarded." />
+            <SelectField
+              label="Council tax band"
+              value={band}
+              onChange={st.bind("band")}
+              options={bands.map((b) => ({ value: b, label: `Band ${b} (${rangeLabel(v.nation, b)})` }))}
+              info={
+                <>
+                  Your band is on your council tax bill. It is based on what your home was worth on {VALUATION[v.nation]}, not today. You can also look it up on GOV.UK
+                  {v.nation === "scotland" ? " or the Scottish Assessors' website" : ""}.
+                </>
+              }
+            />
+            <StepperField
+              label="Adults living there"
+              value={v.adults}
+              onChange={st.bind("adults")}
+              step={1}
+              min={0}
+              max={10}
+              unit=""
+              dp={0}
+              info="Count people aged 18 or over. Leave out anyone who is disregarded, such as full-time students, student nurses, apprentices, live-in carers and people who are severely mentally impaired. One adult gets 25% off; none gets 50% off."
+            />
           </InputGroup>
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            <MoneyField label="Your council's Band D charge" value={v.bandD} onChange={st.bind("bandD")} optional hint={`On your bill or council's website. Leave at £0 to use the ${NATION_LABEL[v.nation]} average of ${gbp(BAND_D_AVG[v.nation])}.`} />
-            <Switch label="Disabled band reduction" checked={v.disabled} onChange={st.bind("disabled")} optional hint="If the home has features needed by a disabled resident, such as an extra room or wheelchair space." />
-            <StepperField label="Second home or empty home premium" value={v.premium} onChange={st.bind("premium")} step={25} min={0} max={300} unit="%" dp={0} optional hint="Councils can charge up to 100% extra in England and Scotland, and up to 300% in Wales." />
-            <Segmented
+            <MoneyField
+              label="Your council's Band D charge"
+              value={v.bandD}
+              onChange={st.bind("bandD")}
+              optional
+              info={`It is on your bill or your council's website, including any parish and police charges. Leave it at £0 to use the ${NATION_LABEL[v.nation]} average of ${gbp(BAND_D_AVG[v.nation])}.`}
+            />
+            <Switch
+              label="Disabled band reduction"
+              checked={v.disabled}
+              onChange={st.bind("disabled")}
+              optional
+              info="If your home has a feature a disabled resident needs, such as an extra bathroom, an extra room or space for a wheelchair, you are billed at the band below."
+            />
+            <StepperField
+              label="Second or empty home premium"
+              value={v.premium}
+              onChange={st.bind("premium")}
+              step={25}
+              min={0}
+              max={300}
+              unit="%"
+              dp={0}
+              optional
+              info="Councils can charge extra on second homes and homes empty for a long time: up to 100% in England and Scotland, and up to 300% in Wales."
+            />
+            <RadioGroup
               label="Pay in"
               value={v.months}
               onChange={st.bind("months")}
@@ -93,6 +131,7 @@ export default function CouncilTaxStudio({ query }: { query: Query }) {
                 { value: "10", label: "10 instalments" },
                 { value: "12", label: "12 instalments" },
               ]}
+              info="Councils bill in 10 monthly instalments by default. You can ask to pay over 12 months instead, which lowers each payment."
             />
           </AdvancedOptions>
         </>
@@ -118,6 +157,15 @@ export default function CouncilTaxStudio({ query }: { query: Query }) {
         }
         badges={[`Band ${band}`, `${gbp(r.instalment, true)} × ${v.months}`, r.discountRate > 0 ? `${Math.round(r.discountRate * 100)}% discount` : "No discount"]}
       />
+
+      <ResultCard title="Your bill" sub={saved > 0 ? `${gbp(r.payable)} to pay after ${gbp(saved)} off.` : `${gbp(r.payable)} a year, with no discount.`}>
+        <SplitBar
+          segments={[
+            { label: "You pay", value: r.payable, display: gbp(r.payable), color: "#2a78d6" },
+            ...(saved > 0 ? [{ label: "Discounts and reductions", value: saved, display: gbp(saved), color: "#1baf7a" }] : []),
+          ]}
+        />
+      </ResultCard>
 
       <Facts
         items={[
@@ -152,18 +200,9 @@ export default function CouncilTaxStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <ResultCard title={`Every band in ${NATION_LABEL[v.nation]}`} sub={`At a Band D charge of ${gbp(r.bandD)}, before discounts.`}>
-        <Compare
-          head={["Band and value on the valuation date", "A year"]}
-          rows={all.map((x) => ({
-            label: (
-              <>
-                Band {x.band} <span style={{ color: "var(--muted)" }}>· {rangeLabel(v.nation, x.band)}</span>
-              </>
-            ),
-            value: gbp(x.bill),
-            bar: x.bill / maxBill,
-            current: x.band === band,
-          }))}
+        <BarChart
+          rows={all.map((x) => ({ label: `Band ${x.band}`, note: rangeLabel(v.nation, x.band), value: x.bill, display: gbp(x.bill), current: x.band === band }))}
+          caption={`Your band, ${band}, is shown in blue.`}
         />
       </ResultCard>
 
@@ -180,7 +219,8 @@ export default function CouncilTaxStudio({ query }: { query: Query }) {
           </Callout>
         )}
         <Callout title="Council Tax Reduction">
-          If you are on a low income or claim benefits, your council may reduce your bill by up to 100% through its Council Tax Reduction scheme.
+          If you are on a low income or claim benefits, your council may reduce your bill by up to 100%. See what you could get with our{" "}
+          <a href="/benefits/council-tax-reduction">Council Tax Reduction calculator</a>.
         </Callout>
         <Callout title="Think your band is wrong?">
           Compare with similar homes nearby. In England and Wales you can ask the Valuation Office Agency to check it; in Scotland, your local assessor. A check can also

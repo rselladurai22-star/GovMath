@@ -22,6 +22,36 @@ function money2(n: number): string {
 
 const Optional = () => <span className="gm-optional">Optional</span>;
 
+/** A small (i) button beside a label that shows a short explanation. */
+export function InfoTip({ label, children }: { label: string; children: ReactNode }) {
+  const id = useId();
+  const wrap = useRef<HTMLSpanElement>(null);
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    if (!open) return;
+    const away = (e: MouseEvent) => {
+      if (!wrap.current?.contains(e.target as Node)) setOpen(false);
+    };
+    const esc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("click", away);
+    document.addEventListener("keydown", esc);
+    return () => {
+      document.removeEventListener("click", away);
+      document.removeEventListener("keydown", esc);
+    };
+  }, [open]);
+  return (
+    <span className="gm-info" ref={wrap}>
+      <button type="button" className="gm-info-button" aria-label={`About ${label.toLowerCase()}`} aria-expanded={open} aria-controls={id} onClick={() => setOpen((o) => !o)}>
+        i
+      </button>
+      <span id={id} role="tooltip" className="gm-info-bubble" hidden={!open}>
+        {children}
+      </span>
+    </span>
+  );
+}
+
 /** A titled group of inputs (the title is for screen readers, as in the design). */
 export function InputGroup({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -40,12 +70,15 @@ export function Field({
   hint,
   optional,
   inline,
+  info,
   children,
 }: {
   label: string;
   htmlFor?: string;
   aside?: ReactNode;
   hint?: ReactNode;
+  /** Explanation shown from an (i) button beside the label. */
+  info?: ReactNode;
   /** Shows an "Optional" tag beside the label. */
   optional?: boolean;
   inline?: ReactNode;
@@ -66,6 +99,7 @@ export function Field({
               {optional && <Optional />}
             </span>
           )}
+          {info && <InfoTip label={label}>{info}</InfoTip>}
           {aside && <span className="gm-aside">{aside}</span>}
         </span>
         {inline}
@@ -132,11 +166,13 @@ export function MoneyField({
   hint,
   pence,
   optional,
+  info,
 }: {
   label: string;
   value: number;
   onChange: (n: number) => void;
   optional?: boolean;
+  info?: ReactNode;
   max?: number;
   slider?: { min: number; max: number; step: number; ends?: [string, string] };
   aside?: ReactNode;
@@ -175,7 +211,7 @@ export function MoneyField({
     </div>
   );
   return (
-    <Field label={label} htmlFor={id} aside={aside} hint={hint} optional={optional} inline={box}>
+    <Field label={label} htmlFor={id} aside={aside} hint={hint} optional={optional} info={info} inline={box}>
       {slider && <Slider value={value} onChange={onChange} label={label} {...slider} />}
     </Field>
   );
@@ -201,11 +237,13 @@ export function StepperField({
   hint,
   aside,
   optional,
+  info,
 }: {
   label: string;
   value: number;
   onChange: (n: number) => void;
   optional?: boolean;
+  info?: ReactNode;
   step: number;
   min: number;
   max: number;
@@ -242,7 +280,7 @@ export function StepperField({
     </div>
   );
   return (
-    <Field label={label} htmlFor={id} hint={hint} aside={aside} optional={optional} inline={box}>
+    <Field label={label} htmlFor={id} hint={hint} aside={aside} optional={optional} info={info} inline={box}>
       <Slider value={value} onChange={(n) => onChange(clamp(n))} label={label} min={min} max={max} step={step} ends={[withUnit(min, unit), withUnit(max, unit)]} />
     </Field>
   );
@@ -314,6 +352,7 @@ export function SelectField<T extends string>({
   options,
   hint,
   optional,
+  info,
 }: {
   label: string;
   value: T;
@@ -321,6 +360,7 @@ export function SelectField<T extends string>({
   options: { value: T; label: string }[];
   hint?: ReactNode;
   optional?: boolean;
+  info?: ReactNode;
 }) {
   const id = useId();
   const wrap = useRef<HTMLDivElement>(null);
@@ -348,10 +388,13 @@ export function SelectField<T extends string>({
 
   return (
     <div className="ax-select-field">
-      <label id={`${id}-label`} htmlFor={`${id}-toggle`}>
-        {label}
-        {optional && <Optional />}
-      </label>
+      <div className="gm-labelwrap">
+        <label id={`${id}-label`} htmlFor={`${id}-toggle`}>
+          {label}
+          {optional && <Optional />}
+        </label>
+        {info && <InfoTip label={label}>{info}</InfoTip>}
+      </div>
       <div className="ax-select" ref={wrap}>
         <button
           ref={toggle}
@@ -477,12 +520,14 @@ export function Switch({
   onChange,
   hint,
   optional,
+  info,
 }: {
   label: string;
   checked: boolean;
   onChange: (v: boolean) => void;
   hint?: ReactNode;
   optional?: boolean;
+  info?: ReactNode;
 }) {
   const id = useId();
   return (
@@ -495,9 +540,48 @@ export function Switch({
           {label}
           {optional && <Optional />}
         </label>
+        {info && <InfoTip label={label}>{info}</InfoTip>}
       </div>
       {hint && <p className="hint">{hint}</p>}
     </div>
+  );
+}
+
+/** A short list of choices as radio buttons, one per line. */
+export function RadioGroup<T extends string>({
+  label,
+  value,
+  onChange,
+  options,
+  info,
+  optional,
+}: {
+  label: string;
+  value: T;
+  onChange: (v: T) => void;
+  options: { value: T; label: string }[];
+  info?: ReactNode;
+  optional?: boolean;
+}) {
+  const name = useId();
+  return (
+    <fieldset className="field gm-radiogroup">
+      <legend className="gm-labelwrap">
+        <span className="gm-label">
+          {label}
+          {optional && <Optional />}
+        </span>
+        {info && <InfoTip label={label}>{info}</InfoTip>}
+      </legend>
+      <div className="gm-radios">
+        {options.map((o) => (
+          <label key={o.value} className="gm-radio">
+            <input type="radio" name={name} value={o.value} checked={value === o.value} onChange={() => onChange(o.value)} />
+            <span>{o.label}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
   );
 }
 

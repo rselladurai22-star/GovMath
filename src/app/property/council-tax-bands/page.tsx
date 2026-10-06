@@ -38,6 +38,7 @@ export default async function CouncilTaxPage({ searchParams }: { searchParams: P
       guide={<CouncilTaxGuide />}
       faqs={FAQS}
       related={related}
+      plainIntro
       note="2026/27. National average Band D charges are a guide: enter your council's own charge for an exact figure."
     >
       <CouncilTaxStudio query={query} />
