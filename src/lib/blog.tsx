@@ -960,7 +960,9 @@ export const BLOG_POSTS: BlogPost[] = [
           Once you own the home, budget for buildings insurance (often required by the lender), council tax, energy
           and water, maintenance (a common rule of thumb is 1% of the property&rsquo;s value a year), and, for
           leasehold flats, ground rent and service charges. The{" "}
-          <Link href="/property/council-tax-bands">council tax calculator</Link> estimates the bill by band.
+          <Link href="/property/council-tax-bands">council tax calculator</Link> estimates the bill by band, and if you
+          live alone the{" "}
+          <Link href="/property/single-person-discount">single person discount</Link> takes 25% off it.
         </p>
 
         <h2>The bottom line</h2>

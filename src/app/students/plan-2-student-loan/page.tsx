@@ -26,7 +26,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function Plan2Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/students/plan-5-student-loan", "/students/postgrad-loan", "/students/plan-1-student-loan", "/tax-and-salary/salary-calculator"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/students/plan-5-student-loan", "/students/postgrad-loan", "/students/plan-1-student-loan", "/tax-and-salary/salary-calculator", "/students/maintenance-loan", "/students/student-council-tax"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

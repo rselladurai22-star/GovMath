@@ -26,7 +26,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function IsaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/investing/dividend-tax", "/investing/capital-gains-assets", "/investing/compound-interest", "/investing/pension-tax-relief"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/investing/dividend-tax", "/investing/capital-gains-assets", "/investing/compound-interest", "/investing/pension-tax-relief", "/investing/premium-bonds", "/investing/inflation-impact"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

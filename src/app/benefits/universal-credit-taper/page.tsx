@@ -5,7 +5,7 @@ import TaperStudio from "./TaperStudio";
 import TaperGuide from "./TaperGuide";
 
 export const metadata: Metadata = {
-  title: "Universal Credit Taper Calculator: What You Keep From Extra Hours (2026/27)",
+  title: "Universal Credit Taper Rate Calculator: What You Keep From Extra Hours (2026/27)",
   description:
     "See how much better off extra hours or a pay rise make you on Universal Credit. Applies 2026/27 Income Tax, National Insurance, pension and the 55% taper above your work allowance.",
   alternates: { canonical: "/benefits/universal-credit-taper" },
@@ -26,7 +26,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function UcTaperPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/benefits/universal-credit", "/benefits/benefit-cap", "/benefits/tax-free-childcare", "/tax-and-salary/salary-calculator", "/benefits/carers-earnings"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/benefits/universal-credit", "/benefits/benefit-cap", "/benefits/tax-free-childcare", "/tax-and-salary/salary-calculator", "/benefits/carers-earnings", "/benefits/local-housing-allowance"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

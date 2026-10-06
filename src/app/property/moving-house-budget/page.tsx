@@ -27,7 +27,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function MovingPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/property/stamp-duty-england", "/property/first-time-buyer", "/property/mortgage-affordability", "/property/council-tax-bands", "/property/lbtt-scotland", "/property/ltt-wales"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/property/stamp-duty-england", "/property/first-time-buyer", "/property/mortgage-affordability", "/property/single-person-discount", "/property/lbtt-scotland", "/property/ltt-wales"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

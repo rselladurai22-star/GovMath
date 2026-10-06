@@ -26,7 +26,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function PcPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/benefits/attendance-allowance", "/benefits/carers-earnings", "/benefits/local-housing-allowance", "/investing/state-pension-age", "/life/care-home-means-test"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/benefits/attendance-allowance", "/benefits/carers-earnings", "/benefits/local-housing-allowance", "/investing/state-pension-age", "/life/care-home-means-test", "/property/single-person-discount"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

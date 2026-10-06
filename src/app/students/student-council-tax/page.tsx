@@ -26,7 +26,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function CouncilTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/students/maintenance-loan", "/students/plan-5-student-loan", "/property/council-tax-bands"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/students/maintenance-loan", "/students/plan-5-student-loan", "/property/council-tax-bands", "/property/single-person-discount", "/life/pro-rata-rent", "/students/plan-2-student-loan"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

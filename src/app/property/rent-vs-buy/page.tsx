@@ -27,7 +27,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function RentVsBuyPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/property/mortgage-affordability", "/property/first-time-buyer", "/property/mortgage-repayment", "/investing/compound-interest", "/property/shared-ownership", "/property/moving-house-budget"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/property/mortgage-affordability", "/property/first-time-buyer", "/property/mortgage-repayment", "/benefits/local-housing-allowance", "/property/shared-ownership", "/property/moving-house-budget"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}
