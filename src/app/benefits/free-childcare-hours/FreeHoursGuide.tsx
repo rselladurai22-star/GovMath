@@ -31,7 +31,6 @@ const TOC: TocItem[] = [
   { id: "send", title: "Children with special educational needs" },
   { id: "changes", title: "If your work or income changes" },
   { id: "myths", title: "Common misunderstandings" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -371,29 +370,7 @@ export default function FreeHoursGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="FAQs" title="Common questions">
-        <h3>Can I use the hours with a childminder?</h3>
-        <p>Yes, if the childminder is registered with Ofsted or a childminder agency and offers funded places.</p>
-        <h3>Can I split the hours between two providers?</h3>
-        <p>Usually yes, though there may be limits on how many sessions a day count. Check with both providers.</p>
-        <h3>Do I lose the hours if I go on maternity leave with a new baby?</h3>
-        <p>No. Parents on statutory leave still count as working for the older child&rsquo;s hours.</p>
-        <h3>Do the hours count as income for benefits?</h3>
-        <p>No. Funded hours are not paid to you, so they do not affect your other benefits.</p>
-        <h3>What if my income changes during the year?</h3>
-        <p>
-          The test is about what you expect to earn over the next three months. Reconfirm honestly each time; if you stop
-          qualifying, a grace period usually applies.
-        </p>
-        <h3>Do both parents have to work if we are separated?</h3>
-        <p>No. The test applies to the parents in the child&rsquo;s household. A single parent only needs to meet it themselves.</p>
-        <h3>Can I use funded hours at a nursery in another council area?</h3>
-        <p>Yes. Funding follows the child, so you can use a provider near your work rather than your home, as long as it offers funded places.</p>
-        <h3>What if my nursery is full?</h3>
-        <p>Your council must help you find a funded place. Contact its family information service.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "30 hours", label: "Working parents, 9 months to school" },

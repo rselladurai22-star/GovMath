@@ -22,7 +22,6 @@ const TOC: TocItem[] = [
   { id: "mid-year", title: "Changing car part-way through the year" },
   { id: "mileage", title: "Business fuel and advisory rates" },
   { id: "mistakes", title: "Common mistakes" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -316,30 +315,7 @@ export default function BikGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={20} kicker="FAQs" title="Common questions">
-        <h3>Is a pool car taxed?</h3>
-        <p>No, if it is genuinely shared, not normally kept at anyone&rsquo;s home, and private use is only incidental.</p>
-        <h3>Does the list price include VAT?</h3>
-        <p>Yes. It is the price including VAT and delivery charges, but excluding the first-year car tax and registration fee.</p>
-        <h3>What about vans?</h3>
-        <p>Vans have a flat benefit of £4,170 for 2026/27, plus £798 if fuel is provided. Electric vans have no benefit charge.</p>
-        <h3>Do I pay National Insurance on a company car?</h3>
-        <p>You do not. Your employer pays Class 1A National Insurance at 15% on the taxable benefit.</p>
-        <h3>What if I share the car with a colleague?</h3>
-        <p>Each person who has the car available for private use can be taxed on it, with the benefit shared in a fair way. Ask your employer how it is reported.</p>
-        <h3>Is a home charger taxed?</h3>
-        <p>No. Electricity your employer provides for an electric company car is not taxed, and a workplace charging point for employees is exempt too.</p>
-        <h3>Is a company car worth it for a higher-rate taxpayer?</h3>
-        <p>An electric company car usually is: a £40,000 model costs £640 a year in tax at 40%, far less than owning or leasing a similar car from taxed income. A petrol car at 30% costs £4,800 a year at the same price, so the sums are much closer.</p>
-        <h3>What if I only use the car for work?</h3>
-        <p>If private use is genuinely banned and the ban is enforced, there is no benefit. Driving from home to a permanent workplace counts as private use.</p>
-        <h3>Does a company car affect my student loan?</h3>
-        <p>No. Student loan repayments are based on your pay, not on benefits in kind, so a company car does not increase them.</p>
-        <h3>Can I reduce the tax by choosing a cheaper model?</h3>
-        <p>Yes. The tax is a percentage of the list price, so a lower-priced car or fewer options means less tax.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "4%", label: "Electric, 2026/27" },

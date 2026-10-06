@@ -38,7 +38,6 @@ const TOC: TocItem[] = [
   { id: "cost-compare", title: "LPAs, wills and other documents" },
   { id: "business", title: "LPAs for business owners" },
   { id: "capacity", title: "What mental capacity means" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -379,29 +378,7 @@ export default function LpaGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={23} kicker="FAQs" title="Common questions">
-        <h3>Do I need a solicitor to make an LPA?</h3>
-        <p>No. Many people make their own online. A solicitor can help if your situation is complex.</p>
-        <h3>Does my husband or wife automatically have power of attorney?</h3>
-        <p>No. Being married does not give the right to manage your finances or make health decisions for you.</p>
-        <h3>Is an LPA the same as a will?</h3>
-        <p>No. An LPA works while you are alive. A will takes over after your death.</p>
-        <h3>Can I use the LPA before I lose capacity?</h3>
-        <p>A property and financial affairs LPA can be used straight away if you choose. A health and welfare LPA cannot.</p>
-        <h3>How many attorneys can I have?</h3>
-        <p>There is no fixed limit, but most people choose one to four, plus replacements.</p>
-        <h3>Can my attorneys be paid?</h3>
-        <p>Family members usually act for free, claiming only expenses. Professional attorneys, such as solicitors, charge fees that you agree in the LPA.</p>
-        <h3>Does an old Enduring Power of Attorney still work?</h3>
-        <p>
-          Yes, if it was signed before October 2007. It covers only property and money, and must be registered with the OPG once the donor is
-          losing capacity.
-        </p>
-        <h3>Can I make an LPA for a parent?</h3>
-        <p>You can help, but the parent must make it themselves while they have capacity and choose their own attorneys.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={24} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={23} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£92", label: "Registration fee per LPA" },

@@ -23,6 +23,15 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Will I get emergency tax back?", a: "Yes, if you overpaid. It is usually refunded through your payslip once your code is corrected, or after the tax year ends when HMRC sends a P800 calculation." },
   { q: "Is BR an emergency tax code?", a: "It can be, if your employer has no information about you. But BR is also the correct code for a second job, where your tax-free allowance is used by your main job." },
   { q: "Does emergency tax affect National Insurance?", a: "No. National Insurance does not depend on your tax code." },
+  { q: "How long does an emergency tax code last?", a: "Usually one to three payslips, until HMRC sends your employer the right code." },
+  { q: "Will I always get the money back?", a: "If you overpaid, yes, either through payroll or after the tax year ends. Emergency codes can occasionally lead to underpaying, for example on a second job; HMRC then collects it through your code the following year." },
+  { q: "Does an emergency code affect National Insurance?", a: "No. National Insurance is worked out on each payment anyway, and does not depend on your tax code." },
+  { q: "Can I ask my employer to stop using it?", a: "Your employer must use the code HMRC gives them. The way to change it is to give them your P45 or contact HMRC." },
+  { q: "I started in April. Why am I on an emergency code?", a: "Usually because your employer had no P45 or starter checklist. If you started in April with no other income, an M1 code gives almost the same result as a cumulative one, so you may not be overpaying at all." },
+  { q: "Can a refund agent get my money back faster?", a: "No. They use the same HMRC process you can use yourself for free, and take a share of your refund as their fee." },
+  { q: "Will my employer know I was overtaxed?", a: "Payroll applies whatever code HMRC sends. Once the correct cumulative code arrives, the payroll system works out the overpayment automatically and refunds it on your next payday." },
+  { q: "Does an emergency code affect my student loan?", a: "No. Student loan repayments are worked out on each payment using the plan threshold, whatever your tax code. They depend on your pay, not your tax-free allowance." },
+  { q: "Is an emergency code the same as being on the wrong code?", a: "Not quite. An emergency code is temporary by design; a wrong code is a mistake. Both are fixed the same way." },
 ];
 
 export default async function EmergencyTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

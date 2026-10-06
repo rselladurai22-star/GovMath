@@ -28,7 +28,6 @@ const TOC: TocItem[] = [
   { id: "using", title: "Using break-even in a business plan" },
   { id: "payback", title: "When will I break even?" },
   { id: "cash", title: "Cash break-even" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -386,31 +385,7 @@ export default function BreakEvenGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={14} kicker="FAQs" title="Common questions">
-        <h3>Is break-even the same as profit?</h3>
-        <p>No. At break-even, profit is exactly zero. Profit starts with the next sale.</p>
-        <h3>Should I include depreciation?</h3>
-        <p>
-          For a planning figure, include the yearly cost of equipment you will need to replace, or the lease payments if you
-          lease it. Leaving it out understates your real costs.
-        </p>
-        <h3>Should loan repayments be a fixed cost?</h3>
-        <p>
-          Interest is a cost. Repaying the loan itself is not a cost in the accounts, but it is cash going out. For a cash
-          break-even, include the full repayment.
-        </p>
-        <h3>How do I lower my break-even point?</h3>
-        <p>Raise prices, cut the cost of each sale, or cut fixed costs. Price usually has the biggest effect.</p>
-        <h3>What about seasonal businesses?</h3>
-        <p>
-          Work out break-even for the year, then check each month against a cash-flow forecast. You may need savings or an
-          overdraft to get through the quiet months.
-        </p>
-        <h3>Do I need to include VAT?</h3>
-        <p>Not if you are VAT-registered: use prices and costs before VAT. If you are not registered, include the VAT you pay in your costs, because you cannot reclaim it.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={15} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={14} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "Price − variable cost", label: "Contribution per sale" },

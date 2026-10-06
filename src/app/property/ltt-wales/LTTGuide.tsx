@@ -32,7 +32,6 @@ const TOC: TocItem[] = [
   { id: "second-homes", title: "Second homes and holiday lets in Wales" },
   { id: "budget", title: "The full cost of buying in Wales" },
   { id: "buy-before-sell", title: "Example: buying before you sell" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -394,26 +393,7 @@ export default function LTTGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="FAQs" title="Common questions">
-        <h3>Do I pay LTT on a home under £225,000?</h3>
-        <p>No, unless the higher rates apply because you will own another home.</p>
-        <h3>Is there first-time buyer relief in Wales?</h3>
-        <p>No. Every buyer of an only home gets the £225,000 0% band instead.</p>
-        <h3>I live in England and am buying a holiday cottage in Wales. What do I pay?</h3>
-        <p>
-          LTT at the higher rates, because you will own two homes. LTT depends on where the property is, not where you live.
-        </p>
-        <h3>Does Wales charge non-UK residents more?</h3>
-        <p>
-          No. Wales has no non-resident surcharge, though the higher rates still apply if you own a home anywhere else.
-        </p>
-        <h3>Can I pay LTT in instalments?</h3>
-        <p>Not normally. It is due in full within 30 days of completion.</p>
-        <h3>Do I pay LTT on a home I inherit?</h3>
-        <p>No. Inheriting is not a purchase. But owning an inherited home can make a later purchase subject to the higher rates.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£225,000", label: "0% band at the main rates" },

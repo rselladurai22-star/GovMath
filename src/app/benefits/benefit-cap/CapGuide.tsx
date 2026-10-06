@@ -34,7 +34,6 @@ const TOC: TocItem[] = [
   { id: "exempt-example", title: "What an exemption is worth" },
   { id: "history", title: "How the cap has changed" },
   { id: "budget", title: "Budgeting on a capped award" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -393,23 +392,7 @@ export default function CapGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Does the benefit cap apply to pensioners?</h3>
-        <p>
-          No. It does not apply once you reach State Pension age. In a couple where one partner is still under State Pension age, the cap may
-          still apply.
-        </p>
-        <h3>Does Child Benefit count towards the cap?</h3>
-        <p>Yes, in full, even though it is paid separately.</p>
-        <h3>Is the childcare element capped?</h3>
-        <p>No. The childcare costs element of Universal Credit is paid in full on top of the cap.</p>
-        <h3>Has the cap gone up for 2026/27?</h3>
-        <p>No. It is still £22,020 for families and £14,753 for single people outside London.</p>
-        <h3>What if I live on the edge of London?</h3>
-        <p>The higher cap applies only if you live in one of the 32 London boroughs or the City of London.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£22,020", label: "Family cap a year outside London" },

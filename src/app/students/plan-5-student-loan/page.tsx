@@ -22,6 +22,11 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much will I repay on \u00a330,000?", a: "9% of \u00a35,000: \u00a3450 a year or \u00a337.50 a month." },
   { q: "What is the Plan 5 interest rate?", a: "RPI only: 4.1% from September 2026." },
   { q: "When is Plan 5 written off?", a: "40 years after the April you were first due to repay." },
+  { q: "Will the threshold go up?", a: "It is £25,000 until April 2027 and is then due to rise each year with RPI." },
+  { q: "Do part-time jobs while studying count?", a: "No. Repayments only start from the April after you leave your course." },
+  { q: "What if I leave my course early?", a: "Repayments can start from the April after you leave, if you earn over the threshold." },
+  { q: "Do I need to tell HMRC about my loan?", a: "Not if you are employed: tell your employer your plan type when you start, often using a starter checklist, and they deduct repayments. If you file Self Assessment, tick the student loan box on your return." },
+  { q: "Is Plan 5 interest higher than Plan 2?", a: "No. Plan 5 charges RPI only, 4.1% from September 2026, while Plan 2 charges up to 6% this year. But Plan 5 is repaid from a lower threshold for longer." },
 ];
 
 export default async function Plan5Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

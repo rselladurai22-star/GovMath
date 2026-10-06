@@ -40,7 +40,6 @@ const TOC: TocItem[] = [
   { id: "assessment", title: "Universal Credit assessment periods" },
   { id: "professionals", title: "Help from midwives and health visitors" },
   { id: "working-families", title: "Working families" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -379,24 +378,7 @@ export default function HealthyStartGuide() {
         />
       </GuideSection>
 
-      <GuideSection id="questions" n={25} kicker="FAQs" title="Common questions">
-        <h3>Can I get Healthy Start if I work?</h3>
-        <p>Yes, if you get Universal Credit and your family&rsquo;s take-home pay is £408 a month or less.</p>
-        <h3>Does Healthy Start affect my other benefits?</h3>
-        <p>No. It is not counted as income for other benefits.</p>
-        <h3>Can I use the card in any shop?</h3>
-        <p>In most shops that take Mastercard, but only for eligible foods.</p>
-        <h3>Is Healthy Start backdated?</h3>
-        <p>Only in limited cases, so apply as soon as you qualify.</p>
-        <h3>What happens to money left on the card?</h3>
-        <p>It stays on the card for you to use, but unused money can be removed after a long period of inactivity.</p>
-        <h3>Can a dad or other carer apply?</h3>
-        <p>Yes. The person claiming the qualifying benefit for the child can apply, whether they are a mum, dad, grandparent or other carer.</p>
-        <h3>Do I need to reapply each year?</h3>
-        <p>No. Payments continue while you are eligible, but you must report changes such as a new baby or a change in benefits.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={26} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={25} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£4.65", label: "Pregnancy, a week" },

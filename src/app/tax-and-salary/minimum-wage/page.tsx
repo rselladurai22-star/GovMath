@@ -23,6 +23,11 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Can my employer charge me for my uniform?", a: "They can, but if the cost takes your pay below the minimum wage for the hours you work, they are breaking the law. Work costs count as a deduction from pay for minimum wage purposes." },
   { q: "Do tips count towards the minimum wage?", a: "No. Tips, gratuities and service charges must be paid on top of at least the minimum wage." },
   { q: "What can I do if I am underpaid?", a: "Raise it with your employer, get free advice from Acas on 0300 123 1100, or complain to HMRC, which enforces the minimum wage. Employers must pay arrears at today's rates and can be fined." },
+  { q: "Is the National Living Wage the same as the real Living Wage?", a: "No. The National Living Wage is the legal minimum for people aged 21 and over. The real Living Wage is a voluntary, higher rate set by the Living Wage Foundation and paid by employers who choose to sign up." },
+  { q: "Can I agree to work for less than the minimum wage?", a: "No. Any agreement to accept less is void, and your employer must still pay the legal minimum." },
+  { q: "Does the minimum wage apply to zero-hours contracts?", a: "Yes. Every hour you work must be paid at least the minimum for your age, whatever your contract type." },
+  { q: "Does the minimum wage go up on my birthday?", a: "Yes, if a birthday moves you into a higher band. The new rate applies from the start of your next pay reference period after your birthday, so check your first payslip after turning 18 or 21." },
+  { q: "Is the minimum wage the same across the UK?", a: "Yes. The same rates apply in England, Scotland, Wales and Northern Ireland." },
 ];
 
 export default async function MinimumWagePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

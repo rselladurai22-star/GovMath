@@ -32,7 +32,6 @@ const TOC: TocItem[] = [
   { id: "paye", title: "Paying through your tax code" },
   { id: "late", title: "If you have not paid it before" },
   { id: "decide", title: "Should you take the payments?" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -367,26 +366,7 @@ export default function HicbcGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={17} kicker="FAQs" title="Common questions">
-        <h3>Is the charge based on household income?</h3>
-        <p>No. It is based on the higher individual income of the two partners.</p>
-        <h3>Does a salary sacrifice pension reduce the charge?</h3>
-        <p>Yes. The sacrificed pay is not taxable income, so it never counts towards adjusted net income.</p>
-        <h3>What if my partner does not want me to know their income?</h3>
-        <p>HMRC will not share it, but you can each check your own position. The person with the higher income is responsible.</p>
-        <h3>What happens if I separate during the year?</h3>
-        <p>The charge only covers the weeks you were living together as a couple, or weeks you received the benefit yourself.</p>
-        <h3>Do I pay the charge if the child lives with my ex-partner?</h3>
-        <p>Not if you are not receiving the Child Benefit and do not live with the person who is.</p>
-        <h3>Does the charge apply to Guardian&rsquo;s Allowance?</h3>
-        <p>No. Only Child Benefit is taken back by the charge.</p>
-        <h3>Is the charge the same in Scotland?</h3>
-        <p>Yes. Adjusted net income is worked out the same way, though Scottish Income Tax rates differ, so the combined marginal rate is a little higher.</p>
-        <h3>Can I pay the charge in instalments?</h3>
-        <p>If it is collected through your tax code it is spread over the year automatically. Through Self Assessment it is due by 31 January, but HMRC can agree a payment plan.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£60,000", label: "Charge starts" },

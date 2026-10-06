@@ -34,7 +34,6 @@ const TOC: TocItem[] = [
   { id: "council-tax", title: "Council Tax help" },
   { id: "dementia", title: "Dementia and memory problems" },
   { id: "abroad", title: "Living or travelling abroad" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -338,28 +337,7 @@ export default function AaGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Is Attendance Allowance taxable?</h3>
-        <p>No. It is tax-free and does not count as income for Pension Credit, Housing Benefit or Council Tax Reduction.</p>
-        <h3>Can I get it if I live with my family?</h3>
-        <p>Yes. Living with others does not affect Attendance Allowance, though it can affect the Pension Credit severe disability addition.</p>
-        <h3>Can I get it if I work?</h3>
-        <p>Yes. Work and earnings make no difference.</p>
-        <h3>Does it count as income for care home fees?</h3>
-        <p>
-          If the council helps with care home fees, it usually stops after 28 days. For care at home, councils can count it in their financial
-          assessment, but must allow for your disability-related costs.
-        </p>
-        <h3>Can I claim for my mother or father?</h3>
-        <p>
-          You can help them claim, fill in the form with them, or act as their appointee if they cannot manage their own affairs. The claim is
-          in their name and the money is paid to them or their appointee.
-        </p>
-        <h3>What if I already get PIP?</h3>
-        <p>You keep PIP after State Pension age and cannot get Attendance Allowance as well. PIP can be worth more because it has a mobility part.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£76.70", label: "Lower rate a week" },

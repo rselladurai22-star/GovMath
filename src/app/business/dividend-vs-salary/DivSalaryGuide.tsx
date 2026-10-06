@@ -28,7 +28,6 @@ const TOC: TocItem[] = [
   { id: "retaining", title: "Leaving profit in the company" },
   { id: "spouse", title: "A spouse or partner as shareholder" },
   { id: "loans", title: "Director's loans" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -361,31 +360,7 @@ export default function DivSalaryGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={15} kicker="FAQs" title="Common questions">
-        <h3>Can I pay myself only dividends?</h3>
-        <p>
-          Yes, but you lose the Corporation Tax saving on a tax-free salary, and the year does not count for your State Pension
-          unless you pay voluntary NI.
-        </p>
-        <h3>Should I take a salary of £5,000 or £12,570?</h3>
-        <p>
-          Without the Employment Allowance, £12,570 still usually leaves more after tax in 2026/27, despite the employer NI
-          above £5,000, because the salary and NI save Corporation Tax.
-        </p>
-        <h3>Do I need to take all the profit out?</h3>
-        <p>
-          No. Profit left in the company has paid Corporation Tax but no dividend tax. Many directors take only what they need
-          and keep within the basic rate band.
-        </p>
-        <h3>When are dividends taxed?</h3>
-        <p>In the tax year they are paid, through your Self Assessment return, due by 31 January after the year ends.</p>
-        <h3>Does the Employment Allowance apply if my spouse is also a director?</h3>
-        <p>Not if the only people paid are directors and there is just one of them. With two directors on the payroll, the company can usually claim it.</p>
-        <h3>Is it worth paying myself through payroll every month?</h3>
-        <p>Yes for the salary part. A director&rsquo;s salary must go through PAYE, and a regular monthly salary keeps the records simple. Dividends can be paid when profits allow.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={16} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={15} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£12,570", label: "Usual best salary" },

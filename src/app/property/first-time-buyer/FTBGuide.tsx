@@ -32,7 +32,6 @@ const TOC: TocItem[] = [
   { id: "mortgages", title: "Mortgages for first-time buyers" },
   { id: "mistakes", title: "Common mistakes to avoid" },
   { id: "joint-example", title: "Example: when one buyer has owned before" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -382,26 +381,7 @@ export default function FTBGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="FAQs" title="Common questions">
-        <h3>I inherited a share of a house as a child. Am I a first-time buyer?</h3>
-        <p>
-          Probably not. Any interest in a residential property anywhere in the world counts as ownership, including an
-          inherited share. Ask your conveyancer to check the details.
-        </p>
-        <h3>Does it matter if I owned a home abroad?</h3>
-        <p>Yes. Homes outside the UK count, so previous overseas ownership rules you out.</p>
-        <h3>Do I need to live in the home?</h3>
-        <p>Yes. It must be your only or main residence. Buying a first property to let out does not qualify.</p>
-        <h3>What if the price changes after I agree it?</h3>
-        <p>Stamp Duty is worked out on the final price at completion, so a renegotiated price changes the tax.</p>
-        <h3>Can I add Stamp Duty to my mortgage?</h3>
-        <p>
-          Not directly. You need the money at completion, though borrowing more and keeping more cash back has the same
-          effect.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£300,000", label: "0% band for first-time buyers" },

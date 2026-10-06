@@ -24,7 +24,6 @@ const TOC: TocItem[] = [
   { id: "health", title: "Pollution and health" },
   { id: "switching", title: "Switching to a compliant vehicle" },
   { id: "checklist", title: "A quick checklist" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -310,28 +309,7 @@ export default function CazGuide() {
         </ol>
       </GuideSection>
 
-      <GuideSection id="questions" n={22} kicker="FAQs" title="Common questions">
-        <h3>Do I need to pay if I only drive through?</h3>
-        <p>Yes. Any driving inside the zone, even on a through road, counts. Parked vehicles that do not move are not charged.</p>
-        <h3>Does Manchester have a clean air zone charge?</h3>
-        <p>No. Greater Manchester&rsquo;s plan was replaced with investment in cleaner vehicles, without charges.</p>
-        <h3>Are hybrids compliant?</h3>
-        <p>Petrol hybrids almost always are. Diesel hybrids need to meet Euro 6.</p>
-        <h3>Is the charge per journey or per day?</h3>
-        <p>Per day. In London a charging day runs from midnight to midnight, so two trips on the same day cost one charge.</p>
-        <h3>Do I get a reminder if I forget to pay?</h3>
-        <p>No. The first you hear may be a penalty charge notice in the post, so pay within the deadline or set up Auto Pay in London.</p>
-        <h3>Can I appeal a penalty?</h3>
-        <p>Yes, for example if the vehicle was sold, stolen or exempt. The penalty notice explains how to challenge it, and there is an independent tribunal.</p>
-        <h3>Do motorbikes pay clean air zone charges?</h3>
-        <p>Only in London, where motorbikes that do not meet Euro 3, usually those made before July 2007, pay the £12.50 ULEZ charge. English clean air zones do not charge motorbikes.</p>
-        <h3>Do I pay if I live inside a zone?</h3>
-        <p>Usually yes, if your vehicle is not compliant and you drive it. Some zones offered residents a temporary exemption when they opened, which has now ended in most places.</p>
-        <h3>Are vans treated differently from cars?</h3>
-        <p>Yes. Vans are charged in more zones than cars, including Bath, Bradford, Sheffield and Tyneside, where private cars are not charged.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={23} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£12.50", label: "London ULEZ" },

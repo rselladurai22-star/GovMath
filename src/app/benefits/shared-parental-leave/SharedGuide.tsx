@@ -31,7 +31,6 @@ const TOC: TocItem[] = [
   { id: "steps", title: "Step by step: booking shared leave" },
   { id: "reasons", title: "Why many couples do not use it" },
   { id: "example-year", title: "An example year" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -328,36 +327,7 @@ export default function SharedGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="FAQs" title="Common questions">
-        <h3>Can we both be off at the same time?</h3>
-        <p>Yes. The mother can be on maternity leave while the partner takes shared leave, or both can take shared leave together.</p>
-        <h3>Does shared leave affect my holiday?</h3>
-        <p>No. Holiday keeps building up during shared parental leave.</p>
-        <h3>Can I go back to work and then take more leave?</h3>
-        <p>Yes, by booking up to three separate blocks before the child&rsquo;s first birthday.</p>
-        <h3>What if the self-employed parent wants leave?</h3>
-        <p>Shared Parental Leave is only for employees, but a self-employed parent can help their employed partner qualify.</p>
-        <h3>Is there a deadline?</h3>
-        <p>All shared leave must be taken within 52 weeks of the birth or placement.</p>
-        <h3>Can grandparents take shared parental leave?</h3>
-        <p>Not yet. Shared Parental Leave is only for the child&rsquo;s parents or the mother&rsquo;s partner.</p>
-        <h3>What happens if we change our minds?</h3>
-        <p>Each parent can vary or cancel a booked block with 8 weeks&rsquo; notice, and each change counts towards the three notices.</p>
-        <h3>Does taking shared leave affect the mother&rsquo;s Maternity Allowance?</h3>
-        <p>Yes. Ending Maternity Allowance early makes the remaining weeks available as shared pay for an eligible partner.</p>
-        <h3>Can we use shared leave after the child&rsquo;s first birthday?</h3>
-        <p>No. All of it must be taken within 52 weeks of the birth or adoption placement.</p>
-        <h3>Is shared parental pay taxed?</h3>
-        <p>Yes. Like maternity and paternity pay, it is paid through payroll with Income Tax and National Insurance deducted.</p>
-        <h3>Does shared leave count as continuous employment?</h3>
-        <p>Yes. Your employment continues, holiday keeps building up, and you return to the same job if your total leave is 26 weeks or less.</p>
-        <h3>Can the partner take shared leave while the mother is still pregnant?</h3>
-        <p>No. Shared leave can only start after the birth, and the mother must take at least two weeks of maternity leave first.</p>
-        <h3>What if the baby is born early?</h3>
-        <p>The dates move with the birth. You can change booked leave if the baby arrives early, often with less notice than usual.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "50 weeks", label: "Shareable leave" },

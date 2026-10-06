@@ -31,7 +31,6 @@ const TOC: TocItem[] = [
   { id: "signals", title: "Signs a contract is inside or outside" },
   { id: "going-contracting", title: "Moving from a permanent job to contracting" },
   { id: "umbrella-payslip", title: "Reading an umbrella payslip" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -365,52 +364,7 @@ export default function IR35Guide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={16} kicker="Questions" title="Common questions">
-        <h3>Do I get employment rights inside IR35?</h3>
-        <p>
-          Not from the client. IR35 is a tax rule. If you use an umbrella company, you are its employee and get statutory
-          rights such as holiday pay and Statutory Sick Pay from it.
-        </p>
-        <h3>Can I claim expenses inside IR35?</h3>
-        <p>
-          Only limited expenses, broadly the same as an employee could claim. Travel to a single long-term workplace is
-          not usually allowed.
-        </p>
-        <h3>Should I close my company if all my work is inside IR35?</h3>
-        <p>
-          Many contractors do, to save accountancy costs. If you expect outside work in future, you might keep it dormant.
-          Speak to an accountant before deciding.
-        </p>
-        <h3>Is the calculator advice on my status?</h3>
-        <p>
-          No. It compares the money under each route. Your status depends on the facts of each contract.
-        </p>
-        <h3>What happens if HMRC disagrees with my client’s decision?</h3>
-        <p>
-          If a client wrongly treats a contract as outside IR35, HMRC normally pursues the fee-payer for the unpaid tax and
-          National Insurance. Since April 2024, tax you have already paid on that income through your company can be set
-          against what is owed.
-        </p>
-        <h3>Do I need to register for VAT?</h3>
-        <p>
-          Outside IR35, your company must register for VAT if its taxable turnover goes over £90,000 in a rolling 12 months.
-          VAT you charge is passed to HMRC, so it is not part of your take-home. Inside IR35 through an umbrella, VAT is
-          handled by the umbrella.
-        </p>
-        <h3>Is it better to leave profit in my company?</h3>
-        <p>
-          Sometimes. Profit kept in the company has paid Corporation Tax but not dividend tax, so leaving some there can
-          reduce your tax bill if your personal income would otherwise go above £50,270 or £100,000. You can then take it
-          in a later year when your income is lower, or pay it into your pension.
-        </p>
-        <h3>How many days should I assume I will bill?</h3>
-        <p>
-          Many contractors plan on 200 to 220 days a year, allowing for holidays, bank holidays, sickness and gaps between
-          contracts. Be cautious in your first year, when gaps are more likely.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={17} kicker="Quick reference" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={16} kicker="Quick reference" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "15%", label: "Employer NI above £5,000" },

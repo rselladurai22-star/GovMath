@@ -22,6 +22,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much will I repay on \u00a335,000?", a: "6% of \u00a314,000: \u00a3840 a year or \u00a370 a month." },
   { q: "Do I repay it with my undergraduate loan?", a: "Yes. You repay both at the same time: 9% above your undergraduate threshold and 6% above \u00a321,000." },
   { q: "What is the interest rate?", a: "RPI plus 3%, which would be 7.1%, capped at 6% from September 2026 to August 2027." },
+  { q: "Do I repay while studying?", a: "No. Repayments start from the April after you finish or leave the course." },
+  { q: "Does a PGCE count as a Postgraduate Loan?", a: "No. PGCE students get undergraduate-style funding, repaid under their undergraduate plan." },
+  { q: "Are Master's and Doctoral Loans added together?", a: "Yes. They form one balance, repaid at 6% above £21,000." },
+  { q: "Do I need to tell HMRC about my loan?", a: "Not if you are employed: tell your employer your plan type when you start, often using a starter checklist, and they deduct repayments. If you file Self Assessment, tick the student loan box on your return." },
+  { q: "Can I get a Master's Loan if I already have a Master's degree?", a: "Usually not. The loan is for students without an equivalent or higher qualification, with some exceptions." },
+  { q: "Is the loan means-tested?", a: "No. Your household income does not affect how much you can borrow." },
+  { q: "Does it matter how much I borrow?", a: "Your monthly repayment depends only on income. But a larger balance takes longer to clear and adds more interest, so borrow what you need." },
 ];
 
 export default async function PostgradPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

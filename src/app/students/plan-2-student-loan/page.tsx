@@ -22,6 +22,10 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much will I repay on £35,000?", a: "9% of £5,615, which is £505.35 a year or £42.11 a month." },
   { q: "What is the Plan 2 interest rate?", a: "From September 2026, 4.1% if you earn £29,385 or less, rising to a capped 6% for higher earners." },
   { q: "When is Plan 2 written off?", a: "30 years after the April you were first due to repay." },
+  { q: "Does salary sacrifice reduce my repayments?", a: "Yes. Pension contributions through salary sacrifice reduce the pay used to work out repayments." },
+  { q: "Can I get a refund?", a: "Yes, if you repaid when your income for the year was below the threshold, or you repaid after the balance was cleared." },
+  { q: "When will the cap end?", a: "The 6% cap is set for September 2026 to August 2027. Rates for later years depend on RPI and any new decisions." },
+  { q: "Do I need to tell HMRC about my loan?", a: "Not if you are employed: tell your employer your plan type when you start, often using a starter checklist, and they deduct repayments. If you file Self Assessment, tick the student loan box on your return." },
 ];
 
 export default async function Plan2Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

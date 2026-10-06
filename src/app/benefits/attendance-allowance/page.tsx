@@ -22,6 +22,12 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Is Attendance Allowance means-tested?", a: "No. Your income and savings make no difference, and it is tax-free." },
   { q: "Who can claim Attendance Allowance?", a: "People over State Pension age who have needed help with personal care or supervision for six months because of an illness or disability." },
   { q: "Does Attendance Allowance affect Pension Credit?", a: "It can increase it. If you live alone and nobody gets Carer's Allowance for you, it adds £86.05 a week to the Pension Credit guarantee." },
+  { q: "Is Attendance Allowance taxable?", a: "No. It is tax-free and does not count as income for Pension Credit, Housing Benefit or Council Tax Reduction." },
+  { q: "Can I get it if I live with my family?", a: "Yes. Living with others does not affect Attendance Allowance, though it can affect the Pension Credit severe disability addition." },
+  { q: "Can I get it if I work?", a: "Yes. Work and earnings make no difference." },
+  { q: "Does it count as income for care home fees?", a: "If the council helps with care home fees, it usually stops after 28 days. For care at home, councils can count it in their financial assessment, but must allow for your disability-related costs." },
+  { q: "Can I claim for my mother or father?", a: "You can help them claim, fill in the form with them, or act as their appointee if they cannot manage their own affairs. The claim is in their name and the money is paid to them or their appointee." },
+  { q: "What if I already get PIP?", a: "You keep PIP after State Pension age and cannot get Attendance Allowance as well. PIP can be worth more because it has a mobility part." },
 ];
 
 export default async function AaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

@@ -33,7 +33,6 @@ const TOC: TocItem[] = [
   { id: "fluctuating", title: "Conditions that come and go" },
   { id: "mental-health", title: "Mental health and PIP" },
   { id: "reviews", title: "Award reviews" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -370,26 +369,7 @@ export default function PipGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="FAQs" title="Common questions">
-        <h3>Can I work and get PIP?</h3>
-        <p>Yes. PIP does not depend on whether you work or how much you earn.</p>
-        <h3>Do I need a diagnosis?</h3>
-        <p>No. PIP looks at how your condition affects you, though medical evidence helps to show this.</p>
-        <h3>How long does a PIP award last?</h3>
-        <p>Awards are usually reviewed after a set period, from a year to ten years, depending on how your condition may change.</p>
-        <h3>What if my condition gets worse?</h3>
-        <p>Report the change. You may get more, but the whole award is looked at again.</p>
-        <h3>Is PIP changing?</h3>
-        <p>
-          The government is reviewing the PIP assessment. Until any change is made law, the points system on this page is the one used.
-        </p>
-        <h3>Will PIP affect my partner&rsquo;s benefits?</h3>
-        <p>No. It is your benefit, not counted as household income, and it can increase means-tested benefits through extra amounts.</p>
-        <h3>Can I get PIP and drive?</h3>
-        <p>Yes. Tell the DVLA if your condition affects your driving, but PIP itself does not stop you holding a licence.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "8", label: "Points for the standard rate" },

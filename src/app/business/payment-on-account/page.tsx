@@ -23,6 +23,14 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Why is my first January bill so big?", a: "In your first year you pay the whole year's bill and the first payment on account for the next year on the same day, about one and a half times a year's tax." },
   { q: "Can I reduce my payments on account?", a: "Yes, online or with form SA303, if you expect a lower bill. If the final bill is higher, you pay interest on the shortfall." },
   { q: "Do payments on account include student loan?", a: "No. Student loan, Class 2 NI and Capital Gains Tax are paid with the balancing payment, never in advance." },
+  { q: "Are payments on account extra tax?", a: "No. They are advance payments of the same tax. Any overpayment is refunded or set against your next bill." },
+  { q: "Why do I have to pay tax for a year that has not finished?", a: "The rules collect tax roughly as the year goes on, as PAYE does for employees, rather than waiting until up to 22 months after the income was earned." },
+  { q: "Do I get a refund if I overpay?", a: "Yes. If your payments on account were more than the final bill, the excess is set against your next payment or refunded if you ask." },
+  { q: "What if I stop being self-employed?", a: "If you expect no Self Assessment bill for the year, ask HMRC to reduce your payments on account to zero. You still need to file the final year's return." },
+  { q: "Where can I see my payments on account?", a: "In your HMRC online account, under Self Assessment, along with every amount due and paid." },
+  { q: "Do payments on account apply to Capital Gains Tax?", a: "No. Capital Gains Tax is paid with the balancing payment, or within 60 days for UK residential property, and never through payments on account." },
+  { q: "What happens if I file my return late?", a: "Your payments on account are still due on 31 January and 31 July, and interest runs on anything paid late. You also get late filing penalties, and HMRC may estimate the tax you owe until your return arrives." },
+  { q: "Can I pay more than my payment on account?", a: "Yes. Any extra is held as a credit and used against your next payment, which can help if you know your bill is going up." },
 ];
 
 export default async function PoaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

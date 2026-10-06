@@ -23,6 +23,12 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much is the Additional Dwelling Supplement?", a: "8% of the whole price for purchases of £40,000 or more, on top of normal LBTT, if you will own more than one home." },
   { q: "Can I get ADS back?", a: "Yes, if the new home replaces your main home and you sell the previous one within 36 months. Claim the refund from Revenue Scotland after the sale." },
   { q: "When do I pay LBTT?", a: "Your solicitor files the return and pays Revenue Scotland within 30 days of the date of entry, usually on settlement day." },
+  { q: "Do I pay LBTT on a house under £145,000?", a: "No, unless it is an additional home. A home mover or first-time buyer pays nothing below £145,000, and a first-time buyer pays nothing up to £175,000." },
+  { q: "Do I pay LBTT if I am buying in Scotland but live in England?", a: "Yes. LBTT depends on where the property is, not where you live. If you keep your English home, ADS applies as well." },
+  { q: "Is there a surcharge for overseas buyers?", a: "No. Scotland has no equivalent of England's 2% surcharge for non-UK residents. ADS still applies if you own a home anywhere else." },
+  { q: "Can I add LBTT to my mortgage?", a: "Not directly. You could borrow more and put down a smaller deposit, but lenders lend against the property value, so you still need the cash for the tax at settlement." },
+  { q: "What happens if I buy before selling and the sale falls through?", a: "Nothing changes straight away, but you only get the ADS back if you sell the old home within 36 months of buying the new one. After that, the supplement is not refundable." },
+  { q: "Do I pay LBTT if I am given a home?", a: "Not if no money changes hands. If you take over a mortgage on the home, the amount of debt you take on counts as the price." },
 ];
 
 export default async function LBTTPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

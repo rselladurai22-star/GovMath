@@ -32,7 +32,6 @@ const TOC: TocItem[] = [
   { id: "young-people", title: "When a young person starts work or claims" },
   { id: "moving", title: "Moving to or from the UK" },
   { id: "checklist", title: "A checklist for new parents" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -345,31 +344,7 @@ export default function ChildBenefitGuide() {
         </ol>
       </GuideSection>
 
-      <GuideSection id="questions" n={17} kicker="FAQs" title="Common questions">
-        <h3>Is Child Benefit taxed?</h3>
-        <p>Not as income. The only tax link is the High Income Child Benefit Charge for incomes over £60,000.</p>
-        <h3>Is there a limit on the number of children?</h3>
-        <p>No. You get £17.90 a week for every child after the eldest.</p>
-        <h3>Can I claim if I am not the parent?</h3>
-        <p>Yes, if you are responsible for the child, such as a grandparent they live with.</p>
-        <h3>What if my child goes to university?</h3>
-        <p>Child Benefit stops, because higher education is not approved education for Child Benefit.</p>
-        <h3>Does Child Benefit affect my tax code?</h3>
-        <p>
-          Not by itself. If you pay the High Income Child Benefit Charge, you can choose to pay it through your tax code instead
-          of Self Assessment.
-        </p>
-        <h3>Can I get Child Benefit for a child born abroad?</h3>
-        <p>Yes, if you live in the UK, are responsible for the child and meet the residence rules.</p>
-        <h3>Can I get Child Benefit for a stepchild?</h3>
-        <p>Yes, if the child lives with you and you are responsible for them, and nobody else is claiming for them.</p>
-        <h3>Is Child Benefit paid during the school holidays for a 17-year-old?</h3>
-        <p>Yes. Breaks between terms, and the summer after finishing a course, are covered as long as they are continuing in approved education or have just finished it.</p>
-        <h3>What if both parents want to claim?</h3>
-        <p>Only one person can get it for each child. If you cannot agree, HMRC decides, usually in favour of the parent the child mainly lives with.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£27.05", label: "Eldest or only child, a week" },

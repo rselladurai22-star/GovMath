@@ -23,7 +23,6 @@ const TOC: TocItem[] = [
   { id: "mistakes", title: "Common mistakes" },
   { id: "costs-per-mile", title: "The full cost per mile" },
   { id: "checklist", title: "Before you switch" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -283,28 +282,7 @@ export default function PetrolEvGuide() {
         </ol>
       </GuideSection>
 
-      <GuideSection id="questions" n={21} kicker="FAQs" title="Common questions">
-        <h3>Do electric cars pay the ULEZ?</h3>
-        <p>No. They are exempt from ULEZ and clean air zone charges, but pay the London congestion charge at a discount.</p>
-        <h3>Will electricity prices rise?</h3>
-        <p>They may. The calculator assumes today&rsquo;s prices throughout; try a higher price to test it.</p>
-        <h3>What about hybrids?</h3>
-        <p>Enter a hybrid&rsquo;s real mpg in the petrol car. Plug-in hybrids are cheapest if most trips are within their electric range.</p>
-        <h3>Are there grants for electric cars?</h3>
-        <p>The Electric Car Grant has offered discounts of up to £3,750 on some new electric cars under £37,000. Check whether the car you want qualifies, and enter the discounted price.</p>
-        <h3>Do electric cars cost more to insure?</h3>
-        <p>Often a little more, because repairs and parts can be dearer. The gap has narrowed as more insurers and repairers handle electric cars.</p>
-        <h3>How long do electric car batteries last?</h3>
-        <p>Most are designed to outlast the car, losing capacity slowly over many years. Manufacturers usually guarantee the battery for 8 years or around 100,000 miles.</p>
-        <h3>Is an electric car cheaper to service?</h3>
-        <p>Usually. There is no oil, spark plugs, clutch or exhaust, and brakes wear more slowly. Tyres may need replacing sooner because of the extra weight.</p>
-        <h3>What if I mostly drive short trips?</h3>
-        <p>Short trips suit electric cars well, as petrol engines are least efficient when cold. But at low mileage, the savings take longer to cover any higher purchase price.</p>
-        <h3>Does cold weather affect electric cars?</h3>
-        <p>Yes. Range can fall by a fifth or more in winter, as batteries are less efficient and heating uses energy. Pre-heating while plugged in at home helps.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "173.8p", label: "Petrol a litre" },

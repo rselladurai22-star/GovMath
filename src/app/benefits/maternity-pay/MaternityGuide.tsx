@@ -32,7 +32,6 @@ const TOC: TocItem[] = [
   { id: "returning", title: "Returning to work" },
   { id: "uc", title: "Maternity pay and Universal Credit" },
   { id: "pregnancy-rights", title: "Your rights while pregnant" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -347,26 +346,7 @@ export default function MaternityGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={17} kicker="FAQs" title="Common questions">
-        <h3>Can I get SMP from two employers?</h3>
-        <p>Yes, if you qualify with each of them separately.</p>
-        <h3>What if my baby is born early?</h3>
-        <p>Leave starts the day after the birth, and SMP rules are adjusted so you are not penalised for a premature birth.</p>
-        <h3>Do I get SMP if I am leaving my job?</h3>
-        <p>Yes. If you qualified by the qualifying week, you still get SMP even if you do not return.</p>
-        <h3>Does SMP go up if I get a pay rise?</h3>
-        <p>Yes. A pay rise effective before the end of your SMP period means your employer must recalculate it.</p>
-        <h3>Is there help for the self-employed?</h3>
-        <p>Maternity Allowance, if you meet the work and earnings tests, plus Universal Credit if your household income is low.</p>
-        <h3>Can I get SMP if I am on a zero-hours contract?</h3>
-        <p>Yes, if you are an employee with 26 weeks&rsquo; service and average earnings of at least £129 a week. If not, check Maternity Allowance.</p>
-        <h3>What happens to my car or phone allowance?</h3>
-        <p>Non-cash benefits in your contract, such as a company car or gym membership, normally continue during maternity leave.</p>
-        <h3>Can I take maternity leave if I adopt?</h3>
-        <p>Adopters get adoption leave and Statutory Adoption Pay instead, which follow almost the same rules and rates.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "90%", label: "Of earnings for the first 6 weeks" },

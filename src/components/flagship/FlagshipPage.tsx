@@ -19,7 +19,6 @@ const TOPIC: Record<string, string> = Object.fromEntries(
  */
 export default function FlagshipPage({
   breadcrumbs,
-  eyebrow,
   title,
   lead,
   children,
@@ -27,11 +26,9 @@ export default function FlagshipPage({
   faqs,
   related,
   note,
-  plainIntro,
-  neutral,
-  claret,
 }: {
   breadcrumbs: Crumb[];
+  /** Short label for the page (not shown since the October 2026 redesign; kept for every page's API). */
   eyebrow: string;
   title: string;
   lead: string;
@@ -42,12 +39,6 @@ export default function FlagshipPage({
   faqs: { q: string; a: string }[];
   related: Calculator[];
   note: string;
-  /** Hide the topic and eyebrow lines above the title (being trialled on the council tax page). */
-  plainIntro?: boolean;
-  /** Neutral reading palette instead of the pink-tinted greys (being trialled on the council tax page). */
-  neutral?: boolean;
-  /** Claret brand colour instead of the dark wine (being trialled on the council tax page). */
-  claret?: boolean;
 }) {
   const jsonLd = [
     {
@@ -70,9 +61,9 @@ export default function FlagshipPage({
   const crumbs = breadcrumbs.map((c, i) => (i === 1 ? { ...c, label: topic || c.label } : c));
 
   return (
-    <GmShell kind="calculator" claret={claret}>
+    <GmShell kind="calculator">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className={neutral ? "wrap gm-neutral" : "wrap"}>
+      <div className="wrap">
         <div className="crumb">
           {crumbs.map((c, i) =>
             i === crumbs.length - 1 ? (
@@ -86,8 +77,6 @@ export default function FlagshipPage({
           )}
         </div>
         <div className="intro">
-          {!plainIntro && topic && <p className="eyebrow">{topic.toUpperCase()}</p>}
-          {!plainIntro && <p className="eyebrow">{eyebrow.toUpperCase()}</p>}
           <h1>{title}</h1>
           <p>{lead}</p>
         </div>

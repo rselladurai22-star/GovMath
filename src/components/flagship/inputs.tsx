@@ -99,13 +99,12 @@ export function Field({
               {optional && <Optional />}
             </span>
           )}
-          {info && <InfoTip label={label}>{info}</InfoTip>}
+          {(info ?? hint) && <InfoTip label={label}>{info ?? hint}</InfoTip>}
           {aside && <span className="gm-aside">{aside}</span>}
         </span>
         {inline}
       </div>
       {children}
-      {hint && <p className="hint">{hint}</p>}
     </div>
   );
 }
@@ -323,27 +322,10 @@ export function Segmented<T extends string>({
   onChange: (v: T) => void;
   optional?: boolean;
 }) {
+  // Shown as radio buttons; the selected option's note sits behind the (i) button.
   const current = options.find((o) => o.value === value);
-  return (
-    <Field label={label} optional={optional} hint={current?.note}>
-      <div className="ax-calctabs gm-choice" role="radiogroup" aria-label={label}>
-        {options.map((o) => (
-          <button
-            key={o.value}
-            type="button"
-            role="radio"
-            aria-checked={value === o.value}
-            className={value === o.value ? "selected" : undefined}
-            onClick={() => onChange(o.value)}
-          >
-            {o.label}
-          </button>
-        ))}
-      </div>
-    </Field>
-  );
+  return <RadioGroup label={label} value={value} onChange={onChange} options={options} optional={optional} info={current?.note} />;
 }
-
 /** The design's dropdown (.ax-select): a button and a listbox, keyboard friendly. */
 export function SelectField<T extends string>({
   label,
@@ -393,7 +375,7 @@ export function SelectField<T extends string>({
           {label}
           {optional && <Optional />}
         </label>
-        {info && <InfoTip label={label}>{info}</InfoTip>}
+        {(info ?? hint) && <InfoTip label={label}>{info ?? hint}</InfoTip>}
       </div>
       <div className="ax-select" ref={wrap}>
         <button
@@ -469,7 +451,6 @@ export function SelectField<T extends string>({
           ))}
         </div>
       </div>
-      {hint && <p className="hint">{hint}</p>}
     </div>
   );
 }
@@ -540,9 +521,8 @@ export function Switch({
           {label}
           {optional && <Optional />}
         </label>
-        {info && <InfoTip label={label}>{info}</InfoTip>}
+        {(info ?? hint) && <InfoTip label={label}>{info ?? hint}</InfoTip>}
       </div>
-      {hint && <p className="hint">{hint}</p>}
     </div>
   );
 }

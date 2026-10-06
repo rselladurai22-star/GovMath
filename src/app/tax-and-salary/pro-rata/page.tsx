@@ -23,6 +23,10 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much holiday do part-time workers get?", a: "The same 5.6 weeks a year as full-timers, made up of your own working days. On three days a week the statutory minimum is 16.8 days, including bank holidays." },
   { q: "Do part-time workers pay less tax?", a: "As a share of pay, usually yes. The £12,570 tax-free allowance is the same whatever you earn, so it covers a bigger share of a smaller salary. Working 80% of full time typically leaves you with around 82% of the full-time take-home." },
   { q: "What if I start a job part-way through the year?", a: "You only earn for the months you work, but you still have the whole year's tax-free allowance. If you had no other income that year, you may be due a tax refund after 5 April." },
+  { q: "Is a pro-rata salary the same as an hourly rate?", a: "It works out at the same hourly rate as the full-time job. If a job pays £40,000 for 37.5 hours, the hourly rate is £20.51 whether you work 15 hours or 37.5." },
+  { q: "Do part-time workers get bank holidays?", a: "You are entitled to 5.6 weeks of paid holiday, which can include bank holidays. Most employers pro-rate bank holidays into your total entitlement. If your contract only gives bank holidays when they fall on your working days, check that your total still meets the statutory minimum." },
+  { q: "Will going part-time affect my pension?", a: "Contributions are usually a percentage of your actual pay, so they fall in line with your salary. In a final salary or career average scheme, the pension you build up each year is also based on your actual pay." },
+  { q: "Can my employer refuse a request to go part-time?", a: "Yes, but only for one of eight business reasons set out in law, such as extra costs or an inability to reorganise work. They must consult you before refusing and reply within two months." },
 ];
 
 export default async function ProRataPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

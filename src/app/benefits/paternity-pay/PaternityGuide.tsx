@@ -32,7 +32,6 @@ const TOC: TocItem[] = [
   { id: "protection", title: "Your rights while on leave" },
   { id: "uc", title: "Paternity pay and other benefits" },
   { id: "budget", title: "Budgeting for your time off" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -350,32 +349,7 @@ export default function PaternityGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="FAQs" title="Common questions">
-        <h3>Is paternity pay taxed?</h3>
-        <p>Yes. SPP goes through payroll, with Income Tax and National Insurance deducted as normal.</p>
-        <h3>Can I take paternity leave if I start a new job during the pregnancy?</h3>
-        <p>Yes, from April 2026 the leave is a day-one right. You may not get SPP without 26 weeks&rsquo; service.</p>
-        <h3>Do I get paternity leave for twins?</h3>
-        <p>No extra. The two weeks are per pregnancy or adoption, not per child.</p>
-        <h3>Can I be dismissed for taking paternity leave?</h3>
-        <p>No. You are protected from detriment or dismissal for taking or asking for paternity leave.</p>
-        <h3>Does holiday build up while I am on paternity leave?</h3>
-        <p>Yes. Your normal holiday continues to build up.</p>
-        <h3>Can I take paternity leave if my baby is stillborn?</h3>
-        <p>Yes. Paternity leave and pay still apply if a baby is stillborn after 24 weeks of pregnancy or dies after birth.</p>
-        <h3>Do agency workers get paternity pay?</h3>
-        <p>Agency workers who are employees of the agency for tax purposes may qualify for SPP, though they may not have the right to the leave itself. Check with the agency.</p>
-        <h3>Can I take paternity leave part-time?</h3>
-        <p>No. Each week must be taken as a whole week, not as odd days. You can use holiday for odd days instead.</p>
-        <h3>What if I have two jobs?</h3>
-        <p>You can get paternity leave and pay from each employer, as long as you qualify with each one separately.</p>
-        <h3>Does paternity pay count towards my State Pension?</h3>
-        <p>Yes. Statutory Paternity Pay above the Lower Earnings Limit keeps your National Insurance record going for those weeks.</p>
-        <h3>Can I change my paternity leave dates?</h3>
-        <p>Yes, with 28 days&rsquo; notice of the new dates, or as soon as reasonably practicable if the baby arrives early or late.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "2 weeks", label: "Paternity leave" },

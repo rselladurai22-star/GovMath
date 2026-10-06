@@ -28,7 +28,6 @@ const TOC: TocItem[] = [
   { id: "beyond", title: "When cost-plus is not enough" },
   { id: "checklist", title: "A pricing checklist" },
   { id: "trade", title: "Trade prices and recommended retail prices" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -358,35 +357,7 @@ export default function MarkupGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={13} kicker="FAQs" title="Common questions">
-        <h3>What markup do I need for a 30% margin?</h3>
-        <p>A 42.9% markup. Divide the margin by one minus the margin: 0.3 ÷ 0.7.</p>
-        <h3>Is markup the same as profit?</h3>
-        <p>
-          Markup is a percentage of cost; profit is an amount in pounds. A 50% markup on a £25 item is £12.50 of gross profit,
-          before overheads and tax.
-        </p>
-        <h3>Should I use the price with or without VAT?</h3>
-        <p>
-          Work out markup and margin on the price before VAT if you are VAT-registered. If you are not, use your cost including
-          the VAT you paid, and there is no VAT to add to the price.
-        </p>
-        <h3>How do I price services rather than goods?</h3>
-        <p>
-          The same maths works if you treat your direct costs, such as materials and subcontractors, as the cost. Many service
-          businesses also price by the hour or day; make sure the rate covers your time, overheads and the weeks you cannot
-          bill.
-        </p>
-        <h3>Can I sell below cost?</h3>
-        <p>
-          Yes, as a one-off, for example to clear old stock. Just be clear that each sale loses money and does not count
-          towards covering overheads.
-        </p>
-        <h3>How often should I review my prices?</h3>
-        <p>At least once a year, and whenever a supplier puts its prices up. Rerun the calculation with the new cost and check your margin is still where you need it.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={14} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={13} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "Cost × (1 + markup)", label: "Price from a markup" },

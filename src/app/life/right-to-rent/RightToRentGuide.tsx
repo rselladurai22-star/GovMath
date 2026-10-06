@@ -36,7 +36,6 @@ const TOC: TocItem[] = [
   { id: "failing", title: "If someone does not have the right to rent" },
   { id: "renters-rights", title: "Right to Rent and the Renters' Rights Act" },
   { id: "step-by-step", title: "A step-by-step check" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -328,31 +327,7 @@ export default function RightToRentGuide() {
         </ol>
       </GuideSection>
 
-      <GuideSection id="questions" n={24} kicker="FAQs" title="Common questions">
-        <h3>Do I need to check British tenants?</h3>
-        <p>Yes. Every adult must be checked, including British citizens.</p>
-        <h3>Do I need to check again when a tenancy renews?</h3>
-        <p>Not for the same tenant with the same landlord, unless their permission is time-limited.</p>
-        <h3>Can I charge for the check?</h3>
-        <p>No. The Tenant Fees Act bans charging tenants for Right to Rent checks.</p>
-        <h3>What if my tenant&rsquo;s visa is being renewed?</h3>
-        <p>Use the Landlord Checking Service, which can confirm their right to rent while an application is pending.</p>
-        <h3>Can I check a tenant by video call?</h3>
-        <p>Yes, for a manual document check, as long as you have the original documents in your possession during the call.</p>
-        <h3>What if a tenant&rsquo;s share code does not work?</h3>
-        <p>
-          Share codes expire after a set period. Ask the tenant to generate a new one. If they still cannot prove their right to rent, use the
-          Landlord Checking Service.
-        </p>
-        <h3>Does a guarantor need a Right to Rent check?</h3>
-        <p>No, unless they will also live in the property.</p>
-        <h3>Do I need to check an adult child who moves back in?</h3>
-        <p>Yes, if they will live there as their main home and you are their landlord under a tenancy or lodging arrangement.</p>
-        <h3>Are there free resources to help landlords?</h3>
-        <p>The Home Office publishes the code of practice, document lists and a landlord helpline. Landlord associations also offer guidance.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={25} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={24} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "28 days", label: "Check window" },

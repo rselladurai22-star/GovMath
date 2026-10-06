@@ -33,7 +33,6 @@ const TOC: TocItem[] = [
   { id: "paying-in", title: "Who can pay in, and getting money out" },
   { id: "compare-schemes", title: "How it fits with the other schemes" },
   { id: "reconfirm", title: "Reconfirming without problems" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -346,32 +345,7 @@ export default function TfcGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="FAQs" title="Common questions">
-        <h3>Is Tax-Free Childcare the same in Scotland, Wales and Northern Ireland?</h3>
-        <p>Yes. It is a UK-wide scheme run by HMRC, unlike funded hours which differ between nations.</p>
-        <h3>Can grandparents use it?</h3>
-        <p>Only if they are registered childcare providers, such as Ofsted-registered childminders.</p>
-        <h3>Do both parents need an account?</h3>
-        <p>No. One account per child is enough, but either parent can pay in. Other people, such as grandparents, can pay in too.</p>
-        <h3>What if I lose my job?</h3>
-        <p>You usually keep access during a short grace period, and can still use money already in the account.</p>
-        <h3>Does Tax-Free Childcare count as income?</h3>
-        <p>No. The top-up is not taxable and does not count as income.</p>
-        <h3>Can I use Tax-Free Childcare for a nanny?</h3>
-        <p>Yes, if the nanny is registered with Ofsted (or the equivalent body elsewhere in the UK) and signed up to receive payments.</p>
-        <h3>Do I need a separate account for each child?</h3>
-        <p>Yes. Each child has their own account and their own top-up limit.</p>
-        <h3>What happens if I miss the three-month reconfirmation?</h3>
-        <p>Your account is frozen and you cannot get the top-up until you reconfirm. Payments into the account during that time are not topped up.</p>
-        <h3>Can I use it for my child&rsquo;s school trips or uniform?</h3>
-        <p>No. It is only for childcare from registered providers, not school costs.</p>
-        <h3>How quickly does the top-up arrive?</h3>
-        <p>Usually as soon as your payment reaches the account, which can take a few working days by bank transfer.</p>
-        <h3>Can I backdate the top-up?</h3>
-        <p>No. Only money paid into the account gets a top-up, so open it before you start paying for childcare.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "20%", label: "Share of childcare costs paid by the government" },

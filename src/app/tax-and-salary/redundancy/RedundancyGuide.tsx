@@ -30,7 +30,6 @@ const TOC: TocItem[] = [
   { id: "weeks-pay", title: "When your pay varies" },
   { id: "collective", title: "Large-scale redundancies" },
   { id: "before-signing", title: "Before you accept a package" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -326,36 +325,7 @@ export default function RedundancyGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="Questions" title="Common questions">
-        <h3>Do part-time workers get redundancy pay?</h3>
-        <p>Yes, on the same rules. Their weekly pay is their actual part-time pay.</p>
-        <h3>Does voluntary redundancy pay the same?</h3>
-        <p>
-          You are still entitled to at least statutory redundancy pay, and voluntary schemes are often enhanced.
-        </p>
-        <h3>Does redundancy pay affect my State Pension?</h3>
-        <p>
-          No. Redundancy pay does not count as earnings for National Insurance, so it neither costs nor earns State
-          Pension credits.
-        </p>
-        <h3>Can I be made redundant while on sick leave or maternity leave?</h3>
-        <p>
-          Yes, if the redundancy is genuine and fair, but you must not be selected because of the leave, and extra
-          protections apply during and after maternity leave.
-        </p>
-        <h3>Is redundancy pay paid with my final salary?</h3>
-        <p>
-          Usually, yes. Your employer should pay it on or soon after your leaving date, and show it separately on your
-          final payslip with any notice and holiday pay.
-        </p>
-        <h3>Can I be made redundant and then replaced?</h3>
-        <p>
-          Not if the redundancy is genuine. If your job still exists and someone else is hired to do it, you may have a
-          claim for unfair dismissal.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Quick reference" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={18} kicker="Quick reference" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "2 years", label: "Service needed for statutory redundancy pay" },

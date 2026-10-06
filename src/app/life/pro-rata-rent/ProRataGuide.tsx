@@ -19,7 +19,6 @@ const TOC: TocItem[] = [
   { id: "lodgers", title: "Lodgers and rooms" },
   { id: "students", title: "Students and fixed academic years" },
   { id: "checklist", title: "A quick checklist" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -232,16 +231,7 @@ export default function ProRataGuide() {
         </ol>
       </GuideSection>
 
-      <GuideSection id="questions" n={17} kicker="FAQs" title="Common questions">
-        <h3>Is pro-rata rent calculated on 30 days?</h3>
-        <p>Rarely. Most agents use 365 days a year, and some use the actual days in the month.</p>
-        <h3>Do I count the day I move in?</h3>
-        <p>Yes. Rent is usually charged from the start date of the tenancy, including that day.</p>
-        <h3>What about the day I move out?</h3>
-        <p>The last day of the tenancy is also counted.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "365", label: "Days a year (366 in a leap year)" },

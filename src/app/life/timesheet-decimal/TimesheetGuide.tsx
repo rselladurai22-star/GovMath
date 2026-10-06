@@ -20,7 +20,6 @@ const TOC: TocItem[] = [
   { id: "spreadsheet", title: "Timesheets in a spreadsheet" },
   { id: "zero-hours", title: "Zero-hours and agency work" },
   { id: "checks", title: "Checking your payslip" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -255,30 +254,7 @@ export default function TimesheetGuide() {
         />
       </GuideSection>
 
-      <GuideSection id="questions" n={18} kicker="FAQs" title="Common questions">
-        <h3>How do I convert 7 hours 20 minutes to decimal?</h3>
-        <p>20 ÷ 60 = 0.33, so it is 7.33 hours.</p>
-        <h3>How do I convert decimal hours back to minutes?</h3>
-        <p>Multiply the decimal part by 60. 0.6 hours is 36 minutes.</p>
-        <h3>Is a 30-minute lunch break paid?</h3>
-        <p>Only if your contract says so. The legal minimum break does not have to be paid.</p>
-        <h3>How many hours is 9 to 5 with a lunch break?</h3>
-        <p>8 hours less a 30-minute unpaid lunch is 7.5 hours, or 37.5 hours over five days.</p>
-        <h3>What is 37.5 hours in hours and minutes?</h3>
-        <p>37 hours 30 minutes, written 37:30.</p>
-        <h3>Does travel time count as working hours?</h3>
-        <p>
-          Normal travel between home and a fixed workplace does not. Travel between jobs during the day, or to customers for workers without a fixed
-          workplace, usually does.
-        </p>
-        <h3>Can my employer deduct time for being late?</h3>
-        <p>
-          They can avoid paying for time not worked, but deductions from wages must be allowed by your contract and cannot take your pay below the
-          minimum wage.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "÷ 60", label: "Minutes to decimal" },

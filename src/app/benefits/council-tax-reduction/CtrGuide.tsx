@@ -21,7 +21,6 @@ const TOC: TocItem[] = [
   { id: "hardship", title: "Extra help in hardship" },
   { id: "arrears", title: "If you fall behind" },
   { id: "changes", title: "Changes you must report" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -369,20 +368,7 @@ export default function CtrGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Does Council Tax Reduction affect other benefits?</h3>
-        <p>No. It is not counted as income for Universal Credit, Pension Credit or Housing Benefit.</p>
-        <h3>I own my home. Can I still claim?</h3>
-        <p>Yes. Unlike Housing Benefit, Council Tax Reduction is for owners as well as tenants.</p>
-        <h3>Can a couple claim if only one of us is a pensioner?</h3>
-        <p>
-          Mixed-age couples usually count as working age if they claim Universal Credit, so the council&rsquo;s working-age scheme applies.
-        </p>
-        <h3>Why is my reduction less than my neighbour&rsquo;s?</h3>
-        <p>Income, savings, other adults at home and your council tax band all change the amount, as do the rules of each council.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Reference" title="Key numbers">
+      <GuideSection id="key-numbers" n={19} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Council Tax Reduction 2026/27 at a glance"
           head={["Item", "Figure"]}

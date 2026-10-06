@@ -30,7 +30,6 @@ const TOC: TocItem[] = [
   { id: "claiming", title: "How to claim" },
   { id: "commitments", title: "Your claimant commitment" },
   { id: "mistakes", title: "Mistakes that cost money" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -386,24 +385,7 @@ export default function UcGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={15} kicker="FAQs" title="Common questions">
-        <h3>Is there still a two-child limit?</h3>
-        <p>No. From April 2026 every child attracts a child element of £303.94 a month, or £351.88 for an eldest child born before April 2017.</p>
-        <h3>Can I get Universal Credit if I work full time?</h3>
-        <p>Yes, if your pay is low enough or your rent or family large enough. There is no limit on hours.</p>
-        <h3>Do students get Universal Credit?</h3>
-        <p>Most full-time students cannot, but student parents, some disabled students and some couples can.</p>
-        <h3>Does Universal Credit count my partner&rsquo;s income?</h3>
-        <p>Yes. A couple is assessed together, so both incomes and both sets of savings count.</p>
-        <h3>Is Universal Credit taxed?</h3>
-        <p>No. It is not taxable income.</p>
-        <h3>What happens to Universal Credit at State Pension age?</h3>
-        <p>
-          When you and any partner have both reached State Pension age, you move to Pension Credit and, if you rent, Housing Benefit instead.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={16} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={15} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£424.90", label: "Single, 25 or over" },

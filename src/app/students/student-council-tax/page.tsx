@@ -22,6 +22,11 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What if I live with someone who is not a student?", a: "With one non-student, they get a 25% single person discount. With two or more, the full bill is due." },
   { q: "Who counts as a full-time student?", a: "Someone on a course of at least a year, studying at least 24 weeks a year and 21 hours a week." },
   { q: "When does the exemption end?", a: "The day after your course finishes. It continues over summer holidays between years." },
+  { q: "Do I need to apply every year?", a: "Usually yes: send a new certificate for each academic year, or when your household changes." },
+  { q: "Does a postgraduate student count?", a: "Yes, if the course meets the full-time rules. Writing-up periods for PhD students may be treated differently by some councils." },
+  { q: "What about my parents' home?", a: "A student living away does not change their parents' bill, which is based on who lives there." },
+  { q: "What if one housemate drops out?", a: "If they stay in the house but are no longer a student, they become liable, and the household may lose the exemption. Tell the council straight away." },
+  { q: "Can I get a refund for past bills?", a: "Yes, if you paid when you were exempt. Send your certificates and ask the council to backdate the exemption." },
 ];
 
 export default async function CouncilTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

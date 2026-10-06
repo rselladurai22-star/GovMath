@@ -21,7 +21,6 @@ const TOC: TocItem[] = [
   { id: "pets", title: "Pets, smoking and gardens" },
   { id: "landlord-side", title: "For landlords" },
   { id: "small-charges", title: "Keys, bills and small charges" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -330,18 +329,7 @@ export default function DepositGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Can a landlord charge for professional cleaning?</h3>
-        <p>Only if the home was professionally cleaned at the start and was not left in the same condition. A clause requiring it regardless is likely unfair.</p>
-        <h3>Can the landlord keep my deposit for unpaid rent?</h3>
-        <p>Yes, if rent is owed at the end. The amount must match what is actually owed.</p>
-        <h3>What if my landlord sold the property?</h3>
-        <p>The deposit should transfer to the new landlord, who becomes responsible for protecting and returning it.</p>
-        <h3>Do I get interest on my deposit?</h3>
-        <p>Usually not. Some custodial schemes keep the interest to run the service.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Reference" title="Key numbers">
+      <GuideSection id="key-numbers" n={19} kicker="Reference" title="Key numbers">
         <DataTable
           caption="Deposit rules at a glance"
           head={["Rule", "England", "Wales", "Scotland", "Northern Ireland"]}

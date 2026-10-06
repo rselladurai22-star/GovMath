@@ -30,7 +30,6 @@ const TOC: TocItem[] = [
   { id: "other-lines", title: "Statutory pay and student loans" },
   { id: "refund-times", title: "How long refunds take" },
   { id: "ni-check", title: "Checking National Insurance on your P60" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -332,33 +331,7 @@ export default function P45P60Guide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={17} kicker="Questions" title="Common questions">
-        <h3>Do I get a P60 if I left my job before 5 April?</h3>
-        <p>No. You get a P45 when you leave instead. The P60 only comes from employers you work for on 5 April.</p>
-        <h3>Should my P45 include pay from my previous job?</h3>
-        <p>
-          If your employer used your previous P45, the &ldquo;total pay to date&rdquo; includes it, and the form separately
-          shows pay in that job.
-        </p>
-        <h3>My P60 tax looks too high. What should I do?</h3>
-        <p>
-          Check your tax code and any other income for the year, then look in the HMRC app. If you overpaid, HMRC usually
-          refunds it automatically through a P800, or you can claim.
-        </p>
-        <h3>Does my P60 show student loan repayments?</h3>
-        <p>Yes, P60s include student loan deductions made through payroll during the year.</p>
-        <h3>Do pension providers issue P60s?</h3>
-        <p>Yes. If you receive a pension taxed through PAYE, the provider gives you a P60 each year, just like an employer.</p>
-        <h3>What if the figures on my P45 look wrong?</h3>
-        <p>
-          Ask your former employer to check them against your payslips. If the pay or tax to date is wrong, they can issue
-          a corrected P45 or send updated figures to HMRC, and your next employer can then use the right numbers.
-        </p>
-        <h3>Is my P60 the same as my payslip?</h3>
-        <p>No. A payslip covers one payment; the P60 adds up every payment in the tax year from that employer.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={18} kicker="Quick reference" title="Key numbers">
+      <GuideSection id="key-numbers" n={17} kicker="Quick reference" title="Key numbers">
         <KeyStats
           items={[
             { value: "31 May", label: "P60 deadline for the previous tax year" },

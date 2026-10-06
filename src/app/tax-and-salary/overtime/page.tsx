@@ -23,6 +23,12 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Do I have to be paid extra for overtime?", a: "Not by law. Overtime rates depend on your contract. Your average pay across all hours worked must still be at least the minimum wage." },
   { q: "Does overtime count towards holiday pay?", a: "Regular overtime usually has to be included in holiday pay for the first four weeks of statutory leave, based on your average pay over the previous 52 weeks." },
   { q: "How many hours of overtime can I be asked to work?", a: "Most workers cannot be made to work more than 48 hours a week on average, usually over 17 weeks, unless they have opted out in writing." },
+  { q: "Why does my overtime seem to be taxed so heavily?", a: "Overtime is taxed at your highest rate because it sits on top of your normal pay. In a month with a lot of overtime, the payslip can look heavy, but over a year you pay the same tax as if the pay had been spread out." },
+  { q: "Can I be forced to work overtime?", a: "Only if your contract says overtime is compulsory. Even then, your average working week must normally stay within 48 hours unless you have opted out in writing." },
+  { q: "Is overtime included in my pension?", a: "It depends on the scheme. Auto-enrolment schemes based on qualifying earnings include overtime; others only count basic salary. Your payslip will show whether a pension deduction is taken from the overtime." },
+  { q: "Does overtime affect my tax code?", a: "No. Your tax code sets your tax-free pay, not your rate. Overtime simply adds to your pay, and the cumulative PAYE system taxes it at whatever band your total income reaches. If you also have a second job, overtime in your main job can mean the second job's BR code is no longer enough, and HMRC may change it to D0." },
+  { q: "Should I take overtime or time off in lieu?", a: "Paid overtime increases your income and is taxed; time off in lieu is not taxed at all because no money changes hands. If you are close to £50,270 or £100,000, time off can be worth more than the pay you would keep. Check how long you have to use the time and whether it can be carried over." },
+  { q: "Do I get overtime if I work part-time?", a: "Usually only once you work more than the full-time hours for your job. Extra hours below that are normally paid at your basic rate." },
 ];
 
 export default async function OvertimePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

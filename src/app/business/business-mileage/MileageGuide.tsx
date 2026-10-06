@@ -29,7 +29,6 @@ const TOC: TocItem[] = [
   { id: "directors", title: "Company directors" },
   { id: "other-travel", title: "Other travel you can claim" },
   { id: "rate-value", title: "Is 45p enough?" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -339,34 +338,7 @@ export default function MileageGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={15} kicker="FAQs" title="Common questions">
-        <h3>Do the rates change each year?</h3>
-        <p>They have been 45p and 25p since April 2011. HMRC reviews them but has not changed them.</p>
-        <h3>Do I count miles from 6 April?</h3>
-        <p>Yes. The 10,000-mile threshold resets at the start of each tax year.</p>
-        <h3>Can I claim mileage and fuel receipts?</h3>
-        <p>No. The mileage rate already covers fuel. Claim one or the other, not both.</p>
-        <h3>What about a car I lease?</h3>
-        <p>
-          You can use the mileage rate for a leased car as a sole trader, or claim the business share of the lease payments and
-          running costs under actual costs.
-        </p>
-        <h3>Can I claim for driving to a job interview?</h3>
-        <p>Not as an employee: you are not yet doing the job. A sole trader visiting a potential client can.</p>
-        <h3>I drive more than 10,000 miles. Is it worth switching method?</h3>
-        <p>
-          It may be, for a new vehicle you have not yet claimed for. For a vehicle already on the mileage rate, you must stay on
-          it.
-        </p>
-        <h3>Can I claim mileage for a car I use only partly for business?</h3>
-        <p>Yes. You only count the business miles, so a car used mostly for private journeys can still give a claim for the miles that were for work.</p>
-        <h3>What if I use two cars in the year?</h3>
-        <p>Add the business miles together. The first 10,000 business miles across all your cars and vans are at 45p, and everything above that at 25p.</p>
-        <h3>Is mileage paid by my employer shown on my payslip?</h3>
-        <p>It may be, but it is not taxed or subject to National Insurance as long as it is at or below the approved rates.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={16} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={15} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "45p", label: "Cars and vans, first 10,000 miles" },

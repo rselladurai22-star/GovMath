@@ -41,7 +41,6 @@ const TOC: TocItem[] = [
   { id: "checks", title: "NHS Health Check" },
   { id: "myths", title: "Common myths about weight" },
   { id: "tracking", title: "Tracking progress sensibly" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -412,25 +411,7 @@ export default function BmiGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={27} kicker="FAQs" title="Common questions">
-        <h3>Is BMI different for men and women?</h3>
-        <p>No. Adult BMI uses the same formula and ranges for both.</p>
-        <h3>What is a healthy BMI for my age?</h3>
-        <p>For adults of all ages the healthy range is 18.5 to 24.9, though doctors take age into account.</p>
-        <h3>Why does the NHS use lower thresholds for some groups?</h3>
-        <p>Because the risk of type 2 diabetes and heart disease starts at a lower BMI in those groups.</p>
-        <h3>How often should I check my BMI?</h3>
-        <p>Every few months is enough. Daily weight changes are mostly water.</p>
-        <h3>Is the NHS BMI calculator different from this one?</h3>
-        <p>
-          It uses the same formula and the same adult ranges. This calculator also shows the lower thresholds, your healthy weight range in
-          imperial units and your waist-to-height ratio.
-        </p>
-        <h3>Does BMI work if I have had an amputation?</h3>
-        <p>Not directly, as body weight is lower. Your healthcare team can adjust the calculation.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={28} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={27} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "18.5", label: "Underweight below" },

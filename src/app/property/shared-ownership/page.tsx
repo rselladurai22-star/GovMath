@@ -23,6 +23,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Who can buy through shared ownership?", a: "Usually households earning £80,000 or less (£90,000 in London) who are first-time buyers, used to own a home, or already own a shared ownership home." },
   { q: "What is staircasing?", a: "Buying more shares in your home, at its market value at the time. Your rent falls as your share rises." },
   { q: "Do I pay Stamp Duty on shared ownership?", a: "You choose: pay on your share now (with more possibly due once you own over 80%), or pay on the full value up front and nothing more later." },
+  { q: "Can I rent out my shared ownership home?", a: "Usually not without your provider's permission, which is normally only given in exceptional circumstances." },
+  { q: "Can I extend or renovate?", a: "You usually need the provider's permission for major changes, as set out in the lease." },
+  { q: "What happens if I fall behind on rent?", a: "Missing rent puts your home at risk, just like missing mortgage payments. Contact your provider early if you are struggling." },
+  { q: "Do I get my deposit back when I sell?", a: "You receive the value of your share at the time, less the mortgage still owed, so your deposit is part of your equity." },
+  { q: "Is shared ownership worth it?", a: "It can be a good way onto the ladder if you cannot buy outright, especially if you plan to staircase. Compare the full monthly cost, including rising rent and service charges, with renting and with buying outright." },
+  { q: "Can I pay off my mortgage early?", a: "Yes, subject to your mortgage terms. Paying off the mortgage does not reduce the rent, which is only reduced by buying more shares." },
+  { q: "What if the value of the home falls?", a: "Your share falls in value too. Staircasing becomes cheaper, but if you sell, you receive less than you paid. The rent is not reduced because prices fall." },
 ];
 
 export default async function SharedOwnershipPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

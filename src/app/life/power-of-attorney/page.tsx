@@ -22,6 +22,14 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Can I get the LPA fee reduced?", a: "Yes. The fee is halved if your income is under £12,000, and may be waived if you get certain means-tested benefits." },
   { q: "What happens if there is no LPA?", a: "Your family may need to apply to the Court of Protection to become a deputy, which costs £532 to apply and £320 a year in supervision fees." },
   { q: "Do I need a solicitor?", a: "No. You can make and register an LPA yourself online." },
+  { q: "Do I need a solicitor to make an LPA?", a: "No. Many people make their own online. A solicitor can help if your situation is complex." },
+  { q: "Does my husband or wife automatically have power of attorney?", a: "No. Being married does not give the right to manage your finances or make health decisions for you." },
+  { q: "Is an LPA the same as a will?", a: "No. An LPA works while you are alive. A will takes over after your death." },
+  { q: "Can I use the LPA before I lose capacity?", a: "A property and financial affairs LPA can be used straight away if you choose. A health and welfare LPA cannot." },
+  { q: "How many attorneys can I have?", a: "There is no fixed limit, but most people choose one to four, plus replacements." },
+  { q: "Can my attorneys be paid?", a: "Family members usually act for free, claiming only expenses. Professional attorneys, such as solicitors, charge fees that you agree in the LPA." },
+  { q: "Does an old Enduring Power of Attorney still work?", a: "Yes, if it was signed before October 2007. It covers only property and money, and must be registered with the OPG once the donor is losing capacity." },
+  { q: "Can I make an LPA for a parent?", a: "You can help, but the parent must make it themselves while they have capacity and choose their own attorneys." },
 ];
 
 export default async function LpaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

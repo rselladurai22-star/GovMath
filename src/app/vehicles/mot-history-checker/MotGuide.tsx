@@ -15,7 +15,6 @@ const TOC: TocItem[] = [
   { id: "penalties", title: "Penalties" },
   { id: "buying", title: "Using MOT history when buying" },
   { id: "preparing", title: "Preparing for the test" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -163,24 +162,7 @@ export default function MotGuide() {
         </ol>
       </GuideSection>
 
-      <GuideSection id="questions" n={13} kicker="FAQs" title="Common questions">
-        <h3>Do electric cars need an MOT?</h3>
-        <p>Yes, on the same timetable as petrol and diesel cars, though there is no emissions test.</p>
-        <h3>Can I tax a car without an MOT?</h3>
-        <p>No. You need a valid MOT, if the car needs one, before you can tax it.</p>
-        <h3>Will I get a reminder?</h3>
-        <p>You can sign up on GOV.UK for a free text or email reminder a month before your MOT is due.</p>
-        <h3>What is checked in an MOT?</h3>
-        <p>Lights, brakes, steering, suspension, tyres and wheels, seatbelts, the body and structure, the exhaust and emissions, the driver&rsquo;s view, the horn and the registration plates. The engine, clutch and gearbox are not checked.</p>
-        <h3>Does an MOT mean the car is in good condition?</h3>
-        <p>No. It only shows the car met the minimum standard on the day. A service and a proper inspection are still worth doing, especially when buying.</p>
-        <h3>What if I lose my MOT certificate?</h3>
-        <p>You do not need it. The result is recorded online, and you can print a copy from the GOV.UK MOT history service.</p>
-        <h3>Can I drive to the MOT if it has expired?</h3>
-        <p>Yes, but only to a test booked in advance, or to a garage for repairs needed to pass. You still need insurance and tax.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={14} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={13} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "3 / 4 years", label: "First MOT, GB / NI" },

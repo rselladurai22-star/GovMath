@@ -27,7 +27,6 @@ const TOC: TocItem[] = [
   { id: "diy", title: "Working it out yourself" },
   { id: "why-grows", title: "Why your balance keeps growing" },
   { id: "policy", title: "Changes to Plan 2 over time" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -342,18 +341,7 @@ export default function Plan2Guide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={25} kicker="FAQs" title="Common questions">
-        <h3>Does salary sacrifice reduce my repayments?</h3>
-        <p>Yes. Pension contributions through salary sacrifice reduce the pay used to work out repayments.</p>
-        <h3>Can I get a refund?</h3>
-        <p>Yes, if you repaid when your income for the year was below the threshold, or you repaid after the balance was cleared.</p>
-        <h3>When will the cap end?</h3>
-        <p>The 6% cap is set for September 2026 to August 2027. Rates for later years depend on RPI and any new decisions.</p>
-        <h3>Do I need to tell HMRC about my loan?</h3>
-        <p>Not if you are employed: tell your employer your plan type when you start, often using a starter checklist, and they deduct repayments. If you file Self Assessment, tick the student loan box on your return.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={26} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={25} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£29,385", label: "Threshold, frozen to 2030" },

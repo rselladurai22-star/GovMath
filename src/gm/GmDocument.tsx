@@ -1,4 +1,5 @@
 import { createElement } from "react";
+import { THEME_AFTER, THEME_BEFORE } from "./GmShell";
 import GmScripts, { type GmScript } from "./GmScripts";
 import { categoryGridHtml, topicMainHtml } from "./catalog";
 import type { CategorySlug } from "@/lib/calculators";
@@ -24,16 +25,17 @@ export default function GmDocument({ page, topic }: { page: GmPage; topic?: Cate
     html.replace("<!--GM:CATEGORYGRID-->", () => categoryGridHtml()).replace("<!--GM:TOPIC-->", () => (topic ? topicMainHtml(topic) : ""));
   return (
     <>
-      {page.css.map((href) => (
+      {[...page.css, ...THEME_BEFORE, ...THEME_AFTER].map((href) => (
         <link key={href} rel="stylesheet" href={`/gm/${href}`} precedence="gm" />
       ))}
-      {page.elements.map((el, i) =>
-        createElement(el.tag, {
-          key: i,
-          ...Object.fromEntries(Object.entries(el.attrs).map(([k, v]) => [PROP[k] ?? k, v])),
-          dangerouslySetInnerHTML: { __html: fill(el.html) },
-        }),
-      )}
+      <div className="gm-claret">
+        {page.elements.map((el, i) => {
+          const attrs = Object.fromEntries(Object.entries(el.attrs).map(([k, v]) => [PROP[k] ?? k, v]));
+          // The site theme wraps the main content (see GmShell).
+          if (el.tag === "main") attrs.className = [attrs.className, "gm-neutral"].filter(Boolean).join(" ");
+          return createElement(el.tag, { key: i, ...attrs, dangerouslySetInnerHTML: { __html: fill(el.html) } });
+        })}
+      </div>
       <GmScripts scripts={page.scripts as GmScript[]} />
     </>
   );

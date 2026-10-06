@@ -34,7 +34,6 @@ const TOC: TocItem[] = [
   { id: "contingency", title: "Why add a contingency?" },
   { id: "hidden", title: "Costs people forget" },
   { id: "renters", title: "Moving costs for renters" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -350,25 +349,7 @@ export default function MovingGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={21} kicker="FAQs" title="Common questions">
-        <h3>How much should I budget on top of my deposit?</h3>
-        <p>
-          It depends mostly on property tax. Without it, many buyers spend £3,000 to £5,000 on fees and removals; sellers add the
-          estate agent&apos;s fee.
-        </p>
-        <h3>Can I add moving costs to my mortgage?</h3>
-        <p>You can usually add the arrangement fee. Other costs need to be paid in cash, though some buyers borrow more to keep cash back.</p>
-        <h3>Do I pay the estate agent if I am only buying?</h3>
-        <p>No. In England, Wales and Northern Ireland the seller pays the estate agent.</p>
-        <h3>Do I get the survey money back if the purchase falls through?</h3>
-        <p>No. Surveys and valuations are paid for even if you pull out. Some insurance products cover abortive costs.</p>
-        <h3>Should I use the estate agent&apos;s recommended conveyancer?</h3>
-        <p>You do not have to. Agents often receive a referral fee, so compare quotes and check the firm&apos;s reviews.</p>
-        <h3>How long does moving take?</h3>
-        <p>In England, often three to four months from offer to completion, longer in a chain or with leasehold property.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£7,500", label: "Stamp Duty on a £350,000 home for a home mover" },

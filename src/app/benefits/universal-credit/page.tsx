@@ -23,6 +23,11 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much can I earn on Universal Credit?", a: "There is no fixed limit. Above any work allowance of £427 or £710 a month, your award falls by 55p for each £1 of take-home pay until it reaches zero." },
   { q: "Can I get Universal Credit with savings?", a: "Yes, up to £16,000. Savings between £6,000 and £16,000 reduce your award by £4.35 a month for each £250." },
   { q: "Does the benefit cap affect Universal Credit?", a: "Yes, unless your household earns at least £881 a month or someone gets a disability or carer's benefit, the health element or the carer element." },
+  { q: "Can I get Universal Credit if I work full time?", a: "Yes, if your pay is low enough or your rent or family large enough. There is no limit on hours." },
+  { q: "Do students get Universal Credit?", a: "Most full-time students cannot, but student parents, some disabled students and some couples can." },
+  { q: "Does Universal Credit count my partner's income?", a: "Yes. A couple is assessed together, so both incomes and both sets of savings count." },
+  { q: "Is Universal Credit taxed?", a: "No. It is not taxable income." },
+  { q: "What happens to Universal Credit at State Pension age?", a: "When you and any partner have both reached State Pension age, you move to Pension Credit and, if you rent, Housing Benefit instead." },
 ];
 
 export default async function UniversalCreditPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

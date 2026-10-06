@@ -38,6 +38,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much is the second home surcharge?", a: "5% on top of every band, from the first pound, for purchases of £40,000 or more." },
   { q: "When do I pay Stamp Duty?", a: "Your conveyancer files the return and pays HMRC within 14 days of completion." },
   { q: "Can I get the surcharge back?", a: "Yes, if the new home replaces your main home and you sell your previous main home within 3 years." },
+  { q: "Does Stamp Duty depend on my deposit?", a: "No. It is worked out on the price, whether you pay cash or borrow 95%." },
+  { q: "I am buying before selling. Do I pay the surcharge?", a: "Yes, if you own two homes at the end of the day of completion. Claim it back once you sell your old home within 3 years." },
+  { q: "Do I pay Stamp Duty on a garage or parking space?", a: "If bought with the home, it is part of the same purchase. Bought separately, non-residential rates may apply." },
+  { q: "Is Stamp Duty due on a house swap or part exchange?", a: "Each side is a purchase, but there are reliefs for part exchanges with house builders. Ask your conveyancer." },
+  { q: "Can I pay Stamp Duty in instalments?", a: "No. It is due in full within 14 days of completion." },
+  { q: "Do I pay Stamp Duty on a home I am given?", a: "Not if nothing is paid. If you take over the giver's mortgage, the amount of debt you take on counts as the price." },
+  { q: "Is Stamp Duty the same in Northern Ireland?", a: "Yes. Northern Ireland uses the same Stamp Duty Land Tax rates and rules as England." },
 ];
 
 export default async function StampDutyPage({ searchParams }: { searchParams: SearchParams }) {

@@ -22,6 +22,14 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much can I receive in dividends tax-free?", a: "£500, plus any unused Personal Allowance. With no other income, £13,070." },
   { q: "Did dividend tax go up in 2026?", a: "Yes. The basic and higher rates rose by 2 percentage points from 6 April 2026." },
   { q: "Do I need to file a tax return for dividends?", a: "Yes, if your dividends are £10,000 or more. Below that, HMRC can usually collect any tax through your tax code." },
+  { q: "Do I pay National Insurance on dividends?", a: "No. Dividends are not subject to National Insurance." },
+  { q: "Are dividends in an ISA taxed?", a: "No, and they do not use up your dividend allowance." },
+  { q: "Do dividends count towards the £100,000 Personal Allowance taper?", a: "Yes. They count as income for adjusted net income, as do savings and rent." },
+  { q: "Do I pay tax on reinvested dividends?", a: "Yes. Reinvesting does not change the tax; it is still your income." },
+  { q: "Is there tax on dividends from shares in my employer's share plan?", a: "Dividends on shares in a Share Incentive Plan can be reinvested tax-free. Other employee shares pay taxable dividends as normal." },
+  { q: "When is a dividend taxed if it is declared in March but paid in April?", a: "In the tax year it is paid, so a dividend paid on 6 April falls into the new tax year." },
+  { q: "Do I get a tax credit on dividends?", a: "No. The old 10% dividend tax credit was abolished in April 2016 and replaced by the dividend allowance." },
+  { q: "Are dividends from a Venture Capital Trust taxed?", a: "No. Dividends from VCT shares bought within the annual limit are tax-free." },
 ];
 
 export default async function DividendPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

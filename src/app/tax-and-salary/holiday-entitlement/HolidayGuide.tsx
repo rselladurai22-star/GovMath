@@ -30,7 +30,6 @@ const TOC: TocItem[] = [
   { id: "holiday-year", title: "Your holiday year" },
   { id: "agency-term", title: "Agency workers and term-time staff" },
   { id: "compressed", title: "Compressed hours and four-day weeks" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -331,38 +330,7 @@ export default function HolidayGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={17} kicker="Questions" title="Common questions">
-        <h3>Do I get holiday on a zero-hours contract?</h3>
-        <p>
-          Yes. You build up holiday at 12.07% of the hours you work, or receive rolled-up holiday pay if your employer
-          uses that method.
-        </p>
-        <h3>Can my employer make me take holiday?</h3>
-        <p>
-          Yes, if they give you notice of at least twice the length of the holiday. Many employers use this for a
-          Christmas shutdown.
-        </p>
-        <h3>Are bank holidays on top of 28 days?</h3>
-        <p>
-          Not by law. They can be part of the 28 days. Many employers give them on top, but that is a contract benefit.
-        </p>
-        <h3>What if I work more than five days a week?</h3>
-        <p>
-          The legal minimum is capped at 28 days, so a six-day week still gives 28 days. Your contract may give more.
-        </p>
-        <h3>Can I take holiday during my notice period?</h3>
-        <p>
-          Yes, if your employer agrees, and your employer can also require you to take holiday during notice if they give
-          you enough notice. Any holiday left untaken at the end must be paid.
-        </p>
-        <h3>Do I build up holiday while on maternity leave?</h3>
-        <p>
-          Yes. Statutory and contractual holiday continue to build up throughout maternity, paternity, adoption and shared
-          parental leave, and you can take it before or after your leave.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={18} kicker="Quick reference" title="Key numbers">
+      <GuideSection id="key-numbers" n={17} kicker="Quick reference" title="Key numbers">
         <KeyStats
           items={[
             { value: "5.6 weeks", label: "Statutory paid holiday a year" },

@@ -28,7 +28,7 @@ const TOC: TocItem[] = [
   { id: "order", title: "Which loan clears first" },
   { id: "employers", title: "Employer and other funding" },
   { id: "end", title: "When the loan is cleared" },
-  { id: "questions", title: "Common questions" },
+  { id: "budgeting", title: "Budgeting during your course" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -318,21 +318,29 @@ export default function PostgradGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={26} kicker="FAQs" title="Common questions">
-        <h3>Do I repay while studying?</h3>
-        <p>No. Repayments start from the April after you finish or leave the course.</p>
-        <h3>Does a PGCE count as a Postgraduate Loan?</h3>
-        <p>No. PGCE students get undergraduate-style funding, repaid under their undergraduate plan.</p>
-        <h3>Are Master&rsquo;s and Doctoral Loans added together?</h3>
-        <p>Yes. They form one balance, repaid at 6% above £21,000.</p>
-        <h3>Do I need to tell HMRC about my loan?</h3>
-        <p>Not if you are employed: tell your employer your plan type when you start, often using a starter checklist, and they deduct repayments. If you file Self Assessment, tick the student loan box on your return.</p>
-        <h3>Can I get a Master&rsquo;s Loan if I already have a Master&rsquo;s degree?</h3>
-        <p>Usually not. The loan is for students without an equivalent or higher qualification, with some exceptions.</p>
-        <h3>Is the loan means-tested?</h3>
-        <p>No. Your household income does not affect how much you can borrow.</p>
-        <h3>Does it matter how much I borrow?</h3>
-        <p>Your monthly repayment depends only on income. But a larger balance takes longer to clear and adds more interest, so borrow what you need.</p>
+      <GuideSection id="budgeting" n={26} kicker="Budgeting" title="Budgeting during your course">
+        <p>
+          Unlike undergraduate funding, the Postgraduate Loan is a single sum paid straight to you, not split into a fee
+          loan and a living cost loan. It is up to you to pay your tuition fees from it and make the rest last.
+        </p>
+        <ul>
+          <li>
+            <strong>Pay your fees first.</strong> Check when your university wants the fees and how much it will take in each
+            instalment, and set that money aside as soon as each payment arrives.
+          </li>
+          <li>
+            <strong>Plan for the gaps.</strong> Payments arrive in instalments across the year, so the money has to cover the
+            weeks in between, including the summer dissertation period.
+          </li>
+          <li>
+            <strong>Count the whole course.</strong> On a part-time course the loan is spread over more years, so each
+            year&rsquo;s payment is smaller.
+          </li>
+          <li>
+            <strong>Look for other money.</strong> University bursaries, departmental funding and part-time work can fill the
+            gap without adding to your loan.
+          </li>
+        </ul>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={27} kicker="Summary" title="Key numbers">

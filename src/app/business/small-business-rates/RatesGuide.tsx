@@ -32,7 +32,6 @@ const TOC: TocItem[] = [
   { id: "leases", title: "Before you sign a lease" },
   { id: "paying", title: "Paying your bill" },
   { id: "changes", title: "When your circumstances change" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -357,26 +356,7 @@ export default function RatesGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={17} kicker="FAQs" title="Common questions">
-        <h3>Who pays business rates, the landlord or the tenant?</h3>
-        <p>The occupier, so usually the tenant. The owner pays when the property is empty.</p>
-        <h3>Do I pay business rates on a market stall?</h3>
-        <p>Usually not on the stall itself, though the market operator may pay rates on the site.</p>
-        <h3>Can I pay monthly?</h3>
-        <p>Yes. Bills are normally in 10 monthly instalments, or 12 if you ask your council.</p>
-        <h3>Are business rates an allowable expense?</h3>
-        <p>Yes. They are deductible for Income Tax and Corporation Tax.</p>
-        <h3>What if my business shares a building?</h3>
-        <p>Each separately occupied part usually has its own rateable value and bill. Shared offices may include rates in the rent.</p>
-        <h3>Does small business rate relief apply to a pub or shop?</h3>
-        <p>Yes, if it is your only business property and its rateable value is under £15,000. It is worked out after the lower retail, hospitality and leisure multiplier.</p>
-        <h3>Is my rateable value the same as my rent?</h3>
-        <p>Not exactly. It is an estimate of the open-market rent at the valuation date, 1 April 2024 for the 2026 list, on standard assumptions. Your actual rent may be higher or lower.</p>
-        <h3>Do I pay rates while I fit out a new shop?</h3>
-        <p>Usually yes, from the date you become responsible for the property, even if you are not yet trading. Ask the council if the property was empty before.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "43.2p / 38.2p", label: "Small business multipliers (standard / RHL)" },

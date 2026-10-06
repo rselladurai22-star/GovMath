@@ -28,7 +28,6 @@ const TOC: TocItem[] = [
   { id: "weekly", title: "Weekly pay" },
   { id: "why-emergency", title: "Why HMRC uses emergency codes" },
   { id: "payslip-check", title: "Spotting an emergency code on your payslip" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -299,44 +298,7 @@ export default function EmergencyGuide() {
         </Callout>
       </GuideSection>
 
-      <GuideSection id="questions" n={16} kicker="Questions" title="Common questions">
-        <h3>How long does an emergency tax code last?</h3>
-        <p>Usually one to three payslips, until HMRC sends your employer the right code.</p>
-        <h3>Will I always get the money back?</h3>
-        <p>
-          If you overpaid, yes, either through payroll or after the tax year ends. Emergency codes can occasionally lead
-          to underpaying, for example on a second job; HMRC then collects it through your code the following year.
-        </p>
-        <h3>Does an emergency code affect National Insurance?</h3>
-        <p>No. National Insurance is worked out on each payment anyway, and does not depend on your tax code.</p>
-        <h3>Can I ask my employer to stop using it?</h3>
-        <p>
-          Your employer must use the code HMRC gives them. The way to change it is to give them your P45 or contact HMRC.
-        </p>
-        <h3>I started in April. Why am I on an emergency code?</h3>
-        <p>
-          Usually because your employer had no P45 or starter checklist. If you started in April with no other income, an
-          M1 code gives almost the same result as a cumulative one, so you may not be overpaying at all.
-        </p>
-        <h3>Can a refund agent get my money back faster?</h3>
-        <p>
-          No. They use the same HMRC process you can use yourself for free, and take a share of your refund as their fee.
-        </p>
-        <h3>Will my employer know I was overtaxed?</h3>
-        <p>
-          Payroll applies whatever code HMRC sends. Once the correct cumulative code arrives, the payroll system works out
-          the overpayment automatically and refunds it on your next payday.
-        </p>
-        <h3>Does an emergency code affect my student loan?</h3>
-        <p>
-          No. Student loan repayments are worked out on each payment using the plan threshold, whatever your tax code.
-          They depend on your pay, not your tax-free allowance.
-        </p>
-        <h3>Is an emergency code the same as being on the wrong code?</h3>
-        <p>Not quite. An emergency code is temporary by design; a wrong code is a mistake. Both are fixed the same way.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={17} kicker="Quick reference" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={16} kicker="Quick reference" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "1257L", label: "Standard tax code" },

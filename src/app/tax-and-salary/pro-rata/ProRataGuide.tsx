@@ -27,7 +27,6 @@ const TOC: TocItem[] = [
   { id: "pension-pay", title: "Pensions, sick pay and parental pay" },
   { id: "rises", title: "Pay rises, bonuses and extra hours" },
   { id: "salary-table", title: "Three and four days at common salaries" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -336,31 +335,7 @@ export default function ProRataGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={13} kicker="Questions" title="Common questions">
-        <h3>Is a pro-rata salary the same as an hourly rate?</h3>
-        <p>
-          It works out at the same hourly rate as the full-time job. If a job pays £40,000 for 37.5 hours, the hourly rate
-          is £20.51 whether you work 15 hours or 37.5.
-        </p>
-        <h3>Do part-time workers get bank holidays?</h3>
-        <p>
-          You are entitled to 5.6 weeks of paid holiday, which can include bank holidays. Most employers pro-rate bank
-          holidays into your total entitlement. If your contract only gives bank holidays when they fall on your
-          working days, check that your total still meets the statutory minimum.
-        </p>
-        <h3>Will going part-time affect my pension?</h3>
-        <p>
-          Contributions are usually a percentage of your actual pay, so they fall in line with your salary. In a final
-          salary or career average scheme, the pension you build up each year is also based on your actual pay.
-        </p>
-        <h3>Can my employer refuse a request to go part-time?</h3>
-        <p>
-          Yes, but only for one of eight business reasons set out in law, such as extra costs or an inability to
-          reorganise work. They must consult you before refusing and reply within two months.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={14} kicker="Quick reference" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={13} kicker="Quick reference" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£12,570", label: "Tax-free Personal Allowance for the year" },

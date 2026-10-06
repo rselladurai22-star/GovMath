@@ -23,6 +23,12 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Does a £12,570 salary cost employer National Insurance?", a: "Yes, 15% on the £7,570 above £5,000, which is £1,135.50, unless the Employment Allowance covers it. The salary and NI both reduce Corporation Tax." },
   { q: "What salary do I need for a State Pension year?", a: "At least the Lower Earnings Limit, £6,708 for 2026/27. No NI is paid on a salary between that and £12,570, but the year still counts." },
   { q: "Is a limited company better than being a sole trader?", a: "Not always. In 2026/27, if all profit is paid out, a sole trader often keeps more. The company route helps most when profit is left in the company or paid into a pension." },
+  { q: "Can I pay myself only dividends?", a: "Yes, but you lose the Corporation Tax saving on a tax-free salary, and the year does not count for your State Pension unless you pay voluntary NI." },
+  { q: "Should I take a salary of £5,000 or £12,570?", a: "Without the Employment Allowance, £12,570 still usually leaves more after tax in 2026/27, despite the employer NI above £5,000, because the salary and NI save Corporation Tax." },
+  { q: "Do I need to take all the profit out?", a: "No. Profit left in the company has paid Corporation Tax but no dividend tax. Many directors take only what they need and keep within the basic rate band." },
+  { q: "When are dividends taxed?", a: "In the tax year they are paid, through your Self Assessment return, due by 31 January after the year ends." },
+  { q: "Does the Employment Allowance apply if my spouse is also a director?", a: "Not if the only people paid are directors and there is just one of them. With two directors on the payroll, the company can usually claim it." },
+  { q: "Is it worth paying myself through payroll every month?", a: "Yes for the salary part. A director's salary must go through PAYE, and a regular monthly salary keeps the records simple. Dividends can be paid when profits allow." },
 ];
 
 export default async function DivSalaryPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

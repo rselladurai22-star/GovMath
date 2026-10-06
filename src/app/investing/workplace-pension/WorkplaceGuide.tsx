@@ -23,7 +23,6 @@ const TOC: TocItem[] = [
   { id: "several-jobs", title: "Part-time work and several jobs" },
   { id: "breaks", title: "Career breaks" },
   { id: "mistakes", title: "Common mistakes" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -350,24 +349,7 @@ export default function WorkplaceGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={21} kicker="FAQs" title="Common questions">
-        <h3>Do I have to be in a workplace pension?</h3>
-        <p>No, you can opt out, but you lose your employer&rsquo;s contributions and the tax relief.</p>
-        <h3>Can I pay in more than the minimum?</h3>
-        <p>Yes, up to the annual allowance of £60,000 a year, including employer contributions, limited to your earnings for tax relief.</p>
-        <h3>What if I am self-employed?</h3>
-        <p>You are not auto-enrolled. You can set up a personal pension or SIPP and get the same tax relief.</p>
-        <h3>Can my employer pay less than 3%?</h3>
-        <p>No, not on qualifying earnings. If your employer uses a different basis, such as basic pay, it must still meet one of the legal tests that give at least the same overall result.</p>
-        <h3>What happens to my pension if I die?</h3>
-        <p>It can usually be passed to the people you nominate. Fill in an expression of wish form with your provider and keep it up to date. From April 2027, unused pensions count towards your estate for inheritance tax.</p>
-        <h3>Is my pension safe if my employer goes bust?</h3>
-        <p>Your pot is held by the pension provider, separately from your employer, so it is not lost if your employer fails. Contributions owed but not paid may be recoverable.</p>
-        <h3>Do the thresholds change each year?</h3>
-        <p>The government reviews them each year. For 2026/27 they are unchanged: £10,000 to be enrolled, and qualifying earnings from £6,240 to £50,270.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£10,000", label: "Auto-enrolment trigger" },

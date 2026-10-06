@@ -25,7 +25,7 @@ const TOC: TocItem[] = [
   { id: "banking", title: "Student bank accounts and overdrafts" },
   { id: "mistakes", title: "Common mistakes" },
   { id: "weekly", title: "Turning the loan into a weekly budget" },
-  { id: "questions", title: "Common questions" },
+  { id: "changes", title: "If your circumstances change" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -286,23 +286,30 @@ export default function MaintenanceGuide() {
         <p>Remember that rent for halls and private lets often covers more than 40 weeks, so check the length of your contract.</p>
       </GuideSection>
 
-      <GuideSection id="questions" n={23} kicker="FAQs" title="Common questions">
-        <h3>Is the final year different?</h3>
-        <p>Yes. The final year is shorter, so the loan is a little lower. The calculator shows the amount for other years.</p>
-        <h3>Do my part-time earnings reduce the loan?</h3>
-        <p>Usually not. Your own earnings during the course are not normally counted.</p>
-        <h3>Can I borrow less than I am offered?</h3>
-        <p>Yes. You can choose a smaller amount, and change it later in the year.</p>
-        <h3>What if my parents will not give their income details?</h3>
-        <p>Contact Student Finance England. You can usually get the minimum loan without their details, and in some cases, such as estrangement, be assessed as independent.</p>
-        <h3>Can I get more if my course is longer than 30 weeks?</h3>
-        <p>Yes. A Long Courses Loan adds an amount for each extra week of attendance, for example on some medical and accelerated courses.</p>
-        <h3>Do I pay the maintenance loan back separately?</h3>
-        <p>No. It joins your tuition fee loan in one Plan 5 balance, repaid at 9% of income above £25,000.</p>
-        <h3>Is there a maintenance grant?</h3>
-        <p>Not for most students starting in 2026/27 in England. The government has announced plans to bring back maintenance grants for some students later in the decade; check GOV.UK for the latest.</p>
-        <h3>Will I get the same amount every year?</h3>
-        <p>Not necessarily. Household income is reassessed each year, and the final year is lower because it is shorter.</p>
+      <GuideSection id="changes" n={23} kicker="Changes" title="If your circumstances change">
+        <p>
+          Your loan is set for the whole academic year when you apply, but it is not fixed for good. Tell Student
+          Finance England as soon as something changes, because the amount can go up or down part-way through the year.
+        </p>
+        <ul>
+          <li>
+            <strong>Household income falls.</strong> If your parents&rsquo; income this tax year is likely to be well below the
+            year Student Finance England normally uses, you can ask for a current year income assessment. It can raise
+            your loan, but you must send the actual figures once the year ends.
+          </li>
+          <li>
+            <strong>Your parents separate or a parent dies.</strong> The household is reassessed, often with only one
+            parent&rsquo;s income counted.
+          </li>
+          <li>
+            <strong>You move out, or back home.</strong> Living away from home and living with parents have different
+            rates, so a move part-way through the year changes your remaining instalments.
+          </li>
+          <li>
+            <strong>You change course or leave.</strong> Payments stop or are recalculated, and you may be asked to repay
+            some of an instalment straight away.
+          </li>
+        </ul>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={24} kicker="Summary" title="Key numbers">

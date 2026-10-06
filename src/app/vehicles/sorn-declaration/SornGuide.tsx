@@ -16,7 +16,6 @@ const TOC: TocItem[] = [
   { id: "seasonal", title: "Seasonal and classic cars" },
   { id: "other-routes", title: "Selling, scrapping and exporting" },
   { id: "mistakes", title: "Common mistakes" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -192,16 +191,7 @@ export default function SornGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={14} kicker="FAQs" title="Common questions">
-        <h3>Does a SORN last forever?</h3>
-        <p>Yes, until the car is taxed, sold, scrapped or exported. You do not renew it.</p>
-        <h3>Can I SORN a car with no tax left?</h3>
-        <p>Yes. You must make a SORN or tax the car as soon as the tax runs out, or you risk the £80 penalty.</p>
-        <h3>Can I get a refund on a car I sold?</h3>
-        <p>Yes. Tell the DVLA you sold it, and any full months left are refunded automatically.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={15} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={14} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "£0", label: "Cost of a SORN" },

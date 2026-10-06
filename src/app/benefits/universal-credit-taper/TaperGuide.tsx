@@ -31,7 +31,6 @@ const TOC: TocItem[] = [
   { id: "pay-rise", title: "A pay rise or more hours" },
   { id: "second-earner-example", title: "A second earner in numbers" },
   { id: "plan", title: "Planning your hours" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -358,30 +357,7 @@ export default function TaperGuide() {
         </ol>
       </GuideSection>
 
-      <GuideSection id="questions" n={17} kicker="FAQs" title="Common questions">
-        <h3>Is it ever worse to work more on Universal Credit?</h3>
-        <p>
-          Not on Universal Credit alone. The taper is 55%, so you always keep part of an extra pound. Extra costs such as childcare or travel
-          can still eat into the gain.
-        </p>
-        <h3>Does the taper use gross or net pay?</h3>
-        <p>Net. Universal Credit counts pay after Income Tax, National Insurance and pension contributions.</p>
-        <h3>Do I get a work allowance with no children?</h3>
-        <p>Only if you have limited capability for work. Otherwise the taper applies from the first pound.</p>
-        <h3>Does Carer&rsquo;s Allowance count as earnings?</h3>
-        <p>No. It is unearned income and is taken off pound for pound, not tapered.</p>
-        <h3>Is overtime treated differently?</h3>
-        <p>No. Overtime, bonuses and commission are earnings and are tapered in the month they are paid.</p>
-        <h3>Does the taper apply to Statutory Sick Pay or Maternity Pay?</h3>
-        <p>Yes. Statutory Sick Pay and Statutory Maternity Pay are paid through payroll and count as earnings, so they are tapered like wages.</p>
-        <h3>Can I choose to be paid less to keep my Universal Credit?</h3>
-        <p>
-          You can, but you will be worse off. Each pound of pay given up costs you at least 32p, and usually 45p or more, of household
-          income. Paying more into a pension is the one way to swap pay for something of value to you.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "55%", label: "Taper on take-home pay" },

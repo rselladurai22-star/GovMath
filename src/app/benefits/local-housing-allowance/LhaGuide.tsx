@@ -35,7 +35,6 @@ const TOC: TocItem[] = [
   { id: "landlords", title: "For landlords" },
   { id: "rent-officer", title: "How rates are set" },
   { id: "young", title: "Young people and the shared rate in practice" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -406,20 +405,7 @@ export default function LhaGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={20} kicker="FAQs" title="Common questions">
-        <h3>Will LHA rates go up in April 2027?</h3>
-        <p>That depends on the government&rsquo;s decision in the autumn. Rates have been frozen since April 2024.</p>
-        <h3>Do I get the LHA rate if my rent is lower?</h3>
-        <p>No. You get your actual rent or the LHA rate, whichever is lower.</p>
-        <h3>Does the LHA include bills?</h3>
-        <p>No. Energy, water and food are not covered, even if your rent includes them. Some service charges are covered.</p>
-        <h3>What if I share a house with friends?</h3>
-        <p>Each tenant is assessed separately, on their own share of the rent and their own household.</p>
-        <h3>Does my age matter if I have children?</h3>
-        <p>No. Anyone with a child gets at least the one-bedroom rate, whatever their age.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "200", label: "Broad Rental Market Areas in the UK" },

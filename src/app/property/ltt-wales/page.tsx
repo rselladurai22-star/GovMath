@@ -23,6 +23,11 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What are the higher rates for second homes?", a: "5% up to £180,000, 8.5% to £250,000, 10% to £400,000, 12.5% to £750,000, 15% to £1.5 million and 17% above. They do not apply to homes bought for under £40,000." },
   { q: "Can I get the higher rates back?", a: "Yes, if the new home replaces your main home and you sell your previous main home within 3 years. Claim the difference from the Welsh Revenue Authority." },
   { q: "When do I pay LTT?", a: "Your solicitor files the return and pays the Welsh Revenue Authority within 30 days of completion." },
+  { q: "Do I pay LTT on a home under £225,000?", a: "No, unless the higher rates apply because you will own another home." },
+  { q: "I live in England and am buying a holiday cottage in Wales. What do I pay?", a: "LTT at the higher rates, because you will own two homes. LTT depends on where the property is, not where you live." },
+  { q: "Does Wales charge non-UK residents more?", a: "No. Wales has no non-resident surcharge, though the higher rates still apply if you own a home anywhere else." },
+  { q: "Can I pay LTT in instalments?", a: "Not normally. It is due in full within 30 days of completion." },
+  { q: "Do I pay LTT on a home I inherit?", a: "No. Inheriting is not a purchase. But owning an inherited home can make a later purchase subject to the higher rates." },
 ];
 
 export default async function LTTPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

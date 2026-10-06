@@ -21,7 +21,6 @@ const TOC: TocItem[] = [
   { id: "couples", title: "Couples and partners" },
   { id: "using", title: "Using the calculator" },
   { id: "mistakes", title: "Common mistakes" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -323,22 +322,7 @@ export default function SpaGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Is State Pension age different for men and women?</h3>
-        <p>No. It has been the same for both since November 2018.</p>
-        <h3>Can I get my State Pension early?</h3>
-        <p>No. The State Pension cannot be paid before State Pension age, even in ill health. Benefits may help if you cannot work.</p>
-        <h3>Does living abroad affect my State Pension?</h3>
-        <p>You can claim from abroad. In some countries outside the European Economic Area, it is frozen at the rate when you first claim.</p>
-        <h3>Will I get a letter?</h3>
-        <p>The Department for Work and Pensions usually writes about two months before you reach State Pension age, explaining how to claim. If nothing arrives three weeks before, contact the Pension Service.</p>
-        <h3>Is the State Pension taxed?</h3>
-        <p>Yes, it is taxable income, but no tax is taken off it. Any tax due is usually collected through the tax code on another pension or your wages, or through Self Assessment.</p>
-        <h3>Do I need to stop work to claim?</h3>
-        <p>No. You can work full time and still get your State Pension in full. There is no earnings limit.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "66 → 67", label: "2026 to 2028" },

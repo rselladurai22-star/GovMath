@@ -22,6 +22,11 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How much will I repay on \u00a335,000?", a: "9% of \u00a38,100: \u00a3729 a year or \u00a360.75 a month." },
   { q: "What is the Plan 1 interest rate?", a: "4.1% from September 2026, the lower of RPI and the Bank of England base rate plus 1%." },
   { q: "When is Plan 1 written off?", a: "25 years after you were first due to repay for loans from September 2006, or at 65 for older loans." },
+  { q: "Will the Plan 1 threshold go up?", a: "Yes. It rises each April in line with RPI." },
+  { q: "Does Plan 1 affect my credit score?", a: "No, but mortgage lenders count the repayments as an outgoing." },
+  { q: "I studied in Northern Ireland. Is anything different?", a: "Plan 1 rules apply, with loans administered by Student Finance NI and written off after 25 years for loans from 2007/08." },
+  { q: "Do I need to tell HMRC about my loan?", a: "Not if you are employed: tell your employer your plan type when you start, often using a starter checklist, and they deduct repayments. If you file Self Assessment, tick the student loan box on your return." },
+  { q: "Is interest on Plan 1 likely to change?", a: "It changes each September, based on March RPI and the Bank of England base rate. When base rate plus 1% is lower than RPI, that lower figure applies." },
 ];
 
 export default async function Plan1Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

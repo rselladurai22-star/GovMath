@@ -26,7 +26,6 @@ const TOC: TocItem[] = [
   { id: "costs", title: "When your costs go up" },
   { id: "improve", title: "Ways to improve your margin" },
   { id: "accounts", title: "Margin in your accounts and tax return" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -400,38 +399,7 @@ export default function MarginGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={12} kicker="FAQs" title="Common questions">
-        <h3>Can a margin be more than 100%?</h3>
-        <p>
-          No. A margin of 100% means the sale cost you nothing. Markup has no upper limit: an item bought for £1 and sold for
-          £10 has a 900% markup but a 90% margin.
-        </p>
-        <h3>Is gross margin the same as gross profit?</h3>
-        <p>No. Gross profit is an amount in pounds. Gross margin is that amount as a percentage of sales.</p>
-        <h3>Should I include my own time in the cost?</h3>
-        <p>
-          A sole trader&rsquo;s own time is not a cost in the accounts, so it is not part of gross margin. But your margin
-          has to be big enough to pay you as well as your overheads. If you employ people to do the work, their wages for that
-          work can be treated as a direct cost.
-        </p>
-        <h3>Do delivery costs count?</h3>
-        <p>
-          Delivery you pay to get goods to a customer is a direct cost of that sale. Delivery to get stock into your premises
-          is usually counted as part of the cost of the stock.
-        </p>
-        <h3>What about card fees and marketplace commission?</h3>
-        <p>
-          They vary with each sale, so treat them as direct costs. A 10% marketplace fee on a sale at a 40% margin takes a
-          quarter of your gross profit.
-        </p>
-        <h3>Why is my margin different in my accounts?</h3>
-        <p>
-          Accounts include stock losses, discounts, returns and stock changes that a per-item calculation leaves out. If your
-          accounts show a much lower margin than your prices suggest, those are the places to look.
-        </p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={13} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={12} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "Profit ÷ price", label: "Gross margin" },

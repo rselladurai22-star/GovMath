@@ -33,7 +33,6 @@ const TOC: TocItem[] = [
   { id: "company", title: "Property owned through a company" },
   { id: "non-resident", title: "Non-residents and moving abroad" },
   { id: "records", title: "Records to keep" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers for 2026/27" },
 ];
 
@@ -339,29 +338,7 @@ export default function PropertyCGTGuide() {
         <p>Keep them for at least a year after the Self Assessment deadline for the tax year of the sale, and longer if you can.</p>
       </GuideSection>
 
-      <GuideSection id="questions" n={20} kicker="FAQs" title="Common questions">
-        <h3>Do I pay CGT when I sell my home?</h3>
-        <p>Not if it was your only or main home throughout and the garden is under half a hectare. Private Residence Relief covers it.</p>
-        <h3>Is CGT due at exchange or completion?</h3>
-        <p>For tax, the disposal happens at exchange, which sets the tax year. The 60-day reporting deadline runs from completion.</p>
-        <h3>Can I deduct mortgage interest from the gain?</h3>
-        <p>No. Interest is a cost of financing, not of buying or improving the property.</p>
-        <h3>I own two homes. Which one gets relief?</h3>
-        <p>
-          The one that is your main residence in practice. You can nominate which one counts by telling HMRC within two years of
-          having a second home.
-        </p>
-        <h3>Does the 60-day rule apply to shares or other assets?</h3>
-        <p>No, only to UK residential property. Other gains are reported through Self Assessment.</p>
-        <h3>Can I pay CGT in instalments?</h3>
-        <p>Not usually. It is due within 60 days, though you can ask HMRC for time to pay if you cannot afford it.</p>
-        <h3>What exchange rate do I use for property abroad?</h3>
-        <p>UK residents pay UK CGT on property abroad too. Convert the purchase and sale prices into pounds at the rates on those dates.</p>
-        <h3>Do I pay CGT if I sell at a loss?</h3>
-        <p>No. Report the loss to HMRC so you can set it against future gains.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£3,000", label: "Annual exempt amount" },

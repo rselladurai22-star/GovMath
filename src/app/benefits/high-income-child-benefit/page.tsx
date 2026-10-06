@@ -23,6 +23,14 @@ const FAQS: { q: string; a: string }[] = [
   { q: "How can I reduce the charge?", a: "Pension contributions, Gift Aid and salary sacrifice all reduce adjusted net income, which reduces or removes the charge." },
   { q: "Is it based on household income?", a: "No. Only the higher individual income counts, so two earners on £55,000 each pay nothing." },
   { q: "Should I stop claiming Child Benefit?", a: "If you would repay it all, stop the payments but keep the claim, so the parent at home keeps National Insurance credits." },
+  { q: "Is the charge based on household income?", a: "No. It is based on the higher individual income of the two partners." },
+  { q: "Does a salary sacrifice pension reduce the charge?", a: "Yes. The sacrificed pay is not taxable income, so it never counts towards adjusted net income." },
+  { q: "What if my partner does not want me to know their income?", a: "HMRC will not share it, but you can each check your own position. The person with the higher income is responsible." },
+  { q: "What happens if I separate during the year?", a: "The charge only covers the weeks you were living together as a couple, or weeks you received the benefit yourself." },
+  { q: "Do I pay the charge if the child lives with my ex-partner?", a: "Not if you are not receiving the Child Benefit and do not live with the person who is." },
+  { q: "Does the charge apply to Guardian's Allowance?", a: "No. Only Child Benefit is taken back by the charge." },
+  { q: "Is the charge the same in Scotland?", a: "Yes. Adjusted net income is worked out the same way, though Scottish Income Tax rates differ, so the combined marginal rate is a little higher." },
+  { q: "Can I pay the charge in instalments?", a: "If it is collected through your tax code it is spread over the year automatically. Through Self Assessment it is due by 31 January, but HMRC can agree a payment plan." },
 ];
 
 export default async function HicbcPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

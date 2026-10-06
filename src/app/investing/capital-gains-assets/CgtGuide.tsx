@@ -25,7 +25,6 @@ const TOC: TocItem[] = [
   { id: "records", title: "Keeping records" },
   { id: "timing", title: "Timing a sale" },
   { id: "inherited", title: "Inherited assets" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -360,29 +359,7 @@ export default function CgtGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="questions" n={23} kicker="FAQs" title="Common questions">
-        <h3>Do I pay Capital Gains Tax on my home?</h3>
-        <p>Not usually, if it has been your main home throughout and the garden is under half a hectare.</p>
-        <h3>Do I pay Capital Gains Tax on gifts to my children?</h3>
-        <p>Yes. A gift is treated as a sale at market value, so tax may be due even though you receive nothing.</p>
-        <h3>Can I carry forward the £3,000 allowance?</h3>
-        <p>No. It is lost if not used in the tax year.</p>
-        <h3>Is Capital Gains Tax charged on death?</h3>
-        <p>No. Heirs inherit at the market value on the date of death, though Inheritance Tax may apply.</p>
-        <h3>Do I pay Capital Gains Tax on investment funds in an ISA?</h3>
-        <p>No. Gains inside an ISA are tax-free and do not need to be reported.</p>
-        <h3>Is there Capital Gains Tax on selling a car?</h3>
-        <p>No. Private cars are exempt, even classic cars that rise in value.</p>
-        <h3>What if I sell at a loss?</h3>
-        <p>
-          Report the loss to HMRC within four years. It can then be set against future gains, so it is worth claiming even if you have no gains this
-          year.
-        </p>
-        <h3>Does Capital Gains Tax push me into a higher income tax band?</h3>
-        <p>No. Gains do not change your income tax, although your income decides whether a gain is taxed at 18% or 24%.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={24} kicker="Summary" title="Key numbers for 2026/27">
+      <GuideSection id="key-numbers" n={23} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£3,000", label: "Annual exempt amount" },

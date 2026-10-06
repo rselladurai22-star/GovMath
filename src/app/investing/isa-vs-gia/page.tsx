@@ -22,6 +22,15 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What is the ISA allowance for 2026/27?", a: "£20,000 a year across all your ISAs." },
   { q: "What changes to ISAs are coming?", a: "From 6 April 2027, savers under 65 can put at most £12,000 a year into cash ISAs. The overall limit stays at £20,000." },
   { q: "What is bed and ISA?", a: "Selling investments in a general account and buying them back inside an ISA, so future growth is tax-free." },
+  { q: "Do I need to report my ISA to HMRC?", a: "No. ISA income and gains do not go on a tax return." },
+  { q: "Can I have more than one ISA?", a: "Yes. You can open several, as long as your total payments stay within £20,000 a year." },
+  { q: "What happens to an ISA when I die?", a: "It stays tax-free until the estate is settled, and a spouse can inherit an extra ISA allowance equal to its value." },
+  { q: "Does an ISA protect from Inheritance Tax?", a: "No. ISAs count towards your estate for Inheritance Tax." },
+  { q: "Can I lose money in a stocks and shares ISA?", a: "Yes. The ISA only changes the tax; the investments inside can still fall in value." },
+  { q: "Should I choose a cash ISA or a stocks and shares ISA?", a: "Cash suits money you need within about five years. For longer periods, shares have usually grown faster than cash, though with ups and downs along the way." },
+  { q: "Do I get the ISA allowance if I live abroad?", a: "You can keep an existing ISA, but you cannot pay into one while you are not resident in the UK, with limited exceptions." },
+  { q: "Does it matter when in the tax year I invest?", a: "Investing early in the tax year gives the money longer to grow tax-free, but regular monthly investing works well too." },
+  { q: "Is the calculator's growth rate realistic?", a: "It is your choice. Lower growth makes the ISA advantage smaller, higher growth makes it bigger. Try a range of rates to see how sensitive the result is." },
 ];
 
 export default async function IsaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

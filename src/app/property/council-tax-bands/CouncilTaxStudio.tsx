@@ -50,8 +50,7 @@ export default function CouncilTaxStudio({ query }: { query: Query }) {
 
   return (
     <Studio
-      title=""
-      variant="clear"
+      title="Your home"
       ready={st.ready}
       onCalculate={st.calculate}
       calculateLabel="Work out my council tax"

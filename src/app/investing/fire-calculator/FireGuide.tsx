@@ -21,7 +21,6 @@ const TOC: TocItem[] = [
   { id: "savings-rate", title: "Your savings rate" },
   { id: "drawing", title: "Drawing an income" },
   { id: "mistakes", title: "Common mistakes" },
-  { id: "questions", title: "Common questions" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -342,18 +341,7 @@ export default function FireGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="questions" n={19} kicker="FAQs" title="Common questions">
-        <h3>Is the 4% rule safe in the UK?</h3>
-        <p>It is a starting point, not a guarantee. For retirements longer than 30 years, many people use 3% to 3.5% or plan to cut spending in bad years.</p>
-        <h3>Should I include my partner?</h3>
-        <p>Enter your joint spending, joint savings and, if you both qualify, both State Pensions added together.</p>
-        <h3>What if I have a defined benefit pension?</h3>
-        <p>Treat it like the State Pension: it reduces the spending your pot must cover from the age it starts.</p>
-        <h3>Does the calculator include my house?</h3>
-        <p>No. Only include money you can draw an income from. Downsizing later could add to your pot.</p>
-      </GuideSection>
-
-      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "4%", label: "Classic safe withdrawal rate" },
