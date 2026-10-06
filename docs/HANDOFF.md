@@ -1,7 +1,7 @@
 # GovMath project memory
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 6 October 2026 (Phases 0 to 8 live; Phase 9 under way; the claret and neutral Axis-style design now applies to every page).
+Last updated: 6 October 2026, evening (Phases 0 to 8 live; Phase 9 batch A live; site-wide design, trust line, header search, speed and caching work, GA4 live; AdSense under review).
 
 ## Goal
 
@@ -35,8 +35,8 @@ We go category by category, one phase at a time.
 - **Checks:** `npx tsc --noEmit -p .`, `npx eslint .` (no warnings) and `npx vitest run`.
 - **Playwright Chromium:** `/opt/pw-browsers/chromium-1194/chrome-linux/chrome`. Run scripts from the repo directory and delete them afterwards (the stop hook flags untracked files).
 - **Release checks:**
-  - Count each guide's words by the `innerText` of `.g-article`. The target is 2,000 or more.
-  - Sweep every sitemap page at widths 375, 768, 1280, 1920 and 2560. Check for horizontal overflow, the text NaN, Infinity or undefined, and console errors (ignore "Failed to load resource").
+  - Count each page's words as the `innerText` of `.g-article` plus the page FAQ (`.fullfaq`, with every `details` opened). The target is 2,000 or more (simple tools 1,000 to 1,500).
+  - Sweep every sitemap page at widths 375, 768, 1280, 1920 and 2560. Check for horizontal overflow, the text NaN, Infinity or undefined, and console errors (ignore "Failed to load resource"; on a local `next start`, also ignore "Refused to execute script from …/_vercel/insights/script.js" and `speed-insights`: those scripts only exist on Vercel, and `nosniff` makes the browser refuse the local 404 page). The page list must include `/` itself (it was once missed); take it from `/sitemap.xml`. The salary page's "no results" flag is a known false alarm. Also crawl for words joined after inline tags (see **JSX spaces**).
 
 ## How a flagship page is built
 
@@ -62,10 +62,10 @@ Use any `src/app/property/*` or `src/app/tax-and-salary/*` page as the template.
   - Frame: `Guide`, `GuideSection`.
   - Blocks: `WorkedExample`, `DataTable`, `CompareCards`, `Timeline`, `KeyStats`, `Callout`.
   - Charts: `BandBar`, `Bars`, `StepChart`.
-  - End with sections `questions` then `key-numbers`.
+  - End with the `key-numbers` section. **No `questions` section**: put every question in the page's `FAQS` array in `page.tsx` (one FAQ per page since October 2026).
 - **Logic** goes in pure, tested libraries under `src/lib/<area>/`. **Compute every figure quoted in a guide from these libraries** using a temporary test, never by hand. Hand arithmetic caused errors several times.
 - `git rm` the old `*Calculator.tsx` once it is replaced.
-- Adding sections to a guide: a helper that inserted sections before "questions" and renumbered the rest was used. It is easy to recreate. Write `'` as `&rsquo;` in any inserted JSX text, or ESLint fails.
+- Adding sections to a guide: insert the section before `key-numbers`, add its TOC entry, and renumber every `n={…}` in order (only `GuideSection` uses `n`). It is easy to recreate. Write `'` as `&rsquo;` in any inserted JSX text, or ESLint fails.
 - Vitest does not resolve the `@/` alias, so `src/lib` files must use relative imports.
 - **JSX spaces:** a space after a closing inline tag (`</strong>`, `</a>`, `</b>`…) is dropped in the build when the following text contains an HTML entity (`&rsquo;`, `&quot;`…), joining two words. Write `</strong>{" "}` there. 59 such spots were fixed in October 2026; a crawl for `</strong>` followed directly by a letter finds new ones.
 - Playwright is not a project dependency: install `playwright-core` in a scratch folder and launch with `executablePath`.
@@ -106,7 +106,7 @@ How they are built:
 
 **Caching (October 2026):** `next.config.ts` caches `/gm/fonts/*` and `/gm/*.webp|png|jpg|svg` for a year (`immutable`), so **a changed font or image must get a new file name**. Stylesheets are linked as `/gm/<file>.css?v=<GM_CSS_VERSION>`, a hash of every `public/gm/*.css` computed in `next.config.ts`; versioned requests are cached for a year and the version changes whenever any stylesheet changes. Lighthouse's "legacy JavaScript" (12 KB) is Next.js's own polyfill module, imported from inside the framework; it was left alone.
 
-**Speed, headers and analytics (October 2026):** all five Lato weights (400, 500, 600, 700, 900) are self-hosted in `public/gm/fonts` (Latin subset, about 31 KB each); the package's Google Fonts `@import` was removed from `original-layout.css`, and the root layout preloads 400 and 700. Lighthouse mobile went from 66 to 97 on the home page and to 90 or more on calculators. `next.config.ts` sends `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options: SAMEORIGIN`, a camera/microphone/geolocation `Permissions-Policy` and a CSP that only sets `frame-ancestors`, `base-uri`, `object-src` and `upgrade-insecure-requests`: **never add script-src or frame-src limits, they would block AdSense**. Vercel Web Analytics and Speed Insights run on every page. Google Analytics 4 is wired but off until `NEXT_PUBLIC_GA_ID` (G-…) is set in Vercel (`src/lib/analytics.ts`): consent mode defaults to denied in the UK, EEA and Switzerland, Google's consent message updates it, and the privacy policy's GA paragraph appears only when the ID is set.
+**Speed, headers and analytics (October 2026):** all five Lato weights (400, 500, 600, 700, 900) are self-hosted in `public/gm/fonts` (Latin subset, about 31 KB each); the package's Google Fonts `@import` was removed from `original-layout.css`, and the root layout preloads 400 and 700. Live PageSpeed for the home page (6 October 2026, after the caching work): **mobile 94, desktop 96**, Accessibility, Best Practices and SEO 100. The remaining warnings are the 8 render-blocking stylesheets (combining them per page type is the only big lever left; not done, to protect the design), Google's/Vercel's own short-cached scripts, AdSense's unused JavaScript and Next.js's own polyfills. After AdSense approval, consider loading the ad script after page load. The PageSpeed API quota from this environment runs out quickly: ask the owner for screenshots. `next.config.ts` sends `X-Content-Type-Options`, `Referrer-Policy`, `X-Frame-Options: SAMEORIGIN`, a camera/microphone/geolocation `Permissions-Policy` and a CSP that only sets `frame-ancestors`, `base-uri`, `object-src` and `upgrade-insecure-requests`: **never add script-src or frame-src limits, they would block AdSense**. Vercel Web Analytics and Speed Insights run on every page. Google Analytics 4 is **live**: `NEXT_PUBLIC_GA_ID=G-ZGGHLPLJ5H` is set in Vercel (Production, type Config, not Secret, because `NEXT_PUBLIC_` values are public) and read by `src/lib/analytics.ts`. Without the variable GA does not load at all. consent mode defaults to denied in the UK, EEA and Switzerland, Google's consent message updates it, and the privacy policy's GA paragraph appears only when the ID is set.
 
 **Site-wide look (October 2026, owner-approved after a trial on `/property/council-tax-bands`):** claret #8c1d40 replaces wine #510b38 (hover #6e1632, focus #b8325f, header included), pink tints become neutral greys (text #282828, body #6e6e6e, panels #f1f4f7, borders #dfe3e8, input borders #9aa1a9), with the Axis Bank type scale (Lato 500/600 self-hosted in `public/gm/fonts`, 40/44 titles, 18px labels, 16/24 body, claret table headers, numbered guide sections and numbered FAQ cards on a grey band). The colour swaps are generated by `scripts/build-neutral-css.py` into `public/gm/govmath-neutral.css` (scope `.gm-neutral`) and `govmath-claret.css` (scope `.gm-claret`): **re-run it after changing any stylesheet**. Hand-written theme rules (type scale, guide, FAQ, fonts, package chart legends) live in `public/gm/govmath-theme.css`, loaded last. Use only these colours and the chart palette; the 11 package pages are no longer pixel-identical to the supplied package, by design.
 
@@ -117,6 +117,8 @@ How they are built:
 **Checks:** to compare with the package, serve its `dist` folder (`python3 -m http.server <port> --directory dist`), take full-page screenshots of both at 1440, 768 and 375px and pixel-diff them. The 11 package pages should match it in layout; colours and type differ by design (site-wide look above). To change them, edit the JSON (or regenerate from a new package with the same converter).
 
 ## Ads (AdSense)
+
+- **Status (6 October 2026):** applied and under Google's review; the consent message is published. Third-party "AdSense checker" sites mostly score unticked self-assessment boxes; their real findings were fixed (footer disclaimer link, CSP, analytics, search, speed). Do not change the AdSense script loading during the review. If Google rejects the site, fix the reason it gives; likely causes are site age and low traffic, not code.
 
 - Publisher ID **ca-pub-3942263076624028** is the default in `src/lib/ads.ts`; `NEXT_PUBLIC_ADSENSE_CLIENT` in Vercel overrides it, and `off` switches ads off. Every page gets the `google-adsense-account` meta tag and the AdSense script (in `src/app/layout.tsx`, which also runs Auto ads), and `/ads.txt` reads `google.com, pub-3942263076624028, DIRECT, f08c47fec0942fa0`. `AdSlot` shows in-page units only once `NEXT_PUBLIC_ADSENSE_SLOT` is set.
 - The script was accidentally dropped in the October 2026 redesign and restored later; check it is still in the root layout after any layout change.
@@ -141,6 +143,8 @@ How they are built:
 The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
+
+- **Where we left off (6 October 2026):** the owner will say "Phase 9" to continue with the next batches (Universal Credit and work, families and childcare, students, savings). Waiting on the owner: the AdSense review result; confirming GA4 shows visits in Reports → Realtime after accepting the consent banner; the "real users" Core Web Vitals in PageSpeed, which need a few weeks of traffic. New calculators must follow the current template (no guide questions section, trust line via `FlagshipPage`, re-run `scripts/build-updated.py`).
 
 - Phase 7 figures to recheck: fuel prices (`PRICES_2026` in `running.ts`: petrol 173.8p, diesel 198.9p for late September 2026; price cap 26.32p for October to December 2026), advisory fuel rates (quarterly), clean air zone charges and the London congestion charge (`ZONES_2026`, `LONDON_CC`), the bus fare cap (£3 to December 2026, then £2), the rail fare freeze (to March 2027), and VED/BIK rates each April. The proposed compulsory eye tests for over-70s (January 2026 road safety strategy) are not yet law; update the licence page if they come in.
 - Phase 8 figures to recheck each year: loan thresholds (April) and interest (September; the 6% cap is for 2026/27 only), maintenance loan amounts (August). The maintenance loan minimums for living at home and in London come from published 2026/27 guides; the studying-abroad minimum and its income point are estimates.
