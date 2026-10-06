@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ContentPage from "@/components/ContentPage";
+import { GA_ID } from "@/lib/analytics";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -135,6 +136,17 @@ export default function PrivacyPage() {
         Insights) to understand aggregate usage and performance. These tools
         report trends, not individuals, and do not require us to identify you.
       </p>
+      {GA_ID && (
+        <p>
+          We also use <strong>Google Analytics</strong> to see which pages are visited and how people reach them. In the UK, the
+          European Economic Area and Switzerland it sets analytics cookies only if you agree in the consent message; otherwise it
+          sends Google basic, cookieless measurements. See{" "}
+          <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">
+            how Google uses data from sites that use its services
+          </a>
+          .
+        </p>
+      )}
 
       <h2>How we use information</h2>
       <ul>

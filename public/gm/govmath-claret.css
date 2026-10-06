@@ -79,3 +79,5 @@
 .gm-claret .gm-neutral .gm-trust-mark{background:#8c1d40}
 .gm-claret .gm-neutral .gm-trust a{color:#8c1d40}
 .gm-claret .gm-neutral .gm-trust a:hover{color:#6e1632}
+.gm-claret .header .gm-headsearch:focus-within{border-color:#8c1d40;outline:2px solid #8c1d40}
+.gm-claret .header .gm-headsearch .ax-search-results a:hover,.gm-claret .header .gm-headsearch .ax-search-results a:focus{color:#8c1d40}

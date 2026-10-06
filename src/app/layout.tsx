@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { preload } from "react-dom";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ADSENSE_CLIENT } from "@/lib/ads";
+import { GA_ID, gaInitScript } from "@/lib/analytics";
 
 /**
  * The one root layout. It loads no site-wide CSS: each page brings the
@@ -10,7 +12,8 @@ import { ADSENSE_CLIENT } from "@/lib/ads";
  *
  * When NEXT_PUBLIC_ADSENSE_CLIENT is set, every page carries the AdSense
  * account meta tag and loads the AdSense script (which also runs Auto ads),
- * so Google can verify the site and serve ads.
+ * so Google can verify the site and serve ads. With NEXT_PUBLIC_GA_ID set,
+ * Google Analytics loads too, with consent defaults first (src/lib/analytics.ts).
  */
 export const metadata: Metadata = {
   metadataBase: new URL("https://govmath.co.uk"),
@@ -24,6 +27,9 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  // Lato 400 and 700 are used on every page; fetch them before the CSS asks.
+  preload("/gm/fonts/lato-400.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/gm/fonts/lato-700.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   return (
     <html lang="en-GB">
       <body>
@@ -39,6 +45,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             }),
           }}
         />
+        {GA_ID && (
+          <>
+            <script dangerouslySetInnerHTML={{ __html: gaInitScript(GA_ID) }} />
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+          </>
+        )}
         {children}
         {ADSENSE_CLIENT && (
           <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`} crossOrigin="anonymous" />
