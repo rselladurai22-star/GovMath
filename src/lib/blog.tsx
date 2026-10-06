@@ -67,7 +67,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
         <h2>Step 1: Your Personal Allowance (the tax-free bit)</h2>
         <p>
-          Everyone gets a <strong>Personal Allowance</strong> — an amount you
+          Everyone gets a <strong>Personal Allowance</strong>{" "}— an amount you
           can earn before paying any Income Tax. For 2026/27 it&apos;s{" "}
           <strong>£12,570</strong>. Earn less than that and you pay no Income
           Tax at all.
@@ -342,7 +342,7 @@ export const BLOG_POSTS: BlogPost[] = [
         </p>
         <ul>
           <li>
-            <strong>Funded childcare hours for working parents</strong> in England: up to 30 hours a week, 38 weeks a
+            <strong>Funded childcare hours for working parents</strong>{" "}in England: up to 30 hours a week, 38 weeks a
             year (1,140 hours) for children from 9 months until they start school. If either parent&rsquo;s adjusted net
             income is expected to be over £100,000, the family loses the working-parent hours. The universal 15 hours for
             3 and 4-year-olds stay. Check eligibility with the{" "}
@@ -424,7 +424,7 @@ export const BLOG_POSTS: BlogPost[] = [
             shows what a bonus is worth with and without it.
           </li>
           <li>
-            <strong>It is a tax-year test.</strong> Income from 6 April to 5 April counts. A contribution made in March
+            <strong>It is a tax-year test.</strong>{" "}Income from 6 April to 5 April counts. A contribution made in March
             reduces that year&rsquo;s figure; one made in May counts towards the next.
           </li>
           <li>
@@ -441,12 +441,12 @@ export const BLOG_POSTS: BlogPost[] = [
         <h2>Limits and things to watch</h2>
         <ul>
           <li>
-            <strong>The annual allowance.</strong> You can normally get tax relief on pension savings of up to £60,000 a
+            <strong>The annual allowance.</strong>{" "}You can normally get tax relief on pension savings of up to £60,000 a
             year (including your employer&rsquo;s contributions), or 100% of your earnings if less. Unused allowance
             from the three previous years can be carried forward.
           </li>
           <li>
-            <strong>Pension money is locked away.</strong> You can&rsquo;t normally draw it until 55 (57 from April
+            <strong>Pension money is locked away.</strong>{" "}You can&rsquo;t normally draw it until 55 (57 from April
             2028). If you need the cash for a house deposit or school fees, this strategy has a real cost.
           </li>
           <li>
@@ -820,7 +820,7 @@ export const BLOG_POSTS: BlogPost[] = [
             purchase. Leasehold flats cost more, as there is more paperwork.
           </li>
           <li>
-            <strong>Survey:</strong> the lender&rsquo;s valuation is not a survey. A RICS Level 2 (HomeBuyer) report
+            <strong>Survey:</strong>{" "}the lender&rsquo;s valuation is not a survey. A RICS Level 2 (HomeBuyer) report
             costs around £600; a Level 3 building survey, for older or unusual homes, around £1,000.
           </li>
           <li>
@@ -950,7 +950,7 @@ export const BLOG_POSTS: BlogPost[] = [
             relief in England, every buyer must be a first-time buyer.
           </li>
           <li>
-            <strong>Keep renting for now:</strong> buying isn&rsquo;t always cheaper. The{" "}
+            <strong>Keep renting for now:</strong>{" "}buying isn&rsquo;t always cheaper. The{" "}
             <Link href="/property/rent-vs-buy">rent vs buy calculator</Link> compares the two over time.
           </li>
         </ul>

@@ -79,7 +79,7 @@ export default function PremiumBondsGuide() {
       <GuideSection id="rate" n={3} kicker="The numbers" title="The prize fund rate and odds">
         <p>
           The <strong>prize fund rate</strong> is the total value of prizes each year as a percentage of all eligible Bonds. It is 4.35% from
-          the September 2026 draw. The <strong>odds</strong> are 21,000 to 1, meaning each £1 Bond has a 1 in 21,000 chance of winning in a
+          the September 2026 draw. The <strong>odds</strong>{" "}are 21,000 to 1, meaning each £1 Bond has a 1 in 21,000 chance of winning in a
           month. NS&amp;I can change both at any time, usually with notice.
         </p>
         <p>

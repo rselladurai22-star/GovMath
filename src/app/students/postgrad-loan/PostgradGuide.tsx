@@ -333,7 +333,7 @@ export default function PostgradGuide() {
             weeks in between, including the summer dissertation period.
           </li>
           <li>
-            <strong>Count the whole course.</strong> On a part-time course the loan is spread over more years, so each
+            <strong>Count the whole course.</strong>{" "}On a part-time course the loan is spread over more years, so each
             year&rsquo;s payment is smaller.
           </li>
           <li>

@@ -231,7 +231,7 @@ export default function ScottishGuide() {
 
       <GuideSection id="moving" n={9} kicker="Moving home" title="Moving to or from Scotland">
         <p>
-          You are either a Scottish taxpayer or not for the <strong>whole</strong> tax year. If you move part-way
+          You are either a Scottish taxpayer or not for the <strong>whole</strong>{" "}tax year. If you move part-way
           through, what counts is where you lived for longer between 6 April and 5 April. Someone who moves from Leeds to
           Glasgow in August has lived in Scotland for most of that year, so the whole year&rsquo;s income is taxed at
           Scottish rates.

@@ -203,7 +203,7 @@ export default function FuelGuide() {
         <ul>
           <li><strong>Using US mpg.</strong> US gallons are smaller, so the numbers do not match UK figures.</li>
           <li><strong>Using the official economy.</strong> Real-world economy is usually lower.</li>
-          <li><strong>Forgetting the return leg.</strong> Turn on &ldquo;Return journey&rdquo; for round trips.</li>
+          <li><strong>Forgetting the return leg.</strong>{" "}Turn on &ldquo;Return journey&rdquo; for round trips.</li>
           <li><strong>Charging a passenger more than the cost.</strong> Making a profit can invalidate your insurance.</li>
         </ul>
       </GuideSection>

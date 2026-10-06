@@ -106,23 +106,33 @@ export default function AboutPage() {
           before any change goes live.
         </li>
         <li>
-          <strong>Reviewed and dated.</strong> Each guide shows when it was last
-          reviewed. We recheck figures each April when the new tax year starts,
-          and whenever the government announces a change.
+          <strong>Checked and dated.</strong> Each calculator shows when its
+          page last changed. We recheck figures each April when the new tax year
+          starts, and whenever the government announces a change.
         </li>
         <li>
-          <strong>Clear about limits.</strong> Each calculator says what it
+          <strong>Clear about limits.</strong>{" "}Each calculator says what it
           assumes under &quot;What we assumed&quot;, so you can see whether the
           answer fits your situation.
         </li>
       </ul>
 
-      <h2>Who we are</h2>
       <p>
-        GovMath is built and maintained by a small UK-based team of developers
-        and writers who were tired of re-reading the same dense guidance pages
-        every tax year. We are not affiliated with HMRC, the DWP, or any part of
-        HM Government.
+        Read the full details in{" "}
+        <Link href="/how-we-check">how we check our figures</Link>.
+      </p>
+
+      <h2>Who runs GovMath</h2>
+      <p>
+        GovMath is an independent UK website, written and maintained by the
+        GovMath team. Every calculator and guide is checked by the team against
+        the official sources it lists before it is published.
+      </p>
+      <p>
+        We are not affiliated with HMRC, the DWP, or any part of HM Government,
+        and no bank, lender or financial firm pays to appear on the site. GovMath
+        is free to use and funded by advertising, which never affects our
+        figures.
       </p>
 
       <h2>Get in touch</h2>

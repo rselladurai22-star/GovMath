@@ -97,7 +97,7 @@ export default function WorkplaceStudio({ query }: { query: Query }) {
           ) : (
             <>
               Each year <b>{gbp(r.total)}</b> goes into your pension: {gbp(r.employee)} from you and {gbp(r.employer)} from your employer. It costs you about <b>{gbp(r.employeeNet)}</b> after basic-rate
-              tax relief. Over {years} {per(years, "years")} it could grow to <b>{gbp(r.pot)}</b> in today&apos;s money.
+              tax relief. Over {years} {per(years, "years")} it could grow to <b>{gbp(r.pot)}</b>{" "}in today&apos;s money.
             </>
           )
         }

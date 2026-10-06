@@ -164,7 +164,7 @@ export default function SSPGuide() {
 
       <GuideSection id="how-long" n={6} kicker="Duration" title="How long SSP lasts">
         <p>
-          SSP is paid for up to <strong>28 weeks</strong> in a period of sickness. If you are ill again within 8 weeks of
+          SSP is paid for up to <strong>28 weeks</strong>{" "}in a period of sickness. If you are ill again within 8 weeks of
           a previous spell, the two are &ldquo;linked&rdquo; and count as one period, sharing the same 28 weeks.
         </p>
         <Timeline

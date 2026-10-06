@@ -56,7 +56,7 @@ export default function CisGuide() {
     >
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
-          <li>Contractors deduct <strong>20%</strong> from a registered subcontractor&rsquo;s labour, <strong>30%</strong> if they are not registered, and nothing if they have gross payment status.</li>
+          <li>Contractors deduct <strong>20%</strong>{" "}from a registered subcontractor&rsquo;s labour, <strong>30%</strong> if they are not registered, and nothing if they have gross payment status.</li>
           <li>The deduction is taken from <strong>labour only</strong>, never from materials or VAT.</li>
           <li>It counts towards your tax bill. Most sole traders get some back after their tax return, because their expenses and tax-free allowance mean they owe less than 20% of labour.</li>
         </ul>
@@ -307,7 +307,7 @@ export default function CisGuide() {
             <strong>No statement:</strong> ask the contractor. They must give one by the 19th of the month after the payment.
           </li>
           <li>
-            <strong>Deductions not on HMRC&rsquo;s records:</strong> HMRC checks your claim against contractors&rsquo; monthly
+            <strong>Deductions not on HMRC&rsquo;s records:</strong>{" "}HMRC checks your claim against contractors&rsquo; monthly
             returns. If a contractor has not filed, give HMRC your statements and payment records.
           </li>
           <li>

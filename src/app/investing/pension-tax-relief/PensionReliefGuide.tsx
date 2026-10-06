@@ -64,7 +64,7 @@ export default function PensionReliefGuide() {
             Between £100,000 and £125,140, relief is effectively <strong>60%</strong> because contributions restore your Personal Allowance.
           </li>
           <li>
-            You can pay in up to <strong>£60,000</strong> a year, or your earnings if lower, including your employer&rsquo;s contributions.
+            You can pay in up to <strong>£60,000</strong>{" "}a year, or your earnings if lower, including your employer&rsquo;s contributions.
           </li>
         </ul>
         <KeyStats

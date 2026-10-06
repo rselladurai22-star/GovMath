@@ -116,7 +116,7 @@ export default function CtrGuide() {
       <GuideSection id="how" n={4} kicker="The method" title="How the reduction is worked out">
         <ol>
           <li>
-            <strong>Weekly bill.</strong> Your yearly council tax, after discounts, is turned into a weekly amount: the year&rsquo;s bill × 7 ÷
+            <strong>Weekly bill.</strong>{" "}Your yearly council tax, after discounts, is turned into a weekly amount: the year&rsquo;s bill × 7 ÷
             365. A £2,000 bill is £38.36 a week.
           </li>
           <li>

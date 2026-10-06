@@ -260,7 +260,7 @@ export default function FireGuide() {
 
       <GuideSection id="coast" n={13} kicker="Variations" title="Coast FI and other flavours">
         <p>
-          <strong>Coast FI</strong> is the pot that, with no more saving, would grow to cover your retirement at State Pension age. In our
+          <strong>Coast FI</strong>{" "}is the pot that, with no more saving, would grow to cover your retirement at State Pension age. In our
           example it is £124,371 at 35. Once you pass it, you only need to earn enough to cover today&rsquo;s spending.
         </p>
         <ul>
@@ -334,7 +334,7 @@ export default function FireGuide() {
       <GuideSection id="mistakes" n={18} kicker="Pitfalls" title="Common mistakes">
         <ul>
           <li><strong>Underestimating spending.</strong> Include irregular costs such as car replacement, home repairs and holidays.</li>
-          <li><strong>Mixing today&rsquo;s money and future pounds.</strong> Use a real return if you enter spending in today&rsquo;s prices.</li>
+          <li><strong>Mixing today&rsquo;s money and future pounds.</strong>{" "}Use a real return if you enter spending in today&rsquo;s prices.</li>
           <li><strong>Forgetting the pension access age.</strong> Money locked in a pension cannot fund your fifties.</li>
           <li><strong>Assuming a full State Pension.</strong> Stopping work early may leave gaps in your National Insurance record.</li>
           <li><strong>Ignoring charges.</strong> A 1% yearly charge can take a fifth or more of a pot over 25 years.</li>

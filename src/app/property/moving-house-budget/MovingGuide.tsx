@@ -260,7 +260,7 @@ export default function MovingGuide() {
 
       <GuideSection id="leasehold" n={14} kicker="Property types" title="Extra costs for leasehold and new-build homes">
         <p>
-          <strong>Leasehold flats</strong> add costs on both sides. The seller usually pays for a management information pack from
+          <strong>Leasehold flats</strong>{" "}add costs on both sides. The seller usually pays for a management information pack from
           the freeholder or managing agent, and the buyer&apos;s conveyancer has more work checking the lease, the service charge
           accounts and any planned major works. If the lease is short, a lease extension can cost thousands and may be needed
           before a lender will agree a mortgage.

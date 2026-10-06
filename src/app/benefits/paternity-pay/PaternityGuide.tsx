@@ -237,7 +237,7 @@ export default function PaternityGuide() {
       <GuideSection id="neonatal" n={10} kicker="Special care" title="If your baby needs neonatal care">
         <p>
           Since April 2025, parents whose baby spends seven or more continuous days in neonatal care, starting within 28 days
-          of the birth, can take up to 12 weeks of <strong>neonatal care leave</strong> on top of other leave. The leave is a
+          of the birth, can take up to 12 weeks of <strong>neonatal care leave</strong>{" "}on top of other leave. The leave is a
           day-one right; neonatal care pay, at the same rate as paternity pay, needs 26 weeks&rsquo; service.
         </p>
         <p>This means paternity leave is not used up while your baby is in hospital, and you can take it later.</p>

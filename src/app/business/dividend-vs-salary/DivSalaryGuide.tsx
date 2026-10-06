@@ -176,7 +176,7 @@ export default function DivSalaryGuide() {
 
       <GuideSection id="allowance" n={6} kicker="Employment Allowance" title="The Employment Allowance">
         <p>
-          The Employment Allowance takes up to <strong>£10,500</strong> a year off a company&rsquo;s employer NI bill. Since
+          The Employment Allowance takes up to <strong>£10,500</strong>{" "}a year off a company&rsquo;s employer NI bill. Since
           April 2025 there is no upper size limit, but one rule matters for small companies: a company whose{" "}
           <strong>only employee is a single director</strong> cannot claim it.
         </p>

@@ -62,7 +62,7 @@ export default function BTLGuide() {
     >
       <GuideSection id="yields" n={1} kicker="The basics" title="Gross and net yield">
         <p>
-          <strong>Gross yield</strong> is a year&apos;s rent divided by the price. It is quick to work out and useful for
+          <strong>Gross yield</strong>{" "}is a year&apos;s rent divided by the price. It is quick to work out and useful for
           comparing listings, but ignores every cost.
         </p>
         <p>

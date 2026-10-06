@@ -146,7 +146,7 @@ export default function LpaGuide() {
       <GuideSection id="help" n={5} kicker="Reduced fees" title="Help with the fee">
         <ul>
           <li>
-            <strong>Reduction:</strong> if the donor&rsquo;s gross income is less than £12,000 a year, the fee is halved to £46.
+            <strong>Reduction:</strong>{" "}if the donor&rsquo;s gross income is less than £12,000 a year, the fee is halved to £46.
           </li>
           <li>
             <strong>Exemption:</strong> if the donor gets certain means-tested benefits, there may be no fee. Check the current list on GOV.UK

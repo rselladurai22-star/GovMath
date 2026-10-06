@@ -56,7 +56,7 @@ export default function ProRataGuide() {
     >
       <GuideSection id="meaning" n={1} kicker="The basics" title="What pro-rata means">
         <p>
-          <em>Pro rata</em> is Latin for &ldquo;in proportion&rdquo;. A salary quoted as &ldquo;£40,000 pro rata&rdquo;
+          <em>Pro rata</em>{" "}is Latin for &ldquo;in proportion&rdquo;. A salary quoted as &ldquo;£40,000 pro rata&rdquo;
           is the full-time equivalent (FTE): what you would earn working the full-time hours. Your actual pay is that
           figure scaled down to the hours or days you work.
         </p>

@@ -87,7 +87,7 @@ export default function FireStudio({ query }: { query: Query }) {
               </>
             ) : (
               <>
-                You need about <b>{gbp(r.target)}</b> in today&apos;s money. Saving {gbp(v.monthly)} a month, you get there in <b>{years} {per(years, "years")}</b>, at age <b>{r.fiAge}</b>.
+                You need about <b>{gbp(r.target)}</b>{" "}in today&apos;s money. Saving {gbp(v.monthly)} a month, you get there in <b>{years} {per(years, "years")}</b>, at age <b>{r.fiAge}</b>.
               </>
             )
           ) : (

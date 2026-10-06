@@ -722,3 +722,63 @@
     flex: 1 1 auto;
   }
 }
+
+/* ── Trust line under each calculator's title ────────────────
+   Who checks the page, when it last changed, and links to its official
+   sources and to "How we check our figures". */
+.gm-neutral .intro .gm-trust {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 0;
+  margin: 14px 0 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #5c6066;
+  max-width: none;
+}
+.gm-neutral .gm-trust > span:not(.gm-trust-mark) + span::before {
+  content: "·";
+  margin: 0 10px;
+  color: #9aa1a9;
+}
+.gm-neutral .gm-trust-mark {
+  position: relative;
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: #510b38;
+}
+.gm-neutral .gm-trust-mark::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 3px;
+  width: 5px;
+  height: 9px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.gm-neutral .gm-trust a {
+  color: #510b38;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.gm-neutral .gm-trust a:hover {
+  color: #73164c;
+}
+@media (max-width: 650px) {
+  /* On phones the items wrap, so spacing replaces the dots. */
+  .gm-neutral .intro .gm-trust {
+    gap: 6px 16px;
+  }
+  .gm-neutral .gm-trust > span:not(.gm-trust-mark) + span::before {
+    content: none;
+  }
+  .gm-neutral .gm-trust-mark {
+    margin-right: -8px;
+  }
+}

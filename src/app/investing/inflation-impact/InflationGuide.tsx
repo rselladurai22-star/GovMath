@@ -253,7 +253,7 @@ export default function InflationGuide() {
           today&rsquo;s money and use a real return. That way the target you aim for means something you can picture now.
         </p>
         <Callout title="Inflation and the FIRE calculator">
-          Our <a href="/investing/fire-calculator">FIRE calculator</a> works entirely in today&rsquo;s money, using a real return after
+          Our <a href="/investing/fire-calculator">FIRE calculator</a>{" "}works entirely in today&rsquo;s money, using a real return after
           inflation, for exactly this reason.
         </Callout>
       </GuideSection>
@@ -327,7 +327,7 @@ export default function InflationGuide() {
           <li><strong>Planning in today&rsquo;s prices but future pounds.</strong> Mixing the two can make a goal look easier than it is.</li>
           <li><strong>Forgetting tax.</strong> Compare the rate after tax with inflation, not the headline rate.</li>
           <li><strong>Assuming today&rsquo;s inflation lasts.</strong> Inflation changes. Test a range rather than one figure.</li>
-          <li><strong>Leaving an inheritance in cash for years.</strong> £100,000 held as cash for 20 years at 2.5% inflation is worth about £61,027 in today&rsquo;s money.</li>
+          <li><strong>Leaving an inheritance in cash for years.</strong>{" "}£100,000 held as cash for 20 years at 2.5% inflation is worth about £61,027 in today&rsquo;s money.</li>
         </ul>
       </GuideSection>
 

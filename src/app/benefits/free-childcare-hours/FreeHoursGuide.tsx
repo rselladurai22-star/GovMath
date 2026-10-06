@@ -247,7 +247,7 @@ export default function FreeHoursGuide() {
 
       <GuideSection id="nations" n={10} kicker="Elsewhere" title="Scotland, Wales and Northern Ireland">
         <p>
-          <strong>Scotland:</strong> all 3 and 4-year-olds, and eligible 2-year-olds, get 1,140 hours a year of funded early
+          <strong>Scotland:</strong>{" "}all 3 and 4-year-olds, and eligible 2-year-olds, get 1,140 hours a year of funded early
           learning and childcare, regardless of their parents&rsquo; work.
         </p>
         <p>
