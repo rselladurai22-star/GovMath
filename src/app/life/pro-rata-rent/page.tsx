@@ -27,7 +27,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function ProRataPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/life/right-to-rent", "/life/days-between-dates", "/benefits/local-housing-allowance", "/property/rent-vs-buy"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/life/right-to-rent", "/life/days-between-dates", "/benefits/local-housing-allowance", "/property/rent-vs-buy", "/property/rent-increase", "/property/deposit-return"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

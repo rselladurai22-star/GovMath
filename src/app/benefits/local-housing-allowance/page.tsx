@@ -28,7 +28,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function LhaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/benefits/universal-credit", "/benefits/benefit-cap", "/benefits/universal-credit-taper", "/property/rent-vs-buy", "/property/council-tax-bands", "/life/pro-rata-rent"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/benefits/universal-credit", "/benefits/benefit-cap", "/benefits/universal-credit-taper", "/property/rent-vs-buy", "/benefits/housing-benefit", "/life/pro-rata-rent"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

@@ -153,6 +153,8 @@ export const CALCULATORS: Calculator[] = [
   live("single-person-discount", "property", "Single Person Council Tax Discount", "Apply the 25% solo-occupant rebate."),
   live("rent-a-room", "property", "Rent a Room Scheme", "How much can you earn tax-free from a lodger?"),
   live("moving-house-budget", "property", "Moving House Budget", "Surveys, legal fees, removals — the full picture."),
+  live("rent-increase", "property", "Rent Increase Checker", "Is your rent rise legal, and what will it cost you?"),
+  live("deposit-return", "property", "Tenancy Deposit Return Calculator", "The deposit cap, fair deductions and what you should get back."),
 
   // ── Business ────────────────────────────────────────────────────────────
   live("sole-trader-tax", "business", "Sole Trader Tax Calculator", "Self-employed Income Tax + Class 2 / 4 NI.", true),
@@ -198,6 +200,8 @@ export const CALCULATORS: Calculator[] = [
   live("attendance-allowance", "benefits", "Attendance Allowance", "Help with care costs for over-65s."),
   live("benefit-cap", "benefits", "Benefit Cap Checker", "Is your household above the cumulative cap?"),
   live("local-housing-allowance", "benefits", "Local Housing Allowance", "LHA rates by property size and region."),
+  live("housing-benefit", "benefits", "Housing Benefit Calculator", "Weekly help with rent for pensioners and supported housing."),
+  live("council-tax-reduction", "benefits", "Council Tax Reduction Calculator", "Means-tested help with your council tax bill."),
 
   // ── Vehicles ───────────────────────────────────────────────────────────
   live("car-tax-ved", "vehicles", "Car Tax (VED) Calculator", "Annual road tax by emissions and list price.", true),
