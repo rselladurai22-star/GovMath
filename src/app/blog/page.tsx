@@ -6,7 +6,7 @@ import PostCard from "@/components/blog/PostCard";
 import GmShell from "@/gm/GmShell";
 import cats from "@/gm/categories.json";
 import { getAllPosts } from "@/lib/blog";
-import { CALCULATORS, getCalculatorsByCategory, shortTitle, type CategorySlug } from "@/lib/calculators";
+import { getCalculatorsByCategory, shortTitle, type CategorySlug } from "@/lib/calculators";
 
 export const metadata: Metadata = {
   title: "Guides — UK money rules, explained",
@@ -43,7 +43,6 @@ export default function GuidesPage() {
           ]}
         />
         <section className="categoryhero">
-          <p className="eyebrow">{CALCULATORS.length + posts.length} GUIDES · 2026/27</p>
           <h1>UK money rules, explained</h1>
           <p>
             Clear, in-depth guides to the UK rules that affect your money, written the way we&rsquo;d explain them to a friend. Every

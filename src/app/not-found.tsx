@@ -12,7 +12,6 @@ export default function NotFound() {
     <GmShell>
       <div className="wrap">
         <section className="categoryhero gm-notfound">
-          <p className="eyebrow">ERROR 404</p>
           <h1>We can&rsquo;t find that page</h1>
           <p>The link may be out of date, or the page may have moved. Search for a calculator from the top of the page, or pick a topic below.</p>
         </section>

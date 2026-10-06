@@ -4,7 +4,7 @@ import AdSlot from "@/components/AdSlot";
 import { Crumbs } from "@/components/ContentPage";
 import GmShell from "@/gm/GmShell";
 import cats from "@/gm/categories.json";
-import { CALCULATORS, getCalculatorsByCategory, shortTitle, type CategorySlug } from "@/lib/calculators";
+import { getCalculatorsByCategory, shortTitle, type CategorySlug } from "@/lib/calculators";
 
 export const metadata: Metadata = {
   title: "All Calculators",
@@ -29,7 +29,6 @@ export default function AllCalculatorsPage() {
           ]}
         />
         <section className="categoryhero">
-          <p className="eyebrow">{CALCULATORS.length} FREE TOOLS · 2026/27 RATES</p>
           <h1>All calculators</h1>
           <p>Every free UK calculator on GovMath, across {CATS.length} topics. Search from the top of the page, or jump to a topic.</p>
         </section>
