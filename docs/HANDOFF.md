@@ -137,6 +137,8 @@ The order of phases 4 to 8 is flexible; ask the owner.
 - IR35 (`src/lib/tax/ir35.ts`) now uses `corporationTaxFull` from `src/lib/business/company.ts`; the old `salary-dividend.ts` is gone.
 - Business guides cite 2026 changes: Corporation Tax late filing penalties doubled (£200/£400), the VOA duty to notify is a pilot until April 2029, and Making Tax Digital penalties use points. Recheck these in April 2027.
 
+- Guides articles (`src/lib/blog.tsx`): the £100,000 tax trap, Plan 2 vs Plan 5 student loans and first-time buyer costs quote 2026/27 figures computed from the engines (take-home, pension relief, loan projections, Stamp Duty, LBTT, LTT, moving budget, mortgage payments). Recompute them each April, and the student loan interest figures each September.
+
 - Benefits rates were checked against the DWP "Benefit and pension rates 2026 to 2027" PDF. Recheck everything in April 2027, including whether LHA rates stay frozen and the benefit cap is still £22,020/£14,753.
 - Benefits guides state that the two-child limit ended in April 2026 and that the UC health element is £217.26 for new claims (£429.80 protected). PIP guide says the assessment is under review; update if the rules change.
 - LHA covers all four nations. When the freeze ends, update all four weekly tables and the DWP monthly Universal Credit CSVs (England, Scotland, Wales) together; the engine test checks each monthly rate is within £10 of weekly × 52 ÷ 12. Northern Ireland's weekly rates come from the Housing Executive's "Current LHA rent levels" page (it blocks automated access, so ask the owner for a screenshot); its Universal Credit monthly rates are weekly × 365 ÷ 84, which matched the published Belfast monthly rates to the penny.
