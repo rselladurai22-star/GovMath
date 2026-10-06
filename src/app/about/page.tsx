@@ -86,6 +86,37 @@ export default function AboutPage() {
         <Link href="/disclaimer">Disclaimer</Link> for the full picture.
       </p>
 
+      <h2>Our editorial standards</h2>
+      <ul>
+        <li>
+          <strong>Official sources first.</strong> Every rate, threshold and
+          rule comes from a primary source, such as GOV.UK, HMRC, the DWP,
+          Student Finance England, the Valuation Office Agency or the Scottish,
+          Welsh and Northern Ireland governments. Each guide lists its sources
+          at the end.
+        </li>
+        <li>
+          <strong>One set of sums.</strong> The figures in our guides and worked
+          examples are produced by the same calculation code as the calculators,
+          not typed in by hand, so the guide and the calculator always agree.
+        </li>
+        <li>
+          <strong>Tested.</strong> The calculation code is checked by hundreds
+          of automated tests against official examples and published tables
+          before any change goes live.
+        </li>
+        <li>
+          <strong>Reviewed and dated.</strong> Each guide shows when it was last
+          reviewed. We recheck figures each April when the new tax year starts,
+          and whenever the government announces a change.
+        </li>
+        <li>
+          <strong>Clear about limits.</strong> Each calculator says what it
+          assumes under &quot;What we assumed&quot;, so you can see whether the
+          answer fits your situation.
+        </li>
+      </ul>
+
       <h2>Who we are</h2>
       <p>
         GovMath is built and maintained by a small UK-based team of developers
