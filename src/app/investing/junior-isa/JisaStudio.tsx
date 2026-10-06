@@ -76,7 +76,7 @@ export default function JisaStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            Paying in <b>{gbp(r.contributed)}</b> over {r.years} {r.years === 1 ? "year" : "years"} could grow to <b>{gbp(r.value)}</b> by your child&rsquo;s 18th birthday, of which <b>{gbp(r.growth)}</b> is growth. In
+            Paying in <b>{gbp(r.contributed)}</b> over {r.years} {r.years === 1 ? "year" : "years"} could grow to <b>{gbp(r.value)}</b> by your child&rsquo;s 18th birthday, of which <b>{gbp(r.growth)}</b>{" "}is growth. In
             today&rsquo;s prices that is about {gbp(real)}. All of it is tax-free, and it becomes your child&rsquo;s money at 18.
           </>
         }

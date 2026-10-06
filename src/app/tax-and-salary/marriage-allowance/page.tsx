@@ -31,6 +31,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "What ID do I need to apply for Marriage Allowance?", a: "Both National Insurance numbers, and ID to sign in to your Government Gateway account, such as a P60, payslip or passport details." },
   { q: "Does Marriage Allowance affect Universal Credit?", a: "Slightly. Your take-home rises, so Universal Credit may fall by 55p for each pound of tax saved." },
   { q: "Can I claim Marriage Allowance if my partner lives abroad?", a: "Yes, as long as both of you meet the income rules and the recipient gets a UK Personal Allowance." },
+  { q: "Can I cancel Marriage Allowance?", a: "Yes. The lower earner can cancel online or by phone; it usually stops at the end of the tax year." },
+  { q: "Does Marriage Allowance affect my State Pension?", a: "No. It only changes Income Tax, not your National Insurance record or State Pension." },
 ];
 
 export default async function MarriageAllowancePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

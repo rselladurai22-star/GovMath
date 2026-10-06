@@ -30,6 +30,9 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Will registering for VAT cost me money?", a: "If your customers are consumers and you keep prices the same, a sixth of what they pay goes to HMRC, less VAT you reclaim on costs." },
   { q: "Can I reclaim VAT on things I bought before registering?", a: "Yes, on goods you still have bought up to four years before, and on services bought up to six months before, with valid invoices." },
   { q: "Does the VAT threshold apply to each business I run?", a: "For a sole trader, all activities count together. A partnership or company has its own separate threshold." },
+  { q: "How often are VAT returns due?", a: "Usually every quarter, one month and seven days after the end of the period, filed with Making Tax Digital software." },
+  { q: "What must a VAT invoice show?", a: "Your VAT number, business details, invoice date and number, what you supplied, the price before VAT, the rate and the VAT amount." },
+  { q: "Is the VAT threshold going to change?", a: "It has been £90,000 since April 2024. Check GOV.UK each April for any change." },
 ];
 
 export default async function VatThresholdPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {

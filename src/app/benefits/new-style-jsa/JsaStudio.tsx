@@ -73,7 +73,7 @@ export default function JsaStudio({ query }: { query: Query }) {
             </>
           ) : (
             <>
-              You could get <b>{gbp(weekly, true)}</b> a week, paid every two weeks as <b>{gbp(weekly * 2, true)}</b>, for up to <b>26 weeks</b>: <b>{gbp(weekly * J.weeks)}</b> in all. It is not affected by
+              You could get <b>{gbp(weekly, true)}</b> a week, paid every two weeks as <b>{gbp(weekly * 2, true)}</b>, for up to <b>26 weeks</b>: <b>{gbp(weekly * J.weeks)}</b>{" "}in all. It is not affected by
               savings or a partner&rsquo;s income.
             </>
           )
