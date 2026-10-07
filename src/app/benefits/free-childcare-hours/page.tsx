@@ -6,7 +6,7 @@ import { ogFor } from "@/gm/og";
 import FreeHoursGuide from "./FreeHoursGuide";
 
 export const metadata: Metadata = {
-  title: "Free Childcare Hours Calculator 2026/27",
+  title: "Funded Childcare Hours Calculator 2026/27",
   description:
     "Free calculator for England's funded childcare hours from 9 months to school age. See what your hours are worth at your nursery's rate and what you still pay.",
   alternates: { canonical: "/benefits/free-childcare-hours" },

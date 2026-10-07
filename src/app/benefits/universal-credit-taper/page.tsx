@@ -6,7 +6,7 @@ import { ogFor } from "@/gm/og";
 import TaperGuide from "./TaperGuide";
 
 export const metadata: Metadata = {
-  title: "Universal Credit Taper Calculator 2026/27",
+  title: "Universal Credit Taper Rate Calculator 2026/27",
   description:
     "Free UC taper calculator for 2026/27. See how much you keep from extra hours or a pay rise after the 55% taper, work allowance, tax and NI.",
   alternates: { canonical: "/benefits/universal-credit-taper" },
