@@ -1020,8 +1020,21 @@
   outline: 2px solid #fff;
   outline-offset: 3px;
 }
-.hero .heroart img {
-  mix-blend-mode: normal;
+/* No picture (owner's request, 7 October 2026): the hero is text only. */
+.hero .herogrid {
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 0;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+.hero .herocopy {
+  max-width: 720px;
+}
+@media (max-width: 700px) {
+  .hero .herogrid {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 .categoryhero {
   background: #8c1d40;
