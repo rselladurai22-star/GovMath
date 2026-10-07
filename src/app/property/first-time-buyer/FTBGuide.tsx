@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AMOUNT_PAGES_LIVE } from "@/lib/seo/amounts";
 import {
   Callout,
   CompareCards,
@@ -383,9 +384,11 @@ export default function FTBGuide() {
       <p>
           If you are not yet sure that buying beats renting for you, the <a href="/property/rent-vs-buy">rent vs buy calculator</a> compares the two year by year.
         </p>
-      <p>
-          To compare prices quickly, <Link href="/property/stamp-duty-on">Stamp Duty by house price</Link> lists what home movers, first-time buyers and second-home buyers pay from £100,000 to £2 million.
-        </p>
+      {AMOUNT_PAGES_LIVE && (
+        <p>
+            To compare prices quickly, <Link href="/property/stamp-duty-on">Stamp Duty by house price</Link> lists what home movers, first-time buyers and second-home buyers pay from £100,000 to £2 million.
+          </p>
+      )}
       </GuideSection>
 
       <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">

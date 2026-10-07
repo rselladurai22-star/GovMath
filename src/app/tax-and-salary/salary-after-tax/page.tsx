@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import AmountPage from "@/components/AmountPage";
 import { DataTable, Guide, GuideSection, type Source, type TocItem } from "@/components/guide/Guide";
 import { gbp } from "@/components/flagship/format";
-import { SALARY_AMOUNTS, salaryFacts } from "@/lib/seo/amounts";
+import { AMOUNT_PAGES_LIVE, SALARY_AMOUNTS, salaryFacts } from "@/lib/seo/amounts";
 import { ogFor } from "@/gm/og";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Salary After Tax UK 2026/27: £15k to £250k",
@@ -30,6 +31,7 @@ const BANDS: [string, number, number][] = [
 const TOC: TocItem[] = BANDS.map(([label, lo]) => ({ id: `from-${lo}`, title: label }));
 
 export default function SalaryAfterTaxIndex() {
+  if (!AMOUNT_PAGES_LIVE) notFound();
   return (
     <AmountPage
       breadcrumbs={[

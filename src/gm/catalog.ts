@@ -1,5 +1,6 @@
 import { getCalculatorsByCategory, shortTitle, type CategorySlug } from "../lib/calculators";
 import cats from "./categories.json";
+import { AMOUNT_PAGES_LIVE } from "../lib/seo/amounts";
 
 /**
  * Builds the calculator lists of the approved design (the homepage category
@@ -78,7 +79,7 @@ const AMOUNT_LINKS: Partial<Record<CategorySlug, { title: string; all: [string, 
 
 function amountLinksHtml(slug: CategorySlug): string {
   const a = AMOUNT_LINKS[slug];
-  if (!a) return "";
+  if (!a || !AMOUNT_PAGES_LIVE) return "";
   const links = [...a.links, a.all].map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join("");
   return `<section class="gm-amountlinks" aria-labelledby="amounts-title"><h2 id="amounts-title">${esc(a.title)}</h2><div class="toollist">${links}</div></section>`;
 }

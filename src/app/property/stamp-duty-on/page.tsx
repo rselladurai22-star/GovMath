@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import AmountPage from "@/components/AmountPage";
 import { DataTable, Guide, GuideSection, type Source, type TocItem } from "@/components/guide/Guide";
 import { gbp } from "@/components/flagship/format";
-import { PRICE_AMOUNTS, stampDutyFacts } from "@/lib/seo/amounts";
+import { AMOUNT_PAGES_LIVE, PRICE_AMOUNTS, stampDutyFacts } from "@/lib/seo/amounts";
 import { ogFor } from "@/gm/og";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Stamp Duty by House Price 2026/27",
@@ -27,6 +28,7 @@ const BANDS: [string, number, number][] = [
 const TOC: TocItem[] = BANDS.map(([label, lo]) => ({ id: `from-${lo}`, title: label }));
 
 export default function StampDutyByPrice() {
+  if (!AMOUNT_PAGES_LIVE) notFound();
   return (
     <AmountPage
       breadcrumbs={[

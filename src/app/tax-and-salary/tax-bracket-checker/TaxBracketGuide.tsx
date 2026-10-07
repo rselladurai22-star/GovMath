@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AMOUNT_PAGES_LIVE } from "@/lib/seo/amounts";
 import {
   BandBar,
   CompareCards,
@@ -392,9 +393,11 @@ export default function TaxBracketGuide() {
           The step from £90,000 to £125,140 adds £35,140 of income but only £15,354 of take-home pay, because it crosses
           the whole of the 60% band.
         </p>
-      <p>
-          For a full breakdown at a set salary, see <Link href="/tax-and-salary/salary-after-tax">salary after tax</Link> for every salary from £15,000 to £250,000.
-        </p>
+      {AMOUNT_PAGES_LIVE && (
+        <p>
+            For a full breakdown at a set salary, see <Link href="/tax-and-salary/salary-after-tax">salary after tax</Link> for every salary from £15,000 to £250,000.
+          </p>
+      )}
       </GuideSection>
 
       <GuideSection id="key-numbers" n={14} kicker="Quick reference" title="Key numbers for 2026/27">
