@@ -104,6 +104,10 @@ describe("2026 investment taxes and credits", () => {
     expect(niit(250_000, 30_000, "single")).toBeCloseTo(1_140, 6);
     expect(niit(210_000, 30_000, "single")).toBeCloseTo(380, 6);
     expect(niit(150_000, 30_000, "single")).toBe(0);
+    // Pension income counts toward the threshold but is not itself investment income:
+    // $250,000 MAGI is $50,000 over, but only the $30,000 of investment income is taxed.
+    const r = federalReturn({ ...base, wages: 180_000, otherIncome: 30_000, nonInvestmentIncome: 40_000 });
+    expect(r.niit).toBeCloseTo(30_000 * 0.038, 6);
   });
 
   it("gives $2,200 a child, with up to $1,700 refundable", () => {

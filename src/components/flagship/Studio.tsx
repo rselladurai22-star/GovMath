@@ -1,7 +1,7 @@
 "use client";
 
 import { Children, Fragment, isValidElement, useEffect, useRef, type ReactElement, type ReactNode } from "react";
-import { gbp } from "./format";
+import { gbp, usd } from "./format";
 import { Answer, ResultCard, SplitBar, soften, type Segment } from "./results";
 
 /** Every element in a tree of results, fragments and cards opened up. */
@@ -40,7 +40,9 @@ function Ring({ segments }: { segments: Segment[] }) {
       return `${soften(g.color)} ${from.toFixed(3)}% ${to.toFixed(3)}%`;
     })
     .join(",");
-  const money = segments.every((g) => /^-?£/.test(g.display.trim()));
+  const pounds = segments.every((g) => /^-?£/.test(g.display.trim()));
+  const dollars = segments.every((g) => /^-?\$/.test(g.display.trim()));
+  const money = pounds || dollars;
   return (
     <>
       <div className="circle" style={{ background: `conic-gradient(${stops})` }} role="img" aria-label={parts.map((g) => `${g.label} ${g.display}`).join(", ")}>
@@ -48,7 +50,7 @@ function Ring({ segments }: { segments: Segment[] }) {
           {money ? (
             <>
               <span>Total</span>
-              <strong>{gbp(total)}</strong>
+              <strong>{dollars ? usd(total) : gbp(total)}</strong>
             </>
           ) : (
             <span>How it splits</span>

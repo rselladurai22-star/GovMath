@@ -205,8 +205,10 @@ export function childTaxCredit(children: number, otherDependents: number, magi: 
 export type ReturnInput = {
   status: FilingStatus;
   wages: number;
-  /** Interest, short-term gains, retirement income and other ordinary income. */
+  /** Interest, non-qualified dividends, short-term gains and other investment income (subject to the 3.8% NIIT). */
   otherIncome: number;
+  /** Pensions, IRA and 401(k) withdrawals, a spouse's wages and other ordinary income outside the NIIT. */
+  nonInvestmentIncome?: number;
   /** Long-term capital gains and qualified dividends. */
   longTermGains: number;
   /** Net self-employment profit. */
@@ -256,7 +258,7 @@ export function federalReturn(i: ReturnInput): ReturnResult {
   const s = i.status;
   const se = selfEmploymentTax(i.selfEmployment, s, i.wages);
   const wagesAfterPreTax = Math.max(0, i.wages - i.preTax);
-  const grossIncome = wagesAfterPreTax + Math.max(0, i.otherIncome) + Math.max(0, i.longTermGains) + Math.max(0, i.selfEmployment);
+  const grossIncome = wagesAfterPreTax + Math.max(0, i.otherIncome) + Math.max(0, i.nonInvestmentIncome ?? 0) + Math.max(0, i.longTermGains) + Math.max(0, i.selfEmployment);
   const agi = Math.max(0, grossIncome - se.deduction - Math.max(0, i.adjustments));
   const std = standardDeduction(s, i.over65, i.blind);
   const deductionType = i.itemized > std ? "itemized" : "standard";
