@@ -907,8 +907,15 @@ footer .logo img{height:52px!important}
    No claret strip and no Home/Calculators/Guides/About links: headerHtml()
    in src/gm/catalog.ts moves the topic menus into the logo row, between the
    logo and the search box. Mega menus still open full width under the
-   header (.ax-header is their positioned parent). Below 1240px the menus
-   take a second row; at 850px and below the Menu button shows them. */
+   header (.ax-header is their positioned parent). Below 1360px the menus
+   take a second row; at 850px and below the Menu button shows them. From
+   1360px the header row is 1340px wide (wider than the page's 1200px) so the
+   logo, menus, search and country menu fit on one line. */
+@media (min-width: 1360px) {
+  .reference-header .header {
+    max-width: 1340px;
+  }
+}
 .reference-header,
 .gm-neutral .reference-header {
   border-top: 0;
@@ -944,7 +951,7 @@ footer .logo img{height:52px!important}
   flex: 0 0 200px;
   max-width: 200px;
 }
-@media (min-width: 851px) and (max-width: 1239px) {
+@media (min-width: 851px) and (max-width: 1359px) {
   .reference-header .header {
     flex-wrap: wrap;
     row-gap: 0;
@@ -1061,4 +1068,152 @@ footer .logo img{height:52px!important}
   display: inline-block;
   padding: 11px 16px;
   white-space: nowrap;
+}
+
+/* ── Country menu (October 2026, owner's request) ────────────────
+   BookMyShow-style location picker after the search box: a pin, the
+   country's short name and a chevron; the list opens under it on the right.
+   CountrySwitch.tsx picks the country (the page's section, else the
+   visitor's choice, else where they are browsing from, else the UK). */
+.gm-country {
+  position: relative;
+  flex: 0 0 auto;
+}
+.gm-country-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 46px;
+  padding: 0 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: #282828;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.gm-country-btn svg {
+  color: #8c1d40;
+}
+.gm-country-btn:hover,
+.gm-country-btn[aria-expanded="true"] {
+  background: #f1f4f7;
+}
+.gm-country-btn:focus-visible {
+  outline: 2px solid #8c1d40;
+  outline-offset: 2px;
+}
+.gm-country-btn .chevron {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  margin: -3px 0 0 2px;
+}
+.gm-country-btn[aria-expanded="true"] .chevron {
+  transform: rotate(225deg);
+  margin-top: 3px;
+}
+.gm-country-list {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 80;
+  width: 260px;
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #dfe3e8;
+  border-radius: 10px;
+  box-shadow: 0 12px 28px #0000001f;
+}
+.gm-country-list[hidden] {
+  display: none;
+}
+.gm-country-note {
+  margin: 0 4px 8px;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #6e6e6e;
+}
+.gm-country-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.gm-country-list a,
+.gm-country-list span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 15px;
+  color: #282828;
+  text-decoration: none;
+}
+.gm-country-list a:hover,
+.gm-country-list a:focus-visible {
+  background: #f1f4f7;
+  color: #8c1d40;
+  outline: none;
+}
+.gm-country-list [aria-current="true"] {
+  font-weight: 700;
+  color: #8c1d40;
+}
+.gm-country-list [aria-current="true"]::before {
+  content: "";
+  order: 2;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8c1d40;
+}
+.gm-country-list span[aria-disabled] {
+  color: #6e6e6e;
+  cursor: default;
+}
+.gm-country-list small {
+  margin-left: auto;
+  font-size: 12px;
+  color: #6e6e6e;
+}
+@media (min-width: 851px) and (max-width: 1359px) {
+  .reference-header .header .gm-country {
+    order: 3;
+  }
+}
+@media (max-width: 850px) {
+  .reference-header .header .gm-country {
+    order: 1;
+    margin-left: auto;
+  }
+  .reference-header .header .ax-mobile-toggle {
+    order: 2;
+  }
+  .gm-country-btn {
+    height: 44px;
+    padding: 0 8px;
+  }
+}
+@media (max-width: 550px) {
+  .reference-header .header {
+    column-gap: 8px;
+  }
+  .gm-country-btn {
+    gap: 4px;
+    padding: 0 6px;
+    font-size: 14px;
+  }
+  .gm-country-btn .chevron {
+    display: none;
+  }
+  .reference-header .header .logo img {
+    height: 44px !important;
+  }
 }

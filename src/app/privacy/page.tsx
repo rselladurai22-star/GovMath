@@ -63,6 +63,15 @@ export default function PrivacyPage() {
         cookies in your browser settings, though some features may not work as
         well.
       </p>
+      <p>
+        <strong>Your country.</strong> To suggest calculators for where you
+        live, the country menu at the top of the page asks our host (Vercel)
+        which country your connection comes from. Our code reads only the
+        country code (such as &ldquo;GB&rdquo;) and does not keep it. If you
+        pick a country from the menu, your choice is saved in your own
+        browser&rsquo;s storage so the menu remembers it; you can clear it at any
+        time by clearing your browser&rsquo;s site data.
+      </p>
 
       <h2>Advertising and Google AdSense</h2>
       <p>
