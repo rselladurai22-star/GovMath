@@ -1,7 +1,7 @@
 # GovMath project memory
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 7 October 2026 (logo, SEO audit fixes, early repayment charge calculator and Phases 0 to 9 live; the 187 fixed-amount pages switched off until AdSense approval, see **SEO**; Search Console API access and sitemap notes under **Search Console** below; `docs/SEO-PLAN.md` has the off-site plan).
+Last updated: 7 October 2026 (logo, SEO audit fixes, early repayment charge calculator and Phases 0 to 9 live; the 187 fixed-amount pages switched off until AdSense approval, see **SEO**; titles and descriptions of 8 near-page-one pages matched to real searches, see **Known loose ends**; Search Console API access and sitemap notes under **Search Console** below; `docs/SEO-PLAN.md` has the off-site plan).
 
 ## Goal
 
