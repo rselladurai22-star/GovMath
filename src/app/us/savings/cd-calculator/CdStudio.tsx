@@ -102,12 +102,12 @@ export default function CdStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            {usd(v.deposit)} in a {duration(v.term)} CD at {percent(c.apy, 2)} APY earns <b>{usd(c.interest, true)}</b> of interest. After {v.tax}% tax you keep{" "}
+            {usd(v.deposit)} in a {duration(v.term)} CD at {percent(c.apy, 2)} APY earns <b>{usd(c.interest, true)}</b>{" "}of interest. After {v.tax}% tax you keep{" "}
             <b>{usd(afterTax, true)}</b>.
             {v.early ? (
               <>
                 {" "}
-                Cashing in after {duration(withdrawAt)} costs a <b>{usd(c.penalty, true)}</b> penalty, leaving <b>{usd(c.earlyValue, true)}</b>
+                Cashing in after {duration(withdrawAt)} costs a <b>{usd(c.penalty, true)}</b>{" "}penalty, leaving <b>{usd(c.earlyValue, true)}</b>
                 {earlyGain < 0 ? <>: {usd(-earlyGain, true)} less than you put in</> : null}.
               </>
             ) : null}

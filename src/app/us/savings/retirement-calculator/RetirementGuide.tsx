@@ -75,11 +75,11 @@ export default function RetirementGuide() {
         <p>The calculator runs your plan in two stages.</p>
         <ol>
           <li>
-            <strong>Saving.</strong> Your current savings and monthly saving grow at the return you set until your retirement age, month by
+            <strong>Saving.</strong>{" "}Your current savings and monthly saving grow at the return you set until your retirement age, month by
             month.
           </li>
           <li>
-            <strong>Spending.</strong> From retirement, it takes out each year&rsquo;s gap between spending and Social Security, both rising with
+            <strong>Spending.</strong>{" "}From retirement, it takes out each year&rsquo;s gap between spending and Social Security, both rising with
             inflation, at the start of the year, and grows what&rsquo;s left at your retirement return.
           </li>
         </ol>
@@ -266,8 +266,8 @@ export default function RetirementGuide() {
         </Figure>
         <p>
           At $500 a month the money runs out at 85, and about $240 a month more would fix it. The easiest way to save more is through work: our{" "}
-          <a href="/us/savings/401k-calculator">401(k) calculator</a> shows what your employer match adds, and the{" "}
-          <a href="/us/savings/roth-ira-calculator">Roth IRA calculator</a> what tax-free saving on the side could reach.
+          <a href="/us/savings/401k-calculator">401(k) calculator</a>{" "}shows what your employer match adds, and the{" "}
+          <a href="/us/savings/roth-ira-calculator">Roth IRA calculator</a>{" "}what tax-free saving on the side could reach.
         </p>
       </GuideSection>
 
@@ -301,16 +301,16 @@ export default function RetirementGuide() {
         <p>
           Starting early is still far easier. A 25-year-old with $5,000 saved and $400 a month reaches {usd(1_311_258)} by 67 but needs{" "}
           {usd(1_930_176)} in future dollars, because 42 years of inflation lift the target. About $217 a month more puts them on track. Our{" "}
-          <a href="/us/savings/compound-interest-calculator">compound interest calculator</a> shows how much time adds.
+          <a href="/us/savings/compound-interest-calculator">compound interest calculator</a>{" "}shows how much time adds.
         </p>
       </GuideSection>
 
       <GuideSection id="accounts" n={16} kicker="Accounts" title="Where to save">
         <ul>
-          <li><strong>401(k), 403(b) or 457(b):</strong> up to $24,500 in 2026, plus catch-ups, often with an employer match.</li>
-          <li><strong>IRA:</strong> up to $7,500, plus $1,100 from 50. Roth or traditional.</li>
-          <li><strong>Health savings account:</strong> for people with a high-deductible health plan; tax-free for medical costs.</li>
-          <li><strong>Taxable brokerage account:</strong> no limits or early-withdrawal rules, but no tax breaks.</li>
+          <li><strong>401(k), 403(b) or 457(b):</strong>{" "}up to $24,500 in 2026, plus catch-ups, often with an employer match.</li>
+          <li><strong>IRA:</strong>{" "}up to $7,500, plus $1,100 from 50. Roth or traditional.</li>
+          <li><strong>Health savings account:</strong>{" "}for people with a high-deductible health plan; tax-free for medical costs.</li>
+          <li><strong>Taxable brokerage account:</strong>{" "}no limits or early-withdrawal rules, but no tax breaks.</li>
         </ul>
         <p>
           The calculator treats all of these as one pot. For short-term goals before retirement, a savings account is better: see our{" "}

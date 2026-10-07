@@ -110,10 +110,10 @@ export default function AutoLoanGuide() {
       <GuideSection id="amount" n={4} kicker="The loan" title="What goes into the amount financed">
         <p>The amount financed is what you actually borrow. It starts with the agreed price and then:</p>
         <ul>
-          <li><strong>Down payment</strong> and <strong>trade-in equity</strong> reduce it.</li>
-          <li><strong>Cash rebates</strong> reduce it if they are applied to the deal.</li>
-          <li><strong>Sales tax</strong>, <strong>title and registration</strong> and <strong>dealer fees</strong> increase it if you finance them.</li>
-          <li><strong>Negative equity</strong> on your trade-in, service contracts and GAP insurance increase it.</li>
+          <li><strong>Down payment</strong>{" "}and <strong>trade-in equity</strong>{" "}reduce it.</li>
+          <li><strong>Cash rebates</strong>{" "}reduce it if they are applied to the deal.</li>
+          <li><strong>Sales tax</strong>, <strong>title and registration</strong>{" "}and <strong>dealer fees</strong>{" "}increase it if you finance them.</li>
+          <li><strong>Negative equity</strong>{" "}on your trade-in, service contracts and GAP insurance increase it.</li>
         </ul>
         <p>
           Read the &quot;amount financed&quot; line on the retail installment contract. The federal Truth in Lending Act requires it, along with
@@ -130,7 +130,7 @@ export default function AutoLoanGuide() {
         <p>
           Many states use a separate motor vehicle tax with its own rate, so the general sales tax may not be what you pay. The calculator fills
           in the state rate plus the state&rsquo;s average local rate as a starting point. Check your state&rsquo;s motor vehicle or revenue
-          department and type the exact rate if it differs. The <a href="/us/taxes/sales-tax-calculator">sales tax calculator</a> lists every
+          department and type the exact rate if it differs. The <a href="/us/taxes/sales-tax-calculator">sales tax calculator</a>{" "}lists every
           state&rsquo;s general rate.
         </p>
       </GuideSection>
@@ -272,8 +272,8 @@ export default function AutoLoanGuide() {
           whether or not you itemize, on the new Schedule 1-A. The IRS rules:
         </p>
         <ul>
-          <li>Up to <strong>$10,000</strong> of interest a year.</li>
-          <li>The loan must be taken out after December 31, 2024, to buy a <strong>new</strong> vehicle for <strong>personal use</strong>, secured by the vehicle. Leases and used cars do not qualify.</li>
+          <li>Up to <strong>$10,000</strong>{" "}of interest a year.</li>
+          <li>The loan must be taken out after December 31, 2024, to buy a <strong>new</strong>{" "}vehicle for <strong>personal use</strong>, secured by the vehicle. Leases and used cars do not qualify.</li>
           <li>The vehicle&rsquo;s <strong>final assembly must be in the United States</strong>. The window sticker or the VIN shows the plant; NHTSA&rsquo;s VIN decoder can check it.</li>
           <li>Cars, minivans, vans, SUVs, pickups and motorcycles under 14,000 pounds gross vehicle weight.</li>
           <li>The limit falls by $200 for each $1,000 of modified AGI over $100,000 ($200,000 for joint filers), and is gone at $150,000 ($250,000).</li>
@@ -300,8 +300,8 @@ export default function AutoLoanGuide() {
         <p>
           A common rule of thumb is to keep the car payment under about 10% to 15% of your take-home pay and all car costs, including insurance,
           fuel and maintenance, under about 20%. Lenders also look at your debt-to-income ratio. The{" "}
-          <a href="/us/loans/debt-to-income-ratio">debt-to-income calculator</a> shows how a new payment changes it, and the{" "}
-          <a href="/us/taxes/paycheck-calculator">paycheck calculator</a> gives your take-home pay.
+          <a href="/us/loans/debt-to-income-ratio">debt-to-income calculator</a>{" "}shows how a new payment changes it, and the{" "}
+          <a href="/us/taxes/paycheck-calculator">paycheck calculator</a>{" "}gives your take-home pay.
         </p>
       </GuideSection>
 
@@ -310,7 +310,7 @@ export default function AutoLoanGuide() {
           Most auto loans have no prepayment penalty, but check your contract. Extra payments go to principal and cut the interest. If rates fall
           or your credit improves, refinancing can lower the rate; a refinanced loan for a qualifying car can still count for the interest
           deduction. Avoid refinancing into a longer term just to lower the payment. The general{" "}
-          <a href="/us/loans/loan-calculator">loan calculator</a> shows the effect of extra payments on any fixed loan.
+          <a href="/us/loans/loan-calculator">loan calculator</a>{" "}shows the effect of extra payments on any fixed loan.
         </p>
       </GuideSection>
 

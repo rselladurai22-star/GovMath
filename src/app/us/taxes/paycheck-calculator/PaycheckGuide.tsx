@@ -71,12 +71,12 @@ export default function PaycheckGuide() {
 
       <GuideSection id="gross-net" n={2} kicker="Basics" title="Gross pay and net pay">
         <p>
-          <strong>Gross pay</strong> is what you earn before anything comes out: your salary, or your hours times your hourly rate. <strong>Net pay</strong>
+          <strong>Gross pay</strong>{" "}is what you earn before anything comes out: your salary, or your hours times your hourly rate. <strong>Net pay</strong>
           {" "}(take-home pay) is the amount that lands in your bank account. The gap between the two is made up of taxes your employer must withhold
           and deductions you chose.
         </p>
         <p>
-          Some deductions come out <em>before</em> tax and lower the pay that is taxed. Others come out <em>after</em> tax. The order matters, which is
+          Some deductions come out <em>before</em>{" "}tax and lower the pay that is taxed. Others come out <em>after</em>{" "}tax. The order matters, which is
           why a 6% 401(k) contribution costs you less than 6% of your take-home pay.
         </p>
       </GuideSection>
@@ -119,11 +119,11 @@ export default function PaycheckGuide() {
       <GuideSection id="w4" n={5} kicker="Form W-4" title="How your Form W-4 changes it">
         <p>The Form W-4 you give your employer tells payroll how to withhold. Since 2020 it has no allowances. Instead it has five steps:</p>
         <ul>
-          <li><strong>Step 1:</strong> your filing status (single, married filing jointly or head of household).</li>
-          <li><strong>Step 2:</strong> tick the box if you have two jobs or your spouse works, so more tax is withheld.</li>
-          <li><strong>Step 3:</strong> credits for children ($2,200 each under 17) and other dependents ($500 each).</li>
-          <li><strong>Step 4:</strong> other income, extra deductions and extra withholding per paycheck.</li>
-          <li><strong>Step 5:</strong> sign it.</li>
+          <li><strong>Step 1:</strong>{" "}your filing status (single, married filing jointly or head of household).</li>
+          <li><strong>Step 2:</strong>{" "}tick the box if you have two jobs or your spouse works, so more tax is withheld.</li>
+          <li><strong>Step 3:</strong>{" "}credits for children ($2,200 each under 17) and other dependents ($500 each).</li>
+          <li><strong>Step 4:</strong>{" "}other income, extra deductions and extra withholding per paycheck.</li>
+          <li><strong>Step 5:</strong>{" "}sign it.</li>
         </ul>
         <p>
           Asking for $50 extra a paycheck in step 4(c) takes the $60,000 example from $1,938.08 to $1,888.08, and adds $1,300 to your federal tax
@@ -212,7 +212,7 @@ export default function PaycheckGuide() {
         />
         <p>
           Putting $173.08 a paycheck into the 401(k) costs only $135.00 of take-home pay, because federal tax falls by $38.08. With an employer match,
-          the first few percent are usually the best return you can get. The <a href="/us/savings/401k-calculator">401(k) calculator</a> shows what
+          the first few percent are usually the best return you can get. The <a href="/us/savings/401k-calculator">401(k) calculator</a>{" "}shows what
           these contributions grow to.
         </p>
       </GuideSection>
@@ -229,7 +229,7 @@ export default function PaycheckGuide() {
       <GuideSection id="benefits" n={11} kicker="Benefits" title="Health insurance, HSA and FSA">
         <p>
           Health, dental and vision premiums, HSA contributions and FSA contributions paid through your employer&rsquo;s cafeteria plan (Section 125)
-          come out before income tax <em>and</em> before Social Security and Medicare. On $60,000 in Texas, $3,000 a year of premiums cuts take-home
+          come out before income tax <em>and</em>{" "}before Social Security and Medicare. On $60,000 in Texas, $3,000 a year of premiums cuts take-home
           pay from $50,390 to $47,979.50: the benefits cost you $2,410.50, not $3,000.
         </p>
         <p>The 2026 HSA limits are $4,400 for self-only cover and $8,750 for family cover, plus $1,000 at age 55 or over.</p>
@@ -269,7 +269,7 @@ export default function PaycheckGuide() {
         />
         <p>
           To convert between hourly and yearly pay, try the <a href="/us/taxes/salary-to-hourly">salary to hourly calculator</a>. Hours over 40 a week
-          are usually paid at time and a half; the <a href="/us/taxes/overtime-calculator">overtime calculator</a> works that out.
+          are usually paid at time and a half; the <a href="/us/taxes/overtime-calculator">overtime calculator</a>{" "}works that out.
         </p>
       </GuideSection>
 
@@ -340,11 +340,11 @@ export default function PaycheckGuide() {
       <GuideSection id="stub" n={18} kicker="Pay stub" title="Reading your pay stub">
         <p>Most stubs show the same lines as this calculator, with codes that vary by payroll company:</p>
         <ul>
-          <li><strong>FIT or Fed W/H:</strong> federal income tax withheld.</li>
-          <li><strong>OASDI or SS:</strong> Social Security. <strong>MED or HI:</strong> Medicare.</li>
-          <li><strong>SIT or SWT:</strong> state income tax. <strong>LIT or CITY:</strong> local tax.</li>
-          <li><strong>401K, 125, HSA:</strong> pre-tax deductions. <strong>ROTH:</strong> after-tax.</li>
-          <li><strong>YTD:</strong> year-to-date totals, useful for checking the Social Security cap.</li>
+          <li><strong>FIT or Fed W/H:</strong>{" "}federal income tax withheld.</li>
+          <li><strong>OASDI or SS:</strong>{" "}Social Security. <strong>MED or HI:</strong>{" "}Medicare.</li>
+          <li><strong>SIT or SWT:</strong>{" "}state income tax. <strong>LIT or CITY:</strong>{" "}local tax.</li>
+          <li><strong>401K, 125, HSA:</strong>{" "}pre-tax deductions. <strong>ROTH:</strong>{" "}after-tax.</li>
+          <li><strong>YTD:</strong>{" "}year-to-date totals, useful for checking the Social Security cap.</li>
         </ul>
         <p>Some states also take a small payroll tax for disability or family leave, such as California SDI or New Jersey FLI.</p>
       </GuideSection>

@@ -150,8 +150,8 @@ export default function FederalGuide() {
         <p>The 2025 tax law (the One Big Beautiful Bill Act) added three deductions you can take whether or not you itemize, for 2025 to 2028:</p>
         <ul>
           <li><strong>Senior deduction:</strong> $6,000 for each person 65 or over, reduced by 6% of AGI above $75,000 ($150,000 joint).</li>
-          <li><strong>Tips:</strong> up to $25,000 of qualified tips in jobs that customarily get tips.</li>
-          <li><strong>Overtime:</strong> up to $12,500 ($25,000 joint) of the overtime premium, the extra half in time and a half.</li>
+          <li><strong>Tips:</strong>{" "}up to $25,000 of qualified tips in jobs that customarily get tips.</li>
+          <li><strong>Overtime:</strong>{" "}up to $12,500 ($25,000 joint) of the overtime premium, the extra half in time and a half.</li>
         </ul>
         <p>
           The tips and overtime deductions shrink by $100 for each $1,000 of income above $150,000 ($300,000 joint), and married people filing
@@ -178,7 +178,7 @@ export default function FederalGuide() {
           ]}
         />
         <p>
-          The <a href="/us/taxes/overtime-calculator">overtime calculator</a> works out your premium from your hours.
+          The <a href="/us/taxes/overtime-calculator">overtime calculator</a>{" "}works out your premium from your hours.
         </p>
       </GuideSection>
 
@@ -198,7 +198,7 @@ export default function FederalGuide() {
         />
         <p>
           Each rate applies only to the income inside its band. Married filing separately uses the single bands up to the 35% band, which ends at
-          $384,350. The <a href="/us/taxes/tax-bracket-calculator">tax bracket calculator</a> shows your income split band by band.
+          $384,350. The <a href="/us/taxes/tax-bracket-calculator">tax bracket calculator</a>{" "}shows your income split band by band.
         </p>
       </GuideSection>
 
@@ -256,7 +256,7 @@ export default function FederalGuide() {
         <p>
           Long-term gains (assets held more than a year) and qualified dividends sit on top of your other taxable income and are taxed at 0%, 15% or 20%.
           A single person with $80,000 of wages and a $10,000 long-term gain pays $8,770 on the wages and $1,500 (15%) on the gain, $10,270 in all.
-          Short-term gains are taxed like wages. The <a href="/us/taxes/capital-gains-tax">capital gains tax calculator</a> goes into the detail.
+          Short-term gains are taxed like wages. The <a href="/us/taxes/capital-gains-tax">capital gains tax calculator</a>{" "}goes into the detail.
         </p>
       </GuideSection>
 
@@ -275,7 +275,7 @@ export default function FederalGuide() {
           total={{ label: "Total federal tax", value: "$9,732.07" }}
         />
         <p>
-          The <a href="/us/taxes/self-employment-tax">self-employment tax calculator</a> also works out your quarterly estimated payments.
+          The <a href="/us/taxes/self-employment-tax">self-employment tax calculator</a>{" "}also works out your quarterly estimated payments.
         </p>
       </GuideSection>
 
@@ -331,9 +331,9 @@ export default function FederalGuide() {
             $10,970 to $8,770, saving $2,200.
           </li>
           <li><strong>An HSA</strong>, if you have a high-deductible health plan: deductible going in, tax-free for medical costs.</li>
-          <li><strong>Hold investments over a year</strong> to get the lower long-term rates.</li>
-          <li><strong>Claim every credit:</strong> child, dependent care, education and the earned income credit.</li>
-          <li><strong>Bunch charity gifts</strong> into one year so you clear the standard deduction and can itemize.</li>
+          <li><strong>Hold investments over a year</strong>{" "}to get the lower long-term rates.</li>
+          <li><strong>Claim every credit:</strong>{" "}child, dependent care, education and the earned income credit.</li>
+          <li><strong>Bunch charity gifts</strong>{" "}into one year so you clear the standard deduction and can itemize.</li>
         </ul>
       </GuideSection>
 
@@ -378,9 +378,9 @@ export default function FederalGuide() {
 
       <GuideSection id="records" n={21} kicker="Paperwork" title="Documents you will need">
         <ul>
-          <li><strong>Form W-2</strong> from each employer: wages in box 1 and federal tax withheld in box 2.</li>
+          <li><strong>Form W-2</strong>{" "}from each employer: wages in box 1 and federal tax withheld in box 2.</li>
           <li><strong>Forms 1099</strong>: 1099-INT for interest, 1099-DIV for dividends, 1099-B for sales of investments, 1099-NEC and 1099-K for freelance and platform income, 1099-R for pensions and IRA withdrawals, SSA-1099 for Social Security.</li>
-          <li><strong>Form 1098</strong> for mortgage interest and 1098-E for student loan interest, if you might itemize or claim the adjustment.</li>
+          <li><strong>Form 1098</strong>{" "}for mortgage interest and 1098-E for student loan interest, if you might itemize or claim the adjustment.</li>
           <li><strong>Records of estimated payments</strong>{" "}you made during the year, and last year&rsquo;s return for the safe-harbor figures.</li>
         </ul>
         <p>

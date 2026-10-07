@@ -108,8 +108,8 @@ export default function CdGuide() {
 
       <GuideSection id="apy" n={4} kicker="Rates" title="APY and the interest rate">
         <p>
-          Banks quote two figures. The <strong>interest rate</strong> is the yearly rate before compounding. The <strong>annual percentage
-          yield (APY)</strong> includes the effect of compounding, so it is what you actually earn in a year. Federal Truth in Savings rules
+          Banks quote two figures. The <strong>interest rate</strong>{" "}is the yearly rate before compounding. The <strong>annual percentage
+          yield (APY)</strong>{" "}includes the effect of compounding, so it is what you actually earn in a year. Federal Truth in Savings rules
           require banks to show the APY, which makes it the right figure for comparing CDs.
         </p>
         <p>
@@ -226,7 +226,7 @@ export default function CdGuide() {
         <p>
           A high-yield savings account is better for an emergency fund you might need at short notice. A CD is better for money with a known date
           when you want to lock in today&rsquo;s rate. The average savings account paid about 0.37% in September 2026, which earns just $37 a
-          year on {usd(10_000)}. The <a href="/us/savings/savings-goal-calculator">savings goal calculator</a> shows how fast regular deposits
+          year on {usd(10_000)}. The <a href="/us/savings/savings-goal-calculator">savings goal calculator</a>{" "}shows how fast regular deposits
           reach a target.
         </p>
       </GuideSection>
@@ -241,11 +241,11 @@ export default function CdGuide() {
 
       <GuideSection id="types" n={13} kicker="Options" title="Other kinds of CD">
         <ul>
-          <li><strong>No-penalty CDs</strong> let you withdraw after the first week without a penalty, usually at a slightly lower rate.</li>
+          <li><strong>No-penalty CDs</strong>{" "}let you withdraw after the first week without a penalty, usually at a slightly lower rate.</li>
           <li><strong>Bump-up CDs</strong>{" "}let you raise the rate once or twice if the bank&rsquo;s rates rise.</li>
-          <li><strong>Jumbo CDs</strong> need a large deposit, often $100,000, and may pay a little more.</li>
-          <li><strong>Brokered CDs</strong> are bought through a brokerage and can be sold before maturity, at the market price.</li>
-          <li><strong>Callable CDs</strong> can be ended early by the bank, usually when rates fall, which removes the rate you locked in.</li>
+          <li><strong>Jumbo CDs</strong>{" "}need a large deposit, often $100,000, and may pay a little more.</li>
+          <li><strong>Brokered CDs</strong>{" "}are bought through a brokerage and can be sold before maturity, at the market price.</li>
+          <li><strong>Callable CDs</strong>{" "}can be ended early by the bank, usually when rates fall, which removes the rate you locked in.</li>
         </ul>
       </GuideSection>
 
@@ -262,7 +262,7 @@ export default function CdGuide() {
         <p>
           CD interest is taxed as ordinary income at your federal rate and usually your state rate. It is taxed in the year it is credited to the
           CD, even if you do not withdraw it, so a multi-year CD can create a tax bill each year. Your bank sends Form 1099-INT. An early
-          withdrawal penalty can be deducted on your return. The <a href="/us/taxes/tax-bracket-calculator">tax bracket calculator</a> shows your
+          withdrawal penalty can be deducted on your return. The <a href="/us/taxes/tax-bracket-calculator">tax bracket calculator</a>{" "}shows your
           marginal rate.
         </p>
       </GuideSection>
@@ -270,7 +270,7 @@ export default function CdGuide() {
       <GuideSection id="ira" n={16} kicker="Tax" title="CDs in an IRA">
         <p>
           You can hold CDs inside a traditional or Roth IRA. The interest then grows tax-deferred or tax-free, but IRA withdrawal rules apply on top
-          of the bank&rsquo;s penalty. The <a href="/us/savings/roth-ira-calculator">Roth IRA calculator</a> shows the 2026 limits.
+          of the bank&rsquo;s penalty. The <a href="/us/savings/roth-ira-calculator">Roth IRA calculator</a>{" "}shows the 2026 limits.
         </p>
       </GuideSection>
 
@@ -285,7 +285,7 @@ export default function CdGuide() {
       <GuideSection id="inflation" n={18} kicker="Real returns" title="CDs and inflation">
         <p>
           A CD protects your dollars but not their buying power. If inflation runs above your after-tax rate, the money loses value in real terms.
-          For goals many years away, the <a href="/us/savings/compound-interest-calculator">compound interest calculator</a> lets you compare
+          For goals many years away, the <a href="/us/savings/compound-interest-calculator">compound interest calculator</a>{" "}lets you compare
           other rates of growth.
         </p>
       </GuideSection>

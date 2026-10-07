@@ -201,8 +201,8 @@ export default function SalaryHourlyGuide() {
       <GuideSection id="after-tax" n={13} kicker="Take-home" title="From gross to take-home">
         <p>
           Every figure here is gross pay, before tax. Federal income tax, Social Security (6.2%), Medicare (1.45%) and any state or local income tax come out
-          of each check, along with any 401(k) or health insurance deductions. The <a href="/us/taxes/paycheck-calculator">paycheck calculator</a> shows
-          your take-home pay, and the <a href="/us/taxes/tax-bracket-calculator">tax bracket calculator</a> shows which bracket your pay falls in.
+          of each check, along with any 401(k) or health insurance deductions. The <a href="/us/taxes/paycheck-calculator">paycheck calculator</a>{" "}shows
+          your take-home pay, and the <a href="/us/taxes/tax-bracket-calculator">tax bracket calculator</a>{" "}shows which bracket your pay falls in.
         </p>
       </GuideSection>
 

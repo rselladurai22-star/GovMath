@@ -119,15 +119,15 @@ export default function CapitalGainsStudio({ query }: { query: Query }) {
         sentence={
           hasLoss ? (
             <>
-              You have a net capital loss of <b>{usd(cl.deduction + cl.carryforward)}</b>. Up to <b>{usd(cl.deduction)}</b> comes off your other income this year, saving about{" "}
-              <b>{usd(Math.abs(total))}</b> of federal tax, and <b>{usd(cl.carryforward)}</b> carries forward to later years.
+              You have a net capital loss of <b>{usd(cl.deduction + cl.carryforward)}</b>. Up to <b>{usd(cl.deduction)}</b>{" "}comes off your other income this year, saving about{" "}
+              <b>{usd(Math.abs(total))}</b>{" "}of federal tax, and <b>{usd(cl.carryforward)}</b>{" "}carries forward to later years.
             </>
           ) : gain > 0 ? (
             <>
-              Your <b>{long ? "long-term" : "short-term"}</b> gain is <b>{usd(gain)}</b>
+              Your <b>{long ? "long-term" : "short-term"}</b>{" "}gain is <b>{usd(gain)}</b>
               {excluded > 0 ? (
                 <>
-                  , of which <b>{usd(excluded)}</b> is tax-free under the home sale exclusion
+                  , of which <b>{usd(excluded)}</b>{" "}is tax-free under the home sale exclusion
                 </>
               ) : null}
               . Federal tax on it is <b>{usd(Math.max(0, fed.tax))}</b>

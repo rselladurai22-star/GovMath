@@ -124,8 +124,8 @@ export default function RentStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            On {usd(v.income)} a year, the 30% rule allows <b>{usd(r.thirty)}</b> and the 40× rule <b>{usd(r.fortyTimes)}</b>. Your budget allows <b>{usd(r.budget)}</b> after other
-            essentials. The lowest, set by the <b>{lowest.label}</b>, is a rent you can comfortably afford: <b>{usd(r.comfortable)}</b> a month.
+            On {usd(v.income)} a year, the 30% rule allows <b>{usd(r.thirty)}</b>{" "}and the 40× rule <b>{usd(r.fortyTimes)}</b>. Your budget allows <b>{usd(r.budget)}</b>{" "}after other
+            essentials. The lowest, set by the <b>{lowest.label}</b>, is a rent you can comfortably afford: <b>{usd(r.comfortable)}</b>{" "}a month.
           </>
         }
         badges={[`Take-home ${usd(takeHome)} a month`, `${percent(takeHome > 0 ? r.comfortable / takeHome : 0, 0)} of take-home`, `Set by the ${lowest.label}`]}

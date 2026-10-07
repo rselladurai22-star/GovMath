@@ -254,12 +254,12 @@ export default function CapitalGainsGuide() {
       <GuideSection id="crypto" n={14} kicker="Special cases" title="Crypto, collectibles and special cases">
         <ul>
           <li>
-            <strong>Crypto</strong> is property. Selling, swapping one coin for another or spending it is a sale. A single person with $45,000 of wages who
+            <strong>Crypto</strong>{" "}is property. Selling, swapping one coin for another or spending it is a sale. A single person with $45,000 of wages who
             makes a $5,000 short-term crypto gain pays $600 (12%).
           </li>
-          <li><strong>Collectibles</strong> (art, coins, stamps, gold and silver, including many metal ETFs) are taxed at up to 28% when long-term.</li>
-          <li><strong>Small business stock</strong> (section 1202) can be partly or wholly tax-free if held long enough.</li>
-          <li><strong>Very large gains</strong> run into the 20% rate: a single person with $100,000 of wages and a $1 million gain pays $211,120 of federal tax on it, including $34,200 of NIIT.</li>
+          <li><strong>Collectibles</strong>{" "}(art, coins, stamps, gold and silver, including many metal ETFs) are taxed at up to 28% when long-term.</li>
+          <li><strong>Small business stock</strong>{" "}(section 1202) can be partly or wholly tax-free if held long enough.</li>
+          <li><strong>Very large gains</strong>{" "}run into the 20% rate: a single person with $100,000 of wages and a $1 million gain pays $211,120 of federal tax on it, including $34,200 of NIIT.</li>
         </ul>
       </GuideSection>
 
@@ -274,12 +274,12 @@ export default function CapitalGainsGuide() {
 
       <GuideSection id="lower" n={16} kicker="Planning" title="Ways to lower the tax">
         <ul>
-          <li><strong>Hold for more than a year</strong> to get the long-term rates.</li>
-          <li><strong>Harvest losses</strong> to offset gains, minding the wash-sale rule.</li>
-          <li><strong>Use the 0% band</strong> in low-income years, such as early retirement.</li>
+          <li><strong>Hold for more than a year</strong>{" "}to get the long-term rates.</li>
+          <li><strong>Harvest losses</strong>{" "}to offset gains, minding the wash-sale rule.</li>
+          <li><strong>Use the 0% band</strong>{" "}in low-income years, such as early retirement.</li>
           <li><strong>Invest through a 401(k) or IRA</strong>, where gains are not taxed each year. The <a href="/us/savings/roth-ira-calculator">Roth IRA calculator</a>{" "}shows tax-free growth.</li>
-          <li><strong>Give appreciated shares</strong> to charity instead of cash: no gain is taxed and you may deduct the full value.</li>
-          <li><strong>Spread a big sale</strong> across two tax years, or use an installment sale for property.</li>
+          <li><strong>Give appreciated shares</strong>{" "}to charity instead of cash: no gain is taxed and you may deduct the full value.</li>
+          <li><strong>Spread a big sale</strong>{" "}across two tax years, or use an installment sale for property.</li>
         </ul>
       </GuideSection>
 

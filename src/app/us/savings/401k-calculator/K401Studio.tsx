@@ -95,7 +95,7 @@ export default function K401Studio({ query }: { query: Query }) {
             <>Set a retirement age above your current age to see a projection.</>
           ) : (
             <>
-              Over {years} {per(years, "years")} you put in <b>{usd(r.yourTotal)}</b>, your employer adds <b>{usd(r.employerTotal)}</b> and investment growth adds <b>{usd(r.growth)}</b>. In today&apos;s dollars the balance is worth
+              Over {years} {per(years, "years")} you put in <b>{usd(r.yourTotal)}</b>, your employer adds <b>{usd(r.employerTotal)}</b>{" "}and investment growth adds <b>{usd(r.growth)}</b>. In today&apos;s dollars the balance is worth
               about <b>{usd(r.real)}</b>.
             </>
           )
@@ -135,7 +135,7 @@ export default function K401Studio({ query }: { query: Query }) {
           hint="Drag across the chart, or use the arrow keys, to read any age."
           readout={(i) => (
             <>
-              At <b>{ages[i]}</b>: balance <b>{usd(bal[i] ?? 0)}</b>, worth <b>{usd(real[i] ?? 0)}</b> in today&apos;s dollars.
+              At <b>{ages[i]}</b>: balance <b>{usd(bal[i] ?? 0)}</b>, worth <b>{usd(real[i] ?? 0)}</b>{" "}in today&apos;s dollars.
             </>
           )}
         />

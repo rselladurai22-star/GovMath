@@ -218,7 +218,7 @@ export default function CardPayoffGuide() {
         <p>
           A personal loan at a lower fixed rate can replace card debt with one fixed payment and an end date. The Federal Reserve&rsquo;s survey
           put the average 24-month personal loan rate at banks at about 11.9% in August 2026, well under typical card rates, though your rate
-          depends on your credit. Check origination fees, and use the <a href="/us/loans/loan-calculator">loan calculator</a> to compare the
+          depends on your credit. Check origination fees, and use the <a href="/us/loans/loan-calculator">loan calculator</a>{" "}to compare the
           total cost with your card plan.
         </p>
       </GuideSection>
@@ -227,7 +227,7 @@ export default function CardPayoffGuide() {
         <p>
           Pay the minimum on every card and put every spare dollar on one. The avalanche method targets the highest APR first and saves the most
           interest; the snowball method targets the smallest balance first for quick wins. The{" "}
-          <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a> compares both for up to six debts.
+          <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a>{" "}compares both for up to six debts.
         </p>
       </GuideSection>
 
@@ -266,7 +266,7 @@ export default function CardPayoffGuide() {
         <p>
           Keep paying the same amount, but into savings. An emergency fund of a few months of expenses stops the next car repair or medical bill
           going on the card. Then pay the full statement balance each month so the grace period means you never pay card interest again. The{" "}
-          <a href="/us/savings/savings-goal-calculator">savings goal calculator</a> shows how fast the fund builds.
+          <a href="/us/savings/savings-goal-calculator">savings goal calculator</a>{" "}shows how fast the fund builds.
         </p>
       </GuideSection>
 

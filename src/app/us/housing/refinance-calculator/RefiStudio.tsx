@@ -112,7 +112,7 @@ export default function RefiStudio({ query }: { query: Query }) {
         sentence={
           saves ? (
             <>
-              Your payment would fall from <b>{usd(r.currentPayment)}</b> to <b>{usd(r.newPayment)}</b>. {v.closing > 0 ? (
+              Your payment would fall from <b>{usd(r.currentPayment)}</b>{" "}to <b>{usd(r.newPayment)}</b>. {v.closing > 0 ? (
                 <>
                   The {usd(v.closing)} of closing costs is paid back by the saving in <b>{breakEven.toLowerCase()}</b>.
                 </>
@@ -123,7 +123,7 @@ export default function RefiStudio({ query }: { query: Query }) {
             </>
           ) : (
             <>
-              Your payment would go from <b>{usd(r.currentPayment)}</b> to <b>{usd(r.newPayment)}</b>
+              Your payment would go from <b>{usd(r.currentPayment)}</b>{" "}to <b>{usd(r.newPayment)}</b>
               {v.cashOut > 0 ? " because of the cash out" : longer ? "" : " because the new term is shorter"}. Over the whole loan you would pay{" "}
               <b>{usd(Math.abs(r.lifetimeDifference))}</b> {r.lifetimeDifference > 0 ? "more" : "less"} than keeping your current mortgage.
             </>

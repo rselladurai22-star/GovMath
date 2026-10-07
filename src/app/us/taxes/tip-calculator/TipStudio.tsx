@@ -60,7 +60,7 @@ export default function TipStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            A <b>{v.pct}%</b> tip on {usd(v.onTotal ? v.bill + v.tax : v.bill, true)} {v.onTotal ? "(bill plus tax)" : "(bill before tax)"} is <b>{usd(t.tip, true)}</b>, so the total is <b>{usd(t.total, true)}</b>.
+            A <b>{v.pct}%</b>{" "}tip on {usd(v.onTotal ? v.bill + v.tax : v.bill, true)} {v.onTotal ? "(bill plus tax)" : "(bill before tax)"} is <b>{usd(t.tip, true)}</b>, so the total is <b>{usd(t.total, true)}</b>.
             {v.roundUp && share !== t.perPerson ? (
               <>
                 {" "}

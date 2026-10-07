@@ -63,8 +63,8 @@ export default function DebtPayoffGuide() {
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
           <li>Pay the minimum on every debt, and put every extra dollar on one target debt.</li>
-          <li>The <strong>avalanche</strong> targets the highest APR first and always costs the least interest.</li>
-          <li>The <strong>snowball</strong> targets the smallest balance first, so whole debts disappear sooner.</li>
+          <li>The <strong>avalanche</strong>{" "}targets the highest APR first and always costs the least interest.</li>
+          <li>The <strong>snowball</strong>{" "}targets the smallest balance first, so whole debts disappear sooner.</li>
           <li>In our example, four debts of {usd(20_200)} with {usd(200)} extra a month are cleared in 29 months either way; the avalanche saves {usd(346)}.</li>
         </ul>
         <KeyStats
@@ -185,8 +185,8 @@ export default function DebtPayoffGuide() {
 
       <GuideSection id="which" n={9} kicker="Decision" title="Which method should you choose?">
         <ul>
-          <li>Choose the <strong>avalanche</strong> if you are motivated by numbers and your highest-rate debt is not huge.</li>
-          <li>Choose the <strong>snowball</strong> if you have many small debts, have tried and stopped before, or need early wins to stay on track.</li>
+          <li>Choose the <strong>avalanche</strong>{" "}if you are motivated by numbers and your highest-rate debt is not huge.</li>
+          <li>Choose the <strong>snowball</strong>{" "}if you have many small debts, have tried and stopped before, or need early wins to stay on track.</li>
           <li>If your smallest debt also has the highest rate, the two methods start the same way.</li>
         </ul>
         <p>The best plan is the one you will stick with: a snowball you finish beats an avalanche you abandon.</p>
@@ -211,7 +211,7 @@ export default function DebtPayoffGuide() {
         <p>
           The Federal Reserve&rsquo;s G.19 survey shows why cards are usually first in line: in August 2026 banks charged about 22% on cards that
           paid interest, about 11.9% on 24-month personal loans and about 7.2% on 72-month new car loans. The{" "}
-          <a href="/us/loans/credit-card-payoff">credit card payoff calculator</a> looks at a single card in more detail.
+          <a href="/us/loans/credit-card-payoff">credit card payoff calculator</a>{" "}looks at a single card in more detail.
         </p>
       </GuideSection>
 
@@ -225,9 +225,9 @@ export default function DebtPayoffGuide() {
 
       <GuideSection id="special" n={14} kicker="Options" title="Debts to treat differently">
         <ul>
-          <li><strong>Federal student loans</strong> have income-driven plans and forgiveness options; see the <a href="/us/loans/student-loan-calculator">student loan calculator</a> before paying them early.</li>
-          <li><strong>Low-rate car loans</strong> and mortgages usually come last.</li>
-          <li><strong>Tax debts</strong> to the IRS carry penalties and interest; set up a payment plan with the IRS.</li>
+          <li><strong>Federal student loans</strong>{" "}have income-driven plans and forgiveness options; see the <a href="/us/loans/student-loan-calculator">student loan calculator</a>{" "}before paying them early.</li>
+          <li><strong>Low-rate car loans</strong>{" "}and mortgages usually come last.</li>
+          <li><strong>Tax debts</strong>{" "}to the IRS carry penalties and interest; set up a payment plan with the IRS.</li>
           <li><strong>Debts in collection</strong>: check the debt is yours and within the statute of limitations before paying.</li>
         </ul>
       </GuideSection>
@@ -243,7 +243,7 @@ export default function DebtPayoffGuide() {
         <p>
           Look at subscriptions, insurance quotes, phone plans and eating out. Send windfalls such as tax refunds and bonuses straight to the target
           debt. If you usually get a big refund, adjusting your W-4 puts that money in each paycheck instead; the{" "}
-          <a href="/us/taxes/paycheck-calculator">paycheck calculator</a> shows the effect.
+          <a href="/us/taxes/paycheck-calculator">paycheck calculator</a>{" "}shows the effect.
         </p>
       </GuideSection>
 
@@ -343,7 +343,7 @@ export default function DebtPayoffGuide() {
       <GuideSection id="dti" n={26} kicker="Credit" title="Debt payoff and borrowing later">
         <p>
           Lenders look at your debt-to-income ratio, your monthly debt payments as a share of your gross income, when you apply for a mortgage or
-          car loan. Each debt you clear lowers it. The <a href="/us/loans/debt-to-income-ratio">debt-to-income calculator</a> shows where you
+          car loan. Each debt you clear lowers it. The <a href="/us/loans/debt-to-income-ratio">debt-to-income calculator</a>{" "}shows where you
           stand now and after each debt is gone.
         </p>
       </GuideSection>

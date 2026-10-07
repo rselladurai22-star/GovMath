@@ -79,8 +79,8 @@ export default function K401Guide() {
           match on what you put in or as a flat contribution.
         </p>
         <p>
-          The account has tax advantages. With <strong>traditional</strong> contributions, the money comes out of your pay before federal income
-          tax, so your taxable income falls; you pay tax when you withdraw it in retirement. With <strong>Roth</strong> contributions, you pay
+          The account has tax advantages. With <strong>traditional</strong>{" "}contributions, the money comes out of your pay before federal income
+          tax, so your taxable income falls; you pay tax when you withdraw it in retirement. With <strong>Roth</strong>{" "}contributions, you pay
           tax now, but qualified withdrawals, including all the growth, are tax-free. In both cases the investments grow without yearly tax on
           dividends or gains, which helps compounding. Social Security and Medicare taxes still apply to your contributions either way. To see how
           a contribution changes your take-home pay, try our <a href="/us/taxes/paycheck-calculator">paycheck calculator</a>.
@@ -171,7 +171,7 @@ export default function K401Guide() {
           ]}
         />
         <p>
-          Some employers also make a <strong>non-elective</strong> contribution, such as a 3% safe harbor contribution, which you get whether or
+          Some employers also make a <strong>non-elective</strong>{" "}contribution, such as a 3% safe harbor contribution, which you get whether or
           not you save anything yourself. Enter it under More options. Matches are often paid each pay period, so if you hit the yearly limit
           early by contributing a high percentage, check whether your plan has a &quot;true-up&quot; or you may lose part of the match.
         </p>
@@ -213,7 +213,7 @@ export default function K401Guide() {
         <p>
           The example assumes pay rises 3% a year, a 7% yearly return before 0.5% fees, and a $20,000 starting balance. Growth makes up more than
           two-thirds of the final balance: that is compounding at work. In today&rsquo;s dollars, with 2.5% inflation, the balance is worth about{" "}
-          {usd(659_684)}. Our <a href="/us/savings/compound-interest-calculator">compound interest calculator</a> shows the same effect for any
+          {usd(659_684)}. Our <a href="/us/savings/compound-interest-calculator">compound interest calculator</a>{" "}shows the same effect for any
           savings.
         </p>
       </GuideSection>
@@ -233,7 +233,7 @@ export default function K401Guide() {
         <p>
           A common rule of thumb is to save about 15% of your pay for retirement, counting your employer&rsquo;s share. If you can&rsquo;t start
           there, many plans offer automatic increases of 1% a year, which you barely notice when they line up with a raise. Our{" "}
-          <a href="/us/savings/retirement-calculator">retirement calculator</a> works backward from the income you want to the saving you need.
+          <a href="/us/savings/retirement-calculator">retirement calculator</a>{" "}works backward from the income you want to the saving you need.
         </p>
       </GuideSection>
 
@@ -302,8 +302,8 @@ export default function K401Guide() {
         <p>
           The deciding question is whether your tax rate is higher now or in retirement, which nobody knows for sure. Many people split their
           contributions to keep options open. Employer matches have traditionally gone in as pre-tax money, though plans may now let you take them
-          as Roth. Use our <a href="/us/taxes/federal-income-tax">federal income tax calculator</a> to see your bracket, and the{" "}
-          <a href="/us/savings/roth-ira-calculator">Roth IRA calculator</a> to compare tax-free growth outside work.
+          as Roth. Use our <a href="/us/taxes/federal-income-tax">federal income tax calculator</a>{" "}to see your bracket, and the{" "}
+          <a href="/us/savings/roth-ira-calculator">Roth IRA calculator</a>{" "}to compare tax-free growth outside work.
         </p>
       </GuideSection>
 

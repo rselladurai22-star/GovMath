@@ -113,13 +113,13 @@ export default function GoalStudio({ query }: { query: Query }) {
             <>You already have {usd(v.saved)}, which meets your {usd(v.goal)} goal.</>
           ) : v.mode === "deadline" ? (
             <>
-              Saving <b>{usd(need, true)}</b> a month for {duration(v.months)} turns your <b>{usd(v.saved)}</b> into <b>{usd(v.goal)}</b>. You put in <b>{usd(yourMoney)}</b> and interest adds <b>{usd(interest)}</b>.
+              Saving <b>{usd(need, true)}</b>{" "}a month for {duration(v.months)} turns your <b>{usd(v.saved)}</b>{" "}into <b>{usd(v.goal)}</b>. You put in <b>{usd(yourMoney)}</b>{" "}and interest adds <b>{usd(interest)}</b>.
             </>
           ) : never ? (
             <>With nothing going in each month and no interest, your savings won&apos;t reach {usd(v.goal)}. Add a monthly amount to see when you&apos;d get there.</>
           ) : (
             <>
-              Saving <b>{usd(v.monthly)}</b> a month gets you from <b>{usd(v.saved)}</b> to <b>{usd(v.goal)}</b> in <b>{duration(takes)}</b>. Interest adds about <b>{usd(interest)}</b> along the way.
+              Saving <b>{usd(v.monthly)}</b>{" "}a month gets you from <b>{usd(v.saved)}</b>{" "}to <b>{usd(v.goal)}</b>{" "}in <b>{duration(takes)}</b>. Interest adds about <b>{usd(interest)}</b>{" "}along the way.
             </>
           )
         }
@@ -158,7 +158,7 @@ export default function GoalStudio({ query }: { query: Query }) {
             hint="Drag across the chart, or use the arrow keys, to read any month."
             readout={(i) => (
               <>
-                Month <b>{i}</b>: balance <b>{usd(bal[i] ?? 0)}</b>, of which <b>{usd((bal[i] ?? 0) - (paid[i] ?? 0))}</b> is interest.
+                Month <b>{i}</b>: balance <b>{usd(bal[i] ?? 0)}</b>, of which <b>{usd((bal[i] ?? 0) - (paid[i] ?? 0))}</b>{" "}is interest.
               </>
             )}
           />

@@ -64,7 +64,7 @@ export default function PrivacyPage() {
         well.
       </p>
       <p>
-        <strong>Your country.</strong> To suggest calculators for where you
+        <strong>Your country.</strong>{" "}To suggest calculators for where you
         live, the country menu at the top of the page asks our host (Vercel)
         which country your connection comes from. Our code reads only the
         country code (such as &ldquo;GB&rdquo;) and does not keep it. If you

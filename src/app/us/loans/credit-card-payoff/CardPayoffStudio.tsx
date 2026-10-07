@@ -105,12 +105,12 @@ export default function CardPayoffStudio({ query }: { query: Query }) {
         sentence={
           never ? (
             <>
-              A payment of <b>{usd(pay, true)}</b> does not cover the <b>{usd(firstInterest, true)}</b> of interest charged in the first month, so the balance never falls. Pay
-              at least <b>{usd(firstInterest + 1, true)}</b> a month.
+              A payment of <b>{usd(pay, true)}</b>{" "}does not cover the <b>{usd(firstInterest, true)}</b>{" "}of interest charged in the first month, so the balance never falls. Pay
+              at least <b>{usd(firstInterest + 1, true)}</b>{" "}a month.
             </>
           ) : (
             <>
-              Paying <b>{usd(pay, true)}</b> a month clears {usd(v.balance)} in <b>{duration(plan.months)}</b> with <b>{usd(plan.totalInterest)}</b> of interest.
+              Paying <b>{usd(pay, true)}</b>{" "}a month clears {usd(v.balance)} in <b>{duration(plan.months)}</b>{" "}with <b>{usd(plan.totalInterest)}</b>{" "}of interest.
               {Number.isFinite(minimum.months) ? (
                 <>
                   {" "}

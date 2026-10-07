@@ -175,20 +175,20 @@ export default function PercentGuide() {
       <GuideSection id="money" n={9} kicker="Real life" title="Percentages in everyday money">
         <ul>
           <li>
-            <strong>Sales tax and VAT:</strong> to add a tax of 20%, multiply by 1.2; to remove it, divide by 1.2. For a 7.25% sales tax, multiply or
+            <strong>Sales tax and VAT:</strong>{" "}to add a tax of 20%, multiply by 1.2; to remove it, divide by 1.2. For a 7.25% sales tax, multiply or
             divide by 1.0725.
           </li>
           <li>
-            <strong>Pay rises:</strong> a 5% rise on 30,000 is 1,500 before tax.
+            <strong>Pay rises:</strong>{" "}a 5% rise on 30,000 is 1,500 before tax.
           </li>
           <li>
             <strong>Discounts:</strong> 30% off then a further 10% off is 37% off, not 40%.
           </li>
           <li>
-            <strong>Interest:</strong> rates are usually yearly, so 4% on 1,000 is about 40 a year.
+            <strong>Interest:</strong>{" "}rates are usually yearly, so 4% on 1,000 is about 40 a year.
           </li>
           <li>
-            <strong>Splitting bills:</strong> dividing 100 three ways gives 33.34, 33.33 and 33.33, so the shares add up.
+            <strong>Splitting bills:</strong>{" "}dividing 100 three ways gives 33.34, 33.33 and 33.33, so the shares add up.
           </li>
         </ul>
       </GuideSection>
@@ -242,7 +242,7 @@ export default function PercentGuide() {
         <p>
           A tip or service charge is a percentage of the bill. A 12.5% service charge on a bill of 64 is 8, taking the total to 72; an 18% tip on
           the same bill is 11.52. Customs differ: in the US a tip of 15% to 20% is expected, while in the UK a service charge of 10% to 12.5% is often
-          added to the bill and is optional. Our <a href="/us/taxes/tip-calculator">tip calculator</a> splits a bill between people.
+          added to the bill and is optional. Our <a href="/us/taxes/tip-calculator">tip calculator</a>{" "}splits a bill between people.
         </p>
       </GuideSection>
 
@@ -267,7 +267,7 @@ export default function PercentGuide() {
         />
         <p>
           Compare savings accounts by AER and loans or credit cards by APR, because both convert different payment patterns into a single yearly
-          percentage. The <a href="/uk/investing/compound-interest">compound interest calculator</a> shows how rates grow over time.
+          percentage. The <a href="/uk/investing/compound-interest">compound interest calculator</a>{" "}shows how rates grow over time.
         </p>
       </GuideSection>
 

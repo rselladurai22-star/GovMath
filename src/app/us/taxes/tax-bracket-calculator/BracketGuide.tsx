@@ -265,7 +265,7 @@ export default function BracketGuide() {
         </p>
         <p>
           Couples with one main earner get a <strong>marriage bonus</strong>: one person earning $100,000 pays $13,170 single but $7,640 married filing
-          jointly. A <strong>marriage penalty</strong> can appear at the very top, where the 37% band starts at $768,700 joint, less than double the
+          jointly. A <strong>marriage penalty</strong>{" "}can appear at the very top, where the 37% band starts at $768,700 joint, less than double the
           $640,600 single figure.
         </p>
       </GuideSection>
@@ -294,12 +294,12 @@ export default function BracketGuide() {
       <GuideSection id="planning" n={16} kicker="Planning" title="Using your bracket to plan">
         <ul>
           <li>
-            <strong>Traditional or Roth?</strong> If your bracket now is higher than you expect in retirement, a traditional 401(k) or IRA usually wins; if
+            <strong>Traditional or Roth?</strong>{" "}If your bracket now is higher than you expect in retirement, a traditional 401(k) or IRA usually wins; if
             lower, a Roth.
           </li>
           <li><strong>Deductions are worth your bracket:</strong> $1,000 of deduction saves $220 in the 22% bracket, $120 in the 12% bracket.</li>
-          <li><strong>Room to fill:</strong> people in a low-income year can convert some of a traditional IRA to a Roth up to the top of the 12% band.</li>
-          <li><strong>Timing:</strong> a bonus or a gain that would cross into a higher band may be worth spreading over two tax years.</li>
+          <li><strong>Room to fill:</strong>{" "}people in a low-income year can convert some of a traditional IRA to a Roth up to the top of the 12% band.</li>
+          <li><strong>Timing:</strong>{" "}a bonus or a gain that would cross into a higher band may be worth spreading over two tax years.</li>
         </ul>
       </GuideSection>
 

@@ -89,14 +89,14 @@ export default function OvertimeStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            Your overtime rate is <b>{usd(w.overtimeRate, true)}</b> an hour, so {v.ot} overtime {per(v.ot, "hours")} add <b>{usd(w.overtimePay, true)}</b>
+            Your overtime rate is <b>{usd(w.overtimeRate, true)}</b>{" "}an hour, so {v.ot} overtime {per(v.ot, "hours")} add <b>{usd(w.overtimePay, true)}</b>
             {v.dt > 0 ? (
               <>
                 {" "}
                 and {v.dt} double-time {per(v.dt, "hours")} add <b>{usd(w.doubleTimePay, true)}</b>
               </>
             ) : null}{" "}
-            to <b>{usd(w.regularPay, true)}</b> of regular pay. Over {v.weeks} {per(v.weeks, "weeks")}, overtime adds <b>{usd(yearlyExtra)}</b> a year.
+            to <b>{usd(w.regularPay, true)}</b>{" "}of regular pay. Over {v.weeks} {per(v.weeks, "weeks")}, overtime adds <b>{usd(yearlyExtra)}</b>{" "}a year.
           </>
         }
         badges={[`Deduction ${usd(saving.deduction)}`, `Federal tax saved about ${usd(saving.taxSaved)}`]}
@@ -168,7 +168,7 @@ export default function OvertimeStudio({ query }: { query: Query }) {
           yFormat={usdShort}
           readout={(i) => (
             <>
-              <b>{i}</b> overtime {per(i, "hours")}: <b>{usd(curve[i], true)}</b> for the week
+              <b>{i}</b>{" "}overtime {per(i, "hours")}: <b>{usd(curve[i], true)}</b>{" "}for the week
             </>
           )}
           ariaLabel="A week's pay rising with overtime hours"

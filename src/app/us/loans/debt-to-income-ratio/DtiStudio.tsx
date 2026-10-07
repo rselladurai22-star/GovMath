@@ -118,8 +118,8 @@ export default function DtiStudio({ query }: { query: Query }) {
             <>Enter your gross income to see your ratio.</>
           ) : (
             <>
-              Your debts take <b>{usd(v.housing + debts)}</b> of <b>{usd(gross)}</b> gross income a month: <b>{percent(r.back, 1)}</b> in all, and{" "}
-              <b>{percent(r.front, 1)}</b> for housing alone. {verdict}
+              Your debts take <b>{usd(v.housing + debts)}</b>{" "}of <b>{usd(gross)}</b>{" "}gross income a month: <b>{percent(r.back, 1)}</b>{" "}in all, and{" "}
+              <b>{percent(r.front, 1)}</b>{" "}for housing alone. {verdict}
             </>
           )
         }

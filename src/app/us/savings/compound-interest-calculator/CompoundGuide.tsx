@@ -165,7 +165,7 @@ export default function CompoundGuide() {
 
       <GuideSection id="apy" n={7} kicker="Comparing accounts" title="APR vs APY">
         <p>
-          The <strong>APY</strong> (annual percentage yield) is what you actually earn in a year once compounding is included. Under the federal
+          The <strong>APY</strong>{" "}(annual percentage yield) is what you actually earn in a year once compounding is included. Under the federal
           Truth in Savings Act, banks and credit unions quote APY on deposit accounts, so you can compare them fairly. The rate before compounding
           is sometimes called the interest rate or APR. A 5% rate compounded monthly has an APY of 5.116%.
         </p>
@@ -209,8 +209,8 @@ export default function CompoundGuide() {
         </Figure>
         <p>
           Starting ten years later means saving twice as much each month to end up in the same place. The early saver deposits $96,000; the late
-          saver needs $144,000. That is the clearest argument for starting a <a href="/us/savings/401k-calculator">401(k)</a> or{" "}
-          <a href="/us/savings/roth-ira-calculator">Roth IRA</a> as early as you can, even with small amounts.
+          saver needs $144,000. That is the clearest argument for starting a <a href="/us/savings/401k-calculator">401(k)</a>{" "}or{" "}
+          <a href="/us/savings/roth-ira-calculator">Roth IRA</a>{" "}as early as you can, even with small amounts.
         </p>
       </GuideSection>
 
@@ -277,7 +277,7 @@ export default function CompoundGuide() {
         <p>
           Savings rates are variable and change with the Federal Reserve&rsquo;s rate decisions. Deposits at FDIC-insured banks are protected up to
           $250,000 per depositor, per bank, per ownership category. Our <a href="/us/savings/savings-goal-calculator">savings goal calculator</a>{" "}
-          works out how much to put aside each month for a target, and the <a href="/us/savings/cd-calculator">CD calculator</a> covers fixed-term
+          works out how much to put aside each month for a target, and the <a href="/us/savings/cd-calculator">CD calculator</a>{" "}covers fixed-term
           deposits.
         </p>
       </GuideSection>
@@ -305,15 +305,15 @@ export default function CompoundGuide() {
         <p>
           Compounding works against you when you borrow. A $5,000 credit card balance at 22% APR, compounded monthly with nothing paid, would grow
           to about {usd(14_872)} in five years. Paying down high-rate debt is a guaranteed return equal to its interest rate, better than most
-          investments. Our <a href="/us/loans/credit-card-payoff">credit card payoff calculator</a> shows how long a balance takes to clear.
+          investments. Our <a href="/us/loans/credit-card-payoff">credit card payoff calculator</a>{" "}shows how long a balance takes to clear.
         </p>
       </GuideSection>
 
       <GuideSection id="which-rate" n={17} kicker="Assumptions" title="Which rate to use">
         <ul>
-          <li><strong>Savings account or CD:</strong> the APY the bank quotes. It can change on a savings account; a CD&rsquo;s is fixed for the term.</li>
-          <li><strong>Bonds or bond funds:</strong> roughly the fund&rsquo;s current yield, which its provider publishes.</li>
-          <li><strong>Stock index funds:</strong> many planners use 6% to 7% a year over long periods, before inflation. Single years range from large gains to falls of a third or more.</li>
+          <li><strong>Savings account or CD:</strong>{" "}the APY the bank quotes. It can change on a savings account; a CD&rsquo;s is fixed for the term.</li>
+          <li><strong>Bonds or bond funds:</strong>{" "}roughly the fund&rsquo;s current yield, which its provider publishes.</li>
+          <li><strong>Stock index funds:</strong>{" "}many planners use 6% to 7% a year over long periods, before inflation. Single years range from large gains to falls of a third or more.</li>
         </ul>
       </GuideSection>
 

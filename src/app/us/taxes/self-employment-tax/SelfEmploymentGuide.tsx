@@ -292,11 +292,11 @@ export default function SelfEmploymentGuide() {
 
       <GuideSection id="forms" n={18} kicker="Paperwork" title="Forms you will use">
         <ul>
-          <li><strong>1099-NEC and 1099-K:</strong> what clients and payment platforms report paying you.</li>
-          <li><strong>Schedule C:</strong> your business income and expenses.</li>
-          <li><strong>Schedule SE:</strong> self-employment tax.</li>
-          <li><strong>Form 8995:</strong> the QBI deduction.</li>
-          <li><strong>Form 1040-ES:</strong> quarterly estimated payments.</li>
+          <li><strong>1099-NEC and 1099-K:</strong>{" "}what clients and payment platforms report paying you.</li>
+          <li><strong>Schedule C:</strong>{" "}your business income and expenses.</li>
+          <li><strong>Schedule SE:</strong>{" "}self-employment tax.</li>
+          <li><strong>Form 8995:</strong>{" "}the QBI deduction.</li>
+          <li><strong>Form 1040-ES:</strong>{" "}quarterly estimated payments.</li>
         </ul>
         <p>Report all your business income, even if you did not get a 1099 for it.</p>
       </GuideSection>

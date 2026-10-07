@@ -76,7 +76,7 @@ export default function RothGuide() {
       <GuideSection id="what" n={2} kicker="Basics" title="What a Roth IRA is">
         <p>
           An individual retirement account (IRA) is a tax-advantaged account you open yourself at a bank, brokerage or robo-adviser, separate from
-          any workplace plan. A <strong>Roth</strong> IRA is funded with money you have already paid tax on. In return, the investments grow
+          any workplace plan. A <strong>Roth</strong>{" "}IRA is funded with money you have already paid tax on. In return, the investments grow
           without yearly tax, and qualified withdrawals in retirement, including all the growth, are completely tax-free.
         </p>
         <p>
@@ -104,7 +104,7 @@ export default function RothGuide() {
 
       <GuideSection id="income" n={4} kicker="Who can contribute" title="Income limits and the phase-out">
         <p>
-          Unlike a traditional IRA, a Roth IRA has income limits. They are based on your <strong>modified adjusted gross income</strong> (MAGI),
+          Unlike a traditional IRA, a Roth IRA has income limits. They are based on your <strong>modified adjusted gross income</strong>{" "}(MAGI),
           which for most people is close to the adjusted gross income on line 11 of Form 1040. Below the start of the range you can contribute the
           full amount; above the end, nothing directly.
         </p>
@@ -119,7 +119,7 @@ export default function RothGuide() {
           ]}
         />
         <p>
-          Not sure of your AGI? Our <a href="/us/taxes/federal-income-tax">federal income tax calculator</a> works it out from your income and
+          Not sure of your AGI? Our <a href="/us/taxes/federal-income-tax">federal income tax calculator</a>{" "}works it out from your income and
           deductions.
         </p>
       </GuideSection>
@@ -158,7 +158,7 @@ export default function RothGuide() {
 
       <GuideSection id="earned" n={6} kicker="Eligibility" title="You need earned income">
         <p>
-          You can only contribute up to your <strong>earned income</strong> for the year: wages, salaries, tips and net self-employment income.
+          You can only contribute up to your <strong>earned income</strong>{" "}for the year: wages, salaries, tips and net self-employment income.
           Interest, dividends, rental income, pensions and Social Security don&rsquo;t count. A student who earns $4,000 from a summer job can
           contribute $4,000, not $7,500. There is no lower age limit, so teenagers with a job can have a custodial Roth IRA.
         </p>
@@ -201,7 +201,7 @@ export default function RothGuide() {
         <p>
           At the 20% long-term gains rate the advantage grows to about {usd(187_752)}. If you would pay 0% on dividends and gains, the two come out
           the same, which is why a Roth matters most to people who expect to pay tax on investment income. Our{" "}
-          <a href="/us/taxes/capital-gains-tax">capital gains tax calculator</a> shows which rate applies to you.
+          <a href="/us/taxes/capital-gains-tax">capital gains tax calculator</a>{" "}shows which rate applies to you.
         </p>
       </GuideSection>
 
@@ -237,9 +237,9 @@ export default function RothGuide() {
       <GuideSection id="withdrawals" n={10} kicker="Getting it out" title="Taking money out">
         <p>Withdrawals come out in a set order, which works in your favor:</p>
         <ol>
-          <li><strong>Contributions first.</strong> Always tax- and penalty-free, at any age.</li>
+          <li><strong>Contributions first.</strong>{" "}Always tax- and penalty-free, at any age.</li>
           <li><strong>Conversions next</strong>, oldest first. The converted amount isn&rsquo;t taxed again, but a 10% penalty can apply if you are under 59½ and the conversion is under five years old.</li>
-          <li><strong>Earnings last.</strong> Tax-free once you are 59½ and the five-year rule is met. Otherwise taxed, usually with a 10% penalty.</li>
+          <li><strong>Earnings last.</strong>{" "}Tax-free once you are 59½ and the five-year rule is met. Otherwise taxed, usually with a 10% penalty.</li>
         </ol>
         <p>
           Exceptions allow penalty-free (and sometimes tax-free) access to earnings for disability, death and up to $10,000 for a first home. Because
@@ -295,8 +295,8 @@ export default function RothGuide() {
           <li>Then a health savings account if eligible, and a taxable account.</li>
         </ol>
         <p>
-          Our <a href="/us/savings/401k-calculator">401(k) calculator</a> shows what the workplace part could reach, and the{" "}
-          <a href="/us/savings/retirement-calculator">retirement calculator</a> checks whether the total is enough.
+          Our <a href="/us/savings/401k-calculator">401(k) calculator</a>{" "}shows what the workplace part could reach, and the{" "}
+          <a href="/us/savings/retirement-calculator">retirement calculator</a>{" "}checks whether the total is enough.
         </p>
       </GuideSection>
 

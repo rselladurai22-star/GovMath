@@ -106,8 +106,8 @@ export default function SalaryHourlyStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            At <b>{v.hours} hours a week</b> for <b>{Math.round((v.dir === "salary" ? v.weeks : weeks) * 10) / 10} weeks</b> a year ({Math.round(yearHours).toLocaleString("en-US")} hours), that is <b>{usd(p.weekly)}</b> a week and{" "}
-            <b>{usd(p.monthly)}</b> a month before tax.
+            At <b>{v.hours} hours a week</b>{" "}for <b>{Math.round((v.dir === "salary" ? v.weeks : weeks) * 10) / 10} weeks</b>{" "}a year ({Math.round(yearHours).toLocaleString("en-US")} hours), that is <b>{usd(p.weekly)}</b>{" "}a week and{" "}
+            <b>{usd(p.monthly)}</b>{" "}a month before tax.
           </>
         }
         badges={[`${usd(p.biweekly)} every two weeks`, `${times.toFixed(1)}× the federal minimum wage`]}
@@ -162,7 +162,7 @@ export default function SalaryHourlyStudio({ query }: { query: Query }) {
           {belowExempt && (
             <Callout tone="warn" title="You may be owed overtime">
               {usd(p.weekly)} a week is below the $684 a week ($35,568 a year) salary level for the federal overtime exemption, so hours over 40 in a week should be paid at time and a half. Use the{" "}
-              <a href="/us/taxes/overtime-calculator">overtime calculator</a> to see what that adds up to.
+              <a href="/us/taxes/overtime-calculator">overtime calculator</a>{" "}to see what that adds up to.
             </Callout>
           )}
         </ResultCard>

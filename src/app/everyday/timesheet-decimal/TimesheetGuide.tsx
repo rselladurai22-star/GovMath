@@ -163,8 +163,8 @@ export default function TimesheetGuide() {
       <GuideSection id="pay" n={8} kicker="Money" title="From hours to pay">
         <p>
           Gross pay is decimal hours times the hourly rate, plus any overtime premium. Tax and National Insurance come off afterwards. The{" "}
-          <a href="/uk/tax-and-salary/salary-calculator">salary calculator</a> shows take-home pay, and the{" "}
-          <a href="/uk/tax-and-salary/minimum-wage">minimum wage checker</a> confirms the legal minimum for your age.
+          <a href="/uk/tax-and-salary/salary-calculator">salary calculator</a>{" "}shows take-home pay, and the{" "}
+          <a href="/uk/tax-and-salary/minimum-wage">minimum wage checker</a>{" "}confirms the legal minimum for your age.
         </p>
       </GuideSection>
 
@@ -269,8 +269,8 @@ export default function TimesheetGuide() {
         </p>
         <p>
           A 44.5-hour week at $15 an hour is 40 hours at $15 ($600) plus 4.5 hours at $22.50 ($101.25): $701.25 before tax. The{" "}
-          <a href="/us/taxes/overtime-calculator">overtime calculator</a> works this out and shows the new federal deduction for overtime pay, and the{" "}
-          <a href="/us/taxes/paycheck-calculator">paycheck calculator</a> shows take-home pay after federal and state tax.
+          <a href="/us/taxes/overtime-calculator">overtime calculator</a>{" "}works this out and shows the new federal deduction for overtime pay, and the{" "}
+          <a href="/us/taxes/paycheck-calculator">paycheck calculator</a>{" "}shows take-home pay after federal and state tax.
         </p>
       </GuideSection>
 

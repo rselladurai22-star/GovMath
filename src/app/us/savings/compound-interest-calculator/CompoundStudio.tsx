@@ -67,7 +67,7 @@ export default function CompoundStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            You put in <b>{usd(g.deposits)}</b> and {g.interest >= 0 ? "earn" : "lose"} <b>{usd(Math.abs(g.interest))}</b>
+            You put in <b>{usd(g.deposits)}</b>{" "}and {g.interest >= 0 ? "earn" : "lose"} <b>{usd(Math.abs(g.interest))}</b>
             {g.interest >= 0 ? " of interest, so your money grows to " : ", so your balance ends at "}
             <b>{usd(g.balance)}</b>. In today&apos;s dollars, after{" "}
             {v.infl}% inflation, that is worth about <b>{usd(g.real)}</b>.
