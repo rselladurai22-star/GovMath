@@ -160,9 +160,10 @@ export const CALCULATORS: Calculator[] = [
   live("rent-increase", "property", "Rent Increase Checker", "Is your rent rise legal, and what will it cost you?"),
   live("deposit-return", "property", "Tenancy Deposit Return Calculator", "The deposit cap, fair deductions and what you should get back."),
   live("remortgage", "property", "Remortgage Calculator", "What a new deal saves after fees and charges."),
+  live("early-repayment-charge", "property", "Early Repayment Charge Calculator", "Your mortgage ERC, free overpayments and when to switch."),
 
   // ── Business ────────────────────────────────────────────────────────────
-  live("sole-trader-tax", "business", "Sole Trader Tax Calculator", "Self-employed Income Tax + Class 2 / 4 NI.", true),
+  live("sole-trader-tax", "business", "Sole Trader Tax Calculator", "Self-employed Income Tax and Class 4 NI.", true),
   live("corporation-tax", "business", "Corporation Tax Calculator", "Small and main rate, with marginal relief."),
   live("dividend-vs-salary", "business", "Dividend vs Salary Optimiser", "Find the tax-efficient split for company directors.", true),
   live("vat-calculator", "business", "VAT Calculator", "Add or remove VAT at 20%, 5% or 0% — instantly.", true),

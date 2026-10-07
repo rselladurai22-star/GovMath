@@ -6,7 +6,7 @@ import { ogFor } from "@/gm/og";
 import LhaGuide from "./LhaGuide";
 
 export const metadata: Metadata = {
-  title: "Local Housing Allowance Calculator 2026/27",
+  title: "LHA Calculator 2026/27: Bedroom Entitlement",
   description:
     "Free LHA calculator for all 200 areas of England, Scotland, Wales and NI. See your bedroom entitlement, the shared rate for under-35s and any rent shortfall.",
   alternates: { canonical: "/benefits/local-housing-allowance" },
