@@ -119,7 +119,7 @@ How they are built:
 
 ## SEO (October 2026)
 
-The audit and the off-site plan are in `docs/SEO-PLAN.md`. Conventions now in the code:
+The audit and the off-site plan are in `docs/SEO-PLAN.md`. The 12-month growth strategy (page families, seasonal moments, links, measurement) is in `docs/GROWTH-STRATEGY.md`; build its batches only when the owner approves them. Conventions now in the code:
 
 - **Titles and descriptions:** see "How a flagship page is built". The 11 package pages set absolute titles in their JSON; blog posts may set a shorter `seoTitle`.
 - **Mega menus** list every calculator in each topic: `headerHtml()` in `src/gm/catalog.ts` rebuilds the `.ax-mega-links` of `chrome.json` and the 11 page JSONs from `CALCULATORS` at render time, and turns the menu `<h3>`s into `p.ax-mega-h` (so each page's `<h1>` is its first heading). Desktop shows three columns (`govmath-theme.css`). A new calculator appears in the menu automatically.
