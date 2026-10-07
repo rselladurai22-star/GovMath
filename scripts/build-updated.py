@@ -45,6 +45,11 @@ for page in glob.glob(os.path.join(ROOT, "src/app/uk/*/*/page.tsx")):
         continue
     # Before October 2026 the UK pages lived at src/app/<topic>/<page>.
     dates[url] = last_change(folder, folder.replace("src/app/uk/", "src/app/", 1))
+# US pages and the Everyday pages shared by every country.
+for pattern in ("src/app/us/*/*/page.tsx", "src/app/everyday/*/page.tsx"):
+    for page in glob.glob(os.path.join(ROOT, pattern)):
+        folder = os.path.relpath(os.path.dirname(page), ROOT)
+        dates["/" + os.path.relpath(folder, "src/app")] = last_change(folder)
 for url, path in PACKAGE.items():
     dates[url] = last_change(path)
 
