@@ -65,7 +65,7 @@ export default function FlagshipPage({
   const crumbs = breadcrumbs.map((c, i) => (i === 1 ? { ...c, label: topic || c.label } : c));
 
   return (
-    <GmShell kind="calculator">
+    <GmShell kind="calculator" country={path.startsWith("/us/") ? "us" : "uk"}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="wrap">
         <div className="crumb">

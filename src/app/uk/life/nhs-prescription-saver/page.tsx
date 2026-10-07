@@ -37,7 +37,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function PrescriptionPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/life/bmi-uk-nhs", "/uk/life/healthy-start", "/uk/benefits/universal-credit", "/uk/benefits/pension-credit"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/everyday/bmi-calculator", "/uk/life/healthy-start", "/uk/benefits/universal-credit", "/uk/benefits/pension-credit"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

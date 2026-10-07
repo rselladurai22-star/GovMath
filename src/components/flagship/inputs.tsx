@@ -166,6 +166,7 @@ export function MoneyField({
   pence,
   optional,
   info,
+  symbol = "£",
 }: {
   label: string;
   value: number;
@@ -179,6 +180,8 @@ export function MoneyField({
   big?: boolean;
   /** Accept and show pence, e.g. 99.99. */
   pence?: boolean;
+  /** Currency symbol: £ by default, $ on the US calculators. */
+  symbol?: string;
 }) {
   const id = useId();
   const [draft, setDraft] = useState<string | null>(null);
@@ -189,7 +192,7 @@ export function MoneyField({
   };
   const box = (
     <div className="number">
-      <span aria-hidden="true">£</span>
+      <span aria-hidden="true">{symbol}</span>
       <input
         id={id}
         type="text"

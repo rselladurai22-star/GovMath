@@ -266,7 +266,7 @@ export default function PayRiseGuide() {
           When you compare offers, add them up.
         </p>
       <p>
-          To work out a rise as a percentage, or what a percentage rise comes to, the <a href="/uk/life/percentage-calculator">percentage calculator</a> shows the working.
+          To work out a rise as a percentage, or what a percentage rise comes to, the <a href="/everyday/percentage-calculator">percentage calculator</a> shows the working.
         </p>
       </GuideSection>
 

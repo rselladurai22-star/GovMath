@@ -2,10 +2,10 @@
 
 import { decimalToHhmm, timesheet, toMinutes } from "@/lib/life/everyday";
 import Studio from "@/components/flagship/Studio";
-import { AdvancedOptions, InputGroup, MoneyField, StepperField, TextField } from "@/components/flagship/inputs";
+import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField, TextField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, per } from "@/components/flagship/format";
-import { num, ShareButton, text, useStudio, type Query } from "@/components/flagship/useStudio";
+import { per } from "@/components/flagship/format";
+import { num, oneOf, ShareButton, text, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const DAYS = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"] as const;
 const NAMES = { mon: "Monday", tue: "Tuesday", wed: "Wednesday", thu: "Thursday", fri: "Friday", sat: "Saturday", sun: "Sunday" };
@@ -19,11 +19,15 @@ const SCHEMA = {
   friS: text("09:00", 5), friE: text("16:00", 5), friB: num(30, 0, 600),
   satS: text("", 5), satE: text("", 5), satB: num(0, 0, 600),
   sunS: text("", 5), sunE: text("", 5), sunB: num(0, 0, 600),
-  hourly: num(12.71, 0, 1_000),
+  cur: oneOf("gbp", ["gbp", "usd", "eur"] as const),
+  hourly: num(15, 0, 1_000),
   otAfter: num(0, 0, 100),
   otRate: num(1.5, 1, 3),
 };
-const ADVANCED = ["satS", "satE", "satB", "sunS", "sunE", "sunB", "hourly", "otAfter", "otRate"] as const;
+const ADVANCED = ["satS", "satE", "satB", "sunS", "sunE", "sunB", "cur", "hourly", "otAfter", "otRate"] as const;
+const SYMBOL = { gbp: "£", usd: "$", eur: "€" };
+/** Minimum hourly pay for adults: the UK National Living Wage (21+, from April 2026) and the US federal minimum wage. */
+const MINIMUM = { gbp: 12.71, usd: 7.25 };
 const MINUTES = [5, 10, 15, 20, 30, 45];
 
 export default function TimesheetStudio({ query }: { query: Query }) {
@@ -35,6 +39,8 @@ export default function TimesheetStudio({ query }: { query: Query }) {
   const worked = DAYS.filter((_, i) => r.hours[i] > 0);
   const bad = DAYS.filter((d) => !valid(v[`${d}S`]) || !valid(v[`${d}E`]));
   const maxH = Math.max(1, ...r.hours);
+  const sym = SYMBOL[v.cur];
+  const money = (n: number) => `${sym}${n.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
   const dayFields = (d: Day, optional = false) => (
     <div key={d}>
@@ -58,7 +64,18 @@ export default function TimesheetStudio({ query }: { query: Query }) {
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             {dayFields("sat", true)}
             {dayFields("sun", true)}
-            <MoneyField label="Hourly pay" value={v.hourly} onChange={st.bind("hourly")} pence optional hint="The National Living Wage is £12.71 from April 2026." />
+            <Segmented
+              label="Currency"
+              value={v.cur}
+              onChange={st.bind("cur")}
+              optional
+              options={[
+                { value: "gbp", label: "£", note: "Pounds: UK notes on the minimum wage and working time." },
+                { value: "usd", label: "$", note: "US dollars: US federal notes on the minimum wage and overtime." },
+                { value: "eur", label: "€", note: "Euros." },
+              ]}
+            />
+            <MoneyField label="Hourly pay" value={v.hourly} onChange={st.bind("hourly")} pence optional symbol={sym} hint="UK National Living Wage £12.71 from April 2026; US federal minimum $7.25." />
             <StepperField label="Overtime after" value={v.otAfter} onChange={st.bind("otAfter")} step={0.5} min={0} max={100} unit="hours" dp={1} optional hint="Hours a week before overtime starts. 0 for none." />
             <StepperField label="Overtime rate" value={v.otRate} onChange={st.bind("otRate")} step={0.25} min={1} max={3} unit="× pay" dp={2} optional />
           </AdvancedOptions>
@@ -76,7 +93,7 @@ export default function TimesheetStudio({ query }: { query: Query }) {
             {v.hourly > 0 ? (
               <>
                 {" "}
-                At <b>{gbp(v.hourly, true)}</b> an hour{r.overtime > 0 ? <>, with <b>{r.overtime.toFixed(2)}</b> hours of overtime at {v.otRate}×</> : null}, that is <b>{gbp(r.pay, true)}</b> before tax.
+                At <b>{money(v.hourly)}</b> an hour{r.overtime > 0 ? <>, with <b>{r.overtime.toFixed(2)}</b> hours of overtime at {v.otRate}×</> : null}, that is <b>{money(r.pay)}</b> before tax.
               </>
             ) : null}
             {bad.length > 0 ? <> Check the times for {bad.map((d) => NAMES[d]).join(", ")}: use the 24-hour format, such as 17:30.</> : null}
@@ -90,7 +107,7 @@ export default function TimesheetStudio({ query }: { query: Query }) {
           { label: "Decimal hours", value: r.total.toFixed(2) },
           { label: "Hours and minutes", value: decimalToHhmm(r.total) },
           { label: "Average a day", value: worked.length ? (r.total / worked.length).toFixed(2) : "0.00" },
-          { label: "Gross pay", value: gbp(r.pay, true), tone: "good" },
+          { label: "Gross pay", value: money(r.pay), tone: "good" },
         ]}
       />
 
@@ -99,7 +116,7 @@ export default function TimesheetStudio({ query }: { query: Query }) {
           { label: "Times", value: "24-hour clock; a finish before the start means overnight" },
           { label: "Breaks", value: "Unpaid, taken off each day" },
           { label: "Overtime", value: v.otAfter > 0 ? `After ${v.otAfter} ${per(v.otAfter, "hours")} at ${v.otRate}×` : "None" },
-          { label: "Pay", value: "Before tax and National Insurance" },
+          { label: "Pay", value: "Before tax and other deductions" },
         ]}
       />
 
@@ -120,17 +137,31 @@ export default function TimesheetStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <ResultCard title="Worth knowing" sub="Hours and pay.">
-        <Callout title="Rest breaks">
-          Adult workers are entitled to a 20-minute rest break if they work more than 6 hours a day. It does not have to be paid unless your contract says so.
-        </Callout>
-        {r.total > 48 && (
-          <Callout tone="warn" title="Over 48 hours">
-            The Working Time Regulations limit average weekly working time to 48 hours over 17 weeks, unless you have opted out in writing.
+        {v.cur === "usd" ? (
+          <Callout title="Overtime in the US">
+            Under the federal Fair Labor Standards Act, non-exempt employees must be paid at least 1.5 times their regular rate for hours over 40 in a
+            workweek. Some states, such as California, also require overtime after 8 hours in a day. Our <a href="/us/taxes/overtime-calculator">overtime
+            calculator</a> includes the new federal overtime deduction.
+          </Callout>
+        ) : (
+          <Callout title="Rest breaks in the UK">
+            Adult workers are entitled to a 20-minute rest break if they work more than 6 hours a day. It does not have to be paid unless your contract says so.
           </Callout>
         )}
-        {v.hourly > 0 && v.hourly < 12.71 && (
-          <Callout tone="warn" title="Below the National Living Wage">
-            Workers aged 21 or over must be paid at least £12.71 an hour from April 2026. Check the <a href="/uk/tax-and-salary/minimum-wage">minimum wage checker</a>.
+        {v.cur === "gbp" && r.total > 48 && (
+          <Callout tone="warn" title="Over 48 hours">
+            In the UK the Working Time Regulations limit average weekly working time to 48 hours over 17 weeks, unless you have opted out in writing.
+          </Callout>
+        )}
+        {v.cur === "gbp" && v.hourly > 0 && v.hourly < MINIMUM.gbp && (
+          <Callout tone="warn" title="Below the UK National Living Wage">
+            In the UK, workers aged 21 or over must be paid at least £12.71 an hour from April 2026. Check the <a href="/uk/tax-and-salary/minimum-wage">minimum wage checker</a>.
+          </Callout>
+        )}
+        {v.cur === "usd" && v.hourly > 0 && v.hourly < MINIMUM.usd && (
+          <Callout tone="warn" title="Below the federal minimum wage">
+            The US federal minimum wage is $7.25 an hour, and many states set a higher minimum. Tipped employees can be paid less if tips make up the
+            difference.
           </Callout>
         )}
       </ResultCard>

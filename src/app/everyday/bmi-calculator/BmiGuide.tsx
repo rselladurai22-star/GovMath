@@ -17,10 +17,10 @@ import {
 const TOC: TocItem[] = [
   { id: "short-answer", title: "The short answer" },
   { id: "how", title: "How BMI is calculated" },
-  { id: "ranges", title: "The NHS BMI ranges" },
+  { id: "ranges", title: "The adult BMI ranges" },
   { id: "ethnicity", title: "Lower thresholds for some ethnic groups" },
   { id: "table", title: "Healthy weight by height" },
-  { id: "imperial", title: "Using feet, inches, stones and pounds" },
+  { id: "imperial", title: "Using feet, inches, pounds and stones" },
   { id: "waist", title: "Waist size and waist-to-height ratio" },
   { id: "limits", title: "What BMI cannot tell you" },
   { id: "children", title: "Children and young people" },
@@ -29,7 +29,7 @@ const TOC: TocItem[] = [
   { id: "risks", title: "Why weight matters for health" },
   { id: "losing", title: "Losing weight safely" },
   { id: "underweight", title: "If you are underweight" },
-  { id: "nhs-help", title: "Help from the NHS" },
+  { id: "nhs-help", title: "Getting help in the UK and US" },
   { id: "medicines", title: "Weight-loss medicines" },
   { id: "history", title: "Where BMI came from" },
   { id: "body-fat", title: "BMI compared with body fat measures" },
@@ -38,13 +38,15 @@ const TOC: TocItem[] = [
   { id: "calories", title: "Calories and energy balance" },
   { id: "activity", title: "Activity and fitness at any size" },
   { id: "conditions", title: "Weight-related conditions to check" },
-  { id: "checks", title: "NHS Health Check" },
+  { id: "checks", title: "Free health checks" },
   { id: "myths", title: "Common myths about weight" },
   { id: "tracking", title: "Tracking progress sensibly" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
 const SOURCES: Source[] = [
+  { label: "World Health Organization — Obesity and overweight", href: "https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" },
+  { label: "CDC — Adult BMI categories", href: "https://www.cdc.gov/bmi/adult-calculator/bmi-categories.html" },
   { label: "NHS — BMI healthy weight calculator", href: "https://www.nhs.uk/health-assessment-tools/calculate-your-body-mass-index/calculate-bmi-for-adults" },
   { label: "NHS — Obesity", href: "https://www.nhs.uk/conditions/obesity/" },
   { label: "NICE — Overweight and obesity management (NG246)", href: "https://www.nice.org.uk/guidance/ng246" },
@@ -56,15 +58,15 @@ export default function BmiGuide() {
   return (
     <Guide
       kicker="The BMI guide"
-      title="BMI and healthy weight, the NHS way"
+      title="BMI and healthy weight, explained"
       intro={
         <>
-          Body mass index, or BMI, is the NHS&rsquo;s first check of whether your weight is healthy for your height. It is quick and free, but it has
-          limits. This guide explains the ranges the NHS uses, the lower thresholds for some ethnic groups, why your waist matters too, and what
-          help is available.
+          Body mass index, or BMI, is the first check doctors use of whether your weight is healthy for your height. The adult ranges come from the
+          World Health Organization and are the same ones the NHS in the UK and the CDC in the US use. It is quick and free, but it has limits. This
+          guide explains the ranges, the lower thresholds for some ethnic groups, why your waist matters too, and what help is available.
         </>
       }
-      meta={["NHS and NICE thresholds", "12 min read", "Reviewed October 2026"]}
+      meta={["WHO, NHS, CDC and NICE thresholds", "12 min read", "Reviewed October 2026"]}
       toc={TOC}
       sources={SOURCES}
     >
@@ -107,7 +109,7 @@ export default function BmiGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="ranges" n={3} kicker="Categories" title="The NHS BMI ranges">
+      <GuideSection id="ranges" n={3} kicker="Categories" title="The adult BMI ranges">
         <DataTable
           caption="Adult BMI ranges"
           head={["BMI", "Most adults", "Lower thresholds"]}
@@ -168,7 +170,9 @@ export default function BmiGuide() {
 
       <GuideSection id="imperial" n={6} kicker="Old units" title="Using feet, inches, stones and pounds">
         <p>
-          The calculator converts imperial units for you. One inch is 2.54 cm, one pound is about 0.454 kg, and there are 14 pounds in a stone.
+          The calculator converts US and UK units for you. One inch is 2.54 cm and one pound is about 0.454 kg. In the US weight is given in pounds;
+          in the UK it is often given in stones and pounds, with 14 pounds in a stone. 5 ft 7 in and 159 lb is the same person as 5 ft 7 in and
+          11 st 5 lb, with a healthy range of about 118 lb to 159 lb.
         </p>
         <WorkedExample
           title="5 ft 7 in and 11 st 5 lb"
@@ -280,11 +284,16 @@ export default function BmiGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="nhs-help" n={15} kicker="Support" title="Help from the NHS">
+      <GuideSection id="nhs-help" n={15} kicker="Support" title="Getting help in the UK and US">
         <p>
-          Your GP or practice nurse can refer you to a free local weight management service. Adults with a BMI of 30 or more, or 27.5 for the
-          lower thresholds, who have diabetes or high blood pressure can be referred to the NHS Digital Weight Management Programme. The free NHS
-          Weight Loss Plan app offers a 12-week programme for anyone.
+          In the UK, your GP or practice nurse can refer you to a free local weight management service. Adults with a BMI of 30 or more, or 27.5 for
+          the lower thresholds, who have diabetes or high blood pressure can be referred to the NHS Digital Weight Management Programme, and the free
+          NHS Weight Loss Plan app offers a 12-week programme for anyone.
+        </p>
+        <p>
+          In the US, the US Preventive Services Task Force recommends that adults with a BMI of 30 or more be offered intensive behavioral
+          programs, which most health insurance plans must cover without cost-sharing under the Affordable Care Act. Ask your doctor what your plan
+          covers; Medicare covers obesity counseling with a primary care provider for people with a BMI of 30 or more.
         </p>
       </GuideSection>
 
@@ -373,11 +382,12 @@ export default function BmiGuide() {
         </ul>
       </GuideSection>
 
-      <GuideSection id="checks" n={24} kicker="Free check" title="NHS Health Check">
+      <GuideSection id="checks" n={24} kicker="Free check" title="Free health checks">
         <p>
-          Adults in England aged 40 to 74 without certain existing conditions are invited for a free NHS Health Check every 5 years. It includes
+          In England, adults aged 40 to 74 without certain existing conditions are invited for a free NHS Health Check every 5 years. It includes
           your BMI, blood pressure and cholesterol, and a conversation about your risk of heart disease, stroke, diabetes and kidney disease. If you
-          have not been invited, ask your GP practice.
+          have not been invited, ask your GP practice. In the US, most health plans cover a yearly preventive visit, including a BMI check, with no
+          copay, and Medicare covers an annual wellness visit.
         </p>
       </GuideSection>
 

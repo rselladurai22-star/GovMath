@@ -39,11 +39,11 @@ export function updatedIso(path: string): string | undefined {
 
 /** Calculators that are not about money get a closer application category. */
 const CATEGORY: Record<string, string> = {
-  "/uk/life/bmi-uk-nhs": "HealthApplication",
+  "/everyday/bmi-calculator": "HealthApplication",
   "/uk/life/bank-holidays": "UtilitiesApplication",
   "/uk/life/days-between-dates": "UtilitiesApplication",
-  "/uk/life/percentage-calculator": "UtilitiesApplication",
-  "/uk/life/timesheet-decimal": "UtilitiesApplication",
+  "/everyday/percentage-calculator": "UtilitiesApplication",
+  "/everyday/timesheet-decimal": "UtilitiesApplication",
   "/uk/vehicles/mot-history-checker": "UtilitiesApplication",
   "/uk/vehicles/licence-at-70": "UtilitiesApplication",
 };

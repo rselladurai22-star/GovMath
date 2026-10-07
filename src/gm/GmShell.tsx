@@ -39,13 +39,22 @@ const render = (el: El) =>
     dangerouslySetInnerHTML: { __html: el.html },
   });
 
-export default function GmShell({ kind = "base", children }: { kind?: "base" | "calculator"; children: ReactNode }) {
+export default function GmShell({
+  kind = "base",
+  country = "uk",
+  children,
+}: {
+  kind?: "base" | "calculator";
+  /** Whose topic menus the header shows. */
+  country?: "uk" | "us";
+  children: ReactNode;
+}) {
   // govmath-site.css adds, in the design's own language, the parts the package does not include.
   const css = [...(kind === "calculator" ? CALCULATOR : BASE), ...THEME_BEFORE, "govmath-site.css", ...THEME_AFTER];
   const page = (
     <>
       {render(chrome.skip as El)}
-      {render({ ...(chrome.header as El), html: headerHtml(chrome.header.html) })}
+      {render({ ...(chrome.header as El), html: headerHtml(chrome.header.html, country) })}
       <main id="main" className="gm-neutral">
         {children}
       </main>

@@ -1,4 +1,4 @@
-import { getCalculatorsByCategory, shortTitle, type CategorySlug } from "../lib/calculators";
+import { EVERYDAY, US_CATEGORIES, getCalculatorsByCategory, shortTitle, type AnyCategory, type CategorySlug } from "../lib/calculators";
 import cats from "./categories.json";
 import { AMOUNT_PAGES_LIVE } from "../lib/seo/amounts";
 import { COUNTRIES, DEFAULT_COUNTRY } from "../lib/countries";
@@ -15,7 +15,10 @@ type Cat = { slug: CategorySlug; label: string; desc: string; icon: string; hero
 const CATS = cats as Cat[];
 
 /** A topic's name as plain text (the JSON holds it HTML-escaped). */
-export function categoryLabel(slug: CategorySlug): string {
+export function categoryLabel(slug: AnyCategory): string {
+  const us = US_CATEGORIES.find((c) => c.slug === slug);
+  if (us) return us.title;
+  if (slug === "everyday") return EVERYDAY.title;
   return (CATS.find((c) => c.slug === slug)?.label ?? slug).replace(/&amp;/g, "&");
 }
 
@@ -48,16 +51,21 @@ export function categoryGridHtml(): string {
  * so the page's own <h1> comes first in its heading outline. The topic menus
  * are moved into the logo row.
  */
-export function headerHtml(html: string): string {
-  return html
+export function headerHtml(html: string, country: "uk" | "us" = "uk"): string {
+  return (country === "us" ? html.replace(/<nav id="ax-navigation"[\s\S]*?<\/nav>/, usNavHtml()) : html)
     .replace(
-      /(<a class="button" href="\/([a-z-]+)">View all calculators<\/a><\/div><div class="ax-mega-links">)[\s\S]*?(<\/div>)/g,
-      (_m, open: string, slug: string, close: string) =>
-        open +
-        getCalculatorsByCategory(slug as CategorySlug)
-          .map((t) => `<a href="${t.href}">${esc(shortTitle(t.title))}</a>`)
-          .join("") +
-        close,
+      /(<a class="button" href="(\/[a-z/-]+)">View all calculators<\/a><\/div><div class="ax-mega-links">)[\s\S]*?(<\/div>)/g,
+      (_m, open: string, href: string, close: string) => {
+        const slug = topicForHref(href);
+        if (!slug) return _m;
+        return (
+          open +
+          getCalculatorsByCategory(slug)
+            .map((t) => `<a href="${t.href}">${esc(shortTitle(t.title))}</a>`)
+            .join("") +
+          close
+        );
+      },
     )
     .replace(/<h3>([\s\S]*?)<\/h3>/g, '<p class="ax-mega-h">$1</p>')
     // One-row header (October 2026, owner's request): no claret strip, no
@@ -69,6 +77,34 @@ export function headerHtml(html: string): string {
     // Country menu (BookMyShow-style location picker) after the search box.
     // CountrySwitch.tsx sets the selected country and opens the list.
     .replace(/(<div class="ax-search gm-headsearch"[\s\S]*?<div id="tool-search-results" hidden><\/div><\/div>)/, `$1${countryMenuHtml()}`);
+}
+
+/** The topic a "View all calculators" link points at (/uk/benefits, /us/taxes, /everyday). */
+function topicForHref(href: string): AnyCategory | undefined {
+  if (href === EVERYDAY.href) return "everyday";
+  const us = US_CATEGORIES.find((c) => c.href === href);
+  if (us) return us.slug;
+  const uk = CATS.find((c) => `/uk/${c.slug}` === href);
+  return uk?.slug;
+}
+
+/**
+ * The header's topic menus on US pages, in the same markup as the UK menus
+ * in chrome.json (the calculator lists are filled in by headerHtml).
+ */
+function usNavHtml(): string {
+  const topics = [...US_CATEGORIES, EVERYDAY];
+  const items = topics
+    .map(
+      (c, i) =>
+        `<div class="ax-navitem"><button class="ax-navbutton" aria-expanded="false" aria-controls="mega-${i}">${esc(c.menu)}<span class="chevron"></span></button>` +
+        `<div class="ax-mega" id="mega-${i}" hidden><div class="ax-mega-title"><h3>${esc(c.title)}</h3><p>${esc(c.description)}</p>` +
+        `<a class="button" href="${c.href}">View all calculators</a></div><div class="ax-mega-links"></div>` +
+        `<div class="ax-mega-feature"><span>Plan with confidence</span><h3>${esc(c.tagline)}</h3><p>Free tools. Clear answers.</p>` +
+        `<a href="${c.href}">Explore ${esc(c.title.toLowerCase())}</a></div></div></div>`,
+    )
+    .join("");
+  return `<nav id="ax-navigation" class="ax-navigation" aria-label="Calculator categories">${items}</nav>`;
 }
 
 const PIN =

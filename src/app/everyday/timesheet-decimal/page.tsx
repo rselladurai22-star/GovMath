@@ -9,14 +9,14 @@ export const metadata: Metadata = {
   title: "Timesheet Calculator: Hours to Decimal",
   description:
     "Free timesheet calculator. Turn hours and minutes into decimal hours, take off breaks, add up a week and work out your pay, including overtime.",
-  alternates: { canonical: "/uk/life/timesheet-decimal" },
-  openGraph: ogFor("/uk/life/timesheet-decimal"),
+  alternates: { canonical: "/everyday/timesheet-decimal" },
+  openGraph: ogFor("/everyday/timesheet-decimal"),
 };
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/life", label: "Everyday Life" },
-  { href: "/uk/life/timesheet-decimal", label: "Timesheet Calculator" },
+  { href: "/everyday", label: "Everyday" },
+  { href: "/everyday/timesheet-decimal", label: "Timesheet Calculator" },
 ];
 
 const FAQS: { q: string; a: string }[] = [
@@ -35,7 +35,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function TimesheetPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/tax-and-salary/overtime", "/uk/tax-and-salary/minimum-wage", "/uk/tax-and-salary/salary-calculator", "/uk/life/days-between-dates", "/uk/life/bank-holidays"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/us/taxes/overtime-calculator", "/us/taxes/salary-to-hourly", "/uk/tax-and-salary/overtime", "/uk/tax-and-salary/minimum-wage", "/everyday/percentage-calculator", "/uk/life/days-between-dates"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}
@@ -46,7 +46,7 @@ export default async function TimesheetPage({ searchParams }: { searchParams: Pr
       guide={<TimesheetGuide />}
       faqs={FAQS}
       related={related}
-      note="Gross pay before tax and National Insurance."
+      note="Gross pay before tax and other deductions."
     >
       <TimesheetStudio query={query} />
     </FlagshipPage>

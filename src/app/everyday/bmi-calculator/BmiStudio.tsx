@@ -7,21 +7,28 @@ import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/comp
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
-  units: oneOf<"metric" | "imperial">("metric", ["metric", "imperial"]),
+  units: oneOf<"metric" | "us" | "imperial">("metric", ["metric", "us", "imperial"]),
   cm: num(170, 50, 250),
   kg: num(72, 10, 400),
   ft: num(5, 1, 8),
   inch: num(7, 0, 11.9),
   st: num(11, 1, 60),
   lb: num(5, 0, 13.9),
+  /** Weight in pounds only (US units). */
+  lbs: num(160, 20, 900),
   lower: bool(false),
   waist: num(0, 0, 250),
   age: num(30, 2, 120),
 };
 const ADVANCED = ["lower", "waist", "age"] as const;
 
-const kgText = (kg: number, imperial: boolean) => {
-  if (!imperial) return `${kg.toFixed(1)} kg`;
+const KG_PER_LB = 0.45359237;
+type Units = "metric" | "us" | "imperial";
+
+/** A weight in the visitor's units: kg, pounds (US) or stones and pounds (UK). */
+const kgText = (kg: number, units: Units) => {
+  if (units === "metric") return `${kg.toFixed(1)} kg`;
+  if (units === "us") return `${Math.round(kg / KG_PER_LB)} lb`;
   const { st, lb } = stLbFromKg(kg);
   return `${st} st ${lb} lb`;
 };
@@ -29,9 +36,10 @@ const kgText = (kg: number, imperial: boolean) => {
 export default function BmiStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
-  const imperial = v.units === "imperial";
-  const heightCm = imperial ? cmFromFtIn(v.ft, v.inch) : v.cm;
-  const weightKg = imperial ? kgFromStLb(v.st, v.lb) : v.kg;
+  const units = v.units;
+  const feet = units !== "metric";
+  const heightCm = feet ? cmFromFtIn(v.ft, v.inch) : v.cm;
+  const weightKg = units === "imperial" ? kgFromStLb(v.st, v.lb) : units === "us" ? v.lbs * KG_PER_LB : v.kg;
   const r = bmiAdult(heightCm, weightKg, v.lower);
   const w = v.waist > 0 ? waistToHeight(v.waist, heightCm) : null;
   const child = v.age < 18;
@@ -63,15 +71,22 @@ export default function BmiStudio({ query }: { query: Query }) {
               onChange={st.bind("units")}
               options={[
                 { value: "metric", label: "cm and kg" },
-                { value: "imperial", label: "ft and st" },
+                { value: "us", label: "ft and lb", note: "US units: height in feet and inches, weight in pounds." },
+                { value: "imperial", label: "ft and st", note: "UK imperial: height in feet and inches, weight in stones and pounds." },
               ]}
             />
-            {imperial ? (
+            {feet ? (
               <>
                 <StepperField label="Height: feet" value={v.ft} onChange={st.bind("ft")} step={1} min={1} max={8} unit="ft" dp={0} />
                 <StepperField label="Height: inches" value={v.inch} onChange={st.bind("inch")} step={1} min={0} max={11.9} unit="in" dp={1} />
-                <StepperField label="Weight: stone" value={v.st} onChange={st.bind("st")} step={1} min={1} max={60} unit="st" dp={0} />
-                <StepperField label="Weight: pounds" value={v.lb} onChange={st.bind("lb")} step={1} min={0} max={13.9} unit="lb" dp={1} />
+                {units === "us" ? (
+                  <StepperField label="Weight" value={v.lbs} onChange={st.bind("lbs")} step={1} min={20} max={900} unit="lb" dp={1} />
+                ) : (
+                  <>
+                    <StepperField label="Weight: stone" value={v.st} onChange={st.bind("st")} step={1} min={1} max={60} unit="st" dp={0} />
+                    <StepperField label="Weight: pounds" value={v.lb} onChange={st.bind("lb")} step={1} min={0} max={13.9} unit="lb" dp={1} />
+                  </>
+                )}
               </>
             ) : (
               <>
@@ -86,7 +101,7 @@ export default function BmiStudio({ query }: { query: Query }) {
               checked={v.lower}
               onChange={st.bind("lower")}
               optional
-              hint="The NHS uses lower thresholds because health risks start at a lower BMI."
+              hint="Health risks start at a lower BMI for these groups, so the UK's NICE guidance (and the WHO for Asian populations) uses lower thresholds."
             />
             <StepperField label="Waist" value={v.waist} onChange={st.bind("waist")} step={1} min={0} max={250} unit="cm" dp={1} optional hint="Measure halfway between your lowest rib and the top of your hips." />
             <StepperField label="Age" value={v.age} onChange={st.bind("age")} step={1} min={2} max={120} unit="years" dp={0} optional hint="Adult BMI applies from 18." />
@@ -101,14 +116,14 @@ export default function BmiStudio({ query }: { query: Query }) {
         sentence={
           child ? (
             <>
-              For children and young people under 18, BMI is compared with others of the same age and sex using centile charts, so this adult result does not apply. Use the NHS healthy weight calculator for
-              children.
+              For children and teens under 18, BMI is compared with others of the same age and sex using growth charts, so this adult result does not apply. Use
+              the NHS healthy weight calculator for children (UK) or the CDC&rsquo;s child and teen BMI calculator (US).
             </>
           ) : (
             <>
-              A BMI of <b>{r.bmi.toFixed(1)}</b> is in the <b>{r.label.toLowerCase()}</b> range. A healthy weight for your height is <b>{kgText(r.healthyMinKg, imperial)}</b> to{" "}
-              <b>{kgText(r.healthyMaxKg, imperial)}</b>.
-              {r.toHealthyKg < 0 ? <> That is <b>{kgText(-r.toHealthyKg, imperial)}</b> less than now.</> : r.toHealthyKg > 0 ? <> That is <b>{kgText(r.toHealthyKg, imperial)}</b> more than now.</> : null}
+              A BMI of <b>{r.bmi.toFixed(1)}</b> is in the <b>{r.label.toLowerCase()}</b> range. A healthy weight for your height is <b>{kgText(r.healthyMinKg, units)}</b> to{" "}
+              <b>{kgText(r.healthyMaxKg, units)}</b>.
+              {r.toHealthyKg < 0 ? <> That is <b>{kgText(-r.toHealthyKg, units)}</b> less than now.</> : r.toHealthyKg > 0 ? <> That is <b>{kgText(r.toHealthyKg, units)}</b> more than now.</> : null}
             </>
           )
         }
@@ -118,8 +133,8 @@ export default function BmiStudio({ query }: { query: Query }) {
       <Facts
         items={[
           { label: "BMI", value: r.bmi.toFixed(1), tone },
-          { label: "Healthy from", value: kgText(r.healthyMinKg, imperial) },
-          { label: "Healthy to", value: kgText(r.healthyMaxKg, imperial) },
+          { label: "Healthy from", value: kgText(r.healthyMinKg, units) },
+          { label: "Healthy to", value: kgText(r.healthyMaxKg, units) },
           { label: "Waist to height", value: w ? w.ratio.toFixed(2) : "Not entered", tone: w ? (w.band === "healthy" ? "good" : w.band === "low" ? undefined : "warn") : undefined },
         ]}
       />
@@ -138,7 +153,7 @@ export default function BmiStudio({ query }: { query: Query }) {
           head={["Range", "Weight"]}
           rows={bands.map((b) => ({
             label: `${b.label} (${b.from === 0 ? "under" : b.from}${b.to < 60 ? `${b.from === 0 ? " " : " to "}${b.to}` : "+"})`,
-            value: b.from === 0 ? `under ${kgText(b.to * m2, imperial)}` : b.to >= 60 ? `${kgText(b.from * m2, imperial)}+` : `${kgText(b.from * m2, imperial)} to ${kgText(b.to * m2, imperial)}`,
+            value: b.from === 0 ? `under ${kgText(b.to * m2, units)}` : b.to >= 60 ? `${kgText(b.from * m2, units)}+` : `${kgText(b.from * m2, units)} to ${kgText(b.to * m2, units)}`,
             bar: Math.min(1, (b.from + b.to) / 2 / 45),
             current: r.bmi >= b.from && r.bmi < b.to,
           }))}
@@ -149,26 +164,27 @@ export default function BmiStudio({ query }: { query: Query }) {
         {w && (
           <Callout tone={w.band === "healthy" ? "good" : w.band === "low" ? "info" : "warn"} title={`Waist-to-height ratio ${w.ratio.toFixed(2)}`}>
             {w.band === "healthy"
-              ? "Your waist is less than half your height, which NICE recommends for everyone."
+              ? "Your waist is less than half your height, which the UK's NICE guidance recommends for everyone."
               : w.band === "low"
-                ? "A ratio under 0.4 can be a sign of being underweight. Talk to your GP if you are concerned."
+                ? "A ratio under 0.4 can be a sign of being underweight. Talk to your doctor if you are concerned."
                 : w.band === "increased"
                   ? "A ratio of 0.5 or more suggests increased health risks from fat around the middle, even with a healthy BMI."
-                  : "A ratio of 0.6 or more suggests high health risks. Talk to your GP or pharmacist."}
+                  : "A ratio of 0.6 or more suggests high health risks. Talk to your doctor or pharmacist."}
           </Callout>
         )}
         <Callout title="BMI does not measure body fat directly">
           Muscular people can have a high BMI without excess fat, and older adults can have a healthy BMI with little muscle. Waist size adds useful information.
         </Callout>
         {(r.category === "obese1" || r.category === "obese2" || r.category === "obese3") && (
-          <Callout title="Free NHS support">
-            Your GP can refer you to a free NHS weight management service, and the NHS Digital Weight Management Programme is available to adults with diabetes or high blood pressure.
+          <Callout title="Support is available">
+            In the UK, your GP can refer you to a free NHS weight management service. In the US, ask your doctor about programs your health insurance
+            covers; Medicare and most plans cover obesity screening and counseling.
           </Callout>
         )}
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        NHS and NICE adult thresholds. Not medical advice.
+        WHO adult ranges, as used by the NHS and the CDC, with NICE&rsquo;s lower thresholds as an option. Not medical advice.
       </p>
     </Studio>
   );

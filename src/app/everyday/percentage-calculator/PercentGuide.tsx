@@ -24,9 +24,10 @@ const TOC: TocItem[] = [
 ];
 
 const SOURCES: Source[] = [
-  { label: "GOV.UK — VAT rates", href: "https://www.gov.uk/vat-rates" },
+  { label: "GOV.UK — VAT rates (UK)", href: "https://www.gov.uk/vat-rates" },
+  { label: "Tax Foundation — State and local sales tax rates (US)", href: "https://taxfoundation.org/data/all/state/2026-sales-tax-rates/" },
   { label: "Office for National Statistics — Inflation and price indices", href: "https://www.ons.gov.uk/economy/inflationandpriceindices" },
-  { label: "MoneyHelper — Interest rates explained", href: "https://www.moneyhelper.org.uk/en/savings/how-to-save/interest-rates-explained" },
+  { label: "Consumer Financial Protection Bureau — What is APR?", href: "https://www.consumerfinance.gov/ask-cfpb/what-is-the-difference-between-a-loans-interest-rate-and-its-apr-en-733/" },
 ];
 
 export default function PercentGuide() {
@@ -70,7 +71,7 @@ export default function PercentGuide() {
           ]}
           total={{ label: "Answer", value: "30" }}
         />
-        <p>The same method finds a 17.5% share of £2,400, which is £420.</p>
+        <p>The same method finds a 17.5% share of 2,400, which is 420.</p>
       </GuideSection>
 
       <GuideSection id="what" n={3} kicker="Type 2" title="What percentage one number is of another">
@@ -94,7 +95,7 @@ export default function PercentGuide() {
           rows={[
             ["80", "100", "+25%"],
             ["100", "80", "−20%"],
-            ["£1,250", "£1,400", "+12%"],
+            ["1,250", "1,400", "+12%"],
           ]}
         />
         <p>
@@ -130,18 +131,18 @@ export default function PercentGuide() {
           gives the wrong answer.
         </p>
         <WorkedExample
-          title="A price of £54 including 20% VAT"
+          title="A price of 54 including 20% VAT (or any 20% tax)"
           steps={[
-            { label: "Divide by 1.2", value: "£45" },
-            { label: "VAT included", value: "£9" },
+            { label: "Divide by 1.2", value: "45" },
+            { label: "VAT included", value: "9" },
           ]}
-          total={{ label: "Price before VAT", value: "£45" }}
+          total={{ label: "Price before VAT", value: "45" }}
         />
         <Callout tone="warn" title="The common error">
-          Taking 20% off £54 gives £43.20, which is wrong. The VAT was 20% of £45, not of £54.
+          Taking 20% off 54 gives 43.20, which is wrong. The VAT was 20% of 45, not of 54.
         </Callout>
         <p>
-          The same applies to pay rises. If your salary is £36,000 after a 4.5% rise, your old salary was £34,449.76, not £34,380.
+          The same applies to pay rises. If your salary is 36,000 after a 4.5% rise, your old salary was 34,449.76, not 34,380.
         </p>
       </GuideSection>
 
@@ -174,26 +175,27 @@ export default function PercentGuide() {
       <GuideSection id="money" n={9} kicker="Real life" title="Percentages in everyday money">
         <ul>
           <li>
-            <strong>VAT:</strong> 20% standard rate. Multiply by 1.2 to add it, divide by 1.2 to remove it.
+            <strong>Sales tax and VAT:</strong> to add a tax of 20%, multiply by 1.2; to remove it, divide by 1.2. For a 7.25% sales tax, multiply or
+            divide by 1.0725.
           </li>
           <li>
-            <strong>Pay rises:</strong> a 5% rise on £30,000 is £1,500 before tax.
+            <strong>Pay rises:</strong> a 5% rise on 30,000 is 1,500 before tax.
           </li>
           <li>
             <strong>Discounts:</strong> 30% off then a further 10% off is 37% off, not 40%.
           </li>
           <li>
-            <strong>Interest:</strong> rates are usually yearly, so 4% on £1,000 is about £40 a year.
+            <strong>Interest:</strong> rates are usually yearly, so 4% on 1,000 is about 40 a year.
           </li>
           <li>
-            <strong>Splitting bills:</strong> dividing £100 three ways gives £33.34, £33.33 and £33.33, so the shares add up.
+            <strong>Splitting bills:</strong> dividing 100 three ways gives 33.34, 33.33 and 33.33, so the shares add up.
           </li>
         </ul>
       </GuideSection>
 
       <GuideSection id="mental" n={10} kicker="Shortcuts" title="Mental maths shortcuts">
         <ul>
-          <li>10%: move the decimal point one place left. 10% of £85 is £8.50.</li>
+          <li>10%: move the decimal point one place left. 10% of 85 is 8.50.</li>
           <li>5%: half of 10%. 1%: move the decimal point two places.</li>
           <li>Percentages are reversible: 8% of 50 is the same as 50% of 8, which is 4.</li>
           <li>25% is a quarter, 50% a half, 75% three quarters, 20% a fifth.</li>
@@ -238,9 +240,9 @@ export default function PercentGuide() {
 
       <GuideSection id="tips" n={14} kicker="Eating out" title="Tips and service charges">
         <p>
-          Restaurants often add a discretionary service charge of 12.5%. On a £64 bill that is £8, taking the total to £72. By law, employers in
-          Great Britain must pass all tips and service charges to staff in full, without deductions. You can ask for a discretionary charge to be removed
-          if you are unhappy with the service.
+          A tip or service charge is a percentage of the bill. A 12.5% service charge on a bill of 64 is 8, taking the total to 72; an 18% tip on
+          the same bill is 11.52. Customs differ: in the US a tip of 15% to 20% is expected, while in the UK a service charge of 10% to 12.5% is often
+          added to the bill and is optional. Our <a href="/us/taxes/tip-calculator">tip calculator</a> splits a bill between people.
         </p>
       </GuideSection>
 

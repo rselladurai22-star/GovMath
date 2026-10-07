@@ -385,7 +385,7 @@ export default function HourlyGuide() {
           the extra pay is taxed at 40% instead of 20%.
         </p>
       <p>
-          If you work part-time, the <a href="/uk/tax-and-salary/pro-rata">pro rata salary calculator</a> scales a full-time salary to your hours, and the <a href="/uk/life/timesheet-decimal">timesheet calculator</a> adds up a week of start and finish times.
+          If you work part-time, the <a href="/uk/tax-and-salary/pro-rata">pro rata salary calculator</a> scales a full-time salary to your hours, and the <a href="/everyday/timesheet-decimal">timesheet calculator</a> adds up a week of start and finish times.
         </p>
       </GuideSection>
 

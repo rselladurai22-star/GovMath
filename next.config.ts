@@ -16,6 +16,12 @@ const SITE = "https://sumatlas.com";
 /** govmath.co.uk and www.govmath.co.uk, the site's address until October 2026. */
 const OLD_HOST = "(?:www\\.)?govmath\\.co\\.uk";
 const UK_TOPICS = "tax-and-salary|property|business|investing|benefits|vehicles|students|life";
+/** Calculators moved from the UK's Everyday Life topic to /everyday: [old slug, new slug]. */
+const EVERYDAY_MOVES: [string, string][] = [
+  ["percentage-calculator", "percentage-calculator"],
+  ["timesheet-decimal", "timesheet-decimal"],
+  ["bmi-uk-nhs", "bmi-calculator"],
+];
 
 const nextConfig: NextConfig = {
   env: { GM_CSS_VERSION: cssHash.digest("hex").slice(0, 10) },
@@ -56,6 +62,11 @@ const nextConfig: NextConfig = {
       // blog, privacy…) to the same path. Keep these for as long as the old
       // domain is renewed.
       { source: "/", has: [{ type: "host", value: OLD_HOST }], destination: `${SITE}/uk`, permanent: true },
+      // The Everyday calculators (October 2026) left the UK's Everyday Life topic.
+      ...EVERYDAY_MOVES.map(([from, to]) => ({ source: `/life/${from}`, has: [{ type: "host" as const, value: OLD_HOST }], destination: `${SITE}/everyday/${to}`, permanent: true })),
+      // A topic's own page needs its own rule: on Vercel an empty :path* leaves
+      // a trailing slash (/uk/benefits/), which would cost a second hop.
+      { source: `/:topic(${UK_TOPICS})`, has: [{ type: "host", value: OLD_HOST }], destination: `${SITE}/uk/:topic`, permanent: true },
       {
         source: `/:topic(${UK_TOPICS})/:path*`,
         has: [{ type: "host", value: OLD_HOST }],
@@ -113,6 +124,12 @@ const nextConfig: NextConfig = {
       { source: "/uk/property/stamp-duty", destination: "/uk/property/stamp-duty-england", permanent: true },
       { source: "/uk/business/ir35-take-home", destination: "/uk/tax-and-salary/ir35-take-home", permanent: true },
       // Old UK addresses on the new domain (links, bookmarks) go under /uk too.
+      // Everyday calculators moved out of /uk/life (and the even older /life).
+      ...EVERYDAY_MOVES.flatMap(([from, to]) => [
+        { source: `/uk/life/${from}`, destination: `/everyday/${to}`, permanent: true },
+        { source: `/life/${from}`, destination: `/everyday/${to}`, permanent: true },
+      ]),
+      { source: `/:topic(${UK_TOPICS})`, destination: "/uk/:topic", permanent: true },
       { source: `/:topic(${UK_TOPICS})/:path*`, destination: "/uk/:topic/:path*", permanent: true },
     ];
   },

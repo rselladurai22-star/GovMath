@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { CALCULATORS, CATEGORIES } from "@/lib/calculators";
+import { CALCULATORS, CATEGORIES, EVERYDAY, US_CATEGORIES } from "@/lib/calculators";
 import { getAllPosts } from "@/lib/blog";
 import { updatedIso } from "@/gm/schema";
 import { AMOUNT_PAGES_LIVE, PRICE_AMOUNTS, SALARY_AMOUNTS } from "@/lib/seo/amounts";
@@ -18,7 +18,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const calcDates = CALCULATORS.map((c) => updatedIso(c.href));
   return [
     dated("", newest(calcDates)),
-    dated("/uk", newest(calcDates)),
+    dated("/uk", newest(CALCULATORS.filter((c) => c.country === "uk").map((c) => updatedIso(c.href)))),
+    dated("/us", newest(CALCULATORS.filter((c) => c.country === "us").map((c) => updatedIso(c.href)))),
+    ...US_CATEGORIES.map((c) => dated(c.href, newest(CALCULATORS.filter((x) => x.category === c.slug).map((x) => updatedIso(x.href))))),
+    dated(EVERYDAY.href, newest(CALCULATORS.filter((x) => x.category === "everyday").map((x) => updatedIso(x.href)))),
     dated("/calculators", newest(calcDates)),
     dated("/blog", newest(getAllPosts().map((p) => p.date))),
     ...["/about", "/how-we-check", "/contact", "/privacy", "/terms", "/disclaimer"].map((u) => dated(u)),

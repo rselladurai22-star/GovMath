@@ -321,7 +321,7 @@ export default function OvertimeGuide() {
           higher rate.
         </p>
       <p>
-          To add up the hours on your timesheet first, the <a href="/uk/life/timesheet-decimal">timesheet calculator</a> converts hours and minutes to decimal hours.
+          To add up the hours on your timesheet first, the <a href="/everyday/timesheet-decimal">timesheet calculator</a> converts hours and minutes to decimal hours.
         </p>
       </GuideSection>
 

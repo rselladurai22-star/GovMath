@@ -26,6 +26,19 @@ export function gbpShort(n: number): string {
   return `£${Math.round(n)}`;
 }
 
+/** $1,234 (or $1,234.56 with `cents`), for the US calculators. */
+export function usd(n: number, cents = false): string {
+  const v = Number.isFinite(n) ? n : 0;
+  return cents
+    ? nf("usd2", { style: "currency", currency: "USD", currencyDisplay: "narrowSymbol", minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(v)
+    : nf("usd0", { style: "currency", currency: "USD", currencyDisplay: "narrowSymbol", maximumFractionDigits: 0 }).format(Math.round(v));
+}
+
+/** $1.2k / $480k / $1.3m — for chart axes. */
+export function usdShort(n: number): string {
+  return gbpShort(n).replace("£", "$");
+}
+
 /** 12,345 */
 export function whole(n: number): string {
   return nf("whole", { maximumFractionDigits: 0 }).format(Math.round(Number.isFinite(n) ? n : 0));

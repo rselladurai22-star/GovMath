@@ -9,20 +9,20 @@ export const metadata: Metadata = {
   title: "Percentage Calculator: Increase, Decrease, Change",
   description:
     "Free percentage calculator. Work out a percentage of a number, percentage increase or decrease, percentage change and reverse percentages in one place.",
-  alternates: { canonical: "/uk/life/percentage-calculator" },
-  openGraph: ogFor("/uk/life/percentage-calculator"),
+  alternates: { canonical: "/everyday/percentage-calculator" },
+  openGraph: ogFor("/everyday/percentage-calculator"),
 };
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/life", label: "Everyday Life" },
-  { href: "/uk/life/percentage-calculator", label: "Percentage Calculator" },
+  { href: "/everyday", label: "Everyday" },
+  { href: "/everyday/percentage-calculator", label: "Percentage Calculator" },
 ];
 
 const FAQS: { q: string; a: string }[] = [
   { q: "How do I work out a percentage of a number?", a: "Divide the percentage by 100 and multiply by the number. 20% of 150 is 0.2 × 150 = 30." },
   { q: "How do I calculate a percentage increase?", a: "Take the new number from the old one, divide by the old number and multiply by 100. From 80 to 100 is a 25% increase." },
-  { q: "How do I remove VAT from a price?", a: "Divide by 1.2 for 20% VAT. £54 including VAT is £45 before VAT." },
+  { q: "How do I remove VAT or sales tax from a price?", a: "Divide by 1 plus the tax rate. A price of 54 including 20% VAT is 45 before tax; 107.25 including a 7.25% sales tax is 100." },
   { q: "What is a percentage point?", a: "The difference between two percentages. A rise from 4% to 5% is 1 percentage point, or 25%." },
   { q: "How do I calculate a percentage on a phone calculator?", a: "Multiply by the percentage and divide by 100. For 15% of 240, type 240 × 15 ÷ 100 = 36." },
   { q: "Can a percentage be more than 100?", a: "Yes. A rise from 50 to 150 is a 200% increase. A fall cannot be more than 100%." },
@@ -35,7 +35,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function PercentPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/business/vat-calculator", "/uk/business/gross-profit-margin", "/uk/investing/compound-interest", "/uk/life/days-between-dates", "/uk/life/timesheet-decimal"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/us/taxes/sales-tax-calculator", "/us/taxes/tip-calculator", "/uk/business/vat-calculator", "/uk/business/gross-profit-margin", "/everyday/timesheet-decimal", "/everyday/bmi-calculator"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

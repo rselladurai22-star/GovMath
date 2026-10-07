@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { per } from "./format";
+import { per, usd, usdShort } from "./format";
 
 describe("per", () => {
   it("keeps the plural for anything but exactly 1", () => {
@@ -20,5 +20,11 @@ describe("per", () => {
   it("handles the possessive", () => {
     expect(per(1, "weeks'")).toBe("week's");
     expect(per(2, "weeks'")).toBe("weeks'");
+  });
+
+  it("formats US dollars", () => {
+    expect(usd(1234.4)).toBe("$1,234");
+    expect(usd(1234.5, true)).toBe("$1,234.50");
+    expect(usdShort(480_000)).toBe("$480k");
   });
 });

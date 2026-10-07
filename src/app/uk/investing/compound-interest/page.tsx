@@ -35,7 +35,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function CompoundPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/investing/inflation-impact", "/uk/investing/isa-vs-gia", "/uk/investing/fire-calculator", "/uk/investing/premium-bonds", "/uk/life/percentage-calculator"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/investing/inflation-impact", "/uk/investing/isa-vs-gia", "/uk/investing/fire-calculator", "/uk/investing/premium-bonds", "/everyday/percentage-calculator"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

@@ -398,7 +398,7 @@ export default function MarginGuide() {
           <a href="/uk/business/sole-trader-tax">sole trader tax calculator</a> for the tax on your final profit.
         </p>
       <p>
-          For other percentage sums, such as a percentage change between two prices, use the <a href="/uk/life/percentage-calculator">percentage calculator</a>.
+          For other percentage sums, such as a percentage change between two prices, use the <a href="/everyday/percentage-calculator">percentage calculator</a>.
         </p>
       </GuideSection>
 

@@ -160,8 +160,8 @@ export default function PercentStudio({ query }: { query: Query }) {
         <Callout title="Percent and percentage points">
           If an interest rate goes from 4% to 5%, it has risen by 1 percentage point but by 25%. Choose &ldquo;Change between two rates&rdquo; to see both.
         </Callout>
-        <Callout title="Taking VAT off">
-          To find a price before 20% VAT, divide by 1.2 rather than taking 20% off. Use &ldquo;Find the original&rdquo;.
+        <Callout title="Taking a tax off">
+          To find a price before a 20% tax such as VAT, divide by 1.2 rather than taking 20% off. Use &ldquo;Find the original&rdquo;.
         </Callout>
       </ResultCard>
 

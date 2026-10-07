@@ -1,12 +1,14 @@
 /**
  * Master registry — every calculator on SumAtlas.
  *
- * Architecture: 8 top-level categories, each with its own route segment.
- * Single source of truth for the header menus and search, the homepage and
- * topic pages, the /calculators index and the sitemap.
+ * Each calculator belongs to a country ("uk", "us") or to everyone
+ * ("global", the Everyday calculators). UK calculators live under
+ * /uk/<topic>/<slug> in 8 topics; US calculators under /us/<topic>/<slug> in
+ * 4 topics; Everyday calculators under /everyday/<slug>, listed in every
+ * country's menus. Single source of truth for the header menus and search,
+ * the home and topic pages, the /calculators index and the sitemap.
  *
- * To add a calculator, build src/app/<category>/<slug>/page.tsx and add a
- * live(...) entry below.
+ * To add a calculator, build its page and add an entry below.
  */
 
 export type CategorySlug =
@@ -19,12 +21,19 @@ export type CategorySlug =
   | "students"
   | "life";
 
+/** US topics. The URL segment is the part after "us-" (/us/taxes…). */
+export type UsCategorySlug = "us-taxes" | "us-housing" | "us-loans" | "us-savings";
+/** Every topic: UK, US and the shared Everyday topic. */
+export type AnyCategory = CategorySlug | UsCategorySlug | "everyday";
+export type Country = "uk" | "us" | "global";
+
 export type Calculator = {
   slug: string;
   href: string;
   title: string;
   blurb: string;
-  category: CategorySlug;
+  category: AnyCategory;
+  country: Country;
   popular?: boolean;
 };
 
@@ -103,6 +112,54 @@ export const CATEGORIES: Category[] = [
   },
 ];
 
+/** US topics, in menu order. */
+export type UsCategory = { slug: UsCategorySlug; title: string; menu: string; href: string; tagline: string; description: string };
+
+export const US_CATEGORIES: UsCategory[] = [
+  {
+    slug: "us-taxes",
+    title: "Taxes & Paycheck",
+    menu: "Taxes & pay",
+    href: "/us/taxes",
+    tagline: "Paycheck, federal income tax, self-employment and capital gains.",
+    description: "Work out your take-home pay and what you owe the IRS for 2026, with every rule explained in plain English.",
+  },
+  {
+    slug: "us-housing",
+    title: "Mortgages & Housing",
+    menu: "Housing",
+    href: "/us/housing",
+    tagline: "Mortgage payments, affordability, refinancing and rent.",
+    description: "Run the numbers on buying, refinancing or renting a home, with taxes, insurance and PMI included.",
+  },
+  {
+    slug: "us-loans",
+    title: "Loans & Debt",
+    menu: "Loans & debt",
+    href: "/us/loans",
+    tagline: "Auto loans, personal loans, credit cards and student loans.",
+    description: "See what a loan really costs, how fast you can clear a balance and which debt to pay off first.",
+  },
+  {
+    slug: "us-savings",
+    title: "Savings & Retirement",
+    menu: "Retirement",
+    href: "/us/savings",
+    tagline: "401(k), Roth IRA, compound interest, CDs and savings goals.",
+    description: "Plan for retirement and grow your savings with the 2026 contribution limits built in.",
+  },
+];
+
+/** The shared Everyday topic, listed for every country. */
+export const EVERYDAY = {
+  slug: "everyday" as const,
+  title: "Everyday Calculators",
+  menu: "Everyday",
+  href: "/everyday",
+  tagline: "Percentages, BMI and timesheet hours.",
+  description: "Quick calculators for everyday sums that work the same wherever you live.",
+};
+
 const live = (
   slug: string,
   category: CategorySlug,
@@ -115,6 +172,27 @@ const live = (
   title,
   blurb,
   category,
+  country: "uk",
+  popular,
+});
+
+const us = (slug: string, category: UsCategorySlug, title: string, blurb: string, popular = false): Calculator => ({
+  slug,
+  href: `/us/${category.slice(3)}/${slug}`,
+  title,
+  blurb,
+  category,
+  country: "us",
+  popular,
+});
+
+const everyday = (slug: string, title: string, blurb: string, popular = false): Calculator => ({
+  slug,
+  href: `/everyday/${slug}`,
+  title,
+  blurb,
+  category: "everyday",
+  country: "global",
   popular,
 });
 
@@ -251,23 +329,68 @@ export const CALCULATORS: Calculator[] = [
   live("student-council-tax", "students", "Student Council Tax Exemption", "Who counts as a full-time student — and who doesn't."),
 
   // ── Life ───────────────────────────────────────────────────────────────
-  live("percentage-calculator", "life", "Percentage Calculator", "Add, subtract or compare percentages — fast.", true),
-  live("days-between-dates", "life", "Days Between Dates", "Calendar days between any two dates."),
-  live("timesheet-decimal", "life", "Timesheet Decimal Converter", "Convert hh:mm worked into decimal hours."),
+  live("days-between-dates", "life", "Days Between Dates", "Calendar and working days between two dates, with UK bank holidays."),
   live("pro-rata-rent", "life", "Pro-Rata Rent Calculator", "Daily rent for a broken move-in month."),
   live("inheritance-tax", "life", "Inheritance Tax Calculator", "IHT on an estate, with the nil-rate band.", true),
   live("probate-fees", "life", "Probate Fees Calculator", "Application costs based on the estate."),
   live("care-home-means-test", "life", "Care Home Means Test", "Will the state cover any of your care costs?"),
   live("nhs-prescription-saver", "life", "NHS Prescription Saver", "Is a Prepayment Certificate cheaper for you?"),
-  live("bmi-uk-nhs", "life", "BMI Calculator (NHS)", "Your BMI against NHS healthy-weight bands."),
   live("healthy-start", "life", "Healthy Start Vouchers", "Eligibility for free vouchers and vitamins."),
   live("bank-holidays", "life", "Bank Holidays Calculator", "Working days excluding bank holidays in your region."),
   live("right-to-rent", "life", "Right to Rent Checker", "Documents landlords must check."),
   live("power-of-attorney", "life", "Power of Attorney Fees", "Application fees and process overview."),
+
+  // ── Everyday (every country) ───────────────────────────────────────────
+  everyday("percentage-calculator", "Percentage Calculator", "Add, subtract or compare percentages — fast.", true),
+  everyday("timesheet-decimal", "Timesheet Decimal Converter", "Convert hh:mm worked into decimal hours."),
+  everyday("bmi-calculator", "BMI Calculator", "Your body mass index against the healthy-weight ranges."),
+
+  // ── US: Taxes & Paycheck ───────────────────────────────────────────────
+  us("paycheck-calculator", "us-taxes", "Paycheck Calculator", "Take-home pay after federal tax, Social Security, Medicare and state tax.", true),
+  us("federal-income-tax", "us-taxes", "Federal Income Tax Calculator", "Your 2026 federal income tax, refund or balance due.", true),
+  us("tax-bracket-calculator", "us-taxes", "Tax Bracket Calculator", "Your 2026 bracket, marginal and effective tax rates."),
+  us("self-employment-tax", "us-taxes", "Self-Employment Tax Calculator", "Social Security and Medicare on 1099 and freelance income."),
+  us("capital-gains-tax", "us-taxes", "Capital Gains Tax Calculator", "Tax on stocks, crypto and property you sell at a gain."),
+  us("salary-to-hourly", "us-taxes", "Salary to Hourly Calculator", "Convert between salary, hourly, weekly and monthly pay."),
+  us("overtime-calculator", "us-taxes", "Overtime Pay Calculator", "Time-and-a-half pay and the new overtime deduction."),
+  us("sales-tax-calculator", "us-taxes", "Sales Tax Calculator", "Add or remove sales tax, with every state's rate."),
+  us("tip-calculator", "us-taxes", "Tip Calculator", "The tip and each person's share of the bill."),
+
+  // ── US: Mortgages & Housing ────────────────────────────────────────────
+  us("mortgage-calculator", "us-housing", "Mortgage Calculator", "Monthly payment with property tax, insurance, PMI and HOA.", true),
+  us("mortgage-affordability", "us-housing", "Home Affordability Calculator", "How much house you can afford on your income."),
+  us("refinance-calculator", "us-housing", "Refinance Calculator", "Monthly savings, closing costs and the break-even point."),
+  us("rent-affordability", "us-housing", "Rent Affordability Calculator", "How much rent you can afford on your income."),
+
+  // ── US: Loans & Debt ───────────────────────────────────────────────────
+  us("auto-loan-calculator", "us-loans", "Auto Loan Calculator", "Car payment with sales tax, fees, trade-in and down payment.", true),
+  us("loan-calculator", "us-loans", "Loan Calculator", "Payment and total interest on a personal or any fixed loan."),
+  us("credit-card-payoff", "us-loans", "Credit Card Payoff Calculator", "How long to clear a card and the interest it costs."),
+  us("student-loan-calculator", "us-loans", "Student Loan Calculator", "Monthly payment, payoff date and the cost of paying extra."),
+  us("debt-to-income-ratio", "us-loans", "Debt-to-Income Ratio Calculator", "Your DTI as lenders see it, front-end and back-end."),
+  us("debt-payoff-calculator", "us-loans", "Debt Payoff Calculator", "Snowball vs avalanche: which clears your debts sooner."),
+
+  // ── US: Savings & Retirement ───────────────────────────────────────────
+  us("401k-calculator", "us-savings", "401(k) Calculator", "Your 401(k) at retirement with the 2026 limits and employer match.", true),
+  us("roth-ira-calculator", "us-savings", "Roth IRA Calculator", "Tax-free growth, the 2026 limit and income phase-out."),
+  us("retirement-calculator", "us-savings", "Retirement Calculator", "Are you on track, and how much to save each month?"),
+  us("compound-interest-calculator", "us-savings", "Compound Interest Calculator", "How savings and investments grow with monthly deposits.", true),
+  us("cd-calculator", "us-savings", "CD Calculator", "Interest and maturity value on a certificate of deposit."),
+  us("savings-goal-calculator", "us-savings", "Savings Goal Calculator", "How much to save each month to reach your goal."),
 ];
 
-export function getCalculatorsByCategory(slug: CategorySlug): Calculator[] {
-  return CALCULATORS.filter((c) => c.category === slug);
+/**
+ * A topic's calculators. The UK's Everyday Life topic and the shared Everyday
+ * topic also list the Everyday calculators.
+ */
+export function getCalculatorsByCategory(slug: AnyCategory): Calculator[] {
+  const own = CALCULATORS.filter((c) => c.category === slug);
+  return slug === "life" ? [...CALCULATORS.filter((c) => c.category === "everyday"), ...own] : own;
+}
+
+/** A country's calculators (UK or US), without the shared Everyday ones. */
+export function getCalculatorsByCountry(country: Country): Calculator[] {
+  return CALCULATORS.filter((c) => c.country === country);
 }
 
 /** Drop the redundant trailing "Calculator" from a tool title for display. */

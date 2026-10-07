@@ -1163,24 +1163,19 @@ a.gm-card:hover {
   }
 }
 
-/* World home page (October 2026): country cards. The toolicon holds a
-   two-letter country code; countries still to come are muted, not links. */
-.categorytool .toolicon:not(:has(svg)) {
+/* World home page (October 2026): "United States" / "United Kingdom" labels
+   above each country's topic links. */
+.gm-topicgroup {
+  margin: 18px 0 10px;
+  font-size: 18px;
   font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.5px;
-  color: #8c1d40;
+  color: #282828;
 }
-.categorytool.gm-coming {
-  cursor: default;
-  opacity: 0.72;
-}
-.categorytool.gm-coming:hover {
-  transform: none;
-  box-shadow: none;
-  border-color: #dfe3e8;
-}
-.categorytool.gm-coming .openlabel {
-  color: #6e6e6e;
-  text-decoration: none;
+
+/* All calculators page: a heading for each country's group of topics. */
+.gm-countryheading {
+  margin: 48px 0 0;
+  padding-top: 24px;
+  border-top: 2px solid #8c1d40;
+  font-size: 30px;
 }
