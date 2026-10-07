@@ -1,6 +1,7 @@
 import { getCalculatorsByCategory, shortTitle, type CategorySlug } from "../lib/calculators";
 import cats from "./categories.json";
 import { AMOUNT_PAGES_LIVE } from "../lib/seo/amounts";
+import { COUNTRIES, DEFAULT_COUNTRY } from "../lib/countries";
 
 /**
  * Builds the calculator lists of the approved design (the homepage category
@@ -64,7 +65,28 @@ export function headerHtml(html: string): string {
     // the rest), and the topic menus sit between the logo and the search box.
     .replace(/<div class="utility">[\s\S]*?<\/div><\/div>/, "")
     .replace(/<nav aria-label="Main navigation">[\s\S]*?<\/nav>/, "")
-    .replace(/(<div class="ax-search gm-headsearch")([\s\S]*?)(<nav id="ax-navigation"[\s\S]*?<\/nav>)/, "$3$1$2");
+    .replace(/(<div class="ax-search gm-headsearch")([\s\S]*?)(<nav id="ax-navigation"[\s\S]*?<\/nav>)/, "$3$1$2")
+    // Country menu (BookMyShow-style location picker) after the search box.
+    // CountrySwitch.tsx sets the selected country and opens the list.
+    .replace(/(<div class="ax-search gm-headsearch"[\s\S]*?<div id="tool-search-results" hidden><\/div><\/div>)/, `$1${countryMenuHtml()}`);
+}
+
+const PIN =
+  '<svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></svg>';
+
+/** The header's country menu. Live countries link to their section; the rest are listed as coming soon. */
+function countryMenuHtml(): string {
+  const first = COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY) ?? COUNTRIES[0];
+  const items = COUNTRIES.map((c) =>
+    c.live
+      ? `<li><a href="/${c.code}" data-country="${c.code}">${esc(c.name)}</a></li>`
+      : `<li><span data-country="${c.code}" aria-disabled="true">${esc(c.name)}<small>Coming soon</small></span></li>`,
+  ).join("");
+  return (
+    `<div class="gm-country"><button type="button" class="gm-country-btn" aria-expanded="false" aria-controls="gm-country-list">` +
+    `${PIN}<span class="sr-only">Country: </span><span class="gm-country-name">${esc(first.short)}</span><span class="chevron" aria-hidden="true"></span></button>` +
+    `<div class="gm-country-list" id="gm-country-list" hidden><p class="gm-country-note">Choose your country</p><ul>${items}</ul></div></div>`
+  );
 }
 
 /** Quick links to the fixed-amount pages, shown on their topic page. */
