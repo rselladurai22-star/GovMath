@@ -15,6 +15,14 @@ import { fullMovingBudget, type MoveBuyer } from "../property/moving-budget";
  * engines; this module only chooses the amounts and gathers the results.
  */
 
+/**
+ * Switch for every fixed-amount page. Off (October 2026) while AdSense reviews
+ * the site: pages that differ only in their numbers read as scaled content.
+ * When off, the pages and their index pages are 404s and nothing links to
+ * them or lists them in the sitemap. Set to true to bring them all back.
+ */
+export const AMOUNT_PAGES_LIVE = false;
+
 /** Salaries with a page: every £1,000 from £15,000 to £150,000, then a few round figures. */
 export const SALARY_AMOUNTS: number[] = [
   ...Array.from({ length: 136 }, (_, i) => 15_000 + i * 1_000),

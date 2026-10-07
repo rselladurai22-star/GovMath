@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import AmountPage from "@/components/AmountPage";
 import { Bars, Callout, DataTable, Guide, GuideSection, KeyStats, SERIES, type Source, type TocItem } from "@/components/guide/Guide";
 import { gbp, percent } from "@/components/flagship/format";
-import { BUYING_COSTS, LENDING, PRICE_AMOUNTS, SALARY_AMOUNTS, neighbours, parseAmount, priceExtras, stampDutyFacts } from "@/lib/seo/amounts";
+import { AMOUNT_PAGES_LIVE, BUYING_COSTS, LENDING, PRICE_AMOUNTS, SALARY_AMOUNTS, neighbours, parseAmount, priceExtras, stampDutyFacts } from "@/lib/seo/amounts";
 import { ogFor } from "@/gm/og";
 
 type Params = Promise<{ price: string }>;
@@ -12,7 +12,7 @@ type Params = Promise<{ price: string }>;
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return PRICE_AMOUNTS.map((n) => ({ price: String(n) }));
+  return AMOUNT_PAGES_LIVE ? PRICE_AMOUNTS.map((n) => ({ price: String(n) })) : [];
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -71,7 +71,7 @@ function positionNote(price: number): string {
 
 export default async function StampDutyOnPage({ params }: { params: Params }) {
   const price = parseAmount((await params).price, PRICE_AMOUNTS);
-  if (!price) notFound();
+  if (!AMOUNT_PAGES_LIVE || !price) notFound();
   const f = stampDutyFacts(price);
   const p = gbp(price);
   const near = neighbours(price, PRICE_AMOUNTS, 3);

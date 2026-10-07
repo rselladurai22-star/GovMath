@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AMOUNT_PAGES_LIVE } from "@/lib/seo/amounts";
 import {
   BandBar,
   Callout,
@@ -386,9 +387,11 @@ export default function StampDutyGuide() {
           If cash is tight, you could put down a slightly smaller deposit to keep money back for the tax, but check that this does
           not push you into a higher loan-to-value band with a worse rate.
         </p>
-      <p>
-          For a quick figure at a common price, see <Link href="/property/stamp-duty-on">Stamp Duty by house price</Link>, from £100,000 to £2 million, with the Scottish and Welsh equivalents.
-        </p>
+      {AMOUNT_PAGES_LIVE && (
+        <p>
+            For a quick figure at a common price, see <Link href="/property/stamp-duty-on">Stamp Duty by house price</Link>, from £100,000 to £2 million, with the Scottish and Welsh equivalents.
+          </p>
+      )}
       </GuideSection>
 
       <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers for 2026/27">

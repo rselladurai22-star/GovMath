@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import AmountPage from "@/components/AmountPage";
 import { Bars, Callout, DataTable, Guide, GuideSection, KeyStats, SERIES, type Source, type TocItem } from "@/components/guide/Guide";
 import { gbp, percent } from "@/components/flagship/format";
-import { LENDING, PRICE_AMOUNTS, SALARY_AMOUNTS, nearestAtOrBelow, neighbours, parseAmount, salaryExtras, salaryFacts } from "@/lib/seo/amounts";
+import { AMOUNT_PAGES_LIVE, LENDING, PRICE_AMOUNTS, SALARY_AMOUNTS, nearestAtOrBelow, neighbours, parseAmount, salaryExtras, salaryFacts } from "@/lib/seo/amounts";
 import { TAX_YEAR_2026_27 } from "@/lib/tax/2026-27";
 import { ogFor } from "@/gm/og";
 
@@ -13,7 +13,7 @@ type Params = Promise<{ amount: string }>;
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return SALARY_AMOUNTS.map((n) => ({ amount: String(n) }));
+  return AMOUNT_PAGES_LIVE ? SALARY_AMOUNTS.map((n) => ({ amount: String(n) })) : [];
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -93,7 +93,7 @@ function positionNote(salary: number, x: ReturnType<typeof salaryExtras>): strin
 
 export default async function SalaryAfterTaxPage({ params }: { params: Params }) {
   const salary = parseAmount((await params).amount, SALARY_AMOUNTS);
-  if (!salary) notFound();
+  if (!AMOUNT_PAGES_LIVE || !salary) notFound();
   const f = salaryFacts(salary);
   const s = gbp(salary);
   const scotDiff = f.takeHome - f.scotland.takeHome;

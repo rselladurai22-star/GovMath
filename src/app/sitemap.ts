@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { CALCULATORS, CATEGORIES } from "@/lib/calculators";
 import { getAllPosts } from "@/lib/blog";
 import { updatedIso } from "@/gm/schema";
-import { PRICE_AMOUNTS, SALARY_AMOUNTS } from "@/lib/seo/amounts";
+import { AMOUNT_PAGES_LIVE, PRICE_AMOUNTS, SALARY_AMOUNTS } from "@/lib/seo/amounts";
 
 const BASE = "https://govmath.co.uk";
 
@@ -25,9 +25,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...CALCULATORS.map((c) => dated(c.href, updatedIso(c.href))),
     ...getAllPosts().map((p) => dated(`/blog/${p.slug}`, p.date)),
     // Fixed-amount pages share their calculator's date (the rates they use).
-    dated("/tax-and-salary/salary-after-tax", updatedIso("/tax-and-salary/salary-calculator")),
-    ...SALARY_AMOUNTS.map((n) => dated(`/tax-and-salary/salary-after-tax/${n}`, updatedIso("/tax-and-salary/salary-calculator"))),
-    dated("/property/stamp-duty-on", updatedIso("/property/stamp-duty-england")),
-    ...PRICE_AMOUNTS.map((n) => dated(`/property/stamp-duty-on/${n}`, updatedIso("/property/stamp-duty-england"))),
+    ...(AMOUNT_PAGES_LIVE
+      ? [
+          dated("/tax-and-salary/salary-after-tax", updatedIso("/tax-and-salary/salary-calculator")),
+          ...SALARY_AMOUNTS.map((n) => dated(`/tax-and-salary/salary-after-tax/${n}`, updatedIso("/tax-and-salary/salary-calculator"))),
+          dated("/property/stamp-duty-on", updatedIso("/property/stamp-duty-england")),
+          ...PRICE_AMOUNTS.map((n) => dated(`/property/stamp-duty-on/${n}`, updatedIso("/property/stamp-duty-england"))),
+        ]
+      : []),
   ];
 }
