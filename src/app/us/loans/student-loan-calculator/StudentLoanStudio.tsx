@@ -187,9 +187,9 @@ export default function StudentLoanStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            On the <b>{r.label}</b>, you {r.forgiven > 0 ? "pay for" : "repay the loan in"} <b>{duration(r.months)}</b>, paying <b>{usd(r.totalPaid)}</b> in all, of which{" "}
-            <b>{usd(r.interest)}</b> is interest.
-            {r.forgiven > 0 ? <> The remaining <b>{usd(r.forgiven)}</b> is forgiven after 30 years.</> : null}
+            On the <b>{r.label}</b>, you {r.forgiven > 0 ? "pay for" : "repay the loan in"} <b>{duration(r.months)}</b>, paying <b>{usd(r.totalPaid)}</b>{" "}in all, of which{" "}
+            <b>{usd(r.interest)}</b>{" "}is interest.
+            {r.forgiven > 0 ? <> The remaining <b>{usd(r.forgiven)}</b>{" "}is forgiven after 30 years.</> : null}
             {v.extra > 0 && savedInterest > 0 ? (
               <>
                 {" "}
@@ -266,7 +266,7 @@ export default function StudentLoanStudio({ query }: { query: Query }) {
           initial={Math.min(5, n - 1)}
           readout={(i) => (
             <>
-              After year <b>{i}</b>: <b>{usd(r.yearly[i] ?? 0)}</b> left on your plan, <b>{usd(base.yearly[i] ?? 0)}</b> on the {base.label.toLowerCase()}.
+              After year <b>{i}</b>: <b>{usd(r.yearly[i] ?? 0)}</b>{" "}left on your plan, <b>{usd(base.yearly[i] ?? 0)}</b>{" "}on the {base.label.toLowerCase()}.
             </>
           )}
         />

@@ -120,7 +120,7 @@ export default function LoanStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            Borrowing <b>{usd(lf.borrowed)}</b> at {v.rate}% over {duration(months)} costs <b>{usd(lf.payment, true)}</b> a month and <b>{usd(plan.totalInterest)}</b> in interest
+            Borrowing <b>{usd(lf.borrowed)}</b>{" "}at {v.rate}% over {duration(months)} costs <b>{usd(lf.payment, true)}</b>{" "}a month and <b>{usd(plan.totalInterest)}</b>{" "}in interest
             {hasExtra ? ` with your extra ${usd(v.extra)} a month` : ""}.
             {hasFee ? (
               <>

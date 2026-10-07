@@ -135,8 +135,8 @@ export default function AutoLoanStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            You borrow <b>{usd(a.amountFinanced)}</b> at {v.apr}% and pay <b>{usd(a.totalInterest)}</b> in interest. With {usd(a.upfront)} paid at signing
-            {equity !== 0 ? <> and {usd(Math.abs(equity))} of {equity > 0 ? "trade-in equity" : "negative equity rolled in"}</> : null}, the car costs <b>{usd(a.totalCost)}</b> in all.
+            You borrow <b>{usd(a.amountFinanced)}</b>{" "}at {v.apr}% and pay <b>{usd(a.totalInterest)}</b>{" "}in interest. With {usd(a.upfront)} paid at signing
+            {equity !== 0 ? <> and {usd(Math.abs(equity))} of {equity > 0 ? "trade-in equity" : "negative equity rolled in"}</> : null}, the car costs <b>{usd(a.totalCost)}</b>{" "}in all.
           </>
         }
         badges={[`Sales tax ${usd(a.salesTax)}`, `${percent(a.totalCost > 0 ? a.totalInterest / a.totalCost : 0)} of the cost is interest`, `${months / 12} years`]}
@@ -201,7 +201,7 @@ export default function AutoLoanStudio({ query }: { query: Query }) {
           hint="Drag across the chart, or use the arrow keys, to read any month."
           readout={(i) => (
             <>
-              After month <b>{i}</b>: you owe <b>{usd(balances[i] ?? 0)}</b> and have paid <b>{usd(paidInterest[i] ?? 0)}</b> in interest.
+              After month <b>{i}</b>: you owe <b>{usd(balances[i] ?? 0)}</b>{" "}and have paid <b>{usd(paidInterest[i] ?? 0)}</b>{" "}in interest.
             </>
           )}
         />

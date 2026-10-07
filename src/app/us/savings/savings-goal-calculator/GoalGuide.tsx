@@ -162,7 +162,7 @@ export default function GoalGuide() {
         />
         <p>
           Paying cash for a car, or making a bigger down payment, means borrowing less and paying less interest; our{" "}
-          <a href="/us/loans/auto-loan-calculator">auto loan calculator</a> shows the difference.
+          <a href="/us/loans/auto-loan-calculator">auto loan calculator</a>{" "}shows the difference.
         </p>
       </GuideSection>
 
@@ -198,13 +198,13 @@ export default function GoalGuide() {
 
       <GuideSection id="where" n={10} kicker="Accounts" title="Where to keep goal money">
         <ul>
-          <li><strong>High-yield savings account:</strong> variable rate, access at any time. Good for emergency funds.</li>
-          <li><strong>Money market account:</strong> similar to savings, sometimes with checks or a debit card.</li>
+          <li><strong>High-yield savings account:</strong>{" "}variable rate, access at any time. Good for emergency funds.</li>
+          <li><strong>Money market account:</strong>{" "}similar to savings, sometimes with checks or a debit card.</li>
           <li>
-            <strong>Certificate of deposit (CD):</strong> fixed rate for a fixed term; an early withdrawal penalty if you take money out early.
+            <strong>Certificate of deposit (CD):</strong>{" "}fixed rate for a fixed term; an early withdrawal penalty if you take money out early.
             Good when you know the date. Try our <a href="/us/savings/cd-calculator">CD calculator</a>.
           </li>
-          <li><strong>Treasury bills:</strong> short-term US government debt; interest is exempt from state income tax.</li>
+          <li><strong>Treasury bills:</strong>{" "}short-term US government debt; interest is exempt from state income tax.</li>
         </ul>
         <p>
           For a goal within about five years, avoid putting the money in stocks. A market fall just before you need it could leave you short, and
@@ -251,7 +251,7 @@ export default function GoalGuide() {
       <GuideSection id="debt" n={15} kicker="Trade-offs" title="Saving vs paying off debt">
         <p>
           Credit cards often charge 20% or more, far above what savings earn. Once you have a starter emergency fund, extra money usually does more
-          good paying down that debt. Our <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a> compares the snowball and avalanche
+          good paying down that debt. Our <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a>{" "}compares the snowball and avalanche
           methods.
         </p>
       </GuideSection>
@@ -259,7 +259,7 @@ export default function GoalGuide() {
       <GuideSection id="long-term" n={16} kicker="Beyond five years" title="When a goal is years away">
         <p>
           For goals more than about five years away, such as retirement, investing can make sense because there is time to ride out market falls.
-          The <a href="/us/savings/retirement-calculator">retirement calculator</a> is built for that. For college saving, look at a 529 plan, which
+          The <a href="/us/savings/retirement-calculator">retirement calculator</a>{" "}is built for that. For college saving, look at a 529 plan, which
           grows tax-free when used for qualified education costs.
         </p>
       </GuideSection>

@@ -123,7 +123,7 @@ export default function PercentStudio({ query }: { query: Query }) {
             {thenApplies ? (
               <>
                 {" "}
-                Then changing by <b>{n(v.then)}%</b> gives <b>{n(afterThen)}</b>, an overall change of <b>{n(overall)}%</b>, not {n(firstChange + v.then)}%.
+                Then changing by <b>{n(v.then)}%</b>{" "}gives <b>{n(afterThen)}</b>, an overall change of <b>{n(overall)}%</b>, not {n(firstChange + v.then)}%.
               </>
             ) : null}
           </>

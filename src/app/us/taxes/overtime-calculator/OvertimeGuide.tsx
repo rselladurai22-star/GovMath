@@ -267,7 +267,7 @@ export default function OvertimeGuide() {
         <p>
           The same household filing jointly (one earner, no other income) sits in the 10% bracket and saves $500. A single worker at $35 an hour with 15
           overtime hours a week for 50 weeks earns a $13,125 premium, deducts the $12,500 limit and saves $2,750 at 22%. The{" "}
-          <a href="/us/taxes/tax-bracket-calculator">tax bracket calculator</a> shows your top rate.
+          <a href="/us/taxes/tax-bracket-calculator">tax bracket calculator</a>{" "}shows your top rate.
         </p>
       </GuideSection>
 
@@ -275,7 +275,7 @@ export default function OvertimeGuide() {
         <p>
           From tax year 2026, employers report qualified overtime compensation on Form W-2 in box 12 with code TT. You cannot claim more than that figure.
           For 2025, the first year, employers did not have to report it separately, and the IRS let workers work it out from pay stubs or other records. You
-          claim the deduction on your Form 1040 return; the <a href="/us/taxes/federal-income-tax">federal income tax calculator</a> shows the effect on your
+          claim the deduction on your Form 1040 return; the <a href="/us/taxes/federal-income-tax">federal income tax calculator</a>{" "}shows the effect on your
           refund or balance due.
         </p>
       </GuideSection>
@@ -285,7 +285,7 @@ export default function OvertimeGuide() {
           Your employer withholds federal income tax on overtime the same way as on other wages, along with Social Security (6.2%) and Medicare (1.45%). A
           big overtime check can be withheld at a higher rate than usual because payroll treats it as if you earned that much every period; the difference
           comes back when you file. If you work steady overtime, you can update Form W-4 to account for the deduction and keep more in each check. The{" "}
-          <a href="/us/taxes/paycheck-calculator">paycheck calculator</a> shows your take-home pay.
+          <a href="/us/taxes/paycheck-calculator">paycheck calculator</a>{" "}shows your take-home pay.
         </p>
       </GuideSection>
 
@@ -293,25 +293,25 @@ export default function OvertimeGuide() {
         <p>
           A salary below $684 a week does not make you exempt. A salaried, non-exempt worker&rsquo;s regular rate is usually the weekly salary divided by
           the hours it is meant to cover. For a $35,568 salary meant for 40 hours, that is $17.10 an hour, so overtime is $25.65 an hour. Use the{" "}
-          <a href="/us/taxes/salary-to-hourly">salary to hourly calculator</a> to find your rate first.
+          <a href="/us/taxes/salary-to-hourly">salary to hourly calculator</a>{" "}to find your rate first.
         </p>
       </GuideSection>
 
       <GuideSection id="comp-time" n={16} kicker="Special cases" title="Comp time, tips and other cases">
         <ul>
           <li>
-            <strong>Comp time.</strong> Private employers must pay overtime in cash. Only state and local government employers can give compensatory time off
+            <strong>Comp time.</strong>{" "}Private employers must pay overtime in cash. Only state and local government employers can give compensatory time off
             instead, at one and a half hours for each overtime hour.
           </li>
           <li>
-            <strong>Tipped workers.</strong> Overtime is worked out on the full minimum wage, not the lower cash wage, so the overtime cash rate is higher
+            <strong>Tipped workers.</strong>{" "}Overtime is worked out on the full minimum wage, not the lower cash wage, so the overtime cash rate is higher
             than 1.5 times the cash wage.
           </li>
           <li>
-            <strong>Two jobs with one employer.</strong> Hours in different roles for the same employer are added together for the 40-hour test.
+            <strong>Two jobs with one employer.</strong>{" "}Hours in different roles for the same employer are added together for the 40-hour test.
           </li>
           <li>
-            <strong>Fluctuating workweek.</strong> Some salaried, non-exempt workers with varying hours are paid half-time for overtime under this method,
+            <strong>Fluctuating workweek.</strong>{" "}Some salaried, non-exempt workers with varying hours are paid half-time for overtime under this method,
             which needs a clear agreement and a fixed salary.
           </li>
         </ul>

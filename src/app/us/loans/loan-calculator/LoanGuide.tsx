@@ -82,13 +82,13 @@ export default function LoanGuide() {
 
       <GuideSection id="formula" n={3} kicker="The maths" title="The payment formula">
         <p>
-          With loan amount <em>P</em>, monthly rate <em>r</em> (the yearly rate ÷ 12) and <em>n</em> payments:
+          With loan amount <em>P</em>, monthly rate <em>r</em>{" "}(the yearly rate ÷ 12) and <em>n</em>{" "}payments:
         </p>
         <p>
           <strong>Payment = P × r ÷ (1 − (1 + r)<sup>−n</sup>)</strong>
         </p>
         <p>
-          At 12% a year, <em>r</em> is 1% a month. For {usd(15_000)} over 36 months, the formula gives $498.21. At a 0% rate the payment is just the amount divided by the number of
+          At 12% a year, <em>r</em>{" "}is 1% a month. For {usd(15_000)} over 36 months, the formula gives $498.21. At a 0% rate the payment is just the amount divided by the number of
           payments: {usd(5_000)} over 12 months is $416.67.
         </p>
       </GuideSection>
@@ -152,7 +152,7 @@ export default function LoanGuide() {
         <p>
           The Federal Reserve&rsquo;s consumer credit survey put the average rate on 24-month personal loans at commercial banks at about 11.9%, and on 60-month new car loans at
           about 7.5%, in August 2026. Online lenders and credit unions quote a wide range, from single digits for excellent credit to well above 30% for poor credit. For a car,
-          our <a href="/us/loans/auto-loan-calculator">auto loan calculator</a> adds sales tax, fees and a trade-in.
+          our <a href="/us/loans/auto-loan-calculator">auto loan calculator</a>{" "}adds sales tax, fees and a trade-in.
         </p>
       </GuideSection>
 
@@ -234,7 +234,7 @@ export default function LoanGuide() {
         <p>
           Lenders price loans on your credit score, income and existing debts. Before applying, get your free credit reports from AnnualCreditReport.com and dispute any errors.
           Paying down card balances lowers your credit use, which can lift your score quickly. Many lenders let you check your rate with a soft credit check that does not affect your
-          score. Our <a href="/us/loans/debt-to-income-ratio">debt-to-income calculator</a> shows the ratio lenders will see.
+          score. Our <a href="/us/loans/debt-to-income-ratio">debt-to-income calculator</a>{" "}shows the ratio lenders will see.
         </p>
       </GuideSection>
 
@@ -250,7 +250,7 @@ export default function LoanGuide() {
             <strong>Student loans</strong>: federal loans have fixed rates set each year; private loans vary. See our <a href="/us/loans/student-loan-calculator">student loan calculator</a>.
           </li>
           <li>
-            <strong>Mortgages</strong>: the same formula over 15 to 30 years. Use our <a href="/us/housing/mortgage-calculator">mortgage calculator</a> to add taxes and insurance.
+            <strong>Mortgages</strong>: the same formula over 15 to 30 years. Use our <a href="/us/housing/mortgage-calculator">mortgage calculator</a>{" "}to add taxes and insurance.
           </li>
         </ul>
       </GuideSection>
@@ -272,7 +272,7 @@ export default function LoanGuide() {
         </p>
         <Callout tone="warn" title="Debt consolidation only works if the debt stops growing">
           Moving card balances to a lower-rate loan saves interest, but if the cards fill up again you end up with both. Our{" "}
-          <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a> compares the snowball and avalanche methods.
+          <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a>{" "}compares the snowball and avalanche methods.
         </Callout>
       </GuideSection>
 

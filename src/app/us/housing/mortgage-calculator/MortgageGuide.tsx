@@ -112,15 +112,15 @@ export default function MortgageGuide() {
 
       <GuideSection id="formula" n={4} kicker="The maths" title="How the payment is worked out">
         <p>
-          A fixed-rate mortgage uses the standard loan formula. With a monthly rate <em>r</em> (the yearly rate ÷ 12), <em>n</em> monthly payments and a loan <em>P</em>:
+          A fixed-rate mortgage uses the standard loan formula. With a monthly rate <em>r</em>{" "}(the yearly rate ÷ 12), <em>n</em>{" "}monthly payments and a loan <em>P</em>:
         </p>
         <p>
           <strong>Payment = P × r ÷ (1 − (1 + r)<sup>−n</sup>)</strong>
         </p>
         <p>
-          At 7.25%, <em>r</em> is 0.6042% a month, and a 30-year loan has 360 payments. The formula sets one payment that clears the loan exactly on time. Interest each month is the
+          At 7.25%, <em>r</em>{" "}is 0.6042% a month, and a 30-year loan has 360 payments. The formula sets one payment that clears the loan exactly on time. Interest each month is the
           balance times <em>r</em>; whatever is left of the payment reduces the balance. The same formula drives our{" "}
-          <a href="/us/loans/loan-calculator">loan calculator</a> for car and personal loans.
+          <a href="/us/loans/loan-calculator">loan calculator</a>{" "}for car and personal loans.
         </p>
       </GuideSection>
 
@@ -232,7 +232,7 @@ export default function MortgageGuide() {
         />
         <p>
           Going from 10% to 20% down saves {usd(423)} a month at the start. Keep enough cash for closing costs, moving and an emergency fund, though: an empty savings account the
-          day you get the keys is a risk of its own. Our <a href="/us/housing/mortgage-affordability">home affordability calculator</a> shows how the down payment changes the price
+          day you get the keys is a risk of its own. Our <a href="/us/housing/mortgage-affordability">home affordability calculator</a>{" "}shows how the down payment changes the price
           you can buy at.
         </p>
       </GuideSection>
@@ -245,11 +245,11 @@ export default function MortgageGuide() {
         <p>Under the Homeowners Protection Act, as the CFPB explains, PMI on most conventional loans made since 1999 stops in one of three ways:</p>
         <ul>
           <li>
-            <strong>You ask</strong> once the balance reaches 80% of the original value (the lower of the price or appraisal). You need a good payment record and the lender may want
+            <strong>You ask</strong>{" "}once the balance reaches 80% of the original value (the lower of the price or appraisal). You need a good payment record and the lender may want
             proof the value has not fallen.
           </li>
           <li>
-            <strong>It ends automatically</strong> when the original schedule reaches 78%, if you are up to date.
+            <strong>It ends automatically</strong>{" "}when the original schedule reaches 78%, if you are up to date.
           </li>
           <li>
             <strong>It must end at the loan&rsquo;s midpoint</strong>, year 15 on a 30-year loan, even if neither has happened.
@@ -330,18 +330,18 @@ export default function MortgageGuide() {
       <GuideSection id="loan-types" n={16} kicker="Loan types" title="Conventional, FHA, VA and USDA">
         <ul>
           <li>
-            <strong>Conventional</strong> loans follow Fannie Mae and Freddie Mac rules. PMI applies below 20% down and can be cancelled.
+            <strong>Conventional</strong>{" "}loans follow Fannie Mae and Freddie Mac rules. PMI applies below 20% down and can be cancelled.
           </li>
           <li>
-            <strong>FHA</strong> loans allow 3.5% down with lower credit scores, but charge an upfront and an annual mortgage insurance premium instead of PMI, often for the life of
+            <strong>FHA</strong>{" "}loans allow 3.5% down with lower credit scores, but charge an upfront and an annual mortgage insurance premium instead of PMI, often for the life of
             the loan.
           </li>
           <li>
-            <strong>VA</strong> loans, for eligible service members and veterans, need no down payment and no monthly mortgage insurance, but most borrowers pay a one-time funding
+            <strong>VA</strong>{" "}loans, for eligible service members and veterans, need no down payment and no monthly mortgage insurance, but most borrowers pay a one-time funding
             fee.
           </li>
           <li>
-            <strong>USDA</strong> loans cover eligible rural areas with no down payment and an annual guarantee fee.
+            <strong>USDA</strong>{" "}loans cover eligible rural areas with no down payment and an annual guarantee fee.
           </li>
         </ul>
         <p>For FHA, VA or USDA loans, enter their yearly fee as the PMI rate to get a close estimate.</p>
@@ -359,7 +359,7 @@ export default function MortgageGuide() {
         <p>
           The interest rate sets your payment. The APR adds lender fees and points, spread over the loan, so it is higher. Use the APR to compare offers with different fees, and the
           rate to work out the payment. Points are prepaid interest: one point costs 1% of the loan and usually lowers the rate a little. Points pay off only if you keep the loan
-          long enough, and many people refinance or move first. Our <a href="/us/housing/refinance-calculator">refinance calculator</a> uses the same break-even logic.
+          long enough, and many people refinance or move first. Our <a href="/us/housing/refinance-calculator">refinance calculator</a>{" "}uses the same break-even logic.
         </p>
       </GuideSection>
 
@@ -382,8 +382,8 @@ export default function MortgageGuide() {
           <li>Copy the link to share the exact figures with a partner or loan officer.</li>
         </ol>
         <p>
-          Renting for now? Our <a href="/us/housing/rent-affordability">rent affordability calculator</a> shows what rent fits your income, and the{" "}
-          <a href="/us/loans/debt-to-income-ratio">debt-to-income calculator</a> shows your ratios as a lender sees them.
+          Renting for now? Our <a href="/us/housing/rent-affordability">rent affordability calculator</a>{" "}shows what rent fits your income, and the{" "}
+          <a href="/us/loans/debt-to-income-ratio">debt-to-income calculator</a>{" "}shows your ratios as a lender sees them.
         </p>
       </GuideSection>
 

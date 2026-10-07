@@ -119,7 +119,7 @@ export default function RentGuide() {
         <p>
           Lenders treat 36% of gross income as a sensible ceiling for housing plus debt payments. The calculator uses the same line for renters: rent plus car, student loan and
           card payments up to 36% of gross pay. With {usd(300)} of debts on {usd(60_000)} a year, that leaves {usd(1_500)}; with {usd(600)}, only {usd(1_200)}, and that becomes
-          the limit. Our <a href="/us/loans/debt-to-income-ratio">debt-to-income calculator</a> shows your ratios in full.
+          the limit. Our <a href="/us/loans/debt-to-income-ratio">debt-to-income calculator</a>{" "}shows your ratios in full.
         </p>
       </GuideSection>
 
@@ -176,7 +176,7 @@ export default function RentGuide() {
         <p>
           Gross pay is your salary before anything is taken out. Take-home pay is what reaches your bank account after federal income tax, Social Security (6.2%), Medicare (1.45%),
           state and local tax, and deductions such as 401(k) contributions and health insurance. The calculator estimates take-home pay from 2026 federal rules and your state, or
-          you can enter the figure from your pay stub. Our <a href="/us/taxes/paycheck-calculator">paycheck calculator</a> gives a full breakdown.
+          you can enter the figure from your pay stub. Our <a href="/us/taxes/paycheck-calculator">paycheck calculator</a>{" "}gives a full breakdown.
         </p>
       </GuideSection>
 
@@ -239,8 +239,8 @@ export default function RentGuide() {
       <GuideSection id="buy" n={17} kicker="Next steps" title="Renting and saving to buy">
         <p>
           If you plan to buy, a rent below your comfortable figure leaves room to save a down payment. When you are ready, our{" "}
-          <a href="/us/housing/mortgage-affordability">home affordability calculator</a> shows the price your income supports, and the{" "}
-          <a href="/us/housing/mortgage-calculator">mortgage calculator</a> shows the monthly payment on a specific home.
+          <a href="/us/housing/mortgage-affordability">home affordability calculator</a>{" "}shows the price your income supports, and the{" "}
+          <a href="/us/housing/mortgage-calculator">mortgage calculator</a>{" "}shows the monthly payment on a specific home.
         </p>
       </GuideSection>
 

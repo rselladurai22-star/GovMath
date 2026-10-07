@@ -89,11 +89,11 @@ export default function TimesheetStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            You worked <b>{r.total.toFixed(2)} {per(r.total.toFixed(2), "hours")}</b>, which is <b>{decimalToHhmm(r.total)}</b> in hours and minutes, over <b>{worked.length}</b> {worked.length === 1 ? "day" : "days"}.
+            You worked <b>{r.total.toFixed(2)} {per(r.total.toFixed(2), "hours")}</b>, which is <b>{decimalToHhmm(r.total)}</b>{" "}in hours and minutes, over <b>{worked.length}</b> {worked.length === 1 ? "day" : "days"}.
             {v.hourly > 0 ? (
               <>
                 {" "}
-                At <b>{money(v.hourly)}</b> an hour{r.overtime > 0 ? <>, with <b>{r.overtime.toFixed(2)}</b> hours of overtime at {v.otRate}×</> : null}, that is <b>{money(r.pay)}</b> before tax.
+                At <b>{money(v.hourly)}</b>{" "}an hour{r.overtime > 0 ? <>, with <b>{r.overtime.toFixed(2)}</b>{" "}hours of overtime at {v.otRate}×</> : null}, that is <b>{money(r.pay)}</b>{" "}before tax.
               </>
             ) : null}
             {bad.length > 0 ? <> Check the times for {bad.map((d) => NAMES[d]).join(", ")}: use the 24-hour format, such as 17:30.</> : null}
@@ -141,7 +141,7 @@ export default function TimesheetStudio({ query }: { query: Query }) {
           <Callout title="Overtime in the US">
             Under the federal Fair Labor Standards Act, non-exempt employees must be paid at least 1.5 times their regular rate for hours over 40 in a
             workweek. Some states, such as California, also require overtime after 8 hours in a day. Our <a href="/us/taxes/overtime-calculator">overtime
-            calculator</a> includes the new federal overtime deduction.
+            calculator</a>{" "}includes the new federal overtime deduction.
           </Callout>
         ) : (
           <Callout title="Rest breaks in the UK">

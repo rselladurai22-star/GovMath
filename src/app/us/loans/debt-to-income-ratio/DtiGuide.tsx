@@ -10,7 +10,7 @@ const TOC: TocItem[] = [
   { id: "special-debts", title: "Student loans, cards and other special cases" },
   { id: "conventional", title: "Conventional loans: 36%, 45% and 50%" },
   { id: "fha", title: "FHA loans: 31% and 43%" },
-  { id: "va", title: "VA loans: 41% and residual income" },
+  { id: "va-loans", title: "VA loans: 41% and residual income" },
   { id: "qm", title: "What happened to the 43% rule" },
   { id: "rule-of-thumb", title: "The 28/36 rule of thumb" },
   { id: "limits-table", title: "Limits side by side" },
@@ -87,7 +87,7 @@ export default function DtiGuide() {
         />
         <p>
           The housing payment means the new one, not your current rent: principal and interest, property tax, homeowners insurance, any mortgage insurance
-          and HOA dues. The <a href="/us/housing/mortgage-calculator">mortgage calculator</a> adds these up for a given price and rate.
+          and HOA dues. The <a href="/us/housing/mortgage-calculator">mortgage calculator</a>{" "}adds these up for a given price and rate.
         </p>
       </GuideSection>
 
@@ -128,21 +128,21 @@ export default function DtiGuide() {
       <GuideSection id="special-debts" n={5} kicker="Debts" title="Student loans, cards and other special cases">
         <ul>
           <li>
-            <strong>Student loans at $0.</strong> FHA counts 0.5% of the outstanding balance when the credit report shows a $0 payment: $200 a month on a
+            <strong>Student loans at $0.</strong>{" "}FHA counts 0.5% of the outstanding balance when the credit report shows a $0 payment: $200 a month on a
             $40,000 balance. Fannie Mae can use a documented $0 income-driven payment; for loans in deferment or forbearance it uses 1% of the balance ($400
             on $40,000) or a fully amortizing payment.
           </li>
           <li>
-            <strong>Credit cards with no payment shown.</strong> Fannie Mae uses 5% of the balance if the credit report shows no minimum payment: $150 a
+            <strong>Credit cards with no payment shown.</strong>{" "}Fannie Mae uses 5% of the balance if the credit report shows no minimum payment: $150 a
             month on a $3,000 balance.
           </li>
           <li>
-            <strong>Loans nearly paid off.</strong> Fannie Mae can leave out installment debts with ten or fewer payments left, unless the payment is large
+            <strong>Loans nearly paid off.</strong>{" "}Fannie Mae can leave out installment debts with ten or fewer payments left, unless the payment is large
             enough to strain your budget. Car leases count however many payments remain.
           </li>
         </ul>
         <p>
-          The <a href="/us/loans/student-loan-calculator">student loan calculator</a> shows the payment on a standard plan if you are not sure what a lender
+          The <a href="/us/loans/student-loan-calculator">student loan calculator</a>{" "}shows the payment on a standard plan if you are not sure what a lender
           will use.
         </p>
       </GuideSection>
@@ -181,7 +181,7 @@ export default function DtiGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="va" n={8} kicker="Loan limits" title="VA loans: 41% and residual income">
+      <GuideSection id="va-loans" n={8} kicker="Loan limits" title="VA loans: 41% and residual income">
         <p>
           VA loans for veterans and service members use 41% as a guideline, not a cap. Above 41%, the lender has to explain why the loan is still sound,
           usually by showing residual income well above VA&rsquo;s minimum. Residual income is what is left each month after taxes, the housing payment,
@@ -203,7 +203,7 @@ export default function DtiGuide() {
         <p>
           The long-standing rule of thumb is to keep housing at or under 28% of gross income and all debts at or under 36%. It is stricter than most loan
           programs, which is the point: it leaves room in your budget for savings, childcare, repairs and the costs DTI ignores. Our{" "}
-          <a href="/us/housing/mortgage-affordability">home affordability calculator</a> uses 28/36 to estimate a price range.
+          <a href="/us/housing/mortgage-affordability">home affordability calculator</a>{" "}uses 28/36 to estimate a price range.
         </p>
         <Callout tone="warn" title="Approved is not the same as affordable">
           At a 50% back-end ratio, half your gross pay goes on debt before tax, retirement saving, food or utilities. A lender may approve it; your budget
@@ -273,7 +273,7 @@ export default function DtiGuide() {
         />
         <ul>
           <li>Pay off small loans or loans with few payments left: removing a whole payment moves DTI the most.</li>
-          <li>Pay down credit cards to cut minimum payments. The <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a> compares snowball and avalanche plans.</li>
+          <li>Pay down credit cards to cut minimum payments. The <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a>{" "}compares snowball and avalanche plans.</li>
           <li>Add a co-borrower whose income is counted (their debts count too).</li>
           <li>Lower the housing payment: a cheaper home, a bigger down payment or a lower rate.</li>
           <li>Hold off on new car loans or store cards until after closing.</li>
@@ -305,7 +305,7 @@ export default function DtiGuide() {
         <p>
           Landlords rarely work out a full DTI. Many look instead for gross income of about three times the rent, which is a rent-to-income ratio of about
           33%. If you are planning to buy, your current rent does not count in your DTI, because the new mortgage payment replaces it. The{" "}
-          <a href="/us/housing/rent-affordability">rent affordability calculator</a> works out a comfortable rent for your income.
+          <a href="/us/housing/rent-affordability">rent affordability calculator</a>{" "}works out a comfortable rent for your income.
         </p>
       </GuideSection>
 

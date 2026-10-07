@@ -131,11 +131,11 @@ export default function DebtPayoffStudio({ query }: { query: Query }) {
             <>Enter a balance for at least one debt.</>
           ) : !done ? (
             <>
-              Your payments of <b>{usd(minimums + v.extra)}</b> a month do not keep up with the interest. Raise the minimums or the extra amount.
+              Your payments of <b>{usd(minimums + v.extra)}</b>{" "}a month do not keep up with the interest. Raise the minimums or the extra amount.
             </>
           ) : (
             <>
-              Paying <b>{usd(minimums + v.extra)}</b> a month clears <b>{usd(total)}</b> of debt by <b>{monthsFromNow(chosen.months)}</b>, with <b>{usd(chosen.totalInterest)}</b> of
+              Paying <b>{usd(minimums + v.extra)}</b>{" "}a month clears <b>{usd(total)}</b>{" "}of debt by <b>{monthsFromNow(chosen.months)}</b>, with <b>{usd(chosen.totalInterest)}</b>{" "}of
               interest.{" "}
               {Math.abs(diff) < 1 ? (
                 <>The {otherLabel.toLowerCase()} method costs the same here.</>
@@ -220,7 +220,7 @@ export default function DebtPayoffStudio({ query }: { query: Query }) {
           hint="Drag across the chart, or use the arrow keys, to read any month."
           readout={(i) => (
             <>
-              Month <b>{i}</b>: avalanche <b>{usd(avalBal[i] ?? 0)}</b> left, snowball <b>{usd(snowBal[i] ?? 0)}</b> left.
+              Month <b>{i}</b>: avalanche <b>{usd(avalBal[i] ?? 0)}</b>{" "}left, snowball <b>{usd(snowBal[i] ?? 0)}</b>{" "}left.
             </>
           )}
         />

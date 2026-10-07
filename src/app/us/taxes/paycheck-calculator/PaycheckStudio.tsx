@@ -159,9 +159,9 @@ export default function PaycheckStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            On <b>{usd(annual)}</b> a year, paid {PERIODS[v.freq]} times, each paycheck is <b>{usd(p.gross.period, true)}</b> before tax. After federal tax, Social Security, Medicare
+            On <b>{usd(annual)}</b>{" "}a year, paid {PERIODS[v.freq]} times, each paycheck is <b>{usd(p.gross.period, true)}</b>{" "}before tax. After federal tax, Social Security, Medicare
             {p.state.year > 0 ? `, ${state?.name ?? "state"} tax` : ""}
-            {saving > 0 ? " and your 401(k)" : ""} you keep <b>{usd(p.net.period, true)}</b>, or <b>{usd(p.net.year)}</b> a year.
+            {saving > 0 ? " and your 401(k)" : ""} you keep <b>{usd(p.net.period, true)}</b>, or <b>{usd(p.net.year)}</b>{" "}a year.
           </>
         }
         badges={[`${percent(p.taxShare, 1)} of pay goes in tax`, `${percent(p.marginalFederal)} federal bracket`, `${usd(p.net.year / 12)} a month`]}

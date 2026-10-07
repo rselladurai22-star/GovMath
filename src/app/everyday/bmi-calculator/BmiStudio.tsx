@@ -121,9 +121,9 @@ export default function BmiStudio({ query }: { query: Query }) {
             </>
           ) : (
             <>
-              A BMI of <b>{r.bmi.toFixed(1)}</b> is in the <b>{r.label.toLowerCase()}</b> range. A healthy weight for your height is <b>{kgText(r.healthyMinKg, units)}</b> to{" "}
+              A BMI of <b>{r.bmi.toFixed(1)}</b>{" "}is in the <b>{r.label.toLowerCase()}</b>{" "}range. A healthy weight for your height is <b>{kgText(r.healthyMinKg, units)}</b>{" "}to{" "}
               <b>{kgText(r.healthyMaxKg, units)}</b>.
-              {r.toHealthyKg < 0 ? <> That is <b>{kgText(-r.toHealthyKg, units)}</b> less than now.</> : r.toHealthyKg > 0 ? <> That is <b>{kgText(r.toHealthyKg, units)}</b> more than now.</> : null}
+              {r.toHealthyKg < 0 ? <> That is <b>{kgText(-r.toHealthyKg, units)}</b>{" "}less than now.</> : r.toHealthyKg > 0 ? <> That is <b>{kgText(r.toHealthyKg, units)}</b>{" "}more than now.</> : null}
             </>
           )
         }

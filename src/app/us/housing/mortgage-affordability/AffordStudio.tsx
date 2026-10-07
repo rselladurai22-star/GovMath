@@ -154,7 +154,7 @@ export default function AffordStudio({ query }: { query: Query }) {
             </>
           ) : (
             <>
-              With {usd(v.down)} down, you could borrow <b>{usd(a.loan)}</b> and buy a home for about <b>{usd(a.price)}</b>. The monthly payment of <b>{usd(p.total)}</b> is set by the{" "}
+              With {usd(v.down)} down, you could borrow <b>{usd(a.loan)}</b>{" "}and buy a home for about <b>{usd(a.price)}</b>. The monthly payment of <b>{usd(p.total)}</b>{" "}is set by the{" "}
               <b>{front ? `${frontPct}% housing limit` : `${backPct}% all-debts limit`}</b>
               {front ? "." : `, because your other debts of ${usd(v.debts)} a month take up part of it.`}
             </>

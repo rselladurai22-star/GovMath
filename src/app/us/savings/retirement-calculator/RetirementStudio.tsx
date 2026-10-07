@@ -89,15 +89,15 @@ export default function RetirementStudio({ query }: { query: Query }) {
         sentence={
           onTrack ? (
             <>
-              You could have <b>{usd(r.atRetirement)}</b> at {retireAge} (<b>{usd(atToday)}</b> in today&apos;s dollars). You need about <b>{usd(r.needed)}</b> to pay your spending gap to age {lifeTo}, so your
+              You could have <b>{usd(r.atRetirement)}</b>{" "}at {retireAge} (<b>{usd(atToday)}</b>{" "}in today&apos;s dollars). You need about <b>{usd(r.needed)}</b>{" "}to pay your spending gap to age {lifeTo}, so your
               money should last.
             </>
           ) : (
             <>
-              You could have <b>{usd(r.atRetirement)}</b> at {retireAge}, but you need about <b>{usd(r.needed)}</b>. The money runs out at about <b>{r.lastsTo}</b>.{" "}
+              You could have <b>{usd(r.atRetirement)}</b>{" "}at {retireAge}, but you need about <b>{usd(r.needed)}</b>. The money runs out at about <b>{r.lastsTo}</b>.{" "}
               {work > 0 ? (
                 <>
-                  Saving about <b>{usd(r.extraMonthly)}</b> more a month would close the gap.
+                  Saving about <b>{usd(r.extraMonthly)}</b>{" "}more a month would close the gap.
                 </>
               ) : (
                 <>Retiring later or spending less would help.</>

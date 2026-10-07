@@ -210,7 +210,7 @@ export default function RefiGuide() {
         <p>
           Taking {usd(40_000)} out in the example with a 30-year loan at 6.5% gives a payment of {usd(2_149)}, still {usd(117)} below today&rsquo;s, but after counting the cash you
           receive the refinance costs {usd(62_855)} more over its life. Using home equity to pay off a credit card turns unsecured debt into debt secured on your home, and spreads it
-          over decades. Our <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a> compares faster ways to clear debts.
+          over decades. Our <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a>{" "}compares faster ways to clear debts.
         </p>
       </GuideSection>
 
@@ -218,7 +218,7 @@ export default function RefiGuide() {
         <p>
           Moving from a 30-year to a 15-year loan usually raises the payment but often comes with a lower rate and saves a lot of interest. If you can afford the higher payment
           comfortably, it is one of the surest ways to cut the total cost. If not, paying extra on a 30-year loan gets much of the same benefit with more flexibility; our{" "}
-          <a href="/us/housing/mortgage-calculator">mortgage calculator</a> shows the effect of extra payments.
+          <a href="/us/housing/mortgage-calculator">mortgage calculator</a>{" "}shows the effect of extra payments.
         </p>
       </GuideSection>
 

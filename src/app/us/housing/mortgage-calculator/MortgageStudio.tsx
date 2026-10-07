@@ -155,7 +155,7 @@ export default function MortgageStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            Borrowing <b>{usd(m.loan)}</b> over {years} years at {v.rate}% costs <b>{usd(m.principalAndInterest)}</b> a month in principal and interest. With property tax,
+            Borrowing <b>{usd(m.loan)}</b>{" "}over {years} years at {v.rate}% costs <b>{usd(m.principalAndInterest)}</b>{" "}a month in principal and interest. With property tax,
             insurance{m.hoa > 0 ? ", HOA dues" : ""}
             {m.pmiMonthly > 0 ? " and PMI" : ""}, your first payment is <b>{usd(m.total)}</b>.
             {m.pmiMonthly > 0 ? (
@@ -238,7 +238,7 @@ export default function MortgageStudio({ query }: { query: Query }) {
           initial={Math.min(5, bal.length - 1)}
           readout={(i) => (
             <>
-              End of year <b>{i}</b>: you owe <b>{usd(bal[i] ?? 0)}</b> and have paid <b>{usd(interestPaid[i] ?? interestPaid[interestPaid.length - 1])}</b> in interest.
+              End of year <b>{i}</b>: you owe <b>{usd(bal[i] ?? 0)}</b>{" "}and have paid <b>{usd(interestPaid[i] ?? interestPaid[interestPaid.length - 1])}</b>{" "}in interest.
             </>
           )}
         />

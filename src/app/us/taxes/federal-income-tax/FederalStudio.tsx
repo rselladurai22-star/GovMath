@@ -133,10 +133,10 @@ export default function FederalStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            Your 2026 federal tax is <b>{usd(r.totalTax)}</b> on <b>{usd(r.grossIncome)}</b> of income. You have paid <b>{usd(v.withheld)}</b>, so you
+            Your 2026 federal tax is <b>{usd(r.totalTax)}</b>{" "}on <b>{usd(r.grossIncome)}</b>{" "}of income. You have paid <b>{usd(v.withheld)}</b>, so you
             {owes ? (
               <>
-                {" "}should expect to <b>owe {usd(-refund)}</b> when you file by April 15, 2027.
+                {" "}should expect to <b>owe {usd(-refund)}</b>{" "}when you file by April 15, 2027.
               </>
             ) : (
               <>

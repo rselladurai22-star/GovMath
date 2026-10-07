@@ -97,11 +97,11 @@ export default function SalesTaxStudio({ query }: { query: Query }) {
         sentence={
           v.mode === "add" ? (
             <>
-              A price of <b>{usd(r.net, true)}</b>{v.discount > 0 ? ` (after ${v.discount}% off ${usd(v.amount, true)})` : ""} plus <b>{usd(r.tax, true)}</b> of sales tax comes to <b>{usd(r.gross, true)}</b>.
+              A price of <b>{usd(r.net, true)}</b>{v.discount > 0 ? ` (after ${v.discount}% off ${usd(v.amount, true)})` : ""} plus <b>{usd(r.tax, true)}</b>{" "}of sales tax comes to <b>{usd(r.gross, true)}</b>.
             </>
           ) : (
             <>
-              A total of <b>{usd(r.gross, true)}</b> includes <b>{usd(r.tax, true)}</b> of sales tax, so the price before tax was <b>{usd(r.net, true)}</b>.
+              A total of <b>{usd(r.gross, true)}</b>{" "}includes <b>{usd(r.tax, true)}</b>{" "}of sales tax, so the price before tax was <b>{usd(r.net, true)}</b>.
             </>
           )
         }

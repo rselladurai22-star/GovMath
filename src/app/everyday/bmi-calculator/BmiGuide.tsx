@@ -74,11 +74,11 @@ export default function BmiGuide() {
         <ul>
           <li>BMI is your weight in kilograms divided by your height in metres squared.</li>
           <li>
-            A BMI of <strong>18.5 to 24.9</strong> is a healthy weight for most adults.
+            A BMI of <strong>18.5 to 24.9</strong>{" "}is a healthy weight for most adults.
           </li>
           <li>
             For people of South Asian, Chinese, other Asian, Middle Eastern, Black African or African-Caribbean background, overweight starts at{" "}
-            <strong>23</strong> and obesity at <strong>27.5</strong>.
+            <strong>23</strong>{" "}and obesity at <strong>27.5</strong>.
           </li>
           <li>Keeping your waist to less than half your height is a useful second check.</li>
         </ul>
@@ -374,11 +374,11 @@ export default function BmiGuide() {
 
       <GuideSection id="conditions" n={23} kicker="Health checks" title="Weight-related conditions to check">
         <ul>
-          <li><strong>Blood pressure:</strong> free checks at many pharmacies for adults over 40.</li>
-          <li><strong>Type 2 diabetes:</strong> a blood test (HbA1c) shows your average blood sugar; the NHS Diabetes Prevention Programme helps people at risk.</li>
-          <li><strong>Cholesterol:</strong> checked as part of the NHS Health Check.</li>
-          <li><strong>Sleep apnoea:</strong> loud snoring and daytime sleepiness are signs worth raising with your GP.</li>
-          <li><strong>Fatty liver disease:</strong> often has no symptoms and is linked to weight around the middle.</li>
+          <li><strong>Blood pressure:</strong>{" "}free checks at many pharmacies for adults over 40.</li>
+          <li><strong>Type 2 diabetes:</strong>{" "}a blood test (HbA1c) shows your average blood sugar; the NHS Diabetes Prevention Programme helps people at risk.</li>
+          <li><strong>Cholesterol:</strong>{" "}checked as part of the NHS Health Check.</li>
+          <li><strong>Sleep apnoea:</strong>{" "}loud snoring and daytime sleepiness are signs worth raising with your GP.</li>
+          <li><strong>Fatty liver disease:</strong>{" "}often has no symptoms and is linked to weight around the middle.</li>
         </ul>
       </GuideSection>
 

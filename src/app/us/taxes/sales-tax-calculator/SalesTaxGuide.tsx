@@ -157,8 +157,8 @@ export default function SalesTaxGuide() {
       <GuideSection id="big" n={10} kicker="Big purchases" title="Cars and other big purchases">
         <p>
           On a large purchase, the rate matters. A $30,000 car at 7% carries $2,100 of sales tax. Most states charge it where you register the car rather
-          than where you buy it, and many tax only the price after a trade-in. The <a href="/us/loans/auto-loan-calculator">auto loan calculator</a> adds
-          sales tax and fees to a car payment, and the <a href="/everyday/percentage-calculator">percentage calculator</a> handles any other percentage sum.
+          than where you buy it, and many tax only the price after a trade-in. The <a href="/us/loans/auto-loan-calculator">auto loan calculator</a>{" "}adds
+          sales tax and fees to a car payment, and the <a href="/everyday/percentage-calculator">percentage calculator</a>{" "}handles any other percentage sum.
         </p>
       </GuideSection>
 
@@ -167,7 +167,7 @@ export default function SalesTaxGuide() {
           If you itemize deductions on your federal return, you can deduct either state and local income taxes or state and local sales taxes, not both,
           within the overall limit on state and local taxes. Sales tax is usually the better choice in states with no income tax, such as Texas, Florida and
           Washington. You can use your receipts or the IRS&rsquo;s tables. Most people take the standard deduction instead; the{" "}
-          <a href="/us/taxes/federal-income-tax">federal income tax calculator</a> compares the two.
+          <a href="/us/taxes/federal-income-tax">federal income tax calculator</a>{" "}compares the two.
         </p>
       </GuideSection>
 

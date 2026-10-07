@@ -94,12 +94,12 @@ export default function RothStudio({ query }: { query: Query }) {
         sentence={
           lim.limit === 0 ? (
             <>
-              With modified AGI of <b>{usd(v.magi)}</b> you can&apos;t contribute to a Roth IRA directly in 2026. {v.balance > 0 ? <>Your current balance could still grow to <b>{usd(g.balance)}</b>.</> : null} A backdoor Roth may still be open to you.
+              With modified AGI of <b>{usd(v.magi)}</b>{" "}you can&apos;t contribute to a Roth IRA directly in 2026. {v.balance > 0 ? <>Your current balance could still grow to <b>{usd(g.balance)}</b>.</> : null} A backdoor Roth may still be open to you.
             </>
           ) : (
             <>
-              Your 2026 limit is <b>{usd(lim.limit)}</b>. Putting in <b>{usd(yearly)}</b> a year for {years} {per(years, "years")} could grow to <b>{usd(g.balance)}</b>, all of it tax-free in retirement. That is
-              about <b>{usd(g.real)}</b> in today&apos;s dollars.
+              Your 2026 limit is <b>{usd(lim.limit)}</b>. Putting in <b>{usd(yearly)}</b>{" "}a year for {years} {per(years, "years")} could grow to <b>{usd(g.balance)}</b>, all of it tax-free in retirement. That is
+              about <b>{usd(g.real)}</b>{" "}in today&apos;s dollars.
             </>
           )
         }
@@ -138,7 +138,7 @@ export default function RothStudio({ query }: { query: Query }) {
           hint="Drag across the chart, or use the arrow keys, to read any age."
           readout={(i) => (
             <>
-              At <b>{v.age + i}</b>: balance <b>{usd(bal[i] ?? 0)}</b>, of which <b>{usd((bal[i] ?? 0) - (paid[i] ?? 0))}</b> is growth.
+              At <b>{v.age + i}</b>: balance <b>{usd(bal[i] ?? 0)}</b>, of which <b>{usd((bal[i] ?? 0) - (paid[i] ?? 0))}</b>{" "}is growth.
             </>
           )}
         />

@@ -183,7 +183,7 @@ export default function StudentLoanGuide() {
           <li>The payment falls by <strong>$50 for each dependent</strong>, but never below <strong>$10</strong>.</li>
           <li>If your payment does not cover the month&rsquo;s interest, the unpaid interest is <strong>not charged</strong>, so your balance does not grow.</li>
           <li>If your payment cuts the principal by less than $50, the government adds a match, up to $50 or your payment if less.</li>
-          <li>Any balance left after <strong>360 qualifying payments</strong> (30 years) is forgiven.</li>
+          <li>Any balance left after <strong>360 qualifying payments</strong>{" "}(30 years) is forgiven.</li>
           <li>If you are married, your spouse&rsquo;s income counts only if you file jointly.</li>
         </ul>
         <p>Parent PLUS loans, and consolidation loans that repaid a Parent PLUS loan, cannot use RAP.</p>
@@ -283,7 +283,7 @@ export default function StudentLoanGuide() {
         <p>
           Refinancing replaces one or more loans with a new private loan, ideally at a lower rate. It can save money on private loans or on federal
           loans for people with high, stable incomes. But refinancing federal loans is permanent: you lose RAP, Public Service Loan Forgiveness,
-          deferment options and the interest waiver. Use the general <a href="/us/loans/loan-calculator">loan calculator</a> to compare offers.
+          deferment options and the interest waiver. Use the general <a href="/us/loans/loan-calculator">loan calculator</a>{" "}to compare offers.
         </p>
       </GuideSection>
 
@@ -295,7 +295,7 @@ export default function StudentLoanGuide() {
         </p>
         <p>
           Before paying extra, make sure you have an emergency fund, any 401(k) match and no higher-rate debt such as credit cards. The{" "}
-          <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a> compares paying off several debts at once.
+          <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a>{" "}compares paying off several debts at once.
         </p>
       </GuideSection>
 
@@ -311,7 +311,7 @@ export default function StudentLoanGuide() {
         <p>
           You can deduct up to $2,500 a year of student loan interest, whether or not you itemize, though the deduction phases out at higher
           incomes. Balances forgiven under an income-driven plan such as RAP may be counted as taxable income. The{" "}
-          <a href="/us/taxes/federal-income-tax">federal income tax calculator</a> shows your bracket.
+          <a href="/us/taxes/federal-income-tax">federal income tax calculator</a>{" "}shows your bracket.
         </p>
       </GuideSection>
 
@@ -325,17 +325,17 @@ export default function StudentLoanGuide() {
 
       <GuideSection id="choosing" n={19} kicker="Decision" title="Choosing a plan">
         <ul>
-          <li><strong>Want to pay least overall?</strong> The shortest fixed term you can afford, plus extra payments.</li>
-          <li><strong>Low or uncertain income?</strong> RAP keeps payments tied to income and stops the balance growing.</li>
-          <li><strong>Working in public service?</strong> RAP or the 10-year standard plan with PSLF.</li>
-          <li><strong>High income and private-sector job?</strong> A fixed plan, possibly refinancing if you will not need federal protections.</li>
+          <li><strong>Want to pay least overall?</strong>{" "}The shortest fixed term you can afford, plus extra payments.</li>
+          <li><strong>Low or uncertain income?</strong>{" "}RAP keeps payments tied to income and stops the balance growing.</li>
+          <li><strong>Working in public service?</strong>{" "}RAP or the 10-year standard plan with PSLF.</li>
+          <li><strong>High income and private-sector job?</strong>{" "}A fixed plan, possibly refinancing if you will not need federal protections.</li>
         </ul>
       </GuideSection>
 
       <GuideSection id="subsidized" n={20} kicker="Basics" title="Subsidized and unsubsidized loans">
         <p>
-          On a <strong>subsidized</strong> loan, available to undergraduates with financial need, the government pays the interest while you are
-          in school at least half time, during the grace period and during deferment. On an <strong>unsubsidized</strong> loan, interest builds
+          On a <strong>subsidized</strong>{" "}loan, available to undergraduates with financial need, the government pays the interest while you are
+          in school at least half time, during the grace period and during deferment. On an <strong>unsubsidized</strong>{" "}loan, interest builds
           from the day the money is paid out. If you do not pay it, it may be added to the balance when repayment starts, and you then pay
           interest on it.
         </p>

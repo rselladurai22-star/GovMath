@@ -121,8 +121,8 @@ export default function SelfEmploymentStudio({ query }: { query: Query }) {
         sentence={
           se.seTax > 0 ? (
             <>
-              On <b>{usd(profit)}</b> of profit you pay <b>{usd(se.seTax)}</b> of Social Security and Medicare, plus about <b>{usd(incomeTax)}</b> of federal income tax: <b>{usd(r.totalTax)}</b> in all.
-              Pay about <b>{usd(est.safeQuarter)}</b> each quarter to stay clear of penalties.
+              On <b>{usd(profit)}</b>{" "}of profit you pay <b>{usd(se.seTax)}</b>{" "}of Social Security and Medicare, plus about <b>{usd(incomeTax)}</b>{" "}of federal income tax: <b>{usd(r.totalTax)}</b>{" "}in all.
+              Pay about <b>{usd(est.safeQuarter)}</b>{" "}each quarter to stay clear of penalties.
             </>
           ) : (
             <>

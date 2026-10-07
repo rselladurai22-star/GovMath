@@ -78,14 +78,14 @@ export default function AffordGuide() {
         <p>Lenders use two ratios, both against your gross (before-tax) monthly income:</p>
         <ul>
           <li>
-            <strong>Front-end ratio:</strong> the full housing payment (principal, interest, property tax, insurance, mortgage insurance and HOA dues) divided by gross income.
+            <strong>Front-end ratio:</strong>{" "}the full housing payment (principal, interest, property tax, insurance, mortgage insurance and HOA dues) divided by gross income.
           </li>
           <li>
-            <strong>Back-end ratio:</strong> the housing payment plus every other monthly debt payment, divided by gross income.
+            <strong>Back-end ratio:</strong>{" "}the housing payment plus every other monthly debt payment, divided by gross income.
           </li>
         </ul>
         <p>
-          The CFPB explains these ratios in plain terms. Our <a href="/us/loans/debt-to-income-ratio">debt-to-income ratio calculator</a> works out your current ratios.
+          The CFPB explains these ratios in plain terms. Our <a href="/us/loans/debt-to-income-ratio">debt-to-income ratio calculator</a>{" "}works out your current ratios.
         </p>
       </GuideSection>
 
@@ -222,7 +222,7 @@ export default function AffordGuide() {
         <p>
           If the all-debts limit binds, every dollar of monthly debt you clear adds a dollar of housing payment. In the example with {usd(1_000)} of debts, clearing them raises the price
           from {usd(265_064)} to {usd(306_360)}. Paying off a small car loan or card balance before applying can be worth more than saving the same cash for the down payment. Our{" "}
-          <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a> helps plan it.
+          <a href="/us/loans/debt-payoff-calculator">debt payoff calculator</a>{" "}helps plan it.
         </p>
       </GuideSection>
 
@@ -287,7 +287,7 @@ export default function AffordGuide() {
           <li>Work out your price range here, then check the payment against your take-home pay.</li>
           <li>Get preapproved by two or three lenders and compare Loan Estimates.</li>
           <li>Look up property tax and HOA dues for each home you like.</li>
-          <li>Use our <a href="/us/housing/mortgage-calculator">mortgage calculator</a> on a specific listing.</li>
+          <li>Use our <a href="/us/housing/mortgage-calculator">mortgage calculator</a>{" "}on a specific listing.</li>
         </ol>
       </GuideSection>
 
@@ -322,7 +322,7 @@ export default function AffordGuide() {
         <p>
           Student loan payments count as debt even when they are deferred or in forbearance. Rules differ by loan program: some lenders use your actual income-driven payment, and
           others use a set share of the balance when the payment shown is zero. A large balance on a low income-driven payment can therefore count for more than you pay. Ask each
-          lender how it treats your loans, and enter the figure it will use. Our <a href="/us/loans/student-loan-calculator">student loan calculator</a> shows the standard payment.
+          lender how it treats your loans, and enter the figure it will use. Our <a href="/us/loans/student-loan-calculator">student loan calculator</a>{" "}shows the standard payment.
         </p>
       </GuideSection>
 
@@ -342,7 +342,7 @@ export default function AffordGuide() {
         <p>
           If the price you can afford does not match the homes you want, renting for another year or two while you pay down debt and build a bigger down payment can change the
           numbers a lot. In the example, adding {usd(40_000)} to the down payment and clearing {usd(500)} of monthly debts would both raise your budget. Our{" "}
-          <a href="/us/housing/rent-affordability">rent affordability calculator</a> shows what rent fits while you save.
+          <a href="/us/housing/rent-affordability">rent affordability calculator</a>{" "}shows what rent fits while you save.
         </p>
         <p>
           State and local first-time buyer programs can also help with the down payment or closing costs, often as a grant or a low-cost second loan. Your state housing finance

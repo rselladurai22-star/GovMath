@@ -99,7 +99,7 @@ export default function TipGuide() {
           ]}
         />
         <p>
-          The <a href="/us/taxes/sales-tax-calculator">sales tax calculator</a> shows the tax rate where you are if it is not printed on the check.
+          The <a href="/us/taxes/sales-tax-calculator">sales tax calculator</a>{" "}shows the tax rate where you are if it is not printed on the check.
         </p>
       </GuideSection>
 
@@ -190,8 +190,8 @@ export default function TipGuide() {
           <li>Tips are still subject to Social Security and Medicare, and to state tax where the state taxes them.</li>
         </ul>
         <p>
-          The <a href="/us/taxes/federal-income-tax">federal income tax calculator</a> includes the tips deduction, and the{" "}
-          <a href="/us/taxes/overtime-calculator">overtime calculator</a> covers the matching deduction for overtime.
+          The <a href="/us/taxes/federal-income-tax">federal income tax calculator</a>{" "}includes the tips deduction, and the{" "}
+          <a href="/us/taxes/overtime-calculator">overtime calculator</a>{" "}covers the matching deduction for overtime.
         </p>
       </GuideSection>
 

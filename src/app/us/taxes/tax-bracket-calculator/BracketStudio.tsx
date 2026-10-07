@@ -112,8 +112,8 @@ export default function BracketStudio({ query }: { query: Query }) {
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           <>
-            With <b>{usd(r.taxable)}</b> of taxable income as {FILING_LABEL[v.status].toLowerCase()}, your top dollars are taxed at <b>{percent(r.marginal)}</b>. Your federal income tax is{" "}
-            <b>{usd(r.tax)}</b>, an effective rate of <b>{percent(effective, 1)}</b> of {v.mode === "gross" ? "your income" : "taxable income"}.
+            With <b>{usd(r.taxable)}</b>{" "}of taxable income as {FILING_LABEL[v.status].toLowerCase()}, your top dollars are taxed at <b>{percent(r.marginal)}</b>. Your federal income tax is{" "}
+            <b>{usd(r.tax)}</b>, an effective rate of <b>{percent(effective, 1)}</b>{" "}of {v.mode === "gross" ? "your income" : "taxable income"}.
           </>
         }
         badges={[`Effective ${percent(effective, 1)}`, Number.isFinite(room) ? `${usd(room)} to the next bracket` : "Top bracket", `Next $1,000 costs ${usd(nextThousand)}`]}
