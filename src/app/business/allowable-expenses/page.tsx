@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import ExpensesGuide from "./ExpensesGuide";
 
 export const metadata: Metadata = {
-  title: "Self-Employed Expenses Calculator UK 2026/27",
+  title: "Self-Employed Expenses Calculator: HMRC 2026/27",
   description:
-    "Free self-employed expenses calculator for 2026/27. Add up allowable expenses, mileage and working from home, and see the Income Tax and NI they save.",
+    "Free self-employed and business expenses calculator for 2026/27. Add allowable costs, HMRC mileage and working-from-home flat rates, and see the tax you save.",
   alternates: { canonical: "/business/allowable-expenses" },
   openGraph: ogFor("/business/allowable-expenses"),
 };
