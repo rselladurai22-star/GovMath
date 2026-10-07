@@ -898,3 +898,150 @@
 /* Logo: the round GovMath.co.uk badge (October 2026). The package's rules size a
    wide wordmark at each breakpoint; keep their height and make the width match. */
 .logo img{aspect-ratio:1/1;width:auto!important;object-fit:contain}
+
+/* ── One-row header (October 2026, owner's request) ──────────────
+   No claret strip and no Home/Calculators/Guides/About links: headerHtml()
+   in src/gm/catalog.ts moves the topic menus into the logo row, between the
+   logo and the search box. Mega menus still open full width under the
+   header (.ax-header is their positioned parent). Below 1240px the menus
+   take a second row; at 850px and below the Menu button shows them. */
+.reference-header,
+.gm-neutral .reference-header {
+  border-top: 0;
+}
+.reference-header .header {
+  height: auto;
+  min-height: 96px;
+  gap: 18px;
+}
+.reference-header .header .logo {
+  width: auto;
+}
+.reference-header .header .ax-navigation {
+  flex: 1 1 auto;
+  align-self: stretch;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border-top: 0;
+  justify-content: center;
+  gap: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  background: transparent;
+}
+.reference-header .header .ax-navbutton {
+  min-height: 100%;
+  padding: 0 9px;
+  font-size: 15px;
+  font-weight: 500;
+}
+.reference-header .header .gm-headsearch {
+  flex: 0 0 210px;
+  max-width: 210px;
+}
+@media (min-width: 851px) and (max-width: 1239px) {
+  .reference-header .header {
+    flex-wrap: wrap;
+    row-gap: 0;
+    padding-bottom: 0;
+  }
+  .reference-header .header .gm-headsearch {
+    flex-basis: 260px;
+    max-width: 260px;
+    margin-left: auto;
+  }
+  .reference-header .header .ax-navigation {
+    order: 5;
+    flex: 1 1 100%;
+    justify-content: space-between;
+    border-top: 1px solid #dfe3e8;
+  }
+  .reference-header .header .ax-navbutton {
+    min-height: 46px;
+    padding: 0 8px;
+  }
+}
+@media (max-width: 850px) {
+  /* The package hid its old header links (.header nav) on phones; the topic
+     menus are a nav inside .header now, so the Menu button must show them. */
+  .reference-header .header .ax-navigation.mobile-open {
+    display: block;
+  }
+  .reference-header .header .ax-navigation {
+    order: 5;
+    flex: 1 1 100%;
+    padding: 0;
+  }
+  .reference-header .header .gm-headsearch {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+  .reference-header .header .ax-navbutton {
+    min-height: 0;
+    padding: 13px 4px;
+    font-size: 16px;
+  }
+}
+
+/* ── Claret heroes (October 2026, owner's request) ────────────────
+   The home hero and the topic and content-page heroes use the brand claret,
+   so the white header and menus stand apart from the page's opening. */
+.gm-neutral .hero,
+.hero {
+  background: #8c1d40;
+  border-bottom: 0;
+  color: #fff;
+}
+.hero .herocopy h1 {
+  color: #fff;
+}
+.hero .herocopy h1 em {
+  color: #f1f4f7;
+  text-decoration: underline;
+  text-decoration-color: #eda100;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 8px;
+}
+.hero .herocopy > p:not(.eyebrow),
+.hero .heronote {
+  color: #f1f4f7;
+}
+.hero .button.herobutton {
+  background: #fff;
+  color: #8c1d40 !important;
+}
+.hero .button.herobutton:hover,
+.hero .button.herobutton:focus-visible {
+  background: #f1f4f7;
+  color: #6e1632 !important;
+}
+.hero .button.herobutton:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+.hero .heroart img {
+  mix-blend-mode: normal;
+}
+.categoryhero {
+  background: #8c1d40;
+  color: #fff;
+}
+.categoryhero h1 {
+  color: #fff;
+}
+.categoryhero > p:not(.eyebrow),
+.categoryhero > p:last-child,
+.categoryhero .gm-meta,
+.categoryhero .gm-meta * {
+  color: #f1f4f7;
+}
+.categoryhero a {
+  color: #fff;
+}
+/* "View all calculators" in each mega menu: room for its label. */
+.ax-mega-title .button {
+  display: inline-block;
+  padding: 11px 16px;
+  white-space: nowrap;
+}
