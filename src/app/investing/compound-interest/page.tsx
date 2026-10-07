@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import CompoundGuide from "./CompoundGuide";
 
 export const metadata: Metadata = {
-  title: "Compound Interest Calculator UK",
+  title: "Compound Interest & Investment Calculator UK",
   description:
-    "Free compound interest calculator. See how savings and investments grow with monthly additions, any compounding frequency, AER and inflation, year by year.",
+    "Free compound interest and investment calculator for the UK. See how much interest your savings earn and how investments grow with monthly deposits.",
   alternates: { canonical: "/investing/compound-interest" },
   openGraph: ogFor("/investing/compound-interest"),
 };

@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import ProRataGuide from "./ProRataGuide";
 
 export const metadata: Metadata = {
-  title: "Pro Rata Rent Calculator UK",
+  title: "Pro Rata Rent Calculator: Daily Rent UK",
   description:
-    "Free pro rata rent calculator. Work out rent for part of a month when you move in or out, using the annual or calendar month method, with weekly conversion.",
+    "Free pro rata and daily rent calculator for the UK. Work out rent for part of a month when you move in or out, using the annual or calendar month method.",
   alternates: { canonical: "/life/pro-rata-rent" },
   openGraph: ogFor("/life/pro-rata-rent"),
 };

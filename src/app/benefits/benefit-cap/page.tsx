@@ -6,7 +6,7 @@ import { ogFor } from "@/gm/og";
 import CapGuide from "./CapGuide";
 
 export const metadata: Metadata = {
-  title: "Benefit Cap Calculator UK 2026/27",
+  title: "Benefit Cap Calculator 2026/27: Universal Credit",
   description:
     "Free benefit cap calculator for 2026/27. See if your Universal Credit or Housing Benefit will be capped, by how much, and the exemptions that lift the cap.",
   alternates: { canonical: "/benefits/benefit-cap" },

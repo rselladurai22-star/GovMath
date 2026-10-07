@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import EmergencyGuide from "./EmergencyGuide";
 
 export const metadata: Metadata = {
-  title: "Emergency Tax Calculator UK 2026/27",
+  title: "Emergency Tax Calculator UK: Rate and Refund",
   description:
-    "Free emergency tax calculator for 2026/27. See how much you overpaid on an emergency tax code, why it happened and how to get the refund.",
+    "Free emergency tax calculator for 2026/27. See how much emergency tax comes off your pay, why the code was used, and how to get the overpaid tax back.",
   alternates: { canonical: "/tax-and-salary/emergency-tax" },
   openGraph: ogFor("/tax-and-salary/emergency-tax"),
 };
