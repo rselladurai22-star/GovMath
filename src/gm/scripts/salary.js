@@ -1,6 +1,6 @@
-/* Supplied GovMath design script, kept as delivered. Only the wrapper (an
-   exported init function) and the points marked "GovMath:" are changed. */
-/* GovMath: salaryResult() now comes from the site's tested take-home engine
+/* Supplied SumAtlas design script, kept as delivered. Only the wrapper (an
+   exported init function) and the points marked "SumAtlas:" are changed. */
+/* SumAtlas: salaryResult() now comes from the site's tested take-home engine
    (src/gm/engines.ts) instead of the inline calculation. */
 export function initSalary(salaryResult){
 if(typeof document==='undefined')return;

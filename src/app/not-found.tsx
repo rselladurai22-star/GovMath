@@ -17,7 +17,7 @@ export default function NotFound() {
         </section>
         <nav className="categoryjump" aria-label="Topics">
           {CATS.map((c) => (
-            <Link key={c.slug} href={`/${c.slug}`}>
+            <Link key={c.slug} href={`/uk/${c.slug}`}>
               {c.label.replace(/&amp;/g, "&")}
             </Link>
           ))}

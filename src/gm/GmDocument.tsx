@@ -38,7 +38,7 @@ export default function GmDocument({
       .replace("<!--GM:TRUST-->", () => (trust ? trustHtml(trust.path, trust.sourcesId) : ""));
   // Calculator pages describe themselves as web applications; topic pages list their calculators.
   const jsonLd = trust
-    ? calculatorJsonLd(trust.path, page.title.replace(/ \| GovMath$/, ""), page.description)
+    ? calculatorJsonLd(trust.path, page.title.replace(/ \| SumAtlas$/, ""), page.description)
     : topic
       ? topicJsonLd(topic, categoryLabel(topic))
       : null;

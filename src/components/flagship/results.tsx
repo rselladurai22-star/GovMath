@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 /*
- * Calculator results in the approved GovMath design's markup (see
+ * Calculator results in the approved SumAtlas design's markup (see
  * public/gm/matching-mortgage.css and matching-calculators.css): the
  * .ax-paymentstrip answer, .facts tiles, .resultcard cards, .splitbar with
  * an .allocation list, .rate-row comparisons and tables in a .tablewrap.

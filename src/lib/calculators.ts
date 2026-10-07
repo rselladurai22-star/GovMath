@@ -1,5 +1,5 @@
 /**
- * Master registry — every calculator on GovMath.
+ * Master registry — every calculator on SumAtlas.
  *
  * Architecture: 8 top-level categories, each with its own route segment.
  * Single source of truth for the header menus and search, the homepage and
@@ -40,7 +40,7 @@ export const CATEGORIES: Category[] = [
   {
     slug: "tax-and-salary",
     title: "Tax & Salary",
-    href: "/tax-and-salary",
+    href: "/uk/tax-and-salary",
     tagline: "Income Tax, NI, payslips, statutory pay.",
     description:
       "Work out exactly what HMRC takes — and what stays in your bank. Every UK employment-tax calculator, with the rules explained in plain English.",
@@ -48,7 +48,7 @@ export const CATEGORIES: Category[] = [
   {
     slug: "property",
     title: "Mortgages & Property",
-    href: "/property",
+    href: "/uk/property",
     tagline: "Stamp Duty, mortgages, rent, council tax.",
     description:
       "Buying, renting, selling or just budgeting? Run the numbers on everything property-related.",
@@ -56,7 +56,7 @@ export const CATEGORIES: Category[] = [
   {
     slug: "business",
     title: "Freelance & Business",
-    href: "/business",
+    href: "/uk/business",
     tagline: "Self-employed tax, VAT, IR35, corporation tax.",
     description:
       "Calculators built for sole traders, contractors and small-business owners — every UK rule decoded.",
@@ -64,7 +64,7 @@ export const CATEGORIES: Category[] = [
   {
     slug: "investing",
     title: "Pensions & Investing",
-    href: "/investing",
+    href: "/uk/investing",
     tagline: "Pensions, ISAs, compound interest, capital gains.",
     description:
       "Plan for the long term with calculators built around UK pension, ISA and investment rules.",
@@ -72,7 +72,7 @@ export const CATEGORIES: Category[] = [
   {
     slug: "benefits",
     title: "Family & Benefits",
-    href: "/benefits",
+    href: "/uk/benefits",
     tagline: "Universal Credit, Child Benefit, parental pay, PIP.",
     description:
       "Estimate what you can claim from DWP and HMRC. No jargon, just plain answers.",
@@ -80,7 +80,7 @@ export const CATEGORIES: Category[] = [
   {
     slug: "vehicles",
     title: "Vehicles & Transport",
-    href: "/vehicles",
+    href: "/uk/vehicles",
     tagline: "Car tax, EV salary sacrifice, fuel, clean-air zones.",
     description:
       "Everything from VED bands to commuting cost comparisons — for the way you actually get around.",
@@ -88,7 +88,7 @@ export const CATEGORIES: Category[] = [
   {
     slug: "students",
     title: "Students",
-    href: "/students",
+    href: "/uk/students",
     tagline: "Student loans (Plans 1–5), maintenance, council tax.",
     description:
       "Student loans, maintenance support and the council-tax rules every UK student should know.",
@@ -96,7 +96,7 @@ export const CATEGORIES: Category[] = [
   {
     slug: "life",
     title: "Everyday Life",
-    href: "/life",
+    href: "/uk/life",
     tagline: "Percentages, dates, inheritance, NHS, bank holidays.",
     description:
       "The small but important calculators for everyday life events and admin.",
@@ -111,7 +111,7 @@ const live = (
   popular = false
 ): Calculator => ({
   slug,
-  href: `/${category}/${slug}`,
+  href: `/uk/${category}/${slug}`,
   title,
   blurb,
   category,

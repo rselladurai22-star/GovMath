@@ -3,9 +3,9 @@ import Link from "next/link";
 import ContentPage from "@/components/ContentPage";
 
 export const metadata: Metadata = {
-  title: "Contact GovMath",
+  title: "Contact SumAtlas",
   description:
-    "Contact GovMath to report an error, suggest a new calculator or ask a question. Corrections to figures are our top priority and we reply by email.",
+    "Contact SumAtlas to report an error, suggest a new calculator or ask a question. Corrections to figures are our top priority and we reply by email.",
   alternates: { canonical: "/contact" },
 };
 
@@ -18,7 +18,7 @@ export default function ContactPage() {
       intro="Found an error, want a new calculator, or have a question? We'd love to hear from you."
     >
       <p>
-        GovMath is built by a small team, and feedback from people who actually
+        SumAtlas is built by a small team, and feedback from people who actually
         use the calculators is the best way we improve. Whether you&apos;ve
         spotted a figure that looks wrong, want a tool we haven&apos;t built
         yet, or just have a question, please get in touch.

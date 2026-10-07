@@ -37,7 +37,7 @@ export const BLOG_POSTS: BlogPost[] = [
         </p>
         <p>
           This guide works through real 2026/27 examples, all from the same engine as our{" "}
-          <Link href="/tax-and-salary/salary-sacrifice">salary sacrifice calculator</Link>, and explains the catches:
+          <Link href="/uk/tax-and-salary/salary-sacrifice">salary sacrifice calculator</Link>, and explains the catches:
           the minimum wage rule, the effect on mortgages and other benefits, and the National Insurance cap planned for
           2029.
         </p>
@@ -118,7 +118,7 @@ export const BLOG_POSTS: BlogPost[] = [
           Pensions are not the only exempt benefit. Under the Cycle to Work scheme, giving up £1,000 of a £30,000 salary
           for a bike costs £720 of take-home pay, a saving of £280, because tax and National Insurance both fall.
           Electric car schemes work in a similar way, but you pay company car tax on the car, so use the{" "}
-          <Link href="/vehicles/ev-salary-sacrifice">EV salary sacrifice calculator</Link> for those.
+          <Link href="/uk/vehicles/ev-salary-sacrifice">EV salary sacrifice calculator</Link> for those.
         </p>
         <p>
           Most other benefits fall under the &ldquo;optional remuneration&rdquo; rules. For them you still pay Income
@@ -169,8 +169,8 @@ export const BLOG_POSTS: BlogPost[] = [
         </p>
         <p>
           To see the effect on your own pay, use the{" "}
-          <Link href="/tax-and-salary/salary-sacrifice">salary sacrifice calculator</Link>, or compare the different ways
-          of getting tax relief with the <Link href="/investing/pension-tax-relief">pension tax relief calculator</Link>.
+          <Link href="/uk/tax-and-salary/salary-sacrifice">salary sacrifice calculator</Link>, or compare the different ways
+          of getting tax relief with the <Link href="/uk/investing/pension-tax-relief">pension tax relief calculator</Link>.
         </p>
       </>
     ),
@@ -195,7 +195,7 @@ export const BLOG_POSTS: BlogPost[] = [
         </p>
         <p>
           This guide uses 2026/27 figures from the same engine as our{" "}
-          <Link href="/tax-and-salary/marriage-allowance">Marriage Allowance calculator</Link>, so you can check your own
+          <Link href="/uk/tax-and-salary/marriage-allowance">Marriage Allowance calculator</Link>, so you can check your own
           incomes there.
         </p>
 
@@ -260,7 +260,7 @@ export const BLOG_POSTS: BlogPost[] = [
           yourself.
         </p>
         <p>
-          Once it is in place, HMRC changes both <Link href="/tax-and-salary/tax-code-decoder">tax codes</Link>. The
+          Once it is in place, HMRC changes both <Link href="/uk/tax-and-salary/tax-code-decoder">tax codes</Link>. The
           higher earner&rsquo;s code ends in M (for example 1383M) and the lower earner&rsquo;s ends in N (for example
           1131N). The allowance renews each year automatically until you cancel it or your circumstances change.
         </p>
@@ -269,7 +269,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <ul>
           <li>
             The lower earner&rsquo;s income rises above £12,570, or the higher earner moves into the higher rate band
-            (perhaps after a <Link href="/tax-and-salary/pay-rise">pay rise</Link>).
+            (perhaps after a <Link href="/uk/tax-and-salary/pay-rise">pay rise</Link>).
           </li>
           <li>You divorce, end a civil partnership, or your partner dies (special rules apply on bereavement).</li>
         </ul>
@@ -287,8 +287,8 @@ export const BLOG_POSTS: BlogPost[] = [
 
         <p>
           Check your own figures, including backdating, with the{" "}
-          <Link href="/tax-and-salary/marriage-allowance">Marriage Allowance calculator</Link>, and see what else you
-          take home with the <Link href="/tax-and-salary/salary-calculator">salary calculator</Link>.
+          <Link href="/uk/tax-and-salary/marriage-allowance">Marriage Allowance calculator</Link>, and see what else you
+          take home with the <Link href="/uk/tax-and-salary/salary-calculator">salary calculator</Link>.
         </p>
       </>
     ),
@@ -318,7 +318,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <p>
           Want the number first and the theory second? Run your figure through
           the{" "}
-          <Link href="/tax-and-salary/salary-calculator">
+          <Link href="/uk/tax-and-salary/salary-calculator">
             Salary &amp; Take-Home Pay Calculator
           </Link>{" "}
           and come back here to understand it.
@@ -401,7 +401,7 @@ export const BLOG_POSTS: BlogPost[] = [
           does <strong>not</strong> mean all your income is suddenly taxed at
           40%. Only the pounds above £50,270 are. Scotland uses a different,
           six-band system — see the{" "}
-          <Link href="/tax-and-salary/scottish-tax">
+          <Link href="/uk/tax-and-salary/scottish-tax">
             Scottish Income Tax calculator
           </Link>{" "}
           if that&apos;s you.
@@ -426,7 +426,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <p>
           NI is calculated on your earnings, separately from Income Tax. You can
           break it down with the{" "}
-          <Link href="/tax-and-salary/national-insurance">
+          <Link href="/uk/tax-and-salary/national-insurance">
             National Insurance calculator
           </Link>
           .
@@ -490,12 +490,12 @@ export const BLOG_POSTS: BlogPost[] = [
         </ul>
         <p>
           For the headline number, the{" "}
-          <Link href="/tax-and-salary/salary-calculator">
+          <Link href="/uk/tax-and-salary/salary-calculator">
             take-home calculator
           </Link>{" "}
           is the fastest way to see where you stand — and if you&apos;re
           weighing up a raise, the{" "}
-          <Link href="/tax-and-salary/tax-bracket-checker">
+          <Link href="/uk/tax-and-salary/tax-bracket-checker">
             Tax Bracket Checker
           </Link>{" "}
           shows what each band actually costs.
@@ -535,7 +535,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <p>
           This guide explains where the trap comes from, what it costs in real pounds for 2026/27, and the legal, common
           ways to step back out of it. Every figure here comes from the same engine as our{" "}
-          <Link href="/tax-and-salary/salary-calculator">Salary &amp; Take-Home Pay Calculator</Link>, so you can check
+          <Link href="/uk/tax-and-salary/salary-calculator">Salary &amp; Take-Home Pay Calculator</Link>, so you can check
           your own numbers there.
         </p>
 
@@ -606,13 +606,13 @@ export const BLOG_POSTS: BlogPost[] = [
         <p>
           A £10,000 rise from £100,000 to £110,000 adds just <strong>£3,800</strong> to take-home pay. Going all the way
           to £125,140, a rise of £25,140, adds <strong>£9,553.20</strong>. You can see the band-by-band picture for any
-          salary in the <Link href="/tax-and-salary/tax-bracket-checker">Tax Bracket Checker</Link>.
+          salary in the <Link href="/uk/tax-and-salary/tax-bracket-checker">Tax Bracket Checker</Link>.
         </p>
         <p>
           In Scotland the trap is steeper still. The Personal Allowance taper is the same, but the income it pulls into
           tax meets the 45% advanced rate, so the marginal rate on salary is <strong>69.5%</strong> including NI. A
           Scottish taxpayer going from £100,000 to £110,000 keeps £3,050 of the £10,000. The{" "}
-          <Link href="/tax-and-salary/scottish-tax">Scottish Income Tax calculator</Link> shows the full picture.
+          <Link href="/uk/tax-and-salary/scottish-tax">Scottish Income Tax calculator</Link> shows the full picture.
         </p>
 
         <h2>The childcare cliff for parents</h2>
@@ -626,12 +626,12 @@ export const BLOG_POSTS: BlogPost[] = [
             year (1,140 hours) for children from 9 months until they start school. If either parent&rsquo;s adjusted net
             income is expected to be over £100,000, the family loses the working-parent hours. The universal 15 hours for
             3 and 4-year-olds stay. Check eligibility with the{" "}
-            <Link href="/benefits/free-childcare-hours">free childcare hours calculator</Link>.
+            <Link href="/uk/benefits/free-childcare-hours">free childcare hours calculator</Link>.
           </li>
           <li>
             <strong>Tax-Free Childcare</strong>: the government adds £2 for every £8 you pay into a childcare account, up
             to <strong>£2,000 a year per child</strong> (£4,000 for a disabled child). Same £100,000 limit, for either
-            parent. See the <Link href="/benefits/tax-free-childcare">Tax-Free Childcare calculator</Link>.
+            parent. See the <Link href="/uk/benefits/tax-free-childcare">Tax-Free Childcare calculator</Link>.
           </li>
         </ul>
         <p>
@@ -639,7 +639,7 @@ export const BLOG_POSTS: BlogPost[] = [
           modest pay rise. Child Benefit is a separate matter: the High Income Child Benefit Charge claws it back
           between £60,000 and £80,000, so by £100,000 it has already gone in full (worth £2,337.40 a year for two
           children in 2026/27). The{" "}
-          <Link href="/benefits/high-income-child-benefit">High Income Child Benefit calculator</Link> covers that
+          <Link href="/uk/benefits/high-income-child-benefit">High Income Child Benefit calculator</Link> covers that
           earlier band.
         </p>
 
@@ -688,7 +688,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <p>
           With relief at source, the claim matters: if you don&rsquo;t file a tax return or ask HMRC, you miss the
           higher-rate relief <em>and</em> the Personal Allowance stays reduced. Many people in this band are owed money
-          for this reason. The <Link href="/investing/pension-tax-relief">pension tax relief calculator</Link> works out
+          for this reason. The <Link href="/uk/investing/pension-tax-relief">pension tax relief calculator</Link> works out
           each method for your salary.
         </p>
 
@@ -700,7 +700,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <ul>
           <li>
             <strong>Bonus sacrifice.</strong> Many employers let you sacrifice part or all of a bonus into your pension.
-            It must be agreed before the bonus is paid. Our <Link href="/tax-and-salary/bonus-tax">bonus tax calculator</Link>{" "}
+            It must be agreed before the bonus is paid. Our <Link href="/uk/tax-and-salary/bonus-tax">bonus tax calculator</Link>{" "}
             shows what a bonus is worth with and without it.
           </li>
           <li>
@@ -746,7 +746,7 @@ export const BLOG_POSTS: BlogPost[] = [
           <li>If it is between £100,000 and £125,140, work out how much you would need to pay into a pension to get back to £100,000.</li>
           <li>If you have young children in childcare, treat £100,000 as a hard line for <em>each</em> parent.</li>
           <li>If you use relief at source, make sure you claim the extra relief through Self Assessment.</li>
-          <li>Run the numbers in the <Link href="/investing/workplace-pension">workplace pension calculator</Link> before changing your contribution.</li>
+          <li>Run the numbers in the <Link href="/uk/investing/workplace-pension">workplace pension calculator</Link> before changing your contribution.</li>
         </ul>
 
         <h2>The bottom line</h2>
@@ -776,8 +776,8 @@ export const BLOG_POSTS: BlogPost[] = [
           If you started between September 2012 and July 2023 (in England or Wales), you are on <strong>Plan 2</strong>.
           The two look similar on paper, but they behave very differently over a working life. This guide compares them
           for 2026/27, using the same engine as our{" "}
-          <Link href="/students/plan-2-student-loan">Plan 2</Link> and{" "}
-          <Link href="/students/plan-5-student-loan">Plan 5</Link> calculators.
+          <Link href="/uk/students/plan-2-student-loan">Plan 2</Link> and{" "}
+          <Link href="/uk/students/plan-5-student-loan">Plan 5</Link> calculators.
         </p>
 
         <h2>The rules side by side</h2>
@@ -872,7 +872,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <p>
           The gap is a steady £32.89 a month (£394.65 a year) once you earn above the Plan 2 threshold. That is 9% of the
           £4,385 difference between the two thresholds. Repayments are taken through PAYE alongside tax and NI; the{" "}
-          <Link href="/tax-and-salary/salary-calculator">take-home pay calculator</Link> includes them.
+          <Link href="/uk/tax-and-salary/salary-calculator">take-home pay calculator</Link> includes them.
         </p>
 
         <h2>What you repay over a lifetime</h2>
@@ -955,7 +955,7 @@ export const BLOG_POSTS: BlogPost[] = [
           The calculators show both paths for your own balance and pay. As a rough rule, overpaying makes sense only if
           you expect your earnings to be high enough to clear the loan well before the write-off date. Otherwise, the
           money usually does more in a pension (with tax relief) or a{" "}
-          <Link href="/investing/isa-vs-gia">stocks and shares ISA</Link>, or towards a house deposit.
+          <Link href="/uk/investing/isa-vs-gia">stocks and shares ISA</Link>, or towards a house deposit.
         </p>
 
         <h2>Common questions</h2>
@@ -963,12 +963,12 @@ export const BLOG_POSTS: BlogPost[] = [
         <p>
           It is not a debt on your credit file, but lenders count the monthly repayment as an outgoing when they work
           out how much to lend. A Plan 5 borrower on £40,000 has £112.50 a month taken into account. Our{" "}
-          <Link href="/property/mortgage-affordability">mortgage affordability calculator</Link> lets you include it.
+          <Link href="/uk/property/mortgage-affordability">mortgage affordability calculator</Link> lets you include it.
         </p>
         <h3>What if I have a Plan 2 loan and a Postgraduate Loan?</h3>
         <p>
           You repay both at once: 9% above the Plan 2 threshold and 6% above £21,000 for the Postgraduate Loan. See the{" "}
-          <Link href="/students/postgrad-loan">Postgraduate Loan calculator</Link>.
+          <Link href="/uk/students/postgrad-loan">Postgraduate Loan calculator</Link>.
         </p>
         <h3>What if I move abroad?</h3>
         <p>
@@ -978,7 +978,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <h3>I&rsquo;m starting university. What will I borrow?</h3>
         <p>
           Tuition fee loans plus maintenance loans of up to several thousand pounds a year. The{" "}
-          <Link href="/students/maintenance-loan">maintenance loan calculator</Link> shows your entitlement from
+          <Link href="/uk/students/maintenance-loan">maintenance loan calculator</Link> shows your entitlement from
           household income.
         </p>
 
@@ -1008,8 +1008,8 @@ export const BLOG_POSTS: BlogPost[] = [
           The deposit is the number everyone focuses on, but it is only part of the cash you need to buy your first
           home. Stamp Duty, legal fees, a survey, a mortgage fee and the move itself all come on top. This guide walks
           through each cost for 2026/27, with a full worked example, so you can plan for the real total. The figures
-          use the same engines as our <Link href="/property/first-time-buyer">first-time buyer calculator</Link> and{" "}
-          <Link href="/property/moving-house-budget">moving house budget calculator</Link>.
+          use the same engines as our <Link href="/uk/property/first-time-buyer">first-time buyer calculator</Link> and{" "}
+          <Link href="/uk/property/moving-house-budget">moving house budget calculator</Link>.
         </p>
 
         <h2>1. The deposit</h2>
@@ -1090,9 +1090,9 @@ export const BLOG_POSTS: BlogPost[] = [
           Note the cliff at £500,000: a first-time buyer in England pays £10,000 at £500,000 but £15,500 at £510,000.
           Wales has no first-time buyer relief, but its tax only starts above £225,000. To qualify in England, every
           buyer must be a first-time buyer, and the home must be your main residence. Check your figure with the{" "}
-          <Link href="/property/stamp-duty-england">Stamp Duty calculator</Link>, the{" "}
-          <Link href="/property/lbtt-scotland">LBTT calculator</Link> or the{" "}
-          <Link href="/property/ltt-wales">LTT calculator</Link>.
+          <Link href="/uk/property/stamp-duty-england">Stamp Duty calculator</Link>, the{" "}
+          <Link href="/uk/property/lbtt-scotland">LBTT calculator</Link> or the{" "}
+          <Link href="/uk/property/ltt-wales">LTT calculator</Link>.
         </p>
 
         <h2>3. Legal fees, survey and mortgage fee</h2>
@@ -1207,8 +1207,8 @@ export const BLOG_POSTS: BlogPost[] = [
           Stretching from 25 to 35 years saves about £260 a month but adds about £100,900 of interest if the rate stayed
           the same throughout. A rate of 5% instead of 4.5% on the 25-year mortgage would push the payment up to
           £1,841.46. Rates change, so try your own figures in the{" "}
-          <Link href="/property/mortgage-repayment">mortgage repayment calculator</Link>, and use the{" "}
-          <Link href="/property/mortgage-overpayment">overpayment calculator</Link> to see how regular overpayments
+          <Link href="/uk/property/mortgage-repayment">mortgage repayment calculator</Link>, and use the{" "}
+          <Link href="/uk/property/mortgage-overpayment">overpayment calculator</Link> to see how regular overpayments
           shorten a long term.
         </p>
 
@@ -1217,7 +1217,7 @@ export const BLOG_POSTS: BlogPost[] = [
           Most lenders cap borrowing at about 4 to 4.5 times household income, and some go to 5 or 5.5 times for
           higher earners or certain professions. They also stress-test whether you could afford the payments if rates
           rose, and take account of commitments such as car finance, childcare and student loan repayments. The{" "}
-          <Link href="/property/mortgage-affordability">mortgage affordability calculator</Link> gives a realistic range.
+          <Link href="/uk/property/mortgage-affordability">mortgage affordability calculator</Link> gives a realistic range.
         </p>
 
         <h2>Other routes to a first home</h2>
@@ -1225,7 +1225,7 @@ export const BLOG_POSTS: BlogPost[] = [
           <li>
             <strong>Shared ownership:</strong> buy a share (often 25% to 75%) and pay rent on the rest. The deposit is
             smaller, but you pay rent, service charges and a mortgage. The{" "}
-            <Link href="/property/shared-ownership">shared ownership calculator</Link> adds it all up.
+            <Link href="/uk/property/shared-ownership">shared ownership calculator</Link> adds it all up.
           </li>
           <li>
             <strong>Buying with someone else:</strong> joint incomes raise what you can borrow. For first-time buyer
@@ -1233,7 +1233,7 @@ export const BLOG_POSTS: BlogPost[] = [
           </li>
           <li>
             <strong>Keep renting for now:</strong>{" "}buying isn&rsquo;t always cheaper. The{" "}
-            <Link href="/property/rent-vs-buy">rent vs buy calculator</Link> compares the two over time.
+            <Link href="/uk/property/rent-vs-buy">rent vs buy calculator</Link> compares the two over time.
           </li>
         </ul>
 
@@ -1242,9 +1242,9 @@ export const BLOG_POSTS: BlogPost[] = [
           Once you own the home, budget for buildings insurance (often required by the lender), council tax, energy
           and water, maintenance (a common rule of thumb is 1% of the property&rsquo;s value a year), and, for
           leasehold flats, ground rent and service charges. The{" "}
-          <Link href="/property/council-tax-bands">council tax calculator</Link> estimates the bill by band, and if you
+          <Link href="/uk/property/council-tax-bands">council tax calculator</Link> estimates the bill by band, and if you
           live alone the{" "}
-          <Link href="/property/single-person-discount">single person discount</Link> takes 25% off it.
+          <Link href="/uk/property/single-person-discount">single person discount</Link> takes 25% off it.
         </p>
 
         <h2>The bottom line</h2>

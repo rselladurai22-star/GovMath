@@ -1,7 +1,7 @@
 /**
  * AdSense settings.
  *
- *   NEXT_PUBLIC_ADSENSE_CLIENT  publisher ID; defaults to GovMath's own
+ *   NEXT_PUBLIC_ADSENSE_CLIENT  publisher ID; defaults to SumAtlas's own
  *   NEXT_PUBLIC_ADSENSE_SLOT    optional display ad unit ID for in-page slots
  *
  * With a publisher ID, every page loads the AdSense script (Auto ads place the

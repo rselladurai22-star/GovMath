@@ -66,7 +66,7 @@ export default function AmountPage({
           <p>{lead}</p>
           <p className="gm-trust">
             <span className="gm-trust-mark" aria-hidden="true" />
-            <span>Checked by the GovMath team</span>
+            <span>Checked by the SumAtlas team</span>
             <span>2026/27 rates</span>
             <span>
               <a href="#guide-sources">Sources</a>

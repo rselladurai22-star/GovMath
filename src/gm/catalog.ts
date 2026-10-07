@@ -34,7 +34,7 @@ export function categoryGridHtml(): string {
     return (
       `<section class="categorycard" aria-labelledby="cat-${n}"><div class="categorytitle"><span class="toolicon">${c.icon}</span>` +
       `<div><h3 id="cat-${n}">${c.label}</h3><span>${tools.length} tools</span></div></div><p>${c.desc}</p>` +
-      `<div class="toollist">${list}</div><a class="viewall" href="/${c.slug}">View all ${tools.length} ${c.label.toLowerCase()} tools</a></section>`
+      `<div class="toollist">${list}</div><a class="viewall" href="/uk/${c.slug}">View all ${tools.length} ${c.label.toLowerCase()} tools</a></section>`
     );
   }).join("");
   return `<div class="categorygrid">${cards}</div>`;
@@ -71,14 +71,14 @@ export function headerHtml(html: string): string {
 const AMOUNT_LINKS: Partial<Record<CategorySlug, { title: string; all: [string, string]; links: [string, string][] }>> = {
   "tax-and-salary": {
     title: "Salary after tax",
-    all: ["/tax-and-salary/salary-after-tax", "Every salary from £15,000 to £250,000"],
-    links: [20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 100].map((k) => [`/tax-and-salary/salary-after-tax/${k * 1000}`, `£${k},000 after tax`]),
+    all: ["/uk/tax-and-salary/salary-after-tax", "Every salary from £15,000 to £250,000"],
+    links: [20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 100].map((k) => [`/uk/tax-and-salary/salary-after-tax/${k * 1000}`, `£${k},000 after tax`]),
   },
   property: {
     title: "Stamp Duty by price",
-    all: ["/property/stamp-duty-on", "Stamp Duty at every price to £2 million"],
+    all: ["/uk/property/stamp-duty-on", "Stamp Duty at every price to £2 million"],
     links: [200, 250, 300, 350, 400, 450, 500, 600, 750, 1000].map((k) => [
-      `/property/stamp-duty-on/${k * 1000}`,
+      `/uk/property/stamp-duty-on/${k * 1000}`,
       `Stamp Duty on ${k === 1000 ? "£1 million" : `£${k},000`}`,
     ]),
   },
@@ -96,7 +96,7 @@ export function topicMainHtml(slug: CategorySlug): string {
   const c = CATS.find((x) => x.slug === slug);
   if (!c) throw new Error(`Unknown category ${slug}`);
   const tools = getCalculatorsByCategory(slug);
-  const jump = CATS.map((x) => `<a class="${x.slug === slug ? "chosen" : ""}" href="/${x.slug}">${x.label}</a>`).join("");
+  const jump = CATS.map((x) => `<a class="${x.slug === slug ? "chosen" : ""}" href="/uk/${x.slug}">${x.label}</a>`).join("");
   const items = tools
     .map(
       (t) =>
@@ -105,9 +105,9 @@ export function topicMainHtml(slug: CategorySlug): string {
     )
     .join("");
   return (
-    `<div class="wrap"><div class="crumb"><a href="/">Home</a><span>›</span><a href="/#categories">Calculators</a><span>›</span>${c.label}</div>` +
+    `<div class="wrap"><div class="crumb"><a href="/">Home</a><span>›</span><a href="/uk">UK calculators</a><span>›</span>${c.label}</div>` +
     `<section class="categoryhero"><h1>${c.heroTitle}</h1><p>${c.heroDesc}</p></section>` +
     `<nav class="categoryjump" aria-label="Calculator categories">${jump}</nav><div class="fullcategory">${items}</div>${amountLinksHtml(slug)}` +
-    `<a class="backlink" href="/#categories">Back to all categories</a></div>`
+    `<a class="backlink" href="/uk#categories">Back to all categories</a></div>`
   );
 }

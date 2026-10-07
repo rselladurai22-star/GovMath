@@ -5,7 +5,7 @@ import ContentPage from "@/components/ContentPage";
 export const metadata: Metadata = {
   title: "Disclaimer",
   description:
-    "GovMath's calculators give estimates for general information only, not financial, tax or legal advice. Read what our figures can and cannot tell you.",
+    "SumAtlas's calculators give estimates for general information only, not financial, tax or legal advice. Read what our figures can and cannot tell you.",
   alternates: { canonical: "/disclaimer" },
 };
 
@@ -13,12 +13,12 @@ export default function DisclaimerPage() {
   return (
     <ContentPage
       title="Disclaimer"
-      intro="Please read this before relying on any figure from GovMath."
+      intro="Please read this before relying on any figure from SumAtlas."
       updated="31 May 2026"
     >
       <h2>General information only</h2>
       <p>
-        All calculators, explanations and articles on GovMath are provided for
+        All calculators, explanations and articles on SumAtlas are provided for
         general informational and educational purposes only. They do{" "}
         <strong>not</strong> constitute financial, tax, legal, accounting or
         professional advice of any kind, and should not be treated as such.
@@ -35,7 +35,7 @@ export default function DisclaimerPage() {
 
       <h2>Not affiliated with the government</h2>
       <p>
-        GovMath is an independent website. We are <strong>not</strong>{" "}affiliated
+        SumAtlas is an independent website. We are <strong>not</strong>{" "}affiliated
         with, endorsed by, or connected to HM Revenue &amp; Customs (HMRC), the
         Department for Work and Pensions (DWP), the DVLA, or any other part of HM
         Government. Official figures and decisions always come from the relevant
@@ -58,7 +58,7 @@ export default function DisclaimerPage() {
       <p>
         We accept no liability for any loss or damage arising from the use of,
         or reliance on, any calculator, figure or content on this Site. You use
-        GovMath at your own risk. This does not affect any statutory rights you
+        SumAtlas at your own risk. This does not affect any statutory rights you
         may have.
       </p>
 

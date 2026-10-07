@@ -1,0 +1,52 @@
+import type { Metadata } from "next";
+import FlagshipPage from "@/components/flagship/FlagshipPage";
+import { CALCULATORS } from "@/lib/calculators";
+import CouncilTaxStudio from "./CouncilTaxStudio";
+import { ogFor } from "@/gm/og";
+import CouncilTaxGuide from "./CouncilTaxGuide";
+
+export const metadata: Metadata = {
+  title: "Student Council Tax Calculator UK",
+  description:
+    "Free student council tax checker. See if your home is exempt, when a discount applies to mixed households, and how to claim with a student certificate.",
+  alternates: { canonical: "/uk/students/student-council-tax" },
+  openGraph: ogFor("/uk/students/student-council-tax"),
+};
+
+const BREADCRUMBS = [
+  { href: "/", label: "Home" },
+  { href: "/uk/students", label: "Students & Graduates" },
+  { href: "/uk/students/student-council-tax", label: "Student Council Tax" },
+];
+
+const FAQS: { q: string; a: string }[] = [
+  { q: "Do students pay council tax?", a: "Not if everyone in the home is a full-time student: the property is exempt." },
+  { q: "What if I live with someone who is not a student?", a: "With one non-student, they get a 25% single person discount. With two or more, the full bill is due." },
+  { q: "Who counts as a full-time student?", a: "Someone on a course of at least a year, studying at least 24 weeks a year and 21 hours a week." },
+  { q: "When does the exemption end?", a: "The day after your course finishes. It continues over summer holidays between years." },
+  { q: "Do I need to apply every year?", a: "Usually yes: send a new certificate for each academic year, or when your household changes." },
+  { q: "Does a postgraduate student count?", a: "Yes, if the course meets the full-time rules. Writing-up periods for PhD students may be treated differently by some councils." },
+  { q: "What about my parents' home?", a: "A student living away does not change their parents' bill, which is based on who lives there." },
+  { q: "What if one housemate drops out?", a: "If they stay in the house but are no longer a student, they become liable, and the household may lose the exemption. Tell the council straight away." },
+  { q: "Can I get a refund for past bills?", a: "Yes, if you paid when you were exempt. Send your certificates and ask the council to backdate the exemption." },
+];
+
+export default async function CouncilTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const query = await searchParams;
+  const related = CALCULATORS.filter((c) => ["/uk/students/maintenance-loan", "/uk/students/plan-5-student-loan", "/uk/property/council-tax-bands", "/uk/property/single-person-discount", "/uk/life/pro-rata-rent", "/uk/students/plan-2-student-loan"].includes(c.href));
+  return (
+    <FlagshipPage
+      breadcrumbs={BREADCRUMBS}
+      eyebrow="Student housing"
+      title="Student Council Tax Calculator"
+      lead="Check whether your household pays council tax, and how much you save."
+      points={["Exemptions", "25% discount", "Part-year bills", "Free and private"]}
+      guide={<CouncilTaxGuide />}
+      faqs={FAQS}
+      related={related}
+      note="Check with your council: local rules and support can apply."
+    >
+      <CouncilTaxStudio query={query} />
+    </FlagshipPage>
+  );
+}

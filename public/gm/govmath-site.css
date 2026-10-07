@@ -1162,3 +1162,25 @@ a.gm-card:hover {
     gap: 10px;
   }
 }
+
+/* World home page (October 2026): country cards. The toolicon holds a
+   two-letter country code; countries still to come are muted, not links. */
+.categorytool .toolicon:not(:has(svg)) {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  color: #8c1d40;
+}
+.categorytool.gm-coming {
+  cursor: default;
+  opacity: 0.72;
+}
+.categorytool.gm-coming:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: #dfe3e8;
+}
+.categorytool.gm-coming .openlabel {
+  color: #6e6e6e;
+  text-decoration: none;
+}

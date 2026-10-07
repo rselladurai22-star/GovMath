@@ -6,7 +6,7 @@ import { GA_ID } from "@/lib/analytics";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How GovMath handles data, cookies, analytics and advertising. We don't store the figures you enter: calculations run in your browser.",
+    "How SumAtlas handles data, cookies, analytics and advertising. We don't store the figures you enter: calculations run in your browser.",
   alternates: { canonical: "/privacy" },
 };
 
@@ -15,12 +15,12 @@ export default function PrivacyPage() {
     <ContentPage
       title="Privacy Policy"
       intro="What we collect, what we don't, and the choices you have."
-      updated="6 October 2026"
+      updated="7 October 2026"
     >
       <p>
-        This Privacy Policy explains how GovMath (&quot;we&quot;,
+        This Privacy Policy explains how SumAtlas (&quot;we&quot;,
         &quot;us&quot;, &quot;our&quot;) collects, uses and protects information
-        when you use this website. By using GovMath, you agree to the practices
+        when you use this website. By using SumAtlas, you agree to the practices
         described here.
       </p>
 
@@ -66,7 +66,7 @@ export default function PrivacyPage() {
 
       <h2>Advertising and Google AdSense</h2>
       <p>
-        We display advertising to keep GovMath free. We intend to use
+        We display advertising to keep SumAtlas free. We intend to use
         third-party advertising partners, including{" "}
         <strong>Google AdSense</strong>. These partners may use cookies and
         similar technologies to serve ads based on your prior visits to this and
@@ -79,7 +79,7 @@ export default function PrivacyPage() {
         </li>
         <li>
           Google&apos;s use of advertising cookies enables it and its partners
-          to serve ads to you based on your visit to GovMath and/or other sites
+          to serve ads to you based on your visit to SumAtlas and/or other sites
           on the internet.
         </li>
         <li>
@@ -150,7 +150,7 @@ export default function PrivacyPage() {
 
       <h2>How we use information</h2>
       <ul>
-        <li>To operate, maintain and improve GovMath.</li>
+        <li>To operate, maintain and improve SumAtlas.</li>
         <li>To understand which calculators and articles are useful.</li>
         <li>To display and measure advertising.</li>
         <li>To respond to messages you send us.</li>
@@ -179,7 +179,7 @@ export default function PrivacyPage() {
 
       <h2>Children</h2>
       <p>
-        GovMath is intended for a general adult audience and is not directed at
+        SumAtlas is intended for a general adult audience and is not directed at
         children under 13. We do not knowingly collect personal data from
         children.
       </p>

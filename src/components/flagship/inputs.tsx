@@ -4,7 +4,7 @@ import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import { per, whole } from "./format";
 
 /*
- * Calculator inputs in the approved GovMath design's markup (see
+ * Calculator inputs in the approved SumAtlas design's markup (see
  * public/gm/original-layout.css, matching-mortgage.css, matching-controls.css
  * and matching-calculators.css): a .field with a .labelrow, a .number box,
  * a range slider with .endpoints, .chips, .ax-calctabs, the .ax-select

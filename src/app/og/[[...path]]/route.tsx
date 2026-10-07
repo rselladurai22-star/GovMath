@@ -15,7 +15,8 @@ export const dynamic = "force-static";
 export function generateStaticParams() {
   return [
     { path: [] },
-    ...CATEGORIES.map((c) => ({ path: [c.slug] })),
+    { path: ["uk"] },
+    ...CATEGORIES.map((c) => ({ path: c.href.slice(1).split("/") })),
     ...CALCULATORS.map((c) => ({ path: c.href.slice(1).split("/") })),
     ...getAllPosts().map((p) => ({ path: ["blog", p.slug] })),
   ];
@@ -28,17 +29,23 @@ function card(path: string): { kicker: string; title: string; text: string } {
   if (cat) return { kicker: "Free calculators", title: `${categoryLabel(cat.slug)} calculators`, text: cat.tagline };
   const post = getAllPosts().find((p) => `/blog/${p.slug}` === path);
   if (post) return { kicker: "Guide", title: post.seoTitle ?? post.title, text: post.description };
+  if (path === "/uk")
+    return {
+      kicker: "Free UK calculators",
+      title: "Tax, salary, mortgage and benefits calculators",
+      text: `${CALCULATORS.length} free calculators with plain-English guides, for 2026/27.`,
+    };
   return {
-    kicker: "Free UK calculators",
-    title: "Tax, salary, mortgage and benefits calculators",
-    text: `${CALCULATORS.length} free calculators with plain-English guides, for 2026/27.`,
+    kicker: "Free calculators",
+    title: "Money, tax and everyday calculators",
+    text: "Clear answers for the country you live in, with plain-English guides. Free, no sign-up.",
   };
 }
 
 export async function GET(_req: Request, { params }: { params: Promise<{ path?: string[] }> }) {
   const { path } = await params;
   const { kicker, title, text } = card(path?.length ? `/${path.join("/")}` : "/");
-  const badge = `data:image/png;base64,${(await readFile(join(process.cwd(), "public/gm/govmath-badge-512.png"))).toString("base64")}`;
+  const badge = `data:image/png;base64,${(await readFile(join(process.cwd(), "public/gm/sumatlas-mark-512.png"))).toString("base64")}`;
   return new ImageResponse(
     (
       <div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column", background: "#ffffff", color: "#282828" }}>
@@ -52,9 +59,9 @@ export async function GET(_req: Request, { params }: { params: Promise<{ path?: 
           <span style={{ display: "flex", alignItems: "center", gap: 18 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={badge} width={72} height={72} alt="" />
-            <span style={{ fontWeight: 800, color: "#8c1d40" }}>GovMath</span>
+            <span style={{ fontWeight: 800, color: "#8c1d40" }}>SumAtlas</span>
           </span>
-          <span style={{ color: "#6e6e6e" }}>govmath.co.uk · Free, no sign-up · Independent</span>
+          <span style={{ color: "#6e6e6e" }}>sumatlas.com · Free, no sign-up · Independent</span>
         </div>
       </div>
     ),

@@ -5,7 +5,7 @@ import ContentPage from "@/components/ContentPage";
 export const metadata: Metadata = {
   title: "How We Check Our Figures",
   description:
-    "Where GovMath's rates come from, how every calculation is tested against official examples, when figures are rechecked and how to report an error.",
+    "Where SumAtlas's rates come from, how every calculation is tested against official examples, when figures are rechecked and how to report an error.",
   alternates: { canonical: "/how-we-check" },
 };
 
@@ -13,7 +13,7 @@ export default function HowWeCheckPage() {
   return (
     <ContentPage
       title="How we check our figures"
-      intro="Every calculator on GovMath gives you a figure you might act on, so here is exactly where our numbers come from and how we keep them right."
+      intro="Every calculator on SumAtlas gives you a figure you might act on, so here is exactly where our numbers come from and how we keep them right."
       breadcrumbs={[
         { href: "/", label: "Home" },
         { href: "/about", label: "About" },
@@ -77,14 +77,14 @@ export default function HowWeCheckPage() {
 
       <h2>5. How our guides are written</h2>
       <p>
-        The GovMath team writes and maintains every page. We use software tools, including AI writing assistants, to
+        The SumAtlas team writes and maintains every page. We use software tools, including AI writing assistants, to
         help draft and structure the explanations. Every figure still comes from the tested calculation code, and the
         rules are checked against the official sources listed on each page before publication.
       </p>
 
       <h2>6. Independent</h2>
       <p>
-        GovMath is not part of, or endorsed by, HM Government, HMRC, the DWP or any other public body. No bank, lender
+        SumAtlas is not part of, or endorsed by, HM Government, HMRC, the DWP or any other public body. No bank, lender
         or financial firm pays to appear in our calculators or guides. The site is free to use and is funded by
         advertising, which never affects our figures.
       </p>
