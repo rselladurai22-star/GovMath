@@ -196,7 +196,7 @@ export default function CisGuide() {
 
       <GuideSection id="refunds" n={7} kicker="Refunds" title="Getting your money back">
         <p>
-          Your CIS deductions are a credit against your Income Tax and Class 4 National Insurance for the year. Because the
+          Your CIS deductions are a credit against your Income Tax and Class 4 <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}for the year. Because the
           20% is taken from labour before your expenses and before your Personal Allowance, most sole traders have paid too
           much by the end of the year.
         </p>
@@ -240,7 +240,7 @@ export default function CisGuide() {
         <p>To qualify, you need:</p>
         <ul>
           <li>
-            <strong>construction turnover</strong> of at least £30,000 a year as a sole trader, excluding VAT and materials, paid
+            <strong>construction turnover</strong> of at least £30,000 a year as a <a href="/business/sole-trader-tax">sole trader</a>, excluding VAT and materials, paid
             through a bank account (partnerships and companies have their own tests);
           </li>
           <li>a <strong>good compliance record</strong>: tax returns filed and tax paid on time in the past 12 months;</li>
@@ -288,7 +288,7 @@ export default function CisGuide() {
         <p>
           A company does not wait for a tax return. Instead, it sets the CIS deducted from its income against the PAYE and
           National Insurance it owes HMRC each month for its own employees, reporting the amounts on its Employer Payment
-          Summary. Anything left over at the end of the tax year can be reclaimed from HMRC or set against Corporation Tax.
+          Summary. Anything left over at the end of the tax year can be reclaimed from HMRC or set against <a href="/business/corporation-tax">Corporation Tax</a>.
         </p>
         <p>
           The gross payment status turnover test for a company is £30,000 for each director, or £100,000 for the company as a

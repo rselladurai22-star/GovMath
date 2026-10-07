@@ -212,8 +212,8 @@ export default function CouncilTaxGuide() {
         />
         <p>Some people are &quot;disregarded&quot; and not counted, including:</p>
         <ul>
-          <li>full-time students, student nurses and some apprentices and young people in training;</li>
-          <li>people under 18, and 18 and 19-year-olds for whom Child Benefit is still paid;</li>
+          <li><a href="/students/student-council-tax">full-time students</a>, student nurses and some apprentices and young people in training;</li>
+          <li>people under 18, and 18 and 19-year-olds for whom <a href="/benefits/child-benefit">Child Benefit</a>{" "}is still paid;</li>
           <li>live-in carers, in many cases;</li>
           <li>people who are severely mentally impaired;</li>
           <li>people in hospital, a care home or prison, and some members of visiting forces.</li>
@@ -242,12 +242,12 @@ export default function CouncilTaxGuide() {
           band lower. Band A homes get a reduction of one-ninth of Band D instead.
         </p>
         <p>
-          <strong>Council Tax Reduction.</strong> If you are on a low income or claim benefits, your council may reduce your bill,
+          <strong><a href="/benefits/council-tax-reduction">Council Tax Reduction</a>.</strong> If you are on a low income or claim benefits, your council may reduce your bill,
           sometimes to zero. Each council in England sets its own scheme; Scotland and Wales have national schemes. Apply to your
           council.
         </p>
         <Callout tone="good" title="Claim even if you are unsure">
-          Council Tax Reduction is separate from Universal Credit and not automatic. Many people who could get it never apply.
+          Council Tax Reduction is separate from <a href="/benefits/universal-credit">Universal Credit</a>{" "}and not automatic. Many people who could get it never apply.
         </Callout>
       </GuideSection>
 
@@ -358,7 +358,7 @@ export default function CouncilTaxGuide() {
         <p>Council tax bills are usually right, but a few mistakes come up again and again. Check yours for these:</p>
         <ul>
           <li>
-            <strong>A missing discount.</strong> If you live alone, or everyone else in the home is disregarded, the 25% discount is not always
+            <strong>A missing discount.</strong> If you live alone, or everyone else in the home is disregarded, the <a href="/property/single-person-discount">25% discount</a>{" "}is not always
             added automatically. It can usually be backdated to when you became entitled.
           </li>
           <li>

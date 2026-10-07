@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import IsaStudio from "./IsaStudio";
+import { ogFor } from "@/gm/og";
 import IsaGuide from "./IsaGuide";
 
 export const metadata: Metadata = {
-  title: "ISA vs GIA Calculator: How Much Tax an ISA Saves (2026/27)",
+  title: "ISA vs GIA Calculator UK 2026/27",
   description:
-    "Compare a stocks and shares ISA with a general investment account over any number of years, with dividend tax, savings tax, Capital Gains Tax and the 2027 changes.",
+    "Free ISA vs general investment account calculator. See how much dividend tax and Capital Gains Tax an ISA saves you over time, at your tax rate.",
   alternates: { canonical: "/investing/isa-vs-gia" },
+  openGraph: ogFor("/investing/isa-vs-gia"),
 };
 
 const BREADCRUMBS = [

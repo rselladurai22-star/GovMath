@@ -47,7 +47,7 @@ export default function ExpensesGuide() {
       title="Allowable expenses for sole traders"
       intro={
         <>
-          Every allowable expense you claim lowers your profit, and with it your Income Tax and National Insurance. This guide
+          Every allowable expense you claim lowers your profit, and with it your Income Tax and <a href="/tax-and-salary/national-insurance">National Insurance</a>. This guide
           explains the test HMRC applies, what you can and cannot claim, the flat rates for working from home and mileage, and
           how much each pound of expenses really saves.
         </>
@@ -59,7 +59,7 @@ export default function ExpensesGuide() {
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <p>
           You can deduct costs you incur <strong>wholly and exclusively</strong> for your business. They come off your turnover
-          before tax is worked out, so a basic-rate sole trader saves about 26p in Income Tax and Class 4 NI for every £1 of
+          before tax is worked out, so a basic-rate <a href="/business/sole-trader-tax">sole trader</a>{" "}saves about 26p in Income Tax and Class 4 NI for every £1 of
           expenses, and a higher-rate one about 42p.
         </p>
         <WorkedExample
@@ -181,7 +181,7 @@ export default function ExpensesGuide() {
           is often worth more, but keep careful workings in case HMRC asks.
         </p>
         <Callout title="Watch out for business rates and Capital Gains Tax">
-          Using part of your home only for business can, in some cases, bring business rates or a small Capital Gains Tax
+          Using part of your home only for business can, in some cases, bring <a href="/business/small-business-rates">business rates</a>{" "}or a small Capital Gains Tax
           charge when you sell. Using a room for business and private purposes avoids both.
         </Callout>
       </GuideSection>
@@ -225,7 +225,7 @@ export default function ExpensesGuide() {
 
       <GuideSection id="worth" n={8} kicker="The saving" title="What an expense is worth">
         <p>
-          An expense saves your <strong>marginal rate</strong> of tax and National Insurance, the rate on the top slice of your
+          An expense saves your <strong><a href="/tax-and-salary/tax-bracket-checker">marginal rate</a></strong> of tax and National Insurance, the rate on the top slice of your
           profit. Here is what £1,000 of expenses saves at different profit levels.
         </p>
         <Figure label="Tax and NI saved by £1,000 of expenses, 2026/27" caption="England, Wales and NI, no other income.">
@@ -322,8 +322,8 @@ export default function ExpensesGuide() {
 
       <GuideSection id="staff" n={12} kicker="People" title="Staff, family and subcontractors">
         <p>
-          Wages you pay to employees are allowable, together with employer National Insurance and any workplace pension
-          contributions you make for them. Payments to freelancers and subcontractors for work on your business are allowable
+          Wages you pay to employees are allowable, together with <a href="/business/employer-ni-costs">employer National Insurance</a>{" "}and any workplace pension
+          contributions you make for them. Payments to freelancers and <a href="/business/cis-deduction">subcontractors</a>{" "}for work on your business are allowable
           too.
         </p>
         <p>

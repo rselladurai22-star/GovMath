@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CouncilTaxStudio from "./CouncilTaxStudio";
+import { ogFor } from "@/gm/og";
 import CouncilTaxGuide from "./CouncilTaxGuide";
 
 export const metadata: Metadata = {
-  title: "Student Council Tax Calculator: Exemptions and Discounts",
+  title: "Student Council Tax Calculator UK",
   description:
-    "Check whether your student household pays council tax: exempt if everyone is a full-time student, 25% off with one non-student, and what to do when your course ends.",
+    "Free student council tax checker. See if your home is exempt, when a discount applies to mixed households, and how to claim with a student certificate.",
   alternates: { canonical: "/students/student-council-tax" },
+  openGraph: ogFor("/students/student-council-tax"),
 };
 
 const BREADCRUMBS = [

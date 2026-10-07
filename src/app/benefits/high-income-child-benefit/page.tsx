@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import HicbcStudio from "./HicbcStudio";
+import { ogFor } from "@/gm/og";
 import HicbcGuide from "./HicbcGuide";
 
 export const metadata: Metadata = {
-  title: "High Income Child Benefit Charge Calculator (2026/27)",
+  title: "High Income Child Benefit Charge Calculator",
   description:
-    "Work out the High Income Child Benefit Charge between £60,000 and £80,000, including pension contributions, Gift Aid, your partner's income and the hidden marginal tax rate.",
+    "Free High Income Child Benefit Charge calculator for 2026/27. See the charge between £60,000 and £80,000 and how pension contributions reduce it.",
   alternates: { canonical: "/benefits/high-income-child-benefit" },
+  openGraph: ogFor("/benefits/high-income-child-benefit"),
 };
 
 const BREADCRUMBS = [

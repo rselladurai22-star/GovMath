@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import BreakEvenStudio from "./BreakEvenStudio";
+import { ogFor } from "@/gm/og";
 import BreakEvenGuide from "./BreakEvenGuide";
 
 export const metadata: Metadata = {
-  title: "Break-Even Calculator: Sales Needed to Cover Your Costs",
+  title: "Break-Even Calculator UK: Sales to Cover Costs",
   description:
-    "Find how many sales you need to cover your costs, the sales for a profit target, your margin of safety and what a price change does to break-even.",
+    "Free break-even calculator. Work out the units and sales you need to cover fixed costs, your margin of safety and the profit at any sales level.",
   alternates: { canonical: "/business/break-even" },
+  openGraph: ogFor("/business/break-even"),
 };
 
 const BREADCRUMBS = [

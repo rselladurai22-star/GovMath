@@ -64,7 +64,7 @@ export default function DividendGuide() {
             <strong>39.35%</strong> in the additional-rate band.
           </li>
           <li>Dividends are taxed after your other income, so your salary decides the rate.</li>
-          <li>Dividends in an ISA or pension are tax-free.</li>
+          <li>Dividends in an <a href="/investing/isa-vs-gia">ISA</a>{" "}or pension are tax-free.</li>
         </ul>
         <KeyStats
           items={[
@@ -104,7 +104,7 @@ export default function DividendGuide() {
 
       <GuideSection id="order" n={4} kicker="Stacking" title="How dividends are stacked on other income">
         <p>
-          Income tax is worked out in a fixed order: salary, pensions and other non-savings income first, then savings interest, then dividends.
+          Income tax is worked out in a fixed order: salary, pensions and other non-savings income first, then <a href="/investing/savings-interest">savings interest</a>, then dividends.
           Dividends are always the top slice. So the more you earn, the higher the rate on your dividends.
         </p>
         <WorkedExample
@@ -184,7 +184,7 @@ export default function DividendGuide() {
       <GuideSection id="scotland" n={9} kicker="Scotland" title="Scottish taxpayers">
         <p>
           Scottish rates and bands apply only to non-savings income such as salary. Dividends use the UK rates and bands, based on where your total
-          income falls in the UK structure. A Scottish taxpayer with the same income and dividends as someone in England pays the same dividend tax,
+          income falls in the UK structure. A <a href="/tax-and-salary/scottish-tax">Scottish taxpayer</a>{" "}with the same income and dividends as someone in England pays the same dividend tax,
           but different tax on their salary.
         </p>
       </GuideSection>
@@ -276,7 +276,7 @@ export default function DividendGuide() {
       <GuideSection id="savings" n={15} kicker="Ordering" title="Dividends and savings interest together">
         <p>
           Savings interest is taxed before dividends. If you have both, interest can use up the basic-rate band and push dividends into the higher
-          band. Basic-rate taxpayers can earn £1,000 of interest tax-free through the Personal Savings Allowance, higher-rate taxpayers £500, and
+          band. Basic-rate taxpayers can earn £1,000 of interest tax-free through the <a href="/investing/personal-savings-allowance">Personal Savings Allowance</a>, higher-rate taxpayers £500, and
           the starting rate for savings can make up to £5,000 more tax-free for people with low other income. Add your savings interest under More
           options to see the combined effect.
         </p>
@@ -293,7 +293,7 @@ export default function DividendGuide() {
 
       <GuideSection id="child-benefit" n={17} kicker="Families" title="Dividends and Child Benefit">
         <p>
-          The High Income Child Benefit Charge is based on adjusted net income, which includes dividends. A parent earning £55,000 with £8,000 of
+          The High Income <a href="/benefits/child-benefit">Child Benefit</a>{" "}Charge is based on adjusted net income, which includes dividends. A parent earning £55,000 with £8,000 of
           dividends would have income of £63,000 and start repaying Child Benefit. The{" "}
           <a href="/benefits/high-income-child-benefit">High Income Child Benefit Charge calculator</a> shows the effect.
         </p>
@@ -367,7 +367,7 @@ export default function DividendGuide() {
       <GuideSection id="drip" n={25} kicker="Compounding" title="Dividend reinvestment">
         <p>
           Many platforms let you reinvest dividends automatically, buying more shares or fund units. This helps your investment grow, but the
-          reinvested dividends are taxed just as if you had received the cash. Each reinvestment also adds to your base cost for Capital Gains Tax,
+          reinvested dividends are taxed just as if you had received the cash. Each reinvestment also adds to your base cost for <a href="/investing/capital-gains-assets">Capital Gains Tax</a>,
           so record the amounts to avoid paying tax twice when you sell.
         </p>
       </GuideSection>

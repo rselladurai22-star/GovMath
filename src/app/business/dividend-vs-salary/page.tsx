@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import DivSalaryStudio from "./DivSalaryStudio";
+import { ogFor } from "@/gm/og";
 import DivSalaryGuide from "./DivSalaryGuide";
 
 export const metadata: Metadata = {
-  title: "Dividend vs Salary Calculator for Directors (2026/27)",
+  title: "Dividend vs Salary Calculator UK 2026/27",
   description:
-    "Find the most tax-efficient salary and dividend split for a company director in 2026/27, with the Employment Allowance, pension contributions and a sole trader comparison.",
+    "Free director salary and dividend calculator for 2026/27. Compare tax, NI and Corporation Tax to find the most tax-efficient mix for your company.",
   alternates: { canonical: "/business/dividend-vs-salary" },
+  openGraph: ogFor("/business/dividend-vs-salary"),
 };
 
 const BREADCRUMBS = [

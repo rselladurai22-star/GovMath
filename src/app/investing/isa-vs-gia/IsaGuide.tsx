@@ -46,7 +46,7 @@ export default function IsaGuide() {
       intro={
         <>
           A stocks and shares ISA and a general investment account (GIA) can hold exactly the same investments. The difference is tax: an ISA pays
-          none, while a GIA pays Income Tax on dividends and interest, and Capital Gains Tax on profits. With allowances now small and frozen, the gap
+          none, while a GIA pays Income Tax on dividends and interest, and <a href="/investing/capital-gains-assets">Capital Gains Tax</a>{" "}on profits. With allowances now small and frozen, the gap
           can be tens of thousands of pounds over a working life. This guide shows how big it is and how to use both accounts well.
         </>
       }
@@ -226,7 +226,7 @@ export default function IsaGuide() {
         <p>
           The calculator follows the same money through both accounts. In the ISA plan, up to £20,000 a year goes into the ISA and anything above
           that into a GIA. In the GIA plan, everything goes into a GIA. Each year, the GIA pays Income Tax on dividends and interest at your rates,
-          after the dividend allowance and Personal Savings Allowance. A share of gains is taken each year, to reflect fund switches and rebalancing,
+          after the <a href="/investing/dividend-tax">dividend allowance</a>{" "}and Personal Savings Allowance. A share of gains is taken each year, to reflect fund switches and rebalancing,
           and taxed after the £3,000 exempt amount. Income is reinvested after tax. At the end you can choose to sell everything.
         </p>
         <p>
@@ -304,7 +304,7 @@ export default function IsaGuide() {
 
       <GuideSection id="children" n={20} kicker="Family" title="Junior ISAs">
         <p>
-          A Junior ISA lets parents, grandparents and others save up to £9,000 a year for a child, tax-free. The money belongs to the child and can
+          A <a href="/investing/junior-isa">Junior ISA</a>{" "}lets parents, grandparents and others save up to £9,000 a year for a child, tax-free. The money belongs to the child and can
           only be taken out at 18. Because the parental £100 income rule does not apply, it is usually the best way for parents to invest for
           children.
         </p>

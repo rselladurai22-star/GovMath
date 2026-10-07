@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import MovingStudio from "./MovingStudio";
+import { ogFor } from "@/gm/og";
 import MovingGuide from "./MovingGuide";
 
 export const metadata: Metadata = {
-  title: "Moving House Costs Calculator (UK, 2026)",
+  title: "Moving House Costs Calculator UK 2026",
   description:
-    "Add up the cost of moving home: Stamp Duty, LBTT or LTT worked out for you, legal fees, surveys, mortgage fees, estate agent fees, removals and the cash your sale releases.",
+    "Free moving costs calculator. Add up Stamp Duty, conveyancing, surveys, mortgage fees, estate agent and removals to see the full cost of moving home.",
   alternates: { canonical: "/property/moving-house-budget" },
+  openGraph: ogFor("/property/moving-house-budget"),
 };
 
 const BREADCRUMBS = [

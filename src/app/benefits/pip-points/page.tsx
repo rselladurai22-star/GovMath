@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import PipStudio from "./PipStudio";
+import { ogFor } from "@/gm/og";
 import PipGuide from "./PipGuide";
 
 export const metadata: Metadata = {
-  title: "PIP Points Calculator (2026/27 Rates)",
+  title: "PIP Points Calculator 2026/27",
   description:
-    "Score yourself against all 12 official PIP activities and descriptors. See your daily living and mobility points, the rate they point to, and what 2026/27 PIP is worth a week and a year.",
+    "Free PIP points calculator for all 12 activities. See if your points reach the standard or enhanced rate for daily living and mobility, and the 2026/27 amount.",
   alternates: { canonical: "/benefits/pip-points" },
+  openGraph: ogFor("/benefits/pip-points"),
 };
 
 const BREADCRUMBS = [

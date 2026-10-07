@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   BandBar,
   CompareCards,
@@ -128,7 +129,7 @@ export default function TaxBracketGuide() {
           that they pay more: on £55,000 the difference is £1,650 a year, and on £100,000 it is £3,300.
         </p>
         <p>
-          National Insurance is UK-wide, so between £43,663 and £50,270 a Scottish taxpayer pays 42% Income Tax plus 8%
+          National Insurance is UK-wide, so between £43,663 and £50,270 a <a href="/tax-and-salary/scottish-tax">Scottish taxpayer</a>{" "}pays 42% Income Tax plus 8%
           NI: a 50% marginal rate. Our Scottish tax calculator covers this in more detail.
         </p>
       </GuideSection>
@@ -141,7 +142,7 @@ export default function TaxBracketGuide() {
           </li>
           <li>
             <strong>Marginal rate</strong>: what is taken from the next £1 you earn, including National Insurance. This
-            is what matters for a pay rise, overtime or a pension contribution.
+            is what matters for a pay rise, <a href="/tax-and-salary/overtime">overtime</a>{" "}or a pension contribution.
           </li>
           <li>
             <strong>Effective rate</strong>: your total Income Tax divided by your total income. This is always lower
@@ -186,8 +187,8 @@ export default function TaxBracketGuide() {
           />
         </Figure>
         <p>
-          The trap also hits childcare: above £100,000, families lose Tax-Free Childcare and the working-parent
-          entitlement to funded childcare hours in England. For a family with young children, earning £100,001 can cost
+          The trap also hits childcare: above £100,000, families lose <a href="/benefits/tax-free-childcare">Tax-Free Childcare</a>{" "}and the working-parent
+          entitlement to <a href="/benefits/free-childcare-hours">funded childcare</a>{" "}hours in England. For a family with young children, earning £100,001 can cost
           thousands of pounds a year.
         </p>
       </GuideSection>
@@ -264,7 +265,7 @@ export default function TaxBracketGuide() {
             £50,270.
           </li>
           <li>
-            <strong>&ldquo;My bonus will be taxed at 40%.&rdquo;</strong> Only if your total income for the year goes above
+            <strong>&ldquo;My <a href="/tax-and-salary/bonus-tax">bonus</a>{" "}will be taxed at 40%.&rdquo;</strong> Only if your total income for the year goes above
             £50,270, and then only the part above it.
           </li>
           <li>
@@ -357,7 +358,7 @@ export default function TaxBracketGuide() {
       <GuideSection id="other-people" n={12} kicker="Other incomes" title="Self-employed, landlords and pensioners">
         <p>
           The bands apply to all your taxable income together, not just to wages. For the self-employed they apply to
-          profits after allowable expenses, through Self Assessment. Landlords add their rental profits to other income,
+          profits after <a href="/business/allowable-expenses">allowable expenses</a>, through Self Assessment. Landlords add their rental profits to other income,
           and that can push them into a higher band.
         </p>
         <p>
@@ -390,6 +391,9 @@ export default function TaxBracketGuide() {
         <p>
           The step from £90,000 to £125,140 adds £35,140 of income but only £15,354 of take-home pay, because it crosses
           the whole of the 60% band.
+        </p>
+      <p>
+          For a full breakdown at a set salary, see <Link href="/tax-and-salary/salary-after-tax">salary after tax</Link> for every salary from £15,000 to £250,000.
         </p>
       </GuideSection>
 

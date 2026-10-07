@@ -51,7 +51,7 @@ export default function SharedOwnershipGuide() {
         <>
           Shared ownership lets you buy part of a home with a smaller deposit and mortgage, and pay rent on the rest. This guide
           explains who can apply, what it really costs each month, how rent and service charges rise, how to buy more shares,
-          the Stamp Duty choices, and how it compares with buying outright.
+          the <a href="/property/stamp-duty-england">Stamp Duty</a>{" "}choices, and how it compares with buying outright.
         </>
       }
       meta={["England rules", "12 min read", "Reviewed October 2026"]}
@@ -78,7 +78,7 @@ export default function SharedOwnershipGuide() {
         </ul>
         <p>and one of these applies:</p>
         <ul>
-          <li>you are a first-time buyer;</li>
+          <li>you are a <a href="/property/first-time-buyer">first-time buyer</a>;</li>
           <li>you used to own a home but cannot afford to buy one now; or</li>
           <li>you already own a shared ownership home and want to move.</li>
         </ul>
@@ -171,7 +171,7 @@ export default function SharedOwnershipGuide() {
         />
         <p>
           Shared ownership is cheaper to get into and often cheaper each month. Buying outright builds equity in the whole home
-          and avoids rent rises and lease restrictions. If you can afford to buy outright, it is usually the better long-term
+          and avoids <a href="/property/rent-increase">rent rises</a>{" "}and lease restrictions. If you can afford to buy outright, it is usually the better long-term
           choice.
         </p>
       </GuideSection>

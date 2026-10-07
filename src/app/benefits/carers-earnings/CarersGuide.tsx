@@ -67,9 +67,9 @@ export default function CarersGuide() {
             Carer&rsquo;s Allowance is <strong>£86.45 a week</strong>, or £4,495.40 a year.
           </li>
           <li>
-            You can earn up to <strong>£204 a week</strong> after tax, National Insurance, half your pension contributions and some care costs.
+            You can earn up to <strong>£204 a week</strong> after tax, <a href="/tax-and-salary/national-insurance">National Insurance</a>, half your pension contributions and some care costs.
           </li>
-          <li>At the £12.71 National Living Wage, that is about 16 hours a week.</li>
+          <li>At the £12.71 <a href="/tax-and-salary/minimum-wage">National Living Wage</a>, that is about 16 hours a week.</li>
           <li>There is no taper: earning over the limit loses the whole payment for that week.</li>
         </ul>
         <KeyStats
@@ -86,7 +86,7 @@ export default function CarersGuide() {
         <ul>
           <li>You are 16 or over and care for someone for at least 35 hours a week.</li>
           <li>
-            They get a qualifying benefit: Attendance Allowance, the daily living part of PIP, the middle or highest care rate of Disability
+            They get a qualifying benefit: <a href="/benefits/attendance-allowance">Attendance Allowance</a>, the daily living part of PIP, the middle or highest care rate of Disability
             Living Allowance, Armed Forces Independence Payment, or Constant Attendance Allowance at certain rates.
           </li>
           <li>You are not in full-time education, meaning 21 hours or more of supervised study a week.</li>
@@ -132,14 +132,14 @@ export default function CarersGuide() {
           </li>
         </ul>
         <p>
-          Expenses your employer repays, such as mileage, are not earnings. Statutory Sick Pay and Statutory Maternity Pay do count. Income
+          Expenses your employer repays, such as mileage, are not earnings. <a href="/tax-and-salary/statutory-sick-pay">Statutory Sick Pay</a>{" "}and Statutory Maternity Pay do count. Income
           from savings, pensions or renting a room does not count towards the earnings limit at all.
         </p>
       </GuideSection>
 
       <GuideSection id="hours" n={5} kicker="Planning" title="How many hours you can work">
         <p>
-          Divide £204 by your hourly rate to get a rough maximum. At the National Living Wage of £12.71, 16 hours a week gives £203.36,
+          Divide £204 by your <a href="/tax-and-salary/hourly-to-salary">hourly rate</a>{" "}to get a rough maximum. At the National Living Wage of £12.71, 16 hours a week gives £203.36,
           just under the limit. A 17th hour takes you to £216.07 and over it.
         </p>
         <Figure label="Weekly income at the National Living Wage" caption="Take-home pay plus Carer's Allowance.">
@@ -332,7 +332,7 @@ export default function CarersGuide() {
 
       <GuideSection id="pay-rise" n={17} kicker="Planning" title="Before you accept a pay rise">
         <p>
-          The National Living Wage and the earnings limit both rise most Aprils, but not always by the same amount. A pay rise in April, or a
+          The National Living Wage and the earnings limit both rise most Aprils, but not always by the same amount. A <a href="/tax-and-salary/pay-rise">pay rise</a>{" "}in April, or a
           new job at a higher rate, can push the same hours over the limit.
         </p>
         <p>

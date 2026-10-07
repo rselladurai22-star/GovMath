@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import WalesStudio from "./WalesStudio";
+import { ogFor } from "@/gm/og";
 import WalesGuide from "./WalesGuide";
 
 export const metadata: Metadata = {
-  title: "Student Finance Wales Calculator 2026/27: Grant and Loan",
+  title: "Student Finance Wales Calculator 2026/27",
   description:
-    "Work out your Welsh Government Learning Grant and Maintenance Loan for 2026/27 from household income: £12,590 a year away from home, £10,685 at home and £15,720 in London.",
+    "Free Student Finance Wales calculator for 2026/27. See your Welsh Government Learning Grant and maintenance loan by household income and where you live.",
   alternates: { canonical: "/students/welsh-student-finance" },
+  openGraph: ogFor("/students/welsh-student-finance"),
 };
 
 const BREADCRUMBS = [

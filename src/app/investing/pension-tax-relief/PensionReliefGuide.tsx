@@ -163,7 +163,7 @@ export default function PensionReliefGuide() {
       <GuideSection id="sacrifice" n={6} kicker="Extra saving" title="Salary sacrifice">
         <p>
           With salary sacrifice, you agree to a lower salary and your employer pays the difference into your pension. You save Income Tax and
-          employee National Insurance, and your employer saves 15% employer National Insurance. Some employers add their saving to your pension.
+          employee National Insurance, and your employer saves 15% <a href="/business/employer-ni-costs">employer National Insurance</a>. Some employers add their saving to your pension.
         </p>
         <WorkedExample
           title="Salary £35,000, £2,000 sacrificed, employer adds its NI saving"
@@ -175,7 +175,7 @@ export default function PensionReliefGuide() {
           total={{ label: "£2,300 in your pension for a real cost of", value: "£1,440" }}
         />
         <p>
-          Salary sacrifice can affect things linked to salary, such as mortgage applications, life cover and Statutory Maternity Pay, and it cannot
+          Salary sacrifice can affect things linked to salary, such as mortgage applications, life cover and <a href="/benefits/maternity-pay">Statutory Maternity Pay</a>, and it cannot
           take pay below the National Minimum Wage.
         </p>
       </GuideSection>
@@ -194,14 +194,14 @@ export default function PensionReliefGuide() {
           total={{ label: "Real cost of £10,000", value: "£4,000" }}
         />
         <p>
-          Paying in enough to bring income down to £100,000 can also restore tax-free childcare and the 30 hours of funded childcare, which stop at
+          Paying in enough to bring income down to £100,000 can also restore tax-free childcare and the 30 hours of <a href="/benefits/free-childcare-hours">funded childcare</a>, which stop at
           £100,000.
         </p>
       </GuideSection>
 
       <GuideSection id="child-benefit" n={8} kicker="Families" title="Pensions and Child Benefit">
         <p>
-          The High Income Child Benefit Charge is based on adjusted net income, which pension contributions reduce. A parent earning £65,000 with two
+          The <a href="/benefits/high-income-child-benefit">High Income Child Benefit Charge</a>{" "}is based on adjusted net income, which pension contributions reduce. A parent earning £65,000 with two
           children repays £584 of Child Benefit. Paying £5,000 gross into a pension removes the charge.
         </p>
         <WorkedExample
@@ -217,7 +217,7 @@ export default function PensionReliefGuide() {
       <GuideSection id="scotland" n={9} kicker="Scotland" title="Scottish taxpayers">
         <p>
           Scottish taxpayers get relief at their Scottish rate. Relief at source schemes add 20% even for starter-rate taxpayers paying 19%. Those
-          paying the intermediate, higher, advanced or top rates claim the extra through Self Assessment. A Scottish taxpayer earning £50,000 pays
+          paying the intermediate, higher, advanced or top rates claim the extra through Self Assessment. A <a href="/tax-and-salary/scottish-tax">Scottish taxpayer</a>{" "}earning £50,000 pays
           42% at the margin, so £1,000 costs £580.
         </p>
       </GuideSection>
@@ -274,7 +274,7 @@ export default function PensionReliefGuide() {
 
       <GuideSection id="changes" n={15} kicker="Ahead" title="Changes on the way">
         <ul>
-          <li>From 6 April 2027, most unused pension funds will count towards your estate for Inheritance Tax.</li>
+          <li>From 6 April 2027, most unused pension funds will count towards your estate for <a href="/life/inheritance-tax">Inheritance Tax</a>.</li>
           <li>From April 2028, the normal minimum pension age rises from 55 to 57.</li>
           <li>From April 2029, salary sacrifice will only save National Insurance on the first £2,000 a year.</li>
         </ul>

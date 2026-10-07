@@ -112,7 +112,7 @@ export default function BonusGuide() {
           total={{ label: "Income Tax on the bonus itself", value: "£1,000.00" }}
         />
         <Callout tone="warn" title="When the bonus month really is over-taxed">
-          If you are on an emergency tax code such as 1257L W1 or M1, payroll ignores the rest of the year and taxes each
+          If you are on an <a href="/tax-and-salary/emergency-tax">emergency tax</a>{" "}code such as 1257L W1 or M1, payroll ignores the rest of the year and taxes each
           payment on its own. A bonus on an emergency code can then be taxed as if you earned it every month. You
           get the overpayment back, either through a corrected code later in the year or a refund after the tax year
           ends.
@@ -150,7 +150,7 @@ export default function BonusGuide() {
 
       <GuideSection id="student-loan" n={4} kicker="Student loan" title="Student loan repayments on a bonus">
         <p>
-          Student loan repayments also use the pay period&rsquo;s threshold. For Plan 2 in 2026/27 that is £29,385 a
+          Student loan repayments also use the pay period&rsquo;s threshold. For <a href="/students/plan-2-student-loan">Plan 2</a>{" "}in 2026/27 that is £29,385 a
           year, or £2,448.75 a month. In the bonus month you repay 9% of everything above £2,448.75, even if your yearly
           income would normally sit below the threshold.
         </p>
@@ -244,7 +244,7 @@ export default function BonusGuide() {
         />
         <p>
           For someone in the 60% trap, sacrifice turns £3,800 of cash into £10,000 of pension. Your employer also saves
-          15% employer NI on the sacrificed amount, and some employers pass part or all of that saving into your pension.
+          15% <a href="/business/employer-ni-costs">employer NI</a>{" "}on the sacrificed amount, and some employers pass part or all of that saving into your pension.
         </p>
         <p>A few limits apply:</p>
         <ul>
@@ -299,9 +299,9 @@ export default function BonusGuide() {
         </p>
         <h3>Child Benefit</h3>
         <p>
-          If your adjusted net income goes over £60,000, the High Income Child Benefit Charge claws back 1% of your
+          If your adjusted net income goes over £60,000, the <a href="/benefits/high-income-child-benefit">High Income Child Benefit Charge</a>{" "}claws back 1% of your
           Child Benefit for every £200 above it, and all of it at £80,000. A bonus that takes you from £58,000 to £63,000
-          can cost a family with two children several hundred pounds in Child Benefit on top of the tax. Paying part of
+          can cost a family with two children several hundred pounds in <a href="/benefits/child-benefit">Child Benefit</a>{" "}on top of the tax. Paying part of
           the bonus into a pension lowers adjusted net income and can avoid this.
         </p>
         <h3>Universal Credit</h3>
@@ -338,7 +338,7 @@ export default function BonusGuide() {
 
       <GuideSection id="bonus-or-rise" n={10} kicker="Choices" title="A bonus or a pay rise?">
         <p>
-          Sometimes an employer offers a choice between a one-off bonus and a permanent pay rise of the same amount. For
+          Sometimes an employer offers a choice between a one-off bonus and a permanent <a href="/tax-and-salary/pay-rise">pay rise</a>{" "}of the same amount. For
           the first year the tax looks similar, but the two behave differently.
         </p>
         <CompareCards

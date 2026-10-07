@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import RentIncreaseStudio from "./RentIncreaseStudio";
+import { ogFor } from "@/gm/og";
 import RentIncreaseGuide from "./RentIncreaseGuide";
 
 export const metadata: Metadata = {
-  title: "Rent Increase Calculator UK: Is My Rent Rise Legal? (2026)",
+  title: "Rent Increase Calculator UK: Is It Legal?",
   description:
-    "Check a rent increase against the 2026 rules in England, Wales, Scotland and Northern Ireland: the notice period, the once-a-year limit, the percentage rise and how to challenge it under the Renters' Rights Act.",
+    "Free rent increase checker for England, Scotland, Wales and Northern Ireland. Check the notice, the once-a-year rule and how to challenge a rise.",
   alternates: { canonical: "/property/rent-increase" },
+  openGraph: ogFor("/property/rent-increase"),
 };
 
 const BREADCRUMBS = [

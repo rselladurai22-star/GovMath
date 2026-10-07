@@ -5,7 +5,7 @@ import ContentPage from "@/components/ContentPage";
 export const metadata: Metadata = {
   title: "Terms of Use",
   description:
-    "The terms that govern your use of GovMath's free UK calculators and content.",
+    "The terms that apply when you use GovMath's free UK calculators, guides and content, including how you may share and link to our tools.",
   alternates: { canonical: "/terms" },
 };
 

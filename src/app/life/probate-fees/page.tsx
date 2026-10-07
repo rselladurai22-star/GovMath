@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import ProbateStudio from "./ProbateStudio";
+import { ogFor } from "@/gm/og";
 import ProbateGuide from "./ProbateGuide";
 
 export const metadata: Metadata = {
-  title: "Probate Fees Calculator (£526 from July 2026)",
+  title: "Probate Fees Calculator UK 2026",
   description:
-    "Work out the probate fees for an estate in England and Wales: £526 for estates over £5,000 from 13 July 2026, copies at £2 or £16, and professional fees if you use a solicitor.",
+    "Free probate fees calculator for England and Wales. See the £526 fee for estates over £5,000, extra copies at £2 or £16, and the cost of using a solicitor.",
   alternates: { canonical: "/life/probate-fees" },
+  openGraph: ogFor("/life/probate-fees"),
 };
 
 const BREADCRUMBS = [

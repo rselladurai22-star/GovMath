@@ -4,6 +4,7 @@ import { shortTitle, type Calculator } from "@/lib/calculators";
 import GmShell from "@/gm/GmShell";
 import cats from "@/gm/categories.json";
 import { trustHtml } from "@/gm/trust";
+import { calculatorJsonLd } from "@/gm/schema";
 
 export type Crumb = { href: string; label: string };
 
@@ -41,7 +42,9 @@ export default function FlagshipPage({
   related: Calculator[];
   note: string;
 }) {
+  const path = breadcrumbs[breadcrumbs.length - 1].href;
   const jsonLd = [
+    calculatorJsonLd(path, title, lead),
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",

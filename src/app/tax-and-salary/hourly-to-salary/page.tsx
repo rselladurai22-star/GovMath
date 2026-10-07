@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import HourlyStudio from "./HourlyStudio";
+import { ogFor } from "@/gm/og";
 import HourlyGuide from "./HourlyGuide";
 
 export const metadata: Metadata = {
-  title: "Hourly Rate to Salary Calculator (UK, 2026/27)",
+  title: "Hourly to Salary Calculator UK 2026/27",
   description:
-    "Convert an hourly rate to a yearly salary, or a salary to an hourly rate, with take-home pay, overtime, unpaid holiday and a minimum wage check. 2026/27 rates.",
+    "Free hourly to salary calculator. Turn an hourly rate into weekly, monthly and yearly pay, then see your take-home after tax and NI in 2026/27.",
   alternates: { canonical: "/tax-and-salary/hourly-to-salary" },
+  openGraph: ogFor("/tax-and-salary/hourly-to-salary"),
 };
 
 const BREADCRUMBS = [

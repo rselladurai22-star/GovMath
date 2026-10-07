@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import BikStudio from "./BikStudio";
+import { ogFor } from "@/gm/og";
 import BikGuide from "./BikGuide";
 
 export const metadata: Metadata = {
-  title: "Company Car Tax Calculator 2026/27 (BIK Rates)",
+  title: "Company Car Tax Calculator 2026/27 (BIK)",
   description:
-    "Work out company car tax for 2026/27 from the list price, CO2, fuel and your salary. Electric cars at 4%, plug-in hybrid rates by range, fuel benefit and future rates.",
+    "Free company car tax calculator for 2026/27. See benefit in kind by CO2 and list price, the tax at 20%, 40% or 45%, fuel benefit and the electric car rate.",
   alternates: { canonical: "/vehicles/benefit-in-kind" },
+  openGraph: ogFor("/vehicles/benefit-in-kind"),
 };
 
 const BREADCRUMBS = [

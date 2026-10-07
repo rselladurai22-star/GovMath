@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import PoaStudio from "./PoaStudio";
+import { ogFor } from "@/gm/og";
 import PoaGuide from "./PoaGuide";
 
 export const metadata: Metadata = {
-  title: "Payment on Account Calculator: Self Assessment Dates",
+  title: "Payment on Account Calculator 2026/27",
   description:
-    "See every Self Assessment payment due on 31 January and 31 July, including payments on account, balancing payments, your first year and the effect of reducing them.",
+    "Free payments on account calculator for Self Assessment. See what you pay in January and July, the balancing payment, and when you can reduce them.",
   alternates: { canonical: "/business/payment-on-account" },
+  openGraph: ogFor("/business/payment-on-account"),
 };
 
 const BREADCRUMBS = [

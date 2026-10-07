@@ -74,8 +74,8 @@ export default function Plan5Guide() {
       <GuideSection id="who" n={2} kicker="Eligibility" title="Who is on Plan 5">
         <p>
           Students from England who started an undergraduate course, or a Postgraduate Certificate in Education, on or after 1 August 2023 are
-          on Plan 5. Students who started before then stay on Plan 2, even if they begin a new course later. Welsh students remain on Plan 2,
-          Scottish students on Plan 4 and Northern Irish students on Plan 1.
+          on Plan 5. Students who started before then stay on <a href="/students/plan-2-student-loan">Plan 2</a>, even if they begin a new course later. Welsh students remain on Plan 2,
+          Scottish students on <a href="/students/plan-4-student-loan">Plan 4</a>{" "}and Northern Irish students on Plan 1.
         </p>
       </GuideSection>
 
@@ -167,7 +167,7 @@ export default function Plan5Guide() {
       <GuideSection id="marginal" n={10} kicker="Take-home pay" title="How it feels in your payslip">
         <p>
           Above £25,000, a basic-rate taxpayer keeps 63p of each extra pound earned, after 20% income tax, 8% National Insurance and 9% student
-          loan. Pension contributions through salary sacrifice reduce the income used for repayments, so they save 9% as well as tax and
+          loan. Pension contributions through <a href="/tax-and-salary/salary-sacrifice">salary sacrifice</a>{" "}reduce the income used for repayments, so they save 9% as well as tax and
           National Insurance.
         </p>
       </GuideSection>
@@ -183,7 +183,7 @@ export default function Plan5Guide() {
 
       <GuideSection id="self-employed" n={12} kicker="Other income" title="Self-employed, abroad and other income">
         <p>
-          Self-employed graduates repay through Self Assessment. Unearned income over £2,000, such as savings interest or rent, also counts.
+          Self-employed graduates repay through Self Assessment. Unearned income over £2,000, such as <a href="/investing/savings-interest">savings interest</a>{" "}or rent, also counts.
           If you move abroad for more than three months, tell the Student Loans Company; repayments are then based on thresholds for your new
           country.
         </p>
@@ -193,7 +193,7 @@ export default function Plan5Guide() {
         <p>
           Your employer works out repayments each pay day from your pay in that period and sends them to HMRC with your tax. HMRC passes the
           details to the Student Loans Company, which updates your balance. There can be a delay of several weeks before payments show in your
-          online account. At the end of the tax year, your P60 shows the total deducted.
+          online account. At the end of the tax year, your <a href="/tax-and-salary/p45-p60-explainer">P60</a>{" "}shows the total deducted.
         </p>
         <p>
           Because repayments are worked out on each pay period, a one-off bonus can trigger a repayment in that month even if your yearly
@@ -303,7 +303,7 @@ export default function Plan5Guide() {
           <li>Multiply what is left by 9%. That is your yearly repayment.</li>
           <li>Divide by 12 for a monthly figure.</li>
         </ol>
-        <p>The calculator does this for you, adds any Postgraduate Loan, and projects the balance over the years ahead.</p>
+        <p>The calculator does this for you, adds any <a href="/students/postgrad-loan">Postgraduate Loan</a>, and projects the balance over the years ahead.</p>
       </GuideSection>
 
       <GuideSection id="lifetime" n={24} kicker="Long term" title="What 40 years of repayments means">

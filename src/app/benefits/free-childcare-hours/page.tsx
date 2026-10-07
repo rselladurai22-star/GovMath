@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import FreeHoursStudio from "./FreeHoursStudio";
+import { ogFor } from "@/gm/og";
 import FreeHoursGuide from "./FreeHoursGuide";
 
 export const metadata: Metadata = {
-  title: "Free Childcare Hours Calculator 2026/27: 15 and 30 Hours (England)",
+  title: "Free Childcare Hours Calculator 2026/27",
   description:
-    "Check how many funded childcare hours you can get in England, from 9 months to school age, what they are worth at your nursery's rate and what you still pay.",
+    "Free calculator for England's funded childcare hours from 9 months to school age. See what your hours are worth at your nursery's rate and what you still pay.",
   alternates: { canonical: "/benefits/free-childcare-hours" },
+  openGraph: ogFor("/benefits/free-childcare-hours"),
 };
 
 const BREADCRUMBS = [

@@ -183,7 +183,7 @@ export default function MarkupGuide() {
         />
         <p>
           If you are <strong>not</strong> registered, you cannot reclaim the VAT on your stock. Use the cost including VAT,
-          and do not add VAT to your price. You must register once taxable sales pass <strong>£90,000</strong> in any rolling
+          and do not add VAT to your price. You must register once taxable sales pass <strong><a href="/business/vat-threshold">£90,000</a></strong> in any rolling
           12 months. At that point a shop selling to the public either raises shelf prices by up to a fifth or absorbs the VAT
           out of its margin, so it is worth planning for well before you reach it.
         </p>

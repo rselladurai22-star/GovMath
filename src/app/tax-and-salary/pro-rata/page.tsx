@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import ProRataStudio from "./ProRataStudio";
+import { ogFor } from "@/gm/og";
 import ProRataGuide from "./ProRataGuide";
 
 export const metadata: Metadata = {
-  title: "Pro Rata Salary Calculator (UK, 2026/27)",
+  title: "Pro Rata Salary Calculator UK 2026/27",
   description:
-    "Work out your pro-rata salary, take-home pay and holiday for part-time or part-year work, by hours or days a week. 2026/27 tax rates.",
+    "Free pro rata salary calculator. Convert a full-time salary to part-time hours or days, and see your pro rata take-home pay and holiday for 2026/27.",
   alternates: { canonical: "/tax-and-salary/pro-rata" },
+  openGraph: ogFor("/tax-and-salary/pro-rata"),
 };
 
 const BREADCRUMBS = [

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import PensionReliefStudio from "./PensionReliefStudio";
+import { ogFor } from "@/gm/og";
 import PensionReliefGuide from "./PensionReliefGuide";
 
 export const metadata: Metadata = {
-  title: "Pension Tax Relief Calculator (2026/27)",
+  title: "Pension Tax Relief Calculator UK 2026/27",
   description:
-    "Work out what a pension contribution really costs after tax relief in 2026/27, by relief at source, net pay or salary sacrifice, including the £100,000 trap, Child Benefit and the annual allowance.",
+    "Free pension tax relief calculator for 2026/27. See relief at 20%, 40% or 45% by relief at source, net pay or salary sacrifice, and the annual allowance.",
   alternates: { canonical: "/investing/pension-tax-relief" },
+  openGraph: ogFor("/investing/pension-tax-relief"),
 };
 
 const BREADCRUMBS = [

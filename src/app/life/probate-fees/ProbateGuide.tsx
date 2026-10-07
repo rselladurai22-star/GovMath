@@ -179,7 +179,7 @@ export default function ProbateGuide() {
       <GuideSection id="diy" n={7} kicker="Doing it yourself" title="Applying yourself">
         <p>
           Most people can apply online at GOV.UK. You need the original will, the death certificate, and the estate&rsquo;s value. If Inheritance
-          Tax is due, or a full account is needed, you must send form IHT400 to HMRC first and wait 20 working days before applying.
+          Tax is due, or a full account is needed, you must send form IHT400 to HMRC first and wait 20 <a href="/life/days-between-dates">working days</a>{" "}before applying.
         </p>
         <ul>
           <li>Value everything the person owned and owed on the date of death.</li>
@@ -303,7 +303,7 @@ export default function ProbateGuide() {
           insured, tell the insurer it is empty, and check whether council tax relief applies to an unoccupied home.
         </p>
         <p>
-          If the property sells for more than its probate value, the estate may owe Capital Gains Tax on the increase. If it sells for less within
+          If the property sells for more than its probate value, the estate may owe <a href="/investing/capital-gains-assets">Capital Gains Tax</a>{" "}on the increase. If it sells for less within
           4 years, the estate may be able to claim back some Inheritance Tax.
         </p>
       </GuideSection>
@@ -340,6 +340,9 @@ export default function ProbateGuide() {
         </ol>
         <p>
           The whole process often takes 9 to 12 months for a straightforward estate, longer if a property must be sold or Inheritance Tax is due.
+        </p>
+      <p>
+          While someone is alive, a Lasting Power of Attorney lets others manage their affairs; see the <a href="/life/power-of-attorney">power of attorney cost calculator</a> for its fees.
         </p>
       </GuideSection>
 

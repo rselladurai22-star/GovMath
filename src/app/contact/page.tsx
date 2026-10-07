@@ -5,7 +5,7 @@ import ContentPage from "@/components/ContentPage";
 export const metadata: Metadata = {
   title: "Contact GovMath",
   description:
-    "Get in touch with GovMath — report an error, suggest a calculator, or ask a question. We prioritise corrections.",
+    "Contact GovMath to report an error, suggest a new calculator or ask a question. Corrections to figures are our top priority and we reply by email.",
   alternates: { canonical: "/contact" },
 };
 

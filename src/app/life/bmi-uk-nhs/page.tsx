@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import BmiStudio from "./BmiStudio";
+import { ogFor } from "@/gm/og";
 import BmiGuide from "./BmiGuide";
 
 export const metadata: Metadata = {
-  title: "BMI Calculator UK (NHS Healthy Weight Ranges)",
+  title: "BMI Calculator UK (NHS Ranges)",
   description:
-    "Calculate your BMI in metric or imperial units with NHS ranges, the lower NICE thresholds for some ethnic groups, your healthy weight range and your waist-to-height ratio.",
+    "Free BMI calculator using NHS healthy weight ranges. Enter metric or imperial, see your BMI and waist-to-height ratio, and what the result means.",
   alternates: { canonical: "/life/bmi-uk-nhs" },
+  openGraph: ogFor("/life/bmi-uk-nhs"),
 };
 
 const BREADCRUMBS = [

@@ -6,7 +6,7 @@ import { GA_ID } from "@/lib/analytics";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How GovMath handles data, cookies and advertising. We don't store the figures you enter — calculations run in your browser.",
+    "How GovMath handles data, cookies, analytics and advertising. We don't store the figures you enter: calculations run in your browser.",
   alternates: { canonical: "/privacy" },
 };
 

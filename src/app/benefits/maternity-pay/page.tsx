@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import MaternityStudio from "./MaternityStudio";
+import { ogFor } from "@/gm/og";
 import MaternityGuide from "./MaternityGuide";
 
 export const metadata: Metadata = {
-  title: "Maternity Pay Calculator (SMP 2026/27)",
+  title: "Maternity Pay Calculator UK 2026/27 (SMP)",
   description:
-    "Work out Statutory Maternity Pay week by week: 90% of earnings for 6 weeks then £194.32, with enhanced employer schemes, Maternity Allowance and key dates from your due date.",
+    "Free Statutory Maternity Pay calculator for 2026/27. See 39 weeks of SMP week by week, the 90% first six weeks, key dates and Maternity Allowance.",
   alternates: { canonical: "/benefits/maternity-pay" },
+  openGraph: ogFor("/benefits/maternity-pay"),
 };
 
 const BREADCRUMBS = [

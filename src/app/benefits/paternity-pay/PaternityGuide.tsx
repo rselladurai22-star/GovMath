@@ -64,7 +64,7 @@ export default function PaternityGuide() {
           <li>Up to <strong>two weeks</strong> of paternity leave, taken together or as two separate weeks.</li>
           <li>Pay of <strong>£194.32 a week</strong>, or 90% of your average weekly earnings if that is less.</li>
           <li>Leave is a day-one right from 6 April 2026; pay needs <strong>26 weeks&rsquo; service</strong> by the 15th week before the due week.</li>
-          <li>Must be taken within 52 weeks of the birth or adoption.</li>
+          <li>Must be taken within 52 weeks of the birth or <a href="/benefits/adoption-pay">adoption</a>.</li>
         </ul>
         <KeyStats
           items={[
@@ -164,7 +164,7 @@ export default function PaternityGuide() {
         </Figure>
         <p>
           Only those earning less than about £11,227 a year get 90% of their pay; everyone else gets the flat rate. After tax
-          and National Insurance the gap is a little smaller, because SPP is taxed like normal pay.
+          and <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}the gap is a little smaller, because SPP is taxed like normal pay.
         </p>
       </GuideSection>
 
@@ -323,13 +323,13 @@ export default function PaternityGuide() {
 
       <GuideSection id="uc" n={16} kicker="Benefits" title="Paternity pay and other benefits">
         <p>
-          SPP counts as earnings for Universal Credit, so a lower payment that month can mean slightly more UC. A new baby adds a
+          SPP counts as earnings for <a href="/benefits/universal-credit">Universal Credit</a>, so a lower payment that month can mean slightly more UC. A new baby adds a
           child element to the award. The family may also be able to claim:
         </p>
         <ul>
           <li>Child Benefit, at £27.05 a week for a first child;</li>
-          <li>a Sure Start Maternity Grant of £500 for a first child, if you get certain benefits (England and Wales);</li>
-          <li>Healthy Start vouchers, for help with milk, fruit and vegetables on a low income.</li>
+          <li>a <a href="/benefits/sure-start-maternity-grant">Sure Start Maternity Grant</a>{" "}of £500 for a first child, if you get certain benefits (England and Wales);</li>
+          <li><a href="/life/healthy-start">Healthy Start</a>{" "}vouchers, for help with milk, fruit and vegetables on a low income.</li>
         </ul>
         <p>See the <a href="/benefits/child-benefit">Child Benefit calculator</a>.</p>
       </GuideSection>

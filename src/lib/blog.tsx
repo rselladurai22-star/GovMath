@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 export type BlogPost = {
   slug: string;
   title: string;
+  /** Shorter title for search results (the page's <title>), when `title` is too long. */
+  seoTitle?: string;
   description: string;
   /** ISO date for metadata + sorting. */
   date: string;
@@ -16,10 +18,287 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "salary-sacrifice-worth-it",
+    title: "Is salary sacrifice worth it? What it really saves in 2026/27",
+    seoTitle: "Is Salary Sacrifice Worth It? 2026/27 Figures",
+    description:
+      "Salary sacrifice cuts Income Tax, NI and student loan repayments. Worked 2026/27 examples for pensions, Cycle to Work and other schemes, and the catches.",
+    date: "2026-10-07",
+    dateLabel: "7 October 2026",
+    readingTime: "8 min read",
+    category: "Tax & Salary",
+    body: (
+      <>
+        <p>
+          Salary sacrifice means agreeing with your employer to give up part of your salary in return for a benefit,
+          usually a bigger pension contribution. Because the salary you give up is never paid to you, you pay no Income
+          Tax, no National Insurance and no student loan repayment on it. The result is that a £1,000 pension
+          contribution can cost you only £580 to £720 of take-home pay, and less still in some salary bands.
+        </p>
+        <p>
+          This guide works through real 2026/27 examples, all from the same engine as our{" "}
+          <Link href="/tax-and-salary/salary-sacrifice">salary sacrifice calculator</Link>, and explains the catches:
+          the minimum wage rule, the effect on mortgages and other benefits, and the National Insurance cap planned for
+          2029.
+        </p>
+
+        <h2>How salary sacrifice saves money</h2>
+        <p>
+          Compare two ways of putting £1,500 a year into a workplace pension on a £30,000 salary in England. Paid out of
+          your salary under the &ldquo;net pay&rdquo; or &ldquo;relief at source&rdquo; methods, you get Income Tax
+          relief but still pay National Insurance on the full £30,000. By salary sacrifice, your salary becomes £28,500
+          and the £1,500 goes straight into the pension, so both tax and National Insurance fall.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>£30,000 salary, £1,500 sacrificed into a pension</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Take-home pay before</td><td>£25,119.60</td></tr>
+            <tr><td>Take-home pay after</td><td>£24,039.60</td></tr>
+            <tr><td>Fall in take-home pay</td><td>£1,080</td></tr>
+            <tr><td>Income Tax saved</td><td>£300</td></tr>
+            <tr><td>National Insurance saved</td><td>£120</td></tr>
+            <tr><td>Paid into your pension</td><td>£1,500</td></tr>
+          </tbody>
+        </table>
+        <p>
+          So £1,500 goes into your pension for £1,080 out of your pocket: a saving of £420, or 28% of the amount
+          sacrificed. That 28% is simply the basic rate of tax (20%) plus the main rate of employee National Insurance
+          (8%).
+        </p>
+
+        <h2>What it saves at different salaries</h2>
+        <p>
+          The saving on each pound you sacrifice is your marginal rate of tax, National Insurance and student loan on
+          the slice of salary you give up. Four 2026/27 examples, each sacrificing a pension contribution in England,
+          Wales or Northern Ireland:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Salary and sacrifice</th>
+              <th>Cost to you</th>
+              <th>Saving</th>
+              <th>Saving as a share</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£30,000, sacrifice £1,500</td><td>£1,080</td><td>£420</td><td>28%</td></tr>
+            <tr><td>£45,000 with a Plan 2 loan, sacrifice £2,250</td><td>£1,417.50</td><td>£832.50</td><td>37%</td></tr>
+            <tr><td>£60,000, sacrifice £3,000</td><td>£1,740</td><td>£1,260</td><td>42%</td></tr>
+            <tr><td>£105,000, sacrifice £5,000</td><td>£1,900</td><td>£3,100</td><td>62%</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The Plan 2 example saves an extra £202.50 because student loan repayments are 9% of earnings above the
+          threshold, and sacrificed salary is not counted. The £105,000 example is the most striking: bringing income
+          back down to £100,000 restores £2,500 of Personal Allowance, so £5,000 goes into the pension for just £1,900
+          of take-home pay. Our guide to the <Link href="/blog/100k-tax-trap">£100,000 tax trap</Link> explains why.
+        </p>
+        <p>
+          In Scotland the saving can be larger, because the Scottish intermediate and higher rates are 21% and 42%. On
+          £45,000 with £2,250 sacrificed, a Scottish taxpayer saves £933.48 against £630 for the same salary elsewhere
+          in the UK (without a student loan).
+        </p>
+
+        <h2>Your employer saves too</h2>
+        <p>
+          Employers pay 15% National Insurance on earnings above £5,000 a year. When you sacrifice £1,500, your employer
+          saves £225 of its own National Insurance. Some employers add part or all of that saving to your pension. If
+          yours adds all of it, the £30,000 example puts £1,725 into your pension for the same £1,080 of take-home pay.
+          It is worth asking HR whether your employer shares its saving.
+        </p>
+
+        <h2>Cycle to Work and other schemes</h2>
+        <p>
+          Pensions are not the only exempt benefit. Under the Cycle to Work scheme, giving up £1,000 of a £30,000 salary
+          for a bike costs £720 of take-home pay, a saving of £280, because tax and National Insurance both fall.
+          Electric car schemes work in a similar way, but you pay company car tax on the car, so use the{" "}
+          <Link href="/vehicles/ev-salary-sacrifice">EV salary sacrifice calculator</Link> for those.
+        </p>
+        <p>
+          Most other benefits fall under the &ldquo;optional remuneration&rdquo; rules. For them you still pay Income
+          Tax on the salary you gave up, so only National Insurance falls. Sacrificing £1,200 of a £30,000 salary for
+          such a benefit saves just £96 a year: the 8% National Insurance.
+        </p>
+
+        <h2>The catches</h2>
+        <h3>You cannot go below the minimum wage</h3>
+        <p>
+          A sacrifice must not take your pay below the National Living Wage, £12.71 an hour for workers aged 21 and
+          over from April 2026. On £26,000 for 37.5 hours a week, sacrificing £1,500 would leave £12.56 an hour, so your
+          employer cannot agree it. A sacrifice of £1,000 leaves £12.82 an hour and is allowed.
+        </p>
+        <h3>A lower salary can affect other things</h3>
+        <ul>
+          <li>
+            <strong>Mortgages:</strong>{" "}lenders may use your salary after sacrifice when working out how much you can
+            borrow.
+          </li>
+          <li>
+            <strong>Statutory pay:</strong>{" "}Statutory Maternity Pay, Statutory Sick Pay and similar payments depend on
+            your earnings, so a big sacrifice can reduce them or make you ineligible.
+          </li>
+          <li>
+            <strong>Life cover and pay rises:</strong>{" "}some employers base life insurance or percentage pay rises on
+            the salary after sacrifice. Check your scheme&rsquo;s rules.
+          </li>
+          <li>
+            <strong>Universal Credit and tax credits:</strong>{" "}lower earnings can mean more help, which is usually a
+            good thing, but it does change the sums.
+          </li>
+        </ul>
+        <h3>The National Insurance cap from April 2029</h3>
+        <p>
+          The government has announced that from April 2029 only the first £2,000 a year of pension contributions made
+          by salary sacrifice will be free of National Insurance. Contributions above £2,000 will still save Income Tax,
+          but both you and your employer will pay National Insurance on them. Until then, the full saving applies.
+        </p>
+
+        <h2>Is it worth it?</h2>
+        <p>
+          For most employees whose employer offers it, yes: salary sacrifice is the cheapest way to pay into a pension,
+          because it saves National Insurance on top of Income Tax. It is most valuable for higher-rate taxpayers,
+          anyone repaying a student loan, and anyone with income between £100,000 and £125,140. The main reasons to hold
+          back are a mortgage application in the near future, a pay level close to the minimum wage, or plans to take
+          family leave soon.
+        </p>
+        <p>
+          To see the effect on your own pay, use the{" "}
+          <Link href="/tax-and-salary/salary-sacrifice">salary sacrifice calculator</Link>, or compare the different ways
+          of getting tax relief with the <Link href="/investing/pension-tax-relief">pension tax relief calculator</Link>.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "marriage-allowance-explained",
+    title: "Marriage Allowance in 2026/27: who gains £252, and how to claim four years back",
+    seoTitle: "Marriage Allowance 2026/27: Who Gets £252?",
+    description:
+      "A low earner can pass £1,260 of Personal Allowance to a basic rate spouse, worth up to £252 a year. Who qualifies, when it does not pay, and how to backdate.",
+    date: "2026-10-07",
+    dateLabel: "7 October 2026",
+    readingTime: "7 min read",
+    category: "Tax & Salary",
+    body: (
+      <>
+        <p>
+          Marriage Allowance is one of the easiest tax savings in the UK, and one of the most often missed. If one of
+          you earns less than the Personal Allowance and the other pays tax at the basic rate, the lower earner can
+          transfer <strong>£1,260</strong>{" "}of their allowance to their partner. That cuts the higher earner&rsquo;s tax
+          by up to <strong>£252 a year</strong>, and you can claim for up to four earlier years too.
+        </p>
+        <p>
+          This guide uses 2026/27 figures from the same engine as our{" "}
+          <Link href="/tax-and-salary/marriage-allowance">Marriage Allowance calculator</Link>, so you can check your own
+          incomes there.
+        </p>
+
+        <h2>Who can claim</h2>
+        <ul>
+          <li>You are married or in a civil partnership. Living together is not enough.</li>
+          <li>
+            The lower earner&rsquo;s income is £12,570 or less (the Personal Allowance). Income includes pensions,
+            savings interest above any tax-free amounts, rent and other taxable income.
+          </li>
+          <li>
+            The higher earner pays tax at the basic rate: income up to £50,270 in England, Wales or Northern Ireland.
+            In Scotland, they must pay no more than the intermediate rate, up to £43,662.
+          </li>
+          <li>
+            Neither of you was born before 6 April 1935. Couples where one was are looked after by the Married
+            Couple&rsquo;s Allowance instead.
+          </li>
+        </ul>
+
+        <h2>How much it is worth</h2>
+        <p>
+          The higher earner&rsquo;s tax falls by 20% of £1,260, which is £252. The lower earner&rsquo;s own allowance
+          falls to £11,310. If they earn £11,310 or less, that costs them nothing, so the couple gains the full £252.
+          If they earn between £11,310 and £12,570, they pay some tax on the slice above £11,310, and the gain is
+          smaller.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Lower earner&rsquo;s income</th>
+              <th>Higher earner&rsquo;s income</th>
+              <th>Couple gains each year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£8,000</td><td>£30,000</td><td>£252</td></tr>
+            <tr><td>£11,500</td><td>£30,000</td><td>£214</td></tr>
+            <tr><td>£12,000</td><td>£30,000</td><td>£114</td></tr>
+            <tr><td>£12,570</td><td>£30,000</td><td>Nothing: it costs as much as it saves</td></tr>
+            <tr><td>£8,000</td><td>£13,000</td><td>£86 (the higher earner only pays £86 tax)</td></tr>
+            <tr><td>£8,000</td><td>£55,000</td><td>Not eligible: higher rate taxpayer</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The £12,000 example is easy to get wrong: the higher earner saves £252, but the lower earner now pays £138
+          of tax on the £690 above £11,310, leaving a gain of £114. Claim only if the household comes out ahead.
+        </p>
+
+        <h2>Claiming for earlier years</h2>
+        <p>
+          You can backdate a claim for up to four tax years if you were eligible in each of them. In 2026/27 that
+          means 2022/23, 2023/24, 2024/25 and 2025/26. The allowance was £1,260 in each of those years, so a couple who
+          gain the full amount every year can receive <strong>£1,260 in total</strong>: £252 this year and £1,008
+          backdated. HMRC pays backdated amounts as a lump sum to the higher earner.
+        </p>
+
+        <h2>How to claim</h2>
+        <p>
+          The lower earner applies on GOV.UK, free of charge. It takes a few minutes and needs both National Insurance
+          numbers. You do not need to use a claims company: they charge a share of the refund for something you can do
+          yourself.
+        </p>
+        <p>
+          Once it is in place, HMRC changes both <Link href="/tax-and-salary/tax-code-decoder">tax codes</Link>. The
+          higher earner&rsquo;s code ends in M (for example 1383M) and the lower earner&rsquo;s ends in N (for example
+          1131N). The allowance renews each year automatically until you cancel it or your circumstances change.
+        </p>
+
+        <h2>When to cancel</h2>
+        <ul>
+          <li>
+            The lower earner&rsquo;s income rises above £12,570, or the higher earner moves into the higher rate band
+            (perhaps after a <Link href="/tax-and-salary/pay-rise">pay rise</Link>).
+          </li>
+          <li>You divorce, end a civil partnership, or your partner dies (special rules apply on bereavement).</li>
+        </ul>
+        <p>
+          If you claim when you are not entitled, HMRC will ask for the tax back, so review the claim each April.
+        </p>
+
+        <h2>Scotland</h2>
+        <p>
+          In Scotland the rules are the same, except that the higher earner must not pay tax above the intermediate
+          rate (21%). A Scottish higher earner on £45,000 is above the £43,662 limit and cannot receive the allowance.
+          The saving is still worked out at 20%, so a couple where the lower earner earns £8,000 and the higher earner
+          £40,000 still gain £252.
+        </p>
+
+        <p>
+          Check your own figures, including backdating, with the{" "}
+          <Link href="/tax-and-salary/marriage-allowance">Marriage Allowance calculator</Link>, and see what else you
+          take home with the <Link href="/tax-and-salary/salary-calculator">salary calculator</Link>.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "uk-take-home-pay-explained",
     title: "How UK take-home pay works in 2026/27: a plain-English guide",
+    seoTitle: "How UK Take-Home Pay Works in 2026/27",
     description:
-      "Income Tax, National Insurance, the Personal Allowance and the hidden 60% trap — exactly what comes out of your salary in 2026/27, explained with a worked example.",
+      "Income Tax, National Insurance, the Personal Allowance and the hidden 60% trap: what comes out of your salary in 2026/27, with a worked example.",
     date: "2026-05-20",
     dateLabel: "20 May 2026",
     readingTime: "8 min read",
@@ -237,8 +516,9 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "100k-tax-trap",
     title: "The £100,000 tax trap: why a pay rise can cost you 62% and how to keep more",
+    seoTitle: "The £100,000 Tax Trap: 62% Tax Explained",
     description:
-      "Between £100,000 and £125,140 you lose your Personal Allowance, free childcare and Tax-Free Childcare. Here is what that really costs in 2026/27, and how pension contributions win it back.",
+      "Earn £100,000 to £125,140 and you lose your Personal Allowance and childcare help. What that costs in 2026/27, and how pension contributions win it back.",
     date: "2026-10-06",
     dateLabel: "6 October 2026",
     readingTime: "9 min read",
@@ -482,8 +762,9 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "plan-2-vs-plan-5-student-loans",
     title: "Plan 2 vs Plan 5 student loans: what you will actually repay",
+    seoTitle: "Plan 2 vs Plan 5 Student Loans: What You Repay",
     description:
-      "Plan 5 has a lower threshold, a lower interest rate and a 40-year term. We compare Plan 2 and Plan 5 for 2026/27, with lifetime projections, and explain when overpaying helps and when it wastes money.",
+      "Plan 2 vs Plan 5 for 2026/27: thresholds, interest and write-off compared with lifetime projections, and when overpaying your student loan helps or wastes money.",
     date: "2026-10-06",
     dateLabel: "6 October 2026",
     readingTime: "9 min read",
@@ -714,8 +995,9 @@ export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "first-time-buyer-costs",
     title: "Buying your first home in 2026/27: the real cost, from deposit to monthly payments",
+    seoTitle: "First-Time Buyer Costs 2026/27: The Real Total",
     description:
-      "Stamp Duty relief, deposits, legal fees, surveys and mortgage payments for first-time buyers in England, Scotland and Wales, with a full worked example for a £350,000 home.",
+      "Stamp Duty relief, deposit, legal fees, surveys and mortgage payments for first-time buyers in England, Scotland and Wales, worked through for a £350,000 home.",
     date: "2026-10-06",
     dateLabel: "6 October 2026",
     readingTime: "9 min read",

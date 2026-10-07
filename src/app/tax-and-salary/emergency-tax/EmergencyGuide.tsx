@@ -46,7 +46,7 @@ export default function EmergencyGuide() {
       title="Emergency tax codes, explained clearly"
       intro={
         <>
-          An emergency tax code is a temporary code your employer uses when HMRC has not yet sent the right one. It often
+          An emergency <a href="/tax-and-salary/tax-code-decoder">tax code</a>{" "}is a temporary code your employer uses when HMRC has not yet sent the right one. It often
           means you pay too much tax for a few months. This guide explains how each emergency code works, how much you
           might overpay, and how to get the code fixed and your money back.
         </>
@@ -72,7 +72,7 @@ export default function EmergencyGuide() {
 
       <GuideSection id="why" n={2} kicker="Causes" title="Why you might be on one">
         <ul>
-          <li>You start a new job and your employer does not have a P45 from your last job.</li>
+          <li>You start a new job and your employer does not have a <a href="/tax-and-salary/p45-p60-explainer">P45</a>{" "}from your last job.</li>
           <li>You start working for the first time, or after a gap, part-way through the tax year.</li>
           <li>You start getting a workplace or private pension.</li>
           <li>You start or stop receiving a company benefit, such as a company car.</li>
@@ -249,7 +249,7 @@ export default function EmergencyGuide() {
         </p>
         <p>
           The same applies when returning to work after a career break, parental leave or time on benefits. If you claimed
-          Jobseeker&rsquo;s Allowance or Employment and Support Allowance, your P45 from the Jobcentre helps payroll get
+          Jobseeker&rsquo;s Allowance or <a href="/benefits/new-style-esa">Employment and Support Allowance</a>, your P45 from the Jobcentre helps payroll get
           your tax right.
         </p>
       </GuideSection>

@@ -52,7 +52,7 @@ export default function CtrGuide() {
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
           <li>Council Tax Reduction can pay up to all of your council tax if you are on a low income or benefits.</li>
-          <li>It is claimed from your council, separately from Universal Credit or Pension Credit.</li>
+          <li>It is claimed from your council, separately from Universal Credit or <a href="/benefits/pension-credit">Pension Credit</a>.</li>
           <li>
             Pensioners on Pension Credit Guarantee Credit get their <strong>whole bill</strong> covered.
           </li>
@@ -107,7 +107,7 @@ export default function CtrGuide() {
           ]}
         />
         <p>
-          You count as a pensioner if you, or both of you if a couple, have reached State Pension age and you do not get Universal Credit. The
+          You count as a pensioner if you, or both of you if a couple, have reached <a href="/investing/state-pension-age">State Pension age</a>{" "}and you do not get Universal Credit. The
           calculator uses national rules where they apply, and lets you set your council&rsquo;s maximum and taper for working-age schemes in
           England.
         </p>
@@ -124,7 +124,7 @@ export default function CtrGuide() {
             with you.
           </li>
           <li>
-            <strong>Applicable amount.</strong> The weekly needs figure for your household, the same as for Housing Benefit.
+            <strong>Applicable amount.</strong> The weekly needs figure for your household, the same as for <a href="/benefits/housing-benefit">Housing Benefit</a>.
           </li>
           <li>
             <strong>Taper.</strong> If your weekly income is above the applicable amount, 20% of the difference comes off the maximum.
@@ -161,7 +161,7 @@ export default function CtrGuide() {
       <GuideSection id="income" n={6} kicker="Means test" title="Income and savings">
         <p>
           Income is counted much as it is for Housing Benefit. State Pension, private pensions, earnings after tax and Carer&rsquo;s Allowance
-          count. Child Benefit, child maintenance, PIP, DLA and Attendance Allowance are ignored. A small part of earnings is disregarded: £5 for
+          count. Child Benefit, <a href="/benefits/child-maintenance">child maintenance</a>, PIP, DLA and Attendance Allowance are ignored. A small part of earnings is disregarded: £5 for
           a single person, £10 for a couple, £20 with a disability or carer premium and £25 for a lone parent.
         </p>
         <p>
@@ -188,7 +188,7 @@ export default function CtrGuide() {
           ]}
         />
         <p>
-          No deductions are made if you or your partner get Attendance Allowance, PIP daily living or DLA care, or are registered blind. Councils&rsquo;
+          No deductions are made if you or your partner get <a href="/benefits/attendance-allowance">Attendance Allowance</a>, PIP daily living or DLA care, or are registered blind. Councils&rsquo;
           working-age schemes and the Welsh and Scottish schemes set their own amounts, often similar or lower.
         </p>
       </GuideSection>

@@ -46,7 +46,7 @@ export default function SornGuide() {
           <li>Making a SORN is free and takes a few minutes online.</li>
           <li>You get back tax for every full calendar month left after the month the DVLA receives the SORN.</li>
           <li>A car on the £200 standard rate with SORN on 15 October and tax due on 1 April gets £83.33 back.</li>
-          <li>A SORN car must be kept off public roads, except to drive to a pre-booked MOT.</li>
+          <li>A SORN car must be kept off public roads, except to drive to a pre-booked <a href="/vehicles/mot-history-checker">MOT</a>.</li>
         </ul>
         <KeyStats
           items={[

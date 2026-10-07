@@ -111,7 +111,7 @@ export default function DegreeGuide() {
 
       <GuideSection id="interest" n={5} kicker="Interest" title="Interest while you study">
         <p>
-          Plan 5 loans charge interest at RPI only: 4.1% from September 2026, based on March 2026 RPI. That is lower than older Plan 2 loans, which
+          Plan 5 loans charge interest at RPI only: 4.1% from September 2026, based on March 2026 RPI. That is lower than older <a href="/students/plan-2-student-loan">Plan 2</a>{" "}loans, which
           charge up to RPI plus 3% while you study. Interest is added from the day each payment is made, so by graduation the balance is already
           larger than what you borrowed: about £3,900 more on a £63,700 three-year loan at 3%.
         </p>
@@ -226,7 +226,7 @@ export default function DegreeGuide() {
           Scottish students at Scottish universities pay no tuition fees: see the <a href="/students/saas-funding">SAAS funding calculator</a>.
           Welsh students get a non-repayable grant of at least £1,020 alongside their loan: see the{" "}
           <a href="/students/welsh-student-finance">Welsh student finance calculator</a>. Northern Ireland has lower fees at its own universities
-          and Plan 1 loans.
+          and <a href="/students/plan-1-student-loan">Plan 1</a>{" "}loans.
         </p>
       </GuideSection>
 
@@ -285,7 +285,7 @@ export default function DegreeGuide() {
         <p>
           Repayments come straight out of your pay, so it helps to think of them monthly. On £28,000 a year, 9% of the £3,000 over the threshold is £270
           a year, or £22.50 a month. On £35,000 it is £75 a month; on £45,000, £150 a month; on £60,000, £262.50 a month. Because the threshold rises
-          with inflation from 2027, a pay rise that only keeps up with prices does not increase what you repay in real terms.
+          with inflation from 2027, a <a href="/tax-and-salary/pay-rise">pay rise</a>{" "}that only keeps up with prices does not increase what you repay in real terms.
         </p>
       </GuideSection>
 

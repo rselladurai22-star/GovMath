@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import ReverseStudio from "./ReverseStudio";
+import { ogFor } from "@/gm/og";
 import ReverseGuide from "./ReverseGuide";
 
 export const metadata: Metadata = {
-  title: "Reverse Salary Calculator UK: What Salary Gives Me £X a Month? (2026/27)",
+  title: "Reverse Salary Calculator UK 2026/27",
   description:
-    "Enter the take-home pay you want and see the salary you need in 2026/27, after Income Tax, National Insurance, student loan and pension. England, Wales, NI and Scotland.",
+    "Free reverse salary calculator. Enter the take-home pay you want each month and see the gross salary you need after tax, NI, pension and student loan.",
   alternates: { canonical: "/tax-and-salary/reverse-take-home" },
+  openGraph: ogFor("/tax-and-salary/reverse-take-home"),
 };
 
 const BREADCRUMBS = [

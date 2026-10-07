@@ -71,7 +71,7 @@ export default function OvertimeGuide() {
         />
         <p>
           Many employers use different rates for different times, for example time and a half on weekdays and double
-          time on Sundays and bank holidays. The calculator lets you add a second rate under More options.
+          time on Sundays and <a href="/life/bank-holidays">bank holidays</a>. The calculator lets you add a second rate under More options.
         </p>
         <p>
           Some contracts offer <strong>time off in lieu</strong> (TOIL) instead of pay, and salaried roles often say
@@ -80,7 +80,7 @@ export default function OvertimeGuide() {
       </GuideSection>
 
       <GuideSection id="hourly-rate" n={2} kicker="The base" title="Finding your basic hourly rate">
-        <p>If you are salaried, overtime is usually based on an hourly rate worked out from your salary:</p>
+        <p>If you are salaried, overtime is usually based on an <a href="/tax-and-salary/hourly-to-salary">hourly rate</a>{" "}worked out from your salary:</p>
         <p>
           <strong>Hourly rate = yearly salary ÷ (contracted hours a week × 52)</strong>
         </p>
@@ -115,7 +115,7 @@ export default function OvertimeGuide() {
           </li>
           <li>
             <strong>Student loan</strong> repayments are also worked out on each payment, at 9% of pay above the monthly
-            threshold (£2,448.75 for Plan 2).
+            threshold (£2,448.75 for <a href="/students/plan-2-student-loan">Plan 2</a>).
           </li>
         </ul>
         <WorkedExample
@@ -168,7 +168,7 @@ export default function OvertimeGuide() {
 
       <GuideSection id="one-off" n={5} kicker="Timing" title="Regular or one-off overtime">
         <p>
-          If you work overtime only occasionally, it behaves like a small bonus: the month it is paid shows the extra
+          If you work overtime only occasionally, it behaves like a small <a href="/tax-and-salary/bonus-tax">bonus</a>: the month it is paid shows the extra
           Income Tax all at once, and the NI and student loan for that month only. Over a full year the Income Tax comes
           out the same as if the overtime had been spread evenly.
         </p>
@@ -187,7 +187,7 @@ export default function OvertimeGuide() {
         <ul>
           <li>
             <strong>Minimum wage.</strong> Your total pay divided by all the hours you work, overtime included, must not
-            fall below the minimum wage. From April 2026 that is £12.71 an hour if you are 21 or over.
+            fall below the <a href="/tax-and-salary/minimum-wage">minimum wage</a>. From April 2026 that is £12.71 an hour if you are 21 or over.
           </li>
           <li>
             <strong>Working time.</strong> Most workers cannot be required to work more than 48 hours a week on
@@ -211,7 +211,7 @@ export default function OvertimeGuide() {
 
       <GuideSection id="pensions" n={7} kicker="Knock-on effects" title="Overtime, pensions and benefits">
         <p>
-          Whether your pension contribution is taken from overtime depends on the scheme. Many auto-enrolment schemes
+          Whether your pension contribution is taken from overtime depends on the scheme. Many <a href="/investing/workplace-pension">auto-enrolment</a>{" "}schemes
           use &ldquo;qualifying earnings&rdquo;, which include overtime, so the same percentage comes off. Others only
           use basic salary. If a contribution is taken by salary sacrifice it also reduces the tax and NI on the
           overtime.
@@ -319,6 +319,9 @@ export default function OvertimeGuide() {
           After Income Tax and National Insurance, a basic-rate taxpayer keeps 72% of these figures and a higher-rate
           taxpayer 58%. So time and a half on £20 an hour is worth £21.60 after tax at the basic rate, and £17.40 at the
           higher rate.
+        </p>
+      <p>
+          To add up the hours on your timesheet first, the <a href="/life/timesheet-decimal">timesheet calculator</a> converts hours and minutes to decimal hours.
         </p>
       </GuideSection>
 

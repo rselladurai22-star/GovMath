@@ -120,7 +120,7 @@ export default function MaternityGuide() {
         </p>
         <ul>
           <li>Overtime, commission and bonuses paid in that period count.</li>
-          <li>A pay rise that takes effect at any time before the end of your SMP must be included, and SMP recalculated.</li>
+          <li>A <a href="/tax-and-salary/pay-rise">pay rise</a>{" "}that takes effect at any time before the end of your SMP must be included, and SMP recalculated.</li>
           <li>Salary sacrifice reduces the pay that counts, unless the scheme protects it.</li>
         </ul>
         <Callout tone="good" title="Timing a bonus or overtime">
@@ -220,7 +220,7 @@ export default function MaternityGuide() {
       <GuideSection id="during" n={9} kicker="Your rights" title="During your leave">
         <ul>
           <li>
-            <strong>Holiday:</strong> you keep accruing paid holiday for the whole 52 weeks, including bank holidays if your
+            <strong>Holiday:</strong> you keep accruing paid holiday for the whole 52 weeks, including <a href="/life/bank-holidays">bank holidays</a>{" "}if your
             contract gives them.
           </li>
           <li>
@@ -240,7 +240,7 @@ export default function MaternityGuide() {
 
       <GuideSection id="tax" n={10} kicker="Interactions" title="Tax, pensions and benefits">
         <p>
-          SMP is paid through payroll and taxed like pay: Income Tax and National Insurance come off. Because your pay falls,
+          SMP is paid through payroll and taxed like pay: Income Tax and <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}come off. Because your pay falls,
           you may pay less tax overall that year, and payroll often refunds some tax automatically.
         </p>
         <p>
@@ -280,7 +280,7 @@ export default function MaternityGuide() {
         />
         <p>
           Building a cushion before the baby arrives, checking whether your household could get Universal Credit, and using
-          holiday to extend paid time off all help. Child Benefit, at £27.05 a week for a first child, also starts once you
+          holiday to extend paid time off all help. <a href="/benefits/child-benefit">Child Benefit</a>, at £27.05 a week for a first child, also starts once you
           claim.
         </p>
       </GuideSection>

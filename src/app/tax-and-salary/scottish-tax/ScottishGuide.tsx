@@ -177,7 +177,7 @@ export default function ScottishGuide() {
           67.5% Income Tax rate, or 69.5% with NI.
         </p>
         <Callout tone="good" title="Pension contributions in the 50% zone">
-          A £1 salary sacrifice pension contribution between £43,663 and £50,270 costs only 50p of take-home pay. Taking a
+          A £1 <a href="/tax-and-salary/salary-sacrifice">salary sacrifice</a>{" "}pension contribution between £43,663 and £50,270 costs only 50p of take-home pay. Taking a
           £50,000 salary back to £43,662 puts £6,338 in a pension for about £3,169 of take-home pay.
         </Callout>
       </GuideSection>
@@ -193,10 +193,10 @@ export default function ScottishGuide() {
         <p>
           <strong>Savings interest and dividends</strong> are taxed using the UK bands and rates, wherever you live. So
           are <strong>capital gains</strong>. Scottish taxpayers get the same £1,000 or £500 Personal Savings Allowance,
-          based on the UK higher-rate threshold of £50,270, and the same £500 dividend allowance.
+          based on the UK higher-rate threshold of £50,270, and the same £500 <a href="/investing/dividend-tax">dividend allowance</a>.
         </p>
         <p>
-          National Insurance, the Personal Allowance and the High Income Child Benefit Charge are also UK-wide.
+          National Insurance, the Personal Allowance and the <a href="/benefits/high-income-child-benefit">High Income Child Benefit Charge</a>{" "}are also UK-wide.
         </p>
       </GuideSection>
 
@@ -212,7 +212,7 @@ export default function ScottishGuide() {
           HMRC. Many intermediate-rate taxpayers get the extra 1% through their tax code without asking.
         </p>
         <p>
-          <strong>Marriage Allowance</strong> works in Scotland if the person receiving it pays tax at the starter, basic
+          <strong><a href="/tax-and-salary/marriage-allowance">Marriage Allowance</a></strong> works in Scotland if the person receiving it pays tax at the starter, basic
           or intermediate rate. It cuts their tax by up to £252 a year.
         </p>
       </GuideSection>
@@ -220,7 +220,7 @@ export default function ScottishGuide() {
       <GuideSection id="student-loans" n={8} kicker="Student loans" title="Plan 4 student loans">
         <p>
           Students who were living in Scotland when they started a course funded by the Student Awards Agency Scotland
-          are usually on <strong>Plan 4</strong>. Repayments are 9% of income above £33,795 a year in 2026/27, the
+          are usually on <strong><a href="/students/plan-4-student-loan">Plan 4</a></strong>. Repayments are 9% of income above £33,795 a year in 2026/27, the
           highest threshold of any plan. Postgraduate loans for Scottish students are also usually on Plan 4.
         </p>
         <p>
@@ -276,7 +276,7 @@ export default function ScottishGuide() {
         </p>
         <p>
           Class 4 National Insurance is UK-wide: 6% on profits between £12,570 and £50,270 and 2% above. So a self-employed
-          person in Scotland with profits between £43,663 and £50,270 pays 42% Income Tax plus 6% NI, a 48% marginal rate.
+          person in Scotland with profits between £43,663 and £50,270 pays 42% Income Tax plus 6% NI, a 48% <a href="/tax-and-salary/tax-bracket-checker">marginal rate</a>.
         </p>
         <p>
           Payments on account are based on last year&rsquo;s bill, so if Scottish rates make your bill higher, the first

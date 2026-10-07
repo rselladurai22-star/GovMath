@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import SharedOwnershipStudio from "./SharedOwnershipStudio";
+import { ogFor } from "@/gm/og";
 import SharedOwnershipGuide from "./SharedOwnershipGuide";
 
 export const metadata: Metadata = {
-  title: "Shared Ownership Calculator (England, 2026)",
+  title: "Shared Ownership Calculator UK 2026",
   description:
-    "Monthly mortgage, rent and service charge for a shared ownership home, compared with buying outright. Plus staircasing costs, rent rises and your Stamp Duty choices.",
+    "Free shared ownership calculator. See the monthly mortgage, rent and service charge on your share, compared with buying outright, plus staircasing costs.",
   alternates: { canonical: "/property/shared-ownership" },
+  openGraph: ogFor("/property/shared-ownership"),
 };
 
 const BREADCRUMBS = [

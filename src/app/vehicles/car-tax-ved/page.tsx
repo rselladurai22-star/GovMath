@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import VedStudio from "./VedStudio";
+import { ogFor } from "@/gm/og";
 import VedGuide from "./VedGuide";
 
 export const metadata: Metadata = {
-  title: "Car Tax Calculator UK 2026/27 (VED Rates)",
+  title: "Car Tax Calculator UK 2026/27 (VED)",
   description:
-    "Work out your car tax from 1 April 2026: first-year rates by CO2, the £200 standard rate, the £440 expensive car supplement, electric car rules and bands A to M.",
+    "Free car tax calculator for 2026/27. See first-year and standard VED rates by CO2 band, the expensive car supplement and electric car tax.",
   alternates: { canonical: "/vehicles/car-tax-ved" },
+  openGraph: ogFor("/vehicles/car-tax-ved"),
 };
 
 const BREADCRUMBS = [

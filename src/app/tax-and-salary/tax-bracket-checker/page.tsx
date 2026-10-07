@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import TaxBracketStudio from "./TaxBracketStudio";
+import { ogFor } from "@/gm/og";
 import TaxBracketGuide from "./TaxBracketGuide";
 
 export const metadata: Metadata = {
-  title: "Tax Bracket Calculator: Which UK Tax Band Am I In? (2026/27)",
+  title: "Tax Bracket Calculator UK 2026/27",
   description:
-    "Find your UK Income Tax band for 2026/27, your marginal and effective rate, how far you are from the next band, and how pension contributions or Gift Aid move you down.",
+    "Free tax bracket calculator for 2026/27. See which Income Tax band you are in, your marginal rate, and what the next pound or pay rise really costs.",
   alternates: { canonical: "/tax-and-salary/tax-bracket-checker" },
+  openGraph: ogFor("/tax-and-salary/tax-bracket-checker"),
 };
 
 const BREADCRUMBS = [

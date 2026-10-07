@@ -164,7 +164,7 @@ export default function NIGuide() {
           ]}
         />
         <p>
-          Because each pay period stands alone, a month with a bonus or overtime is charged on that month&rsquo;s pay
+          Because each pay period stands alone, a month with a <a href="/tax-and-salary/bonus-tax">bonus</a>{" "}or overtime is charged on that month&rsquo;s pay
           only. Nothing is evened out at the end of the year. With Income Tax, HMRC can refund you if you overpaid
           across the year. With NI, what was deducted in the month stays deducted, unless your employer made a mistake.
         </p>
@@ -228,7 +228,7 @@ export default function NIGuide() {
           Sole traders and partners pay <strong>Class 4</strong> NI on their taxable profits through their Self
           Assessment tax return. It uses the same £12,570 and £50,270 thresholds as employees, but lower rates: 6% on
           profits between the two, and 2% above. It is paid with your Income Tax, in your balancing payment by 31
-          January and through payments on account.
+          January and through <a href="/business/payment-on-account">payments on account</a>.
         </p>
         <CompareCards
           columns={[
@@ -298,7 +298,7 @@ export default function NIGuide() {
         </ul>
         <p>
           Most employers can also claim the <strong>Employment Allowance</strong>, which takes up to £10,500 a year off
-          their employer NI bill. A limited company whose only employee is a director cannot claim it.
+          their <a href="/business/employer-ni-costs">employer NI</a>{" "}bill. A limited company whose only employee is a director cannot claim it.
         </p>
       </GuideSection>
 
@@ -324,7 +324,7 @@ export default function NIGuide() {
         </p>
         <Callout tone="warn" title="A change is planned for April 2029">
           The government has announced that, from April 2029, salary-sacrificed pension contributions above £2,000 a
-          year will be charged NI. Sacrifice below that limit, and ordinary tax relief on pension contributions, are not
+          year will be charged NI. Sacrifice below that limit, and ordinary <a href="/investing/pension-tax-relief">tax relief on pension</a>{" "}contributions, are not
           affected. Nothing changes for 2026/27.
         </Callout>
       </GuideSection>
@@ -347,8 +347,8 @@ export default function NIGuide() {
           </li>
           <li>
             <strong>NI credits</strong>, which are given free in many situations: claiming Child Benefit for a child
-            under 12, receiving Universal Credit, Carer&rsquo;s Allowance or Carer&rsquo;s Credit, being on statutory
-            sick, maternity or paternity pay, or looking after a grandchild under 12 for a working parent.
+            under 12, receiving Universal Credit, <a href="/benefits/carers-earnings">Carer&rsquo;s Allowance</a>{" "}or Carer&rsquo;s Credit, being on statutory
+            sick, maternity or <a href="/benefits/paternity-pay">paternity pay</a>, or looking after a grandchild under 12 for a working parent.
           </li>
           <li>
             <strong>Voluntary Class 3 contributions</strong>, at £18.40 a week, or £956.80 for a full year.

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import OvertimeStudio from "./OvertimeStudio";
+import { ogFor } from "@/gm/og";
 import OvertimeGuide from "./OvertimeGuide";
 
 export const metadata: Metadata = {
-  title: "Overtime Pay Calculator (UK, 2026/27)",
+  title: "Overtime Calculator UK 2026/27",
   description:
-    "Work out your overtime pay and what you keep after Income Tax, National Insurance and student loan, at time and a half, double time or your own rate. 2026/27 rates.",
+    "Free overtime pay calculator. Work out time and a half or double time, and see what your extra hours are worth after Income Tax and NI in 2026/27.",
   alternates: { canonical: "/tax-and-salary/overtime" },
+  openGraph: ogFor("/tax-and-salary/overtime"),
 };
 
 const BREADCRUMBS = [

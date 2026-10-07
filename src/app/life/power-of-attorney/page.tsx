@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import LpaStudio from "./LpaStudio";
+import { ogFor } from "@/gm/og";
 import LpaGuide from "./LpaGuide";
 
 export const metadata: Metadata = {
-  title: "Power of Attorney Cost Calculator (LPA Fees 2026)",
+  title: "Power of Attorney Cost Calculator 2026",
   description:
-    "Work out what Lasting Powers of Attorney cost in England and Wales: £92 per LPA, fee reductions and exemptions, solicitor fees, and how it compares with a Court of Protection deputyship.",
+    "Free calculator for the cost of a Lasting Power of Attorney. See the registration fee, fee reductions and exemptions, and the cost of using a solicitor.",
   alternates: { canonical: "/life/power-of-attorney" },
+  openGraph: ogFor("/life/power-of-attorney"),
 };
 
 const BREADCRUMBS = [

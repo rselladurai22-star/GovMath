@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import LoanStudio from "@/components/students/LoanStudio";
 import { CALCULATORS } from "@/lib/calculators";
+import { ogFor } from "@/gm/og";
 import PostgradGuide from "./PostgradGuide";
 
 export const metadata: Metadata = {
-  title: "Postgraduate Loan Repayment Calculator 2026/27",
+  title: "Postgraduate Loan Calculator 2026/27",
   description:
-    "Work out your Master's or Doctoral Loan repayments: 6% of income above \u00a321,000, alongside any undergraduate loan, with interest capped at 6% from September 2026.",
+    "Free Postgraduate Loan repayment calculator for 2026/27. See the 6% repayments above £21,000, how they stack with Plan 2 or 5, and the total you repay.",
   alternates: { canonical: "/students/postgrad-loan" },
+  openGraph: ogFor("/students/postgrad-loan"),
 };
 
 const BREADCRUMBS = [

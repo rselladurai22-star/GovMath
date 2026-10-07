@@ -111,7 +111,7 @@ export default function PipGuide() {
 
       <GuideSection id="who" n={3} kicker="Eligibility" title="Who can get PIP">
         <ul>
-          <li>You are aged 16 or over and under State Pension age when you claim.</li>
+          <li>You are aged 16 or over and under <a href="/investing/state-pension-age">State Pension age</a>{" "}when you claim.</li>
           <li>You have had difficulties for at least 3 months and expect them to last at least 9 more months.</li>
           <li>You normally live in England, Wales or Northern Ireland. In Scotland, Adult Disability Payment has replaced PIP.</li>
         </ul>
@@ -312,15 +312,15 @@ export default function PipGuide() {
           ]}
         />
         <p>
-          PIP can also add extra amounts to other benefits, such as the severe disability addition in Pension Credit, and some councils
+          PIP can also add extra amounts to other benefits, such as the severe disability addition in <a href="/benefits/pension-credit">Pension Credit</a>, and some councils
           give Council Tax discounts or free bus passes.
         </p>
       </GuideSection>
 
       <GuideSection id="other" n={13} kicker="Interactions" title="PIP and other benefits">
         <p>
-          PIP is ignored as income for Universal Credit, Housing Benefit and Pension Credit, so it never reduces them. It is tax-free. It does
-          not affect the Universal Credit health element, which depends on a separate Work Capability Assessment.
+          PIP is ignored as income for Universal Credit, <a href="/benefits/housing-benefit">Housing Benefit</a>{" "}and Pension Credit, so it never reduces them. It is tax-free. It does
+          not affect the <a href="/benefits/universal-credit">Universal Credit</a>{" "}health element, which depends on a separate Work Capability Assessment.
         </p>
         <p>
           When you reach State Pension age you keep PIP, and the award is usually reviewed less often. You cannot claim PIP for the first time

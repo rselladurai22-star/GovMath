@@ -55,8 +55,8 @@ export default function LBTTGuide() {
       title="Land and Buildings Transaction Tax, explained"
       intro={
         <>
-          If you buy a home in Scotland you pay Land and Buildings Transaction Tax (LBTT) rather than Stamp Duty. This guide
-          explains the 2026/27 rates, how first-time buyer relief and the 8% Additional Dwelling Supplement work, when you can
+          If you buy a home in Scotland you pay Land and Buildings Transaction Tax (LBTT) rather than <a href="/property/stamp-duty-england">Stamp Duty</a>. This guide
+          explains the 2026/27 rates, how <a href="/property/first-time-buyer">first-time buyer relief</a>{" "}and the 8% Additional Dwelling Supplement work, when you can
           claim the supplement back, and how the bill compares with England and Wales.
         </>
       }
@@ -105,7 +105,7 @@ export default function LBTTGuide() {
       </GuideSection>
 
       <GuideSection id="example" n={3} kicker="Worked example" title="A worked example">
-        <p>Here is the tax on a £280,000 home bought by someone moving house.</p>
+        <p>Here is the tax on a £280,000 home bought by someone <a href="/property/moving-house-budget">moving house</a>.</p>
         <WorkedExample
           title="LBTT on £280,000, moving home"
           steps={[
@@ -178,7 +178,7 @@ export default function LBTTGuide() {
       <GuideSection id="who-ads" n={6} kicker="Who pays it" title="Who pays ADS">
         <p>ADS usually applies when, at the end of the day you buy, you own two or more homes. Common cases:</p>
         <ul>
-          <li>buying a buy-to-let property or a holiday home;</li>
+          <li>buying a <a href="/property/buy-to-let-yield">buy-to-let</a>{" "}property or a holiday home;</li>
           <li>buying a new home before you have sold your old one;</li>
           <li>buying a home for a child to live in, if you are named on the title and already own your own home;</li>
           <li>buying jointly with someone who already owns a home and is keeping it.</li>
@@ -256,7 +256,7 @@ export default function LBTTGuide() {
         />
         <p>
           For second homes the gap is wider still. A £300,000 buy-to-let costs £28,600 in Scotland, £20,000 in England and
-          £19,950 in Wales.
+          £19,950 <a href="/property/ltt-wales">in Wales</a>.
         </p>
       </GuideSection>
 

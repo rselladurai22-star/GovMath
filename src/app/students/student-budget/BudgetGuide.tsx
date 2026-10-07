@@ -140,9 +140,9 @@ export default function BudgetGuide() {
 
       <GuideSection id="job" n={7} kicker="Earning" title="Working while you study">
         <p>
-          Many universities suggest no more than 15 hours of paid work a week during term. From April 2026 the minimum wage is £12.71 an hour at 21
+          Many universities suggest no more than 15 hours of paid work a week during term. From April 2026 the <a href="/tax-and-salary/minimum-wage">minimum wage</a>{" "}is £12.71 an hour at 21
           or over and £10.85 at 18 to 20. Ten hours a week at £12.71 over 30 weeks adds £3,813 to your year. Most students earn less than the
-          £12,570 Personal Allowance, so pay no Income Tax; check your tax code is not emergency tax. Earnings do not reduce your student loan.
+          £12,570 Personal Allowance, so pay no Income Tax; check your tax code is not <a href="/tax-and-salary/emergency-tax">emergency tax</a>. Earnings do not reduce your student loan.
         </p>
       </GuideSection>
 

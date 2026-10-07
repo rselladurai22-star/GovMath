@@ -158,7 +158,7 @@ export default function RightToRentGuide() {
         </Callout>
         <p>
           If a person cannot show their right to rent, for example because they have an outstanding application, you can ask the Home Office Landlord
-          Checking Service, which normally replies within 2 working days.
+          Checking Service, which normally replies within 2 <a href="/life/days-between-dates">working days</a>.
         </p>
       </GuideSection>
 

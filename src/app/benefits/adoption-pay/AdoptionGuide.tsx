@@ -53,7 +53,7 @@ export default function AdoptionGuide() {
           <li>Statutory Adoption Pay is <strong>90% of your average weekly earnings for 6 weeks</strong>, then <strong>£194.32 a week</strong> (or 90% if lower) for 33 weeks.</li>
           <li>You need <strong>26 weeks with your employer</strong> by the week you are matched, and earnings of at least <strong>£129 a week</strong>.</li>
           <li>Adoption leave of up to 52 weeks is a day-one right for employees.</li>
-          <li>Only one adopter gets adoption pay; the other can get paternity pay or share leave.</li>
+          <li>Only one adopter gets adoption pay; the other can get <a href="/benefits/paternity-pay">paternity pay</a>{" "}or share leave.</li>
         </ul>
         <KeyStats
           items={[
@@ -87,7 +87,7 @@ export default function AdoptionGuide() {
           ]}
         />
         <p>
-          The rates are the same as Statutory Maternity Pay. Your employer pays it through payroll, so Income Tax and National Insurance are taken
+          The rates are the same as Statutory Maternity Pay. Your employer pays it through payroll, so Income Tax and <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}are taken
           off, and recovers most or all of it from HMRC.
         </p>
       </GuideSection>
@@ -110,7 +110,7 @@ export default function AdoptionGuide() {
           check how a sacrifice scheme affects your pay. The calculator estimates it as your salary divided by 52 unless you enter a figure.
         </p>
         <Callout title="A pay rise counts">
-          If you get a pay rise that would have applied during the 8 weeks, even if it is backdated later, your adoption pay is recalculated.
+          If you get a <a href="/tax-and-salary/pay-rise">pay rise</a>{" "}that would have applied during the 8 weeks, even if it is backdated later, your adoption pay is recalculated.
         </Callout>
       </GuideSection>
 
@@ -205,10 +205,10 @@ export default function AdoptionGuide() {
       <GuideSection id="money" n={12} kicker="Other help" title="Other money when a child arrives">
         <ul>
           <li><a href="/benefits/child-benefit">Child Benefit</a> from the date the child comes to live with you.</li>
-          <li>Universal Credit&rsquo;s child element, if you claim it.</li>
+          <li><a href="/benefits/universal-credit">Universal Credit</a>&rsquo;s child element, if you claim it.</li>
           <li>Adoption allowances from your local authority in some cases, particularly for children with additional needs.</li>
           <li>The <a href="/benefits/sure-start-maternity-grant">Sure Start Maternity Grant</a> if you adopt a child under 1 and get a qualifying benefit.</li>
-          <li>Funded childcare hours and Tax-Free Childcare once you return to work.</li>
+          <li>Funded childcare hours and <a href="/benefits/tax-free-childcare">Tax-Free Childcare</a>{" "}once you return to work.</li>
         </ul>
       </GuideSection>
 
@@ -228,7 +228,7 @@ export default function AdoptionGuide() {
         </p>
         <p>
           Your employer must keep paying its pension contributions during paid adoption leave as if you were on your normal pay. Your own
-          contributions are based on what you actually receive. If you pay into a pension by salary sacrifice, check with your employer how the
+          contributions are based on what you actually receive. If you pay into a pension by <a href="/tax-and-salary/salary-sacrifice">salary sacrifice</a>, check with your employer how the
           arrangement works while you are on leave.
         </p>
       </GuideSection>

@@ -156,7 +156,7 @@ export default function ProRataGuide() {
           ]}
         />
         <p>
-          Your tenancy deposit must be protected in a government-approved scheme within 30 days. A holding deposit must be returned or put towards
+          Your <a href="/property/deposit-return">tenancy deposit</a>{" "}must be protected in a government-approved scheme within 30 days. A holding deposit must be returned or put towards
           the first rent or deposit within the agreed deadline, usually 15 days.
         </p>
       </GuideSection>
@@ -195,7 +195,7 @@ export default function ProRataGuide() {
         <p>
           Universal Credit pays housing costs monthly, based on your assessment period, not your rent day. If you move in part-way through an
           assessment period, the housing element is usually worked out for the whole period at the new rent, as long as you are liable for rent on
-          the last day. Housing Benefit, used mainly by pensioners, is worked out weekly, so part weeks are calculated day by day.
+          the last day. <a href="/benefits/housing-benefit">Housing Benefit</a>, used mainly by pensioners, is worked out weekly, so part weeks are calculated day by day.
         </p>
       </GuideSection>
 

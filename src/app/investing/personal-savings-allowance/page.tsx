@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import PsaStudio from "./PsaStudio";
+import { ogFor } from "@/gm/og";
 import PsaGuide from "./PsaGuide";
 
 export const metadata: Metadata = {
-  title: "Personal Savings Allowance Calculator 2026/27: Tax on Savings Interest",
+  title: "Personal Savings Allowance Calculator 2026/27",
   description:
-    "Work out the tax on your savings interest in 2026/27: the £1,000 or £500 Personal Savings Allowance, the £5,000 starting rate for savings and the April 2027 rate rise.",
+    "Free calculator for tax on savings interest in 2026/27. Check your Personal Savings Allowance, the starting rate for savings and the tax you owe.",
   alternates: { canonical: "/investing/personal-savings-allowance" },
+  openGraph: ogFor("/investing/personal-savings-allowance"),
 };
 
 const BREADCRUMBS = [

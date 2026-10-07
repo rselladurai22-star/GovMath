@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import NIStudio from "./NIStudio";
 import NIGuide from "./NIGuide";
+import { ogFor } from "@/gm/og";
 import { CALCULATORS } from "@/lib/calculators";
 
 export const metadata: Metadata = {
-  title: "National Insurance Calculator (UK, 2026/27)",
+  title: "National Insurance Calculator UK 2026/27",
   description:
-    "Work out your UK National Insurance for 2026/27 — Class 1 (employee) or Class 4 (self-employed), band by band, with your effective and marginal NI rate. Free, private, no sign-up.",
+    "Free National Insurance calculator for 2026/27. See Class 1 employee NI at 8% and 2%, or Class 4 for the self-employed, band by band, by week, month or year.",
   alternates: { canonical: "/tax-and-salary/national-insurance" },
+  openGraph: ogFor("/tax-and-salary/national-insurance"),
 };
 
 type SearchParams = Promise<{ income?: string; mode?: string }>;

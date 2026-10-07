@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import PremiumBondsStudio from "./PremiumBondsStudio";
+import { ogFor } from "@/gm/og";
 import PremiumBondsGuide from "./PremiumBondsGuide";
 
 export const metadata: Metadata = {
-  title: "Premium Bonds Calculator UK: How Much Could I Win?",
+  title: "Premium Bonds Calculator UK: What Could I Win?",
   description:
-    "See what you are likely to win with Premium Bonds at the 4.35% prize fund rate, in a typical, unlucky and lucky year, and compare with a savings account after tax.",
+    "Free Premium Bonds calculator. See what you could win at the current prize rate in a typical, unlucky and lucky year, compared with a savings account after tax.",
   alternates: { canonical: "/investing/premium-bonds" },
+  openGraph: ogFor("/investing/premium-bonds"),
 };
 
 const BREADCRUMBS = [

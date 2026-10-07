@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import BankHolidaysStudio from "./BankHolidaysStudio";
+import { ogFor } from "@/gm/og";
 import BankHolidaysGuide from "./BankHolidaysGuide";
 
 export const metadata: Metadata = {
-  title: "UK Bank Holidays 2026, 2027 and 2028 (with Leave Planner)",
+  title: "UK Bank Holidays 2026, 2027 and 2028",
   description:
-    "Every UK bank holiday for England and Wales, Scotland and Northern Ireland from 2025 to 2030, the next bank holiday, working days in each year, and the best ways to turn annual leave into long breaks.",
+    "Every UK bank holiday for 2026, 2027 and 2028 in England, Wales, Scotland and Northern Ireland, with a planner to make the most of your annual leave.",
   alternates: { canonical: "/life/bank-holidays" },
+  openGraph: ogFor("/life/bank-holidays"),
 };
 
 const BREADCRUMBS = [

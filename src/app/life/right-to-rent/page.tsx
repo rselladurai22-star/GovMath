@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import RightToRentStudio from "./RightToRentStudio";
+import { ogFor } from "@/gm/og";
 import RightToRentGuide from "./RightToRentGuide";
 
 export const metadata: Metadata = {
-  title: "Right to Rent Check Dates and Penalties (England)",
+  title: "Right to Rent Check Calculator (England)",
   description:
-    "Work out when to do a Right to Rent check, which method to use, when a follow-up check is due, and the penalties of up to £10,000 per occupier for a first breach.",
+    "Free right to rent checker for landlords in England. See when follow-up checks are due for time-limited permission, and the civil penalties.",
   alternates: { canonical: "/life/right-to-rent" },
+  openGraph: ogFor("/life/right-to-rent"),
 };
 
 const BREADCRUMBS = [

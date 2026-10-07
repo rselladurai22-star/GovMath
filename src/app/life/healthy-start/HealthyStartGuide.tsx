@@ -78,7 +78,7 @@ export default function HealthyStartGuide() {
           <li>
             <strong>£4.65 a week</strong> for each child aged 1 to 3.
           </li>
-          <li>You usually need Universal Credit with family take-home pay of £408 a month or less, or certain other benefits.</li>
+          <li>You usually need Universal Credit with family <a href="/tax-and-salary/salary-calculator">take-home pay</a>{" "}of £408 a month or less, or certain other benefits.</li>
           <li>Free vitamins for pregnancy and for children up to 4 are included.</li>
         </ul>
         <KeyStats
@@ -114,7 +114,7 @@ export default function HealthyStartGuide() {
           <li>Universal Credit, with family take-home pay from work of £408 a month or less;</li>
           <li>Income Support;</li>
           <li>income-based Jobseeker&rsquo;s Allowance;</li>
-          <li>Pension Credit that includes the child addition;</li>
+          <li><a href="/benefits/pension-credit">Pension Credit</a>{" "}that includes the child addition;</li>
           <li>income-related Employment and Support Allowance, if you are pregnant.</li>
         </ul>
         <p>
@@ -349,7 +349,7 @@ export default function HealthyStartGuide() {
           returns to its usual level, and keep your Universal Credit statements as evidence.
         </p>
         <p>
-          The limit applies to earnings from work. Universal Credit itself, Child Benefit and most other benefits are not counted towards the £408.
+          The limit applies to earnings from work. Universal Credit itself, <a href="/benefits/child-benefit">Child Benefit</a>{" "}and most other benefits are not counted towards the £408.
         </p>
       </GuideSection>
 
@@ -364,7 +364,7 @@ export default function HealthyStartGuide() {
       <GuideSection id="working-families" n={24} kicker="In work" title="Working families">
         <p>
           Healthy Start is not only for families who are out of work. A parent working part-time on a low wage can be well under the £408 limit,
-          especially in the months after having a baby or while on unpaid parental leave. Statutory Maternity Pay counts as earnings for Universal
+          especially in the months after having a baby or while on unpaid parental leave. <a href="/benefits/maternity-pay">Statutory Maternity Pay</a>{" "}counts as earnings for Universal
           Credit, so check your take-home figure each month while you are on maternity leave.
         </p>
         <WorkedExample
@@ -376,6 +376,9 @@ export default function HealthyStartGuide() {
           ]}
           total={{ label: "Paid every 4 weeks", value: "£55.80" }}
         />
+      <p>
+          For a quick check of adult weight against NHS ranges, use the <a href="/life/bmi-uk-nhs">BMI calculator</a>.
+        </p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={25} kicker="Summary" title="Key numbers">

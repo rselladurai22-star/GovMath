@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import SPDStudio from "./SPDStudio";
+import { ogFor } from "@/gm/og";
 import SPDGuide from "./SPDGuide";
 
 export const metadata: Metadata = {
-  title: "Single Person Council Tax Discount Calculator: 25% Off (2026/27)",
+  title: "Single Person Council Tax Discount Calculator",
   description:
-    "Check if you qualify for the 25% single person discount on council tax, how much you save a year and a month, and how it works if you live alone for only part of the year.",
+    "Free single person discount calculator. See how much the 25% council tax discount saves you a year and a month, including if you live alone for part of a year.",
   alternates: { canonical: "/property/single-person-discount" },
+  openGraph: ogFor("/property/single-person-discount"),
 };
 
 const BREADCRUMBS = [

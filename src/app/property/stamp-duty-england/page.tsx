@@ -3,13 +3,15 @@ import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import type { BuyerType } from "@/lib/tax/sdlt-2025";
 import StampDutyStudio from "./StampDutyStudio";
+import { ogFor } from "@/gm/og";
 import StampDutyGuide from "./StampDutyGuide";
 
 export const metadata: Metadata = {
-  title: "Stamp Duty Calculator (England & NI, 2026/27)",
+  title: "Stamp Duty Calculator UK 2026/27 (England & NI)",
   description:
-    "Work out the Stamp Duty (SDLT) on your next home in England or Northern Ireland. Standard, first-time buyer and additional-property rates, band by band, compared with Scotland and Wales.",
+    "Free Stamp Duty calculator for England and NI 2026/27. See your SDLT bill band by band, with first-time buyer relief and the 5% second-home surcharge.",
   alternates: { canonical: "/property/stamp-duty-england" },
+  openGraph: ogFor("/property/stamp-duty-england"),
 };
 
 type SearchParams = Promise<{ price?: string; buyer?: string }>;

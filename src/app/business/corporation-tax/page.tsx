@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CorpTaxStudio from "./CorpTaxStudio";
+import { ogFor } from "@/gm/og";
 import CorpTaxGuide from "./CorpTaxGuide";
 
 export const metadata: Metadata = {
-  title: "Corporation Tax Calculator with Marginal Relief (2026/27)",
+  title: "Corporation Tax Calculator UK 2026/27",
   description:
-    "Work out UK Corporation Tax at 19% to 25% with marginal relief, associated companies, short accounting periods, losses and your payment deadline.",
+    "Free Corporation Tax calculator for 2026/27. See the 19% and 25% rates with marginal relief, associated companies, short periods and payment dates.",
   alternates: { canonical: "/business/corporation-tax" },
+  openGraph: ogFor("/business/corporation-tax"),
 };
 
 const BREADCRUMBS = [

@@ -101,7 +101,7 @@ export default function CmsGuide() {
           income is at least 25% different from that figure, the CMS uses current income instead.
         </p>
         <ul>
-          <li>Contributions to a pension, including a workplace pension, are taken off.</li>
+          <li>Contributions to a pension, including a <a href="/investing/workplace-pension">workplace pension</a>, are taken off.</li>
           <li>Income over £3,000 a week (£156,429 a year) is ignored.</li>
           <li>The receiving parent&rsquo;s income does not count at all.</li>
         </ul>
@@ -121,8 +121,8 @@ export default function CmsGuide() {
         />
         <p>
           The reduced rate percentages apply to income above £100. Basic plus means the basic rate on the first £800 a week and the lower
-          percentage on the rest. The flat rate also applies if the paying parent gets a benefit such as Universal Credit with no earnings, the
-          State Pension, Pension Credit, JSA or ESA.
+          percentage on the rest. The flat rate also applies if the paying parent gets a benefit such as <a href="/benefits/universal-credit">Universal Credit</a>{" "}with no earnings, the
+          State Pension, <a href="/benefits/pension-credit">Pension Credit</a>, JSA or ESA.
         </p>
       </GuideSection>
 
@@ -155,7 +155,7 @@ export default function CmsGuide() {
 
       <GuideSection id="other-children" n={6} kicker="Second families" title="Other children the paying parent supports">
         <p>
-          If the paying parent lives with other children, such as children with a new partner or stepchildren, or gets Child Benefit for them,
+          If the paying parent lives with other children, such as children with a new partner or stepchildren, or gets <a href="/benefits/child-benefit">Child Benefit</a>{" "}for them,
           their income is reduced before the basic rate is applied: by 11% for one other child, 14% for two and 16% for three or more.
         </p>
         <p>
@@ -237,7 +237,7 @@ export default function CmsGuide() {
 
       <GuideSection id="benefits" n={12} kicker="Benefits" title="Child maintenance and benefits">
         <p>
-          Child maintenance you receive is ignored completely for Universal Credit, Housing Benefit, Child Benefit and Tax-Free Childcare. Paying
+          Child maintenance you receive is ignored completely for Universal Credit, <a href="/benefits/housing-benefit">Housing Benefit</a>, Child Benefit and Tax-Free Childcare. Paying
           it does not reduce your own Universal Credit either. It is not taxable for either parent.
         </p>
         <Callout title="Check what else you could get">
@@ -255,7 +255,7 @@ export default function CmsGuide() {
 
       <GuideSection id="self-employed" n={14} kicker="Income types" title="Self-employed and company directors">
         <p>
-          For self-employed paying parents, the CMS uses taxable profit from the Self Assessment return, after allowable expenses, not turnover.
+          For self-employed paying parents, the CMS uses taxable profit from the Self Assessment return, after <a href="/business/allowable-expenses">allowable expenses</a>, not turnover.
           Company directors are assessed on the salary they take; dividends are unearned income, which the receiving parent can ask the CMS to add
           through a variation if they are over £2,500 a year. If you think a paying parent is keeping income low through a company, give the CMS
           as much detail as you can.

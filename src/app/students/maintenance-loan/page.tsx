@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import MaintenanceStudio from "./MaintenanceStudio";
+import { ogFor } from "@/gm/og";
 import MaintenanceGuide from "./MaintenanceGuide";
 
 export const metadata: Metadata = {
-  title: "Student Maintenance Loan Calculator 2026/27 (Student Finance England)",
+  title: "Maintenance Loan Calculator 2026/27 (England)",
   description:
-    "Work out your 2026/27 maintenance loan from household income and where you will live: up to £10,830 away from home, £14,135 in London or £9,118 living with parents.",
+    "Free Student Finance England maintenance loan calculator for 2026/27. See your loan by household income, living at home, away or in London.",
   alternates: { canonical: "/students/maintenance-loan" },
+  openGraph: ogFor("/students/maintenance-loan"),
 };
 
 const BREADCRUMBS = [

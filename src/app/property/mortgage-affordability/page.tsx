@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import AffordabilityStudio from "./AffordabilityStudio";
+import { ogFor } from "@/gm/og";
 import AffordabilityGuide from "./AffordabilityGuide";
 
 export const metadata: Metadata = {
-  title: "Mortgage Affordability Calculator (UK, 2026)",
+  title: "Mortgage Affordability Calculator UK 2026",
   description:
-    "How much could you borrow? Income multiples, bonus income, debts and childcare, a rate-rise stress test, monthly payments and the Stamp Duty on the home you could buy.",
+    "Free mortgage affordability calculator. See how much you could borrow from income multiples, debts and childcare, with a rate stress test and monthly payments.",
   alternates: { canonical: "/property/mortgage-affordability" },
+  openGraph: ogFor("/property/mortgage-affordability"),
 };
 
 const BREADCRUMBS = [

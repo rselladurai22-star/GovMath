@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import MileageStudio from "./MileageStudio";
+import { ogFor } from "@/gm/og";
 import MileageGuide from "./MileageGuide";
 
 export const metadata: Metadata = {
-  title: "Business Mileage Calculator: HMRC 45p and 25p Rates (2026/27)",
+  title: "Business Mileage Calculator UK (45p/25p)",
   description:
-    "Work out your business mileage claim at HMRC's approved rates, the tax it saves, and Mileage Allowance Relief if your employer pays less than 45p a mile.",
+    "Free business mileage calculator for 2026/27. Apply HMRC's 45p and 25p rates, see the tax your claim saves and the relief when your employer pays less.",
   alternates: { canonical: "/business/business-mileage" },
+  openGraph: ogFor("/business/business-mileage"),
 };
 
 const BREADCRUMBS = [

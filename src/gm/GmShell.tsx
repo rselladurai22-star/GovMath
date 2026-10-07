@@ -1,6 +1,7 @@
 import { createElement, type ReactNode } from "react";
 import chrome from "./chrome.json";
 import GmScripts from "./GmScripts";
+import { headerHtml } from "./catalog";
 
 /**
  * The approved design's page frame for pages built in React: the design's
@@ -44,7 +45,7 @@ export default function GmShell({ kind = "base", children }: { kind?: "base" | "
   const page = (
     <>
       {render(chrome.skip as El)}
-      {render(chrome.header as El)}
+      {render({ ...(chrome.header as El), html: headerHtml(chrome.header.html) })}
       <main id="main" className="gm-neutral">
         {children}
       </main>

@@ -88,7 +88,7 @@ export default function CapGuide() {
       <GuideSection id="amounts" n={2} kicker="The limits" title="How much the cap is">
         <p>
           A &ldquo;family&rdquo; here means a couple, with or without children, or a single parent whose child lives with them. Universal
-          Credit uses the monthly figure. Housing Benefit uses the weekly one.
+          Credit uses the monthly figure. <a href="/benefits/housing-benefit">Housing Benefit</a>{" "}uses the weekly one.
         </p>
         <DataTable
           caption="Benefit cap amounts, 2026/27"
@@ -143,20 +143,20 @@ export default function CapGuide() {
           <li>earns at least £881 a month after tax, on its own or added to their partner&rsquo;s pay, on Universal Credit;</li>
           <li>qualifies for Working Tax Credit, on legacy benefits;</li>
           <li>
-            gets Personal Independence Payment, Disability Living Allowance, Attendance Allowance, Carer&rsquo;s Allowance, Guardian&rsquo;s
+            gets Personal Independence Payment, Disability Living Allowance, Attendance Allowance, <a href="/benefits/carers-earnings">Carer&rsquo;s Allowance</a>, Guardian&rsquo;s
             Allowance, War Pensions or Industrial Injuries Benefits;
           </li>
           <li>has the health element (LCWRA) or carer element in their Universal Credit, or gets ESA with the support component;</li>
           <li>is single and has reached State Pension age.</li>
         </ul>
         <Callout tone="good" title="Disabled children count">
-          The exemption applies when a child in the household gets Disability Living Allowance or PIP, not only when an adult does.
+          The exemption applies when a child in the household gets Disability Living Allowance or <a href="/benefits/pip-points">PIP</a>, not only when an adult does.
         </Callout>
       </GuideSection>
 
       <GuideSection id="uc" n={5} kicker="The main route" title="How the cap works on Universal Credit">
         <p>
-          Each month, the Department for Work and Pensions works out your Universal Credit as normal, adds Child Benefit and any other counted
+          Each month, the Department for Work and Pensions works out your Universal Credit as normal, adds <a href="/benefits/child-benefit">Child Benefit</a>{" "}and any other counted
           benefit, and compares the total with the cap. Anything over the cap is taken off your Universal Credit. The childcare element is
           protected and paid in full.
         </p>
@@ -383,11 +383,11 @@ export default function CapGuide() {
       <GuideSection id="budget" n={18} kicker="Money" title="Budgeting on a capped award">
         <p>
           A capped award can leave very little after rent. Ask for the housing element to be paid straight to your landlord if that helps you
-          keep up with rent. Check whether you can get Council Tax Reduction, help with water charges through a social tariff, and the Warm Home
+          keep up with rent. Check whether you can get <a href="/benefits/council-tax-reduction">Council Tax Reduction</a>, help with water charges through a social tariff, and the Warm Home
           Discount, none of which count towards the cap.
         </p>
         <p>
-          Free school meals and the Healthy Start scheme also sit outside the cap. Local welfare assistance schemes run by councils can help with
+          Free school meals and the <a href="/life/healthy-start">Healthy Start</a>{" "}scheme also sit outside the cap. Local welfare assistance schemes run by councils can help with
           one-off costs such as cookers, beds or travel to a job interview.
         </p>
       </GuideSection>

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import LicenceStudio from "./LicenceStudio";
+import { ogFor } from "@/gm/og";
 import LicenceGuide from "./LicenceGuide";
 
 export const metadata: Metadata = {
-  title: "Driving Licence at 70: Renewal Date Calculator",
+  title: "Driving Licence at 70 Renewal Calculator",
   description:
-    "Find when your driving licence runs out at 70 and every three years after, when you can apply, and the health and eyesight rules. Renewal is free.",
+    "Free calculator for renewing your driving licence at 70. Find your renewal date, how to apply free online and the 3-year renewals after 70.",
   alternates: { canonical: "/vehicles/licence-at-70" },
+  openGraph: ogFor("/vehicles/licence-at-70"),
 };
 
 const BREADCRUMBS = [

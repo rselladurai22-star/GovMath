@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import ChildcareStudio from "./ChildcareStudio";
+import { ogFor } from "@/gm/og";
 import ChildcareGuide from "./ChildcareGuide";
 
 export const metadata: Metadata = {
-  title: "Childcare Costs Calculator UK 2026/27: What Will I Pay?",
+  title: "Childcare Costs Calculator UK 2026/27",
   description:
-    "Work out what nursery, childminder or after-school care really costs after 30 funded hours, Tax-Free Childcare or Universal Credit childcare, for up to three children.",
+    "Free childcare costs calculator for 2026/27. Compare funded hours, Tax-Free Childcare and Universal Credit's 85% help to see what you will really pay.",
   alternates: { canonical: "/benefits/childcare-costs" },
+  openGraph: ogFor("/benefits/childcare-costs"),
 };
 
 const BREADCRUMBS = [

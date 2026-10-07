@@ -159,7 +159,7 @@ export default function SpaGuide() {
           />
         </Figure>
         <p>
-          The State Pension rises each April under the triple lock, by the highest of average earnings growth, CPI inflation or 2.5%. It is
+          The State Pension rises each April under the triple lock, by the highest of average earnings growth, CPI <a href="/investing/inflation-impact">inflation</a>{" "}or 2.5%. It is
           taxable income, but it is paid without tax taken off.
         </p>
       </GuideSection>
@@ -214,7 +214,7 @@ export default function SpaGuide() {
           <li>The State Pension is not paid automatically. You should get a letter about two months before your State Pension age.</li>
           <li>You can claim online, by phone or by post, up to four months before.</li>
           <li>It is usually paid every four weeks, in arrears, into a bank account.</li>
-          <li>Your payment day depends on the last two digits of your National Insurance number.</li>
+          <li>Your payment day depends on the last two digits of your <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}number.</li>
         </ul>
       </GuideSection>
 
@@ -243,7 +243,7 @@ export default function SpaGuide() {
       <GuideSection id="working" n={12} kicker="Work" title="Working past State Pension age">
         <p>
           You can work and get your State Pension at the same time. Once you reach State Pension age, you stop paying employee National
-          Insurance on your wages, which gives a noticeable boost to take-home pay. Income tax still applies, and your State Pension counts as
+          Insurance on your wages, which gives a noticeable boost to <a href="/tax-and-salary/salary-calculator">take-home pay</a>. Income tax still applies, and your State Pension counts as
           income, so it may push some of your earnings into a higher band.
         </p>
       </GuideSection>
@@ -293,7 +293,7 @@ export default function SpaGuide() {
           date of birth, so one may get their pension years before the other.
         </p>
         <p>
-          That gap can matter for planning. While one partner is under State Pension age, the couple usually claims Universal Credit rather than
+          That gap can matter for planning. While one partner is under State Pension age, the couple usually claims <a href="/benefits/universal-credit">Universal Credit</a>{" "}rather than
           Pension Credit if they need means-tested help. If you are married or in a civil partnership and your partner dies, you may be able to
           inherit some of their State Pension, depending on when you each reached State Pension age and your National Insurance records.
         </p>

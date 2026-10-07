@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import WorkplaceStudio from "./WorkplaceStudio";
+import { ogFor } from "@/gm/og";
 import WorkplaceGuide from "./WorkplaceGuide";
 
 export const metadata: Metadata = {
-  title: "Workplace Pension Calculator UK (Auto-Enrolment 2026/27)",
+  title: "Workplace Pension Calculator UK 2026/27",
   description:
-    "Work out your workplace pension contributions, your employer's share and tax relief under auto-enrolment, and see how big your pot could grow by retirement.",
+    "Free auto-enrolment pension calculator for 2026/27. See employee and employer contributions, tax relief and what your pot could be worth at retirement.",
   alternates: { canonical: "/investing/workplace-pension" },
+  openGraph: ogFor("/investing/workplace-pension"),
 };
 
 const BREADCRUMBS = [

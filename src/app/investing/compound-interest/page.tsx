@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CompoundStudio from "./CompoundStudio";
+import { ogFor } from "@/gm/og";
 import CompoundGuide from "./CompoundGuide";
 
 export const metadata: Metadata = {
   title: "Compound Interest Calculator UK",
   description:
-    "See how savings or investments grow with compound interest, with monthly additions, rising contributions, compounding frequency, AER and inflation-adjusted results.",
+    "Free compound interest calculator. See how savings and investments grow with monthly additions, any compounding frequency, AER and inflation, year by year.",
   alternates: { canonical: "/investing/compound-interest" },
+  openGraph: ogFor("/investing/compound-interest"),
 };
 
 const BREADCRUMBS = [

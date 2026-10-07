@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import PetrolEvStudio from "./PetrolEvStudio";
+import { ogFor } from "@/gm/og";
 import PetrolEvGuide from "./PetrolEvGuide";
 
 export const metadata: Metadata = {
-  title: "Petrol vs Electric Car Cost Calculator UK (2026)",
+  title: "Petrol vs Electric Car Cost Calculator UK",
   description:
-    "Compare the full cost of a petrol and an electric car over the years you keep it: fuel versus home and public charging, servicing, tax, insurance, the 2028 mileage charge and resale value.",
+    "Free petrol vs electric car calculator. Compare fuel and charging, servicing, tax, insurance, the 2028 mileage charge and resale value while you own it.",
   alternates: { canonical: "/vehicles/petrol-vs-ev-cost" },
+  openGraph: ogFor("/vehicles/petrol-vs-ev-cost"),
 };
 
 const BREADCRUMBS = [

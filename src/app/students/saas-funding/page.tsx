@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import SaasStudio from "./SaasStudio";
+import { ogFor } from "@/gm/og";
 import SaasGuide from "./SaasGuide";
 
 export const metadata: Metadata = {
-  title: "SAAS Funding Calculator 2026/27: Bursary and Student Loan (Scotland)",
+  title: "SAAS Funding Calculator 2026/27 (Scotland)",
   description:
-    "See how much SAAS funding you can get in 2026/27: the Young or Independent Students' Bursary and student loan by household income, free tuition in Scotland and Plan 4 repayments.",
+    "Free SAAS calculator for Scottish students in 2026/27. See your bursary and student loan by household income, for young and independent students.",
   alternates: { canonical: "/students/saas-funding" },
+  openGraph: ogFor("/students/saas-funding"),
 };
 
 const BREADCRUMBS = [

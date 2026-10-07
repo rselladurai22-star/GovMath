@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import DepositStudio from "./DepositStudio";
+import { ogFor } from "@/gm/og";
 import DepositGuide from "./DepositGuide";
 
 export const metadata: Metadata = {
-  title: "Tenancy Deposit Calculator: Deposit Cap, Fair Deductions and What You Get Back",
+  title: "Tenancy Deposit Calculator UK",
   description:
-    "Check the legal deposit cap, work out fair deductions for wear and tear on carpets, decorating and furniture, and see what deposit you should get back in England, Wales, Scotland and Northern Ireland.",
+    "Free tenancy deposit calculator. Check the legal deposit cap, fair deductions with wear and tear apportioned, and how much you should get back.",
   alternates: { canonical: "/property/deposit-return" },
+  openGraph: ogFor("/property/deposit-return"),
 };
 
 const BREADCRUMBS = [

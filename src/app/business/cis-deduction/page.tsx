@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CisStudio from "./CisStudio";
+import { ogFor } from "@/gm/og";
 import CisGuide from "./CisGuide";
 
 export const metadata: Metadata = {
-  title: "CIS Deduction Calculator (Construction Industry Scheme)",
+  title: "CIS Deduction Calculator UK 2026/27",
   description:
-    "Work out the 20% or 30% CIS deduction on a subcontractor invoice, with materials, VAT and the reverse charge, and estimate your refund at the end of the year.",
+    "Free CIS calculator for subcontractors. Work out the 20% or 30% deduction on labour, your net payment and what you could reclaim at the year end.",
   alternates: { canonical: "/business/cis-deduction" },
+  openGraph: ogFor("/business/cis-deduction"),
 };
 
 const BREADCRUMBS = [

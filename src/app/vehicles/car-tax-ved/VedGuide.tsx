@@ -242,7 +242,7 @@ export default function VedGuide() {
       <GuideSection id="eved" n={11} kicker="Changes" title="Pay-per-mile from 2028">
         <p>
           From April 2028, electric cars are due to pay an Electric Vehicle Excise Duty of 3p a mile, and plug-in hybrids 1.5p a mile, on top
-          of car tax. Drivers will estimate their mileage when they tax the car, and the figure will be checked at the MOT. At 8,000 miles a
+          of car tax. Drivers will estimate their mileage when they tax the car, and the figure will be checked at the <a href="/vehicles/mot-history-checker">MOT</a>. At 8,000 miles a
           year, that is about £240 for an electric car and £120 for a plug-in hybrid. The rates are expected to rise with inflation.
         </p>
       </GuideSection>
@@ -250,7 +250,7 @@ export default function VedGuide() {
       <GuideSection id="exempt" n={12} kicker="Exemptions" title="Who pays nothing">
         <ul>
           <li><strong>Historic vehicles:</strong> cars built more than 40 years ago. From 1 April 2026, that means cars built before 1 January 1986.</li>
-          <li><strong>Disabled drivers:</strong> people getting the higher rate mobility part of Disability Living Allowance, the enhanced mobility part of PIP, and some other benefits.</li>
+          <li><strong>Disabled drivers:</strong> people getting the higher rate mobility part of Disability Living Allowance, the enhanced mobility part of <a href="/benefits/pip-points">PIP</a>, and some other benefits.</li>
           <li><strong>Mobility vehicles:</strong> cars leased through the Motability scheme.</li>
           <li><strong>Off-road vehicles:</strong> cars with a SORN, which cannot be driven or parked on public roads.</li>
         </ul>
@@ -278,7 +278,7 @@ export default function VedGuide() {
       <GuideSection id="using" n={15} kicker="How to" title="Using the calculator">
         <ol>
           <li>Choose when the car was first registered.</li>
-          <li>Pick the fuel type and enter the CO2 figure from the V5C.</li>
+          <li>Pick the <a href="/vehicles/fuel-cost-journey">fuel</a>{" "}type and enter the CO2 figure from the V5C.</li>
           <li>For cars from April 2017, enter the list price when new.</li>
           <li>Under &ldquo;More options&rdquo;, tell us if an electric car was registered before April 2025, and your yearly mileage to see the 2028 per-mile charge.</li>
         </ol>
@@ -336,6 +336,9 @@ export default function VedGuide() {
           <li><strong>Forgetting a Direct Debit has failed.</strong> The DVLA cancels the tax, and cameras can pick up an untaxed car quickly.</li>
           <li><strong>Driving after a SORN.</strong> A SORN car cannot be used or parked on a public road.</li>
         </ul>
+      <p>
+          Your driving licence has its own renewal dates: at 70 and every three years after. The <a href="/vehicles/licence-at-70">licence at 70 calculator</a> works yours out.
+        </p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers">

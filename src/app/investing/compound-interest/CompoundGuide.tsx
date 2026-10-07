@@ -173,7 +173,7 @@ export default function CompoundGuide() {
       <GuideSection id="regular" n={9} kicker="Habits" title="Regular saving and rising contributions">
         <p>
           Regular monthly saving builds a pot steadily and smooths out the ups and downs of investing, because you buy more when prices are low.
-          Increasing your contributions each year, for example by the same percentage as your pay rise, keeps saving a constant share of your income.
+          Increasing your contributions each year, for example by the same percentage as your <a href="/tax-and-salary/pay-rise">pay rise</a>, keeps saving a constant share of your income.
         </p>
       </GuideSection>
 
@@ -199,7 +199,7 @@ export default function CompoundGuide() {
 
       <GuideSection id="tax" n={12} kicker="Tax" title="Tax on interest and growth">
         <p>
-          The calculator assumes no tax, as in an ISA or pension. Outside these, interest above your Personal Savings Allowance, dividends above £500,
+          The calculator assumes no tax, as in an ISA or pension. Outside these, interest above your <a href="/investing/personal-savings-allowance">Personal Savings Allowance</a>, dividends above £500,
           and gains above £3,000 a year are taxed, which slows compounding. The <a href="/investing/isa-vs-gia">ISA vs GIA calculator</a> shows the
           difference.
         </p>
@@ -208,7 +208,7 @@ export default function CompoundGuide() {
       <GuideSection id="rates" n={13} kicker="Assumptions" title="What rate to use">
         <ul>
           <li>For a savings account, use the AER, and remember variable rates change.</li>
-          <li>For a fixed-rate bond, use the fixed rate for the term.</li>
+          <li>For a <a href="/investing/savings-interest">fixed-rate bond</a>, use the fixed rate for the term.</li>
           <li>For shares, long-term returns have averaged around 4% to 5% a year above inflation in the past, but with large swings and no guarantee.</li>
           <li>Run the calculator with a lower and a higher rate to see a range.</li>
         </ul>

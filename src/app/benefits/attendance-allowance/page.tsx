@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import AaStudio from "./AaStudio";
+import { ogFor } from "@/gm/og";
 import AaGuide from "./AaGuide";
 
 export const metadata: Metadata = {
-  title: "Attendance Allowance Calculator (2026/27 Rates)",
+  title: "Attendance Allowance Calculator 2026/27",
   description:
-    "Check whether you could get Attendance Allowance at £76.70 or £114.60 a week in 2026/27, and how much extra Pension Credit it could unlock through the severe disability addition.",
+    "Free Attendance Allowance calculator for 2026/27. Check the lower and higher weekly rates, whether you qualify and the extra benefits it can unlock.",
   alternates: { canonical: "/benefits/attendance-allowance" },
+  openGraph: ogFor("/benefits/attendance-allowance"),
 };
 
 const BREADCRUMBS = [

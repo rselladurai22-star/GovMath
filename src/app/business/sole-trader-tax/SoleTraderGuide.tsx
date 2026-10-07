@@ -49,7 +49,7 @@ export default function SoleTraderGuide() {
       title="How sole traders are taxed in 2026/27"
       intro={
         <>
-          As a sole trader you pay Income Tax and National Insurance on your profit, not on what you take out of the
+          As a sole trader you pay Income Tax and <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}on your profit, not on what you take out of the
           business. This guide explains how the bill is worked out, the rates for 2026/27, how a job or a student loan
           changes it, when you pay, and how much to put aside each month so January is not a shock.
         </>
@@ -216,7 +216,7 @@ export default function SoleTraderGuide() {
         <p>
           The Class 4 figure is zero because £10,000 of profit is below the £12,570 lower limit, whatever your salary. Your
           employer&rsquo;s PAYE covers the tax on your salary; the tax on your profit is paid through Self Assessment, or
-          sometimes collected through your tax code if you ask HMRC.
+          sometimes collected through your <a href="/tax-and-salary/tax-code-decoder">tax code</a>{" "}if you ask HMRC.
         </p>
       </GuideSection>
 
@@ -224,12 +224,12 @@ export default function SoleTraderGuide() {
         <h3>Student loans</h3>
         <p>
           Student loan repayments for the self-employed are worked out in Self Assessment, at your plan&rsquo;s rate on total
-          income above its threshold. On £40,000 of profit with a Plan 2 loan, that is 9% of £10,615, or £955 a year, on top of
+          income above its threshold. On £40,000 of profit with a <a href="/students/plan-2-student-loan">Plan 2</a>{" "}loan, that is 9% of £10,615, or £955 a year, on top of
           tax and NI.
         </p>
         <h3>Scotland</h3>
         <p>
-          Scottish taxpayers pay Scottish Income Tax on their profit. At £40,000 that is £5,551 instead of £5,486, about £65
+          Scottish taxpayers pay <a href="/tax-and-salary/scottish-tax">Scottish Income Tax</a>{" "}on their profit. At £40,000 that is £5,551 instead of £5,486, about £65
           more. Above £43,663 the 42% rate starts, so the gap widens for higher profits.
         </p>
         <h3>Pension contributions</h3>

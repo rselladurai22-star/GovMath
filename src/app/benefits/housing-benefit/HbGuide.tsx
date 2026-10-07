@@ -197,8 +197,8 @@ export default function HbGuide() {
         />
         <p>
           The family premium was removed for new claims from May 2016, so it is left out here. The disability premiums for working-age claimants
-          usually depend on getting PIP or DLA; the severe disability premium also needs you to live without other adults and for nobody to be
-          paid Carer&rsquo;s Allowance for looking after you.
+          usually depend on getting <a href="/benefits/pip-points">PIP</a>{" "}or DLA; the severe disability premium also needs you to live without other adults and for nobody to be
+          paid <a href="/benefits/carers-earnings">Carer&rsquo;s Allowance</a>{" "}for looking after you.
         </p>
       </GuideSection>
 
@@ -295,7 +295,7 @@ export default function HbGuide() {
           ]}
         />
         <p>
-          No deduction is made if you or your partner get Attendance Allowance, the daily living part of PIP or the care part of DLA, or are
+          No deduction is made if you or your partner get <a href="/benefits/attendance-allowance">Attendance Allowance</a>, the daily living part of PIP or the care part of DLA, or are
           registered blind. There is also none for a non-dependant who is under 18, on Pension Credit, a full-time student, or under 25 and
           getting Universal Credit without earnings.
         </p>
@@ -340,7 +340,7 @@ export default function HbGuide() {
 
       <GuideSection id="taper" n={13} kicker="Earning more" title="The 65% taper in practice">
         <p>
-          Every extra £1 of weekly income above your applicable amount reduces Housing Benefit by 65p. If you also get Council Tax Reduction,
+          Every extra £1 of weekly income above your applicable amount reduces Housing Benefit by 65p. If you also get <a href="/benefits/council-tax-reduction">Council Tax Reduction</a>,
           that falls by another 20p, so you keep only 15p of each extra pound until one of them runs out.
         </p>
         <p>

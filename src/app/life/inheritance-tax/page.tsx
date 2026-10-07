@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import IhtStudio from "./IhtStudio";
+import { ogFor } from "@/gm/og";
 import IhtGuide from "./IhtGuide";
 
 export const metadata: Metadata = {
-  title: "Inheritance Tax Calculator UK (2026/27)",
+  title: "Inheritance Tax Calculator UK 2026/27",
   description:
-    "Work out Inheritance Tax on an estate in 2026/27: the £325,000 and £175,000 bands, spouse transfers, the £2m taper, gifts and the 7-year rule, the 36% charity rate, the new £2.5m business and farm relief, and pensions from April 2027.",
+    "Free inheritance tax calculator for 2026/27. Work out IHT with the nil-rate band, residence nil-rate band, gifts and taper, spouse transfers and reliefs.",
   alternates: { canonical: "/life/inheritance-tax" },
+  openGraph: ogFor("/life/inheritance-tax"),
 };
 
 const BREADCRUMBS = [

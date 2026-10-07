@@ -182,7 +182,7 @@ export default function CouncilTaxGuide() {
           everyone knows what they owe.
         </p>
         <p>
-          If a non-student joins the household, the council tax bill can appear mid-year. Decide in advance who pays it, since only the
+          If a non-student joins the household, the <a href="/property/council-tax-bands">council tax bill</a>{" "}can appear mid-year. Decide in advance who pays it, since only the
           non-students are liable.
         </p>
       </GuideSection>

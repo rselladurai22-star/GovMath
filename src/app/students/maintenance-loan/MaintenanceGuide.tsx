@@ -43,7 +43,7 @@ export default function MaintenanceGuide() {
       title="How much maintenance loan you can get in 2026/27"
       intro={
         <>
-          The maintenance loan helps full-time students from England pay for rent, food and other living costs. How much you get depends on
+          The maintenance loan helps full-time students from England pay for rent, food and other <a href="/students/student-budget">living costs</a>. How much you get depends on
           where you live while studying and your household income. This guide explains the 2026/27 amounts, how income is assessed, and how
           to plan for the gap between the loan and what university life really costs.
         </>

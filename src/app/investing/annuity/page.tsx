@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import AnnuityStudio from "./AnnuityStudio";
+import { ogFor } from "@/gm/og";
 import AnnuityGuide from "./AnnuityGuide";
 
 export const metadata: Metadata = {
-  title: "Annuity Calculator UK 2026: How Much Income Will My Pension Buy?",
+  title: "Annuity Calculator UK: Income From Your Pension",
   description:
-    "Work out the income an annuity gives from your pension pot: 25% tax-free cash, the annuity rate, Income Tax with the State Pension, payback age and a drawdown comparison.",
+    "Free annuity calculator. See the yearly and monthly income your pension could buy, after tax-free cash and Income Tax, and how it compares with drawdown.",
   alternates: { canonical: "/investing/annuity" },
+  openGraph: ogFor("/investing/annuity"),
 };
 
 const BREADCRUMBS = [

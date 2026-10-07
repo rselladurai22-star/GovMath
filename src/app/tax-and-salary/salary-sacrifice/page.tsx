@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import SacrificeStudio from "./SacrificeStudio";
+import { ogFor } from "@/gm/og";
 import SacrificeGuide from "./SacrificeGuide";
 
 export const metadata: Metadata = {
-  title: "Salary Sacrifice Calculator UK 2026/27: Pension, Bike and Other Schemes",
+  title: "Salary Sacrifice Calculator UK 2026/27",
   description:
-    "See what salary sacrifice saves you in Income Tax, National Insurance and student loan, what your employer saves, and the minimum wage and £100,000 rules.",
+    "Free salary sacrifice calculator for 2026/27. See the tax and NI you save on pension, cycle, EV or other schemes, and the effect on your take-home pay.",
   alternates: { canonical: "/tax-and-salary/salary-sacrifice" },
+  openGraph: ogFor("/tax-and-salary/salary-sacrifice"),
 };
 
 const BREADCRUMBS = [

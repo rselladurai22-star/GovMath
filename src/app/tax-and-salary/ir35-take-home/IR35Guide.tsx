@@ -67,7 +67,7 @@ export default function IR35Guide() {
         </p>
         <p>
           The rules exist because paying yourself through a company (a small salary plus dividends) usually costs less in
-          tax and National Insurance than a salary of the same value, and avoids employer NI altogether.
+          tax and National Insurance than a salary of the same value, and avoids <a href="/business/employer-ni-costs">employer NI</a>{" "}altogether.
         </p>
       </GuideSection>
 
@@ -155,7 +155,7 @@ export default function IR35Guide() {
       <GuideSection id="outside" n={5} kicker="Outside IR35" title="Outside IR35: how you are paid">
         <p>
           Outside IR35 your company invoices the client and pays its costs. A common approach is a salary of £12,570,
-          which uses your tax-free allowance, with the remaining profit paid as dividends after Corporation Tax.
+          which uses your tax-free allowance, with the remaining profit paid as dividends after <a href="/business/corporation-tax">Corporation Tax</a>.
         </p>
         <WorkedExample
           title="Outside IR35: £500 a day for 220 days, £2,000 of costs"
@@ -196,7 +196,7 @@ export default function IR35Guide() {
           />
         </Figure>
         <p>
-          The gap is smaller than many people expect, because Corporation Tax and dividend tax rates have risen in recent
+          The gap is smaller than many people expect, because Corporation Tax and <a href="/investing/dividend-tax">dividend tax</a>{" "}rates have risen in recent
           years. Outside IR35 also means paying your own accountant, insurance and other costs, and getting no holiday
           pay, sick pay or pension contributions from an employer.
         </p>
@@ -204,12 +204,12 @@ export default function IR35Guide() {
 
       <GuideSection id="day-rates" n={7} kicker="Pricing" title="Setting a day rate">
         <p>
-          A day rate needs to cover more than a salary does. When comparing an inside IR35 role with a permanent job,
+          A <a href="/business/day-rate">day rate</a>{" "}needs to cover more than a salary does. When comparing an inside IR35 role with a permanent job,
           remember that:
         </p>
         <ul>
           <li>Employer NI and the Apprenticeship Levy come out of your rate inside IR35, not the client&rsquo;s budget.</li>
-          <li>You are only paid for days you work: holidays, bank holidays, sickness and gaps between contracts are unpaid.</li>
+          <li>You are only paid for days you work: holidays, <a href="/life/bank-holidays">bank holidays</a>, sickness and gaps between contracts are unpaid.</li>
           <li>There is no employer pension contribution, which is often worth 3% to 10% of salary in a permanent job.</li>
         </ul>
         <p>
@@ -269,7 +269,7 @@ export default function IR35Guide() {
           the most tax-efficient way to extract profit.
         </p>
         <p>
-          Inside IR35, salary sacrifice through your umbrella company gives tax and NI relief at your marginal rate. In
+          Inside IR35, salary sacrifice through your umbrella company gives tax and NI relief at your <a href="/tax-and-salary/tax-bracket-checker">marginal rate</a>. In
           both cases, total contributions are normally limited by the £60,000 annual allowance, and outside IR35 the
           contribution must be justifiable as a business expense.
         </p>

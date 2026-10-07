@@ -331,7 +331,7 @@ export default function RatesGuide() {
           recovered through the courts, which adds costs, so it is worth acting before a reminder.
         </p>
         <p>
-          Business rates are an allowable expense for Income Tax and Corporation Tax, so part of the cost comes back through a
+          Business rates are an allowable expense for Income Tax and <a href="/business/corporation-tax">Corporation Tax</a>, so part of the cost comes back through a
           lower tax bill.
         </p>
       </GuideSection>

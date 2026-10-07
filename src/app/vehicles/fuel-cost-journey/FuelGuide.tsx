@@ -47,7 +47,7 @@ export default function FuelGuide() {
           <li>A 240-mile round trip in a 45 mpg petrol car at 173.8p a litre costs about £42.14 in fuel.</li>
           <li>That is 17.6p a mile. A 30 mpg car costs 26.3p a mile; a 60 mpg car 13.2p.</li>
           <li>An electric car doing 3.5 miles per kWh costs £5.49 on an 8p overnight tariff, but £51.43 on 75p rapid chargers.</li>
-          <li>For business trips in your own car, you can be paid 45p a mile tax-free.</li>
+          <li>For business trips in your own car, you can be paid <a href="/business/business-mileage">45p a mile</a>{" "}tax-free.</li>
         </ul>
         <KeyStats
           items={[

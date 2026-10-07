@@ -56,8 +56,8 @@ export default function LTTGuide() {
       title="Land Transaction Tax in Wales, explained"
       intro={
         <>
-          Buy a home in Wales and you pay Land Transaction Tax (LTT), not Stamp Duty. Wales has the UK&apos;s highest tax-free
-          band for home buyers but no separate first-time buyer relief, and its own higher rates for second homes. This guide
+          Buy a home in Wales and you pay Land Transaction Tax (LTT), not <a href="/property/stamp-duty-england">Stamp Duty</a>. Wales has the UK&apos;s highest tax-free
+          band for home buyers but no separate <a href="/property/first-time-buyer">first-time buyer relief</a>, and its own higher rates for second homes. This guide
           covers the 2026/27 rates, the higher rates and refunds, and how the bill compares with England and Scotland.
         </>
       }
@@ -285,7 +285,7 @@ export default function LTTGuide() {
 
       <GuideSection id="special" n={12} kicker="Special cases" title="Special cases">
         <p>
-          <strong>Shared ownership and shared equity.</strong> Special rules let you pay LTT on the share you buy or on the full
+          <strong><a href="/property/shared-ownership">Shared ownership</a>{" "}and shared equity.</strong> Special rules let you pay LTT on the share you buy or on the full
           value. Your conveyancer will advise which suits you.
         </p>
         <p>
@@ -341,10 +341,10 @@ export default function LTTGuide() {
         <ul>
           <li>
             <strong>Council tax premiums.</strong> Councils can charge a premium of up to 300% on second homes and long-term
-            empty homes, on top of the normal council tax.
+            empty homes, on top of the normal <a href="/property/council-tax-bands">council tax</a>.
           </li>
           <li>
-            <strong>Holiday let business rates.</strong> To be rated for business rates rather than council tax, a self-catering
+            <strong>Holiday let <a href="/business/small-business-rates">business rates</a>.</strong> To be rated for business rates rather than council tax, a self-catering
             property must be available to let for at least 252 days a year and actually let for at least 182 days.
           </li>
           <li>
@@ -368,7 +368,7 @@ export default function LTTGuide() {
           <li><strong>Removals</strong>, furnishing and buildings insurance from exchange of contracts.</li>
         </ul>
         <p>
-          Our moving house budget calculator adds these to your deposit and LTT so you can see the total cash you need on
+          Our <a href="/property/moving-house-budget">moving house</a>{" "}budget calculator adds these to your deposit and LTT so you can see the total cash you need on
           completion day.
         </p>
       </GuideSection>

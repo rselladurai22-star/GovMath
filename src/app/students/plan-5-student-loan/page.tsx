@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import LoanStudio from "@/components/students/LoanStudio";
 import { CALCULATORS } from "@/lib/calculators";
+import { ogFor } from "@/gm/og";
 import Plan5Guide from "./Plan5Guide";
 
 export const metadata: Metadata = {
   title: "Plan 5 Student Loan Calculator 2026/27",
   description:
-    "Work out your Plan 5 student loan repayments: 9% of income above \u00a325,000, interest at RPI (4.1%), and what you are likely to repay before the 40-year write-off.",
+    "Free Plan 5 student loan calculator for 2026/27. See repayments at 9% above the threshold, interest, the 40-year write-off and the total you repay.",
   alternates: { canonical: "/students/plan-5-student-loan" },
+  openGraph: ogFor("/students/plan-5-student-loan"),
 };
 
 const BREADCRUMBS = [

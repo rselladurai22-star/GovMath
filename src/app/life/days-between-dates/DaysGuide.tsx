@@ -37,7 +37,7 @@ export default function DaysGuide() {
       intro={
         <>
           Counting days sounds simple until you hit questions like whether to include the end date, how long a month is, or which days are working
-          days. This guide explains the conventions, shows worked examples with bank holidays, and covers adding days to a date for deadlines.
+          days. This guide explains the conventions, shows worked examples with <a href="/life/bank-holidays">bank holidays</a>, and covers adding days to a date for deadlines.
         </>
       }
       meta={["Updated for 2026 and 2027", "8 min read", "Reviewed October 2026"]}
@@ -170,7 +170,7 @@ export default function DaysGuide() {
       <GuideSection id="uses" n={8} kicker="Practical" title="Everyday uses">
         <ul>
           <li>Counting down to a holiday, wedding or due date.</li>
-          <li>Working out how long you have been in a job, for redundancy or holiday entitlement.</li>
+          <li>Working out how long you have been in a job, for redundancy or <a href="/tax-and-salary/holiday-entitlement">holiday entitlement</a>.</li>
           <li>Checking how many working days are left to meet a deadline.</li>
           <li>Planning a notice period or a tenancy end date.</li>
           <li>Calculating interest for a number of days on a loan or savings account.</li>

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import TfcStudio from "./TfcStudio";
+import { ogFor } from "@/gm/og";
 import TfcGuide from "./TfcGuide";
 
 export const metadata: Metadata = {
-  title: "Tax-Free Childcare Calculator (2026/27)",
+  title: "Tax-Free Childcare Calculator 2026/27",
   description:
-    "Work out your Tax-Free Childcare top-up: £2 for every £8 you pay, up to £2,000 a year per child or £4,000 if disabled, and compare it with Universal Credit childcare help.",
+    "Free Tax-Free Childcare calculator for 2026/27. See the £2 top-up for every £8, up to £2,000 a child a year, and whether Universal Credit help is better.",
   alternates: { canonical: "/benefits/tax-free-childcare" },
+  openGraph: ogFor("/benefits/tax-free-childcare"),
 };
 
 const BREADCRUMBS = [

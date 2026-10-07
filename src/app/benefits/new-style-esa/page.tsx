@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import EsaStudio from "./EsaStudio";
+import { ogFor } from "@/gm/og";
 import EsaGuide from "./EsaGuide";
 
 export const metadata: Metadata = {
-  title: "New Style ESA Calculator 2026/27: Rates, Groups and Eligibility",
+  title: "New Style ESA Calculator 2026/27",
   description:
-    "Check if your National Insurance record qualifies you for New Style Employment and Support Allowance and how much you get in 2026/27: £95.55 a week, or £145.90 in the support group.",
+    "Free New Style ESA calculator for 2026/27. Check if your National Insurance record qualifies and see the weekly rate: £95.55, or £145.90 in the support group.",
   alternates: { canonical: "/benefits/new-style-esa" },
+  openGraph: ogFor("/benefits/new-style-esa"),
 };
 
 const BREADCRUMBS = [

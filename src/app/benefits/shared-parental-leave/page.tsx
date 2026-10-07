@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import SharedStudio from "./SharedStudio";
+import { ogFor } from "@/gm/og";
 import SharedGuide from "./SharedGuide";
 
 export const metadata: Metadata = {
-  title: "Shared Parental Leave and Pay Calculator (2026/27)",
+  title: "Shared Parental Leave Calculator 2026/27",
   description:
-    "Plan Shared Parental Leave: see how up to 50 weeks of leave and 37 weeks of pay split between parents, what each gets, and how switching early affects the total.",
+    "Free Shared Parental Leave calculator for 2026/27. Split up to 50 weeks of leave and 37 weeks of pay between parents and see what each of you gets.",
   alternates: { canonical: "/benefits/shared-parental-leave" },
+  openGraph: ogFor("/benefits/shared-parental-leave"),
 };
 
 const BREADCRUMBS = [

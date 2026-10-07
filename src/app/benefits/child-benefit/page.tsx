@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import ChildBenefitStudio from "./ChildBenefitStudio";
+import { ogFor } from "@/gm/og";
 import ChildBenefitGuide from "./ChildBenefitGuide";
 
 export const metadata: Metadata = {
-  title: "Child Benefit Calculator (2026/27 Rates)",
+  title: "Child Benefit Calculator UK 2026/27",
   description:
-    "Work out your Child Benefit for 2026/27: £27.05 a week for the eldest child and £17.90 for each other child, with part-year claims and the High Income Child Benefit Charge.",
+    "Free Child Benefit calculator for 2026/27. See your weekly, monthly and yearly payments for each child, plus the High Income Child Benefit Charge.",
   alternates: { canonical: "/benefits/child-benefit" },
+  openGraph: ogFor("/benefits/child-benefit"),
 };
 
 const BREADCRUMBS = [

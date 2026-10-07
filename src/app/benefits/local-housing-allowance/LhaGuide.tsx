@@ -56,7 +56,7 @@ export default function LhaGuide() {
       title="Local Housing Allowance in 2026/27"
       intro={
         <>
-          If you rent from a private landlord and get Universal Credit or Housing Benefit, the Local Housing Allowance sets the most rent the
+          If you rent from a private landlord and get Universal Credit or <a href="/benefits/housing-benefit">Housing Benefit</a>, the Local Housing Allowance sets the most rent the
           benefit will cover. It depends on where you live and how many bedrooms your household is allowed. This guide explains the bedroom
           rules, the shared rate for under-35s, the 2026/27 freeze and what to do if your rent is higher.
         </>
@@ -67,7 +67,7 @@ export default function LhaGuide() {
     >
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
-          <li>Local Housing Allowance (LHA) is the most rent Universal Credit or Housing Benefit pays for a private tenancy.</li>
+          <li>Local Housing Allowance (LHA) is the most rent <a href="/benefits/universal-credit">Universal Credit</a>{" "}or Housing Benefit pays for a private tenancy.</li>
           <li>
             There is a rate for each of 200 areas: 152 in England, 18 in Scotland, 22 in Wales and 8 in Northern Ireland, for shared
             accommodation and for one to four bedrooms.
@@ -169,7 +169,7 @@ export default function LhaGuide() {
         <p>You get the one-bedroom rate instead if you are under 35 and:</p>
         <ul>
           <li>a care leaver under 25;</li>
-          <li>getting the daily living part of PIP, or the middle or higher care rate of DLA;</li>
+          <li>getting the daily living part of <a href="/benefits/pip-points">PIP</a>, or the middle or higher care rate of DLA;</li>
           <li>aged 25 or over and have spent at least three months in a homeless hostel and accepted support;</li>
           <li>an ex-offender managed under multi-agency public protection arrangements;</li>
           <li>a victim of domestic abuse or modern slavery, in some circumstances.</li>

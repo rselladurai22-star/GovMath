@@ -135,7 +135,7 @@ export default function ReverseGuide() {
           </li>
         </ul>
         <Callout title="The marginal rate is what matters">
-          The calculator shows what share of any pay rise you keep. For basic-rate taxpayers it is 72p in the pound; for higher-rate taxpayers 58p;
+          The calculator shows what share of any <a href="/tax-and-salary/pay-rise">pay rise</a>{" "}you keep. For basic-rate taxpayers it is 72p in the pound; for higher-rate taxpayers 58p;
           inside the £100,000 trap it falls to 38p.
         </Callout>
       </GuideSection>
@@ -145,17 +145,17 @@ export default function ReverseGuide() {
           Scotland sets its own Income Tax bands: starter 19%, basic 20%, intermediate 21%, higher 42%, advanced 45% and top 48%. National
           Insurance is the same across the UK. On modest salaries Scottish taxpayers pay slightly less, so the salary needed is a little lower:
           £28,390 rather than £28,445 for £2,000 a month. From around £30,000 the intermediate and higher rates take over, and for £4,000 a
-          month a Scottish taxpayer needs about £3,300 more salary than someone in England.
+          month a <a href="/tax-and-salary/scottish-tax">Scottish taxpayer</a>{" "}needs about £3,300 more salary than someone in England.
         </p>
       </GuideSection>
 
       <GuideSection id="student-loans" n={7} kicker="Student loans" title="Student loans">
         <p>
           Student loan repayments come out of your pay like a tax: 9% of income above your plan&rsquo;s threshold (6% for postgraduate loans).
-          For 2026/27 the thresholds are £26,900 for Plan 1, £29,385 for Plan 2, £33,795 for Plan 4 and £25,000 for Plan 5.
+          For 2026/27 the thresholds are £26,900 for <a href="/students/plan-1-student-loan">Plan 1</a>, £29,385 for Plan 2, £33,795 for Plan 4 and £25,000 for Plan 5.
         </p>
         <p>
-          With a Plan 2 loan, a take-home of £3,000 a month needs £47,358 rather than £45,112: over £2,200 more, because the loan takes 9p of
+          With a <a href="/students/plan-2-student-loan">Plan 2</a>{" "}loan, a take-home of £3,000 a month needs £47,358 rather than £45,112: over £2,200 more, because the loan takes 9p of
           every pound over the threshold. The higher your salary, the bigger the gap. Choose your plan under More options to include it.
         </p>
       </GuideSection>
@@ -212,7 +212,7 @@ export default function ReverseGuide() {
       <GuideSection id="limits" n={12} kicker="Limits" title="What the calculator leaves out">
         <p>
           The result is for one job, paid evenly through the year, with the standard 1257L tax code. It does not include benefits in kind such as a
-          company car, other income such as rent or self-employment, Marriage Allowance, or a tax code that collects tax owed from earlier years.
+          company car, other income such as rent or self-employment, <a href="/tax-and-salary/marriage-allowance">Marriage Allowance</a>, or a tax code that collects tax owed from earlier years.
           Any of these change the salary you need. If you are on Universal Credit, a pay rise also reduces your award by 55p in each extra pound
           you take home: see the <a href="/benefits/universal-credit-taper">UC earnings taper calculator</a>.
         </p>
@@ -225,7 +225,7 @@ export default function ReverseGuide() {
           out on each job separately, so two smaller jobs can mean less National Insurance than one bigger one with the same total pay.
         </p>
         <p>
-          Other income, such as rent from a lodger above the £7,500 Rent a Room limit, self-employed profits or savings interest over your
+          Other income, such as rent from a lodger above the £7,500 <a href="/property/rent-a-room">Rent a Room</a>{" "}limit, self-employed profits or savings interest over your
           allowance, is taxed through Self Assessment or your tax code. Any of it pushes up the salary you need from your main job for the
           same spending money.
         </p>

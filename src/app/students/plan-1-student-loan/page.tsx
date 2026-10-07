@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import LoanStudio from "@/components/students/LoanStudio";
 import { CALCULATORS } from "@/lib/calculators";
+import { ogFor } from "@/gm/og";
 import Plan1Guide from "./Plan1Guide";
 
 export const metadata: Metadata = {
   title: "Plan 1 Student Loan Calculator 2026/27",
   description:
-    "Work out your Plan 1 student loan repayments: 9% of income above \u00a326,900, interest at 4.1%, and when your loan will be paid off or written off.",
+    "Free Plan 1 student loan calculator for 2026/27. See monthly repayments above the threshold, interest, and when your loan is paid off or written off.",
   alternates: { canonical: "/students/plan-1-student-loan" },
+  openGraph: ogFor("/students/plan-1-student-loan"),
 };
 
 const BREADCRUMBS = [

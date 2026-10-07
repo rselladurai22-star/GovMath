@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import SpaStudio from "./SpaStudio";
+import { ogFor } from "@/gm/og";
 import SpaGuide from "./SpaGuide";
 
 export const metadata: Metadata = {
   title: "State Pension Age Calculator UK",
   description:
-    "Find your exact State Pension age and date from your date of birth, including the rises to 67 and 68, with your new State Pension amount and the effect of deferring.",
+    "Free State Pension age calculator. Find the exact date you reach State Pension age from your birthday, with the rises to 67 and 68 and how much you'll get.",
   alternates: { canonical: "/investing/state-pension-age" },
+  openGraph: ogFor("/investing/state-pension-age"),
 };
 
 const BREADCRUMBS = [

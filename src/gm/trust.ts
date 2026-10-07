@@ -9,7 +9,8 @@ export function updatedOn(path: string): string | undefined {
 
 /**
  * The trust line under a calculator's title: who checks it, when it changed,
- * and links to its sources and to how we check our figures.
+ * links to its sources and to how we check our figures, and that GovMath
+ * is independent (its name is not a sign of a government site).
  * `sourcesId` is the id of the guide's Sources box on that page.
  */
 export function trustHtml(path: string, sourcesId: string): string {
@@ -19,6 +20,7 @@ export function trustHtml(path: string, sourcesId: string): string {
     `<span>Checked by the GovMath team</span>` +
     (date ? `<span>Updated ${date}</span>` : "") +
     `<span><a href="#${sourcesId}">Sources</a></span>` +
-    `<span><a href="/how-we-check">How we check our figures</a></span></p>`
+    `<span><a href="/how-we-check">How we check our figures</a></span>` +
+    `<span>Independent: not a government website</span></p>`
   );
 }

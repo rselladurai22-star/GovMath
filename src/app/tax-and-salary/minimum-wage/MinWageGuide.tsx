@@ -48,7 +48,7 @@ export default function MinWageGuide() {
       title="The minimum wage, explained clearly"
       intro={
         <>
-          The minimum wage is the lowest hourly rate an employer can legally pay, and it rose again in April 2026. But
+          The minimum wage is the lowest <a href="/tax-and-salary/hourly-to-salary">hourly rate</a>{" "}an employer can legally pay, and it rose again in April 2026. But
           the rate on your contract is only half the story: unpaid time, deductions and accommodation charges can take
           your real pay below the legal floor. This guide explains the rules and how to check your own pay.
         </>
@@ -123,9 +123,9 @@ export default function MinWageGuide() {
         <p>It does not include:</p>
         <ul>
           <li>Tips, gratuities and service charges, even when paid through payroll.</li>
-          <li>The premium part of overtime or shift pay: only the basic rate counts.</li>
+          <li>The premium part of <a href="/tax-and-salary/overtime">overtime</a>{" "}or shift pay: only the basic rate counts.</li>
           <li>Expenses, allowances for things like travel, and benefits in kind other than accommodation.</li>
-          <li>Pay you give up through salary sacrifice.</li>
+          <li>Pay you give up through <a href="/tax-and-salary/salary-sacrifice">salary sacrifice</a>.</li>
         </ul>
         <p>
           That last point catches people out. A salary sacrifice scheme for a pension, car or bike cannot reduce your pay
@@ -142,7 +142,7 @@ export default function MinWageGuide() {
           <li>Required tasks before or after a shift: opening up, security checks, putting on protective clothing.</li>
         </ul>
         <p>
-          Your normal commute does not count, and neither do rest breaks. If you sleep at work on a sleep-in shift, only
+          Your normal <a href="/vehicles/commuter-comparison">commute</a>{" "}does not count, and neither do rest breaks. If you sleep at work on a sleep-in shift, only
           the time you are awake and required to work counts.
         </p>
         <WorkedExample
@@ -164,7 +164,7 @@ export default function MinWageGuide() {
           safety equipment, training courses and DBS checks you are required to pay for.
         </p>
         <p>
-          Deductions that do not reduce minimum wage pay include tax and National Insurance, pension contributions you
+          Deductions that do not reduce minimum wage pay include tax and <a href="/tax-and-salary/national-insurance">National Insurance</a>, pension contributions you
           choose to make, union subscriptions, repayment of a loan or advance of wages, and payments for things you
           choose to buy, such as meals in a staff canteen.
         </p>

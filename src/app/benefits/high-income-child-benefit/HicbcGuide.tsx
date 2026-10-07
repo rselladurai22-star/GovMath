@@ -63,7 +63,7 @@ export default function HicbcGuide() {
           <li>The charge applies if either partner&rsquo;s <strong>adjusted net income</strong> is over £60,000.</li>
           <li>It is <strong>1% of the Child Benefit for every £200</strong> of income above £60,000.</li>
           <li>At £80,000 or more, the charge equals all of the Child Benefit.</li>
-          <li>The partner with the higher income pays it, through Self Assessment or their tax code.</li>
+          <li>The partner with the higher income pays it, through Self Assessment or their <a href="/tax-and-salary/tax-code-decoder">tax code</a>.</li>
         </ul>
         <DataTable
           caption="Charge on a full year of Child Benefit, 2026/27"
@@ -107,15 +107,15 @@ export default function HicbcGuide() {
       <GuideSection id="ani" n={3} kicker="The income test" title="Adjusted net income">
         <p>The charge uses <strong>adjusted net income</strong>, not your salary. Broadly:</p>
         <ul>
-          <li>start with all your taxable income: salary, bonus, self-employed profit, rental profit, savings interest and dividends;</li>
+          <li>start with all your taxable income: salary, bonus, self-employed profit, rental profit, <a href="/investing/savings-interest">savings interest</a>{" "}and dividends;</li>
           <li>take off trading losses;</li>
           <li>take off the gross amount of personal pension contributions paid with relief at source;</li>
           <li>take off the gross amount of Gift Aid donations.</li>
         </ul>
         <p>
-          Pension contributions taken from your pay before tax, through a net pay scheme or salary sacrifice, are already left
-          out of your taxable pay, so you do not deduct them again. Interest within the Personal Savings Allowance and dividends
-          within the dividend allowance still count.
+          Pension contributions taken from your pay before tax, through a net pay scheme or <a href="/tax-and-salary/salary-sacrifice">salary sacrifice</a>, are already left
+          out of your taxable pay, so you do not deduct them again. Interest within the <a href="/investing/personal-savings-allowance">Personal Savings Allowance</a>{" "}and dividends
+          within the <a href="/investing/dividend-tax">dividend allowance</a>{" "}still count.
         </p>
       </GuideSection>
 
@@ -166,7 +166,7 @@ export default function HicbcGuide() {
           />
         </Figure>
         <p>
-          A pay rise from £60,000 to £70,000 adds £5,800 to take-home pay
+          A <a href="/tax-and-salary/pay-rise">pay rise</a>{" "}from £60,000 to £70,000 adds £5,800 to take-home pay
           after Income Tax and NI, but a family with two children loses £1,168.70 of Child Benefit, so they are only £4,631.30
           better off.
         </p>

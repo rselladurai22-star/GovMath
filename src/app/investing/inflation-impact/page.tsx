@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import InflationStudio from "./InflationStudio";
+import { ogFor } from "@/gm/og";
 import InflationGuide from "./InflationGuide";
 
 export const metadata: Metadata = {
-  title: "Inflation Calculator UK: What Your Money Will Be Worth",
+  title: "Inflation Calculator UK: Future Value of Money",
   description:
-    "See what your savings will be worth in today's money, or what things will cost in future, using the latest UK CPI inflation. Includes real returns and tax on interest.",
+    "Free UK inflation calculator. See what your money will be worth in future, the real return on savings and what prices today cost in years to come.",
   alternates: { canonical: "/investing/inflation-impact" },
+  openGraph: ogFor("/investing/inflation-impact"),
 };
 
 const BREADCRUMBS = [

@@ -39,7 +39,7 @@ export default function JisaGuide() {
       title="Saving for a child with a Junior ISA"
       intro={
         <>
-          A Junior ISA is a tax-free savings or investment account for a child, locked until they turn 18. Small regular amounts paid in from birth
+          A Junior <a href="/investing/isa-vs-gia">ISA</a>{" "}is a tax-free savings or investment account for a child, locked until they turn 18. Small regular amounts paid in from birth
           can grow into a meaningful sum for university, a first car or a house deposit. This guide explains how Junior ISAs work, how cash and
           investment versions compare, what fees do over 18 years, and what happens when your child takes control.
         </>
@@ -132,7 +132,7 @@ export default function JisaGuide() {
 
       <GuideSection id="time" n={6} kicker="Compounding" title="Why starting early matters">
         <p>
-          With compound growth, money paid in early has longest to grow. In the £100-a-month example, the payments made in the first five years
+          With <a href="/investing/compound-interest">compound growth</a>, money paid in early has longest to grow. In the £100-a-month example, the payments made in the first five years
           end up worth far more than those in the last five. If you can only afford to save for part of a child&rsquo;s childhood, the early years
           matter most. Use the calculator&rsquo;s chart to see how the gap between paid in and value widens with age.
         </p>
@@ -157,7 +157,7 @@ export default function JisaGuide() {
       <GuideSection id="alternatives" n={9} kicker="Options" title="Other ways to save for a child">
         <ul>
           <li><strong>Children&rsquo;s savings accounts:</strong> easy access, but subject to the £100 rule for parents&rsquo; money.</li>
-          <li><strong>Premium Bonds:</strong> can be bought for a child under 16 by a parent or grandparent; prizes are tax-free.</li>
+          <li><strong><a href="/investing/premium-bonds">Premium Bonds</a>:</strong> can be bought for a child under 16 by a parent or grandparent; prizes are tax-free.</li>
           <li><strong>Junior SIPP:</strong> a pension for a child, with tax relief, but locked until at least 57.</li>
           <li><strong>Saving in your own ISA:</strong> keeps control with you, and uses your own £20,000 allowance.</li>
         </ul>
@@ -189,7 +189,7 @@ export default function JisaGuide() {
         </p>
         <Callout title="Means-tested support">
           A large Junior ISA does not affect student loans, which depend on household income, but once it is an adult ISA it counts as savings for
-          means-tested benefits such as Universal Credit.
+          means-tested benefits such as <a href="/benefits/universal-credit">Universal Credit</a>.
         </Callout>
       </GuideSection>
 
@@ -241,7 +241,7 @@ export default function JisaGuide() {
       <GuideSection id="benefits" n={17} kicker="Benefits" title="Junior ISAs and benefits">
         <p>
           Money in a Junior ISA belongs to the child, so it is not counted as the parents&rsquo; savings for Universal Credit or other means-tested
-          benefits. It does not affect Child Benefit or Tax-Free Childcare. Once the child is 18 and the account becomes an adult ISA, it counts as their
+          benefits. It does not affect Child Benefit or <a href="/benefits/tax-free-childcare">Tax-Free Childcare</a>. Once the child is 18 and the account becomes an adult ISA, it counts as their
           own savings if they claim a means-tested benefit themselves.
         </p>
       </GuideSection>

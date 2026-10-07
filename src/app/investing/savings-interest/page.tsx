@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import SavingsStudio from "./SavingsStudio";
+import { ogFor } from "@/gm/og";
 import SavingsGuide from "./SavingsGuide";
 
 export const metadata: Metadata = {
-  title: "Savings Interest Calculator UK: Fixed vs Easy Access After Tax (2026/27)",
+  title: "Savings Interest Calculator UK 2026/27",
   description:
-    "Compare a fixed-rate bond with an easy-access account after tax: interest earned, the Personal Savings Allowance, interest paid at maturity and inflation, for 2026/27.",
+    "Free savings interest calculator. Compare fixed and easy access accounts after tax, see interest paid monthly or at maturity, and your real return.",
   alternates: { canonical: "/investing/savings-interest" },
+  openGraph: ogFor("/investing/savings-interest"),
 };
 
 const BREADCRUMBS = [

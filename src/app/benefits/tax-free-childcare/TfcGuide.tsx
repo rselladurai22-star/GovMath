@@ -136,7 +136,7 @@ export default function TfcGuide() {
           <li>you are not getting Universal Credit, tax credits or childcare vouchers.</li>
         </ul>
         <p>
-          If one partner cannot work because they get Carer&rsquo;s Allowance, Incapacity Benefit, Severe Disablement
+          If one partner cannot work because they get <a href="/benefits/carers-earnings">Carer&rsquo;s Allowance</a>, Incapacity Benefit, Severe Disablement
           Allowance or contribution-based ESA, the working partner can still qualify.
         </p>
       </GuideSection>
@@ -177,7 +177,7 @@ export default function TfcGuide() {
       <GuideSection id="uc" n={7} kicker="The big choice" title="Tax-Free Childcare or Universal Credit?">
         <p>
           You cannot get Tax-Free Childcare and Universal Credit at the same time. Universal Credit can repay up to{" "}
-          <strong>85%</strong> of childcare costs, up to £1,071.09 a month for one child or £1,836.16 for two or more, so lower
+          <strong>85%</strong> of <a href="/benefits/childcare-costs">childcare costs</a>, up to £1,071.09 a month for one child or £1,836.16 for two or more, so lower
           earners usually do better on Universal Credit.
         </p>
         <CompareCards

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import VatThresholdStudio from "./VatThresholdStudio";
+import { ogFor } from "@/gm/og";
 import VatThresholdGuide from "./VatThresholdGuide";
 
 export const metadata: Metadata = {
-  title: "VAT Threshold Checker 2026/27: Do I Need to Register for VAT?",
+  title: "VAT Threshold Calculator UK 2026/27",
   description:
-    "Check your rolling 12-month turnover against the £90,000 VAT registration threshold, see your deadline and when you would cross it, and what registering would cost.",
+    "Free VAT threshold checker for 2026/27. Test your rolling 12-month turnover against £90,000, see when you must register and the 30-day look-ahead.",
   alternates: { canonical: "/business/vat-threshold" },
+  openGraph: ogFor("/business/vat-threshold"),
 };
 
 const BREADCRUMBS = [

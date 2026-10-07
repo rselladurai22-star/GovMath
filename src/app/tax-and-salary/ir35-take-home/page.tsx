@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import IR35Studio from "./IR35Studio";
+import { ogFor } from "@/gm/og";
 import IR35Guide from "./IR35Guide";
 
 export const metadata: Metadata = {
-  title: "IR35 Calculator: Inside vs Outside Take-Home (2026/27)",
+  title: "IR35 Calculator UK 2026/27: Inside vs Outside",
   description:
-    "Compare contractor take-home inside IR35 through an umbrella company and outside IR35 through your own limited company, with Corporation Tax, dividends and the equivalent permanent salary. 2026/27.",
+    "Free IR35 calculator for 2026/27. Compare take-home pay inside and outside IR35, via an umbrella or your own limited company, at any day rate.",
   alternates: { canonical: "/tax-and-salary/ir35-take-home" },
+  openGraph: ogFor("/tax-and-salary/ir35-take-home"),
 };
 
 const BREADCRUMBS = [

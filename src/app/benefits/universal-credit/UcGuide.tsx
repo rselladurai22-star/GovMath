@@ -69,7 +69,7 @@ export default function UcGuide() {
           </li>
           <li>Rent is covered up to the Local Housing Allowance (private) or your actual rent (social), less any deductions.</li>
           <li>
-            Earnings reduce the award by <strong>55p for every £1</strong> of take-home pay above your work allowance.
+            Earnings reduce the award by <strong>55p for every £1</strong> of <a href="/tax-and-salary/salary-calculator">take-home pay</a>{" "}above your work allowance.
           </li>
           <li>Savings over £16,000 rule you out, and the benefit cap limits the total for most households not in work.</li>
         </ul>
@@ -187,7 +187,7 @@ export default function UcGuide() {
         </p>
         <p>
           Each other adult living with you, such as a grown-up son or daughter, usually means a housing cost contribution of £96.55 a month is
-          taken off. Some are exempt, including people getting PIP, DLA or Carer&rsquo;s Allowance and anyone under 21. If you own your home,
+          taken off. Some are exempt, including people getting PIP, DLA or <a href="/benefits/carers-earnings">Carer&rsquo;s Allowance</a>{" "}and anyone under 21. If you own your home,
           Universal Credit does not pay a housing element. You may be able to get a Support for Mortgage Interest loan instead.
         </p>
       </GuideSection>
@@ -262,7 +262,7 @@ export default function UcGuide() {
         </p>
         <p>
           Self-employed claimants who have been trading for more than 12 months may be treated as earning at least the minimum income floor,
-          roughly 35 hours a week at the National Living Wage, even if they earn less.
+          roughly 35 hours a week at the <a href="/tax-and-salary/minimum-wage">National Living Wage</a>, even if they earn less.
         </p>
       </GuideSection>
 
@@ -325,10 +325,10 @@ export default function UcGuide() {
         </p>
         <Callout tone="warn" title="Two paydays in one period">
           If you are paid weekly, fortnightly or four-weekly, some assessment periods will contain an extra payday and your award will drop
-          that month. A payday moved early for a bank holiday can have the same effect. It evens out over the year.
+          that month. A payday moved early for a <a href="/life/bank-holidays">bank holiday</a>{" "}can have the same effect. It evens out over the year.
         </Callout>
         <p>
-          You can ask for an advance payment while you wait for the first payment. It is a loan repaid from future payments, usually over 24
+          You can ask for an <a href="/benefits/uc-advance">advance payment</a>{" "}while you wait for the first payment. It is a loan repaid from future payments, usually over 24
           months. Couples get one payment into one account, though you can ask for a split payment in exceptional cases.
         </p>
       </GuideSection>
@@ -364,7 +364,7 @@ export default function UcGuide() {
       <GuideSection id="mistakes" n={14} kicker="Avoid these" title="Mistakes that cost money">
         <ul>
           <li>
-            <strong>Not reporting childcare costs on time.</strong> They must be reported in the assessment period they were paid, or by the end
+            <strong>Not reporting <a href="/benefits/childcare-costs">childcare costs</a>{" "}on time.</strong> They must be reported in the assessment period they were paid, or by the end
             of the next one.
           </li>
           <li>

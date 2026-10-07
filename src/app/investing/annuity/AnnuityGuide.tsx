@@ -116,7 +116,7 @@ export default function AnnuityGuide() {
           <li><strong>Joint life:</strong> keeps paying a spouse or partner after you die, often at half or two-thirds of the income. Lowers the rate.</li>
           <li><strong>Guarantee period:</strong> pays for at least, say, 5 or 10 years even if you die sooner. Lowers the rate slightly.</li>
           <li><strong>Value protection:</strong> returns the unused part of the price to your estate if you die early.</li>
-          <li><strong>Escalation:</strong> income rises each year by a fixed percentage or with inflation. Lowers the starting rate a lot.</li>
+          <li><strong>Escalation:</strong> income rises each year by a fixed percentage or with <a href="/investing/inflation-impact">inflation</a>. Lowers the starting rate a lot.</li>
           <li><strong>Payment timing:</strong> monthly in advance or in arrears, which slightly changes the amount.</li>
         </ul>
       </GuideSection>
@@ -215,7 +215,7 @@ export default function AnnuityGuide() {
 
       <GuideSection id="benefits" n={16} kicker="Benefits" title="Annuities and means-tested benefits">
         <p>
-          Annuity income counts as income for Pension Credit, Housing Benefit and Council Tax Reduction. If your income is low, a small annuity can reduce
+          Annuity income counts as income for Pension Credit, Housing Benefit and <a href="/benefits/council-tax-reduction">Council Tax Reduction</a>. If your income is low, a small annuity can reduce
           these benefits pound for pound, so check the <a href="/benefits/pension-credit">Pension Credit calculator</a> before you buy. The DWP may also
           treat you as having income from a pension pot you could have used to buy an annuity, so leaving it untouched does not always help.
         </p>

@@ -49,7 +49,7 @@ export default function PoaGuide() {
       intro={
         <>
           If you pay tax through Self Assessment, HMRC usually asks you to pay towards next year&rsquo;s bill in advance, in two
-          instalments called payments on account. They are why the first January bill for a new sole trader is so large, and
+          instalments called payments on account. They are why the first January bill for a new <a href="/business/sole-trader-tax">sole trader</a>{" "}is so large, and
           why your bill can jump or fall from one year to the next. This guide explains how they work and how to plan for them.
         </>
       }
@@ -221,13 +221,13 @@ export default function PoaGuide() {
 
       <GuideSection id="excluded" n={8} kicker="The detail" title="What is left out">
         <p>
-          Payments on account are based on your Income Tax and Class 4 National Insurance only. These are paid with the
+          Payments on account are based on your Income Tax and Class 4 <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}only. These are paid with the
           balancing payment, but never in advance:
         </p>
         <ul>
           <li>student loan and postgraduate loan repayments;</li>
           <li>voluntary Class 2 National Insurance;</li>
-          <li>Capital Gains Tax.</li>
+          <li><a href="/investing/capital-gains-assets">Capital Gains Tax</a>.</li>
         </ul>
         <WorkedExample
           title="An £8,000 bill plus £1,200 of student loan"
@@ -281,7 +281,7 @@ export default function PoaGuide() {
             plan online, though interest still applies.
           </li>
           <li>
-            <strong>Pay through your tax code:</strong> if you also have a job and owe less than £3,000, filing online by
+            <strong>Pay through your <a href="/tax-and-salary/tax-code-decoder">tax code</a>:</strong> if you also have a job and owe less than £3,000, filing online by
             30 December lets HMRC collect the balancing payment through PAYE over the following tax year. Payments on account
             cannot be collected this way.
           </li>
@@ -335,11 +335,11 @@ export default function PoaGuide() {
             <strong>Partners</strong> in a business partnership, who each pay on their share of the profit.
           </li>
           <li>
-            <strong>Company directors</strong> taking dividends above the £500 dividend allowance, because dividend tax is not
+            <strong>Company directors</strong> taking dividends above the £500 <a href="/investing/dividend-tax">dividend allowance</a>, because dividend tax is not
             deducted at source.
           </li>
           <li>
-            <strong>Higher earners</strong> paying the High Income Child Benefit Charge or with large savings interest.
+            <strong>Higher earners</strong> paying the High Income Child Benefit Charge or with large <a href="/investing/savings-interest">savings interest</a>.
           </li>
         </ul>
       </GuideSection>

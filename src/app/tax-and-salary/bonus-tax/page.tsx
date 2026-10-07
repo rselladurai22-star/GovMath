@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import BonusStudio from "./BonusStudio";
+import { ogFor } from "@/gm/og";
 import BonusGuide from "./BonusGuide";
 
 export const metadata: Metadata = {
-  title: "Bonus Tax Calculator (UK, 2026/27)",
+  title: "Bonus Tax Calculator UK 2026/27",
   description:
-    "See what a bonus is really worth after Income Tax, National Insurance and student loan, with your bonus-month payslip, the 60% trap and the pension option. 2026/27 rates.",
+    "Free bonus tax calculator for 2026/27. See exactly how much of your bonus you keep after Income Tax, NI, student loan and pension, and the 60% trap.",
   alternates: { canonical: "/tax-and-salary/bonus-tax" },
+  openGraph: ogFor("/tax-and-salary/bonus-tax"),
 };
 
 const BREADCRUMBS = [

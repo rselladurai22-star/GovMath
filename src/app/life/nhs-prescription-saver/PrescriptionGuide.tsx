@@ -209,7 +209,7 @@ export default function PrescriptionGuide() {
 
       <GuideSection id="low-income" n={8} kicker="Low income" title="Low income and the NHS Low Income Scheme">
         <p>
-          If you get Income Support, income-based JSA, income-related ESA, Pension Credit Guarantee Credit, or Universal Credit with earnings below
+          If you get Income Support, income-based JSA, income-related ESA, <a href="/benefits/pension-credit">Pension Credit</a>{" "}Guarantee Credit, or Universal Credit with earnings below
           a set limit, you get free prescriptions. If not, the NHS Low Income Scheme can give full help (HC2) or partial help (HC3) depending on your
           income and savings.
         </p>
@@ -361,7 +361,7 @@ export default function PrescriptionGuide() {
           help, so it is worth applying with an HC1 form before buying a PPC.
         </p>
         <p>
-          Young people leaving care, and those on Universal Credit with low earnings, can also get free prescriptions. Check before you pay, as
+          Young people leaving care, and those on <a href="/benefits/universal-credit">Universal Credit</a>{" "}with low earnings, can also get free prescriptions. Check before you pay, as
           refunds are only possible with an FP57 receipt.
         </p>
       </GuideSection>
@@ -371,6 +371,9 @@ export default function PrescriptionGuide() {
           In some rural areas, GP practices dispense medicines themselves. The same charges and exemptions apply, and a PPC works in exactly the same
           way. NHS online pharmacies deliver prescriptions free of charge; you still pay the normal prescription charge unless you are exempt or have
           a PPC.
+        </p>
+      <p>
+          Other free NHS-based checks on GovMath include the <a href="/life/bmi-uk-nhs">BMI calculator</a>, which uses NHS healthy weight ranges.
         </p>
       </GuideSection>
 

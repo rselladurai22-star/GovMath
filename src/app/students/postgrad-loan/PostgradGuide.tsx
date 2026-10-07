@@ -45,7 +45,7 @@ export default function PostgradGuide() {
       title="How Postgraduate Loan repayments work"
       intro={
         <>
-          The Postgraduate Loan covers Master&rsquo;s and Doctoral Loans from Student Finance England and Student Finance Wales. You repay 6% of
+          The Postgraduate Loan covers Master&rsquo;s and Doctoral Loans from Student Finance England and <a href="/students/welsh-student-finance">Student Finance Wales</a>. You repay 6% of
           income above £21,000, on top of any undergraduate loan repayments. This guide explains how it works and what it costs.
         </>
       }
@@ -56,7 +56,7 @@ export default function PostgradGuide() {
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
           <li>You repay 6% of income above £21,000. On £35,000, that is £70 a month.</li>
-          <li>You repay it at the same time as any Plan 1, 2 or 5 loan.</li>
+          <li>You repay it at the same time as any <a href="/students/plan-1-student-loan">Plan 1</a>, 2 or 5 loan.</li>
           <li>Interest is RPI plus 3%, capped at 6% from September 2026.</li>
           <li>Any balance left after 30 years is written off.</li>
         </ul>
@@ -72,7 +72,7 @@ export default function PostgradGuide() {
 
       <GuideSection id="what" n={2} kicker="Basics" title="What the Postgraduate Loan is">
         <p>
-          Master&rsquo;s Loans and Doctoral Loans are paid to you, not your university, and can be used for fees or living costs. They are not
+          Master&rsquo;s Loans and Doctoral Loans are paid to you, not your university, and can be used for fees or <a href="/students/student-budget">living costs</a>. They are not
           means-tested. Scottish and Northern Irish students have different postgraduate funding, repaid under their own plans.
         </p>
       </GuideSection>
@@ -109,7 +109,7 @@ export default function PostgradGuide() {
 
       <GuideSection id="combined" n={5} kicker="Two loans" title="With an undergraduate loan">
         <p>
-          If you also have an undergraduate loan, you repay both at once. On £40,000 with Plan 2, that is £79.61 a month on Plan 2 and £95 on
+          If you also have an undergraduate loan, you repay both at once. On £40,000 with <a href="/students/plan-2-student-loan">Plan 2</a>, that is £79.61 a month on Plan 2 and £95 on
           the Postgraduate Loan: £174.61 in total, or 15% of income above the thresholds.
         </p>
         <CompareCards
@@ -295,7 +295,7 @@ export default function PostgradGuide() {
 
       <GuideSection id="order" n={23} kicker="Two loans" title="Which loan clears first">
         <p>
-          The Postgraduate Loan has a low threshold and, on most salaries, is cleared well before a Plan 2 or Plan 5 loan. On £35,000, the
+          The Postgraduate Loan has a low threshold and, on most salaries, is cleared well before a Plan 2 or <a href="/students/plan-5-student-loan">Plan 5</a>{" "}loan. On £35,000, the
           example £12,500 Postgraduate Loan clears in 16 years. After that, you only repay your undergraduate loan, and your take-home pay rises
           by £70 a month.
         </p>
@@ -321,7 +321,7 @@ export default function PostgradGuide() {
       <GuideSection id="budgeting" n={26} kicker="Budgeting" title="Budgeting during your course">
         <p>
           Unlike undergraduate funding, the Postgraduate Loan is a single sum paid straight to you, not split into a fee
-          loan and a living cost loan. It is up to you to pay your tuition fees from it and make the rest last.
+          loan and a living cost loan. It is up to you to pay your <a href="/students/degree-cost">tuition fees</a>{" "}from it and make the rest last.
         </p>
         <ul>
           <li>

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import PropertyCGTStudio from "./PropertyCGTStudio";
+import { ogFor } from "@/gm/og";
 import PropertyCGTGuide from "./PropertyCGTGuide";
 
 export const metadata: Metadata = {
-  title: "Capital Gains Tax on Property Calculator (2026/27)",
+  title: "Capital Gains Tax on Property Calculator",
   description:
-    "Work out Capital Gains Tax on selling a buy-to-let, second home or former home: 18% and 24% rates, the £3,000 allowance, Private Residence Relief, joint owners and the 60-day deadline.",
+    "Free CGT on property calculator for 2026/27. Work out the tax on selling a second home or buy-to-let at 18% or 24%, with reliefs and the 60-day deadline.",
   alternates: { canonical: "/property/property-capital-gains" },
+  openGraph: ogFor("/property/property-capital-gains"),
 };
 
 const BREADCRUMBS = [
