@@ -330,7 +330,7 @@ export default function InflationGuide() {
           <li><strong>Leaving an inheritance in cash for years.</strong>{" "}£100,000 held as cash for 20 years at 2.5% inflation is worth about £61,027 in today&rsquo;s money.</li>
         </ul>
       <p>
-          For quick percentage sums, such as the percentage change between two prices, use the <a href="/uk/life/percentage-calculator">percentage calculator</a>.
+          For quick percentage sums, such as the percentage change between two prices, use the <a href="/everyday/percentage-calculator">percentage calculator</a>.
         </p>
       </GuideSection>
 

@@ -33,7 +33,7 @@ function show(code: string) {
       else item.removeAttribute("aria-current");
     });
     const note = menu.querySelector(".gm-country-note");
-    if (note) note.textContent = c.live ? "Choose your country" : `${c.name}: coming soon. UK calculators are live now.`;
+    if (note) note.textContent = c.live ? "Choose your country" : `${c.name}: coming soon. UK and US calculators are live now.`;
   });
   document.documentElement.dataset.country = c.code;
 }
@@ -70,7 +70,7 @@ function close(menu: Element) {
 
 /**
  * The header's country menu (markup from countryMenuHtml in catalog.ts).
- * Inside a country's section (/uk/…) it shows that country. Elsewhere it
+ * Inside a country's section (/uk/…, /us/…) it shows that country. Elsewhere it
  * shows the visitor's own choice if they made one, else the country they
  * are browsing from (when we cover it), else the UK. It never redirects:
  * people, and search engines crawling from abroad, always reach the page

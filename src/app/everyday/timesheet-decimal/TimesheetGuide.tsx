@@ -8,18 +8,19 @@ const TOC: TocItem[] = [
   { id: "table", title: "Conversion table" },
   { id: "week", title: "Working out a weekly total" },
   { id: "overnight", title: "Night shifts" },
-  { id: "breaks", title: "Breaks and the law" },
+  { id: "breaks", title: "Breaks and the law in the UK" },
   { id: "overtime", title: "Overtime" },
   { id: "pay", title: "From hours to pay" },
   { id: "rounding", title: "Rounding and clocking in" },
-  { id: "limits", title: "Working time limits" },
+  { id: "limits", title: "Working time limits in the UK" },
   { id: "records", title: "Keeping records" },
   { id: "annualised", title: "Annualised and variable hours" },
-  { id: "holiday", title: "Holiday pay for irregular hours" },
+  { id: "holiday", title: "Holiday pay for irregular hours (UK)" },
   { id: "self-employed", title: "Timesheets for the self-employed" },
   { id: "spreadsheet", title: "Timesheets in a spreadsheet" },
-  { id: "zero-hours", title: "Zero-hours and agency work" },
+  { id: "zero-hours", title: "Zero-hours and agency work (UK)" },
   { id: "checks", title: "Checking your payslip" },
+  { id: "us-rules", title: "Hours and pay rules in the US" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -29,6 +30,8 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — National Minimum Wage and National Living Wage rates", href: "https://www.gov.uk/national-minimum-wage-rates" },
   { label: "GOV.UK — Overtime: your rights", href: "https://www.gov.uk/overtime-your-rights" },
   { label: "Acas — Working hours", href: "https://www.acas.org.uk/working-hours" },
+  { label: "US Department of Labor — Overtime pay", href: "https://www.dol.gov/agencies/whd/overtime" },
+  { label: "US Department of Labor — Minimum wage", href: "https://www.dol.gov/agencies/whd/minimum-wage" },
 ];
 
 export default function TimesheetGuide() {
@@ -58,7 +61,7 @@ export default function TimesheetGuide() {
             { value: "0.25", label: "15 minutes" },
             { value: "0.5", label: "30 minutes" },
             { value: "0.75", label: "45 minutes" },
-            { value: "£12.71", label: "National Living Wage an hour" },
+            { value: "0.1", label: "6 minutes" },
           ]}
         />
       </GuideSection>
@@ -103,7 +106,9 @@ export default function TimesheetGuide() {
           ]}
           total={{ label: "Decimal hours", value: "38.5" }}
         />
-        <p>At the National Living Wage of £12.71 an hour, 38.5 hours is £489.34 before tax.</p>
+        <p>
+          At the UK National Living Wage of £12.71 an hour, 38.5 hours is £489.34 before tax. At $15 an hour in the US, the same week is $577.50.
+        </p>
       </GuideSection>
 
       <GuideSection id="overnight" n={5} kicker="Shift work" title="Night shifts">
@@ -114,7 +119,7 @@ export default function TimesheetGuide() {
         <p>Night workers have extra protections, including a limit of 8 hours in 24 on average and free health assessments.</p>
       </GuideSection>
 
-      <GuideSection id="breaks" n={6} kicker="Rights" title="Breaks and the law">
+      <GuideSection id="breaks" n={6} kicker="Rights" title="Breaks and the law in the UK">
         <CompareCards
           columns={[
             {
@@ -140,11 +145,12 @@ export default function TimesheetGuide() {
 
       <GuideSection id="overtime" n={7} kicker="Extra hours" title="Overtime">
         <p>
-          There is no legal right to extra pay for overtime. Your contract sets whether overtime is paid, at what rate, and after how many hours. Your
-          average pay for all hours worked must not fall below the minimum wage.
+          In the UK there is no legal right to extra pay for overtime. Your contract sets whether overtime is paid, at what rate, and after how many
+          hours, and your average pay for all hours worked must not fall below the minimum wage. In the US the rules are stricter: see the section on
+          US rules below.
         </p>
         <WorkedExample
-          title="38.5 hours plus a 6-hour Saturday, overtime after 40 hours at time and a half, £12.71 an hour"
+          title="UK example: 38.5 hours plus a 6-hour Saturday, overtime after 40 hours at time and a half, £12.71 an hour"
           steps={[
             { label: "Total hours", value: "44.5" },
             { label: "40 hours at £12.71", value: "£508.40" },
@@ -170,7 +176,7 @@ export default function TimesheetGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="limits" n={10} kicker="Hours" title="Working time limits">
+      <GuideSection id="limits" n={10} kicker="Hours" title="Working time limits in the UK">
         <p>
           Most workers cannot be made to work more than 48 hours a week on average, normally over 17 weeks, unless they opt out in writing. Workers
           under 18 cannot work more than 8 hours a day or 40 hours a week. Some jobs, such as the armed forces and some transport roles, have
@@ -192,7 +198,7 @@ export default function TimesheetGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="holiday" n={13} kicker="Leave" title="Holiday pay for irregular hours">
+      <GuideSection id="holiday" n={13} kicker="Leave" title="Holiday pay for irregular hours (UK)">
         <p>
           Since April 2024, irregular-hours and part-year workers in Great Britain build up holiday at 12.07% of the hours they work in each pay
           period. If you work 38.5 hours in a week, that adds about 4.65 hours of holiday. Employers can also pay this as rolled-up holiday pay of
@@ -203,7 +209,7 @@ export default function TimesheetGuide() {
       <GuideSection id="self-employed" n={14} kicker="Freelancers" title="Timesheets for the self-employed">
         <p>
           Freelancers who bill by the hour should record time in decimal hours to invoice accurately. Many round to the nearest 6 or 15 minutes, as
-          set out in their terms. At £45 an hour, 2 hours 20 minutes is 2.33 hours, or £105.
+          set out in their terms. At 45 an hour (in pounds, dollars or euros), 2 hours 20 minutes is 2.33 hours, or 105.
         </p>
       </GuideSection>
 
@@ -223,7 +229,7 @@ export default function TimesheetGuide() {
         />
       </GuideSection>
 
-      <GuideSection id="zero-hours" n={16} kicker="Flexible work" title="Zero-hours and agency work">
+      <GuideSection id="zero-hours" n={16} kicker="Flexible work" title="Zero-hours and agency work (UK)">
         <p>
           If you work variable shifts, keep a record of every shift, including time spent waiting on site at your employer&rsquo;s request, which can
           count as working time. Agency workers are entitled to the same basic pay and conditions as permanent staff after 12 weeks in the same
@@ -254,7 +260,21 @@ export default function TimesheetGuide() {
         />
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers">
+      <GuideSection id="us-rules" n={18} kicker="United States" title="Hours and pay rules in the US">
+        <p>
+          In the US, the federal Fair Labor Standards Act sets the minimum wage at $7.25 an hour and requires overtime at no less than 1.5 times the
+          regular rate for hours over 40 in a workweek, for employees who are not exempt. Many states and cities set a higher minimum wage, and some,
+          such as California, also require overtime after 8 hours in a single day. Federal law does not require meal or rest breaks for adults, though
+          short breaks of 5 to 20 minutes that an employer does give must be paid, and several states require meal breaks.
+        </p>
+        <p>
+          A 44.5-hour week at $15 an hour is 40 hours at $15 ($600) plus 4.5 hours at $22.50 ($101.25): $701.25 before tax. The{" "}
+          <a href="/us/taxes/overtime-calculator">overtime calculator</a> works this out and shows the new federal deduction for overtime pay, and the{" "}
+          <a href="/us/taxes/paycheck-calculator">paycheck calculator</a> shows take-home pay after federal and state tax.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
             { value: "÷ 60", label: "Minutes to decimal" },
@@ -262,7 +282,9 @@ export default function TimesheetGuide() {
             { value: "20 mins", label: "Break after 6 hours" },
             { value: "11 hours", label: "Rest between shifts" },
             { value: "48 hours", label: "Average weekly limit" },
-            { value: "£12.71", label: "National Living Wage, 21 and over" },
+            { value: "£12.71", label: "UK National Living Wage, 21 and over" },
+            { value: "$7.25", label: "US federal minimum wage" },
+            { value: "40 hours", label: "US weekly overtime threshold" },
             { value: "38.5", label: "Hours in a typical full-time week" },
             { value: "6 years", label: "Pay records kept" },
           ]}

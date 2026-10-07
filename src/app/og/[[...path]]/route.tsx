@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
-import { CALCULATORS, CATEGORIES } from "@/lib/calculators";
+import { CALCULATORS, CATEGORIES, EVERYDAY, US_CATEGORIES } from "@/lib/calculators";
 import { getAllPosts } from "@/lib/blog";
 import { categoryLabel } from "@/gm/catalog";
 
@@ -16,6 +16,9 @@ export function generateStaticParams() {
   return [
     { path: [] },
     { path: ["uk"] },
+    { path: ["us"] },
+    { path: ["everyday"] },
+    ...US_CATEGORIES.map((c) => ({ path: c.href.slice(1).split("/") })),
     ...CATEGORIES.map((c) => ({ path: c.href.slice(1).split("/") })),
     ...CALCULATORS.map((c) => ({ path: c.href.slice(1).split("/") })),
     ...getAllPosts().map((p) => ({ path: ["blog", p.slug] })),
@@ -29,6 +32,15 @@ function card(path: string): { kicker: string; title: string; text: string } {
   if (cat) return { kicker: "Free calculators", title: `${categoryLabel(cat.slug)} calculators`, text: cat.tagline };
   const post = getAllPosts().find((p) => `/blog/${p.slug}` === path);
   if (post) return { kicker: "Guide", title: post.seoTitle ?? post.title, text: post.description };
+  const usCat = US_CATEGORIES.find((c) => c.href === path);
+  if (usCat) return { kicker: "Free US calculators", title: `${usCat.title} calculators`, text: usCat.tagline };
+  if (path === EVERYDAY.href) return { kicker: "Free calculators", title: EVERYDAY.title, text: EVERYDAY.tagline };
+  if (path === "/us")
+    return {
+      kicker: "Free US calculators",
+      title: "Paycheck, tax, mortgage and retirement calculators",
+      text: `${CALCULATORS.filter((c) => c.country === "us").length} free calculators with plain-English guides, for 2026.`,
+    };
   if (path === "/uk")
     return {
       kicker: "Free UK calculators",

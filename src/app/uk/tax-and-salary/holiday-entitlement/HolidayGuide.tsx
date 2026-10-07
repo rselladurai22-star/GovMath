@@ -329,7 +329,7 @@ export default function HolidayGuide() {
           holiday rules in detail.
         </p>
       <p>
-          To scale a full-time salary to your hours or days, use the <a href="/uk/tax-and-salary/pro-rata">pro rata salary calculator</a>. To add up the hours you have worked, the <a href="/uk/life/timesheet-decimal">timesheet calculator</a> turns hours and minutes into decimal hours.
+          To scale a full-time salary to your hours or days, use the <a href="/uk/tax-and-salary/pro-rata">pro rata salary calculator</a>. To add up the hours you have worked, the <a href="/everyday/timesheet-decimal">timesheet calculator</a> turns hours and minutes into decimal hours.
         </p>
       </GuideSection>
 

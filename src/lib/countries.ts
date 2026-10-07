@@ -7,7 +7,7 @@ export type Country = { code: string; iso: string; name: string; short: string; 
 
 export const COUNTRIES: Country[] = [
   { code: "uk", iso: "GB", name: "United Kingdom", short: "UK", live: true },
-  { code: "us", iso: "US", name: "United States", short: "US", live: false },
+  { code: "us", iso: "US", name: "United States", short: "US", live: true },
   { code: "in", iso: "IN", name: "India", short: "India", live: false },
   { code: "sg", iso: "SG", name: "Singapore", short: "Singapore", live: false },
 ];

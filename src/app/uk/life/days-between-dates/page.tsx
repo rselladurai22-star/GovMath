@@ -35,7 +35,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function DaysPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/life/bank-holidays", "/uk/life/timesheet-decimal", "/uk/life/pro-rata-rent", "/uk/tax-and-salary/holiday-entitlement"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/life/bank-holidays", "/everyday/timesheet-decimal", "/uk/life/pro-rata-rent", "/uk/tax-and-salary/holiday-entitlement"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

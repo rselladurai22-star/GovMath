@@ -373,7 +373,7 @@ export default function PrescriptionGuide() {
           a PPC.
         </p>
       <p>
-          Other free NHS-based checks on SumAtlas include the <a href="/uk/life/bmi-uk-nhs">BMI calculator</a>, which uses NHS healthy weight ranges.
+          Other free NHS-based checks on SumAtlas include the <a href="/everyday/bmi-calculator">BMI calculator</a>, which uses NHS healthy weight ranges.
         </p>
       </GuideSection>
 

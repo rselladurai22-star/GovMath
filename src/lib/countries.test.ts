@@ -14,11 +14,12 @@ describe("countries", () => {
     expect(countryForPath("/uk/benefits/universal-credit")).toBe("uk");
     expect(countryForPath("/")).toBeUndefined();
     expect(countryForPath("/about")).toBeUndefined();
+    expect(countryForPath("/us/taxes/paycheck-calculator")).toBe("us");
     // Countries that are not live yet have no section.
-    expect(countryForPath("/us/paycheck")).toBeUndefined();
+    expect(countryForPath("/in/income-tax")).toBeUndefined();
   });
 
-  it("has the UK live", () => {
-    expect(COUNTRIES.filter((c) => c.live).map((c) => c.code)).toEqual(["uk"]);
+  it("has the UK and US live", () => {
+    expect(COUNTRIES.filter((c) => c.live).map((c) => c.code)).toEqual(["uk", "us"]);
   });
 });

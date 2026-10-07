@@ -377,7 +377,7 @@ export default function HealthyStartGuide() {
           total={{ label: "Paid every 4 weeks", value: "£55.80" }}
         />
       <p>
-          For a quick check of adult weight against NHS ranges, use the <a href="/uk/life/bmi-uk-nhs">BMI calculator</a>.
+          For a quick check of adult weight against NHS ranges, use the <a href="/everyday/bmi-calculator">BMI calculator</a>.
         </p>
       </GuideSection>
 
