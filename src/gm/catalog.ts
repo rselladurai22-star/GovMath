@@ -44,7 +44,8 @@ export function categoryGridHtml(): string {
  * The header with its mega menus built from the live catalogue: each topic's
  * menu lists every calculator in that topic (so new tools are linked from
  * every page), and the menu headings are styled paragraphs rather than <h3>s,
- * so the page's own <h1> comes first in its heading outline.
+ * so the page's own <h1> comes first in its heading outline. The topic menus
+ * are moved into the logo row.
  */
 export function headerHtml(html: string): string {
   return html
@@ -57,7 +58,13 @@ export function headerHtml(html: string): string {
           .join("") +
         close,
     )
-    .replace(/<h3>([\s\S]*?)<\/h3>/g, '<p class="ax-mega-h">$1</p>');
+    .replace(/<h3>([\s\S]*?)<\/h3>/g, '<p class="ax-mega-h">$1</p>')
+    // One-row header (October 2026, owner's request): no claret strip, no
+    // Home/Calculators/Guides/About links (the logo goes home; the footer has
+    // the rest), and the topic menus sit between the logo and the search box.
+    .replace(/<div class="utility">[\s\S]*?<\/div><\/div>/, "")
+    .replace(/<nav aria-label="Main navigation">[\s\S]*?<\/nav>/, "")
+    .replace(/(<div class="ax-search gm-headsearch")([\s\S]*?)(<nav id="ax-navigation"[\s\S]*?<\/nav>)/, "$3$1$2");
 }
 
 /** Quick links to the fixed-amount pages, shown on their topic page. */
