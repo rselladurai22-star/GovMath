@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { CALCULATORS, CATEGORIES } from "@/lib/calculators";
 import { getAllPosts } from "@/lib/blog";
@@ -36,6 +38,7 @@ function card(path: string): { kicker: string; title: string; text: string } {
 export async function GET(_req: Request, { params }: { params: Promise<{ path?: string[] }> }) {
   const { path } = await params;
   const { kicker, title, text } = card(path?.length ? `/${path.join("/")}` : "/");
+  const badge = `data:image/png;base64,${(await readFile(join(process.cwd(), "public/gm/govmath-badge-512.png"))).toString("base64")}`;
   return new ImageResponse(
     (
       <div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column", background: "#ffffff", color: "#282828" }}>
@@ -46,7 +49,11 @@ export async function GET(_req: Request, { params }: { params: Promise<{ path?: 
           <div style={{ fontSize: 32, color: "#6e6e6e", lineHeight: 1.4, display: "flex" }}>{text.length > 120 ? `${text.slice(0, 117)}…` : text}</div>
         </div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "26px 80px", background: "#f1f4f7", fontSize: 28 }}>
-          <span style={{ fontWeight: 800, color: "#8c1d40" }}>GovMath</span>
+          <span style={{ display: "flex", alignItems: "center", gap: 18 }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={badge} width={72} height={72} alt="" />
+            <span style={{ fontWeight: 800, color: "#8c1d40" }}>GovMath</span>
+          </span>
           <span style={{ color: "#6e6e6e" }}>govmath.co.uk · Free, no sign-up · Independent</span>
         </div>
       </div>
