@@ -894,3 +894,7 @@
     padding: 8px 0;
   }
 }
+
+/* Logo: the round GovMath.co.uk badge (October 2026). The package's rules size a
+   wide wordmark at each breakpoint; keep their height and make the width match. */
+.logo img{aspect-ratio:1/1;width:auto!important;object-fit:contain}

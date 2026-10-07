@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { preload } from "react-dom";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -21,15 +21,17 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://govmath.co.uk"),
   // Every page title ends with the brand; pages give their own title without it.
   title: { default: "GovMath: Free UK Calculators", template: "%s | GovMath" },
-  icons: {
-    icon: "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Crect%20width='40'%20height='40'%20rx='8'%20fill='%23510b38'/%3E%3Ctext%20x='8'%20y='29'%20fill='white'%20font-family='Arial'%20font-size='27'%20font-weight='bold'%3EG%3C/text%3E%3C/svg%3E",
-  },
   openGraph: ogFor("/"),
   twitter: { card: "summary_large_image" },
   verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
   ...(ADSENSE_CLIENT ? { other: { "google-adsense-account": ADSENSE_CLIENT } } : {}),
 };
 
+// The browser bar on phones takes the site's claret.
+export const viewport: Viewport = { themeColor: "#8c1d40" };
+
+// The tab icon, Google's favicon and home-screen icons come from the files
+// src/app/favicon.ico, icon.png and apple-icon.png (the round GovMath badge).
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   // Lato 400 and 700 are used on every page; fetch them before the CSS asks.
   preload("/gm/fonts/lato-400.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });

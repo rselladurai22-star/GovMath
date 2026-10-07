@@ -17,7 +17,7 @@ export const siteJsonLd = [
     "@id": ORG_ID,
     name: "GovMath",
     url: SITE,
-    logo: `${SITE}/gm/govmath-logo-630.png`,
+    logo: `${SITE}/gm/govmath-badge-512.png`,
     description: "An independent UK website of free tax, salary, mortgage, benefits and pension calculators. Not part of the UK government.",
   },
   {
