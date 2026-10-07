@@ -111,7 +111,7 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
     items.push({
       key: "uc",
       name: "Universal Credit",
-      href: "/benefits/universal-credit",
+      href: "/uk/benefits/universal-credit",
       status: uc.capitalTooHigh ? "unlikely" : ucAward >= 1 ? "likely" : "unlikely",
       monthly: ucAward >= 1 ? ucAward : null,
       why: uc.capitalTooHigh
@@ -134,7 +134,7 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
     items.push({
       key: "pc",
       name: "Pension Credit",
-      href: "/benefits/pension-credit",
+      href: "/uk/benefits/pension-credit",
       status: pcWeekly >= 0.01 ? "likely" : "unlikely",
       monthly: pcWeekly >= 0.01 ? wk2m(pcWeekly) : null,
       why: pcWeekly >= 0.01 ? "Your income is below the minimum guarantee." : "Your income is above the minimum guarantee.",
@@ -147,7 +147,7 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
     items.push({
       key: "hb",
       name: "Housing Benefit",
-      href: "/benefits/housing-benefit",
+      href: "/uk/benefits/housing-benefit",
       status: pcWeekly > 0 ? "likely" : "check",
       monthly: pcWeekly > 0 ? i.rent : null,
       why: pcWeekly > 0 ? "Guarantee Credit gives maximum Housing Benefit, up to the rent limit for your area." : "Pensioners who rent claim Housing Benefit from the council. It depends on income and savings.",
@@ -158,7 +158,7 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
   items.push({
     key: "ctr",
     name: "Council Tax Reduction",
-    href: "/benefits/council-tax-reduction",
+    href: "/uk/benefits/council-tax-reduction",
     status: meansTested ? "likely" : i.savings > 16_000 && !i.pensionAge ? "unlikely" : "check",
     monthly: null,
     why: meansTested ? "People on Universal Credit or Pension Credit usually get a large reduction." : "Each council sets its own scheme. Worth checking on a low income.",
@@ -171,7 +171,7 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
     items.push({
       key: "cb",
       name: "Child Benefit",
-      href: "/benefits/child-benefit",
+      href: "/uk/benefits/child-benefit",
       status: "likely",
       monthly: wk2m(cbWeekly),
       why: charge ? "Paid for every child. Some or all is taken back through tax as the highest earner is over £60,000." : "Paid for every child under 16, or under 20 in approved education.",
@@ -179,14 +179,14 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
   }
   if ((i.pregnant || (hasKids && i.youngest < 4)) && ucAward >= 1 && i.earnings <= HEALTHY_START.ucEarningsLimit) {
     const weekly = (i.pregnant ? HEALTHY_START.pregnancy : 0) + (hasKids && i.youngest < 1 ? HEALTHY_START.under1 : hasKids && i.youngest < 4 ? HEALTHY_START.age1to4 : 0);
-    items.push({ key: "hs", name: "Healthy Start", href: "/life/healthy-start", status: "likely", monthly: wk2m(weekly), why: "Universal Credit with family take-home pay of £408 a month or less." });
+    items.push({ key: "hs", name: "Healthy Start", href: "/uk/life/healthy-start", status: "likely", monthly: wk2m(weekly), why: "Universal Credit with family take-home pay of £408 a month or less." });
   }
   if (i.pregnant || (hasKids && i.youngest < 1)) {
     const first = !hasKids || (kids === 1 && i.youngest < 1 && !i.pregnant);
     items.push({
       key: "ssmg",
       name: "Sure Start Maternity Grant",
-      href: "/benefits/sure-start-maternity-grant",
+      href: "/uk/benefits/sure-start-maternity-grant",
       status: meansTested && first ? "likely" : meansTested ? "check" : "unlikely",
       monthly: null,
       oneOff: meansTested && first ? OTHER_HELP_2026.sureStart : undefined,
@@ -197,7 +197,7 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
     items.push({
       key: "hours",
       name: "Funded childcare hours",
-      href: "/benefits/free-childcare-hours",
+      href: "/uk/benefits/free-childcare-hours",
       status: i.youngest >= 3 ? "likely" : "check",
       monthly: null,
       why: i.youngest >= 3 ? "Every 3 and 4-year-old in England gets 15 hours; working parents get 30." : "From 9 months in England if you work, or from 2 on some benefits.",
@@ -207,7 +207,7 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
     items.push({
       key: "tfc",
       name: "Tax-Free Childcare",
-      href: "/benefits/tax-free-childcare",
+      href: "/uk/benefits/tax-free-childcare",
       status: ucAward >= 1 ? "check" : i.highestIncome > 100_000 ? "unlikely" : "check",
       monthly: null,
       why: ucAward >= 1 ? "You cannot have it alongside Universal Credit childcare costs: compare the two." : i.highestIncome > 100_000 ? "Not available if either parent earns over £100,000." : "Up to £2,000 a child a year if every parent works.",
@@ -217,19 +217,19 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
   // ── Disability and caring
   if (i.disability === "daily" || i.disability === "both") {
     if (i.pensionAge) {
-      items.push({ key: "aa", name: "Attendance Allowance", href: "/benefits/attendance-allowance", status: "check", monthly: null, why: `Not means-tested. ${gbpWeek(AA_2026.lower)} or ${gbpWeek(AA_2026.higher)} a week if you need help with personal care.` });
+      items.push({ key: "aa", name: "Attendance Allowance", href: "/uk/benefits/attendance-allowance", status: "check", monthly: null, why: `Not means-tested. ${gbpWeek(AA_2026.lower)} or ${gbpWeek(AA_2026.higher)} a week if you need help with personal care.` });
     } else {
-      items.push({ key: "pip", name: "Personal Independence Payment", href: "/benefits/pip-points", status: "check", monthly: null, why: `Not means-tested. From ${gbpWeek(PIP_2026.mobility.standard)} to ${gbpWeek(PIP_2026.daily.enhanced + PIP_2026.mobility.enhanced)} a week, decided by an assessment.` });
+      items.push({ key: "pip", name: "Personal Independence Payment", href: "/uk/benefits/pip-points", status: "check", monthly: null, why: `Not means-tested. From ${gbpWeek(PIP_2026.mobility.standard)} to ${gbpWeek(PIP_2026.daily.enhanced + PIP_2026.mobility.enhanced)} a week, decided by an assessment.` });
     }
   }
   if (!i.pensionAge && (i.disability === "work" || i.disability === "both") && i.workedRecently) {
-    items.push({ key: "esa", name: "New Style ESA", href: "/benefits/new-style-esa", status: "check", monthly: null, why: "Paid on your National Insurance record if illness stops you working. Not affected by savings." });
+    items.push({ key: "esa", name: "New Style ESA", href: "/uk/benefits/new-style-esa", status: "check", monthly: null, why: "Paid on your National Insurance record if illness stops you working. Not affected by savings." });
   }
   if (!i.pensionAge && i.disability === "none" && i.workedRecently && i.earnings < 1_000) {
-    items.push({ key: "jsa", name: "New Style JSA", href: "/benefits/new-style-jsa", status: "check", monthly: null, why: "Up to 26 weeks on your National Insurance record if you are out of work. Not affected by savings." });
+    items.push({ key: "jsa", name: "New Style JSA", href: "/uk/benefits/new-style-jsa", status: "check", monthly: null, why: "Up to 26 weeks on your National Insurance record if you are out of work. Not affected by savings." });
   }
   if (i.carer) {
-    items.push({ key: "ca", name: "Carer's Allowance", href: "/benefits/carers-earnings", status: "check", monthly: null, why: `${gbpWeek(CA_2026.weekly)} a week if your own earnings are £${CA_2026.earningsLimit} a week or less after allowable expenses.` });
+    items.push({ key: "ca", name: "Carer's Allowance", href: "/uk/benefits/carers-earnings", status: "check", monthly: null, why: `${gbpWeek(CA_2026.weekly)} a week if your own earnings are £${CA_2026.earningsLimit} a week or less after allowable expenses.` });
   }
 
   // ── Bills

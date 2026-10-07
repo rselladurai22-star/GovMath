@@ -10,7 +10,7 @@ export type Crumb = { href: string; label: string };
 
 /** Topic names as the approved design writes them (e.g. "Mortgages & property"). */
 const TOPIC: Record<string, string> = Object.fromEntries(
-  (cats as { slug: string; label: string }[]).map((c) => [`/${c.slug}`, c.label.replace(/&amp;/g, "&")]),
+  (cats as { slug: string; label: string }[]).map((c) => [`/uk/${c.slug}`, c.label.replace(/&amp;/g, "&")]),
 );
 
 /**
@@ -52,7 +52,7 @@ export default function FlagshipPage({
         "@type": "ListItem",
         position: i + 1,
         name: c.label,
-        item: `https://govmath.co.uk${c.href}`,
+        item: `https://sumatlas.com${c.href}`,
       })),
     },
     {

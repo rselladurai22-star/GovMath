@@ -21,8 +21,8 @@ const label = (c: Cat) => c.label.replace(/&amp;/g, "&");
 
 /** Where each calculator's guide starts. The two pages taken from the design package name theirs. */
 const GUIDE_ANCHOR: Record<string, string> = {
-  "/tax-and-salary/salary-calculator": "#salary-guide",
-  "/property/mortgage-repayment": "#mortgage-guide",
+  "/uk/tax-and-salary/salary-calculator": "#salary-guide",
+  "/uk/property/mortgage-repayment": "#mortgage-guide",
 };
 const guideHref = (href: string) => href + (GUIDE_ANCHOR[href] ?? "#guide");
 

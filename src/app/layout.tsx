@@ -18,9 +18,9 @@ import { ogFor } from "@/gm/og";
  * Google Analytics loads too, with consent defaults first (src/lib/analytics.ts).
  */
 export const metadata: Metadata = {
-  metadataBase: new URL("https://govmath.co.uk"),
+  metadataBase: new URL("https://sumatlas.com"),
   // Every page title ends with the brand; pages give their own title without it.
-  title: { default: "GovMath: Free UK Calculators", template: "%s | GovMath" },
+  title: { default: "SumAtlas: Free Money and Tax Calculators", template: "%s | SumAtlas" },
   openGraph: ogFor("/"),
   twitter: { card: "summary_large_image" },
   verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#8c1d40" };
 
 // The tab icon, Google's favicon and home-screen icons come from the files
-// src/app/favicon.ico, icon.png and apple-icon.png (the round GovMath badge).
+// src/app/favicon.ico, icon.png and apple-icon.png (the round SumAtlas badge).
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   // Lato 400 and 700 are used on every page; fetch them before the CSS asks.
   preload("/gm/fonts/lato-400.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });

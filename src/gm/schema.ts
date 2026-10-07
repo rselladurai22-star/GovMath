@@ -6,7 +6,7 @@ import updated from "./updated.json";
  * declared once (root layout) with stable @ids; calculator and topic pages
  * point back to them.
  */
-export const SITE = "https://govmath.co.uk";
+export const SITE = "https://sumatlas.com";
 export const ORG_ID = `${SITE}/#organization`;
 const WEBSITE_ID = `${SITE}/#website`;
 
@@ -15,16 +15,16 @@ export const siteJsonLd = [
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": ORG_ID,
-    name: "GovMath",
+    name: "SumAtlas",
     url: SITE,
-    logo: `${SITE}/gm/govmath-badge-512.png`,
+    logo: `${SITE}/gm/sumatlas-mark-512.png`,
     description: "An independent UK website of free tax, salary, mortgage, benefits and pension calculators. Not part of the UK government.",
   },
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": WEBSITE_ID,
-    name: "GovMath",
+    name: "SumAtlas",
     url: SITE,
     inLanguage: "en-GB",
     description: "Free UK tax, salary, mortgage and benefits calculators in plain English.",
@@ -39,13 +39,13 @@ export function updatedIso(path: string): string | undefined {
 
 /** Calculators that are not about money get a closer application category. */
 const CATEGORY: Record<string, string> = {
-  "/life/bmi-uk-nhs": "HealthApplication",
-  "/life/bank-holidays": "UtilitiesApplication",
-  "/life/days-between-dates": "UtilitiesApplication",
-  "/life/percentage-calculator": "UtilitiesApplication",
-  "/life/timesheet-decimal": "UtilitiesApplication",
-  "/vehicles/mot-history-checker": "UtilitiesApplication",
-  "/vehicles/licence-at-70": "UtilitiesApplication",
+  "/uk/life/bmi-uk-nhs": "HealthApplication",
+  "/uk/life/bank-holidays": "UtilitiesApplication",
+  "/uk/life/days-between-dates": "UtilitiesApplication",
+  "/uk/life/percentage-calculator": "UtilitiesApplication",
+  "/uk/life/timesheet-decimal": "UtilitiesApplication",
+  "/uk/vehicles/mot-history-checker": "UtilitiesApplication",
+  "/uk/vehicles/licence-at-70": "UtilitiesApplication",
 };
 
 /** A calculator page as a free web application. */

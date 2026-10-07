@@ -4,7 +4,7 @@ import { getAllPosts } from "@/lib/blog";
 import { updatedIso } from "@/gm/schema";
 import { AMOUNT_PAGES_LIVE, PRICE_AMOUNTS, SALARY_AMOUNTS } from "@/lib/seo/amounts";
 
-const BASE = "https://govmath.co.uk";
+const BASE = "https://sumatlas.com";
 
 /**
  * Every page, with a real last-changed date where we have one (calculators
@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const calcDates = CALCULATORS.map((c) => updatedIso(c.href));
   return [
     dated("", newest(calcDates)),
+    dated("/uk", newest(calcDates)),
     dated("/calculators", newest(calcDates)),
     dated("/blog", newest(getAllPosts().map((p) => p.date))),
     ...["/about", "/how-we-check", "/contact", "/privacy", "/terms", "/disclaimer"].map((u) => dated(u)),
@@ -27,10 +28,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Fixed-amount pages share their calculator's date (the rates they use).
     ...(AMOUNT_PAGES_LIVE
       ? [
-          dated("/tax-and-salary/salary-after-tax", updatedIso("/tax-and-salary/salary-calculator")),
-          ...SALARY_AMOUNTS.map((n) => dated(`/tax-and-salary/salary-after-tax/${n}`, updatedIso("/tax-and-salary/salary-calculator"))),
-          dated("/property/stamp-duty-on", updatedIso("/property/stamp-duty-england")),
-          ...PRICE_AMOUNTS.map((n) => dated(`/property/stamp-duty-on/${n}`, updatedIso("/property/stamp-duty-england"))),
+          dated("/uk/tax-and-salary/salary-after-tax", updatedIso("/uk/tax-and-salary/salary-calculator")),
+          ...SALARY_AMOUNTS.map((n) => dated(`/uk/tax-and-salary/salary-after-tax/${n}`, updatedIso("/uk/tax-and-salary/salary-calculator"))),
+          dated("/uk/property/stamp-duty-on", updatedIso("/uk/property/stamp-duty-england")),
+          ...PRICE_AMOUNTS.map((n) => dated(`/uk/property/stamp-duty-on/${n}`, updatedIso("/uk/property/stamp-duty-england"))),
         ]
       : []),
   ];

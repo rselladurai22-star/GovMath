@@ -30,7 +30,7 @@ export async function generateMetadata({
       description: post.description,
       url: `/blog/${post.slug}`,
       publishedTime: post.date,
-      siteName: "GovMath",
+      siteName: "SumAtlas",
       locale: "en_GB",
       images: [{ url: `/og/blog/${post.slug}`, width: 1200, height: 630 }],
     },
@@ -53,9 +53,9 @@ export default async function BlogPostPage({ params }: { params: Params }) {
     description: post.description,
     datePublished: post.date,
     dateModified: post.date,
-    author: { "@type": "Organization", "@id": ORG_ID, name: "GovMath", url: SITE },
+    author: { "@type": "Organization", "@id": ORG_ID, name: "SumAtlas", url: SITE },
     publisher: { "@id": ORG_ID },
-    mainEntityOfPage: `https://govmath.co.uk/blog/${post.slug}`,
+    mainEntityOfPage: `https://sumatlas.com/blog/${post.slug}`,
   };
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",

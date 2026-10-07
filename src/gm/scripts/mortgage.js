@@ -1,6 +1,6 @@
-/* Supplied GovMath design script, kept as delivered. Only the wrapper (an
-   exported init function) and the points marked "GovMath:" are changed. */
-/* GovMath: stampDuty() now comes from the site's SDLT engine (src/gm/engines.ts). */
+/* Supplied SumAtlas design script, kept as delivered. Only the wrapper (an
+   exported init function) and the points marked "SumAtlas:" are changed. */
+/* SumAtlas: stampDuty() now comes from the site's SDLT engine (src/gm/engines.ts). */
 function paymentFor(loan,rate,years,type){const r=rate/1200,n=years*12;return type==='interest-only'?loan*r:r?loan*r/(1-Math.pow(1+r,-n)):loan/n;}
 function mortgage(s){const loan=Math.max(0,s.price-s.deposit),r=s.rate/1200,monthly=paymentFor(loan,s.rate,s.term,s.type);let balance=loan,interest=0,paid=0,yi=0,yc=0,months=0,rows=[];for(let m=1;m<=s.term*12&&balance>.000001;m++){const charge=balance*r,capital=Math.min(balance,Math.max(0,(s.type==='interest-only'?0:monthly-charge)+s.overpay));balance=Math.max(0,balance-capital);interest+=charge;paid+=charge+capital;yi+=charge;yc+=capital;months=m;if(m%12===0||balance<.000001||m===s.term*12){rows.push({year:Math.ceil(m/12),interest:yi,capital:yc,balance,cumulativeInterest:interest});yi=0;yc=0;}}return{loan,monthly,outgoing:loan?Math.min(loan+loan*r,monthly+s.overpay):0,interest,paid,total:paid+balance,balloon:balance,months,rows};}
 

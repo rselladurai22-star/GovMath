@@ -5,7 +5,7 @@ import ContentPage from "@/components/ContentPage";
 export const metadata: Metadata = {
   title: "Terms of Use",
   description:
-    "The terms that apply when you use GovMath's free UK calculators, guides and content, including how you may share and link to our tools.",
+    "The terms that apply when you use SumAtlas's free UK calculators, guides and content, including how you may share and link to our tools.",
   alternates: { canonical: "/terms" },
 };
 
@@ -13,18 +13,18 @@ export default function TermsPage() {
   return (
     <ContentPage
       title="Terms of Use"
-      intro="The simple rules for using GovMath."
+      intro="The simple rules for using SumAtlas."
       updated="31 May 2026"
     >
       <p>
         These Terms of Use (&quot;Terms&quot;) govern your access to and use of
-        GovMath (the &quot;Site&quot;). By using the Site, you agree to these
+        SumAtlas (the &quot;Site&quot;). By using the Site, you agree to these
         Terms. If you do not agree, please do not use the Site.
       </p>
 
       <h2>Use of the Site</h2>
       <p>
-        GovMath provides free calculators and educational content about UK
+        SumAtlas provides free calculators and educational content about UK
         government rules. You may use the Site for your own personal,
         non-commercial information. You agree not to:
       </p>
@@ -43,7 +43,7 @@ export default function TermsPage() {
 
       <h2>No professional advice</h2>
       <p>
-        The calculators and content on GovMath are for general information only
+        The calculators and content on SumAtlas are for general information only
         and are <strong>not</strong> financial, tax, legal or accounting advice.
         Results are estimates and may not reflect your personal circumstances.
         Always confirm figures with the relevant authority (such as HMRC or the
@@ -61,8 +61,8 @@ export default function TermsPage() {
 
       <h2>Intellectual property</h2>
       <p>
-        The content, design, and code of GovMath are owned by us or our
-        licensors and are protected by law. The GovMath name and branding may
+        The content, design, and code of SumAtlas are owned by us or our
+        licensors and are protected by law. The SumAtlas name and branding may
         not be used without our written permission. You may link to our pages
         freely.
       </p>
@@ -77,7 +77,7 @@ export default function TermsPage() {
 
       <h2>Limitation of liability</h2>
       <p>
-        To the fullest extent permitted by law, GovMath and its team will not be
+        To the fullest extent permitted by law, SumAtlas and its team will not be
         liable for any loss or damage arising from your use of, or reliance on,
         the Site or its content, including any decisions you make based on a
         calculator result.

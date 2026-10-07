@@ -9,7 +9,7 @@ export function updatedOn(path: string): string | undefined {
 
 /**
  * The trust line under a calculator's title: who checks it, when it changed,
- * links to its sources and to how we check our figures, and that GovMath
+ * links to its sources and to how we check our figures, and that SumAtlas
  * is independent (its name is not a sign of a government site).
  * `sourcesId` is the id of the guide's Sources box on that page.
  */
@@ -17,7 +17,7 @@ export function trustHtml(path: string, sourcesId: string): string {
   const date = updatedOn(path);
   return (
     `<p class="gm-trust"><span class="gm-trust-mark" aria-hidden="true"></span>` +
-    `<span>Checked by the GovMath team</span>` +
+    `<span>Checked by the SumAtlas team</span>` +
     (date ? `<span>Updated ${date}</span>` : "") +
     `<span><a href="#${sourcesId}">Sources</a></span>` +
     `<span><a href="/how-we-check">How we check our figures</a></span>` +

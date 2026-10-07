@@ -9,7 +9,7 @@ import { getCalculatorsByCategory, shortTitle, type CategorySlug } from "@/lib/c
 export const metadata: Metadata = {
   title: "All UK Calculators 2026/27",
   description:
-    "Every free GovMath calculator in one list: tax and salary, mortgages and property, benefits, business, pensions, vehicles, students and everyday life.",
+    "Every free SumAtlas calculator in one list: tax and salary, mortgages and property, benefits, business, pensions, vehicles, students and everyday life.",
   alternates: { canonical: "/calculators" },
 };
 
@@ -30,7 +30,7 @@ export default function AllCalculatorsPage() {
         />
         <section className="categoryhero">
           <h1>All calculators</h1>
-          <p>Every free UK calculator on GovMath, across {CATS.length} topics. Search from the top of the page, or jump to a topic.</p>
+          <p>Every free UK calculator on SumAtlas, across {CATS.length} topics. Search from the top of the page, or jump to a topic.</p>
         </section>
         <nav className="categoryjump" aria-label="Jump to topic">
           {CATS.map((c) => (
@@ -48,7 +48,7 @@ export default function AllCalculatorsPage() {
                   <p className="eyebrow">{tools.length} TOOLS</p>
                   <h2 id={`${c.slug}-title`}>{label(c)}</h2>
                 </div>
-                <Link className="textbutton" href={`/${c.slug}`}>
+                <Link className="textbutton" href={`/uk/${c.slug}`}>
                   View topic
                 </Link>
               </div>

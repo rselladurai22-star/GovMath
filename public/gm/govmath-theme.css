@@ -895,9 +895,13 @@
   }
 }
 
-/* Logo: the round GovMath.co.uk badge (October 2026). The package's rules size a
-   wide wordmark at each breakpoint; keep their height and make the width match. */
-.logo img{aspect-ratio:1/1;width:auto!important;object-fit:contain}
+/* Logo: the SumAtlas mark and wordmark (October 2026), about 3.35 times as wide
+   as it is tall. Header 56px tall (48px on phones), footer 52px; the width
+   follows the image. */
+.logo img{width:auto!important;object-fit:contain}
+.reference-header .header .logo img{height:56px!important}
+footer .logo img{height:52px!important}
+@media (max-width:550px){.reference-header .header .logo img{height:48px!important}}
 
 /* ── One-row header (October 2026, owner's request) ──────────────
    No claret strip and no Home/Calculators/Guides/About links: headerHtml()
@@ -932,13 +936,13 @@
 }
 .reference-header .header .ax-navbutton {
   min-height: 100%;
-  padding: 0 9px;
+  padding: 0 7px;
   font-size: 15px;
   font-weight: 500;
 }
 .reference-header .header .gm-headsearch {
-  flex: 0 0 210px;
-  max-width: 210px;
+  flex: 0 0 200px;
+  max-width: 200px;
 }
 @media (min-width: 851px) and (max-width: 1239px) {
   .reference-header .header {

@@ -3,20 +3,20 @@ import Link from "next/link";
 import ContentPage from "@/components/ContentPage";
 
 export const metadata: Metadata = {
-  title: "About GovMath: Independent UK Calculators",
+  title: "About SumAtlas: Independent UK Calculators",
   description:
-    "GovMath is an independent site of free UK calculators for tax, benefits, property and pensions. Who we are, how we work and how we are funded.",
+    "SumAtlas is an independent site of free UK calculators for tax, benefits, property and pensions. Who we are, how we work and how we are funded.",
   alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
   return (
     <ContentPage
-      title="About GovMath"
+      title="About SumAtlas"
       intro="We turn the UK's most confusing government rules into clear, free answers anyone can understand."
     >
       <p>
-        GovMath is an independent UK reference site. Our mission is simple: take
+        SumAtlas is an independent UK reference site. Our mission is simple: take
         the rules that govern your money — Income Tax, National Insurance, Stamp
         Duty, Universal Credit, student loans, pensions and dozens more — and
         translate them into calculators and explanations that make sense the
@@ -29,10 +29,16 @@ export default function AboutPage() {
         Duty they owe, or what they can actually claim. We exist to close that
         gap.
       </p>
+      <p>
+        Until October 2026 we were called GovMath, at govmath.co.uk. We changed
+        our name as we grow beyond the UK: the UK calculators now live at{" "}
+        <Link href="/uk">sumatlas.com/uk</Link>, and old govmath.co.uk links
+        take you straight to the same page here.
+      </p>
 
       <h2>What we do</h2>
       <p>
-        Every GovMath tool follows the same promise. You get a fast, accurate
+        Every SumAtlas tool follows the same promise. You get a fast, accurate
         calculator at the top of the page, and underneath it a plain-English
         explainer that covers three things:
       </p>
@@ -81,7 +87,7 @@ export default function AboutPage() {
         rate, we update the calculator and note the tax year it applies to.
       </p>
       <p>
-        That said, GovMath provides estimates for general information. We are not
+        That said, SumAtlas provides estimates for general information. We are not
         a substitute for professional advice — read our{" "}
         <Link href="/disclaimer">Disclaimer</Link> for the full picture.
       </p>
@@ -122,15 +128,15 @@ export default function AboutPage() {
         <Link href="/how-we-check">how we check our figures</Link>.
       </p>
 
-      <h2>Who runs GovMath</h2>
+      <h2>Who runs SumAtlas</h2>
       <p>
-        GovMath is an independent UK website, written and maintained by the
-        GovMath team. Every calculator and guide is checked by the team against
+        SumAtlas is an independent UK website, written and maintained by the
+        SumAtlas team. Every calculator and guide is checked by the team against
         the official sources it lists before it is published.
       </p>
       <p>
         We are not affiliated with HMRC, the DWP, or any part of HM Government,
-        and no bank, lender or financial firm pays to appear on the site. GovMath
+        and no bank, lender or financial firm pays to appear on the site. SumAtlas
         is free to use and funded by advertising, which never affects our
         figures.
       </p>

@@ -12,6 +12,11 @@ for (const file of readdirSync(cssDir).filter((f) => f.endsWith(".css")).sort())
 }
 const YEAR = "public, max-age=31536000, immutable";
 
+const SITE = "https://sumatlas.com";
+/** govmath.co.uk and www.govmath.co.uk, the site's address until October 2026. */
+const OLD_HOST = "(?:www\\.)?govmath\\.co\\.uk";
+const UK_TOPICS = "tax-and-salary|property|business|investing|benefits|vehicles|students|life";
+
 const nextConfig: NextConfig = {
   env: { GM_CSS_VERSION: cssHash.digest("hex").slice(0, 10) },
   async headers() {
@@ -44,13 +49,22 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // One address for the site: www goes to the bare domain.
+      // October 2026: the site moved from govmath.co.uk to sumatlas.com, and
+      // the UK calculators moved under /uk. Every old address goes straight
+      // to its new page in one permanent hop: the home page to the UK hub,
+      // topic and calculator pages to /uk/<topic>/…, everything else (about,
+      // blog, privacy…) to the same path. Keep these for as long as the old
+      // domain is renewed.
+      { source: "/", has: [{ type: "host", value: OLD_HOST }], destination: `${SITE}/uk`, permanent: true },
       {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.govmath.co.uk" }],
-        destination: "https://govmath.co.uk/:path*",
+        source: `/:topic(${UK_TOPICS})/:path*`,
+        has: [{ type: "host", value: OLD_HOST }],
+        destination: `${SITE}/uk/:topic/:path*`,
         permanent: true,
       },
+      { source: "/:path*", has: [{ type: "host", value: OLD_HOST }], destination: `${SITE}/:path*`, permanent: true },
+      // One address for the site: www goes to the bare domain.
+      { source: "/:path*", has: [{ type: "host", value: "www.sumatlas.com" }], destination: `${SITE}/:path*`, permanent: true },
       // The take-home pay article's address no longer names a tax year.
       {
         source: "/blog/uk-take-home-pay-2025-26-explained",
@@ -58,43 +72,48 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       // Legacy taxonomy → new 8-category structure (permanent).
-      { source: "/tax", destination: "/tax-and-salary", permanent: true },
+      { source: "/tax", destination: "/uk/tax-and-salary", permanent: true },
       {
         source: "/tax/take-home-pay",
-        destination: "/tax-and-salary/salary-calculator",
+        destination: "/uk/tax-and-salary/salary-calculator",
         permanent: true,
       },
       {
         source: "/tax/income-tax",
-        destination: "/tax-and-salary/tax-bracket-checker",
+        destination: "/uk/tax-and-salary/tax-bracket-checker",
         permanent: true,
       },
       {
         source: "/tax/national-insurance",
-        destination: "/tax-and-salary/national-insurance",
+        destination: "/uk/tax-and-salary/national-insurance",
         permanent: true,
       },
       {
         source: "/tax/vat",
-        destination: "/business/vat-calculator",
+        destination: "/uk/business/vat-calculator",
         permanent: true,
       },
-      { source: "/pensions", destination: "/investing", permanent: true },
+      { source: "/pensions", destination: "/uk/investing", permanent: true },
       {
         source: "/pensions/:slug",
-        destination: "/investing/:slug",
+        destination: "/uk/investing/:slug",
         permanent: true,
       },
       {
         source: "/property/stamp-duty",
-        destination: "/property/stamp-duty-england",
+        destination: "/uk/property/stamp-duty-england",
         permanent: true,
       },
       {
         source: "/business/ir35-take-home",
-        destination: "/tax-and-salary/ir35-take-home",
+        destination: "/uk/tax-and-salary/ir35-take-home",
         permanent: true,
       },
+      // The same two old addresses arriving from govmath.co.uk, now under /uk.
+      { source: "/uk/property/stamp-duty", destination: "/uk/property/stamp-duty-england", permanent: true },
+      { source: "/uk/business/ir35-take-home", destination: "/uk/tax-and-salary/ir35-take-home", permanent: true },
+      // Old UK addresses on the new domain (links, bookmarks) go under /uk too.
+      { source: `/:topic(${UK_TOPICS})/:path*`, destination: "/uk/:topic/:path*", permanent: true },
     ];
   },
 };
