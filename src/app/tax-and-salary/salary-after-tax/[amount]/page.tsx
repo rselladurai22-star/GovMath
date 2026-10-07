@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import AmountPage from "@/components/AmountPage";
-import { Callout, DataTable, Guide, GuideSection, KeyStats, type Source, type TocItem } from "@/components/guide/Guide";
+import { Bars, Callout, DataTable, Guide, GuideSection, KeyStats, SERIES, type Source, type TocItem } from "@/components/guide/Guide";
 import { gbp, percent } from "@/components/flagship/format";
-import { SALARY_AMOUNTS, neighbours, parseAmount, salaryFacts } from "@/lib/seo/amounts";
+import { LENDING, PRICE_AMOUNTS, SALARY_AMOUNTS, nearestAtOrBelow, neighbours, parseAmount, salaryExtras, salaryFacts } from "@/lib/seo/amounts";
 import { TAX_YEAR_2026_27 } from "@/lib/tax/2026-27";
 import { ogFor } from "@/gm/og";
 
@@ -34,6 +34,10 @@ const SOURCES: Source[] = [
   { label: "GOV.UK: National Insurance rates and categories", href: "https://www.gov.uk/national-insurance-rates-letters" },
   { label: "GOV.UK: Scottish Income Tax rates", href: "https://www.gov.uk/scottish-income-tax" },
   { label: "GOV.UK: Repaying your student loan", href: "https://www.gov.uk/repaying-your-student-loan" },
+  { label: "GOV.UK: High Income Child Benefit Charge", href: "https://www.gov.uk/child-benefit-tax-charge" },
+  { label: "GOV.UK: Marriage Allowance", href: "https://www.gov.uk/marriage-allowance" },
+  { label: "GOV.UK: National Minimum Wage and National Living Wage rates", href: "https://www.gov.uk/national-minimum-wage-rates" },
+  { label: "GOV.UK: Workplace pensions, what you and your employer pay", href: "https://www.gov.uk/workplace-pensions/what-you-your-employer-and-the-government-pay" },
 ];
 
 const TOC: TocItem[] = [
@@ -42,7 +46,13 @@ const TOC: TocItem[] = [
   { id: "national-insurance", title: "National Insurance" },
   { id: "scotland", title: "In Scotland" },
   { id: "deductions", title: "With a pension or student loan" },
+  { id: "student-loans", title: "Student loan by plan" },
   { id: "rates", title: "Your tax rates" },
+  { id: "pay-rise", title: "A pay rise from here" },
+  { id: "pension", title: "Paying more into a pension" },
+  { id: "family", title: "Child Benefit and Marriage Allowance" },
+  { id: "mortgage", title: "Buying a home" },
+  { id: "employer", title: "What you cost your employer" },
   { id: "hourly", title: "Per hour, day and week" },
   { id: "nearby", title: "Nearby salaries" },
 ];
@@ -61,6 +71,26 @@ function rateNote(salary: number, marginal: number): string {
   return `Above ${gbp(T.paTaperEnd)} you have no Personal Allowance and pay the 45% additional rate. Each extra £100 costs ${m}, leaving about £${Math.round(100 * (1 - marginal))}.`;
 }
 
+/** What is special about this salary's tax position, in plain words. */
+function positionNote(salary: number, x: ReturnType<typeof salaryExtras>): string {
+  const s = gbp(salary);
+  if (salary < x.nlwFullTime)
+    return `${s} is less than a full-time job pays at the National Living Wage (${gbp(x.nlwFullTime)} for 37.5 hours a week in 2026/27), so it is most often a part-time salary: at the minimum rate it is about ${Math.round(x.nlwHoursPerWeek)} hours a week. Almost all of it is taxed at the 20% basic rate after the tax-free allowance, and on a low income you may be able to get Universal Credit on top.`;
+  if (salary < 30_000)
+    return `${s} is above full-time National Living Wage pay (${gbp(x.nlwFullTime)}) but below £30,000. Everything above the ${gbp(T.personalAllowance)} allowance is taxed at the basic rate, so the 28% combined rate of tax and NI applies to every extra pound. Student loan repayments start around here: Plan 5 from £25,000, Plan 1 from £26,900 and Plan 2 from £29,385.`;
+  if (salary <= T.ni.upperEarningsLimit)
+    return `${s} is in the basic rate band, which runs to ${gbp(T.ni.upperEarningsLimit)}. You keep 72p of each extra pound (less if you are repaying a student loan), and you qualify to receive Marriage Allowance if your partner earns under ${gbp(T.personalAllowance)}.`;
+  if (salary <= 60_000)
+    return `${s} takes you into the 40% higher rate on the ${gbp(salary - T.ni.upperEarningsLimit)} above ${gbp(T.ni.upperEarningsLimit)}, but National Insurance falls to 2% on that slice, so each extra pound costs 42p. Pension contributions now save 40% tax on the top slice.`;
+  if (salary <= 80_000)
+    return `${s} is in the band where the High Income Child Benefit Charge takes back 1% of Child Benefit for every £200 of income above £60,000. If you get Child Benefit, the effective rate on your next pound is higher than the 42% of tax and NI. A pension contribution of ${gbp(salary - 60_000)} would bring you back to £60,000.`;
+  if (salary <= T.paTaperStart)
+    return `${s} is a higher rate salary above the Child Benefit charge band: anyone claiming Child Benefit on this income repays all of it through the charge. Each extra pound costs 42p in tax and NI until ${gbp(T.paTaperStart)}, where the Personal Allowance starts to go.`;
+  if (salary < T.paTaperEnd)
+    return `${s} is inside the £100,000 to ${gbp(T.paTaperEnd)} band where the Personal Allowance is withdrawn, the steepest band in the UK system. Your income is also too high for Tax-Free Childcare and the working-parent funded childcare hours in England.`;
+  return `${s} is above ${gbp(T.paTaperEnd)}, so you have no Personal Allowance and the 45% additional rate applies above that point. Your pension annual allowance may also be tapered if your adjusted income, which includes employer pension contributions, is over £260,000.`;
+}
+
 export default async function SalaryAfterTaxPage({ params }: { params: Params }) {
   const salary = parseAmount((await params).amount, SALARY_AMOUNTS);
   if (!salary) notFound();
@@ -69,12 +99,18 @@ export default async function SalaryAfterTaxPage({ params }: { params: Params })
   const scotDiff = f.takeHome - f.scotland.takeHome;
   const near = neighbours(salary, SALARY_AMOUNTS, 3);
   const calc = `/tax-and-salary/salary-calculator?salary=${salary}`;
+  const x = salaryExtras(salary);
+  const homePrice = nearestAtOrBelow(x.mortgage.priceWith10, PRICE_AMOUNTS);
+  const cb1 = x.childBenefit[0];
+  const cb2 = x.childBenefit[1];
 
   const faqs = [
     { q: `How much is ${s} after tax a month?`, a: `${gbp(f.monthly)} a month in England, Wales or Northern Ireland in 2026/27, with no pension or student loan. That is ${gbp(f.takeHome)} a year and ${gbp(f.weekly)} a week.` },
     { q: `How much tax do I pay on ${s}?`, a: `${gbp(f.tax)} Income Tax and ${gbp(f.ni)} National Insurance a year, ${gbp(f.tax + f.ni)} in total, or ${percent(f.effectiveRate, 1)} of your salary.` },
     { q: `What is ${s} after tax in Scotland?`, a: `${gbp(f.scotland.takeHome)} a year, or ${gbp(f.scotland.takeHome / 12)} a month. Scottish Income Tax is ${gbp(f.scotland.tax)}, ${scotDiff >= 0 ? `${gbp(scotDiff)} more` : `${gbp(-scotDiff)} less`} than in the rest of the UK; National Insurance is the same.` },
     { q: `What is ${s} an hour?`, a: `About ${gbp(f.hourlyGross, true)} an hour before tax, or ${gbp(f.hourlyNet, true)} after tax, based on 37.5 hours a week for 52 weeks.` },
+    { q: `How much does a ${s} employee cost the employer?`, a: `About ${gbp(x.employer.total)} a year: ${gbp(x.employer.ni)} employer National Insurance (15% above £5,000) and at least ${gbp(x.employer.pension)} of workplace pension (3% of qualifying earnings), before the Employment Allowance.` },
+    { q: `How much mortgage can I get on ${s}?`, a: `Most lenders lend about ${LENDING.multiple} times income, so roughly ${gbp(x.mortgage.loan)} on ${s} alone. At ${LENDING.ratePct}% over ${LENDING.termYears} years that costs ${gbp(x.mortgage.monthly)} a month. Lenders also check your spending and credit record.` },
     { q: `How much is ${s} after tax with a Plan 2 student loan?`, a: `${gbp(f.variants[2].takeHome)} a year (${gbp(f.variants[2].takeHome / 12)} a month), after ${gbp(f.variants[2].loan)} of student loan repayments.` },
   ];
 
@@ -119,6 +155,15 @@ export default async function SalaryAfterTaxPage({ params }: { params: Params })
               [<strong key="t">Take-home pay</strong>, <strong key="y">{gbp(f.takeHome)}</strong>, <strong key="m">{gbp(f.monthly)}</strong>, <strong key="w">{gbp(f.weekly)}</strong>],
             ]}
           />
+          <Bars
+            items={[
+              { label: "Take-home pay", value: f.takeHome, color: SERIES[0] },
+              { label: "Income Tax", value: f.tax, color: SERIES[1] },
+              { label: "National Insurance", value: f.ni, color: SERIES[2] },
+            ]}
+            format={(n) => gbp(n)}
+          />
+          <p>{positionNote(salary, x)}</p>
           <p>
             Out of every £100 you earn, you keep about £{Math.round(100 * (1 - f.effectiveRate))}. Your payslip may differ by a few pounds because payroll
             works each pay period separately.
@@ -172,7 +217,24 @@ export default async function SalaryAfterTaxPage({ params }: { params: Params })
           />
         </GuideSection>
 
-        <GuideSection id="rates" n={6} kicker="Tax rates" title="Your tax rates">
+        <GuideSection id="student-loans" n={6} kicker="Student loans" title="Student loan repayments by plan">
+          <p>
+            Student loan repayments are 9% of your income above your plan&rsquo;s threshold (6% above £21,000 for a Postgraduate Loan), taken through
+            payroll. The plan depends on where and when you started your course.
+          </p>
+          <DataTable
+            head={["Plan", "Threshold", "A year", "A month"]}
+            numeric={[1, 2, 3]}
+            rows={x.loans.map((l) => [l.label, gbp(l.threshold), gbp(l.yearly), gbp(l.monthly)])}
+          />
+          <p>
+            {x.loans.every((l) => l.yearly === 0)
+              ? `On ${s} you are below every repayment threshold, so nothing is taken for a student loan this year.`
+              : `On ${s} a Plan 2 graduate repays ${gbp(x.loans[1].yearly)} a year and a Plan 5 graduate ${gbp(x.loans[3].yearly)}.`}{" "}
+            See how long your balance lasts with the <a href="/students/plan-2-student-loan">Plan 2 loan calculator</a>.
+          </p>
+        </GuideSection>
+        <GuideSection id="rates" n={7} kicker="Tax rates" title="Your tax rates">
           <KeyStats
             items={[
               { value: percent(f.effectiveRate, 1), label: "Average (effective) rate of tax and NI" },
@@ -187,7 +249,100 @@ export default async function SalaryAfterTaxPage({ params }: { params: Params })
           )}
         </GuideSection>
 
-        <GuideSection id="hourly" n={7} kicker="Equivalents" title="Per hour, day and week">
+        <GuideSection id="pay-rise" n={8} kicker="Pay rise" title="A pay rise from here">
+          <p>
+            A £1,000 rise on {s} adds {gbp(x.rise1000)} to your take-home pay a year ({gbp(x.rise1000 / 12)} a month). A 5% rise, worth{" "}
+            {gbp(x.rise5pct.rise)}, adds {gbp(x.rise5pct.extra)} a year after tax and NI, or {gbp(x.rise5pct.extra / 12)} a month.
+          </p>
+          <KeyStats
+            items={[
+              { value: gbp(x.rise1000), label: "Kept from a £1,000 rise" },
+              { value: gbp(x.rise5pct.extra), label: `Kept from a 5% rise (${gbp(x.rise5pct.rise)})` },
+            ]}
+          />
+          <p>
+            The <a href="/tax-and-salary/pay-rise">pay rise calculator</a> also checks the rise against inflation and the Child Benefit charge.
+          </p>
+        </GuideSection>
+
+        <GuideSection id="pension" n={9} kicker="Pension" title="Paying more into a pension">
+          <p>
+            Paying an extra £100 a month into a workplace pension by salary sacrifice reduces your take-home pay by only {gbp(x.pension100)} a month on {s},
+            because the money is taken before Income Tax and National Insurance. The rest is tax and NI you no longer pay.
+          </p>
+          {salary > T.ni.upperEarningsLimit ? (
+            <Callout tone="good" title="Higher rate relief">
+              Contributions that come off income above {gbp(T.ni.upperEarningsLimit)} save 40% Income Tax{salary > T.paTaperStart ? ", and above £100,000 they also win back Personal Allowance" : ""}. The{" "}
+              <a href="/investing/pension-tax-relief">pension tax relief calculator</a> compares salary sacrifice, net pay and relief at source.
+            </Callout>
+          ) : (
+            <p>
+              Compare salary sacrifice with the other ways of paying in using the <a href="/investing/pension-tax-relief">pension tax relief calculator</a>.
+            </p>
+          )}
+        </GuideSection>
+
+        <GuideSection id="family" n={10} kicker="Family" title="Child Benefit and Marriage Allowance">
+          <DataTable
+            head={["Children", "Child Benefit a year", "Charge on " + s, "You keep"]}
+            numeric={[1, 2, 3]}
+            rows={x.childBenefit.map((c) => [String(c.children), gbp(c.benefit), gbp(c.charge), gbp(c.keep)])}
+          />
+          <p>
+            {cb1.charge === 0
+              ? `Your income is under £60,000, so the High Income Child Benefit Charge does not apply: a family with two children keeps all ${gbp(cb2.benefit)}.`
+              : cb1.keep === 0
+                ? `Your income is over £80,000, so the charge takes back all the Child Benefit. It can still be worth claiming (or claiming and opting out of payments) to protect a non-working partner's State Pension record.`
+                : `The charge takes back ${gbp(cb1.charge)} of ${gbp(cb1.benefit)} for one child. Paying ${gbp(x.pensionToAvoidCharge)} more into a pension would bring your adjusted net income down to £60,000 and remove the charge.`}{" "}
+            Check your own family with the <a href="/benefits/child-benefit">Child Benefit calculator</a>.
+          </p>
+          <p>
+            {x.marriageGain > 0
+              ? `If you are married or in a civil partnership and your partner earns under ${gbp(T.personalAllowance)}, they can transfer £1,260 of their Personal Allowance to you through Marriage Allowance, cutting your tax by ${gbp(x.marriageGain)} a year.`
+              : salary > T.ni.upperEarningsLimit
+                ? `Marriage Allowance is not available on ${s}, because the person receiving it must be a basic rate taxpayer.`
+                : `Marriage Allowance would save nothing on ${s}, because your income is within your own allowance.`}{" "}
+            The <a href="/tax-and-salary/marriage-allowance">Marriage Allowance calculator</a> includes up to four backdated years.
+          </p>
+        </GuideSection>
+
+        <GuideSection id="mortgage" n={11} kicker="Mortgage" title={`Buying a home on ${s}`}>
+          <p>
+            Most lenders offer around {LENDING.multiple} times income. On {s} alone that is about {gbp(x.mortgage.loan)}, which with a 10% deposit buys a home
+            of about {gbp(x.mortgage.priceWith10)}. At {LENDING.ratePct}% over {LENDING.termYears} years the repayments are {gbp(x.mortgage.monthly)} a month,{" "}
+            {percent(x.mortgage.shareOfTakeHome)} of your take-home pay.
+          </p>
+          <KeyStats
+            items={[
+              { value: gbp(x.mortgage.loan), label: `Borrowing at ${LENDING.multiple} times salary` },
+              { value: gbp(x.mortgage.monthly), label: `A month at ${LENDING.ratePct}% over ${LENDING.termYears} years` },
+            ]}
+          />
+          <p>
+            Lenders also look at your spending, debts and credit record, and some lend more to higher earners. See the{" "}
+            <a href={`/property/stamp-duty-on/${homePrice}`}>Stamp Duty on a {gbp(homePrice)} home</a>, or test your own figures with the{" "}
+            <a href="/property/mortgage-affordability">mortgage affordability calculator</a>.
+          </p>
+        </GuideSection>
+
+        <GuideSection id="employer" n={12} kicker="Employer" title="What you cost your employer">
+          <DataTable
+            head={["", "A year"]}
+            numeric={[1]}
+            rows={[
+              ["Salary", gbp(salary)],
+              ["Employer National Insurance (15% above £5,000)", gbp(x.employer.ni)],
+              ["Minimum employer pension (3% of qualifying earnings)", gbp(x.employer.pension)],
+              [<strong key="t">Total cost</strong>, <strong key="v">{gbp(x.employer.total)}</strong>],
+            ]}
+          />
+          <p>
+            So a {s} job costs the employer about {gbp(x.employer.total)}, while you take home {gbp(f.takeHome)}. Small employers can set the £10,500 Employment
+            Allowance against their NI bill. The <a href="/business/employer-ni-costs">employer cost calculator</a> works out a whole team.
+          </p>
+        </GuideSection>
+
+        <GuideSection id="hourly" n={13} kicker="Equivalents" title="Per hour, day and week">
           <DataTable
             head={["", "Before tax", "After tax"]}
             numeric={[1, 2]}
@@ -198,9 +353,13 @@ export default async function SalaryAfterTaxPage({ params }: { params: Params })
               ["Per month", gbp(salary / 12), gbp(f.monthly)],
             ]}
           />
+          <p>
+            At the National Living Wage of £12.71 an hour (age 21 and over), {s} is the pay for about {Math.round(x.nlwHoursPerWeek)} hours a week all year.
+            {f.hourlyGross < 12.71 ? " At 37.5 hours a week it works out below the minimum wage, so it must be a part-time salary for anyone 21 or over." : ""}
+          </p>
         </GuideSection>
 
-        <GuideSection id="nearby" n={8} kicker="Compare" title="Nearby salaries">
+        <GuideSection id="nearby" n={14} kicker="Compare" title="Nearby salaries">
           <DataTable
             head={["Salary", "Take-home a year", "A month"]}
             numeric={[1, 2]}
