@@ -239,7 +239,8 @@ export function retirement(i: RetireInput): Retirement {
   let needed = 0;
   for (let k = 0; k < retiredYears; k++) needed += (gapToday * Math.pow(infl, work + k)) / Math.pow(1 + i.retiredReturnPct / 100, k);
   const shortfall = Math.max(0, needed - g.balance);
-  const r = Math.pow(1 + i.returnPct / 100, 1 / 12) - 1;
+  // Same monthly rate as grow(..., "monthly") above.
+  const r = i.returnPct / 100 / 12;
   const n = Math.round(work * 12);
   const extraMonthly = shortfall > 0 && n > 0 ? (r > 0 ? (shortfall * r) / (Math.pow(1 + r, n) - 1) : shortfall / n) : 0;
   return { atRetirement: g.balance, needed, fourPercent: gapToday * 25, gapToday, extraMonthly, lastsTo, path };
