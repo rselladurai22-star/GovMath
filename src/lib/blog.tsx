@@ -18,6 +18,993 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "inheritance-tax-explained",
+    title: "Inheritance Tax in 2026/27: how it is worked out, with real examples",
+    seoTitle: "Inheritance Tax 2026/27: How It Works, Examples",
+    description:
+      "How Inheritance Tax is worked out in 2026/27: the £325,000 and £175,000 bands, couples, gifts, the £2m taper, charity, business relief and pensions from 2027.",
+    date: "2026-10-07",
+    dateLabel: "7 October 2026",
+    readingTime: "12 min read",
+    category: "Everyday Life",
+    body: (
+      <>
+        <p>
+          Inheritance Tax is the tax paid on what a person leaves when they die. Most estates pay nothing, because the
+          first £325,000 is tax free, a further £175,000 is tax free when a home goes to children or grandchildren, and
+          everything left to a husband, wife or civil partner is exempt. But the allowances have been frozen since 2009
+          and 2020, house prices have kept rising, and from April 2027 most unused pensions will count too. Each year
+          more families find that a bill is due.
+        </p>
+        <p>
+          This guide explains how the tax is worked out for deaths in the 2026/27 tax year, step by step, with worked
+          examples for a single person, a married couple, a large estate, lifetime gifts, a charity gift, a family farm
+          and a pension. Every figure comes from the same engine as our{" "}
+          <Link href="/life/inheritance-tax">inheritance tax calculator</Link>, so you can put in your own numbers and
+          check the result.
+        </p>
+
+        <h2>The sum in five steps</h2>
+        <p>
+          Every Inheritance Tax bill follows the same five steps. Getting each one right matters more than any clever
+          planning idea.
+        </p>
+        <ol>
+          <li>
+            <strong>Add up the estate.</strong>{" "}Everything the person owned when they died: their home or their
+            share of it, savings, investments, other property, cars, jewellery and belongings, and money owed to them.
+            From 6 April 2027 most unused pension funds are added as well.
+          </li>
+          <li>
+            <strong>Take off debts and funeral costs.</strong>{" "}A mortgage, credit cards, unpaid bills and a
+            reasonable funeral all come off. The result is the net estate.
+          </li>
+          <li>
+            <strong>Take off reliefs and exemptions.</strong>{" "}Business and agricultural relief, anything left to a
+            spouse or civil partner, and anything left to charity.
+          </li>
+          <li>
+            <strong>Take off the tax-free bands.</strong>{" "}The nil-rate band of £325,000, less any of it used up by
+            gifts made in the last seven years, and the residence nil-rate band of up to £175,000.
+          </li>
+          <li>
+            <strong>Charge 40% on the rest.</strong>{" "}Or 36% if at least 10% of the estate goes to charity.
+          </li>
+        </ol>
+        <p>
+          Both bands are frozen until at least April 2030. Because they do not rise with prices, a typical estate that
+          was comfortably below the line ten years ago may now be above it.
+        </p>
+
+        <h2>What counts as part of the estate</h2>
+        <p>
+          The estate is wider than many people expect. As well as the obvious things, it includes:
+        </p>
+        <ul>
+          <li>a share of anything owned jointly, such as half of a home held with a partner or a joint bank account;</li>
+          <li>ISAs, which are free of Income Tax and Capital Gains Tax but not of Inheritance Tax;</li>
+          <li>
+            life insurance that pays out to the estate, unless the policy was written in trust so that it goes
+            straight to the people named;
+          </li>
+          <li>assets held abroad, for people who are treated as long-term UK residents;</li>
+          <li>
+            gifts the person kept using, such as a house given to a child while the parent carried on living in it
+            rent free (a &ldquo;gift with reservation of benefit&rdquo;);
+          </li>
+          <li>
+            from 6 April 2027, unused defined contribution pension funds and most lump sums paid from a pension on
+            death.
+          </li>
+        </ul>
+        <p>
+          A few things fall outside it: death-in-service lump sums from an employer, pensions already turned into an
+          annuity that stops on death, and, until April 2027, unused pension funds that the scheme pays out at its
+          discretion.
+        </p>
+
+        <h2>The nil-rate band: the first £325,000</h2>
+        <p>
+          Everyone has a nil-rate band of £325,000. The first £325,000 of the estate, after debts, reliefs and
+          exemptions, is taxed at 0%. The band is shared between the estate and any gifts made in the seven years
+          before death: gifts use it first, in the order they were made, and only what is left protects the estate.
+          That is why a large gift a few years before death can leave the estate itself fully taxable, as one of the
+          examples below shows.
+        </p>
+
+        <h2>The residence nil-rate band: up to £175,000 more</h2>
+        <p>
+          The residence nil-rate band adds up to £175,000 when a home, or a share of one, passes to direct
+          descendants. Direct descendants are children, grandchildren and their children, including stepchildren,
+          adopted and foster children, and their spouses or civil partners. Nieces, nephews, brothers, sisters and
+          friends do not count.
+        </p>
+        <p>The band has three limits that catch people out:</p>
+        <ul>
+          <li>
+            <strong>It is capped at the value of the home.</strong>{" "}If the home left to the children is worth
+            £120,000, the band is £120,000, not £175,000.
+          </li>
+          <li>
+            <strong>It must be a home the person lived in at some point.</strong>{" "}A buy-to-let flat they never lived
+            in does not qualify.
+          </li>
+          <li>
+            <strong>It tapers away on large estates.</strong>{" "}For every £2 the net estate is above £2 million, £1 of
+            the band is lost. A single person loses all of it at £2.35 million.
+          </li>
+        </ul>
+        <p>
+          If the person sold their home or moved somewhere cheaper after 8 July 2015, for example into a smaller flat
+          or into a care home, a &ldquo;downsizing addition&rdquo; can keep some or all of the band, provided other
+          assets of the same value go to direct descendants.
+        </p>
+
+        <h2>Example 1: a single person with a home</h2>
+        <p>
+          Margaret is divorced, so she has no bands transferred from a late partner. She leaves a home worth £400,000 and £150,000 of savings and investments to her two
+          daughters, and has £10,000 of debts and funeral costs.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Margaret&rsquo;s estate</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Home</td><td>£400,000</td></tr>
+            <tr><td>Savings and investments</td><td>£150,000</td></tr>
+            <tr><td>Less debts and funeral</td><td>−£10,000</td></tr>
+            <tr><td>Net estate</td><td>£540,000</td></tr>
+            <tr><td>Less nil-rate band</td><td>−£325,000</td></tr>
+            <tr><td>Less residence nil-rate band</td><td>−£175,000</td></tr>
+            <tr><td>Taxable</td><td>£40,000</td></tr>
+            <tr><td>Inheritance Tax at 40%</td><td>£16,000</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The bill is £16,000, or about 3% of the net estate. Now change one detail: Margaret has no children and
+          leaves everything to her nephew. The residence nil-rate band no longer applies, the taxable amount jumps to
+          £215,000 and the bill becomes <strong>£86,000</strong>. Who inherits the home matters as much as what it is
+          worth.
+        </p>
+
+        <h2>Married couples and civil partners</h2>
+        <p>
+          Anything left to a husband, wife or civil partner is free of Inheritance Tax, however large, as long as both
+          are treated as UK resident for the tax. So when the first partner dies and leaves everything to the other,
+          there is usually no tax at all, and none of their own bands are used.
+        </p>
+        <p>
+          The unused share of both bands then passes to the surviving partner. When the survivor dies, their estate
+          can use up to two nil-rate bands (£650,000) and two residence nil-rate bands (£350,000): £1 million in total.
+          The transfer is made as a percentage, so if the first partner used 40% of their band on gifts to children,
+          60% is carried over. It also works for a partner who died before the residence band existed: the survivor
+          still gets their full 100% of it.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Surviving partner, full transfer, home £500,000 to children</th>
+              <th>Other assets £300,000</th>
+              <th>Other assets £600,000</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Net estate</td><td>£800,000</td><td>£1,100,000</td></tr>
+            <tr><td>Nil-rate bands (2 × £325,000)</td><td>£650,000</td><td>£650,000</td></tr>
+            <tr><td>Residence bands (2 × £175,000)</td><td>£350,000</td><td>£350,000</td></tr>
+            <tr><td>Taxable</td><td>£0</td><td>£100,000</td></tr>
+            <tr><td>Inheritance Tax</td><td>£0</td><td>£40,000</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The transfer is not automatic. The executors must claim it on form IHT402 within two years of the second
+          death, so keep the first partner&rsquo;s will, the value of their estate and any record of gifts. Unmarried
+          partners, however long they have lived together, get neither the spouse exemption nor the transfer, which is
+          one of the strongest financial arguments for marriage or civil partnership later in life.
+        </p>
+
+        <h2>Estates above £2 million: the taper</h2>
+        <p>
+          The residence band shrinks by £1 for every £2 the net estate is above £2 million. The taper is worked out on
+          the net estate before reliefs and exemptions, so business property and gifts to a spouse still count towards
+          the £2 million line. Three examples, each with an £800,000 home left to children:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Estate</th>
+              <th>Residence band lost</th>
+              <th>Residence band left</th>
+              <th>Inheritance Tax</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Single person, £2.2 million</td><td>£100,000</td><td>£75,000</td><td>£720,000</td></tr>
+            <tr><td>Single person, £2.35 million</td><td>£175,000</td><td>£0</td><td>£810,000</td></tr>
+            <tr><td>Surviving partner, full transfer, £2.2 million</td><td>£100,000</td><td>£250,000</td><td>£520,000</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Between £2 million and £2.35 million, each extra £1 of estate costs 60p in tax for a single person: 40p on the
+          pound itself and 20p because 50p of the residence band disappears. Gifts or charity legacies that bring the
+          estate back under £2 million can therefore be unusually good value.
+        </p>
+
+        <h2>Gifts and the seven-year rule</h2>
+        <p>
+          Gifts made during a person&rsquo;s life are usually free of Inheritance Tax if they live for seven years
+          afterwards. A gift to another person is a &ldquo;potentially exempt transfer&rdquo;: nothing is due when it
+          is made, but if the giver dies within seven years it is brought back into the sum. Gifts into most trusts are
+          different: they can be taxed at 20% straight away on anything above the nil-rate band.
+        </p>
+        <p>Some gifts are exempt from the start and never come back into the sum:</p>
+        <ul>
+          <li><strong>The annual exemption:</strong>{" "}£3,000 a tax year in total, and last year&rsquo;s unused £3,000 can be carried forward once.</li>
+          <li><strong>Small gifts:</strong>{" "}up to £250 a person a tax year, to as many people as you like (but not to someone who also gets part of the £3,000).</li>
+          <li><strong>Wedding and civil partnership gifts:</strong>{" "}£5,000 to a child, £2,500 to a grandchild, £1,000 to anyone else.</li>
+          <li>
+            <strong>Regular gifts out of surplus income:</strong>{" "}gifts that are part of a pattern, come from income
+            rather than savings and leave you enough to keep your usual standard of living. There is no upper limit, but
+            keep records of income, spending and gifts so the executors can prove it.
+          </li>
+          <li><strong>Gifts to a spouse, civil partner, charity or political party.</strong></li>
+        </ul>
+        <p>
+          When a gift does come back into the sum, it uses up the nil-rate band first. Tax is only charged on the gift
+          itself if it is bigger than the band, and that tax is cut by <strong>taper relief</strong> when the giver
+          lived for more than three years after making it. Take a gift of £425,000 to a child (after exemptions), so
+          £100,000 is above the band:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Years between gift and death</th>
+              <th>Taper relief</th>
+              <th>Tax on the gift</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Less than 3</td><td>0%</td><td>£40,000</td></tr>
+            <tr><td>3 to 4</td><td>20%</td><td>£32,000</td></tr>
+            <tr><td>4 to 5</td><td>40%</td><td>£24,000</td></tr>
+            <tr><td>5 to 6</td><td>60%</td><td>£16,000</td></tr>
+            <tr><td>6 to 7</td><td>80%</td><td>£8,000</td></tr>
+            <tr><td>7 or more</td><td>100%</td><td>£0</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Two points are often misunderstood. Taper relief reduces the tax on the gift, not the value of the gift, so
+          it does nothing for a gift that fits inside the nil-rate band. And the gift still uses up the band for seven
+          full years. In this example the giver also left £300,000 at death with no home going to children. Because the
+          gift had already used all of the band, the whole £300,000 was taxed at 40%: <strong>£120,000</strong> on the
+          estate on top of the tax on the gift. The person who received the gift normally pays the tax on it; the
+          estate pays the rest.
+        </p>
+        <p>
+          A gift of something other than cash, such as shares or a second property, can also trigger Capital Gains Tax
+          for the giver at the time of the gift, whereas assets kept until death are free of Capital Gains Tax. Our{" "}
+          <Link href="/investing/capital-gains-assets">capital gains tax calculator</Link> shows what a gift of an
+          asset that has grown in value would cost now.
+        </p>
+
+        <h2>Leaving 10% to charity: the 36% rate</h2>
+        <p>
+          Gifts to charity are exempt, and if at least 10% of the &ldquo;baseline amount&rdquo; goes to charity, the
+          rest of the taxable estate is charged at 36% instead of 40%. The baseline is roughly the estate after debts,
+          reliefs, other exemptions and the nil-rate band, with the charity gift added back. The residence band is not
+          taken off when working it out.
+        </p>
+        <p>
+          Take David, who is single with no children and leaves £800,000 to friends and relatives. With no charity gift,
+          the taxable amount is £475,000 and the bill is £190,000, so his heirs share £610,000. If he leaves £47,500 to
+          charity (10% of the £475,000 baseline), the taxable amount falls to £427,500, the rate falls to 36% and the
+          bill becomes £153,900. His heirs now share £598,600.
+        </p>
+        <p>
+          So a £47,500 gift to charity costs his family only £11,400. The rest is paid for by the tax saved. If you
+          are already planning a legacy, it is worth checking how close it is to the 10% line, and a will can be worded
+          to pay &ldquo;whatever is needed to reach 10%&rdquo; so the gift stays right as values change.
+        </p>
+
+        <h2>Business, farms and AIM shares after April 2026</h2>
+        <p>
+          Business relief and agricultural relief used to take qualifying property out of the sum completely. From 6
+          April 2026 the full 100% relief applies only to the first £2.5 million of qualifying business and
+          agricultural property combined. Above that, relief is 50%, so the excess is effectively taxed at 20%. The
+          £2.5 million allowance can be passed to a surviving spouse or civil partner in the same way as the nil-rate
+          band, so a couple can shelter up to £5 million. Shares listed on AIM that qualify for business relief now get
+          50% relief, whatever their value.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Farmer: farm £3m, home £600,000, other £200,000</th>
+              <th>Single, no transfer</th>
+              <th>Surviving partner, full transfer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Net estate</td><td>£3,800,000</td><td>£3,800,000</td></tr>
+            <tr><td>Business and agricultural relief</td><td>£2,750,000</td><td>£3,000,000</td></tr>
+            <tr><td>Nil-rate band</td><td>£325,000</td><td>£650,000</td></tr>
+            <tr><td>Residence band (lost to the taper)</td><td>£0</td><td>£0</td></tr>
+            <tr><td>Inheritance Tax</td><td>£290,000</td><td>£60,000</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Notice that the residence band is lost completely in both cases. The £2 million taper looks at the estate
+          before reliefs, so a farm that pays little tax still pushes the estate over the line. Tax on qualifying
+          business and farm property can be paid in ten equal yearly instalments, interest free, which helps families
+          who do not want to sell land or shares to pay it.
+        </p>
+        <p>
+          For AIM shares: a single person with £200,000 of qualifying AIM shares and £400,000 of other assets, no
+          home, gets £100,000 of relief and pays £70,000. Without the relief it would be £110,000.
+        </p>
+
+        <h2>Pensions from 6 April 2027</h2>
+        <p>
+          This is the biggest change for most families. Until now, money left in a defined contribution pension, such
+          as a workplace pension or a personal pension, has usually been outside the estate. For deaths on or after 6
+          April 2027, most unused pension funds and lump sum death benefits will be added to the estate and share its
+          bands. Pensions left to a spouse or civil partner stay exempt, and death-in-service benefits stay outside.
+        </p>
+        <p>
+          Take Peter, single, with a home worth £450,000 that goes to his children, £100,000 of savings and £250,000
+          left in his pension:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Peter&rsquo;s estate</th>
+              <th>Death before 6 April 2027</th>
+              <th>Death on or after 6 April 2027</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Estate counted</td><td>£550,000</td><td>£800,000</td></tr>
+            <tr><td>Tax-free bands</td><td>£500,000</td><td>£500,000</td></tr>
+            <tr><td>Taxable</td><td>£50,000</td><td>£300,000</td></tr>
+            <tr><td>Inheritance Tax</td><td>£20,000</td><td>£120,000</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The pension adds £100,000 of tax. And if Peter was 75 or older when he died, his children will also pay
+          Income Tax at their own rate when they draw the pension money, on what is left after Inheritance Tax. For a
+          higher-rate taxpayer that combination can take well over half of the pension.
+        </p>
+        <p>
+          It changes the old advice to spend other savings first and leave the pension untouched. For some people it
+          will now make sense to draw more from the pension during their lifetime, use the tax-free cash, or make
+          regular gifts out of the extra income. Our{" "}
+          <Link href="/investing/pension-drawdown">pension drawdown calculator</Link> shows the Income Tax on
+          different withdrawal plans. Check your expression of wishes with each scheme too: a pension nominated to a
+          spouse stays exempt.
+        </p>
+
+        <h2>Who pays and when</h2>
+        <p>
+          The executors (or administrators, if there is no will) work out the tax, report the estate to HMRC and pay
+          the bill out of the estate. Beneficiaries do not normally pay it themselves, except on a gift made within
+          seven years.
+        </p>
+        <ul>
+          <li>
+            <strong>The deadline:</strong>{" "}tax is due by the end of the sixth month after the month of death. A death
+            on 10 October 2026 means payment by 30 April 2027. Interest is charged after that.
+          </li>
+          <li>
+            <strong>Before probate:</strong>{" "}in England and Wales, at least part of the tax must usually be paid
+            before the grant of probate is issued, which can be awkward when the money is tied up in the estate. Banks
+            and building societies can pay it straight to HMRC from the person&rsquo;s accounts under the Direct
+            Payment Scheme.
+          </li>
+          <li>
+            <strong>Instalments:</strong>{" "}tax on a home, land or a business can be paid over ten years. Interest is
+            charged on the home, but not on qualifying business or farm property.
+          </li>
+          <li>
+            <strong>Probate fee:</strong>{" "}separately, applying for probate in England and Wales costs £526 for an
+            estate worth more than £5,000 (from 13 July 2026). Our{" "}
+            <Link href="/life/probate-fees">probate fees calculator</Link> adds the cost of extra copies.
+          </li>
+        </ul>
+        <p>
+          If shares or property are sold for less than their value at death within a year (shares) or four years
+          (land and buildings), the executors can claim back the tax on the loss.
+        </p>
+
+        <h2>Legitimate ways to reduce the bill</h2>
+        <p>
+          There is no shortage of schemes sold as ways to avoid Inheritance Tax, and HMRC challenges many of them. The
+          reliable steps are simple and are written into the rules on purpose:
+        </p>
+        <ol>
+          <li>
+            <strong>Make a will.</strong>{" "}Without one, the intestacy rules decide who inherits, which may not send
+            the home to children, may leave less to an unmarried partner and may waste the residence band.
+          </li>
+          <li>
+            <strong>Use the spouse exemption and the transfers.</strong>{" "}Keep records from the first death so the
+            second can claim up to £1 million of bands.
+          </li>
+          <li>
+            <strong>Give early and give from income.</strong>{" "}Use the £3,000 annual exemption every year, make
+            regular gifts from surplus income with good records, and make larger gifts as early as you can afford, so
+            the seven years start running.
+          </li>
+          <li>
+            <strong>Put life cover in trust.</strong>{" "}A policy written in trust pays out outside the estate, and can
+            be used to fund the bill.
+          </li>
+          <li>
+            <strong>Think about charity.</strong>{" "}A legacy near the 10% line can cost your heirs much less than it
+            gives.
+          </li>
+          <li>
+            <strong>Review pension nominations</strong>{" "}before April 2027.
+          </li>
+          <li>
+            <strong>Plan for later life.</strong>{" "}A Lasting Power of Attorney lets someone you trust manage your
+            money if you cannot, including keeping up a pattern of regular gifts. Our{" "}
+            <Link href="/life/power-of-attorney">power of attorney fees calculator</Link> shows the registration
+            cost.
+          </li>
+        </ol>
+        <p>
+          Giving away too much too soon is the main risk. Keep enough to live on, to pay for care if you need it, and to
+          stay independent. Gifts made to reduce a care home means test can be treated as &ldquo;deprivation of
+          assets&rdquo; and counted anyway.
+        </p>
+
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>
+            <strong>Forgetting gifts.</strong>{" "}Executors must report gifts from the seven years before death. Old bank
+            statements are often the only record, so keep a simple list of what you give and when.
+          </li>
+          <li>
+            <strong>Assuming the home is always protected.</strong>{" "}The residence band needs a home and direct
+            descendants. A home left in a discretionary trust, or to a nephew, does not qualify.
+          </li>
+          <li>
+            <strong>Valuing the home too low.</strong>{" "}HMRC checks property values and can charge penalties on careless
+            under-valuations. Use a professional valuation for anything near a threshold.
+          </li>
+          <li>
+            <strong>Missing the transfer claim.</strong>{" "}The surviving partner&rsquo;s executors must claim the unused
+            bands within two years.
+          </li>
+          <li>
+            <strong>Overlooking jointly owned assets.</strong>{" "}A joint account passes automatically to the other
+            owner, but the deceased person&rsquo;s share still counts in their estate.
+          </li>
+        </ul>
+
+        <h2>Scotland, Wales and Northern Ireland</h2>
+        <p>
+          Inheritance Tax is a UK-wide tax, so the bands, the rates and the gift rules are the same in all four
+          nations. What differs is the legal process. Scotland has confirmation rather than probate, different rules
+          on who inherits without a will, and &ldquo;legal rights&rdquo; that give a spouse and children a share of
+          moveable property whatever the will says. Northern Ireland has its own probate office and fees.
+        </p>
+
+        <h2>The bottom line</h2>
+        <p>
+          For most single people the tax-free limit is £325,000, rising to £500,000 if a home goes to children or
+          grandchildren. For most married couples and civil partners it is up to £1 million in total, as long as the
+          second estate claims the first partner&rsquo;s unused bands. Above that, the tax is 40% of the excess, with
+          lower rates for estates that leave 10% to charity and for business and farm property above £2.5 million.
+          Gifts escape the tax after seven years, and pensions join the estate from April 2027.
+        </p>
+        <p>
+          These figures are for deaths in 2026/27 and are general guidance, not tax or legal advice. For a large or
+          complicated estate, or before making big gifts or setting up a trust, talk to a solicitor or a tax adviser.
+          Put your own figures into the{" "}
+          <Link href="/life/inheritance-tax">inheritance tax calculator</Link> to see where you stand today and after
+          April 2027.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "universal-credit-explained",
+    title: "How Universal Credit is worked out in 2026/27, with worked examples",
+    seoTitle: "How Universal Credit Is Worked Out in 2026/27",
+    description:
+      "Universal Credit 2026/27 step by step: standard allowance, child, health, childcare and housing elements, the £427 work allowance, 55% taper and benefit cap.",
+    date: "2026-10-07",
+    dateLabel: "7 October 2026",
+    readingTime: "12 min read",
+    category: "Benefits",
+    body: (
+      <>
+        <p>
+          Universal Credit is the main benefit for people of working age on a low income, whether they are in work,
+          looking for work, caring for someone or too ill to work. It replaced six older benefits, and it is paid
+          monthly, based on what happened in the month before. That makes it flexible, but it also makes the amount
+          hard to predict: it can change every month as your pay, rent or family changes.
+        </p>
+        <p>
+          This guide explains how the award is worked out for 2026/27, from the building blocks to the deductions,
+          with worked examples for a single renter, a couple with children, a lone parent paying for childcare, a large
+          family hit by the benefit cap and someone with a health condition. Every figure comes from the same engine
+          as our <Link href="/benefits/universal-credit">Universal Credit calculator</Link>, using the Department for
+          Work and Pensions rates from April 2026.
+        </p>
+
+        <h2>Who can claim</h2>
+        <p>In general you can claim Universal Credit if:</p>
+        <ul>
+          <li>you are 18 or over (16 and 17 year olds can claim in some cases, for example if they are caring for a child);</li>
+          <li>you, or your partner if you have one, are under State Pension age;</li>
+          <li>you and your partner have £16,000 or less in savings and investments between you;</li>
+          <li>you live in the UK and meet the residence rules.</li>
+        </ul>
+        <p>
+          Couples who live together claim jointly, and their income and savings are added together. There are no
+          hours limits: you can work full time and still get Universal Credit if your pay is low compared with your
+          rent and family size. Most full-time students cannot claim, unless, for example, they are responsible for a
+          child.
+        </p>
+
+        <h2>Monthly assessment periods</h2>
+        <p>
+          Universal Credit works in monthly &ldquo;assessment periods&rdquo; that start on the day you claimed. If
+          you claimed on the 12th, each period runs from the 12th of one month to the 11th of the next. The award is
+          based on your circumstances and your take-home pay in that period, and it is paid about seven days after
+          the period ends.
+        </p>
+        <p>
+          That means the first payment arrives about five weeks after you claim. If you cannot manage until then, you
+          can ask for an advance of up to your estimated first payment, repaid from later payments over up to 24
+          months. Our <Link href="/benefits/uc-advance">Universal Credit advance calculator</Link> shows what the
+          repayments would be.
+        </p>
+
+        <h2>The formula in one line</h2>
+        <p>Every award follows the same sum:</p>
+        <ol>
+          <li>
+            <strong>Add up the maximum award:</strong>{" "}the standard allowance plus any elements for children,
+            disability or ill health, caring, childcare and housing.
+          </li>
+          <li>
+            <strong>Take off 55% of your take-home pay</strong>{" "}above your work allowance, if you have one.
+          </li>
+          <li>
+            <strong>Take off other income in full,</strong>{" "}such as a private pension or New Style Jobseeker&rsquo;s
+            Allowance.
+          </li>
+          <li>
+            <strong>Take off an amount for savings</strong>{" "}between £6,000 and £16,000.
+          </li>
+          <li>
+            <strong>Apply the benefit cap</strong>{" "}if your household is not exempt.
+          </li>
+        </ol>
+        <p>The rest of this guide takes each step in turn.</p>
+
+        <h2>Step 1: the standard allowance</h2>
+        <p>
+          Everyone gets a standard allowance. It depends only on whether you are single or a couple and whether you
+          are under 25.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Standard allowance 2026/27</th>
+              <th>A month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Single, under 25</td><td>£338.58</td></tr>
+            <tr><td>Single, 25 or over</td><td>£424.90</td></tr>
+            <tr><td>Couple, both under 25</td><td>£528.34</td></tr>
+            <tr><td>Couple, one or both 25 or over</td><td>£666.97</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Step 2: elements for children</h2>
+        <p>
+          You get a child element of £303.94 a month for each child you are responsible for. If your eldest child was
+          born before 6 April 2017, the first child gets a higher rate of £351.88. The two-child limit, which used to
+          stop the child element for a third or later child born after April 2017, ended in April 2026, so every child
+          now counts.
+        </p>
+        <p>
+          A disabled child adds a further amount: £164.79 a month (the lower rate) if they get Disability Living
+          Allowance or Child Disability Payment, or £514.71 (the higher rate) if they get the highest care rate or are
+          certified as severely sight impaired.
+        </p>
+
+        <h2>Step 3: health and caring</h2>
+        <p>
+          If a health condition or disability limits your ability to work, you can be assessed through the Work
+          Capability Assessment. If you are found to have limited capability for work and work-related activity
+          (LCWRA), a health element is added:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Health element</th>
+              <th>A month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>New claims from 6 April 2026</td><td>£217.26</td></tr>
+            <tr><td>Claims before April 2026, severe conditions or terminal illness</td><td>£429.80</td></tr>
+            <tr><td>Limited capability for work only (claims before April 2017)</td><td>£158.76</td></tr>
+          </tbody>
+        </table>
+        <p>
+          If you care for a severely disabled person for at least 35 hours a week, and they get a qualifying
+          disability benefit such as the daily living part of Personal Independence Payment, you get a carer element
+          of £209.34 a month. You cannot get both the carer element and the health element for the same person.
+        </p>
+
+        <h2>Step 4: childcare costs</h2>
+        <p>
+          If you are in paid work (both of you, in a couple) and pay a registered childminder, nursery or club,
+          Universal Credit pays back 85% of the cost, up to £1,071.09 a month for one child or £1,836.16 for two or
+          more. You must report the costs, with proof of payment, in the same or the next assessment period. The
+          element can also help with the first month&rsquo;s fees before you start a new job.
+        </p>
+        <p>
+          It is worth comparing with Tax-Free Childcare, which pays 20% and cannot be used at the same time. On
+          Universal Credit, 85% is almost always the better deal.
+        </p>
+
+        <h2>Step 5: help with housing costs</h2>
+        <p>
+          If you rent, a housing element is added. How much depends on who your landlord is:
+        </p>
+        <ul>
+          <li>
+            <strong>Private renters</strong>{" "}get the lower of their rent and the Local Housing Allowance (LHA) rate
+            for the number of bedrooms they are allowed, in their area. Single people under 35 are usually limited to
+            the rate for a room in a shared house. LHA rates have been frozen at their April 2024 level, so in many
+            areas they now fall short of real rents. Our{" "}
+            <Link href="/benefits/local-housing-allowance">Local Housing Allowance calculator</Link> finds the rate
+            for your area.
+          </li>
+          <li>
+            <strong>Social renters</strong>{" "}(council or housing association) get their full eligible rent, minus 14%
+            if they have one spare bedroom or 25% for two or more (the &ldquo;bedroom tax&rdquo;).
+          </li>
+          <li>
+            <strong>Adults living with you</strong>{" "}who are not your partner, such as a grown-up son or daughter,
+            usually reduce the housing element by £96.55 a month each (the &ldquo;housing cost
+            contribution&rdquo;), with exceptions, for example if they are under 21 or get certain disability benefits.
+          </li>
+          <li>
+            <strong>Homeowners</strong>{" "}get no housing element for mortgage payments. Instead, after a waiting
+            period, they can apply for a Support for Mortgage Interest loan, which is secured on the home.
+          </li>
+        </ul>
+
+        <h2>Step 6: the work allowance and the 55% taper</h2>
+        <p>
+          Earnings reduce Universal Credit gradually rather than all at once. For every £1 of take-home pay (after
+          Income Tax, National Insurance and pension contributions), the award falls by 55p. This is the{" "}
+          &ldquo;taper&rdquo;.
+        </p>
+        <p>
+          Some households can earn a set amount first without losing anything. This &ldquo;work allowance&rdquo; is
+          only for claimants who are responsible for a child or who have limited capability for work:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Work allowance 2026/27</th>
+              <th>A month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>With a housing element</td><td>£427</td></tr>
+            <tr><td>Without a housing element</td><td>£710</td></tr>
+            <tr><td>No children and no health condition</td><td>£0</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The work allowance is per household, not per person. A couple share one, and it is set against their
+          combined take-home pay.
+        </p>
+
+        <h2>Example 1: a single renter with no children</h2>
+        <p>
+          Sam is 30, single and rents privately for £700 a month. The LHA rate for a one-bedroom home in their area is
+          £650.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Sam, single, private rent</th>
+              <th>Not working</th>
+              <th>Take-home pay £1,000</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard allowance</td><td>£424.90</td><td>£424.90</td></tr>
+            <tr><td>Housing element (LHA rate)</td><td>£650.00</td><td>£650.00</td></tr>
+            <tr><td>Maximum award</td><td>£1,074.90</td><td>£1,074.90</td></tr>
+            <tr><td>Less 55% of earnings (no work allowance)</td><td>£0</td><td>−£550.00</td></tr>
+            <tr><td>Universal Credit a month</td><td>£1,074.90</td><td>£524.90</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Sam pays the £50 gap between the rent and the LHA rate from the award either way. Their Universal Credit
+          stops altogether once take-home pay reaches about £1,954 a month. Without the rent, a single person with no
+          children loses all of their Universal Credit at take-home pay of about £773 a month.
+        </p>
+
+        <h2>Example 2: a couple with two children in social housing</h2>
+        <p>
+          Amira and Tom are in their thirties, have two children born after April 2017, rent from a housing
+          association for £550 a month with no spare bedrooms, and take home £1,800 a month between them.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Amira and Tom</th>
+              <th>A month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard allowance (couple, 25 or over)</td><td>£666.97</td></tr>
+            <tr><td>Child element (2 children)</td><td>£607.88</td></tr>
+            <tr><td>Housing element</td><td>£550.00</td></tr>
+            <tr><td>Maximum award</td><td>£1,824.85</td></tr>
+            <tr><td>Earnings above the £427 work allowance</td><td>£1,373.00</td></tr>
+            <tr><td>Less 55% of that</td><td>−£755.15</td></tr>
+            <tr><td>Universal Credit</td><td>£1,069.70</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Now suppose they had one spare bedroom and Tom&rsquo;s 22-year-old brother lived with them. The housing
+          element would lose 14% of the rent (£77) and a housing cost contribution of £96.55, falling to £376.45, and
+          their award would drop to <strong>£896.15</strong>. They would have to find £173.55 of the rent themselves,
+          unless the brother pays towards it.
+        </p>
+
+        <h2>Example 3: a lone parent paying for childcare</h2>
+        <p>
+          Leah has one child, rents privately for £850 a month (LHA rate £800), pays a nursery £600 a month and takes
+          home £1,200.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Leah</th>
+              <th>A month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Standard allowance (single, 25 or over)</td><td>£424.90</td></tr>
+            <tr><td>Child element</td><td>£303.94</td></tr>
+            <tr><td>Childcare costs (85% of £600)</td><td>£510.00</td></tr>
+            <tr><td>Housing element (LHA rate)</td><td>£800.00</td></tr>
+            <tr><td>Maximum award</td><td>£2,038.84</td></tr>
+            <tr><td>Less 55% of (£1,200 − £427)</td><td>−£425.15</td></tr>
+            <tr><td>Universal Credit</td><td>£1,613.69</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The childcare element is the biggest single difference to whether work pays for parents. Leah must report
+          the nursery bills every month; if she reports them late, that month&rsquo;s element can be lost.
+        </p>
+
+        <h2>How much of a pay rise you keep</h2>
+        <p>
+          On Universal Credit, extra pay is reduced three ways: Income Tax, National Insurance and pension
+          contributions first, then 55% of what is left through the taper. Take a lone parent with one child who earns
+          £1,500 a month before tax, pays 5% into a workplace pension and rents privately for £850 (LHA £800). She is
+          offered extra hours worth £200 a month before tax:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Extra £200 a month before tax</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Income Tax and National Insurance</td><td>−£53.20</td></tr>
+            <tr><td>Pension contribution (5%)</td><td>−£10.00</td></tr>
+            <tr><td>Extra take-home pay</td><td>£136.80</td></tr>
+            <tr><td>Universal Credit lost (55%)</td><td>−£75.24</td></tr>
+            <tr><td>Better off by</td><td>£61.56</td></tr>
+          </tbody>
+        </table>
+        <p>
+          She keeps about 31p of each extra pound, plus £10 more in her pension. That is still a gain, and more hours
+          can lead to better pay and more pension later, but it is far less than the headline figure. Our{" "}
+          <Link href="/benefits/universal-credit-taper">Universal Credit taper calculator</Link> works this out for
+          any pay rise, new job or change in hours.
+        </p>
+
+        <h2>Other income</h2>
+        <p>
+          Income that is not from work is usually taken off pound for pound, with no work allowance or taper. That
+          includes:
+        </p>
+        <ul>
+          <li>New Style Jobseeker&rsquo;s Allowance and New Style Employment and Support Allowance;</li>
+          <li>Carer&rsquo;s Allowance;</li>
+          <li>private and workplace pensions you are drawing;</li>
+          <li>maintenance paid to you by a former partner for yourself (but not for your children);</li>
+          <li>some rental income and student income.</li>
+        </ul>
+        <p>
+          Some income is ignored completely: Child Benefit, Personal Independence Payment, Disability Living
+          Allowance, Attendance Allowance, child maintenance and most charitable payments.
+        </p>
+
+        <h2>Savings and capital</h2>
+        <p>
+          The first £6,000 of savings and investments is ignored. Between £6,000 and £16,000, Universal Credit
+          assumes an income of £4.35 a month for each £250 (or part of £250), and takes it off the award. Above
+          £16,000 you cannot get Universal Credit at all.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Savings</th>
+              <th>Monthly deduction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£6,000 or less</td><td>£0</td></tr>
+            <tr><td>£6,001</td><td>£4.35</td></tr>
+            <tr><td>£10,000</td><td>£69.60</td></tr>
+            <tr><td>£16,000</td><td>£174.00</td></tr>
+            <tr><td>More than £16,000</td><td>No Universal Credit</td></tr>
+          </tbody>
+        </table>
+        <p>
+          With £10,000 in savings, Sam from Example 1 would get £1,005.30 a month instead of £1,074.90. The value of
+          your home is ignored, and so are pensions you have not started drawing. Deliberately spending or giving away
+          money to get under the limit can be treated as &ldquo;notional capital&rdquo; and counted anyway, although
+          ordinary spending, such as paying off debts or replacing a broken boiler, is fine.
+        </p>
+
+        <h2>The benefit cap</h2>
+        <p>
+          The benefit cap limits the total of most benefits a working-age household can get. For 2026/27 it is:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Benefit cap</th>
+              <th>Greater London, a year</th>
+              <th>Elsewhere, a year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Couples and lone parents</td><td>£25,323</td><td>£22,020</td></tr>
+            <tr><td>Single people with no children</td><td>£16,967</td><td>£14,753</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Outside London, that is £1,835 a month for a family. Child Benefit counts towards it, but the childcare
+          element does not. Take a couple with four children renting privately for £1,400 a month, with no
+          earnings:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Couple, four children, rent £1,400</th>
+              <th>No earnings</th>
+              <th>Take-home pay £900</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Universal Credit before the cap</td><td>£3,282.73</td><td>£3,022.58</td></tr>
+            <tr><td>Child Benefit (counts towards the cap)</td><td>£349.92</td><td>£349.92</td></tr>
+            <tr><td>Cap reduction</td><td>−£1,797.65</td><td>£0 (exempt)</td></tr>
+            <tr><td>Universal Credit paid</td><td>£1,485.08</td><td>£3,022.58</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The cap stops applying when household take-home pay reaches £881 a month (roughly 16 hours a week at the
+          National Living Wage). In this example, earning £900 a month raises the household&rsquo;s income by more than
+          £2,400: the cap reduction disappears and the taper takes only £260.15. Households that have been working
+          steadily also get a nine-month &ldquo;grace period&rdquo; before the cap applies if their earnings fall.
+        </p>
+        <p>
+          The cap also does not apply if anyone in the household gets the LCWRA health element, the carer element,
+          Personal Independence Payment, Disability Living Allowance, Attendance Allowance, Carer&rsquo;s Allowance or a
+          war pension. For example, a single person with the new health element and £600 social rent gets £1,242.16 a
+          month, more than the single cap of £1,229.42, and keeps all of it. Our{" "}
+          <Link href="/benefits/benefit-cap">benefit cap calculator</Link> checks your household.
+        </p>
+
+        <h2>Under 25s</h2>
+        <p>
+          A single person under 25 gets a standard allowance of £338.58 a month instead of £424.90. Young people renting
+          privately are usually limited to the shared room rate of LHA until they are 35, with exceptions such as care
+          leavers under 25 and some people who have lived in homeless hostels.
+        </p>
+
+        <h2>What can reduce a payment</h2>
+        <ul>
+          <li>
+            <strong>Deductions:</strong>{" "}an advance, an overpayment, rent or energy arrears, council tax arrears and
+            some fines can be repaid from your award. Most deductions together are capped at 15% of the standard
+            allowance, and you can ask for lower repayments if you are in hardship.
+          </li>
+          <li>
+            <strong>Sanctions:</strong>{" "}if you are expected to look for work and do not do what your claimant
+            commitment says without a good reason, part of your standard allowance can be stopped for a time.
+          </li>
+          <li>
+            <strong>Late reporting:</strong>{" "}changes such as a new partner, someone moving in or out, a change in rent
+            or savings going over £6,000 must be reported. Late reports often lead to overpayments that are recovered
+            later.
+          </li>
+          <li>
+            <strong>Self-employment:</strong>{" "}after a start-up period, self-employed claimants who are expected to
+            work full time are treated as earning at least the &ldquo;minimum income floor&rdquo;, roughly what they
+            would earn at the National Living Wage, even if they earn less.
+          </li>
+        </ul>
+
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>
+            <strong>Assuming you cannot claim because you work.</strong>{" "}Many full-time workers with children or high
+            rents qualify.
+          </li>
+          <li>
+            <strong>Two pay days in one assessment period.</strong>{" "}If you are paid weekly or four-weekly, or your pay
+            day moves because of a weekend, one month can show extra pay and a smaller award. It usually evens out the
+            following month.
+          </li>
+          <li>
+            <strong>Forgetting to report childcare.</strong>{" "}Costs reported late can be lost for good.
+          </li>
+          <li>
+            <strong>Not checking the housing element.</strong>{" "}Make sure the right number of bedrooms and the right LHA
+            area have been used.
+          </li>
+          <li>
+            <strong>Missing other help.</strong>{" "}Council Tax Reduction is claimed separately from your council, and
+            Universal Credit can open the door to free school meals, Healthy Start, cheaper broadband and energy
+            schemes, and help with NHS costs.
+          </li>
+        </ul>
+
+        <h2>Other help to check</h2>
+        <p>
+          Universal Credit is rarely the only support available. Our{" "}
+          <Link href="/benefits/council-tax-reduction">Council Tax Reduction calculator</Link> estimates help with
+          your council tax bill, and the{" "}
+          <Link href="/benefits/benefits-checker">benefits checker</Link> runs through Universal Credit, Pension
+          Credit, Child Benefit and other help in one go. If you have a disability or care for someone, check Personal
+          Independence Payment and Carer&rsquo;s Allowance too: they are paid on top and can exempt you from the cap.
+        </p>
+
+        <h2>The bottom line</h2>
+        <p>
+          Universal Credit starts from a maximum award built from a standard allowance and elements for children,
+          health, caring, childcare and rent. Take-home pay above any work allowance reduces it by 55p in the pound,
+          other income reduces it pound for pound, savings over £6,000 reduce it a little and savings over £16,000 stop
+          it. The benefit cap then limits the total for some households without work or disability.
+        </p>
+        <p>
+          The figures here use the 2026/27 rates and are estimates. Your actual award is set by the Department for Work
+          and Pensions and may differ, for example because of deductions or how your pay dates fall. Use the{" "}
+          <Link href="/benefits/universal-credit">Universal Credit calculator</Link> for your own household, and get
+          free advice from Citizens Advice if you think a decision is wrong: you can ask for a mandatory
+          reconsideration within one month.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "salary-sacrifice-worth-it",
     title: "Is salary sacrifice worth it? What it really saves in 2026/27",
     seoTitle: "Is Salary Sacrifice Worth It? 2026/27 Figures",
