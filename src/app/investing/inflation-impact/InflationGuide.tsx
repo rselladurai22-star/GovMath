@@ -170,7 +170,7 @@ export default function InflationGuide() {
         <p>
           Tax is charged on the whole interest, including the part that only makes up for inflation. A higher-rate taxpayer earning 4% outside an
           ISA keeps 2.4%, which is below 3.1% inflation, so their savings shrink in real terms. This example assumes all the interest is taxed;
-          the Personal Savings Allowance (£1,000 for basic-rate and £500 for higher-rate taxpayers) shelters some of it.
+          the <a href="/investing/personal-savings-allowance">Personal Savings Allowance</a>{" "}(£1,000 for basic-rate and £500 for higher-rate taxpayers) shelters some of it.
         </p>
       </GuideSection>
 
@@ -191,7 +191,7 @@ export default function InflationGuide() {
 
       <GuideSection id="pay" n={10} kicker="Income" title="Pay, pensions and benefits">
         <p>
-          A pay rise only makes you better off if it beats inflation. A 3% rise on a £35,000 salary with 3.1% inflation is worth £34,966 in
+          A <a href="/tax-and-salary/pay-rise">pay rise</a>{" "}only makes you better off if it beats inflation. A 3% rise on a £35,000 salary with 3.1% inflation is worth £34,966 in
           today&rsquo;s money: a small real pay cut.
         </p>
         <ul>
@@ -203,7 +203,7 @@ export default function InflationGuide() {
           </li>
           <li>
             <strong>Private pensions:</strong> defined benefit pensions usually rise with inflation up to a cap. Annuities can be level or
-            inflation-linked; a level annuity starts higher but loses value over time.
+            inflation-linked; a level <a href="/investing/annuity">annuity</a>{" "}starts higher but loses value over time.
           </li>
         </ul>
       </GuideSection>
@@ -240,7 +240,7 @@ export default function InflationGuide() {
         />
         <ul>
           <li><strong>Shop around:</strong> easy-access rates vary widely. Moving can add a percentage point or more.</li>
-          <li><strong>Use your ISA allowance:</strong> £20,000 a year, so interest and growth are tax-free.</li>
+          <li><strong>Use your <a href="/investing/isa-vs-gia">ISA allowance</a>:</strong> £20,000 a year, so interest and growth are tax-free.</li>
           <li><strong>Index-linked gilts:</strong> UK government bonds whose payments rise with inflation.</li>
           <li><strong>Pay off expensive debt:</strong> a guaranteed saving often far above inflation.</li>
         </ul>
@@ -329,6 +329,9 @@ export default function InflationGuide() {
           <li><strong>Assuming today&rsquo;s inflation lasts.</strong> Inflation changes. Test a range rather than one figure.</li>
           <li><strong>Leaving an inheritance in cash for years.</strong>{" "}£100,000 held as cash for 20 years at 2.5% inflation is worth about £61,027 in today&rsquo;s money.</li>
         </ul>
+      <p>
+          For quick percentage sums, such as the percentage change between two prices, use the <a href="/life/percentage-calculator">percentage calculator</a>.
+        </p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers">

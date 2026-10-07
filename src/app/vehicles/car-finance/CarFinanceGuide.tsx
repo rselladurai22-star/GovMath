@@ -222,7 +222,7 @@ export default function CarFinanceGuide() {
 
       <GuideSection id="running-costs" n={16} kicker="Running costs" title="The full cost of running a car">
         <p>
-          Finance is only part of what a car costs. Insurance, fuel or charging, servicing, tyres, road tax and parking can add several thousand pounds a year.
+          Finance is only part of what a car costs. Insurance, <a href="/vehicles/fuel-cost-journey">fuel</a>{" "}or charging, servicing, tyres, road tax and parking can add several thousand pounds a year.
           An electric car may cost more to finance but less to run. Before choosing a monthly payment, add these costs to your budget. See the{" "}
           <a href="/vehicles/petrol-vs-ev-cost">petrol vs EV running cost calculator</a> and the <a href="/vehicles/car-tax-ved">car tax calculator</a>.
         </p>

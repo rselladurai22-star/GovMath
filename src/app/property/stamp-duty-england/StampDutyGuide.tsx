@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   BandBar,
   Callout,
@@ -61,8 +62,8 @@ export default function StampDutyGuide() {
       intro={
         <>
           Stamp Duty Land Tax is charged when you buy a home in England or Northern Ireland. This guide explains the 2026/27 rates
-          for home movers, first-time buyers and second homes, how the bill is worked out slice by slice, how to reclaim the
-          surcharge, and the special rules for leasehold, shared ownership and buyers from abroad.
+          for home movers, <a href="/property/first-time-buyer">first-time buyers</a>{" "}and second homes, how the bill is worked out slice by slice, how to reclaim the
+          surcharge, and the special rules for leasehold, <a href="/property/shared-ownership">shared ownership</a>{" "}and buyers from abroad.
         </>
       }
       meta={["2026/27 rates", "12 min read", "Reviewed October 2026"]}
@@ -319,8 +320,8 @@ export default function StampDutyGuide() {
 
       <GuideSection id="nations" n={15} kicker="Across the UK" title="Scotland and Wales">
         <p>
-          Scotland charges Land and Buildings Transaction Tax and Wales charges Land Transaction Tax, each with different bands and
-          surcharges. For a home mover at £300,000: £5,000 in England, £4,600 in Scotland and £4,500 in Wales. Our LBTT and LTT
+          Scotland charges <a href="/property/lbtt-scotland">Land and Buildings Transaction Tax</a>{" "}and Wales charges Land Transaction Tax, each with different bands and
+          surcharges. For a home mover at £300,000: £5,000 in England, £4,600 in Scotland and £4,500 <a href="/property/ltt-wales">in Wales</a>. Our LBTT and LTT
           calculators cover them.
         </p>
       </GuideSection>
@@ -384,6 +385,9 @@ export default function StampDutyGuide() {
         <p>
           If cash is tight, you could put down a slightly smaller deposit to keep money back for the tax, but check that this does
           not push you into a higher loan-to-value band with a worse rate.
+        </p>
+      <p>
+          For a quick figure at a common price, see <Link href="/property/stamp-duty-on">Stamp Duty by house price</Link>, from £100,000 to £2 million, with the Scottish and Welsh equivalents.
         </p>
       </GuideSection>
 

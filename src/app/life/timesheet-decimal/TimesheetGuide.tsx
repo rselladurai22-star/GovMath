@@ -51,7 +51,7 @@ export default function TimesheetGuide() {
           <li>Divide the minutes by 60 to get the decimal part: 45 minutes is 0.75 hours.</li>
           <li>Take unpaid breaks off each day before adding up the week.</li>
           <li>A finish time earlier than the start time means the shift ran past midnight.</li>
-          <li>Multiply decimal hours by the hourly rate to get gross pay.</li>
+          <li>Multiply decimal hours by the <a href="/tax-and-salary/hourly-to-salary">hourly rate</a>{" "}to get gross pay.</li>
         </ul>
         <KeyStats
           items={[

@@ -163,7 +163,7 @@ export default function PremiumBondsGuide() {
 
       <GuideSection id="tax" n={7} kicker="Tax" title="Tax-free prizes">
         <p>
-          Premium Bond prizes are free of income tax and capital gains tax, and do not count towards your Personal Savings Allowance. Savings
+          Premium Bond prizes are free of income tax and capital gains tax, and do not count towards your <a href="/investing/personal-savings-allowance">Personal Savings Allowance</a>. Savings
           interest is taxed once it goes over your allowance: £1,000 for basic-rate taxpayers, £500 for higher-rate, and nothing for
           additional-rate taxpayers.
         </p>
@@ -179,7 +179,7 @@ export default function PremiumBondsGuide() {
         />
         <p>
           These figures compare against the average prize rate, not a typical year. For basic-rate taxpayers whose interest stays within the
-          £1,000 allowance, savings interest is effectively tax-free too, so the tax advantage disappears.
+          £1,000 allowance, <a href="/investing/savings-interest">savings interest</a>{" "}is effectively tax-free too, so the tax advantage disappears.
         </p>
       </GuideSection>
 
@@ -207,7 +207,7 @@ export default function PremiumBondsGuide() {
           ]}
         />
         <p>
-          A cash ISA gives tax-free interest too, with a guaranteed rate. If a cash ISA pays more than your typical Premium Bonds return, it is
+          A cash <a href="/investing/isa-vs-gia">ISA</a>{" "}gives tax-free interest too, with a guaranteed rate. If a cash ISA pays more than your typical Premium Bonds return, it is
           likely to be the better choice for most people. The calculator compares your holding with any savings rate you enter.
         </p>
       </GuideSection>

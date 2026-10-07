@@ -3,9 +3,9 @@ import Link from "next/link";
 import ContentPage from "@/components/ContentPage";
 
 export const metadata: Metadata = {
-  title: "About GovMath",
+  title: "About GovMath: Independent UK Calculators",
   description:
-    "GovMath turns confusing UK government rules — tax, benefits, property, pensions — into free, plain-English calculators. Learn who we are and how we work.",
+    "GovMath is an independent site of free UK calculators for tax, benefits, property and pensions. Who we are, how we work and how we are funded.",
   alternates: { canonical: "/about" },
 };
 

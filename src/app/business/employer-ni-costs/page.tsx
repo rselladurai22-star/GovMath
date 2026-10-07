@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import EmployerCostStudio from "./EmployerCostStudio";
+import { ogFor } from "@/gm/og";
 import EmployerCostGuide from "./EmployerCostGuide";
 
 export const metadata: Metadata = {
-  title: "Employer NI Calculator: True Cost of an Employee (2026/27)",
+  title: "Employer NI Calculator UK 2026/27",
   description:
-    "Work out employer National Insurance at 15% above £5,000, workplace pension and the full cost of an employee or team, with the Employment Allowance and salary sacrifice.",
+    "Free employer cost calculator for 2026/27. See employer NI at 15%, the Employment Allowance, pension and the true cost of hiring someone.",
   alternates: { canonical: "/business/employer-ni-costs" },
+  openGraph: ogFor("/business/employer-ni-costs"),
 };
 
 const BREADCRUMBS = [

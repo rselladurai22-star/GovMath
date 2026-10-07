@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import LandTaxStudio from "@/components/property/LandTaxStudio";
 import { CALCULATORS } from "@/lib/calculators";
+import { ogFor } from "@/gm/og";
 import LTTGuide from "./LTTGuide";
 
 export const metadata: Metadata = {
-  title: "LTT Calculator (Wales, 2026/27)",
+  title: "LTT Calculator Wales 2026/27",
   description:
-    "Work out Land Transaction Tax on a home in Wales: main rates with the £225,000 0% band, higher rates for second homes and buy-to-let, and refunds when you replace your main home.",
+    "Free Land Transaction Tax calculator for Wales in 2026/27. See LTT band by band, the higher rates for second homes and how Wales compares with England.",
   alternates: { canonical: "/property/ltt-wales" },
+  openGraph: ogFor("/property/ltt-wales"),
 };
 
 const BREADCRUMBS = [

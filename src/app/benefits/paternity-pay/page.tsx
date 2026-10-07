@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import PaternityStudio from "./PaternityStudio";
+import { ogFor } from "@/gm/og";
 import PaternityGuide from "./PaternityGuide";
 
 export const metadata: Metadata = {
-  title: "Paternity Pay Calculator (SPP 2026/27)",
+  title: "Paternity Pay Calculator UK 2026/27 (SPP)",
   description:
-    "Work out Statutory Paternity Pay for 2026/27: £194.32 a week or 90% of earnings, for one or two weeks, with employer top-ups and the April 2026 day-one leave right.",
+    "Free Statutory Paternity Pay calculator for 2026/27. See your weekly SPP, whether you qualify and when you can take your leave.",
   alternates: { canonical: "/benefits/paternity-pay" },
+  openGraph: ogFor("/benefits/paternity-pay"),
 };
 
 const BREADCRUMBS = [

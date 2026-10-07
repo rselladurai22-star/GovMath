@@ -222,7 +222,7 @@ export default function PetrolEvGuide() {
         </p>
         <p>
           Set the share of public charging in the calculator to match your situation. At 100% public charging at 75p a kWh, the electric car
-          in the example costs £1,714 a year in electricity, more than the petrol car&rsquo;s fuel.
+          in the example costs £1,714 a year in electricity, more than the petrol car&rsquo;s <a href="/vehicles/fuel-cost-journey">fuel</a>.
         </p>
       </GuideSection>
 
@@ -273,7 +273,7 @@ export default function PetrolEvGuide() {
 
       <GuideSection id="checklist" n={20} kicker="Summary" title="Before you switch">
         <ol>
-          <li>Work out your real yearly mileage from your last two MOT certificates.</li>
+          <li>Work out your real yearly mileage from your last two <a href="/vehicles/mot-history-checker">MOT</a>{" "}certificates.</li>
           <li>Check whether you can charge at home or at work, and what EV tariffs are available.</li>
           <li>Get insurance quotes for both cars.</li>
           <li>Compare total costs over the years you will keep the car, not just the monthly payment.</li>

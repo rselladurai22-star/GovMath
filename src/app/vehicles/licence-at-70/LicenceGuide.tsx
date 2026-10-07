@@ -145,7 +145,7 @@ export default function LicenceGuide() {
       <GuideSection id="renewing-tips" n={11} kicker="Tips" title="Tips for a smooth renewal">
         <ul>
           <li>Apply as soon as the 90-day window opens, so there is time if the DVLA needs medical information.</li>
-          <li>Have your National Insurance number and addresses for the last three years ready if renewing online.</li>
+          <li>Have your <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}number and addresses for the last three years ready if renewing online.</li>
           <li>Get an eye test first if you have not had one recently, so you can declare your eyesight with confidence.</li>
           <li>Keep a note of your next renewal date: the calculator shows every date from 70 to 100.</li>
         </ul>

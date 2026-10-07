@@ -139,7 +139,7 @@ export default function BreakEvenGuide() {
       <GuideSection id="revenue" n={4} kicker="In pounds" title="Break-even in sales value">
         <p>
           Sometimes you know your costs as a percentage of sales rather than a cost per item. A café knows food costs are
-          about a third of the till, for example. Then use the <strong>contribution margin</strong>: contribution as a share
+          about a third of the till, for example. Then use the <strong>contribution <a href="/business/gross-profit-margin">margin</a></strong>: contribution as a share
           of the price.
         </p>
         <WorkedExample
@@ -250,7 +250,7 @@ export default function BreakEvenGuide() {
         />
         <h3>A freelance consultant</h3>
         <p>
-          Fixed costs of £12,000 (laptop, software, insurance, a co-working desk, accountant). A day rate of £400, with about
+          Fixed costs of £12,000 (laptop, software, insurance, a co-working desk, accountant). A <a href="/business/day-rate">day rate</a>{" "}of £400, with about
           £20 of travel and materials per day worked.
         </p>
         <WorkedExample
@@ -310,8 +310,8 @@ export default function BreakEvenGuide() {
             or while you wait for customers to pay. A cash-flow forecast covers that.
           </li>
           <li>
-            <strong>It is before tax.</strong> Profit above break-even is taxed: Income Tax and National Insurance for a sole
-            trader, Corporation Tax for a company.
+            <strong>It is before tax.</strong> Profit above break-even is taxed: Income Tax and <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}for a sole
+            trader, <a href="/business/corporation-tax">Corporation Tax</a>{" "}for a company.
           </li>
         </ul>
       </GuideSection>

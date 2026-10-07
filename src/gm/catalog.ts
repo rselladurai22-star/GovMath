@@ -1,4 +1,4 @@
-import { getCalculatorsByCategory, shortTitle, type CategorySlug } from "@/lib/calculators";
+import { getCalculatorsByCategory, shortTitle, type CategorySlug } from "../lib/calculators";
 import cats from "./categories.json";
 
 /**
@@ -39,6 +39,50 @@ export function categoryGridHtml(): string {
   return `<div class="categorygrid">${cards}</div>`;
 }
 
+/**
+ * The header with its mega menus built from the live catalogue: each topic's
+ * menu lists every calculator in that topic (so new tools are linked from
+ * every page), and the menu headings are styled paragraphs rather than <h3>s,
+ * so the page's own <h1> comes first in its heading outline.
+ */
+export function headerHtml(html: string): string {
+  return html
+    .replace(
+      /(<a class="button" href="\/([a-z-]+)">View all calculators<\/a><\/div><div class="ax-mega-links">)[\s\S]*?(<\/div>)/g,
+      (_m, open: string, slug: string, close: string) =>
+        open +
+        getCalculatorsByCategory(slug as CategorySlug)
+          .map((t) => `<a href="${t.href}">${esc(shortTitle(t.title))}</a>`)
+          .join("") +
+        close,
+    )
+    .replace(/<h3>([\s\S]*?)<\/h3>/g, '<p class="ax-mega-h">$1</p>');
+}
+
+/** Quick links to the fixed-amount pages, shown on their topic page. */
+const AMOUNT_LINKS: Partial<Record<CategorySlug, { title: string; all: [string, string]; links: [string, string][] }>> = {
+  "tax-and-salary": {
+    title: "Salary after tax",
+    all: ["/tax-and-salary/salary-after-tax", "Every salary from £15,000 to £250,000"],
+    links: [20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 100].map((k) => [`/tax-and-salary/salary-after-tax/${k * 1000}`, `£${k},000 after tax`]),
+  },
+  property: {
+    title: "Stamp Duty by price",
+    all: ["/property/stamp-duty-on", "Stamp Duty at every price to £2 million"],
+    links: [200, 250, 300, 350, 400, 450, 500, 600, 750, 1000].map((k) => [
+      `/property/stamp-duty-on/${k * 1000}`,
+      `Stamp Duty on ${k === 1000 ? "£1 million" : `£${k},000`}`,
+    ]),
+  },
+};
+
+function amountLinksHtml(slug: CategorySlug): string {
+  const a = AMOUNT_LINKS[slug];
+  if (!a) return "";
+  const links = [...a.links, a.all].map(([href, label]) => `<a href="${href}">${esc(label)}</a>`).join("");
+  return `<section class="gm-amountlinks" aria-labelledby="amounts-title"><h2 id="amounts-title">${esc(a.title)}</h2><div class="toollist">${links}</div></section>`;
+}
+
 /** The whole <main> content of a topic page. */
 export function topicMainHtml(slug: CategorySlug): string {
   const c = CATS.find((x) => x.slug === slug);
@@ -55,7 +99,7 @@ export function topicMainHtml(slug: CategorySlug): string {
   return (
     `<div class="wrap"><div class="crumb"><a href="/">Home</a><span>›</span><a href="/#categories">Calculators</a><span>›</span>${c.label}</div>` +
     `<section class="categoryhero"><h1>${c.heroTitle}</h1><p>${c.heroDesc}</p></section>` +
-    `<nav class="categoryjump" aria-label="Calculator categories">${jump}</nav><div class="fullcategory">${items}</div>` +
+    `<nav class="categoryjump" aria-label="Calculator categories">${jump}</nav><div class="fullcategory">${items}</div>${amountLinksHtml(slug)}` +
     `<a class="backlink" href="/#categories">Back to all categories</a></div>`
   );
 }

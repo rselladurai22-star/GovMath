@@ -9,9 +9,9 @@ import { getAllPosts } from "@/lib/blog";
 import { getCalculatorsByCategory, shortTitle, type CategorySlug } from "@/lib/calculators";
 
 export const metadata: Metadata = {
-  title: "Guides — UK money rules, explained",
+  title: "UK Money Guides 2026/27",
   description:
-    "Plain-English guides to UK tax, pay, property, benefits, pensions, vehicles and student loans for 2026/27, each with a free calculator. No jargon, no sign-ups.",
+    "Plain-English guides to UK tax, pay, property, benefits, pensions and student loans for 2026/27, each with a free calculator to run your own numbers.",
   alternates: { canonical: "/blog" },
 };
 

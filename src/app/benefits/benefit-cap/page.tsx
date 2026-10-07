@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CapStudio from "./CapStudio";
+import { ogFor } from "@/gm/og";
 import CapGuide from "./CapGuide";
 
 export const metadata: Metadata = {
-  title: "Benefit Cap Calculator 2026/27: Will My Benefits Be Capped?",
+  title: "Benefit Cap Calculator UK 2026/27",
   description:
-    "Check whether the benefit cap reduces your Universal Credit or Housing Benefit in 2026/27. £22,020 for families and £14,753 for single people outside London, with every exemption and the £881 earnings test.",
+    "Free benefit cap calculator for 2026/27. See if your Universal Credit or Housing Benefit will be capped, by how much, and the exemptions that lift the cap.",
   alternates: { canonical: "/benefits/benefit-cap" },
+  openGraph: ogFor("/benefits/benefit-cap"),
 };
 
 const BREADCRUMBS = [

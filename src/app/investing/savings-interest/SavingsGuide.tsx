@@ -98,7 +98,7 @@ export default function SavingsGuide() {
           The <strong>AER</strong> (annual equivalent rate) shows what you would earn in a year if interest were added and left in the account,
           whether it is paid monthly or yearly. It is the fairest way to compare accounts, and it is what the calculator uses. The{" "}
           <strong>gross</strong> rate is the rate before tax; banks pay interest without taking tax off, so any tax due is collected by HMRC through
-          your tax code or Self Assessment.
+          your <a href="/tax-and-salary/tax-code-decoder">tax code</a>{" "}or Self Assessment.
         </p>
       </GuideSection>
 
@@ -186,7 +186,7 @@ export default function SavingsGuide() {
 
       <GuideSection id="isa" n={11} kicker="ISAs" title="Cash ISAs">
         <p>
-          Interest in a cash ISA is tax-free and does not use your Personal Savings Allowance. You can save up to £20,000 a year across all your ISAs.
+          Interest in a cash ISA is tax-free and does not use your Personal Savings Allowance. You can save up to £20,000 a year across all your <a href="/investing/isa-vs-gia">ISAs</a>.
           Fixed-rate and easy-access cash ISAs both exist, and many easy-access ISAs are flexible, so you can take money out and put it back in the
           same tax year without using more allowance. If your interest is above your allowances, or soon will be, a cash ISA is usually the better
           home. Tick the ISA option in the calculator to compare.
@@ -254,7 +254,7 @@ export default function SavingsGuide() {
           total={{ label: "Fixing earns more by, after tax", value: "£436.17" }}
         />
         <p>
-          For a higher-rate taxpayer, 40p of every pound of interest over £500 a year goes in tax, so a cash ISA or Premium Bonds can beat a taxable account
+          For a higher-rate taxpayer, 40p of every pound of interest over £500 a year goes in tax, so a cash ISA or <a href="/investing/premium-bonds">Premium Bonds</a>{" "}can beat a taxable account
           with a noticeably higher rate.
         </p>
       </GuideSection>

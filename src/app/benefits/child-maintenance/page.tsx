@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CmsStudio from "./CmsStudio";
+import { ogFor } from "@/gm/og";
 import CmsGuide from "./CmsGuide";
 
 export const metadata: Metadata = {
-  title: "Child Maintenance Calculator UK (CMS) 2026: How Much Should I Pay?",
+  title: "Child Maintenance Calculator UK (CMS) 2026/27",
   description:
-    "Work out child maintenance with the Child Maintenance Service formula: gross income, the five rates, other children, shared care nights and Collect and Pay fees.",
+    "Free CMS child maintenance calculator. Work out weekly payments with the 2012 formula, shared care, other children and Collect and Pay fees.",
   alternates: { canonical: "/benefits/child-maintenance" },
+  openGraph: ogFor("/benefits/child-maintenance"),
 };
 
 const BREADCRUMBS = [

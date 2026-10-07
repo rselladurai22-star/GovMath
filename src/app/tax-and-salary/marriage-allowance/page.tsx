@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import MarriageStudio from "./MarriageStudio";
+import { ogFor } from "@/gm/og";
 import MarriageGuide from "./MarriageGuide";
 
 export const metadata: Metadata = {
-  title: "Marriage Allowance Calculator 2026/27: Am I Eligible for £252?",
+  title: "Marriage Allowance Calculator 2026/27",
   description:
-    "Check whether you can transfer £1,260 of Personal Allowance to your spouse or civil partner, what it saves each year, and how much you could backdate to 2022/23.",
+    "Free Marriage Allowance calculator for 2026/27. Check if you can transfer £1,260 of allowance to save up to £252 a year, and backdate four years.",
   alternates: { canonical: "/tax-and-salary/marriage-allowance" },
+  openGraph: ogFor("/tax-and-salary/marriage-allowance"),
 };
 
 const BREADCRUMBS = [

@@ -51,7 +51,7 @@ export default function PropertyCGTGuide() {
       title="Capital Gains Tax on property, explained"
       intro={
         <>
-          Selling a buy-to-let, a second home or a former home can mean paying Capital Gains Tax. This guide explains how the
+          Selling a <a href="/property/buy-to-let-yield">buy-to-let</a>, a second home or a former home can mean paying Capital Gains Tax. This guide explains how the
           gain is worked out, the 18% and 24% rates, Private Residence Relief, joint ownership, and the 60-day deadline to report
           and pay.
         </>
@@ -61,7 +61,7 @@ export default function PropertyCGTGuide() {
       sources={SOURCES}
     >
       <GuideSection id="when" n={1} kicker="The basics" title="When you pay CGT on property">
-        <p>You may pay Capital Gains Tax when you sell, give away or otherwise dispose of a property that has risen in value, such as:</p>
+        <p>You may pay <a href="/investing/capital-gains-assets">Capital Gains Tax</a>{" "}when you sell, give away or otherwise dispose of a property that has risen in value, such as:</p>
         <ul>
           <li>a buy-to-let or other rental property;</li>
           <li>a second home or holiday home;</li>
@@ -262,13 +262,13 @@ export default function PropertyCGTGuide() {
         </p>
         <p>
           <strong>Gifts.</strong> Giving a property to anyone other than a spouse or civil partner counts as selling it at market
-          value, so CGT can be due even though you received nothing. The gift may also have Inheritance Tax consequences.
+          value, so CGT can be due even though you received nothing. The gift may also have <a href="/life/inheritance-tax">Inheritance Tax</a>{" "}consequences.
         </p>
       </GuideSection>
 
       <GuideSection id="reduce" n={14} kicker="Planning" title="Legitimate ways to reduce the bill">
         <ul>
-          <li>Claim every allowable cost, including Stamp Duty and improvement work.</li>
+          <li>Claim every allowable cost, including <a href="/property/stamp-duty-england">Stamp Duty</a>{" "}and improvement work.</li>
           <li>Use both spouses&apos; allowances and basic-rate bands through joint ownership.</li>
           <li>Time the sale for a year when your income is lower.</li>
           <li>Make pension contributions in the year of sale, which can extend your basic-rate band.</li>
@@ -308,7 +308,7 @@ export default function PropertyCGTGuide() {
 
       <GuideSection id="company" n={17} kicker="Companies" title="Property owned through a company">
         <p>
-          A company does not pay Capital Gains Tax. Gains on property it sells are part of its profits and pay Corporation Tax at
+          A company does not pay Capital Gains Tax. Gains on property it sells are part of its profits and pay <a href="/business/corporation-tax">Corporation Tax</a>{" "}at
           19% to 25%. Getting the money out of the company then means dividends or salary, which are taxed again. Moving a
           property you own personally into a company counts as selling it at market value, so CGT, and usually Stamp Duty, can be
           due.
@@ -332,7 +332,7 @@ export default function PropertyCGTGuide() {
           <li>the completion statements from when you bought and sold;</li>
           <li>your Stamp Duty return and legal and estate agent invoices;</li>
           <li>invoices for improvements, with dates, and photos if you have them;</li>
-          <li>evidence of when the property was your main home, such as council tax bills, bank statements and the electoral roll;</li>
+          <li>evidence of when the property was your main home, such as <a href="/property/council-tax-bands">council tax</a>{" "}bills, bank statements and the electoral roll;</li>
           <li>valuations used for inherited or gifted property.</li>
         </ul>
         <p>Keep them for at least a year after the Self Assessment deadline for the tax year of the sale, and longer if you can.</p>

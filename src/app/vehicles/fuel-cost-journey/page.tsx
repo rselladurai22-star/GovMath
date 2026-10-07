@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import FuelStudio from "./FuelStudio";
+import { ogFor } from "@/gm/og";
 import FuelGuide from "./FuelGuide";
 
 export const metadata: Metadata = {
   title: "Fuel Cost Calculator UK: Journey Cost by MPG",
   description:
-    "Work out what a car journey costs in petrol, diesel or electricity, split the cost between passengers, and see what you can claim for business mileage. Autumn 2026 prices.",
+    "Free fuel cost calculator. Work out the cost of any journey from miles and MPG at current UK petrol and diesel prices, and split it between passengers.",
   alternates: { canonical: "/vehicles/fuel-cost-journey" },
+  openGraph: ogFor("/vehicles/fuel-cost-journey"),
 };
 
 const BREADCRUMBS = [

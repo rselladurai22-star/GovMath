@@ -79,13 +79,13 @@ export default function GrantGuide() {
         <p>You or your partner must get one of these:</p>
         <ul>
           <li>Universal Credit;</li>
-          <li>Pension Credit;</li>
+          <li><a href="/benefits/pension-credit">Pension Credit</a>;</li>
           <li>income-based Jobseeker&rsquo;s Allowance;</li>
           <li>income-related Employment and Support Allowance;</li>
           <li>Income Support.</li>
         </ul>
         <p>
-          New Style JSA and ESA, Child Benefit and PIP do not count on their own. If you are waiting for a decision on a qualifying benefit, claim
+          New Style JSA and ESA, Child Benefit and <a href="/benefits/pip-points">PIP</a>{" "}do not count on their own. If you are waiting for a decision on a qualifying benefit, claim
           the grant anyway within the time limit.
         </p>
         <Callout title="Under 16 or a dependent teenager">
@@ -230,7 +230,7 @@ export default function GrantGuide() {
           <li>part B of form SF100 signed by a midwife, doctor or health visitor, confirming the due date or the birth;</li>
           <li>your National Insurance number, and your partner&rsquo;s if you have one;</li>
           <li>details of the qualifying benefit and who gets it;</li>
-          <li>for an adoption or guardianship, a copy of the court order or the adoption agency&rsquo;s paperwork;</li>
+          <li>for an <a href="/benefits/adoption-pay">adoption</a>{" "}or guardianship, a copy of the court order or the adoption agency&rsquo;s paperwork;</li>
           <li>your bank details, so the money can be paid straight into your account.</li>
         </ul>
         <p>
@@ -247,7 +247,7 @@ export default function GrantGuide() {
         </p>
         <p>
           When the baby arrives, report the birth to Universal Credit through your journal straight away. Your award gains a child element from
-          the start of that assessment period, and you may also qualify for Healthy Start and help with childcare costs.
+          the start of that assessment period, and you may also qualify for Healthy Start and help with <a href="/benefits/childcare-costs">childcare costs</a>.
         </p>
       </GuideSection>
 

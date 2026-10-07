@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import PcStudio from "./PcStudio";
+import { ogFor } from "@/gm/og";
 import PcGuide from "./PcGuide";
 
 export const metadata: Metadata = {
-  title: "Pension Credit Calculator (2026/27 Rates)",
+  title: "Pension Credit Calculator UK 2026/27",
   description:
-    "Estimate your Pension Credit for 2026/27: the £238 single and £363.25 couple guarantee, severe disability, carer and child additions, savings over £10,000 and Savings Credit.",
+    "Free Pension Credit calculator for 2026/27. Check Guarantee Credit and Savings Credit from your income and savings, and the extra help it unlocks.",
   alternates: { canonical: "/benefits/pension-credit" },
+  openGraph: ogFor("/benefits/pension-credit"),
 };
 
 const BREADCRUMBS = [

@@ -80,8 +80,8 @@ export default function RentVsBuyGuide() {
 
       <GuideSection id="buying-costs" n={2} kicker="Buying" title="The costs of buying">
         <ul>
-          <li><strong>Upfront:</strong> deposit, Stamp Duty (or LBTT or LTT), legal fees, survey and mortgage fees.</li>
-          <li><strong>Monthly:</strong> mortgage payments, part interest and part capital.</li>
+          <li><strong>Upfront:</strong> deposit, Stamp Duty (or <a href="/property/lbtt-scotland">LBTT</a>{" "}or LTT), legal fees, survey and mortgage fees.</li>
+          <li><strong>Monthly:</strong> <a href="/property/mortgage-repayment">mortgage payments</a>, part interest and part capital.</li>
           <li><strong>Upkeep:</strong>{" "}repairs, maintenance and buildings insurance, often around 1% of the home&apos;s value a year.</li>
           <li><strong>Leasehold costs:</strong> service charge and ground rent for many flats.</li>
           <li><strong>Selling:</strong> estate agent and legal fees when you move on, often 1% to 2% of the value.</li>
@@ -101,7 +101,7 @@ export default function RentVsBuyGuide() {
 
       <GuideSection id="example" n={4} kicker="Worked example" title="A worked example">
         <p>
-          A first-time buyer in England looks at a £300,000 home with a £30,000 deposit, or renting a similar home for £1,300 a
+          A <a href="/property/first-time-buyer">first-time buyer</a>{" "}in England looks at a £300,000 home with a £30,000 deposit, or renting a similar home for £1,300 a
           month. The mortgage is 4.5% over 25 years. House prices and rents both rise 3% a year, investments return 5%, upkeep is
           1% a year and selling costs 1.5%.
         </p>
@@ -241,7 +241,7 @@ export default function RentVsBuyGuide() {
 
       <GuideSection id="limits" n={12} kicker="Caveats" title="What the model leaves out">
         <ul>
-          <li>Taxes on investment returns, and Capital Gains Tax on any second home. A main home is usually free of CGT.</li>
+          <li>Taxes on investment returns, and <a href="/investing/capital-gains-assets">Capital Gains Tax</a>{" "}on any second home. A main home is usually free of CGT.</li>
           <li>Changes in mortgage rate after a fixed deal ends.</li>
           <li>Leasehold costs such as service charges, unless you include them in upkeep.</li>
           <li>Big one-off repairs, such as a new roof.</li>
@@ -265,7 +265,7 @@ export default function RentVsBuyGuide() {
       <GuideSection id="other-routes" n={14} kicker="Alternatives" title="Other routes into owning">
         <ul>
           <li>
-            <strong>Shared ownership</strong> lets you buy part of a home with a smaller deposit and pay rent on the rest. Our
+            <strong><a href="/property/shared-ownership">Shared ownership</a></strong> lets you buy part of a home with a smaller deposit and pay rent on the rest. Our
             shared ownership calculator compares the costs.
           </li>
           <li>
@@ -356,7 +356,7 @@ export default function RentVsBuyGuide() {
 
       <GuideSection id="tax" n={19} kicker="Tax" title="Tax differences between owning and renting">
         <p>
-          Your main home is usually free of Capital Gains Tax when you sell it, thanks to Private Residence Relief. So the
+          Your main home is usually free of Capital Gains Tax when you sell it, thanks to <a href="/property/property-capital-gains">Private Residence Relief</a>. So the
           buyer&apos;s gain in the calculator is normally tax-free. The renter&apos;s investment returns are taxed unless they are
           held in an ISA or pension, or fall within the dividend and capital gains allowances.
         </p>

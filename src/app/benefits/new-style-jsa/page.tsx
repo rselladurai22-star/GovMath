@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import JsaStudio from "./JsaStudio";
+import { ogFor } from "@/gm/og";
 import JsaGuide from "./JsaGuide";
 
 export const metadata: Metadata = {
-  title: "New Style JSA Calculator 2026/27: Do I Qualify and How Much?",
+  title: "New Style JSA Calculator 2026/27",
   description:
-    "Check whether your National Insurance record qualifies you for New Style Jobseeker's Allowance and how much you get in 2026/27: £95.55 a week at 25 or over, for up to 26 weeks.",
+    "Free New Style JSA calculator for 2026/27. Check if your National Insurance record qualifies and see the weekly rate: £95.55 at 25 or over, for up to 26 weeks.",
   alternates: { canonical: "/benefits/new-style-jsa" },
+  openGraph: ogFor("/benefits/new-style-jsa"),
 };
 
 const BREADCRUMBS = [

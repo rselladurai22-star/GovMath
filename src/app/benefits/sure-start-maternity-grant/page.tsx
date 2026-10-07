@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import GrantStudio from "./GrantStudio";
+import { ogFor } from "@/gm/og";
 import GrantGuide from "./GrantGuide";
 
 export const metadata: Metadata = {
-  title: "Sure Start Maternity Grant Checker 2026: Can I Get £500?",
+  title: "Sure Start Maternity Grant Checker 2026",
   description:
-    "Check if you can get the £500 Sure Start Maternity Grant, or Scotland's Best Start Grant of £796.65, with the first-child rule, twins, qualifying benefits and claim dates.",
+    "Free checker for the £500 Sure Start Maternity Grant and Scotland's Best Start Grant. See if you qualify, how much you could get and the deadline to claim.",
   alternates: { canonical: "/benefits/sure-start-maternity-grant" },
+  openGraph: ogFor("/benefits/sure-start-maternity-grant"),
 };
 
 const BREADCRUMBS = [

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import FTBStudio from "./FTBStudio";
+import { ogFor } from "@/gm/og";
 import FTBGuide from "./FTBGuide";
 
 export const metadata: Metadata = {
-  title: "First-Time Buyer Stamp Duty Calculator (2026/27)",
+  title: "First-Time Buyer Stamp Duty Calculator 2026/27",
   description:
-    "Stamp Duty for first-time buyers in England and Northern Ireland: 0% to £300,000, 5% to £500,000, the £500,000 cliff edge, joint buyers, Lifetime ISAs and the cash you need on completion.",
+    "Free first-time buyer Stamp Duty calculator. Pay 0% to £300,000 and 5% to £500,000. See the £500,000 cliff edge and the cash you need to complete.",
   alternates: { canonical: "/property/first-time-buyer" },
+  openGraph: ogFor("/property/first-time-buyer"),
 };
 
 const BREADCRUMBS = [

@@ -142,7 +142,7 @@ export default function MarriageGuide() {
         <p>
           Many retired couples qualify: for example, one partner on the full new State Pension (£12,547.60 in 2026/27) and the other with a smaller
           pension. Be careful when the lower earner&rsquo;s income is close to the limit, as the State Pension alone almost uses the whole allowance. Savings
-          interest covered by the starting rate or Personal Savings Allowance still counts as income for the £12,570 test.
+          interest covered by the starting rate or <a href="/investing/personal-savings-allowance">Personal Savings Allowance</a>{" "}still counts as income for the £12,570 test.
         </p>
       </GuideSection>
 
@@ -158,7 +158,7 @@ export default function MarriageGuide() {
 
       <GuideSection id="tax-code" n={11} kicker="Payslips" title="How it shows in your tax code">
         <p>
-          The higher earner&rsquo;s tax code ends in M, such as 1383M, and the lower earner&rsquo;s ends in N, such as 1131N. If either of you
+          The higher earner&rsquo;s <a href="/tax-and-salary/tax-code-decoder">tax code</a>{" "}ends in M, such as 1383M, and the lower earner&rsquo;s ends in N, such as 1131N. If either of you
           completes Self Assessment, the allowance is applied in your tax calculation instead.
         </p>
       </GuideSection>
@@ -228,10 +228,10 @@ export default function MarriageGuide() {
 
       <GuideSection id="benefits" n={18} kicker="Benefits" title="Marriage Allowance and benefits">
         <p>
-          Universal Credit and most other means-tested benefits look at take-home pay after tax, so the higher earner&rsquo;s lower tax bill slightly increases
+          Universal Credit and most other means-tested benefits look at <a href="/tax-and-salary/salary-calculator">take-home pay</a>{" "}after tax, so the higher earner&rsquo;s lower tax bill slightly increases
           the household&rsquo;s earnings for Universal Credit. For most couples the effect is small: Universal Credit falls by 55p for each pound of extra
           take-home, so £252 of tax saved might reduce Universal Credit by about £139 a year. You are still better off claiming, but the gain is less than
-          £252. Marriage Allowance does not affect Child Benefit, the State Pension or Pension Credit directly.
+          £252. Marriage Allowance does not affect Child Benefit, the State Pension or <a href="/benefits/pension-credit">Pension Credit</a>{" "}directly.
         </p>
       </GuideSection>
 
@@ -239,9 +239,9 @@ export default function MarriageGuide() {
         <ul>
           <li><strong>One partner at home with young children</strong>, with little or no income of their own.</li>
           <li><strong>One partner studying</strong> full time, with no more than a small part-time income.</li>
-          <li><strong>One partner on maternity or shared parental leave</strong> for most of the tax year, if their total income for the year stays under £12,570.</li>
+          <li><strong>One partner on maternity or <a href="/benefits/shared-parental-leave">shared parental leave</a></strong> for most of the tax year, if their total income for the year stays under £12,570.</li>
           <li><strong>Retired couples</strong> where one partner has a small pension and the other a larger one, within the basic-rate band.</li>
-          <li><strong>One partner caring</strong> for a relative and receiving Carer&rsquo;s Allowance, which is taxable but well under the allowance.</li>
+          <li><strong>One partner caring</strong> for a relative and receiving <a href="/benefits/carers-earnings">Carer&rsquo;s Allowance</a>, which is taxable but well under the allowance.</li>
         </ul>
         <p>
           In each case, check the lower earner&rsquo;s total taxable income, including any interest above their savings allowances and taxable benefits.

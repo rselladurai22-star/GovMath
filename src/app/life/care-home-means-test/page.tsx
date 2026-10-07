@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CareStudio from "./CareStudio";
+import { ogFor } from "@/gm/og";
 import CareGuide from "./CareGuide";
 
 export const metadata: Metadata = {
-  title: "Care Home Means Test Calculator (2026/27)",
+  title: "Care Home Means Test Calculator 2026/27",
   description:
-    "Find out who pays for a care home in 2026/27: the £23,250 and £14,250 capital limits, tariff income, your home, top-ups, NHS-funded nursing care, and how long savings last, for all four UK nations.",
+    "Free care home fees means test calculator for England, Scotland, Wales and NI. See what you pay from income and savings, and when council help starts.",
   alternates: { canonical: "/life/care-home-means-test" },
+  openGraph: ogFor("/life/care-home-means-test"),
 };
 
 const BREADCRUMBS = [

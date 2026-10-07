@@ -70,7 +70,7 @@ export default function PayRiseGuide() {
 
       <GuideSection id="marginal" n={2} kicker="Method" title="Your marginal rate decides what you keep">
         <p>
-          What matters for a pay rise is not your average tax rate but your marginal rate: the share of the next pound you earn that goes in
+          What matters for a pay rise is not your average tax rate but your <a href="/tax-and-salary/tax-bracket-checker">marginal rate</a>: the share of the next pound you earn that goes in
           deductions. Someone on £30,000 pays about 16% of their whole salary in Income Tax and National Insurance, but 28% of any rise. The
           calculator works out your take-home before and after the rise with the full 2026/27 rules, so every threshold you cross is counted
           exactly, including a rise that straddles two bands.
@@ -88,7 +88,7 @@ export default function PayRiseGuide() {
             ["Over £125,140", "45%", "2%", "53p in £1"],
           ]}
         />
-        <p>Child Benefit, a student loan or Universal Credit can push these figures lower.</p>
+        <p><a href="/benefits/child-benefit">Child Benefit</a>, a student loan or Universal Credit can push these figures lower.</p>
       </GuideSection>
 
       <GuideSection id="examples" n={4} kicker="Worked examples" title="Worked examples">
@@ -115,7 +115,7 @@ export default function PayRiseGuide() {
         <p>
           Above £50,270, Income Tax rises from 20% to 40%, but National Insurance falls from 8% to 2%, so the combined rate rises from 28% to 42%.
           A rise that takes you over the line is taxed at both rates, which is why the £50,000 example keeps 60% rather than 72% or 58%. Higher-rate
-          taxpayers also see their Personal Savings Allowance halve to £500, so interest on savings can cost more too.
+          taxpayers also see their <a href="/investing/personal-savings-allowance">Personal Savings Allowance</a>{" "}halve to £500, so interest on savings can cost more too.
         </p>
       </GuideSection>
 
@@ -123,7 +123,7 @@ export default function PayRiseGuide() {
         <p>
           Between £100,000 and £125,140, you lose £1 of tax-free Personal Allowance for every £2 you earn, which adds 20% to the 40% rate. With 2%
           National Insurance, you keep only 38p in the pound. A 5% rise from £100,000 to £105,000 adds just £1,900 to your take-home. Parents in
-          this band also lose 30 hours of funded childcare and Tax-Free Childcare, which can make a rise cost money overall. Salary sacrifice into a
+          this band also lose 30 hours of <a href="/benefits/free-childcare-hours">funded childcare</a>{" "}and Tax-Free Childcare, which can make a rise cost money overall. Salary sacrifice into a
           pension is the usual way to stay under £100,000.
         </p>
       </GuideSection>
@@ -247,7 +247,7 @@ export default function PayRiseGuide() {
         <p>
           If your rise starts in, say, October, only half of it is paid in the 2026/27 tax year. The calculator compares full years, so your gain in the first
           tax year is about half the figure shown, and the full gain arrives the following year. PAYE spreads your Personal Allowance and bands across the year,
-          so the tax on the higher pay in the second half is worked out correctly by the end of March as long as your tax code is right.
+          so the tax on the higher pay in the second half is worked out correctly by the end of March as long as your <a href="/tax-and-salary/tax-code-decoder">tax code</a>{" "}is right.
         </p>
       </GuideSection>
 
@@ -262,8 +262,11 @@ export default function PayRiseGuide() {
       <GuideSection id="negotiating-total" n={20} kicker="Package" title="Looking at the whole package">
         <p>
           A pay rise is not the only way to be better off. A higher employer pension contribution goes into your pension without any tax or National Insurance,
-          so £1,000 more from your employer is worth more than £1,000 more salary. Extra holiday, flexible hours and a shorter commute all have real value too.
+          so £1,000 more from your employer is worth more than £1,000 more salary. Extra holiday, flexible hours and a shorter <a href="/vehicles/commuter-comparison">commute</a>{" "}all have real value too.
           When you compare offers, add them up.
+        </p>
+      <p>
+          To work out a rise as a percentage, or what a percentage rise comes to, the <a href="/life/percentage-calculator">percentage calculator</a> shows the working.
         </p>
       </GuideSection>
 

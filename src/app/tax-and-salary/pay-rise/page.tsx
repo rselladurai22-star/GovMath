@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import PayRiseStudio from "./PayRiseStudio";
+import { ogFor } from "@/gm/og";
 import PayRiseGuide from "./PayRiseGuide";
 
 export const metadata: Metadata = {
-  title: "Pay Rise Calculator UK 2026/27: What Is My Pay Rise Worth After Tax?",
+  title: "Pay Rise Calculator UK 2026/27: After Tax",
   description:
-    "See what a pay rise adds to your take-home pay after Income Tax, National Insurance, student loan and the Child Benefit charge, and whether it beats inflation.",
+    "Free pay rise calculator for 2026/27. See what a rise adds to take-home pay after tax, NI, student loan and the Child Benefit charge, and against inflation.",
   alternates: { canonical: "/tax-and-salary/pay-rise" },
+  openGraph: ogFor("/tax-and-salary/pay-rise"),
 };
 
 const BREADCRUMBS = [

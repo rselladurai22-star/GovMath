@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import TaperStudio from "./TaperStudio";
+import { ogFor } from "@/gm/og";
 import TaperGuide from "./TaperGuide";
 
 export const metadata: Metadata = {
-  title: "Universal Credit Taper Rate Calculator: What You Keep From Extra Hours (2026/27)",
+  title: "Universal Credit Taper Calculator 2026/27",
   description:
-    "See how much better off extra hours or a pay rise make you on Universal Credit. Applies 2026/27 Income Tax, National Insurance, pension and the 55% taper above your work allowance.",
+    "Free UC taper calculator for 2026/27. See how much you keep from extra hours or a pay rise after the 55% taper, work allowance, tax and NI.",
   alternates: { canonical: "/benefits/universal-credit-taper" },
+  openGraph: ogFor("/benefits/universal-credit-taper"),
 };
 
 const BREADCRUMBS = [

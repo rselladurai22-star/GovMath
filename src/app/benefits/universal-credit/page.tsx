@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import UcStudio from "./UcStudio";
+import { ogFor } from "@/gm/og";
 import UcGuide from "./UcGuide";
 
 export const metadata: Metadata = {
-  title: "Universal Credit Calculator (2026/27 Rates)",
+  title: "Universal Credit Calculator UK 2026/27",
   description:
-    "Estimate your monthly Universal Credit for 2026/27: standard allowance, children, rent with real Local Housing Allowance rates, health, carer and childcare elements, the 55% taper, savings and the benefit cap.",
+    "Free Universal Credit calculator for 2026/27. Estimate your monthly UC from rent, children, earnings, savings and health, with the benefit cap applied.",
   alternates: { canonical: "/benefits/universal-credit" },
+  openGraph: ogFor("/benefits/universal-credit"),
 };
 
 const BREADCRUMBS = [

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import FlatRateStudio from "./FlatRateStudio";
+import { ogFor } from "@/gm/og";
 import FlatRateGuide from "./FlatRateGuide";
 
 export const metadata: Metadata = {
-  title: "Flat Rate VAT Calculator: Flat Rate Scheme or Standard VAT?",
+  title: "Flat Rate VAT Calculator UK 2026/27",
   description:
-    "Compare the VAT Flat Rate Scheme with standard VAT for your trade, with every HMRC flat rate, the 16.5% limited cost trader test and the first-year discount.",
+    "Free Flat Rate Scheme calculator. Compare flat rate VAT with standard VAT for your trade, with every HMRC rate and the 16.5% limited cost trader test.",
   alternates: { canonical: "/business/flat-rate-vat" },
+  openGraph: ogFor("/business/flat-rate-vat"),
 };
 
 const BREADCRUMBS = [

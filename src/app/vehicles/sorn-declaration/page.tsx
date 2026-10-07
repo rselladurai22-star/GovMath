@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import SornStudio from "./SornStudio";
+import { ogFor } from "@/gm/og";
 import SornGuide from "./SornGuide";
 
 export const metadata: Metadata = {
-  title: "SORN Refund Calculator: Car Tax Refund When Off the Road",
+  title: "SORN Refund Calculator: Car Tax Refund",
   description:
-    "Work out your vehicle tax refund when you make a SORN, how timing affects it, and what you save while a car is off the road. Plus the rules and penalties.",
+    "Free SORN refund calculator. See the car tax you get back when you declare SORN, how timing affects the refund, and the rules and penalties while off the road.",
   alternates: { canonical: "/vehicles/sorn-declaration" },
+  openGraph: ogFor("/vehicles/sorn-declaration"),
 };
 
 const BREADCRUMBS = [

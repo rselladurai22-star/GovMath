@@ -124,7 +124,7 @@ export default function CorpTaxGuide() {
         />
         <p>
           The same answer comes from 19% on the first £50,000 (£9,500) plus 26.5% on the next £50,000 (£13,250). That is why
-          the band is often described as having a 26.5% marginal rate.
+          the band is often described as having a 26.5% <a href="/tax-and-salary/tax-bracket-checker">marginal rate</a>.
         </p>
         <p>
           If the company receives dividends from other, non-group companies, these are added to profit to give{" "}
@@ -165,7 +165,7 @@ export default function CorpTaxGuide() {
           <li>add any taxable gains on assets the company sold.</li>
         </ul>
         <p>
-          Directors&rsquo; salaries, employer National Insurance and employer pension contributions are all deductible.
+          Directors&rsquo; salaries, <a href="/business/employer-ni-costs">employer National Insurance</a>{" "}and employer pension contributions are all deductible.
           Dividends paid to shareholders are <strong>not</strong>: they come out of profit after Corporation Tax.
         </p>
         <Callout title="Capital allowances">
@@ -226,7 +226,7 @@ export default function CorpTaxGuide() {
             allowance into this year.
           </li>
           <li>
-            <strong>Claiming every allowable cost,</strong> including use of home, mileage at the approved rates, and
+            <strong>Claiming every allowable cost,</strong> including use of home, <a href="/business/business-mileage">mileage</a>{" "}at the approved rates, and
             accountancy and software.
           </li>
           <li>
@@ -265,7 +265,7 @@ export default function CorpTaxGuide() {
           band and 39.35% in the additional rate band, after a £500 allowance.
         </p>
         <p>
-          The combined rate of Corporation Tax and dividend tax on the same profit can be close to, or above, what a sole trader
+          The combined rate of Corporation Tax and <a href="/investing/dividend-tax">dividend tax</a>{" "}on the same profit can be close to, or above, what a sole trader
           pays. The <a href="/business/dividend-vs-salary">dividend vs salary calculator</a> finds the best split for your
           profit, and the <a href="/business/sole-trader-tax">sole trader tax calculator</a> shows the comparison.
         </p>

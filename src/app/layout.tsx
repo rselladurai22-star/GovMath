@@ -4,6 +4,8 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ADSENSE_CLIENT } from "@/lib/ads";
 import { GA_ID, gaInitScript } from "@/lib/analytics";
+import { siteJsonLd } from "@/gm/schema";
+import { ogFor } from "@/gm/og";
 
 /**
  * The one root layout. It loads no site-wide CSS: each page brings the
@@ -17,10 +19,12 @@ import { GA_ID, gaInitScript } from "@/lib/analytics";
  */
 export const metadata: Metadata = {
   metadataBase: new URL("https://govmath.co.uk"),
+  // Every page title ends with the brand; pages give their own title without it.
+  title: { default: "GovMath: Free UK Calculators", template: "%s | GovMath" },
   icons: {
     icon: "data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2040%2040'%3E%3Crect%20width='40'%20height='40'%20rx='8'%20fill='%23510b38'/%3E%3Ctext%20x='8'%20y='29'%20fill='white'%20font-family='Arial'%20font-size='27'%20font-weight='bold'%3EG%3C/text%3E%3C/svg%3E",
   },
-  openGraph: { type: "website", locale: "en_GB", siteName: "GovMath" },
+  openGraph: ogFor("/"),
   twitter: { card: "summary_large_image" },
   verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
   ...(ADSENSE_CLIENT ? { other: { "google-adsense-account": ADSENSE_CLIENT } } : {}),
@@ -33,18 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en-GB">
       <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "GovMath",
-              url: "https://govmath.co.uk",
-              description: "Free UK tax, salary, mortgage and benefits calculators in plain English.",
-            }),
-          }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteJsonLd) }} />
         {GA_ID && (
           <>
             <script dangerouslySetInnerHTML={{ __html: gaInitScript(GA_ID) }} />

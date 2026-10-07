@@ -91,7 +91,7 @@ export default function BTLGuide() {
           <li><strong>Service charge and ground rent:</strong> for leasehold flats, often £1,000 to £3,000 a year or more.</li>
           <li><strong>Licensing:</strong> some councils require a licence for rented homes.</li>
         </ul>
-        <p>All of these are allowable expenses that reduce your taxable profit. Mortgage interest is treated differently.</p>
+        <p>All of these are <a href="/business/allowable-expenses">allowable expenses</a>{" "}that reduce your taxable profit. Mortgage interest is treated differently.</p>
       </GuideSection>
 
       <GuideSection id="example" n={3} kicker="Worked example" title="A worked example">
@@ -222,7 +222,7 @@ export default function BTLGuide() {
           a year in interest. At 6% instead of 5%, the higher-rate landlord&apos;s loss grows from £600 to £2,100 a year.
         </p>
         <Callout title="Stress-test your numbers">
-          Try the calculator at your expected remortgage rate, not just today&apos;s. A property that only works at a low fixed
+          Try the calculator at your expected <a href="/property/remortgage">remortgage</a>{" "}rate, not just today&apos;s. A property that only works at a low fixed
           rate is a risk when the fix ends.
         </Callout>
       </GuideSection>
@@ -234,7 +234,7 @@ export default function BTLGuide() {
           buy-to-let mortgages are often more expensive.
         </p>
         <p>
-          Moving properties you already own into a company is treated as a sale, so Capital Gains Tax and Stamp Duty can be due.
+          Moving properties you already own into a company is treated as a sale, so Capital Gains Tax and <a href="/property/stamp-duty-england">Stamp Duty</a>{" "}can be due.
           Take advice from an accountant before deciding.
         </p>
       </GuideSection>
@@ -271,7 +271,7 @@ export default function BTLGuide() {
         />
         <p>
           Up to £1,000 a year of property income is covered by the property allowance, and renting a room in your own home has a
-          separate £7,500 Rent a Room allowance.
+          separate £7,500 <a href="/property/rent-a-room">Rent a Room</a>{" "}allowance.
         </p>
       </GuideSection>
 
@@ -300,7 +300,7 @@ export default function BTLGuide() {
           That keeps monthly costs low, but the debt never falls.
         </p>
         <p>
-          With a 25-year repayment mortgage on the same £187,500 loan at 5%, first-year interest falls slightly to about £9,287,
+          With a 25-year <a href="/property/mortgage-repayment">repayment mortgage</a>{" "}on the same £187,500 loan at 5%, first-year interest falls slightly to about £9,287,
           but you also repay about £3,866 of capital. Your profit after tax is similar, about £1,524, but your cash flow becomes
           negative at about −£2,342, because capital repayments come out of your pocket and are not tax-deductible. The
           capital is not lost: it builds equity in the property.
@@ -314,7 +314,7 @@ export default function BTLGuide() {
           £80,500.
         </p>
         <p>
-          Prices can fall as well as rise, and a gain is only realised when you sell, after selling costs and Capital Gains Tax.
+          Prices can fall as well as rise, and a gain is only realised when you sell, after selling costs and <a href="/investing/capital-gains-assets">Capital Gains Tax</a>.
           Stamp Duty and your buying and selling costs are deducted from the gain when working out the tax.
         </p>
       </GuideSection>

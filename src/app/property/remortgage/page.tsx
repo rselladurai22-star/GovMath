@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import RemortgageStudio from "./RemortgageStudio";
+import { ogFor } from "@/gm/og";
 import RemortgageGuide from "./RemortgageGuide";
 
 export const metadata: Metadata = {
-  title: "Remortgage Calculator UK: How Much Could I Save? (2026)",
+  title: "Remortgage Calculator UK: How Much Could I Save?",
   description:
-    "Compare staying on your current or standard variable rate with a new mortgage deal: monthly payments, fees, early repayment charges, break-even and the saving over the deal.",
+    "Free remortgage calculator. Compare your current or standard variable rate with a new deal after fees and early repayment charges, and see the break-even.",
   alternates: { canonical: "/property/remortgage" },
+  openGraph: ogFor("/property/remortgage"),
 };
 
 const BREADCRUMBS = [

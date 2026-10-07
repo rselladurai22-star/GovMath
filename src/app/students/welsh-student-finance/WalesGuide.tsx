@@ -52,7 +52,7 @@ export default function WalesGuide() {
         <ul>
           <li>Total support is <strong>£12,590</strong> a year living away from home, <strong>£10,685</strong> living with parents and <strong>£15,720</strong> in London.</li>
           <li>Part is a <strong>Welsh Government Learning Grant</strong>: up to £7,020, £8,260 or £10,325, and at least £1,020 for everyone.</li>
-          <li>The rest is a <strong>Maintenance Loan</strong>, repaid on Plan 2.</li>
+          <li>The rest is a <strong><a href="/students/maintenance-loan">Maintenance Loan</a></strong>, repaid on Plan 2.</li>
           <li>Tuition is covered by a <strong>Tuition Fee Loan</strong> of up to £9,790 a year.</li>
         </ul>
         <KeyStats

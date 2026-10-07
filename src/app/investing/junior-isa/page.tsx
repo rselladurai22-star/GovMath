@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import JisaStudio from "./JisaStudio";
+import { ogFor } from "@/gm/og";
 import JisaGuide from "./JisaGuide";
 
 export const metadata: Metadata = {
-  title: "Junior ISA Calculator UK: What Will It Be Worth at 18? (2026/27)",
+  title: "Junior ISA Calculator UK 2026/27",
   description:
-    "See what a Junior ISA could grow to by 18 from monthly payments and lump sums, cash or stocks and shares, after fees and inflation, within the £9,000 yearly allowance.",
+    "Free Junior ISA calculator. See what monthly or lump-sum saving could be worth at 18, cash or stocks and shares, within the £9,000 yearly limit.",
   alternates: { canonical: "/investing/junior-isa" },
+  openGraph: ogFor("/investing/junior-isa"),
 };
 
 const BREADCRUMBS = [

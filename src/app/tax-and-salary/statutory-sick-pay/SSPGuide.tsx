@@ -153,7 +153,7 @@ export default function SSPGuide() {
       <GuideSection id="earnings" n={5} kicker="Earnings" title="Average weekly earnings">
         <p>
           Your average weekly earnings are normally worked out over the 8 weeks before the pay day before you fell ill.
-          They include overtime, bonuses, holiday pay and statutory pay, before tax and National Insurance. If you have
+          They include <a href="/tax-and-salary/overtime">overtime</a>, bonuses, holiday pay and statutory pay, before tax and National Insurance. If you have
           worked for less than 8 weeks, a shorter period is used.
         </p>
         <p>
@@ -208,7 +208,7 @@ export default function SSPGuide() {
             deducted as normal.
           </li>
           <li>
-            <strong>Universal Credit:</strong> SSP counts as earnings, so it reduces Universal Credit through the taper in
+            <strong><a href="/benefits/universal-credit">Universal Credit</a>:</strong> SSP counts as earnings, so it reduces Universal Credit through the taper in
             the same way as wages.
           </li>
           <li>
@@ -247,7 +247,7 @@ export default function SSPGuide() {
             days.
           </li>
           <li>
-            SSP stops if you start Statutory Maternity Pay or Maternity Allowance. If you are off sick with a
+            SSP stops if you start <a href="/benefits/maternity-pay">Statutory Maternity Pay</a>{" "}or Maternity Allowance. If you are off sick with a
             pregnancy-related illness in the four weeks before your due date, your maternity pay period starts
             automatically.
           </li>
@@ -262,7 +262,7 @@ export default function SSPGuide() {
         </p>
         <p>
           If SSP ends after 28 weeks and you are still too ill to work, you can claim the health element of Universal
-          Credit or New Style Employment and Support Allowance, depending on your National Insurance record. Your
+          Credit or New Style <a href="/benefits/new-style-esa">Employment and Support Allowance</a>, depending on your National Insurance record. Your
           employer should give you form SSP1 to help with the claim.
         </p>
       </GuideSection>
@@ -298,7 +298,7 @@ export default function SSPGuide() {
 
       <GuideSection id="work-types" n={15} kicker="Different jobs" title="Agency, zero-hours and several jobs">
         <p>
-          Agency workers are paid SSP by the agency, or by an umbrella company if one employs them. Zero-hours workers
+          Agency workers are paid SSP by the agency, or by an <a href="/tax-and-salary/ir35-take-home">umbrella company</a>{" "}if one employs them. Zero-hours workers
           can get SSP for days they were due to work, and the April 2026 changes mean many of them qualify for the first
           time because the earnings test has gone.
         </p>
@@ -309,7 +309,7 @@ export default function SSPGuide() {
         </p>
         <p>
           If you are self-employed, SSP does not apply. You may be able to claim New Style Employment and Support
-          Allowance based on your National Insurance contributions, or Universal Credit.
+          Allowance based on your <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}contributions, or Universal Credit.
         </p>
       </GuideSection>
 

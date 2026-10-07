@@ -87,7 +87,7 @@ export default function P45P60Guide() {
 
       <GuideSection id="p45" n={2} kicker="P45" title="Your P45">
         <p>
-          A P45 shows your pay and tax from 6 April up to the day you left, and the tax code used on your last payslip.
+          A P45 shows your pay and tax from 6 April up to the day you left, and the <a href="/tax-and-salary/tax-code-decoder">tax code</a>{" "}used on your last payslip.
           Your employer sends the leaving details to HMRC through payroll and gives you the rest of the form:
         </p>
         <ul>
@@ -110,7 +110,7 @@ export default function P45P60Guide() {
       <GuideSection id="p45-use" n={3} kicker="Using it" title="What to do with a P45">
         <p>
           Give parts 2 and 3 to your new employer as soon as you start. Payroll uses the pay and tax to date to carry on
-          your cumulative tax from where your last job stopped, which avoids an emergency tax code.
+          your cumulative tax from where your last job stopped, which avoids an <a href="/tax-and-salary/emergency-tax">emergency tax</a>{" "}code.
         </p>
         <WorkedExample
           title="Leaving in September (month 6) on £32,000 a year, code 1257L"
@@ -129,7 +129,7 @@ export default function P45P60Guide() {
 
       <GuideSection id="p60" n={4} kicker="P60" title="Your P60">
         <p>
-          A P60 summarises a whole tax year in one job: your pay, the Income Tax and National Insurance deducted, your
+          A P60 summarises a whole tax year in one job: your pay, the Income Tax and <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}deducted, your
           final tax code, and any statutory payments such as maternity or sick pay. Your employer must give it to you by
           <strong> 31 May</strong>.
         </p>
@@ -271,7 +271,7 @@ export default function P45P60Guide() {
       <GuideSection id="leaving-tax" n={13} kicker="Leaving" title="What happens to your tax when you leave">
         <p>
           Your last employer works out your final pay, including any holiday pay owed, and records your pay and tax to
-          date on your P45. Anything paid after the P45 is issued, such as a late bonus, is taxed using code 0T on a
+          date on your P45. Anything paid after the P45 is issued, such as a late <a href="/tax-and-salary/bonus-tax">bonus</a>, is taxed using code 0T on a
           non-cumulative basis, so no tax-free allowance is given against it.
         </p>
         <p>
@@ -283,8 +283,8 @@ export default function P45P60Guide() {
 
       <GuideSection id="other-lines" n={14} kicker="Other figures" title="Statutory pay and student loans">
         <p>
-          Your P60 also shows statutory payments made through payroll during the year, such as Statutory Maternity Pay,
-          Statutory Paternity Pay, Statutory Sick Pay and Shared Parental Pay. These are taxable and are already included
+          Your P60 also shows statutory payments made through payroll during the year, such as <a href="/benefits/maternity-pay">Statutory Maternity Pay</a>,
+          Statutory Paternity Pay, <a href="/tax-and-salary/statutory-sick-pay">Statutory Sick Pay</a>{" "}and Shared Parental Pay. These are taxable and are already included
           in your total pay.
         </p>
         <p>

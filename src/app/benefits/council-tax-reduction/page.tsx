@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CtrStudio from "./CtrStudio";
+import { ogFor } from "@/gm/og";
 import CtrGuide from "./CtrGuide";
 
 export const metadata: Metadata = {
-  title: "Council Tax Reduction Calculator 2026/27 (Council Tax Support)",
+  title: "Council Tax Reduction Calculator 2026/27",
   description:
-    "Estimate your Council Tax Reduction (Council Tax Support) for 2026/27 in England, Wales or Scotland, from your bill, income and savings. Covers the pensioner scheme, working-age schemes and other adults at home.",
+    "Free Council Tax Reduction (Council Tax Support) calculator for 2026/27. Estimate your discount from income, savings, household and non-dependants.",
   alternates: { canonical: "/benefits/council-tax-reduction" },
+  openGraph: ogFor("/benefits/council-tax-reduction"),
 };
 
 const BREADCRUMBS = [

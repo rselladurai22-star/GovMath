@@ -109,7 +109,7 @@ export default function FreeHoursGuide() {
         </ul>
         <p>
           The self-employed can use expected profit, and new businesses are exempt from the minimum earnings test for their
-          first year. Parents on maternity, paternity, adoption or sick leave still count as working. If one parent cannot work
+          first year. Parents on maternity, paternity, <a href="/benefits/adoption-pay">adoption</a>{" "}or sick leave still count as working. If one parent cannot work
           because they are disabled, have caring responsibilities or get certain benefits, the other parent can still qualify.
         </p>
         <Callout tone="warn" title="The £100,000 cliff edge">
@@ -125,7 +125,7 @@ export default function FreeHoursGuide() {
           including:
         </p>
         <ul>
-          <li>Universal Credit with household take-home earnings of £15,400 a year or less;</li>
+          <li><a href="/benefits/universal-credit">Universal Credit</a>{" "}with household take-home earnings of £15,400 a year or less;</li>
           <li>income-based Jobseeker&rsquo;s Allowance, income-related ESA or Income Support;</li>
           <li>some support for people with no recourse to public funds.</li>
         </ul>
@@ -236,7 +236,7 @@ export default function FreeHoursGuide() {
             <a href="/benefits/tax-free-childcare">Tax-Free Childcare calculator</a>.
           </li>
           <li>
-            <strong>Universal Credit childcare costs:</strong> UC can repay up to 85% of what you pay for childcare. You cannot
+            <strong>Universal Credit <a href="/benefits/childcare-costs">childcare costs</a>:</strong> UC can repay up to 85% of what you pay for childcare. You cannot
             use Tax-Free Childcare at the same time, but you can use funded hours with either.
           </li>
           <li>
@@ -292,7 +292,7 @@ export default function FreeHoursGuide() {
           <li>Do they accept Tax-Free Childcare payments?</li>
         </ul>
         <p>
-          Comparing the total yearly cost, not just the hourly rate, gives a truer picture. A nursery with a lower hourly rate
+          Comparing the total yearly cost, not just the <a href="/tax-and-salary/hourly-to-salary">hourly rate</a>, gives a truer picture. A nursery with a lower hourly rate
           but a high daily charge for meals can work out dearer.
         </p>
       </GuideSection>
@@ -365,7 +365,7 @@ export default function FreeHoursGuide() {
         <ul>
           <li><strong>&ldquo;30 hours means 30 hours every week of the year.&rdquo;</strong> It is 1,140 hours a year, usually 38 weeks.</li>
           <li><strong>&ldquo;It is means-tested on household income.&rdquo;</strong> Each parent is tested separately, with a £100,000 limit each.</li>
-          <li><strong>&ldquo;Part-time workers cannot qualify.&rdquo;</strong> 16 hours a week at minimum wage is enough.</li>
+          <li><strong>&ldquo;Part-time workers cannot qualify.&rdquo;</strong> 16 hours a week at <a href="/tax-and-salary/minimum-wage">minimum wage</a>{" "}is enough.</li>
           <li><strong>&ldquo;It is automatic.&rdquo;</strong> The working parent hours need an application and a code.</li>
         </ul>
       </GuideSection>

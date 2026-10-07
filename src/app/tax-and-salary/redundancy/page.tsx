@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import RedundancyStudio from "./RedundancyStudio";
+import { ogFor } from "@/gm/og";
 import RedundancyGuide from "./RedundancyGuide";
 
 export const metadata: Metadata = {
-  title: "Redundancy Pay Calculator (UK, 2026/27)",
+  title: "Redundancy Pay Calculator UK 2026/27",
   description:
-    "Work out statutory redundancy pay with the April 2026 £751 weekly cap (£783 in NI), plus notice pay, holiday pay, enhanced payments and the £30,000 tax-free limit.",
+    "Free statutory redundancy pay calculator for 2026/27. See your entitlement by age and service, the weekly pay cap, and the tax on any pay over £30,000.",
   alternates: { canonical: "/tax-and-salary/redundancy" },
+  openGraph: ogFor("/tax-and-salary/redundancy"),
 };
 
 const BREADCRUMBS = [

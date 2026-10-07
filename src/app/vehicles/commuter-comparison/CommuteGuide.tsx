@@ -70,7 +70,7 @@ export default function CommuteGuide() {
       <GuideSection id="car-costs" n={2} kicker="Driving" title="What driving to work really costs">
         <p>
           Fuel is the cost most people notice, but it is often not the biggest. Parking, extra wear and tear, and any zone charges can add more.
-          The calculator includes fuel, parking, wear at 12p a mile by default, and any daily zone charge. It leaves out insurance, car tax and
+          The calculator includes fuel, parking, wear at 12p a mile by default, and any daily zone charge. It leaves out insurance, <a href="/vehicles/car-tax-ved">car tax</a>{" "}and
           depreciation, which you would usually pay anyway if you keep the car for other trips.
         </p>
       </GuideSection>
@@ -136,7 +136,7 @@ export default function CommuteGuide() {
       <GuideSection id="bike" n={7} kicker="Cycling" title="Cycling and the Cycle to Work scheme">
         <p>
           Cycling is by far the cheapest way to commute once you have a bike. Through the Cycle to Work scheme, your employer buys the bike and
-          you pay for it from your salary before tax and National Insurance. A £1,000 bike costs a basic-rate taxpayer about £720, and a
+          you pay for it from your salary before tax and <a href="/tax-and-salary/national-insurance">National Insurance</a>. A £1,000 bike costs a basic-rate taxpayer about £720, and a
           higher-rate taxpayer about £580.
         </p>
         <CompareCards
@@ -184,7 +184,7 @@ export default function CommuteGuide() {
 
       <GuideSection id="electric" n={12} kicker="Electric" title="Commuting in an electric car">
         <p>
-          An electric car charged at home transforms the cost of driving to work. The example&rsquo;s 5,520 miles a year would cost about
+          An <a href="/vehicles/petrol-vs-ev-cost">electric car</a>{" "}charged at home transforms the cost of driving to work. The example&rsquo;s 5,520 miles a year would cost about
           £126 in electricity on an 8p overnight tariff, or £415 at the 26.32p price cap, against £969 in petrol. With parking at £6 a day and
           wear at 10p a mile, driving an electric car would cost about £2,058 a year, still a little less than the season ticket. Some
           workplaces offer free charging, which is not taxed as a benefit.
@@ -202,7 +202,7 @@ export default function CommuteGuide() {
       <GuideSection id="employer" n={14} kicker="Work" title="Help from your employer">
         <ul>
           <li><strong>Season ticket loans:</strong> interest-free, repaid from your salary over a year.</li>
-          <li><strong>Cycle to Work:</strong> a bike and safety kit through salary sacrifice.</li>
+          <li><strong>Cycle to Work:</strong> a bike and safety kit through <a href="/tax-and-salary/salary-sacrifice">salary sacrifice</a>.</li>
           <li><strong>Workplace parking and charging:</strong> free parking or charging at work is not a taxable benefit.</li>
           <li><strong>Flexible or hybrid working:</strong> you can ask for it from your first day of employment.</li>
         </ul>

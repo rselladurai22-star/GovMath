@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import MarginStudio from "./MarginStudio";
+import { ogFor } from "@/gm/og";
 import MarginGuide from "./MarginGuide";
 
 export const metadata: Metadata = {
-  title: "Gross Profit Margin Calculator (Margin, Markup and Discounts)",
+  title: "Profit Margin Calculator UK: Margin and Markup",
   description:
-    "Work out gross margin and markup from a price and cost, with VAT taken out, yearly profit after overheads and what a discount does to your profit.",
+    "Free profit margin calculator. Work out gross margin, markup, selling price from a target margin and the effect of discounts, with VAT handled.",
   alternates: { canonical: "/business/gross-profit-margin" },
+  openGraph: ogFor("/business/gross-profit-margin"),
 };
 
 const BREADCRUMBS = [

@@ -77,8 +77,8 @@ export default function Plan2Guide() {
           <li>Students on Advanced Learner Loans.</li>
         </ul>
         <p>
-          English students starting from August 2023 are on Plan 5. Scottish students are on Plan 4, and older English and Welsh loans and
-          Northern Ireland loans are on Plan 1. Your online Student Loans Company account shows your plan.
+          English students starting from August 2023 are on Plan 5. Scottish students are on <a href="/students/plan-4-student-loan">Plan 4</a>, and older English and Welsh loans and
+          Northern Ireland loans are on <a href="/students/plan-1-student-loan">Plan 1</a>. Your online Student Loans Company account shows your plan.
         </p>
       </GuideSection>
 
@@ -190,8 +190,8 @@ export default function Plan2Guide() {
 
       <GuideSection id="self-employed" n={10} kicker="Other income" title="Self-employed and other income">
         <p>
-          If you are self-employed or have other income over £2,000, such as rent or savings interest, repayments are worked out through
-          Self Assessment along with your tax. They are due by 31 January after the tax year, and may be included in payments on account.
+          If you are self-employed or have other income over £2,000, such as rent or <a href="/investing/savings-interest">savings interest</a>, repayments are worked out through
+          Self Assessment along with your tax. They are due by 31 January after the tax year, and may be included in <a href="/business/payment-on-account">payments on account</a>.
         </p>
       </GuideSection>
 
@@ -243,7 +243,7 @@ export default function Plan2Guide() {
       <GuideSection id="checking" n={16} kicker="Records" title="Checking your balance and repayments">
         <ul>
           <li>Your online Student Loans Company account shows the balance, interest added and repayments received.</li>
-          <li>Your payslip shows the amount taken each pay period, and your P60 shows the total for the tax year.</li>
+          <li>Your payslip shows the amount taken each pay period, and your <a href="/tax-and-salary/p45-p60-explainer">P60</a>{" "}shows the total for the tax year.</li>
           <li>If the SLC records do not match your payslips, contact them with copies of your P60s.</li>
           <li>When you are close to clearing the loan, consider switching to Direct Debit to avoid overpaying through PAYE.</li>
         </ul>
@@ -319,7 +319,7 @@ export default function Plan2Guide() {
           <li>Multiply what is left by 9%. That is your yearly repayment.</li>
           <li>Divide by 12 for a monthly figure.</li>
         </ol>
-        <p>The calculator does this for you, adds any Postgraduate Loan, and projects the balance over the years ahead.</p>
+        <p>The calculator does this for you, adds any <a href="/students/postgrad-loan">Postgraduate Loan</a>, and projects the balance over the years ahead.</p>
       </GuideSection>
 
       <GuideSection id="why-grows" n={23} kicker="Balance" title="Why your balance keeps growing">

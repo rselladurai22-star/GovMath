@@ -47,7 +47,7 @@ export default function HourlyGuide() {
         <>
           Job adverts mix hourly rates, day rates and annual salaries, which makes offers hard to compare. This guide
           shows how to convert between them properly, what you actually take home, and the details that change the
-          answer: paid holiday, overtime and the minimum wage. All figures are for 2026/27.
+          answer: paid holiday, <a href="/tax-and-salary/overtime">overtime</a>{" "}and the minimum wage. All figures are for 2026/27.
         </>
       }
       meta={["2026/27 tax year", "9 min read", "Reviewed October 2026"]}
@@ -120,7 +120,7 @@ export default function HourlyGuide() {
           off is paid, a salaried employee is paid for all 52 weeks, and 52 is the right number to use.
         </p>
         <p>
-          Use fewer weeks when time off is <strong>not</strong> paid. That applies mainly to contractors, freelancers
+          Use fewer weeks when time off is <strong>not</strong> paid. That applies mainly to <a href="/tax-and-salary/ir35-take-home">contractors</a>, freelancers
           and some agency workers paid only for the hours they work.
         </p>
         <CompareCards
@@ -222,7 +222,7 @@ export default function HourlyGuide() {
             unless they opt out in writing.
           </li>
           <li>
-            Regular overtime usually has to be included in holiday pay for the first four weeks of statutory holiday.
+            Regular overtime usually has to be included in holiday pay for the first four weeks of <a href="/tax-and-salary/holiday-entitlement">statutory holiday</a>.
           </li>
         </ul>
         <p>
@@ -252,7 +252,7 @@ export default function HourlyGuide() {
 
       <GuideSection id="day-rates" n={8} kicker="Day rates" title="Daily rates and contractors">
         <p>
-          A day rate converts the same way. Divide the yearly figure by paid weeks and by the days you work each week.
+          A <a href="/business/day-rate">day rate</a>{" "}converts the same way. Divide the yearly figure by paid weeks and by the days you work each week.
           On £29,250 for a five-day week, that is £29,250 ÷ 52 ÷ 5 = £112.50 a day.
         </p>
         <p>
@@ -278,7 +278,7 @@ export default function HourlyGuide() {
           <li>Paid breaks, if your contract pays them.</li>
         </ul>
         <p>
-          It does not usually include unpaid lunch breaks, your commute, or time asleep on a sleep-in shift when you are
+          It does not usually include unpaid lunch breaks, your <a href="/vehicles/commuter-comparison">commute</a>, or time asleep on a sleep-in shift when you are
           only required to be available. If unpaid tasks such as opening up, cashing up or changing into a uniform are
           required, that time can count, and it can take your real hourly rate below the minimum wage.
         </p>
@@ -306,7 +306,7 @@ export default function HourlyGuide() {
             can either give you paid time off or add 12.07% to every hour as rolled-up holiday pay.
           </li>
           <li>
-            <strong>Statutory Sick Pay</strong> is paid from the first day of sickness from April 2026, and the minimum
+            <strong><a href="/tax-and-salary/statutory-sick-pay">Statutory Sick Pay</a></strong> is paid from the first day of sickness from April 2026, and the minimum
             earnings test has gone. It is 80% of your average weekly earnings or £123.25, whichever is lower.
           </li>
           <li>
@@ -383,6 +383,9 @@ export default function HourlyGuide() {
         <p>
           Notice how take-home grows more slowly from £26 an hour upwards. That is where yearly pay passes £50,270 and
           the extra pay is taxed at 40% instead of 20%.
+        </p>
+      <p>
+          If you work part-time, the <a href="/tax-and-salary/pro-rata">pro rata salary calculator</a> scales a full-time salary to your hours, and the <a href="/life/timesheet-decimal">timesheet calculator</a> adds up a week of start and finish times.
         </p>
       </GuideSection>
 

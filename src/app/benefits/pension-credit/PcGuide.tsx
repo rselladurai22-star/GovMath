@@ -54,7 +54,7 @@ export default function PcGuide() {
       title="Pension Credit in 2026/27"
       intro={
         <>
-          Pension Credit tops up the weekly income of people over State Pension age who have a low income. It is worth claiming even for a small
+          Pension Credit tops up the weekly income of people over <a href="/investing/state-pension-age">State Pension age</a>{" "}who have a low income. It is worth claiming even for a small
           amount, because it unlocks help with rent, Council Tax, heating and more. Hundreds of thousands of eligible pensioners do not claim it.
           This guide explains how it is worked out, with 2026/27 rates and examples.
         </>
@@ -85,11 +85,11 @@ export default function PcGuide() {
       <GuideSection id="who" n={2} kicker="Eligibility" title="Who can get Pension Credit">
         <ul>
           <li>You have reached State Pension age and live in Great Britain.</li>
-          <li>If you have a partner, you both must have reached State Pension age, unless you were already getting Pension Credit or Housing Benefit for pensioners as a mixed-age couple before 15 May 2019.</li>
+          <li>If you have a partner, you both must have reached State Pension age, unless you were already getting Pension Credit or <a href="/benefits/housing-benefit">Housing Benefit</a>{" "}for pensioners as a mixed-age couple before 15 May 2019.</li>
           <li>Your weekly income is below your guarantee, or you qualify for Savings Credit.</li>
         </ul>
         <p>
-          A mixed-age couple, where one partner is under State Pension age, claims Universal Credit instead. Owning your home does not stop you
+          A mixed-age couple, where one partner is under State Pension age, claims <a href="/benefits/universal-credit">Universal Credit</a>{" "}instead. Owning your home does not stop you
           getting Pension Credit.
         </p>
       </GuideSection>
@@ -235,7 +235,7 @@ export default function PcGuide() {
       <GuideSection id="passport" n={9} kicker="Passports" title="What Pension Credit unlocks">
         <ul>
           <li>Housing Benefit for all eligible rent, if you get Guarantee Credit.</li>
-          <li>Council Tax Reduction, often covering the whole bill.</li>
+          <li><a href="/benefits/council-tax-reduction">Council Tax Reduction</a>, often covering the whole bill.</li>
           <li>A free TV licence if you are 75 or over.</li>
           <li>Cold Weather Payments of £25 for each very cold week.</li>
           <li>The Warm Home Discount on your electricity bill.</li>
@@ -272,7 +272,7 @@ export default function PcGuide() {
       <GuideSection id="changes" n={12} kicker="Staying right" title="Changes and reviews">
         <p>
           Tell the Pension Service about changes in your income, savings, who lives with you, or time abroad. Most awards are reviewed from
-          time to time. Getting Attendance Allowance after you start Pension Credit can increase your award, so report that too.
+          time to time. Getting <a href="/benefits/attendance-allowance">Attendance Allowance</a>{" "}after you start Pension Credit can increase your award, so report that too.
         </p>
       </GuideSection>
 
@@ -322,7 +322,7 @@ export default function PcGuide() {
 
       <GuideSection id="documents" n={18} kicker="Checklist" title="What you need to claim">
         <ul>
-          <li>Your National Insurance number, and your partner&rsquo;s.</li>
+          <li>Your <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}number, and your partner&rsquo;s.</li>
           <li>Details of your State Pension and any other pensions.</li>
           <li>Bank statements and details of savings and investments.</li>
           <li>Details of any earnings, rent, service charges or mortgage.</li>

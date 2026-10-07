@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import DrawdownStudio from "./DrawdownStudio";
+import { ogFor } from "@/gm/og";
 import DrawdownGuide from "./DrawdownGuide";
 
 export const metadata: Metadata = {
-  title: "Pension Drawdown Calculator UK: How Long Will My Pension Last? (2026/27)",
+  title: "Pension Drawdown Calculator UK 2026/27",
   description:
-    "See how long your pension pot lasts in drawdown: 25% tax-free cash upfront or phased, Income Tax with the State Pension, inflation and growth, for 2026/27.",
+    "Free pension drawdown calculator for 2026/27. See how long your pot lasts, the tax each year with the State Pension, and tax-free cash upfront or phased.",
   alternates: { canonical: "/investing/pension-drawdown" },
+  openGraph: ogFor("/investing/pension-drawdown"),
 };
 
 const BREADCRUMBS = [

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CazStudio from "./CazStudio";
+import { ogFor } from "@/gm/og";
 import CazGuide from "./CazGuide";
 
 export const metadata: Metadata = {
-  title: "Clean Air Zone and ULEZ Charge Calculator (2026)",
+  title: "Clean Air Zone and ULEZ Calculator 2026",
   description:
-    "Check whether your car or van meets the standard and what London's ULEZ and congestion charge, Birmingham, Bristol and other clean air zones would cost you in 2026.",
+    "Free clean air zone and ULEZ charge calculator for 2026. See the daily charge in each UK city, the London congestion charge and how much a year costs.",
   alternates: { canonical: "/vehicles/clean-air-zones" },
+  openGraph: ogFor("/vehicles/clean-air-zones"),
 };
 
 const BREADCRUMBS = [

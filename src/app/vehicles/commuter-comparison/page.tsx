@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CommuteStudio from "./CommuteStudio";
+import { ogFor } from "@/gm/og";
 import CommuteGuide from "./CommuteGuide";
 
 export const metadata: Metadata = {
-  title: "Commute Cost Calculator: Car vs Train vs Bus vs Bike (UK)",
+  title: "Commute Cost Calculator UK: Car vs Train",
   description:
-    "Compare the yearly cost of commuting by car, train, bus or bike, including fuel, parking, wear, season tickets, the £3 bus fare cap and hybrid working.",
+    "Free commute cost calculator. Compare the yearly cost of car, train, bus or bike, with fuel, parking, season tickets, the £3 bus fare cap and hybrid working.",
   alternates: { canonical: "/vehicles/commuter-comparison" },
+  openGraph: ogFor("/vehicles/commuter-comparison"),
 };
 
 const BREADCRUMBS = [

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CheckerStudio from "./CheckerStudio";
+import { ogFor } from "@/gm/og";
 import CheckerGuide from "./CheckerGuide";
 
 export const metadata: Metadata = {
-  title: "Benefits Calculator UK 2026/27: What Benefits Can I Get?",
+  title: "Benefits Calculator UK 2026/27: What Can I Get?",
   description:
-    "Answer a few questions and see which benefits you are likely to get in 2026/27: Universal Credit, Pension Credit, Child Benefit, Council Tax Reduction, PIP, Carer's Allowance and more.",
+    "Free UK benefits checker for 2026/27. See which benefits you are likely to get, from Universal Credit and Pension Credit to PIP and Council Tax Reduction.",
   alternates: { canonical: "/benefits/benefits-checker" },
+  openGraph: ogFor("/benefits/benefits-checker"),
 };
 
 const BREADCRUMBS = [

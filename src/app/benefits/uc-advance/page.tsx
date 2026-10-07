@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import AdvanceStudio from "./AdvanceStudio";
+import { ogFor } from "@/gm/og";
 import AdvanceGuide from "./AdvanceGuide";
 
 export const metadata: Metadata = {
-  title: "Universal Credit Advance Repayment Calculator (2026/27)",
+  title: "Universal Credit Advance Calculator 2026/27",
   description:
-    "See what a Universal Credit advance costs you each month: repayments over up to 24 months, the 15% deductions cap, and how much UC you are left with.",
+    "Free Universal Credit advance calculator. See your monthly repayments over up to 24 months, the 15% deductions cap and budgeting advance limits.",
   alternates: { canonical: "/benefits/uc-advance" },
+  openGraph: ogFor("/benefits/uc-advance"),
 };
 
 const BREADCRUMBS = [

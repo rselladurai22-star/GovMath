@@ -108,7 +108,7 @@ export default function MileageGuide() {
       </GuideSection>
 
       <GuideSection id="business" n={3} kicker="The test" title="What counts as a business journey">
-        <p>A journey counts if you make it for work, other than ordinary commuting. Typical examples:</p>
+        <p>A journey counts if you make it for work, other than ordinary <a href="/vehicles/commuter-comparison">commuting</a>. Typical examples:</p>
         <ul>
           <li>visiting a client, customer or supplier;</li>
           <li>travelling to a temporary workplace, such as a building site or a client&rsquo;s office for a project;</li>
@@ -144,7 +144,7 @@ export default function MileageGuide() {
           total={{ label: "Total saved", value: "£936" }}
         />
         <p>
-          A higher-rate sole trader saves 42% instead, £1,512 on the same mileage. Limited companies cannot use simplified
+          A higher-rate <a href="/business/sole-trader-tax">sole trader</a>{" "}saves 42% instead, £1,512 on the same mileage. Limited companies cannot use simplified
           expenses; instead, the company can pay a director the approved rates tax-free for business use of their own car.
         </p>
       </GuideSection>
@@ -210,7 +210,7 @@ export default function MileageGuide() {
         <p>
           Claim online or with form <strong>P87</strong> if your work expenses are £2,500 or less and you do not file a tax
           return; otherwise claim through Self Assessment. You can claim for up to four previous tax years, and HMRC may adjust
-          your tax code for future years.
+          your <a href="/tax-and-salary/tax-code-decoder">tax code</a>{" "}for future years.
         </p>
       </GuideSection>
 
@@ -247,7 +247,7 @@ export default function MileageGuide() {
           quarterly by engine size and fuel type, with a separate advisory electricity rate for fully electric company cars.
         </p>
         <p>
-          For your own electric car, the normal 45p and 25p rates apply. Because electricity is often cheaper per mile than
+          For your own <a href="/vehicles/petrol-vs-ev-cost">electric car</a>, the normal 45p and 25p rates apply. Because electricity is often cheaper per mile than
           petrol or diesel, the approved rate can work out well for EV drivers who charge at home.
         </p>
       </GuideSection>
@@ -296,11 +296,11 @@ export default function MileageGuide() {
       <GuideSection id="directors" n={12} kicker="Limited companies" title="Company directors">
         <p>
           A director who uses their own car for company business is treated like an employee. The company can pay them the
-          approved rates tax-free, and the payments are an allowable expense for the company, saving Corporation Tax.
+          approved rates tax-free, and the payments are an allowable expense for the company, saving <a href="/business/corporation-tax">Corporation Tax</a>.
         </p>
         <p>
           This is often a tax-efficient way to cover the cost of a personal car used for work, because the director pays no
-          Income Tax or National Insurance on the payments and the company gets relief. If the company pays less than the
+          Income Tax or <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}on the payments and the company gets relief. If the company pays less than the
           approved rate, the director can claim Mileage Allowance Relief on the difference.
         </p>
         <p>

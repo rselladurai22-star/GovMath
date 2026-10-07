@@ -58,7 +58,7 @@ export default function FlatRateGuide() {
     >
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <p>
-          On the Flat Rate Scheme you still charge customers 20% VAT, but instead of paying HMRC the VAT you charged minus the
+          On the Flat Rate Scheme you still charge customers <a href="/business/vat-calculator">20% VAT</a>, but instead of paying HMRC the VAT you charged minus the
           VAT you paid on costs, you pay a <strong>flat percentage of your VAT-inclusive turnover</strong>. The percentage
           depends on your trade, from 4% to 14.5%.
         </p>
@@ -278,7 +278,7 @@ export default function FlatRateGuide() {
           ]}
         />
         <p>
-          You cannot use the scheme if you are in the VAT margin scheme for second-hand goods or the capital goods scheme, or
+          You cannot use the scheme if you are in the VAT <a href="/business/gross-profit-margin">margin</a>{" "}scheme for second-hand goods or the capital goods scheme, or
           if you are closely associated with another business. HMRC&rsquo;s Notice 733 lists every condition.
         </p>
       </GuideSection>
@@ -289,8 +289,8 @@ export default function FlatRateGuide() {
           added to your taxable profits.
         </p>
         <p>
-          For the builder in the examples, the £1,880 saving is taxed like any other profit: a sole trader paying basic-rate
-          tax and Class 4 National Insurance keeps about £1,391 of it after 20% Income Tax and 6% National Insurance.
+          For the builder in the examples, the £1,880 saving is taxed like any other profit: a <a href="/business/sole-trader-tax">sole trader</a>{" "}paying basic-rate
+          tax and Class 4 <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}keeps about £1,391 of it after 20% Income Tax and 6% National Insurance.
           Remember this when you compare schemes: the real saving is after tax.
         </p>
       </GuideSection>

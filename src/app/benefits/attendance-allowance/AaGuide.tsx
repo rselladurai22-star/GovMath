@@ -52,7 +52,7 @@ export default function AaGuide() {
       title="Attendance Allowance in 2026/27"
       intro={
         <>
-          Attendance Allowance is paid to people over State Pension age who need help with personal care or supervision because of an illness
+          Attendance Allowance is paid to people over <a href="/investing/state-pension-age">State Pension age</a>{" "}who need help with personal care or supervision because of an illness
           or disability. It is not means-tested, it is tax-free, and you do not need anyone to actually be caring for you. Hundreds of
           thousands of pensioners who could get it do not claim. This guide explains the rates, the rules and the extra help it can unlock.
         </>
@@ -93,7 +93,7 @@ export default function AaGuide() {
           ]}
         />
         <p>
-          It is usually paid every four weeks into a bank account. The rates match the two daily living rates of PIP, and they rise every
+          It is usually paid every four weeks into a bank account. The rates match the two daily living rates of <a href="/benefits/pip-points">PIP</a>, and they rise every
           April. Attendance Allowance has no mobility part, so difficulties with walking alone do not qualify unless they mean you need help
           with care or supervision.
         </p>
@@ -192,7 +192,7 @@ export default function AaGuide() {
           />
         </Figure>
         <p>
-          Getting Pension Credit, even a small amount, also opens the door to full Housing Benefit, Council Tax Reduction, a free TV licence at
+          Getting Pension Credit, even a small amount, also opens the door to full Housing Benefit, <a href="/benefits/council-tax-reduction">Council Tax Reduction</a>, a free TV licence at
           75 or over, and Cold Weather Payments. The <a href="/benefits/pension-credit">Pension Credit calculator</a> works out your award.
         </p>
       </GuideSection>
@@ -200,7 +200,7 @@ export default function AaGuide() {
       <GuideSection id="carers" n={8} kicker="Family" title="Attendance Allowance and your carer">
         <p>
           Anyone who looks after you for at least 35 hours a week can claim Carer&rsquo;s Allowance of £86.45 a week once you get Attendance
-          Allowance, if they earn £204 a week or less after deductions. They also get National Insurance credits towards their own State
+          Allowance, if they earn £204 a week or less after deductions. They also get <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}credits towards their own State
           Pension.
         </p>
         <Callout tone="warn" title="Think before your carer claims">
@@ -239,7 +239,7 @@ export default function AaGuide() {
       <GuideSection id="care-homes" n={11} kicker="Where you live" title="Hospitals and care homes">
         <p>
           Attendance Allowance stops after 28 days in an NHS hospital. It also stops after 28 days in a care home if the council pays any of the
-          fees. If you pay your care home fees in full yourself, you keep it. Short stays are linked together if they are no more than 28 days
+          fees. If you pay your <a href="/life/care-home-means-test">care home fees</a>{" "}in full yourself, you keep it. Short stays are linked together if they are no more than 28 days
           apart, so tell the Department for Work and Pensions about every stay.
         </p>
       </GuideSection>

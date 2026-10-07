@@ -47,7 +47,7 @@ export default function DivSalaryGuide() {
       intro={
         <>
           Most owner-directors pay themselves a small salary and take the rest of the profit as dividends. The right salary
-          depends on your profit, whether the company can claim the Employment Allowance, and the dividend tax rates that rose
+          depends on your profit, whether the company can claim the Employment Allowance, and the <a href="/investing/dividend-tax">dividend tax</a>{" "}rates that rose
           in April 2026. This guide walks through every layer of tax, with worked examples from the calculator.
         </>
       }
@@ -99,7 +99,7 @@ export default function DivSalaryGuide() {
           ]}
         />
         <p>
-          Salary is deductible for Corporation Tax but attracts National Insurance. Dividends carry no National Insurance but
+          Salary is deductible for Corporation Tax but attracts <a href="/tax-and-salary/national-insurance">National Insurance</a>. Dividends carry no National Insurance but
           are paid from profit that has already borne Corporation Tax. The best mix balances the two.
         </p>
       </GuideSection>
@@ -133,7 +133,7 @@ export default function DivSalaryGuide() {
       <GuideSection id="dividends" n={4} kicker="Dividends" title="How dividends are taxed">
         <p>
           Dividends sit on top of your other income, including your salary. The first <strong>£500</strong> is tax-free; above
-          that, the rate depends on which Income Tax band the dividends fall in.
+          that, the rate depends on which <a href="/tax-and-salary/tax-bracket-checker">Income Tax band</a>{" "}the dividends fall in.
         </p>
         <DataTable
           caption="Dividend tax rates"
@@ -169,7 +169,7 @@ export default function DivSalaryGuide() {
           total={{ label: "You keep", value: "£55,765" }}
         />
         <p>
-          Of the £80,000, £24,235 goes in tax: £13,818 Corporation Tax, £1,136 employer NI and £9,282 dividend tax. The same
+          Of the £80,000, £24,235 goes in tax: £13,818 Corporation Tax, £1,136 <a href="/business/employer-ni-costs">employer NI</a>{" "}and £9,282 dividend tax. The same
           profit as a sole trader would leave £57,711, about £1,946 more, before any company running costs.
         </p>
       </GuideSection>
@@ -243,7 +243,7 @@ export default function DivSalaryGuide() {
           total={{ label: "Total value to you", value: "£61,043" }}
         />
         <p>
-          The £10,000 pension costs you only £4,722 of take-home pay. Pension money is locked away until at least 55 (57 from
+          The £10,000 pension costs you only £4,722 of <a href="/tax-and-salary/salary-calculator">take-home pay</a>. Pension money is locked away until at least 55 (57 from
           2028), and the annual allowance of £60,000 applies to all contributions together.
         </p>
       </GuideSection>

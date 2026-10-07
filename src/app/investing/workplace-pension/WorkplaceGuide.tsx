@@ -146,7 +146,7 @@ export default function WorkplaceGuide() {
           total={{ label: "Income at 4% a year from the rest of the pot", value: "About £9,576 a year" }}
         />
         <p>
-          This assumes investment growth of 4% a year above inflation after charges, and pay rising 1% a year above inflation. Over the 38
+          This assumes investment growth of 4% a year above <a href="/investing/inflation-impact">inflation</a>{" "}after charges, and pay rising 1% a year above inflation. Over the 38
           years, about £109,673 is paid in; the rest is growth.
         </p>
       </GuideSection>
@@ -198,8 +198,8 @@ export default function WorkplaceGuide() {
 
       <GuideSection id="sacrifice" n={8} kicker="NI" title="Salary sacrifice">
         <p>
-          With salary sacrifice, you give up part of your salary and your employer pays it into your pension instead. You save income tax and
-          employee National Insurance (8% for most people), and many employers pass on some of their own 15% National Insurance saving too.
+          With <a href="/tax-and-salary/salary-sacrifice">salary sacrifice</a>, you give up part of your salary and your employer pays it into your pension instead. You save income tax and
+          employee <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}(8% for most people), and many employers pass on some of their own 15% National Insurance saving too.
         </p>
         <p>
           On the £1,438 a year in the example, the National Insurance saving is about £115.04 a year for you. From April 2029, the government

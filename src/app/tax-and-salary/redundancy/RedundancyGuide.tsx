@@ -61,7 +61,7 @@ export default function RedundancyGuide() {
       <GuideSection id="who" n={1} kicker="Eligibility" title="Who gets redundancy pay">
         <p>You are entitled to statutory redundancy pay if you:</p>
         <ul>
-          <li>are an employee (not a worker or self-employed contractor),</li>
+          <li>are an employee (not a worker or self-employed <a href="/tax-and-salary/ir35-take-home">contractor</a>),</li>
           <li>have worked continuously for your employer for at least <strong>2 full years</strong>, and</li>
           <li>are dismissed because of redundancy: your job no longer exists, the workplace is closing, or fewer people are needed for the work.</li>
         </ul>
@@ -166,7 +166,7 @@ export default function RedundancyGuide() {
           ]}
         />
         <Callout title="Your P45 and tax code">
-          Payments made after your P45 has been issued are taxed using code 0T on a non-cumulative basis, so no tax-free
+          Payments made after your <a href="/tax-and-salary/p45-p60-explainer">P45</a>{" "}has been issued are taxed using code 0T on a non-cumulative basis, so no tax-free
           allowance is given against them. If that means too much tax is taken, you can claim it back from HMRC, or it is
           refunded through your next job.
         </Callout>
@@ -198,7 +198,7 @@ export default function RedundancyGuide() {
           ]}
         />
         <p>
-          Employees on maternity, adoption or shared parental leave, and pregnant employees, have priority for suitable
+          Employees on maternity, adoption or <a href="/benefits/shared-parental-leave">shared parental leave</a>, and pregnant employees, have priority for suitable
           alternative vacancies during the protected period.
         </p>
       </GuideSection>
@@ -206,7 +206,7 @@ export default function RedundancyGuide() {
       <GuideSection id="after" n={9} kicker="After" title="After you leave">
         <ul>
           <li>Keep your P45: your next employer or Jobcentre will need it.</li>
-          <li>Check whether you can claim New Style Jobseeker&rsquo;s Allowance or Universal Credit. Redundancy pay can affect Universal Credit if your savings go above £6,000.</li>
+          <li>Check whether you can claim New Style <a href="/benefits/new-style-jsa">Jobseeker&rsquo;s Allowance</a>{" "}or Universal Credit. Redundancy pay can affect Universal Credit if your savings go above £6,000.</li>
           <li>If your employer does not pay, claim through an employment tribunal within 6 months.</li>
           <li>If your employer is insolvent, apply to the Redundancy Payments Service.</li>
         </ul>
@@ -288,7 +288,7 @@ export default function RedundancyGuide() {
         <p>
           If you work regular hours for a fixed salary, a week&rsquo;s pay is simply your normal weekly gross pay. If your
           hours vary, it is your average weekly pay over the 12 weeks before the day you were given notice, ignoring weeks
-          when you were not paid. If you work shifts at different rates, the average hourly rate over those 12 weeks is
+          when you were not paid. If you work shifts at different rates, the average <a href="/tax-and-salary/hourly-to-salary">hourly rate</a>{" "}over those 12 weeks is
           used.
         </p>
         <p>
@@ -321,7 +321,7 @@ export default function RedundancyGuide() {
         <p>
           Timing can matter for tax. A payment made just after 5 April falls into the next tax year, which can help if
           your income will be lower then. Ask whether the date can be agreed, especially for notice pay or bonuses that
-          are taxed at your marginal rate.
+          are taxed at your <a href="/tax-and-salary/tax-bracket-checker">marginal rate</a>.
         </p>
       </GuideSection>
 

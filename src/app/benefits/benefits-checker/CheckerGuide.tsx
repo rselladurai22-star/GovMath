@@ -52,8 +52,8 @@ export default function CheckerGuide() {
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
           <li>Working-age households on a low income claim <strong>Universal Credit</strong>; pensioners claim <strong>Pension Credit</strong>.</li>
-          <li>Both open the door to more help: Council Tax Reduction, the £150 Warm Home Discount, free prescriptions and more.</li>
-          <li><strong>Child Benefit</strong>, <strong>PIP</strong>, <strong>Attendance Allowance</strong> and <strong>Carer&rsquo;s Allowance</strong> are not affected by savings.</li>
+          <li>Both open the door to more help: Council Tax Reduction, the £150 Warm Home Discount, <a href="/life/nhs-prescription-saver">free prescriptions</a>{" "}and more.</li>
+          <li><strong>Child Benefit</strong>, <strong>PIP</strong>, <strong><a href="/benefits/attendance-allowance">Attendance Allowance</a></strong> and <strong>Carer&rsquo;s Allowance</strong> are not affected by savings.</li>
           <li>The checker is a first look. Use the linked calculator for each benefit before you claim.</li>
         </ul>
         <KeyStats
@@ -73,8 +73,8 @@ export default function CheckerGuide() {
         </p>
         <ul>
           <li>Universal Credit with the same engine as our <a href="/benefits/universal-credit">Universal Credit calculator</a>, or Pension Credit with the <a href="/benefits/pension-credit">Pension Credit calculator</a>&rsquo;s;</li>
-          <li>Child Benefit, Healthy Start and the Sure Start Maternity Grant from their 2026/27 rates;</li>
-          <li>which other help depends on an assessment or details it has not asked, such as PIP, Carer&rsquo;s Allowance and New Style JSA.</li>
+          <li>Child Benefit, Healthy Start and the <a href="/benefits/sure-start-maternity-grant">Sure Start Maternity Grant</a>{" "}from their 2026/27 rates;</li>
+          <li>which other help depends on an assessment or details it has not asked, such as PIP, Carer&rsquo;s Allowance and <a href="/benefits/new-style-jsa">New Style JSA</a>.</li>
         </ul>
         <p>
           It assumes your rent is within the Local Housing Allowance for your area. If it is higher, Universal Credit covers less; check with the{" "}
@@ -115,8 +115,8 @@ export default function CheckerGuide() {
             <strong>Universal Credit</strong> combines a standard allowance with extra for children, rent, disability, caring and childcare, then
             reduces by 55p for every pound of take-home pay above any work allowance. Savings over £16,000 rule it out.
           </li>
-          <li><strong>New Style JSA and ESA</strong> pay a flat amount based on your National Insurance record, whatever your savings.</li>
-          <li><strong>Council Tax Reduction</strong> comes from your council and can cut your bill substantially.</li>
+          <li><strong>New Style JSA and ESA</strong> pay a flat amount based on your <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}record, whatever your savings.</li>
+          <li><strong><a href="/benefits/council-tax-reduction">Council Tax Reduction</a></strong> comes from your council and can cut your bill substantially.</li>
         </ul>
       </GuideSection>
 

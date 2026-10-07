@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import RatesStudio from "./RatesStudio";
+import { ogFor } from "@/gm/og";
 import RatesGuide from "./RatesGuide";
 
 export const metadata: Metadata = {
-  title: "Small Business Rates Relief Calculator (England 2026/27)",
+  title: "Small Business Rates Relief Calculator 2026/27",
   description:
-    "Work out your 2026/27 business rates bill in England with the new multipliers, small business rate relief, retail and hospitality rates, charity relief and part-year occupation.",
+    "Free business rates calculator for England in 2026/27. Check small business rates relief, the multipliers and what you pay on your rateable value.",
   alternates: { canonical: "/business/small-business-rates" },
+  openGraph: ogFor("/business/small-business-rates"),
 };
 
 const BREADCRUMBS = [

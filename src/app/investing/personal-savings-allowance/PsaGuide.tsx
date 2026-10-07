@@ -54,7 +54,7 @@ export default function PsaGuide() {
           <li>Basic-rate taxpayers can earn <strong>£1,000</strong> of interest tax-free each year; higher-rate taxpayers <strong>£500</strong>; additional-rate taxpayers nothing.</li>
           <li>If your other income is under £17,570, up to <strong>£5,000</strong> more can be tax-free under the starting rate for savings.</li>
           <li>Interest above that is taxed at 20%, 40% or 45%, rising to 22%, 42% and 47% from April 2027.</li>
-          <li>Interest in ISAs is always tax-free and does not count.</li>
+          <li>Interest in <a href="/investing/isa-vs-gia">ISAs</a>{" "}is always tax-free and does not count.</li>
         </ul>
         <KeyStats
           items={[
@@ -78,7 +78,7 @@ export default function PsaGuide() {
         <p>
           Your Personal Savings Allowance depends on the highest tax band your total income reaches, including the interest itself. Interest
           that would push you over £50,270 can therefore halve your allowance. It is not a separate band of income: interest covered by the PSA
-          still counts towards your total income, for example for the £100,000 Personal Allowance taper or the High Income Child Benefit Charge.
+          still counts towards your total income, for example for the £100,000 Personal Allowance taper or the <a href="/benefits/high-income-child-benefit">High Income Child Benefit Charge</a>.
         </p>
       </GuideSection>
 
@@ -148,7 +148,7 @@ export default function PsaGuide() {
           <li>Interest from bank, building society and credit union accounts, including fixed bonds;</li>
           <li>interest from government and corporate bonds, and peer-to-peer lending;</li>
           <li>interest distributions from bond and money market funds held outside ISAs;</li>
-          <li>some purchased life annuity payments.</li>
+          <li>some purchased life <a href="/investing/annuity">annuity</a>{" "}payments.</li>
         </ul>
         <p>Interest counts in the tax year it is paid or credited to your account, not when it builds up.</p>
       </GuideSection>
@@ -180,7 +180,7 @@ export default function PsaGuide() {
       <GuideSection id="paying" n={10} kicker="Collection" title="How the tax is collected">
         <p>
           Banks and building societies report interest to HMRC. If you are employed or get a pension, HMRC usually collects tax on interest by
-          reducing your tax code for a later year, based on an estimate. If you fill in a Self Assessment return, you report the interest there. If
+          reducing your <a href="/tax-and-salary/tax-code-decoder">tax code</a>{" "}for a later year, based on an estimate. If you fill in a Self Assessment return, you report the interest there. If
           you owe tax and HMRC has not contacted you, you must tell them; if your interest is under £10,000 you can ask them to collect it through
           your tax code.
         </p>
@@ -189,7 +189,7 @@ export default function PsaGuide() {
       <GuideSection id="scotland" n={11} kicker="Scotland" title="Scottish taxpayers">
         <p>
           Scottish Income Tax rates apply only to non-savings income. Savings interest is taxed at the UK rates of 20%, 40% and 45%, and your
-          Personal Savings Allowance depends on the UK bands, so a Scottish taxpayer earning £45,000 pays the Scottish higher rate on pay but still
+          Personal Savings Allowance depends on the UK bands, so a <a href="/tax-and-salary/scottish-tax">Scottish taxpayer</a>{" "}earning £45,000 pays the Scottish higher rate on pay but still
           gets the £1,000 allowance on interest.
         </p>
       </GuideSection>
@@ -273,7 +273,7 @@ export default function PsaGuide() {
       <GuideSection id="dividends" n={20} kicker="Dividends" title="Savings and dividends together">
         <p>
           If you have both savings interest and dividends, interest is taxed before dividends. Each has its own allowance: the Personal Savings Allowance
-          for interest and the £500 dividend allowance for dividends. Dividends are taxed at 10.75%, 35.75% and 39.35% in 2026/27. Large dividends can push
+          for interest and the £500 <a href="/investing/dividend-tax">dividend allowance</a>{" "}for dividends. Dividends are taxed at 10.75%, 35.75% and 39.35% in 2026/27. Large dividends can push
           your total income into the higher-rate band and reduce your savings allowance from £1,000 to £500, even though the dividends are taxed after the
           interest. The calculator includes dividends under More options so you can see the effect.
         </p>

@@ -39,7 +39,7 @@ export default function SPDGuide() {
       title="Council tax single person discount, explained"
       intro={
         <>
-          If you are the only adult in your home, you can get 25% off your council tax. This guide explains who qualifies,
+          If you are the only adult in your home, you can get 25% off your <a href="/property/council-tax-bands">council tax</a>. This guide explains who qualifies,
           which people are not counted, how much you save, how to claim and backdate it, and what to do if your household
           changes.
         </>
@@ -60,10 +60,10 @@ export default function SPDGuide() {
         <p>You can get the discount if you are aged 18 or over and either:</p>
         <ul>
           <li>you live alone; or</li>
-          <li>everyone else who lives with you is disregarded for council tax, such as children or full-time students.</li>
+          <li>everyone else who lives with you is disregarded for council tax, such as children or <a href="/students/student-council-tax">full-time students</a>.</li>
         </ul>
         <p>
-          It is your main home that matters. A partner who lives elsewhere, a lodger who has their own main home somewhere else,
+          It is your main home that matters. A partner who lives elsewhere, a <a href="/property/rent-a-room">lodger</a>{" "}who has their own main home somewhere else,
           or family who stay for a short time do not normally count. A lodger who lives with you as their main home does count,
           and would end the discount.
         </p>
@@ -72,7 +72,7 @@ export default function SPDGuide() {
       <GuideSection id="disregarded" n={3} kicker="Disregards" title="People who don't count">
         <p>These people are not counted when working out how many adults live in a home:</p>
         <ul>
-          <li>children under 18, and 18 and 19-year-olds for whom Child Benefit is still paid;</li>
+          <li>children under 18, and 18 and 19-year-olds for whom <a href="/benefits/child-benefit">Child Benefit</a>{" "}is still paid;</li>
           <li>full-time students, student nurses, apprentices and young people on some training schemes;</li>
           <li>people who are severely mentally impaired;</li>
           <li>many live-in carers caring for someone who is not their partner or child under 18;</li>
@@ -153,7 +153,7 @@ export default function SPDGuide() {
 
       <GuideSection id="other-help" n={8} kicker="More help" title="Other help with council tax">
         <ul>
-          <li><strong>Council Tax Reduction</strong> for people on a low income, which can be claimed on top of the discount.</li>
+          <li><strong><a href="/benefits/council-tax-reduction">Council Tax Reduction</a></strong> for people on a low income, which can be claimed on top of the discount.</li>
           <li><strong>Disabled band reduction</strong> if your home has features needed by a disabled resident.</li>
           <li><strong>Exemptions</strong> for some empty homes, annexes and homes where everyone is disregarded.</li>
         </ul>

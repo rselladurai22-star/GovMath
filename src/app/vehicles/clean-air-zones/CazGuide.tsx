@@ -114,7 +114,7 @@ export default function CazGuide() {
       <GuideSection id="london" n={5} kicker="London" title="London: ULEZ and the congestion charge">
         <p>
           The ULEZ covers all London boroughs and runs every day except Christmas Day. Separately, the congestion charge covers central London
-          from 7am to 6pm on weekdays and noon to 6pm at weekends and on bank holidays. It rose to £18 a day on 2 January 2026.
+          from 7am to 6pm on weekdays and noon to 6pm at weekends and on <a href="/life/bank-holidays">bank holidays</a>. It rose to £18 a day on 2 January 2026.
         </p>
         <WorkedExample
           title="Non-compliant car driving into central London 5 days a week, 46 weeks"
@@ -290,7 +290,7 @@ export default function CazGuide() {
       <GuideSection id="switching" n={20} kicker="Replacing" title="Switching to a compliant vehicle">
         <p>
           If you drive into a zone often, replacing a non-compliant car can pay for itself. A London commuter paying the ULEZ five days a week
-          spends £2,875 a year, enough to cover much of the gap between an old diesel and a compliant petrol car. A compliant used petrol car
+          spends £2,875 a year, enough to cover much of the gap between an old diesel and a compliant <a href="/vehicles/petrol-vs-ev-cost">petrol car</a>. A compliant used petrol car
           from 2006 onwards, or a diesel from late 2015 onwards, avoids the charge in every zone.
         </p>
         <p>

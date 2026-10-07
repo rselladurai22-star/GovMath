@@ -64,7 +64,7 @@ export default function CgtGuide() {
           <li>
             Business Asset Disposal Relief gives <strong>18%</strong> on qualifying business sales from 6 April 2026.
           </li>
-          <li>Gains inside ISAs and pensions, and on your main home, are usually tax-free.</li>
+          <li>Gains inside <a href="/investing/isa-vs-gia">ISAs</a>{" "}and pensions, and on your main home, are usually tax-free.</li>
         </ul>
         <KeyStats
           items={[
@@ -83,7 +83,7 @@ export default function CgtGuide() {
           spouse, civil partner or charity.
         </p>
         <p>
-          UK residents pay Capital Gains Tax on assets anywhere in the world. Companies pay Corporation Tax on their gains instead.
+          UK residents pay Capital Gains Tax on assets anywhere in the world. Companies pay <a href="/business/corporation-tax">Corporation Tax</a>{" "}on their gains instead.
         </p>
       </GuideSection>
 
@@ -198,7 +198,7 @@ export default function CgtGuide() {
 
       <GuideSection id="property" n={9} kicker="Homes" title="Property">
         <p>
-          Your main home is usually exempt through Private Residence Relief. Second homes and buy-to-let properties are taxed at 18% and 24%. If you
+          Your main home is usually exempt through Private Residence Relief. Second homes and <a href="/property/buy-to-let-yield">buy-to-let</a>{" "}properties are taxed at 18% and 24%. If you
           lived in a property for part of the time you owned it, part of the gain is exempt, and the final 9 months of ownership always qualify. The{" "}
           <a href="/property/property-capital-gains">property Capital Gains Tax calculator</a> covers this in detail.
         </p>

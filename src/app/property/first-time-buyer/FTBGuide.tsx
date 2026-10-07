@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Callout,
   CompareCards,
@@ -49,7 +50,7 @@ export default function FTBGuide() {
       title="Stamp Duty for first-time buyers, explained"
       intro={
         <>
-          First-time buyers in England and Northern Ireland pay no Stamp Duty on the first £300,000 of a home costing up to
+          First-time buyers in England and Northern Ireland pay no <a href="/property/stamp-duty-england">Stamp Duty</a>{" "}on the first £300,000 of a home costing up to
           £500,000. This guide explains who qualifies, exactly what you pay, the cliff edge at £500,000, and what else you need
           to budget for when you buy your first home.
         </>
@@ -67,11 +68,11 @@ export default function FTBGuide() {
         </ul>
         <p>
           &quot;Owned&quot; includes inherited homes, homes held in a trust for you in some cases, and homes owned abroad. It
-          also includes a home you once owned with a former partner, even if you sold it years ago. Shared ownership counts too:
+          also includes a home you once owned with a former partner, even if you sold it years ago. <a href="/property/shared-ownership">Shared ownership</a>{" "}counts too:
           if you have ever owned a share, you are no longer a first-time buyer.
         </p>
         <p>
-          Owning a buy-to-let as your only property also rules you out, because you have owned a residential property. Having
+          Owning a <a href="/property/buy-to-let-yield">buy-to-let</a>{" "}as your only property also rules you out, because you have owned a residential property. Having
           had a mortgage is not the test; owning is.
         </p>
       </GuideSection>
@@ -247,11 +248,11 @@ export default function FTBGuide() {
         <p>Stamp Duty applies in England and Northern Ireland. Scotland and Wales have their own taxes:</p>
         <ul>
           <li>
-            <strong>Scotland (LBTT):</strong> first-time buyers pay nothing up to £175,000 and the normal rates above. Relief is
+            <strong>Scotland (<a href="/property/lbtt-scotland">LBTT</a>):</strong> first-time buyers pay nothing up to £175,000 and the normal rates above. Relief is
             worth up to £600 and has no price cap.
           </li>
           <li>
-            <strong>Wales (LTT):</strong> no first-time buyer relief, but everyone buying an only home pays nothing up to
+            <strong>Wales (<a href="/property/ltt-wales">LTT</a>):</strong> no first-time buyer relief, but everyone buying an only home pays nothing up to
             £225,000.
           </li>
         </ul>
@@ -348,7 +349,7 @@ export default function FTBGuide() {
             partner, before you budget for relief.
           </li>
           <li>
-            <strong>Spending the whole deposit.</strong> Keep cash back for Stamp Duty, fees, the survey and moving costs.
+            <strong>Spending the whole deposit.</strong> Keep cash back for Stamp Duty, fees, the survey and <a href="/property/moving-house-budget">moving costs</a>.
           </li>
           <li>
             <strong>Missing the Lifetime ISA timing.</strong> Your conveyancer must request the money in good time, and the
@@ -378,6 +379,12 @@ export default function FTBGuide() {
           If Amira bought alone, she would qualify and pay £5,000, though she would need to borrow on her income alone. Because
           Tom no longer owns a home, the 5% surcharge for additional properties does not apply. If he still owned his share,
           it probably would, and the bill would rise to £30,000.
+        </p>
+      <p>
+          If you are not yet sure that buying beats renting for you, the <a href="/property/rent-vs-buy">rent vs buy calculator</a> compares the two year by year.
+        </p>
+      <p>
+          To compare prices quickly, <Link href="/property/stamp-duty-on">Stamp Duty by house price</Link> lists what home movers, first-time buyers and second-home buyers pay from £100,000 to £2 million.
         </p>
       </GuideSection>
 

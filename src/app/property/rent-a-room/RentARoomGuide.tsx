@@ -127,7 +127,7 @@ export default function RentARoomGuide() {
             },
           ]}
         />
-        <p>The profit is added to your other income and taxed at your normal Income Tax rates. There is no National Insurance on it.</p>
+        <p>The profit is added to your other income and taxed at your normal Income Tax rates. There is no <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}on it.</p>
       </GuideSection>
 
       <GuideSection id="examples" n={6} kicker="Worked examples" title="Examples">
@@ -183,8 +183,8 @@ export default function RentARoomGuide() {
           <li><strong>Mortgage:</strong> tell your lender. Most allow a lodger, but some need consent.</li>
           <li><strong>Home insurance:</strong> tell your insurer, as a lodger can affect your cover.</li>
           <li><strong>Tenancy:</strong>{" "}if you rent, check your tenancy allows a lodger and get your landlord&apos;s permission.</li>
-          <li><strong>Right to rent:</strong> in England you must check that an adult lodger has the right to rent.</li>
-          <li><strong>Council tax:</strong> a lodger who lives with you as their main home ends any single person discount.</li>
+          <li><strong>Right to rent:</strong> in England you must check that an adult lodger has the <a href="/life/right-to-rent">right to rent</a>.</li>
+          <li><strong>Council tax:</strong> a lodger who lives with you as their main home ends any <a href="/property/single-person-discount">single person discount</a>.</li>
           <li><strong>Benefits:</strong> lodger income can affect means-tested benefits; check before you start.</li>
           <li><strong>Agreement:</strong> a simple written lodger agreement setting out rent, notice and house rules avoids disputes.</li>
         </ul>

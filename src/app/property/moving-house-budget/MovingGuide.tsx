@@ -96,7 +96,7 @@ export default function MovingGuide() {
             ["Wales (LTT)", "£7,500", "£7,500", "£24,950"],
           ]}
         />
-        <p>Our Stamp Duty, LBTT and LTT calculators explain each tax in detail.</p>
+        <p>Our Stamp Duty, <a href="/property/lbtt-scotland">LBTT</a>{" "}and LTT calculators explain each tax in detail.</p>
       </GuideSection>
 
       <GuideSection id="legal" n={3} kicker="Legal" title="Legal fees and searches">
@@ -111,7 +111,7 @@ export default function MovingGuide() {
           <li><strong>Bank transfer fees</strong> and identity checks.</li>
         </ul>
         <p>
-          Leasehold, new-build, shared ownership and unregistered properties usually cost more. Check whether a quote includes
+          Leasehold, new-build, <a href="/property/shared-ownership">shared ownership</a>{" "}and unregistered properties usually cost more. Check whether a quote includes
           VAT and disbursements.
         </p>
       </GuideSection>
@@ -176,7 +176,7 @@ export default function MovingGuide() {
       </GuideSection>
 
       <GuideSection id="example-buyer" n={8} kicker="Worked example" title="Example: first-time buyer">
-        <p>A first-time buyer in England paying £350,000 with a £50,000 deposit:</p>
+        <p>A <a href="/property/first-time-buyer">first-time buyer</a>{" "}in England paying £350,000 with a £50,000 deposit:</p>
         <WorkedExample
           title="Buying only"
           steps={[
@@ -189,7 +189,7 @@ export default function MovingGuide() {
           ]}
           total={{ label: "Moving costs", value: "£7,259" }}
         />
-        <p>With the deposit, they need £57,259 in cash. As a home mover, the Stamp Duty would be £7,500 and the total £12,759.</p>
+        <p>With the deposit, they need £57,259 in cash. As a home mover, the <a href="/property/stamp-duty-england">Stamp Duty</a>{" "}would be £7,500 and the total £12,759.</p>
       </GuideSection>
 
       <GuideSection id="example-mover" n={9} kicker="Worked example" title="Example: buying and selling">
@@ -252,7 +252,7 @@ export default function MovingGuide() {
 
       <GuideSection id="after" n={13} kicker="Ongoing" title="Costs after you move in">
         <p>
-          Budget for the first few months too: council tax from the day you move, buildings insurance from exchange (or completion
+          Budget for the first few months too: <a href="/property/council-tax-bands">council tax</a>{" "}from the day you move, buildings insurance from exchange (or completion
           for a leasehold flat), contents insurance, utilities, and any repairs found in the survey. Our council tax calculator
           shows what your new band will cost.
         </p>
@@ -343,7 +343,7 @@ export default function MovingGuide() {
       <GuideSection id="renters" n={20} kicker="Renting" title="Moving costs for renters">
         <p>
           If you rent, moving is simpler but not free. In England, letting agents cannot charge tenants most fees. You will
-          usually pay a holding deposit of up to one week&apos;s rent and a tenancy deposit of up to five weeks&apos; rent, plus
+          usually pay a holding deposit of up to one week&apos;s rent and a <a href="/property/deposit-return">tenancy deposit</a>{" "}of up to five weeks&apos; rent, plus
           your first month&apos;s rent in advance. Your old deposit is only returned after you move out, so you may need both at
           once for a short time. Add removals and any cleaning needed to get your old deposit back.
         </p>

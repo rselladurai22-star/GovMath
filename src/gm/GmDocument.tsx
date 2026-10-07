@@ -1,7 +1,9 @@
 import { createElement } from "react";
 import { THEME_AFTER, THEME_BEFORE } from "./GmShell";
 import GmScripts, { type GmScript } from "./GmScripts";
-import { categoryGridHtml, topicMainHtml } from "./catalog";
+import { categoryGridHtml, categoryLabel, headerHtml, topicMainHtml } from "./catalog";
+import { calculatorJsonLd, topicJsonLd } from "./schema";
+import { ogFor } from "./og";
 import { trustHtml } from "./trust";
 import type { CategorySlug } from "@/lib/calculators";
 
@@ -34,8 +36,15 @@ export default function GmDocument({
   const fill = (html: string) =>
     html.replace("<!--GM:CATEGORYGRID-->", () => categoryGridHtml()).replace("<!--GM:TOPIC-->", () => (topic ? topicMainHtml(topic) : ""))
       .replace("<!--GM:TRUST-->", () => (trust ? trustHtml(trust.path, trust.sourcesId) : ""));
+  // Calculator pages describe themselves as web applications; topic pages list their calculators.
+  const jsonLd = trust
+    ? calculatorJsonLd(trust.path, page.title.replace(/ \| GovMath$/, ""), page.description)
+    : topic
+      ? topicJsonLd(topic, categoryLabel(topic))
+      : null;
   return (
     <>
+      {jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />}
       {[...page.css, ...THEME_BEFORE, ...THEME_AFTER].map((href) => (
         <link key={href} rel="stylesheet" href={`/gm/${href}?v=${process.env.GM_CSS_VERSION}`} precedence="gm" />
       ))}
@@ -44,7 +53,7 @@ export default function GmDocument({
           const attrs = Object.fromEntries(Object.entries(el.attrs).map(([k, v]) => [PROP[k] ?? k, v]));
           // The site theme wraps the main content (see GmShell).
           if (el.tag === "main") attrs.className = [attrs.className, "gm-neutral"].filter(Boolean).join(" ");
-          return createElement(el.tag, { key: i, ...attrs, dangerouslySetInnerHTML: { __html: fill(el.html) } });
+          return createElement(el.tag, { key: i, ...attrs, dangerouslySetInnerHTML: { __html: el.tag === "header" ? headerHtml(el.html) : fill(el.html) } });
         })}
       </div>
       <GmScripts scripts={page.scripts as GmScript[]} />
@@ -58,5 +67,6 @@ export function gmMetadata(page: GmPage, path: string) {
     title: { absolute: page.title },
     description: page.description,
     alternates: { canonical: path },
+    openGraph: ogFor(path),
   };
 }

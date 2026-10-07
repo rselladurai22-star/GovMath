@@ -100,7 +100,7 @@ export default function FireGuide() {
       <GuideSection id="swr" n={4} kicker="Withdrawals" title="The safe withdrawal rate">
         <p>
           The 4% rule comes from US research in the 1990s, often called the Trinity Study. It found that, historically, withdrawing 4% of a
-          mixed share and bond portfolio in the first year, then raising the amount with inflation, usually lasted at least 30 years.
+          mixed share and bond portfolio in the first year, then raising the amount with <a href="/investing/inflation-impact">inflation</a>, usually lasted at least 30 years.
         </p>
         <CompareCards
           columns={[
@@ -153,7 +153,7 @@ export default function FireGuide() {
           Pension age, the bigger it is.
         </p>
         <Callout title="Check your forecast">
-          You need 35 qualifying years of National Insurance for the full new State Pension and at least 10 for any. If you stop working early,
+          You need 35 qualifying years of <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}for the full new State Pension and at least 10 for any. If you stop working early,
           you may need to pay voluntary contributions to fill gaps. Check your forecast on GOV.UK. The{" "}
           <a href="/investing/state-pension-age">State Pension age calculator</a> shows your date.
         </Callout>
@@ -236,7 +236,7 @@ export default function FireGuide() {
       <GuideSection id="wrappers" n={11} kicker="Structure" title="Pensions, ISAs and the bridge">
         <p>
           Pensions give tax relief on the way in, and employers often add to them, which makes them powerful. But you cannot touch them until
-          the minimum pension age. ISAs give no relief on the way in, but are tax-free and accessible at any time.
+          the minimum pension age. <a href="/investing/isa-vs-gia">ISAs</a>{" "}give no relief on the way in, but are tax-free and accessible at any time.
         </p>
         <p>
           A common FIRE plan uses both: pensions for life after 57, and ISAs to bridge the years from stopping work to that age. If you plan to
@@ -293,7 +293,7 @@ export default function FireGuide() {
 
       <GuideSection id="savings-rate" n={16} kicker="Habits" title="Your savings rate">
         <p>
-          The share of your take-home pay that you save is the single best guide to how long FIRE will take. It matters more than your
+          The share of your <a href="/tax-and-salary/salary-calculator">take-home pay</a>{" "}that you save is the single best guide to how long FIRE will take. It matters more than your
           income, because a higher savings rate means both more going in and less spending to replace.
         </p>
         <DataTable
@@ -310,7 +310,7 @@ export default function FireGuide() {
         />
         <p>
           The table holds for any income, because it compares spending with saving. Going from 20% to 30% saves about ten years; going from
-          30% to 50% saves another thirteen. Even small rises, such as saving half of every pay rise, add up.
+          30% to 50% saves another thirteen. Even small rises, such as saving half of every <a href="/tax-and-salary/pay-rise">pay rise</a>, add up.
         </p>
       </GuideSection>
 

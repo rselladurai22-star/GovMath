@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import VatStudio from "./VatStudio";
+import { ogFor } from "@/gm/og";
 import VatGuide from "./VatGuide";
 
 export const metadata: Metadata = {
-  title: "UK VAT Calculator: Add or Remove VAT (20%, 5%, 0%)",
+  title: "VAT Calculator UK: Add or Remove VAT",
   description:
-    "Add or remove UK VAT at 20%, 5% or 0%, with the VAT shown separately, invoice totals for several items, a registration threshold check and a Flat Rate Scheme comparison.",
+    "Free UK VAT calculator. Add or remove VAT at 20%, 5% or 0% in one click and see the net, VAT and gross amounts. Works for single items or invoice totals.",
   alternates: { canonical: "/business/vat-calculator" },
+  openGraph: ogFor("/business/vat-calculator"),
 };
 
 const BREADCRUMBS = [

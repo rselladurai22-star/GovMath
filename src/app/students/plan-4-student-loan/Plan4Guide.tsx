@@ -46,7 +46,7 @@ export default function Plan4Guide() {
       title="How Plan 4 student loans work for Scottish graduates"
       intro={
         <>
-          Plan 4 covers student loans from the Student Awards Agency Scotland. Scottish students do not pay tuition fees at Scottish
+          Plan 4 covers student loans from the Student Awards Agency Scotland. Scottish students do not pay <a href="/students/degree-cost">tuition fees</a>{" "}at Scottish
           universities, so balances are usually much smaller than in England. You repay 9% of income above £33,795, the highest threshold of any
           plan, and the loan is written off after 30 years.
         </>
@@ -74,7 +74,7 @@ export default function Plan4Guide() {
 
       <GuideSection id="who" n={2} kicker="Eligibility" title="Who has a Plan 4 loan">
         <p>
-          Plan 4 applies to loans from the Student Awards Agency Scotland (SAAS). In April 2021, all existing Scottish Plan 1 loans moved to
+          Plan 4 applies to loans from the Student Awards Agency Scotland (SAAS). In April 2021, all existing Scottish <a href="/students/plan-1-student-loan">Plan 1</a>{" "}loans moved to
           Plan 4, so Scottish graduates of any age are on Plan 4. Students who lived in Scotland but took loans from Student Finance England
           are on the English plans instead.
         </p>
@@ -82,7 +82,7 @@ export default function Plan4Guide() {
 
       <GuideSection id="no-fees" n={3} kicker="Background" title="Why Scottish balances are smaller">
         <p>
-          Scottish students studying in Scotland have their tuition fees paid by SAAS and do not borrow for them. Their loans are mainly for
+          Scottish students studying in Scotland have their tuition fees paid by <a href="/students/saas-funding">SAAS</a>{" "}and do not borrow for them. Their loans are mainly for
           living costs, so typical balances are a fraction of those in England, often well under £30,000.
         </p>
       </GuideSection>
@@ -175,7 +175,7 @@ export default function Plan4Guide() {
         <p>
           Your employer works out repayments each pay day from your pay in that period and sends them to HMRC with your tax. HMRC passes the
           details to the Student Loans Company, which updates your balance. There can be a delay of several weeks before payments show in your
-          online account. At the end of the tax year, your P60 shows the total deducted.
+          online account. At the end of the tax year, your <a href="/tax-and-salary/p45-p60-explainer">P60</a>{" "}shows the total deducted.
         </p>
         <p>
           Because repayments are worked out on each pay period, a one-off bonus can trigger a repayment in that month even if your yearly
@@ -190,7 +190,7 @@ export default function Plan4Guide() {
           Benefits in kind, such as a company car, do not count towards repayments.
         </p>
         <p>
-          For a Scottish taxpayer earning between the Plan 4 threshold and about £43,660, each extra pound loses 21% in income tax, 8% in
+          For a <a href="/tax-and-salary/scottish-tax">Scottish taxpayer</a>{" "}earning between the Plan 4 threshold and about £43,660, each extra pound loses 21% in income tax, 8% in
           National Insurance and 9% in repayments, leaving about 62p. Above the Scottish higher rate threshold, about 48p is left.
         </p>
       </GuideSection>
@@ -285,7 +285,7 @@ export default function Plan4Guide() {
           <li>Multiply what is left by 9%. That is your yearly repayment.</li>
           <li>Divide by 12 for a monthly figure.</li>
         </ol>
-        <p>The calculator does this for you, adds any Postgraduate Loan, and projects the balance over the years ahead.</p>
+        <p>The calculator does this for you, adds any <a href="/students/postgrad-loan">Postgraduate Loan</a>, and projects the balance over the years ahead.</p>
       </GuideSection>
 
       <GuideSection id="saas-support" n={23} kicker="Background" title="SAAS loans and bursaries">

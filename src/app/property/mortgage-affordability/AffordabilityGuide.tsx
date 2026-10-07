@@ -132,7 +132,7 @@ export default function AffordabilityGuide() {
       <GuideSection id="commitments" n={4} kicker="Outgoings" title="Debts and childcare">
         <p>
           Regular commitments reduce what you can borrow, because they compete with the mortgage for your income. Lenders look
-          at personal loans, car finance, credit card balances, student loan repayments, childcare and some other regular
+          at personal loans, <a href="/vehicles/car-finance">car finance</a>, credit card balances, student loan repayments, childcare and some other regular
           costs.
         </p>
         <p>
@@ -174,7 +174,7 @@ export default function AffordabilityGuide() {
       </GuideSection>
 
       <GuideSection id="payments" n={6} kicker="Payments" title="Monthly payments">
-        <p>What a repayment mortgage costs each month for every £100,000 you borrow over 25 years:</p>
+        <p>What a <a href="/property/mortgage-repayment">repayment mortgage</a>{" "}costs each month for every £100,000 you borrow over 25 years:</p>
         <DataTable
           caption="Monthly payment per £100,000 borrowed, 25-year repayment"
           head={["Rate", "Monthly payment"]}
@@ -200,7 +200,7 @@ export default function AffordabilityGuide() {
         />
         <p>
           A longer term lowers the payment and can help you pass affordability checks, but you pay more interest overall. You
-          can often shorten the term later or overpay.
+          can often shorten the term later or <a href="/property/mortgage-overpayment">overpay</a>.
         </p>
       </GuideSection>
 
@@ -219,7 +219,7 @@ export default function AffordabilityGuide() {
         />
         <p>
           Their combined take-home pay is about £5,387 a month, so the payment would take 37% of it, or 49% at the stressed
-          rate. As first-time buyers in England they would pay £5,000 Stamp Duty at £400,000.
+          rate. As <a href="/property/first-time-buyer">first-time buyers</a>{" "}in England they would pay £5,000 Stamp Duty at £400,000.
         </p>
       </GuideSection>
 
@@ -264,7 +264,7 @@ export default function AffordabilityGuide() {
         <p>
           Self-employed borrowers usually need two years of accounts or tax calculations. Lenders use your profit, not your
           turnover, and for limited company directors they may use salary plus dividends or your share of company profit.
-          Contractors on day rates can often be assessed on the day rate multiplied by a typical number of working weeks.
+          Contractors on day rates can often be assessed on the <a href="/business/day-rate">day rate</a>{" "}multiplied by a typical number of working weeks.
         </p>
       </GuideSection>
 
@@ -339,7 +339,7 @@ export default function AffordabilityGuide() {
           <li><strong>Choose a longer fix.</strong> Five-year fixes often face a gentler stress test.</li>
           <li><strong>Add an applicant.</strong> A joint application, or a joint borrower who is not an owner, adds income.</li>
           <li><strong>Prove variable income.</strong> Two years of steady bonus or overtime may let a lender count more of it.</li>
-          <li><strong>Look at schemes.</strong> Shared ownership needs a much smaller mortgage for part of a home.</li>
+          <li><strong>Look at schemes.</strong> <a href="/property/shared-ownership">Shared ownership</a>{" "}needs a much smaller mortgage for part of a home.</li>
           <li><strong>Grow the deposit.</strong> A lower loan-to-value means better rates and a smaller loan for the same home.</li>
         </ul>
         <p>
@@ -365,6 +365,9 @@ export default function AffordabilityGuide() {
         <p>
           Write down a realistic monthly budget before you agree a price. If the numbers only work at today&apos;s rate with
           nothing to spare, consider a smaller loan, a longer fix or waiting to build a bigger deposit.
+        </p>
+      <p>
+          If you are still deciding whether to buy at all, the <a href="/property/rent-vs-buy">rent vs buy calculator</a> compares the cost of buying with renting and investing the difference.
         </p>
       </GuideSection>
 

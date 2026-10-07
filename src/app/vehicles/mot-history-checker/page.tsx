@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import MotStudio from "./MotStudio";
+import { ogFor } from "@/gm/og";
 import MotGuide from "./MotGuide";
 
 export const metadata: Metadata = {
-  title: "MOT Due Date Checker and MOT History Link",
+  title: "MOT Due Date Calculator and History Check",
   description:
-    "Work out when your MOT is due, the earliest date you can test and keep your renewal date, and get a direct link to a vehicle's official MOT history.",
+    "Free MOT due date calculator. See when your first and next MOT is due, the earliest date to test without losing days, and how to check MOT history.",
   alternates: { canonical: "/vehicles/mot-history-checker" },
+  openGraph: ogFor("/vehicles/mot-history-checker"),
 };
 
 const BREADCRUMBS = [

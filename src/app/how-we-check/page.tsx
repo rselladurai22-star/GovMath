@@ -5,7 +5,7 @@ import ContentPage from "@/components/ContentPage";
 export const metadata: Metadata = {
   title: "How We Check Our Figures",
   description:
-    "Where GovMath's rates come from, how every calculation is tested, when figures are rechecked and how to report an error.",
+    "Where GovMath's rates come from, how every calculation is tested against official examples, when figures are rechecked and how to report an error.",
   alternates: { canonical: "/how-we-check" },
 };
 

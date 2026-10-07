@@ -148,7 +148,7 @@ export default function MotGuide() {
         <ul>
           <li>Check the mileage rises steadily from test to test. A fall can mean the clock has been changed.</li>
           <li>Look for repeated advisories, such as corrosion, that may now be due.</li>
-          <li>Check the car has had an MOT each year; gaps can mean it was off the road.</li>
+          <li>Check the car has had an MOT each year; gaps can mean it was <a href="/vehicles/sorn-declaration">off the road</a>.</li>
         </ul>
       </GuideSection>
 
@@ -160,6 +160,9 @@ export default function MotGuide() {
           <li>Remove clutter that blocks the view, and clean the number plates.</li>
           <li>Make sure no warning lights are on, and that the horn works.</li>
         </ol>
+      <p>
+          Drivers also need to renew their licence at 70 and every three years after; the <a href="/vehicles/licence-at-70">licence at 70 calculator</a> gives your renewal date.
+        </p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={13} kicker="Summary" title="Key numbers">

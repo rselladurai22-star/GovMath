@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CarersStudio from "./CarersStudio";
+import { ogFor } from "@/gm/og";
 import CarersGuide from "./CarersGuide";
 
 export const metadata: Metadata = {
-  title: "Carer's Allowance Earnings Limit Calculator (2026/27)",
+  title: "Carer's Allowance Earnings Limit Calculator",
   description:
-    "Check whether your pay keeps you within the £204 a week Carer's Allowance earnings limit for 2026/27. Applies tax, NI, half of pension contributions and care costs, and shows how many hours you can work.",
+    "Free Carer's Allowance earnings calculator for 2026/27. Check your earnings against the weekly limit after allowable deductions, and avoid an overpayment.",
   alternates: { canonical: "/benefits/carers-earnings" },
+  openGraph: ogFor("/benefits/carers-earnings"),
 };
 
 const BREADCRUMBS = [

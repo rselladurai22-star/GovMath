@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import HealthyStartStudio from "./HealthyStartStudio";
+import { ogFor } from "@/gm/og";
 import HealthyStartGuide from "./HealthyStartGuide";
 
 export const metadata: Metadata = {
-  title: "Healthy Start Calculator (2026 Rates)",
+  title: "Healthy Start Calculator 2026",
   description:
-    "Check whether you qualify for NHS Healthy Start and how much you would get from April 2026: £4.65 a week in pregnancy, £9.30 for babies under 1 and £4.65 for children aged 1 to 3, plus free vitamins.",
+    "Free Healthy Start checker. See if you qualify for the NHS Healthy Start card and how much you get each week for fruit, vegetables, milk and formula.",
   alternates: { canonical: "/life/healthy-start" },
+  openGraph: ogFor("/life/healthy-start"),
 };
 
 const BREADCRUMBS = [

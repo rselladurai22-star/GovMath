@@ -35,7 +35,7 @@ export default function JsaGuide() {
       title="New Style Jobseeker’s Allowance in 2026/27"
       intro={
         <>
-          New Style Jobseeker&rsquo;s Allowance is the benefit you build up through National Insurance while you work. If you lose your job, it
+          New Style Jobseeker&rsquo;s Allowance is the benefit you build up through <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}while you work. If you lose your job, it
           pays a flat weekly amount for up to 26 weeks, whatever your savings and whatever your partner earns. This guide explains who qualifies,
           how much it pays in 2026/27, how it fits with Universal Credit and what you have to do to keep it.
         </>
@@ -91,8 +91,8 @@ export default function JsaGuide() {
         />
         <p>
           It is paid every two weeks into your bank account, in arrears. There are no extra amounts for a partner or children: help for them comes
-          through Universal Credit and Child Benefit. New Style JSA is taxable, but it is paid without tax taken off; it goes on your P45 or into
-          your tax code.
+          through Universal Credit and Child Benefit. New Style JSA is taxable, but it is paid without tax taken off; it goes on your <a href="/tax-and-salary/p45-p60-explainer">P45</a>{" "}or into
+          your <a href="/tax-and-salary/tax-code-decoder">tax code</a>.
         </p>
       </GuideSection>
 
@@ -109,8 +109,8 @@ export default function JsaGuide() {
           </li>
         </ol>
         <p>
-          Credits count for the second test only. You get them automatically on Universal Credit, Carer&rsquo;s Allowance, Statutory Sick Pay,
-          maternity pay and while getting Child Benefit for a child under 12, among others. Check your record on GOV.UK: each year shows as full
+          Credits count for the second test only. You get them automatically on Universal Credit, Carer&rsquo;s Allowance, <a href="/tax-and-salary/statutory-sick-pay">Statutory Sick Pay</a>,
+          maternity pay and while getting <a href="/benefits/child-benefit">Child Benefit</a>{" "}for a child under 12, among others. Check your record on GOV.UK: each year shows as full
           or with a gap.
         </p>
         <Callout title="Low or irregular pay">
@@ -172,7 +172,7 @@ export default function JsaGuide() {
         <ul>
           <li><strong>Pensions:</strong> any private, workplace or personal pension over £50 a week reduces JSA pound for pound. The State Pension does not apply, as you cannot claim JSA after State Pension age.</li>
           <li><strong>Part-time work:</strong> earnings after tax, National Insurance and half of any pension contribution, above £5 a week, reduce JSA pound for pound. Working 16 hours or more stops it entirely.</li>
-          <li><strong>Not affected:</strong> savings, redundancy pay, a partner&rsquo;s income, Child Benefit, PIP.</li>
+          <li><strong>Not affected:</strong> savings, redundancy pay, a partner&rsquo;s income, Child Benefit, <a href="/benefits/pip-points">PIP</a>.</li>
         </ul>
         <p>
           Payments from your last job, such as holiday pay or pay in lieu of notice, can delay the start of your claim. Tell the Jobcentre about them.

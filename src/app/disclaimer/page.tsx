@@ -5,7 +5,7 @@ import ContentPage from "@/components/ContentPage";
 export const metadata: Metadata = {
   title: "Disclaimer",
   description:
-    "GovMath provides estimates for general information only — not financial, tax or legal advice. Read the full disclaimer.",
+    "GovMath's calculators give estimates for general information only, not financial, tax or legal advice. Read what our figures can and cannot tell you.",
   alternates: { canonical: "/disclaimer" },
 };
 

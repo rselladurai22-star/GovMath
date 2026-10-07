@@ -71,7 +71,7 @@ export default function VatThresholdGuide() {
         <p>
           Taxable turnover is the total value of everything you sell that is not exempt from VAT: standard-rated, reduced-rated and zero-rated sales all
           count. It is your sales, not your profit. Exempt sales, such as most insurance, finance, education and residential rents, do not count, and nor
-          do sales of capital assets such as old equipment. If you run more than one business as a sole trader, their turnover is added together.
+          do sales of capital assets such as old equipment. If you run more than one business as a <a href="/business/sole-trader-tax">sole trader</a>, their turnover is added together.
         </p>
       </GuideSection>
 
@@ -210,7 +210,7 @@ export default function VatThresholdGuide() {
         <p>
           When you register, you decide whether to add VAT to your prices or absorb it. For business customers, adding 20% is normal: they reclaim it on
           their own VAT return, so their real cost does not change. For consumers, adding 20% is a visible price rise, so many businesses split the
-          difference, raising prices a little and absorbing the rest. Work out the effect on your margin before deciding. If a £100 job becomes £120 with
+          difference, raising prices a little and absorbing the rest. Work out the effect on your <a href="/business/gross-profit-margin">margin</a>{" "}before deciding. If a £100 job becomes £120 with
           VAT, or stays at £100 including VAT, your income falls to £83.33. See the <a href="/business/vat-calculator">VAT calculator</a> to work out prices
           with and without VAT.
         </p>

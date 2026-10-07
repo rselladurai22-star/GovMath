@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import HolidayStudio from "./HolidayStudio";
+import { ogFor } from "@/gm/og";
 import HolidayGuide from "./HolidayGuide";
 
 export const metadata: Metadata = {
-  title: "Holiday Entitlement Calculator (UK)",
+  title: "Holiday Entitlement Calculator UK",
   description:
-    "Work out your statutory holiday in days or hours, for full-time, part-time, irregular-hours and part-year workers, plus holiday built up so far and what it is worth.",
+    "Free holiday entitlement calculator. Work out statutory leave in days or hours for full-time, part-time, irregular-hours and part-year workers, and its value.",
   alternates: { canonical: "/tax-and-salary/holiday-entitlement" },
+  openGraph: ogFor("/tax-and-salary/holiday-entitlement"),
 };
 
 const BREADCRUMBS = [

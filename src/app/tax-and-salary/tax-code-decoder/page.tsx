@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import TaxCodeStudio from "./TaxCodeStudio";
+import { ogFor } from "@/gm/og";
 import TaxCodeGuide from "./TaxCodeGuide";
 
 export const metadata: Metadata = {
-  title: "Tax Code Checker: What Does My Tax Code Mean? (2026/27)",
+  title: "Tax Code Checker UK 2026/27",
   description:
-    "Decode any UK tax code, from 1257L to K codes, BR, 0T and emergency codes, see your tax-free pay, and compare the tax it takes with the standard code. 2026/27.",
+    "Free tax code checker for 2026/27. Decode 1257L, K codes, BR, 0T and emergency codes, see your tax-free pay and compare the tax with the standard code.",
   alternates: { canonical: "/tax-and-salary/tax-code-decoder" },
+  openGraph: ogFor("/tax-and-salary/tax-code-decoder"),
 };
 
 const BREADCRUMBS = [

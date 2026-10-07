@@ -162,7 +162,7 @@ export default function ChildBenefitGuide() {
 
       <GuideSection id="pension" n={5} kicker="Protecting your pension" title="Child Benefit and your State Pension">
         <p>
-          The person named on the Child Benefit claim gets National Insurance credits for every week they claim for a child
+          The person named on the Child Benefit claim gets <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}credits for every week they claim for a child
           under 12. These credits count towards the State Pension, which needs 35 qualifying years for the full amount.
         </p>
         <Callout tone="good" title="Make sure the right parent is named">
@@ -170,7 +170,7 @@ export default function ChildBenefitGuide() {
           who is at home or earning less than £6,708 a year. Otherwise the credits are wasted.
         </Callout>
         <p>
-          Grandparents and other family members under State Pension age who look after a child under 12 while the parents work
+          Grandparents and other family members under <a href="/investing/state-pension-age">State Pension age</a>{" "}who look after a child under 12 while the parents work
           can apply to transfer these credits with Specified Adult Childcare credits.
         </p>
       </GuideSection>
@@ -258,7 +258,7 @@ export default function ChildBenefitGuide() {
           who claims; if they cannot, HMRC decides, usually in favour of the parent the child lives with most.
         </p>
         <p>
-          With two or more children, separated parents can each claim for different children. Each household then gets the
+          With two or more children, <a href="/benefits/child-maintenance">separated parents</a>{" "}can each claim for different children. Each household then gets the
           higher eldest-child rate for its own eldest, which can mean slightly more in total than one parent claiming for all.
         </p>
       </GuideSection>
@@ -270,7 +270,7 @@ export default function ChildBenefitGuide() {
             Credit.
           </li>
           <li>
-            <strong>The benefit cap:</strong> Child Benefit does count towards the benefit cap, which limits the total some
+            <strong>The <a href="/benefits/benefit-cap">benefit cap</a>:</strong> Child Benefit does count towards the benefit cap, which limits the total some
             working-age households can get.
           </li>
           <li>
@@ -278,7 +278,7 @@ export default function ChildBenefitGuide() {
             get Guardian&rsquo;s Allowance, but you must be getting Child Benefit for that child.
           </li>
           <li>
-            <strong>Free childcare and Tax-Free Childcare:</strong> separate schemes with their own rules; Child Benefit does
+            <strong>Free childcare and <a href="/benefits/tax-free-childcare">Tax-Free Childcare</a>:</strong> separate schemes with their own rules; Child Benefit does
             not affect them.
           </li>
         </ul>
@@ -339,7 +339,7 @@ export default function ChildBenefitGuide() {
           <li>Register the birth within 42 days in England and Wales, or 21 days in Scotland.</li>
           <li>Claim Child Benefit online or in the HMRC app, in the name of the parent who earns less.</li>
           <li>If either of you earns over £60,000, decide whether to take the payments or keep the claim and stop them.</li>
-          <li>Check whether you can get Universal Credit, a Sure Start Maternity Grant or Healthy Start.</li>
+          <li>Check whether you can get Universal Credit, a <a href="/benefits/sure-start-maternity-grant">Sure Start Maternity Grant</a>{" "}or Healthy Start.</li>
           <li>Diary the date your child turns 9 months, when working parent childcare hours can start.</li>
         </ol>
       </GuideSection>

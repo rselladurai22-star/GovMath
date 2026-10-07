@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import LoanStudio from "@/components/students/LoanStudio";
 import { CALCULATORS } from "@/lib/calculators";
+import { ogFor } from "@/gm/og";
 import Plan4Guide from "./Plan4Guide";
 
 export const metadata: Metadata = {
-  title: "Plan 4 Student Loan Calculator (Scotland) 2026/27",
+  title: "Plan 4 Student Loan Calculator 2026/27",
   description:
-    "Work out your Scottish Plan 4 student loan repayments: 9% of income above \u00a333,795, interest at 4.1%, and when your loan will be paid off or written off.",
+    "Free Plan 4 calculator for Scottish student loans in 2026/27. See monthly repayments above the threshold, interest and when your loan will be cleared.",
   alternates: { canonical: "/students/plan-4-student-loan" },
+  openGraph: ogFor("/students/plan-4-student-loan"),
 };
 
 const BREADCRUMBS = [

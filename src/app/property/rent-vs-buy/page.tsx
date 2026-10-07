@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import RentVsBuyStudio from "./RentVsBuyStudio";
+import { ogFor } from "@/gm/og";
 import RentVsBuyGuide from "./RentVsBuyGuide";
 
 export const metadata: Metadata = {
-  title: "Rent vs Buy Calculator (UK, 2026)",
+  title: "Rent vs Buy Calculator UK 2026",
   description:
-    "Compare renting and buying over time: deposit, Stamp Duty, mortgage, upkeep and selling costs against rent and investing the difference, with your wealth year by year and the break-even point.",
+    "Free rent vs buy calculator. Compare the cost of buying with renting and investing the difference, year by year, and find your break-even point.",
   alternates: { canonical: "/property/rent-vs-buy" },
+  openGraph: ogFor("/property/rent-vs-buy"),
 };
 
 const BREADCRUMBS = [

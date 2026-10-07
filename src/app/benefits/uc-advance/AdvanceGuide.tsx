@@ -38,7 +38,7 @@ export default function AdvanceGuide() {
       intro={
         <>
           Your first Universal Credit payment arrives about five weeks after you claim. If you cannot manage until then, you can ask for an
-          advance: an interest-free loan of up to one month&rsquo;s estimated payment. This guide explains how much you can borrow, how it is taken
+          advance: an interest-free loan of up to one month&rsquo;s estimated payment. This guide explains <a href="/property/mortgage-affordability">how much you can borrow</a>, how it is taken
           back from later payments, the 15% cap on deductions and how to choose a repayment period you can live with.
         </>
       }
@@ -110,7 +110,7 @@ export default function AdvanceGuide() {
           ]}
         />
         <p>
-          A few deductions can go above the cap, such as payments for some fines and child maintenance. If a repayment would take you over it, the
+          A few deductions can go above the cap, such as payments for some fines and <a href="/benefits/child-maintenance">child maintenance</a>. If a repayment would take you over it, the
           calculator shows the shortest period that would keep you within it.
         </p>
       </GuideSection>
@@ -235,7 +235,7 @@ export default function AdvanceGuide() {
 
       <GuideSection id="moving" n={14} kicker="Moving over" title="Moving from older benefits">
         <p>
-          If you move to Universal Credit from Housing Benefit, income-based JSA, income-related ESA or Income Support, those benefits
+          If you move to Universal Credit from <a href="/benefits/housing-benefit">Housing Benefit</a>, income-based JSA, income-related ESA or Income Support, those benefits
           carry on for two more weeks after you claim. This two-week run-on is not a loan, so it is not taken back. It often means you
           need a smaller advance than someone claiming from scratch.
         </p>

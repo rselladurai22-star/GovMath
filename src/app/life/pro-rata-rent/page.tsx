@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import ProRataStudio from "./ProRataStudio";
+import { ogFor } from "@/gm/og";
 import ProRataGuide from "./ProRataGuide";
 
 export const metadata: Metadata = {
-  title: "Pro-Rata Rent Calculator UK: Daily Rent for Part of a Month",
+  title: "Pro Rata Rent Calculator UK",
   description:
-    "Work out rent for part of a month when you move in or out, using the annual (× 12 ÷ 365) or calendar month method, with weekly rent conversion and deposit caps.",
+    "Free pro rata rent calculator. Work out rent for part of a month when you move in or out, using the annual or calendar month method, with weekly conversion.",
   alternates: { canonical: "/life/pro-rata-rent" },
+  openGraph: ogFor("/life/pro-rata-rent"),
 };
 
 const BREADCRUMBS = [

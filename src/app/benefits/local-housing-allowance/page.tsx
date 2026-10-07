@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import LhaStudio from "./LhaStudio";
+import { ogFor } from "@/gm/og";
 import LhaGuide from "./LhaGuide";
 
 export const metadata: Metadata = {
-  title: "Local Housing Allowance Calculator (2026/27 LHA Rates)",
+  title: "Local Housing Allowance Calculator 2026/27",
   description:
-    "Find your Local Housing Allowance for all 200 areas of England, Scotland, Wales and Northern Ireland, for Universal Credit or Housing Benefit. Works out your bedroom entitlement, the shared rate for under-35s and any rent shortfall, using the rates frozen for 2026/27.",
+    "Free LHA calculator for all 200 areas of England, Scotland, Wales and NI. See your bedroom entitlement, the shared rate for under-35s and any rent shortfall.",
   alternates: { canonical: "/benefits/local-housing-allowance" },
+  openGraph: ogFor("/benefits/local-housing-allowance"),
 };
 
 const BREADCRUMBS = [

@@ -61,7 +61,7 @@ export default function TaperGuide() {
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
           <li>
-            Universal Credit falls by <strong>55p for every £1</strong> of take-home pay above your work allowance.
+            Universal Credit falls by <strong>55p for every £1</strong> of <a href="/tax-and-salary/salary-calculator">take-home pay</a>{" "}above your work allowance.
           </li>
           <li>
             If you have children or a health condition, the first <strong>£427</strong> a month (with help for rent) or <strong>£710</strong>{" "}
@@ -220,7 +220,7 @@ export default function TaperGuide() {
       <GuideSection id="pension" n={7} kicker="A hidden boost" title="Pension contributions on Universal Credit">
         <p>
           Because Universal Credit counts pay after pension contributions, the same high withdrawal rate works in reverse when you save into a
-          pension. For a basic-rate taxpayer, putting £100 a month into a workplace pension through salary sacrifice reduces take-home pay by
+          pension. For a basic-rate taxpayer, putting £100 a month into a workplace pension through <a href="/tax-and-salary/salary-sacrifice">salary sacrifice</a>{" "}reduces take-home pay by
           £72, but Universal Credit rises by £39.60. Household income falls by only £32.40.
         </p>
         <WorkedExample
@@ -254,7 +254,7 @@ export default function TaperGuide() {
 
       <GuideSection id="self-employed" n={9} kicker="Working for yourself" title="Self-employed claimants">
         <p>
-          If you are self-employed, you report your income and allowable expenses each month and the taper applies to the profit. After a
+          If you are self-employed, you report your income and <a href="/business/allowable-expenses">allowable expenses</a>{" "}each month and the taper applies to the profit. After a
           12-month start-up period, the minimum income floor may treat you as earning at least the National Living Wage for the hours you are
           expected to work, usually 35 a week, less tax and National Insurance. Earning less than that does not raise your award.
         </p>
@@ -274,7 +274,7 @@ export default function TaperGuide() {
           may get nothing. It is not lost for good: the next month is based on one payday again.
         </Callout>
         <p>
-          If a payday moves because of a weekend or bank holiday, tell the Department for Work and Pensions through your journal. In some
+          If a payday moves because of a weekend or <a href="/life/bank-holidays">bank holiday</a>, tell the Department for Work and Pensions through your journal. In some
           cases they can treat the pay as belonging to the right month.
         </p>
       </GuideSection>
@@ -304,7 +304,7 @@ export default function TaperGuide() {
 
       <GuideSection id="childcare-work" n={13} kicker="Working parents" title="Childcare costs and working more">
         <p>
-          Extra hours often mean extra childcare. Universal Credit pays back 85% of registered childcare costs, up to £1,071.09 a month for one
+          Extra hours often mean extra childcare. Universal Credit pays back 85% of registered <a href="/benefits/childcare-costs">childcare costs</a>, up to £1,071.09 a month for one
           child, and this is added to your maximum award before the taper is applied.
         </p>
         <WorkedExample
@@ -325,7 +325,7 @@ export default function TaperGuide() {
 
       <GuideSection id="pay-rise" n={14} kicker="Pay" title="A pay rise or more hours">
         <p>
-          The taper treats every extra pound the same way, whether it comes from more hours, overtime or a higher hourly rate. A rise from
+          The taper treats every extra pound the same way, whether it comes from more hours, overtime or a higher <a href="/tax-and-salary/hourly-to-salary">hourly rate</a>. A rise from
           £12.71 to £13.50 an hour on a 30-hour week adds £102.70 of gross pay a month. After tax, National Insurance and the taper, the
           household is £33.27 better off, about 32p in the pound.
         </p>

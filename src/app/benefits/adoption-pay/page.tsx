@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import AdoptionStudio from "./AdoptionStudio";
+import { ogFor } from "@/gm/og";
 import AdoptionGuide from "./AdoptionGuide";
 
 export const metadata: Metadata = {
-  title: "Statutory Adoption Pay Calculator 2026/27",
+  title: "Adoption Pay Calculator UK 2026/27 (SAP)",
   description:
-    "Work out Statutory Adoption Pay week by week: 90% of earnings for 6 weeks, then £194.32 for 33 weeks, with any enhanced employer scheme, eligibility and key dates.",
+    "Free Statutory Adoption Pay calculator for 2026/27. See your 39 weeks of SAP week by week, the 90% first six weeks, the weekly rate and who qualifies.",
   alternates: { canonical: "/benefits/adoption-pay" },
+  openGraph: ogFor("/benefits/adoption-pay"),
 };
 
 const BREADCRUMBS = [

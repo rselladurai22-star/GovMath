@@ -135,7 +135,7 @@ export default function LpaGuide() {
         />
         <p>
           The registration fee is the same whether you apply yourself or through a solicitor. Solicitors&rsquo; fees vary widely: some charge a fixed
-          fee per document, others an hourly rate. Charities and some will-writing services offer lower-cost help.
+          fee per document, others an <a href="/tax-and-salary/hourly-to-salary">hourly rate</a>. Charities and some will-writing services offer lower-cost help.
         </p>
         <Callout tone="good" title="Doing it yourself">
           The online service guides you through each step and checks for common errors. If your wishes are simple and your family relationships

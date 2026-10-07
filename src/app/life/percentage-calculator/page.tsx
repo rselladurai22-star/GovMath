@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import PercentStudio from "./PercentStudio";
+import { ogFor } from "@/gm/og";
 import PercentGuide from "./PercentGuide";
 
 export const metadata: Metadata = {
-  title: "Percentage Calculator (Increase, Decrease, Reverse and More)",
+  title: "Percentage Calculator: Increase, Decrease, Change",
   description:
-    "Work out a percentage of a number, what percent one number is of another, percentage change, adding or removing a percentage, reverse percentages such as VAT, and percentage points, with the working shown.",
+    "Free percentage calculator. Work out a percentage of a number, percentage increase or decrease, percentage change and reverse percentages in one place.",
   alternates: { canonical: "/life/percentage-calculator" },
+  openGraph: ogFor("/life/percentage-calculator"),
 };
 
 const BREADCRUMBS = [

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CouncilTaxStudio from "./CouncilTaxStudio";
+import { ogFor } from "@/gm/og";
 import CouncilTaxGuide from "./CouncilTaxGuide";
 
 export const metadata: Metadata = {
-  title: "Council Tax Calculator by Band (2026/27)",
+  title: "Council Tax Calculator by Band 2026/27",
   description:
-    "Work out council tax for any band in England, Wales or Scotland: national averages or your council's Band D charge, the single person discount, disability reduction, second home premiums and monthly instalments.",
+    "Free council tax calculator for 2026/27. See the bill for any band in England, Wales or Scotland, monthly instalments, discounts and second home premiums.",
   alternates: { canonical: "/property/council-tax-bands" },
+  openGraph: ogFor("/property/council-tax-bands"),
 };
 
 const BREADCRUMBS = [

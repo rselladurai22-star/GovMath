@@ -77,7 +77,7 @@ export default function SharedGuide() {
 
       <GuideSection id="how" n={2} kicker="Mechanics" title="How the sharing works">
         <p>
-          The mother is entitled to 52 weeks of maternity leave and 39 weeks of maternity pay. The first two weeks after the
+          The mother is entitled to 52 weeks of maternity leave and 39 weeks of <a href="/benefits/maternity-pay">maternity pay</a>. The first two weeks after the
           birth are compulsory leave. If she gives notice to end her maternity leave early, whatever is left can be shared.
         </p>
         <WorkedExample
@@ -138,7 +138,7 @@ export default function SharedGuide() {
             ["£42,000", "£807.69", "£194.32"],
           ]}
         />
-        <p>Pay is taxed through payroll like maternity and paternity pay.</p>
+        <p>Pay is taxed through payroll like maternity and <a href="/benefits/paternity-pay">paternity pay</a>.</p>
       </GuideSection>
 
       <GuideSection id="plans" n={5} kicker="Examples" title="Comparing plans">
@@ -179,7 +179,7 @@ export default function SharedGuide() {
           <li>A continuous block, such as 10 weeks in a row, cannot be refused by the employer.</li>
           <li>A discontinuous block, such as alternate weeks, can be refused; it then becomes one continuous block unless you withdraw it.</li>
           <li>Parents can be off at the same time, as long as the total stays within the shared weeks.</li>
-          <li>All shared leave must end by the child&rsquo;s first birthday, or one year after adoption placement.</li>
+          <li>All shared leave must end by the child&rsquo;s first birthday, or one year after <a href="/benefits/adoption-pay">adoption</a>{" "}placement.</li>
         </ul>
       </GuideSection>
 

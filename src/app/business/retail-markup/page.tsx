@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import MarkupStudio from "./MarkupStudio";
+import { ogFor } from "@/gm/og";
 import MarkupGuide from "./MarkupGuide";
 
 export const metadata: Metadata = {
-  title: "Retail Markup Calculator: Selling Price from Cost",
+  title: "Markup Calculator UK: Selling Price from Cost",
   description:
-    "Find the selling price that hits a target markup or margin, with marketplace fees, postage, VAT and price rounding built in.",
+    "Free retail markup calculator. Turn a cost price into a selling price with your markup or margin, with or without VAT, and see the profit on each sale.",
   alternates: { canonical: "/business/retail-markup" },
+  openGraph: ogFor("/business/retail-markup"),
 };
 
 const BREADCRUMBS = [

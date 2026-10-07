@@ -132,12 +132,12 @@ export default function CareGuide() {
 
       <GuideSection id="income" n={4} kicker="Contribution" title="How your income is used">
         <p>
-          If the council helps, most of your income goes towards the fees: State Pension, private pensions, Pension Credit and most benefits.
+          If the council helps, most of your income goes towards the fees: State Pension, private pensions, <a href="/benefits/pension-credit">Pension Credit</a>{" "}and most benefits.
           You keep a personal expenses allowance of £31.80 a week in England for things like clothes, toiletries and hairdressing.
         </p>
         <p>
-          Some income is ignored, such as the mobility part of DLA or PIP and, if a spouse lives at home, half of a private pension can be passed
-          to them. Attendance Allowance stops after 28 days if the council funds the place.
+          Some income is ignored, such as the mobility part of DLA or <a href="/benefits/pip-points">PIP</a>{" "}and, if a spouse lives at home, half of a private pension can be passed
+          to them. <a href="/benefits/attendance-allowance">Attendance Allowance</a>{" "}stops after 28 days if the council funds the place.
         </p>
       </GuideSection>
 
@@ -332,7 +332,7 @@ export default function CareGuide() {
       <GuideSection id="benefits" n={18} kicker="Income" title="Benefits in a care home">
         <p>
           Pension Credit can continue in a care home and can rise because the home is no longer counted. If you pay your own fees, you can keep
-          Attendance Allowance or the daily living part of PIP. If the council funds you, these usually stop after 28 days. Housing Benefit for the
+          Attendance Allowance or the daily living part of PIP. If the council funds you, these usually stop after 28 days. <a href="/benefits/housing-benefit">Housing Benefit</a>{" "}for the
           old home can continue for a short time during a move.
         </p>
       </GuideSection>
@@ -365,6 +365,9 @@ export default function CareGuide() {
           <li>Check whether the home accepts the council rate if your savings may run out.</li>
         </ul>
         <p>Choosing a home that accepts council funding avoids having to move later, which can be distressing for residents.</p>
+      <p>
+          If someone may lose the capacity to manage their money, a Lasting Power of Attorney made in good time avoids a court application. The <a href="/life/power-of-attorney">power of attorney cost calculator</a> shows the fees.
+        </p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers for 2026/27">

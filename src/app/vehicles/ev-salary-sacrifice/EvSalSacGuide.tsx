@@ -41,7 +41,7 @@ export default function EvSalSacGuide() {
       title="How electric car salary sacrifice saves you money"
       intro={
         <>
-          Salary sacrifice lets you lease a new electric car through your employer and pay for it from your salary before tax and National
+          Salary sacrifice lets you lease a new <a href="/vehicles/petrol-vs-ev-cost">electric car</a>{" "}through your employer and pay for it from your salary before tax and National
           Insurance. Because electric company cars are taxed very lightly, the saving can be large. This guide explains how it works, what you
           save at different incomes, and the catches to check before you sign.
         </>
@@ -53,7 +53,7 @@ export default function EvSalSacGuide() {
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
           <li>You give up some salary, so you pay less income tax and National Insurance.</li>
-          <li>You pay company car tax on the car, but electric cars are taxed at only 4% of the list price in 2026/27.</li>
+          <li>You pay company <a href="/vehicles/car-tax-ved">car tax</a>{" "}on the car, but electric cars are taxed at only 4% of the list price in 2026/27.</li>
           <li>On £45,000, a £450-a-month sacrifice for a £40,000 car costs about £350.67 a month in take-home pay, 22% less than leasing privately.</li>
           <li>Higher earners save more: about 30% on £70,000 and 44% on £110,000.</li>
         </ul>
@@ -76,7 +76,7 @@ export default function EvSalSacGuide() {
         </ol>
         <p>
           The net cost to you is the salary you give up, less the tax and National Insurance you save, plus the company car tax. Your employer
-          also saves employer National Insurance, and some pass part of that on.
+          also saves <a href="/business/employer-ni-costs">employer National Insurance</a>, and some pass part of that on.
         </p>
       </GuideSection>
 
@@ -137,7 +137,7 @@ export default function EvSalSacGuide() {
         <p>
           Between £100,000 and £125,140, you lose £1 of Personal Allowance for every £2 of income, creating an effective tax rate of 60%. A
           sacrifice that brings your income down within this band saves tax at 60%. On £110,000, the same car costs just £251 a month, a 44%
-          saving. Bringing income below £100,000 can also restore tax-free childcare and funded childcare hours.
+          saving. Bringing income below £100,000 can also restore tax-free childcare and <a href="/benefits/free-childcare-hours">funded childcare</a>{" "}hours.
         </p>
       </GuideSection>
 
@@ -197,7 +197,7 @@ export default function EvSalSacGuide() {
 
       <GuideSection id="minimum-wage" n={11} kicker="Limits" title="The minimum wage limit">
         <p>
-          A salary sacrifice cannot take your pay below the National Living Wage, which is £12.71 an hour for workers aged 21 and over from
+          A salary sacrifice cannot take your pay below the <a href="/tax-and-salary/minimum-wage">National Living Wage</a>, which is £12.71 an hour for workers aged 21 and over from
           April 2026. For a full-time worker on 37.5 hours a week, that is about £24,785 a year. Lower earners may find a scheme limits the car
           they can choose, or turns them down.
         </p>
@@ -259,7 +259,7 @@ export default function EvSalSacGuide() {
         <p>
           Insurance is normally included and arranged by the provider. Check who else can drive the car: many schemes let you add a partner or
           family members, sometimes for a small extra charge. Check the excess you would pay after a claim, and whether a courtesy car is
-          included if yours is off the road.
+          included if yours is <a href="/vehicles/sorn-declaration">off the road</a>.
         </p>
       </GuideSection>
 

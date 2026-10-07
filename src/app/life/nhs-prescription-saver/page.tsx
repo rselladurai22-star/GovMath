@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import PrescriptionStudio from "./PrescriptionStudio";
+import { ogFor } from "@/gm/og";
 import PrescriptionGuide from "./PrescriptionGuide";
 
 export const metadata: Metadata = {
-  title: "NHS Prescription Cost Calculator: Is a PPC Worth It? (2026/27)",
+  title: "NHS Prescription Cost Calculator 2026/27",
   description:
-    "Compare paying £9.90 per item with a 3-month (£32.05) or 12-month (£114.50) prescription prepayment certificate or the £19.80 HRT PPC, and check whether you get free prescriptions.",
+    "Free NHS prescription calculator for England. See if a 3 or 12-month prepayment certificate saves money at the current prescription charge.",
   alternates: { canonical: "/life/nhs-prescription-saver" },
+  openGraph: ogFor("/life/nhs-prescription-saver"),
 };
 
 const BREADCRUMBS = [

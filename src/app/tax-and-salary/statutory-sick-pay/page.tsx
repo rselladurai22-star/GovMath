@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import SSPStudio from "./SSPStudio";
+import { ogFor } from "@/gm/og";
 import SSPGuide from "./SSPGuide";
 
 export const metadata: Metadata = {
-  title: "Statutory Sick Pay Calculator (UK, 2026/27)",
+  title: "Statutory Sick Pay Calculator UK 2026/27",
   description:
-    "Work out Statutory Sick Pay under the April 2026 rules: paid from day one, the lower of £123.25 a week or 80% of earnings, with daily rates, linked spells and company sick pay.",
+    "Free SSP calculator for 2026/27. Work out Statutory Sick Pay from day one, the weekly rate, linked periods and how much you get for your days off sick.",
   alternates: { canonical: "/tax-and-salary/statutory-sick-pay" },
+  openGraph: ogFor("/tax-and-salary/statutory-sick-pay"),
 };
 
 const BREADCRUMBS = [

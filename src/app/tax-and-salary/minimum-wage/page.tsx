@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import MinWageStudio from "./MinWageStudio";
+import { ogFor } from "@/gm/og";
 import MinWageGuide from "./MinWageGuide";
 
 export const metadata: Metadata = {
-  title: "Minimum Wage Checker (UK, April 2026 rates)",
+  title: "Minimum Wage Calculator UK 2026",
   description:
-    "Check whether you are paid the National Living Wage or minimum wage for your age from April 2026, counting unpaid time, work costs and accommodation, and estimate back pay owed.",
+    "Free minimum wage checker with April 2026 rates. Check your pay against the National Living Wage for your age, counting unpaid time and work costs.",
   alternates: { canonical: "/tax-and-salary/minimum-wage" },
+  openGraph: ogFor("/tax-and-salary/minimum-wage"),
 };
 
 const BREADCRUMBS = [

@@ -7,9 +7,9 @@ import cats from "@/gm/categories.json";
 import { getCalculatorsByCategory, shortTitle, type CategorySlug } from "@/lib/calculators";
 
 export const metadata: Metadata = {
-  title: "All Calculators",
+  title: "All UK Calculators 2026/27",
   description:
-    "Every GovMath calculator in one place — tax, benefits, property and pensions. Free, plain English, no sign-up.",
+    "Every free GovMath calculator in one list: tax and salary, mortgages and property, benefits, business, pensions, vehicles, students and everyday life.",
   alternates: { canonical: "/calculators" },
 };
 

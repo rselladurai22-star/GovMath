@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import DaysStudio from "./DaysStudio";
+import { ogFor } from "@/gm/og";
 import DaysGuide from "./DaysGuide";
 
 export const metadata: Metadata = {
-  title: "Days Between Dates Calculator (with UK Working Days)",
+  title: "Days Between Dates Calculator (UK)",
   description:
-    "Count the days, weeks, months and working days between two dates, allowing for UK bank holidays in England and Wales, Scotland or Northern Ireland, and add days or working days to a date.",
+    "Free days between dates calculator. Count calendar days, weeks and UK working days between two dates, with bank holidays for each nation taken out.",
   alternates: { canonical: "/life/days-between-dates" },
+  openGraph: ogFor("/life/days-between-dates"),
 };
 
 const BREADCRUMBS = [

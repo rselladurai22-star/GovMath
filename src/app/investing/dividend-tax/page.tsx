@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import DividendStudio from "./DividendStudio";
+import { ogFor } from "@/gm/og";
 import DividendGuide from "./DividendGuide";
 
 export const metadata: Metadata = {
-  title: "Dividend Tax Calculator UK (2026/27 Rates)",
+  title: "Dividend Tax Calculator UK 2026/27",
   description:
-    "Work out the tax on your dividends in 2026/27: the £500 allowance, 10.75%, 35.75% and 39.35% rates, how dividends stack on your salary, and ways to pay less.",
+    "Free dividend tax calculator for 2026/27. See the tax on dividends after the £500 allowance at 10.75%, 35.75% and 39.35%, stacked on your other income.",
   alternates: { canonical: "/investing/dividend-tax" },
+  openGraph: ogFor("/investing/dividend-tax"),
 };
 
 const BREADCRUMBS = [

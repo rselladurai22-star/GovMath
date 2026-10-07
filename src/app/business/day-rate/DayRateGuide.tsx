@@ -53,9 +53,9 @@ export default function DayRateGuide() {
     >
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
-          <li>Most freelancers can bill about <strong>200 days</strong> a year, not 260, once holidays, bank holidays, sickness and admin are counted.</li>
+          <li>Most freelancers can bill about <strong>200 days</strong> a year, not 260, once holidays, <a href="/life/bank-holidays">bank holidays</a>, sickness and admin are counted.</li>
           <li>To take home <strong>£40,000</strong> as a sole trader, with £3,000 of costs and 202 billable days, you need about <strong>£261 a day</strong>.</li>
-          <li>An employee would need a salary of about £50,763 for the same take-home, partly because self-employed National Insurance is lower.</li>
+          <li>An employee would need a salary of about £50,763 for the same take-home, partly because self-employed <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}is lower.</li>
           <li>Above £90,000 of turnover you must register for VAT.</li>
         </ul>
         <KeyStats
@@ -70,7 +70,7 @@ export default function DayRateGuide() {
 
       <GuideSection id="method" n={2} kicker="Method" title="Working backwards from take-home">
         <ol>
-          <li>Decide the take-home pay you need for the year.</li>
+          <li>Decide the <a href="/tax-and-salary/salary-calculator">take-home pay</a>{" "}you need for the year.</li>
           <li>Find the profit that leaves that much after Income Tax, Class 4 National Insurance and any student loan.</li>
           <li>Add your business costs to get the turnover you need.</li>
           <li>Divide by the days you can actually bill.</li>
@@ -203,7 +203,7 @@ export default function DayRateGuide() {
 
       <GuideSection id="limited" n={12} kicker="Structure" title="Sole trader or limited company?">
         <p>
-          A limited company pays Corporation Tax on profit and you pay yourself through a mix of salary and dividends. At higher profits this can save tax,
+          A limited company pays <a href="/business/corporation-tax">Corporation Tax</a>{" "}on profit and you pay yourself through a mix of salary and dividends. At higher profits this can save tax,
           though the gap has narrowed since dividend tax and Corporation Tax rose. There is more admin and accountancy cost. Compare with the{" "}
           <a href="/business/dividend-vs-salary">dividend vs salary calculator</a>.
         </p>
@@ -250,7 +250,7 @@ export default function DayRateGuide() {
           Day rates suit work where clients book your time, such as consultancy, design and development. Hourly rates suit short or variable tasks, such as
           tutoring or repairs. Project prices suit clearly defined pieces of work and can earn more if you are efficient, but carry the risk of overruns.
           Whichever you use, the calculation underneath is the same: your yearly income need divided by the time you can sell. If you quote by the project,
-          estimate the days it will take and multiply by your day rate, then add a margin for changes.
+          estimate the days it will take and multiply by your day rate, then add a <a href="/business/gross-profit-margin">margin</a>{" "}for changes.
         </p>
       </GuideSection>
 

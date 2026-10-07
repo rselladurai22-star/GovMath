@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import EmergencyStudio from "./EmergencyStudio";
+import { ogFor } from "@/gm/og";
 import EmergencyGuide from "./EmergencyGuide";
 
 export const metadata: Metadata = {
-  title: "Emergency Tax Calculator: How Much Have I Overpaid? (2026/27)",
+  title: "Emergency Tax Calculator UK 2026/27",
   description:
-    "See how much tax an emergency code (1257L M1/W1/X, BR or 0T) takes compared with the right code, how much you have overpaid so far and how to get it back. 2026/27 rates.",
+    "Free emergency tax calculator for 2026/27. See how much you overpaid on an emergency tax code, why it happened and how to get the refund.",
   alternates: { canonical: "/tax-and-salary/emergency-tax" },
+  openGraph: ogFor("/tax-and-salary/emergency-tax"),
 };
 
 const BREADCRUMBS = [

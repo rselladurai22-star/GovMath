@@ -130,7 +130,7 @@ export default function IhtGuide() {
           ]}
         />
         <p>
-          The transfer is claimed by the executors on the second death, using form IHT402. They will need details of the first estate, so keep
+          The transfer is claimed by the <a href="/life/probate-fees">executors</a>{" "}on the second death, using form IHT402. They will need details of the first estate, so keep
           the paperwork.
         </p>
       </GuideSection>
@@ -369,6 +369,9 @@ export default function IhtGuide() {
           <li>Paying the tax late: interest starts at the end of the sixth month after death.</li>
           <li>Distributing the estate before HMRC has agreed the figures.</li>
         </ul>
+      <p>
+          Planning ahead also means deciding who can act for you if you lose capacity: the <a href="/life/power-of-attorney">power of attorney cost calculator</a> shows the fees to register a Lasting Power of Attorney.
+        </p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">

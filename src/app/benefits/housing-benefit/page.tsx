@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import HbStudio from "./HbStudio";
+import { ogFor } from "@/gm/og";
 import HbGuide from "./HbGuide";
 
 export const metadata: Metadata = {
-  title: "Housing Benefit Calculator 2026/27: How Much Help With Rent?",
+  title: "Housing Benefit Calculator UK 2026/27",
   description:
-    "Work out your Housing Benefit for 2026/27 from your rent, income and savings. Uses the DWP's 2026/27 rates, the 65% taper, Local Housing Allowance, non-dependant deductions and the spare room rules.",
+    "Free Housing Benefit calculator for 2026/27. Estimate help with rent from your income, savings, household and non-dependants, with the full means test.",
   alternates: { canonical: "/benefits/housing-benefit" },
+  openGraph: ogFor("/benefits/housing-benefit"),
 };
 
 const BREADCRUMBS = [

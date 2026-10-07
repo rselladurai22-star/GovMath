@@ -50,8 +50,8 @@ export default function EmployerCostGuide() {
       title="Employer National Insurance and the true cost of an employee"
       intro={
         <>
-          An employee costs more than their salary. On top of pay, employers pay National Insurance at 15% above £5,000 a year,
-          at least 3% into a workplace pension, and a range of smaller costs. This guide explains how each is worked out for
+          An employee costs more than their salary. On top of pay, employers pay <a href="/tax-and-salary/national-insurance">National Insurance</a>{" "}at 15% above £5,000 a year,
+          at least 3% into a <a href="/investing/workplace-pension">workplace pension</a>, and a range of smaller costs. This guide explains how each is worked out for
           2026/27, the reliefs that reduce them, and how to budget for a new hire.
         </>
       }
@@ -209,7 +209,7 @@ export default function EmployerCostGuide() {
 
       <GuideSection id="sacrifice" n={7} kicker="Saving NI" title="Salary sacrifice">
         <p>
-          With salary sacrifice, an employee gives up part of their salary and the employer pays the same amount into their
+          With <a href="/tax-and-salary/salary-sacrifice">salary sacrifice</a>, an employee gives up part of their salary and the employer pays the same amount into their
           pension. Because the sacrificed pay is no longer earnings, neither side pays NI on it.
         </p>
         <WorkedExample
@@ -249,7 +249,7 @@ export default function EmployerCostGuide() {
             getting the work, which matters if you need cover.
           </li>
           <li>
-            <strong>Sick pay:</strong> Statutory Sick Pay, or more under your own policy.
+            <strong>Sick pay:</strong> <a href="/tax-and-salary/statutory-sick-pay">Statutory Sick Pay</a>, or more under your own policy.
           </li>
           <li>
             <strong>Employer&rsquo;s liability insurance:</strong> a legal requirement for most employers, with a fine for

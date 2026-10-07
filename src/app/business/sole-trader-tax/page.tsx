@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import SoleTraderStudio from "./SoleTraderStudio";
+import { ogFor } from "@/gm/og";
 import SoleTraderGuide from "./SoleTraderGuide";
 
 export const metadata: Metadata = {
-  title: "Sole Trader Tax Calculator (2026/27)",
+  title: "Sole Trader Tax Calculator UK 2026/27",
   description:
-    "Income Tax and Class 4 National Insurance on your self-employed profit for 2026/27, with a job alongside, student loans, Scotland, pension relief and your payment dates.",
+    "Free self-employed tax calculator for 2026/27. See Income Tax, Class 4 NI and your take-home profit, plus payments on account and what to set aside.",
   alternates: { canonical: "/business/sole-trader-tax" },
+  openGraph: ogFor("/business/sole-trader-tax"),
 };
 
 const BREADCRUMBS = [

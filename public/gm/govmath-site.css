@@ -1136,3 +1136,29 @@ a.gm-card:hover {
     grid-template-columns: 90px 1fr 80px;
   }
 }
+
+/* Topic pages: quick links to the fixed-amount pages (salary after tax, Stamp Duty by price). */
+.gm-amountlinks {
+  margin: 40px 0 0;
+}
+.gm-amountlinks h2 {
+  margin: 0 0 14px;
+}
+.gm-amountlinks .toollist {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  column-gap: 24px;
+}
+/* Fixed-amount pages: the answer at a glance under the title. */
+.gm-amount-summary {
+  margin-top: 8px;
+}
+.gm-amount-summary .g-stats {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+@media (max-width: 560px) {
+  .gm-amount-summary .g-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+}

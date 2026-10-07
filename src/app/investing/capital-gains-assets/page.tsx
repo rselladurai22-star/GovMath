@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import CgtStudio from "./CgtStudio";
+import { ogFor } from "@/gm/og";
 import CgtGuide from "./CgtGuide";
 
 export const metadata: Metadata = {
-  title: "Capital Gains Tax Calculator UK (2026/27)",
+  title: "Capital Gains Tax Calculator UK 2026/27",
   description:
-    "Work out Capital Gains Tax on shares, funds, property, crypto or a business in 2026/27: the £3,000 exempt amount, 18% and 24% rates, losses, Business Asset Disposal Relief, and ways to pay less.",
+    "Free Capital Gains Tax calculator for 2026/27. Work out CGT on shares, funds, crypto or a business with the £3,000 allowance, 18% and 24% rates and losses.",
   alternates: { canonical: "/investing/capital-gains-assets" },
+  openGraph: ogFor("/investing/capital-gains-assets"),
 };
 
 const BREADCRUMBS = [

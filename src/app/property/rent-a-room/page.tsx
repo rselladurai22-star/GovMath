@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import RentARoomStudio from "./RentARoomStudio";
+import { ogFor } from "@/gm/og";
 import RentARoomGuide from "./RentARoomGuide";
 
 export const metadata: Metadata = {
-  title: "Rent a Room Tax Calculator (2026/27)",
+  title: "Rent a Room Tax Calculator 2026/27",
   description:
-    "Check whether your lodger income is tax-free under the £7,500 Rent a Room scheme, and if not, whether the scheme or the normal method gives less tax.",
+    "Free Rent a Room calculator for 2026/27. See tax on lodger income under the £7,500 allowance, and whether the allowance or actual expenses saves more.",
   alternates: { canonical: "/property/rent-a-room" },
+  openGraph: ogFor("/property/rent-a-room"),
 };
 
 const BREADCRUMBS = [

@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import LoanStudio from "@/components/students/LoanStudio";
 import { CALCULATORS } from "@/lib/calculators";
+import { ogFor } from "@/gm/og";
 import Plan2Guide from "./Plan2Guide";
 
 export const metadata: Metadata = {
   title: "Plan 2 Student Loan Calculator 2026/27",
   description:
-    "Work out your Plan 2 student loan repayments: 9% above £29,385, interest from 4.1% to the 6% cap, the freeze to 2030, and whether you will repay before the 30-year write-off.",
+    "Free Plan 2 student loan calculator for 2026/27. See monthly repayments, the sliding interest rate, total repaid and whether your loan will be written off.",
   alternates: { canonical: "/students/plan-2-student-loan" },
+  openGraph: ogFor("/students/plan-2-student-loan"),
 };
 
 const BREADCRUMBS = [

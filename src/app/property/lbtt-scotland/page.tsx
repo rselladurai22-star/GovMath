@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import LandTaxStudio from "@/components/property/LandTaxStudio";
 import { CALCULATORS } from "@/lib/calculators";
+import { ogFor } from "@/gm/og";
 import LBTTGuide from "./LBTTGuide";
 
 export const metadata: Metadata = {
-  title: "LBTT Calculator (Scotland, 2026/27)",
+  title: "LBTT Calculator Scotland 2026/27",
   description:
-    "Work out Land and Buildings Transaction Tax on a home in Scotland: band by band, first-time buyer relief, the 8% Additional Dwelling Supplement and how to reclaim it.",
+    "Free LBTT calculator for Scotland in 2026/27. See Land and Buildings Transaction Tax band by band, first-time buyer relief and the 8% ADS on second homes.",
   alternates: { canonical: "/property/lbtt-scotland" },
+  openGraph: ogFor("/property/lbtt-scotland"),
 };
 
 const BREADCRUMBS = [

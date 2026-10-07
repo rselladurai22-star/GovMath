@@ -52,7 +52,7 @@ export default function DrawdownGuide() {
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
           <li>You can usually take <strong>25% tax-free</strong>, up to £268,275, and the rest is taxed as income when you withdraw it.</li>
-          <li>A £250,000 pot at 66, with £62,500 taken tax-free and £15,000 a year withdrawn rising with inflation, lasts to about <strong>79</strong> at 4% growth.</li>
+          <li>A £250,000 pot at 66, with £62,500 taken tax-free and £15,000 a year withdrawn rising with <a href="/investing/inflation-impact">inflation</a>, lasts to about <strong>79</strong> at 4% growth.</li>
           <li>Taking less, or growth above inflation, makes it last much longer.</li>
           <li>Once you take taxable income, you can only pay <strong>£10,000 a year</strong> into pensions with tax relief.</li>
         </ul>
@@ -175,7 +175,7 @@ export default function DrawdownGuide() {
 
       <GuideSection id="emergency-tax" n={10} kicker="Tax codes" title="Emergency tax on first withdrawals">
         <p>
-          Your pension provider often taxes the first withdrawal on an emergency tax code, as if you would take the same amount every month. That can
+          Your pension provider often taxes the first withdrawal on an emergency <a href="/tax-and-salary/tax-code-decoder">tax code</a>, as if you would take the same amount every month. That can
           mean far too much tax. You can reclaim it from HMRC straight away using form P55 (for a one-off withdrawal) or P53Z (if you have emptied the
           pot), or wait for it to be corrected through your tax code. See the <a href="/tax-and-salary/emergency-tax">emergency tax calculator</a>.
         </p>

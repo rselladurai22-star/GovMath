@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import TimesheetStudio from "./TimesheetStudio";
+import { ogFor } from "@/gm/og";
 import TimesheetGuide from "./TimesheetGuide";
 
 export const metadata: Metadata = {
-  title: "Timesheet Calculator: Hours to Decimal and Weekly Pay",
+  title: "Timesheet Calculator: Hours to Decimal",
   description:
-    "Add up a week of start and finish times with breaks, convert hours and minutes to decimal hours, handle night shifts and overtime, and work out gross pay at your hourly rate.",
+    "Free timesheet calculator. Turn hours and minutes into decimal hours, take off breaks, add up a week and work out your pay, including overtime.",
   alternates: { canonical: "/life/timesheet-decimal" },
+  openGraph: ogFor("/life/timesheet-decimal"),
 };
 
 const BREADCRUMBS = [

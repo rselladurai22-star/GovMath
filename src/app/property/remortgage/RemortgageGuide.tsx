@@ -259,13 +259,13 @@ export default function RemortgageGuide() {
         <p>
           Remortgaging is often when couples add or remove a name from the mortgage, after a marriage, separation or inheritance. Removing someone needs the
           lender&rsquo;s agreement that the remaining borrower can afford the loan alone, and may need legal work to transfer ownership of the home. Adding a
-          borrower usually needs a full application. Stamp Duty can apply when a share of a property changes hands for money or debt, so take advice first.
+          borrower usually needs a full application. <a href="/property/stamp-duty-england">Stamp Duty</a>{" "}can apply when a share of a property changes hands for money or debt, so take advice first.
         </p>
       </GuideSection>
 
       <GuideSection id="costs" n={21} kicker="Costs" title="Other costs of remortgaging">
         <p>
-          Besides the arrangement fee, a remortgage can involve a valuation fee, legal fees for the conveyancing, a broker fee and sometimes a fee for leaving your
+          Besides the arrangement fee, a remortgage can involve a valuation fee, legal fees for the <a href="/property/moving-house-budget">conveyancing</a>, a broker fee and sometimes a fee for leaving your
           old lender, often called an exit or deeds release fee of up to a few hundred pounds. Many remortgage deals include a free valuation and free standard
           legal work, which can be worth several hundred pounds. Add any you will pay under More options in the calculator.
         </p>

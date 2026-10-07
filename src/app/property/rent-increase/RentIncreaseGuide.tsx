@@ -300,8 +300,11 @@ export default function RentIncreaseGuide() {
       <GuideSection id="advice" n={18} kicker="Help" title="Free advice">
         <p>
           If you are unsure whether a notice is valid, or how to apply to the tribunal, get free advice before the start date. Shelter and
-          Citizens Advice help tenants in England, Shelter Cymru in Wales, Shelter Scotland in Scotland and Housing Rights in Northern Ireland. Many
+          Citizens Advice help tenants in England, Shelter Cymru <a href="/property/ltt-wales">in Wales</a>, Shelter Scotland in Scotland and Housing Rights in Northern Ireland. Many
           councils also have a private renting or tenancy relations officer who can speak to your landlord for you.
+        </p>
+      <p>
+          If rent rises are pushing you to think about buying, the <a href="/property/rent-vs-buy">rent vs buy calculator</a> compares the long-run cost of each.
         </p>
       </GuideSection>
 

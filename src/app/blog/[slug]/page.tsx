@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import AdSlot from "@/components/AdSlot";
 import ContentPage from "@/components/ContentPage";
 import PostCard from "@/components/blog/PostCard";
+import { ORG_ID, SITE } from "@/gm/schema";
 import { BLOG_POSTS, getAllPosts, getPost } from "@/lib/blog";
 
 type Params = Promise<{ slug: string }>;
@@ -20,7 +21,7 @@ export async function generateMetadata({
   const post = getPost(slug);
   if (!post) return { title: "Article not found" };
   return {
-    title: post.title,
+    title: post.seoTitle ?? post.title,
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
@@ -29,6 +30,9 @@ export async function generateMetadata({
       description: post.description,
       url: `/blog/${post.slug}`,
       publishedTime: post.date,
+      siteName: "GovMath",
+      locale: "en_GB",
+      images: [{ url: `/og/blog/${post.slug}`, width: 1200, height: 630 }],
     },
   };
 }
@@ -49,16 +53,18 @@ export default async function BlogPostPage({ params }: { params: Params }) {
     description: post.description,
     datePublished: post.date,
     dateModified: post.date,
-    author: { "@type": "Organization", name: "GovMath" },
-    publisher: {
-      "@type": "Organization",
-      name: "GovMath",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://govmath.co.uk/icon.png",
-      },
-    },
+    author: { "@type": "Organization", "@id": ORG_ID, name: "GovMath", url: SITE },
+    publisher: { "@id": ORG_ID },
     mainEntityOfPage: `https://govmath.co.uk/blog/${post.slug}`,
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+      { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${SITE}/blog/${post.slug}` },
+    ],
   };
 
   return (
@@ -92,7 +98,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
         </>
       }
     >
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([articleJsonLd, breadcrumbJsonLd]) }} />
       <AdSlot size="leaderboard" />
       {post.body}
     </ContentPage>

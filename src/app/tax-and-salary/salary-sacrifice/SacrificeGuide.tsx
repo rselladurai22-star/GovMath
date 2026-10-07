@@ -43,7 +43,7 @@ export default function SacrificeGuide() {
       intro={
         <>
           Salary sacrifice means agreeing to a lower salary in return for a benefit your employer provides, such as a pension contribution, a bike or
-          an electric car. Because the benefit is not taxed in the same way as pay, both you and your employer can save. How much depends on what the
+          an <a href="/vehicles/petrol-vs-ev-cost">electric car</a>. Because the benefit is not taxed in the same way as pay, both you and your employer can save. How much depends on what the
           benefit is and which tax band you are in. This guide explains the rules for 2026/27, the benefits that save the most, and the catches.
         </>
       }
@@ -145,8 +145,8 @@ export default function SacrificeGuide() {
       <GuideSection id="thresholds" n={7} kicker="Strategy" title="Using sacrifice around tax thresholds">
         <ul>
           <li><strong>£50,270:</strong> sacrificing the salary above this keeps you a basic-rate taxpayer and doubles your Personal Savings Allowance. On £55,000, sacrificing £4,730 saves £1,987.</li>
-          <li><strong>£60,000:</strong> keeps you clear of the High Income Child Benefit Charge.</li>
-          <li><strong>£100,000:</strong> sacrifice wins back your Personal Allowance and keeps funded childcare. On £105,000, sacrificing £5,000 costs only £1,900 of take-home.</li>
+          <li><strong>£60,000:</strong> keeps you clear of the <a href="/benefits/high-income-child-benefit">High Income Child Benefit Charge</a>.</li>
+          <li><strong>£100,000:</strong> sacrifice wins back your Personal Allowance and keeps <a href="/benefits/free-childcare-hours">funded childcare</a>. On £105,000, sacrificing £5,000 costs only £1,900 of take-home.</li>
           <li><strong>Student loans:</strong> a lower salary also means lower repayments, a further 9% saving above your threshold.</li>
         </ul>
       </GuideSection>
@@ -185,7 +185,7 @@ export default function SacrificeGuide() {
 
       <GuideSection id="downsides" n={12} kicker="Catches" title="What a lower salary can affect">
         <ul>
-          <li><strong>Mortgages:</strong> lenders may use your reduced salary, cutting how much you can borrow.</li>
+          <li><strong>Mortgages:</strong> lenders may use your reduced salary, cutting <a href="/property/mortgage-affordability">how much you can borrow</a>.</li>
           <li><strong>Statutory pay:</strong> maternity, paternity and sick pay are based on actual earnings, so a large sacrifice can reduce them.</li>
           <li><strong>Life cover and pay rises:</strong> some are linked to salary; check whether your employer uses the pre-sacrifice figure.</li>
           <li><strong>State benefits:</strong> very low earnings could affect your National Insurance record if pay falls below £129 a week.</li>
@@ -253,7 +253,7 @@ export default function SacrificeGuide() {
       <GuideSection id="family" n={19} kicker="Families" title="Child Benefit and childcare">
         <p>
           Salary sacrifice reduces your adjusted net income, the figure used for the High Income Child Benefit Charge and for the £100,000 limit on funded
-          childcare and Tax-Free Childcare. For parents earning just over £60,000 or £100,000, a pension sacrifice can be worth far more than the tax and NI
+          childcare and <a href="/benefits/tax-free-childcare">Tax-Free Childcare</a>. For parents earning just over £60,000 or £100,000, a pension sacrifice can be worth far more than the tax and NI
           saving alone, because it can keep thousands of pounds of Child Benefit or childcare support.
         </p>
       </GuideSection>
@@ -261,7 +261,7 @@ export default function SacrificeGuide() {
       <GuideSection id="scotland" n={20} kicker="Scotland" title="Scottish taxpayers">
         <p>
           In Scotland the saving depends on your Scottish band: 19% or 20% for starter and basic-rate taxpayers, 21% for intermediate, 42% for higher, 45% for
-          advanced and 48% for top-rate taxpayers, plus the same National Insurance saving as elsewhere. A Scottish taxpayer earning £45,000 saves 42% Income Tax
+          advanced and 48% for top-rate taxpayers, plus the same National Insurance saving as elsewhere. A <a href="/tax-and-salary/scottish-tax">Scottish taxpayer</a>{" "}earning £45,000 saves 42% Income Tax
           and 8% National Insurance on a pension sacrifice, so each £1 costs only 50p. Choose Scotland under More options to see your figures.
         </p>
       </GuideSection>

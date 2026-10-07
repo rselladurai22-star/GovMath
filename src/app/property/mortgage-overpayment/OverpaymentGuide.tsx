@@ -66,11 +66,11 @@ export default function OverpaymentGuide() {
           because more of each payment goes to the loan and less to interest.
         </p>
         <p>
-          Take a £200,000 repayment mortgage at 4.5% over 25 years. The monthly payment is £1,111.66, and over the full term you
+          Take a £200,000 <a href="/property/mortgage-repayment">repayment mortgage</a>{" "}at 4.5% over 25 years. The monthly payment is £1,111.66, and over the full term you
           would pay £133,499 in interest: two-thirds of the amount borrowed. Overpaying cuts into that interest bill directly.
         </p>
         <Callout tone="good" title="A guaranteed, tax-free return">
-          Each pound you overpay saves interest at your mortgage rate. Unlike savings interest, that saving is not taxed, and
+          Each pound you overpay saves interest at your mortgage rate. Unlike <a href="/investing/savings-interest">savings interest</a>, that saving is not taxed, and
           unlike investments, it is certain.
         </Callout>
       </GuideSection>
@@ -139,7 +139,7 @@ export default function OverpaymentGuide() {
         />
         <p>
           Early in a mortgage, most of each payment is interest. That is exactly when overpaying has the biggest effect, and when
-          it most quickly improves your loan-to-value for your next remortgage.
+          it most quickly improves your loan-to-value for your next <a href="/property/remortgage">remortgage</a>.
         </p>
       </GuideSection>
 
@@ -224,7 +224,7 @@ export default function OverpaymentGuide() {
           ]}
         />
         <p>
-          The Personal Savings Allowance lets basic-rate taxpayers earn £1,000 of interest tax-free a year, and higher-rate
+          The <a href="/investing/personal-savings-allowance">Personal Savings Allowance</a>{" "}lets basic-rate taxpayers earn £1,000 of interest tax-free a year, and higher-rate
           taxpayers £500. ISAs are tax-free entirely. So for many people the fair comparison is simply the mortgage rate against
           the best tax-free savings rate.
         </p>
@@ -266,7 +266,7 @@ export default function OverpaymentGuide() {
 
       <GuideSection id="when-not" n={12} kicker="Caution" title="When not to overpay">
         <ul>
-          <li>If you have more expensive debts, such as credit cards or car finance, pay those first.</li>
+          <li>If you have more expensive debts, such as credit cards or <a href="/vehicles/car-finance">car finance</a>, pay those first.</li>
           <li>If you have no emergency fund. Aim for three to six months of spending in easy-access savings.</li>
           <li>If you would lose an employer pension match.</li>
           <li>If the overpayment would trigger an early repayment charge larger than the interest saved.</li>
@@ -326,7 +326,7 @@ export default function OverpaymentGuide() {
 
       <GuideSection id="isa" n={17} kicker="Investing" title="Overpay or invest in an ISA?">
         <p>
-          A stocks and shares ISA has historically returned more than mortgage rates over long periods, but with no guarantee:
+          A <a href="/investing/isa-vs-gia">stocks and shares ISA</a>{" "}has historically returned more than mortgage rates over long periods, but with no guarantee:
           investments can fall, sometimes sharply, and you might need the money at a bad time. Overpaying gives a certain,
           tax-free return equal to your mortgage rate.
         </p>

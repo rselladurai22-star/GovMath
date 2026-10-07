@@ -49,7 +49,7 @@ export default function HolidayGuide() {
       intro={
         <>
           Almost every worker in the UK has a legal right to paid holiday, whether full-time, part-time, casual or on a
-          zero-hours contract. This guide explains how much you are entitled to, how bank holidays and part-time hours
+          zero-hours contract. This guide explains how much you are entitled to, how <a href="/life/bank-holidays">bank holidays</a>{" "}and part-time hours
           work, how holiday pay should be calculated, and what happens when you start or leave a job.
         </>
       }
@@ -165,7 +165,7 @@ export default function HolidayGuide() {
       <GuideSection id="holiday-pay" n={6} kicker="Holiday pay" title="How holiday pay is worked out">
         <p>
           Holiday pay should be your normal pay. For the first four weeks of statutory holiday, &ldquo;normal&rdquo;
-          includes regular overtime, commission, shift premiums and other payments linked to the work you do.
+          includes regular <a href="/tax-and-salary/overtime">overtime</a>, commission, shift premiums and other payments linked to the work you do.
         </p>
         <p>
           If your pay varies, holiday pay is based on your average pay over the previous 52 weeks in which you were paid,
@@ -206,7 +206,7 @@ export default function HolidayGuide() {
 
       <GuideSection id="sickness" n={9} kicker="Leave" title="Sickness and family leave">
         <ul>
-          <li>Holiday continues to build up while you are off sick, and while on maternity, paternity, adoption or shared parental leave.</li>
+          <li>Holiday continues to build up while you are off sick, and while on maternity, paternity, adoption or <a href="/benefits/shared-parental-leave">shared parental leave</a>.</li>
           <li>If you are ill during booked holiday, you can take it as sick leave instead and rebook the holiday later.</li>
           <li>You can choose to take holiday while off sick, so you receive holiday pay instead of sick pay.</li>
         </ul>
@@ -327,6 +327,9 @@ export default function HolidayGuide() {
           On a true four-day week, where pay stays the same but hours fall, for example to 32 a week, your statutory
           entitlement is 5.6 × 32 = 179.2 hours, or 22.4 days of 8 hours. Contracts for these schemes usually set out the
           holiday rules in detail.
+        </p>
+      <p>
+          To scale a full-time salary to your hours or days, use the <a href="/tax-and-salary/pro-rata">pro rata salary calculator</a>. To add up the hours you have worked, the <a href="/life/timesheet-decimal">timesheet calculator</a> turns hours and minutes into decimal hours.
         </p>
       </GuideSection>
 

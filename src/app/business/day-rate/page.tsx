@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import DayRateStudio from "./DayRateStudio";
+import { ogFor } from "@/gm/og";
 import DayRateGuide from "./DayRateGuide";
 
 export const metadata: Metadata = {
-  title: "Freelance Day Rate Calculator UK 2026/27: What Should I Charge?",
+  title: "Freelance Day Rate Calculator UK 2026/27",
   description:
-    "Work out the day rate you need as a sole trader for the take-home pay you want, after tax, National Insurance, costs, holidays and unpaid admin days.",
+    "Free day rate calculator for freelancers. Find the rate that gives the take-home pay you want after tax, NI, costs, holidays and unpaid admin days.",
   alternates: { canonical: "/business/day-rate" },
+  openGraph: ogFor("/business/day-rate"),
 };
 
 const BREADCRUMBS = [

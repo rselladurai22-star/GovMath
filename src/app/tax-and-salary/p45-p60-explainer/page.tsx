@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import P45P60Studio from "./P45P60Studio";
+import { ogFor } from "@/gm/og";
 import P45P60Guide from "./P45P60Guide";
 
 export const metadata: Metadata = {
   title: "P45 and P60 Checker: Did I Pay the Right Tax?",
   description:
-    "Check the tax on your P60 or P45 against what was due for your pay and tax code, see each box explained, and learn what to do about an overpayment.",
+    "Free P45 and P60 checker. Compare the tax on your form with what was due for your pay and tax code, see each box explained, and fix an overpayment.",
   alternates: { canonical: "/tax-and-salary/p45-p60-explainer" },
+  openGraph: ogFor("/tax-and-salary/p45-p60-explainer"),
 };
 
 const BREADCRUMBS = [

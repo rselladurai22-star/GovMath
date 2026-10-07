@@ -115,10 +115,10 @@ export default function TaxCodeGuide() {
           end of the year. Common reasons include:
         </p>
         <ul>
-          <li><strong>Marriage Allowance:</strong> receiving it gives 1383M (£13,830); giving it gives 1131N (£11,310).</li>
+          <li><strong><a href="/tax-and-salary/marriage-allowance">Marriage Allowance</a>:</strong> receiving it gives 1383M (£13,830); giving it gives 1131N (£11,310).</li>
           <li><strong>Work expenses:</strong> a £60 uniform cleaning allowance raises the allowance to £12,630, code 1263L.</li>
           <li><strong>Company benefits:</strong> the taxable value of a car, fuel or medical insurance lowers your allowance.</li>
-          <li><strong>Untaxed income:</strong> rental profits or savings interest above your allowance can be taxed through your code.</li>
+          <li><strong>Untaxed income:</strong> rental profits or <a href="/investing/savings-interest">savings interest</a>{" "}above your allowance can be taxed through your code.</li>
           <li><strong>Tax you owe:</strong> small underpayments from earlier years, usually up to £3,000, can be collected through your code.</li>
           <li><strong>Pension or Gift Aid relief:</strong> higher-rate relief can be given by raising your allowance.</li>
         </ul>
@@ -159,7 +159,7 @@ export default function TaxCodeGuide() {
           of allowance left, so their code might be 757L.
         </p>
         <p>
-          If your income changes during the year, for example through a bonus, your code may not keep up. Any
+          If your income changes during the year, for example through a <a href="/tax-and-salary/bonus-tax">bonus</a>, your code may not keep up. Any
           underpayment is collected later through your code or Self Assessment. Pension contributions that bring you
           back below £100,000 can restore the allowance.
         </p>
@@ -214,7 +214,7 @@ export default function TaxCodeGuide() {
       <GuideSection id="pensioners" n={11} kicker="Retirement" title="Tax codes for pensioners">
         <p>
           The State Pension is taxable but paid without tax deducted. HMRC collects the tax through the code on your
-          private or workplace pension instead, by reducing your allowance by the State Pension.
+          private or <a href="/investing/workplace-pension">workplace pension</a>{" "}instead, by reducing your allowance by the State Pension.
         </p>
         <WorkedExample
           title="Full new State Pension plus a workplace pension"
@@ -227,7 +227,7 @@ export default function TaxCodeGuide() {
         />
         <p>
           A very low code like this is correct, not a mistake. It means almost all of the workplace pension is taxed at
-          20%, because the State Pension has used the allowance. If you keep working past State Pension age, the same
+          20%, because the State Pension has used the allowance. If you keep working past <a href="/investing/state-pension-age">State Pension age</a>, the same
           applies to your job.
         </p>
       </GuideSection>
@@ -289,7 +289,7 @@ export default function TaxCodeGuide() {
         <ul>
           <li>Rental profits under £2,500 a year, if you do not file a Self Assessment return.</li>
           <li>Savings interest above your Personal Savings Allowance, which HMRC learns about from banks.</li>
-          <li>Taxable State benefits, such as the State Pension or Carer&rsquo;s Allowance, alongside a job.</li>
+          <li>Taxable State benefits, such as the State Pension or <a href="/benefits/carers-earnings">Carer&rsquo;s Allowance</a>, alongside a job.</li>
         </ul>
         <p>
           The adjustment is an estimate based on the latest information HMRC has. If your savings interest falls, for

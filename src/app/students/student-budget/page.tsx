@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import BudgetStudio from "./BudgetStudio";
+import { ogFor } from "@/gm/og";
 import BudgetGuide from "./BudgetGuide";
 
 export const metadata: Metadata = {
-  title: "Student Budget Calculator UK 2026/27: Will My Loan Cover It?",
+  title: "Student Budget Calculator UK 2026/27",
   description:
-    "Plan your year at university: maintenance loan, grants, family help and a part-time job against rent and weekly living costs, with your weekly budget and any shortfall.",
+    "Free student budget calculator for 2026/27. Set your loan and income against rent, food, travel and other costs to see if your money will last the term.",
   alternates: { canonical: "/students/student-budget" },
+  openGraph: ogFor("/students/student-budget"),
 };
 
 const BREADCRUMBS = [

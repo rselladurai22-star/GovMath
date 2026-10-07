@@ -67,7 +67,7 @@ export default function VatGuide() {
             <strong>The VAT inside a VAT-inclusive price</strong> is one-sixth of it at 20%, and one twenty-first at 5%.
           </li>
           <li>
-            <strong>You must register</strong> once your taxable sales pass £90,000 in any rolling 12 months.
+            <strong>You must register</strong> once your taxable sales pass <a href="/business/vat-threshold">£90,000</a>{" "}in any rolling 12 months.
           </li>
         </ul>
         <KeyStats

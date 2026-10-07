@@ -40,7 +40,7 @@ export default function BikGuide() {
       intro={
         <>
           If your employer gives you a car you can use privately, you pay income tax on it as a benefit in kind. The amount depends on the
-          car&rsquo;s list price, its CO2 emissions and fuel, and your own tax rate. This guide explains the 2026/27 rates, why electric cars
+          car&rsquo;s list price, its CO2 emissions and <a href="/vehicles/fuel-cost-journey">fuel</a>, and your own tax rate. This guide explains the 2026/27 rates, why electric cars
           are so much cheaper, and how the rates will change.
         </>
       }
@@ -52,7 +52,7 @@ export default function BikGuide() {
         <ul>
           <li>Taxable benefit = list price × the appropriate percentage for the car.</li>
           <li>Electric cars are taxed at 4% in 2026/27. Petrol cars at 120 g/km are taxed at 30%.</li>
-          <li>On a £40,000 car, an electric model costs a basic-rate taxpayer £320 a year; a 120 g/km petrol car costs up to £4,800.</li>
+          <li>On a £40,000 car, an electric model costs a basic-rate taxpayer £320 a year; a 120 g/km <a href="/vehicles/petrol-vs-ev-cost">petrol car</a>{" "}costs up to £4,800.</li>
           <li>The electric rate rises to 5% in 2027/28, 7% in 2028/29 and 9% in 2029/30.</li>
         </ul>
         <KeyStats
@@ -74,7 +74,7 @@ export default function BikGuide() {
           <li>Start with the list price when new, including VAT, delivery and factory options.</li>
           <li>Multiply by the appropriate percentage, set by CO2 emissions and fuel.</li>
           <li>Reduce it for any days the car was unavailable and any payments you make for private use.</li>
-          <li>Pay income tax on the result at your marginal rate.</li>
+          <li>Pay income tax on the result at your <a href="/tax-and-salary/tax-bracket-checker">marginal rate</a>.</li>
         </ol>
         <p>You do not pay employee National Insurance on a company car, but your employer pays Class 1A National Insurance on it.</p>
       </GuideSection>
@@ -179,7 +179,7 @@ export default function BikGuide() {
         </p>
         <Callout tone="warn" title="Watch the £100,000 line">
           A company car counts towards adjusted net income. If it takes you over £100,000, you start to lose your Personal Allowance and may
-          lose tax-free childcare and funded childcare hours.
+          lose tax-free childcare and <a href="/benefits/free-childcare-hours">funded childcare</a>{" "}hours.
         </Callout>
       </GuideSection>
 
@@ -260,7 +260,7 @@ export default function BikGuide() {
       <GuideSection id="list-price" n={15} kicker="Price" title="The list price, or P11D value">
         <p>
           The price used is the car&rsquo;s list price on the day before it was first registered, often called the P11D value. It includes
-          VAT, delivery charges and any options or accessories fitted by the manufacturer or dealer. It excludes the first-year car tax and the
+          VAT, delivery charges and any options or accessories fitted by the manufacturer or dealer. It excludes the first-year <a href="/vehicles/car-tax-ved">car tax</a>{" "}and the
           first registration fee.
         </p>
         <p>
@@ -301,7 +301,7 @@ export default function BikGuide() {
           at home or 15p at a public charger. Paying for business fuel this way does not trigger the fuel benefit charge.
         </p>
         <p>
-          Your commute is not a business journey. Fuel for commuting paid by your employer counts as private fuel.
+          Your commute is not a business journey. Fuel for <a href="/vehicles/commuter-comparison">commuting</a>{" "}paid by your employer counts as private fuel.
         </p>
       </GuideSection>
 

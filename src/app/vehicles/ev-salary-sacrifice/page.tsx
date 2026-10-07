@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import EvSalSacStudio from "./EvSalSacStudio";
+import { ogFor } from "@/gm/og";
 import EvSalSacGuide from "./EvSalSacGuide";
 
 export const metadata: Metadata = {
   title: "EV Salary Sacrifice Calculator UK 2026/27",
   description:
-    "See what an electric car through salary sacrifice really costs after income tax, National Insurance and 4% company car tax, and how much you save compared with leasing privately.",
+    "Free electric car salary sacrifice calculator for 2026/27. See the real monthly cost after tax and NI savings, with benefit in kind included.",
   alternates: { canonical: "/vehicles/ev-salary-sacrifice" },
+  openGraph: ogFor("/vehicles/ev-salary-sacrifice"),
 };
 
 const BREADCRUMBS = [

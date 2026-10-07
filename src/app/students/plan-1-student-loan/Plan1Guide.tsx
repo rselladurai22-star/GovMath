@@ -75,7 +75,7 @@ export default function Plan1Guide() {
           <li>English or Welsh students who started an undergraduate course before 1 September 2012.</li>
           <li>Northern Irish students, whenever they started.</li>
         </ul>
-        <p>Scottish students are on Plan 4. Your Student Loans Company account confirms your plan.</p>
+        <p>Scottish students are on <a href="/students/plan-4-student-loan">Plan 4</a>. Your Student Loans Company account confirms your plan.</p>
       </GuideSection>
 
       <GuideSection id="repayments" n={3} kicker="Repaying" title="How repayments work">
@@ -111,7 +111,7 @@ export default function Plan1Guide() {
       <GuideSection id="interest" n={5} kicker="Interest" title="Interest on Plan 1">
         <p>
           Plan 1 interest is the lower of the Retail Prices Index from March and the Bank of England base rate plus 1%. From 1 September 2026 to
-          31 August 2027 it is 4.1%, the March 2026 RPI. Unlike Plan 2, it does not depend on your income, and there is no extra percentage
+          31 August 2027 it is 4.1%, the March 2026 RPI. Unlike <a href="/students/plan-2-student-loan">Plan 2</a>, it does not depend on your income, and there is no extra percentage
           while you study.
         </p>
       </GuideSection>
@@ -129,7 +129,7 @@ export default function Plan1Guide() {
           ]}
         />
         <p>
-          Plan 1 balances are usually smaller than later plans, because tuition fees were lower. Many borrowers on average incomes will clear
+          Plan 1 balances are usually smaller than later plans, because <a href="/students/degree-cost">tuition fees</a>{" "}were lower. Many borrowers on average incomes will clear
           the loan before the write-off. Enter how many years you have already been repaying under &ldquo;More options&rdquo; for a better
           estimate.
         </p>
@@ -167,7 +167,7 @@ export default function Plan1Guide() {
       <GuideSection id="marginal" n={10} kicker="Take-home pay" title="How it feels in your payslip">
         <p>
           Above the threshold, a basic-rate taxpayer keeps 63p of each extra pound after income tax, National Insurance and the 9% repayment.
-          Pension contributions through salary sacrifice reduce the pay used for repayments, so they save 9% as well.
+          Pension contributions through <a href="/tax-and-salary/salary-sacrifice">salary sacrifice</a>{" "}reduce the pay used for repayments, so they save 9% as well.
         </p>
       </GuideSection>
 
@@ -190,7 +190,7 @@ export default function Plan1Guide() {
         <p>
           Your employer works out repayments each pay day from your pay in that period and sends them to HMRC with your tax. HMRC passes the
           details to the Student Loans Company, which updates your balance. There can be a delay of several weeks before payments show in your
-          online account. At the end of the tax year, your P60 shows the total deducted.
+          online account. At the end of the tax year, your <a href="/tax-and-salary/p45-p60-explainer">P60</a>{" "}shows the total deducted.
         </p>
         <p>
           Because repayments are worked out on each pay period, a one-off bonus can trigger a repayment in that month even if your yearly
@@ -300,7 +300,7 @@ export default function Plan1Guide() {
           <li>Multiply what is left by 9%. That is your yearly repayment.</li>
           <li>Divide by 12 for a monthly figure.</li>
         </ol>
-        <p>The calculator does this for you, adds any Postgraduate Loan, and projects the balance over the years ahead.</p>
+        <p>The calculator does this for you, adds any <a href="/students/postgrad-loan">Postgraduate Loan</a>, and projects the balance over the years ahead.</p>
       </GuideSection>
 
       <GuideSection id="history" n={24} kicker="Background" title="A short history of Plan 1">

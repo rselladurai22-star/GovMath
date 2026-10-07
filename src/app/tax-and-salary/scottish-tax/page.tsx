@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import ScottishStudio from "./ScottishStudio";
+import { ogFor } from "@/gm/og";
 import ScottishGuide from "./ScottishGuide";
 
 export const metadata: Metadata = {
-  title: "Scottish Income Tax Calculator (2026/27)",
+  title: "Scottish Income Tax Calculator 2026/27",
   description:
-    "Work out your Scottish Income Tax and take-home pay for 2026/27 across all six bands, and compare it with the rest of the UK. Includes Plan 4 student loans and pensions.",
+    "Free Scottish Income Tax calculator for 2026/27. See tax in all six Scottish bands, your take-home pay and how it compares with the rest of the UK.",
   alternates: { canonical: "/tax-and-salary/scottish-tax" },
+  openGraph: ogFor("/tax-and-salary/scottish-tax"),
 };
 
 const BREADCRUMBS = [

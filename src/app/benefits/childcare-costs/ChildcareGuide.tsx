@@ -37,7 +37,7 @@ export default function ChildcareGuide() {
       title="What childcare really costs after the help you can get"
       intro={
         <>
-          Childcare is one of the biggest bills a working family faces, but very few parents pay the full price. In England, funded hours,
+          Childcare is one of the biggest bills a working family faces, but very few parents pay the full price. In England, <a href="/benefits/free-childcare-hours">funded hours</a>,
           Tax-Free Childcare and Universal Credit can each take a large share off the bill, and choosing the right combination can be worth
           thousands of pounds a year. This guide explains each kind of help, who gets it, and how to work out what you will actually pay.
         </>
@@ -50,7 +50,7 @@ export default function ChildcareGuide() {
         <ul>
           <li>Working parents in England get <strong>30 funded hours a week</strong>, for 38 weeks a year, from the term after a child turns 9 months until they start school.</li>
           <li>Every 3 and 4-year-old gets <strong>15 hours</strong>, whether or not the parents work.</li>
-          <li><strong>Tax-Free Childcare</strong> adds £2 for every £8 you pay, up to £2,000 a child a year.</li>
+          <li><strong><a href="/benefits/tax-free-childcare">Tax-Free Childcare</a></strong> adds £2 for every £8 you pay, up to £2,000 a child a year.</li>
           <li><strong>Universal Credit</strong> pays back 85% of costs, up to £1,071.09 a month for one child or £1,836.16 for two or more.</li>
           <li>You can have funded hours with either, but not Tax-Free Childcare and Universal Credit together.</li>
         </ul>
@@ -102,13 +102,13 @@ export default function ChildcareGuide() {
           is on a low income.
         </p>
         <p>
-          To count as working, each parent must expect to earn at least 16 hours a week at their minimum wage over the next three months (about
+          To count as working, each parent must expect to earn at least 16 hours a week at their <a href="/tax-and-salary/minimum-wage">minimum wage</a>{" "}over the next three months (about
           £203 a week at the National Living Wage of £12.71), and neither can have adjusted net income over £100,000. You reconfirm every three
           months.
         </p>
         <Callout title="Hours, not money">
           Funded hours are 30 hours for 38 weeks: 1,140 hours a year. Many nurseries stretch them over 48 to 51 weeks, giving about 22 to 24
-          hours a week. The value to you depends on your provider&rsquo;s hourly rate.
+          hours a week. The value to you depends on your provider&rsquo;s <a href="/tax-and-salary/hourly-to-salary">hourly rate</a>.
         </Callout>
       </GuideSection>
 
@@ -174,7 +174,7 @@ export default function ChildcareGuide() {
         <p>
           There are no funded hours for babies under 9 months, so this is often the most expensive time. Full-time nursery for a baby at £8.50 an
           hour for 50 hours a week over 51 weeks costs £21,675. Tax-Free Childcare takes off at most £2,000, leaving £19,675; Universal Credit
-          can pay up to £12,853 a year for one child. Many parents time the return to work with the funded hours, or use shared parental leave to
+          can pay up to £12,853 a year for one child. Many parents time the return to work with the funded hours, or use <a href="/benefits/shared-parental-leave">shared parental leave</a>{" "}to
           cover the gap.
         </p>
       </GuideSection>
@@ -194,7 +194,7 @@ export default function ChildcareGuide() {
         </p>
         <ul>
           <li>registration fees and deposits, often a month&rsquo;s fees;</li>
-          <li>fees for bank holidays and closure days in some settings;</li>
+          <li>fees for <a href="/life/bank-holidays">bank holidays</a>{" "}and closure days in some settings;</li>
           <li>late collection charges;</li>
           <li>the summer holidays, when term-time funding stops.</li>
         </ul>

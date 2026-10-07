@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import FlagshipPage from "@/components/flagship/FlagshipPage";
 import { CALCULATORS } from "@/lib/calculators";
 import DegreeStudio from "./DegreeStudio";
+import { ogFor } from "@/gm/og";
 import DegreeGuide from "./DegreeGuide";
 
 export const metadata: Metadata = {
-  title: "Cost of a Degree Calculator UK 2026: Fees, Loans and What You Repay",
+  title: "Cost of a Degree Calculator UK 2026",
   description:
-    "Add up the full cost of a degree in England: £9,790 tuition fees, maintenance loans, interest while studying, and what you would repay on a Plan 5 loan over 40 years.",
+    "Free calculator for the real cost of a degree. See tuition fees, maintenance loans, the total you borrow and what you are likely to repay on Plan 5.",
   alternates: { canonical: "/students/degree-cost" },
+  openGraph: ogFor("/students/degree-cost"),
 };
 
 const BREADCRUMBS = [
