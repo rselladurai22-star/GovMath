@@ -51,8 +51,16 @@ export function categoryGridHtml(): string {
  * so the page's own <h1> comes first in its heading outline. The topic menus
  * are moved into the logo row.
  */
-export function headerHtml(html: string, country: "uk" | "us" = "uk"): string {
-  return (country === "us" ? html.replace(/<nav id="ax-navigation"[\s\S]*?<\/nav>/, usNavHtml()) : html)
+/**
+ * The logo's link: the country's own home page inside its section (/uk, /us),
+ * or "/" elsewhere, which src/proxy.ts sends to the visitor's country.
+ */
+export function logoHomeHtml(html: string, country?: "uk" | "us"): string {
+  return country ? html.replace(/href="\/"(?= aria-label="SumAtlas home")/g, `href="/${country}"`) : html;
+}
+
+export function headerHtml(html: string, country?: "uk" | "us"): string {
+  return logoHomeHtml((country === "us" ? html.replace(/<nav id="ax-navigation"[\s\S]*?<\/nav>/, usNavHtml()) : html)
     .replace(
       /(<a class="button" href="(\/[a-z/-]+)">View all calculators<\/a><\/div><div class="ax-mega-links">)[\s\S]*?(<\/div>)/g,
       (_m, open: string, href: string, close: string) => {
@@ -76,7 +84,7 @@ export function headerHtml(html: string, country: "uk" | "us" = "uk"): string {
     .replace(/(<div class="ax-search gm-headsearch")([\s\S]*?)(<nav id="ax-navigation"[\s\S]*?<\/nav>)/, "$3$1$2")
     // Country menu (BookMyShow-style location picker) after the search box.
     // CountrySwitch.tsx sets the selected country and opens the list.
-    .replace(/(<div class="ax-search gm-headsearch"[\s\S]*?<div id="tool-search-results" hidden><\/div><\/div>)/, `$1${countryMenuHtml()}`);
+    .replace(/(<div class="ax-search gm-headsearch"[\s\S]*?<div id="tool-search-results" hidden><\/div><\/div>)/, `$1${countryMenuHtml()}`), country);
 }
 
 /** The topic a "View all calculators" link points at (/uk/benefits, /us/taxes, /everyday). */

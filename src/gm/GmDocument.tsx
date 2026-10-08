@@ -1,7 +1,7 @@
 import { createElement } from "react";
 import { THEME_AFTER, THEME_BEFORE } from "./GmShell";
 import GmScripts, { type GmScript } from "./GmScripts";
-import { categoryGridHtml, categoryLabel, headerHtml, topicMainHtml } from "./catalog";
+import { categoryGridHtml, categoryLabel, headerHtml, logoHomeHtml, topicMainHtml } from "./catalog";
 import { calculatorJsonLd, topicJsonLd } from "./schema";
 import { ogFor } from "./og";
 import { trustHtml } from "./trust";
@@ -53,7 +53,7 @@ export default function GmDocument({
           const attrs = Object.fromEntries(Object.entries(el.attrs).map(([k, v]) => [PROP[k] ?? k, v]));
           // The site theme wraps the main content (see GmShell).
           if (el.tag === "main") attrs.className = [attrs.className, "gm-neutral"].filter(Boolean).join(" ");
-          return createElement(el.tag, { key: i, ...attrs, dangerouslySetInnerHTML: { __html: el.tag === "header" ? headerHtml(el.html) : fill(el.html) } });
+          return createElement(el.tag, { key: i, ...attrs, dangerouslySetInnerHTML: { __html: el.tag === "header" ? headerHtml(el.html, "uk") : el.tag === "footer" ? logoHomeHtml(fill(el.html), "uk") : fill(el.html) } });
         })}
       </div>
       <GmScripts scripts={page.scripts as GmScript[]} />

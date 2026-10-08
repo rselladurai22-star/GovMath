@@ -17,7 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const newest = (isos: (string | undefined)[]) => isos.filter(Boolean).sort().at(-1);
   const calcDates = CALCULATORS.map((c) => updatedIso(c.href));
   return [
-    dated("", newest(calcDates)),
     dated("/uk", newest(CALCULATORS.filter((c) => c.country === "uk").map((c) => updatedIso(c.href)))),
     dated("/us", newest(CALCULATORS.filter((c) => c.country === "us").map((c) => updatedIso(c.href)))),
     ...US_CATEGORIES.map((c) => dated(c.href, newest(CALCULATORS.filter((x) => x.category === c.slug).map((x) => updatedIso(x.href))))),

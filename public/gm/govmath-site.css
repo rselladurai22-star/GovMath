@@ -1163,15 +1163,6 @@ a.gm-card:hover {
   }
 }
 
-/* World home page (October 2026): "United States" / "United Kingdom" labels
-   above each country's topic links. */
-.gm-topicgroup {
-  margin: 18px 0 10px;
-  font-size: 18px;
-  font-weight: 700;
-  color: #282828;
-}
-
 /* All calculators page: a heading for each country's group of topics. */
 .gm-countryheading {
   margin: 48px 0 0;

@@ -72,9 +72,10 @@ function close(menu: Element) {
  * The header's country menu (markup from countryMenuHtml in catalog.ts).
  * Inside a country's section (/uk/…, /us/…) it shows that country. Elsewhere it
  * shows the visitor's own choice if they made one, else the country they
- * are browsing from (when we cover it), else the UK. It never redirects:
- * people, and search engines crawling from abroad, always reach the page
- * they asked for.
+ * are browsing from (when we cover it), else the UK. A choice is also saved
+ * as the sa-country cookie, which src/proxy.ts uses to send sumatlas.com
+ * itself to that country. Nothing else redirects: people, and search engines
+ * crawling from abroad, always reach the page they asked for.
  */
 export default function CountrySwitch() {
   const path = usePathname();
@@ -116,7 +117,10 @@ export default function CountrySwitch() {
       }
       const choice = target.closest("a[data-country]");
       if (choice) {
-        write(KEY, choice.getAttribute("data-country")!);
+        const code = choice.getAttribute("data-country")!;
+        write(KEY, code);
+        // The same choice as a cookie, so sumatlas.com opens this country next time (src/proxy.ts).
+        document.cookie = `${KEY}=${code}; path=/; max-age=31536000; SameSite=Lax; Secure`;
         close(choice.closest(".gm-country")!);
       }
     };
