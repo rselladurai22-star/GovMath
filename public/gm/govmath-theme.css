@@ -1354,3 +1354,228 @@ footer .logo img{height:52px!important}
     line-height: 29px;
   }
 }
+
+/* ── Compact calculator, guide and content pages (8 October 2026) ──
+   Owner's request: compact every page, smaller headings where it helps,
+   body text kept at 16px for reading. */
+.gm-neutral .crumb {
+  padding: 10px 0;
+}
+.gm-neutral .intro {
+  padding: 6px 0 16px;
+}
+.gm-neutral .intro h1 {
+  font-size: 34px;
+  line-height: 40px;
+  margin: 0 0 8px;
+}
+.gm-neutral .gm-trust {
+  margin-top: 10px;
+}
+.gm-neutral .sectionnav {
+  margin-bottom: 18px;
+}
+.gm-neutral .sectionnav a {
+  padding: 10px 0;
+}
+/* Calculator */
+.gm-neutral .calculator {
+  padding: 26px 32px;
+}
+.gm-neutral .calcgrid {
+  gap: 32px;
+}
+.gm-neutral .field {
+  margin-bottom: 18px;
+}
+.gm-neutral .labelrow {
+  margin-bottom: 8px;
+}
+.gm-neutral .labelrow label {
+  font-size: 16px;
+}
+.gm-neutral .result {
+  padding: 22px 22px;
+}
+.gm-neutral .ax-paymentstrip {
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+.gm-neutral .circle {
+  width: 190px;
+  height: 190px;
+  margin: 12px auto 16px;
+}
+.gm-neutral .circle strong {
+  font-size: 28px;
+}
+.gm-neutral .bank-calculate {
+  margin-top: 10px;
+}
+/* Results in detail */
+.gm-neutral #results {
+  padding: 26px 0;
+}
+.gm-neutral #results h2 {
+  font-size: 26px;
+  line-height: 32px;
+}
+.gm-neutral .resultgrid {
+  margin: 14px 0;
+  gap: 14px;
+}
+.gm-neutral .resultgrid > * {
+  padding: 18px 20px;
+}
+.gm-neutral .facts {
+  margin: 14px 0;
+}
+.gm-neutral .facts > * {
+  padding: 14px 16px;
+}
+.gm-neutral details.ax-assumptions {
+  padding: 12px 16px;
+  margin: 14px 0;
+}
+.gm-neutral table th,
+.gm-neutral table td {
+  padding: 8px 12px;
+}
+/* Guide */
+.gm-neutral .guideintro {
+  padding: 22px 26px;
+  margin: 8px 0 22px;
+}
+.gm-neutral .guideintro h2,
+.gm-neutral .fullfaq h2,
+.gm-neutral .section h2,
+.gm-neutral .sectionheading h2,
+.gm-neutral .q-explainerTitle {
+  font-size: 28px;
+  line-height: 34px;
+}
+.gm-neutral .g-section {
+  padding: 4px 0 22px;
+  margin: 0 0 22px;
+}
+.gm-neutral .g-sectionHead {
+  margin-bottom: 6px;
+}
+.gm-neutral .g-section h2 {
+  font-size: 22px;
+  line-height: 28px;
+  margin: 0 0 10px;
+}
+.gm-neutral .g-section > p,
+.gm-neutral .g-section > ul,
+.gm-neutral .g-section > ol {
+  max-width: 84ch;
+}
+.gm-neutral .g-section p {
+  margin-bottom: 12px;
+}
+.gm-neutral .g-article ul li {
+  margin-bottom: 4px;
+}
+.gm-neutral .g-article table td,
+.gm-neutral .g-article table th {
+  padding: 9px 14px;
+}
+.gm-neutral .guide-nav {
+  padding: 14px 16px;
+}
+.gm-neutral .g-callout,
+.gm-neutral .callout {
+  padding: 12px 16px;
+  margin: 14px 0;
+}
+.gm-neutral .g-stats > *,
+.gm-neutral .g-compare > *,
+.gm-neutral .g-cards > * {
+  padding: 14px;
+}
+.gm-neutral .g-worked,
+.gm-neutral .g-example {
+  margin: 14px 0;
+}
+/* FAQ and related */
+.gm-neutral .fullfaq {
+  padding: 26px 28px;
+  margin: 26px 0;
+}
+.gm-neutral .q-faq details,
+.gm-neutral .q-faq > * {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-size: 17px;
+}
+.gm-neutral .relatedgrid {
+  margin-top: 14px;
+  gap: 14px;
+}
+.gm-neutral .q-relatedCard {
+  padding: 16px 18px;
+}
+footer {
+  padding: 22px 0 18px;
+}
+@media (max-width: 700px) {
+  .gm-neutral .intro h1 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+  .gm-neutral .calculator {
+    padding: 18px 14px;
+  }
+  .gm-neutral .result {
+    padding: 16px 14px;
+  }
+  .gm-neutral .guideintro h2,
+  .gm-neutral .fullfaq h2,
+  .gm-neutral .section h2,
+  .gm-neutral .sectionheading h2 {
+    font-size: 23px;
+    line-height: 29px;
+  }
+  .gm-neutral .g-section h2 {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .gm-neutral .guideintro,
+  .gm-neutral .fullfaq {
+    padding: 18px 16px;
+  }
+  .gm-neutral .q-faq details,
+  .gm-neutral .q-faq > * {
+    font-size: 16px;
+  }
+}
+/* Long card lists (all calculators, guides, topic pages): the whole card is
+   the link, so the "Open calculator" label goes, and wide screens get four
+   columns. */
+.categorytool .openlabel {
+  display: none;
+}
+.categorytool p {
+  margin-bottom: 0;
+}
+@media (min-width: 1240px) {
+  .fullcategory {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.gm-neutral .gm-cards {
+  gap: 14px;
+}
+.gm-neutral .gm-cards > * {
+  padding: 16px 18px;
+}
+.gm-neutral .categorytool h3 {
+  font-size: 18px;
+  line-height: 1.35;
+  margin: 0 0 4px;
+}
+.gm-neutral .gm-countryheading {
+  margin-top: 28px;
+  padding-top: 16px;
+}
