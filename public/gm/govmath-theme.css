@@ -1579,3 +1579,197 @@ footer {
   margin-top: 28px;
   padding-top: 16px;
 }
+
+/* ── Calculator form rows (8 October 2026, owner's request) ─────────
+   Every input is one row: the label on the left, its value on the right,
+   with a thin rule between fields so each one reads as its own line.
+   Sliders sit tight under their row; end values are small and muted. */
+.gm-neutral .gm-clear .field,
+.gm-neutral .gm-clear .ax-select-field {
+  margin: 0;
+  padding: 12px 0;
+  border-bottom: 1px solid #e4e8ec;
+}
+.gm-neutral .gm-clear .moreoptions .field:last-child,
+.gm-neutral .gm-clear .moreoptions .ax-select-field:last-child {
+  border-bottom: 0;
+}
+.gm-neutral .gm-clear .labelrow {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0;
+}
+.gm-neutral .gm-clear .labelrow > .gm-labelwrap {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.gm-neutral.gm-neutral .gm-clear .labelrow label,
+.gm-neutral .gm-clear .gm-label,
+.gm-neutral .gm-clear .ax-select-field label,
+.gm-neutral .gm-clear .gm-switchrow label {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.gm-neutral .gm-clear .gm-aside {
+  font-size: 13px;
+  font-weight: 400;
+}
+.gm-neutral .gm-clear .number,
+.gm-neutral .gm-clear .labelrow > .number {
+  flex: 0 0 auto;
+  width: 150px;
+  min-height: 38px;
+  padding: 6px 10px;
+}
+.gm-neutral .gm-clear .number input {
+  font-size: 15px;
+}
+.gm-neutral .gm-clear input[type="range"] {
+  margin: 12px 0 4px;
+}
+.gm-neutral .gm-clear .endpoints {
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0;
+}
+.gm-neutral .gm-clear .field .chips {
+  margin: 10px 0 0;
+}
+/* Dropdowns */
+.gm-neutral .gm-clear .ax-select-field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(170px, 56%);
+  align-items: center;
+  gap: 12px;
+}
+.gm-neutral .gm-clear .ax-select-field .gm-labelwrap {
+  margin: 0;
+}
+.gm-neutral .gm-clear .ax-select-toggle {
+  min-height: 38px;
+  font-size: 15px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+/* Radio choices: label left, options right (they wrap under each other if
+   there is not room). */
+.gm-neutral .gm-clear .gm-radiogroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+}
+.gm-neutral .gm-clear .gm-radiogroup > legend {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+.gm-neutral .gm-clear .gm-radios {
+  margin-left: auto;
+  justify-content: flex-end;
+  gap: 6px;
+}
+.gm-neutral .gm-clear .gm-radio {
+  padding: 6px 11px 6px 9px;
+  gap: 7px;
+  font-size: 14px;
+}
+/* Switches: label left, switch right */
+.gm-neutral .gm-clear .gm-switchrow {
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+.gm-neutral .gm-clear .gm-switchrow .gm-switch {
+  order: 3;
+  margin-left: auto;
+}
+.gm-neutral .gm-clear .gm-switchrow label {
+  order: 1;
+}
+.gm-neutral .gm-clear .gm-switchrow .gm-info {
+  order: 2;
+}
+/* Date and text boxes */
+.gm-neutral .gm-clear .field:has(> .gm-input) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 50%);
+  align-items: center;
+  gap: 12px;
+}
+.gm-neutral .gm-clear .field > .gm-input {
+  width: 100%;
+  min-height: 38px;
+  font-size: 15px;
+}
+.gm-neutral .gm-clear .field > .hint {
+  grid-column: 1 / -1;
+}
+/* More options and the button */
+.gm-neutral .gm-clear .moreoptions > div {
+  padding-top: 0;
+}
+.gm-neutral .gm-clear .bank-calculate {
+  margin-top: 16px;
+}
+@media (max-width: 650px) {
+  .gm-neutral .gm-clear .labelrow {
+    flex-wrap: nowrap;
+  }
+  .gm-neutral .gm-clear .labelrow > .gm-labelwrap {
+    flex: 1 1 auto;
+  }
+  .gm-neutral .gm-clear .number,
+  .gm-neutral .gm-clear .labelrow > .number {
+    width: 46%;
+    max-width: 170px;
+  }
+  .gm-neutral .gm-clear .ax-select-field {
+    grid-template-columns: minmax(0, 1fr) 54%;
+  }
+  .gm-neutral .gm-clear .gm-radio {
+    flex: 0 1 auto;
+  }
+}
+/* The (i) button follows the label text on the same line, even on phones. */
+.gm-neutral .gm-clear .gm-labelwrap {
+  display: block;
+}
+.gm-neutral .gm-clear .gm-labelwrap > label,
+.gm-neutral .gm-clear .gm-labelwrap > .gm-label {
+  display: inline;
+}
+.gm-neutral .gm-clear .gm-labelwrap > .gm-info {
+  display: inline-flex;
+  vertical-align: -3px;
+  margin-left: 6px;
+}
+.gm-neutral .gm-clear .gm-labelwrap > .gm-aside {
+  display: block;
+  margin-top: 2px;
+}
+/* Four or more choices: the options take their own row under the label. */
+.gm-neutral .gm-clear .gm-radiogroup:has(.gm-radio:nth-child(4)) > legend {
+  float: none;
+  width: 100%;
+}
+.gm-neutral .gm-clear .gm-radiogroup:has(.gm-radio:nth-child(4)) .gm-radios {
+  width: 100%;
+  margin-left: 0;
+  justify-content: flex-start;
+}
+@media (max-width: 650px) {
+  .gm-neutral .gm-clear .gm-radiogroup:has(.gm-radio:nth-child(3)) > legend {
+    float: none;
+    width: 100%;
+  }
+  .gm-neutral .gm-clear .gm-radiogroup:has(.gm-radio:nth-child(3)) .gm-radios {
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+}
