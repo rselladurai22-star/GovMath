@@ -152,28 +152,35 @@ export default function PaycheckGuide() {
       <GuideSection id="state" n={7} kicker="State" title="State income tax">
         <p>
           Nine states have no income tax on wages: Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington and Wyoming.
-          Others use one flat rate, such as Arizona (2.5%), Colorado (4.4%), Illinois (4.95%) and North Carolina (3.99%). The rest, including
-          California and New York, have graduated brackets, so the calculator asks you for your rate instead of guessing.
+          The other 41 states and DC each have their own rules. Some use one flat rate, such as Arizona (2.5%), Colorado (4.4%) and Illinois (4.95%);
+          the rest, including California and New York, tax income in brackets. Each state also has its own standard deduction, personal exemptions
+          or credits. The calculator applies your state&rsquo;s 2026 brackets, deductions and exemptions for your filing status and dependents.
         </p>
         <DataTable
-          caption="State income tax on $60,000, single, paid every two weeks (flat rate on all wages)"
-          head={["State", "State tax a year", "Take-home a year"]}
-          numeric={[1, 2]}
+          caption="State income tax on $60,000, single, no dependents, 2026 state rules"
+          head={["State", "State tax a year", "Share of pay", "Take-home a year"]}
+          numeric={[1, 2, 3]}
           rows={[
-            ["Texas or Florida", "$0", "$50,390"],
-            ["Arizona (2.5%)", "$1,500", "$48,890"],
-            ["Indiana (2.95%)", "$1,770", "$48,620"],
-            ["Pennsylvania (3.07%)", "$1,842", "$48,548"],
-            ["North Carolina (3.99%)", "$2,394", "$47,996"],
-            ["Michigan (4.25%)", "$2,550", "$47,840"],
-            ["Colorado (4.4%)", "$2,640", "$47,750"],
-            ["Illinois (4.95%)", "$2,970", "$47,420"],
-            ["Georgia (4.99%)", "$2,994", "$47,396"],
+            ["Texas or Florida", "$0", "0%", "$50,390"],
+            ["Ohio", "$875", "1.5%", "$49,516"],
+            ["Arizona", "$1,291", "2.2%", "$49,099"],
+            ["New Jersey", "$1,767", "2.9%", "$48,623"],
+            ["Pennsylvania", "$1,842", "3.1%", "$48,548"],
+            ["North Carolina", "$1,885", "3.1%", "$48,505"],
+            ["Colorado", "$1,932", "3.2%", "$48,458"],
+            ["Georgia", "$2,246", "3.7%", "$48,145"],
+            ["California (including 1.3% SDI)", "$2,420", "4.0%", "$47,970"],
+            ["Virginia", "$2,636", "4.4%", "$47,754"],
+            ["New York (before any city tax)", "$2,643", "4.4%", "$47,747"],
+            ["Massachusetts", "$2,780", "4.6%", "$47,610"],
+            ["Illinois", "$2,825", "4.7%", "$47,565"],
+            ["Oregon", "$4,420", "7.4%", "$45,970"],
           ]}
         />
         <p>
-          These figures apply the flat rate to all wages after pre-tax deductions. Some states give personal exemptions or their own standard
-          deduction, so the real figure can be a little lower. In Illinois the $60,000 example loses $114.23 a paycheck to state tax, leaving $1,823.85.
+          A state&rsquo;s top rate can mislead: Ohio&rsquo;s 2.75% and New Jersey&rsquo;s brackets leave far less tax at $60,000 than a flat 4.95% in
+          Illinois, where the $60,000 example loses $108.66 a paycheck to state tax, leaving $1,829.42. A few states also let you deduct some federal
+          tax (Alabama in full, Missouri and Oregon in part); we include Alabama&rsquo;s and leave out the other two, so those figures can be a little high.
         </p>
       </GuideSection>
 

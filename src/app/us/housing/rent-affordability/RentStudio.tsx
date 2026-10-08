@@ -5,7 +5,7 @@ import { paycheck, stateNote } from "@/lib/us/pay";
 import { STATES, stateByCode } from "@/lib/us/states";
 import type { FilingStatus } from "@/lib/us/tax-2026";
 import Studio from "@/components/flagship/Studio";
-import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField } from "@/components/flagship/inputs";
+import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
 import { percent, usd } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
@@ -17,19 +17,17 @@ const SCHEMA = {
   pay: oneOf<"estimate" | "enter">("estimate", ["estimate", "enter"]),
   state: oneOf<string>("TX", CODES),
   status: oneOf<FilingStatus>("single", ["single", "mfj", "hoh"]),
-  stateRate: num(4, 0, 20),
   takeHome: num(4_200, 0, 10_000_000),
   otherNeeds: num(700, 0, 1_000_000),
   debts: num(300, 0, 1_000_000),
   rent: num(1_800, 0, 1_000_000),
 };
-const ADVANCED = ["pay", "state", "status", "stateRate", "takeHome"] as const;
+const ADVANCED = ["pay", "state", "status", "takeHome"] as const;
 
 export default function RentStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
   const st8 = stateByCode(v.state);
-  const asks = st8?.income.kind === "ask";
   const pc = paycheck({
     salary: v.income,
     frequency: "monthly",
@@ -40,7 +38,6 @@ export default function RentStudio({ query }: { query: Query }) {
     children: 0,
     otherDependents: 0,
     state: v.state,
-    stateRate: v.stateRate / 100,
     localRate: 0,
     extraWithholding: 0,
   });
@@ -98,7 +95,6 @@ export default function RentStudio({ query }: { query: Query }) {
             {v.pay === "estimate" ? (
               <>
                 <SelectField label="State" optional value={v.state} onChange={st.bind("state")} options={STATES.map((s) => ({ value: s.code, label: s.name }))} hint={stateNote(v.state)} />
-                {asks && <StepperField label="State income tax, share of pay" optional value={v.stateRate} onChange={st.bind("stateRate")} step={0.25} min={0} max={20} unit="%" dp={2} />}
                 <SelectField
                   label="Filing status"
                   optional

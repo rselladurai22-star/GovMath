@@ -186,13 +186,15 @@ export default function RentGuide() {
           format={usd}
           items={[
             { label: "Texas (no income tax)", value: 4_199 },
-            { label: "Arizona (2.5% flat)", value: 4_074 },
-            { label: "California (3% entered)", value: 4_049 },
-            { label: "Colorado (4.4% flat)", value: 3_979 },
-            { label: "Georgia (4.99% flat)", value: 3_950 },
+            { label: "Arizona", value: 4_092 },
+            { label: "Colorado", value: 4_038 },
+            { label: "Georgia", value: 4_012 },
+            { label: "California", value: 3_998 },
+            { label: "New York", value: 3_979 },
+            { label: "Oregon", value: 3_831 },
           ]}
         />
-        <p>The difference is a couple of hundred dollars a month, which matters most in a tight budget. Some cities, such as New York City, add a local income tax too.</p>
+        <p>Each figure uses that state&rsquo;s 2026 brackets, deductions and exemptions. The difference is a few hundred dollars a month, which matters most in a tight budget. Some cities, such as New York City, add a local income tax too.</p>
       </GuideSection>
 
       <GuideSection id="hidden" n={12} kicker="Costs" title="Costs beyond the rent">

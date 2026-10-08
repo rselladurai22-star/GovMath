@@ -36,6 +36,7 @@ const SOURCES: Source[] = [
   { label: "CFPB: Interest rate vs APR", href: "https://www.consumerfinance.gov/ask-cfpb/what-is-the-difference-between-a-mortgage-interest-rate-and-an-apr-en-135/" },
   { label: "CFPB: What are closing costs?", href: "https://www.consumerfinance.gov/ask-cfpb/what-are-closing-costs-en-1845/" },
   { label: "CFPB: Buying a house", href: "https://www.consumerfinance.gov/owning-a-home/" },
+  { label: "U.S. Census Bureau: American Community Survey 2024, median real estate taxes (B25103) and median home value (B25077)", href: "https://data.census.gov/table/ACSDT1Y2024.B25103" },
   { label: "Tax Foundation: How high are property taxes in your state?", href: "https://taxfoundation.org/data/all/property-taxes/how-high-are-property-taxes-in-your-state/" },
 ];
 
@@ -263,19 +264,23 @@ export default function MortgageGuide() {
 
       <GuideSection id="property-tax" n={11} kicker="Taxes" title="Property tax">
         <p>
-          Property tax is set by your county, city and school district, as a share of the assessed value. Nationally it averages about 1% of a home&rsquo;s value a year. The Tax
-          Foundation&rsquo;s latest state ranking runs from about 0.3% in Hawaii to about 2.2% in New Jersey, with Illinois and New Hampshire also above 2%.
+          Property tax is set by your county, city and school district, as a share of the assessed value. Census Bureau figures for 2024 put the typical
+          bill at about 0.89% of a home&rsquo;s value nationally ($3,211 on a $360,600 home). Statewide, it runs from about 0.27% in Hawaii to about 1.9% in
+          New Jersey and Illinois. Pick your state in the calculator and it fills in that state&rsquo;s typical rate.
         </p>
         <Bars
           format={(n) => `${n.toFixed(2)}%`}
           items={[
-            { label: "New Jersey", value: 2.21 },
-            { label: "Illinois", value: 2.05 },
-            { label: "New Hampshire", value: 2.03 },
-            { label: "Wyoming", value: 0.55 },
-            { label: "Louisiana", value: 0.52 },
-            { label: "Alabama", value: 0.4 },
-            { label: "Hawaii", value: 0.3 },
+            { label: "Illinois", value: 1.92 },
+            { label: "New Jersey", value: 1.89 },
+            { label: "Connecticut", value: 1.66 },
+            { label: "New Hampshire", value: 1.46 },
+            { label: "Texas", value: 1.31 },
+            { label: "US typical", value: 0.89 },
+            { label: "California", value: 0.71 },
+            { label: "Colorado", value: 0.49 },
+            { label: "Alabama", value: 0.38 },
+            { label: "Hawaii", value: 0.27 },
           ]}
         />
         <p>
@@ -407,7 +412,7 @@ export default function MortgageGuide() {
             ["PMI cost (Freddie Mac)", "about $30 to $70 a month per $100,000"],
             ["Ask to cancel PMI", "80% of original value"],
             ["PMI ends automatically", "78% on the original schedule"],
-            ["Typical property tax", "about 1% of value a year"],
+            ["Typical property tax (Census Bureau, 2024)", "about 0.89% of value a year; 0.27% to 1.9% by state"],
             ["Minimum down payment", "3% to 5% conventional, 3.5% FHA, 0% VA and USDA"],
           ]}
         />

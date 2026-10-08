@@ -12,7 +12,6 @@ const base: PaycheckInput = {
   children: 0,
   otherDependents: 0,
   state: "TX",
-  stateRate: 0,
   localRate: 0,
   extraWithholding: 0,
 };
@@ -42,10 +41,12 @@ describe("US paycheck", () => {
     const k = paycheck({ ...base, salary: 300_000, k401Pct: 0.15 });
     expect(k.k401.year).toBe(24_500);
     expect(k.k401Capped).toBe(true);
-    expect(paycheck({ ...base, state: "IL" }).state.year).toBeCloseTo(75_000 * 0.0495, 6);
-    expect(stateIncomeTax("OH", 50_000, 0)).toBeCloseTo((50_000 - 26_050) * 0.0275, 6);
-    expect(stateIncomeTax("CA", 50_000, 0.05)).toBeCloseTo(2_500, 6);
-    expect(stateIncomeTax("FL", 50_000, 0.05)).toBe(0);
+    // Illinois: 4.95% after the $2,925 exemption.
+    expect(paycheck({ ...base, state: "IL" }).state.year).toBeCloseTo((75_000 - 2_925) * 0.0495, 6);
+    expect(stateIncomeTax("FL", 50_000)).toBe(0);
+    // California adds 1.3% SDI on wages to the state line.
+    const ca = paycheck({ ...base, state: "CA" });
+    expect(ca.state.year).toBeCloseTo(stateIncomeTax("CA", 75_000) + 75_000 * 0.013, 6);
   });
 
   it("gives the child tax credit through withholding", () => {
