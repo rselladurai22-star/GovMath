@@ -1217,3 +1217,140 @@ footer .logo img{height:52px!important}
     height: 44px !important;
   }
 }
+
+/* ── Compact home and topic pages (October 2026, owner's request) ──
+   Less empty space on the country home pages (/uk, /us) and the topic pages
+   that share their cards, without smaller body text. */
+.hero .herogrid {
+  padding-top: 36px;
+  padding-bottom: 36px;
+}
+.hero .herocopy h1 {
+  font-size: 38px;
+  margin: 0 0 12px;
+}
+.hero .herocopy > p:not(.eyebrow) {
+  margin-bottom: 18px;
+}
+.hero .heronote {
+  margin-top: 12px;
+}
+.popularsection {
+  padding: 28px 0;
+}
+.headingrow {
+  margin-bottom: 16px;
+}
+.popularcard {
+  padding: 16px 18px;
+}
+.popularcard h3 {
+  margin: 10px 0 4px;
+}
+.popularcard p {
+  margin: 0 0 10px;
+}
+.browse {
+  padding: 28px 0 36px;
+}
+.categoryjump {
+  margin: 0 0 18px;
+}
+.categorygrid {
+  gap: 16px;
+}
+.categorycard {
+  padding: 18px 20px;
+}
+.categorycard > p {
+  margin: 8px 0 10px;
+}
+.toollist {
+  margin-bottom: 14px;
+}
+.toollist a {
+  padding: 7px 4px;
+}
+@media (min-width: 1100px) {
+  .categorygrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .fullcategory {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.categoryhero {
+  padding: 24px 28px;
+  margin: 4px 0 16px;
+}
+.categoryhero h1 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+.crumb {
+  padding: 14px 0;
+}
+.fullcategory {
+  gap: 14px;
+  margin: 16px 0;
+}
+.categorytool {
+  padding: 16px 18px;
+  gap: 14px;
+}
+.gm-neutral .categorytool h2,
+.categorytool h2 {
+  font-size: 19px;
+  line-height: 1.35;
+  margin: 0 0 4px;
+}
+.categorytool p {
+  font-size: 15px;
+  margin: 0 0 8px;
+}
+.gm-neutral .section:has(> .fullcategory),
+.gm-neutral .section:has(.fullcategory) {
+  padding: 24px 0;
+}
+.gm-neutral .sectionheading h2 {
+  font-size: 28px;
+  line-height: 34px;
+}
+.sectionheading .eyebrow {
+  margin-bottom: 4px;
+}
+.section:has(.fullcategory) .sectionheading + p {
+  margin: 6px 0 0;
+}
+@media (max-width: 700px) {
+  .hero .herogrid {
+    padding-top: 26px;
+    padding-bottom: 26px;
+  }
+  .hero .herocopy h1 {
+    font-size: 32px;
+  }
+  .popularsection,
+  .browse {
+    padding: 22px 0;
+  }
+  .categorycard {
+    padding: 16px;
+  }
+  .toollist a {
+    padding: 9px 4px;
+  }
+  .categoryhero {
+    padding: 20px 18px;
+  }
+  .categoryhero h1 {
+    font-size: 26px;
+  }
+  .categorytool {
+    padding: 14px;
+  }
+  .gm-neutral .sectionheading h2 {
+    font-size: 23px;
+    line-height: 29px;
+  }
+}

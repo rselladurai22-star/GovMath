@@ -15,7 +15,7 @@ export default function PrivacyPage() {
     <ContentPage
       title="Privacy Policy"
       intro="What we collect, what we don't, and the choices you have."
-      updated="7 October 2026"
+      updated="8 October 2026"
     >
       <p>
         This Privacy Policy explains how SumAtlas (&quot;we&quot;,
@@ -69,8 +69,12 @@ export default function PrivacyPage() {
         which country your connection comes from. Our code reads only the
         country code (such as &ldquo;GB&rdquo;) and does not keep it. If you
         pick a country from the menu, your choice is saved in your own
-        browser&rsquo;s storage so the menu remembers it; you can clear it at any
-        time by clearing your browser&rsquo;s site data.
+        browser (in its storage and in a small first-party cookie called
+        &ldquo;sa-country&rdquo; that lasts a year), so the menu remembers it and
+        sumatlas.com opens that country&rsquo;s page next time. When you visit
+        sumatlas.com without a saved choice, we use the same country code to
+        open the UK or US page. You can clear the choice at any time by clearing
+        your browser&rsquo;s site data.
       </p>
 
       <h2>Advertising and Google AdSense</h2>
