@@ -4,7 +4,8 @@ import { mortgage, yearly } from "@/lib/us/mortgage";
 import { pmiMilestones } from "@/lib/us/housing-loans-extra";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
-import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
+import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField } from "@/components/flagship/inputs";
+import { propertyTaxPct, STATES } from "@/lib/us/states";
 import { Answer, Assumptions, Callout, DataTable, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
 import { duration, percent, usd, usdShort } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
@@ -17,7 +18,8 @@ const SCHEMA = {
   rate: num(7.25, 0, 30),
   years: oneOf<"15" | "20" | "30">("30", ["15", "20", "30"]),
   taxMode: oneOf<"rate" | "usd">("rate", ["rate", "usd"]),
-  taxRate: num(1, 0, 10),
+  state: oneOf<string>("US", ["US", ...STATES.map((s) => s.code)]),
+  taxRate: num(propertyTaxPct("US"), 0, 10),
   taxAmount: num(4_000, 0, 10_000_000),
   insurance: num(1_800, 0, 1_000_000),
   hoa: num(0, 0, 100_000),
@@ -101,6 +103,16 @@ export default function MortgageStudio({ query }: { query: Query }) {
                 { value: "30", label: "30 years" },
               ]}
             />
+            <SelectField
+              label="State"
+              value={v.state}
+              onChange={(code) => {
+                st.set("state", code);
+                st.set("taxRate", propertyTaxPct(code)); st.set("taxMode", "rate");
+              }}
+              options={[{ value: "US", label: "US average" }, ...STATES.map((s) => ({ value: s.code, label: s.name }))]}
+              info={`Sets the property tax rate to the ${v.state === "US" ? "national" : "state"} typical figure (${propertyTaxPct(v.state)}%). You can change it under More options.`}
+            />
           </InputGroup>
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             <Segmented
@@ -125,7 +137,7 @@ export default function MortgageStudio({ query }: { query: Query }) {
                 unit="%"
                 dp={2}
                 aside={`${usd(propertyTax)} a year`}
-                info="About 1% of the home's value is typical nationally. The Tax Foundation's state averages run from about 0.3% in Hawaii to about 2.2% in New Jersey. Your county assessor's site has the real figure."
+                info="Statewide typical rates run from about 0.27% in Hawaii to about 1.9% in New Jersey and Illinois (Census Bureau, 2024). Your county assessor's site has the real figure."
               />
             ) : (
               <MoneyField label="Property tax a year" symbol="$" optional value={v.taxAmount} onChange={st.bind("taxAmount")} />

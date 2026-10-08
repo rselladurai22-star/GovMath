@@ -265,7 +265,9 @@ export default function CapitalGainsGuide() {
 
       <GuideSection id="state" n={15} kicker="State" title="State tax on gains">
         <p>
-          Most states tax capital gains as ordinary income at their normal rates, so a 5% state adds about 5% of the gain. States with no income tax
+          Most states tax capital gains as ordinary income at their normal rates, stacked on your other income. The calculator works out your
+          state&rsquo;s tax with and without the gain using its 2026 brackets: for a single person earning $60,000, a $30,000 gain adds about $2,485 of
+          California tax, $1,627 in New York and $1,485 in Illinois. States with no income tax
           (Texas, Florida, Nevada and others) do not tax gains, with one exception: Washington taxes long-term gains on stocks and similar assets above a
           yearly standard deduction ($270,000 for 2024, raised for inflation) at 7%, and at 9.9% on gains over $1 million from 2025. Real estate is exempt
           there. Some states, such as Arkansas and Wisconsin, tax only part of long-term gains.

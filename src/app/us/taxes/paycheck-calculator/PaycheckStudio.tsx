@@ -21,7 +21,6 @@ const SCHEMA = {
   freq: oneOf<PayFrequency>("biweekly", FREQS),
   status: oneOf<FilingStatus>("single", STATUSES),
   state: oneOf<string>("TX", CODES),
-  stateRate: num(5, 0, 20),
   k401: num(0, 0, 100),
   children: num(0, 0, 15),
   roth: num(0, 0, 100),
@@ -49,13 +48,11 @@ export default function PaycheckStudio({ query }: { query: Query }) {
     children: Math.round(v.children),
     otherDependents: Math.round(v.others),
     state: v.state,
-    stateRate: v.stateRate / 100,
     localRate: v.local / 100,
     extraWithholding: v.extra,
   };
   const p = paycheck(input);
   const state = stateByCode(v.state);
-  const asks = state?.income.kind === "ask";
   const n = p.periods;
   const fica = p.socialSecurity.period + p.medicare.period;
   const stateLocal = p.state.period + p.local.period;
@@ -119,19 +116,6 @@ export default function PaycheckStudio({ query }: { query: Query }) {
           <InputGroup title="Your taxes">
             <RadioGroup label="Filing status" value={v.status} onChange={st.bind("status")} options={STATUSES.map((s) => ({ value: s, label: FILING_LABEL[s] }))} />
             <SelectField label="State you work in" value={v.state} onChange={st.bind("state")} options={STATES.map((s) => ({ value: s.code, label: s.name }))} info={stateNote(v.state)} />
-            {asks && (
-              <StepperField
-                label={`${state?.name ?? "State"} income tax rate`}
-                value={v.stateRate}
-                onChange={st.bind("stateRate")}
-                step={0.25}
-                min={0}
-                max={15}
-                unit="%"
-                dp={2}
-                info="This state taxes income at graduated rates. Enter the share of your pay you expect to go in state income tax: your last return or a recent pay stub shows it."
-              />
-            )}
             <StepperField label="Traditional 401(k)" value={v.k401} onChange={st.bind("k401")} step={1} min={0} max={100} unit="%" dp={1} info={`Taken before income tax, up to the 2026 limit of ${usd(US_2026.limits.k401)}.`} />
             <StepperField label="Children under 17" value={v.children} onChange={(x) => st.set("children", Math.round(x))} step={1} min={0} max={15} unit="children" dp={0} info="As on step 3 of your Form W-4: $2,200 child tax credit each." />
           </InputGroup>
@@ -182,6 +166,7 @@ export default function PaycheckStudio({ query }: { query: Query }) {
           { label: "Form W-4", value: `2020 or later form, ${FILING_LABEL[v.status].toLowerCase()}, no other jobs or income` },
           { label: "Federal tax", value: "The year's tax on this pay, spread evenly over your paychecks" },
           { label: "State", value: state ? stateNote(state.code) : "" },
+          { label: "State tax method", value: "2026 state brackets, standard deduction and exemptions on wages after pre-tax deductions; head of household uses the single brackets" },
           { label: "FICA", value: `Social Security 6.2% up to ${usd(US_2026.socialSecurity.wageBase)}; Medicare 1.45%, plus 0.9% on high pay` },
         ]}
       />

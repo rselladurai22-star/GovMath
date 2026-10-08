@@ -4,7 +4,8 @@
  */
 
 import { federalReturn, fica, ordinaryTax, overtimeDeduction, standardDeduction, US_2026, type FilingStatus } from "./tax-2026";
-import { stateByCode, stateIncomeTax } from "./states";
+import { stateByCode } from "./states";
+import { CA_SDI, stateTax } from "./state-tax-2026";
 
 export type PayFrequency = "weekly" | "biweekly" | "semimonthly" | "monthly";
 export const PERIODS: Record<PayFrequency, number> = { weekly: 52, biweekly: 26, semimonthly: 24, monthly: 12 };
@@ -25,8 +26,6 @@ export type PaycheckInput = {
   children: number;
   otherDependents: number;
   state: string;
-  /** For states that ask: the share of pay you expect to pay in state and local income tax. */
-  stateRate: number;
   /** Local income tax (city or county), as a share of pay. */
   localRate: number;
   /** Extra federal withholding a paycheck (Form W-4 step 4(c)). */
@@ -92,7 +91,8 @@ export function paycheck(i: PaycheckInput): Paycheck {
   // Withholding covers the tax after credits; refundable credits come back on the return, not through payroll.
   const federal = Math.max(0, ret.incomeTax) + Math.max(0, i.extraWithholding) * periods;
   const f = fica(ficaWages, i.status);
-  const state = stateIncomeTax(i.state, federalWages, i.stateRate);
+  const st = stateTax({ code: i.state, wages: federalWages, k401, status: i.status, dependents: i.children + i.otherDependents, federalTax: Math.max(0, ret.incomeTax) });
+  const state = st.tax + (i.state === "CA" ? ficaWages * CA_SDI : 0);
   const local = federalWages * Math.max(0, i.localRate);
   const net = gross - k401 - roth - s125 - federal - f.socialSecurity - f.medicare - f.additionalMedicare - state - local;
   return {
@@ -120,8 +120,10 @@ export function stateNote(code: string): string {
   const s = stateByCode(code);
   if (!s) return "";
   if (s.income.kind === "none") return `${s.name} has no state income tax on wages.`;
-  if (s.income.kind === "flat") return `${s.name} has a flat income tax of ${(s.income.rate * 100).toFixed(2).replace(/0$/, "")}%.${s.income.note ? ` ${s.income.note}` : ""}`;
-  return `${s.name}'s income tax rate depends on your income, so enter the share of your pay you expect to pay.`;
+  const pct = (r: number) => `${(r * 100).toFixed(2).replace(/\.?0+$/, "")}%`;
+  const note = s.income.note ? ` ${s.income.note}` : "";
+  if (s.income.kind === "flat") return `${s.name} has a flat income tax of ${pct(s.income.rate)}, after its own deductions and exemptions.${note}`;
+  return `${s.name} taxes income in brackets up to ${pct(s.income.top)}, after its own deductions and exemptions.${note}`;
 }
 
 export type PayRates = { hourly: number; daily: number; weekly: number; biweekly: number; semimonthly: number; monthly: number; annual: number };

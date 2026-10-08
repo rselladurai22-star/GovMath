@@ -1,10 +1,11 @@
 "use client";
 
 import { federalReturn, FILING_LABEL, US_2026, type FilingStatus, type ReturnInput } from "@/lib/us/tax-2026";
+import { stateTax as stateTaxOn } from "@/lib/us/state-tax-2026";
 import { STATES, stateByCode } from "@/lib/us/states";
 import { capitalLoss, homeExclusion } from "@/lib/us/taxes-extra";
 import Studio from "@/components/flagship/Studio";
-import { AdvancedOptions, InputGroup, MoneyField, RadioGroup, Segmented, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
+import { AdvancedOptions, InputGroup, MoneyField, RadioGroup, Segmented, SelectField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
 import { percent, usd } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
@@ -20,7 +21,6 @@ const SCHEMA = {
   status: oneOf<FilingStatus>("single", STATUSES),
   income: num(60_000, 0, 100_000_000),
   state: oneOf<string>("TX", CODES),
-  stateRate: num(5, 0, 20),
   costs: num(0, 0, 100_000_000),
   losses: num(0, 0, 100_000_000),
   home: bool(false),
@@ -62,8 +62,9 @@ export default function CapitalGainsStudio({ query }: { query: Query }) {
   const fed = gainTax(v.status, v.income, v.itemized, cl.netGain, cl.deduction, long);
   const other = gainTax(v.status, v.income, v.itemized, cl.netGain, cl.deduction, !long);
   const state = stateByCode(v.state);
-  const stateRate = !state || state.income.kind === "none" ? 0 : state.income.kind === "flat" ? state.income.rate : v.stateRate / 100;
-  const stateTax = cl.netGain * stateRate;
+  const stateBase = { code: v.state, status: v.status, dependents: 0 };
+  const stateTax = stateTaxOn({ ...stateBase, wages: v.income + cl.netGain - cl.deduction }).tax - stateTaxOn({ ...stateBase, wages: v.income }).tax;
+  const stateRate = cl.netGain > 0 ? stateTax / cl.netGain : 0;
   const federalOnly = Math.max(0, fed.tax - fed.niit);
   const total = fed.tax + stateTax;
   const keep = Math.max(0, gain - Math.max(0, total));
@@ -99,9 +100,6 @@ export default function CapitalGainsStudio({ query }: { query: Query }) {
             <RadioGroup label="Filing status" value={v.status} onChange={st.bind("status")} options={STATUSES.map((s) => ({ value: s, label: FILING_LABEL[s] }))} />
             <MoneyField label="Your other income for 2026" symbol="$" value={v.income} onChange={st.bind("income")} info="Wages and other ordinary income before deductions. The gain is taxed on top." />
             <SelectField label="State" value={v.state} onChange={st.bind("state")} options={STATES.map((s) => ({ value: s.code, label: s.name }))} />
-            {state?.income.kind === "ask" && (
-              <StepperField label={`${state.name} tax rate on the gain`} value={v.stateRate} onChange={st.bind("stateRate")} step={0.25} min={0} max={15} unit="%" dp={2} info="Most states tax gains as ordinary income at your top state rate." />
-            )}
           </InputGroup>
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             <MoneyField label="Selling costs" symbol="$" value={v.costs} onChange={st.bind("costs")} optional info="Commissions, closing costs and other costs of the sale." />
@@ -159,7 +157,7 @@ export default function CapitalGainsStudio({ query }: { query: Query }) {
           { label: "Tax year", value: "2026" },
           { label: "Other income", value: `${usd(v.income)} of ordinary income, ${v.itemized > 0 ? "larger of itemized and standard deduction" : "standard deduction"}` },
           { label: "Federal rates", value: long ? "0%, 15% or 20%, stacked on your other income" : "Your ordinary income brackets" },
-          { label: "State", value: state ? (state.income.kind === "none" ? `${state.name}: no income tax on gains` : `${state.name}: ${percent(stateRate, 2)} on the gain`) : "" },
+          { label: "State", value: state ? (state.income.kind === "none" ? `${state.name}: no income tax on gains` : `${state.name}: ${usd(stateTax)} (${percent(stateRate, 2)} of the gain), taxed as ordinary income on top of your other income with 2026 state brackets. A few states tax long-term gains less`) : "" },
           { label: "Not included", value: "28% collectibles rate, 25% depreciation recapture, AMT" },
         ]}
       />

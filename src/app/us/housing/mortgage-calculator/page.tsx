@@ -55,7 +55,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How is property tax estimated?",
-    a: "As a share of the home's value: about 1% is typical, but state averages range from about 0.3% in Hawaii to about 2.2% in New Jersey. You can enter a rate or a dollar figure under More options.",
+    a: "As a share of the home's value: about 0.89% nationally (Census Bureau, 2024), from about 0.27% in Hawaii to about 1.9% in New Jersey and Illinois. Pick your state to fill in its typical rate, or enter your own rate or dollar figure under More options.",
   },
   {
     q: "Does the calculator include closing costs?",

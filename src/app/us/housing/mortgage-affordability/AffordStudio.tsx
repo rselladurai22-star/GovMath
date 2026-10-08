@@ -1,6 +1,7 @@
 "use client";
 
 import { affordability } from "@/lib/us/mortgage";
+import { propertyTaxPct, STATES } from "@/lib/us/states";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
@@ -18,7 +19,8 @@ const SCHEMA = {
   rule: oneOf<Rule>("28-36", ["28-36", "28-43", "31-43", "custom"]),
   front: num(28, 1, 100),
   back: num(36, 1, 100),
-  taxRate: num(1, 0, 10),
+  state: oneOf<string>("US", ["US", ...STATES.map((s) => s.code)]),
+  taxRate: num(propertyTaxPct("US"), 0, 10),
   insurance: num(1_800, 0, 1_000_000),
   hoa: num(0, 0, 100_000),
   pmiRate: num(0.5, 0, 5),
@@ -108,6 +110,16 @@ export default function AffordStudio({ query }: { query: Query }) {
                 { value: "30", label: "30 years" },
               ]}
             />
+            <SelectField
+              label="State"
+              value={v.state}
+              onChange={(code) => {
+                st.set("state", code);
+                st.set("taxRate", propertyTaxPct(code));
+              }}
+              options={[{ value: "US", label: "US average" }, ...STATES.map((s) => ({ value: s.code, label: s.name }))]}
+              info={`Sets the property tax rate to the ${v.state === "US" ? "national" : "state"} typical figure (${propertyTaxPct(v.state)}%). You can change it under More options.`}
+            />
           </InputGroup>
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             <SelectField
@@ -124,7 +136,7 @@ export default function AffordStudio({ query }: { query: Query }) {
                 <StepperField label="All-debts limit" optional value={v.back} onChange={st.bind("back")} step={1} min={1} max={100} unit="%" dp={0} />
               </>
             )}
-            <StepperField label="Property tax rate" optional value={v.taxRate} onChange={st.bind("taxRate")} step={0.05} min={0} max={10} unit="%" dp={2} info="About 1% of the price is typical; state averages run from about 0.3% to about 2.2%." />
+            <StepperField label="Property tax rate" optional value={v.taxRate} onChange={st.bind("taxRate")} step={0.05} min={0} max={10} unit="%" dp={2} info="Statewide typical rates run from about 0.27% in Hawaii to about 1.9% in New Jersey and Illinois (Census Bureau, 2024)." />
             <MoneyField label="Homeowners insurance a year" symbol="$" optional value={v.insurance} onChange={st.bind("insurance")} />
             <MoneyField label="HOA dues a month" symbol="$" optional value={v.hoa} onChange={st.bind("hoa")} />
             <StepperField

@@ -23,12 +23,12 @@ const BREADCRUMBS = [
 ];
 
 const FAQS: { q: string; a: string }[] = [
-  { q: "How much is $60,000 a year after taxes?", a: "For a single person in Texas paid every two weeks in 2026, about $1,938 a paycheck, or $50,390 a year. In a state with income tax it is lower: about $47,420 in Illinois." },
+  { q: "How much is $60,000 a year after taxes?", a: "For a single person in Texas paid every two weeks in 2026, about $1,938 a paycheck, or $50,390 a year. In a state with income tax it is lower: about $47,565 in Illinois or $47,970 in California." },
   { q: "What percentage of my paycheck goes to taxes?", a: "Usually 15% to 25% for most earners: 7.65% for Social Security and Medicare, plus federal income tax and any state tax. On $60,000 in Texas it is about 16%." },
   { q: "How is federal tax withheld from my paycheck?", a: "Your employer uses your Form W-4 and the IRS tables in Publication 15-T. They turn your pay into a yearly figure, take off the standard deduction, apply the 2026 brackets and divide the tax across your paychecks." },
   { q: "What is FICA on my pay stub?", a: "FICA is Social Security (6.2% of pay up to $184,500 in 2026) and Medicare (1.45% of all pay, plus 0.9% above $200,000 single or $250,000 married filing jointly)." },
   { q: "Does a 401(k) lower my taxes?", a: "A traditional 401(k) lowers federal and most state income tax, but not Social Security or Medicare. A Roth 401(k) does not lower your tax now, but qualified withdrawals are tax-free." },
-  { q: "Why is my paycheck different from the calculator?", a: "Payroll tables round, some states have deductions or payroll taxes we leave out (such as California SDI), and your stub may include benefits, garnishments or a different W-4 setting. The difference is usually a few dollars a paycheck." },
+  { q: "Why is my paycheck different from the calculator?", a: "Payroll tables round, some states have credits or payroll taxes we leave out (such as paid family leave contributions), and your stub may include benefits, garnishments or a different W-4 setting. The difference is usually a few dollars a paycheck." },
   { q: "Is biweekly the same as twice a month?", a: "No. Biweekly is every two weeks, 26 paychecks a year. Twice a month (semimonthly) is 24 paychecks, so each one is a little bigger." },
   { q: "Which states have no income tax?", a: "Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington and Wyoming do not tax wages." },
   { q: "Should I claim my children on my W-4?", a: "Yes, if you will claim them on your return. Step 3 lowers withholding by $2,200 for each child under 17 and $500 for other dependents, so you get the credit through your paychecks instead of waiting for a refund." },

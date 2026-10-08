@@ -1,10 +1,20 @@
 import updated from "./updated.json";
 import { formatDate } from "../lib/life/calendar";
 
-/** The date a calculator page last changed (from scripts/build-updated.py), e.g. "6 October 2026". */
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+/**
+ * The date a calculator page last changed (from scripts/build-updated.py):
+ * "6 October 2026" in UK style, or "October 6, 2026" on US pages.
+ */
 export function updatedOn(path: string): string | undefined {
   const iso = (updated as Record<string, string>)[path];
-  return iso ? formatDate(iso, "medium") : undefined;
+  if (!iso) return undefined;
+  if (path.startsWith("/us/")) {
+    const [y, m, d] = iso.split("-").map(Number);
+    return `${MONTHS[m - 1]} ${d}, ${y}`;
+  }
+  return formatDate(iso, "medium");
 }
 
 /**
