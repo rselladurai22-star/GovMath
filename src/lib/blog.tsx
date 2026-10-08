@@ -1257,6 +1257,865 @@ export const BLOG_POSTS: BlogPost[] = [
       </>
     ),
   },
+  {
+    slug: "no-tax-on-overtime-and-tips-2026",
+    title: "No tax on overtime and tips in 2026: what the new deductions are really worth",
+    seoTitle: "No Tax on Overtime and Tips: 2026 Real Savings",
+    description:
+      "The 2026 overtime and tips deductions explained with worked examples: who qualifies, the $12,500 and $25,000 caps, the income phase-out, and the taxes you still pay.",
+    date: "2026-10-08",
+    dateLabel: "8 October 2026",
+    readingTime: "11 min read",
+    category: "US Taxes",
+    body: (
+      <>
+        <p>
+          &ldquo;No tax on overtime&rdquo; and &ldquo;no tax on tips&rdquo; were two of the most talked-about promises
+          of the last few years, and the One Big Beautiful Bill Act, signed on July 4, 2025, turned both into law. But
+          the law does not quite do what the slogans say. Overtime and tips are not tax-free. Instead, there are two
+          new federal deductions, each with a cap, an income phase-out and a list of rules about what counts. For many
+          hourly workers and tipped staff they are worth hundreds or a few thousand dollars a year. For others they are
+          worth nothing at all.
+        </p>
+        <p>
+          This guide explains how both deductions work for the 2026 tax year, the return you file in early 2027, with
+          worked examples for a warehouse worker, a married pair of nurses, a restaurant server, a bartender and higher
+          earners caught by the phase-out. Every dollar figure comes from the same 2026 federal tax engine as our{" "}
+          <Link href="/us/taxes/federal-income-tax">federal income tax calculator</Link>, using the 2026 brackets and
+          standard deduction. The examples assume the standard deduction and no other income unless they say otherwise.
+        </p>
+
+        <h2>The short version</h2>
+        <ul>
+          <li>
+            <strong>Overtime:</strong>{" "}you can deduct the extra &ldquo;half&rdquo; of time-and-a-half pay that
+            federal law requires, up to $12,500 a year, or $25,000 on a joint return.
+          </li>
+          <li>
+            <strong>Tips:</strong>{" "}you can deduct qualified tips, up to $25,000 a year per return, if you work in a job
+            where tipping was customary before 2025.
+          </li>
+          <li>
+            <strong>Both</strong>{" "}shrink by $100 for every $1,000 of modified adjusted gross income above $150,000
+            ($300,000 for married couples filing jointly).
+          </li>
+          <li>
+            <strong>Both</strong>{" "}apply whether or not you itemize, but neither cuts Social Security, Medicare or (in
+            most states) state income tax.
+          </li>
+          <li>
+            <strong>Both</strong>{" "}run for the 2025 to 2028 tax years only, and neither is available if you are married
+            and file separately.
+          </li>
+        </ul>
+
+        <h2>Why &ldquo;no tax&rdquo; is not quite right</h2>
+        <p>
+          A deduction lowers your taxable income. It does not remove tax dollar for dollar. If you are in the 12% bracket, every $1,000 of deduction saves $120 of federal income tax. In the 22%
+          bracket the same $1,000 saves $220. So the value of the overtime and tips deductions depends on your bracket,
+          and if your income is already low enough that you owe no federal income tax, the deductions save nothing,
+          because there is no tax left to cut.
+        </p>
+        <p>
+          The second reason the slogans overstate it is payroll tax. Every dollar of overtime and tips is still subject
+          to Social Security tax (6.2%) and Medicare tax (1.45%), a combined 7.65% for most employees. Those taxes come
+          out of every paycheck whatever the new deductions say. For many lower-paid workers, payroll tax is actually a
+          bigger bill than federal income tax, so the headline promise touches only part of what they pay.
+        </p>
+        <p>
+          The third reason is state tax. The new deductions sit in the federal calculation after adjusted gross income
+          (AGI). Most states start their own income tax from federal AGI or from wages, so unless your state passes its
+          own matching rule, your overtime and tips are still taxed by the state. Nine states have no tax on wages at
+          all, so there it makes no difference.
+        </p>
+
+        <h2>How the overtime deduction works</h2>
+        <h3>Only the premium counts</h3>
+        <p>
+          The deduction covers &ldquo;qualified overtime compensation&rdquo;: the part of your overtime pay that is
+          above your regular rate and is required by the Fair Labor Standards Act (FLSA). Under the FLSA, most hourly
+          employees must get at least one and a half times their regular rate for hours over 40 in a workweek. If you
+          earn $22 an hour, an overtime hour pays $33. Only the extra $11, the &ldquo;half&rdquo; in time-and-a-half, is
+          qualified overtime. The first $22 is ordinary pay, taxed as usual.
+        </p>
+        <p>
+          That one detail cuts the value of the deduction to about a third of what many people expect. Someone who earns
+          $9,900 of overtime pay in a year at time-and-a-half can deduct $3,300, not $9,900.
+        </p>
+        <h3>Federal overtime only</h3>
+        <p>
+          Because the definition is tied to the FLSA, overtime that is paid only because of state law or a contract
+          generally does not qualify. Examples include daily overtime after eight hours in a day (required in some
+          states, but not by the FLSA), double time, and overtime paid to salaried staff who are exempt from the FLSA
+          overtime rules. If you are paid double time for hours over 40, only the premium that the FLSA requires (half
+          your regular rate) counts, not the full extra amount. Our{" "}
+          <Link href="/us/taxes/overtime-calculator">overtime calculator</Link> splits your overtime pay into the regular
+          part and the premium, so you can see the deductible amount.
+        </p>
+        <h3>The cap and the phase-out</h3>
+        <p>
+          The deduction is capped at $12,500 a year for single filers and heads of household, and $25,000 for married
+          couples filing jointly. To reach the single cap you would need $25,000 of overtime premium, which means
+          $75,000 of overtime pay at time-and-a-half. Very few people get near it, so for most workers the cap is not
+          the limit that matters. The phase-out may be.
+        </p>
+
+        <h2>How the tips deduction works</h2>
+        <p>
+          The tips deduction lets you deduct up to $25,000 of &ldquo;qualified tips&rdquo; a year. The cap is per
+          return, not per person, so a married couple who both earn tips still share one $25,000 cap. To be qualified,
+          tips must meet several conditions:
+        </p>
+        <ul>
+          <li>
+            <strong>A tipped occupation:</strong>{" "}the job must be one that customarily and regularly received tips on
+            or before December 31, 2024. The Treasury published a list of qualifying occupations, which covers jobs such
+            as servers, bartenders, hairstylists, delivery drivers, valets, hotel staff and many others.
+          </li>
+          <li>
+            <strong>Voluntary:</strong>{" "}the customer must choose whether to tip and how much. Automatic service
+            charges added to a bill, such as an 18% charge for large groups, are not tips, even if the employer passes
+            them on to staff.
+          </li>
+          <li>
+            <strong>Cash or card:</strong>{" "}tips paid in cash, by card or through a tip-sharing arrangement all count,
+            as long as they are reported.
+          </li>
+          <li>
+            <strong>Reported:</strong>{" "}tips must appear on your Form W-2 or, for self-employed workers, on the forms
+            and records used for your return. Tips that were never reported to your employer cannot be deducted.
+          </li>
+        </ul>
+        <p>
+          Self-employed people in tipped occupations can claim the deduction too, but the deduction cannot exceed their
+          net profit from that work, and some professional service businesses are excluded.
+        </p>
+
+        <h2>Who cannot claim either deduction</h2>
+        <ul>
+          <li>Married people who file separate returns.</li>
+          <li>Anyone without a Social Security number valid for work (the number must be on the return).</li>
+          <li>Salaried staff who are exempt from FLSA overtime, for the overtime deduction.</li>
+          <li>Workers in jobs not on the tipped occupation list, for the tips deduction.</li>
+          <li>High earners whose income has fully phased the deduction out (see below).</li>
+        </ul>
+
+        <h2>Example 1: a warehouse worker on $22 an hour</h2>
+        <p>
+          Maria is single and earns $22 an hour. She works 40 hours every week of the year, which is $45,760, plus six
+          hours of overtime a week for 50 weeks at $33 an hour, another $9,900. Her total wages are $55,660.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Maria, single, 2026</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Regular pay</td><td>$45,760</td></tr>
+            <tr><td>Overtime pay</td><td>$9,900</td></tr>
+            <tr><td>Qualified overtime premium (the &ldquo;half&rdquo;)</td><td>$3,300</td></tr>
+            <tr><td>Federal income tax without the deduction</td><td>$4,499.20</td></tr>
+            <tr><td>Federal income tax with the deduction</td><td>$4,103.20</td></tr>
+            <tr><td>Saving</td><td>$396</td></tr>
+            <tr><td>Social Security and Medicare still due on the overtime pay</td><td>$757.35</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Maria saves $396 a year, which is 12% of her $3,300 premium because her top dollar of taxable income sits in
+          the 12% bracket. Notice that the payroll tax on her overtime pay, $757.35, is almost twice the income tax she
+          saves. The deduction helps, but her overtime is a long way from tax-free.
+        </p>
+
+        <h2>Example 2: a married couple who are both nurses</h2>
+        <p>
+          A married couple filing jointly earn $140,000 between them, including overtime with a qualified premium of
+          $9,000. They have two children, so they also get the child tax credit of $2,200 a child.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Married filing jointly, two children</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Wages</td><td>$140,000</td></tr>
+            <tr><td>Overtime deduction</td><td>$9,000</td></tr>
+            <tr><td>Federal income tax without the deduction</td><td>$8,740</td></tr>
+            <tr><td>Federal income tax with the deduction</td><td>$6,960</td></tr>
+            <tr><td>Saving</td><td>$1,780</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The saving is $1,780 rather than a flat 22% of $9,000 ($1,980). Without the deduction, $7,000 of their taxable
+          income sits in the 22% bracket, which starts at $100,800 for joint filers in 2026. The deduction removes that
+          $7,000 at 22% and another $2,000 at 12%. When a deduction straddles a bracket line, the saving is a blend of
+          the two rates. The <Link href="/us/taxes/tax-bracket-calculator">tax bracket calculator</Link> shows exactly
+          where your income sits.
+        </p>
+
+        <h2>Example 3: a restaurant server</h2>
+        <p>
+          Jordan is single and works as a server. Jordan&rsquo;s wages from the restaurant come to $28,000 and reported
+          tips add $18,000, so W-2 income is $46,000.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Jordan, single</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Wages including tips</td><td>$46,000</td></tr>
+            <tr><td>Tips deduction</td><td>$18,000</td></tr>
+            <tr><td>Taxable income after the standard deduction and tips</td><td>$11,900</td></tr>
+            <tr><td>Federal income tax without the deduction</td><td>$3,340</td></tr>
+            <tr><td>Federal income tax with the deduction</td><td>$1,190</td></tr>
+            <tr><td>Saving</td><td>$2,150</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The tips deduction is far more valuable than the overtime deduction for the same income, because the whole tip
+          counts, not just a premium. Jordan&rsquo;s federal income tax falls by almost two thirds. Payroll tax of 7.65%
+          on all $46,000 still applies, $3,519 in total, which is now nearly three times Jordan&rsquo;s income tax.
+        </p>
+
+        <h2>Example 4: a bartender who hits the cap</h2>
+        <p>
+          A single bartender earns $30,000 in wages and $40,000 in tips, $70,000 in all. Only $25,000 of the tips can be
+          deducted.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Bartender, single</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Wages including tips</td><td>$70,000</td></tr>
+            <tr><td>Tips deduction (capped)</td><td>$25,000</td></tr>
+            <tr><td>Federal income tax without the deduction</td><td>$6,570</td></tr>
+            <tr><td>Federal income tax with the deduction</td><td>$3,220</td></tr>
+            <tr><td>Saving</td><td>$3,350</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The deduction takes this bartender from the 22% bracket down into the 12% bracket, so the first part of the
+          deduction saves 22 cents on the dollar and the rest saves 12 cents. The remaining $15,000 of tips is taxed as
+          normal.
+        </p>
+
+        <h2>Example 5: tips and overtime together</h2>
+        <p>
+          You can claim both deductions in the same year if you qualify for both, for example a hotel worker who earns
+          tips and also works overtime. A single worker with $70,000 of wages, including $10,000 of qualified tips and an
+          overtime premium of $4,000, pays $6,570 of federal income tax without the deductions and $4,540 with them, a
+          saving of $2,030. Each deduction has its own cap, so claiming one does not use up the other.
+        </p>
+
+        <h2>Example 6: when the deduction saves nothing, or adds to a refund</h2>
+        <p>
+          A single part-time server with $24,000 of wages, including $8,000 of tips, would owe $790 of federal income tax
+          without the deduction. With it, taxable income falls to zero, so the saving is the full $790. A bigger tips
+          figure would not save any more: once taxable income reaches zero, there is nothing left to deduct from.
+        </p>
+        <p>
+          The interaction with credits can be surprising. A head of household server with one child, wages of $38,000
+          including $14,000 of tips, already owes no federal income tax after the child tax credit. Without the tips
+          deduction the return shows a refund of $815 from the refundable part of the credit. With it, the refund rises to
+          $1,700, the full refundable amount, because the deduction leaves less income tax for the credit to cancel and
+          more of the credit is paid out in cash. That is $885 better off.
+        </p>
+        <p>
+          At the other end, a worker whose income is entirely covered by the standard deduction, $16,100 for a single
+          filer in 2026, owes no income tax and gains nothing from either deduction.
+        </p>
+
+        <h2>The phase-out for higher earners</h2>
+        <p>
+          Both deductions shrink by $100 for each $1,000, or part of $1,000, of modified adjusted gross income above
+          $150,000 for single filers and heads of household, or $300,000 for joint filers. For most people, modified AGI
+          is simply AGI. Because the cut is the same $100 per $1,000 for both deductions, the bigger tips cap lasts
+          longer.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Modified AGI</th>
+              <th>Maximum overtime deduction</th>
+              <th>Maximum tips deduction</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Single, $150,000 or less</td><td>$12,500</td><td>$25,000</td></tr>
+            <tr><td>Single, $160,000</td><td>$11,500</td><td>$24,000</td></tr>
+            <tr><td>Single, $175,000</td><td>$10,000</td><td>$22,500</td></tr>
+            <tr><td>Single, $200,000</td><td>$7,500</td><td>$20,000</td></tr>
+            <tr><td>Single, $275,000</td><td>$0</td><td>$12,500</td></tr>
+            <tr><td>Joint, $300,000 or less</td><td>$25,000</td><td>$25,000</td></tr>
+            <tr><td>Joint, $350,000</td><td>$20,000</td><td>$20,000</td></tr>
+            <tr><td>Joint, $425,000</td><td>$12,500</td><td>$12,500</td></tr>
+            <tr><td>Joint, $550,000</td><td>$0</td><td>$0</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Even $1 over the line costs $100 of deduction: a single filer with modified AGI of $150,001 can deduct up to
+          $12,400 of overtime, not $12,500. In practice the phase-out only bites when your overtime premium is larger
+          than the reduced cap.
+        </p>
+        <p>
+          Two examples. A single filer earning $170,000 with $12,500 of overtime premium can deduct only $10,500,
+          saving $2,520 at the 24% rate. A married couple earning $320,000 with a $20,000 premium face a reduced cap of
+          $23,000, which is still above their premium, so they deduct the full $20,000 and save $4,800.
+        </p>
+
+        <h2>Lower-income examples at a glance</h2>
+        <p>
+          The deduction&rsquo;s value grows with your bracket, but only up to the phase-out. A married couple filing
+          jointly on $75,000, with one spouse earning a $6,000 overtime premium, save $720, because all of it sits in
+          the 12% bracket. Compare that with the bartender above, who saved $3,350 on $70,000 because the tips deduction
+          was larger and reached into the 22% bracket.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Example (2026)</th>
+              <th>Deduction</th>
+              <th>Federal income tax saved</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Single, $55,660 with $3,300 overtime premium</td><td>$3,300</td><td>$396</td></tr>
+            <tr><td>Joint, $75,000 with $6,000 overtime premium</td><td>$6,000</td><td>$720</td></tr>
+            <tr><td>Joint, $140,000 with $9,000 premium, two children</td><td>$9,000</td><td>$1,780</td></tr>
+            <tr><td>Single, $24,000 with $8,000 tips</td><td>$8,000</td><td>$790</td></tr>
+            <tr><td>Single, $46,000 with $18,000 tips</td><td>$18,000</td><td>$2,150</td></tr>
+            <tr><td>Single, $70,000 with $40,000 tips</td><td>$25,000 (capped)</td><td>$3,350</td></tr>
+            <tr><td>Single, $170,000 with $12,500 premium</td><td>$10,500 (phased)</td><td>$2,520</td></tr>
+            <tr><td>Married filing separately, any amount</td><td>$0</td><td>$0</td></tr>
+          </tbody>
+        </table>
+
+        <h2>What it does not change</h2>
+        <h3>Social Security and Medicare</h3>
+        <p>
+          Payroll taxes are worked out on wages, and the new deductions only reduce income tax. You still pay 6.2%
+          Social Security tax up to the 2026 wage base of $184,500 and 1.45% Medicare tax on all of it, plus the
+          additional 0.9% Medicare tax above $200,000 for a single filer. One upside of this: because tips and overtime
+          still count as wages for Social Security, they still build your future Social Security benefit.
+        </p>
+        <h3>Your AGI</h3>
+        <p>
+          The deductions come after AGI. That matters because many other tax rules use AGI, including the phase-outs for
+          Roth IRA contributions, the child tax credit and the student loan interest deduction, and income-based student
+          loan repayment plans and health insurance subsidies. Claiming the overtime or tips deduction does not lower
+          your AGI, so it will not, on its own, help you qualify for those.
+        </p>
+        <h3>State income tax</h3>
+        <p>
+          As explained above, most states tax overtime and tips as normal unless they have passed their own law. Check
+          your state&rsquo;s rules for 2026 before counting on any state saving. Our{" "}
+          <Link href="/us/taxes/paycheck-calculator">paycheck calculator</Link> includes state income tax for all 50 states
+          and DC, so you can see what is left after every tax.
+        </p>
+
+        <h2>Will my paycheck change?</h2>
+        <p>
+          Not automatically. Employers withhold federal income tax from each paycheck using your Form W-4, and the
+          standard withholding tables do not know how much of your pay is overtime premium or qualified tips. Without a
+          change, the saving arrives as a bigger refund (or a smaller bill) when you file.
+        </p>
+        <p>
+          If you would rather have the money through the year, you can give your employer a new Form W-4 and enter an
+          estimate of your yearly deductions in Step 4(b), the line for deductions other than the standard deduction.
+          Be cautious: if your overtime or tips fall short of the estimate, too little tax will be withheld and you may
+          owe at filing time. A conservative estimate, perhaps two thirds of what you expect, is a sensible middle
+          ground. The <Link href="/us/taxes/paycheck-calculator">paycheck calculator</Link> shows your take-home pay per
+          paycheck so you can check the result.
+        </p>
+
+        <h2>How to claim on your return</h2>
+        <p>
+          You claim both deductions when you file Form 1040, using Schedule 1-A, which also covers the new senior
+          deduction and the car loan interest deduction. The figures come from your records and your Form W-2:
+        </p>
+        <ul>
+          <li>
+            <strong>Overtime:</strong>{" "}your employer should report qualified overtime compensation on your W-2. If it
+            reports total overtime pay instead, work out the premium yourself: at time-and-a-half it is one third of your
+            overtime pay.
+          </li>
+          <li>
+            <strong>Tips:</strong>{" "}your W-2 shows the tips you reported to your employer. Tips you did not report to your employer at the time can be added with
+            Form 4137, but then you owe payroll tax on them too.
+          </li>
+          <li>
+            <strong>Keep records:</strong>{" "}pay stubs showing overtime hours and rates, and a daily tip log, make it
+            easy to back up the figures if the IRS asks.
+          </li>
+        </ul>
+
+        <h2>Common mistakes to avoid</h2>
+        <ul>
+          <li>
+            <strong>Deducting all overtime pay:</strong>{" "}only the premium is deductible. At time-and-a-half that is a
+            third of the overtime pay.
+          </li>
+          <li>
+            <strong>Counting service charges as tips:</strong>{" "}a mandatory charge on the bill is not a voluntary tip,
+            even if you receive it.
+          </li>
+          <li>
+            <strong>Filing separately:</strong>{" "}married couples who file separate returns lose both deductions. If one
+            of you has large overtime or tips, compare a joint return.
+          </li>
+          <li>
+            <strong>Assuming state tax falls too:</strong>{" "}in most states it does not.
+          </li>
+          <li>
+            <strong>Forgetting the end date:</strong>{" "}the deductions are scheduled to end after the 2028 tax year. Do
+            not make long-term plans, such as a mortgage, that depend on them lasting unless Congress extends them.
+          </li>
+        </ul>
+
+        <h2>How it compares with other ways to cut your tax</h2>
+        <p>
+          The overtime and tips deductions are generous for the people they reach, but they sit alongside older tools
+          that work for almost everyone with a job. A pre-tax 401(k) contribution lowers both your taxable income and
+          your AGI, and many employers add a match. Putting $3,300 into a traditional 401(k) would save Maria in Example 1
+          the same $396 of federal income tax as her overtime deduction, and she could do both. The{" "}
+          <Link href="/us/savings/401k-calculator">401(k) calculator</Link> shows the long-term value. If you also do
+          some self-employed work, such as delivery driving on your own account, the{" "}
+          <Link href="/us/taxes/self-employment-tax">self-employment tax calculator</Link> shows the 15.3% payroll tax that
+          applies to that profit, which the new deductions do not touch.
+        </p>
+
+        <h2>Key numbers for 2026</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>2026 figure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Overtime deduction cap</td><td>$12,500 ($25,000 joint)</td></tr>
+            <tr><td>Tips deduction cap</td><td>$25,000 per return</td></tr>
+            <tr><td>Phase-out starts (modified AGI)</td><td>$150,000 ($300,000 joint)</td></tr>
+            <tr><td>Phase-out rate</td><td>$100 per $1,000 above the start</td></tr>
+            <tr><td>Standard deduction</td><td>$16,100 single, $32,200 joint, $24,150 head of household</td></tr>
+            <tr><td>Social Security wage base</td><td>$184,500</td></tr>
+            <tr><td>Employee payroll tax</td><td>7.65% (6.2% + 1.45%)</td></tr>
+            <tr><td>Years covered</td><td>2025 to 2028</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The bottom line</h2>
+        <p>
+          For a tipped worker in the 12% or 22% bracket, the tips deduction is one of the most valuable tax changes in
+          years, often worth $2,000 to $3,500. The overtime deduction is smaller than its name suggests, because only the
+          premium counts: a few hundred dollars for a typical hourly worker, more for couples with heavy overtime in the
+          22% bracket. Neither touches payroll tax or, in most states, state tax, and neither helps if you already owe
+          no federal income tax. To see your own figures, try the{" "}
+          <Link href="/us/taxes/overtime-calculator">overtime calculator</Link> and the{" "}
+          <Link href="/us/taxes/federal-income-tax">federal income tax calculator</Link>. These figures are estimates for
+          the 2026 tax year and general information, not tax advice.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "self-employed-expenses-what-you-can-claim",
+    title: "Self-employed expenses in 2026/27: what you can claim and what it saves",
+    seoTitle: "Self-Employed Expenses 2026/27: What You Can Claim",
+    description:
+      "What sole traders can claim as allowable expenses in 2026/27, the flat rates for mileage and working from home, the £1,000 trading allowance, and worked tax savings.",
+    date: "2026-10-08",
+    dateLabel: "8 October 2026",
+    readingTime: "11 min read",
+    category: "Business",
+    body: (
+      <>
+        <p>
+          If you work for yourself, every allowable expense you claim comes off your profit before Income Tax and
+          Class 4 National Insurance are worked out. A £1,000 cost you forget to claim can mean £260 to £620 more tax,
+          depending on your profit. Yet many sole traders under-claim, either because they are unsure what counts or
+          because they never write the small costs down.
+        </p>
+        <p>
+          This guide sets out what HMRC lets you claim as a sole trader in the 2026/27 tax year (6 April 2026 to 5 April
+          2027), the flat rates that save you working out the exact cost of using your car or your home, when the
+          £1,000 trading allowance beats your real expenses, and what all of it is worth in tax. Every figure comes from
+          the same engine as our{" "}
+          <Link href="/uk/business/allowable-expenses">self-employed expenses calculator</Link> and{" "}
+          <Link href="/uk/business/sole-trader-tax">sole trader tax calculator</Link>. Limited companies follow different
+          rules and are not covered here.
+        </p>
+
+        <h2>The one rule behind every expense</h2>
+        <p>
+          HMRC&rsquo;s test is that a cost must be incurred &ldquo;wholly and exclusively&rdquo; for the purposes of
+          your business. In plain words: you spent the money because of the business, not for yourself. Where a cost is
+          partly business and partly personal, such as a phone you also use for family calls, you can claim the business
+          share if you can separate it sensibly, for example by the proportion of calls or data used for work.
+        </p>
+        <p>
+          Three things follow from that rule. You cannot claim personal costs, even if they help you work (lunch on an
+          ordinary working day, for instance). You cannot claim your own wages or the money you take out of the business
+          (drawings), because profit is what you are taxed on. And you cannot claim your own Income Tax or National
+          Insurance as an expense.
+        </p>
+
+        <h2>What you can claim: the main categories</h2>
+        <p>
+          The Self Assessment self-employment pages group expenses into categories. If your turnover is below the VAT
+          threshold of £90,000, you can use the short pages and enter a single total for expenses, but it still helps to
+          keep your records in these groups:
+        </p>
+        <ul>
+          <li>
+            <strong>Office, property and equipment:</strong>{" "}stationery, printing, postage, software and subscriptions, phone and broadband (business share), rent and business rates for business premises, small equipment.
+          </li>
+          <li>
+            <strong>Car, van and travel:</strong>{" "}fuel, insurance, repairs and road tax for a business vehicle (or the mileage rates instead), train and bus fares, parking, hotel and meals on overnight business trips.
+          </li>
+          <li>
+            <strong>Clothing:</strong>{" "}uniforms, protective clothing and costumes for performers; not everyday clothes, even if bought for work.
+          </li>
+          <li>
+            <strong>Staff:</strong>{" "}wages, employer National Insurance, employer pension contributions, subcontractor costs, agency fees.
+          </li>
+          <li>
+            <strong>Stock and materials:</strong>{" "}goods for resale, raw materials, direct costs of producing what you sell.
+          </li>
+          <li>
+            <strong>Financial costs:</strong>{" "}business insurance, bank charges, card fees, interest on business loans (up to £500 under the cash basis).
+          </li>
+          <li>
+            <strong>Professional fees:</strong>{" "}accountant, bookkeeper, solicitor and surveyor fees for the business.
+          </li>
+          <li>
+            <strong>Marketing and subscriptions:</strong>{" "}advertising, a website, directory listings, trade or professional body subscriptions.
+          </li>
+          <li>
+            <strong>Training:</strong>{" "}courses that maintain or update skills you use in your current trade.
+          </li>
+        </ul>
+
+        <h2>What you cannot claim</h2>
+        <ul>
+          <li>
+            <strong>Commuting:</strong>{" "}travel between home and a permanent workplace, such as a shop you rent. Travel
+            to clients, temporary sites and suppliers is allowed.
+          </li>
+          <li>
+            <strong>Entertaining:</strong>{" "}taking clients or potential clients for meals or drinks. Staff events can be
+            allowable.
+          </li>
+          <li>
+            <strong>Everyday clothing:</strong>{" "}a suit for meetings is not allowable, even if you only wear it for work.
+          </li>
+          <li>
+            <strong>Fines and penalties:</strong>{" "}parking and speeding fines, and HMRC penalties.
+          </li>
+          <li>
+            <strong>Training for a new trade:</strong>{" "}a course to start a different kind of business is not allowable
+            against your current one.
+          </li>
+          <li>
+            <strong>The personal share:</strong>{" "}of anything used partly for private life.
+          </li>
+        </ul>
+
+        <h2>What claiming is worth: your marginal rate</h2>
+        <p>
+          An expense saves tax at your marginal rate: the Income Tax and Class 4 National Insurance on the last slice of
+          profit it removes. In 2026/27 Class 4 is 6% on profit between £12,570 and £50,270 and 2% above that. The table
+          shows the tax and National Insurance on the next £100 of profit for a sole trader with no other income.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Profit</th>
+              <th>England, Wales, NI</th>
+              <th>Scotland</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£10,000</td><td>0%</td><td>0%</td></tr>
+            <tr><td>£20,000</td><td>26%</td><td>26%</td></tr>
+            <tr><td>£30,000</td><td>26%</td><td>27%</td></tr>
+            <tr><td>£45,000</td><td>26%</td><td>48%</td></tr>
+            <tr><td>£60,000</td><td>42%</td><td>44%</td></tr>
+            <tr><td>£90,000</td><td>42%</td><td>47%</td></tr>
+            <tr><td>£110,000</td><td>62%</td><td>69.5%</td></tr>
+            <tr><td>£130,000</td><td>47%</td><td>50%</td></tr>
+          </tbody>
+        </table>
+        <p>
+          So a £1,000 expense you remember to claim saves £260 at a profit of £30,000 and £420 at £60,000. Between
+          £100,000 and £125,140 the Personal Allowance is withdrawn, which pushes the marginal rate to 62% in England,
+          Wales and Northern Ireland. If your profit is below the £12,570 Personal Allowance and you have no other
+          income, expenses save no tax at all that year, though they still matter if your profit later turns into a
+          loss you can carry forward.
+        </p>
+
+        <h2>Worked example: a freelance designer on £40,000</h2>
+        <p>
+          Sam is a self-employed graphic designer in England with turnover of £40,000 and no other income. Over the year
+          Sam spends £1,500 on software, a laptop accessory, stationery and the business share of a phone; £600 on a
+          website and advertising; £900 on insurance, an accountant and bank fees; and £400 on a course updating design
+          skills. Sam drives 2,000 business miles to clients and works from home 51 to 100 hours a month all year.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Sam&rsquo;s expenses, 2026/27</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Itemised costs</td><td>£3,400</td></tr>
+            <tr><td>Mileage, 2,000 miles at 45p</td><td>£900</td></tr>
+            <tr><td>Working from home flat rate, £18 a month for 12 months</td><td>£216</td></tr>
+            <tr><td>Total expenses</td><td>£4,516</td></tr>
+            <tr><td>Taxable profit</td><td>£35,484</td></tr>
+            <tr><td>Income Tax and Class 4 NI with no expenses</td><td>£7,131.80</td></tr>
+            <tr><td>Income Tax and Class 4 NI with the expenses</td><td>£5,957.64</td></tr>
+            <tr><td>Saved by claiming</td><td>£1,174.16</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The same £4,516 of expenses saves £1,896.72 if Sam&rsquo;s turnover is £70,000, because the profit sits in
+          the higher-rate band, and £1,219.32 for a designer in Scotland on £40,000. If Sam had claimed only the £1,000
+          trading allowance instead, the bill would be £6,871.80, £914.16 more than claiming real expenses.
+        </p>
+
+        <h2>Simplified expenses: the flat rates</h2>
+        <p>
+          Simplified expenses let you use flat rates for a few costs that are awkward to split between business and
+          personal use. They are optional; you can always work out the actual cost instead if it is higher and you have
+          the records.
+        </p>
+        <h3>Vehicles: 45p and 25p a mile</h3>
+        <p>
+          For a car or van, you can claim 45p a mile for the first 10,000 business miles in the year and 25p a mile after
+          that. Motorcycles are 24p a mile. The rate covers fuel, insurance, servicing, road tax and depreciation, so you
+          cannot also claim those. Parking, tolls and congestion charges on business journeys can be claimed on top.
+        </p>
+        <p>
+          A courier or a tradesperson who drives 12,000 business miles can claim £5,000 (10,000 at 45p plus 2,000 at
+          25p). On turnover of £50,000, that cuts Income Tax and National Insurance by £1,300. Once you choose the
+          mileage rate for a vehicle, you must keep using it for as long as you use that vehicle in the business. Our{" "}
+          <Link href="/uk/business/business-mileage">business mileage calculator</Link> works out the claim.
+        </p>
+        <h3>Working from home</h3>
+        <p>
+          Instead of working out a share of your heating, lighting and electricity, you can claim a flat monthly amount
+          based on the hours you work at home on business:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Hours of business use at home each month</th>
+              <th>Flat rate a month</th>
+              <th>Over a full year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>25 to 50</td><td>£10</td><td>£120</td></tr>
+            <tr><td>51 to 100</td><td>£18</td><td>£216</td></tr>
+            <tr><td>101 or more</td><td>£26</td><td>£312</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The flat rate does not cover phone and broadband, which you claim separately for the business share. The
+          amounts are modest: £312 a year saves £81.12 of tax and National Insurance at a profit of about £30,000. If you
+          use a room mainly for work and your bills are high, working out the actual business share (by rooms and hours)
+          can give a bigger figure, but you will need to show how you calculated it.
+        </p>
+        <h3>Living at your business premises</h3>
+        <p>
+          If you run a guest house, bed and breakfast or care home and live there too, you can deduct a flat amount from
+          your total premises costs for private use: £350 a month for one person, £500 for two and £650 for three or
+          more.
+        </p>
+
+        <h2>The £1,000 trading allowance</h2>
+        <p>
+          The trading allowance lets you deduct a flat £1,000 from your self-employed income instead of your actual
+          expenses. If your total trading income (before expenses) is £1,000 or less, you do not need to tell HMRC about
+          it at all. Above that, you choose each year between the allowance and your real expenses; you cannot claim
+          both.
+        </p>
+        <p>
+          The choice is simple: use the allowance when your real expenses are below £1,000. Take someone with a £30,000
+          salary and a side business with turnover of £3,000. With no deduction, the side income would cost £600 in
+          Income Tax. The table shows the result with different levels of real expenses:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Real expenses</th>
+              <th>Tax claiming real expenses</th>
+              <th>Tax with the trading allowance</th>
+              <th>Better choice</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£300</td><td>£540</td><td>£400</td><td>Trading allowance</td></tr>
+            <tr><td>£600</td><td>£480</td><td>£400</td><td>Trading allowance</td></tr>
+            <tr><td>£1,500</td><td>£300</td><td>£400</td><td>Real expenses</td></tr>
+          </tbody>
+        </table>
+        <p>
+          There is no Class 4 National Insurance here because the side profit is well below £12,570. The allowance also
+          saves record-keeping, which is useful for small side incomes such as occasional craft sales or tutoring. One
+          catch: if you make a loss, claiming real expenses lets you use it against other income or carry it forward,
+          whereas the allowance cannot create a loss.
+        </p>
+
+        <h2>Equipment, computers and vans</h2>
+        <p>
+          Since April 2024 the cash basis has been the default for sole traders. Under the cash basis, most equipment
+          you buy for the business, such as a laptop, tools or a printer, is simply an expense in the year you pay for
+          it. Under traditional accounting you claim capital allowances instead, and the Annual Investment Allowance of
+          £1 million means most small businesses can still deduct the full cost in the year of purchase.
+        </p>
+        <p>
+          Cars are the exception. Under either basis, a car (not a van) is not an expense when you buy it: you either use
+          the mileage rate or claim capital allowances on the car plus the business share of running costs. If you use
+          equipment partly for personal reasons, claim only the business share, and if you later sell it, the sale price
+          may need to be added to your income.
+        </p>
+
+        <h2>Big incomes: expenses and the 62% band</h2>
+        <p>
+          If your profit is between £100,000 and £125,140, each £1 of expenses gives back 50p of Personal Allowance as
+          well as cutting tax on the £1 itself. A sole trader with turnover of £110,000 who claims £10,000 of genuine
+          expenses brings profit down to £100,000 and saves £6,200 of Income Tax and National Insurance. Personal
+          pension contributions have a similar effect on the Personal Allowance, even though they are not a business
+          expense; the{" "}
+          <Link href="/uk/investing/pension-tax-relief">pension tax relief calculator</Link> shows how they work for the
+          self-employed.
+        </p>
+
+        <h2>Student loans: a hidden extra saving</h2>
+        <p>
+          If you are repaying a student loan, your repayments are worked out on your profit through Self Assessment, so
+          expenses cut those too. A sole trader with a Plan 2 loan and turnover of £40,000 pays £8,087.15 in Income Tax,
+          National Insurance and student loan repayments with no expenses. With £5,000 of expenses the total falls to
+          £6,337.15, a saving of £1,750, of which £450 is the lower student loan repayment.
+        </p>
+
+        <h2>Records: what to keep and for how long</h2>
+        <p>
+          You do not send receipts to HMRC, but you must keep records that support the figures on your tax return, for
+          at least five years after the 31 January filing deadline for that year. Useful habits:
+        </p>
+        <ul>
+          <li>Keep receipts or invoices for every purchase, digital copies are fine.</li>
+          <li>Use a separate bank account for the business, so business spending is easy to spot.</li>
+          <li>Keep a mileage log with the date, destination, purpose and miles of each business journey.</li>
+          <li>Note how you worked out any business share, for example of your phone or home costs.</li>
+          <li>Record small cash purchases as you go; they add up over a year.</li>
+        </ul>
+
+        <h2>Making Tax Digital changes the routine</h2>
+        <p>
+          From 6 April 2026, sole traders and landlords whose qualifying income (turnover from self-employment and
+          property together) was over £50,000 must keep digital records and send quarterly updates to HMRC through
+          compatible software. The threshold falls to £30,000 from April 2027 and £20,000 from April 2028. Quarterly
+          updates do not change what you can claim, but they do mean recording expenses through the year rather than in a
+          rush in January, which tends to catch more of them. If you are getting close to the VAT threshold as well, the{" "}
+          <Link href="/uk/business/vat-threshold">VAT threshold calculator</Link> tracks your rolling 12-month turnover.
+        </p>
+
+        <h2>Paying the tax: payments on account</h2>
+        <p>
+          Lower profit also means lower payments on account. If your Self Assessment bill is £1,000 or more and less
+          than 80% of your tax was collected at source, HMRC asks for two advance payments towards next year&rsquo;s bill,
+          each half of this year&rsquo;s. Claiming all your expenses reduces this year&rsquo;s bill and so both advance
+          payments. The <Link href="/uk/business/payment-on-account">payments on account calculator</Link> shows the
+          dates and amounts.
+        </p>
+
+        <h2>Ten commonly missed expenses</h2>
+        <ol>
+          <li>The business share of your mobile phone and broadband.</li>
+          <li>Accountancy and bookkeeping software subscriptions.</li>
+          <li>Professional body and trade association fees.</li>
+          <li>Business insurance, including professional indemnity and public liability.</li>
+          <li>Bank charges and card processing fees, including online payment platforms.</li>
+          <li>Parking, tolls and congestion charges on business trips, on top of the mileage rate.</li>
+          <li>Train and bus fares to clients and suppliers.</li>
+          <li>Hotel stays and meals when travelling overnight for work.</li>
+          <li>The working from home flat rate, even if you also have an office.</li>
+          <li>Small tools and equipment under the cash basis.</li>
+        </ol>
+
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>
+            <strong>Claiming mileage and fuel together:</strong>{" "}the mileage rate already covers fuel and running
+            costs.
+          </li>
+          <li>
+            <strong>Claiming the trading allowance and expenses together:</strong>{" "}it is one or the other.
+          </li>
+          <li>
+            <strong>Claiming the whole cost of something used privately:</strong>{" "}claim only the business share.
+          </li>
+          <li>
+            <strong>Treating drawings as expenses:</strong>{" "}money you take out for yourself is not a cost of the
+            business.
+          </li>
+          <li>
+            <strong>Forgetting VAT:</strong>{" "}if you are VAT-registered under the standard scheme, claim expenses net
+            of the VAT you reclaim. On the{" "}
+            <Link href="/uk/business/flat-rate-vat">Flat Rate Scheme</Link> you usually cannot reclaim VAT on purchases,
+            so the full cost is the expense.
+          </li>
+        </ul>
+
+        <h2>Key numbers for 2026/27</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>2026/27 figure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Trading allowance</td><td>£1,000</td></tr>
+            <tr><td>Personal Allowance</td><td>£12,570 (withdrawn between £100,000 and £125,140)</td></tr>
+            <tr><td>Class 4 National Insurance</td><td>6% from £12,570 to £50,270, 2% above</td></tr>
+            <tr><td>Small Profits Threshold (free State Pension credit)</td><td>£7,105</td></tr>
+            <tr><td>Mileage, cars and vans</td><td>45p for 10,000 miles, then 25p</td></tr>
+            <tr><td>Mileage, motorcycles</td><td>24p</td></tr>
+            <tr><td>Working from home</td><td>£10, £18 or £26 a month</td></tr>
+            <tr><td>VAT registration threshold</td><td>£90,000</td></tr>
+            <tr><td>Making Tax Digital threshold</td><td>£50,000 (£30,000 from April 2027)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The bottom line</h2>
+        <p>
+          Claiming every allowable expense is the simplest legal way for a sole trader to cut a tax bill. For most
+          people the saving is 26p to 42p for each £1 claimed, rising to 62p for profits between £100,000 and £125,140.
+          Use the flat rates for mileage and working from home when they are easier, choose the £1,000 trading allowance
+          only when your real costs are lower, and keep records as you go. To check your own figures, try the{" "}
+          <Link href="/uk/business/allowable-expenses">self-employed expenses calculator</Link> and the{" "}
+          <Link href="/uk/business/sole-trader-tax">sole trader tax calculator</Link>. These figures are estimates for
+          2026/27 and general guidance, not tax advice; an accountant can help with anything unusual.
+        </p>
+      </>
+    ),
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {
