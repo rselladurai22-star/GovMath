@@ -2116,6 +2116,917 @@ export const BLOG_POSTS: BlogPost[] = [
       </>
     ),
   },
+  {
+    slug: "maintenance-loan-by-household-income-2026-27",
+    title: "How much maintenance loan will I get? Every household income for 2026/27",
+    seoTitle: "Maintenance Loan by Household Income 2026/27",
+    description:
+      "2026/27 maintenance loan amounts at every household income from £25,000 to £70,000, living at home, away or in London, with weekly budgets and what you repay.",
+    date: "2026-10-09",
+    dateLabel: "9 October 2026",
+    readingTime: "11 min read",
+    category: "Students",
+    body: (
+      <>
+        <p>
+          The maintenance loan is the money Student Finance England lends you for rent, food and everything else while
+          you study. Everyone on a full-time undergraduate course can get some of it, but the amount depends on two
+          things: where you live during term, and your household income, which for most students under 25 means your
+          parents&rsquo; income. Two students on the same course in the same halls can be lent very different sums.
+        </p>
+        <p>
+          This guide sets out the 2026/27 loan at every household income from £25,000 to £70,000, in steps of £2,500,
+          for students living with their parents, away from home outside London and in London. It shows how much each
+          instalment is, what that means a week, how much the means test expects parents to add, and what the loan is
+          likely to cost you after you graduate. Every figure comes from the same engine as our{" "}
+          <Link href="/uk/students/maintenance-loan">maintenance loan calculator</Link>, which uses Student Finance
+          England&rsquo;s published 2026/27 rates.
+        </p>
+
+        <h2>The short answer</h2>
+        <ul>
+          <li>
+            <strong>Household income £25,000 or less:</strong>{" "}you get the full loan: £10,830 away from home outside
+            London, £14,135 in London, or £9,118 living with your parents.
+          </li>
+          <li>
+            <strong>Above £25,000:</strong>{" "}the loan falls by about 15.5p for every extra £1 of household income, or
+            roughly £386 for every £2,500.
+          </li>
+          <li>
+            <strong>The minimum:</strong>{" "}£5,048 away from home outside London (reached at £62,410), £7,039 in London
+            (at £70,131) and £4,013 at home (at £58,347). Nobody gets less than this, whatever their parents earn.
+          </li>
+          <li>
+            <strong>Tuition fees:</strong>{" "}up to £9,790 a year, paid by a separate tuition fee loan that is not
+            means-tested.
+          </li>
+          <li>
+            <strong>Repayment:</strong>{" "}9% of your income above £25,000 a year on Plan 5, written off after 40 years.
+            What you repay depends far more on what you earn later than on how much you borrow.
+          </li>
+        </ul>
+
+        <h2>The full table: loan by household income</h2>
+        <p>
+          These are the yearly amounts for full-time students from England in 2026/27. They apply both to new students
+          and to those continuing a course that started after August 2016.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Household income</th>
+              <th>Living with parents</th>
+              <th>Away, outside London</th>
+              <th>Away, in London</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£25,000 or less</td><td>£9,118</td><td>£10,830</td><td>£14,135</td></tr>
+            <tr><td>£27,500</td><td>£8,736</td><td>£10,444</td><td>£13,742</td></tr>
+            <tr><td>£30,000</td><td>£8,353</td><td>£10,058</td><td>£13,349</td></tr>
+            <tr><td>£32,500</td><td>£7,970</td><td>£9,671</td><td>£12,956</td></tr>
+            <tr><td>£35,000</td><td>£7,588</td><td>£9,285</td><td>£12,563</td></tr>
+            <tr><td>£37,500</td><td>£7,205</td><td>£8,899</td><td>£12,170</td></tr>
+            <tr><td>£40,000</td><td>£6,822</td><td>£8,512</td><td>£11,777</td></tr>
+            <tr><td>£42,500</td><td>£6,439</td><td>£8,126</td><td>£11,384</td></tr>
+            <tr><td>£45,000</td><td>£6,057</td><td>£7,739</td><td>£10,991</td></tr>
+            <tr><td>£47,500</td><td>£5,674</td><td>£7,353</td><td>£10,598</td></tr>
+            <tr><td>£50,000</td><td>£5,291</td><td>£6,967</td><td>£10,205</td></tr>
+            <tr><td>£52,500</td><td>£4,909</td><td>£6,580</td><td>£9,812</td></tr>
+            <tr><td>£55,000</td><td>£4,526</td><td>£6,194</td><td>£9,419</td></tr>
+            <tr><td>£57,500</td><td>£4,143</td><td>£5,807</td><td>£9,025</td></tr>
+            <tr><td>£60,000</td><td>£4,013</td><td>£5,421</td><td>£8,632</td></tr>
+            <tr><td>£62,500</td><td>£4,013</td><td>£5,048</td><td>£8,239</td></tr>
+            <tr><td>£65,000</td><td>£4,013</td><td>£5,048</td><td>£7,846</td></tr>
+            <tr><td>£70,000</td><td>£4,013</td><td>£5,048</td><td>£7,060</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Between the rows the loan moves in a straight line, so for an income of, say, £41,250 you can take the
+          halfway point between the £40,000 and £42,500 rows. Student Finance England rounds in your favour, so the
+          exact award can be a pound above what simple arithmetic gives. For any income, the{" "}
+          <Link href="/uk/students/maintenance-loan">calculator</Link>{" "}gives the precise figure.
+        </p>
+
+        <h2>How the taper works</h2>
+        <p>
+          Above £25,000 of household income, the loan is reduced in a straight line from the maximum down to the
+          minimum. The slope is slightly different for each living arrangement, because each starts from a different
+          maximum and reaches its minimum at a different income:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Living arrangement</th>
+              <th>Loan lost per £1 of extra income</th>
+              <th>Income for each £1 of loan lost</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>With parents</td><td>15.3p</td><td>£6.53</td></tr>
+            <tr><td>Away, outside London</td><td>15.5p</td><td>£6.47</td></tr>
+            <tr><td>Away, in London</td><td>15.7p</td><td>£6.36</td></tr>
+          </tbody>
+        </table>
+        <p>
+          In practice, that means each £1,000 of extra household income above £25,000 cuts the loan by about £153 to
+          £157 a year, until the minimum is reached. A pay rise of £5,000 for a parent therefore costs a student away
+          from home about £770 of loan a year. The taper stops at the minimum, so in a London household earning £70,131
+          or more the loan stays at £7,039 however high income goes.
+        </p>
+
+        <h2>Instalments and weekly budgets</h2>
+        <p>
+          The loan is paid in three instalments, one at the start of each term, straight into your bank account. The
+          first arrives once your university confirms you have registered; the next two usually come in January and
+          April. Each instalment is roughly a third of the year&rsquo;s loan:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Household income</th>
+              <th>With parents</th>
+              <th>Away, outside London</th>
+              <th>Away, in London</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£25,000 or less</td><td>£3,039</td><td>£3,610</td><td>£4,712</td></tr>
+            <tr><td>£35,000</td><td>£2,529</td><td>£3,095</td><td>£4,188</td></tr>
+            <tr><td>£45,000</td><td>£2,019</td><td>£2,580</td><td>£3,664</td></tr>
+            <tr><td>£55,000</td><td>£1,509</td><td>£2,065</td><td>£3,140</td></tr>
+            <tr><td>£65,000</td><td>£1,338</td><td>£1,683</td><td>£2,615</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Thinking in weeks makes it easier to see whether the money will stretch. Spread over a 40-week academic year,
+          the loan gives you:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Household income</th>
+              <th>With parents</th>
+              <th>Away, outside London</th>
+              <th>Away, in London</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£25,000 or less</td><td>£227.95</td><td>£270.75</td><td>£353.38</td></tr>
+            <tr><td>£35,000</td><td>£189.70</td><td>£232.13</td><td>£314.07</td></tr>
+            <tr><td>£45,000</td><td>£151.43</td><td>£193.47</td><td>£274.77</td></tr>
+            <tr><td>£55,000</td><td>£113.15</td><td>£154.85</td><td>£235.47</td></tr>
+            <tr><td>£65,000</td><td>£100.33</td><td>£126.20</td><td>£196.15</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Compare those weekly figures with your rent. A student away from home from a £45,000 household has £193.47 a
+          week. If their room costs £160 a week, only £33.47 is left for food, travel, books, a phone and a social
+          life. Many hall and private tenancies also run for 44 to 51 weeks, not 40, so the true weekly rent is higher
+          than it looks. Our <Link href="/uk/students/student-budget">student budget calculator</Link>{" "}lets you put in
+          your own rent, contract length and spending.
+        </p>
+
+        <h2>The parental contribution: the gap nobody tells you about</h2>
+        <p>
+          The means test is built on an assumption: as household income rises, parents will make up the difference
+          between the maximum loan and the reduced loan. Student Finance England never says this on your award letter,
+          and parents have no legal duty to pay, but the system is designed around it. These are the &ldquo;expected
+          contributions&rdquo; at different incomes:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Household income</th>
+              <th>With parents</th>
+              <th>Away, outside London</th>
+              <th>Away, in London</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£30,000</td><td>£765</td><td>£772</td><td>£786</td></tr>
+            <tr><td>£40,000</td><td>£2,296</td><td>£2,318</td><td>£2,358</td></tr>
+            <tr><td>£50,000</td><td>£3,827</td><td>£3,863</td><td>£3,930</td></tr>
+            <tr><td>£60,000</td><td>£5,105</td><td>£5,409</td><td>£5,503</td></tr>
+            <tr><td>£70,000</td><td>£5,105</td><td>£5,782</td><td>£7,075</td></tr>
+          </tbody>
+        </table>
+        <p>
+          For a family on £50,000 with a child at university outside London, that is £3,863 a year, or about £322 a
+          month. Over a three-year course it adds up to more than £11,500. It is worth talking about early, ideally
+          before applications open, because the gap often surprises families who are comfortable but not wealthy. A
+          household on £60,000 after tax and pension contributions does not usually have £450 a month spare.
+        </p>
+        <p>
+          If parents cannot or will not contribute, the student has to fill the gap another way: part-time work,
+          savings, a bursary from the university, or an interest-free student overdraft. Students who are estranged from
+          their parents can apply to be assessed as independent, so their parents&rsquo; income is ignored.
+        </p>
+
+        <h2>What counts as household income</h2>
+        <p>
+          &ldquo;Household income&rdquo; is not simply your parents&rsquo; salaries added together. Student Finance
+          England looks at:
+        </p>
+        <ul>
+          <li>
+            <strong>Whose income:</strong>{" "}for most students under 25, both parents if they live together, or the
+            parent you live with and their partner if they have separated. Your own income counts too, above a small
+            allowance, but part-time earnings during your course usually do not.
+          </li>
+          <li>
+            <strong>Which year:</strong>{" "}for 2026/27, the 2024/25 tax year, two years before the academic year.
+          </li>
+          <li>
+            <strong>What is taken off:</strong>{" "}pension contributions are deducted, and £1,130 is taken off for each
+            other child the household supports.
+          </li>
+        </ul>
+        <p>
+          Those deductions can make a real difference. A family with gross income of £45,000 and one younger child is
+          assessed on £43,870, which raises a student&rsquo;s loan away from home from £7,739 to £7,914. With two younger
+          children the assessed income is £42,740 and the loan is £8,089. Pension contributions work the same way: a
+          parent earning £52,000 who pays £3,000 a year into a pension is assessed on £49,000, lifting the loan from £6,657
+          to £7,121.
+        </p>
+        <p>
+          That last point is worth knowing if a parent is thinking about paying more into a pension anyway. Every extra
+          £1,000 of contributions cuts assessed income by £1,000 and raises the loan by about £155, on top of the usual
+          tax relief. Our <Link href="/uk/tax-and-salary/salary-sacrifice">salary sacrifice calculator</Link>{" "}shows the
+          tax side of the same decision. It only helps for the tax year Student Finance England actually assesses, so
+          the timing matters.
+        </p>
+
+        <h2>If household income has dropped</h2>
+        <p>
+          Because the assessment uses income from two years earlier, it can be out of date. If your household income in
+          the current tax year is likely to be at least 15% lower than in 2024/25 (after a redundancy, a move to part-time
+          work, illness or retirement, for example), you can ask for a current year income assessment. Student Finance
+          England will base the loan on an estimate of this year&rsquo;s income, then check it against the actual figures
+          after the tax year ends. If the real income turns out higher, the loan can be reduced later, so estimate
+          honestly.
+        </p>
+
+        <h2>Three years of borrowing</h2>
+        <p>
+          Over a standard three-year course with the same household income each year (in practice it changes, and the
+          rates usually rise a little), the maintenance loan alone adds up to:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Household income</th>
+              <th>With parents</th>
+              <th>Away, outside London</th>
+              <th>Away, in London</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£25,000 or less</td><td>£27,354</td><td>£32,490</td><td>£42,405</td></tr>
+            <tr><td>£40,000</td><td>£20,466</td><td>£25,536</td><td>£35,331</td></tr>
+            <tr><td>£55,000</td><td>£13,578</td><td>£18,582</td><td>£28,257</td></tr>
+            <tr><td>£70,000</td><td>£12,039</td><td>£15,144</td><td>£21,180</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Add £29,370 of tuition fee loans (£9,790 a year for three years) and a student away from home from a £40,000
+          household borrows £54,906 before interest. With interest charged from the first payment, the balance at
+          graduation is higher still. The <Link href="/uk/students/degree-cost">cost of a degree calculator</Link>{" "}shows
+          the year-by-year build-up for your own course.
+        </p>
+
+        <h2>Does borrowing more mean repaying more?</h2>
+        <p>
+          This is the question families most often get wrong. On Plan 5, the loan for students who started from August
+          2023, you repay 9% of your income above £25,000 (a threshold that rises with RPI from April 2027), and whatever
+          is left after 40 years is written off. Your monthly repayment depends only on what you earn, not on what you
+          owe.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Salary after graduating</th>
+              <th>Plan 5 repayment a month</th>
+              <th>A year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£25,000</td><td>£0</td><td>£0</td></tr>
+            <tr><td>£28,000</td><td>£22.50</td><td>£270</td></tr>
+            <tr><td>£30,000</td><td>£37.50</td><td>£450</td></tr>
+            <tr><td>£35,000</td><td>£75</td><td>£900</td></tr>
+            <tr><td>£40,000</td><td>£112.50</td><td>£1,350</td></tr>
+            <tr><td>£50,000</td><td>£187.50</td><td>£2,250</td></tr>
+          </tbody>
+        </table>
+        <p>
+          To see what that means over a working life, we projected two students on three-year courses away from home
+          outside London: one from a household on £25,000 who takes the full maintenance loan (£61,860 borrowed in total
+          with fees), and one from a household on £62,410 who takes the minimum (£44,514). Both are charged interest at
+          RPI, assumed to be 3% a year, and both see their pay rise by 3% a year.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Starting salary</th>
+              <th>Total repaid, full loan</th>
+              <th>Total repaid, minimum loan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£32,000</td><td>£47,503 (rest written off)</td><td>£47,503 (rest written off)</td></tr>
+            <tr><td>£45,000</td><td>£124,302 (cleared in year 38)</td><td>£74,556 (cleared in year 28)</td></tr>
+            <tr><td>£60,000</td><td>£94,401 (cleared in year 22)</td><td>£61,586 (cleared in year 16)</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The pattern is clear. For a graduate starting on £32,000, the extra £17,000 of borrowing costs nothing at all:
+          they repay exactly the same £47,503 either way, because their repayments never clear even the smaller balance
+          and the rest is written off. For higher earners, who are on course to clear the loan, extra borrowing does add
+          to the total, because they keep paying until it is gone. The graduate on £45,000 who cannot clear the larger
+          balance until year 38 is the worst case: high enough earnings to repay a lot, not high enough to finish
+          quickly.
+        </p>
+        <p>
+          Nobody knows at 18 what they will earn at 30, so the projection is a guide, not a rule. But it does suggest
+          that for most students, taking the loan they need is sensible, while borrowing extra just to save it is not.
+          The <Link href="/uk/students/plan-5-student-loan">Plan 5 calculator</Link>{" "}lets you test your own salary path.
+        </p>
+
+        <h2>Scotland and Wales work differently</h2>
+        <p>
+          Students from Scotland and Wales are not funded by Student Finance England, and their systems are built in a
+          different way. Here is how a young student living away from home compares at different household incomes:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Household income</th>
+              <th>England: loan</th>
+              <th>Scotland: bursary + loan</th>
+              <th>Wales: grant + loan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£20,000</td><td>£10,830</td><td>£2,000 + £9,400</td><td>£7,971 + £4,619</td></tr>
+            <tr><td>£30,000</td><td>£10,058</td><td>£500 + £9,400</td><td>£6,198 + £6,392</td></tr>
+            <tr><td>£40,000</td><td>£8,512</td><td>£0 + £8,400</td><td>£4,425 + £8,165</td></tr>
+            <tr><td>£50,000</td><td>£6,967</td><td>£0 + £8,400</td><td>£2,651 + £9,939</td></tr>
+            <tr><td>£60,000</td><td>£5,421</td><td>£0 + £8,400</td><td>£1,020 + £11,570</td></tr>
+          </tbody>
+        </table>
+        <p>
+          In Wales, every student away from home outside London gets the same £12,590 in total; household income only
+          changes how much of it is a grant (which is never repaid) and how much is a loan. In Scotland, SAAS pays a
+          non-repayable bursary on lower incomes and a loan of £8,400 to £9,400. Scottish students studying in Scotland
+          also pay much lower fees. Our <Link href="/uk/students/saas-funding">SAAS calculator</Link>{" "}and{" "}
+          <Link href="/uk/students/welsh-student-finance">Welsh student finance calculator</Link>{" "}cover both systems in
+          detail.
+        </p>
+
+        <h2>Extra money that does not need repaying</h2>
+        <p>
+          The maintenance loan is the main source of money for most students, but it is not the only one. On top of it,
+          you may be able to get:
+        </p>
+        <ul>
+          <li>
+            <strong>University bursaries and scholarships:</strong>{" "}many universities pay cash bursaries to students
+            from lower-income households, often £1,000 to £3,000 a year. Check each university&rsquo;s website before
+            you choose, because the difference between them can be bigger than the difference in loans.
+          </li>
+          <li>
+            <strong>Childcare Grant:</strong>{" "}up to 85% of childcare costs, to a maximum of £199.62 a week for one
+            child or £342.24 for two or more.
+          </li>
+          <li>
+            <strong>Parents&rsquo; Learning Allowance:</strong>{" "}£50 to £2,024 a year for students with children.
+          </li>
+          <li>
+            <strong>Adult Dependants&rsquo; Grant:</strong>{" "}up to £3,545 a year if a partner or another adult
+            depends on you financially.
+          </li>
+          <li>
+            <strong>Disabled Students&rsquo; Allowance:</strong>{" "}help with the extra study costs of a disability,
+            long-term illness or specific learning difficulty, not means-tested.
+          </li>
+          <li>
+            <strong>Hardship funds:</strong>{" "}universities hold emergency funds for students who run into money
+            problems during the year.
+          </li>
+        </ul>
+        <p>
+          Full-time students are also exempt from council tax in most cases. If you share with people who are not
+          students, our <Link href="/uk/students/student-council-tax">student council tax calculator</Link>{" "}shows who
+          pays what.
+        </p>
+
+        <h2>Four worked examples</h2>
+        <p>
+          <strong>Amira, household income £28,000, living away from home in Leeds.</strong>{" "}Her loan is £10,367 a
+          year, paid in three instalments of about £3,456. At £150 a week for a 44-week hall contract, rent costs £6,600,
+          leaving £3,767 for 40 weeks of term, or about £94 a week. Her university also pays a bursary to students from
+          lower-income families, which she should apply for.
+        </p>
+        <p>
+          <strong>Tom, household income £45,000, living with his parents in Manchester.</strong>{" "}His loan is £6,057,
+          about £151 a week over 40 weeks. With no rent to pay, that covers travel, food on campus and books
+          comfortably. He borrows about £5,000 less over three years than he would living away (£1,682 a year), and saves
+          far more than that in rent.
+        </p>
+        <p>
+          <strong>Priya, household income £55,000, studying in London.</strong>{" "}Her loan is £9,419. London rents
+          mean it is unlikely to cover a room on its own, and the means test expects her parents to add £4,716. If they
+          cannot, a part-time job of 12 hours a week at £12.71 an hour (the 2026/27 National Living Wage for those aged 21 and over) over 30 weeks
+          would add about £4,576 before tax, and she would pay no Income Tax on it below the £12,570 Personal Allowance.
+        </p>
+        <p>
+          <strong>Sam, household income £72,000, living away from home in Bristol.</strong>{" "}His loan is the minimum,
+          £5,048. His parents&rsquo; expected contribution is £5,782 a year. If one parent paid an extra £5,000 into a
+          pension in the assessed tax year, household income would still be above £62,410, so the loan would not change.
+          Pension planning only moves the loan for incomes inside the taper.
+        </p>
+
+        <h2>How and when to apply</h2>
+        <ol>
+          <li>
+            Apply online through your Student Finance England account. Applications for new students usually open in
+            the spring before the course starts. You do not need a confirmed place to apply.
+          </li>
+          <li>
+            Give your parents&rsquo; or partner&rsquo;s details. They will be asked to confirm their income online,
+            using their National Insurance numbers. Chase them: a slow reply is the most common reason a loan arrives
+            late.
+          </li>
+          <li>
+            Choose the right living arrangement. If you are not sure whether you will live at home, you can change it
+            later, and your loan will be adjusted.
+          </li>
+          <li>
+            Apply again for each year of your course. Returning students are usually reminded, but the loan is not
+            renewed automatically.
+          </li>
+        </ol>
+
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>
+            <strong>Assuming the loan covers rent:</strong>{" "}for many students it does not. Check the contract length
+            as well as the weekly price.
+          </li>
+          <li>
+            <strong>Forgetting the deductions:</strong>{" "}parents should include pension contributions and other
+            children, which lower assessed income.
+          </li>
+          <li>
+            <strong>Not asking for a current year assessment:</strong>{" "}if income has fallen by 15% or more, the
+            standard assessment uses old, higher figures.
+          </li>
+          <li>
+            <strong>Spending the first instalment too fast:</strong>{" "}it has to last from September to January, which
+            is the longest gap of the year.
+          </li>
+          <li>
+            <strong>Turning the loan down to avoid debt:</strong>{" "}for most graduates, repayments depend on income,
+            not the balance, and any balance left after 40 years is written off.
+          </li>
+        </ul>
+
+        <h2>Key numbers for 2026/27</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>2026/27 figure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Full loan up to household income of</td><td>£25,000</td></tr>
+            <tr><td>Maximum: with parents / away / London</td><td>£9,118 / £10,830 / £14,135</td></tr>
+            <tr><td>Minimum: with parents / away / London</td><td>£4,013 / £5,048 / £7,039</td></tr>
+            <tr><td>Minimum reached at</td><td>£58,347 / £62,410 / £70,131</td></tr>
+            <tr><td>Deduction for each other dependent child</td><td>£1,130</td></tr>
+            <tr><td>Income year assessed</td><td>2024/25</td></tr>
+            <tr><td>Current year assessment if income falls by</td><td>15% or more</td></tr>
+            <tr><td>Tuition fee loan</td><td>Up to £9,790 (£11,750 accelerated)</td></tr>
+            <tr><td>Plan 5 repayment</td><td>9% above £25,000, written off after 40 years</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The bottom line</h2>
+        <p>
+          If your household income is £25,000 or less, you get the full maintenance loan. Above that, every £1,000 of
+          household income costs about £155 of loan, until the minimum is reached somewhere between £58,347 and £70,131.
+          The loan rarely covers everything, especially away from home, and the means test quietly assumes parents fill
+          the gap. Check the figure for your own household with the{" "}
+          <Link href="/uk/students/maintenance-loan">maintenance loan calculator</Link>, plan a weekly budget, and talk
+          about the gap before term starts. These figures are for Student Finance England in 2026/27 and are general
+          guidance, not financial advice.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "how-much-house-can-i-afford-2026",
+    title: "How much house can I afford in 2026? Answers for every salary from $50,000 to $250,000",
+    seoTitle: "How Much House Can I Afford? 2026 by Salary",
+    description:
+      "How much house you can afford in 2026 on $50,000 to $250,000 a year under the 28/36 rule, and how rates, down payment, debts and property tax change it.",
+    date: "2026-10-09",
+    dateLabel: "9 October 2026",
+    readingTime: "11 min read",
+    category: "US Housing",
+    body: (
+      <>
+        <p>
+          &ldquo;How much house can I afford?&rdquo; is the first question almost every buyer asks, and the answer you
+          get depends heavily on who you ask. A real estate agent, a lender and a cautious financial planner can give
+          three different numbers for the same income. Most of them start from the same place, though: the 28/36 rule
+          that mortgage lenders have used for decades to decide how big a payment a household can carry.
+        </p>
+        <p>
+          This guide works through that rule for incomes from $50,000 to $250,000 a year in 2026, then shows how much
+          the answer moves when mortgage rates, your down payment, your other debts or your state&rsquo;s property tax
+          change. Every figure comes from the same engine as our{" "}
+          <Link href="/us/housing/mortgage-affordability">home affordability calculator</Link>, and every monthly
+          payment includes principal, interest, property tax, homeowners insurance and private mortgage insurance (PMI),
+          not just the loan payment that adverts quote.
+        </p>
+
+        <h2>The short answer</h2>
+        <ul>
+          <li>
+            <strong>Rule of thumb:</strong>{" "}with a 7.25% 30-year mortgage, $40,000 down and $500 a month of other
+            debts, most households can afford a home of about 3 times their gross yearly income.
+          </li>
+          <li>
+            <strong>On $100,000 a year:</strong>{" "}about $310,000, with a full monthly payment of about $2,333.
+          </li>
+          <li>
+            <strong>Interest rates matter less than people think</strong>{" "}for the price, but a lot for the cost:
+            each half point moves the $100,000 budget by roughly $11,000 to $14,000.
+          </li>
+          <li>
+            <strong>Debts matter more than people think:</strong>{" "}every $100 of monthly car or student loan payments
+            above the point where the 36% limit starts to bind cuts the price by about $12,500.
+          </li>
+          <li>
+            <strong>Property tax</strong>{" "}changes the answer by about $50,000 between low-tax and high-tax states on
+            the same income.
+          </li>
+        </ul>
+
+        <h2>The 28/36 rule, in plain English</h2>
+        <p>
+          Lenders look at two ratios of your gross (before-tax) monthly income:
+        </p>
+        <ul>
+          <li>
+            <strong>The front-end ratio, 28%:</strong>{" "}your total housing payment (principal, interest, property tax,
+            homeowners insurance, PMI and any HOA dues) should be no more than 28% of gross monthly income.
+          </li>
+          <li>
+            <strong>The back-end ratio, 36%:</strong>{" "}your housing payment plus all your other monthly debt payments
+            (car loans, student loans, minimum credit card payments, personal loans, child support) should be no more
+            than 36%.
+          </li>
+        </ul>
+        <p>
+          Whichever limit is lower sets your maximum payment. On $100,000 a year, gross monthly income is $8,333. The
+          28% limit allows $2,333 for housing. The 36% limit allows $3,000 for all debts, so with $500 of other debts it
+          allows $2,500 for housing. The lower figure, $2,333, wins. Our{" "}
+          <Link href="/us/loans/debt-to-income-ratio">debt-to-income calculator</Link>{" "}shows both ratios for your own
+          numbers.
+        </p>
+        <p>
+          The rule is a starting point rather than a law. Conventional lenders often approve back-end ratios up to 45%
+          or even 50% with strong credit and savings, and FHA loans use 31/43. But a lender&rsquo;s maximum is the most
+          they will lend, not what is comfortable to pay, which is why many planners stick to 28/36 or lower.
+        </p>
+
+        <h2>How much house you can afford, by salary</h2>
+        <p>
+          The table assumes a 30-year fixed mortgage at 7.25%, a $40,000 down payment, $500 a month of other debts,
+          property tax at the national typical rate of 0.89% of the home&rsquo;s value a year, homeowners insurance of
+          $1,800 a year, PMI at 0.5% of the loan a year while you have less than 20% equity, and no HOA dues.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Gross income</th>
+              <th>Home price</th>
+              <th>Monthly payment</th>
+              <th>Price ÷ income</th>
+              <th>Limit that binds</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>$50,000</td><td>$148,460</td><td>$1,000</td><td>2.97</td><td>36% (debts)</td></tr>
+            <tr><td>$60,000</td><td>$188,125</td><td>$1,300</td><td>3.14</td><td>36% (debts)</td></tr>
+            <tr><td>$75,000</td><td>$236,781</td><td>$1,750</td><td>3.16</td><td>Both equal</td></tr>
+            <tr><td>$90,000</td><td>$280,640</td><td>$2,100</td><td>3.12</td><td>28% (housing)</td></tr>
+            <tr><td>$100,000</td><td>$309,880</td><td>$2,333</td><td>3.10</td><td>28% (housing)</td></tr>
+            <tr><td>$125,000</td><td>$382,978</td><td>$2,917</td><td>3.06</td><td>28% (housing)</td></tr>
+            <tr><td>$150,000</td><td>$456,077</td><td>$3,500</td><td>3.04</td><td>28% (housing)</td></tr>
+            <tr><td>$200,000</td><td>$602,274</td><td>$4,667</td><td>3.01</td><td>28% (housing)</td></tr>
+            <tr><td>$250,000</td><td>$748,471</td><td>$5,833</td><td>2.99</td><td>28% (housing)</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Two things stand out. First, the multiple is fairly steady at about 3 times income, which is why &ldquo;three
+          times your salary&rdquo; is a common rule of thumb at today&rsquo;s rates. (When rates were near 3% in 2021,
+          the same rules allowed about 4.4 times.) Second, at lower incomes the 36% limit binds: $500 of car or
+          student loan payments takes a much bigger bite out of a $4,167 monthly income than out of an $8,333 one.
+          Without those debts, a $50,000 household could afford about $170,500 rather than $148,460.
+        </p>
+
+        <h2>Where the monthly payment goes</h2>
+        <p>
+          On $100,000 a year, the $2,333 maximum payment buys a $309,880 home with a $269,880 loan. It splits like this
+          in the first month:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Part of the payment</th>
+              <th>A month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Principal and interest</td><td>$1,841</td></tr>
+            <tr><td>Property tax (0.89%)</td><td>$230</td></tr>
+            <tr><td>Homeowners insurance</td><td>$150</td></tr>
+            <tr><td>PMI</td><td>$112</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>$2,333</strong></td></tr>
+          </tbody>
+        </table>
+        <p>
+          More than a fifth of the payment is not the loan at all. That is why a quote of &ldquo;$1,841 a month&rdquo; for a
+          $270,000 mortgage can mislead: the bill you actually pay is $2,333. PMI is the one part that goes away. In this
+          example it lasts 99 months, a little over 8 years, and costs about $11,100 in total before it ends
+          automatically when the balance reaches 78% of the original price. Our{" "}
+          <Link href="/us/housing/mortgage-calculator">mortgage calculator</Link>{" "}shows the full schedule.
+        </p>
+
+        <h2>What the payment means for your take-home pay</h2>
+        <p>
+          The 28/36 rule is based on gross income, but you pay the mortgage from take-home pay. A single filer earning
+          $100,000 in Texas, putting 5% into a 401(k), takes home about $6,273 a month after federal income tax, Social
+          Security and Medicare. A $2,333 housing payment is 37% of that. In California, with state income tax and SDI,
+          take-home falls to about $5,783, and the same payment is 40% of it.
+        </p>
+        <p>
+          At $50,000 in Texas, take-home is about $3,346 a month, and the $1,000 payment the rule allows is 30% of it.
+          At $75,000 it is $4,889, and $1,750 is 36%. Before you commit, run your own figures through the{" "}
+          <Link href="/us/taxes/paycheck-calculator">paycheck calculator</Link>{" "}and list everything else the rest of the
+          money has to cover: utilities, maintenance (often 1% of the home&rsquo;s value a year), childcare, food,
+          transport and saving for retirement.
+        </p>
+
+        <h2>How mortgage rates change the answer</h2>
+        <p>
+          Freddie Mac&rsquo;s weekly survey put the average 30-year fixed rate at about 7.3% at the start of October
+          2026. Here is how the $100,000 budget moves with the rate, with everything else the same:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Mortgage rate</th>
+              <th>Home price</th>
+              <th>Price ÷ income</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>5.5%</td><td>$355,037</td><td>3.55</td></tr>
+            <tr><td>6.0%</td><td>$341,050</td><td>3.41</td></tr>
+            <tr><td>6.5%</td><td>$327,961</td><td>3.28</td></tr>
+            <tr><td>7.0%</td><td>$315,709</td><td>3.16</td></tr>
+            <tr><td>7.25%</td><td>$309,880</td><td>3.10</td></tr>
+            <tr><td>7.5%</td><td>$304,238</td><td>3.04</td></tr>
+            <tr><td>8.0%</td><td>$293,492</td><td>2.93</td></tr>
+          </tbody>
+        </table>
+        <p>
+          A drop from 7.25% to 6.0% would add about $31,000 to the budget. That sounds like a lot, but it is only 10%,
+          because property tax, insurance and PMI do not fall with the rate. Waiting for rates to drop is a gamble on
+          both rates and prices: if lower rates bring more buyers back, prices can rise by more than the extra
+          borrowing power. If you buy now and rates fall later, you can look at refinancing; our{" "}
+          <Link href="/us/housing/refinance-calculator">refinance calculator</Link>{" "}shows when the closing costs pay for
+          themselves.
+        </p>
+
+        <h2>How your down payment changes the answer</h2>
+        <p>
+          A bigger down payment raises the price you can afford in two ways: you borrow less for each dollar of house,
+          and you pay less PMI, or none at all once you reach 20% down. On $100,000 a year:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Down payment</th>
+              <th>Home price</th>
+              <th>Down as a share of price</th>
+              <th>Total PMI paid</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>$10,000</td><td>$282,668</td><td>3.5%</td><td>$17,155</td></tr>
+            <tr><td>$20,000</td><td>$291,739</td><td>6.9%</td><td>$15,399</td></tr>
+            <tr><td>$40,000</td><td>$309,880</td><td>12.9%</td><td>$11,133</td></tr>
+            <tr><td>$60,000</td><td>$328,021</td><td>18.3%</td><td>$5,695</td></tr>
+            <tr><td>$80,000</td><td>$360,825</td><td>22.2%</td><td>$0</td></tr>
+            <tr><td>$100,000</td><td>$378,864</td><td>26.4%</td><td>$0</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Notice the jump between $60,000 and $80,000: crossing the 20% line removes PMI entirely, which frees about
+          $110 a month of the payment for the loan itself, so the budget rises by almost $33,000 for $20,000 more down.
+          If you are close to 20%, it can be worth waiting a few months to get there. If you are far from it, buying with
+          less down and paying PMI for a few years is often cheaper than paying rent while you save.
+        </p>
+        <p>
+          Remember that the down payment is not the only cash you need. Closing costs usually run to 2% to 5% of the
+          loan, and you will want an emergency fund left over after you move in. A goal-based plan in our{" "}
+          <Link href="/us/savings/savings-goal-calculator">savings goal calculator</Link>{" "}helps you see how long the
+          deposit will take.
+        </p>
+
+        <h2>How other debts change the answer</h2>
+        <p>
+          Other monthly debts are the biggest single lever most buyers can pull. On $100,000 a year, the 28% housing
+          limit binds until other debts reach $667 a month; above that, the 36% limit takes over and each extra dollar of
+          debt payment is a dollar less for the mortgage.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Other debts a month</th>
+              <th>Home price</th>
+              <th>Housing payment allowed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>$0 to $500</td><td>$309,880</td><td>$2,333</td></tr>
+            <tr><td>$750</td><td>$299,437</td><td>$2,250</td></tr>
+            <tr><td>$1,000</td><td>$268,109</td><td>$2,000</td></tr>
+            <tr><td>$1,500</td><td>$205,453</td><td>$1,500</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Going from $1,000 to $1,500 of monthly debts cuts the budget by about $62,700, or roughly $12,500 for every
+          $100. A $600 car payment can cost a family a whole bedroom. Paying off a car loan or a credit card before you
+          apply often does more for your budget than months of extra saving. Our{" "}
+          <Link href="/us/loans/debt-payoff-calculator">debt payoff calculator</Link>{" "}compares the snowball and
+          avalanche methods if you have several debts to clear.
+        </p>
+
+        <h2>How your state&rsquo;s property tax changes the answer</h2>
+        <p>
+          Property tax is part of the monthly payment, so a high-tax state leaves less room for the loan. Using each
+          state&rsquo;s typical effective rate (median real estate taxes divided by median home value, from the Census
+          Bureau&rsquo;s 2024 American Community Survey), the $100,000 budget looks like this:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>Typical property tax rate</th>
+              <th>Home price on $100,000</th>
+              <th>Tax a month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Hawaii</td><td>0.27%</td><td>$331,331</td><td>$75</td></tr>
+            <tr><td>Alabama</td><td>0.38%</td><td>$327,311</td><td>$104</td></tr>
+            <tr><td>California</td><td>0.71%</td><td>$315,816</td><td>$187</td></tr>
+            <tr><td>Florida</td><td>0.75%</td><td>$314,477</td><td>$197</td></tr>
+            <tr><td>Texas</td><td>1.31%</td><td>$296,860</td><td>$324</td></tr>
+            <tr><td>New York</td><td>1.45%</td><td>$292,760</td><td>$354</td></tr>
+            <tr><td>New Jersey</td><td>1.89%</td><td>$280,580</td><td>$442</td></tr>
+            <tr><td>Illinois</td><td>1.92%</td><td>$279,786</td><td>$448</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The same income buys about $51,500 more house in Hawaii than in Illinois, before you even look at local
+          prices. Texas is a good example of a trade-off: no state income tax, so take-home pay is higher, but property
+          tax well above average. Rates also vary a lot within states, by county and school district, so check the tax
+          bill on any home you are considering. Homeowners insurance varies too, and in parts of Florida, Louisiana and
+          California it can be several times the $1,800 used here.
+        </p>
+
+        <h2>HOA dues count too</h2>
+        <p>
+          Condos and many newer subdivisions charge homeowners association dues, and lenders count them in the housing
+          payment. On $100,000 a year, $300 a month of HOA dues cuts the price you can afford from $309,880 to $272,286,
+          about $37,600 less. A condo with high dues can cost as much each month as a pricier house without them.
+        </p>
+
+        <h2>15-year or 30-year?</h2>
+        <p>
+          A 15-year mortgage has a lower rate (about 6.6% in early October 2026) and costs far less interest over its
+          life, but the payment is much higher. On $100,000 a year, the 28% limit buys about $257,000 of house on a
+          15-year loan, against $309,880 on a 30-year loan. Many buyers take the 30-year loan for the lower required
+          payment and make extra payments when they can. That keeps the flexibility to pay less in a tight month.
+        </p>
+
+        <h2>FHA loans and lower down payments</h2>
+        <p>
+          FHA loans, backed by the Federal Housing Administration, allow 3.5% down with lower credit scores and use
+          31/43 limits instead of 28/36. On $75,000 a year with $10,000 down, FHA limits (with its 0.55% annual mortgage
+          insurance) allow about $231,900, against about $209,600 on a conventional loan with the same down payment under
+          28/36. The catch is cost: FHA also charges an upfront premium of 1.75% of the loan, usually added to the
+          balance, and on most loans with less than 10% down its annual premium lasts for the life of the loan rather
+          than ending at 78%. Many FHA borrowers refinance into a conventional loan once they reach 20% equity.
+        </p>
+
+        <h2>Five ways to afford more (or need less)</h2>
+        <ol>
+          <li>
+            <strong>Pay down debts first.</strong>{" "}If the 36% limit binds, each $100 of monthly payments cleared adds
+            about $12,500 to your budget.
+          </li>
+          <li>
+            <strong>Get to 20% down.</strong>{" "}It ends PMI and can add more than the extra cash itself.
+          </li>
+          <li>
+            <strong>Improve your credit score.</strong>{" "}A higher score can mean a lower rate and cheaper PMI; the
+            best rates usually start around 740 to 760.
+          </li>
+          <li>
+            <strong>Compare property taxes and HOA dues,</strong>{" "}not just prices. A cheaper home with a high tax
+            bill can cost more each month.
+          </li>
+          <li>
+            <strong>Buy points or ask for seller credits</strong>{" "}to lower the rate, if you plan to stay long enough
+            to recoup the upfront cost.
+          </li>
+        </ol>
+
+        <h2>Renting while you get ready</h2>
+        <p>
+          If the numbers do not work yet, renting is not wasted money: it buys flexibility and frees you from repairs,
+          property tax and insurance. A common guide is to keep rent to about 30% of gross income. Our{" "}
+          <Link href="/us/housing/rent-affordability">rent affordability calculator</Link>{" "}applies that and two other
+          common rules to your income, and shows how much is left to save toward a down payment each month.
+        </p>
+
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>
+            <strong>Budgeting from the loan payment alone:</strong>{" "}tax, insurance, PMI and HOA dues can add a fifth
+            or more.
+          </li>
+          <li>
+            <strong>Taking the lender&rsquo;s maximum:</strong>{" "}pre-approval tells you what you can borrow, not what
+            you can comfortably repay alongside retirement saving and everyday life.
+          </li>
+          <li>
+            <strong>Forgetting maintenance:</strong>{" "}a common rule is to set aside 1% to 2% of the home&rsquo;s value
+            each year for repairs.
+          </li>
+          <li>
+            <strong>Emptying savings for the down payment:</strong>{" "}keep an emergency fund of three to six months of
+            costs after closing.
+          </li>
+          <li>
+            <strong>Taking on a car loan just before buying:</strong>{" "}a new monthly payment can shrink the budget, or
+            even derail an approval, between pre-approval and closing.
+          </li>
+        </ul>
+
+        <h2>Key numbers for 2026</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Figure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Front-end (housing) limit</td><td>28% of gross income (FHA 31%)</td></tr>
+            <tr><td>Back-end (all debts) limit</td><td>36% of gross income (FHA 43%, some conventional up to 50%)</td></tr>
+            <tr><td>Average 30-year fixed rate, early October 2026</td><td>about 7.3% (15-year about 6.6%)</td></tr>
+            <tr><td>Typical property tax, US</td><td>0.89% of value a year (0.27% to 1.92% by state)</td></tr>
+            <tr><td>PMI</td><td>Below 20% down; ends automatically at 78% of the original price</td></tr>
+            <tr><td>FHA minimum down payment</td><td>3.5%, upfront premium 1.75%</td></tr>
+            <tr><td>Rule-of-thumb price at 7.25%</td><td>About 3 times gross income</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The bottom line</h2>
+        <p>
+          At 2026 mortgage rates, the 28/36 rule lets most households afford a home of about three times their gross
+          income: about $150,000 on $50,000, $237,000 on $75,000, $310,000 on $100,000 and $456,000 on $150,000, with
+          $40,000 down. Debts, down payment, property tax and HOA dues can each move that by tens of thousands of
+          dollars. Put your own numbers into the{" "}
+          <Link href="/us/housing/mortgage-affordability">home affordability calculator</Link>, then check the monthly
+          payment against your take-home pay, not just your salary. These figures are estimates for 2026 and general
+          guidance, not mortgage or financial advice.
+        </p>
+      </>
+    ),
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {
