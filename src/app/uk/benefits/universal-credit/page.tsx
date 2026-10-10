@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import UcGuide from "./UcGuide";
 
 export const metadata: Metadata = {
-  title: "Universal Credit Calculator UK 2026/27",
+  title: "Universal Credit Calculator: How Much Will I Get?",
   description:
-    "Free Universal Credit calculator for 2026/27. Estimate your monthly UC from rent, children, earnings, savings and health, with the benefit cap applied.",
+    "Free Universal Credit calculator for 2026/27. Estimate how much UC you will get each month from your rent, children, earnings, savings and health.",
   alternates: { canonical: "/uk/benefits/universal-credit" },
   openGraph: ogFor("/uk/benefits/universal-credit"),
 };

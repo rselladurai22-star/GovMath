@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import TaxCodeGuide from "./TaxCodeGuide";
 
 export const metadata: Metadata = {
-  title: "Tax Code Checker UK 2026/27",
+  title: "Tax Code Checker: What Does My Tax Code Mean?",
   description:
-    "Free tax code checker for 2026/27. Decode 1257L, K codes, BR, 0T and emergency codes, see your tax-free pay and compare the tax with the standard code.",
+    "Free tax code checker for 2026/27. Enter any code, such as 1257L, 1170L, K475, BR or 0T, to see what it means, your tax-free pay and whether you overpay.",
   alternates: { canonical: "/uk/tax-and-salary/tax-code-decoder" },
   openGraph: ogFor("/uk/tax-and-salary/tax-code-decoder"),
 };

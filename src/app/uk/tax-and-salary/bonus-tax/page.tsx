@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import BonusGuide from "./BonusGuide";
 
 export const metadata: Metadata = {
-  title: "Bonus Tax Calculator UK 2026/27",
+  title: "Bonus Tax Calculator UK 2026/27: Take-Home",
   description:
-    "Free bonus tax calculator for 2026/27. See exactly how much of your bonus you keep after Income Tax, NI, student loan and pension, and the 60% trap.",
+    "Free bonus tax calculator for 2026/27. See how much of a bonus or one-off payment you keep after Income Tax, NI, student loan and pension, and the 60% trap.",
   alternates: { canonical: "/uk/tax-and-salary/bonus-tax" },
   openGraph: ogFor("/uk/tax-and-salary/bonus-tax"),
 };

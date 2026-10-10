@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import DaysGuide from "./DaysGuide";
 
 export const metadata: Metadata = {
-  title: "Days Between Dates Calculator (UK)",
+  title: "Days Between Dates Calculator: UK Working Days",
   description:
-    "Free days between dates calculator. Count calendar days, weeks and UK working days between two dates, with bank holidays for each nation taken out.",
+    "Free days between dates calculator. Count calendar days, weeks and UK working days between two dates, with each nation's bank holidays taken out.",
   alternates: { canonical: "/uk/life/days-between-dates" },
   openGraph: ogFor("/uk/life/days-between-dates"),
 };

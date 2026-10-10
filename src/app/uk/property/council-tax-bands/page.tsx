@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import CouncilTaxGuide from "./CouncilTaxGuide";
 
 export const metadata: Metadata = {
-  title: "Council Tax Calculator by Band 2026/27",
+  title: "Council Tax Calculator 2026/27: Bill by Band",
   description:
-    "Free council tax calculator for 2026/27. See the bill for any band in England, Wales or Scotland, monthly instalments, discounts and second home premiums.",
+    "Free council tax calculator for 2026/27. See the yearly and monthly bill for every band in England, Wales and Scotland, with discounts and premiums.",
   alternates: { canonical: "/uk/property/council-tax-bands" },
   openGraph: ogFor("/uk/property/council-tax-bands"),
 };

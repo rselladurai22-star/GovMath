@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import CareGuide from "./CareGuide";
 
 export const metadata: Metadata = {
-  title: "Care Home Means Test Calculator 2026/27",
+  title: "Care Home Fees Calculator 2026/27: Who Pays?",
   description:
-    "Free care home fees means test calculator for England, Scotland, Wales and NI. See what you pay from income and savings, and when council help starts.",
+    "Free care home fees calculator for England, Scotland, Wales and NI. See what you pay from income and savings, and when the council starts to help.",
   alternates: { canonical: "/uk/life/care-home-means-test" },
   openGraph: ogFor("/uk/life/care-home-means-test"),
 };
