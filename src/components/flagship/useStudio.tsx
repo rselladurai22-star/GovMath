@@ -112,7 +112,8 @@ export function useStudio<T extends Record<string, unknown>>(schema: Schema<T>, 
     copied,
     share: async () => {
       // Copy a link to exactly these inputs, whether or not Calculate was pressed.
-      const link = window.location.origin + addressFor(schema, values);
+      // From an embedded calculator (/embed/…), share the full page instead.
+      const link = window.location.origin + addressFor(schema, values).replace(/^\/embed(?=\/)/, "");
       window.history.replaceState(null, "", addressFor(schema, values));
       setReady(true);
       try {

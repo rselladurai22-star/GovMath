@@ -10,7 +10,7 @@ import { headerHtml, logoHomeHtml } from "./catalog";
  * stylesheets as the approved take-home and mortgage pages.
  */
 const BASE = ["original-layout.css", "original-home.css", "original-brand.css", "axis-navigation.css", "reference-header.css"];
-const CALCULATOR = [
+export const CALCULATOR_CSS = [
   "original-layout.css",
   "original-home.css",
   "matching-mortgage.css",
@@ -50,7 +50,7 @@ export default function GmShell({
   children: ReactNode;
 }) {
   // govmath-site.css adds, in the design's own language, the parts the package does not include.
-  const css = [...(kind === "calculator" ? CALCULATOR : BASE), ...THEME_BEFORE, "govmath-site.css", ...THEME_AFTER];
+  const css = [...(kind === "calculator" ? CALCULATOR_CSS : BASE), ...THEME_BEFORE, "govmath-site.css", ...THEME_AFTER];
   const page = (
     <>
       {render(chrome.skip as El)}

@@ -1170,3 +1170,19 @@ a.gm-card:hover {
   border-top: 2px solid #8c1d40;
   font-size: 30px;
 }
+
+/* Embeddable calculators (/embed/…) and their embed code (October 2026). */
+.gm-embedbody { margin: 0; background: #fff; }
+.gm-embed { padding: 0 12px 12px; }
+.gm-embed .calculator { margin-top: 0; }
+.gm-embedbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 4px; border-bottom: 1px solid #dfe3e8; margin-bottom: 12px; }
+.gm-embedbar img { display: block; height: 28px; width: auto; }
+.gm-embedfull, .gm-embedfoot a { color: #8c1d40; font-weight: 600; font-size: 14px; }
+.gm-embedfoot { margin: 12px 4px 0; font-size: 13px; color: #6e6e6e; }
+.gm-embedcode { display: grid; gap: 10px; margin-top: 12px; }
+.gm-embedcode textarea { width: 100%; box-sizing: border-box; font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; padding: 10px 12px; border: 1px solid #9aa1a9; border-radius: 8px; background: #f1f4f7; color: #282828; resize: vertical; }
+.gm-embedcode .button { justify-self: start; }
+.gm-embedsection { border-top: 1px solid #dfe3e8; }
+.gm-widget { border: 1px solid #dfe3e8; border-radius: 10px; padding: 12px 16px; margin: 0 0 10px; }
+.gm-widget summary { cursor: pointer; }
+.gm-widget summary span { color: #6e6e6e; }

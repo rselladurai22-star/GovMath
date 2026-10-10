@@ -25,10 +25,14 @@ const EVERYDAY_MOVES: [string, string][] = [
 
 const nextConfig: NextConfig = {
   env: { GM_CSS_VERSION: cssHash.digest("hex").slice(0, 10) },
+  // The site and the embeddable calculators have separate root layouts, so
+  // unmatched addresses use src/app/global-not-found.tsx.
+  experimental: { globalNotFound: true },
   async headers() {
     return [
       {
-        source: "/(.*)",
+        // Everything but the embeddable calculators, which other sites frame.
+        source: "/((?!embed/).*)",
         headers: [
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
@@ -40,6 +44,16 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: "frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests",
           },
+        ],
+      },
+      {
+        // Embeddable calculators (src/app/(embed)): any site may frame them.
+        source: "/embed/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+          { key: "Content-Security-Policy", value: "frame-ancestors *; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" },
         ],
       },
       // Fonts and images never change in place: a changed file gets a new name.

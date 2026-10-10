@@ -5,6 +5,8 @@ import GmShell from "@/gm/GmShell";
 import cats from "@/gm/categories.json";
 import { trustHtml } from "@/gm/trust";
 import { calculatorJsonLd } from "@/gm/schema";
+import { embedCode, isEmbeddable } from "@/lib/embeds";
+import EmbedCode from "@/components/EmbedCode";
 
 export type Crumb = { href: string; label: string };
 
@@ -121,6 +123,17 @@ export default function FlagshipPage({
             <p>{note}</p>
           </div>
         </section>
+
+        {isEmbeddable(path) && (
+          <section className="section gm-embedsection" id="embed">
+            <h2>Add this calculator to your website</h2>
+            <p>
+              Free for any website, blog or advice service: paste this code where you want the calculator. It stays up to date
+              with the latest rates. <Link href="/widgets">More calculators to embed</Link>
+            </p>
+            <EmbedCode code={embedCode(path, title)} label={`Embed code for the ${title}`} />
+          </section>
+        )}
 
         {related.length > 0 && (
           <section className="section" id="related">
