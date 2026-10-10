@@ -202,7 +202,7 @@ The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
 
-- **Latest (10 October 2026):** 50 more US calculators (75 in all), PR open for review; see **United States and Everyday**. After deploy, ask the owner to resubmit `sitemap.xml` in Search Console.
+- **Latest (10 October 2026):** PR 62 merged: 50 more US calculators (75 in all); see **United States and Everyday**. After deploy, ask the owner to resubmit `sitemap.xml` in Search Console.
 - **Earlier (8 October 2026, night):** PR 60 merged: calculator form rows (see **Calculator form rows** under Design). Next, if the owner wants: the same row layout on the salary and mortgage package pages.
 - **Earlier (8 October 2026, evening):** PR 59 merged: every page compacted (see **Compact layout** under Design). If the owner wants it tighter still, the next lever is body text (16px now) or shorter guides; both trade off readability or the 2,000-word rule, so ask first.
 - **Earlier (8 October 2026, later):** PR 58 merged: sumatlas.com (`/`) now redirects to the visitor's country home (`src/proxy.ts`), the logo links to `/uk` or `/us`, the world home page is gone, and the home and topic pages are compact. Next, if the owner wants: compact the calculator pages the same way. AdSense review of sumatlas.com still pending (requested 8 October 09:17).
