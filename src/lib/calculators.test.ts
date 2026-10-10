@@ -18,8 +18,8 @@ describe("calculator registry", () => {
     expect(US_CATEGORIES.every((c) => c.href === `/us/${c.slug.replace(/^us-/, "")}`)).toBe(true);
   });
 
-  it("has 25 US calculators and lists the Everyday ones in the UK's Everyday Life topic", () => {
-    expect(getCalculatorsByCountry("us")).toHaveLength(25);
+  it("has 75 US calculators and lists the Everyday ones in the UK's Everyday Life topic", () => {
+    expect(getCalculatorsByCountry("us")).toHaveLength(75);
     const everyday = getCalculatorsByCategory("everyday");
     expect(everyday.length).toBeGreaterThan(0);
     const life = getCalculatorsByCategory("life").map((c) => c.href);
