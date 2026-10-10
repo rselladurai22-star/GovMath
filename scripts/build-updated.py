@@ -38,18 +38,22 @@ def last_change(*paths: str) -> str:
 
 
 dates = {}
-for page in glob.glob(os.path.join(ROOT, "src/app/uk/*/*/page.tsx")):
+# Since October 2026 the site's pages live in the (site) route group; before
+# that they were directly under src/app, so each page's history spans both.
+APP = "src/app/(site)"
+for page in glob.glob(os.path.join(ROOT, APP, "uk/*/*/page.tsx")):
     folder = os.path.relpath(os.path.dirname(page), ROOT)
-    url = "/" + os.path.relpath(folder, "src/app")
+    url = "/" + os.path.relpath(folder, APP)
     if "[" in url or url in PACKAGE:
         continue
     # Before October 2026 the UK pages lived at src/app/<topic>/<page>.
-    dates[url] = last_change(folder, folder.replace("src/app/uk/", "src/app/", 1))
+    dates[url] = last_change(folder, "src/app" + url, "src/app" + url.replace("/uk/", "/", 1))
 # US pages and the Everyday pages shared by every country.
-for pattern in ("src/app/us/*/*/page.tsx", "src/app/everyday/*/page.tsx"):
-    for page in glob.glob(os.path.join(ROOT, pattern)):
+for pattern in ("us/*/*/page.tsx", "everyday/*/page.tsx"):
+    for page in glob.glob(os.path.join(ROOT, APP, pattern)):
         folder = os.path.relpath(os.path.dirname(page), ROOT)
-        dates["/" + os.path.relpath(folder, "src/app")] = last_change(folder)
+        url = "/" + os.path.relpath(folder, APP)
+        dates[url] = last_change(folder, "src/app" + url)
 for url, path in PACKAGE.items():
     dates[url] = last_change(path)
 

@@ -23,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     dated(EVERYDAY.href, newest(CALCULATORS.filter((x) => x.category === "everyday").map((x) => updatedIso(x.href)))),
     dated("/calculators", newest(calcDates)),
     dated("/blog", newest(getAllPosts().map((p) => p.date))),
-    ...["/about", "/how-we-check", "/contact", "/privacy", "/terms", "/disclaimer"].map((u) => dated(u)),
+    ...["/about", "/how-we-check", "/widgets", "/contact", "/privacy", "/terms", "/disclaimer"].map((u) => dated(u)),
     ...CATEGORIES.map((c) => dated(c.href, newest(CALCULATORS.filter((x) => x.category === c.slug).map((x) => updatedIso(x.href))))),
     ...CALCULATORS.map((c) => dated(c.href, updatedIso(c.href))),
     ...getAllPosts().map((p) => dated(`/blog/${p.slug}`, p.date)),
