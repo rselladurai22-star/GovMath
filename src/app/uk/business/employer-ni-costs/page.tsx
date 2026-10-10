@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import EmployerCostGuide from "./EmployerCostGuide";
 
 export const metadata: Metadata = {
-  title: "Employer NI Calculator UK 2026/27",
+  title: "Employer NI Calculator 2026/27: Cost of Hiring",
   description:
-    "Free employer cost calculator for 2026/27. See employer NI at 15%, the Employment Allowance, pension and the true cost of hiring someone.",
+    "Free employer NI calculator for 2026/27. See employer NI at 15%, the Employment Allowance, pension costs and the true cost of hiring someone.",
   alternates: { canonical: "/uk/business/employer-ni-costs" },
   openGraph: ogFor("/uk/business/employer-ni-costs"),
 };

@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import TaperGuide from "./TaperGuide";
 
 export const metadata: Metadata = {
-  title: "Universal Credit Taper Rate Calculator 2026/27",
+  title: "UC Taper Rate Calculator 2026/27: 55p per £1",
   description:
-    "Free UC taper calculator for 2026/27. See how much you keep from extra hours or a pay rise after the 55% taper, work allowance, tax and NI.",
+    "Free Universal Credit taper rate calculator for 2026/27. UC falls by 55p for every £1 you earn above the work allowance: see what you keep from extra hours.",
   alternates: { canonical: "/uk/benefits/universal-credit-taper" },
   openGraph: ogFor("/uk/benefits/universal-credit-taper"),
 };

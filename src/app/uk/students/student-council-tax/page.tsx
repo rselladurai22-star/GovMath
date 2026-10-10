@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import CouncilTaxGuide from "./CouncilTaxGuide";
 
 export const metadata: Metadata = {
-  title: "Student Council Tax Calculator UK",
+  title: "Do Students Pay Council Tax? Exemption Checker",
   description:
-    "Free student council tax checker. See if your home is exempt, when a discount applies to mixed households, and how to claim with a student certificate.",
+    "Free student council tax checker. Full-time students are exempt: see if your home is, when a discount applies if you live with non-students, and how to claim.",
   alternates: { canonical: "/uk/students/student-council-tax" },
   openGraph: ogFor("/uk/students/student-council-tax"),
 };

@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import AaGuide from "./AaGuide";
 
 export const metadata: Metadata = {
-  title: "Attendance Allowance Calculator 2026/27",
+  title: "Attendance Allowance 2026/27: Rates and Checker",
   description:
-    "Free Attendance Allowance calculator for 2026/27. Check the lower and higher weekly rates, whether you qualify and the extra benefits it can unlock.",
+    "Free Attendance Allowance checker for 2026/27. See the lower and higher weekly rates, whether you qualify and the extra benefits it can unlock.",
   alternates: { canonical: "/uk/benefits/attendance-allowance" },
   openGraph: ogFor("/uk/benefits/attendance-allowance"),
 };

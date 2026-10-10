@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import ChildBenefitGuide from "./ChildBenefitGuide";
 
 export const metadata: Metadata = {
-  title: "Child Benefit Calculator UK 2026/27",
+  title: "Child Benefit Calculator 2026/27: How Much?",
   description:
-    "Free Child Benefit calculator for 2026/27. See your weekly, monthly and yearly payments for each child, plus the High Income Child Benefit Charge.",
+    "Free Child Benefit calculator for 2026/27. See how much you get each week, month and year for each child, plus the High Income Child Benefit Charge.",
   alternates: { canonical: "/uk/benefits/child-benefit" },
   openGraph: ogFor("/uk/benefits/child-benefit"),
 };

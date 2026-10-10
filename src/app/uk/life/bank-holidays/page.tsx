@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import BankHolidaysGuide from "./BankHolidaysGuide";
 
 export const metadata: Metadata = {
-  title: "UK Bank Holidays 2026, 2027 and 2028",
+  title: "UK Bank Holidays 2026 and 2027: All Dates",
   description:
-    "Every UK bank holiday for 2026, 2027 and 2028 in England, Wales, Scotland and Northern Ireland, with a planner to make the most of your annual leave.",
+    "Every UK bank holiday in 2026, 2027 and 2028 for England, Wales, Scotland and Northern Ireland, with a planner to make the most of your annual leave.",
   alternates: { canonical: "/uk/life/bank-holidays" },
   openGraph: ogFor("/uk/life/bank-holidays"),
 };

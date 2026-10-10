@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import RatesGuide from "./RatesGuide";
 
 export const metadata: Metadata = {
-  title: "Small Business Rates Relief Calculator 2026/27",
+  title: "Business Rates Calculator 2026/27 (England)",
   description:
-    "Free business rates calculator for England in 2026/27. Check small business rates relief, the multipliers and what you pay on your rateable value.",
+    "Free business rates calculator for 2026/27. See your bill from your rateable value, small business rate relief and the multipliers in England.",
   alternates: { canonical: "/uk/business/small-business-rates" },
   openGraph: ogFor("/uk/business/small-business-rates"),
 };

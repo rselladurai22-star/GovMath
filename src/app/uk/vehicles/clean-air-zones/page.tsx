@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import CazGuide from "./CazGuide";
 
 export const metadata: Metadata = {
-  title: "Clean Air Zone and ULEZ Calculator 2026",
+  title: "ULEZ and Clean Air Zone Charges 2026: Checker",
   description:
-    "Free clean air zone and ULEZ charge calculator for 2026. See the daily charge in each UK city, the London congestion charge and how much a year costs.",
+    "Free clean air zone and ULEZ charge checker for 2026. See the daily charge in each UK city, the London congestion charge and what a year costs.",
   alternates: { canonical: "/uk/vehicles/clean-air-zones" },
   openGraph: ogFor("/uk/vehicles/clean-air-zones"),
 };

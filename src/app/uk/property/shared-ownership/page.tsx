@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import SharedOwnershipGuide from "./SharedOwnershipGuide";
 
 export const metadata: Metadata = {
-  title: "Shared Ownership Calculator UK 2026",
+  title: "Shared Ownership Calculator: Rent and Mortgage",
   description:
-    "Free shared ownership calculator. See the monthly mortgage, rent and service charge on your share, compared with buying outright, plus staircasing costs.",
+    "Free shared ownership calculator. See the monthly mortgage, the rent on the share you don't own and the service charge, compared with buying outright.",
   alternates: { canonical: "/uk/property/shared-ownership" },
   openGraph: ogFor("/uk/property/shared-ownership"),
 };

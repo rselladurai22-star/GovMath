@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import SPDGuide from "./SPDGuide";
 
 export const metadata: Metadata = {
-  title: "Single Person Council Tax Discount Calculator",
+  title: "Single Person Council Tax Discount: 25% Off",
   description:
-    "Free single person discount calculator. See how much the 25% council tax discount saves you a year and a month, including if you live alone for part of a year.",
+    "Free single person council tax calculator. Living alone takes 25% off your bill: see what you save a year and a month, including for part of a year.",
   alternates: { canonical: "/uk/property/single-person-discount" },
   openGraph: ogFor("/uk/property/single-person-discount"),
 };

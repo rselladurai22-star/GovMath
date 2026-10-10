@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import SornGuide from "./SornGuide";
 
 export const metadata: Metadata = {
-  title: "SORN Refund Calculator: Car Tax Refund",
+  title: "SORN Refund Calculator: How Much Car Tax Back?",
   description:
-    "Free SORN refund calculator. See the car tax you get back when you declare SORN, how timing affects the refund, and the rules and penalties while off the road.",
+    "Free SORN refund calculator. See how much car tax you get back when you declare SORN, how timing affects the refund, and the rules while off the road.",
   alternates: { canonical: "/uk/vehicles/sorn-declaration" },
   openGraph: ogFor("/uk/vehicles/sorn-declaration"),
 };
