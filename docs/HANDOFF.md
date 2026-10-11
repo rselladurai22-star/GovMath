@@ -1,7 +1,7 @@
 # SumAtlas project memory (formerly GovMath)
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 8 October 2026 (**every page compacted, `/` redirects to the visitor's country**; **25 US calculators with state-by-state income and property tax, an Everyday section and a multi-country registry live, see United States and Everyday**; move to sumatlas.com live, see Site move; one-row header, claret heroes and a text-only home hero, see **Design**; logo, SEO audit fixes, early repayment charge calculator and Phases 0 to 9 live; the 187 fixed-amount pages switched off until AdSense approval, see **SEO**; titles and descriptions of 8 near-page-one pages matched to real searches, see **Known loose ends**; Search Console API access and sitemap notes under **Search Console** below; `docs/SEO-PLAN.md` has the off-site plan).
+Last updated: 11 October 2026 (**next 25 tools proposed, waiting for the owner's go-ahead, see Known loose ends**; salary and mortgage package forms use the shared form rows; every calculator page has the two-group page structure (tool + related sidebar, then guide); IndexNow live; 22 embeddable widgets; 25 high-demand UK and Everyday calculators; 75 US calculators with state income and property tax; sumatlas.com live with `/` redirecting to the visitor's country; the 187 fixed-amount pages switched off until AdSense approval, see **SEO**; Search Console API notes under **Search Console**; `docs/SEO-PLAN.md` has the off-site plan).
 
 ## Goal
 
@@ -230,7 +230,12 @@ The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
 
-- **Latest (11 October 2026, late night):** PR 70 merged: form rows on the salary and mortgage package pages (see **Calculator form rows** under Design).
+- **Latest (11 October 2026, after PR 70):** the owner asked for the next 25 high-traffic tools. Proposed list (none duplicates an existing page; build only after the owner approves or swaps items, one agent at a time in five batches of five, same brief as **25 high-demand calculators**, then one PR):
+  - Everyday, health and life: sleep (90-minute cycles), period (next period, fertile window), macro, ideal weight (several formulas), water intake, running pace (pace/time/distance, 5k to marathon). Health pages say they are estimates and point to the NHS or a doctor.
+  - Everyday, maths and converters: scientific calculator, random number generator (plus dice and coin), temperature converter, length and distance converter, area and square footage, Roman numerals.
+  - Everyday, home and money: paint, tile and flooring (waste allowance), split the bill (tip, uneven shares, currency choice), unit price comparison, dog and cat age.
+  - UK: personal loan (APR comparison), credit card repayment (minimum payment vs fixed), debt snowball vs avalanche, landlord tax (Section 24 credit), pension pot and income, savings goal (after tax, ISA vs easy access), electric car charging cost (home, off-peak, public), late payment interest (8% plus Bank of England base rate, fixed compensation).
+- **Earlier (11 October 2026, late night):** PR 70 merged: form rows on the salary and mortgage package pages (see **Calculator form rows** under Design).
 - **Earlier (11 October 2026, night):** PR 69 merged: calculator page structure (see **Calculator page structure** under Design).
 - **Earlier (11 October 2026, evening):** PR 68 merged: IndexNow support (see **IndexNow**); every sitemap page submitted once with `--all` after the deploy.
 - **Earlier (11 October 2026, later):** PR 67 merged: 5 more embeddable widgets (age, due date, calorie, redundancy, appliance cost; 22 in all) and an Everyday group on `/widgets`.
