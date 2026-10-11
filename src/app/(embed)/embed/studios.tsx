@@ -15,6 +15,11 @@ import PremiumBondsStudio from "@/app/(site)/uk/investing/premium-bonds/PremiumB
 import BonusStudio from "@/app/(site)/uk/tax-and-salary/bonus-tax/BonusStudio";
 import PaycheckStudio from "@/app/(site)/us/taxes/paycheck-calculator/PaycheckStudio";
 import MortgageStudio from "@/app/(site)/us/housing/mortgage-calculator/MortgageStudio";
+import RedundancyPayStudio from "@/app/(site)/uk/tax-and-salary/redundancy/RedundancyPayStudio";
+import ApplianceStudio from "@/app/(site)/uk/property/appliance-running-cost/ApplianceStudio";
+import AgeStudio from "@/app/(site)/everyday/age-calculator/AgeStudio";
+import DueDateStudio from "@/app/(site)/everyday/pregnancy-due-date/DueDateStudio";
+import CalorieStudio from "@/app/(site)/everyday/calorie-calculator/CalorieStudio";
 import CompoundStudio from "@/app/(site)/us/savings/compound-interest-calculator/CompoundStudio";
 import type { EMBEDS } from "@/lib/embeds";
 
@@ -44,7 +49,12 @@ export const STUDIOS: Record<(typeof EMBEDS)[number], Studio> = {
   "/uk/property/council-tax-bands": CouncilTaxStudio,
   "/uk/investing/premium-bonds": PremiumBondsStudio,
   "/uk/tax-and-salary/bonus-tax": BonusStudio,
+  "/uk/tax-and-salary/redundancy": RedundancyPayStudio,
+  "/uk/property/appliance-running-cost": ApplianceStudio,
   "/us/taxes/paycheck-calculator": PaycheckStudio,
   "/us/housing/mortgage-calculator": MortgageStudio,
   "/us/savings/compound-interest-calculator": CompoundStudio,
+  "/everyday/age-calculator": AgeStudio,
+  "/everyday/pregnancy-due-date": DueDateStudio,
+  "/everyday/calorie-calculator": CalorieStudio,
 };
