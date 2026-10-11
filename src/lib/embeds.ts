@@ -20,9 +20,14 @@ export const EMBEDS = [
   "/uk/property/council-tax-bands",
   "/uk/investing/premium-bonds",
   "/uk/tax-and-salary/bonus-tax",
+  "/uk/tax-and-salary/redundancy",
+  "/uk/property/appliance-running-cost",
   "/us/taxes/paycheck-calculator",
   "/us/housing/mortgage-calculator",
   "/us/savings/compound-interest-calculator",
+  "/everyday/age-calculator",
+  "/everyday/pregnancy-due-date",
+  "/everyday/calorie-calculator",
 ] as const;
 
 export const SITE_URL = "https://sumatlas.com";

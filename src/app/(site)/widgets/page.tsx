@@ -8,13 +8,13 @@ import { EMBEDS, SITE_URL, embedCode } from "@/lib/embeds";
 export const metadata: Metadata = {
   title: "Free Calculator Widgets for Your Website",
   description:
-    "Free UK and US calculator widgets to embed on your website: Universal Credit, student loans, council tax, Child Benefit, paycheck and mortgage. Always up to date.",
+    "Free calculator widgets for your website: Universal Credit, student loans, council tax, redundancy, energy costs, age, due date, paycheck and mortgage.",
   alternates: { canonical: "/widgets" },
 };
 
 const LIST = EMBEDS.map((href) => CALCULATORS.find((c) => c.href === href)!);
 
-function Group({ title, country }: { title: string; country: "uk" | "us" }) {
+function Group({ title, country }: { title: string; country: "uk" | "us" | "global" }) {
   return (
     <>
       <h2>{title}</h2>
@@ -66,6 +66,7 @@ export default function WidgetsPage() {
       </ul>
       <Group title="UK calculators" country="uk" />
       <Group title="US calculators" country="us" />
+      <Group title="Everyday calculators (every country)" country="global" />
     </ContentPage>
   );
 }
