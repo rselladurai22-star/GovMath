@@ -57,7 +57,7 @@ export default function TopicHub({
 }) {
   return (
     <GmShell country={country}>
-      <div className="wrap">
+      <div className="wrap gm-hub">
         <Crumbs items={crumbs} />
         <section className="categoryhero">
           <h1>{title}</h1>

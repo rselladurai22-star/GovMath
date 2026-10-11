@@ -1944,3 +1944,57 @@ footer {
 .gm-neutral .calculator:not(.gm-clear) .gm-form .moreoptions[open] > summary {
   border-bottom: 1px solid #dfe3e8;
 }
+
+/* ── Smaller type (October 2026, owner's request) ─────────────────────
+   One step down on every calculator page (main:has(.pg-layout), React
+   and package pages alike) and on the hubs built by TopicHub (/us, the
+   US topics, /everyday). Inputs stay 15px. */
+.gm-neutral:has(.pg-layout) .intro h1 { font-size: 30px; line-height: 36px; }
+.gm-neutral:has(.pg-layout) .intro > p:not(.gm-trust) { font-size: 15px; line-height: 22px; }
+.gm-neutral:has(.pg-layout) .sectionheading h2,
+.gm-neutral:has(.pg-layout) .section > h2,
+.gm-neutral:has(.pg-layout) #results h2 { font-size: 22px; line-height: 28px; }
+/* The salary page's guide title carries an inline 34px size. */
+.gm-neutral:has(.pg-layout) h2[style*="font-size:34px"] { font-size: 26px !important; line-height: 32px !important; }
+.gm-neutral:has(.pg-layout) .pg-step { font-size: 17px; }
+.gm-neutral:has(.pg-layout) .facts b { font-size: 22px; line-height: 30px; }
+.gm-neutral:has(.pg-layout) .resultcard h3 { font-size: 17px; line-height: 23px; }
+.gm-neutral:has(.pg-layout) .resultcard p,
+.gm-neutral:has(.pg-layout) .resultcard li,
+.gm-neutral:has(.pg-layout) .resultcard td,
+.gm-neutral:has(.pg-layout) .resultcard th { font-size: 14px; line-height: 21px; }
+.gm-neutral:has(.pg-layout) .pg-related a,
+.gm-neutral:has(.pg-layout) .pg-related strong { font-size: 14px; line-height: 20px; }
+.gm-neutral:has(.pg-layout) .pg-related p { font-size: 13px; line-height: 18px; }
+.gm-neutral:has(.pg-layout) .guideintro h2 { font-size: 24px; line-height: 30px; }
+.gm-neutral:has(.pg-layout) .guideintro p { font-size: 15px; line-height: 23px; }
+.gm-neutral:has(.pg-layout) .g-section h2 { font-size: 20px; line-height: 26px; }
+.gm-neutral:has(.pg-layout) .g-section h3 { font-size: 16px; line-height: 22px; }
+.gm-neutral:has(.pg-layout) .g-section p,
+.gm-neutral:has(.pg-layout) .g-section li { font-size: 15px; line-height: 24px; }
+.gm-neutral:has(.pg-layout) .g-section table { font-size: 13px; }
+.gm-neutral:has(.pg-layout) .guide-nav a { font-size: 13px; line-height: 18px; }
+.gm-neutral:has(.pg-layout) .fullfaq h2 { font-size: 22px; line-height: 28px; }
+.gm-neutral:has(.pg-layout) .q-faq summary { font-size: 16px; line-height: 22px; }
+.gm-neutral:has(.pg-layout) .q-faqBody,
+.gm-neutral:has(.pg-layout) .q-faqBody p { font-size: 15px; line-height: 24px; }
+.gm-neutral:has(.pg-layout) .q-note,
+.gm-neutral:has(.pg-layout) .q-note p { font-size: 14px; line-height: 21px; }
+/* Hubs */
+.gm-neutral .gm-hub .categoryhero h1 { font-size: 28px; line-height: 34px; }
+.gm-neutral .gm-hub .categoryhero p { font-size: 15px; line-height: 22px; }
+.gm-neutral .gm-hub .sectionheading h2 { font-size: 22px; line-height: 28px; }
+.gm-neutral .gm-hub .section > p { font-size: 15px; line-height: 22px; }
+.gm-neutral .gm-hub .categorytool p { font-size: 13px; line-height: 19px; }
+.gm-neutral .gm-hub .categorytool h2,
+.gm-neutral .gm-hub .categorytool strong { font-size: 15px; line-height: 20px; }
+@media (max-width: 650px) {
+  .gm-neutral:has(.pg-layout) .intro h1 { font-size: 26px; line-height: 32px; }
+  .gm-neutral .gm-hub .categoryhero h1 { font-size: 26px; line-height: 32px; }
+}
+.gm-neutral .intro > p.gm-trust:last-child { font-size: 14px; line-height: 20px; }
+.gm-neutral:has(.pg-layout) .ax-paymentstrip span { font-size: 19px; line-height: 25px; }
+.gm-neutral:has(.pg-layout) .ax-paymentstrip strong { font-size: 26px; line-height: 32px; }
+.gm-neutral:has(.pg-layout) .ax-chartlegend > div > span { font-size: 13px; }
+.gm-neutral:has(.pg-layout) .ax-chartlegend b { font-size: 18px; line-height: 24px; }
+.gm-neutral:has(.pg-layout) .sectionnav a { font-size: 15px; }
