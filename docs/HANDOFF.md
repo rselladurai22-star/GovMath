@@ -229,7 +229,7 @@ The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
 
-- **Latest (11 October 2026, evening):** IndexNow support (see **IndexNow**), PR open for review. After deploy, run `node scripts/indexnow.mjs --all` once.
+- **Latest (11 October 2026, evening):** PR 68 merged: IndexNow support (see **IndexNow**); every sitemap page submitted once with `--all` after the deploy.
 - **Earlier (11 October 2026, later):** PR 67 merged: 5 more embeddable widgets (age, due date, calorie, redundancy, appliance cost; 22 in all) and an Everyday group on `/widgets`.
 - **Earlier (11 October 2026):** PR 66 merged: 25 high-demand calculators (see **25 high-demand calculators**). Next for the owner: resubmit `sitemap.xml`; consider adding age, due date, appliance cost, redundancy and calorie to the embeddable widgets.
 - **Earlier (10 October 2026, evening):** PR 64 merged: embeddable calculators for backlinks (see **Embeddable calculators**). Next for the owner: offer `sumatlas.com/widgets` to student unions, advice charities, housing associations and bloggers.
