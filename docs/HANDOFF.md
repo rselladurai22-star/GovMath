@@ -230,7 +230,8 @@ The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
 
-- **Latest (11 October 2026, night):** PR 69 merged: calculator page structure (see **Calculator page structure** under Design).
+- **Latest (11 October 2026, late night):** form rows on the salary and mortgage package pages (see **Calculator form rows** under Design).
+- **Earlier (11 October 2026, night):** PR 69 merged: calculator page structure (see **Calculator page structure** under Design).
 - **Earlier (11 October 2026, evening):** PR 68 merged: IndexNow support (see **IndexNow**); every sitemap page submitted once with `--all` after the deploy.
 - **Earlier (11 October 2026, later):** PR 67 merged: 5 more embeddable widgets (age, due date, calorie, redundancy, appliance cost; 22 in all) and an Everyday group on `/widgets`.
 - **Earlier (11 October 2026):** PR 66 merged: 25 high-demand calculators (see **25 high-demand calculators**). Next for the owner: resubmit `sitemap.xml`; consider adding age, due date, appliance cost, redundancy and calorie to the embeddable widgets.
