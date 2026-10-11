@@ -58,6 +58,20 @@ The owner asked for the non-UK-specific calculators to be shared and for the top
 - **Dates:** US pages show the trust-line date US style ("October 7, 2026", `updatedOn()` in `src/gm/trust.ts`).
 - **Not yet done:** state rules not modelled: Connecticut and New York high-income recapture, Missouri and Oregon federal tax subtraction, lower state rates on long-term gains (AR, ND, SC, WI and others), Arkansas's low-income table; `BandBar` and `StepChart` in `Guide.tsx` still print £, so US guides use `Bars`.
 
+## 25 high-demand calculators (October 2026, owner's request)
+
+Built one agent at a time (owner's rule for big batches). Brief: each page follows the flagship template; health pages say they are estimates and point to the NHS.
+- **UK:**
+  - `/uk/property/`: appliance running cost, energy bill (`src/lib/energy/costs.ts`: Ofgem cap Oct–Dec 2026, electricity 26.32p and 54.83p a day, gas 7.97p and 29.68p, typical £1,723; **electricity VAT 0% from 1 October 2026 to 31 March 2027**, gas 5%); solar panels and heat pump vs boiler (`src/lib/energy/home-upgrades.ts`: BUS £7,500, PVGIS regional yields, DESNZ costs and carbon factors, 0% VAT on installs to March 2027); lease extension (`src/lib/property/lease-extension.ts`: 1993 Act rules in force; the 2024 Act method shown as "not in force").
+  - `/uk/tax-and-salary/`: redundancy (the new, fuller page replaced the old one **at the existing `/uk/tax-and-salary/redundancy` address**; cap £751/week, max £22,530; NI £783), notice period and final pay, holiday pay for irregular hours (12.07%), all in `src/lib/tax/employment-rights.ts`; Budget tax changes (`src/lib/tax/budget-changes.ts`, announced measures only to 2030/31; **update on Budget day, 28 October 2026**).
+  - `/uk/benefits/baby-cost-calculator` (`src/lib/benefits/baby-costs.ts`; England's funded hours only).
+- **Everyday:**
+  - Dates: age, date, countdown and hours/time (`src/lib/life/dates.ts`). `src/components/flagship/useToday.ts` gives the visitor's date after mount, so date defaults ("" = today) never go stale and never cause hydration mismatches; the due date and ovulation pages use it too.
+  - Pregnancy: due date and ovulation (`src/lib/life/pregnancy.ts`).
+  - Body: calorie, body fat, stone to kg and feet to cm (`src/lib/life/body.ts`).
+  - Maths and money: discount, fraction, average, GPA and grade, and fuel economy (`src/lib/life/maths.ts`).
+- **Recheck:** the Ofgem cap every quarter (next announcement 25 November 2026, for January to March 2027) and the end of the electricity VAT cut (31 March 2027); BUS grant and installation VAT (April 2027); redundancy caps each April; Budget measures on 28 October 2026; leasehold valuation regulations (consultation closed 21 October 2026); the votes-at-16 bill (age guide).
+
 ## Stack and commands
 
 - **Stack:** Next.js 16 App Router (`searchParams` is a Promise), React 19, Vitest, Playwright. All styling comes from plain stylesheets in `public/gm/` (no CSS Modules, no Tailwind).
@@ -210,7 +224,8 @@ The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
 
-- **Latest (10 October 2026, evening):** PR 64 merged: embeddable calculators for backlinks (see **Embeddable calculators**). Next for the owner: offer `sumatlas.com/widgets` to student unions, advice charities, housing associations and bloggers.
+- **Latest (11 October 2026):** 25 high-demand calculators (see **25 high-demand calculators**), PR open for review.
+- **Earlier (10 October 2026, evening):** PR 64 merged: embeddable calculators for backlinks (see **Embeddable calculators**). Next for the owner: offer `sumatlas.com/widgets` to student unions, advice charities, housing associations and bloggers.
 - **Earlier (10 October 2026, later):** PR 63 merged: traffic review from Search Console (July to 8 October: impressions 4× to about 16,000 a week, clicks only 13 to about 30 to 40 a week, average position about 37; mortgage and Stamp Duty sit at 69 to 84). Titles and descriptions rewritten from real queries for 19 pages: the page-one ones with real volume (UC taper "55p per £1", tax code checker "what does my tax code mean", council tax bands, Universal Credit "how much will I get", shared ownership, single person discount, business rates, bank holidays, student council tax, ULEZ, Attendance Allowance, days between dates, employer NI, care home fees, SORN) and near-page-one ones (Premium Bonds "average return", bonus tax, tax bracket, Child Benefit). The 8 retitled on 7 October were left alone so their test isn't reset; page-one pages with under about 70 impressions a month were left as they were. **Recheck clicks and CTR for these in 3 to 4 weeks (early November 2026).** Bigger levers, told to the owner: Change of address in Search Console (still outstanding), Bing Webmaster Tools, links (forums, student unions, advice charities, journalist requests, embeddable calculators), timely Budget content, and focusing on niches that already rank (benefits, students, pro-rata).
 - **Earlier (10 October 2026):** PR 62 merged: 50 more US calculators (75 in all); see **United States and Everyday**. After deploy, ask the owner to resubmit `sitemap.xml` in Search Console.
 - **Earlier (8 October 2026, night):** PR 60 merged: calculator form rows (see **Calculator form rows** under Design). Next, if the owner wants: the same row layout on the salary and mortgage package pages.
