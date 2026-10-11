@@ -148,8 +148,10 @@ export default function Studio({
               else onCalculate();
             }}
           >
-            <div className="formheading gm-notitle">
-              {title && <h2 className="sr-only">{title}</h2>}
+            <div className="formheading pg-stephead">
+              <h2 className="pg-step">
+                <span aria-hidden="true">1</span>Your details{title && <span className="sr-only">: {title}</span>}
+              </h2>
               {onReset && (
                 <button type="button" className="textbutton" onClick={onReset}>
                   Reset
@@ -164,6 +166,9 @@ export default function Studio({
           </form>
 
           <div className="result ax-chartpanel" aria-live="polite">
+            <h2 className="pg-step">
+              <span aria-hidden="true">2</span>Your results
+            </h2>
             <p className="resultlabel">Your summary</p>
             {a && (
               <div className="ax-paymentstrip">
@@ -192,7 +197,7 @@ export default function Studio({
         <section ref={details} className="section gm-details" id="results" aria-labelledby="results-title">
           <div className="sectionheading">
             <div>
-              <p className="eyebrow">THE COMPLETE PICTURE</p>
+              <p className="pg-badge">Based on your figures</p>
               <h2 id="results-title">Your results in detail</h2>
             </div>
           </div>

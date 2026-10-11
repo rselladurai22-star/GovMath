@@ -1773,3 +1773,61 @@ footer {
     justify-content: flex-start;
   }
 }
+
+/* ── Calculator page structure (October 2026, owner's request) ────────
+   Group 1 (.pg-tool): your details and your results in one bordered
+   section, with a related-calculators sidebar (.pg-related) beside it on
+   wide screens and below it on smaller ones. Group 2 (.pg-guide): the
+   guide, questions and sources, below a clear divider. */
+.wrap:has(> .pg-layout) { max-width: 1340px; }
+.pg-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+.pg-tool { border: 1px solid #dfe3e8; border-radius: 16px; padding: 14px; background: #fff; box-shadow: 0 1px 3px rgba(16, 24, 40, 0.05); min-width: 0; }
+.gm-neutral .pg-tool > .calculator { margin: 0; }
+.pg-step { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 18px; line-height: 24px; font-weight: 700; color: #282828; text-align: left; }
+.pg-step > span { display: inline-grid; place-items: center; flex: 0 0 26px; height: 26px; border-radius: 50%; background: #8c1d40; color: #fff; font-size: 14px; line-height: 1; }
+.gm-neutral .formheading.pg-stephead { display: flex; justify-content: space-between; align-items: center; margin: 0 0 6px; padding: 0 0 12px; border-bottom: 1px solid #dfe3e8; }
+.gm-neutral .result .pg-step { margin: -4px 0 14px; padding: 0 0 12px; border-bottom: 1px solid #dfe3e8; }
+.gm-neutral .pg-tool > .assumption { padding: 12px 6px 0; }
+/* Detailed results stay inside Group 1, set off by a rule and a label. */
+.gm-neutral .pg-tool > section.section { border-top: 1px solid #dfe3e8; margin-top: 18px; padding: 22px 8px 6px; }
+.pg-badge { display: inline-block; margin: 0 0 8px; padding: 3px 10px; border-radius: 999px; background: #f1f4f7; border: 1px solid #dfe3e8; color: #8c1d40; font-size: 12px; font-weight: 700; letter-spacing: 0.03em; }
+.gm-neutral .pg-tool .sectionheading h2 { font-size: 24px; line-height: 30px; }
+.pg-next { margin: 20px 0 0; padding: 14px 18px; border: 1px solid #dfe3e8; border-left: 4px solid #8c1d40; border-radius: 10px; background: #fff; }
+.pg-next h3 { margin: 0 0 6px; font-size: 16px; }
+.pg-next ul { margin: 0; padding-left: 18px; }
+.pg-next li { margin: 4px 0; font-size: 15px; line-height: 22px; color: #4a4a4a; }
+.pg-next a, .pg-links a { color: #8c1d40; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+/* Related calculators: a sidebar on wide screens, a grid below the results otherwise. */
+.pg-related { background: #f7f8fa; border: 1px solid #dfe3e8; border-radius: 14px; padding: 16px; }
+.pg-related h2 { margin: 0 0 10px; font-size: 17px; line-height: 22px; }
+.pg-related nav { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
+.pg-relcard { display: block; padding: 10px 12px; background: #fff; border: 1px solid #e4e8ec; border-radius: 10px; text-decoration: none; }
+.pg-relcard strong { display: block; color: #8c1d40; font-size: 15px; line-height: 20px; }
+.pg-relcard span { display: block; margin-top: 2px; color: #6e6e6e; font-size: 13px; line-height: 18px; }
+.pg-relcard:hover { border-color: #8c1d40; }
+.pg-relcard:focus-visible { outline: 3px solid #b8325f; outline-offset: 2px; }
+@media (min-width: 1200px) {
+  .pg-layout { grid-template-columns: minmax(0, 1fr) 272px; gap: 24px; }
+  .pg-related { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
+  .pg-related nav { grid-template-columns: 1fr; }
+}
+/* Group 2: the guide starts after a clear divider. */
+.pg-guide { margin-top: 36px; padding-top: 22px; border-top: 3px solid #8c1d40; }
+.pg-guidehead { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.pg-kicker { margin: 0; padding: 3px 12px; border-radius: 999px; background: #8c1d40; color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.pg-guidelead { margin: 0; color: #6e6e6e; font-size: 15px; }
+.gm-neutral .pg-guide > .guideintro, .gm-neutral .pg-guide > .salary-guide { padding-top: 12px; }
+.gm-neutral .pg-guide details.ax-guide-toc { margin: 12px 0 8px; }
+.gm-neutral .pg-guide details.ax-guide-toc nav { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 2px 16px; }
+.pg-links { margin: 14px 0 0; padding-left: 12px; border-left: 3px solid #dfe3e8; color: #4a4a4a; font-size: 15px; }
+/* Guide examples use fixed figures: label them so they are not mistaken for your results. */
+.g-exampleHead::before { content: "Example"; display: inline-block; margin-right: 8px; padding: 1px 8px; border-radius: 999px; background: #f1f4f7; border: 1px solid #dfe3e8; color: #6e6e6e; font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; vertical-align: 2px; }
+@media (max-width: 650px) {
+  .pg-tool { padding: 8px; border-radius: 12px; }
+  .gm-neutral .pg-tool > section.section { padding: 18px 4px 4px; }
+  .pg-guide { margin-top: 28px; }
+}
+.gm-neutral .result .pg-step ~ .resultlabel { display: none; }
+.gm-neutral .pg-guide details.ax-guide-toc nav a { padding: 5px 0; border: 0; font-size: 14px; line-height: 20px; }
+.gm-neutral .pg-guide .salary-guide details.ax-guide-toc { margin: 4px 0 20px; }
+.gm-neutral .pg-tool > section.section .eyebrow { display: none; }

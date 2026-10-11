@@ -60,7 +60,11 @@ export default function FlagshipPage({
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
     },
   ];
   const topic = TOPIC[breadcrumbs[1]?.href ?? ""] ?? breadcrumbs[1]?.label ?? "";
@@ -85,7 +89,13 @@ export default function FlagshipPage({
         <div className="intro">
           <h1>{title}</h1>
           <p>{lead}</p>
-          {guide && <div dangerouslySetInnerHTML={{ __html: trustHtml(breadcrumbs[breadcrumbs.length - 1].href, "guide-sources") }} />}
+          {guide && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: trustHtml(breadcrumbs[breadcrumbs.length - 1].href, "guide-sources"),
+              }}
+            />
+          )}
         </div>
         <nav className="sectionnav" aria-label="On this page">
           <a className="active" href="#calculator">
@@ -96,61 +106,72 @@ export default function FlagshipPage({
           <a href="#faqs">FAQs</a>
         </nav>
 
-        {children}
-
-        {guide}
-
-        <section className="fullfaq section" id="faqs">
-          <div>
-            <span className="q-kicker">Questions</span>
-            <h2 className="q-explainerTitle">Frequently asked</h2>
-          </div>
-          <div className="q-faqs">
-            {faqs.map((f) => (
-              <details key={f.q} className="q-faq">
-                <summary>
-                  <span>{f.q}</span>
-                  <span aria-hidden="true" className="q-faqPlus" />
-                </summary>
-                <div className="q-faqBody">
-                  <p>{f.a}</p>
-                </div>
-              </details>
-            ))}
-          </div>
-          <div className="q-note">
-            <strong>Good to know</strong>
-            <p>{note}</p>
-          </div>
-        </section>
-
-        {isEmbeddable(path) && (
-          <section className="section gm-embedsection" id="embed">
-            <h2>Add this calculator to your website</h2>
-            <p>
-              Free for any website, blog or advice service: paste this code where you want the calculator. It stays up to date
-              with the latest rates. <Link href="/widgets">More calculators to embed</Link>
-            </p>
-            <EmbedCode code={embedCode(path, title)} label={`Embed code for the ${title}`} />
+        <div className="pg-layout">
+          <section className="pg-tool" aria-label="Calculator and your results">
+            {children}
           </section>
-        )}
+          {related.length > 0 && (
+            <aside className="pg-related" aria-labelledby="pg-related-title">
+              <h2 id="pg-related-title">Related calculators</h2>
+              <nav aria-label="Related calculators">
+                {related.map((c) => (
+                  <Link key={c.href} className="pg-relcard" href={c.href}>
+                    <strong>{shortTitle(c.title)}</strong>
+                    <span>{c.blurb}</span>
+                  </Link>
+                ))}
+              </nav>
+            </aside>
+          )}
+        </div>
 
-        {related.length > 0 && (
-          <section className="section" id="related">
-            <p className="eyebrow">KEEP EXPLORING</p>
-            <h2>Related calculators</h2>
-            <div className="relatedgrid">
-              {related.map((c) => (
-                <Link key={c.href} className="q-relatedCard" href={c.href}>
-                  <span className="q-relatedIcon" />
-                  <strong>{shortTitle(c.title)}</strong>
-                  <p>{c.blurb}</p>
-                  <span className="q-relatedGo">Open calculator</span>
-                </Link>
+        <section className="pg-guide" aria-label="Guide and questions">
+          <div className="pg-guidehead">
+            <p className="pg-kicker">Guide</p>
+            <p className="pg-guidelead">
+              {guide
+                ? "How the calculation works, with fixed examples, then answers to common questions."
+                : "Answers to common questions."}
+            </p>
+          </div>
+
+          {guide}
+
+          <section className="fullfaq section" id="faqs">
+            <div>
+              <span className="q-kicker">Questions</span>
+              <h2 className="q-explainerTitle">Frequently asked</h2>
+            </div>
+            <div className="q-faqs">
+              {faqs.map((f) => (
+                <details key={f.q} className="q-faq">
+                  <summary>
+                    <span>{f.q}</span>
+                    <span aria-hidden="true" className="q-faqPlus" />
+                  </summary>
+                  <div className="q-faqBody">
+                    <p>{f.a}</p>
+                  </div>
+                </details>
               ))}
             </div>
+            <div className="q-note">
+              <strong>Good to know</strong>
+              <p>{note}</p>
+            </div>
           </section>
-        )}
+
+          {isEmbeddable(path) && (
+            <section className="section gm-embedsection" id="embed">
+              <h2>Add this calculator to your website</h2>
+              <p>
+                Free for any website, blog or advice service: paste this code where you want the calculator. It stays up to date
+                with the latest rates. <Link href="/widgets">More calculators to embed</Link>
+              </p>
+              <EmbedCode code={embedCode(path, title)} label={`Embed code for the ${title}`} />
+            </section>
+          )}
+        </section>
       </div>
     </GmShell>
   );
