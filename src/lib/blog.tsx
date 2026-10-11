@@ -18,6 +18,760 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "universal-credit-working-how-much-you-keep-2026-27",
+    title: "Working on Universal Credit in 2026/27: how much of each extra £1 you keep",
+    seoTitle: "Working on Universal Credit: What You Keep 2026/27",
+    description:
+      "How the 55% taper, the work allowance, tax, NI and the benefit cap decide what you keep from extra hours on Universal Credit in 2026/27, with worked examples.",
+    date: "2026-10-11",
+    dateLabel: "11 October 2026",
+    readingTime: "12 min read",
+    category: "Benefits",
+    body: (
+      <>
+        <p>
+          &ldquo;Will I actually be better off if I work more?&rdquo; is one of the most common questions people on
+          Universal Credit ask, and one of the hardest to answer from the rules alone. Universal Credit was designed so
+          that work always pays, and it does: your household income never falls when your pay rises. But it pays less
+          than most people expect. Once tax, National Insurance and the Universal Credit taper have all taken their
+          share, many claimants keep about a third of each extra pound they earn.
+        </p>
+        <p>
+          This guide explains exactly how that works in the 2026/27 tax year, from April 2026 to April 2027. It covers
+          the 55% taper, the work allowance, the point at which tax and National Insurance start, how pension
+          contributions and childcare change the picture, and the one place where a single extra hour of work can be
+          worth hundreds of pounds a month: the benefit cap. Every figure comes from the same 2026/27 engines as our{" "}
+          <Link href="/uk/benefits/universal-credit-taper">Universal Credit taper calculator</Link> and{" "}
+          <Link href="/uk/benefits/universal-credit">Universal Credit calculator</Link>, using DWP&rsquo;s 2026/27 rates
+          and a National Living Wage of £12.71 an hour. The examples are for England, Wales or Northern Ireland, with no
+          savings over £6,000 and no other income, unless they say otherwise.
+        </p>
+
+        <h2>The short version</h2>
+        <ul>
+          <li>
+            <strong>Universal Credit falls by 55p</strong>{" "}for every £1 of take-home pay above your work allowance. You
+            keep the other 45p.
+          </li>
+          <li>
+            <strong>The work allowance</strong>{" "}lets some people keep their first £427 a month (if Universal Credit
+            helps with rent) or £710 a month (if it does not) with no reduction at all. You only get it if you look after
+            a child or have limited capability for work.
+          </li>
+          <li>
+            <strong>Once you pay tax and National Insurance</strong>{" "}(above about £1,048 a month in 2026/27), 28p of
+            each extra £1 goes first, then the taper takes 55% of the 72p left. You keep 32.4p.
+          </li>
+          <li>
+            <strong>The benefit cap</strong>{" "}stops applying when your household earns £881 a month or more after tax.
+            For a capped family that line can be worth more than any pay rise.
+          </li>
+          <li>
+            <strong>Child Benefit is not counted</strong>{" "}as income for Universal Credit, and pension contributions are
+            taken off your earnings before the taper is worked out.
+          </li>
+        </ul>
+
+        <h2>How the taper works</h2>
+        <p>
+          Universal Credit is worked out once a month, over a period called an assessment period. DWP starts with your
+          maximum award, which is the total of every element you qualify for: the standard allowance, any child
+          elements, the housing element, the carer element, the health element and help with childcare. In 2026/27 the
+          standard allowance is £424.90 a month for a single person aged 25 or over and £666.97 for a couple where at
+          least one of you is 25 or over. Each child adds £303.94 a month (£351.88 for a first child born before 6 April
+          2017), and since April 2026 there is no two-child limit.
+        </p>
+        <p>
+          Your earnings are then taken off. DWP uses your take-home pay: gross pay minus Income Tax, National Insurance
+          and any pension contributions. It reads this from your employer&rsquo;s payroll report to HMRC, so you do not
+          usually need to report it yourself. From that take-home figure it subtracts your work allowance, if you have
+          one, and then reduces your award by 55% of what is left. This 55% is the &ldquo;taper rate&rdquo;. It was 63%
+          until November 2021 and has been 55% since.
+        </p>
+        <p>
+          So if your take-home pay rises by £100 and you have already used up your work allowance, your Universal Credit
+          falls by £55. Your household income still rises by £45. That is the basic promise of the system: more work
+          always means more money, just not pound for pound.
+        </p>
+
+        <h2>The work allowance: who gets it and what it is worth</h2>
+        <p>
+          The work allowance is the amount you can earn before the taper starts. Not everyone gets one. You have a work
+          allowance only if you, or your partner, are responsible for a child or have been assessed as having limited
+          capability for work (including the health element, known as LCWRA). A single person or a couple with no
+          children and no health assessment has no work allowance at all: the taper starts on their first pound of
+          earnings.
+        </p>
+        <p>The amount depends on whether your award includes help with housing costs:</p>
+        <table>
+          <thead>
+            <tr><th>Your situation</th><th>Work allowance a month (2026/27)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Children or limited capability for work, Universal Credit helps with rent</td><td>£427</td></tr>
+            <tr><td>Children or limited capability for work, no housing element</td><td>£710</td></tr>
+            <tr><td>No children and no limited capability for work</td><td>None</td></tr>
+          </tbody>
+        </table>
+        <p>
+          A couple gets one work allowance between them, not one each. It is set against your combined take-home pay.
+        </p>
+        <p>
+          The work allowance is worth up to £234.85 a month to a renter (55% of £427) and £390.50 a month to someone
+          without a housing element (55% of £710). That is the difference it makes to your award compared with someone
+          on the same pay with no allowance.
+        </p>
+
+        <h2>Three zones: what you keep from each extra £1</h2>
+        <p>
+          Putting the taper, the work allowance, Income Tax and National Insurance together gives three zones for most
+          people on Universal Credit. In 2026/27 the Personal Allowance is £12,570 a year (£1,047.50 a month) and
+          employee National Insurance starts at the same point, at 8%.
+        </p>
+        <table>
+          <thead>
+            <tr><th>Where your pay is</th><th>Lost to tax and NI</th><th>Lost to Universal Credit</th><th>You keep</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Inside your work allowance</td><td>0p</td><td>0p</td><td>£1.00</td></tr>
+            <tr><td>Above the work allowance, below £1,048 a month gross</td><td>0p</td><td>55p</td><td>45p</td></tr>
+            <tr><td>Above £1,048 a month gross (basic-rate taxpayer)</td><td>28p</td><td>39.6p</td><td>32.4p</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The third zone is where most full-time workers on Universal Credit sit. An extra £100 a month of gross pay is
+          £72 after 20% tax and 8% National Insurance; the taper then takes 55% of that £72, which is £39.60; you keep
+          £32.40. Your effective marginal rate is 67.6%, higher than the 42% a higher-rate taxpayer loses on the same
+          extra £100 in England. That is one of the most criticised features of the system, but it is still an increase
+          in income, never a loss.
+        </p>
+        <p>
+          If you repay a student loan, the picture is a little worse. Universal Credit does not take student loan
+          repayments off your earnings, so the taper is worked out as if you still had the money. If your pay is above
+          your plan&rsquo;s repayment threshold, another 9p of each extra £1 goes to the loan, and you keep about 23.4p.
+          Our{" "}<Link href="/uk/students/plan-2-student-loan">Plan 2 student loan calculator</Link> shows when
+          repayments start, and there are matching calculators for the other plans.
+        </p>
+
+        <h2>Worked example 1: a single person renting, no children</h2>
+        <p>
+          Sam is 30, lives alone and rents privately for £700 a month, which is also the Local Housing Allowance rate for
+          a one-bedroom home in their area. With no work, Sam&rsquo;s Universal Credit is £1,124.90 a month: the £424.90
+          standard allowance plus £700 for rent. Sam has no work allowance, because they have no children and no health
+          assessment. Here is what happens as Sam works more hours at £12.71 an hour:
+        </p>
+        <table>
+          <thead>
+            <tr><th>Hours a week</th><th>Gross pay a month</th><th>Take-home pay</th><th>Universal Credit</th><th>Total income</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>£0</td><td>£0</td><td>£1,124.90</td><td>£1,124.90</td></tr>
+            <tr><td>8</td><td>£440.61</td><td>£440.61</td><td>£882.56</td><td>£1,323.18</td></tr>
+            <tr><td>16</td><td>£881.23</td><td>£881.23</td><td>£640.23</td><td>£1,521.45</td></tr>
+            <tr><td>20</td><td>£1,101.53</td><td>£1,086.40</td><td>£527.38</td><td>£1,613.78</td></tr>
+            <tr><td>25</td><td>£1,376.92</td><td>£1,284.68</td><td>£418.33</td><td>£1,703.01</td></tr>
+            <tr><td>30</td><td>£1,652.30</td><td>£1,482.96</td><td>£309.27</td><td>£1,792.23</td></tr>
+            <tr><td>37.5</td><td>£2,065.38</td><td>£1,780.37</td><td>£145.70</td><td>£1,926.07</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Going from no work to 16 hours raises Sam&rsquo;s income by £396.55 a month. Going from 16 hours to full time
+          (37.5 hours) adds another £404.62, even though it is more than twice as many extra hours. Each step is worth
+          it, but the reward per hour falls as Sam moves into the tax-paying zone. Sam&rsquo;s Universal Credit stops
+          altogether once take-home pay reaches about £2,045 a month.
+        </p>
+
+        <h2>Worked example 2: a lone parent renting, one child</h2>
+        <p>
+          Priya is 32, has one child aged six and rents for £850 a month (again at the Local Housing Allowance rate).
+          With no earnings, her maximum award is £1,578.84 a month: standard allowance £424.90, child element £303.94 and
+          housing element £850. Because she looks after a child and gets help with rent, she has a work allowance of £427
+          a month.
+        </p>
+        <table>
+          <thead>
+            <tr><th>Hours a week</th><th>Gross pay a month</th><th>Take-home pay</th><th>Universal Credit</th><th>Total income</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>£0</td><td>£0</td><td>£1,578.84</td><td>£1,578.84</td></tr>
+            <tr><td>8</td><td>£440.61</td><td>£440.61</td><td>£1,571.35</td><td>£2,011.97</td></tr>
+            <tr><td>16</td><td>£881.23</td><td>£881.23</td><td>£1,329.02</td><td>£2,210.24</td></tr>
+            <tr><td>20</td><td>£1,101.53</td><td>£1,086.40</td><td>£1,216.17</td><td>£2,302.57</td></tr>
+            <tr><td>25</td><td>£1,376.92</td><td>£1,284.68</td><td>£1,107.12</td><td>£2,391.80</td></tr>
+            <tr><td>30</td><td>£1,652.30</td><td>£1,482.96</td><td>£998.06</td><td>£2,481.02</td></tr>
+            <tr><td>37.5</td><td>£2,065.38</td><td>£1,780.37</td><td>£834.49</td><td>£2,614.86</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The work allowance makes the first few hours very valuable. At eight hours a week Priya earns £440.61 and her
+          Universal Credit falls by only £7.49, because only £13.61 of her pay is above the £427 allowance. Her household
+          income rises by £433.13 a month for about 35 hours of work in the month. Beyond that, each extra hour is
+          tapered like anyone else&rsquo;s. Her Universal Credit runs out only when her take-home pay reaches about
+          £3,298 a month, which is why many working parents still get some Universal Credit on a full-time wage.
+        </p>
+        <p>
+          Priya also gets Child Benefit of about £117 a month. It is not counted as income for Universal Credit, so it
+          makes no difference to the figures above, but it does count towards the benefit cap.
+        </p>
+
+        <h2>Worked example 3: where one extra hour is worth £879 a month</h2>
+        <p>
+          The benefit cap limits the total of most working-age benefits a household can get. Outside London in 2026/27
+          it is £22,020 a year (£1,835 a month) for couples and anyone with children, and £14,753 a year (£1,229.42 a
+          month) for single people with no children. In London it is £25,323 and £16,967. Child Benefit counts towards
+          it, but the childcare costs element does not.
+        </p>
+        <p>
+          The cap does not apply if your household&rsquo;s take-home pay is at least £881 a month, the equivalent of 16
+          hours a week at the National Living Wage. That creates a cliff edge, and it is the one place where working a
+          little more can transform your income.
+        </p>
+        <p>
+          Take Leah, a lone parent with three children who rents privately for £1,300 a month outside London (the
+          Local Housing Allowance rate for her area). Her maximum Universal Credit before the cap is £2,636.72 a month.
+        </p>
+        <table>
+          <thead>
+            <tr><th>Hours a week</th><th>Take-home pay</th><th>Benefit cap reduction</th><th>Universal Credit</th><th>Total income</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>£0</td><td>£1,074.07</td><td>£1,562.65</td><td>£1,562.65</td></tr>
+            <tr><td>15</td><td>£826.15</td><td>£854.54</td><td>£1,562.65</td><td>£2,388.80</td></tr>
+            <tr><td>16</td><td>£881.23</td><td>£0</td><td>£2,386.90</td><td>£3,268.12</td></tr>
+          </tbody>
+        </table>
+        <p>
+          At 15 hours, every pound Leah earns comes off the cap reduction rather than her award, so her Universal Credit
+          stays at £1,562.65. At 16 hours her earnings pass £881 and the cap is lifted. Her Universal Credit jumps to
+          £2,386.90 and her total income rises by £879.32 a month for one extra hour a week. If you are capped, our{" "}
+          <Link href="/uk/benefits/benefit-cap">benefit cap calculator</Link> shows exactly how far you are from the
+          exemption.
+        </p>
+        <p>
+          Two other things lift the cap: getting the health element or the carer element in your Universal Credit, or
+          someone in the household getting a disability or carer&rsquo;s benefit such as PIP, DLA, Attendance Allowance or
+          Carer&rsquo;s Allowance. If you stop work after earning enough for the previous 12 months, you also get a
+          nine-month grace period before the cap applies.
+        </p>
+        <p>
+          A couple in the same position works the same way. A couple with two children renting a social home for £600 a
+          month has a maximum award of £1,874.85, but the cap (with their Child Benefit counted) cuts it to £1,640.22.
+          If one partner works eight hours a week, they keep all £440.61 of their pay, because the work allowance covers
+          it and the cap reduction is already larger than any taper. At 16 hours the cap goes, and the household&rsquo;s
+          income is £2,506.25 a month.
+        </p>
+
+        <h2>Pension contributions: a better deal than you might think</h2>
+        <p>
+          Universal Credit counts your earnings after pension contributions. That makes paying into a workplace pension
+          unusually cheap for claimants. If Sam, Priya or anyone else in the tax-paying zone gets a £100 pay rise and
+          pays 5% of their pay into a pension, their household income rises by £30.78 a month and £5 goes into their
+          pension. Without the pension contribution, the same rise would add £32.40. So the £5 saved for retirement
+          costs them only £1.62 of spending money, because tax relief and a smaller taper make up the rest. The employer
+          usually adds at least 3% of qualifying earnings on top.
+        </p>
+        <p>
+          That is worth knowing if you are tempted to opt out of auto-enrolment to boost your take-home pay. On
+          Universal Credit you lose much less than the headline contribution. Our{" "}
+          <Link href="/uk/investing/workplace-pension">workplace pension calculator</Link> shows how much the
+          contributions grow to.
+        </p>
+
+        <h2>Childcare: getting 85% back</h2>
+        <p>
+          If you work and pay for registered childcare, Universal Credit can pay back 85% of the cost, up to £1,071.09 a
+          month for one child or £1,836.16 for two or more. You must report the costs and show proof of payment; if you
+          have a partner, you both need to be in paid work (unless one of you cannot work, for example because of a
+          health condition or caring). There is no minimum number of hours.
+        </p>
+        <p>
+          The childcare element is added to your maximum award, so it is tapered away with everything else as your pay
+          rises. For Priya, paying £600 a month for after-school care while working 25 hours, the childcare element is
+          £510. Her Universal Credit rises from £1,107.12 to £1,617.12 and her total income to £2,901.80 before she pays
+          the £600. For families who need a lot of childcare, the comparison with Tax-Free Childcare (which you cannot
+          get at the same time as Universal Credit) is worth doing: our{" "}
+          <Link href="/uk/benefits/childcare-costs">childcare costs calculator</Link> compares them, and the{" "}
+          <Link href="/uk/benefits/free-childcare-hours">free childcare hours calculator</Link> shows the funded hours you
+          can claim either way.
+        </p>
+
+        <h2>When Universal Credit stops</h2>
+        <p>
+          Your Universal Credit stops when 55% of your earnings above the work allowance equals your maximum award. In
+          the examples above that happens at a take-home pay of about £2,045 a month for Sam, £3,298 for Priya and £3,836
+          for the couple with two children. Because the take-home figure is after tax and National Insurance, the gross
+          pay at which you come off Universal Credit is higher still.
+        </p>
+        <p>
+          If your earnings go up for only one month, for example because of a bonus, overtime or being paid twice in one
+          assessment period, your award may drop to nothing for that month. Your claim usually stays open for six months
+          after an award of zero, so the payments start again automatically if your earnings fall back. Very high
+          one-off earnings can also be carried forward into later months as &ldquo;surplus earnings&rdquo;, so check the
+          rules before closing a claim.
+        </p>
+
+        <h2>Being paid weekly, fortnightly or four-weekly</h2>
+        <p>
+          The monthly assessment period does not always line up with your pay dates. If you are paid every four weeks,
+          one assessment period each year will contain two paydays, so your earnings look doubled and your award falls
+          (sometimes to zero) for that month, then returns to normal. Over a year the total is about the same, but it can
+          make budgeting harder. If you are paid weekly, some months contain five paydays instead of four, with the same
+          effect on a smaller scale. A Universal Credit advance or budgeting advance can help in a tight month: our{" "}
+          <Link href="/uk/benefits/uc-advance">Universal Credit advance calculator</Link> shows what you would repay.
+        </p>
+
+        <h2>Self-employed? The Minimum Income Floor</h2>
+        <p>
+          If you are self-employed and your business is your main job, Universal Credit may assume you earn at least the
+          Minimum Income Floor: roughly what you would earn working your expected hours (usually 35 a week) at the
+          National Living Wage, minus notional tax and National Insurance. If your real profit is lower, your award is
+          still worked out as if you had earned the floor. New businesses usually get a 12-month start-up period without
+          it, and it does not apply if you have limited capability for work or are in certain other groups. Because of
+          the floor, a self-employed claimant earning very little can get much less Universal Credit than an employee on
+          the same income.
+        </p>
+
+        <h2>Is it worth working more? Some practical points</h2>
+        <ul>
+          <li>
+            <strong>Count the costs of working.</strong>{" "}Travel, childcare not covered by the 85%, work clothes and
+            lunches all come out of your 32p or 45p. A long commute can wipe out the gain from a few extra hours.
+          </li>
+          <li>
+            <strong>Look at the total, not the Universal Credit.</strong>{" "}People often say &ldquo;my Universal Credit
+            went down&rdquo;, and it did, but their household income went up. Compare total income before and after.
+          </li>
+          <li>
+            <strong>Watch the cliff edges.</strong>{" "}The benefit cap exemption at £881 a month is the big one. Some
+            council tax reduction schemes, social tariffs for broadband and water, and local grants also have their own
+            income limits, so check any help you get outside Universal Credit before taking on more hours.
+          </li>
+          <li>
+            <strong>Think beyond this month.</strong>{" "}More hours can lead to promotion, higher pay rates and a bigger
+            pension, and once you earn more than the conditionality threshold (about 35 hours at the National Living
+            Wage for most people), your Jobcentre work search requirements usually stop.
+          </li>
+          <li>
+            <strong>Check what a pay rise really adds.</strong>{" "}Our{" "}
+            <Link href="/uk/tax-and-salary/pay-rise">pay rise calculator</Link> shows the tax and National Insurance on a
+            rise, and the taper calculator shows what Universal Credit does to it.
+          </li>
+        </ul>
+
+        <h2>Scotland, Wales and Northern Ireland</h2>
+        <p>
+          Universal Credit rules and rates are the same in all four nations, though Northern Ireland pays it twice a
+          month by default and has its own mitigation payments for the benefit cap and the bedroom tax. In Scotland you
+          can ask for twice-monthly payments and for the housing element to be paid straight to your landlord. Scottish
+          Income Tax rates differ from the rest of the UK, and at the earnings in this guide the tax on each extra pound
+          is 19p (the starter rate) or 20p, so you keep between 32.4p and about 32.9p of each extra £1 in the tax-paying
+          zone. The difference grows at higher pay, where Scotland&rsquo;s 21% intermediate rate starts.
+        </p>
+
+        <h2>Key numbers for 2026/27</h2>
+        <table>
+          <thead>
+            <tr><th>Item</th><th>Amount</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Taper rate</td><td>55%</td></tr>
+            <tr><td>Work allowance with housing element</td><td>£427 a month</td></tr>
+            <tr><td>Work allowance without housing element</td><td>£710 a month</td></tr>
+            <tr><td>Standard allowance, single 25 or over</td><td>£424.90 a month</td></tr>
+            <tr><td>Standard allowance, couple (one 25 or over)</td><td>£666.97 a month</td></tr>
+            <tr><td>Child element</td><td>£303.94 a month (£351.88 first child born before 6 April 2017)</td></tr>
+            <tr><td>Childcare costs</td><td>85%, up to £1,071.09 (one child) or £1,836.16 (two or more)</td></tr>
+            <tr><td>Benefit cap outside London</td><td>£22,020 (families), £14,753 (single) a year</td></tr>
+            <tr><td>Benefit cap in London</td><td>£25,323 (families), £16,967 (single) a year</td></tr>
+            <tr><td>Earnings that lift the benefit cap</td><td>£881 a month take-home</td></tr>
+            <tr><td>National Living Wage (21 and over)</td><td>£12.71 an hour</td></tr>
+            <tr><td>Personal Allowance and NI primary threshold</td><td>£12,570 a year</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The bottom line</h2>
+        <p>
+          On Universal Credit you are always better off working more, but by how much depends on where you are. Inside
+          your work allowance you keep every pound. Above it you keep 45p, and once you pay tax and National Insurance,
+          32.4p. If your household is capped, reaching £881 a month of take-home pay can be worth more than everything
+          else in this guide put together. To see your own figures, enter your pay, rent and household in the{" "}
+          <Link href="/uk/benefits/universal-credit-taper">Universal Credit taper calculator</Link>, or check your whole
+          award with the{" "}<Link href="/uk/benefits/universal-credit">Universal Credit calculator</Link>. These figures
+          are estimates for 2026/27 and general guidance, not benefits advice; Citizens Advice and local welfare rights
+          services can check your claim for free.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "401k-limits-2026-how-much-to-contribute",
+    title: "401(k) in 2026: contribution limits, catch-ups, the match and how much to save",
+    seoTitle: "401(k) Limits 2026 and How Much to Contribute",
+    description:
+      "The 2026 401(k) limits ($24,500, $32,500 at 50, $35,750 at 60 to 63), the new Roth catch-up rule, the tax you save and what saving 6%, 10% or 15% grows to.",
+    date: "2026-10-11",
+    dateLabel: "11 October 2026",
+    readingTime: "12 min read",
+    category: "US Savings",
+    body: (
+      <>
+        <p>
+          A 401(k) is the main way most Americans save for retirement, and for good reason: your contributions come out
+          of your paycheck before you can spend them, they cut your tax bill or grow tax-free, and many employers add
+          free money on top. But the rules change every year, and 2026 brings two changes worth knowing about: higher
+          limits, and a new rule that sends catch-up contributions from higher earners into a Roth account.
+        </p>
+        <p>
+          This guide covers the 2026 limits, how the employer match works, how much a pre-tax contribution really saves
+          you in federal income tax, how Roth and traditional contributions compare, and what saving 3%, 6%, 10% or 15%
+          of your pay could grow to by 67. Every projection and tax figure comes from the same 2026 engines as our{" "}
+          <Link href="/us/savings/401k-calculator">401(k) calculator</Link> and{" "}
+          <Link href="/us/taxes/federal-income-tax">federal income tax calculator</Link>. Projections assume a 7% yearly
+          return, 3% yearly raises, an employer match of 50% of your contributions up to 6% of pay, no fund fees unless
+          stated, and retirement at 67. They are illustrations, not promises: real returns go up and down.
+        </p>
+
+        <h2>The short version</h2>
+        <ul>
+          <li>
+            <strong>You can put in up to $24,500</strong>{" "}of your own pay in 2026, up from $23,500 in 2025.
+          </li>
+          <li>
+            <strong>At 50 or over</strong>{" "}you can add a catch-up of $8,000, for $32,500 in all. At 60, 61, 62 or 63
+            the catch-up is $11,250 instead, for $35,750.
+          </li>
+          <li>
+            <strong>If you earned more than $150,000</strong>{" "}in FICA wages from your employer in 2025, your 2026
+            catch-up contributions must go in as Roth (after-tax) money.
+          </li>
+          <li>
+            <strong>Always get the full match.</strong>{" "}Contributing too little to earn it is turning down part of your
+            pay.
+          </li>
+          <li>
+            <strong>Pre-tax contributions cut federal income tax</strong>{" "}at your top bracket rate, 12% or 22% for most
+            savers, but not Social Security or Medicare tax.
+          </li>
+        </ul>
+
+        <h2>2026 401(k) limits at a glance</h2>
+        <table>
+          <thead>
+            <tr><th>Limit</th><th>2026</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Employee contribution (elective deferral), under 50</td><td>$24,500</td></tr>
+            <tr><td>Catch-up contribution, age 50 to 59 and 64 or over</td><td>$8,000 (total $32,500)</td></tr>
+            <tr><td>Super catch-up, age 60 to 63</td><td>$11,250 (total $35,750)</td></tr>
+            <tr><td>Total from you and your employer (under 50)</td><td>$72,000</td></tr>
+            <tr><td>IRA contribution</td><td>$7,500 ($8,600 at 50 or over)</td></tr>
+            <tr><td>Roth catch-up wage line</td><td>More than $150,000 of 2025 FICA wages</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The age rules go by the age you reach by December 31. If you turn 50 at any point in 2026, you can make the
+          full $8,000 catch-up in 2026, even in the months before your birthday. The super catch-up works the same way:
+          it applies in the years you turn 60, 61, 62 and 63, and drops back to the normal catch-up in the year you turn
+          64.
+        </p>
+        <p>
+          The $24,500 limit is per person, not per plan. If you change jobs during the year, or have two jobs with a
+          401(k), your contributions to all of them count toward one limit, and it is up to you to keep track: each
+          employer only sees its own payroll. Employer contributions do not count toward the $24,500, but they do count
+          toward the $72,000 overall limit. 403(b) plans and most governmental 457(b) plans share the same $24,500 figure
+          (457(b) has its own separate limit, so some public employees can save in both).
+        </p>
+
+        <h2>The new Roth catch-up rule</h2>
+        <p>
+          The SECURE 2.0 Act of 2022 changed how catch-up contributions work for higher earners, and after a two-year
+          delay the rule applies from 2026. If your FICA wages (Box 3 of your W-2) from the employer sponsoring the plan
+          were more than $150,000 in 2025, any catch-up you make in 2026 must be a Roth contribution. You pay tax on it
+          now, and it comes out tax-free in retirement if you follow the Roth rules.
+        </p>
+        <p>
+          Your regular $24,500 can still be pre-tax. Only the catch-up portion is affected. If your plan does not offer a
+          Roth option at all, it cannot let higher earners make catch-ups, so check with your plan administrator. If you
+          are self-employed or your wages are below the line, nothing changes: you can choose pre-tax or Roth for the
+          catch-up as before.
+        </p>
+
+        <h2>How the employer match works</h2>
+        <p>
+          The most common match is 50 cents for every dollar you contribute, up to 6% of your pay. Others match dollar for
+          dollar up to 3%, 4% or 5%, or add a flat contribution whether you save or not. The match is the best return you
+          will find anywhere: a 50% match is an instant 50% gain on the money you put in, before any investment growth.
+        </p>
+        <p>
+          Take someone earning $50,000 with a 50% match up to 6%. If they save 3%, they put in $1,500 a year and their
+          employer adds $750. If they save 6%, they put in $3,000 and the employer adds $1,500. By saving only 3%, they
+          leave $750 a year on the table, and the gap compounds for decades.
+        </p>
+        <h3>Vesting</h3>
+        <p>
+          Your own contributions are always 100% yours. Employer contributions may vest over time: a plan can make you
+          wait up to three years for full vesting (&ldquo;cliff&rdquo; vesting) or phase it in over up to six years
+          (&ldquo;graded&rdquo; vesting). If you leave before you are fully vested, you lose the unvested part. Most safe
+          harbor matches vest immediately. If you are thinking of changing jobs, it is worth checking your vesting date
+          first; a few weeks can be worth thousands of dollars.
+        </p>
+        <h3>Watch out for front-loading</h3>
+        <p>
+          If you earn enough to hit the $24,500 limit before December, your contributions stop when you reach it. Some
+          plans calculate the match each pay period, so you would miss the match for the rest of the year. Plans with a
+          &ldquo;true-up&rdquo; fix this at year end; plans without one do not. If yours has no true-up, spread your
+          contributions so they last all year.
+        </p>
+
+        <h2>How much a pre-tax contribution saves in tax</h2>
+        <p>
+          Traditional (pre-tax) 401(k) contributions come off your wages before federal income tax. Each dollar saves
+          tax at your top bracket rate. They do not reduce Social Security or Medicare tax, which still apply to the full
+          wage. Most states also let you deduct them, which adds to the saving, though a few (such as Pennsylvania) do
+          not. Here is the federal income tax saving for 2026, using the standard deduction and no other income:
+        </p>
+        <table>
+          <thead>
+            <tr><th>Filer and salary</th><th>You contribute</th><th>Federal tax saved</th><th>Real cost to you</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Single, $50,000</td><td>$3,000 (6%)</td><td>$360</td><td>$2,640</td></tr>
+            <tr><td>Single, $50,000</td><td>$5,000 (10%)</td><td>$600</td><td>$4,400</td></tr>
+            <tr><td>Single, $60,000</td><td>$6,000 (10%)</td><td>$720</td><td>$5,280</td></tr>
+            <tr><td>Single, $75,000</td><td>$7,500 (10%)</td><td>$1,650</td><td>$5,850</td></tr>
+            <tr><td>Single, $100,000</td><td>$10,000 (10%)</td><td>$2,200</td><td>$7,800</td></tr>
+            <tr><td>Single, $100,000</td><td>$24,500 (the maximum)</td><td>$5,390</td><td>$19,110</td></tr>
+            <tr><td>Single, $200,000</td><td>$24,500 (the maximum)</td><td>$5,880</td><td>$18,620</td></tr>
+            <tr><td>Married filing jointly, $150,000</td><td>$24,500 (the maximum)</td><td>$4,640</td><td>$19,860</td></tr>
+          </tbody>
+        </table>
+        <p>
+          At $50,000 the saver is in the 12% bracket, so each dollar saves 12 cents. At $75,000 and $100,000 they are in
+          the 22% bracket. A single saver on $100,000 who maxes out saves exactly 22% of $24,500, $5,390, because every
+          dollar comes out of the 22% bracket. A married couple on $150,000 saves less on the same contribution, $4,640,
+          because part of it pulls their taxable income down into the 12% bracket. Our{" "}
+          <Link href="/us/taxes/paycheck-calculator">paycheck calculator</Link> shows the effect on each paycheck,
+          including state tax.
+        </p>
+        <p>
+          A lower adjusted gross income can be worth more than the tax saving alone. It can bring you under the income
+          limit for a Roth IRA, raise the Child Tax Credit or Earned Income Tax Credit if you are near a phase-out, cut
+          student loan payments on an income-driven plan, and lower the income used for ACA marketplace subsidies.
+        </p>
+
+        <h2>Traditional or Roth 401(k)?</h2>
+        <p>
+          Most plans now offer a Roth 401(k) alongside the traditional one. The trade is simple to state: traditional
+          contributions save tax now and are taxed when you withdraw them; Roth contributions are taxed now and come out
+          tax-free, growth included, after age 59&frac12; and five years. If your tax rate in retirement will be the same
+          as today, the two end up exactly equal. So the question is whether your rate will be higher or lower later.
+        </p>
+        <ul>
+          <li>
+            <strong>Roth tends to win</strong>{" "}if you are early in your career, in the 10% or 12% bracket, expect your
+            income to rise a lot, or expect tax rates to go up.
+          </li>
+          <li>
+            <strong>Traditional tends to win</strong>{" "}if you are in the 22% bracket or higher now, expect a smaller
+            income in retirement, or plan to retire in a state with no income tax after working in a high-tax one.
+          </li>
+          <li>
+            <strong>Splitting is reasonable</strong>{" "}if you are unsure. Having both kinds of money gives you flexibility
+            to manage your tax bracket in retirement.
+          </li>
+        </ul>
+        <p>
+          Employer matches can also go into Roth if your plan allows it (another SECURE 2.0 change), but they are then
+          taxable income to you in the year they are made. Roth 401(k) balances no longer have required minimum
+          distributions during your lifetime, from 2024. If you want to compare with an IRA, our{" "}
+          <Link href="/us/savings/roth-ira-calculator">Roth IRA calculator</Link> shows whether your income lets you
+          contribute directly.
+        </p>
+
+        <h2>What saving 3%, 6%, 10% or 15% grows to</h2>
+        <p>
+          Here is a 25-year-old earning $50,000, with a 50% match up to 6%, saving until 67. The &ldquo;today&rsquo;s
+          dollars&rdquo; column divides by 2.5% yearly inflation, to show what the balance would buy at today&rsquo;s
+          prices.
+        </p>
+        <table>
+          <thead>
+            <tr><th>You save</th><th>You put in (total)</th><th>Employer adds</th><th>Balance at 67</th><th>In today&rsquo;s dollars</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>3%</td><td>$123,035</td><td>$61,517</td><td>$796,640</td><td>$282,397</td></tr>
+            <tr><td>6%</td><td>$246,070</td><td>$123,035</td><td>$1,593,280</td><td>$564,793</td></tr>
+            <tr><td>10%</td><td>$410,116</td><td>$123,035</td><td>$2,301,404</td><td>$815,813</td></tr>
+            <tr><td>15%</td><td>$615,174</td><td>$123,035</td><td>$3,186,559</td><td>$1,129,587</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Going from 3% to 6% exactly doubles the final balance, because the match doubles too. After 6% the match is
+          maxed out, so each extra percent adds less, but still a lot: going from 6% to 15% adds about $1.6 million at
+          67, or about $565,000 in today&rsquo;s money.
+        </p>
+        <p>The same idea for people starting later, still to 67:</p>
+        <table>
+          <thead>
+            <tr><th>Starting point</th><th>You save</th><th>Balance at 67</th><th>In today&rsquo;s dollars</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Age 35, $75,000</td><td>6%</td><td>$1,072,422</td><td>$486,634</td></tr>
+            <tr><td>Age 35, $75,000</td><td>10%</td><td>$1,549,054</td><td>$702,915</td></tr>
+            <tr><td>Age 45, $100,000</td><td>10%</td><td>$845,747</td><td>$491,265</td></tr>
+            <tr><td>Age 45, $100,000</td><td>15%</td><td>$1,171,034</td><td>$680,213</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Why starting early matters so much</h2>
+        <p>
+          Compare three people who each earn $60,000 and save 10% with the same match, starting at 25, 35 and 45:
+        </p>
+        <table>
+          <thead>
+            <tr><th>Start at</th><th>You put in</th><th>Balance at 67</th><th>In today&rsquo;s dollars</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>25</td><td>$492,139</td><td>$2,761,685</td><td>$978,975</td></tr>
+            <tr><td>35</td><td>$315,017</td><td>$1,239,243</td><td>$562,332</td></tr>
+            <tr><td>45</td><td>$183,221</td><td>$507,448</td><td>$294,759</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Starting ten years earlier costs the 25-year-old about $177,000 more in contributions but leaves them with about
+          $1.5 million more at 67. Most of a long-term 401(k) balance is growth, not contributions, and growth needs time.
+          If you start late, the catch-up limits are there for exactly this reason. Our{" "}
+          <Link href="/us/savings/compound-interest-calculator">compound interest calculator</Link> shows how the same
+          effect works on any savings.
+        </p>
+
+        <h2>What maxing out from 40 looks like</h2>
+        <p>
+          A 40-year-old who contributes the maximum every year to 67, using the catch-up from 50 and the super catch-up
+          from 60 to 63, puts in $810,500 of their own money at today&rsquo;s limits: $24,500 a year in their 40s, $32,500
+          in their 50s, $35,750 from 60 to 63 and $32,500 again from 64. With the employer match on a $200,000 salary and
+          a 7% return, that grows to about $2.62 million, or about $1.35 million in today&rsquo;s dollars. In practice the
+          limits rise with inflation most years, so the real figure would be higher.
+        </p>
+
+        <h2>Fees: the quiet drag on your balance</h2>
+        <p>
+          Every fund in your 401(k) charges a yearly fee (the expense ratio), and some plans add administration fees on
+          top. They look small, but they come off every year. A 30-year-old earning $60,000 and saving 10% until 67 would
+          end up with:
+        </p>
+        <table>
+          <thead>
+            <tr><th>Yearly fees</th><th>Balance at 67</th><th>Lost to fees compared with 0.05%</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0.05% (a cheap index fund)</td><td>$1,843,493</td><td>None</td></tr>
+            <tr><td>0.5%</td><td>$1,666,005</td><td>$177,488</td></tr>
+            <tr><td>1.0%</td><td>$1,491,770</td><td>$351,723</td></tr>
+          </tbody>
+        </table>
+        <p>
+          A 1% fee costs this saver about a fifth of their retirement savings. Your plan must send you a fee disclosure
+          each year; look for the expense ratio of each fund and prefer low-cost index funds or target-date index funds
+          where they are offered.
+        </p>
+
+        <h2>So how much should you contribute?</h2>
+        <p>A common order of priorities, which fits most people:</p>
+        <ol>
+          <li>
+            <strong>Contribute enough to get the full match.</strong>{" "}Even with high-interest debt, a 50% or 100%
+            instant return is hard to beat.
+          </li>
+          <li>
+            <strong>Pay off high-interest debt</strong>{" "}such as credit cards, and build an emergency fund of three to
+            six months of spending. Our{" "}<Link href="/us/savings/emergency-fund-calculator">emergency fund calculator</Link>{" "}
+            helps set the target.
+          </li>
+          <li>
+            <strong>Consider an IRA or HSA.</strong>{" "}An IRA can offer cheaper funds than a poor 401(k), and a health
+            savings account (if you have a high-deductible plan) is tax-free going in and coming out for medical costs.
+          </li>
+          <li>
+            <strong>Raise your 401(k) toward 15% of pay</strong>{" "}including the match, or more if you started late. Many
+            plans can raise your rate by 1% a year automatically, which is an easy way to get there.
+          </li>
+          <li>
+            <strong>Max it out</strong>{" "}if you can, then use a taxable brokerage account.
+          </li>
+        </ol>
+        <p>
+          Since 2025, most new 401(k) plans must enroll new employees automatically at 3% to 10% of pay and raise it by
+          1% a year to at least 10%. You can opt out or change the rate, but if you have been auto-enrolled at 3%, check
+          whether that is enough to get your full match: often it is not.
+        </p>
+
+        <h2>Getting money out: the rules to know</h2>
+        <ul>
+          <li>
+            <strong>Age 59&frac12;.</strong>{" "}Withdrawals before this age usually face a 10% penalty on top of income
+            tax, with exceptions for disability, certain medical costs, a qualified birth or adoption ($5,000), an
+            emergency expense ($1,000 a year) and a few others.
+          </li>
+          <li>
+            <strong>The rule of 55.</strong>{" "}If you leave your job in or after the year you turn 55, you can take money
+            from that employer&rsquo;s 401(k) without the 10% penalty. It does not apply to IRAs or old 401(k)s.
+          </li>
+          <li>
+            <strong>401(k) loans.</strong>{" "}Many plans let you borrow up to half your vested balance, capped at
+            $50,000, repaid through payroll over up to five years. If you leave your job, the loan usually has to be
+            repaid by your tax return due date or it becomes a taxable withdrawal.
+          </li>
+          <li>
+            <strong>Required minimum distributions</strong>{" "}from traditional 401(k)s start at 73 (75 if you were born in
+            1960 or later), unless you are still working for that employer. Our{" "}
+            <Link href="/us/savings/rmd-calculator">RMD calculator</Link> works out the amount.
+          </li>
+          <li>
+            <strong>Changing jobs.</strong>{" "}You can usually leave the money in the old plan, roll it into your new
+            employer&rsquo;s plan or roll it into an IRA. Cashing out means income tax and, under 55, the 10% penalty.
+          </li>
+        </ul>
+
+        <h2>The Saver&rsquo;s Credit</h2>
+        <p>
+          If your income is modest, you may also get the Saver&rsquo;s Credit: a credit of 10%, 20% or 50% of up to
+          $2,000 of retirement contributions ($4,000 for a married couple), depending on your income. It is
+          non-refundable, so it only helps if you owe federal income tax. From 2027 it is due to be replaced by the
+          Saver&rsquo;s Match, a government contribution paid straight into your retirement account.
+        </p>
+
+        <h2>Key numbers for 2026</h2>
+        <table>
+          <thead>
+            <tr><th>Item</th><th>Amount</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>401(k), 403(b) and 457(b) employee limit</td><td>$24,500</td></tr>
+            <tr><td>Catch-up at 50 or over</td><td>$8,000</td></tr>
+            <tr><td>Super catch-up at 60 to 63</td><td>$11,250</td></tr>
+            <tr><td>Overall limit, you plus employer</td><td>$72,000</td></tr>
+            <tr><td>IRA limit</td><td>$7,500, plus $1,100 at 50 or over</td></tr>
+            <tr><td>Roth catch-up required above</td><td>$150,000 of prior-year FICA wages</td></tr>
+            <tr><td>Penalty-free withdrawals from</td><td>59&frac12; (55 for the rule of 55)</td></tr>
+            <tr><td>Required minimum distributions from</td><td>73 (75 if born in 1960 or later)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The bottom line</h2>
+        <p>
+          In 2026 you can save up to $24,500 in a 401(k), $32,500 from 50 and $35,750 from 60 to 63. Whatever your age,
+          the first goal is the full employer match; the second is to work toward about 15% of your pay, as early as you
+          can. Pre-tax contributions cut your federal income tax by 12 to 24 cents per dollar for most savers, and a Roth
+          can be the better deal if your tax rate will rise. To try your own numbers, use our{" "}
+          <Link href="/us/savings/401k-calculator">401(k) calculator</Link>, and the{" "}
+          <Link href="/us/savings/retirement-calculator">retirement calculator</Link> to see whether you are on track.
+          These figures are estimates for 2026 and general guidance, not investment or tax advice.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "salary-sacrifice-worth-it",
     title: "Is salary sacrifice worth it? What it really saves in 2026/27",
     seoTitle: "Is Salary Sacrifice Worth It? 2026/27 Figures",
