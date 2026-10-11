@@ -1584,17 +1584,17 @@ footer {
    Every input is one row: the label on the left, its value on the right,
    with a thin rule between fields so each one reads as its own line.
    Sliders sit tight under their row; end values are small and muted. */
-.gm-neutral .gm-clear .field,
-.gm-neutral .gm-clear .ax-select-field {
+.gm-neutral .gm-form .field,
+.gm-neutral .gm-form .ax-select-field {
   margin: 0;
   padding: 12px 0;
   border-bottom: 1px solid #e4e8ec;
 }
-.gm-neutral .gm-clear .moreoptions .field:last-child,
-.gm-neutral .gm-clear .moreoptions .ax-select-field:last-child {
+.gm-neutral .gm-form .moreoptions .field:last-child,
+.gm-neutral .gm-form .moreoptions .ax-select-field:last-child {
   border-bottom: 0;
 }
-.gm-neutral .gm-clear .labelrow {
+.gm-neutral .gm-form .labelrow {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -1602,54 +1602,54 @@ footer {
   gap: 12px;
   margin: 0;
 }
-.gm-neutral .gm-clear .labelrow > .gm-labelwrap {
+.gm-neutral .gm-form .labelrow > .gm-labelwrap {
   flex: 1 1 auto;
   min-width: 0;
 }
-.gm-neutral.gm-neutral .gm-clear .labelrow label,
-.gm-neutral .gm-clear .gm-label,
-.gm-neutral .gm-clear .ax-select-field label,
-.gm-neutral .gm-clear .gm-switchrow label {
+.gm-neutral.gm-neutral .gm-form .labelrow label,
+.gm-neutral .gm-form .gm-label,
+.gm-neutral .gm-form .ax-select-field label,
+.gm-neutral .gm-form .gm-switchrow label {
   font-size: 15px;
   line-height: 20px;
   font-weight: 600;
 }
-.gm-neutral .gm-clear .gm-aside {
+.gm-neutral .gm-form .gm-aside {
   font-size: 13px;
   font-weight: 400;
 }
-.gm-neutral .gm-clear .number,
-.gm-neutral .gm-clear .labelrow > .number {
+.gm-neutral .gm-form .number,
+.gm-neutral .gm-form .labelrow > .number {
   flex: 0 0 auto;
   width: 150px;
   min-height: 38px;
   padding: 6px 10px;
 }
-.gm-neutral .gm-clear .number input {
+.gm-neutral .gm-form .number input {
   font-size: 15px;
 }
-.gm-neutral .gm-clear input[type="range"] {
+.gm-neutral .gm-form input[type="range"] {
   margin: 12px 0 4px;
 }
-.gm-neutral .gm-clear .endpoints {
+.gm-neutral .gm-form .endpoints {
   font-size: 12px;
   line-height: 14px;
   letter-spacing: 0;
 }
-.gm-neutral .gm-clear .field .chips {
+.gm-neutral .gm-form .field .chips {
   margin: 10px 0 0;
 }
 /* Dropdowns */
-.gm-neutral .gm-clear .ax-select-field {
+.gm-neutral .gm-form .ax-select-field {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(170px, 56%);
   align-items: center;
   gap: 12px;
 }
-.gm-neutral .gm-clear .ax-select-field .gm-labelwrap {
+.gm-neutral .gm-form .ax-select-field .gm-labelwrap {
   margin: 0;
 }
-.gm-neutral .gm-clear .ax-select-toggle {
+.gm-neutral .gm-form .ax-select-toggle {
   min-height: 38px;
   font-size: 15px;
   padding-top: 6px;
@@ -1657,117 +1657,117 @@ footer {
 }
 /* Radio choices: label left, options right (they wrap under each other if
    there is not room). */
-.gm-neutral .gm-clear .gm-radiogroup {
+.gm-neutral .gm-form .gm-radiogroup {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 8px 12px;
 }
-.gm-neutral .gm-clear .gm-radiogroup > legend {
+.gm-neutral .gm-form .gm-radiogroup > legend {
   float: left;
   margin: 0;
   padding: 0;
 }
-.gm-neutral .gm-clear .gm-radios {
+.gm-neutral .gm-form .gm-radios {
   margin-left: auto;
   justify-content: flex-end;
   gap: 6px;
 }
-.gm-neutral .gm-clear .gm-radio {
+.gm-neutral .gm-form .gm-radio {
   padding: 6px 11px 6px 9px;
   gap: 7px;
   font-size: 14px;
 }
 /* Switches: label left, switch right */
-.gm-neutral .gm-clear .gm-switchrow {
+.gm-neutral .gm-form .gm-switchrow {
   flex-wrap: nowrap;
   gap: 8px;
 }
-.gm-neutral .gm-clear .gm-switchrow .gm-switch {
+.gm-neutral .gm-form .gm-switchrow .gm-switch {
   order: 3;
   margin-left: auto;
 }
-.gm-neutral .gm-clear .gm-switchrow label {
+.gm-neutral .gm-form .gm-switchrow label {
   order: 1;
 }
-.gm-neutral .gm-clear .gm-switchrow .gm-info {
+.gm-neutral .gm-form .gm-switchrow .gm-info {
   order: 2;
 }
 /* Date and text boxes */
-.gm-neutral .gm-clear .field:has(> .gm-input) {
+.gm-neutral .gm-form .field:has(> .gm-input) {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(150px, 50%);
   align-items: center;
   gap: 12px;
 }
-.gm-neutral .gm-clear .field > .gm-input {
+.gm-neutral .gm-form .field > .gm-input {
   width: 100%;
   min-height: 38px;
   font-size: 15px;
 }
-.gm-neutral .gm-clear .field > .hint {
+.gm-neutral .gm-form .field > .hint {
   grid-column: 1 / -1;
 }
 /* More options and the button */
-.gm-neutral .gm-clear .moreoptions > div {
+.gm-neutral .gm-form .moreoptions > div {
   padding-top: 0;
 }
-.gm-neutral .gm-clear .bank-calculate {
+.gm-neutral .gm-form .bank-calculate {
   margin-top: 16px;
 }
 @media (max-width: 650px) {
-  .gm-neutral .gm-clear .labelrow {
+  .gm-neutral .gm-form .labelrow {
     flex-wrap: nowrap;
   }
-  .gm-neutral .gm-clear .labelrow > .gm-labelwrap {
+  .gm-neutral .gm-form .labelrow > .gm-labelwrap {
     flex: 1 1 auto;
   }
-  .gm-neutral .gm-clear .number,
-  .gm-neutral .gm-clear .labelrow > .number {
+  .gm-neutral .gm-form .number,
+  .gm-neutral .gm-form .labelrow > .number {
     width: 46%;
     max-width: 170px;
   }
-  .gm-neutral .gm-clear .ax-select-field {
+  .gm-neutral .gm-form .ax-select-field {
     grid-template-columns: minmax(0, 1fr) 54%;
   }
-  .gm-neutral .gm-clear .gm-radio {
+  .gm-neutral .gm-form .gm-radio {
     flex: 0 1 auto;
   }
 }
 /* The (i) button follows the label text on the same line, even on phones. */
-.gm-neutral .gm-clear .gm-labelwrap {
+.gm-neutral .gm-form .gm-labelwrap {
   display: block;
 }
-.gm-neutral .gm-clear .gm-labelwrap > label,
-.gm-neutral .gm-clear .gm-labelwrap > .gm-label {
+.gm-neutral .gm-form .gm-labelwrap > label,
+.gm-neutral .gm-form .gm-labelwrap > .gm-label {
   display: inline;
 }
-.gm-neutral .gm-clear .gm-labelwrap > .gm-info {
+.gm-neutral .gm-form .gm-labelwrap > .gm-info {
   display: inline-flex;
   vertical-align: -3px;
   margin-left: 6px;
 }
-.gm-neutral .gm-clear .gm-labelwrap > .gm-aside {
+.gm-neutral .gm-form .gm-labelwrap > .gm-aside {
   display: block;
   margin-top: 2px;
 }
 /* Four or more choices: the options take their own row under the label. */
-.gm-neutral .gm-clear .gm-radiogroup:has(.gm-radio:nth-child(4)) > legend {
+.gm-neutral .gm-form .gm-radiogroup:has(.gm-radio:nth-child(4)) > legend {
   float: none;
   width: 100%;
 }
-.gm-neutral .gm-clear .gm-radiogroup:has(.gm-radio:nth-child(4)) .gm-radios {
+.gm-neutral .gm-form .gm-radiogroup:has(.gm-radio:nth-child(4)) .gm-radios {
   width: 100%;
   margin-left: 0;
   justify-content: flex-start;
 }
 @media (max-width: 650px) {
-  .gm-neutral .gm-clear .gm-radiogroup:has(.gm-radio:nth-child(3)) > legend {
+  .gm-neutral .gm-form .gm-radiogroup:has(.gm-radio:nth-child(3)) > legend {
     float: none;
     width: 100%;
   }
-  .gm-neutral .gm-clear .gm-radiogroup:has(.gm-radio:nth-child(3)) .gm-radios {
+  .gm-neutral .gm-form .gm-radiogroup:has(.gm-radio:nth-child(3)) .gm-radios {
     width: 100%;
     margin-left: 0;
     justify-content: flex-start;
@@ -1831,3 +1831,116 @@ footer {
 .gm-neutral .pg-guide details.ax-guide-toc nav a { padding: 5px 0; border: 0; font-size: 14px; line-height: 20px; }
 .gm-neutral .pg-guide .salary-guide details.ax-guide-toc { margin: 4px 0 20px; }
 .gm-neutral .pg-tool > section.section .eyebrow { display: none; }
+
+/* ── Form rows on the salary and mortgage package forms (October 2026) ─
+   The shared rules above reach these forms through .gm-form; these cover
+   the package's own markup: the radio fieldset, preset chips and hints
+   that sit between fields, and More options' plain label/input pairs. */
+.gm-neutral .gm-form.gm-form .gm-pkgradios {
+  margin: 0;
+  padding: 0 0 12px;
+  border-bottom: 1px solid #e4e8ec;
+}
+.gm-neutral .gm-form .field:has(+ .chips),
+.gm-neutral .gm-form .field:has(+ .hint) {
+  border-bottom: 0;
+  padding-bottom: 4px;
+}
+.gm-neutral .gm-form > .chips,
+.gm-neutral .gm-form > .hint {
+  margin: 0;
+  padding: 6px 0 12px;
+  border-bottom: 1px solid #e4e8ec;
+}
+.gm-neutral .gm-form > .hint {
+  font-size: 13px;
+  line-height: 18px;
+}
+.gm-neutral .gm-form > .ax-select-field + .moreoptions,
+.gm-neutral .gm-form > .chips + .moreoptions {
+  margin-top: 16px;
+}
+.gm-neutral .gm-form .moreoptions > div:not(:has(> .field, > .ax-select-field, > .gm-radiogroup, > .gm-switchrow)) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(170px, 56%);
+  align-items: center;
+  gap: 0 12px;
+  padding: 6px 18px 4px;
+}
+.gm-neutral .gm-form .moreoptions > div > label {
+  margin: 0;
+  padding: 12px 0;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+}
+.gm-neutral .gm-form .moreoptions > div > input,
+.gm-neutral .gm-form .moreoptions > div > .ax-select {
+  margin: 0;
+  min-height: 38px;
+  font-size: 15px;
+}
+.gm-neutral .gm-form .moreoptions > div > .hint {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 0 0 12px;
+  border-bottom: 1px solid #e4e8ec;
+  font-size: 13px;
+  line-height: 18px;
+}
+.gm-neutral .gm-form .moreoptions > div > .hint:last-child {
+  border-bottom: 0;
+}
+@media (max-width: 650px) {
+  .gm-neutral .gm-form .moreoptions > div:not(:has(> .field, > .ax-select-field, > .gm-radiogroup, > .gm-switchrow)) {
+    grid-template-columns: minmax(0, 1fr) 54%;
+  }
+}
+/* More options as a white box with a +/− button, as on every other
+   calculator (govmath-site.css, which these two pages don't load). */
+.gm-neutral .calculator:not(.gm-clear) .gm-form .moreoptions {
+  margin: 16px 0 8px;
+  padding: 0;
+  border: 1px solid #dfe3e8;
+  border-radius: 10px;
+  background: #fff;
+}
+.gm-neutral .calculator:not(.gm-clear) .gm-form .moreoptions > summary {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  padding: 14px 18px;
+  color: #8c1d40;
+  font-size: 15px;
+  font-weight: 700;
+}
+.gm-neutral .calculator:not(.gm-clear) .gm-form .moreoptions > summary::-webkit-details-marker {
+  display: none;
+}
+.gm-neutral .calculator:not(.gm-clear) .gm-form .moreoptions > summary::before {
+  content: "+";
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #eef2f7;
+  color: #8c1d40;
+  font-size: 16px;
+  line-height: 1;
+}
+.gm-neutral .calculator:not(.gm-clear) .gm-form .moreoptions[open] > summary::before {
+  content: "−";
+}
+.gm-neutral .calculator:not(.gm-clear) .gm-form .moreoptions > summary > span {
+  flex-basis: 100%;
+  margin: 0 0 0 32px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #6e6e6e;
+}
+.gm-neutral .calculator:not(.gm-clear) .gm-form .moreoptions[open] > summary {
+  border-bottom: 1px solid #dfe3e8;
+}

@@ -140,6 +140,7 @@ export default function Studio({
       <section className="calculator gm-clear" id="calculator">
         <div className="calcgrid">
           <form
+            className="gm-form"
             noValidate
             onSubmit={(e) => {
               e.preventDefault();
