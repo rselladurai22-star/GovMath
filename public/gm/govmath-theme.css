@@ -2121,3 +2121,42 @@ footer {
 .gm-neutral .gm-prose table { white-space: normal; }
 .gm-neutral .gm-prose th,
 .gm-neutral .gm-prose td { white-space: normal; vertical-align: top; }
+
+/* ── Reading text in the menu's style (12 October 2026, owner's request) ──
+   The header menu reads crisply because it is dark (#282828), medium
+   weight and not letter-spaced; body copy was light grey, regular weight
+   and spaced out. Content text now matches the menu. Small print (hints,
+   footnotes, end values, notes) keeps a lighter grey for hierarchy. */
+.gm-neutral .intro > p:not(.gm-trust),
+.gm-neutral .g-section p,
+.gm-neutral .g-section li,
+.gm-neutral .g-section dd,
+.gm-neutral .g-section td,
+.gm-neutral .guideintro p,
+.gm-neutral .q-faqBody,
+.gm-neutral .q-faqBody p,
+.gm-neutral .section > p:not(.eyebrow),
+.gm-neutral .resultcard p,
+.gm-neutral .resultcard li,
+.gm-neutral .resultcard td,
+.gm-neutral .loan-summary,
+.gm-neutral .pg-related p,
+.gm-neutral .categorytool p,
+.gm-neutral .gm-prose p,
+.gm-neutral .gm-prose li,
+.gm-neutral .gm-prose td,
+.gm-neutral .g-stat p,
+.gm-neutral .g-card p,
+.gm-neutral .g-callout p {
+  color: #282828;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.gm-neutral .labelrow label,
+.gm-neutral .ax-select-field > label,
+.gm-neutral .gm-label { letter-spacing: 0; }
+.gm-neutral .hint,
+.gm-neutral .footnote,
+.gm-neutral .endpoints,
+.gm-neutral .resultnote,
+.gm-neutral .q-note p { color: #555b62; letter-spacing: 0; }
