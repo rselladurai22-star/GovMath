@@ -23,7 +23,7 @@ const SCHEMA = {
   grossUp: bool(false),
   extra: num(0, 0, 1_000_000),
 };
-const ADVANCED = ["feeHow", "grossUp", "extra"] as const;
+const ADVANCED = ["tier", "feePct", "feeHow", "grossUp", "extra"] as const;
 
 const pct = (n: number) => `${n.toFixed(2)}%`;
 
@@ -64,6 +64,10 @@ export default function PersonalLoanStudio({ query }: { query: Query }) {
         <>
           <InputGroup title="The loan">
             <MoneyField label="Loan amount" symbol="$" value={v.amount} onChange={st.bind("amount")} slider={{ min: 1_000, max: 50_000, step: 500, ends: ["$1k", "$50k"] }} />
+            <StepperField label="Interest rate (APR before fees)" value={v.apr} onChange={st.bind("apr")} step={0.25} min={0} max={100} unit="%" dp={2} />
+            <SelectField label="Loan term" value={v.term} onChange={st.bind("term")} options={TERMS.map((t) => ({ value: t, label: `${t} months (${Number(t) / 12} years)` }))} />
+          </InputGroup>
+          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             <SelectField
               label="Your credit score"
               value={v.tier}
@@ -71,8 +75,6 @@ export default function PersonalLoanStudio({ query }: { query: Query }) {
               options={CREDIT_TIERS.map((t) => ({ value: t, label: `${PERSONAL_LOAN_TIERS[t].label} (${PERSONAL_LOAN_TIERS[t].scores})` }))}
               info="Fills in the average APR offered to borrowers with that score: about 15.2% for excellent, 19.5% for good, 24.2% for fair and 29.7% for bad credit (NerdWallet pre-qualified offers, October 2026). Enter your own quote below if you have one."
             />
-            <StepperField label="Interest rate (APR before fees)" value={v.apr} onChange={st.bind("apr")} step={0.25} min={0} max={100} unit="%" dp={2} />
-            <SelectField label="Loan term" value={v.term} onChange={st.bind("term")} options={TERMS.map((t) => ({ value: t, label: `${t} months (${Number(t) / 12} years)` }))} />
             <StepperField
               label="Origination fee"
               value={v.feePct}
@@ -85,8 +87,6 @@ export default function PersonalLoanStudio({ query }: { query: Query }) {
               aside={usd(loan.fee)}
               info="A one-time charge for setting up the loan. Many lenders charge none; others charge about 1% to 10%, and a few up to about 12%."
             />
-          </InputGroup>
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             <Segmented
               label="How the fee is paid"
               optional

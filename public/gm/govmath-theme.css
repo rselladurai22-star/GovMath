@@ -2214,3 +2214,139 @@ footer {
 }
 .gm-neutral.gm-neutral .gm-modern .gm-radio.selected { border-color: #8c1d40; background: #fbf5f7; box-shadow: inset 0 0 0 1px #8c1d40; }
 .gm-neutral.gm-neutral .gm-modern .result .resultnote { text-align: left; }
+
+/* ── "Indus" look (13 October 2026, owner's trial) ─────────────────────
+   One page (US personal loan calculator, FlagshipPage look="indus") drawn
+   to the measurements of a bank's EMI calculator page the owner supplied:
+   Source Sans 3; a white card (radius 8, padding 30) on a full-width maroon
+   #8f282c band; the title inside the card (30px/38 bold maroon); 16px bold
+   labels; grey value boxes (#f0ecec, 22px semibold maroon); 8px sliders with
+   an orange #ce802a fill; a half-circle gauge; grey, orange and maroon
+   result rows; maroon buttons. Our header, footer, content and brand stay. */
+@font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 400; font-display: swap; src: url("/gm/fonts/source-sans-3-400.woff2") format("woff2"); }
+@font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 500; font-display: swap; src: url("/gm/fonts/source-sans-3-500.woff2") format("woff2"); }
+@font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 600; font-display: swap; src: url("/gm/fonts/source-sans-3-600.woff2") format("woff2"); }
+@font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 700; font-display: swap; src: url("/gm/fonts/source-sans-3-700.woff2") format("woff2"); }
+.gm-neutral .gm-indus-page,
+.gm-neutral .gm-indus-page :is(h1, h2, h3, h4, p, li, td, th, label, span, b, strong, a, button, input, summary, dt, dd, small, em) {
+  font-family: "Source Sans 3", Arial, sans-serif;
+}
+.gm-neutral .gm-indus-page .crumb { font-size: 12px; line-height: 20px; color: #000; }
+.gm-neutral .gm-indus-page .pg-layout--single { grid-template-columns: minmax(0, 1fr); }
+.gm-neutral .gm-indus-page .pg-tool { border: 0; padding: 0; background: none; box-shadow: none; }
+/* Card on a full-width band (the band is the card's own spread shadow, clipped to the band's height). */
+.gm-neutral.gm-neutral .calculator.gm-indus {
+  position: relative; margin: 30px 0 60px; padding: 30px; background: #fff; border: 0; border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 0 100vmax #8f282c;
+  clip-path: inset(-30px -100vmax);
+}
+.gm-neutral .gm-indus .calcgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px 30px; align-items: start; }
+.gm-neutral .gm-indus .calcgrid > form,
+.gm-neutral .gm-indus .calcgrid > .result { background: none; border: 0; box-shadow: none; padding: 0; border-radius: 0; position: static; }
+.gm-neutral .gm-indus .calcgrid > .result { text-align: left; padding-top: 0; }
+.gm-neutral .gm-indus .ind-head h1 { margin: 0; font-size: 30px; line-height: 38px; font-weight: 700; color: #8f282c; letter-spacing: 0; }
+.gm-neutral .gm-indus .ind-head p { margin: 0 0 22px; font-size: 14.88px; line-height: 25.3px; color: #333; font-weight: 400; }
+/* Fields */
+.gm-neutral.gm-neutral .gm-indus .field,
+.gm-neutral.gm-neutral .gm-indus .ax-select-field,
+.gm-neutral.gm-neutral .gm-indus .gm-radiogroup { border: 0; padding: 0; margin: 0 0 26px; }
+.gm-neutral.gm-neutral .gm-indus .labelrow { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; }
+.gm-neutral.gm-neutral .gm-indus .labelrow label,
+.gm-neutral.gm-neutral .gm-indus .ax-select-field label,
+.gm-neutral.gm-neutral .gm-indus .gm-label,
+.gm-neutral.gm-neutral .gm-indus .gm-switchrow label { font-size: 16px; line-height: 27.2px; font-weight: 700; color: #333; letter-spacing: 0; }
+.gm-neutral.gm-neutral .gm-indus .number {
+  width: auto; min-height: 0; padding: 0; gap: 8px; background: none; border: 0; box-shadow: none; flex-direction: row;
+}
+.gm-neutral.gm-neutral .gm-indus .number:focus-within { box-shadow: none; }
+.gm-neutral.gm-neutral .gm-indus .number > span { font-size: 20px; line-height: 34px; font-weight: 600; color: #000; }
+.gm-neutral.gm-neutral .gm-indus .number > span:empty { display: none; }
+.gm-neutral.gm-neutral .gm-indus .number input {
+  width: 140px; height: 43px; padding: 3px 2px 1px; text-align: center; background: #f0ecec; border: 1px solid #cdd4dd;
+  border-radius: 6px; font-size: 22px; line-height: 37.4px; font-weight: 600; color: #8f282c;
+}
+.gm-neutral.gm-neutral .gm-indus .number input:focus { outline: 2px solid #8f282c; outline-offset: 1px; }
+.gm-neutral.gm-neutral .gm-indus input[type="range"] {
+  height: 8px; margin: 22px 0 12px; border-radius: 5px;
+  background: linear-gradient(90deg, #ce802a var(--fill, 30%), #d3d3d3 var(--fill, 30%));
+}
+.gm-neutral.gm-neutral .gm-indus input[type="range"]::-webkit-slider-thumb {
+  width: 8px; height: 22px; border: 0; border-radius: 4px; background: #8f282c; box-shadow: none; transform: none;
+}
+.gm-neutral.gm-neutral .gm-indus input[type="range"]::-moz-range-thumb { width: 8px; height: 22px; border: 0; border-radius: 4px; background: #8f282c; box-shadow: none; }
+.gm-neutral.gm-neutral .gm-indus .endpoints { font-size: 14px; line-height: 23.8px; font-weight: 700; color: #202020; }
+/* Dropdown */
+.gm-neutral.gm-neutral .gm-indus .ax-select-field { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 260px); align-items: center; gap: 12px; }
+.gm-neutral.gm-neutral .gm-indus .ax-select-toggle {
+  min-height: 43px; background: #f0ecec; border: 1px solid #cdd4dd; border-radius: 6px; font-size: 16px; font-weight: 600; color: #8f282c; box-shadow: none;
+}
+/* Two choices: an outlined toggle, the chosen one filled maroon */
+.gm-neutral.gm-neutral .gm-indus .gm-radiogroup { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.gm-neutral.gm-neutral .gm-indus .gm-radios { display: inline-flex; gap: 0; margin: 0; border: 1px solid #8f282c; border-radius: 6px; overflow: hidden; }
+.gm-neutral.gm-neutral .gm-indus .gm-radio {
+  margin: 0; padding: 5px 12px; gap: 0; border: 0; border-radius: 0; background: #fff; box-shadow: none; color: #333; font-size: 14.88px; line-height: 25.3px;
+}
+.gm-neutral.gm-neutral .gm-indus .gm-radio input { position: absolute; opacity: 0; pointer-events: none; }
+.gm-neutral.gm-neutral .gm-indus .gm-radio:has(input:checked) { background: #8f282c; color: #fff; box-shadow: none; }
+.gm-neutral.gm-neutral .gm-indus .gm-radio:has(input:focus-visible) { outline: 2px solid #ce802a; outline-offset: -2px; }
+/* More options and the button */
+.gm-neutral.gm-neutral .gm-indus .moreoptions { border: 1px solid #cdd4dd; border-radius: 6px; background: #fff; }
+.gm-neutral.gm-neutral .gm-indus .moreoptions > summary { color: #8f282c; }
+.gm-neutral.gm-neutral .gm-indus .footnote { font-size: 13px; color: #555; }
+.gm-neutral.gm-neutral .gm-indus .bank-calculate,
+.gm-neutral.gm-neutral .gm-indus .result .textbutton {
+  display: block; width: 170px; min-height: 40px; margin: 18px auto 0; padding: 10px 20px; border: 1px solid #fff; border-radius: 4px;
+  background: #8f282c; color: #fff; font-size: 14px; line-height: 18px; font-weight: 700; text-align: center; box-shadow: none; transform: none; text-decoration: none;
+}
+.gm-neutral.gm-neutral .gm-indus .bank-calculate { margin-left: 0; width: auto; }
+.gm-neutral.gm-neutral .gm-indus .result .textbutton { width: auto; min-width: 170px; }
+.gm-neutral.gm-neutral .gm-indus .bank-calculate:hover,
+.gm-neutral.gm-neutral .gm-indus .result .textbutton:hover { background: #6e1f22; }
+/* Gauge and rows */
+.ind-gauge { width: 240px; margin: 0 auto 18px; text-align: center; }
+.ind-gauge svg { display: block; width: 240px; height: 125px; overflow: visible; }
+.ind-gauge path { fill: none; stroke-width: 26; transition: opacity 0.15s, stroke-width 0.15s; cursor: pointer; }
+.ind-gauge .ind-gauge-track { stroke: #eee7e7; cursor: default; }
+.ind-gauge path.is-off { opacity: 0.35; }
+.ind-gauge path.is-on { stroke-width: 32; }
+.ind-gauge-legend { list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 18px; margin: 10px -60px 0; padding: 0; }
+.ind-gauge-legend li { display: flex; align-items: center; gap: 6px; font-family: "Source Sans 3", Arial, sans-serif; font-size: 12.8px; line-height: 20px; color: #333; }
+.ind-gauge-legend i { width: 11px; height: 11px; border-radius: 50%; }
+.ind-rows { display: grid; gap: 10px; margin: 0 0 14px; }
+.ind-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px; border-radius: 4px; color: #fff;
+  font-family: "Source Sans 3", Arial, sans-serif; transition: filter 0.15s;
+}
+.ind-row.is-on { filter: brightness(1.08); }
+.ind-row span { font-size: 14.88px; line-height: 25.3px; font-weight: 600; }
+.ind-row b { font-size: 14.88px; line-height: 25.3px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.ind-row--answer { background: #f0ecec; color: #000; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); }
+.gm-neutral.gm-neutral .gm-indus .result .loan-summary { text-align: left; font-size: 14.88px; line-height: 25.3px; color: #333; font-weight: 400; margin: 6px 0 0; }
+.gm-neutral.gm-neutral .gm-indus .result .badges { display: none; }
+/* The rest of the page in the same type */
+.gm-neutral .gm-indus-page .gm-details .sectionheading h2,
+.gm-neutral .gm-indus-page #results h2 { font-size: 20.8px; line-height: 27px; font-weight: 700; color: #000; }
+.gm-neutral .gm-indus-page .g-section h2,
+.gm-neutral .gm-indus-page .guideintro h2,
+.gm-neutral .gm-indus-page .fullfaq h2 { font-size: 19.2px; line-height: 25px; font-weight: 700; color: #832625; }
+.gm-neutral .gm-indus-page :is(.g-section p, .g-section li, .q-faqBody, .q-faqBody p, .resultcard p, .resultcard li, .guideintro p) {
+  font-size: 14.88px; line-height: 25.3px; font-weight: 400; color: #000;
+}
+.gm-neutral .gm-indus-page .q-faq summary { font-size: 19.2px; line-height: 25px; font-weight: 500; color: #000; }
+.gm-neutral .gm-indus-page table th { background: #8f282c; color: #fff; font-size: 14.4px; font-weight: 700; }
+.gm-neutral .gm-indus-page table td { font-size: 14.4px; font-weight: 600; color: #000; }
+.gm-neutral .gm-indus-page table tbody tr:nth-child(even) td { background: #f0ecec; }
+.gm-neutral .gm-indus-page .facts > div { border-top-color: #8f282c; }
+.gm-neutral .gm-indus-page .facts b { color: #8f282c; }
+@media (max-width: 900px) {
+  .gm-neutral .gm-indus .calcgrid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 650px) {
+  .gm-neutral.gm-neutral .calculator.gm-indus { padding: 20px 16px; margin: 20px 0 40px; clip-path: inset(-20px -100vmax); }
+  .gm-neutral .gm-indus .ind-head h1 { font-size: 26px; line-height: 32px; }
+  .gm-neutral.gm-neutral .gm-indus .number input { width: 120px; }
+  .gm-neutral.gm-neutral .gm-indus .ax-select-field { grid-template-columns: 1fr; gap: 6px; }
+}
+@media (min-width: 1261px) {
+  .gm-neutral.gm-neutral .calculator.gm-indus { max-width: 1190px; margin-left: auto; margin-right: auto; }
+}

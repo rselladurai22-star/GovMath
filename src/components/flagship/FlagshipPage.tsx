@@ -7,6 +7,7 @@ import { trustHtml } from "@/gm/trust";
 import { calculatorJsonLd } from "@/gm/schema";
 import { embedCode, isEmbeddable } from "@/lib/embeds";
 import EmbedCode from "@/components/EmbedCode";
+import { LookProvider } from "./look";
 
 export type Crumb = { href: string; label: string };
 
@@ -30,6 +31,7 @@ export default function FlagshipPage({
   faqs,
   related,
   note,
+  look,
 }: {
   breadcrumbs: Crumb[];
   /** Short label for the page (not shown since the October 2026 redesign; kept for every page's API). */
@@ -43,6 +45,8 @@ export default function FlagshipPage({
   faqs: { q: string; a: string }[];
   related: Calculator[];
   note: string;
+  /** Optional design variant for the calculator (see components/flagship/look.tsx). */
+  look?: "indus";
 }) {
   const path = breadcrumbs[breadcrumbs.length - 1].href;
   const jsonLd = [
@@ -73,7 +77,7 @@ export default function FlagshipPage({
   return (
     <GmShell kind="calculator" country={path.startsWith("/us/") ? "us" : path.startsWith("/uk/") ? "uk" : undefined}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <div className="wrap">
+      <div className={look ? `wrap gm-${look}-page` : "wrap"}>
         <div className="crumb">
           {crumbs.map((c, i) =>
             i === crumbs.length - 1 ? (
@@ -87,8 +91,13 @@ export default function FlagshipPage({
           )}
         </div>
         <div className="intro">
-          <h1>{title}</h1>
-          <p>{lead}</p>
+          {/* With a look, the title and lead sit inside the calculator card (Studio). */}
+          {!look && (
+            <>
+              <h1>{title}</h1>
+              <p>{lead}</p>
+            </>
+          )}
           {guide && (
             <div
               dangerouslySetInnerHTML={{
@@ -106,9 +115,9 @@ export default function FlagshipPage({
           <a href="#faqs">FAQs</a>
         </nav>
 
-        <div className="pg-layout">
+        <div className={look ? "pg-layout pg-layout--single" : "pg-layout"}>
           <section className="pg-tool" aria-label="Calculator and your results">
-            {children}
+            <LookProvider value={look ? { look, title, lead } : null}>{children}</LookProvider>
           </section>
           {related.length > 0 && (
             <aside className="pg-related" aria-labelledby="pg-related-title">
