@@ -1,6 +1,7 @@
-# Lato Regular (400), Medium (500), Semibold (600), Bold (700) and Black (900)
+# Inter Regular (400), Medium (500), Semibold (600), Bold (700) and Black (900)
 
-Lato 2.0 by Łukasz Dziedzic, from the `lato-font` package (v3.0.0), licensed
-under the SIL Open Font License 1.1 (https://openfontlicense.org). Subset to
-Latin characters with fontTools to keep each file about 31 KB. All five weights are
-self-hosted, so no stylesheet or font loads from Google Fonts.
+Inter 4 by Rasmus Andersson, from the `@fontsource/inter` package (v5.1.0,
+Latin subset, about 24 KB a weight), licensed under the SIL Open Font
+License 1.1 (https://openfontlicense.org). All five weights are self-hosted,
+so no stylesheet or font loads from Google Fonts. Inter replaced Lato in
+October 2026 for clearer text at small sizes.
