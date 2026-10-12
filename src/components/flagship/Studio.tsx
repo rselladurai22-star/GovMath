@@ -3,6 +3,7 @@
 import { Children, Fragment, isValidElement, useEffect, useRef, useState, type ReactElement, type ReactNode } from "react";
 import { gbp, usd } from "./format";
 import { Answer, ResultCard, SplitBar, soften, type Segment } from "./results";
+import { useLook } from "./look";
 
 /** Every element in a tree of results, fragments and cards opened up. */
 function flatten(node: ReactNode): ReactElement[] {
@@ -110,6 +111,82 @@ function Ring({ segments }: { segments: Segment[] }) {
   );
 }
 
+/** The "indus" look's colours: orange, maroon, then greys. */
+const INDUS = ["#ce802a", "#8f282c", "#9d968e", "#5b5b5b", "#c3c8ce"];
+
+/**
+ * The "indus" look's results: a half-circle gauge with a dot legend, then
+ * the answer and each part of the split as full-width rows (grey for the
+ * answer, then orange, maroon…). Hovering a slice or a row highlights it.
+ */
+function Gauge({ segments, answer }: { segments: Segment[] | null; answer?: AnswerProps }) {
+  const [active, setActive] = useState<number | null>(null);
+  const parts = (segments ?? []).map((g, i) => ({ ...g, i, color: INDUS[i % INDUS.length] }));
+  const total = parts.reduce((a, g) => a + Math.max(g.value, 0), 0);
+  const R = 90;
+  const L = Math.PI * R;
+  const arcs = parts
+    .filter((g) => g.value > 0)
+    .map((g) => {
+      const before = parts.filter((q) => q.i < g.i && q.value > 0).reduce((a, q) => a + q.value, 0);
+      return { ...g, len: (g.value / total) * L, off: (before / total) * L };
+    });
+  return (
+    <>
+      {total > 0 && (
+        <div className="ind-gauge" role="img" aria-label={parts.map((g) => `${g.label} ${g.display}`).join(", ")}>
+          <svg viewBox="0 0 240 125" aria-hidden="true">
+            <path className="ind-gauge-track" d="M 30 115 A 90 90 0 0 1 210 115" />
+            {arcs.map((a) => (
+              <path
+                key={a.label}
+                d="M 30 115 A 90 90 0 0 1 210 115"
+                stroke={a.color}
+                strokeDasharray={`${a.len} ${L}`}
+                strokeDashoffset={-a.off}
+                className={active === null ? undefined : active === a.i ? "is-on" : "is-off"}
+                onMouseEnter={() => setActive(a.i)}
+                onMouseLeave={() => setActive(null)}
+              />
+            ))}
+          </svg>
+          <ul className="ind-gauge-legend">
+            {parts.map((g) => (
+              <li key={g.label}>
+                <i style={{ background: g.color }} aria-hidden="true" />
+                {g.label}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      <div className="ind-rows">
+        {answer && (
+          <div className="ind-row ind-row--answer">
+            <span>{answer.eyebrow}</span>
+            <b>
+              {answer.value}
+              {answer.unit ? ` ${answer.unit}` : ""}
+            </b>
+          </div>
+        )}
+        {parts.map((g) => (
+          <div
+            key={g.label}
+            className={`ind-row${active === g.i ? " is-on" : ""}`}
+            style={{ background: g.color }}
+            onMouseEnter={() => setActive(g.i)}
+            onMouseLeave={() => setActive(null)}
+          >
+            <span>{g.label}</span>
+            <b>{g.display}</b>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
 type AnswerProps = { eyebrow: string; value: string; unit?: string; sentence: ReactNode; badges?: ReactNode[]; actions?: ReactNode };
 
 /**
@@ -141,6 +218,8 @@ export default function Studio({
   dock: { label: string; value: string };
   children: ReactNode;
 }) {
+  const look = useLook();
+  const indus = look?.look === "indus";
   const details = useRef<HTMLElement>(null);
   const jump = useRef(false);
 
@@ -175,7 +254,7 @@ export default function Studio({
 
   return (
     <>
-      <section className="calculator gm-clear gm-modern" id="calculator">
+      <section className={indus ? "calculator gm-clear gm-indus" : "calculator gm-clear gm-modern"} id="calculator">
         <div className="calcgrid">
           <form
             className="gm-form"
@@ -187,7 +266,13 @@ export default function Studio({
               else onCalculate();
             }}
           >
-            <div className="formheading pg-stephead">
+            {indus && look && (
+              <div className="ind-head">
+                <h1>{look.title}</h1>
+                <p>{look.lead}</p>
+              </div>
+            )}
+            <div className={indus ? "formheading pg-stephead sr-only" : "formheading pg-stephead"}>
               <h2 className="pg-step">
                 <span aria-hidden="true">1</span>Your details{title && <span className="sr-only">: {title}</span>}
               </h2>
@@ -205,11 +290,12 @@ export default function Studio({
           </form>
 
           <div className="result ax-chartpanel" aria-live="polite">
-            <h2 className="pg-step">
+            <h2 className={indus ? "pg-step sr-only" : "pg-step"}>
               <span aria-hidden="true">2</span>Your results
             </h2>
             <p className="resultlabel">Your summary</p>
-            {a && (
+            {indus && <Gauge segments={segments} answer={a} />}
+            {!indus && a && (
               <div className="ax-paymentstrip">
                 <div>
                   <span>{a.eyebrow}</span>
@@ -218,7 +304,7 @@ export default function Studio({
                 </div>
               </div>
             )}
-            {segments && <Ring segments={segments} />}
+            {!indus && segments && <Ring segments={segments} />}
             {a && <p className="loan-summary">{a.sentence}</p>}
             {a?.badges && a.badges.length > 0 && (
               <div className="badges">

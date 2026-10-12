@@ -5,3 +5,9 @@ Latin subset, about 24 KB a weight), licensed under the SIL Open Font
 License 1.1 (https://openfontlicense.org). All five weights are self-hosted,
 so no stylesheet or font loads from Google Fonts. Inter replaced Lato in
 October 2026 for clearer text at small sizes.
+
+# Source Sans 3 (400, 500, 600, 700)
+
+By Adobe (Paul D. Hunt), from `@fontsource/source-sans-3` v5.1.0, Latin subset
+(about 16 KB a weight), SIL Open Font License 1.1. Used only by the "indus"
+calculator look (the US personal loan calculator trial, October 2026).
