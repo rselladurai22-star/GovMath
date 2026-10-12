@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import type { NextConfig } from "next";
+import { AMOUNT_PAGES_LIVE } from "./src/lib/seo/amounts";
 
 // Version for the stylesheets in public/gm: a hash of their contents, added to
 // each <link> as ?v=… so browsers can cache them for a year and still get the
@@ -22,6 +23,24 @@ const EVERYDAY_MOVES: [string, string][] = [
   ["timesheet-decimal", "timesheet-decimal"],
   ["bmi-uk-nhs", "bmi-calculator"],
 ];
+
+/**
+ * While the fixed-amount pages are switched off (AMOUNT_PAGES_LIVE, until
+ * AdSense approval), their addresses go to the matching calculator with a
+ * temporary redirect instead of a 404, from both domains, so Google drops
+ * them without "Not found" errors and can pick them up again later.
+ */
+const AMOUNT_REDIRECTS = AMOUNT_PAGES_LIVE
+  ? []
+  : [
+      ["tax-and-salary/salary-after-tax", "tax-and-salary/salary-calculator"],
+      ["property/stamp-duty-on", "property/stamp-duty-england"],
+    ].flatMap(([from, to]) => [
+      { source: `/${from}`, has: [{ type: "host" as const, value: OLD_HOST }], destination: `${SITE}/uk/${to}`, permanent: false },
+      { source: `/${from}/:amount`, has: [{ type: "host" as const, value: OLD_HOST }], destination: `${SITE}/uk/${to}`, permanent: false },
+      { source: `/uk/${from}`, destination: `/uk/${to}`, permanent: false },
+      { source: `/uk/${from}/:amount`, destination: `/uk/${to}`, permanent: false },
+    ]);
 
 const nextConfig: NextConfig = {
   env: { GM_CSS_VERSION: cssHash.digest("hex").slice(0, 10) },
@@ -67,6 +86,12 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return {
+      // govmath.co.uk/sitemap.xml lists the old addresses (see the route's notes).
+      beforeFiles: [{ source: "/sitemap.xml", has: [{ type: "host", value: OLD_HOST }], destination: "/legacy-sitemap.xml" }],
+    };
+  },
   async redirects() {
     return [
       // October 2026: the site moved from govmath.co.uk to sumatlas.com, and
@@ -76,6 +101,7 @@ const nextConfig: NextConfig = {
       // blog, privacy…) to the same path. Keep these for as long as the old
       // domain is renewed.
       { source: "/", has: [{ type: "host", value: OLD_HOST }], destination: `${SITE}/uk`, permanent: true },
+      ...AMOUNT_REDIRECTS,
       // The Everyday calculators (October 2026) left the UK's Everyday Life topic.
       ...EVERYDAY_MOVES.map(([from, to]) => ({ source: `/life/${from}`, has: [{ type: "host" as const, value: OLD_HOST }], destination: `${SITE}/everyday/${to}`, permanent: true })),
       // A topic's own page needs its own rule: on Vercel an empty :path* leaves
@@ -87,7 +113,8 @@ const nextConfig: NextConfig = {
         destination: `${SITE}/uk/:topic/:path*`,
         permanent: true,
       },
-      { source: "/:path*", has: [{ type: "host", value: OLD_HOST }], destination: `${SITE}/:path*`, permanent: true },
+      // Everything else on the old domain, except its sitemap (see rewrites()).
+      { source: "/:path((?!sitemap\\.xml$).*)", has: [{ type: "host", value: OLD_HOST }], destination: `${SITE}/:path`, permanent: true },
       // One address for the site: www goes to the bare domain.
       { source: "/:path*", has: [{ type: "host", value: "www.sumatlas.com" }], destination: `${SITE}/:path*`, permanent: true },
       // The take-home pay article's address no longer names a tax year.
