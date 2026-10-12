@@ -234,7 +234,7 @@ The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
 
-- **Latest (13 October 2026):** the modern calculator look now covers the salary and mortgage package pages too (owner: "apply to all calculators").
+- **Latest (13 October 2026):** PR 72 merged (smaller type, Inter, menu-style text, modern calculator look with hover donut and dropdowns for 3+ options); the modern look covers the salary and mortgage package pages too (owner: "apply to all calculators").
 - **Earlier (12 October 2026, late night):** modern calculator look, hover donut, dropdowns for 3+ options (see **Modern calculator** under Design).
 - **Earlier (12 October 2026, night):** reading text in the menu's style (dark, medium weight).
 - **Earlier (12 October 2026, evening):** Inter replaced Lato (see **Inter** under Design).
