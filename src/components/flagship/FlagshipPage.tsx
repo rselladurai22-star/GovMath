@@ -31,7 +31,7 @@ export default function FlagshipPage({
   faqs,
   related,
   note,
-  look,
+  look = "indus",
 }: {
   breadcrumbs: Crumb[];
   /** Short label for the page (not shown since the October 2026 redesign; kept for every page's API). */
@@ -45,7 +45,7 @@ export default function FlagshipPage({
   faqs: { q: string; a: string }[];
   related: Calculator[];
   note: string;
-  /** Optional design variant for the calculator (see components/flagship/look.tsx). */
+  /** Design variant for the calculator (see components/flagship/look.tsx); every page uses "indus" since 13 October 2026. */
   look?: "indus";
 }) {
   const path = breadcrumbs[breadcrumbs.length - 1].href;

@@ -2227,13 +2227,13 @@ footer {
 @font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 500; font-display: swap; src: url("/gm/fonts/source-sans-3-500.woff2") format("woff2"); }
 @font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 600; font-display: swap; src: url("/gm/fonts/source-sans-3-600.woff2") format("woff2"); }
 @font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 700; font-display: swap; src: url("/gm/fonts/source-sans-3-700.woff2") format("woff2"); }
-.gm-neutral .gm-indus-page,
-.gm-neutral .gm-indus-page :is(h1, h2, h3, h4, p, li, td, th, label, span, b, strong, a, button, input, summary, dt, dd, small, em) {
+.gm-neutral:has(.calculator.gm-indus),
+.gm-neutral:has(.calculator.gm-indus) :is(h1, h2, h3, h4, p, li, td, th, label, span, b, strong, a, button, input, summary, dt, dd, small, em) {
   font-family: "Source Sans 3", Arial, sans-serif;
 }
-.gm-neutral .gm-indus-page .crumb { font-size: 12px; line-height: 20px; color: #000; }
-.gm-neutral .gm-indus-page .pg-layout--single { grid-template-columns: minmax(0, 1fr); }
-.gm-neutral .gm-indus-page .pg-tool { border: 0; padding: 0; background: none; box-shadow: none; }
+.gm-neutral:has(.calculator.gm-indus) .crumb { font-size: 12px; line-height: 20px; color: #000; }
+.gm-neutral:has(.calculator.gm-indus) .pg-layout--single { grid-template-columns: minmax(0, 1fr); }
+.gm-neutral:has(.calculator.gm-indus) .pg-tool { border: 0; padding: 0; background: none; box-shadow: none; }
 /* Card on a full-width band (the band is the card's own spread shadow, clipped to the band's height). */
 .gm-neutral.gm-neutral .calculator.gm-indus {
   position: relative; margin: 30px 0 60px; padding: 30px; background: #fff; border: 0; border-radius: 8px;
@@ -2324,20 +2324,21 @@ footer {
 .gm-neutral.gm-neutral .gm-indus .result .loan-summary { text-align: left; font-size: 14.88px; line-height: 25.3px; color: #333; font-weight: 400; margin: 6px 0 0; }
 .gm-neutral.gm-neutral .gm-indus .result .badges { display: none; }
 /* The rest of the page in the same type */
-.gm-neutral .gm-indus-page .gm-details .sectionheading h2,
-.gm-neutral .gm-indus-page #results h2 { font-size: 20.8px; line-height: 27px; font-weight: 700; color: #000; }
-.gm-neutral .gm-indus-page .g-section h2,
-.gm-neutral .gm-indus-page .guideintro h2,
-.gm-neutral .gm-indus-page .fullfaq h2 { font-size: 19.2px; line-height: 25px; font-weight: 700; color: #832625; }
-.gm-neutral .gm-indus-page :is(.g-section p, .g-section li, .q-faqBody, .q-faqBody p, .resultcard p, .resultcard li, .guideintro p) {
+.gm-neutral:has(.calculator.gm-indus) .gm-details .sectionheading h2,
+.gm-neutral:has(.calculator.gm-indus) #results h2 { font-size: 20.8px; line-height: 27px; font-weight: 700; color: #000; }
+.gm-neutral:has(.calculator.gm-indus) .g-section h2,
+.gm-neutral:has(.calculator.gm-indus) .guideintro h2,
+.gm-neutral:has(.calculator.gm-indus) .fullfaq h2 { font-size: 19.2px; line-height: 25px; font-weight: 700; color: #832625; }
+.gm-neutral:has(.calculator.gm-indus) :is(.g-section p, .g-section li, .q-faqBody, .q-faqBody p, .resultcard p, .resultcard li, .guideintro p) {
   font-size: 14.88px; line-height: 25.3px; font-weight: 400; color: #000;
 }
-.gm-neutral .gm-indus-page .q-faq summary { font-size: 19.2px; line-height: 25px; font-weight: 500; color: #000; }
-.gm-neutral .gm-indus-page table th { background: #8f282c; color: #fff; font-size: 14.4px; font-weight: 700; }
-.gm-neutral .gm-indus-page table td { font-size: 14.4px; font-weight: 600; color: #000; }
-.gm-neutral .gm-indus-page table tbody tr:nth-child(even) td { background: #f0ecec; }
-.gm-neutral .gm-indus-page .facts > div { border-top-color: #8f282c; }
-.gm-neutral .gm-indus-page .facts b { color: #8f282c; }
+.gm-neutral:has(.calculator.gm-indus) .q-faq summary { font-size: 19.2px; line-height: 25px; font-weight: 500; color: #000; }
+.gm-neutral:has(.calculator.gm-indus) table thead th { background: #8f282c !important; color: #fff; font-size: 14.4px; font-weight: 700; }
+.gm-neutral:has(.calculator.gm-indus) table tbody th { color: #000; font-size: 14.4px; font-weight: 600; }
+.gm-neutral:has(.calculator.gm-indus) table td { font-size: 14.4px; font-weight: 600; color: #000; }
+.gm-neutral:has(.calculator.gm-indus) table tbody tr:nth-child(even) td { background: #f0ecec; }
+.gm-neutral:has(.calculator.gm-indus) .facts > div { border-top-color: #8f282c; }
+.gm-neutral:has(.calculator.gm-indus) .facts b { color: #8f282c; }
 @media (max-width: 900px) {
   .gm-neutral .gm-indus .calcgrid { grid-template-columns: minmax(0, 1fr); }
 }
@@ -2350,3 +2351,63 @@ footer {
 @media (min-width: 1261px) {
   .gm-neutral.gm-neutral .calculator.gm-indus { max-width: 1190px; margin-left: auto; margin-right: auto; }
 }
+/* Indus look, everywhere: layout one column, Reset kept beside the fields. */
+.gm-neutral:has(.calculator.gm-indus) .pg-layout { grid-template-columns: minmax(0, 1fr); }
+.gm-neutral.gm-neutral .gm-indus .ind-stephead { display: flex; justify-content: flex-end; border: 0; margin: -6px 0 6px; padding: 0; min-height: 0; }
+.gm-neutral.gm-neutral .gm-indus .pg-stephead .pg-step { font-size: 0; }
+.gm-neutral.gm-neutral .gm-indus .textbutton:not(.result .textbutton) { color: #8f282c; border-bottom-color: #8f282c; font-size: 14px; font-weight: 700; }
+/* Package pages (take-home pay, mortgage): their markup, the same look. */
+.gm-neutral.gm-neutral .gm-indus .pg-stephead:not(.ind-stephead) { display: flex; justify-content: flex-end; border: 0; margin: 0 0 6px; padding: 0; }
+.gm-neutral.gm-neutral .gm-indus .pg-stephead:not(.ind-stephead) .pg-step { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.gm-neutral.gm-neutral .gm-indus .gm-pkgradios { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 0 0 26px; padding: 0; border: 0; }
+.gm-neutral.gm-neutral .gm-indus .gm-pkgradios > legend { float: left; font-size: 16px; font-weight: 700; color: #333; margin: 0; }
+.gm-neutral.gm-neutral .gm-indus .gm-radio.selected { background: #8f282c; color: #fff; box-shadow: none; border: 0; }
+.gm-neutral.gm-neutral .gm-indus .gm-radio.selected span { color: #fff; }
+.gm-neutral.gm-neutral .gm-indus .chips button { border: 1px solid #8f282c; border-radius: 4px; color: #8f282c; background: #fff; font-weight: 600; }
+.gm-neutral.gm-neutral .gm-indus .chips button:hover { background: #8f282c; color: #fff; }
+.gm-neutral.gm-neutral .gm-indus .result:has(.ax-paymentstrip) { display: flex; flex-direction: column; }
+.gm-neutral.gm-neutral .gm-indus .result > .pg-step { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: 0; padding: 0; }
+.gm-neutral.gm-neutral .gm-indus .circle.gm-pkgdonut {
+  order: 1; position: relative; width: 240px; height: 125px; margin: 0 auto 22px; padding: 0; border-radius: 0; background: none !important; box-shadow: none;
+}
+.gm-neutral.gm-neutral .gm-indus .circle.gm-pkgdonut > svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: none; overflow: visible; }
+.gm-neutral.gm-neutral .gm-indus .circle.gm-pkgdonut > svg path { fill: none; stroke-width: 26; transition: opacity 0.15s, stroke-width 0.15s; cursor: pointer; }
+.gm-neutral.gm-neutral .gm-indus .circle.gm-pkgdonut > svg path.ind-gauge-track { stroke: #eee7e7; cursor: default; }
+.gm-neutral.gm-neutral .gm-indus .circle.gm-pkgdonut > svg path.is-off { opacity: 0.35; }
+.gm-neutral.gm-neutral .gm-indus .circle.gm-pkgdonut > svg path.is-on { stroke-width: 32; }
+.gm-neutral.gm-neutral .gm-indus .circle.gm-pkgdonut > div { display: none !important; }
+.gm-neutral.gm-neutral .gm-indus .ax-paymentstrip { order: 2; margin: 0 0 10px; padding: 0; border: 0; background: none; text-align: left; }
+.gm-neutral.gm-neutral .gm-indus .ax-paymentstrip > div {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 0 10px; padding: 12px; border-radius: 4px; background: #f0ecec; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.gm-neutral.gm-neutral .gm-indus .ax-paymentstrip span { font-size: 14.88px; line-height: 25.3px; font-weight: 600; color: #000; }
+.gm-neutral.gm-neutral .gm-indus .ax-paymentstrip strong { margin: 0 0 0 auto; font-size: 14.88px; line-height: 25.3px; font-weight: 700; color: #000; }
+.gm-neutral.gm-neutral .gm-indus .ax-paymentstrip small { font-size: 13px; color: #333; }
+.gm-neutral.gm-neutral .gm-indus .ax-chartlegend { order: 3; display: grid; gap: 10px; margin: 0 0 14px; padding: 0; border: 0; }
+.gm-neutral.gm-neutral .gm-indus .ax-chartlegend > div {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0; padding: 12px; border-radius: 4px; background: #a8631a;
+}
+.gm-neutral.gm-neutral .gm-indus .ax-chartlegend > div:nth-child(2) { background: #8f282c; }
+.gm-neutral.gm-neutral .gm-indus .ax-chartlegend > div:nth-child(3) { background: #706a63; }
+.gm-neutral.gm-neutral .gm-indus .ax-chartlegend > div.is-on { filter: brightness(1.08); }
+.gm-neutral.gm-neutral .gm-indus .ax-chartlegend > div > span { display: flex; align-items: center; gap: 0; font-size: 14.88px; line-height: 25.3px; font-weight: 600; color: #fff; }
+.gm-neutral.gm-neutral .gm-indus .ax-chartlegend i,
+.gm-neutral.gm-neutral .gm-indus .ax-chartlegend em { display: none; }
+.gm-neutral.gm-neutral .gm-indus .ax-chartlegend b { font-size: 14.88px; line-height: 25.3px; font-weight: 700; color: #fff; margin: 0; }
+.gm-neutral.gm-neutral .gm-indus .result:has(.ax-paymentstrip) > :is(.loan-summary, .resultnote, .badges, .textbutton, #salaryShare, #share) { order: 4; }
+.gm-neutral.gm-neutral .gm-indus .resultnote { text-align: left; font-size: 13px; color: #333; }
+.gm-neutral.gm-neutral .gm-indus .gm-radio:has(input:checked) span,
+.gm-neutral.gm-neutral .gm-indus .gm-radio:has(input:checked) * { color: #fff; }
+.gm-neutral.gm-neutral .gm-indus .gm-radio::before,
+.gm-neutral.gm-neutral .gm-indus .gm-radio::after { display: none; }
+.gm-neutral.gm-neutral .gm-indus .ax-chartlegend { grid-template-columns: minmax(0, 1fr); }
+.gm-neutral.gm-neutral .gm-indus .gm-form > .hint,
+.gm-neutral.gm-neutral .gm-indus .gm-form > .chips { border: 0; }
+
+/* Legibility fixes from the contrast check (13 October 2026). */
+.gm-neutral .crumb span { color: #6e6e6e; }
+.gm-neutral .g-band, .gm-neutral .g-band[data-light] { font-weight: 700; color: #fff; }
+/* Dark text on the light chart colours (orange, aqua, yellow), white on blue and violet. */
+.gm-neutral .g-band:is([style*="--g-c2"], [style*="--g-c3"], [style*="--g-c5"], [style*="235, 104, 52"], [style*="27, 175, 122"], [style*="237, 161, 0"], [style*="#eb6834"], [style*="#1baf7a"], [style*="#eda100"], [style*="--g-track"], [style*="238, 241, 244"], [style*="#eef1f4"]) { color: #1f2329; }
+/* Band charts: a slightly deeper blue so white labels pass 4.5:1 (legend swatches match). */
+.gm-neutral .g-bandBar, .gm-neutral .g-bandBar ~ .g-legend { --g-c1: #2672cc; }

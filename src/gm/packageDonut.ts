@@ -7,16 +7,20 @@
  * share in the middle.
  */
 const NS = "http://www.w3.org/2000/svg";
+/** The "indus" look's slice colours: orange, maroon, then greys. */
+const INDUS = ["#a8631a", "#8f282c", "#706a63", "#5b5b5b"];
 const R = 78;
 const C = 2 * Math.PI * R;
 
 export function initPackageDonut() {
-  const ring = document.querySelector<HTMLElement>(".calculator.gm-modern .circle");
-  const rows = [...document.querySelectorAll<HTMLElement>(".calculator.gm-modern .ax-chartlegend > div")];
+  const ring = document.querySelector<HTMLElement>(".calculator:is(.gm-modern, .gm-indus) .circle");
+  const rows = [...document.querySelectorAll<HTMLElement>(".calculator:is(.gm-modern, .gm-indus) .ax-chartlegend > div")];
   if (!ring || !rows.length) return;
+  // The "indus" look (every calculator since 13 October 2026) shows a half-circle gauge in its own colours.
+  const gauge = !!ring.closest(".gm-indus");
   ring.classList.add("gm-pkgdonut");
   const svg = document.createElementNS(NS, "svg");
-  svg.setAttribute("viewBox", "0 0 200 200");
+  svg.setAttribute("viewBox", gauge ? "0 0 240 125" : "0 0 200 200");
   svg.setAttribute("aria-hidden", "true");
   ring.prepend(svg);
   const hover = document.createElement("div");
@@ -34,7 +38,7 @@ export function initPackageDonut() {
   let active: number | null = null;
 
   const paint = () => {
-    svg.querySelectorAll("circle").forEach((c, i) => {
+    svg.querySelectorAll("circle, path").forEach((c, i) => {
       c.classList.toggle("is-on", active !== null && i - 1 === active);
       c.classList.toggle("is-off", active !== null && i > 0 && i - 1 !== active);
     });
@@ -76,31 +80,53 @@ export function initPackageDonut() {
     const live = segs.filter((s) => s.share > 0).length;
     const gap = live > 1 ? 3 : 0;
     svg.innerHTML = "";
-    const track = document.createElementNS(NS, "circle");
-    track.setAttribute("class", "gm-donut-track");
-    for (const c of [track]) {
-      c.setAttribute("cx", "100");
-      c.setAttribute("cy", "100");
-      c.setAttribute("r", String(R));
-      svg.append(c);
+    if (gauge) {
+      // Half circle from left to right over the top; slices in the look's colours.
+      const L = Math.PI * 90;
+      const d = "M 30 115 A 90 90 0 0 1 210 115";
+      const track = document.createElementNS(NS, "path");
+      track.setAttribute("d", d);
+      track.setAttribute("class", "ind-gauge-track");
+      svg.append(track);
+      let at = 0;
+      segs.forEach((s, i) => {
+        const arc = document.createElementNS(NS, "path");
+        arc.setAttribute("d", d);
+        arc.setAttribute("stroke", INDUS[i % INDUS.length]);
+        arc.setAttribute("stroke-dasharray", `${s.share * L} ${L}`);
+        arc.setAttribute("stroke-dashoffset", String(-at));
+        arc.addEventListener("mouseenter", () => ((active = i), paint()));
+        arc.addEventListener("mouseleave", () => ((active = null), paint()));
+        svg.append(arc);
+        at += s.share * L;
+      });
+    } else {
+      const track = document.createElementNS(NS, "circle");
+      track.setAttribute("class", "gm-donut-track");
+      for (const c of [track]) {
+        c.setAttribute("cx", "100");
+        c.setAttribute("cy", "100");
+        c.setAttribute("r", String(R));
+        svg.append(c);
+      }
+      let start = 0;
+      segs.forEach((s, i) => {
+        const len = s.share * C;
+        const arc = document.createElementNS(NS, "circle");
+        arc.setAttribute("class", "gm-donut-arc");
+        arc.setAttribute("cx", "100");
+        arc.setAttribute("cy", "100");
+        arc.setAttribute("r", String(R));
+        arc.setAttribute("stroke", s.color);
+        const dash = s.share > 0 ? Math.max(len - gap, 0.5) : 0;
+        arc.setAttribute("stroke-dasharray", `${dash} ${C - dash}`);
+        arc.setAttribute("stroke-dashoffset", String(-start));
+        arc.addEventListener("mouseenter", () => ((active = i), paint()));
+        arc.addEventListener("mouseleave", () => ((active = null), paint()));
+        svg.append(arc);
+        start += len;
+      });
     }
-    let start = 0;
-    segs.forEach((s, i) => {
-      const len = s.share * C;
-      const arc = document.createElementNS(NS, "circle");
-      arc.setAttribute("class", "gm-donut-arc");
-      arc.setAttribute("cx", "100");
-      arc.setAttribute("cy", "100");
-      arc.setAttribute("r", String(R));
-      arc.setAttribute("stroke", s.color);
-      const dash = s.share > 0 ? Math.max(len - gap, 0.5) : 0;
-      arc.setAttribute("stroke-dasharray", `${dash} ${C - dash}`);
-      arc.setAttribute("stroke-dashoffset", String(-start));
-      arc.addEventListener("mouseenter", () => ((active = i), paint()));
-      arc.addEventListener("mouseleave", () => ((active = null), paint()));
-      svg.append(arc);
-      start += len;
-    });
     shares.forEach((em, i) => (em.textContent = segs[i] ? fmt(segs[i].share) : ""));
     paint();
   };
