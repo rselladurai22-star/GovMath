@@ -80,7 +80,6 @@ export default async function PersonalLoanPage({ searchParams }: { searchParams:
   );
   return (
     <FlagshipPage
-      look="indus"
       breadcrumbs={BREADCRUMBS}
       eyebrow="Rates by credit score, fees and terms"
       title="Personal Loan Calculator"

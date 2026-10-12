@@ -111,8 +111,8 @@ function Ring({ segments }: { segments: Segment[] }) {
   );
 }
 
-/** The "indus" look's colours: orange, maroon, then greys. */
-const INDUS = ["#ce802a", "#8f282c", "#9d968e", "#5b5b5b", "#c3c8ce"];
+/** The "indus" look's colours: amber, maroon, then greys (darkened from the reference so white text on them meets 4.5:1). */
+const INDUS = ["#a8631a", "#8f282c", "#706a63", "#5b5b5b", "#6e737a"];
 
 /**
  * The "indus" look's results: a half-circle gauge with a dot legend, then
@@ -272,8 +272,8 @@ export default function Studio({
                 <p>{look.lead}</p>
               </div>
             )}
-            <div className={indus ? "formheading pg-stephead sr-only" : "formheading pg-stephead"}>
-              <h2 className="pg-step">
+            <div className={indus ? "formheading pg-stephead ind-stephead" : "formheading pg-stephead"}>
+              <h2 className={indus ? "pg-step sr-only" : "pg-step"}>
                 <span aria-hidden="true">1</span>Your details{title && <span className="sr-only">: {title}</span>}
               </h2>
               {onReset && (
