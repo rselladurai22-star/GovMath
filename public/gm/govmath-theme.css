@@ -290,47 +290,47 @@
   border-radius: 0 10px 10px 0;
 }
 
-/* ── Lato 500 and 600 (not served by Google Fonts) ───────────────── */
+/* ── Inter, self-hosted (October 2026: replaced Lato for clearer text) ── */
 @font-face {
-  font-family: "Lato";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("/gm/fonts/lato-400.woff2") format("woff2");
+  src: url("/gm/fonts/inter-400.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Lato";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url("/gm/fonts/lato-700.woff2") format("woff2");
+  src: url("/gm/fonts/inter-700.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Lato";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url("/gm/fonts/lato-900.woff2") format("woff2");
+  src: url("/gm/fonts/inter-900.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Lato";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url("/gm/fonts/lato-500.woff2") format("woff2");
+  src: url("/gm/fonts/inter-500.woff2") format("woff2");
 }
 @font-face {
-  font-family: "Lato";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("/gm/fonts/lato-600.woff2") format("woff2");
+  src: url("/gm/fonts/inter-600.woff2") format("woff2");
 }
 
 /* ── Type scale and spacing taken from Axis Bank's calculator pages ──
    Measured from axis.bank.in/calculators/personal-loan-emi-calculator:
-   headings in Lato Medium, labels in Lato Bold, body 16/24 grey, figures
-   in Lato Semibold; smaller sizes below 650px. */
+   headings Medium, labels Bold, body 16/24 grey, figures Semibold
+   (Inter since October 2026); smaller sizes below 650px. */
 .gm-neutral {
   --axis-ink: #282828;
   --axis-body: #6e6e6e;
@@ -831,7 +831,7 @@
   flex: 0 0 auto;
 }
 .header .gm-headsearch input {
-  font-size: 15px;
+  font-size: 14px;
   color: #282828;
   background: transparent;
 }
@@ -943,8 +943,8 @@ footer .logo img{height:52px!important}
 }
 .reference-header .header .ax-navbutton {
   min-height: 100%;
-  padding: 0 7px;
-  font-size: 15px;
+  padding: 0 6px;
+  font-size: 14.5px;
   font-weight: 500;
 }
 .reference-header .header .gm-headsearch {
@@ -2108,3 +2108,16 @@ footer {
 .gm-neutral.gm-neutral .gm-tryout .pg-step > span { display: inline-grid; place-items: center; min-width: 44px; flex: 0 0 44px; }
 .gm-neutral.gm-neutral .gm-tryout .field .number { justify-content: center; gap: 2px; }
 .gm-neutral.gm-neutral .gm-tryout .field .number input { flex: 0 1 auto; width: 7ch; }
+
+/* Inter: figures line up in columns (tabular numbers) wherever money is shown. */
+.gm-neutral .number input,
+.gm-neutral .ax-paymentstrip strong,
+.gm-neutral .circle strong,
+.gm-neutral .ax-chartlegend b,
+.gm-neutral .facts b,
+.gm-neutral table,
+.gm-neutral .resultcard { font-variant-numeric: tabular-nums; }
+/* Article tables: let long cells wrap (the package sets tables to nowrap). */
+.gm-neutral .gm-prose table { white-space: normal; }
+.gm-neutral .gm-prose th,
+.gm-neutral .gm-prose td { white-space: normal; vertical-align: top; }
