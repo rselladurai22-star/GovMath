@@ -1,6 +1,6 @@
 "use client";
 
-import { Children, Fragment, isValidElement, useEffect, useRef, type ReactElement, type ReactNode } from "react";
+import { Children, Fragment, isValidElement, useEffect, useRef, useState, type ReactElement, type ReactNode } from "react";
 import { gbp, usd } from "./format";
 import { Answer, ResultCard, SplitBar, soften, type Segment } from "./results";
 
@@ -27,47 +27,85 @@ function topLevel(node: ReactNode): ReactElement[] {
   return out;
 }
 
-/** The design's ring chart (.circle) and its legend (.ax-chartlegend). */
+/**
+ * Donut chart with its legend. Each slice is an SVG arc; hovering or
+ * focusing a slice or a legend row highlights it and shows its amount and
+ * share in the middle.
+ */
 function Ring({ segments }: { segments: Segment[] }) {
-  const parts = segments.filter((g) => g.value > 0);
+  const [active, setActive] = useState<number | null>(null);
+  const parts = segments.map((g, i) => ({ ...g, i })).filter((g) => g.value > 0);
   const total = parts.reduce((a, g) => a + g.value, 0);
   if (total <= 0) return null;
-  const stops = parts
-    .map((g, i) => {
-      const before = parts.slice(0, i).reduce((a, q) => a + q.value, 0);
-      const from = (before / total) * 100;
-      const to = ((before + g.value) / total) * 100;
-      return `${soften(g.color)} ${from.toFixed(3)}% ${to.toFixed(3)}%`;
-    })
-    .join(",");
   const pounds = segments.every((g) => /^-?£/.test(g.display.trim()));
   const dollars = segments.every((g) => /^-?\$/.test(g.display.trim()));
   const money = pounds || dollars;
+  const R = 78;
+  const C = 2 * Math.PI * R;
+  const gap = parts.length > 1 ? 3 : 0;
+  const arcs = parts.map((g, k) => {
+    const before = parts.slice(0, k).reduce((a, q) => a + q.value, 0);
+    const len = (g.value / total) * C;
+    return { ...g, dash: Math.max(len - gap, 0.5), offset: -(before / total) * C };
+  });
+  const share = (v: number) => `${((v / total) * 100).toFixed(v / total < 0.1 ? 1 : 0)}%`;
+  const on = active === null ? null : segments[active];
   return (
     <>
-      <div className="circle" style={{ background: `conic-gradient(${stops})` }} role="img" aria-label={parts.map((g) => `${g.label} ${g.display}`).join(", ")}>
-        <div>
-          {money ? (
+      <div className="gm-donut" role="img" aria-label={parts.map((g) => `${g.label} ${g.display}`).join(", ")}>
+        <svg viewBox="0 0 200 200" aria-hidden="true">
+          <circle className="gm-donut-track" cx="100" cy="100" r={R} />
+          {arcs.map((a) => (
+            <circle
+              key={a.label}
+              className={`gm-donut-arc${active === null ? "" : active === a.i ? " is-on" : " is-off"}`}
+              cx="100"
+              cy="100"
+              r={R}
+              stroke={soften(a.color)}
+              strokeDasharray={`${a.dash} ${C - a.dash}`}
+              strokeDashoffset={a.offset}
+              onMouseEnter={() => setActive(a.i)}
+              onMouseLeave={() => setActive(null)}
+            />
+          ))}
+        </svg>
+        <div className="gm-donut-centre">
+          {on ? (
+            <>
+              <span>{on.label}</span>
+              <strong>{on.display}</strong>
+              <small>{share(on.value)} of the total</small>
+            </>
+          ) : money ? (
             <>
               <span>Total</span>
               <strong>{dollars ? usd(total) : gbp(total)}</strong>
+              <small>Hover a slice for detail</small>
             </>
           ) : (
             <span>How it splits</span>
           )}
         </div>
       </div>
-      <div className="ax-chartlegend">
-        {segments.map((g) => (
-          <div key={g.label}>
-            <span>
-              <i style={{ background: soften(g.color) }} aria-hidden="true" />
-              {g.label}
-            </span>
+      <ul className="gm-legend">
+        {segments.map((g, i) => (
+          <li
+            key={g.label}
+            tabIndex={0}
+            className={active === i ? "is-on" : undefined}
+            onMouseEnter={() => setActive(i)}
+            onMouseLeave={() => setActive(null)}
+            onFocus={() => setActive(i)}
+            onBlur={() => setActive(null)}
+          >
+            <i style={{ background: soften(g.color) }} aria-hidden="true" />
+            <span>{g.label}</span>
             <b>{g.display}</b>
-          </div>
+            <em>{g.value > 0 ? share(g.value) : "0%"}</em>
+          </li>
         ))}
-      </div>
+      </ul>
     </>
   );
 }
