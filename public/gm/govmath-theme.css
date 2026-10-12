@@ -1998,3 +1998,113 @@ footer {
 .gm-neutral:has(.pg-layout) .ax-chartlegend > div > span { font-size: 13px; }
 .gm-neutral:has(.pg-layout) .ax-chartlegend b { font-size: 18px; line-height: 24px; }
 .gm-neutral:has(.pg-layout) .sectionnav a { font-size: 15px; }
+
+/* ── Take-home pay design trial (October 2026, owner's request) ───────
+   Only /uk/tax-and-salary/salary-calculator (section.calculator.gm-tryout).
+   Soft labels above each control, thick sliders with the value in a
+   bubble under the thumb (src/gm/sliderBubbles.ts copies --fill to the
+   field), white panels split by a line, a tinted headline box, a thick
+   ring, a square-swatch legend and a full-width button. */
+.gm-neutral .calculator.gm-tryout { background: #fff; border: 0; padding: 8px 4px; }
+.gm-neutral .gm-tryout .calcgrid { gap: 0; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+.gm-neutral .gm-tryout .calcgrid > form { padding: 8px 40px 8px 8px; }
+.gm-neutral .gm-tryout .calcgrid > .result {
+  border: 0; border-left: 1px solid #e4e8ec; border-radius: 0; box-shadow: none;
+  padding: 8px 8px 8px 40px; background: #fff;
+}
+/* Heading: a tinted square tile instead of the round step number */
+.gm-neutral .gm-tryout .pg-stephead { border: 0; margin-bottom: 18px; }
+.gm-neutral .gm-tryout .pg-step { font-size: 24px; font-weight: 700; gap: 14px; }
+.gm-neutral .gm-tryout .pg-step > span {
+  width: 44px; height: 44px; border-radius: 10px; background: #eef2f7; color: #8c1d40; font-size: 18px;
+}
+.gm-neutral .gm-tryout .result .pg-step { display: none; }
+/* Fields: label above, no rules between */
+.gm-neutral.gm-neutral .gm-tryout .field,
+.gm-neutral.gm-neutral .gm-tryout .ax-select-field,
+.gm-neutral.gm-neutral .gm-tryout .gm-pkgradios {
+  display: block; border: 0; padding: 0; margin: 0 0 26px;
+}
+.gm-neutral.gm-neutral .gm-tryout .field { display: flex; flex-direction: column; }
+.gm-neutral.gm-neutral .gm-tryout .labelrow { display: contents; }
+.gm-neutral.gm-neutral .gm-tryout .labelrow label,
+.gm-neutral.gm-neutral .gm-tryout .ax-select-field > label,
+.gm-neutral.gm-neutral .gm-tryout .gm-pkgradios > legend {
+  order: 1; display: block; float: none; width: auto;
+  font-size: 16px; line-height: 22px; font-weight: 400; color: #6e6e6e; margin: 0 0 12px;
+}
+/* Sliders: thick rounded track, large thumb */
+.gm-neutral.gm-neutral .gm-tryout input[type="range"] {
+  order: 2; height: 12px; margin: 4px 0 12px; border-radius: 12px;
+  background: linear-gradient(to right, #8c1d40 var(--fill, 30%), #eceff3 var(--fill, 30%));
+}
+.gm-neutral.gm-neutral .gm-tryout input[type="range"]::-webkit-slider-thumb {
+  width: 26px; height: 26px; border: 4px solid #fff; background: #8c1d40;
+  box-shadow: 0 0 0 1px #d9b8c3, 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+.gm-neutral.gm-neutral .gm-tryout input[type="range"]::-moz-range-thumb {
+  width: 18px; height: 18px; border: 4px solid #fff; background: #8c1d40;
+  box-shadow: 0 0 0 1px #d9b8c3, 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+.gm-neutral.gm-neutral .gm-tryout .endpoints { display: none; }
+/* The number box becomes a bubble under the thumb (still editable) */
+.gm-neutral.gm-neutral .gm-tryout .field .number {
+  order: 3; position: relative; width: 132px; min-height: 0; padding: 6px 10px;
+  margin-left: clamp(0px, calc(var(--fill, 0%) - 66px), calc(100% - 132px));
+  background: #eef2f7; border: 1px solid #eef2f7; border-radius: 8px; box-shadow: none;
+}
+.gm-neutral.gm-neutral .gm-tryout .field .number::before {
+  content: ""; position: absolute; top: -7px; left: 50%; margin-left: -7px;
+  border: 7px solid transparent; border-top: 0; border-bottom-color: #eef2f7;
+}
+.gm-neutral.gm-neutral .gm-tryout .field .number:focus-within { border-color: #8c1d40; }
+.gm-neutral.gm-neutral .gm-tryout .field .number input { text-align: center; font-weight: 600; font-size: 15px; }
+.gm-neutral.gm-neutral .gm-tryout .field .number > span:empty { display: none; }
+.gm-neutral.gm-neutral .gm-tryout .field + .hint { margin: -12px 0 24px; padding: 0; border: 0; }
+/* Dropdown and choices */
+.gm-neutral.gm-neutral .gm-tryout .ax-select-field .ax-select { width: min(100%, 360px); }
+.gm-neutral.gm-neutral .gm-tryout .ax-select-toggle { min-height: 50px; font-size: 16px; }
+.gm-neutral.gm-neutral .gm-tryout .gm-pkgradios .gm-radios { margin: 0; justify-content: flex-start; }
+.gm-neutral.gm-neutral .gm-tryout .ax-select-field + .moreoptions { margin-top: 0; }
+/* Results */
+.gm-neutral .gm-tryout .result { text-align: center; }
+.gm-neutral.gm-neutral .gm-tryout .ax-paymentstrip { border: 0; padding: 0; margin: 0 0 10px; }
+.gm-neutral.gm-neutral .gm-tryout .ax-paymentstrip > div {
+  display: inline-block; background: #eef2f7; border-radius: 10px; padding: 14px 34px;
+}
+.gm-neutral.gm-neutral .gm-tryout .ax-paymentstrip span { font-size: 17px; line-height: 24px; color: #282828; }
+.gm-neutral.gm-neutral .gm-tryout .ax-paymentstrip strong { font-size: 32px; line-height: 40px; color: #282828; margin: 4px 0 0; }
+.gm-neutral.gm-neutral .gm-tryout .ax-paymentstrip small { font-size: 13px; color: #6e6e6e; }
+.gm-neutral.gm-neutral .gm-tryout .circle {
+  width: 270px; height: 270px; padding: 46px; margin: 26px auto; box-shadow: none;
+}
+.gm-neutral.gm-neutral .gm-tryout .circle span,
+.gm-neutral.gm-neutral .gm-tryout .circle small { color: #9aa1a9; }
+.gm-neutral.gm-neutral .gm-tryout .circle strong { font-size: 24px; color: #6e6e6e; }
+.gm-neutral.gm-neutral .gm-tryout .ax-chartlegend {
+  display: block; text-align: left; border: 0; padding: 0 0 18px; margin: 0 0 18px; border-bottom: 1px solid #e4e8ec;
+}
+.gm-neutral.gm-neutral .gm-tryout .ax-chartlegend > div {
+  display: flex; align-items: center; gap: 6px; margin: 0 0 12px; font-size: 17px; line-height: 24px;
+}
+.gm-neutral.gm-neutral .gm-tryout .ax-chartlegend > div > span { display: inline; font-size: 17px; color: #282828; }
+.gm-neutral.gm-neutral .gm-tryout .ax-chartlegend > div > span::after { content: ":"; }
+.gm-neutral.gm-neutral .gm-tryout .ax-chartlegend i { width: 14px; height: 14px; border-radius: 2px; margin-right: 14px; vertical-align: -1px; }
+.gm-neutral.gm-neutral .gm-tryout .ax-chartlegend b { display: inline; margin: 0; font-size: 17px; font-weight: 600; color: #282828; }
+.gm-neutral.gm-neutral .gm-tryout .resultnote,
+.gm-neutral.gm-neutral .gm-tryout .loan-summary { text-align: left; }
+.gm-neutral.gm-neutral .gm-tryout .badges { justify-content: flex-start; }
+.gm-neutral.gm-neutral .gm-tryout #salaryShare {
+  display: block; width: 100%; margin-top: 18px; padding: 15px 16px; border: 0; border-radius: 8px;
+  background: #8c1d40; color: #fff; font-size: 17px; font-weight: 700;
+}
+.gm-neutral.gm-neutral .gm-tryout #salaryShare:hover { background: #6e1632; }
+@media (max-width: 650px) {
+  .gm-neutral .gm-tryout .calcgrid { grid-template-columns: 1fr; }
+  .gm-neutral .gm-tryout .calcgrid > form { padding: 8px 4px 24px; }
+  .gm-neutral .gm-tryout .calcgrid > .result { border-left: 0; border-top: 1px solid #e4e8ec; padding: 24px 4px 8px; }
+  .gm-neutral.gm-neutral .gm-tryout .circle { width: 230px; height: 230px; padding: 40px; }
+}
+.gm-neutral.gm-neutral .gm-tryout .pg-step > span { display: inline-grid; place-items: center; min-width: 44px; flex: 0 0 44px; }
+.gm-neutral.gm-neutral .gm-tryout .field .number { justify-content: center; gap: 2px; }
+.gm-neutral.gm-neutral .gm-tryout .field .number input { flex: 0 1 auto; width: 7ch; }

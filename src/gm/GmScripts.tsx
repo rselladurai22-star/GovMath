@@ -7,6 +7,7 @@ import { initSalary } from "@/gm/scripts/salary.js";
 import { initMortgage } from "@/gm/scripts/mortgage.js";
 import { salaryResult, stampDuty } from "./engines";
 import CountrySwitch from "./CountrySwitch";
+import { initSliderBubbles } from "./sliderBubbles";
 
 export type GmScript = "axis" | "salary" | "mortgage";
 
@@ -28,6 +29,7 @@ export default function GmScripts({ scripts }: { scripts: GmScript[] }) {
     w.__gmInit = true;
     initHeader();
     scripts.forEach((name) => RUN[name]());
+    initSliderBubbles();
   }, [scripts]);
   return <CountrySwitch />;
 }
