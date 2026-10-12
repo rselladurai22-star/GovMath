@@ -2116,6 +2116,877 @@ export const BLOG_POSTS: BlogPost[] = [
       </>
     ),
   },
+  {
+    slug: "energy-bills-winter-2026-price-cap-vat-cut",
+    title: "Energy bills this winter: the October 2026 price cap and the electricity VAT cut in real numbers",
+    seoTitle: "Energy Bills Winter 2026: Price Cap and VAT Cut",
+    description:
+      "What the October to December 2026 price cap and 0% VAT on electricity mean for your bill, with worked examples for low, typical and high use, and appliance costs.",
+    date: "2026-10-12",
+    dateLabel: "12 October 2026",
+    readingTime: "11 min read",
+    category: "Property",
+    body: (
+      <>
+        <p>
+          Two things changed on household energy bills in Great Britain on 1 October 2026. Ofgem&rsquo;s price cap moved
+          to new rates for October to December, and VAT on household electricity fell from 5% to 0% until 31 March 2027.
+          Gas still carries 5% VAT. The headlines talk about a &ldquo;typical bill&rdquo; of £1,723 a year, but very
+          few homes use exactly the typical amount, and the two changes pull in different directions: gas got dearer,
+          while electricity, thanks to the VAT cut, costs about the same as it did over the summer.
+        </p>
+        <p>
+          This guide works through what the new cap means in pounds for low, typical and high users, for homes with
+          and without gas, and for Direct Debit, prepayment and pay-on-receipt customers. It also prices the appliances
+          people worry about most in winter: electric heaters, tumble dryers, electric showers and car chargers. Every
+          figure comes from the same engine as our{" "}
+          <Link href="/uk/property/energy-bill-calculator">energy bill calculator</Link> and{" "}
+          <Link href="/uk/property/appliance-running-cost">appliance running cost calculator</Link>, using Ofgem&rsquo;s
+          published unit rates and standing charges for the Great Britain average.
+        </p>
+
+        <h2>The short version</h2>
+        <ul>
+          <li>
+            <strong>Typical dual fuel bill:</strong>{" "}£1,723 a year by Direct Debit from 1 October 2026, up about £60 from
+            £1,664 for July to September.
+          </li>
+          <li>
+            <strong>Electricity:</strong>{" "}26.32p per kWh and a standing charge of 54.83p a day, with no VAT. The
+            standing charge fell from 57.19p.
+          </li>
+          <li>
+            <strong>Gas:</strong>{" "}7.97p per kWh and 29.68p a day, including 5% VAT. Both went up, which is where almost
+            all of the rise comes from.
+          </li>
+          <li>
+            <strong>The VAT cut</strong>{" "}is worth about £43 a year on a typical electricity bill, or roughly £21 over the
+            six months it lasts.
+          </li>
+          <li>
+            <strong>The next cap</strong>{" "}(January to March 2027) is due to be announced on 25 November 2026.
+          </li>
+        </ul>
+
+        <h2>What the price cap is, and what it is not</h2>
+        <p>
+          The price cap is not a cap on your bill. It is a limit on the unit rate (pence per kWh) and the standing
+          charge (pence per day) that a supplier can charge on a standard variable tariff. If you use more energy, you
+          pay more. Ofgem sets the cap every three months from the wholesale cost of energy plus network, policy and
+          operating costs. It applies to default tariffs in England, Scotland and Wales; Northern Ireland has its own
+          system.
+        </p>
+        <p>
+          The rates differ by region and payment method, and Ofgem publishes them all. The figures in this guide are
+          the Great Britain average for Direct Debit, which is what most comparisons quote. Your own bill shows your
+          region&rsquo;s actual rates; you can type them into the calculator to replace the averages.
+        </p>
+        <p>
+          A fixed tariff is not affected by the cap during its term. If you fixed earlier in the year, your unit rates
+          stay the same, though the electricity VAT cut still applies to you: VAT is a tax on the supply, not part of
+          the tariff, so suppliers pass the 0% rate through on fixed deals as well.
+        </p>
+
+        <h2>The new rates side by side</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Rate (GB average, Direct Debit)</th>
+              <th>July to September 2026</th>
+              <th>October to December 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Electricity unit rate</td><td>26.11p per kWh (5% VAT)</td><td>26.32p per kWh (0% VAT)</td></tr>
+            <tr><td>Electricity standing charge</td><td>57.19p a day</td><td>54.83p a day</td></tr>
+            <tr><td>Gas unit rate</td><td>7.33p per kWh</td><td>7.97p per kWh</td></tr>
+            <tr><td>Gas standing charge</td><td>29.04p a day</td><td>29.68p a day</td></tr>
+            <tr><td>Typical yearly bill (Ofgem)</td><td>£1,663</td><td>£1,723</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Look closely at the electricity unit rate. It went up by only 0.21p, but the old figure included 5% VAT and
+          the new one includes none. Before tax, the underlying rate rose by about 6%. Without the VAT cut, the
+          electricity unit rate would have been close to 27.6p from October. The cut hides an increase rather than
+          delivering a fall.
+        </p>
+
+        <h2>What a typical home pays</h2>
+        <p>
+          Ofgem&rsquo;s typical home uses 2,500 kWh of electricity and 9,500 kWh of gas a year. These are the new
+          &ldquo;typical domestic consumption values&rdquo; that came in on 1 July 2026, lower than the 2,700 and 11,500
+          kWh used before, because homes have been using less since the energy crisis.
+        </p>
+        <p>
+          At those amounts, the yearly bill splits like this at the October rates:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Part of the bill</th>
+              <th>Electricity</th>
+              <th>Gas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Energy used</td><td>£658.00 (2,500 kWh)</td><td>£757.15 (9,500 kWh)</td></tr>
+            <tr><td>Standing charges</td><td>£200.13</td><td>£108.33</td></tr>
+            <tr><td>Total for the year</td><td>£858.13</td><td>£865.48</td></tr>
+            <tr><td>VAT included</td><td>£0</td><td>£41.21</td></tr>
+          </tbody>
+        </table>
+        <p>
+          That is £1,723.61 a year, or about £143.63 a month spread evenly. Over the summer quarter&rsquo;s rates the
+          same home would have paid £1,663.84. The electricity half of the bill actually fell slightly, from £861.49 to
+          £858.13, because the lower standing charge and the VAT cut together outweigh the higher underlying unit rate.
+          The gas half rose from £802.35 to £865.48, a jump of about £63.
+        </p>
+
+        <h2>Low, typical and high users</h2>
+        <p>
+          Ofgem publishes three usage levels. A flat or a one- or two-person home is often near &ldquo;low&rdquo;; a
+          larger family home, or one with someone at home all day, is often near &ldquo;high&rdquo;.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Usage (electricity / gas a year)</th>
+              <th>July to September rates</th>
+              <th>October to December rates</th>
+              <th>Change a year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Low (1,600 / 6,000 kWh)</td><td>£1,172.30</td><td>£1,207.78</td><td>+£35.48</td></tr>
+            <tr><td>Typical (2,500 / 9,500 kWh)</td><td>£1,663.84</td><td>£1,723.61</td><td>+£59.77</td></tr>
+            <tr><td>High (3,800 / 14,000 kWh)</td><td>£2,333.12</td><td>£2,424.42</td><td>+£91.30</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The more gas you burn, the bigger the rise. A high-use home pays about £91 a year more at the new rates, and
+          almost all of that is gas. A low user sees about £35 more.
+        </p>
+
+        <h2>Homes without gas: the VAT cut matters most here</h2>
+        <p>
+          Millions of homes in Great Britain have no mains gas and heat with electricity, oil or something else.
+          For an all-electric home, the October changes are mildly good news: the bill falls slightly, and the VAT
+          saving is larger because every unit is electricity.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Electricity used a year</th>
+              <th>Bill with 0% VAT</th>
+              <th>Same bill at 5% VAT</th>
+              <th>VAT saving a year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2,500 kWh</td><td>£858.13</td><td>£901.04</td><td>£42.91</td></tr>
+            <tr><td>3,800 kWh</td><td>£1,200.29</td><td>£1,260.30</td><td>£60.01</td></tr>
+            <tr><td>6,000 kWh (electric heating)</td><td>£1,779.33</td><td>£1,868.30</td><td>£88.97</td></tr>
+          </tbody>
+        </table>
+        <p>
+          These are yearly figures at the October rates, so the real saving is roughly half of each, since the cut lasts
+          six months, and a little more for homes with electric heating, which use most of their electricity in exactly
+          those winter months. Many all-electric homes are on Economy 7 or another time-of-use tariff, with cheaper
+          night rates; the calculator lets you enter your own day and night rates.
+        </p>
+
+        <h2>Direct Debit, prepayment or paying on receipt</h2>
+        <p>
+          The cap differs by payment method. Ofgem&rsquo;s typical bills for October to December are £1,723 by Direct
+          Debit, £1,678 on a prepayment meter and £1,861 for &ldquo;standard credit&rdquo;, where you pay each bill as
+          it arrives by cash, cheque or card.
+        </p>
+        <ul>
+          <li>
+            <strong>Prepayment</strong>{" "}is now about £45 a year cheaper than Direct Debit for a typical home, after a
+            change Ofgem made to stop prepayment customers paying more.
+          </li>
+          <li>
+            <strong>Standard credit</strong>{" "}is about £138 a year dearer, reflecting the cost of late payments and
+            chasing debts. If you can set up a Direct Debit, it is usually worth doing.
+          </li>
+        </ul>
+        <p>
+          A Direct Debit is normally a fixed monthly amount. It is set so that summer overpayments build a credit that
+          covers winter bills. A credit balance in October is normal; a large one in spring may mean your Direct Debit is
+          too high, and you can ask for it to be reviewed or refunded.
+        </p>
+
+        <h2>Working back from your Direct Debit</h2>
+        <p>
+          Many people know their monthly payment but not their usage. The calculator can work backwards, assuming your
+          use is in the same proportion as Ofgem&rsquo;s typical home:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Monthly Direct Debit at October rates</th>
+              <th>Electricity a year</th>
+              <th>Gas a year</th>
+              <th>Compared with typical</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£100</td><td>about 1,575 kWh</td><td>about 5,985 kWh</td><td>63%</td></tr>
+            <tr><td>£150</td><td>about 2,635 kWh</td><td>about 10,013 kWh</td><td>105%</td></tr>
+            <tr><td>£200</td><td>about 3,695 kWh</td><td>about 14,041 kWh</td><td>148%</td></tr>
+          </tbody>
+        </table>
+        <p>
+          This is a rough guide: your real split between gas and electricity may differ. The best source is your annual
+          statement, which lists the kWh you used over the last 12 months. If you have a smart meter, the in-home display
+          or your supplier&rsquo;s app shows the same.
+        </p>
+
+        <h2>Standing charges: the part you cannot switch off</h2>
+        <p>
+          Standing charges cover the cost of connecting your home to the networks, plus some policy costs. You pay them
+          every day whether you use any energy or not. At the October rates they come to £200.13 a year for electricity
+          and £108.33 for gas: £308.46 before you boil a kettle.
+        </p>
+        <p>
+          The electricity standing charge fell by about £8.61 a year compared with the summer, while gas rose by about
+          £2.34. For a low user, standing charges are a large share of the bill: about a quarter of the £1,207.78 low-use
+          figure. That is why some suppliers offer tariffs with lower standing charges and higher unit rates, which can
+          suit people who use very little; ask your supplier whether it has one.
+        </p>
+
+        <h2>What heating costs this winter</h2>
+        <p>
+          Heating is the biggest part of most winter bills, and the cost depends hugely on how you heat. With gas at
+          7.97p and electricity at 26.32p per kWh, a unit of electricity costs about 3.3 times as much as a unit of gas.
+          Gas boilers lose some heat, so we assume 90% efficiency, but electricity still costs about three times as much
+          for the same warmth.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Heater (typical use)</th>
+              <th>Cost per hour</th>
+              <th>Cost a week</th>
+              <th>Same heat from a gas boiler, a year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>2kW fan or convector heater, 3 hours a day</td><td>£0.53</td><td>£11.05</td><td>£193.94 (vs £576.41)</td></tr>
+            <tr><td>1.5kW oil-filled radiator, 4 hours a day, on 60% of the time</td><td>£0.24</td><td>£6.63</td><td>£116.36 (vs £345.84)</td></tr>
+            <tr><td>1.2kW halogen heater, 3 hours a day</td><td>£0.32</td><td>£6.63</td><td>£116.36 (vs £345.84)</td></tr>
+            <tr><td>100W electric blanket, 1 hour a day</td><td>£0.03</td><td>£0.18</td><td>£3.23 (vs £9.61)</td></tr>
+          </tbody>
+        </table>
+        <p>
+          An hour of a 2kW heater costs about 53p; the same heat from gas central heating costs about 18p. So the
+          popular advice to &ldquo;heat the person, not the room&rdquo; is right on the numbers only if the plug-in heater
+          lets you leave the central heating off. Running a heater in one room while the boiler heats the whole house
+          rarely saves money unless the rest of the house is cold anyway. Heating one room with a 2kW heater for three
+          hours a day all year would cost £576, against about £194 for the same heat from gas.
+        </p>
+        <p>
+          An electric blanket is the cheapest warmth on the list by far: about 3p an hour. Heat pumps change this sum
+          entirely, because they deliver three or more units of heat for each unit of electricity; our{" "}
+          <Link href="/uk/property/heat-pump-vs-boiler">heat pump vs boiler calculator</Link> compares the two.
+        </p>
+
+        <h2>The appliances that cost the most</h2>
+        <p>
+          At 26.32p per kWh, appliances that heat water or air cost the most. The figures below assume typical
+          wattages and use; every one can be changed in the appliance calculator.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Appliance (typical use)</th>
+              <th>Per use</th>
+              <th>A year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Electric shower, 9.5kW, 8 minutes a day</td><td>£0.33</td><td>£121.69</td></tr>
+            <tr><td>Immersion heater, 3kW, 1 hour a day</td><td>£0.79</td><td>£288.20</td></tr>
+            <tr><td>Tumble dryer (vented or condenser), 75 minutes, 3 times a week</td><td>£0.82</td><td>£128.66</td></tr>
+            <tr><td>Heat pump tumble dryer, 2 hours, 3 times a week</td><td>£0.42</td><td>£65.88</td></tr>
+            <tr><td>Electric oven, 45 minutes a day</td><td>£0.28</td><td>£103.75</td></tr>
+            <tr><td>Air fryer, 20 minutes a day</td><td>£0.13</td><td>£48.03</td></tr>
+            <tr><td>Dehumidifier, 8 hours a day</td><td>£0.63</td><td>£230.56</td></tr>
+            <tr><td>Heated clothes airer, 4 hours, 3 times a week</td><td>£0.32</td><td>£49.41</td></tr>
+            <tr><td>Fridge freezer, always on</td><td>£0.19 a day</td><td>£69.17</td></tr>
+            <tr><td>Kettle, 4 boils a day</td><td>£0.04</td><td>£57.64</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Three things stand out. First, an immersion heater left on for an hour a day costs nearly £290 a year: a timer
+          and a well-insulated cylinder pay for themselves quickly. Second, a heat pump tumble dryer uses about half the
+          electricity of a standard one; at three loads a week the difference is about £63 a year. Third, drying
+          clothes on a heated airer costs well under half as much as a standard tumble dryer, and a dehumidifier in the
+          same room speeds it up, though running one for eight hours a day costs about £230 a year on its own.
+        </p>
+        <p>
+          Cooking in an air fryer instead of the oven saves about £56 a year at these assumptions, but only if it
+          replaces the oven rather than being used as well. A microwave is cheaper still: about 3p a use.
+        </p>
+
+        <h2>Charging an electric car at home</h2>
+        <p>
+          At the capped rate, charging a car on a 7kW home charger for four hours costs about £7.37, or about £769 a year
+          at twice a week. On a typical overnight electric vehicle tariff of about 8p per kWh, the same charging costs
+          about £2.24 a session and £234 a year. If you have an electric car and are still on the standard variable
+          tariff, moving to a time-of-use tariff is probably the single biggest saving available to you. Our{" "}
+          <Link href="/uk/vehicles/petrol-vs-ev-cost">petrol vs electric calculator</Link> compares the running costs with a
+          petrol car.
+        </p>
+
+        <h2>Why gas went up and electricity did not</h2>
+        <p>
+          The cap follows wholesale prices with a lag. Higher wholesale gas costs in the period Ofgem used for October to
+          December pushed the gas unit rate from 7.33p to 7.97p,
+          about 9%. The electricity rate before VAT also rose, by about 6%, partly because much of Britain&rsquo;s
+          electricity is still generated from gas.
+        </p>
+        <p>
+          The government&rsquo;s decision to remove VAT from household electricity for six months means the rise in the
+          underlying electricity price does not reach bills for now. Gas was left at 5%. That choice favours homes that
+          heat with electricity, which tend to pay more per unit of heat.
+        </p>
+
+        <h2>What happens in April 2027</h2>
+        <p>
+          Unless the government extends it, the electricity VAT cut ends on 31 March 2027. If the underlying rates were
+          unchanged, the 5% would come back on top: on the typical home&rsquo;s electricity that is about £43 a year, and
+          on 6,000 kWh of electric heating about £89. The cap for January to March 2027 will be announced on 25 November
+          2026, and the April to June cap in late February 2027. We update both calculators on announcement day.
+        </p>
+
+        <h2>Help with bills this winter</h2>
+        <ul>
+          <li>
+            <strong>Warm Home Discount:</strong>{" "}£150 off your electricity bill each winter for households on
+            means-tested benefits, usually applied automatically.
+          </li>
+          <li>
+            <strong>Winter Fuel Payment:</strong>{" "}£200, or £300 at 80 or over, paid automatically at State Pension age;
+            it is taken back through tax if your income is over £35,000.
+          </li>
+          <li>
+            <strong>Cold Weather Payments:</strong>{" "}£25 for each very cold week if you get certain benefits.
+          </li>
+          <li>
+            <strong>Supplier hardship funds:</strong>{" "}most large suppliers have grants or debt write-off schemes for
+            customers struggling to pay. Ask your supplier, or get free advice from Citizens Advice, StepChange or
+            National Debtline.
+          </li>
+          <li>
+            <strong>Priority Services Register:</strong>{" "}free extra support from your supplier if you are of State
+            Pension age, disabled, have a long-term health condition or young children.
+          </li>
+        </ul>
+        <p>
+          If you are not sure what you can claim, our{" "}
+          <Link href="/uk/benefits/benefits-checker">benefits checker</Link> runs the Universal Credit and Pension Credit
+          rules and lists other help, including the Warm Home Discount.
+        </p>
+
+        <h2>Ten practical ways to cut the bill</h2>
+        <ol>
+          <li>
+            <strong>Give a meter reading</strong>{" "}on or just after 1 October and again on 1 January, so the right rates
+            are applied to the right days. Smart meters do this automatically.
+          </li>
+          <li>
+            <strong>Turn the boiler flow temperature down</strong>{" "}on a combi boiler to about 60°C. Condensing boilers
+            work more efficiently at lower temperatures.
+          </li>
+          <li>
+            <strong>Set the thermostat one degree lower.</strong>{" "}Every degree makes a noticeable difference to gas use.
+          </li>
+          <li>
+            <strong>Use thermostatic radiator valves</strong>{" "}to keep rooms you rarely use cooler.
+          </li>
+          <li>
+            <strong>Put the immersion heater on a timer,</strong>{" "}or turn it off if your boiler heats your water.
+          </li>
+          <li>
+            <strong>Shorten showers.</strong>{" "}Each minute in a 9.5kW electric shower costs about 4p.
+          </li>
+          <li>
+            <strong>Dry clothes outside or on an airer</strong>{" "}when you can; a standard tumble dryer costs about 82p a
+            load.
+          </li>
+          <li>
+            <strong>Fill the kettle only as far as you need.</strong>
+          </li>
+          <li>
+            <strong>Check a fixed tariff.</strong>{" "}A fix below the cap protects you from a rise in January; one above it
+            costs you more unless prices rise. Compare the unit rates and standing charges, not just the headline
+            yearly figure.
+          </li>
+          <li>
+            <strong>Draught-proof</strong>{" "}doors, windows and letterboxes: cheap materials, often a fast payback.
+          </li>
+        </ol>
+
+        <h2>Key numbers</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>October to December 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Electricity unit rate</td><td>26.32p per kWh, 0% VAT</td></tr>
+            <tr><td>Electricity standing charge</td><td>54.83p a day (£200.13 a year)</td></tr>
+            <tr><td>Gas unit rate</td><td>7.97p per kWh, 5% VAT</td></tr>
+            <tr><td>Gas standing charge</td><td>29.68p a day (£108.33 a year)</td></tr>
+            <tr><td>Typical use</td><td>2,500 kWh electricity, 9,500 kWh gas</td></tr>
+            <tr><td>Typical bill: Direct Debit / prepayment / standard credit</td><td>£1,723 / £1,678 / £1,861</td></tr>
+            <tr><td>Electricity VAT at 0%</td><td>1 October 2026 to 31 March 2027</td></tr>
+            <tr><td>Next cap announcement</td><td>25 November 2026 (for January to March 2027)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The bottom line</h2>
+        <p>
+          For a typical home with gas central heating, the October cap adds about £60 a year, nearly all of it on gas.
+          The electricity VAT cut stops the electricity side of the bill rising, and saves about £43 a year on typical
+          use (more for all-electric homes) while it lasts. The biggest savings are still in how you heat your home and
+          heat water: a degree on the thermostat, a timer on the immersion heater, and a time-of-use tariff if you have
+          an electric car. To see your own figures, enter your usage or monthly Direct Debit in the{" "}
+          <Link href="/uk/property/energy-bill-calculator">energy bill calculator</Link>, and price any appliance with the{" "}
+          <Link href="/uk/property/appliance-running-cost">appliance running cost calculator</Link>. Figures are Great
+          Britain averages for Direct Debit at Ofgem&rsquo;s October to December 2026 rates; your region and tariff may
+          differ. This is general guidance, not financial advice.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "pay-off-credit-card-debt-fastest-way",
+    title: "The fastest way to pay off credit card debt in 2026: minimums, fixed payments, balance transfers and loans compared",
+    seoTitle: "Fastest Way to Pay Off Credit Card Debt (2026)",
+    description:
+      "How long a $6,000 card balance takes to clear at 22% APR: minimum payments, fixed payments, a 0% balance transfer, a personal loan, and snowball vs avalanche.",
+    date: "2026-10-12",
+    dateLabel: "12 October 2026",
+    readingTime: "12 min read",
+    category: "US Loans",
+    body: (
+      <>
+        <p>
+          Credit card interest is the most expensive debt most Americans carry. The Federal Reserve&rsquo;s G.19 survey
+          put the average APR on cards that were charged interest at about 22% in August 2026. At that rate, a balance
+          that is not paid in full grows by almost 2% every month, and the minimum payment barely dents it.
+        </p>
+        <p>
+          This guide takes one realistic balance, $6,000 at 22% APR, and runs it through every common way of paying it
+          off: minimum payments only, a fixed monthly payment, a target payoff date, a 0% balance transfer and a
+          personal loan. Then it compares the snowball and avalanche methods for people with several cards. Every
+          figure comes from the same engines as our{" "}
+          <Link href="/us/loans/credit-card-payoff">credit card payoff calculator</Link>,{" "}
+          <Link href="/us/loans/balance-transfer-calculator">balance transfer calculator</Link> and{" "}
+          <Link href="/us/loans/debt-payoff-calculator">debt payoff calculator</Link>. Interest is charged monthly at
+          APR ÷ 12; real cards compound daily, which adds a few cents a month.
+        </p>
+
+        <h2>The short version</h2>
+        <ul>
+          <li>
+            <strong>Minimum payments only:</strong>{" "}$6,000 at 22% takes about 20 years and 9 months to clear and costs
+            $9,933 in interest, more than the balance itself.
+          </li>
+          <li>
+            <strong>A fixed $300 a month:</strong>{" "}26 months and $1,543 in interest. That one change saves about
+            $8,400.
+          </li>
+          <li>
+            <strong>A 0% balance transfer</strong>{" "}(3% fee, 18 months) at the same $300 a month: 21 months and $207 in
+            fee and interest, about $1,336 cheaper than staying put.
+          </li>
+          <li>
+            <strong>A 36-month personal loan</strong>{" "}at 15% to 19% beats paying the card over the same 36 months, but
+            an origination fee can wipe out much of the gain.
+          </li>
+          <li>
+            <strong>Avalanche</strong>{" "}(highest rate first) always costs the least interest; <strong>snowball</strong>{" "}
+            (smallest balance first) gives earlier wins. With typical balances, the difference is often a few hundred
+            dollars.
+          </li>
+        </ul>
+
+        <h2>How card interest works</h2>
+        <p>
+          Your card&rsquo;s APR is an annual rate, but interest is charged on your balance every day and billed monthly.
+          At 22%, the monthly rate is about 1.83%. On a $6,000 balance that is about $110 of interest in the first
+          month alone.
+        </p>
+        <p>
+          If you pay your statement balance in full by the due date, most cards charge no interest on purchases: this
+          is the grace period. Once you carry a balance, you usually lose the grace period, so new purchases start
+          collecting interest from the day you make them. That is why the first rule of paying off a card is to stop
+          adding to it, even with small purchases. Our{" "}
+          <Link href="/us/loans/credit-card-interest-calculator">credit card interest calculator</Link> shows how the
+          average daily balance and grace period work in detail.
+        </p>
+
+        <h2>Paying only the minimum</h2>
+        <p>
+          Card issuers set the minimum payment by formula. A common one is 1% of the balance plus that month&rsquo;s
+          interest, with a floor of $25 to $40. On $6,000 at 22%, the first minimum is $170: $110 of interest and $60
+          off the balance.
+        </p>
+        <p>
+          The problem is that the minimum shrinks as the balance shrinks, so you never speed up. Here is what happens
+          if you pay only the minimum every month and never spend on the card again:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Minimum formula</th>
+              <th>First payment</th>
+              <th>Time to clear</th>
+              <th>Total interest</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1% of balance + interest, $25 floor</td><td>$170</td><td>249 months (20 years 9 months)</td><td>$9,933</td></tr>
+            <tr><td>2% of balance + interest, $25 floor</td><td>$230</td><td>146 months (12 years 2 months)</td><td>$5,145</td></tr>
+          </tbody>
+        </table>
+        <p>
+          On the 1% formula you would pay $15,933 in total for $6,000 of spending. Your statement must show this: under
+          the Credit CARD Act of 2009, card statements include a &ldquo;minimum payment warning&rdquo; with how long
+          minimum payments would take and the total cost, plus what you would need to pay each month to clear the
+          balance in three years.
+        </p>
+
+        <h2>The power of a fixed payment</h2>
+        <p>
+          The simplest fix is to pick a fixed amount and pay it every month, even as the minimum falls. Because the
+          amount stays the same, more and more of it goes to the balance as the interest shrinks.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Fixed monthly payment ($6,000 at 22%)</th>
+              <th>Months to clear</th>
+              <th>Total interest</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>$150</td><td>73</td><td>$4,913</td></tr>
+            <tr><td>$200</td><td>44</td><td>$2,791</td></tr>
+            <tr><td>$250</td><td>32</td><td>$1,979</td></tr>
+            <tr><td>$300</td><td>26</td><td>$1,543</td></tr>
+            <tr><td>$400</td><td>18</td><td>$1,081</td></tr>
+            <tr><td>$500</td><td>14</td><td>$839</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Two things jump out. First, paying a fixed $170, the same as the first minimum, would already cut the time
+          from 249 months to 58 and the interest from $9,933 to $3,746, simply because the payment never shrinks. Second, the savings flatten out: going from $150 to $200
+          saves about $2,100 in interest, while going from $400 to $500 saves about $240. The biggest gain comes from
+          the first step away from minimum payments.
+        </p>
+
+        <h2>Working back from a payoff date</h2>
+        <p>
+          If you have a target date in mind, such as clearing the card before a wedding or a home purchase, work out the
+          payment for that date:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Clear $6,000 at 22% in</th>
+              <th>Monthly payment</th>
+              <th>Total interest</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>12 months</td><td>$561.57</td><td>$739</td></tr>
+            <tr><td>24 months</td><td>$311.27</td><td>$1,470</td></tr>
+            <tr><td>36 months</td><td>$229.14</td><td>$2,249</td></tr>
+            <tr><td>48 months</td><td>$189.04</td><td>$3,074</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The 36-month figure is the one your statement shows in its minimum payment warning. It is a useful
+          benchmark: if you can pay at least that, you will be free of the debt within three years.
+        </p>
+
+        <h2>Balance transfers: 0% for a while, at a price</h2>
+        <p>
+          A balance transfer card lets you move a balance from another card and pay a promotional rate, usually 0%, for
+          a set period: often 12 to 21 months. You pay a transfer fee up front, typically 3% to 5% of the amount moved.
+          After the promotion, any balance left is charged the card&rsquo;s normal APR.
+        </p>
+        <p>
+          Here is $6,000 moved to a card with a 3% fee and 0% for 18 months, then 22%, paying $300 a month:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Paying $300 a month</th>
+              <th>Stay on the current card</th>
+              <th>Balance transfer (3% fee, 18 months at 0%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Transfer fee</td><td>$0</td><td>$180</td></tr>
+            <tr><td>Months to clear</td><td>26</td><td>21</td></tr>
+            <tr><td>Interest</td><td>$1,543</td><td>$27</td></tr>
+            <tr><td>Total paid</td><td>$7,543</td><td>$6,207</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The transfer saves about $1,336 and clears the debt five months sooner. At $300 a month, $780 is left when the
+          18 months end, so a little interest is charged at 22% before it is cleared.
+        </p>
+        <p>
+          To clear the whole balance before the promotion ends, you need about $344 a month: the $6,180 balance with the
+          fee, divided by 18. Then you pay no interest at all, just the $180 fee, and save about $1,117 compared with
+          paying $344 a month on the current card.
+        </p>
+        <p>
+          A longer promotion with a higher fee can also work. A 5% fee ($300) with 21 months at 0% clears exactly in 21
+          months at $300 a month, with no interest, about $1,243 cheaper than staying.
+        </p>
+
+        <h3>When a balance transfer goes wrong</h3>
+        <p>
+          The danger is paying too little. At $150 a month on the 3% transfer above, $3,480 is still owed when the 0%
+          ends, and the whole plan takes 49 months with about $1,094 of interest. It still beats staying on the old card
+          at $150 a month (73 months and $4,913 of interest), but the benefit is much smaller than it looks. Other
+          traps:
+        </p>
+        <ul>
+          <li>
+            <strong>New purchases</strong>{" "}on the transfer card usually get the normal APR, not 0%, and only the
+            amount you pay above the minimum has to go to the highest-rate balance first.
+          </li>
+          <li>
+            <strong>A late payment</strong>{" "}can end the promotional rate early on many cards. Set up autopay for at
+            least the minimum.
+          </li>
+          <li>
+            <strong>Deferred interest</strong>{" "}is a different product, common on store cards: if the balance is not
+            fully paid by the end, interest is charged back to the start. A true 0% balance transfer does not do this,
+            but check the terms.
+          </li>
+          <li>
+            <strong>Approval</strong>{" "}generally needs good credit, and the credit limit may be lower than the balance
+            you want to move.
+          </li>
+        </ul>
+
+        <h2>Personal loans: a fixed rate and an end date</h2>
+        <p>
+          A debt consolidation loan replaces card debt with one fixed payment over a fixed term, usually 2 to 5 years.
+          Rates depend heavily on your credit score. Average offers in the 30 days to October 1, 2026 (NerdWallet,
+          lenders with a maximum APR of 36% or less) were about 15.17% for excellent credit, 19.47% for good and
+          24.21% for fair.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>$6,000 over 36 months</th>
+              <th>Monthly payment</th>
+              <th>Interest and fees</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Keep on the card at 22%</td><td>$229.14</td><td>$2,249</td></tr>
+            <tr><td>Loan at 15.17%, no fee</td><td>$208.49</td><td>$1,506</td></tr>
+            <tr><td>Loan at 15.17%, 5% fee taken from the loan</td><td>$219.47</td><td>$1,901</td></tr>
+            <tr><td>Loan at 19.47%, no fee</td><td>$221.36</td><td>$1,969</td></tr>
+            <tr><td>Loan at 19.47%, 5% fee taken from the loan</td><td>$233.02</td><td>$2,389</td></tr>
+            <tr><td>Loan at 24.21%, no fee</td><td>$236.06</td><td>$2,498</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Many personal loans charge an origination fee of 1% to 10%, taken from the money you receive. To get the full
+          $6,000 into your hands with a 5% fee, you have to borrow about $6,316. With good credit and a 5% fee, the loan
+          costs more than leaving the debt on a 22% card. With excellent credit and no fee, it saves about $743 over
+          three years.
+        </p>
+        <p>
+          A loan&rsquo;s real advantage is structure: a fixed end date and a payment that cannot shrink. Its risk is
+          that the cards are now empty. If they fill up again, you have the loan and new card debt. Many people close
+          or lock away the cards once they consolidate. Our{" "}
+          <Link href="/us/loans/debt-consolidation-calculator">debt consolidation calculator</Link> compares your own cards
+          with a loan offer, fee included, and our{" "}
+          <Link href="/us/loans/personal-loan-calculator">personal loan calculator</Link> shows the true APR once the fee
+          is counted.
+        </p>
+
+        <h2>Several cards: snowball or avalanche?</h2>
+        <p>
+          With more than one card, pay the minimum on all of them and put every spare dollar on one target. When the
+          target is cleared, its minimum moves on to the next card. The two methods differ only in the order:
+        </p>
+        <ul>
+          <li>
+            <strong>Avalanche:</strong>{" "}highest APR first. Mathematically, this always costs the least interest.
+          </li>
+          <li>
+            <strong>Snowball:</strong>{" "}smallest balance first. You clear a card sooner, which many people find keeps
+            them going.
+          </li>
+        </ul>
+        <p>
+          Take three cards with $250 a month on top of the minimums:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Card</th>
+              <th>Balance</th>
+              <th>APR</th>
+              <th>Minimum</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Card A</td><td>$900</td><td>18.99%</td><td>$30</td></tr>
+            <tr><td>Card B</td><td>$5,200</td><td>27.99%</td><td>$160</td></tr>
+            <tr><td>Card C</td><td>$3,100</td><td>22.99%</td><td>$95</td></tr>
+          </tbody>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th>Method ($535 a month in all)</th>
+              <th>First card cleared</th>
+              <th>Debt-free</th>
+              <th>Total interest</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Snowball (A, then C, then B)</td><td>Card A in month 4</td><td>Month 22</td><td>$2,516</td></tr>
+            <tr><td>Avalanche (B, then C, then A)</td><td>Card B in month 16</td><td>Month 22</td><td>$2,255</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Both plans finish in the same month. The avalanche saves about $261, but you wait 16 months to clear your
+          first card, against 4 months with the snowball. If an early win is what keeps you paying, the snowball&rsquo;s
+          extra cost is the price of that motivation, and for many people it is worth it.
+        </p>
+        <p>
+          Sometimes the two methods agree. With a $1,200 store card at 29.99%, a $4,500 card at 24.99% and a $7,800 card
+          at 19.99%, the smallest balance is also the most expensive, so both methods attack the same card first. With
+          $200 extra a month, both clear all three in 31 months with about $4,069 of interest; with no extra, they take
+          58 months and cost about $8,760. The extra $200 a month saves about $4,700.
+        </p>
+
+        <h2>Finding the money to pay more</h2>
+        <p>
+          Every example above says the same thing: the payment matters more than the method. A few ways people find
+          an extra $50 to $200 a month:
+        </p>
+        <ul>
+          <li>
+            <strong>Pause extra savings, but not all of them.</strong>{" "}Money in a savings account earning 4% while a card
+            charges 22% loses you about 18% a year on that amount. Keep a small emergency fund, perhaps one month of
+            essential costs, so a surprise bill does not go back on the card. Our{" "}
+            <Link href="/us/savings/emergency-fund-calculator">emergency fund calculator</Link> can help set the figure.
+          </li>
+          <li>
+            <strong>Keep the 401(k) match.</strong>{" "}An employer match is usually an instant 50% or 100% return, which
+            beats paying off a 22% card.
+          </li>
+          <li>
+            <strong>Check your withholding.</strong>{" "}A large tax refund is money you lent the government for free;
+            adjusting your W-4 puts it in your paycheck now.
+          </li>
+          <li>
+            <strong>Cancel subscriptions you rarely use,</strong>{" "}and put each saving straight onto the card.
+          </li>
+          <li>
+            <strong>Use windfalls:</strong>{" "}a bonus, a tax refund or a gift paid onto a card at 22% earns a guaranteed
+            22% return.
+          </li>
+        </ul>
+
+        <h2>Ask for a lower rate</h2>
+        <p>
+          It is worth calling your card issuer to ask for a lower APR, especially if you have paid on time for a year
+          or more, or if your credit score has risen. A cut from 22% to 18% on $6,000 at $300 a month clears the
+          balance in 24 months instead of 26 and saves about $356 of interest. If you are struggling to pay, ask about a hardship program: many
+          issuers will lower the rate or the payment for a time.
+        </p>
+        <p>
+          A nonprofit credit counseling agency can also set up a debt management plan, often with lower rates
+          negotiated with your card issuers, for a small monthly fee. Look for an agency accredited by the National
+          Foundation for Credit Counseling. Be wary of &ldquo;debt settlement&rdquo; companies that tell you to stop
+          paying your cards: settlement damages your credit, can bring fees and lawsuits, and forgiven debt may be
+          taxable.
+        </p>
+
+        <h2>What paying off cards does to your credit score</h2>
+        <p>
+          Paying down card balances usually helps your credit score fairly quickly, because credit utilization (the
+          share of your card limits you are using) is a major factor. Keeping old cards open after you pay them off
+          helps too, since closing them lowers your total available credit. A balance transfer or loan application
+          causes a small, temporary dip from the hard inquiry. A lower score is rarely a reason not to consolidate if
+          the plan saves real money.
+        </p>
+
+        <h2>A five-step plan</h2>
+        <ol>
+          <li>
+            <strong>List every card</strong>{" "}with its balance, APR and minimum payment.
+          </li>
+          <li>
+            <strong>Stop adding to the balances.</strong>{" "}Use a debit card or cash for day-to-day spending.
+          </li>
+          <li>
+            <strong>Choose a fixed monthly amount</strong>{" "}you can keep up, ideally at least the 36-month payment.
+          </li>
+          <li>
+            <strong>Cut the rate if you can:</strong>{" "}a 0% balance transfer if you can clear it within the promotion, or a
+            fee-free personal loan with a clearly lower APR.
+          </li>
+          <li>
+            <strong>Pick avalanche or snowball</strong>{" "}and stick with it. Move each cleared card&rsquo;s minimum to the
+            next target.
+          </li>
+        </ol>
+
+        <h2>Key numbers</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Figure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Average card APR, accounts charged interest (Fed G.19, August 2026)</td><td>about 22%</td></tr>
+            <tr><td>$6,000 at 22%, minimum payments only (1% + interest)</td><td>249 months, $9,933 interest</td></tr>
+            <tr><td>$6,000 at 22%, $300 a month</td><td>26 months, $1,543 interest</td></tr>
+            <tr><td>Payment to clear $6,000 at 22% in 36 months</td><td>$229.14</td></tr>
+            <tr><td>Balance transfer, 3% fee, 18 months at 0%, $300 a month</td><td>21 months, $207 fee and interest</td></tr>
+            <tr><td>Typical balance transfer fee</td><td>3% to 5%</td></tr>
+            <tr><td>Average personal loan APR (excellent / good / fair credit)</td><td>15.17% / 19.47% / 24.21%</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The bottom line</h2>
+        <p>
+          On a typical 22% card, paying only the minimum turns a $6,000 balance into a 20-year, $16,000 commitment. A
+          fixed payment of $300 clears it in just over two years. A 0% balance transfer you can pay off within the
+          promotion cuts the cost to little more than its fee, and a fee-free personal loan at a clearly lower rate gives
+          you a firm end date. Whatever you choose, the amount you pay each month matters most. To run your own
+          numbers, use the <Link href="/us/loans/credit-card-payoff">credit card payoff calculator</Link>, the{" "}
+          <Link href="/us/loans/balance-transfer-calculator">balance transfer calculator</Link> and the{" "}
+          <Link href="/us/loans/debt-payoff-calculator">debt payoff calculator</Link>. These figures are estimates using
+          monthly interest at APR ÷ 12 and are general information, not financial advice.
+        </p>
+      </>
+    ),
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {
