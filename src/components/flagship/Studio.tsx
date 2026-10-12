@@ -175,7 +175,7 @@ export default function Studio({
 
   return (
     <>
-      <section className="calculator gm-clear" id="calculator">
+      <section className="calculator gm-clear gm-modern" id="calculator">
         <div className="calcgrid">
           <form
             className="gm-form"
