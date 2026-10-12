@@ -311,7 +311,7 @@ export function Chips<T extends string | number>({
   );
 }
 
-/** Two-to-four way choice, as the design's underlined calculator tabs. */
+/** A choice between a few options (radio buttons for two, a dropdown for more). */
 export function Segmented<T extends string>({
   label,
   options,
@@ -530,7 +530,7 @@ export function Switch({
   );
 }
 
-/** A short list of choices as radio buttons, one per line. */
+/** Two choices as radio buttons; three or more as the dropdown. */
 export function RadioGroup<T extends string>({
   label,
   value,
@@ -547,6 +547,8 @@ export function RadioGroup<T extends string>({
   optional?: boolean;
 }) {
   const name = useId();
+  // Owner's rule (October 2026): two options are radio buttons; more become a dropdown.
+  if (options.length > 2) return <SelectField label={label} value={value} onChange={onChange} options={options} info={info} optional={optional} />;
   return (
     <fieldset className="field gm-radiogroup">
       <legend className="gm-labelwrap">
