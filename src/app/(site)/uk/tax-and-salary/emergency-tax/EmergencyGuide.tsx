@@ -60,7 +60,7 @@ export default function EmergencyGuide() {
           Your tax code tells your employer how much tax-free pay to give you and how to tax the rest. The standard code
           for 2026/27 is <strong>1257L</strong>. Normally PAYE is <strong>cumulative</strong>: each payday it looks at
           your pay and tax since 6 April and puts things right, including giving you any tax-free allowance you have
-          not used yet.
+          not used yet. The allowance behind 1257L is frozen for now; the <a href="/uk/tax-and-salary/budget-tax-changes">Budget tax changes</a>{" "}calculator shows what announced measures mean for you.
         </p>
         <p>
           An emergency code is used until HMRC can work out the right one. The most common is 1257L followed by
@@ -229,7 +229,7 @@ export default function EmergencyGuide() {
 
       <GuideSection id="pensions" n={11} kicker="Pensions" title="Emergency tax on pension withdrawals">
         <p>
-          The first taxable withdrawal from a pension under flexible access is usually taxed on an emergency code. A
+          The first taxable withdrawal from a pension under flexible access (<a href="/uk/investing/pension-drawdown">pension drawdown</a>) is usually taxed on an emergency code. A
           one-off lump sum is then taxed as if you will receive the same amount every month, which can mean thousands of
           pounds of overpaid tax.
         </p>

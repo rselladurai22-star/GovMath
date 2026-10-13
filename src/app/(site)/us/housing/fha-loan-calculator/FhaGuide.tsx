@@ -210,7 +210,10 @@ export default function FhaGuide() {
       </GuideSection>
 
       <GuideSection id="vs-conventional" n={11} kicker="Compare" title="FHA vs conventional">
-        <p>At the same 7.25% rate on the {usd(350_000)} home:</p>
+        <p>
+          Eligible service members and veterans should also price a <a href="/us/housing/va-loan-calculator">VA loan</a>, which needs no down payment and no monthly mortgage
+          insurance. At the same 7.25% rate on the {usd(350_000)} home:
+        </p>
         <CompareCards
           columns={[
             {

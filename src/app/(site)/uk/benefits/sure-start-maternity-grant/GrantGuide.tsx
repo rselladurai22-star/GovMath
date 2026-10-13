@@ -253,7 +253,7 @@ export default function GrantGuide() {
 
       <GuideSection id="budget" n={16} kicker="Planning" title="Budgeting for a new baby">
         <p>
-          £500 helps, but the first year with a baby usually costs more. A rough plan for the months around the birth:
+          £500 helps, but the first year with a baby usually costs more (our <a href="/uk/benefits/baby-cost-calculator">cost of a baby</a>{" "}calculator adds it up). A rough plan for the months around the birth:
         </p>
         <ul>
           <li>buy the essentials first: somewhere safe to sleep, a car seat if you drive, clothes, nappies and feeding equipment;</li>

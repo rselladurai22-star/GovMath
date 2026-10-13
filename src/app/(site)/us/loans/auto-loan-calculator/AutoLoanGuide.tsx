@@ -300,6 +300,7 @@ export default function AutoLoanGuide() {
         <p>
           A common rule of thumb is to keep the car payment under about 10% to 15% of your take-home pay and all car costs, including insurance,
           fuel and maintenance, under about 20%. Lenders also look at your debt-to-income ratio. The{" "}
+          <a href="/us/loans/car-affordability-calculator">car affordability calculator</a>{" "}works out how much car you can afford in all. The{" "}
           <a href="/us/loans/debt-to-income-ratio">debt-to-income calculator</a>{" "}shows how a new payment changes it, and the{" "}
           <a href="/us/taxes/paycheck-calculator">paycheck calculator</a>{" "}gives your take-home pay.
         </p>
@@ -324,7 +325,7 @@ export default function AutoLoanGuide() {
 
       <GuideSection id="lease" n={19} kicker="Choices" title="Buying or leasing">
         <p>
-          A lease is a long rental: payments are lower because you pay for the car&rsquo;s expected loss in value plus a finance charge, then
+          A <a href="/us/loans/car-lease-calculator">car lease</a>{" "}is a long rental: payments are lower because you pay for the car&rsquo;s expected loss in value plus a finance charge, then
           hand it back. Leases suit people who want a new car every few years and drive within the mileage limit. Buying costs more each month but
           you own the car once the loan is paid, and lease payments do not qualify for the interest deduction.
         </p>

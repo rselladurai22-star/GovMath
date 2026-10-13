@@ -293,7 +293,7 @@ export default function OvertimeGuide() {
         <p>
           A salary below $684 a week does not make you exempt. A salaried, non-exempt worker&rsquo;s regular rate is usually the weekly salary divided by
           the hours it is meant to cover. For a $35,568 salary meant for 40 hours, that is $17.10 an hour, so overtime is $25.65 an hour. Use the{" "}
-          <a href="/us/taxes/salary-to-hourly">salary to hourly calculator</a>{" "}to find your rate first.
+          <a href="/us/taxes/salary-to-hourly">salary to hourly calculator</a>{" "}to find your rate first, and the <a href="/us/taxes/hourly-paycheck-calculator">hourly paycheck calculator</a>{" "}to see a whole paycheck with overtime.
         </p>
       </GuideSection>
 
@@ -319,7 +319,7 @@ export default function OvertimeGuide() {
 
       <GuideSection id="records" n={17} kicker="Your rights" title="Keep your own records">
         <p>
-          Employers must keep records of hours worked, but your own log of start and finish times is useful if your pay looks wrong. If you think you have
+          Employers must keep records of hours worked, but your own log of start and finish times is useful (the <a href="/everyday/time-calculator">time calculator</a>{" "}can add up hours worked) if your pay looks wrong. If you think you have
           been underpaid, raise it with payroll first. You can also contact the Department of Labor&rsquo;s Wage and Hour Division, which can recover back
           pay, usually for up to two years (three if the violation was willful).
         </p>

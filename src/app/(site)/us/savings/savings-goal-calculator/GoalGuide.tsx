@@ -52,7 +52,7 @@ export default function GoalGuide() {
     >
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
-          <li>To grow $2,000 into a $15,000 emergency fund in a year at 4%, save about $1,057 a month.</li>
+          <li>To grow $2,000 into a $15,000 <a href="/us/savings/emergency-fund-calculator">emergency fund</a>{" "}in a year at 4%, save about $1,057 a month.</li>
           <li>Saving $500 a month instead, the same goal takes 25 months.</li>
           <li>The best online savings accounts paid around 4% in September 2026; the national average was about 0.38%.</li>
           <li>Keep goal money in an insured savings account, money market account or CD, not in stocks.</li>
@@ -259,7 +259,7 @@ export default function GoalGuide() {
       <GuideSection id="long-term" n={16} kicker="Beyond five years" title="When a goal is years away">
         <p>
           For goals more than about five years away, such as retirement, investing can make sense because there is time to ride out market falls.
-          The <a href="/us/savings/retirement-calculator">retirement calculator</a>{" "}is built for that. For college saving, look at a 529 plan, which
+          The <a href="/us/savings/retirement-calculator">retirement calculator</a>{" "}is built for that. For college saving, look at a <a href="/us/savings/529-plan-calculator">529 plan</a>, which
           grows tax-free when used for qualified education costs.
         </p>
       </GuideSection>

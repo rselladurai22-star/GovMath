@@ -162,6 +162,9 @@ export default function VatGuide() {
           anything eaten on the premises are standard-rated. HMRC publishes detailed notices for each sector; check the
           relevant one if you are not sure.
         </p>
+        <p>
+          Some business costs carry no VAT at all, so there is nothing to reclaim: <a href="/uk/business/small-business-rates">business rates</a>{" "}are one, along with wages and most insurance.
+        </p>
         <Callout title="Zero-rated is not the same as exempt">
           Zero-rated sales count towards the registration threshold, and you can reclaim VAT on the costs of making them.
           Exempt sales do neither. A business that only makes exempt sales cannot register for VAT.

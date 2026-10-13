@@ -132,7 +132,7 @@ export default function ProRataGuide() {
         <p>
           At higher salaries the effect can be much larger. Someone earning £110,000 full time who drops to 0.9 FTE
           (£99,000) gets their full Personal Allowance back and steps out of the 60% band. Their gross pay falls by
-          £11,000 but their take-home falls by only about £4,380.
+          £11,000 but their take-home falls by only about £4,380. To work backwards, the <a href="/uk/tax-and-salary/reverse-take-home">reverse take-home calculator</a>{" "}finds the salary needed for a take-home figure.
         </p>
         <Callout title="Very low hours">
           If your pay is under £12,570 a year you pay no Income Tax, and under £242 a week no National Insurance. Above

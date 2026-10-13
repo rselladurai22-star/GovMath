@@ -212,7 +212,7 @@ export default function CazGuide() {
       <GuideSection id="checking" n={12} kicker="Buying" title="Checking a vehicle before you buy">
         <p>
           A cheap older diesel can cost more to drive into a city than it saved at purchase. Check the registration on the official checker
-          before buying, especially if you live or work near a zone. The <a href="/uk/vehicles/commuter-comparison">commuter comparison</a>{" "}
+          before buying, especially if you live or work near a zone, and check its <a href="/uk/vehicles/car-tax-ved">car tax</a> band too. The <a href="/uk/vehicles/commuter-comparison">commuter comparison</a>{" "}
           includes zone charges when comparing car and public transport costs.
         </p>
       </GuideSection>

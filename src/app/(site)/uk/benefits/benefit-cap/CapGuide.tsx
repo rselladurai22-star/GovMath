@@ -337,7 +337,7 @@ export default function CapGuide() {
         <p>
           Because the housing element is usually the largest part of a capped award, rent decides how much the cap takes. A cheaper home cuts
           the amount over the cap pound for pound until you drop below it. The council can sometimes help with a deposit or rent in advance
-          through a Discretionary Housing Payment or local welfare scheme.
+          through a Discretionary Housing Payment or local welfare scheme. A Universal Credit <a href="/uk/benefits/uc-advance">advance and its deductions</a>{" "}come out of the capped award, so check what repayments would leave you with.
         </p>
         <p>
           A move into temporary accommodation arranged by the council can be treated differently, as some of these costs are paid through

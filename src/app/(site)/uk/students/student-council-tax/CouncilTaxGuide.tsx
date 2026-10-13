@@ -46,7 +46,7 @@ export default function CouncilTaxGuide() {
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
           <li>All full-time students: no council tax.</li>
-          <li>Students plus one other adult: the other adult gets a 25% discount.</li>
+          <li>Students plus one other adult: the other adult gets a 25% <a href="/uk/property/single-person-discount">single person discount</a>.</li>
           <li>Students plus two or more other adults: the full bill is due, though the students are not normally liable for it.</li>
           <li>You need a certificate from your university or college to claim.</li>
         </ul>
@@ -156,7 +156,7 @@ export default function CouncilTaxGuide() {
       <GuideSection id="part-time" n={10} kicker="Part-time" title="Part-time and distance learners">
         <p>
           Part-time students and most distance learners do not count as full-time students, so they are counted for council tax. If you are on
-          a low income, you may get council tax support from your council.
+          a low income, you may get <a href="/uk/benefits/council-tax-reduction">Council Tax Reduction</a> from your council.
         </p>
       </GuideSection>
 
@@ -179,7 +179,7 @@ export default function CouncilTaxGuide() {
         <p>
           Even when council tax is not due, other household bills are. Agree early how you will split energy, water, broadband and a TV licence
           if anyone watches live TV or BBC iPlayer. Some student lets include bills in the rent; others do not. Put the details in writing so
-          everyone knows what they owe.
+          everyone knows what they owe. A <a href="/uk/students/student-budget">student budget</a> helps you plan your share.
         </p>
         <p>
           If a non-student joins the household, the <a href="/uk/property/council-tax-bands">council tax bill</a>{" "}can appear mid-year. Decide in advance who pays it, since only the

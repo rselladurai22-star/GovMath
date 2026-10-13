@@ -47,7 +47,8 @@ export default function Plan5Guide() {
         <>
           Plan 5 is for students from England who started an undergraduate course from August 2023. Repayments began for the first graduates in
           April 2026. You repay 9% of income above £25,000, interest is at inflation, and anything left is written off after 40 years. This guide
-          explains how it works and what most graduates can expect to pay.
+          explains how it works and what most graduates can expect to pay. Students from Wales stay on Plan 2: see{" "}
+          <a href="/uk/students/welsh-student-finance">Student Finance Wales</a>.
         </>
       }
       meta={["2026/27 rules", "12 min read", "Reviewed October 2026"]}

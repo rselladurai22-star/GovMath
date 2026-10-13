@@ -212,7 +212,8 @@ export default function DividendGuide() {
           When a stock goes ex-dividend, its price drops by about the amount of the dividend. A dividend moves value from the company to your pocket;
           it doesn&rsquo;t create it. Your real return is the total return: dividends plus the change in price. A 3% yield with 4% price growth is a
           total return of about 7%, the same as a 1% yield with 6% price growth. Our{" "}
-          <a href="/us/savings/compound-interest-calculator">compound interest calculator</a>{" "}shows how a given total return compounds.
+          <a href="/us/savings/compound-interest-calculator">compound interest calculator</a>{" "}shows how a given total return compounds, and our <a href="/us/savings/investment-calculator">investment calculator</a>{" "}shows investment growth after fees and taxes. Once the portfolio is large, our{" "}
+          <a href="/us/savings/net-worth-calculator">net worth calculator</a>{" "}puts it alongside everything else you own and owe.
         </p>
       </GuideSection>
 

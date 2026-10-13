@@ -153,7 +153,8 @@ export default function RefiGuide() {
           tight.
         </p>
         <Callout title="Check for prepayment penalties">
-          Most new mortgages have none, but confirm on the Loan Estimate before planning to pay extra.
+          Most new mortgages have none, but confirm on the Loan Estimate before planning to pay extra. The{" "}
+          <a href="/us/housing/mortgage-payoff-calculator">mortgage payoff calculator</a>{" "}shows how much sooner extra payments would clear the loan.
         </Callout>
       </GuideSection>
 
@@ -196,7 +197,7 @@ export default function RefiGuide() {
 
       <GuideSection id="points" n={10} kicker="Points" title="Paying points">
         <p>
-          A discount point costs 1% of the loan and lowers the rate. If paying {usd(3_000)} more in costs (one point on {usd(300_000)}) cut the rate in the example from 6.5% to 6.25%
+          A <a href="/us/housing/mortgage-points-calculator">discount point</a>{" "}costs 1% of the loan and lowers the rate. If paying {usd(3_000)} more in costs (one point on {usd(300_000)}) cut the rate in the example from 6.5% to 6.25%
           on a 25-year loan, the saving would rise to {usd(287)} a month and break-even would be 42 months on the {usd(12_000)} total. Points are worth it only if you will keep the
           loan for many years. Compare offers on APR, which includes points and fees.
         </p>
@@ -205,7 +206,8 @@ export default function RefiGuide() {
       <GuideSection id="cash-out" n={11} kicker="Cash out" title="Cash-out refinancing">
         <p>
           A cash-out refinance borrows more than you owe and pays you the difference, often to pay for renovations or to clear higher-rate debt. Lenders usually cap the new loan at
-          about 80% of the home&rsquo;s value.
+          about 80% of the home&rsquo;s value. If your current rate is low, a{" "}
+          <a href="/us/housing/home-equity-loan-calculator">home equity loan</a>{" "}can raise the cash without replacing it.
         </p>
         <p>
           Taking {usd(40_000)} out in the example with a 30-year loan at 6.5% gives a payment of {usd(2_149)}, still {usd(117)} below today&rsquo;s, but after counting the cash you

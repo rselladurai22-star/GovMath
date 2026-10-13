@@ -280,6 +280,9 @@ export default function FTBGuide() {
           <strong>New builds.</strong> The rates are the same as for older homes. If a developer offers to pay your Stamp Duty,
           the tax is still worked out on the price, and the incentive may need declaring to your lender.
         </p>
+        <p>
+          <strong>Leasehold flats.</strong> Check how many years are left on the lease: under about 80 years, lenders may refuse a mortgage and a <a href="/uk/property/lease-extension">lease extension</a>{" "}gets more expensive.
+        </p>
       </GuideSection>
 
       <GuideSection id="non-resident" n={12} kicker="Overseas buyers" title="Buyers from abroad">

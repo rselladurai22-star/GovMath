@@ -91,7 +91,7 @@ export default function LpaGuide() {
         </p>
         <p>
           You must be 18 or over and have mental capacity when you make it. Many people make LPAs at the same time as a will, long before they
-          need them.
+          need them. It is a good moment to check your <a href="/uk/life/inheritance-tax">inheritance tax</a> position too.
         </p>
       </GuideSection>
 
@@ -243,7 +243,7 @@ export default function LpaGuide() {
 
       <GuideSection id="using" n={10} kicker="In practice" title="Using an LPA">
         <p>
-          Once registered, attorneys show the LPA to banks, care homes and others. Attorneys must act in your best interests, keep your money
+          Once registered, attorneys show the LPA to banks, care homes and others, and may need to plan for <a href="/uk/life/care-home-means-test">care home fees</a>. Attorneys must act in your best interests, keep your money
           separate from theirs and keep records. They can claim reasonable expenses but not pay themselves unless the LPA allows it.
         </p>
         <p>The OPG can investigate if anyone is concerned that an attorney is misusing their power.</p>
@@ -268,7 +268,7 @@ export default function LpaGuide() {
 
       <GuideSection id="ending" n={12} kicker="Later" title="Changing or ending an LPA">
         <p>
-          While you have capacity, you can cancel an LPA at any time, or remove an attorney. An LPA ends automatically on your death. A property
+          While you have capacity, you can cancel an LPA at any time, or remove an attorney. An LPA ends automatically on your death; your executors then deal with the estate, which may need <a href="/uk/life/probate-fees">probate</a>. A property
           and financial affairs LPA also ends if you become bankrupt. To change attorneys, you usually need to make a new LPA.
         </p>
       </GuideSection>

@@ -239,7 +239,7 @@ export default function PaycheckGuide() {
           come out before income tax <em>and</em>{" "}before Social Security and Medicare. On $60,000 in Texas, $3,000 a year of premiums cuts take-home
           pay from $50,390 to $47,979.50: the benefits cost you $2,410.50, not $3,000.
         </p>
-        <p>The 2026 HSA limits are $4,400 for self-only cover and $8,750 for family cover, plus $1,000 at age 55 or over.</p>
+        <p>The 2026 <a href="/us/savings/hsa-calculator">HSA limits</a>{" "}are $4,400 for self-only cover and $8,750 for family cover, plus $1,000 at age 55 or over.</p>
       </GuideSection>
 
       <GuideSection id="frequency" n={12} kicker="Schedules" title="Weekly, biweekly or monthly pay">
@@ -262,7 +262,7 @@ export default function PaycheckGuide() {
       <GuideSection id="hourly" n={13} kicker="Hourly" title="Hourly pay">
         <p>
           For hourly workers the calculator multiplies your rate by your hours and paid weeks to get yearly pay, then works out each paycheck the same
-          way. At $20 an hour for 40 hours a week, 52 weeks a year, pay is $41,600 a year.
+          way. At $20 an hour for 40 hours a week, 52 weeks a year, pay is $41,600 a year. The <a href="/us/taxes/hourly-paycheck-calculator">hourly paycheck calculator</a>{" "}adds overtime week by week.
         </p>
         <WorkedExample
           title="$20 an hour, 40 hours, paid weekly, single, Texas"

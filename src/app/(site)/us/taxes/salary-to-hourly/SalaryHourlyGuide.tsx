@@ -218,7 +218,7 @@ export default function SalaryHourlyGuide() {
       <GuideSection id="raises" n={15} kicker="Pay rises" title="Raises in hourly terms">
         <p>
           A raise quoted as an hourly figure grows a lot over a year. Every extra $1 an hour is worth $2,080 a year at 40 hours a week, before tax. Going from
-          $20 to $25 an hour lifts full-time pay from $41,600 to $52,000. Turned around, a $5,000 raise on a salary is about $2.40 an hour at 2,080 hours.
+          $20 to $25 an hour lifts full-time pay from $41,600 to $52,000. Turned around, a $5,000 <a href="/us/taxes/raise-calculator">raise on a salary</a>{" "}is about $2.40 an hour at 2,080 hours.
           When you negotiate, it helps to know both numbers: the hourly figure sounds small, while the yearly figure shows what it adds to your budget and to
           any 401(k) contributions set as a share of pay.
         </p>

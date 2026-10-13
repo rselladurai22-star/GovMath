@@ -240,7 +240,8 @@ export default function RentGuide() {
 
       <GuideSection id="buy" n={17} kicker="Next steps" title="Renting and saving to buy">
         <p>
-          If you plan to buy, a rent below your comfortable figure leaves room to save a down payment. When you are ready, our{" "}
+          If you plan to buy, a rent below your comfortable figure leaves room to save a down payment. The{" "}
+          <a href="/us/housing/rent-vs-buy-calculator">rent vs buy calculator</a>{" "}compares the two over the years you expect to stay. When you are ready, our{" "}
           <a href="/us/housing/mortgage-affordability">home affordability calculator</a>{" "}shows the price your income supports, and the{" "}
           <a href="/us/housing/mortgage-calculator">mortgage calculator</a>{" "}shows the monthly payment on a specific home.
         </p>

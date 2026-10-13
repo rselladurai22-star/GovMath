@@ -120,7 +120,10 @@ export default function RightToRentGuide() {
       <GuideSection id="when" n={4} kicker="Timing" title="When to check">
         <p>
           The check must be made no more than 28 days before the start of the tenancy. Checks made earlier do not count, and checks made after the
-          tenant moves in leave you without protection for that period.
+          tenant moves in leave you without protection for that period. If the tenancy starts mid-month, a{" "}
+          <a href="/uk/life/pro-rata-rent">pro-rata rent</a> calculation gives the first month&rsquo;s rent, and the{" "}
+          <a href="/uk/property/deposit-return">deposit</a> must be protected in a government-backed scheme. Later on, any{" "}
+          <a href="/uk/property/rent-increase">rent increase</a> must follow the notice rules.
         </p>
         <WorkedExample
           title="A tenancy starting on 1 November 2026"

@@ -152,7 +152,8 @@ export default function PayoffGuide() {
       <GuideSection id="target" n={8} kicker="Target date" title="Picking a payoff date">
         <p>
           Many people want the mortgage gone by a date: retirement, a child starting college, a 50th birthday. Choose &ldquo;Pick a payoff date&rdquo; and the calculator finds the
-          smallest extra monthly payment that gets you there, to the cent.
+          smallest extra monthly payment that gets you there, to the cent. If you plan on selling the home first, the{" "}
+          <a href="/us/housing/home-sale-proceeds-calculator">home sale proceeds calculator</a>{" "}shows what you would walk away with.
         </p>
         <DataTable
           caption="$300,000 at 6.5% with 27 years left"

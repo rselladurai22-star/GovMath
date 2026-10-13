@@ -259,7 +259,7 @@ export default function CommuteGuide() {
       <GuideSection id="checklist" n={21} kicker="Summary" title="Working out your best option">
         <ol>
           <li>Measure the distance and how many days a week you actually travel.</li>
-          <li>Find your real fuel economy and what parking costs at work.</li>
+          <li>Find your real <a href="/everyday/fuel-economy">fuel economy</a> and what parking costs at work.</li>
           <li>Check the season ticket price, the daily return fare and any flexi tickets.</li>
           <li>Look up the bus fare and whether weekly passes are cheaper.</li>
           <li>Ask your employer about Cycle to Work, season ticket loans, parking and charging.</li>

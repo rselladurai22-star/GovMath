@@ -126,7 +126,7 @@ export default function HolidayGuide() {
 
       <GuideSection id="irregular" n={4} kicker="Irregular hours" title="Irregular hours and part-year work">
         <p>
-          Since holiday years starting on or after 1 April 2024, workers with irregular hours (such as zero-hours or
+          Since holiday years starting on or after 1 April 2024, workers with <a href="/uk/tax-and-salary/holiday-pay-irregular-hours">irregular hours</a> (such as zero-hours or
           casual workers) and part-year workers (such as term-time staff) build up holiday at <strong>12.07%</strong> of
           the hours they work in each pay period.
         </p>

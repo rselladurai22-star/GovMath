@@ -319,7 +319,7 @@ export default function RatesGuide() {
           <li>Look up the property&rsquo;s rateable value on GOV.UK before agreeing the rent.</li>
           <li>Check whether it will be your only business property, so you know if small business rate relief applies.</li>
           <li>Ask whether the rent includes rates, which is common in serviced offices but rare in shops.</li>
-          <li>Budget for the bill from the day the lease starts, even if you are still fitting out.</li>
+          <li>Budget for the bill from the day the lease starts, even if you are still fitting out, and work it into your <a href="/uk/business/break-even">break-even</a> sums.</li>
           <li>If you are close to £12,000 or £15,000, a property a little smaller can be much cheaper to occupy.</li>
         </ul>
       </GuideSection>
@@ -331,8 +331,11 @@ export default function RatesGuide() {
           recovered through the courts, which adds costs, so it is worth acting before a reminder.
         </p>
         <p>
-          Business rates are an allowable expense for Income Tax and <a href="/uk/business/corporation-tax">Corporation Tax</a>, so part of the cost comes back through a
+          Business rates are an <a href="/uk/business/allowable-expenses">allowable expense</a>{" "}for Income Tax and <a href="/uk/business/corporation-tax">Corporation Tax</a>, so part of the cost comes back through a
           lower tax bill.
+        </p>
+        <p>
+          Multipliers and reliefs are set at each Budget, so check our <a href="/uk/tax-and-salary/budget-tax-changes">Budget tax changes</a>{" "}page for anything announced for future years.
         </p>
       </GuideSection>
 

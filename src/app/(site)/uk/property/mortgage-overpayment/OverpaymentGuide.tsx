@@ -192,7 +192,7 @@ export default function OverpaymentGuide() {
       <GuideSection id="allowance" n={7} kicker="Limits" title="Allowances and early repayment charges">
         <p>
           Most fixed-rate and discounted deals let you overpay up to <strong>10% of the balance each year</strong> without a
-          charge. Above that, an early repayment charge (ERC) applies to the excess, often 1% to 5% depending on how long the
+          charge. Above that, an <a href="/uk/property/early-repayment-charge">early repayment charge</a>{" "}(ERC) applies to the excess, often 1% to 5% depending on how long the
           deal has left.
         </p>
         <ul>

@@ -253,7 +253,10 @@ export default function HelocGuide() {
           <li>Your home is the security: if you cannot pay, the lender can foreclose.</li>
           <li>The rate and payment can rise with prime, with little warning.</li>
           <li>The payment jumps when the draw period ends.</li>
-          <li>If prices fall, you can owe more than the home is worth, which makes selling or refinancing hard.</li>
+          <li>
+            If prices fall, you can owe more than the home is worth, which makes selling or refinancing hard. The line must be repaid when you sell the home; the{" "}
+            <a href="/us/housing/home-sale-proceeds-calculator">home sale proceeds calculator</a>{" "}shows what is left.
+          </li>
           <li>An open line makes it easy to keep borrowing.</li>
         </ul>
         <Callout tone="warn" title="Borrow for value, repay with a plan">

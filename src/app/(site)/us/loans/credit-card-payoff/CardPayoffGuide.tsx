@@ -77,7 +77,8 @@ export default function CardPayoffGuide() {
       <GuideSection id="interest" n={2} kicker="Basics" title="How card interest is charged">
         <p>
           Your card&rsquo;s APR is a yearly rate. Most issuers divide it by 365 to get a daily rate, apply it to your balance each day and add the
-          interest to your account once a month. Because interest is added to the balance, next month you pay interest on it too.
+          interest to your account once a month. Because interest is added to the balance, next month you pay interest on it too. The{" "}
+          <a href="/us/loans/credit-card-interest-calculator">credit card interest calculator</a>{" "}shows the daily method in detail.
         </p>
         <p>
           A {usd(6_000)} balance at 22% costs about $110 a month in interest (6,000 × 22% ÷ 12). The calculator uses the monthly rate, which

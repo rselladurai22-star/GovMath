@@ -34,7 +34,7 @@ export default function FuelGuide() {
       intro={
         <>
           The fuel cost of a trip depends on three things: how far you drive, how efficient your car is, and what you pay for fuel or
-          electricity. This guide shows how to work it out, what your mpg means in pence per mile, how electric cars compare, and what you can
+          electricity. This guide shows how to work it out, what your <a href="/everyday/fuel-economy">mpg means</a> in pence per mile, how electric cars compare, and what you can
           claim for business journeys.
         </>
       }

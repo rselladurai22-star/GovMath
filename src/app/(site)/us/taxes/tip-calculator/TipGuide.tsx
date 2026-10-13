@@ -158,7 +158,7 @@ export default function TipGuide() {
         <p>
           Payment tablets at coffee shops, food trucks and stores often suggest 18%, 20% or 25%, sometimes worked out on the total after tax. Those are
           prompts, not prices. Where you order and pick up at a counter, a tip is optional; leaving a dollar or rounding up is generous, and choosing
-          &ldquo;no tip&rdquo; is acceptable. Check whether the suggested amounts are percentages of the bill before or after tax before you tap.
+          &ldquo;no tip&rdquo; is acceptable. Check whether the suggested amounts are percentages of the bill before or after tax before you tap. The <a href="/everyday/percentage-calculator">percentage calculator</a>{" "}checks any other share.
         </p>
       </GuideSection>
 

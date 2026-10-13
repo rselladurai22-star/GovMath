@@ -280,7 +280,7 @@ export default function EnergyBillGuide() {
         </p>
         <p>
           Turning the heating down, draught-proofing and using less hot water cut gas use. Drying clothes without a tumble dryer, using smaller cooking appliances
-          and cutting standby power cut electricity use.
+          and cutting standby power cut electricity use. For bigger savings over years, see what <a href="/uk/property/solar-panel-calculator">solar panels</a>{" "}could save, or compare a <a href="/uk/property/heat-pump-vs-boiler">heat pump vs gas boiler</a>.
         </p>
       </GuideSection>
 

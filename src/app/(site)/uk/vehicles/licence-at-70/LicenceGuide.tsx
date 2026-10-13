@@ -58,7 +58,8 @@ export default function LicenceGuide() {
 
       <GuideSection id="rules" n={2} kicker="Rules" title="The renewal rules">
         <p>
-          Car and motorbike licences in Great Britain are issued until your 70th birthday. At 70 you must renew to keep driving, and each
+          Car and motorbike licences in Great Britain are issued until your 70th birthday (an <a href="/everyday/age-calculator">exact age</a>{" "}
+          check shows when that is). At 70 you must renew to keep driving, and each
           renewal lasts three years. The DVLA sends a reminder, form D46P, about 90 days before, but you can renew without it.
         </p>
         <p>
@@ -75,7 +76,11 @@ export default function LicenceGuide() {
             ["15 June 1957", "15 June 2027", "17 March 2027", "15 June 2030"],
           ]}
         />
-        <p>Someone born on 20 January 1950 is 76 and next renews on 20 January 2029, aged 79.</p>
+        <p>
+          Someone born on 20 January 1950 is 76 and next renews on 20 January 2029, aged 79. Renewal at 70 is unrelated to your{" "}
+          <a href="/uk/investing/state-pension-age">State Pension age</a>, and your car still needs its own yearly{" "}
+          <a href="/uk/vehicles/mot-history-checker">MOT</a>.
+        </p>
       </GuideSection>
 
       <GuideSection id="how" n={4} kicker="How to" title="How to renew">

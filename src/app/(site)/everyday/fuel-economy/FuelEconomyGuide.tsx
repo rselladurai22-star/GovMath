@@ -137,7 +137,7 @@ export default function FuelEconomyGuide() {
       <GuideSection id="cost" n={7} kicker="Cost" title="Cost per mile and per trip">
         <p>
           The UK average petrol price was about 173.8p a litre and diesel about 198.9p in late September 2026. At 45 mpg (UK), a car uses about 0.101
-          litres a mile.
+          litres a mile. Shopping in the US? Running costs matter when you check <a href="/us/loans/car-affordability-calculator">how much car you can afford</a>.
         </p>
         <DataTable
           caption="200 miles at 45 mpg (UK)"

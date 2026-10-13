@@ -182,7 +182,7 @@ export default function AverageGuide() {
         <p>
           You cannot simply average two averages if the groups are different sizes. A class of 20 with a mean mark of 70 and a class of 30 with a mean
           of 60 do not average 65 together. Weight each mean by its class size: (70 × 20 + 60 × 30) ÷ 50 = 64. Enter 70 and 60 as the numbers and 20
-          and 30 as the weights to check it.
+          and 30 as the weights to check it. Marks given as <a href="/everyday/fraction-calculator">fractions</a>{" "}can be turned into decimals first.
         </p>
       </GuideSection>
 

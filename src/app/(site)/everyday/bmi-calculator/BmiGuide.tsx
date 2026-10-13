@@ -173,6 +173,8 @@ export default function BmiGuide() {
           The calculator converts US and UK units for you. One inch is 2.54 cm and one pound is about 0.454 kg. In the US weight is given in pounds;
           in the UK it is often given in stones and pounds, with 14 pounds in a stone. 5 ft 7 in and 159 lb is the same person as 5 ft 7 in and
           11 st 5 lb, with a healthy range of about 118 lb to 159 lb.
+          To switch between units on their own, use the <a href="/everyday/weight-converter">stone to kg converter</a> or the{" "}
+          <a href="/everyday/height-converter">feet to cm converter</a>.
         </p>
         <WorkedExample
           title="5 ft 7 in and 11 st 5 lb"
@@ -252,6 +254,7 @@ export default function BmiGuide() {
         <p>
           BMI is not useful during pregnancy because weight rises naturally. Your midwife will usually record your BMI at your first appointment
           to plan your care. Dieting during pregnancy is not recommended; talk to your midwife about healthy eating instead.
+          If you are planning a pregnancy, the <a href="/everyday/ovulation-calculator">ovulation calculator</a> shows your likely fertile days.
         </p>
       </GuideSection>
 
@@ -338,7 +341,7 @@ export default function BmiGuide() {
       <GuideSection id="muscle" n={19} kicker="Exceptions" title="Athletes and muscular people">
         <p>
           Muscle is denser than fat, so rugby players, rowers and people who do regular strength training can have a BMI in the overweight or even
-          obese range while carrying little body fat. If that describes you, waist-to-height ratio is a better guide. A waist under half your height
+          obese range while carrying little body fat. If that describes you, waist-to-height ratio or a <a href="/everyday/body-fat-calculator">body fat</a>{" "}estimate is a better guide. A waist under half your height
           with a BMI of 27 is a very different picture from a large waist with the same BMI.
         </p>
       </GuideSection>
@@ -355,7 +358,7 @@ export default function BmiGuide() {
         <p>
           Weight changes when the energy you take in from food and drink differs from the energy you use. The NHS uses a rough guide of around
           2,000 calories a day for women and 2,500 for men to maintain weight, though needs vary with age, size and activity. Reducing intake by
-          about 600 calories a day is often suggested for steady weight loss of around 0.5 kg a week.
+          about 600 <a href="/everyday/calorie-calculator">calories</a>{" "}a day is often suggested for steady weight loss of around 0.5 kg a week.
         </p>
         <p>
           Calories from sugary drinks and snacks add up quickly without making you feel full. Swapping them for water, fruit, vegetables and foods

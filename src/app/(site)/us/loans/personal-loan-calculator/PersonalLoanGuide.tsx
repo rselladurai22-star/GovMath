@@ -124,7 +124,8 @@ export default function PersonalLoanGuide() {
         <p>
           An origination fee pays the lender for processing and underwriting the loan. Many lenders charge none; others charge from about 1% to 10% of the amount, and a few go up to
           about 12%. The fee usually rises as your credit score falls, so the borrowers who already pay the highest rates often pay the biggest fees too. Always ask whether a quote
-          includes a fee, and compare offers by APR, which counts it.
+          includes a fee, and{" "}
+          <a href="/us/loans/loan-comparison-calculator">compare loan offers</a>{" "}by APR, which counts it.
         </p>
         <DataTable
           caption="$10,000 at 19.47% for 36 months, fee taken from the money"

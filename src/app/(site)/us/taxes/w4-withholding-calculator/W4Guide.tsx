@@ -307,7 +307,7 @@ export default function W4Guide() {
       <GuideSection id="exempt" n={16} kicker="Special case" title="Claiming exempt">
         <p>
           You can claim exemption from withholding for 2026 only if you had no federal income tax liability in 2025 and expect none in 2026, for example a student with a summer job well below the
-          standard deduction. Social Security and Medicare are still withheld. An exempt W-4 expires: file a new one by February 16, 2027 or withholding restarts at the single rate.
+          standard deduction. Social Security and Medicare are still withheld, and your employer pays its own share of these <a href="/us/taxes/payroll-tax-calculator">payroll taxes</a>{" "}on top. An exempt W-4 expires: file a new one by February 16, 2027 or withholding restarts at the single rate.
         </p>
       </GuideSection>
 

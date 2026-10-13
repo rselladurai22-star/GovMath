@@ -68,7 +68,7 @@ export default function RaiseGuide() {
       <GuideSection id="percent" n={2} kicker="Method" title="Percent and dollars">
         <p>
           To turn a percentage into dollars, multiply your current pay by the percentage. To go the other way, divide the raise by your old pay. A $3,000 raise
-          on $60,000 is 5%. The <a href="/everyday/percentage-calculator">percentage calculator</a>{" "}does any percentage change.
+          on $60,000 is 5%. The <a href="/everyday/percentage-calculator">percentage calculator</a>{" "}does any percentage change, and the <a href="/us/taxes/bonus-tax-calculator">bonus tax calculator</a>{" "}shows what a one-off bonus leaves you instead.
         </p>
         <DataTable
           caption="Raises on a $60,000 salary"

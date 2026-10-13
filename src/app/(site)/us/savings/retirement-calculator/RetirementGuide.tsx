@@ -45,7 +45,7 @@ export default function RetirementGuide() {
       title="Are you on track to retire? How to check, and what to change"
       intro={
         <>
-          Planning for retirement comes down to one question: will your savings and Social Security pay for the life you want, for as long as you
+          Planning for retirement comes down to one question: will your savings and <a href="/us/savings/social-security-calculator">Social Security</a>{" "}pay for the life you want, for as long as you
           live? This guide explains how the calculator answers it, the 2026 Social Security figures, the 4% rule, why inflation matters so much, and
           the levers you can pull if you&rsquo;re behind.
         </>
@@ -177,7 +177,7 @@ export default function RetirementGuide() {
         <p>
           The 4% rule comes from studies of US market history in the 1990s. If you take 4% of your savings in the first year of retirement and raise
           the dollar amount with inflation each year after, a portfolio of stocks and bonds has historically lasted at least 30 years, even through bad
-          markets. Turned around, it means saving 25 times the yearly gap.
+          markets. Turned around, it means saving 25 times the yearly gap. Our <a href="/us/savings/retirement-withdrawal-calculator">retirement withdrawal calculator</a>{" "}tests other withdrawal rates.
         </p>
         <DataTable
           caption="The 4% rule target for different yearly gaps (today's dollars)"
@@ -357,7 +357,7 @@ export default function RetirementGuide() {
 
       <GuideSection id="pensions" n={21} kicker="Other income" title="Pensions and annuities">
         <p>
-          A workplace pension or an annuity pays a set income for life, much like Social Security. Add it to the Social Security figure in the
+          A workplace pension or an <a href="/us/savings/annuity-calculator">annuity</a>{" "}pays a set income for life, much like Social Security. Add it to the Social Security figure in the
           calculator, in today&rsquo;s dollars. If it doesn&rsquo;t rise with inflation, as many private pensions don&rsquo;t, enter a little less than
           today&rsquo;s amount to allow for its value falling over time.
         </p>

@@ -289,6 +289,7 @@ export default function RentIncreaseGuide() {
           <li>Keep every rent increase notice, with the envelope or email showing when it arrived.</li>
           <li>Keep a note of every rent change and its start date. The once-a-year rule runs from the last rise.</li>
           <li>Pay rent by bank transfer, not cash, so you have proof of what you paid and when.</li>
+          <li>Keep your <a href="/uk/property/deposit-return">deposit</a>{" "}protection certificate and check-in inventory, as you will need them when you move out.</li>
           <li>Write down any repairs you have reported and when; they may be relevant to the market rent.</li>
         </ul>
         <p>

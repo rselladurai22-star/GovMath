@@ -253,7 +253,7 @@ export default function CompoundGuide() {
 
       <GuideSection id="savings-rates" n={13} kicker="2026 context" title="Savings account rates in 2026">
         <p>
-          The FDIC&rsquo;s national average rate on savings accounts was about 0.38% through mid-2026, while the best-paying online high-yield savings
+          The FDIC&rsquo;s national average rate on savings accounts was about 0.38% through mid-2026, while the best-paying online <a href="/us/savings/high-yield-savings-calculator">high-yield savings</a>{" "}
           accounts paid around 4% in September 2026. On $10,000 for a year, that is about $38 of interest against about $407.
         </p>
         <CompareCards

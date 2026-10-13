@@ -66,7 +66,7 @@ export default function SharedOwnershipGuide() {
         </p>
         <p>
           You can buy more shares later, a process called staircasing, often up to 100%. Shared ownership homes are almost always
-          leasehold, so you also pay a service charge and must follow the terms of the lease.
+          leasehold, so you also pay a service charge and must follow the terms of the lease. Once you own 100%, you can usually seek a <a href="/uk/property/lease-extension">lease extension</a>{" "}if the term runs low.
         </p>
       </GuideSection>
 
@@ -97,7 +97,7 @@ export default function SharedOwnershipGuide() {
         </ol>
         <p>
           Only the mortgage builds equity you own. The rent and service charge are housing costs, much like renting. Lenders
-          include all three in their affordability check.
+          include all three in their affordability check, so they reduce <a href="/uk/property/mortgage-affordability">how much you can borrow</a>.
         </p>
       </GuideSection>
 

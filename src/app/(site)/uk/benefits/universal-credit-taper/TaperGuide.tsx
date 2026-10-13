@@ -271,7 +271,7 @@ export default function TaperGuide() {
         </p>
         <Callout tone="warn" title="Weekly and four-weekly pay">
           If you are paid every four weeks, once a year two paydays fall in one assessment period. The award drops sharply that month and you
-          may get nothing. It is not lost for good: the next month is based on one payday again.
+          may get nothing. It is not lost for good: the next month is based on one payday again. If a low month leaves you short, an <a href="/uk/benefits/uc-advance">advance payment</a>{" "}can help, but it is paid back from later awards.
         </Callout>
         <p>
           If a payday moves because of a weekend or <a href="/uk/life/bank-holidays">bank holiday</a>, tell the Department for Work and Pensions through your journal. In some

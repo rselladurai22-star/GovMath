@@ -220,7 +220,7 @@ export default function TimeGuide() {
           <li>Rounding each day before adding, which can add up to several minutes a week.</li>
         </ul>
         <p>
-          For days rather than hours, use the <a href="/everyday/date-calculator">date calculator</a>.
+          For days rather than hours, use the <a href="/everyday/date-calculator">date calculator</a>, or the <a href="/everyday/countdown">countdown</a>{" "}to see the time until an event.
         </p>
       </GuideSection>
 

@@ -128,7 +128,7 @@ export default function MortgageGuide() {
       <GuideSection id="amortization" n={5} kicker="Amortization" title="Where each payment goes">
         <p>
           Early payments are mostly interest, because the balance is at its largest. In the example, the first payment of {usd(2_456)} is {usd(2_175)} interest and only $280.83
-          principal. Principal does not overtake interest until payment 246, more than 20 years in.
+          principal. Principal does not overtake interest until payment 246, more than 20 years in. The <a href="/us/housing/amortization-calculator">amortization schedule</a>{" "}lists every payment.
         </p>
         <DataTable
           caption="$360,000 at 7.25% over 30 years: balance at the end of selected years"
@@ -387,7 +387,8 @@ export default function MortgageGuide() {
           <li>Copy the link to share the exact figures with a partner or loan officer.</li>
         </ol>
         <p>
-          Renting for now? Our <a href="/us/housing/rent-affordability">rent affordability calculator</a>{" "}shows what rent fits your income, and the{" "}
+          Still weighing renting vs buying? The{" "}
+          <a href="/us/housing/rent-vs-buy-calculator">rent vs buy calculator</a>{" "}compares the total cost. Renting for now? Our <a href="/us/housing/rent-affordability">rent affordability calculator</a>{" "}shows what rent fits your income, and the{" "}
           <a href="/us/loans/debt-to-income-ratio">debt-to-income calculator</a>{" "}shows your ratios as a lender sees them.
         </p>
       </GuideSection>

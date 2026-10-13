@@ -77,7 +77,7 @@ export default function EmergencyGuide() {
         </p>
         <p>
           The Consumer Financial Protection Bureau describes the fund as a buffer that keeps a surprise from becoming a debt. It is the first building
-          block of most financial plans: it protects your retirement savings and your credit score at the same time.
+          block of most financial plans: it protects your retirement savings, your credit score and your <a href="/us/savings/net-worth-calculator">net worth</a>{" "}at the same time.
         </p>
       </GuideSection>
 

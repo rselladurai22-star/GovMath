@@ -294,7 +294,8 @@ export default function AprGuide() {
 
       <GuideSection id="apy" n={17} kicker="Rates" title="APR and APY">
         <p>
-          APR is a simple rate: the monthly rate times 12. APY, the annual percentage yield used for savings accounts and CDs, includes compounding. A loan at 12% APR charges 1%
+          APR is a{" "}
+          <a href="/us/loans/simple-interest-calculator">simple interest</a>{" "}rate: the monthly rate times 12. APY, the annual percentage yield used for savings accounts and CDs, includes compounding. A loan at 12% APR charges 1%
           a month, which compounds to about 12.68% over a year if nothing is paid. Lenders quote APR and banks quote APY, so each side shows the friendlier-looking number.
         </p>
       </GuideSection>

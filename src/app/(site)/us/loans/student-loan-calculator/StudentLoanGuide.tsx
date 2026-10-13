@@ -258,6 +258,11 @@ export default function StudentLoanGuide() {
           {usd(36_830)} of interest. On the new standard plan for that balance (20 years), the payment falls to $672.64 but the interest rises
           to {usd(81_434)}. On RAP with AGI of {usd(70_000)}, the first payment is $350 and the loan is repaid after about 20 years.
         </p>
+        <p>
+          Borrowing less is the surest saving. Many merit scholarships and graduate programs set a minimum{" "}
+          <a href="/everyday/gpa-calculator">GPA</a>, and families saving ahead can use a{" "}
+          <a href="/us/savings/529-plan-calculator">529 plan</a>{" "}to cover costs that would otherwise be borrowed.
+        </p>
       </GuideSection>
 
       <GuideSection id="private" n={13} kicker="Private" title="Private student loans">
@@ -283,7 +288,8 @@ export default function StudentLoanGuide() {
         <p>
           Refinancing replaces one or more loans with a new private loan, ideally at a lower rate. It can save money on private loans or on federal
           loans for people with high, stable incomes. But refinancing federal loans is permanent: you lose RAP, Public Service Loan Forgiveness,
-          deferment options and the interest waiver. Use the general <a href="/us/loans/loan-calculator">loan calculator</a>{" "}to compare offers.
+          deferment options and the interest waiver. Use the general <a href="/us/loans/loan-calculator">loan calculator</a>{" "}to check a payment, and the{" "}
+          <a href="/us/loans/loan-comparison-calculator">loan comparison calculator</a>{" "}to compare refinance offers side by side.
         </p>
       </GuideSection>
 

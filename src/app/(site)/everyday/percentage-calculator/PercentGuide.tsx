@@ -100,6 +100,7 @@ export default function PercentGuide() {
         />
         <p>
           Notice that going from 80 to 100 is a 25% rise, but going back from 100 to 80 is only a 20% fall, because the starting point is different.
+          The same sum shows how big a <a href="/uk/property/rent-increase">rent increase</a>{" "}is in percentage terms.
         </p>
       </GuideSection>
 
@@ -182,7 +183,7 @@ export default function PercentGuide() {
             <strong>Pay rises:</strong>{" "}a 5% rise on 30,000 is 1,500 before tax.
           </li>
           <li>
-            <strong>Discounts:</strong> 30% off then a further 10% off is 37% off, not 40%.
+            <strong>Discounts:</strong> 30% off then a further 10% off is 37% off, not 40%. The <a href="/everyday/discount-calculator">discount calculator</a>{" "}works out sale prices and stacked discounts.
           </li>
           <li>
             <strong>Interest:</strong>{" "}rates are usually yearly, so 4% on 1,000 is about 40 a year.
@@ -227,7 +228,7 @@ export default function PercentGuide() {
             ["75%", "0.75", "3/4"],
           ]}
         />
-        <p>To turn a fraction into a percentage, divide the top by the bottom and multiply by 100. To turn a percentage into a decimal, divide by 100.</p>
+        <p>To turn a fraction into a percentage, divide the top by the bottom and multiply by 100. To turn a percentage into a decimal, divide by 100. To add, simplify or convert fractions, use the <a href="/everyday/fraction-calculator">fraction calculator</a>.</p>
       </GuideSection>
 
       <GuideSection id="marks" n={13} kicker="Education" title="Exam marks and grades">
