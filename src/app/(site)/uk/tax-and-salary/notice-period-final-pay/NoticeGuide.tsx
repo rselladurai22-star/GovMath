@@ -64,11 +64,11 @@ export default function NoticeGuide() {
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
           <li>
-            <strong>Your employer</strong> must give at least 1 week&rsquo;s notice after a month&rsquo;s service, and 1 week for each full year from 2 years, up to
+            <strong>Your employer</strong>{" "}must give at least 1 week&rsquo;s notice after a month&rsquo;s service, and 1 week for each full year from 2 years, up to
             12 weeks.
           </li>
           <li>
-            <strong>You</strong> must give at least 1 week&rsquo;s notice after a month&rsquo;s service.
+            <strong>You</strong>{" "}must give at least 1 week&rsquo;s notice after a month&rsquo;s service.
           </li>
           <li>Your contract can ask for more notice, but not less. The longer one applies.</li>
           <li>Notice starts the day after it is given.</li>
@@ -147,7 +147,7 @@ export default function NoticeGuide() {
 
       <GuideSection id="counting" n={5} kicker="Counting" title="Counting the days">
         <p>
-          A notice period starts on the day <strong>after</strong> notice is given. A week&rsquo;s notice given on a Friday runs from Saturday and ends at the end of
+          A notice period starts on the day <strong>after</strong>{" "}notice is given. A week&rsquo;s notice given on a Friday runs from Saturday and ends at the end of
           the following Friday. Six weeks&rsquo; notice given on Friday 30 October 2026 ends on Friday 11 December 2026.
         </p>
         <p>

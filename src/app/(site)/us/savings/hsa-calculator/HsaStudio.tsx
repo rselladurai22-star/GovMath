@@ -191,7 +191,7 @@ export default function HsaStudio({ query }: { query: Query }) {
             hint="Drag across the chart, or use the arrow keys, to read any age."
             readout={(i) => (
               <>
-                At <b>{ages[i]}</b>: balance <b>{usd(bal[i] ?? 0)}</b>, worth <b>{usd(real[i] ?? 0)}</b> in today&apos;s dollars.
+                At <b>{ages[i]}</b>: balance <b>{usd(bal[i] ?? 0)}</b>, worth <b>{usd(real[i] ?? 0)}</b>{" "}in today&apos;s dollars.
               </>
             )}
           />
