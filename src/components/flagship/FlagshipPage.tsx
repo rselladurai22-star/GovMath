@@ -115,7 +115,7 @@ export default function FlagshipPage({
           <a href="#faqs">FAQs</a>
         </nav>
 
-        <div className={look ? "pg-layout pg-layout--single" : "pg-layout"}>
+        <div className="pg-layout">
           <section className="pg-tool" aria-label="Calculator and your results">
             <LookProvider value={look ? { look, title, lead } : null}>{children}</LookProvider>
           </section>

@@ -4,12 +4,13 @@ import TopicHub, { TOPIC_ICON, ToolGrid } from "@/components/TopicHub";
 import { ogFor } from "@/gm/og";
 import { US_CATEGORIES, getCalculatorsByCategory, getCalculatorsByCountry } from "@/lib/calculators";
 import { US_ICON } from "./UsTopic";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: { absolute: "US Paycheck, Tax, Mortgage and 401(k) Calculators 2026 | SumAtlas" },
   description:
     "Free US calculators for 2026: paycheck and take-home pay, federal income tax, mortgages, auto loans, credit cards, 401(k), Roth IRA and savings.",
-  alternates: { canonical: "/us" },
+  alternates: alternatesFor("/us"),
   openGraph: ogFor("/us"),
 };
 

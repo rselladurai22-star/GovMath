@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import AnnuityStudio from "./AnnuityStudio";
 import AnnuityGuide from "./AnnuityGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/savings/annuity-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Annuity Calculator: Income and Cost",
   description:
     "Free annuity calculator for 2026. See the monthly income a lump sum buys for life or a set term, the cost of a target income, and present and future value.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

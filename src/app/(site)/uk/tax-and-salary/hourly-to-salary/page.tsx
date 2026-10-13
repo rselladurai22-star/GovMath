@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import HourlyStudio from "./HourlyStudio";
 import { ogFor } from "@/gm/og";
 import HourlyGuide from "./HourlyGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Hourly to Salary Calculator UK 2026/27",
   description:
     "Free hourly to salary calculator. Turn an hourly rate into weekly, monthly and yearly pay, then see your take-home after tax and NI in 2026/27.",
-  alternates: { canonical: "/uk/tax-and-salary/hourly-to-salary" },
+  alternates: alternatesFor("/uk/tax-and-salary/hourly-to-salary"),
   openGraph: ogFor("/uk/tax-and-salary/hourly-to-salary"),
 };
 

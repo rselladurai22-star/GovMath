@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import FireStudio from "./FireStudio";
 import { ogFor } from "@/gm/og";
 import FireGuide from "./FireGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "FIRE Calculator UK: When Can I Retire Early?",
   description:
     "Free UK FIRE calculator. Find your financial independence number and early retirement age with the 4% rule, the State Pension, real returns and Coast FI.",
-  alternates: { canonical: "/uk/investing/fire-calculator" },
+  alternates: alternatesFor("/uk/investing/fire-calculator"),
   openGraph: ogFor("/uk/investing/fire-calculator"),
 };
 

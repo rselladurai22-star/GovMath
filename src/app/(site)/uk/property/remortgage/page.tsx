@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import RemortgageStudio from "./RemortgageStudio";
 import { ogFor } from "@/gm/og";
 import RemortgageGuide from "./RemortgageGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Remortgage Calculator UK: How Much Could I Save?",
   description:
     "Free remortgage calculator. Compare your current or standard variable rate with a new deal after fees and early repayment charges, and see the break-even.",
-  alternates: { canonical: "/uk/property/remortgage" },
+  alternates: alternatesFor("/uk/property/remortgage"),
   openGraph: ogFor("/uk/property/remortgage"),
 };
 

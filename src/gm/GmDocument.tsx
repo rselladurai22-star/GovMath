@@ -6,6 +6,7 @@ import { calculatorJsonLd, topicJsonLd } from "./schema";
 import { ogFor } from "./og";
 import { trustHtml } from "./trust";
 import type { CategorySlug } from "@/lib/calculators";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export type GmPage = {
   title: string;
@@ -66,7 +67,7 @@ export function gmMetadata(page: GmPage, path: string) {
   return {
     title: { absolute: page.title },
     description: page.description,
-    alternates: { canonical: path },
+    alternates: alternatesFor(path),
     openGraph: ogFor(path),
   };
 }

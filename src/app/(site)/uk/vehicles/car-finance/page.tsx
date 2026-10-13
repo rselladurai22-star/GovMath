@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import CarFinanceStudio from "./CarFinanceStudio";
 import { ogFor } from "@/gm/og";
 import CarFinanceGuide from "./CarFinanceGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Car Finance Calculator UK: PCP vs HP",
   description:
     "Free car finance calculator. Work out PCP and hire purchase monthly payments from the price, deposit, APR and balloon, and compare the total cost of each.",
-  alternates: { canonical: "/uk/vehicles/car-finance" },
+  alternates: alternatesFor("/uk/vehicles/car-finance"),
   openGraph: ogFor("/uk/vehicles/car-finance"),
 };
 

@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import SavingsStudio from "./SavingsStudio";
 import { ogFor } from "@/gm/og";
 import SavingsGuide from "./SavingsGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Savings Interest Calculator UK 2026/27",
   description:
     "Free savings interest calculator. Compare fixed and easy access accounts after tax, see interest paid monthly or at maturity, and your real return.",
-  alternates: { canonical: "/uk/investing/savings-interest" },
+  alternates: alternatesFor("/uk/investing/savings-interest"),
   openGraph: ogFor("/uk/investing/savings-interest"),
 };
 

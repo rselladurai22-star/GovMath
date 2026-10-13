@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import AffordStudio from "./AffordStudio";
 import AffordGuide from "./AffordGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "How Much House Can I Afford? Calculator",
   description:
     "Free home affordability calculator for 2026. See the home price your income supports under the 28/36 rule, 43% or FHA limits, and what more cash down changes.",
-  alternates: { canonical: "/us/housing/mortgage-affordability" },
+  alternates: alternatesFor("/us/housing/mortgage-affordability"),
   openGraph: ogFor("/us/housing/mortgage-affordability"),
 };
 

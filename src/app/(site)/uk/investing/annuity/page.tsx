@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import AnnuityStudio from "./AnnuityStudio";
 import { ogFor } from "@/gm/og";
 import AnnuityGuide from "./AnnuityGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Annuity Calculator UK: Income From Your Pension",
   description:
     "Free annuity calculator. See the yearly and monthly income your pension could buy, after tax-free cash and Income Tax, and how it compares with drawdown.",
-  alternates: { canonical: "/uk/investing/annuity" },
+  alternates: alternatesFor("/uk/investing/annuity"),
   openGraph: ogFor("/uk/investing/annuity"),
 };
 

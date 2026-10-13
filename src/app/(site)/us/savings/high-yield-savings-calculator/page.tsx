@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import HysaStudio from "./HysaStudio";
 import HysaGuide from "./HysaGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/savings/high-yield-savings-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "High-Yield Savings Calculator: HYSA vs Regular",
   description:
     "Free high-yield savings calculator for 2026. Compare interest at a high-yield APY with the national average, after tax and fees, with monthly deposits.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

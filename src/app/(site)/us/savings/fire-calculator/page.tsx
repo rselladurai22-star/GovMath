@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import FireStudio from "./FireStudio";
 import FireGuide from "./FireGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/savings/fire-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "FIRE Calculator: When Can You Retire Early?",
   description:
     "Free FIRE calculator for 2026. Find your FIRE number, years to financial independence and age, with Lean, Fat, Coast and Barista FIRE and a savings-rate table.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

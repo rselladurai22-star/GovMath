@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import EmployerCostStudio from "./EmployerCostStudio";
 import { ogFor } from "@/gm/og";
 import EmployerCostGuide from "./EmployerCostGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Employer NI Calculator 2026/27: Cost of Hiring",
   description:
     "Free employer NI calculator for 2026/27. See employer NI at 15%, the Employment Allowance, pension costs and the true cost of hiring someone.",
-  alternates: { canonical: "/uk/business/employer-ni-costs" },
+  alternates: alternatesFor("/uk/business/employer-ni-costs"),
   openGraph: ogFor("/uk/business/employer-ni-costs"),
 };
 

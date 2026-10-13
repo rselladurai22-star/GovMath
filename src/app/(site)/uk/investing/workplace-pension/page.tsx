@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import WorkplaceStudio from "./WorkplaceStudio";
 import { ogFor } from "@/gm/og";
 import WorkplaceGuide from "./WorkplaceGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Workplace Pension Calculator UK 2026/27",
   description:
     "Free auto-enrolment pension calculator for 2026/27. See employee and employer contributions, tax relief and what your pot could be worth at retirement.",
-  alternates: { canonical: "/uk/investing/workplace-pension" },
+  alternates: alternatesFor("/uk/investing/workplace-pension"),
   openGraph: ogFor("/uk/investing/workplace-pension"),
 };
 

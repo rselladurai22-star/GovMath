@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import OvertimeStudio from "./OvertimeStudio";
 import { ogFor } from "@/gm/og";
 import OvertimeGuide from "./OvertimeGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Overtime Calculator UK 2026/27",
   description:
     "Free overtime pay calculator. Work out time and a half or double time, and see what your extra hours are worth after Income Tax and NI in 2026/27.",
-  alternates: { canonical: "/uk/tax-and-salary/overtime" },
+  alternates: alternatesFor("/uk/tax-and-salary/overtime"),
   openGraph: ogFor("/uk/tax-and-salary/overtime"),
 };
 

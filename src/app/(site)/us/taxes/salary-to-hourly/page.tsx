@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import SalaryHourlyStudio from "./SalaryHourlyStudio";
 import SalaryHourlyGuide from "./SalaryHourlyGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/taxes/salary-to-hourly";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Salary to Hourly Calculator: Pay Converter 2026",
   description:
     "Free salary to hourly calculator for 2026. Convert an annual salary to an hourly wage, or hourly pay to weekly, biweekly, monthly and yearly pay.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import CompoundStudio from "./CompoundStudio";
 import CompoundGuide from "./CompoundGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/savings/compound-interest-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Compound Interest Calculator with Deposits",
   description:
     "Free compound interest calculator for 2026. See how savings and investments grow with monthly deposits, daily or monthly compounding, APY and inflation.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import SelfEmploymentStudio from "./SelfEmploymentStudio";
 import SelfEmploymentGuide from "./SelfEmploymentGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/taxes/self-employment-tax";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Self-Employment Tax Calculator 2026 (1099)",
   description:
     "Free self-employment tax calculator for 2026. Work out SE tax on 1099 and freelance profit, income tax on top, and your quarterly estimated tax payments.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

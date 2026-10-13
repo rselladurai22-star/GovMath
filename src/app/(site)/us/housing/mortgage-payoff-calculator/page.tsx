@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import PayoffStudio from "./PayoffStudio";
 import PayoffGuide from "./PayoffGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Mortgage Payoff Calculator: Pay Off Early",
   description:
     "Free mortgage payoff calculator for 2026. See your new payoff date and interest saved with extra, biweekly or lump sum payments, or the extra for a target date.",
-  alternates: { canonical: "/us/housing/mortgage-payoff-calculator" },
+  alternates: alternatesFor("/us/housing/mortgage-payoff-calculator"),
   openGraph: ogFor("/us/housing/mortgage-payoff-calculator"),
 };
 

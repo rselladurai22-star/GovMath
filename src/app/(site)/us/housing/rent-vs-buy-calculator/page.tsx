@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import RentVsBuyStudio from "./RentVsBuyStudio";
 import RentVsBuyGuide from "./RentVsBuyGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Rent vs Buy Calculator: Which Is Cheaper?",
   description:
     "Free rent vs buy calculator for 2026. Compare the full cost of owning and renting year by year, with investing the difference, and find your break-even year.",
-  alternates: { canonical: "/us/housing/rent-vs-buy-calculator" },
+  alternates: alternatesFor("/us/housing/rent-vs-buy-calculator"),
   openGraph: ogFor("/us/housing/rent-vs-buy-calculator"),
 };
 

@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import IhtStudio from "./IhtStudio";
 import { ogFor } from "@/gm/og";
 import IhtGuide from "./IhtGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Inheritance Tax Calculator UK 2026/27",
   description:
     "Free inheritance tax calculator for 2026/27. Work out IHT with the nil-rate band, residence nil-rate band, gifts and taper, spouse transfers and reliefs.",
-  alternates: { canonical: "/uk/life/inheritance-tax" },
+  alternates: alternatesFor("/uk/life/inheritance-tax"),
   openGraph: ogFor("/uk/life/inheritance-tax"),
 };
 

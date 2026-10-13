@@ -4,13 +4,14 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import BonusStudio from "./BonusStudio";
 import BonusGuide from "./BonusGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/taxes/bonus-tax-calculator";
 
 export const metadata: Metadata = {
   title: "Bonus Tax Calculator 2026: Take-Home Pay",
   description: "Free bonus tax calculator for 2026. See your bonus take-home after the 22% flat rate, Social Security, Medicare and state tax, and what comes back at tax time.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 
