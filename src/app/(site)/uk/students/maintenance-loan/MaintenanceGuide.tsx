@@ -73,7 +73,9 @@ export default function MaintenanceGuide() {
         <p>
           The maintenance loan is paid into your bank account to help with living costs: rent, food, travel, books and going out. It is repaid
           together with your tuition fee loan after you leave university, as part of your Plan 5 student loan, and only once you earn over
-          £25,000 a year.
+          £25,000 a year. To see what the whole course could cost, fees and living costs together, try the{" "}
+          <a href="/uk/students/degree-cost">cost of a degree calculator</a>. Loan rules can change at a Budget: our{" "}
+          <a href="/uk/tax-and-salary/budget-tax-changes">Budget tax changes</a> page lists the announced measures.
         </p>
       </GuideSection>
 

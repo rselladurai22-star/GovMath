@@ -153,7 +153,7 @@ export default function WeightGuide() {
       <GuideSection id="babies" n={7} kicker="Newborns" title="Baby weights in pounds and ounces">
         <p>
           UK hospitals weigh babies in kilograms and record them in the red book (personal child health record), but many families still share
-          birth weights in pounds and ounces. To convert, turn kilograms into pounds, then multiply the fraction of a pound by 16.
+          birth weights in pounds and ounces. To convert, turn kilograms into pounds, then multiply the <a href="/everyday/fraction-calculator">fraction of a pound</a>{" "}by 16.
         </p>
         <DataTable
           caption="Baby weights"
@@ -189,7 +189,7 @@ export default function WeightGuide() {
         <p>
           Weight on its own says little about health without your height. Use our <a href="/everyday/bmi-calculator">BMI calculator</a>{" "}to check
           your weight against the healthy range, the <a href="/everyday/calorie-calculator">calorie calculator</a>{" "}to plan a steady change, and
-          the <a href="/everyday/height-converter">feet to cm converter</a>{" "}if your height is in different units.
+          the <a href="/everyday/height-converter">feet to cm converter</a>{" "}if your height is in different units. For a closer look at what your weight is made of, try the <a href="/everyday/body-fat-calculator">body fat calculator</a>.
         </p>
       </GuideSection>
 

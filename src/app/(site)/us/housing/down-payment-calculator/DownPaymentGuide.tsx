@@ -52,7 +52,7 @@ export default function DownPaymentGuide() {
     >
       <GuideSection id="short-answer" n={1} kicker="In brief" title="The short answer">
         <ul>
-          <li>Conventional loans start at 3% down, FHA loans at 3.5%, and VA and USDA loans can need nothing.</li>
+          <li>Conventional loans start at 3% down, FHA loans at 3.5%, and <a href="/us/housing/va-loan-calculator">VA loans</a>{" "}and USDA loans can need nothing.</li>
           <li>Below 20% down, conventional loans charge PMI until the balance falls to 78% of the price; FHA charges its own mortgage insurance.</li>
           <li>On a {usd(400_000)} home at 7.25%, going from 3% to 20% down lowers the payment from {usd(3_255)} to {usd(2_630)} a month.</li>
           <li>Plan for closing costs too: Freddie Mac puts them at about 2% to 5% of the price.</li>

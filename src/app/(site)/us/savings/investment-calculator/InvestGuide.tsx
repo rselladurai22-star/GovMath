@@ -78,7 +78,7 @@ export default function InvestGuide() {
         </p>
         <p>
           In a taxable account, the dividend part of the return is taxed each December and the tax comes out of the account, and when you sell
-          at the end, tax is due on the gain over what you paid (your cost basis, which includes reinvested dividends). The &quot;with no
+          at the end, tax is due on the gain over what you paid (your cost basis, which includes reinvested <a href="/us/savings/dividend-calculator">dividends</a>). The &quot;with no
           fees&quot; line runs the same plan without the fee, so the gap between the two lines is the full cost of fees.
         </p>
       </GuideSection>
@@ -128,7 +128,7 @@ export default function InvestGuide() {
           No calculator knows future returns. Over very long periods, broad US stock indexes have averaged roughly 10% a year before inflation,
           and high-quality bonds much less, but those averages include decades well above and well below them. Because a plan that only works in
           good markets is fragile, many planners use 5% to 7% a year for a portfolio of mostly stocks with some bonds, and lower figures for
-          more conservative mixes.
+          more conservative mixes. To find the <a href="/everyday/average-calculator">average return</a>{" "}of your own past yearly returns, add them up and divide by the number of years.
         </p>
         <Callout title="Use the return before fees">
           Enter the return the investments themselves might earn; the calculator takes the fee off separately. A fund tracking an index that
@@ -236,7 +236,7 @@ export default function InvestGuide() {
           A balance decades from now buys less than the same number of dollars today. At 2.5% inflation, prices roughly double in 28 years, so
           the {usd(595_755)} in the example is worth about {usd(284_022)} in today&rsquo;s money. Use the today&rsquo;s-dollars figure when you compare
           the result with a goal such as retirement spending. Our <a href="/us/savings/inflation-calculator">inflation calculator</a>{" "}shows how
-          prices have changed since 1913.
+          prices have changed since 1913. If your goal is <a href="/us/savings/fire-calculator">financial independence</a>, the FIRE calculator works out the portfolio you need.
         </p>
       </GuideSection>
 

@@ -238,7 +238,7 @@ export default function CapitalGainsGuide() {
         />
         <p>
           Improvements over the years raise your basis and shrink the gain, so keep the receipts. A partial exclusion may apply if you move early for a new
-          job, health or another unforeseen reason. Planning the next purchase? The <a href="/us/housing/mortgage-calculator">mortgage calculator</a>{" "}
+          job, health or another unforeseen reason. The <a href="/us/housing/home-sale-proceeds-calculator">home sale proceeds calculator</a>{" "}shows what you walk away with after the exclusion and selling costs. Planning the next purchase? The <a href="/us/housing/mortgage-calculator">mortgage calculator</a>{" "}
           and <a href="/us/housing/mortgage-affordability">home affordability calculator</a>{" "}help with the numbers.
         </p>
       </GuideSection>
@@ -247,7 +247,7 @@ export default function CapitalGainsGuide() {
         <p>
           Rental and second homes do not get the exclusion. Depreciation you claimed (or could have claimed) is &quot;recaptured&quot; and taxed at up to
           25%, with the rest of the gain at the normal long-term rates. A 1031 like-kind exchange can defer the tax if you reinvest in other investment
-          real estate within strict time limits.
+          real estate within strict time limits. The <a href="/us/housing/rental-property-calculator">rental property calculator</a>{" "}shows the yearly return while you hold one.
         </p>
       </GuideSection>
 

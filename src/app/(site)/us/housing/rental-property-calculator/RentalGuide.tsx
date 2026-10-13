@@ -98,7 +98,8 @@ export default function RentalGuide() {
         </p>
         <p>
           Check rent against listings for the same size of home nearby, and be wary of a seller&rsquo;s rent roll that is above the market. Parking, laundry, storage or pet fees
-          can add income; enter them under More options.
+          can add income; enter them under More options. Check the county&rsquo;s{" "}
+          <a href="/us/housing/property-tax-calculator">property taxes</a>{" "}too, since they often rise after a sale.
         </p>
       </GuideSection>
 
@@ -247,7 +248,9 @@ export default function RentalGuide() {
       </GuideSection>
 
       <GuideSection id="long-run" n={15} kicker="Total return" title="The return over 10 years">
-        <p>Hold the example for 10 years with rent, costs and value each rising 3% a year, then sell for 6% in costs:</p>
+        <p>Hold the example for 10 years with rent, costs and value each rising 3% a year, then sell for 6% in costs (the{" "}
+          <a href="/us/housing/home-sale-proceeds-calculator">home sale proceeds calculator</a>{" "}itemizes those costs):
+        </p>
         <DataTable
           head={["Item", "Amount"]}
           numeric={[1]}

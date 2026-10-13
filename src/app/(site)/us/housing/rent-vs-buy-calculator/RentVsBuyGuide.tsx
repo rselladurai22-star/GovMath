@@ -322,7 +322,8 @@ export default function RentVsBuyGuide() {
       <GuideSection id="maintenance" n={14} kicker="Upkeep" title="Maintenance and big repairs">
         <p>
           Renters call the landlord; owners pay. A common rule of thumb is to budget about 1% of the home&rsquo;s value a year, which in the example comes to {usd(45_856)} over 10
-          years. The money rarely arrives evenly: a quiet year can be followed by a new roof, water heater or HVAC system. An older home or one with a big lot can need 2% or more.
+          years. The money rarely arrives evenly: a quiet year can be followed by a new roof, water heater or HVAC system. An older home or one with a big lot can need 2% or more. Thinking of buying to let instead? The{" "}
+          <a href="/us/housing/rental-property-calculator">rental property calculator</a>{" "}works out cash flow and returns from a landlord&rsquo;s side.
         </p>
         <p>Keep an emergency fund for repairs on top of the down payment. Stretching every dollar into the purchase leaves no room for the first surprise.</p>
       </GuideSection>

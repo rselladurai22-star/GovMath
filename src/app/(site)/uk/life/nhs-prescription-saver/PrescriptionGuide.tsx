@@ -187,7 +187,7 @@ export default function PrescriptionGuide() {
         <ul>
           <li>People aged 60 or over, and under 16.</li>
           <li>16 to 18-year-olds in full-time education.</li>
-          <li>Pregnant women and those who have had a baby in the last 12 months, with a maternity exemption certificate.</li>
+          <li>Pregnant women and those who have had a baby in the last 12 months, with a maternity exemption certificate. They may also qualify for <a href="/uk/life/healthy-start">Healthy Start</a>.</li>
           <li>People with certain medical conditions, with a medical exemption certificate.</li>
           <li>People with a continuing physical disability that stops them going out without help, with a certificate.</li>
           <li>People getting certain benefits, or with an NHS tax credit exemption or HC2 certificate.</li>

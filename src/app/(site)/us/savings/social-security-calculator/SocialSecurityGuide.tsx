@@ -150,7 +150,7 @@ export default function SocialSecurityGuide() {
           ]}
         />
         <p>
-          Anyone born on January 1 is treated as born the year before, and Social Security considers you to reach an age the day before your birthday. Anyone
+          Anyone born on January 1 is treated as born the year before, and Social Security considers you to reach an age the day before your birthday. Our <a href="/everyday/age-calculator">age calculator</a>{" "}gives your exact age on any date. Anyone
           turning 62 in 2026 was born in 1964 and has a full retirement age of 67.
         </p>
       </GuideSection>

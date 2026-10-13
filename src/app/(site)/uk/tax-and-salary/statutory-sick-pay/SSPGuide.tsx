@@ -300,7 +300,7 @@ export default function SSPGuide() {
         <p>
           Agency workers are paid SSP by the agency, or by an <a href="/uk/tax-and-salary/ir35-take-home">umbrella company</a>{" "}if one employs them. Zero-hours workers
           can get SSP for days they were due to work, and the April 2026 changes mean many of them qualify for the first
-          time because the earnings test has gone.
+          time because the earnings test has gone. Their holiday builds up differently too: the <a href="/uk/tax-and-salary/holiday-pay-irregular-hours">holiday pay for irregular hours</a>{" "}calculator works it out.
         </p>
         <p>
           If you have two jobs, each employer looks only at your earnings with them. You can get SSP from both, or from

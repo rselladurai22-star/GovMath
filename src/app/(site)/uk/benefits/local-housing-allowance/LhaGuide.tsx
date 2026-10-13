@@ -278,6 +278,9 @@ export default function LhaGuide() {
           <li>ask your landlord whether the rent includes services that are not eligible, which may be separated;</li>
           <li>consider a cheaper home, or one in a nearby area with a higher rate.</li>
         </ul>
+        <p>
+          If your total benefits are high, the <a href="/uk/benefits/benefit-cap">benefit cap</a>{" "}can cut your award further, even when the rent is within the LHA.
+        </p>
       </GuideSection>
 
       <GuideSection id="uc-hb" n={11} kicker="Which benefit" title="LHA on Universal Credit and Housing Benefit">

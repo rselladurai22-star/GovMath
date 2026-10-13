@@ -184,7 +184,8 @@ export default function CarAffordabilityGuide() {
       <GuideSection id="running" n={11} kicker="Running costs" title="Insurance and fuel">
         <p>
           AAA&rsquo;s 2025 driving cost study put full coverage insurance at about {usd(1_694)} a year for a typical driver, about {usd(141)} a month, but quotes vary widely
-          by state, age, driving record and car. Get a quote before you buy: sporty or expensive models can cost far more to insure. Fuel depends on miles and fuel economy:
+          by state, age, driving record and car. Get a quote before you buy: sporty or expensive models can cost far more to insure. Fuel depends on miles and{" "}
+          <a href="/everyday/fuel-economy">fuel economy</a>:
           15,000 miles a year at 28 mpg and $4.15 a gallon, the price AAA used in its 2026 study, is about {usd(185)} a month.
         </p>
         <CompareCards

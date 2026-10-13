@@ -167,9 +167,11 @@ export default function PointsGuide() {
 
       <GuideSection id="credits" n={10} kicker="Credits" title="Lender credits: negative points">
         <p>
-          Lender credits run the other way. The lender pays part of your closing costs, and you accept a higher rate. One point of credit on the example loan gives you{" "}
+          Lender credits run the other way. The lender pays part of your{" "}
+          <a href="/us/housing/closing-cost-calculator">closing costs</a>, and you accept a higher rate. One point of credit on the example loan gives you{" "}
           {usd(4_000)} at closing and a 7.5% rate, adding $68.15 a month. The credit stays ahead for about four years (48 months, counting the slower paydown); after that, it costs
-          you. Credits suit buyers short of cash at closing and those who expect to move or refinance soon.
+          you. Credits suit buyers short of cash at closing and those who expect to move or refinance soon. Buying an investment property? The{" "}
+          <a href="/us/housing/rental-property-calculator">rental property calculator</a>{" "}shows how points change its cash flow and return.
         </p>
       </GuideSection>
 

@@ -59,7 +59,7 @@ export default function RentARoomGuide() {
         </p>
         <p>
           The limit applies to the tax year, from 6 April to 5 April, and is not reduced if you only let a room for part of the
-          year.
+          year. The £7,500 has been the same since April 2016; our <a href="/uk/tax-and-salary/budget-tax-changes">Budget tax changes</a>{" "}page lists what has been announced for later years.
         </p>
       </GuideSection>
 
@@ -186,7 +186,7 @@ export default function RentARoomGuide() {
           <li><strong>Right to rent:</strong> in England you must check that an adult lodger has the <a href="/uk/life/right-to-rent">right to rent</a>.</li>
           <li><strong>Council tax:</strong> a lodger who lives with you as their main home ends any <a href="/uk/property/single-person-discount">single person discount</a>.</li>
           <li><strong>Benefits:</strong> lodger income can affect means-tested benefits; check before you start.</li>
-          <li><strong>Agreement:</strong> a simple written lodger agreement setting out rent, notice and house rules avoids disputes.</li>
+          <li><strong>Agreement:</strong> a simple written lodger agreement setting out rent, notice and house rules avoids disputes. Lodgers are not covered by the formal <a href="/uk/property/rent-increase">rent increase</a>{" "}rules for tenants, so agree any rise in writing.</li>
         </ul>
       </GuideSection>
 

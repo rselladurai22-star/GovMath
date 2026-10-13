@@ -112,7 +112,7 @@ export default function MovingGuide() {
         </ul>
         <p>
           Leasehold, new-build, <a href="/uk/property/shared-ownership">shared ownership</a>{" "}and unregistered properties usually cost more. Check whether a quote includes
-          VAT and disbursements.
+          VAT and disbursements. If a leasehold flat has under about 80 years left on the lease, budget for a <a href="/uk/property/lease-extension">lease extension</a>{" "}too.
         </p>
       </GuideSection>
 

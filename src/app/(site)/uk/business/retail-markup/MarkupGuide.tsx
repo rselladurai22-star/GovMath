@@ -144,7 +144,7 @@ export default function MarkupGuide() {
           with the price you meant to charge.
         </Callout>
         <p>
-          Pricing from margin is the better habit, because your accounts, your lender and your break-even sums all work in
+          Pricing from margin is the better habit, because your accounts, your lender and your <a href="/uk/business/break-even">break-even</a>{" "}sums all work in
           margin. Our <a href="/uk/business/gross-profit-margin">gross profit margin calculator</a> checks the margin on any
           price you already charge.
         </p>
@@ -293,7 +293,8 @@ export default function MarkupGuide() {
         />
         <p>
           If you know roughly how much ends up in the sale, price for it from the start. To average £50 when one item in five
-          sells at 30% off, the full price needs to be about <strong>£53.19</strong>.
+          sells at 30% off, the full price needs to be about <strong>£53.19</strong>. A{" "}
+          <a href="/everyday/discount-calculator">discount calculator</a> shows the sale price for any percentage off.
         </p>
         <p>
           Lost and damaged stock works the same way. If 3% of what you buy is never sold, each item you do sell has to carry

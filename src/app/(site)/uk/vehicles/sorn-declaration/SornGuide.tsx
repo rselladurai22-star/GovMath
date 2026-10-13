@@ -32,7 +32,7 @@ export default function SornGuide() {
       title="How to take a car off the road and get a tax refund"
       intro={
         <>
-          A Statutory Off Road Notification, or SORN, tells the DVLA a vehicle is kept off public roads, so you do not need to tax it. Making a
+          A Statutory Off Road Notification, or SORN, tells the DVLA a vehicle is kept off public roads, so you do not need to <a href="/uk/vehicles/car-tax-ved">tax it</a>. Making a
           SORN cancels your tax and triggers a refund of any full months left. This guide explains when to make one, how the refund is worked
           out, and the rules while a car is off the road.
         </>
@@ -154,7 +154,9 @@ export default function SornGuide() {
         <p>
           If a car will be off the road for a month or more, a SORN usually saves money. On the £200 standard rate, each full month off the
           road saves £16.67 in tax. Cars paying the expensive car supplement save £53.33 a month. Six months off the road with £40 a month of
-          insurance cancelled saves £340 in total at the standard rate.
+          insurance cancelled saves £340 in total at the standard rate. If you are thinking of getting by without a car, the{" "}
+          <a href="/uk/vehicles/commuter-comparison">commuter comparison</a> sets driving against public transport, and a car that would
+          need to pay a <a href="/uk/vehicles/clean-air-zones">clean air zone</a> charge may be worth keeping off the road.
         </p>
         <p>
           For a short break of a few weeks, the saving is small, and you lose the month the SORN is made. Keeping the car taxed and insured can

@@ -82,7 +82,8 @@ export default function MotGuide() {
         <p>
           The DVSA&rsquo;s free online service shows the MOT history of any vehicle tested in Great Britain since 2005, using only the
           registration number. It lists each test, the result, the mileage recorded, and any failures, advisories and minor defects. Enter a
-          plate in the calculator for a direct link.
+          plate in the calculator for a direct link. If you are buying a used car on finance, check its history before you sign, and compare
+          deals with the <a href="/uk/vehicles/car-finance">car finance calculator</a>.
         </p>
       </GuideSection>
 
@@ -140,7 +141,7 @@ export default function MotGuide() {
         <p>
           Driving without a valid MOT can lead to a fine of up to £1,000. Driving a car with a dangerous defect can lead to a fine of up to
           £2,500, a ban and 3 penalty points. Your insurance may also be invalid. You can drive a car without a valid MOT only to a pre-booked
-          test or to a garage for repairs.
+          test or to a garage for repairs. A car also needs valid <a href="/uk/vehicles/car-tax-ved">car tax</a> to be driven on the road.
         </p>
       </GuideSection>
 

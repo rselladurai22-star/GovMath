@@ -185,7 +185,7 @@ export default function IraGuide() {
           />
         </Figure>
         <p>
-          Inside the IRA, dividends and gains aren&rsquo;t taxed each year, so all of the return compounds. Someone who starts at 50 and contributes the{" "}
+          Inside the IRA, <a href="/us/savings/dividend-calculator">dividends</a>{" "}and gains aren&rsquo;t taxed each year, so all of the return compounds. Someone who starts at 50 and contributes the{" "}
           {usd(8_600)} catch-up limit for 15 years at 7% builds about {usd(227_156)}. Our{" "}
           <a href="/us/savings/compound-interest-calculator">compound interest calculator</a>{" "}shows the effect of different rates.
         </p>

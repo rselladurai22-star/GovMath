@@ -42,7 +42,7 @@ export default function ConversionGuide() {
       title="Roth conversions: the tax now and the payoff later"
       intro={
         <>
-          A Roth conversion moves money from a traditional IRA or 401(k) into a Roth IRA. You pay income tax on it now, and in return it grows and comes out
+          A Roth conversion moves money from a <a href="/us/savings/ira-calculator">traditional IRA</a>{" "}or 401(k) into a Roth IRA. You pay income tax on it now, and in return it grows and comes out
           tax-free. This guide explains how the tax is worked out, how to fill a bracket, the break-even tax rate, and the side effects on Medicare and
           Social Security.
         </>

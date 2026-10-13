@@ -61,7 +61,10 @@ export default function AffordGuide() {
         <ul>
           <li>The classic rule: housing costs up to 28% of gross income, and all debts up to 36%.</li>
           <li>On {usd(100_000)} a year with {usd(500)} of other debts and {usd(40_000)} down at 7.25%, that buys a home of about {usd(306_360)}.</li>
-          <li>FHA&rsquo;s standard 31/43 limits raise that to about {usd(337_333)}.</li>
+          <li>
+            The <a href="/us/housing/fha-loan-calculator">FHA loan</a>&rsquo;s standard 31/43 limits raise that to about {usd(337_333)}, and an eligible veteran can price a{" "}
+            <a href="/us/housing/va-loan-calculator">VA loan</a>{" "}with no down payment.
+          </li>
           <li>A lower rate, a bigger down payment or fewer debts all raise the price; property tax and HOA dues lower it.</li>
         </ul>
         <KeyStats

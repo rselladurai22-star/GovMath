@@ -273,7 +273,7 @@ export default function IhtGuide() {
 
       <GuideSection id="pensions" n={10} kicker="From April 2027" title="Pensions from April 2027">
         <p>
-          For deaths on or after 6 April 2027, most unused pension funds and death benefits will be part of the estate. That ends their role as a
+          For deaths on or after 6 April 2027, most unused pension funds, including money left in <a href="/uk/investing/pension-drawdown">pension drawdown</a>, and death benefits will be part of the estate. That ends their role as a
           way to pass money on free of Inheritance Tax. Pensions left to a spouse or civil partner stay exempt, as do death-in-service benefits.
         </p>
         <WorkedExample
@@ -331,7 +331,7 @@ export default function IhtGuide() {
 
       <GuideSection id="downsizing" n={14} kicker="Moving home" title="Downsizing and the residence band">
         <p>
-          People who sold a larger home or moved into care after 8 July 2015 do not lose the residence nil-rate band. The &ldquo;downsizing
+          People who sold a larger home or moved into care after 8 July 2015 (see the <a href="/uk/life/care-home-means-test">care home fees calculator</a>) do not lose the residence nil-rate band. The &ldquo;downsizing
           addition&rdquo; lets the estate claim the band against other assets left to direct descendants, up to the amount that would have been
           available on the old home.
         </p>

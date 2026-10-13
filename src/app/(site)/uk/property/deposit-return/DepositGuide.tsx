@@ -290,6 +290,9 @@ export default function DepositGuide() {
           <li>do a joint check-out with photos of each bedroom and the shared areas;</li>
           <li>if one person leaves early, settle their share privately with whoever replaces them.</li>
         </ul>
+        <p>
+          A lodger who lives with the owner is not a tenant, so their deposit does not have to be protected; see our <a href="/uk/property/rent-a-room">Rent a Room</a>{" "}calculator if you take one in.
+        </p>
       </GuideSection>
 
       <GuideSection id="pets" n={16} kicker="Common disputes" title="Pets, smoking and gardens">
@@ -308,7 +311,7 @@ export default function DepositGuide() {
         <p>
           Protect the deposit within 30 days, give the prescribed information, and keep a detailed, photographed inventory signed at check-in.
           At the end, list each deduction with evidence and the age of any item you are replacing. Claims that ignore wear and tear or ask for
-          new-for-old replacement are often reduced at adjudication, and an unprotected deposit can cost up to three times its value.
+          new-for-old replacement are often reduced at adjudication, and an unprotected deposit can cost up to three times its value. In England, carry out <a href="/uk/life/right-to-rent">right to rent checks</a>{" "}before the tenancy starts, and follow the section 13 process for any <a href="/uk/property/rent-increase">rent increase</a>.
         </p>
       </GuideSection>
 

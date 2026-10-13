@@ -97,7 +97,7 @@ export default function FederalGuide() {
       <GuideSection id="agi" n={4} kicker="Step 2" title="Adjustments and AGI">
         <p>
           Adjustments come off before your deduction, so they help whether or not you itemize. The main ones are half of self-employment tax,
-          deductible traditional IRA contributions (up to $7,500 in 2026, plus $1,100 at 50 or over), HSA contributions made outside payroll, student
+          deductible traditional IRA contributions (up to $7,500 in 2026, plus $1,100 at 50 or over), <a href="/us/savings/hsa-calculator">HSA contributions</a>{" "}made outside payroll, student
           loan interest (up to $2,500) and self-employed health insurance and retirement plans.
         </p>
         <p>
@@ -263,7 +263,7 @@ export default function FederalGuide() {
       <GuideSection id="self-employed" n={12} kicker="Business income" title="Self-employment income">
         <p>
           Freelance, 1099 and gig profit pays income tax and self-employment tax (15.3% on 92.35% of profit). Half of the self-employment tax is an
-          adjustment, and most sole proprietors also get the qualified business income (QBI) deduction of up to 20% of their business income.
+          adjustment, and most sole proprietors also get the qualified business income (QBI) deduction of up to 20% of their business income. The <a href="/us/taxes/1099-vs-w2-calculator">1099 vs W-2 calculator</a>{" "}compares a contract rate with a salaried job.
         </p>
         <WorkedExample
           title="Single, $50,000 freelance profit, no other income"

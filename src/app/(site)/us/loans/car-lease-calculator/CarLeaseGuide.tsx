@@ -124,7 +124,8 @@ export default function CarLeaseGuide() {
 
       <GuideSection id="money-factor" n={6} kicker="Rate" title="The money factor">
         <p>
-          The money factor is the lease&rsquo;s interest rate in disguise. Multiply it by 2,400 for an approximate APR. Like a loan rate, it depends on your credit score, and the
+          The money factor is the lease&rsquo;s interest rate in disguise. Multiply it by 2,400 for an approximate{" "}
+          <a href="/us/loans/apr-calculator">APR</a>. Like a loan rate, it depends on your credit score, and the
           leasing company publishes a base rate (the &ldquo;buy rate&rdquo;) for each model each month. Dealers are often allowed to add to it and keep the difference, so ask for
           the base money factor and check the figure on the contract.
         </p>

@@ -46,7 +46,7 @@ export default function SelfEmploymentGuide() {
       intro={
         <>
           When you work for yourself, nobody withholds tax from your pay. You pay both halves of Social Security and Medicare through self-employment
-          tax, plus income tax, and you pay it during the year in quarterly installments. This guide explains each piece with 2026 figures.
+          tax, plus income tax, and you pay it during the year in <a href="/us/taxes/estimated-tax-calculator">quarterly estimated tax</a>{" "}installments. This guide explains each piece with 2026 figures.
         </>
       }
       meta={["Tax year 2026", "12 min read", "Reviewed October 2026"]}
@@ -72,7 +72,7 @@ export default function SelfEmploymentGuide() {
 
       <GuideSection id="what" n={2} kicker="Basics" title="What self-employment tax is">
         <p>
-          Employees pay 7.65% of their pay in Social Security and Medicare, and their employer pays another 7.65%. When you are self-employed you are both,
+          Employees pay 7.65% of their pay in Social Security and Medicare, and their employer pays another 7.65% (the <a href="/us/taxes/payroll-tax-calculator">employer payroll tax calculator</a>{" "}shows that side). When you are self-employed you are both,
           so you pay the full 15.3%. It funds the same benefits: your Social Security retirement pension, disability cover and Medicare. Profit you
           report builds your Social Security record just as wages do.
         </p>
@@ -80,7 +80,7 @@ export default function SelfEmploymentGuide() {
 
       <GuideSection id="who" n={3} kicker="Who" title="Who pays it">
         <p>
-          Anyone with $400 or more of net earnings from self-employment: freelancers and contractors paid on a 1099-NEC, gig workers on delivery and
+          Anyone with $400 or more of net earnings from self-employment: freelancers and contractors paid on a 1099-NEC (the <a href="/us/taxes/1099-vs-w2-calculator">1099 vs W-2 calculator</a>{" "}compares contract work with a job), gig workers on delivery and
           ride-share apps, sole proprietors, single-member LLCs and partners in a business. It does not matter whether you also have a job, or whether
           you are already collecting Social Security.
         </p>

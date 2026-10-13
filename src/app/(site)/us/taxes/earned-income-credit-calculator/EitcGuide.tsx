@@ -290,7 +290,7 @@ export default function EitcGuide() {
 
       <GuideSection id="benefits" n={19} kicker="Benefits" title="The EITC and public benefits">
         <p>
-          Federal law says a tax refund, including the EITC, does not count as income for federal means-tested benefits such as SNAP, Medicaid, SSI or
+          Federal law says a <a href="/us/taxes/tax-refund-calculator">tax refund</a>, including the EITC, does not count as income for federal means-tested benefits such as SNAP, Medicaid, SSI or
           housing assistance, and does not count as a resource for 12 months after you get it. Saving part of the refund is therefore safe for these
           programs.
         </p>

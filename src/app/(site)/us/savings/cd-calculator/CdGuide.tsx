@@ -178,7 +178,7 @@ export default function CdGuide() {
           ]}
         />
         <p>
-          Federal rules set a minimum: money withdrawn within six days of the deposit must pay at least seven days&rsquo; simple interest, even on
+          Federal rules set a minimum: money withdrawn within six days of the deposit must pay at least seven days&rsquo; <a href="/us/loans/simple-interest-calculator">simple interest</a>, even on
           a no-penalty CD. If the penalty is more than the interest earned so far, the rest comes out of your deposit.
         </p>
       </GuideSection>
@@ -224,7 +224,7 @@ export default function CdGuide() {
           ]}
         />
         <p>
-          A high-yield savings account is better for an emergency fund you might need at short notice. A CD is better for money with a known date
+          A <a href="/us/savings/high-yield-savings-calculator">high-yield savings account</a>{" "}is better for an emergency fund you might need at short notice. A CD is better for money with a known date
           when you want to lock in today&rsquo;s rate. The average savings account paid about 0.37% in September 2026, which earns just $37 a
           year on {usd(10_000)}. The <a href="/us/savings/savings-goal-calculator">savings goal calculator</a>{" "}shows how fast regular deposits
           reach a target.

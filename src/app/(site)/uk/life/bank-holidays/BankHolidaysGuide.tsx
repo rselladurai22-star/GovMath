@@ -135,7 +135,7 @@ export default function BankHolidaysGuide() {
       <GuideSection id="rights" n={6} kicker="Employment law" title="Your rights at work">
         <ul>
           <li>There is no legal right to paid time off on bank holidays.</li>
-          <li>Almost all workers are entitled to 5.6 weeks of paid holiday a year, which can include bank holidays.</li>
+          <li>Almost all workers are entitled to 5.6 weeks of paid <a href="/uk/tax-and-salary/holiday-entitlement">holiday entitlement</a> a year, which can include bank holidays.</li>
           <li>Your contract says whether bank holidays are extra to your annual leave or part of it.</li>
           <li>Your employer can require you to work on a bank holiday if your contract allows it.</li>
           <li>Extra pay for working a bank holiday depends on your contract, not the law.</li>
@@ -143,6 +143,10 @@ export default function BankHolidaysGuide() {
         <Callout title="5.6 weeks for a full-time worker">
           For someone working 5 days a week, 5.6 weeks is 28 days. If bank holidays are included, that leaves 20 days to book.
         </Callout>
+        <p>
+          To see how many days are left until the next break, use the <a href="/everyday/countdown">countdown</a>, and to add days to a date,
+          for example to find your return date, use the <a href="/everyday/date-calculator">date calculator</a>.
+        </p>
       </GuideSection>
 
       <GuideSection id="part-time" n={7} kicker="Fairness" title="Part-time workers">

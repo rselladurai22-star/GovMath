@@ -372,7 +372,7 @@ export default function K401Guide() {
       <GuideSection id="beyond" n={18} kicker="Saving more" title="When you hit the limit">
         <p>
           If you max out your 401(k), the usual next steps are an IRA (a Roth IRA if your income allows, $7,500 in 2026 plus $1,100 from age 50),
-          a health savings account if you have a qualifying high-deductible health plan, and then a taxable brokerage account. Some plans also allow
+          a <a href="/us/savings/hsa-calculator">health savings account</a>{" "}if you have a qualifying high-deductible health plan, and then a taxable brokerage account. Some plans also allow
           after-tax contributions up to the $72,000 total limit, which can be converted to Roth.
         </p>
       </GuideSection>

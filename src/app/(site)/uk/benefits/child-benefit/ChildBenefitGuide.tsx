@@ -67,7 +67,7 @@ export default function ChildBenefitGuide() {
           <li>
             <strong>£17.90 a week</strong> for each other child. There is no limit on the number of children.
           </li>
-          <li>Paid every four weeks, usually straight into a bank account.</li>
+          <li>Paid every four weeks, usually straight into a bank account. Some parents put part of it into a <a href="/uk/investing/junior-isa">Junior ISA</a>{" "}to save for their child.</li>
           <li>If either parent&rsquo;s income is over £60,000, the High Income Child Benefit Charge takes some of it back.</li>
         </ul>
         <KeyStats

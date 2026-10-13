@@ -55,7 +55,7 @@ export default function RemortgageGuide() {
           <li>Moving £200,000 from a 7.5% standard variable rate to a 4.5% fix cuts payments by about <strong>£346 a month</strong> over 20 years.</li>
           <li>Over a 2-year deal, after a £999 fee, that leaves you about <strong>£10,900</strong> better off.</li>
           <li>Compare deals over their whole length, including fees, not just the rate.</li>
-          <li>Start looking up to 6 months before your current deal ends, so you never pay an early repayment charge or the variable rate.</li>
+          <li>Start looking up to 6 months before your current deal ends, so you never pay an <a href="/uk/property/early-repayment-charge">early repayment charge</a>{" "}or the variable rate.</li>
         </ul>
         <KeyStats
           items={[

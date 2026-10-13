@@ -49,8 +49,8 @@ export default function ProRataGuide() {
         <ul>
           <li>Most letting agents use the annual method: monthly rent × 12 ÷ 365 for a daily rate.</li>
           <li>Some divide the monthly rent by the number of days in that month.</li>
-          <li>Multiply the daily rate by the days you have the property, counting the first and last day.</li>
-          <li>Your tenancy agreement may say which method applies.</li>
+          <li>Multiply the daily rate by the days you have the property, counting the first and last day (a <a href="/everyday/date-calculator">date calculator</a> can count the days).</li>
+          <li>Your tenancy agreement may say which method applies. The same daily rate applies when a <a href="/uk/property/rent-increase">rent increase</a> starts mid-month.</li>
         </ul>
         <KeyStats
           items={[

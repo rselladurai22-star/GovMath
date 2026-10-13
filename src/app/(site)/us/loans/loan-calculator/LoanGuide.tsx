@@ -241,16 +241,21 @@ export default function LoanGuide() {
       <GuideSection id="types" n={15} kicker="Loan types" title="Kinds of fixed loans">
         <ul>
           <li>
-            <strong>Personal loans</strong>: unsecured, usually 2 to 7 years, used for anything from debt consolidation to home repairs.
+            <strong>Personal loans</strong>: unsecured, usually 2 to 7 years, used for anything from debt consolidation to home repairs. See our{" "}
+            <a href="/us/loans/personal-loan-calculator">personal loan calculator</a>.
           </li>
           <li>
-            <strong>Auto loans</strong>: secured on the car, so rates are lower.
+            <strong>Auto loans</strong>: secured on the car, so rates are lower. If you are weighing a{" "}
+            <a href="/us/loans/car-lease-calculator">car lease</a>{" "}instead, compare the total cost.
           </li>
           <li>
             <strong>Student loans</strong>: federal loans have fixed rates set each year; private loans vary. See our <a href="/us/loans/student-loan-calculator">student loan calculator</a>.
           </li>
           <li>
             <strong>Mortgages</strong>: the same formula over 15 to 30 years. Use our <a href="/us/housing/mortgage-calculator">mortgage calculator</a>{" "}to add taxes and insurance.
+          </li>
+          <li>
+            <strong>Business loans</strong>: term loans and SBA loans follow the same math, often with extra fees. Try our <a href="/us/loans/business-loan-calculator">business loan calculator</a>.
           </li>
         </ul>
       </GuideSection>

@@ -74,7 +74,8 @@ export default function HourlyPaycheckGuide() {
         <p>
           A full-time year is 2,080 hours (40 × 52). At $20 an hour that is $41,600. Use the{" "}
           <a href="/us/taxes/salary-to-hourly">salary to hourly calculator</a>{" "}to compare an hourly job with a salaried one, and the{" "}
-          <a href="/everyday/timesheet-decimal">timesheet calculator</a>{" "}to add up a week of start and finish times.
+          <a href="/everyday/timesheet-decimal">timesheet calculator</a>{" "}to add up a week of start and finish times. Offered a new rate? The{" "}
+          <a href="/us/taxes/raise-calculator">raise calculator</a>{" "}shows what it adds to your yearly pay.
         </p>
       </GuideSection>
 

@@ -201,7 +201,8 @@ export default function DebtPayoffGuide() {
 
       <GuideSection id="list" n={11} kicker="Getting started" title="Listing your debts">
         <p>
-          Gather your latest statements and write down each balance, APR and minimum payment. Include credit cards, store cards, personal loans,
+          Gather your latest statements and write down each balance, APR and minimum payment. Include credit cards, store cards,{" "}
+          <a href="/us/loans/personal-loan-calculator">personal loans</a>,
           car loans, medical bills on payment plans and private student loans. Pull your free credit reports at AnnualCreditReport.com to check you
           have not missed any accounts. Leave out your mortgage: it usually has a low rate and is best paid on schedule.
         </p>
@@ -234,7 +235,8 @@ export default function DebtPayoffGuide() {
 
       <GuideSection id="emergency" n={15} kicker="Safety" title="Emergency savings first">
         <p>
-          Without some cash set aside, the next car repair goes back on a card. Many advisers suggest a starter emergency fund of about $1,000
+          Without some cash set aside, the next car repair goes back on a card. Many advisers suggest a starter{" "}
+          <a href="/us/savings/emergency-fund-calculator">emergency fund</a>{" "}of about $1,000
           or one month of expenses before attacking debt hard, and capturing any 401(k) employer match, which is an instant return.
         </p>
       </GuideSection>

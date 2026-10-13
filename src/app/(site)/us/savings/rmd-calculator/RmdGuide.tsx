@@ -297,7 +297,7 @@ export default function RmdGuide() {
             <strong>Spending traditional money first</strong>{" "}in your 60s while delaying Social Security, which also raises your guaranteed income.
           </li>
           <li>
-            <strong>A QLAC</strong>{" "}(qualifying longevity annuity contract): money used to buy one is left out of the RMD balance until payments start, by
+            <strong>A QLAC</strong>{" "}(qualifying longevity <a href="/us/savings/annuity-calculator">annuity</a>{" "}contract): money used to buy one is left out of the RMD balance until payments start, by
             85 at the latest.
           </li>
           <li>
@@ -310,7 +310,7 @@ export default function RmdGuide() {
         <p>
           You can take the RMD in one amount or in pieces, at any time in the year. Taking it in December leaves the money invested longer, which the
           calculator assumes. Monthly withdrawals work like a paycheck. Either way, don&rsquo;t leave it to the last week of December, when providers are
-          busy. If you don&rsquo;t need the money, you can reinvest it in a taxable account, or in a Roth IRA if you have earned income.
+          busy. If the RMD is less than you need, our <a href="/us/savings/retirement-withdrawal-calculator">retirement withdrawal calculator</a>{" "}shows how long your savings last at a given withdrawal rate. If you don&rsquo;t need the money, you can reinvest it in a taxable account, or in a Roth IRA if you have earned income.
         </p>
       </GuideSection>
 

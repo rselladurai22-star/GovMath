@@ -141,7 +141,7 @@ export default function SalesTaxGuide() {
           <li>Services such as haircuts or repairs are taxed in some states and not in others.</li>
         </ul>
         <Callout title="Coupons and discounts">
-          A store discount usually lowers the taxable price. A manufacturer&rsquo;s coupon, which the store is paid back for, is often taxed on the full
+          A <a href="/everyday/discount-calculator">store discount</a>{" "}usually lowers the taxable price. A manufacturer&rsquo;s coupon, which the store is paid back for, is often taxed on the full
           price. Rules vary by state.
         </Callout>
       </GuideSection>

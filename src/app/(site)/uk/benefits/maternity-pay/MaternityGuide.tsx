@@ -97,6 +97,10 @@ export default function MaternityGuide() {
       </GuideSection>
 
       <GuideSection id="eligibility" n={3} kicker="Eligibility" title="Who qualifies for SMP">
+        <p>
+          If you are <a href="/everyday/ovulation-calculator">planning a pregnancy</a>, these rules are worth checking early, because they count back from the week your
+          baby is due. An estimated <a href="/everyday/pregnancy-due-date">due date</a>{" "}tells you when the qualifying week falls.
+        </p>
         <p>To get SMP you must:</p>
         <ul>
           <li>be an employee, not self-employed or a worker paid through an agency without an employment contract;</li>

@@ -143,7 +143,8 @@ export default function PropertyTaxGuide() {
         </p>
         <p>
           A state figure is an average. Rates inside a state differ by county, city and school district, sometimes by a factor of two or more. Use your own bill or the
-          county&rsquo;s published rate when you have it.
+          county&rsquo;s published rate when you have it. Property tax is a yearly bill on the home itself, not the federal{" "}
+          <a href="/us/taxes/estate-tax-calculator">estate tax</a>{" "}that can apply to a large estate when the owner dies.
         </p>
       </GuideSection>
 

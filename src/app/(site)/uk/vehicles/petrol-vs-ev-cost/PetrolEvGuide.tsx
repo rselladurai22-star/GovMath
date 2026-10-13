@@ -150,7 +150,8 @@ export default function PetrolEvGuide() {
       <GuideSection id="purchase" n={7} kicker="Buying" title="Purchase price and resale value">
         <p>
           The price gap between electric and petrol cars has narrowed, and used electric cars have become much cheaper. If you can buy an
-          electric car for the same price as the petrol one, it is £3,283 cheaper over six years in the example.
+          electric car for the same price as the petrol one, it is £3,283 cheaper over six years in the example. If you are paying monthly, compare PCP and HP deals with the{" "}
+          <a href="/uk/vehicles/car-finance">car finance calculator</a>.
         </p>
         <p>
           Resale values for electric cars have been less predictable than for petrol cars, as battery technology and new models move quickly.

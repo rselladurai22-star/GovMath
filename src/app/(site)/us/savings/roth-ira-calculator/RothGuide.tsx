@@ -81,7 +81,7 @@ export default function RothGuide() {
         </p>
         <p>
           That makes it very different from a regular brokerage account, where you pay tax on dividends each year and on gains when you sell, and
-          from a traditional IRA, where you may get a deduction now but pay income tax on every dollar you take out.
+          from a <a href="/us/savings/ira-calculator">traditional IRA</a>, where you may get a deduction now but pay income tax on every dollar you take out.
         </p>
       </GuideSection>
 

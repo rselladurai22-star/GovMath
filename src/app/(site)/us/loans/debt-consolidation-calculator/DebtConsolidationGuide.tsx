@@ -198,7 +198,8 @@ export default function DebtConsolidationGuide() {
 
       <GuideSection id="home" n={12} kicker="Options" title="Home equity and 401(k) loans">
         <p>
-          A home equity loan or line of credit usually has a lower rate, but it turns unsecured card debt into debt secured on your home. The CFPB warns that if you cannot repay,
+          A <a href="/us/housing/home-equity-loan-calculator">home equity loan</a>{" "}or{" "}
+          <a href="/us/housing/heloc-calculator">line of credit (HELOC)</a>{" "}usually has a lower rate, but it turns unsecured card debt into debt secured on your home. The CFPB warns that if you cannot repay,
           you could lose the home. A 401(k) loan avoids a credit check but takes money out of the market, and if you leave your job the balance can become due quickly or be
           taxed as a withdrawal. Both are big steps for card debt.
         </p>

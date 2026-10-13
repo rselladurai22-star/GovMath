@@ -70,7 +70,8 @@ export default function NetWorthGuide() {
         <p>
           Your net worth is what would be left if you sold everything you own and paid off every debt. It is a snapshot of your balance sheet on one
           day. Income tells you how much flows in each year; net worth tells you how much you have kept. A high earner who spends everything can have a
-          lower net worth than a modest earner who has saved steadily for decades.
+          lower net worth than a modest earner who has saved steadily for decades. A very large net worth also matters at death: only estates above
+          the federal exemption owe <a href="/us/taxes/estate-tax-calculator">estate tax</a>.
         </p>
       </GuideSection>
 
@@ -96,7 +97,7 @@ export default function NetWorthGuide() {
         <ul>
           <li><strong>Cash:</strong>{" "}checking, savings, money market accounts and CDs at today&rsquo;s balance.</li>
           <li><strong>Retirement accounts:</strong>{" "}401(k), 403(b), IRAs and HSAs at today&rsquo;s balance. Unvested employer contributions don&rsquo;t count yet.</li>
-          <li><strong>Investments:</strong>{" "}brokerage accounts at market value, plus 529 plans if you count them as yours.</li>
+          <li><strong>Investments:</strong>{" "}brokerage accounts at market value, plus 529 plans if you count them as yours. Count reinvested <a href="/us/savings/dividend-calculator">dividends</a>{" "}in the balance, not as extra income.</li>
           <li><strong>Home and other property:</strong>{" "}what it would sell for now. Recent sales of similar homes nearby are a better guide than online estimates.</li>
           <li><strong>Vehicles:</strong>{" "}the private-party value, which falls every year. A new car can lose a fifth or more of its value in the first year.</li>
           <li><strong>Other assets:</strong>{" "}a business stake, cash-value life insurance or money owed to you. Leave out furniture, clothes and electronics, which sell for little.</li>
@@ -308,7 +309,7 @@ export default function NetWorthGuide() {
       <GuideSection id="planning" n={19} kicker="Uses" title="Using net worth in planning">
         <p>
           Net worth is the starting point for most bigger questions. Lenders look at assets when you apply for a mortgage. Retirement plans start from
-          the savings you already have, and a <a href="/us/savings/fire-calculator">FIRE</a>{" "}plan tracks invested assets against a target. Estate
+          the savings you already have, and a FIRE plan tracks invested assets against a target. Estate
           planning starts from what you own and owe. Breaking the figure down, as the calculator does, shows where to focus: building cash if liquid net
           worth is negative, paying down high-interest debt if the debt-to-asset ratio is high, or investing more if most of your wealth is in your home.
         </p>

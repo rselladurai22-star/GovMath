@@ -297,7 +297,8 @@ export default function DtiGuide() {
           Mortgage lenders publish their limits; most car and personal loan lenders do not. Many still check DTI, and a high ratio can mean a smaller loan
           or a higher rate. Because the new payment is added to your existing debts, it helps to run the numbers before you shop: add the expected
           payment to your other debts and divide by your gross monthly income. If a new car payment would push you over a mortgage limit you hope to meet
-          within a year or two, it may be worth waiting.
+          within a year or two, it may be worth waiting. The{" "}
+          <a href="/us/loans/car-affordability-calculator">car affordability calculator</a>{" "}shows how much car you can afford on your income.
         </p>
       </GuideSection>
 

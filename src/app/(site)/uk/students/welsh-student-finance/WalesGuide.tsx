@@ -176,7 +176,8 @@ export default function WalesGuide() {
           Welsh students&rsquo; Tuition Fee and Maintenance Loans are Plan 2 loans, even for courses starting after 2023. You repay 9% of income over
           £29,385 a year from the April after you leave, through your payslip, and anything left is written off 30 years later. On £32,000 you would
           repay £235 a year, about £20 a month. Interest is RPI plus up to 3% depending on income, capped at 6% from September 2026. See the{" "}
-          <a href="/uk/students/plan-2-student-loan">Plan 2 calculator</a>.
+          <a href="/uk/students/plan-2-student-loan">Plan 2 calculator</a>. Students from England on the same courses repay on a{" "}
+          <a href="/uk/students/plan-5-student-loan">Plan 5 loan</a> instead.
         </p>
       </GuideSection>
 

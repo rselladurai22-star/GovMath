@@ -257,7 +257,7 @@ export default function InflationGuide() {
       <GuideSection id="savings" n={14} kicker="Real returns" title="Inflation and your savings">
         <p>
           What matters is your return after inflation, the real return. A savings account paying 1% when inflation is 3% loses about 2% of its
-          buying power a year. Cash is right for emergencies and short-term goals, but money for goals decades away usually needs to be invested
+          buying power a year. Cash is right for emergencies and short-term goals (a <a href="/us/savings/high-yield-savings-calculator">high-yield savings</a>{" "}account keeps the gap small), but money for goals decades away usually needs to be invested
           to stay ahead. The <a href="/us/savings/investment-calculator">investment calculator</a>{" "}shows any balance in today&rsquo;s dollars.
         </p>
         <Callout tone="warn" title="Tax makes it harder">

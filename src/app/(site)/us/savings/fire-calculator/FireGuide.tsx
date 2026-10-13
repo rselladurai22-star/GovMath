@@ -72,7 +72,7 @@ export default function FireGuide() {
 
       <GuideSection id="what" n={2} kicker="Basics" title="What FIRE means">
         <p>
-          Financial independence means your investments can pay your living costs for the rest of your life, so work becomes a choice. Retiring early
+          Financial independence means your investments can pay your living costs for the rest of your life, so work becomes a choice. Tracking your <a href="/us/savings/net-worth-calculator">net worth</a>{" "}each year shows how close you are. Retiring early
           is what many people do with that freedom, but plenty keep working, switch to work they enjoy or go part-time. The movement grew online in
           the 2010s, but the maths behind it is the same maths that sits behind any <a href="/us/savings/retirement-calculator">retirement plan</a>: how
           much you spend, how much you save and how fast your money grows.

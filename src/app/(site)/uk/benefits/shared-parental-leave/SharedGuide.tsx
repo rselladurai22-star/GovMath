@@ -294,7 +294,7 @@ export default function SharedGuide() {
         <ul>
           <li>
             <strong>Money:</strong> the partner often earns more and would drop to £194.32 a week, while the mother may have
-            enhanced pay.
+            enhanced pay. Weighing this against the <a href="/uk/benefits/baby-cost-calculator">cost of a baby</a>{" "}in the first year helps you plan.
           </li>
           <li>
             <strong>Complexity:</strong> the notices and declarations put people off, especially when plans are uncertain.

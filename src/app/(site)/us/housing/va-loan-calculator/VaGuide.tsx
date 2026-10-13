@@ -192,7 +192,8 @@ export default function VaGuide() {
         />
         <p>
           Putting 5% down cuts the fee by {usd(2_900)} and the payment by {usd(156)} a month. For someone using the benefit a second time, the saving is bigger: the fee drops from
-          3.3% ({usd(13_200)}) to 1.5%. Whether it is worth it depends on what else that cash could do for you.
+          3.3% ({usd(13_200)}) to 1.5%. Whether it is worth it depends on what else that cash could do for you. The{" "}
+          <a href="/us/housing/down-payment-calculator">down payment calculator</a>{" "}shows how long saving it would take.
         </p>
       </GuideSection>
 

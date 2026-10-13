@@ -171,10 +171,11 @@ export default function SaleGuide() {
       <GuideSection id="payoff" n={9} kicker="Mortgage" title="Your mortgage payoff">
         <p>
           The payoff amount is not the balance on your statement. It adds the interest from your last payment to the payoff date and any fees, so ask your servicer for a payoff
-          quote dated near closing. A home equity loan or HELOC must be paid off too. Few home loans have a prepayment penalty today, but check yours.
+          quote dated near closing; the <a href="/us/housing/mortgage-payoff-calculator">mortgage payoff calculator</a>{" "}shows how extra payments shrink it before you list. A home equity loan or HELOC must be paid off too. Few home loans have a prepayment penalty today, but check yours.
         </p>
         <p>
-          Our <a href="/us/housing/mortgage-calculator">mortgage calculator</a>{" "}shows how the balance falls over time, which helps when you are deciding when to sell.
+          Our <a href="/us/housing/mortgage-calculator">mortgage calculator</a>{" "}shows how the balance falls over time, which helps when you are deciding when to sell. Selling an inherited home? Its tax basis is usually stepped up to its value at the owner&rsquo;s death, and the{" "}
+          <a href="/us/taxes/estate-tax-calculator">estate tax calculator</a>{" "}shows whether the estate itself owes federal tax.
         </p>
       </GuideSection>
 

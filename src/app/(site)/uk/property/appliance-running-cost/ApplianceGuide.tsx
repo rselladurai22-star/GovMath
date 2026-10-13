@@ -225,7 +225,7 @@ export default function ApplianceGuide() {
         />
         <p>
           That is not the whole story. Central heating warms every room with a radiator, while a heater warms one. If you only need one room warm for a few
-          hours, a heater can cost less than heating the whole house. Choose &ldquo;Gas central heating&rdquo; in the calculator to compare your own heater.
+          hours, a heater can cost less than heating the whole house. Choose &ldquo;Gas central heating&rdquo; in the calculator to compare your own heater. If you are thinking of replacing the boiler, compare running costs in our <a href="/uk/property/heat-pump-vs-boiler">heat pump</a>{" "}calculator, and see how <a href="/uk/property/solar-panel-calculator">solar panels</a>{" "}could cut the cost of each unit.
         </p>
       </GuideSection>
 

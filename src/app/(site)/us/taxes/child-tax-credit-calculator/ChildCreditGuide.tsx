@@ -285,7 +285,7 @@ export default function ChildCreditGuide() {
         <p>
           The PATH Act stops the IRS from issuing refunds that include the additional child tax credit or the earned income credit before mid-February. The
           IRS uses the time to check for fraud. If you file online early with direct deposit and there are no problems, most of these refunds arrive by early
-          March 2027.
+          March 2027. The <a href="/us/taxes/tax-refund-calculator">tax refund calculator</a>{" "}estimates your whole refund.
         </p>
       </GuideSection>
 
