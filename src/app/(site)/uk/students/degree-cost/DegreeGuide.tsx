@@ -226,7 +226,7 @@ export default function DegreeGuide() {
           Scottish students at Scottish universities pay no tuition fees: see the <a href="/uk/students/saas-funding">SAAS funding calculator</a>.
           Welsh students get a non-repayable grant of at least £1,020 alongside their loan: see the{" "}
           <a href="/uk/students/welsh-student-finance">Welsh student finance calculator</a>. Northern Ireland has lower fees at its own universities
-          and <a href="/uk/students/plan-1-student-loan">Plan 1</a>{" "}loans.
+          and <a href="/uk/students/student-loan-repayment">Plan 1</a>{" "}loans.
         </p>
       </GuideSection>
 
@@ -251,7 +251,7 @@ export default function DegreeGuide() {
         <p>
           A Postgraduate Loan of over £12,000 can help pay for a master&rsquo;s course. It is repaid at 6% of income over £21,000, on top of your
           undergraduate repayments, so a graduate with both pays 15% of income above the thresholds. See the{" "}
-          <a href="/uk/students/postgrad-loan">Postgraduate Loan calculator</a>.
+          <a href="/uk/students/student-loan-repayment">student loan repayment calculator</a>.
         </p>
       </GuideSection>
 

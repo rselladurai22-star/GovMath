@@ -220,7 +220,7 @@ export default function ScottishGuide() {
       <GuideSection id="student-loans" n={8} kicker="Student loans" title="Plan 4 student loans">
         <p>
           Students who were living in Scotland when they started a course funded by the Student Awards Agency Scotland
-          are usually on <strong><a href="/uk/students/plan-4-student-loan">Plan 4</a></strong>. Repayments are 9% of income above £33,795 a year in 2026/27, the
+          are usually on <strong><a href="/uk/students/student-loan-repayment">Plan 4</a></strong>. Repayments are 9% of income above £33,795 a year in 2026/27, the
           highest threshold of any plan. Postgraduate loans for Scottish students are also usually on Plan 4.
         </p>
         <p>

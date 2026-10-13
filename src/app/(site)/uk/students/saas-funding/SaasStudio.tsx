@@ -122,7 +122,7 @@ export default function SaasStudio({ query }: { query: Query }) {
       <ResultCard title="Paying it back">
         <Callout title={`Plan 4: ${gbp(repay.monthly)} a month on ${gbp(v.salary)}`}>
           Scottish student loans are Plan 4. You repay 9% of income over £33,795 a year, from the April after you leave your course, and anything left is written off after 30 years. Interest is the lower of RPI
-          or the Bank of England base rate plus 1%. See the <a href="/uk/students/plan-4-student-loan">Plan 4 calculator</a>.
+          or the Bank of England base rate plus 1%. See the <a href="/uk/students/student-loan-repayment">student loan repayment calculator</a>.
         </Callout>
         {r.loan > 0 && (
           <Callout title="You do not have to take it all">

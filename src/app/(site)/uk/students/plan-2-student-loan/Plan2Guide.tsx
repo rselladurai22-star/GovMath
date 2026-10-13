@@ -77,8 +77,8 @@ export default function Plan2Guide() {
           <li>Students on Advanced Learner Loans.</li>
         </ul>
         <p>
-          English students starting from August 2023 are on Plan 5. Scottish students are on <a href="/uk/students/plan-4-student-loan">Plan 4</a>, and older English and Welsh loans and
-          Northern Ireland loans are on <a href="/uk/students/plan-1-student-loan">Plan 1</a>. Your online Student Loans Company account shows your plan.
+          English students starting from August 2023 are on Plan 5. Scottish students are on <a href="/uk/students/student-loan-repayment">Plan 4</a>, and older English and Welsh loans and
+          Northern Ireland loans are on <a href="/uk/students/student-loan-repayment">Plan 1</a>. Your online Student Loans Company account shows your plan.
         </p>
       </GuideSection>
 
@@ -319,7 +319,7 @@ export default function Plan2Guide() {
           <li>Multiply what is left by 9%. That is your yearly repayment.</li>
           <li>Divide by 12 for a monthly figure.</li>
         </ol>
-        <p>The calculator does this for you, adds any <a href="/uk/students/postgrad-loan">Postgraduate Loan</a>, and projects the balance over the years ahead.</p>
+        <p>The calculator does this for you, adds any <a href="/uk/students/student-loan-repayment">Postgraduate Loan</a>, and projects the balance over the years ahead.</p>
       </GuideSection>
 
       <GuideSection id="why-grows" n={23} kicker="Balance" title="Why your balance keeps growing">

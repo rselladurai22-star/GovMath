@@ -968,7 +968,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <h3>What if I have a Plan 2 loan and a Postgraduate Loan?</h3>
         <p>
           You repay both at once: 9% above the Plan 2 threshold and 6% above £21,000 for the Postgraduate Loan. See the{" "}
-          <Link href="/uk/students/postgrad-loan">Postgraduate Loan calculator</Link>.
+          <Link href="/uk/students/student-loan-repayment">student loan repayment calculator</Link>.
         </p>
         <h3>What if I move abroad?</h3>
         <p>

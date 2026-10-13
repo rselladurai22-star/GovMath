@@ -75,7 +75,7 @@ export default function Plan5Guide() {
         <p>
           Students from England who started an undergraduate course, or a Postgraduate Certificate in Education, on or after 1 August 2023 are
           on Plan 5. Students who started before then stay on <a href="/uk/students/plan-2-student-loan">Plan 2</a>, even if they begin a new course later. Welsh students remain on Plan 2,
-          Scottish students on <a href="/uk/students/plan-4-student-loan">Plan 4</a>{" "}and Northern Irish students on Plan 1.
+          Scottish students on <a href="/uk/students/student-loan-repayment">Plan 4</a>{" "}and Northern Irish students on Plan 1.
         </p>
       </GuideSection>
 
@@ -256,54 +256,67 @@ export default function Plan5Guide() {
       </GuideSection>
 
       <GuideSection id="income" n={20} kicker="Income" title="What counts as income">
+        <p>
+          Plan 5 deductions are worked out from earnings, and the rules are broadly the same as for income tax, with a few twists worth
+          knowing before your first payslip arrives.
+        </p>
         <ul>
-          <li><strong>Counts:</strong> salary, wages, overtime, bonuses and commission, and self-employed profits.</li>
-          <li><strong>Counts if over £2,000 a year in total:</strong> unearned income such as savings interest, dividends and rent, reported through Self Assessment.</li>
-          <li><strong>Does not count:</strong> benefits in kind such as a company car, pension income in most cases, and salary given up through salary sacrifice.</li>
+          <li><strong>Included:</strong> wages, salary, overtime, commission, bonuses and the profits you make from self-employment.</li>
+          <li><strong>Included only above £2,000 in the year:</strong> untaxed extras such as bank interest, share dividends and rental profit, which reach HMRC through a tax return.</li>
+          <li><strong>Left out:</strong> perks such as a company car, most pension income, and any pay you swap for a benefit through a salary sacrifice scheme.</li>
         </ul>
-        <p>If you have two jobs, each employer looks only at its own pay, so you may repay less through PAYE and the rest through Self Assessment.</p>
+        <p>
+          Hold two jobs at once and each payroll judges only its own wages against the threshold. That can leave too little collected at
+          source, with the gap settled later on a Self Assessment return.
+        </p>
       </GuideSection>
 
       <GuideSection id="thresholds" n={21} kicker="Pay periods" title="Thresholds by pay period">
         <DataTable
           caption="Plan 5 threshold, 2026/27"
-          head={["Paid", "Threshold"]}
+          head={["Pay frequency", "Threshold"]}
           numeric={[1]}
           rows={[
-            ["Yearly", "£25,000"],
-            ["Monthly", "£2,083.33"],
-            ["Weekly", "about £480"],
+            ["Per year", "£25,000"],
+            ["Per month", "£2,083.33"],
+            ["Per week", "£480.77"],
           ]}
         />
         <p>
-          Your employer compares the pay in each period with these figures and takes 9% of anything above them. If your pay is uneven, the
-          monthly amounts can vary a lot even though the yearly total is what matters.
+          Payroll checks every pay day on its own, setting your gross pay for that period against the matching line above and deducting 9% of
+          the excess. A month with a bonus therefore shows a bigger deduction than a quiet month, though over a whole year it is total
+          earnings that decide whether you should have paid at all.
         </p>
       </GuideSection>
 
       <GuideSection id="first-year" n={22} kicker="Example" title="Your first year in numbers">
         <WorkedExample
-          title="Balance £50,000, salary £30,000"
+          title="£50,000 owed, earning £30,000"
           steps={[
-            { label: "Interest added this year at 4.1%", value: "£2,050" },
-            { label: "Repaid through your pay", value: "£450" },
+            { label: "Interest charged over the year at 4.1%", value: "£2,050" },
+            { label: "Collected from your wages", value: "£450" },
           ]}
-          total={{ label: "Change in the balance", value: "Rises" }}
+          total={{ label: "Effect on what you owe", value: "Goes up" }}
         />
         <p>
-          When interest is more than your repayments, the balance grows even though you are paying. That is normal for income-contingent loans
-          and does not change what you pay each month, which depends only on your income.
+          Seeing the statement climb while money leaves every payslip can be unsettling, but it is how these loans are designed. Your monthly
+          deduction is fixed by earnings, not by the size of the debt, so a rising balance does not mean a rising bill.
         </p>
       </GuideSection>
 
       <GuideSection id="diy" n={23} kicker="How to" title="Working it out yourself">
+        <p>A pen and paper are enough to check a payslip:</p>
         <ol>
-          <li>Take your yearly income before tax.</li>
-          <li>Subtract the Plan 5 threshold of £25,000.</li>
-          <li>Multiply what is left by 9%. That is your yearly repayment.</li>
-          <li>Divide by 12 for a monthly figure.</li>
+          <li>Start from gross pay for the year, before any tax comes off.</li>
+          <li>Knock off £25,000, the Plan 5 starting point.</li>
+          <li>Take 9% of the remainder to get the annual deduction.</li>
+          <li>Split that across 12 months to see the monthly figure.</li>
         </ol>
-        <p>The calculator does this for you, adds any <a href="/uk/students/postgrad-loan">Postgraduate Loan</a>, and projects the balance over the years ahead.</p>
+        <p>
+          Our calculator runs the same steps instantly, can stack a{" "}
+          <a href="/uk/students/student-loan-repayment">Postgraduate Loan</a>{" "}
+          on top, and follows your balance year by year until it is cleared or cancelled.
+        </p>
       </GuideSection>
 
       <GuideSection id="lifetime" n={24} kicker="Long term" title="What 40 years of repayments means">

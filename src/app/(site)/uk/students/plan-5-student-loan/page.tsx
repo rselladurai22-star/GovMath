@@ -27,13 +27,13 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Will the threshold go up?", a: "It is £25,000 until April 2027 and is then due to rise each year with RPI." },
   { q: "Do part-time jobs while studying count?", a: "No. Repayments only start from the April after you leave your course." },
   { q: "What if I leave my course early?", a: "Repayments can start from the April after you leave, if you earn over the threshold." },
-  { q: "Do I need to tell HMRC about my loan?", a: "Not if you are employed: tell your employer your plan type when you start, often using a starter checklist, and they deduct repayments. If you file Self Assessment, tick the student loan box on your return." },
+  { q: "Do I have to contact HMRC to start repaying?", a: "No. Give a new employer your plan type (Plan 5) on their starter form and payroll takes care of it. Only if you complete a tax return do you need to declare the loan yourself, in the student loan section." },
   { q: "Is Plan 5 interest higher than Plan 2?", a: "No. Plan 5 charges RPI only, 4.1% from September 2026, while Plan 2 charges up to 6% this year. But Plan 5 is repaid from a lower threshold for longer." },
 ];
 
 export default async function Plan5Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/students/plan-2-student-loan", "/uk/students/maintenance-loan", "/uk/students/postgrad-loan", "/uk/tax-and-salary/salary-calculator"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/students/plan-2-student-loan", "/uk/students/maintenance-loan", "/uk/students/student-loan-repayment", "/uk/tax-and-salary/salary-calculator"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

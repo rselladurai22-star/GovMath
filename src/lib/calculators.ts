@@ -316,11 +316,9 @@ export const CALCULATORS: Calculator[] = [
   live("car-finance", "vehicles", "Car Finance Calculator", "PCP and hire purchase payments and total cost."),
 
   // ── Students ───────────────────────────────────────────────────────────
-  live("plan-1-student-loan", "students", "Plan 1 Student Loan Calculator", "Pre-2012 loan repayments."),
+  live("student-loan-repayment", "students", "Student Loan Repayment Calculator", "Repayments, interest and write-off for Plans 1, 2, 4, 5 and Postgraduate."),
   live("plan-2-student-loan", "students", "Plan 2 Student Loan Calculator", "Post-2012 loan repayments.", true),
-  live("plan-4-student-loan", "students", "Plan 4 Student Loan Calculator", "Scottish student loan repayments."),
   live("plan-5-student-loan", "students", "Plan 5 Student Loan Calculator", "Post-2023 loans with the 40-year write-off."),
-  live("postgrad-loan", "students", "Postgraduate Loan Calculator", "Repayments on a Master's or Doctoral loan."),
   live("maintenance-loan", "students", "Maintenance Loan Estimator", "Support based on household income.", true),
   live("degree-cost", "students", "Cost of a Degree Calculator", "Fees, loans, interest and what you will really repay."),
   live("saas-funding", "students", "SAAS Funding Calculator", "Scottish bursary and student loan by household income."),

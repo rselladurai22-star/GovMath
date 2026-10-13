@@ -38,7 +38,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function SaasPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/students/plan-4-student-loan", "/uk/students/student-budget", "/uk/students/degree-cost", "/uk/students/welsh-student-finance", "/uk/students/maintenance-loan", "/uk/students/student-council-tax"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/students/student-loan-repayment", "/uk/students/student-budget", "/uk/students/degree-cost", "/uk/students/welsh-student-finance", "/uk/students/maintenance-loan", "/uk/students/student-council-tax"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

@@ -3,10 +3,10 @@
 import { interestRate, PLANS_2026, projectLoan, repayments2026, type Plan } from "@/lib/students/loans";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
-import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
+import { AdvancedOptions, InputGroup, MoneyField, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
 import { gbp, gbpShort, percent, per } from "@/components/flagship/format";
-import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
+import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 const SCHEMA = {
   salary: num(35_000, 0, 10_000_000),
@@ -19,21 +19,41 @@ const SCHEMA = {
 };
 const ADVANCED = ["growth", "rpi", "yearsRepaying", "extra", "postgrad"] as const;
 
+const PLAN_OPTIONS: { value: Plan; label: string }[] = [
+  { value: "plan1", label: "Plan 1 (England/Wales before 2012, Northern Ireland)" },
+  { value: "plan2", label: "Plan 2 (England/Wales 2012 to 2023)" },
+  { value: "plan4", label: "Plan 4 (Scotland)" },
+  { value: "plan5", label: "Plan 5 (England from August 2023)" },
+  { value: "postgrad", label: "Postgraduate Loan" },
+];
+const CHOOSE_SCHEMA = { ...SCHEMA, plan: oneOf<Plan>("plan2", PLAN_OPTIONS.map((o) => o.value)) };
+/* With `choosePlan`, the page reads ?plan= on the server and passes that plan's
+   default salary and balance; the plan itself comes from the same query. */
+type LoanSchema = typeof CHOOSE_SCHEMA;
+
 // One schema per set of defaults, created once so its identity is stable between renders.
-const SCHEMAS = new Map<string, typeof SCHEMA>();
-function schemaFor(salary: number, balance: number): typeof SCHEMA {
-  const key = `${salary}:${balance}`;
+// Pages with a fixed plan get no "plan" key, so their shared links are unchanged.
+const SCHEMAS = new Map<string, LoanSchema>();
+function schemaFor(salary: number, balance: number, choose: boolean): LoanSchema {
+  const key = `${salary}:${balance}:${choose ? "choose" : ""}`;
   let sc = SCHEMAS.get(key);
   if (!sc) {
-    sc = { ...SCHEMA, salary: num(salary, 0, 10_000_000), balance: num(balance, 0, 1_000_000) };
+    const base = { ...SCHEMA, salary: num(salary, 0, 10_000_000), balance: num(balance, 0, 1_000_000) };
+    // The plan's default is always Plan 2, so any other plan stays in the address and shared links reopen on it.
+    sc = (choose ? { ...base, plan: CHOOSE_SCHEMA.plan } : base) as LoanSchema;
     SCHEMAS.set(key, sc);
   }
   return sc;
 }
 
-export default function LoanStudio({ query, plan, defaults }: { query: Query; plan: Plan; defaults?: { salary?: number; balance?: number } }) {
-  const st = useStudio(schemaFor(defaults?.salary ?? 35_000, defaults?.balance ?? 45_000), query);
+/**
+ * The student loan studio. With `choosePlan`, the visitor picks the plan from a
+ * dropdown (query key "plan"); `plan` and `defaults` only set the starting salary and balance.
+ */
+export default function LoanStudio({ query, plan: fixedPlan, defaults, choosePlan = false }: { query: Query; plan: Plan; defaults?: { salary?: number; balance?: number }; choosePlan?: boolean }) {
+  const st = useStudio(schemaFor(defaults?.salary ?? 35_000, defaults?.balance ?? 45_000, choosePlan), query);
   const v = st.values;
+  const plan: Plan = choosePlan ? v.plan : fixedPlan;
   const spec = PLANS_2026[plan];
   const plans: Plan[] = plan !== "postgrad" && v.postgrad ? [plan, "postgrad"] : [plan];
   const now = repayments2026({ salary: v.salary, plans });
@@ -58,6 +78,7 @@ export default function LoanStudio({ query, plan, defaults }: { query: Query; pl
       inputs={
         <>
           <InputGroup title="You">
+            {choosePlan && <SelectField label="Your loan plan" value={v.plan} onChange={st.bind("plan")} options={PLAN_OPTIONS} hint="Your Student Loans Company account shows your plan." />}
             <MoneyField label="Salary a year" value={v.salary} onChange={st.bind("salary")} hint="Before tax. Include other income if you file Self Assessment." />
             <MoneyField label="Loan balance" value={v.balance} onChange={st.bind("balance")} hint="From your Student Loans Company online account." />
           </InputGroup>
