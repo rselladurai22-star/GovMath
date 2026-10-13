@@ -152,7 +152,7 @@ export default function ReverseGuide() {
       <GuideSection id="student-loans" n={7} kicker="Student loans" title="Student loans">
         <p>
           Student loan repayments come out of your pay like a tax: 9% of income above your plan&rsquo;s threshold (6% for postgraduate loans).
-          For 2026/27 the thresholds are £26,900 for <a href="/uk/students/plan-1-student-loan">Plan 1</a>, £29,385 for Plan 2, £33,795 for Plan 4 and £25,000 for Plan 5.
+          For 2026/27 the thresholds are £26,900 for <a href="/uk/students/student-loan-repayment">Plan 1</a>, £29,385 for Plan 2, £33,795 for Plan 4 and £25,000 for Plan 5.
         </p>
         <p>
           With a <a href="/uk/students/plan-2-student-loan">Plan 2</a>{" "}loan, a take-home of £3,000 a month needs £47,358 rather than £45,112: over £2,200 more, because the loan takes 9p of

@@ -25,6 +25,18 @@ const EVERYDAY_MOVES: [string, string][] = [
 ];
 
 /**
+ * Plan 1, Plan 4 and Postgraduate loan pages merged into one student loan
+ * repayment calculator (October 2026): [old slug, plan]. The plan goes in the
+ * query so the calculator opens on it; Next adds any incoming query as well.
+ */
+const STUDENT_LOAN_MOVES: [string, string][] = [
+  ["plan-1-student-loan", "plan1"],
+  ["plan-4-student-loan", "plan4"],
+  ["postgrad-loan", "postgrad"],
+];
+const STUDENT_LOAN_PAGE = "/uk/students/student-loan-repayment";
+
+/**
  * While the fixed-amount pages are switched off (AMOUNT_PAGES_LIVE, until
  * AdSense approval), their addresses go to the matching calculator with a
  * temporary redirect instead of a 404, from both domains, so Google drops
@@ -104,6 +116,7 @@ const nextConfig: NextConfig = {
       ...AMOUNT_REDIRECTS,
       // The Everyday calculators (October 2026) left the UK's Everyday Life topic.
       ...EVERYDAY_MOVES.map(([from, to]) => ({ source: `/life/${from}`, has: [{ type: "host" as const, value: OLD_HOST }], destination: `${SITE}/everyday/${to}`, permanent: true })),
+      ...STUDENT_LOAN_MOVES.map(([from, plan]) => ({ source: `/students/${from}`, has: [{ type: "host" as const, value: OLD_HOST }], destination: `${SITE}${STUDENT_LOAN_PAGE}?plan=${plan}`, permanent: true })),
       // A topic's own page needs its own rule: on Vercel an empty :path* leaves
       // a trailing slash (/uk/benefits/), which would cost a second hop.
       { source: `/:topic(${UK_TOPICS})`, has: [{ type: "host", value: OLD_HOST }], destination: `${SITE}/uk/:topic`, permanent: true },
@@ -169,6 +182,10 @@ const nextConfig: NextConfig = {
       ...EVERYDAY_MOVES.flatMap(([from, to]) => [
         { source: `/uk/life/${from}`, destination: `/everyday/${to}`, permanent: true },
         { source: `/life/${from}`, destination: `/everyday/${to}`, permanent: true },
+      ]),
+      ...STUDENT_LOAN_MOVES.flatMap(([from, plan]) => [
+        { source: `/uk/students/${from}`, destination: `${STUDENT_LOAN_PAGE}?plan=${plan}`, permanent: true },
+        { source: `/students/${from}`, destination: `${STUDENT_LOAN_PAGE}?plan=${plan}`, permanent: true },
       ]),
       { source: `/:topic(${UK_TOPICS})`, destination: "/uk/:topic", permanent: true },
       { source: `/:topic(${UK_TOPICS})/:path*`, destination: "/uk/:topic/:path*", permanent: true },

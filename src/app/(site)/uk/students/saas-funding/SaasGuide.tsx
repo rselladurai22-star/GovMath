@@ -42,7 +42,7 @@ export default function SaasGuide() {
         <>
           Students from Scotland are funded by the Student Awards Agency Scotland (SAAS), not Student Finance England. Tuition at Scottish
           universities is free, and living costs are covered by a non-repayable bursary and a student loan, both based on your household
-          income. This guide explains the 2026/27 amounts, who counts as a young or independent student, and how a <a href="/uk/students/plan-4-student-loan">Plan 4</a>{" "}loan is repaid.
+          income. This guide explains the 2026/27 amounts, who counts as a young or independent student, and how a <a href="/uk/students/student-loan-repayment">Plan 4</a>{" "}loan is repaid.
         </>
       }
       meta={["2026/27 figures", "10 min read", "Reviewed October 2026"]}

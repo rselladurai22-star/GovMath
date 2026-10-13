@@ -32,7 +32,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function Plan2Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/students/plan-5-student-loan", "/uk/students/postgrad-loan", "/uk/students/plan-1-student-loan", "/uk/tax-and-salary/salary-calculator", "/uk/students/maintenance-loan", "/uk/students/student-council-tax"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/students/plan-5-student-loan", "/uk/students/student-loan-repayment", "/uk/students/student-loan-repayment", "/uk/tax-and-salary/salary-calculator", "/uk/students/maintenance-loan", "/uk/students/student-council-tax"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}
