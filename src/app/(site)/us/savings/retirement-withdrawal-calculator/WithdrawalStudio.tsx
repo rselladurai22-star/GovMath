@@ -114,7 +114,7 @@ export default function WithdrawalStudio({ query }: { query: Query }) {
           ) : (
             <>
               Taking <b>{v.pct}%</b> of the balance each year never empties the account, but income changes with the balance: <b>{usd(firstYear?.withdrawn ?? 0)}</b> in year 1
-              {lastIncome ? <> and <b>{usd(lastIncome.withdrawn)}</b> in year {lastIncome.year}, worth <b>{usd(lastIncome.realWithdrawn)}</b> in today&apos;s dollars</> : null}.
+              {lastIncome ? <> and <b>{usd(lastIncome.withdrawn)}</b> in year {lastIncome.year}, worth <b>{usd(lastIncome.realWithdrawn)}</b>{" "}in today&apos;s dollars</> : null}.
             </>
           )
         }
@@ -151,7 +151,7 @@ export default function WithdrawalStudio({ query }: { query: Query }) {
           initial={bal.length - 1}
           readout={(i) => (
             <>
-              End of year <b>{i}</b>: balance <b>{usd(bal[i] ?? 0)}</b>, worth <b>{usd(real[i] ?? 0)}</b> in today&apos;s dollars.
+              End of year <b>{i}</b>: balance <b>{usd(bal[i] ?? 0)}</b>, worth <b>{usd(real[i] ?? 0)}</b>{" "}in today&apos;s dollars.
             </>
           )}
         />
