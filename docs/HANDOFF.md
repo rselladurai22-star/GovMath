@@ -1,7 +1,7 @@
 # SumAtlas project memory (formerly GovMath)
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 11 October 2026 (**next 25 tools proposed, waiting for the owner's go-ahead, see Known loose ends**; salary and mortgage package forms use the shared form rows; every calculator page has the two-group page structure (tool + related sidebar, then guide); IndexNow live; 22 embeddable widgets; 25 high-demand UK and Everyday calculators; 75 US calculators with state income and property tax; sumatlas.com live with `/` redirecting to the visitor's country; the 187 fixed-amount pages switched off until AdSense approval, see **SEO**; Search Console API notes under **Search Console**; `docs/SEO-PLAN.md` has the off-site plan).
+Last updated: 13 October 2026 (**next 25 tools proposed, waiting for the owner's go-ahead, see Known loose ends**; the "Indus" calculator look on every calculator, see Design; IndexNow blocked with 403 on Bing's side, see **IndexNow**; salary and mortgage package forms use the shared form rows; every calculator page has the two-group page structure (tool + related sidebar, then guide); IndexNow live; 22 embeddable widgets; 25 high-demand UK and Everyday calculators; 75 US calculators with state income and property tax; sumatlas.com live with `/` redirecting to the visitor's country; the 187 fixed-amount pages switched off until AdSense approval, see **SEO**; Search Console API notes under **Search Console**; `docs/SEO-PLAN.md` has the off-site plan).
 
 ## Goal
 
@@ -206,6 +206,7 @@ The audit and the off-site plan are in `docs/SEO-PLAN.md`. Conventions now in th
 
 - Key file `public/6ced640de091072f47cd8d9872b710ab.txt` (public by design; keep the file name and content identical). `scripts/indexnow.mjs` posts changed pages to `api.indexnow.org` (Bing, Yandex, Seznam, Naver…; Bing feeds ChatGPT search and Copilot): by default the sitemap pages whose `lastmod` is within 3 days; `--days N`, `--all`, or explicit paths. HTTP 200/202 = accepted, 403 = key file not live, 422 = wrong host.
 - `.github/workflows/indexnow.yml` runs it automatically after every successful **Production** deployment that Vercel reports to GitHub (`deployment_status`). Check the Actions tab if pings stop. Google does not use IndexNow; it keeps reading the sitemap.
+- **Status (13 October 2026):** every submission since sumatlas.com went live returns **403 UserForbiddedToAccessSite**, although the key file is live (200, text/plain, correct content, reachable with the bingbot user agent). Retried 11 and 12 October; no more retries scheduled. The fix is on Bing's side: the owner should verify sumatlas.com in Bing Webmaster Tools (import from Google Search Console), submit `sitemap.xml` there and, if offered, record the site move from govmath.co.uk. After that, run `node scripts/indexnow.mjs --all` once to confirm 200/202.
 
 ## Ads (AdSense)
 
@@ -237,7 +238,7 @@ The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
 
-- **Latest (13 October 2026, night):** the "Indus" look on every calculator, with a site-wide contrast check (see Design), in PR 75, waiting for the owner.
+- **Latest (13 October 2026, night):** PR 75 merged and live: the "Indus" look on every calculator, with a site-wide contrast check (see Design). IndexNow retry still 403 (see **IndexNow**); the owner was asked to verify sumatlas.com in Bing Webmaster Tools. Still waiting on the owner: the Vercel domain settings (see **Search Console**) and the go-ahead for the next 25 tools.
 - **Earlier (13 October 2026, later):** PR 74 merged: Search Console indexing check and fixes (see **Search Console**: legacy sitemap on govmath.co.uk, amount-page redirects, Vercel domain settings for the owner).
 - **Earlier (13 October 2026):** PR 72 merged (smaller type, Inter, menu-style text, modern calculator look with hover donut and dropdowns for 3+ options); the modern look covers the salary and mortgage package pages too (owner: "apply to all calculators").
 - **Earlier (12 October 2026, late night):** modern calculator look, hover donut, dropdowns for 3+ options (see **Modern calculator** under Design).
