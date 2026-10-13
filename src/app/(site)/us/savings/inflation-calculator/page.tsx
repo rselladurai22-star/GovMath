@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import InflationStudio from "./InflationStudio";
 import InflationGuide from "./InflationGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/savings/inflation-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Inflation Calculator: Dollar Value 1913–2026",
   description:
     "Free inflation calculator for 2026. See what a dollar from any year since 1913 is worth today, using official CPI-U data, plus future prices at any rate.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

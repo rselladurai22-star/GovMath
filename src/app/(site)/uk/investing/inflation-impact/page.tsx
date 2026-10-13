@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import InflationStudio from "./InflationStudio";
 import { ogFor } from "@/gm/og";
 import InflationGuide from "./InflationGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Inflation Calculator UK: Future Value of Money",
   description:
     "Free UK inflation calculator. See what your money will be worth in future, the real return on savings and what prices today cost in years to come.",
-  alternates: { canonical: "/uk/investing/inflation-impact" },
+  alternates: alternatesFor("/uk/investing/inflation-impact"),
   openGraph: ogFor("/uk/investing/inflation-impact"),
 };
 

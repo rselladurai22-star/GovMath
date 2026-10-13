@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import RentVsBuyStudio from "./RentVsBuyStudio";
 import { ogFor } from "@/gm/og";
 import RentVsBuyGuide from "./RentVsBuyGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Rent vs Buy Calculator UK 2026",
   description:
     "Free rent vs buy calculator. Compare the cost of buying with renting and investing the difference, year by year, and find your break-even point.",
-  alternates: { canonical: "/uk/property/rent-vs-buy" },
+  alternates: alternatesFor("/uk/property/rent-vs-buy"),
   openGraph: ogFor("/uk/property/rent-vs-buy"),
 };
 

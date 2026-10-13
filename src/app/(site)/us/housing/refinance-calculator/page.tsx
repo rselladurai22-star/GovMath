@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import RefiStudio from "./RefiStudio";
 import RefiGuide from "./RefiGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Mortgage Refinance Calculator: Break-Even",
   description:
     "Free refinance calculator for 2026. See your monthly saving, the break-even month on closing costs, lifetime interest, cash out and the 30-year reset trap.",
-  alternates: { canonical: "/us/housing/refinance-calculator" },
+  alternates: alternatesFor("/us/housing/refinance-calculator"),
   openGraph: ogFor("/us/housing/refinance-calculator"),
 };
 

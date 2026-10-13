@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import RaiseStudio from "./RaiseStudio";
 import RaiseGuide from "./RaiseGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/taxes/raise-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Pay Raise Calculator 2026: After Tax",
   description:
     "Free pay raise calculator for 2026. Turn a raise in percent or dollars into your new salary, extra take-home per paycheck and real raise after inflation.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

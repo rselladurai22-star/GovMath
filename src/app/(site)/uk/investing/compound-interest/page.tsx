@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import CompoundStudio from "./CompoundStudio";
 import { ogFor } from "@/gm/og";
 import CompoundGuide from "./CompoundGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Compound Interest & Investment Calculator UK",
   description:
     "Free compound interest and investment calculator for the UK. See how much interest your savings earn and how investments grow with monthly deposits.",
-  alternates: { canonical: "/uk/investing/compound-interest" },
+  alternates: alternatesFor("/uk/investing/compound-interest"),
   openGraph: ogFor("/uk/investing/compound-interest"),
 };
 

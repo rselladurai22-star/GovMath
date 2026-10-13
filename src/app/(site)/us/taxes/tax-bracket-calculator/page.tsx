@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import BracketStudio from "./BracketStudio";
 import BracketGuide from "./BracketGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/taxes/tax-bracket-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Tax Bracket Calculator 2026: Marginal Rate",
   description:
     "Free tax bracket calculator for 2026. Find your federal bracket, marginal and effective tax rate, and see your income taxed band by band for every filing status.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

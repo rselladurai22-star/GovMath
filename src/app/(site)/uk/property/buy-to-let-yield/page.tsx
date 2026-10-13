@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import BTLStudio from "./BTLStudio";
 import { ogFor } from "@/gm/og";
 import BTLGuide from "./BTLGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Buy-to-Let Calculator UK: Yield and Profit",
   description:
     "Free buy-to-let calculator for 2026/27. See gross and net yield, cash flow, tax under Section 24, rental cover and the 5% Stamp Duty surcharge.",
-  alternates: { canonical: "/uk/property/buy-to-let-yield" },
+  alternates: alternatesFor("/uk/property/buy-to-let-yield"),
   openGraph: ogFor("/uk/property/buy-to-let-yield"),
 };
 

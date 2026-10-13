@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import OverpaymentStudio from "./OverpaymentStudio";
 import { ogFor } from "@/gm/og";
 import OverpaymentGuide from "./OverpaymentGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Mortgage Overpayment Calculator UK",
   description:
     "Free mortgage overpayment calculator. See the interest and years you save with monthly or lump-sum overpayments, the 10% allowance, and saving instead.",
-  alternates: { canonical: "/uk/property/mortgage-overpayment" },
+  alternates: alternatesFor("/uk/property/mortgage-overpayment"),
   openGraph: ogFor("/uk/property/mortgage-overpayment"),
 };
 

@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import SoleTraderStudio from "./SoleTraderStudio";
 import { ogFor } from "@/gm/og";
 import SoleTraderGuide from "./SoleTraderGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Sole Trader Tax Calculator UK 2026/27",
   description:
     "Free self-employed tax calculator for 2026/27. See Income Tax, Class 4 NI and your take-home profit, plus payments on account and what to set aside.",
-  alternates: { canonical: "/uk/business/sole-trader-tax" },
+  alternates: alternatesFor("/uk/business/sole-trader-tax"),
   openGraph: ogFor("/uk/business/sole-trader-tax"),
 };
 

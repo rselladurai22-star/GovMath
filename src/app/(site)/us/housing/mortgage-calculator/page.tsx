@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import MortgageStudio from "./MortgageStudio";
 import MortgageGuide from "./MortgageGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Mortgage Calculator with Taxes, PMI and HOA",
   description:
     "Free mortgage calculator for 2026. See your monthly payment with property tax, insurance, PMI and HOA, the amortization schedule and what extra payments save.",
-  alternates: { canonical: "/us/housing/mortgage-calculator" },
+  alternates: alternatesFor("/us/housing/mortgage-calculator"),
   openGraph: ogFor("/us/housing/mortgage-calculator"),
 };
 

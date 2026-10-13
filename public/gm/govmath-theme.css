@@ -2232,7 +2232,6 @@ footer {
   font-family: "Source Sans 3", Arial, sans-serif;
 }
 .gm-neutral:has(.calculator.gm-indus) .crumb { font-size: 12px; line-height: 20px; color: #000; }
-.gm-neutral:has(.calculator.gm-indus) .pg-layout--single { grid-template-columns: minmax(0, 1fr); }
 .gm-neutral:has(.calculator.gm-indus) .pg-tool { border: 0; padding: 0; background: none; box-shadow: none; }
 /* Card on a full-width band (the band is the card's own spread shadow, clipped to the band's height). */
 .gm-neutral.gm-neutral .calculator.gm-indus {
@@ -2351,8 +2350,7 @@ footer {
 @media (min-width: 1261px) {
   .gm-neutral.gm-neutral .calculator.gm-indus { max-width: 1190px; margin-left: auto; margin-right: auto; }
 }
-/* Indus look, everywhere: layout one column, Reset kept beside the fields. */
-.gm-neutral:has(.calculator.gm-indus) .pg-layout { grid-template-columns: minmax(0, 1fr); }
+/* Indus look, everywhere: Reset kept beside the fields. */
 .gm-neutral.gm-neutral .gm-indus .ind-stephead { display: flex; justify-content: flex-end; border: 0; margin: -6px 0 6px; padding: 0; min-height: 0; }
 .gm-neutral.gm-neutral .gm-indus .pg-stephead .pg-step { font-size: 0; }
 .gm-neutral.gm-neutral .gm-indus .textbutton:not(.result .textbutton) { color: #8f282c; border-bottom-color: #8f282c; font-size: 14px; font-weight: 700; }
@@ -2411,3 +2409,22 @@ footer {
 .gm-neutral .g-band:is([style*="--g-c2"], [style*="--g-c3"], [style*="--g-c5"], [style*="235, 104, 52"], [style*="27, 175, 122"], [style*="237, 161, 0"], [style*="#eb6834"], [style*="#1baf7a"], [style*="#eda100"], [style*="--g-track"], [style*="238, 241, 244"], [style*="#eef1f4"]) { color: #1f2329; }
 /* Band charts: a slightly deeper blue so white labels pass 4.5:1 (legend swatches match). */
 .gm-neutral .g-bandBar, .gm-neutral .g-bandBar ~ .g-legend { --g-c1: #2672cc; }
+
+/* Related calculators beside the Indus card (14 October 2026, owner's request:
+   the list belongs on the right on laptops). From 1200px the sidebar sits in
+   the right-hand column, its top level with the card's (the card has a 30px
+   top margin), drawn as a white card like the calculator's; it is sticky, so
+   it paints above the card's maroon band. Below 1200px it stays a grid under
+   the results. */
+@media (min-width: 1200px) {
+  .gm-neutral:has(.calculator.gm-indus) .pg-layout { grid-template-columns: minmax(0, 1fr) 272px; gap: 24px; }
+  .gm-neutral:has(.calculator.gm-indus) .pg-related { margin-top: 30px; top: 16px; }
+}
+.gm-neutral:has(.calculator.gm-indus) .pg-related {
+  background: #fff; border: 0; border-radius: 8px; padding: 20px 18px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.gm-neutral:has(.calculator.gm-indus) .pg-related h2 { margin: 0 0 12px; font-size: 19.2px; line-height: 26px; font-weight: 700; color: #8f282c; }
+.gm-neutral:has(.calculator.gm-indus) .pg-related a { border: 1px solid #e6e1e1; border-radius: 6px; background: #fff; }
+.gm-neutral:has(.calculator.gm-indus) .pg-related a:hover { border-color: #8f282c; background: #fbf7f7; }
+.gm-neutral:has(.calculator.gm-indus) .pg-relcard strong { color: #8f282c; font-weight: 700; }
+.gm-neutral:has(.calculator.gm-indus) .pg-relcard span { color: #333; }

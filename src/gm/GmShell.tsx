@@ -66,7 +66,10 @@ export default function GmShell({
       {css.map((href) => (
         <link key={href} rel="stylesheet" href={`/gm/${href}?v=${process.env.GM_CSS_VERSION}`} precedence="gm" />
       ))}
-      <div className="gm-claret">{page}</div>
+      {/* The site is en-GB (root <html>); US pages are written in American English. */}
+      <div className="gm-claret" lang={country === "us" ? "en-US" : undefined}>
+        {page}
+      </div>
       <GmScripts scripts={["axis"]} />
     </>
   );

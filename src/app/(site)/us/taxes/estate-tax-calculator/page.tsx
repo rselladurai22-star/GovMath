@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import EstateStudio from "./EstateStudio";
 import EstateGuide from "./EstateGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/taxes/estate-tax-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Estate Tax Calculator 2026: $15 Million Exclusion",
   description:
     "Free estate tax calculator for 2026. Work out federal estate tax with the $15 million exclusion, gifts, portability, marital and charitable deductions.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

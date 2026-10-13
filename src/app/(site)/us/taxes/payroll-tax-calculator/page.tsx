@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import PayrollTaxStudio from "./PayrollTaxStudio";
 import PayrollTaxGuide from "./PayrollTaxGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/taxes/payroll-tax-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Employer Payroll Tax Calculator 2026",
   description:
     "Free employer payroll tax calculator for 2026. See what an employee really costs: Social Security, Medicare, FUTA, state unemployment and benefits, per year and hour.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import PaycheckStudio from "./PaycheckStudio";
 import PaycheckGuide from "./PaycheckGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/taxes/paycheck-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Paycheck Calculator 2026: Take-Home Pay",
   description:
     "Free paycheck calculator for 2026. See take-home pay per paycheck after federal tax, Social Security, Medicare, state tax and 401(k), for salary or hourly pay.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

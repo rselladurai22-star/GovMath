@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import AutoLoanStudio from "./AutoLoanStudio";
 import AutoLoanGuide from "./AutoLoanGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/loans/auto-loan-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Auto Loan Calculator: Car Payment with Tax",
   description:
     "Free auto loan calculator for 2026. Car payment with sales tax by state, fees, trade-in, negative equity and rebates, plus 36 to 84 month terms compared.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

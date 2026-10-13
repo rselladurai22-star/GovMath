@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import K401Studio from "./K401Studio";
 import K401Guide from "./K401Guide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/savings/401k-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "401(k) Calculator 2026: Match, Limits, Growth",
   description:
     "Free 401(k) calculator for 2026. See your balance at retirement with your employer match, the $24,500 limit, catch-up contributions, fees and inflation.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

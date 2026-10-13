@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import OvertimeStudio from "./OvertimeStudio";
 import OvertimeGuide from "./OvertimeGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/taxes/overtime-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Overtime Calculator: Time and a Half Pay 2026",
   description:
     "Free overtime calculator for 2026. Work out time-and-a-half and double-time pay for a week, and the tax you save with the new deduction for overtime.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

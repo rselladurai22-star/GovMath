@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import AffordabilityStudio from "./AffordabilityStudio";
 import { ogFor } from "@/gm/og";
 import AffordabilityGuide from "./AffordabilityGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Mortgage Affordability Calculator UK 2026",
   description:
     "Free mortgage affordability calculator. See how much you could borrow from income multiples, debts and childcare, with a rate stress test and monthly payments.",
-  alternates: { canonical: "/uk/property/mortgage-affordability" },
+  alternates: alternatesFor("/uk/property/mortgage-affordability"),
   openGraph: ogFor("/uk/property/mortgage-affordability"),
 };
 

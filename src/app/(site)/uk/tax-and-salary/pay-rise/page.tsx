@@ -4,12 +4,13 @@ import { CALCULATORS } from "@/lib/calculators";
 import PayRiseStudio from "./PayRiseStudio";
 import { ogFor } from "@/gm/og";
 import PayRiseGuide from "./PayRiseGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
   title: "Pay Rise Calculator UK 2026/27: After Tax",
   description:
     "Free pay rise calculator for 2026/27. See what a rise adds to take-home pay after tax, NI, student loan and the Child Benefit charge, and against inflation.",
-  alternates: { canonical: "/uk/tax-and-salary/pay-rise" },
+  alternates: alternatesFor("/uk/tax-and-salary/pay-rise"),
   openGraph: ogFor("/uk/tax-and-salary/pay-rise"),
 };
 

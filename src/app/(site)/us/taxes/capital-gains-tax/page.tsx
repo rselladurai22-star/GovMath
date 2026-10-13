@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import CapitalGainsStudio from "./CapitalGainsStudio";
 import CapitalGainsGuide from "./CapitalGainsGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/taxes/capital-gains-tax";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Capital Gains Tax Calculator 2026",
   description:
     "Free capital gains tax calculator for 2026. See federal and state tax on stocks, crypto or a home sale, short vs long term, with the 0%, 15% and 20% rates and NIIT.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

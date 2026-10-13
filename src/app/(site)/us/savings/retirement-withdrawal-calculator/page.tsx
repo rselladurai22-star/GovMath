@@ -4,6 +4,7 @@ import { CALCULATORS } from "@/lib/calculators";
 import { ogFor } from "@/gm/og";
 import WithdrawalStudio from "./WithdrawalStudio";
 import WithdrawalGuide from "./WithdrawalGuide";
+import { alternatesFor } from "@/lib/seo/hreflang";
 
 const PATH = "/us/savings/retirement-withdrawal-calculator";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   title: "Retirement Withdrawal Calculator",
   description:
     "Free retirement withdrawal calculator for 2026. See how long your savings last at a fixed or percentage withdrawal, and the most you can take each year.",
-  alternates: { canonical: PATH },
+  alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
 

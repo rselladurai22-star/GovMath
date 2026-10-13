@@ -36,7 +36,7 @@ const FAQS: { q: string; a: string }[] = [
 export default async function ScottishTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
   const related = CALCULATORS.filter((c) =>
-    ["/uk/tax-and-salary/salary-calculator", "/uk/tax-and-salary/tax-bracket-checker", "/uk/students/plan-4-student-loan", "/uk/property/lbtt-scotland", "/uk/tax-and-salary/national-insurance", "/uk/investing/pension-tax-relief"].includes(c.href),
+    ["/uk/tax-and-salary/salary-calculator", "/uk/tax-and-salary/tax-bracket-checker", "/uk/students/student-loan-repayment", "/uk/property/lbtt-scotland", "/uk/tax-and-salary/national-insurance", "/uk/investing/pension-tax-relief"].includes(c.href),
   );
   return (
     <FlagshipPage
