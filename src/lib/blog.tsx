@@ -2116,6 +2116,823 @@ export const BLOG_POSTS: BlogPost[] = [
       </>
     ),
   },
+  {
+    slug: "high-income-child-benefit-charge-2026-27",
+    title: "The High Income Child Benefit Charge in 2026/27: who pays it and how to keep your Child Benefit",
+    seoTitle: "High Income Child Benefit Charge 2026/27 Guide",
+    description:
+      "How the High Income Child Benefit Charge works in 2026/27: the £60,000 to £80,000 taper, worked examples, the 54% tax trap and legal ways to keep your Child Benefit.",
+    date: "2026-10-14",
+    dateLabel: "14 October 2026",
+    readingTime: "11 min read",
+    category: "Benefits",
+    body: (
+      <>
+        <p>
+          Child Benefit is one of the few payments the government makes to almost every family with children. In
+          2026/27 it is worth £27.05 a week for the eldest child and £17.90 a week for each other child, which comes to
+          £1,406.60 a year for one child and £2,337.40 a year for two. But once the higher earner in a household has an
+          income above £60,000, the High Income Child Benefit Charge starts to take it back through the tax system. By
+          £80,000 it takes all of it.
+        </p>
+        <p>
+          Many parents first hear about the charge in a letter from HMRC asking for tax they did not know they owed.
+          Others stop claiming altogether and lose out on State Pension credits without realising. This guide explains
+          how the charge works in 2026/27, what it costs at each income, why it creates one of the highest effective
+          tax rates in the UK, and the legal ways to reduce it. Every figure comes from the same 2026/27 engine as our{" "}
+          <Link href="/uk/benefits/high-income-child-benefit">High Income Child Benefit Charge calculator</Link>, so you
+          can check your own numbers there.
+        </p>
+
+        <h2>The short version</h2>
+        <ul>
+          <li>
+            <strong>Who pays:</strong>{" "}the partner with the higher adjusted net income, if it is above £60,000,
+            whoever actually receives the Child Benefit.
+          </li>
+          <li>
+            <strong>How much:</strong>{" "}1% of the Child Benefit for every £200 of adjusted net income above £60,000.
+            At £70,000 the charge is half the benefit; at £80,000 it is all of it.
+          </li>
+          <li>
+            <strong>The trap:</strong>{" "}between £60,000 and £80,000, a parent of two loses about 54p of every extra
+            £1 earned to Income Tax, National Insurance and the charge.
+          </li>
+          <li>
+            <strong>The fix:</strong>{" "}pension contributions, salary sacrifice and Gift Aid all lower adjusted net
+            income, so they can cut the charge as well as your tax.
+          </li>
+          <li>
+            <strong>Keep claiming:</strong>{" "}even if you opt out of the payments, a claim protects National Insurance
+            credits towards the State Pension for a parent at home with a child under 12.
+          </li>
+        </ul>
+
+        <h2>Child Benefit rates for 2026/27</h2>
+        <p>
+          Child Benefit is paid every four weeks into a bank account, usually to the parent the child lives with. You
+          can claim for each child under 16, or under 20 if they stay in approved education or training such as A
+          levels, Scottish Highers or an apprenticeship that is not paid as a job. There is no limit on the number of
+          children, and the amount does not depend on your income: the charge works separately, through tax.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Children</th>
+              <th>Weekly</th>
+              <th>Every four weeks</th>
+              <th>A year (52 weeks)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>£27.05</td><td>£108.20</td><td>£1,406.60</td></tr>
+            <tr><td>2</td><td>£44.95</td><td>£179.80</td><td>£2,337.40</td></tr>
+            <tr><td>3</td><td>£62.85</td><td>£251.40</td><td>£3,268.20</td></tr>
+            <tr><td>4</td><td>£80.75</td><td>£323.00</td><td>£4,199.00</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The quickest way to see what your family should receive is the{" "}
+          <Link href="/uk/benefits/child-benefit">Child Benefit calculator</Link>, which also handles part-year claims,
+          for example a baby born part-way through the tax year.
+        </p>
+
+        <h2>How the charge works</h2>
+        <p>
+          The High Income Child Benefit Charge (HICBC) is an Income Tax charge. It was introduced in January 2013 with
+          a starting point of £50,000 and a top of £60,000. From April 2024 the government raised the starting point to
+          £60,000 and doubled the width of the taper, so the charge now runs from £60,000 to £80,000. The rate of
+          withdrawal halved as a result: it is 1% of the benefit for every £200 above £60,000, rather than 1% for every
+          £100.
+        </p>
+        <p>
+          Three details catch people out. First, the test is on <em>individual</em> income, not household income. A
+          couple who each earn £55,000, a combined £110,000, pay no charge at all. A single earner on £80,000 with a
+          partner at home loses all of their Child Benefit. The previous government consulted on moving to a household
+          test, but the plan was dropped in 2024 and the rules for 2026/27 are still based on the higher individual
+          income.
+        </p>
+        <p>
+          Second, the charge falls on whichever partner has the higher income, even if the other partner receives the
+          Child Benefit. &ldquo;Partner&rdquo; here means someone you are married to, in a civil partnership with or
+          living with as a couple. It also applies if the child lives with you and someone else claims for them, for
+          example a grandparent.
+        </p>
+        <p>
+          Third, the measure is <strong>adjusted net income</strong>, not salary. That is the number that gives you
+          room to manoeuvre, and it is explained next.
+        </p>
+
+        <h2>What counts as adjusted net income</h2>
+        <p>
+          Adjusted net income starts with all your taxable income for the tax year: salary, bonuses, taxable benefits in
+          kind such as a company car, profits from self-employment, rental profits, savings interest, dividends and
+          taxable pensions. From that total you take away:
+        </p>
+        <ul>
+          <li>
+            the gross amount of any pension contributions paid under relief at source (a personal pension or SIPP, or a
+            workplace scheme that adds 20% tax relief on top of what you pay);
+          </li>
+          <li>
+            the gross amount of Gift Aid donations (what you gave plus the 25% the charity reclaims);
+          </li>
+          <li>trading losses and certain other reliefs.</li>
+        </ul>
+        <p>
+          Contributions to a workplace pension under the &ldquo;net pay&rdquo; arrangement, and anything paid by salary
+          sacrifice, have already come off your taxable pay, so they reduce adjusted net income automatically. That is
+          why two people on the same headline salary can face very different charges.
+        </p>
+        <p>
+          Adjusted net income is the same measure that removes the Personal Allowance between £100,000 and £125,140, so
+          anything that lowers it helps with both problems at once.
+        </p>
+
+        <h2>What the charge costs at each income</h2>
+        <p>
+          The table shows the charge for a family with two children receiving Child Benefit for the full year, at
+          different adjusted net incomes. The charge is rounded down to a whole 1%, as the law requires.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Adjusted net income</th>
+              <th>Share taken back</th>
+              <th>Charge (2 children)</th>
+              <th>Child Benefit kept</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>£60,000</td><td>0%</td><td>£0</td><td>£2,337.40</td></tr>
+            <tr><td>£62,000</td><td>10%</td><td>£233.74</td><td>£2,103.66</td></tr>
+            <tr><td>£65,000</td><td>25%</td><td>£584.35</td><td>£1,753.05</td></tr>
+            <tr><td>£70,000</td><td>50%</td><td>£1,168.70</td><td>£1,168.70</td></tr>
+            <tr><td>£75,000</td><td>75%</td><td>£1,753.05</td><td>£584.35</td></tr>
+            <tr><td>£79,800</td><td>99%</td><td>£2,314.03</td><td>£23.37</td></tr>
+            <tr><td>£80,000 or more</td><td>100%</td><td>£2,337.40</td><td>£0</td></tr>
+          </tbody>
+        </table>
+        <p>
+          For one child, the charge at £70,000 is £703.30; for three children it is £1,634.10. The share taken back is
+          the same whatever the number of children, but the pounds involved grow with the size of the family.
+        </p>
+
+        <h2>The hidden 54% tax rate</h2>
+        <p>
+          Between £60,000 and £80,000 you are already a higher-rate taxpayer, paying 40% Income Tax and 2% National
+          Insurance on each extra pound of salary. The charge sits on top. Every £1,000 of extra income takes another 5%
+          of your Child Benefit, so the effective rate depends on how many children you have:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Children</th>
+              <th>Tax, NI and charge on each extra £1 (£60,000 to £80,000)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>about 49p</td></tr>
+            <tr><td>2</td><td>about 54p</td></tr>
+            <tr><td>3</td><td>about 58p</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Below £60,000 and above £80,000 the rate drops back to 42p (the basic-rate band ends at £50,270, so from there
+          up to £100,000 the ordinary rate is 40% tax plus 2% NI). Above £100,000 the Personal Allowance taper pushes
+          the rate to about 62p in every pound, which we cover in our guide to the{" "}
+          <Link href="/blog/100k-tax-trap">£100,000 tax trap</Link>. So a parent of three earning £70,000 keeps less of
+          a pay rise than someone earning £90,000 with no children.
+        </p>
+        <p>
+          It is worth seeing this in pounds. On £70,000 a year, a parent of two in England pays £15,432 of Income Tax and
+          £3,410.60 of employee National Insurance. On top of that the charge is £1,168.70. A £5,000 pay rise to £75,000
+          adds £2,000 of tax, £100 of NI and £584.35 of extra charge, so take-home pay rises by only about £2,316: less
+          than half the rise.
+        </p>
+
+        <h2>Example 1: paying into a personal pension</h2>
+        <p>
+          Sam earns £70,000 and has two children. The charge is £1,168.70. Sam pays £8,000 into a personal pension. The
+          provider claims £2,000 of basic-rate tax relief, so £10,000 goes into the pot, and Sam&rsquo;s adjusted net
+          income falls by the gross £10,000 to £60,000.
+        </p>
+        <ul>
+          <li>The High Income Child Benefit Charge falls from £1,168.70 to £0.</li>
+          <li>
+            Sam also claims higher-rate relief through Self Assessment: another £2,000 off the tax bill, because the
+            £10,000 would otherwise have been taxed at 40% rather than 20%.
+          </li>
+          <li>
+            Net cost: £8,000 paid, less £2,000 extra relief, less £1,168.70 of charge saved, which is £4,831.30 for
+            £10,000 in the pension.
+          </li>
+        </ul>
+        <p>
+          In other words, each pound in the pension cost Sam about 48p. Our{" "}
+          <Link href="/uk/investing/pension-tax-relief">pension tax relief calculator</Link> shows how this works for
+          relief at source, net pay and salary sacrifice side by side.
+        </p>
+
+        <h2>Example 2: salary sacrifice</h2>
+        <p>
+          If Sam&rsquo;s employer offers salary sacrifice, the same £10,000 can go in by reducing Sam&rsquo;s salary to
+          £60,000. Income Tax falls by £4,000 and employee National Insurance by £200, so take-home pay drops by £5,800.
+          The charge also falls to £0, saving £1,168.70.
+        </p>
+        <p>
+          The net cost is £4,631.30 for £10,000 in the pension, about £200 cheaper than the personal pension route
+          because salary sacrifice also saves the 2% National Insurance. Many employers add some or all of their own
+          15% National Insurance saving to the pension too, which makes the deal better still. Our{" "}
+          <Link href="/uk/tax-and-salary/salary-sacrifice">salary sacrifice calculator</Link> includes that option, and
+          our guide <Link href="/blog/salary-sacrifice-worth-it">Is salary sacrifice worth it?</Link>{" "}
+          covers the catches, including the minimum wage rule and the effect on mortgage applications.
+        </p>
+
+        <h2>Example 3: a smaller contribution</h2>
+        <p>
+          You do not have to bring income all the way down to £60,000 for this to pay. Alex earns £65,000 with two
+          children and pays a charge of £584.35. A gross pension contribution of £5,000 (£4,000 paid, £1,000 added by
+          the provider) brings adjusted net income to £60,000 and removes the charge. With £1,000 of higher-rate relief
+          claimed back, the net cost is £4,000 &minus; £1,000 &minus; £584.35 = £2,415.65 for £5,000 in the pension.
+          By salary sacrifice it is £2,315.65.
+        </p>
+        <p>
+          Even a partial contribution helps, because the charge falls by 1% for each £200 of income removed. Every
+          £1,000 of gross contribution in the taper saves 5% of the benefit, which is £116.87 a year for a family with
+          two children.
+        </p>
+
+        <h2>Example 4: income at the top of the taper</h2>
+        <p>
+          Jo earns £80,000 and has two children, so the whole £2,337.40 is taken back. To clear the charge Jo would
+          need £20,000 of gross pension contributions. By salary sacrifice that costs £11,600 of take-home pay, less the
+          £2,337.40 of charge saved, so £9,262.60 for £20,000 in the pension. That is a good deal per pound, but it is a
+          lot of money to lock away until at least 57, the minimum pension age from April 2028. Jo might choose a
+          middle path, for example sacrificing £10,000 to bring income to £70,000 and keep half the benefit.
+        </p>
+        <p>
+          Remember the annual allowance: total pension contributions from you and your employer are limited to £60,000
+          a year (or 100% of your earnings, if lower) before a tax charge applies, though unused allowance from the last
+          three years can be carried forward.
+        </p>
+
+        <h2>Gift Aid also counts</h2>
+        <p>
+          Charitable giving through Gift Aid lowers adjusted net income by the gross amount of the gift. If you earn
+          £61,250 with two children, a charge of £140.24 applies. Giving £1,000 to charity with Gift Aid (worth £1,250
+          to the charity) brings adjusted net income to £60,000 and removes that charge. You also claim back the
+          difference between higher and basic-rate tax on the gift through Self Assessment. For people who already give
+          regularly, timing donations within the tax year can make a real difference.
+        </p>
+
+        <h2>Should you still claim Child Benefit?</h2>
+        <p>
+          Yes, in almost every case. Even if your income is above £80,000 and the charge would cancel the benefit, you
+          should fill in the claim form and then choose not to receive the payments. There are two reasons.
+        </p>
+        <ul>
+          <li>
+            <strong>State Pension credits.</strong>{" "}A parent who is not working, or earning below the Lower Earnings
+            Limit (£129 a week in 2026/27), gets National Insurance credits for each week they are the Child Benefit
+            claimant for a child under 12. Each qualifying year adds about 1/35 of the full new State Pension, which is
+            worth thousands of pounds over retirement. You only get the credits if someone has claimed.
+          </li>
+          <li>
+            <strong>A National Insurance number for the child.</strong>{" "}Children with a Child Benefit claim are sent
+            their NI number automatically before their 16th birthday.
+          </li>
+        </ul>
+        <p>
+          If a stay-at-home parent is the claimant, their record is protected. If the higher earner claims, the credits
+          go to them, and they usually do not need them. So make sure the right parent is named on the claim. Where a
+          grandparent or other relative looks after a child under 12 so that the parents can work, they may be able to
+          apply for Specified Adult Childcare credits instead.
+        </p>
+
+        <h2>Opting out, and opting back in</h2>
+        <p>
+          You can stop the payments at any time, online or by calling the Child Benefit Office, and restart them later
+          if your income falls, for example during maternity leave, a career break or a period of part-time work. You
+          can backdate a restart by up to three months. If you have opted out, there is no charge to pay for the weeks
+          when no benefit was paid.
+        </p>
+        <p>
+          Opting out is the simplest choice if your adjusted net income will clearly be above £80,000 for the whole
+          year. If it may fall in the taper, many families keep the payments and pay the charge, because they can never
+          lose more than they receive: the charge cannot exceed the benefit.
+        </p>
+
+        <h2>How to pay the charge</h2>
+        <p>
+          The charge is not deducted from the benefit. It is collected as tax from the higher earner. For years, that
+          meant registering for Self Assessment by 5 October after the end of the tax year and paying by the following
+          31 January. For 2026/27, that means registering by 5 October 2027 and paying by 31 January 2028.
+        </p>
+        <p>
+          Since 2025, employed people who do not otherwise need to file a tax return can instead ask HMRC to collect the
+          charge through their tax code, using the online service on GOV.UK. HMRC then reduces the tax code so the
+          charge comes out of pay each month, avoiding a lump sum in January. You can check what any new code means with
+          our <Link href="/uk/tax-and-salary/tax-code-decoder">tax code decoder</Link>.
+        </p>
+        <p>
+          If you were caught by the charge in earlier years and did not pay it, tell HMRC as soon as possible. Penalties
+          for failing to notify are much lower when you come forward before HMRC contacts you, and in many past cases
+          HMRC has waived penalties for people who genuinely did not know about the charge.
+        </p>
+
+        <h2>Bonuses, pay rises and one-off income</h2>
+        <p>
+          Because the test covers the whole tax year, a one-off bonus can push income into the taper even when your
+          salary sits below £60,000. A £58,000 salary with a £7,000 bonus gives adjusted net income of £65,000 and a
+          charge of 25% of the benefit. If your employer allows it, sacrificing the bonus into a pension avoids both the
+          tax and the charge. Our <Link href="/uk/tax-and-salary/bonus-tax">bonus tax calculator</Link> shows what a
+          bonus is worth after tax, and the same applies to rental profits, dividends or a large amount of savings
+          interest, all of which count towards adjusted net income.
+        </p>
+        <p>
+          The reverse is also true. If your income drops part-way through the year, for example because you go on
+          maternity leave or move to part-time hours, your adjusted net income for that year may fall below £60,000 and
+          the charge disappears for that year.
+        </p>
+
+        <h2>Couples: who should earn what</h2>
+        <p>
+          Because the charge looks at the higher individual income, households with the same total income can be
+          treated very differently. A couple on £55,000 each keep all their Child Benefit. A couple on £90,000 and
+          £20,000 lose all of it. If both of you work and one partner is near the taper, it can make sense for the
+          higher earner to take any extra pension or salary sacrifice, because each pound they move saves the charge as
+          well as 40% tax.
+        </p>
+        <p>
+          The charge does not interact with Marriage Allowance, which is only available when neither partner pays
+          higher-rate tax. Couples where one partner earns below the Personal Allowance and the other is a basic-rate
+          taxpayer should look at the{" "}
+          <Link href="/uk/tax-and-salary/marriage-allowance">Marriage Allowance calculator</Link> instead.
+        </p>
+
+        <h2>Childcare support is a separate test</h2>
+        <p>
+          The High Income Child Benefit Charge has nothing to do with childcare help, which uses a different limit.
+          Tax-Free Childcare and the funded childcare hours in England stop if either parent expects adjusted net income
+          above £100,000. So a parent on £85,000 loses all of their Child Benefit but can still get up to £2,000 a year
+          per child towards childcare costs, and the 30 funded hours. Our{" "}
+          <Link href="/uk/benefits/tax-free-childcare">Tax-Free Childcare calculator</Link> and{" "}
+          <Link href="/uk/benefits/free-childcare-hours">free childcare hours checker</Link> show what you can get.
+        </p>
+        <p>
+          The £100,000 line is much harsher than the Child Benefit taper, because it is a cliff: £1 over and you lose
+          everything. Pension contributions bring adjusted net income down for that test too, which is why a single
+          contribution can protect Child Benefit, childcare support and the Personal Allowance at once.
+        </p>
+
+        <h2>Common mistakes</h2>
+        <ul>
+          <li>
+            <strong>Looking at salary instead of adjusted net income.</strong>{" "}Benefits in kind, rental profits and
+            interest count; relief-at-source pension contributions and Gift Aid come off.
+          </li>
+          <li>
+            <strong>Assuming the claimant pays.</strong>{" "}It is always the higher earner, even if the benefit goes into
+            the other partner&rsquo;s account.
+          </li>
+          <li>
+            <strong>Not claiming at all.</strong>{" "}A parent at home can lose years of State Pension credits.
+          </li>
+          <li>
+            <strong>Forgetting to claim higher-rate relief.</strong>{" "}Relief-at-source pensions only add 20%. The
+            extra 20% needs a Self Assessment return or a call to HMRC.
+          </li>
+          <li>
+            <strong>Missing a change of partner.</strong>{" "}If you move in with a new partner who earns more than £60,000,
+            the charge can apply to them from that date, even for children who are not theirs.
+          </li>
+        </ul>
+
+        <h2>Key numbers for 2026/27</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>2026/27 figure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Child Benefit, eldest child</td><td>£27.05 a week</td></tr>
+            <tr><td>Child Benefit, each other child</td><td>£17.90 a week</td></tr>
+            <tr><td>Charge starts</td><td>£60,000 adjusted net income</td></tr>
+            <tr><td>Charge rate</td><td>1% of the benefit per £200 above £60,000</td></tr>
+            <tr><td>All benefit taken back</td><td>£80,000 adjusted net income</td></tr>
+            <tr><td>Higher-rate threshold (England, Wales, NI)</td><td>£50,270</td></tr>
+            <tr><td>Lower Earnings Limit (for NI credits)</td><td>£129 a week</td></tr>
+            <tr><td>Tax-Free Childcare and funded hours limit</td><td>£100,000 adjusted net income</td></tr>
+            <tr><td>Self Assessment registration for 2026/27</td><td>5 October 2027</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The bottom line</h2>
+        <p>
+          The High Income Child Benefit Charge is fairer than it was before 2024, but it still creates an effective tax
+          rate of about 54% for a parent of two earning between £60,000 and £80,000. The good news is that the same
+          pension and Gift Aid rules that reduce your tax also reduce the charge, often making each pound saved into a
+          pension cost less than half a pound. Keep claiming Child Benefit whatever your income, make sure the right
+          parent is the claimant, and run your figures through the{" "}
+          <Link href="/uk/benefits/high-income-child-benefit">High Income Child Benefit Charge calculator</Link> and the{" "}
+          <Link href="/uk/tax-and-salary/salary-calculator">salary calculator</Link> before deciding. These figures are
+          estimates for 2026/27 in England, Wales and Northern Ireland (Scottish Income Tax rates differ), and general
+          guidance, not tax or financial advice.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "when-to-claim-social-security-2026",
+    title: "When to claim Social Security in 2026: 62, 67 or 70?",
+    seoTitle: "When to Claim Social Security: 62, 67 or 70?",
+    description:
+      "When to claim Social Security in 2026: how much you get at 62, 67 and 70, break-even ages, the earnings test, taxes on benefits and spousal rules, with worked examples.",
+    date: "2026-10-14",
+    dateLabel: "14 October 2026",
+    readingTime: "12 min read",
+    category: "US Retirement",
+    body: (
+      <>
+        <p>
+          Deciding when to start Social Security is one of the biggest financial choices most Americans make. You can
+          claim your retirement benefit at any age from 62 to 70, and the age you pick changes your monthly check for
+          the rest of your life. Claim at 62 and you get about 70% of your full benefit. Wait until 70 and you get about
+          124%. The difference between the two, for a typical worker, is well over $1,000 a month, every month, for as
+          long as you live, with cost-of-living raises on top.
+        </p>
+        <p>
+          There is no single right answer. The best age depends on your health, your savings, whether you are married,
+          whether you are still working and how your benefits will be taxed. This guide walks through each of those
+          with 2026 figures and worked examples. Every dollar figure comes from the same 2026 engine as our{" "}
+          <Link href="/us/savings/social-security-calculator">Social Security calculator</Link>, so you can plug in
+          your own numbers there.
+        </p>
+
+        <h2>The short version</h2>
+        <ul>
+          <li>
+            <strong>Full retirement age</strong>{" "}is 67 for anyone born in 1960 or later. Claiming then gets you 100%
+            of your primary insurance amount (PIA).
+          </li>
+          <li>
+            <strong>At 62</strong>{" "}you get 70% of your PIA, a 30% cut that never goes away.
+          </li>
+          <li>
+            <strong>Each year you wait</strong>{" "}after 67 adds 8%, up to 124% at 70. There is no gain from waiting past
+            70.
+          </li>
+          <li>
+            <strong>Break-even ages:</strong>{" "}waiting from 62 to 67 pays off if you live past about 78 and 9 months;
+            waiting from 67 to 70 pays off past about 82 and a half.
+          </li>
+          <li>
+            <strong>Married couples</strong>{" "}should think about the survivor benefit: the higher earner&rsquo;s
+            claiming age sets the check the surviving spouse keeps.
+          </li>
+        </ul>
+
+        <h2>How your benefit is worked out</h2>
+        <p>
+          Social Security starts from your earnings record. The Social Security Administration (SSA) takes your
+          highest 35 years of earnings, adjusts the older ones for wage growth, and averages them into your average
+          indexed monthly earnings (AIME). Years with no earnings count as zero, so a short career pulls the average
+          down. Earnings above the taxable maximum, $184,500 in 2026, do not count.
+        </p>
+        <p>
+          Your primary insurance amount is then a percentage of the AIME, worked out in three slices using the 2026
+          &ldquo;bend points&rdquo;: 90% of the first $1,286 of AIME, 32% of the amount between $1,286 and $7,749,
+          and 15% of anything above $7,749. The formula is deliberately progressive. Lower earners get back a bigger
+          share of their past pay than higher earners do.
+        </p>
+        <p>
+          The PIA is what you get if you claim exactly at full retirement age. Claim earlier and it is reduced; claim
+          later and it is increased. Benefits then rise each year with inflation. The cost-of-living adjustment for 2026
+          was 2.8%.
+        </p>
+
+        <h2>Full retirement age by year of birth</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Year of birth</th>
+              <th>Full retirement age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1954 or earlier</td><td>66</td></tr>
+            <tr><td>1955</td><td>66 and 2 months</td></tr>
+            <tr><td>1956</td><td>66 and 4 months</td></tr>
+            <tr><td>1957</td><td>66 and 6 months</td></tr>
+            <tr><td>1958</td><td>66 and 8 months</td></tr>
+            <tr><td>1959</td><td>66 and 10 months</td></tr>
+            <tr><td>1960 or later</td><td>67</td></tr>
+          </tbody>
+        </table>
+        <p>
+          If you were born on January 1, the SSA treats you as born in the previous year. Anyone turning 62 in 2026 was
+          born in 1964, so their full retirement age is 67, and that is the age we use in the examples below.
+        </p>
+
+        <h2>What you get at each age</h2>
+        <p>
+          Before full retirement age, your benefit is cut by 5/9 of 1% for each of the first 36 months you claim early,
+          and 5/12 of 1% for each month beyond that. With a full retirement age of 67, claiming at 62 is 60 months
+          early, a 30% cut. After full retirement age you earn delayed retirement credits of 2/3 of 1% a month, which
+          is 8% a year, until 70.
+        </p>
+        <p>
+          The table shows monthly benefits in today&rsquo;s dollars for three workers born in 1960 or later, who each
+          earned the same real salary for 35 years: $40,000, $60,000 and $90,000 a year.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Claiming age</th>
+              <th>Share of PIA</th>
+              <th>$40,000 earner</th>
+              <th>$60,000 earner</th>
+              <th>$90,000 earner</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>62</td><td>70%</td><td>$1,268</td><td>$1,642</td><td>$2,202</td></tr>
+            <tr><td>63</td><td>75%</td><td>$1,359</td><td>$1,759</td><td>$2,359</td></tr>
+            <tr><td>64</td><td>80%</td><td>$1,449</td><td>$1,876</td><td>$2,516</td></tr>
+            <tr><td>65</td><td>86.7%</td><td>$1,570</td><td>$2,033</td><td>$2,726</td></tr>
+            <tr><td>66</td><td>93.3%</td><td>$1,691</td><td>$2,189</td><td>$2,936</td></tr>
+            <tr><td>67</td><td>100%</td><td>$1,812</td><td>$2,345</td><td>$3,145</td></tr>
+            <tr><td>68</td><td>108%</td><td>$1,957</td><td>$2,533</td><td>$3,397</td></tr>
+            <tr><td>69</td><td>116%</td><td>$2,102</td><td>$2,721</td><td>$3,649</td></tr>
+            <tr><td>70</td><td>124%</td><td>$2,247</td><td>$2,908</td><td>$3,900</td></tr>
+          </tbody>
+        </table>
+        <p>
+          For the $60,000 earner, the gap between claiming at 62 and at 70 is $1,266 a month, or $15,192 a year in
+          today&rsquo;s dollars. These are simplified estimates: your real benefit depends on your actual earnings
+          history, which you can see at ssa.gov/myaccount. The SSA says the average retired worker received about
+          $2,071 a month in January 2026.
+        </p>
+
+        <h2>Break-even ages</h2>
+        <p>
+          Waiting means giving up checks now for bigger checks later. The break-even age is when the total received
+          from the later claim catches up with the total from the earlier one. For the $60,000 earner, ignoring
+          interest and inflation adjustments (which apply to both choices equally):
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Comparison</th>
+              <th>Break-even age</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Claim at 67 instead of 62</td><td>78 and 9 months</td></tr>
+            <tr><td>Claim at 70 instead of 62</td><td>80 and 5 months</td></tr>
+            <tr><td>Claim at 70 instead of 67</td><td>82 and 6 months</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The break-even ages are almost the same at every income level, because the reductions and credits are
+          percentages. The $40,000 and $90,000 earners break even at the same ages, give or take a month.
+        </p>
+        <p>
+          Here is what that means in lifetime totals for the $60,000 earner, again in today&rsquo;s dollars:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Lives to</th>
+              <th>Claim at 62</th>
+              <th>Claim at 67</th>
+              <th>Claim at 70</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>80</td><td>$354,672</td><td>$365,820</td><td>$348,960</td></tr>
+            <tr><td>85</td><td>$453,192</td><td>$506,520</td><td>$523,440</td></tr>
+            <tr><td>90</td><td>$551,712</td><td>$647,220</td><td>$697,920</td></tr>
+          </tbody>
+        </table>
+        <p>
+          If you die at 80, the three choices end up within about $17,000 of each other. Live to 90 and waiting until
+          70 is worth about $146,000 more than claiming at 62. That asymmetry is the main argument for waiting: the
+          downside of delaying is modest, while the upside is large in exactly the situation where you need money most,
+          a long life.
+        </p>
+
+        <h2>Life expectancy: the question behind the question</h2>
+        <p>
+          According to the SSA&rsquo;s own period life tables, a 62-year-old American man can expect to live to about
+          83 on average, and a woman to about 86. Those are averages: around a third of 65-year-olds today will live
+          past 90. If you are in good health, have long-lived parents and are a non-smoker, the odds favor waiting. If
+          you have a serious illness, or a family history of dying young, claiming earlier can make sense.
+        </p>
+        <p>
+          It also helps to think of Social Security as insurance rather than an investment. A bigger check from 70 is
+          inflation-protected, guaranteed by the federal government and paid for life. Buying the same income from an
+          insurance company would be expensive. You can see what a private income costs with our{" "}
+          <Link href="/us/savings/annuity-calculator">annuity calculator</Link>; delaying Social Security is usually
+          the cheapest inflation-linked annuity available.
+        </p>
+
+        <h2>If you are married</h2>
+        <p>
+          For couples, the claiming decision is really two decisions, and they interact.
+        </p>
+        <p>
+          <strong>Spousal benefits.</strong>{" "}A husband or wife can get a spousal benefit of up to half of their
+          partner&rsquo;s PIA, if that is more than their own benefit. The spousal benefit is reduced if claimed before
+          the spouse&rsquo;s own full retirement age, but it does not grow with delayed retirement credits, so there is
+          no gain from the lower earner waiting past full retirement age for a spousal benefit. You also cannot claim a
+          spousal benefit until your partner has claimed their own benefit.
+        </p>
+        <p>
+          <strong>Survivor benefits.</strong>{" "}When one spouse dies, the survivor keeps the larger of the two checks
+          and the smaller one stops. So the higher earner&rsquo;s claiming age decides the income of whichever spouse
+          lives longer. Because at least one member of a 65-year-old couple has a good chance of reaching 90, many
+          planners suggest the higher earner waits until 70 even if the lower earner claims earlier.
+        </p>
+        <p>
+          <strong>Divorced spouses.</strong>{" "}If your marriage lasted at least 10 years and you have not remarried, you
+          can claim spousal and survivor benefits on an ex-spouse&rsquo;s record. It does not reduce their benefit or
+          that of their current spouse.
+        </p>
+
+        <h2>Working while you claim: the earnings test</h2>
+        <p>
+          If you claim before full retirement age and keep working, the retirement earnings test can hold back some of
+          your benefits. In 2026, the SSA withholds $1 for every $2 you earn above $24,480. In the calendar year you
+          reach full retirement age, the limit rises to $65,160 and the SSA withholds $1 for every $3 above it, counting
+          only earnings before the month you reach full retirement age. From that month on, there is no limit.
+        </p>
+        <p>
+          Take the $60,000 earner claiming at 62, with benefits of $1,642 a month, or $19,704 a year. If they keep a
+          part-time job paying $30,000, $2,760 of benefits is withheld. At $40,000 of earnings, $7,760 is withheld,
+          about 39% of the year&rsquo;s benefits.
+        </p>
+        <p>
+          The withheld money is not lost. At full retirement age the SSA recalculates your benefit to credit the months
+          when benefits were held back, so your check goes up. But it does make claiming early while working a poor
+          deal for most people. If you plan to keep earning a full salary, there is usually little reason to claim
+          before full retirement age.
+        </p>
+
+        <h2>Taxes on Social Security benefits</h2>
+        <p>
+          Up to 85% of your benefits can be subject to federal income tax, depending on your &ldquo;provisional
+          income&rdquo;: your other income plus half your benefits. Below $25,000 of provisional income ($32,000 for a
+          married couple filing jointly) none of your benefits are taxable. Between $25,000 and $34,000 ($32,000 and
+          $44,000 joint) up to 50% is taxable. Above that, up to 85%. These thresholds were set in 1983 and 1993 and
+          have never been raised for inflation, so more retirees are taxed every year.
+        </p>
+        <p>
+          Some 2026 examples for people aged 65 or older, using the 2026 brackets, the extra standard deduction for
+          seniors and the new senior deduction:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Household</th>
+              <th>Benefits</th>
+              <th>Other income</th>
+              <th>Taxable benefits</th>
+              <th>Extra federal tax from benefits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Single</td><td>$24,000</td><td>$20,000</td><td>$3,500</td><td>$0</td></tr>
+            <tr><td>Single</td><td>$36,000</td><td>$30,000</td><td>$16,400</td><td>$1,837</td></tr>
+            <tr><td>Single</td><td>$24,000</td><td>$40,000</td><td>$19,800</td><td>$2,376</td></tr>
+            <tr><td>Married, joint</td><td>$48,000</td><td>$40,000</td><td>$23,000</td><td>$1,550</td></tr>
+            <tr><td>Married, joint</td><td>$48,000</td><td>$80,000</td><td>$40,800</td><td>$4,896</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The way benefits phase into tax creates a &ldquo;tax torpedo&rdquo;: in the phase-in range, each extra $1 of
+          IRA withdrawal can make another 50 or 85 cents of benefits taxable, so the marginal rate can be 1.5 or 1.85
+          times your bracket. That is one more reason some people delay Social Security and draw down their IRA or
+          401(k) first, in their 60s, when their taxable income is lower. Our{" "}
+          <Link href="/us/taxes/federal-income-tax">federal income tax calculator</Link> handles Social Security
+          benefits alongside other income, and a handful of states tax benefits too.
+        </p>
+
+        <h2>Bridging the gap: using savings first</h2>
+        <p>
+          If you retire at 62 or 65 but want to delay Social Security until 70, you need to live on something in
+          between. The usual approach is to draw more heavily from your 401(k), IRA or taxable savings in those years,
+          then cut withdrawals once the larger Social Security check starts.
+        </p>
+        <p>
+          For the $60,000 earner, delaying from 62 to 70 means covering eight years without the $1,642 a month they
+          could have had. That is about $158,000 of extra withdrawals in today&rsquo;s dollars. In exchange they get
+          $1,266 a month more for life, inflation-protected. Whether that trade works depends on how much you have
+          saved. Our <Link href="/us/savings/retirement-withdrawal-calculator">retirement withdrawal calculator</Link>{" "}
+          and <Link href="/us/savings/retirement-calculator">retirement calculator</Link> let you test it.
+        </p>
+        <p>
+          The bridge years also tend to be low-income years, which makes them a good time for{" "}
+          <Link href="/us/savings/roth-conversion-calculator">Roth conversions</Link>, filling up the 12% or 22%
+          bracket before Social Security and required minimum distributions push your income up. RMDs start at 73 for
+          people born from 1951 to 1959 and at 75 for those born in 1960 or later; our{" "}
+          <Link href="/us/savings/rmd-calculator">RMD calculator</Link> shows how big they will be.
+        </p>
+
+        <h2>Medicare is a separate clock</h2>
+        <p>
+          Medicare eligibility starts at 65, whatever you do about Social Security. If you are not yet claiming
+          benefits, you have to sign up for Medicare yourself during your initial enrollment period (the seven months
+          around your 65th birthday), or you can face lifetime late-enrollment penalties, unless you have qualifying
+          coverage from a current employer. Once you claim Social Security, Part B premiums, $202.90 a month in 2026
+          for most people, are taken from your check. Higher-income retirees pay more under IRMAA, based on income from
+          two years earlier.
+        </p>
+
+        <h2>When claiming early can make sense</h2>
+        <ul>
+          <li>
+            <strong>Poor health or a short life expectancy.</strong>{" "}If you are unlikely to reach the break-even age,
+            earlier checks are worth more.
+          </li>
+          <li>
+            <strong>You need the money.</strong>{" "}If the alternative is high-interest debt or running out of savings,
+            claiming earlier is sensible.
+          </li>
+          <li>
+            <strong>You are the lower earner in a couple.</strong>{" "}If your own benefit is small and your
+            spouse&rsquo;s will become the survivor benefit, claiming your own earlier costs relatively little.
+          </li>
+          <li>
+            <strong>You have a minor child.</strong>{" "}Children under 18 of a retired worker can get up to half of the
+            worker&rsquo;s PIA, subject to a family maximum, which can make an earlier claim pay.
+          </li>
+        </ul>
+
+        <h2>When waiting usually wins</h2>
+        <ul>
+          <li>You are in good health and come from a long-lived family.</li>
+          <li>You are the higher earner in a married couple.</li>
+          <li>You are still working and would lose benefits to the earnings test.</li>
+          <li>You have enough savings to bridge the gap without hardship.</li>
+          <li>You worry about outliving your money more than about leaving an inheritance.</li>
+        </ul>
+
+        <h2>What about the trust fund?</h2>
+        <p>
+          The Social Security trustees project that the retirement trust fund will run short in the early 2030s. If
+          Congress does nothing, incoming payroll taxes would still pay roughly 77% to 80% of scheduled benefits.
+          Some people claim early because of this, but that is usually a mistake: any cut would most likely apply to
+          everyone&rsquo;s check as a percentage, whether they claimed at 62 or 70, and Congress has historically
+          protected people already near retirement. Claiming early to &ldquo;get yours first&rdquo; locks in a
+          permanent 30% reduction to guard against a cut that may never come, and would probably hit you anyway.
+        </p>
+
+        <h2>Changing your mind</h2>
+        <p>
+          If you claim and regret it, you have two options. Within 12 months of first claiming, you can withdraw your
+          application once, repaying everything you and your family received; it is then as if you never claimed. After
+          full retirement age, you can also voluntarily suspend your benefit to earn delayed retirement credits until
+          70, though any benefits paid to family members on your record are suspended too.
+        </p>
+
+        <h2>Key numbers for 2026</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>2026 figure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Cost-of-living adjustment</td><td>2.8%</td></tr>
+            <tr><td>Taxable maximum</td><td>$184,500</td></tr>
+            <tr><td>PIA bend points</td><td>$1,286 and $7,749</td></tr>
+            <tr><td>Maximum benefit at full retirement age</td><td>$4,152 a month</td></tr>
+            <tr><td>Average retired worker benefit</td><td>about $2,071 a month</td></tr>
+            <tr><td>Earnings test (under full retirement age)</td><td>$24,480; $1 withheld per $2 over</td></tr>
+            <tr><td>Earnings test (year of full retirement age)</td><td>$65,160; $1 withheld per $3 over</td></tr>
+            <tr><td>Medicare Part B standard premium</td><td>$202.90 a month</td></tr>
+            <tr><td>Benefit tax thresholds (single / joint)</td><td>$25,000 and $34,000 / $32,000 and $44,000</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The bottom line</h2>
+        <p>
+          For most healthy people, and especially for the higher earner in a married couple, waiting beyond 62
+          pays off: the break-even ages sit around 79 to 83, and the reward for living longer is a much bigger,
+          inflation-protected check. Claiming early still makes sense if your health is poor, you need the income now
+          or your own benefit is small next to your spouse&rsquo;s. Whatever you choose, check your earnings record on
+          the SSA website first, then compare ages with our{" "}
+          <Link href="/us/savings/social-security-calculator">Social Security calculator</Link>. These figures are
+          simplified estimates for 2026 and general information, not financial or tax advice.
+        </p>
+      </>
+    ),
+  },
 ];
 
 export function getAllPosts(): BlogPost[] {
