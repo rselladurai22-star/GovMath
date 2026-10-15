@@ -61,9 +61,9 @@ export default function TaperStudio({ query }: { query: Query }) {
   const hourGain = v.extra > 0 ? c.gain / v.extra / (52 / 12) : 0;
   const lostSegments = [
     { label: "You keep", value: Math.max(0, c.gain), display: gbp(c.gain, true), color: "#16a34a" },
-    { label: "Universal Credit", value: Math.max(0, c.lostToUc), display: gbp(c.lostToUc, true), color: "#5b1e6e" },
-    { label: "Tax and NI", value: Math.max(0, c.lostToTaxNi), display: gbp(c.lostToTaxNi, true), color: "#f59e0b" },
-    ...(c.lostToPension > 0.005 ? [{ label: "Pension", value: c.lostToPension, display: gbp(c.lostToPension, true), color: "#8e4ba3" }] : []),
+    { label: "Universal Credit lost", value: Math.max(0, c.lostToUc), display: gbp(c.lostToUc, true), color: "#5b1e6e" },
+    { label: "Tax and NI paid", value: Math.max(0, c.lostToTaxNi), display: gbp(c.lostToTaxNi, true), color: "#f59e0b" },
+    ...(c.lostToPension > 0.005 ? [{ label: "Into your pension", value: c.lostToPension, display: gbp(c.lostToPension, true), color: "#8e4ba3" }] : []),
   ];
 
   return (

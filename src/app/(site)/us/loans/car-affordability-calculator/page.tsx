@@ -10,7 +10,7 @@ const PATH = "/us/loans/car-affordability-calculator";
 export const metadata: Metadata = {
   title: "Car Affordability Calculator: 20/4/10 Rule",
   description:
-    "Free car affordability calculator for 2026. How much car you can afford on your income, with the 20/4/10 rule, insurance, fuel, sales tax, trade-in and loan term.",
+    "Free car affordability calculator for 2026. What car you can afford on your income, with the 20/4/10 rule, insurance, fuel, sales tax, trade-in and loan term.",
   alternates: { canonical: PATH },
   openGraph: ogFor(PATH),
 };

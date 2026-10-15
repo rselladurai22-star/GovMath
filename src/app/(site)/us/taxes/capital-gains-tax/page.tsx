@@ -11,7 +11,7 @@ const PATH = "/us/taxes/capital-gains-tax";
 export const metadata: Metadata = {
   title: "Capital Gains Tax Calculator 2026",
   description:
-    "Free capital gains tax calculator for 2026. See federal and state tax on stocks, crypto or a home sale, short vs long term, with the 0%, 15% and 20% rates and NIIT.",
+    "Free capital gains tax calculator for 2026. Federal and state tax on stocks, crypto or a home sale, short vs long term, with the 0%, 15% and 20% rates and NIIT.",
   alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };

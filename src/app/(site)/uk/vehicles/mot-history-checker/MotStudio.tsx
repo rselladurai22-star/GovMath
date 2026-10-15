@@ -11,7 +11,7 @@ import { bool, date, ShareButton, text, useStudio, type Query } from "@/componen
 
 const SCHEMA = {
   reg: text("", 10),
-  firstReg: date("2023-05-15"),
+  firstReg: date("2024-03-01"),
   expiry: date(""),
   ni: bool(false),
 };

@@ -11,7 +11,7 @@ const PATH = "/us/taxes/payroll-tax-calculator";
 export const metadata: Metadata = {
   title: "Employer Payroll Tax Calculator 2026",
   description:
-    "Free employer payroll tax calculator for 2026. See what an employee really costs: Social Security, Medicare, FUTA, state unemployment and benefits, per year and hour.",
+    "Free employer payroll tax calculator for 2026. See what an employee costs: Social Security, Medicare, FUTA, state unemployment and benefits, yearly and hourly.",
   alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };

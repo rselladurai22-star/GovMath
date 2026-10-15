@@ -11,7 +11,7 @@ const PATH = "/us/taxes/tax-bracket-calculator";
 export const metadata: Metadata = {
   title: "Tax Bracket Calculator 2026: Marginal Rate",
   description:
-    "Free tax bracket calculator for 2026. Find your federal bracket, marginal and effective tax rate, and see your income taxed band by band for every filing status.",
+    "Free tax bracket calculator for 2026. Find your federal bracket, marginal and effective tax rate, and your income taxed band by band for any filing status.",
   alternates: alternatesFor(PATH),
   openGraph: ogFor(PATH),
 };
