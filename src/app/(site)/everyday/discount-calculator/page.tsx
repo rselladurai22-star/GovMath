@@ -36,7 +36,7 @@ const FAQS: { q: string; a: string }[] = [
 export default async function DiscountPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
   const related = CALCULATORS.filter((c) =>
-    ["/everyday/percentage-calculator", "/uk/business/vat-calculator", "/us/taxes/sales-tax-calculator", "/us/taxes/tip-calculator", "/uk/business/gross-profit-margin", "/everyday/fraction-calculator"].includes(c.href),
+    ["/everyday/percentage-calculator", "/uk/business/vat-calculator", "/us/taxes/sales-tax-calculator", "/us/taxes/tip-calculator", "/uk/business/gross-profit-margin"].includes(c.href),
   );
   return (
     <FlagshipPage

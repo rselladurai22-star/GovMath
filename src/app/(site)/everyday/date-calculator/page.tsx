@@ -37,7 +37,7 @@ const FAQS: { q: string; a: string }[] = [
 export default async function DateCalcPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
   const related = CALCULATORS.filter((c) =>
-    ["/uk/life/days-between-dates", "/uk/life/bank-holidays", "/everyday/age-calculator", "/everyday/countdown", "/uk/tax-and-salary/notice-period-final-pay", "/everyday/time-calculator"].includes(c.href),
+    ["/uk/life/days-between-dates", "/uk/life/bank-holidays", "/everyday/age-calculator", "/uk/tax-and-salary/notice-period-final-pay"].includes(c.href),
   );
   return (
     <FlagshipPage

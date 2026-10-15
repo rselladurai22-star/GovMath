@@ -258,7 +258,7 @@ export default function OvertimeGuide() {
         </p>
         <Callout title="Keep a record">
           If you regularly work unpaid hours, note your start and finish times. It helps if you ever need to raise a
-          minimum wage or working time concern, or ask for a pay review. The <a href="/everyday/time-calculator">time calculator</a>{" "}can add up hours across the week.
+          minimum wage or working time concern, or ask for a pay review. The <a href="/everyday/timesheet-decimal">timesheet calculator</a>{" "}can add up hours across the week.
         </Callout>
       </GuideSection>
 

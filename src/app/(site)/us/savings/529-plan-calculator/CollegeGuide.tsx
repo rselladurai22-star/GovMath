@@ -94,7 +94,7 @@ export default function CollegeGuide() {
           ]}
         />
         <p>
-          These are sticker prices. Many students pay less after grants and scholarships, especially at private colleges. Books, transport and personal costs come on top. Many merit scholarships depend on <a href="/everyday/gpa-calculator">grades and GPA</a>, so good grades can cut the bill too. Choose a type in
+          These are sticker prices. Many students pay less after grants and scholarships, especially at private colleges. Books, transport and personal costs come on top. Many merit scholarships depend on grades and GPA, so good grades can cut the bill too. Choose a type in
           the calculator, or enter your own yearly figure under More options.
         </p>
       </GuideSection>

@@ -319,7 +319,7 @@ export default function OvertimeGuide() {
 
       <GuideSection id="records" n={17} kicker="Your rights" title="Keep your own records">
         <p>
-          Employers must keep records of hours worked, but your own log of start and finish times is useful (the <a href="/everyday/time-calculator">time calculator</a>{" "}can add up hours worked) if your pay looks wrong. If you think you have
+          Employers must keep records of hours worked, but your own log of start and finish times is useful (the <a href="/everyday/timesheet-decimal">timesheet calculator</a>{" "}can add up hours worked) if your pay looks wrong. If you think you have
           been underpaid, raise it with payroll first. You can also contact the Department of Labor&rsquo;s Wage and Hour Division, which can recover back
           pay, usually for up to two years (three if the violation was willful).
         </p>

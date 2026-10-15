@@ -6,19 +6,13 @@ import {
   deurenbergBodyFat,
   fatAndLean,
   fatBand,
-  ftInFromCm,
-  ftInText,
-  heightTable,
   kgFromLb,
-  kgFromLbOz,
   kgFromStLb,
   lbFromKg,
-  lbOzText,
   macros,
   navyBodyFat,
   stLbFromKg,
   stLbText,
-  weightTable,
 } from "./body";
 
 describe("weight", () => {
@@ -26,20 +20,12 @@ describe("weight", () => {
     expect(kgFromLb(1)).toBe(0.45359237);
     expect(kgFromStLb(1, 0)).toBeCloseTo(6.35029318, 8);
     expect(lbFromKg(100)).toBeCloseTo(220.462262, 5);
-    expect(kgFromLbOz(7, 8)).toBeCloseTo(3.40194, 4);
   });
   it("splits into stones and pounds with carrying", () => {
     expect(stLbFromKg(kgFromStLb(11, 4))).toEqual({ st: 11, lb: 4 });
     // 13.97 lb rounds to 14.0 and carries into the next stone.
     expect(stLbFromKg(kgFromStLb(10, 13.97), 1)).toEqual({ st: 11, lb: 0 });
     expect(stLbText(70)).toBe("11 st 0.3 lb");
-    expect(lbOzText(3.4)).toBe("7 lb 8 oz");
-  });
-  it("builds a half-stone table", () => {
-    const t = weightTable(7, 25, 0.5);
-    expect(t).toHaveLength(37);
-    expect(t[1].label).toBe("7 st 7 lb");
-    expect(t[t.length - 1].kg).toBeCloseTo(158.757, 3);
   });
   it("never returns NaN for odd input", () => {
     expect(kgFromLb(NaN)).toBe(0);
@@ -50,15 +36,6 @@ describe("weight", () => {
 describe("height", () => {
   it("uses the exact inch", () => {
     expect(cmFromFtIn(6, 0)).toBeCloseTo(182.88, 10);
-    expect(ftInFromCm(170)).toEqual({ ft: 5, inches: 6.9 });
-    expect(ftInFromCm(182.8, 0)).toEqual({ ft: 6, inches: 0 });
-    expect(ftInText(152.4)).toBe("5 ft 0 in");
-  });
-  it("builds 4′10″ to 6′8″", () => {
-    const t = heightTable(58, 80);
-    expect(t).toHaveLength(23);
-    expect(t[0].label).toBe("4′10″");
-    expect(t[22].cm).toBeCloseTo(203.2, 10);
   });
 });
 

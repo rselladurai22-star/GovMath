@@ -144,7 +144,7 @@ export default function BankHolidaysGuide() {
           For someone working 5 days a week, 5.6 weeks is 28 days. If bank holidays are included, that leaves 20 days to book.
         </Callout>
         <p>
-          To see how many days are left until the next break, use the <a href="/everyday/countdown">countdown</a>, and to add days to a date,
+          To see how many days are left until the next break, use the <a href="/uk/life/days-between-dates">days between dates calculator</a>, and to add days to a date,
           for example to find your return date, use the <a href="/everyday/date-calculator">date calculator</a>.
         </p>
       </GuideSection>

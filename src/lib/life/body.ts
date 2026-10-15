@@ -1,5 +1,5 @@
 /**
- * Body measures: weight and height conversions, calorie needs (BMR, TDEE,
+ * Body measures: weight and height conversions for the forms, calorie needs (BMR, TDEE,
  * targets and macros) and body fat estimates (US Navy tape method and the
  * Deurenberg BMI equation). Pure functions, tested in body.test.ts.
  */
@@ -11,7 +11,6 @@ export const KG_PER_LB = 0.45359237;
 /** International inch. */
 export const CM_PER_IN = 2.54;
 export const LB_PER_ST = 14;
-export const OZ_PER_LB = 16;
 export const IN_PER_FT = 12;
 
 const pos = (n: number) => (Number.isFinite(n) ? Math.max(0, n) : 0);
@@ -25,9 +24,6 @@ const roundTo = (n: number, dp: number) => {
 export const kgFromLb = (lb: number) => pos(lb) * KG_PER_LB;
 export const lbFromKg = (kg: number) => pos(kg) / KG_PER_LB;
 export const kgFromStLb = (st: number, lb: number) => (pos(st) * LB_PER_ST + pos(lb)) * KG_PER_LB;
-export const kgFromLbOz = (lb: number, oz: number) => (pos(lb) + pos(oz) / OZ_PER_LB) * KG_PER_LB;
-/** Stone as a decimal, e.g. 11.5 st. */
-export const stFromKg = (kg: number) => lbFromKg(kg) / LB_PER_ST;
 
 /** Whole stones and the pounds left over, rounded to `dp` places (carrying 14 lb into a stone). */
 export function stLbFromKg(kg: number, dp = 1): { st: number; lb: number } {
@@ -41,18 +37,6 @@ export function stLbFromKg(kg: number, dp = 1): { st: number; lb: number } {
   return { st, lb: Math.max(0, lb) };
 }
 
-/** Whole pounds and the ounces left over, rounded to `dp` places. */
-export function lbOzFromKg(kg: number, dp = 0): { lb: number; oz: number } {
-  const totalOz = roundTo(lbFromKg(kg) * OZ_PER_LB, dp);
-  let lb = Math.floor(totalOz / OZ_PER_LB + 1e-9);
-  let oz = roundTo(totalOz - lb * OZ_PER_LB, dp);
-  if (oz >= OZ_PER_LB) {
-    lb += 1;
-    oz = roundTo(oz - OZ_PER_LB, dp);
-  }
-  return { lb, oz: Math.max(0, oz) };
-}
-
 const trim = (n: number, dp: number) => Number(n.toFixed(dp)).toString();
 
 /** "11 st 4.5 lb" */
@@ -61,62 +45,11 @@ export function stLbText(kg: number, dp = 1): string {
   return `${st} st ${trim(lb, dp)} lb`;
 }
 
-/** "7 lb 8 oz" */
-export function lbOzText(kg: number, dp = 0): string {
-  const { lb, oz } = lbOzFromKg(kg, dp);
-  return `${lb} lb ${trim(oz, dp)} oz`;
-}
-
-export type WeightRow = { st: number; label: string; kg: number; lb: number };
-
-/** A stone table, e.g. 7 st to 25 st in half stones. */
-export function weightTable(fromSt = 7, toSt = 25, stepSt = 0.5): WeightRow[] {
-  const rows: WeightRow[] = [];
-  const step = stepSt > 0 ? stepSt : 0.5;
-  for (let s = fromSt; s <= toSt + 1e-9; s += step) {
-    const whole = Math.floor(s + 1e-9);
-    const lb = roundTo((s - whole) * LB_PER_ST, 1);
-    const kg = kgFromStLb(whole, lb);
-    rows.push({ st: s, label: `${whole} st ${trim(lb, 1)} lb`, kg, lb: lbFromKg(kg) });
-  }
-  return rows;
-}
-
 /* ── Height ────────────────────────────────────────────────────── */
 
 export const cmFromFtIn = (ft: number, inches: number) => (pos(ft) * IN_PER_FT + pos(inches)) * CM_PER_IN;
 export const cmFromIn = (inches: number) => pos(inches) * CM_PER_IN;
-export const inFromCm = (cm: number) => pos(cm) / CM_PER_IN;
-
-/** Whole feet and the inches left over, rounded to `dp` places (carrying 12 in into a foot). */
-export function ftInFromCm(cm: number, dp = 1): { ft: number; inches: number } {
-  const total = roundTo(inFromCm(cm), dp);
-  let ft = Math.floor(total / IN_PER_FT + 1e-9);
-  let inches = roundTo(total - ft * IN_PER_FT, dp);
-  if (inches >= IN_PER_FT) {
-    ft += 1;
-    inches = roundTo(inches - IN_PER_FT, dp);
-  }
-  return { ft, inches: Math.max(0, inches) };
-}
-
-/** 5′ 7.5″ written as "5 ft 7.5 in". */
-export function ftInText(cm: number, dp = 1): string {
-  const { ft, inches } = ftInFromCm(cm, dp);
-  return `${ft} ft ${trim(inches, dp)} in`;
-}
-
-export type HeightRow = { inches: number; label: string; cm: number; m: number };
-
-/** A height table in whole inches, e.g. 4′10″ (58 in) to 6′8″ (80 in). */
-export function heightTable(fromIn = 58, toIn = 80): HeightRow[] {
-  const rows: HeightRow[] = [];
-  for (let i = Math.round(fromIn); i <= Math.round(toIn); i++) {
-    const cm = cmFromIn(i);
-    rows.push({ inches: i, label: `${Math.floor(i / IN_PER_FT)}′${i % IN_PER_FT}″`, cm, m: cm / 100 });
-  }
-  return rows;
-}
+const inFromCm = (cm: number) => pos(cm) / CM_PER_IN;
 
 /* ── Calories ──────────────────────────────────────────────────── */
 

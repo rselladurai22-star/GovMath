@@ -244,7 +244,7 @@ export default function DaysGuide() {
         <p>
           School terms in England add up to 190 teaching days a year, set by councils or academy trusts. Term dates do not follow bank holidays
           exactly, so use your school&rsquo;s calendar for exact counts. The calculator is useful for counting the days left until a holiday or
-          an exam, and a <a href="/everyday/countdown">countdown</a> shows the time left to the minute.
+          an exam.
         </p>
       </GuideSection>
 

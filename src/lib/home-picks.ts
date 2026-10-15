@@ -33,8 +33,8 @@ export const POPULAR_EVERYDAY = [
   "/everyday/timesheet-decimal",
   "/everyday/discount-calculator",
   "/everyday/fuel-economy",
-  "/everyday/time-calculator",
-  "/everyday/average-calculator",
+  "/everyday/bmi-calculator",
+  "/everyday/calorie-calculator",
 ];
 
 /** The calculators behind a list of paths, in order. */

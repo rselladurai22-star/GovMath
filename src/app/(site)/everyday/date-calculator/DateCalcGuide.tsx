@@ -300,9 +300,6 @@ export default function DateCalcGuide() {
           <li>
             <a href="/everyday/age-calculator">Age calculator</a>: exact age in years, months and days.
           </li>
-          <li>
-            <a href="/everyday/countdown">Countdown calculator</a>: days, weekends and working days until a date.
-          </li>
         </ul>
       </GuideSection>
 

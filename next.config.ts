@@ -37,6 +37,21 @@ const STUDENT_LOAN_MOVES: [string, string][] = [
 const STUDENT_LOAN_PAGE = "/uk/students/student-loan-repayment";
 
 /**
+ * Generic Everyday utilities removed on 15 October 2026 (owner's choice, for
+ * the AdSense review): no money or UK angle, and thousands of copies
+ * elsewhere. Each goes to the closest calculator that is still live.
+ */
+const RETIRED_EVERYDAY: [string, string][] = [
+  ["weight-converter", "bmi-calculator"],
+  ["height-converter", "bmi-calculator"],
+  ["fraction-calculator", "percentage-calculator"],
+  ["average-calculator", "percentage-calculator"],
+  ["gpa-calculator", "percentage-calculator"],
+  ["countdown", "date-calculator"],
+  ["time-calculator", "timesheet-decimal"],
+];
+
+/**
  * While the fixed-amount pages are switched off (AMOUNT_PAGES_LIVE, until
  * AdSense approval), their addresses go to the matching calculator with a
  * temporary redirect instead of a 404, from both domains, so Google drops
@@ -117,6 +132,7 @@ const nextConfig: NextConfig = {
       // The Everyday calculators (October 2026) left the UK's Everyday Life topic.
       ...EVERYDAY_MOVES.map(([from, to]) => ({ source: `/life/${from}`, has: [{ type: "host" as const, value: OLD_HOST }], destination: `${SITE}/everyday/${to}`, permanent: true })),
       ...STUDENT_LOAN_MOVES.map(([from, plan]) => ({ source: `/students/${from}`, has: [{ type: "host" as const, value: OLD_HOST }], destination: `${SITE}${STUDENT_LOAN_PAGE}?plan=${plan}`, permanent: true })),
+      ...RETIRED_EVERYDAY.map(([from, to]) => ({ source: `/everyday/${from}`, has: [{ type: "host" as const, value: OLD_HOST }], destination: `${SITE}/everyday/${to}`, permanent: true })),
       // A topic's own page needs its own rule: on Vercel an empty :path* leaves
       // a trailing slash (/uk/benefits/), which would cost a second hop.
       { source: `/:topic(${UK_TOPICS})`, has: [{ type: "host", value: OLD_HOST }], destination: `${SITE}/uk/:topic`, permanent: true },
@@ -186,6 +202,10 @@ const nextConfig: NextConfig = {
       ...STUDENT_LOAN_MOVES.flatMap(([from, plan]) => [
         { source: `/uk/students/${from}`, destination: `${STUDENT_LOAN_PAGE}?plan=${plan}`, permanent: true },
         { source: `/students/${from}`, destination: `${STUDENT_LOAN_PAGE}?plan=${plan}`, permanent: true },
+      ]),
+      ...RETIRED_EVERYDAY.flatMap(([from, to]) => [
+        { source: `/everyday/${from}`, destination: `/everyday/${to}`, permanent: true },
+        { source: `/embed/everyday/${from}`, destination: `/everyday/${to}`, permanent: true },
       ]),
       { source: `/:topic(${UK_TOPICS})`, destination: "/uk/:topic", permanent: true },
       { source: `/:topic(${UK_TOPICS})/:path*`, destination: "/uk/:topic/:path*", permanent: true },

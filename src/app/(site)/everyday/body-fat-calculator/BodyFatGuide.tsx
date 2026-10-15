@@ -328,9 +328,7 @@ export default function BodyFatGuide() {
       <GuideSection id="tracking" n={18} kicker="Over weeks" title="Tracking changes">
         <p>
           Measure every four to six weeks, at the same time of day, with the same tape. A change of a point or less can be measuring error, so look
-          at the trend over several months. If your weight is shown in different units on your scales, our{" "}
-          <a href="/everyday/weight-converter">stone to kg converter</a>{" "}will help, and the{" "}
-          <a href="/everyday/height-converter">feet to cm converter</a>{" "}does the same for height.
+          at the trend over several months. The calculator takes centimetres or inches, so use whichever your tape shows.
         </p>
       </GuideSection>
 
