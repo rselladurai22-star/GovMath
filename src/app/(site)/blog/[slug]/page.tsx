@@ -101,6 +101,22 @@ export default async function BlogPostPage({ params }: { params: Params }) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([articleJsonLd, breadcrumbJsonLd]) }} />
       <AdSlot size="leaderboard" />
       {post.body}
+      {/* The same Sources box as the calculator guides (components/guide/Guide.tsx). */}
+      {post.sources && post.sources.length > 0 && (
+        <aside className="g-sources" aria-labelledby="guide-sources">
+          <h2 id="guide-sources">Sources</h2>
+          <p>Figures are checked against these sources.</p>
+          <ul>
+            {post.sources.map((src) => (
+              <li key={src.href}>
+                <a href={src.href} target="_blank" rel="noopener noreferrer">
+                  {src.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
     </ContentPage>
   );
 }

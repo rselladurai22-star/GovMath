@@ -100,9 +100,9 @@ export default function BmiGuide() {
             { label: "Height in metres, squared", note: "1.75 × 1.75", value: "3.0625" },
             { label: "Weight ÷ height squared", note: "90 ÷ 3.0625", value: "29.4" },
             { label: "Range", value: "Overweight" },
-            { label: "Top of the healthy range at this height", value: "76.3 kg" },
+            { label: "Top of the healthy range at this height", note: "Highest weight with a BMI under 25", value: "76.5 kg" },
           ]}
-          total={{ label: "Weight change to reach a healthy BMI", value: "Lose 13.7 kg" }}
+          total={{ label: "Weight change to reach a healthy BMI", value: "Lose 13.5 kg" }}
         />
         <p>
           The same formula is used for men and women. It was designed for adults, so children and teenagers are measured differently.
@@ -123,6 +123,10 @@ export default function BmiGuide() {
             ["40 or more", "Severe obesity", "Severe obesity"],
           ]}
         />
+        <p>
+          Each range starts at its threshold and runs up to, but not including, the next one. The WHO and the CDC describe a healthy weight as a
+          BMI of 18.5 to less than 25, which the NHS writes as 18.5 to 24.9: a BMI of 24.98 is still a healthy weight, and 25.0 is overweight.
+        </p>
         <p>
           Doctors sometimes split obesity into classes: 30 to 34.9, 35 to 39.9 and 40 or more. These classes help decide which treatments may be
           offered.
@@ -145,16 +149,21 @@ export default function BmiGuide() {
           head={["Height", "Healthy from", "Healthy to", "Lower thresholds: up to"]}
           numeric={[1, 2, 3]}
           rows={[
-            ["155 cm", "44.4 kg", "59.8 kg", "55.0 kg"],
-            ["160 cm", "47.4 kg", "63.7 kg", "58.6 kg"],
-            ["165 cm", "50.4 kg", "67.8 kg", "62.3 kg"],
-            ["170 cm", "53.5 kg", "72.0 kg", "66.2 kg"],
-            ["175 cm", "56.7 kg", "76.3 kg", "70.1 kg"],
-            ["180 cm", "59.9 kg", "80.7 kg", "74.2 kg"],
-            ["185 cm", "63.3 kg", "85.2 kg", "78.4 kg"],
-            ["190 cm", "66.8 kg", "89.9 kg", "82.7 kg"],
+            ["155 cm", "44.5 kg", "60.0 kg", "55.2 kg"],
+            ["160 cm", "47.4 kg", "63.9 kg", "58.8 kg"],
+            ["165 cm", "50.4 kg", "68.0 kg", "62.6 kg"],
+            ["170 cm", "53.5 kg", "72.2 kg", "66.4 kg"],
+            ["175 cm", "56.7 kg", "76.5 kg", "70.4 kg"],
+            ["180 cm", "60.0 kg", "80.9 kg", "74.5 kg"],
+            ["185 cm", "63.4 kg", "85.5 kg", "78.7 kg"],
+            ["190 cm", "66.8 kg", "90.2 kg", "83.0 kg"],
           ]}
         />
+        <p>
+          Each weight is rounded inwards to the nearest 0.1 kg, so the figure shown is itself inside the range. At 170 cm, 72.2 kg is a BMI of
+          24.98, still a healthy weight, while 72.3 kg is 25.02, which is overweight. In the same way, 53.5 kg is a BMI of 18.51 and 53.4 kg is
+          18.48, which is underweight. The calculator never rounds a BMI up into the next range, so 24.98 shows as 24.9 rather than 25.0.
+        </p>
         <Figure label="Weight at which obesity starts" caption="At a BMI of 30, the standard threshold.">
           <Bars
             items={[
@@ -172,7 +181,7 @@ export default function BmiGuide() {
         <p>
           The calculator converts US and UK units for you. One inch is 2.54 cm and one pound is about 0.454 kg. In the US weight is given in pounds;
           in the UK it is often given in stones and pounds, with 14 pounds in a stone. 5 ft 7 in and 159 lb is the same person as 5 ft 7 in and
-          11 st 5 lb, with a healthy range of about 118 lb to 159 lb.
+          11 st 5 lb, with a healthy range of 119 lb to 159 lb in whole pounds, rounded inwards.
           To switch between units on their own, use the <a href="/everyday/weight-converter">stone to kg converter</a> or the{" "}
           <a href="/everyday/height-converter">feet to cm converter</a>.
         </p>
@@ -183,7 +192,7 @@ export default function BmiGuide() {
             { label: "Weight", value: "72.1 kg" },
             { label: "BMI", value: "24.9" },
           ]}
-          total={{ label: "Healthy range at this height", value: "8 st 6 lb to 11 st 5 lb" }}
+          total={{ label: "Healthy range at this height", value: "8 st 7 lb to 11 st 5 lb" }}
         />
       </GuideSection>
 

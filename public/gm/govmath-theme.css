@@ -2428,3 +2428,33 @@ footer {
 .gm-neutral:has(.calculator.gm-indus) .pg-related a:hover { border-color: #8f282c; background: #fbf7f7; }
 .gm-neutral:has(.calculator.gm-indus) .pg-relcard strong { color: #8f282c; font-weight: 700; }
 .gm-neutral:has(.calculator.gm-indus) .pg-relcard span { color: #333; }
+
+/* ── Shared pages: the visitor's country's menus (October 2026) ──────
+   Pages outside /uk and /us (home, about, legal pages, blog, /calculators,
+   /widgets, /everyday, 404) carry the UK and the US topic menus in one nav
+   (sharedNavHtml() in src/gm/catalog.ts). CountrySwitch.tsx sets
+   html[data-country] to the visitor's country: the US menus show for "us",
+   the UK menus otherwise (also before the script runs and without
+   JavaScript). Only one set shows at a time, so the header's widths are
+   unchanged, and the Menu button on phones opens the visible set. */
+html:not([data-country="us"]) .ax-navigation .ax-navitem.gm-nav-us,
+html[data-country="us"] .ax-navigation .ax-navitem.gm-nav-uk {
+  display: none;
+}
+
+/* Everyday hub: a short paragraph under the hero on what the calculators cover. */
+.gm-neutral .gm-hub .gm-hubintro {
+  max-width: 84ch;
+  margin: 0;
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: #282828;
+}
+
+/* Mortgage repayment (package page): its "What we assumed" box (October 2026)
+   styled like the salary page's, whose rules sit in matching-salary.css, a
+   stylesheet the mortgage page does not load. */
+.gm-neutral:has(#mortgageForm) details.ax-assumptions > summary { cursor: pointer; font-weight: 700; }
+.gm-neutral:has(#mortgageForm) details.ax-assumptions > p { font-size: 14px; line-height: 1.7; }

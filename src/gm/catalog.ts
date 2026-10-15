@@ -45,13 +45,6 @@ export function categoryGridHtml(): string {
 }
 
 /**
- * The header with its mega menus built from the live catalogue: each topic's
- * menu lists every calculator in that topic (so new tools are linked from
- * every page), and the menu headings are styled paragraphs rather than <h3>s,
- * so the page's own <h1> comes first in its heading outline. The topic menus
- * are moved into the logo row.
- */
-/**
  * The logo's link: the country's own home page inside its section (/uk, /us),
  * or the site's home page ("/") elsewhere.
  */
@@ -67,8 +60,23 @@ export function footerHtml(html: string, country?: "uk" | "us"): string {
   );
 }
 
+/** The topic menus' nav in chrome.json and the page JSONs (the UK's). */
+const TOPIC_NAV = /<nav id="ax-navigation"[\s\S]*?<\/nav>/;
+
+/**
+ * The header with its mega menus built from the live catalogue: each topic's
+ * menu lists every calculator in that topic (so new tools are linked from
+ * every page), and the menu headings are styled paragraphs rather than <h3>s,
+ * so the page's own <h1> comes first in its heading outline. The topic menus
+ * are moved into the logo row.
+ *
+ * `country` is the section the page belongs to: its topic menus show and the
+ * logo goes to its home. Shared pages (no country) carry both countries' menus
+ * (see sharedNavHtml) and their logo goes to "/".
+ */
 export function headerHtml(html: string, country?: "uk" | "us"): string {
-  return logoHomeHtml((country === "us" ? html.replace(/<nav id="ax-navigation"[\s\S]*?<\/nav>/, usNavHtml()) : html)
+  const withNav = country === "us" ? html.replace(TOPIC_NAV, usNavHtml()) : country === "uk" ? html : sharedNavHtml(html);
+  return logoHomeHtml(withNav
     .replace(
       /(<a class="button" href="(\/[a-z/-]+)">View all calculators<\/a><\/div><div class="ax-mega-links">)[\s\S]*?(<\/div>)/g,
       (_m, open: string, href: string, close: string) => {
@@ -105,22 +113,44 @@ function topicForHref(href: string): AnyCategory | undefined {
 }
 
 /**
- * The header's topic menus on US pages, in the same markup as the UK menus
- * in chrome.json (the calculator lists are filled in by headerHtml).
+ * The US topic menus, in the same markup as the UK menus in chrome.json (the
+ * calculator lists are filled in by headerHtml). `prefix` starts each mega
+ * menu's id and `cls` is added to each item's class.
  */
-function usNavHtml(): string {
-  const topics = [...US_CATEGORIES, EVERYDAY];
-  const items = topics
+function usNavItems(prefix: string, cls?: string): string {
+  return [...US_CATEGORIES, EVERYDAY]
     .map(
       (c, i) =>
-        `<div class="ax-navitem"><button class="ax-navbutton" aria-expanded="false" aria-controls="mega-${i}">${esc(c.menu)}<span class="chevron"></span></button>` +
-        `<div class="ax-mega" id="mega-${i}" hidden><div class="ax-mega-title"><h3>${esc(c.title)}</h3><p>${esc(c.description)}</p>` +
+        `<div class="ax-navitem${cls ? ` ${cls}` : ""}"><button class="ax-navbutton" aria-expanded="false" aria-controls="${prefix}${i}">${esc(c.menu)}<span class="chevron"></span></button>` +
+        `<div class="ax-mega" id="${prefix}${i}" hidden><div class="ax-mega-title"><h3>${esc(c.title)}</h3><p>${esc(c.description)}</p>` +
         `<a class="button" href="${c.href}">View all calculators</a></div><div class="ax-mega-links"></div>` +
         `<div class="ax-mega-feature"><span>Plan with confidence</span><h3>${esc(c.tagline)}</h3><p>Free tools. Clear answers.</p>` +
         `<a href="${c.href}">Explore ${esc(c.title.toLowerCase())}</a></div></div></div>`,
     )
     .join("");
-  return `<nav id="ax-navigation" class="ax-navigation" aria-label="Calculator categories">${items}</nav>`;
+}
+
+/** The header's topic menus on US pages. */
+function usNavHtml(): string {
+  return `<nav id="ax-navigation" class="ax-navigation" aria-label="Calculator categories">${usNavItems("mega-")}</nav>`;
+}
+
+/**
+ * The header's topic menus on shared pages (/, /about, the legal pages, /blog,
+ * /calculators, /widgets, /everyday, the 404 page): the UK's menus (class
+ * gm-nav-uk) followed by the US's (gm-nav-us, mega menus mega-us-0…) in the
+ * one nav. CountrySwitch.tsx sets html[data-country] to the visitor's
+ * country, and govmath-theme.css shows the US menus for "us" and the UK menus
+ * otherwise, including before the script runs and without JavaScript. One nav
+ * rather than two because axis.js opens the first .ax-navigation from the
+ * mobile Menu button; it binds every .ax-navbutton by its aria-controls id.
+ */
+function sharedNavHtml(html: string): string {
+  return html.replace(
+    /(<nav id="ax-navigation"[^>]*>)([\s\S]*?)(<\/nav>)/,
+    (_m, open: string, items: string, close: string) =>
+      open + items.replace(/<div class="ax-navitem">/g, '<div class="ax-navitem gm-nav-uk">') + usNavItems("mega-us-", "gm-nav-us") + close,
+  );
 }
 
 const PIN =

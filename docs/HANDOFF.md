@@ -1,7 +1,7 @@
 # SumAtlas project memory (formerly GovMath)
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 15 October 2026 (**AdSense readiness audit: real home page at `/`, coming-soon countries hidden, contact `hello@sumatlas.com`, trust pages cover UK, US and health; owner actions under Ads**; **AdSense turned down govmath.co.uk ("Low value content", "Site Behavior: Navigation"); no link points at `/` any more and 12 dead source links were replaced, see Ads**; related sidebar back on the right from 1200px; hreflang for 24 UK/US twins; Plan 1, Plan 4 and Postgraduate merged into `/uk/students/student-loan-repayment`; every calculator has 3+ in-guide links**, see Known loose ends; **next 25 tools proposed, waiting for the owner's go-ahead, see Known loose ends**; the "Indus" calculator look on every calculator, see Design; IndexNow blocked with 403 on Bing's side, see **IndexNow**; salary and mortgage package forms use the shared form rows; every calculator page has the two-group page structure (tool + related sidebar, then guide); IndexNow live; 22 embeddable widgets; 25 high-demand UK and Everyday calculators; 75 US calculators with state income and property tax; sumatlas.com live with `/` redirecting to the visitor's country; the 187 fixed-amount pages switched off until AdSense approval, see **SEO**; Search Console API notes under **Search Console**; `docs/SEO-PLAN.md` has the off-site plan).
+Last updated: 15 October 2026, evening (**live review fixes committed but not yet built or PR'd: see the IN PROGRESS item at the top of Known loose ends**; **AdSense readiness audit: real home page at `/`, coming-soon countries hidden, contact `hello@sumatlas.com`, trust pages cover UK, US and health; owner actions under Ads**; **AdSense turned down govmath.co.uk ("Low value content", "Site Behavior: Navigation"); no link points at `/` any more and 12 dead source links were replaced, see Ads**; related sidebar back on the right from 1200px; hreflang for 24 UK/US twins; Plan 1, Plan 4 and Postgraduate merged into `/uk/students/student-loan-repayment`; every calculator has 3+ in-guide links**, see Known loose ends; **next 25 tools proposed, waiting for the owner's go-ahead, see Known loose ends**; the "Indus" calculator look on every calculator, see Design; IndexNow blocked with 403 on Bing's side, see **IndexNow**; salary and mortgage package forms use the shared form rows; every calculator page has the two-group page structure (tool + related sidebar, then guide); IndexNow live; 22 embeddable widgets; 25 high-demand UK and Everyday calculators; 75 US calculators with state income and property tax; sumatlas.com live with `/` redirecting to the visitor's country; the 187 fixed-amount pages switched off until AdSense approval, see **SEO**; Search Console API notes under **Search Console**; `docs/SEO-PLAN.md` has the off-site plan).
 
 ## Goal
 
@@ -248,6 +248,37 @@ The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
 
+- **IN PROGRESS (15 October 2026, evening): live review fixes, committed on the branch but NOT yet built, checked or PR'd.** PR 81 is merged and live. An independent review of the live site then found the problems below. Two commits on `claude/new-session-nfy8f3` fix them: `bdde332` (privacy and trust wording) and the commit after it (agent patches plus the client-navigation fix). **Next session, in this order:**
+  1. Production build (`next build --webpack`), then `npx tsc --noEmit -p .`, `npx eslint .` and `npx vitest run` (977 tests passed before the build).
+  2. Local checks: crawl every sitemap page (every internal link and schema item must answer 200 with no redirect); a Chromium sweep at 390 and 1440 (plus 375/768/1280/1920/2560 for /, /about, /privacy, /terms, /blog, /everyday and /everyday/bmi-calculator); and **a client-navigation test**: on / click the Salary card, change the salary and check `#salaryMonthly` changes; do the same with the Mortgage card; follow a breadcrumb, then open a header menu; with localStorage `sa-country=us`, /about must show the US menus and they must open (desktop, and Menu at 390px).
+  3. Look at the new boxes at 375 and 1440: the blog Sources box (`.gm-prose .g-sources` in govmath-site.css) and the mortgage "What we assumed" box (end of govmath-theme.css).
+  4. Run `scripts/build-updated.py` after committing (the BMI, salary and mortgage pages changed), commit `updated.json`, push, and open the PR. Then "Merge it and deploy" as usual.
+  5. Optional: delete the local branches `worktree-wf_3cbd260d-8d9-1` to `-4` (left by the agents' worktrees; the worktrees themselves are removed).
+- **What those commits change:**
+  - **Inputs out of page addresses (the high finding).** The privacy policy promised inputs never leave the browser, but every calculator wrote them into the address bar as people typed, so they reached GA, AdSense and, on reload, our server. See **Privacy of inputs** under Design. `useStudio`, `NIStudio` and `StampDutyStudio` no longer write the URL while people type; Share copies the link. GA uses `page_location` without the query, and Vercel Analytics strips it (`src/components/VercelAnalytics.tsx`). The privacy policy has a new "Links to your results" paragraph and describes the `sa-geo` session storage.
+  - **Trust wording made true:**
+    - About, How we check and the home page now say guide figures are "worked out with the same tested code", not "produced by the code" (219 of 225 guides hold pasted figures).
+    - The Sources note says "these sources" (not "official pages"), in Guide.tsx and both package JSONs.
+    - How we check's pump price and Federal Reserve examples are fixed.
+    - The Terms allow use at work and embedding with the credit line.
+    - "Each guide lists its sources" is now true: see the next point.
+  - **Blog (Guides):**
+    - Each of the 8 articles has a Sources list (a `sources` field in `src/lib/blog.tsx`, rendered in `blog/[slug]/page.tsx`; 32 URLs checked).
+    - "comes from the engine" sentences now say "worked out with".
+    - `/blog` is titled for the UK and US, with US topic and Everyday sections.
+  - **BMI** (`src/lib/life/health.ts`, tested): the healthy range is 18.5 to below 25, matching how the category is decided.
+    - The default no longer says "0.0 kg less than now", and the summary and table agree (53.5 to 72.2 kg at 170 cm).
+    - Limits are rounded inwards, and `bmiShown` never rounds up into the next band.
+    - Known leftover: BodyFatGuide says "BMI 25.0" for 165 cm / 68 kg, while the BMI page shows 24.9.
+  - **Package pages:** mortgage.json gained a "What we assumed" box. salary.json's raw-HTML default take-home is now £2,288.30 (was £2,434; computed with `salaryResult`).
+  - **Header on shared pages:** `sharedNavHtml()` in catalog.ts puts the UK items (`gm-nav-uk`) and the US items (`gm-nav-us`, ids `mega-us-N`) in one nav. CSS on `html[data-country]` shows one set (UK by default). It is one nav because axis.js's Menu button opens only the first `.ax-navigation`. Tested in `src/lib/header-nav.test.ts`.
+  - **Everyday hub:** no country (logo to /), new title, description and tagline, and an intro paragraph. AmountPage passes `country="uk"`.
+  - **Client-navigation bug (found live, serious):** `GmScripts` ran the design scripts once per browser load (`window.__gmInit`). After any next/link navigation, the new page's header menus did nothing, and **the salary and mortgage calculators were dead when reached from the home page cards**. Now the scripts run once per rendered page (the mark is `#ax-navigation[data-gm-init]`). Reproduced live before the fix; not yet re-tested after it (step 2 above).
+- **Still to do or decide:**
+  - **Owner:** email deliverability for `hello@sumatlas.com`. SPF is `v=spf1 include:secureserver.net ~all` with no Zoho include, there is no DKIM at `zmail._domainkey`, and DMARC is p=quarantine. Add Zoho's SPF include and DKIM record from Zoho Mail admin, then send a test email.
+  - Some calculator guides link to GOV.UK and IRS addresses that now redirect (Marriage Allowance eligibility, Tax-Free Childcare eligibility, simplified expenses vehicles, income over £100,000, MTD eligibility, and the IRS "One Big Beautiful Bill" pages, renamed "Working Families Tax Cuts"). They still work; update them to the final addresses when those guides are next touched.
+  - The navigation reviewer in the live review did not run (usage limit). Its checks were redone by hand: / answers 200 with no redirect for any country header or cookie, and old govmath.co.uk addresses reach the matching page in one hop.
+  - Owner actions from the audit are still open (see **Ads**).
 - **Latest (15 October 2026, later):** AdSense readiness audit; real home page at `/`, coming-soon countries hidden, `hello@sumatlas.com`, trust pages for the whole site. Owner actions listed under **Ads**.
 - **Earlier (15 October 2026):** AdSense turned down govmath.co.uk (low value content, navigation); fixes for the navigation faults it found on sumatlas.com (Home links to `/`, 12 dead source links). Owner: remove govmath.co.uk from AdSense → Sites, don't request its review, and wait for sumatlas.com's review. See **Ads**.
 - **Earlier (14 October 2026, AdSense focus):**
