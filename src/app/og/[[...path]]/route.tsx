@@ -45,12 +45,12 @@ function card(path: string): { kicker: string; title: string; text: string } {
     return {
       kicker: "Free UK calculators",
       title: "Tax, salary, mortgage and benefits calculators",
-      text: `${CALCULATORS.length} free calculators with plain-English guides, for 2026/27.`,
+      text: `${CALCULATORS.filter((c) => c.country === "uk").length} free calculators with plain-English guides, for 2026/27.`,
     };
   return {
-    kicker: "Free calculators",
-    title: "Money, tax and everyday calculators",
-    text: "Clear answers for the country you live in, with plain-English guides. Free, no sign-up.",
+    kicker: "Free UK and US calculators",
+    title: "Tax, pay, mortgage and everyday calculators",
+    text: `${CALCULATORS.length} free calculators for the UK and the US, with plain-English guides. No sign-up.`,
   };
 }
 

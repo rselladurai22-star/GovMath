@@ -22,9 +22,9 @@ function write(key: string, value: string) {
   }
 }
 
-/** Shows `code` as the selected country in every country menu on the page. */
+/** Shows `code` as the selected country in every country menu on the page (the default when it is not live). */
 function show(code: string) {
-  const c = COUNTRIES.find((x) => x.code === code) ?? COUNTRIES[0];
+  const c = COUNTRIES.find((x) => x.live && x.code === code) ?? COUNTRIES.find((x) => x.code === DEFAULT_COUNTRY)!;
   document.querySelectorAll(".gm-country").forEach((menu) => {
     const name = menu.querySelector(".gm-country-name");
     if (name) name.textContent = c.short;
@@ -32,12 +32,7 @@ function show(code: string) {
       if (item.getAttribute("data-country") === c.code) item.setAttribute("aria-current", "true");
       else item.removeAttribute("aria-current");
     });
-    const note = menu.querySelector(".gm-country-note");
-    if (note) note.textContent = c.live ? "Choose your country" : `${c.name}: coming soon. UK and US calculators are live now.`;
   });
-  // Shared pages' home links (logo, "Home" crumb) go to this country's home page, not "/".
-  const home = `/${c.live ? c.code : DEFAULT_COUNTRY}`;
-  document.querySelectorAll("a[data-home]").forEach((a) => a.setAttribute("href", home));
   document.documentElement.dataset.country = c.code;
 }
 
@@ -75,10 +70,9 @@ function close(menu: Element) {
  * The header's country menu (markup from countryMenuHtml in catalog.ts).
  * Inside a country's section (/uk/…, /us/…) it shows that country. Elsewhere it
  * shows the visitor's own choice if they made one, else the country they
- * are browsing from (when we cover it), else the UK. A choice is also saved
- * as the sa-country cookie, which src/proxy.ts uses to send sumatlas.com
- * itself to that country. Nothing else redirects: people, and search engines
- * crawling from abroad, always reach the page they asked for.
+ * are browsing from (when it is live), else the UK. Nothing redirects by
+ * location: people, and search engines crawling from abroad, always reach
+ * the page they asked for.
  */
 export default function CountrySwitch() {
   const path = usePathname();
@@ -120,10 +114,7 @@ export default function CountrySwitch() {
       }
       const choice = target.closest("a[data-country]");
       if (choice) {
-        const code = choice.getAttribute("data-country")!;
-        write(KEY, code);
-        // The same choice as a cookie, so sumatlas.com opens this country next time (src/proxy.ts).
-        document.cookie = `${KEY}=${code}; path=/; max-age=31536000; SameSite=Lax; Secure`;
+        write(KEY, choice.getAttribute("data-country")!);
         close(choice.closest(".gm-country")!);
       }
     };

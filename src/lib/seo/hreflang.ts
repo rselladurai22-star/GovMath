@@ -39,14 +39,14 @@ export const HREFLANG_PAIRS: readonly (readonly [string, string])[] = [
   ["/uk/investing/savings-interest", "/us/savings/high-yield-savings-calculator"],
 ];
 
-/** The two country homes; "/" sends each visitor to theirs, so it is the x-default. */
+/** The two country homes; "/" lets each visitor choose theirs, so it is the x-default. */
 const HUBS = { "en-GB": "/uk", "en-US": "/us", "x-default": "/" } as const;
 
 export type Alternates = { canonical: string; languages?: Record<string, string> };
 
 /** The page's hreflang tags, or undefined when it has no other-country twin. */
 export function hreflangFor(path: string): Record<string, string> | undefined {
-  if (path === HUBS["en-GB"] || path === HUBS["en-US"]) return { ...HUBS };
+  if (path === HUBS["en-GB"] || path === HUBS["en-US"] || path === HUBS["x-default"]) return { ...HUBS };
   const pair = HREFLANG_PAIRS.find(([uk, us]) => uk === path || us === path);
   return pair ? { "en-GB": pair[0], "en-US": pair[1] } : undefined;
 }

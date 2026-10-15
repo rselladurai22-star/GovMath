@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/contact" },
 };
 
-const EMAIL = "hello@govmath.co.uk";
+const EMAIL = "hello@sumatlas.com";
 
 export default function ContactPage() {
   return (

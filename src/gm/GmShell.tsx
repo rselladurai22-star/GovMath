@@ -1,7 +1,7 @@
 import { createElement, type ReactNode } from "react";
 import chrome from "./chrome.json";
 import GmScripts from "./GmScripts";
-import { headerHtml, logoHomeHtml } from "./catalog";
+import { footerHtml, headerHtml } from "./catalog";
 
 /**
  * The approved design's page frame for pages built in React: the design's
@@ -45,7 +45,7 @@ export default function GmShell({
   children,
 }: {
   kind?: "base" | "calculator";
-  /** Whose topic menus the header shows (the UK's when unset) and where the logo goes (the visitor's country when unset). */
+  /** Whose topic menus the header shows (the UK's when unset) and where the logo goes (the site's home page, "/", when unset). */
   country?: "uk" | "us";
   children: ReactNode;
 }) {
@@ -58,7 +58,7 @@ export default function GmShell({
       <main id="main" className="gm-neutral">
         {children}
       </main>
-      {render({ ...(chrome.footer as El), html: logoHomeHtml(chrome.footer.html, country) })}
+      {render({ ...(chrome.footer as El), html: footerHtml(chrome.footer.html, country) })}
     </>
   );
   return (

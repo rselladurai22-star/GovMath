@@ -15,7 +15,7 @@ export default function PrivacyPage() {
     <ContentPage
       title="Privacy Policy"
       intro="What we collect, what we don't, and the choices you have."
-      updated="8 October 2026"
+      updated="15 October 2026"
     >
       <p>
         This Privacy Policy explains how SumAtlas (&quot;we&quot;,
@@ -69,12 +69,9 @@ export default function PrivacyPage() {
         which country your connection comes from. Our code reads only the
         country code (such as &ldquo;GB&rdquo;) and does not keep it. If you
         pick a country from the menu, your choice is saved in your own
-        browser (in its storage and in a small first-party cookie called
-        &ldquo;sa-country&rdquo; that lasts a year), so the menu remembers it and
-        sumatlas.com opens that country&rsquo;s page next time. When you visit
-        sumatlas.com without a saved choice, we use the same country code to
-        open the UK or US page. You can clear the choice at any time by clearing
-        your browser&rsquo;s site data.
+        browser&rsquo;s storage, so the menu remembers it; it is not sent to us.
+        You can clear the choice at any time by clearing your browser&rsquo;s
+        site data.
       </p>
 
       <h2>Advertising and Google AdSense</h2>
@@ -188,6 +185,24 @@ export default function PrivacyPage() {
           ico.org.uk
         </a>
         .
+      </p>
+
+      <h2>Your rights in the US</h2>
+      <p>
+        Some US states, including California, give residents rights over their
+        personal information, such as the right to know what is collected, to
+        have it deleted, and to opt out of its &ldquo;sale&rdquo; or
+        &ldquo;sharing&rdquo; for targeted advertising. We do not sell personal
+        information for money. Google&apos;s advertising cookies, described
+        above, may count as sharing for targeted advertising under some state
+        laws. You can opt out of personalised ads at{" "}
+        <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">
+          Google Ads Settings
+        </a>
+        , block or delete cookies in your browser, and, where Google shows a US
+        state privacy message on this site, use its link to opt out. To make a
+        request, contact us using the details on our{" "}
+        <Link href="/contact">contact page</Link>.
       </p>
 
       <h2>Children</h2>
