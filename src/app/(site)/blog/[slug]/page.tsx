@@ -5,7 +5,6 @@ import ContentPage from "@/components/ContentPage";
 import PostCard from "@/components/blog/PostCard";
 import { ORG_ID, SITE } from "@/gm/schema";
 import { BLOG_POSTS, getAllPosts, getPost } from "@/lib/blog";
-import { homeFor } from "@/lib/seo/home-links";
 
 type Params = Promise<{ slug: string }>;
 
@@ -62,7 +61,7 @@ export default async function BlogPostPage({ params }: { params: Params }) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}${homeFor("/blog").href}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
       { "@type": "ListItem", position: 2, name: "Guides", item: `${SITE}/blog` },
       { "@type": "ListItem", position: 3, name: post.title, item: `${SITE}/blog/${post.slug}` },
     ],

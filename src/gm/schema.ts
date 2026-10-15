@@ -18,7 +18,9 @@ export const siteJsonLd = [
     name: "SumAtlas",
     url: SITE,
     logo: `${SITE}/gm/sumatlas-mark-512.png`,
-    description: "An independent UK website of free tax, salary, mortgage, benefits and pension calculators. Not part of the UK government.",
+    email: "hello@sumatlas.com",
+    description:
+      "An independent website of free tax, pay, mortgage, benefits, loan and retirement calculators for the UK and the US. Not part of any government.",
   },
   {
     "@context": "https://schema.org",
@@ -26,8 +28,8 @@ export const siteJsonLd = [
     "@id": WEBSITE_ID,
     name: "SumAtlas",
     url: SITE,
-    inLanguage: "en-GB",
-    description: "Free UK tax, salary, mortgage and benefits calculators in plain English.",
+    inLanguage: ["en-GB", "en-US"],
+    description: "Free UK and US tax, pay, mortgage, benefits and retirement calculators in plain English.",
     publisher: { "@id": ORG_ID },
   },
 ];

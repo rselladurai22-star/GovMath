@@ -30,6 +30,7 @@ describe("hreflang pairs", () => {
     const tags = { "en-GB": "/uk", "en-US": "/us", "x-default": "/" };
     expect(hreflangFor("/uk")).toEqual(tags);
     expect(hreflangFor("/us")).toEqual(tags);
+    expect(hreflangFor("/")).toEqual(tags);
   });
 
   it("leaves pages without a twin alone", () => {

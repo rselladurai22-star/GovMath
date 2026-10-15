@@ -52,14 +52,19 @@ export function categoryGridHtml(): string {
  * are moved into the logo row.
  */
 /**
- * The logo's link: the country's own home page inside its section (/uk, /us).
- * Elsewhere it is the default country's, marked data-home so CountrySwitch
- * points it at the visitor's country. Never "/", which redirects by
- * location (see src/lib/seo/home-links.ts).
+ * The logo's link: the country's own home page inside its section (/uk, /us),
+ * or the site's home page ("/") elsewhere.
  */
-export function logoHomeHtml(html: string, country?: "uk" | "us"): string {
-  const href = country ? `href="/${country}"` : `href="/${DEFAULT_COUNTRY}" data-home=""`;
-  return html.replace(/href="\/"(?= aria-label="SumAtlas home")/g, href);
+function logoHomeHtml(html: string, country?: "uk" | "us"): string {
+  return country ? html.replace(/href="\/"(?= aria-label="SumAtlas home")/g, `href="/${country}"`) : html;
+}
+
+/** The footer: its logo link, and a closing line that covers both countries (the JSONs say "the UK government"). */
+export function footerHtml(html: string, country?: "uk" | "us"): string {
+  return logoHomeHtml(html, country).replace(
+    "Not affiliated with the UK government or a bank.",
+    "Not affiliated with any government, bank or lender.",
+  );
 }
 
 export function headerHtml(html: string, country?: "uk" | "us"): string {
@@ -121,14 +126,17 @@ function usNavHtml(): string {
 const PIN =
   '<svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9.5" r="2.5" fill="currentColor"/></svg>';
 
-/** The header's country menu. Live countries link to their section; the rest are listed as coming soon. */
+/**
+ * The header's country menu: the live countries, each linking to its
+ * section. Countries not yet live stay out of it (since 15 October 2026: a
+ * "Coming soon" list reads as an unfinished site); setting `live: true` in
+ * countries.ts adds one.
+ */
 function countryMenuHtml(): string {
   const first = COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY) ?? COUNTRIES[0];
-  const items = COUNTRIES.map((c) =>
-    c.live
-      ? `<li><a href="/${c.code}" data-country="${c.code}">${esc(c.name)}</a></li>`
-      : `<li><span data-country="${c.code}" aria-disabled="true">${esc(c.name)}<small>Coming soon</small></span></li>`,
-  ).join("");
+  const items = COUNTRIES.filter((c) => c.live)
+    .map((c) => `<li><a href="/${c.code}" data-country="${c.code}">${esc(c.name)}</a></li>`)
+    .join("");
   return (
     `<div class="gm-country"><button type="button" class="gm-country-btn" aria-expanded="false" aria-controls="gm-country-list">` +
     `${PIN}<span class="sr-only">Country: </span><span class="gm-country-name">${esc(first.short)}</span><span class="chevron" aria-hidden="true"></span></button>` +

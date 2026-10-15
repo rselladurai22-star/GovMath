@@ -21,14 +21,21 @@ export default function HowWeCheckPage() {
     >
       <h2>1. Official sources first</h2>
       <p>
-        Every rate, threshold, allowance and rule comes from the organisation that sets it: GOV.UK, HM Revenue &amp;
-        Customs, the Department for Work and Pensions, the DVLA, Student Finance England, the Valuation Office Agency,
-        the Bank of England, the Office for National Statistics, legislation.gov.uk, and the Scottish, Welsh and
-        Northern Ireland governments.
+        Every rate, threshold, allowance and rule comes from the organisation that sets it. In the UK: GOV.UK, HM
+        Revenue &amp; Customs, the Department for Work and Pensions, the DVLA, Student Finance England, the Valuation
+        Office Agency, the Bank of England, the Office for National Statistics, legislation.gov.uk, and the Scottish,
+        Welsh and Northern Ireland governments. In the US: the Internal Revenue Service, the Social Security
+        Administration, the Treasury, the Department of Labor, the Bureau of Labor Statistics, the Census Bureau and the
+        Consumer Financial Protection Bureau.
       </p>
       <p>
-        A few figures are not published by any official body, such as average pump prices. For those we use an
-        established independent source, such as the RAC, and name it.
+        A few figures are not published by any official body, or not in one place, such as average pump prices, each
+        US state&rsquo;s income tax brackets or average loan rates. For those we use an established independent source,
+        such as the RAC, the Tax Foundation or the Federal Reserve, and name it.
+      </p>
+      <p>
+        Health and pregnancy calculators use published formulas and NHS and CDC guidance. They give estimates, not
+        medical advice, and say so on the page.
       </p>
       <p>
         Each calculator lists the pages it relies on in a <strong>Sources</strong>{" "}box at the end of its guide. The
@@ -54,7 +61,14 @@ export default function HowWeCheckPage() {
           student loan thresholds, car tax and company car rates.
         </li>
         <li>
-          <strong>Every September</strong>: student loan interest rates.
+          <strong>Every September</strong>: UK student loan interest rates.
+        </li>
+        <li>
+          <strong>Every October and November</strong>: the next US tax year&rsquo;s IRS figures (tax brackets,
+          standard deduction and retirement plan limits) and Social Security&rsquo;s cost-of-living increase.
+        </li>
+        <li>
+          <strong>Every January</strong>: US state income tax changes.
         </li>
         <li>
           <strong>Every quarter</strong>: the energy price cap and HMRC&rsquo;s advisory fuel rates; fuel prices more
@@ -84,7 +98,8 @@ export default function HowWeCheckPage() {
 
       <h2>6. Independent</h2>
       <p>
-        SumAtlas is not part of, or endorsed by, HM Government, HMRC, the DWP or any other public body. No bank, lender
+        SumAtlas is not part of, or endorsed by, HM Government, HMRC, the DWP, the US government, the IRS or any other
+        public body. No bank, lender
         or financial firm pays to appear in our calculators or guides. The site is free to use and is funded by
         advertising, which never affects our figures.
       </p>
@@ -96,7 +111,7 @@ export default function HowWeCheckPage() {
         the page&rsquo;s Updated date changes when the fix goes live.
       </p>
       <p>
-        Our calculators give estimates for general information, not financial, tax or legal advice. See our{" "}
+        Our calculators give estimates for general information, not financial, tax, legal or medical advice. See our{" "}
         <Link href="/disclaimer">disclaimer</Link>.
       </p>
     </ContentPage>

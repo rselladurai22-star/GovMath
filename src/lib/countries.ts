@@ -1,6 +1,7 @@
 /**
  * The countries SumAtlas covers, in menu order. Live countries have their own
- * section (/uk/…); the others are listed as coming soon. `iso` is the
+ * section (/uk/…) and appear in the header's country menu; the others are
+ * planned and appear nowhere until set live. `iso` is the
  * ISO 3166-1 alpha-2 code that Vercel reports for a visitor's location.
  */
 export type Country = { code: string; iso: string; name: string; short: string; live: boolean };

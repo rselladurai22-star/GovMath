@@ -1186,3 +1186,16 @@ a.gm-card:hover {
 .gm-widget { border: 1px solid #dfe3e8; border-radius: 10px; padding: 12px 16px; margin: 0 0 10px; }
 .gm-widget summary { cursor: pointer; }
 .gm-widget summary span { color: #6e6e6e; }
+
+/* Home page (sumatlas.com/, October 2026): the "United Kingdom" / "United
+   States" labels above each country's topic links. */
+.gm-topicgroup {
+  margin: 18px 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #282828;
+}
+/* Its four "Why you can rely on the figures" cards sit in one row on wide screens. */
+@media (min-width: 1100px) {
+  .gm-home .gm-trustcards { grid-template-columns: repeat(4, 1fr); }
+}
