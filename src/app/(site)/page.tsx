@@ -40,11 +40,11 @@ function Heading({ id, eyebrow, title, link }: { id: string; eyebrow: string; ti
 const TRUST = [
   {
     title: "Official figures",
-    text: "Rates and rules come from the bodies that set them: HMRC, the DWP and GOV.UK in the UK; the IRS, the Social Security Administration and other official sources in the US. Each guide lists its sources.",
+    text: "Rates and rules come from the bodies that set them wherever we can: HMRC, the DWP and GOV.UK in the UK; the IRS and the Social Security Administration in the US. Every guide and article lists its sources.",
   },
   {
     title: "One set of sums, tested",
-    text: "Each topic's rules are written once as calculation code. The same code drives the calculator and every figure in its guide, and hundreds of automated tests check it against official examples.",
+    text: "Each topic's rules are written once as calculation code, which drives the calculator and is used to work out the figures in its guide. Hundreds of automated tests check it against official examples.",
   },
   {
     title: "Checked and dated",
@@ -123,7 +123,7 @@ export default function Home() {
           <nav className="categoryjump" aria-label="UK topics">
             {CATS.map((c) => (
               <Link key={c.slug} href={`/uk/${c.slug}`}>
-                {c.label.replace(/&amp;/g, "&")} ({getCalculatorsByCategory(c.slug).length})
+                {c.label.replace(/&amp;/g, "&")} ({getCalculatorsByCategory(c.slug).filter((t) => t.country === "uk").length})
               </Link>
             ))}
           </nav>

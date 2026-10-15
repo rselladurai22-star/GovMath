@@ -31,9 +31,11 @@ export default function PrivacyPage() {
           calculator without signing up or giving us your name or email.
         </li>
         <li>
-          <strong>We do not store your calculator inputs.</strong> The numbers
-          you type (salary, property price, benefit amounts, etc.) are processed
-          in your browser and are never sent to or saved on our servers.
+          <strong>We do not store your calculator inputs.</strong> The figures
+          you type (salary, property price, benefit amounts, dates and so on)
+          are worked out in your browser. While you use a calculator they are
+          not sent to us or to anyone else. They only leave your browser if you
+          copy a link to your results (see below).
         </li>
         <li>
           <strong>We use cookies for analytics and advertising</strong> to keep
@@ -55,6 +57,19 @@ export default function PrivacyPage() {
         (country/region), device and browser type, referring page, and the pages
         you view. This is used to understand traffic and improve the site.
       </p>
+      <h3>Links to your results</h3>
+      <p>
+        The &ldquo;Copy a link to these results&rdquo; button makes a link that
+        contains the figures you entered, so the same results open for whoever
+        uses it. Anyone you send it to can see those figures. When the link is
+        opened, our hosting provider (Vercel) receives the page address in order
+        to show the results, and Google&apos;s advertising service may receive
+        the page address when an ad is shown. Our analytics (Google Analytics
+        and Vercel Analytics) record the page without the figures. We do not
+        save the figures, though our host&apos;s request logs may hold the
+        address for a short time. If you would rather nobody saw your figures,
+        don&apos;t share the link.
+      </p>
 
       <h2>Cookies and similar technologies</h2>
       <p>
@@ -67,17 +82,19 @@ export default function PrivacyPage() {
         <strong>Your country.</strong>{" "}To suggest calculators for where you
         live, the country menu at the top of the page asks our host (Vercel)
         which country your connection comes from. Our code reads only the
-        country code (such as &ldquo;GB&rdquo;) and does not keep it. If you
-        pick a country from the menu, your choice is saved in your own
-        browser&rsquo;s storage, so the menu remembers it; it is not sent to us.
+        country code (such as &ldquo;GB&rdquo;) and keeps the result in your
+        browser&rsquo;s session storage until you close the tab, so it does not
+        ask again on every page. If you pick a country from the menu, your
+        choice is saved in your browser&rsquo;s local storage, so the menu
+        remembers it. Neither is sent to us.
         You can clear the choice at any time by clearing your browser&rsquo;s
         site data.
       </p>
 
       <h2>Advertising and Google AdSense</h2>
       <p>
-        We display advertising to keep SumAtlas free. We intend to use
-        third-party advertising partners, including{" "}
+        We display advertising to keep SumAtlas free. We use third-party
+        advertising partners, including{" "}
         <strong>Google AdSense</strong>. These partners may use cookies and
         similar technologies to serve ads based on your prior visits to this and
         other websites.

@@ -26,8 +26,8 @@ export default function TermsPage() {
       <p>
         SumAtlas provides free calculators and educational content about tax,
         pay, housing, benefits, loans and retirement rules in the UK and the US,
-        plus everyday calculators. You may use the Site for your own personal,
-        non-commercial information. You agree not to:
+        plus everyday calculators. You may use the Site for your own
+        information, at home or at work. You agree not to:
       </p>
       <ul>
         <li>misuse the Site or interfere with its normal operation;</li>
@@ -67,6 +67,15 @@ export default function TermsPage() {
         licensors and are protected by law. The SumAtlas name and branding may
         not be used without our written permission. You may link to our pages
         freely.
+      </p>
+
+      <h2>Embedding our calculators</h2>
+      <p>
+        You may embed our calculators on any website, including a commercial
+        one, using the code on our <Link href="/widgets">widgets page</Link>,
+        as long as the &ldquo;Calculator by SumAtlas&rdquo; line under each
+        calculator stays in place. We may change or withdraw a widget at any
+        time.
       </p>
 
       <h2>Third-party links and advertising</h2>
