@@ -71,7 +71,7 @@ export function Guide({
           {sources && sources.length > 0 && (
             <aside className="g-sources" aria-labelledby="guide-sources">
               <h2 id="guide-sources">Sources</h2>
-              <p>{sourcesNote ?? "Figures are checked against these official pages."}</p>
+              <p>{sourcesNote ?? "Figures are checked against these sources."}</p>
               <ul>
                 {sources.map((src) => (
                   <li key={src.href}>

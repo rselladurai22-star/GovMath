@@ -16,12 +16,16 @@ const CONSENT_REGIONS = [
   "LV", "LI", "LT", "LU", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE",
 ];
 
-/** Inline script that sets consent defaults and configures GA; runs before gtag.js loads. */
+/**
+ * Inline script that sets consent defaults and configures GA; runs before gtag.js loads.
+ * The page address is reported without its query string: a shared results link
+ * carries the figures someone entered (?salary=…), and those must not reach GA.
+ */
 export function gaInitScript(id: string): string {
   const denied = { ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied", analytics_storage: "denied" };
   return (
     "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}" +
     `gtag('consent','default',${JSON.stringify({ ...denied, region: CONSENT_REGIONS, wait_for_update: 500 })});` +
-    `gtag('js',new Date());gtag('config',${JSON.stringify(id)});`
+    `gtag('js',new Date());gtag('config',${JSON.stringify(id)},{page_location:location.origin+location.pathname});`
   );
 }

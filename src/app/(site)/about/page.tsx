@@ -69,8 +69,9 @@ export default function AboutPage() {
           harvesting. We keep the lights on with unobtrusive advertising.
         </li>
         <li>
-          <strong>Privacy-first.</strong> Calculations run in your browser. We
-          do not store the figures you type in. See our{" "}
+          <strong>Privacy-first.</strong> Calculations run in your browser, and
+          the figures you type are not sent to us or saved. They only leave your
+          browser if you copy a link to your results. See our{" "}
           <Link href="/privacy">Privacy Policy</Link>.
         </li>
         <li>
@@ -107,16 +108,17 @@ export default function AboutPage() {
       <h2>Our editorial standards</h2>
       <ul>
         <li>
-          <strong>Official sources first.</strong> Every rate, threshold and
-          rule comes from a primary source wherever one exists, such as GOV.UK,
+          <strong>Official sources first.</strong>{" "}We take rates, thresholds and
+          rules from the bodies that set them wherever we can, such as GOV.UK,
           HMRC, the DWP, Student Finance England, the Valuation Office Agency,
-          the IRS or the Social Security Administration. Each guide lists its
+          the IRS or the Social Security Administration, and name any other
+          source we use. Each calculator&apos;s guide and each article lists its
           sources at the end.
         </li>
         <li>
           <strong>One set of sums.</strong> The figures in our guides and worked
-          examples are produced by the same calculation code as the calculators,
-          not typed in by hand, so the guide and the calculator always agree.
+          examples are worked out with the same tested calculation code as the
+          calculators, and worked out again whenever the rates change.
         </li>
         <li>
           <strong>Tested.</strong> The calculation code is checked by hundreds
@@ -124,7 +126,7 @@ export default function AboutPage() {
           before any change goes live.
         </li>
         <li>
-          <strong>Checked and dated.</strong> Each calculator shows when its
+          <strong>Checked and dated.</strong>{" "}Each calculator shows when its
           page last changed. We recheck UK figures each April when the new tax
           year starts, US figures each autumn when the IRS publishes the next
           year&apos;s, and both whenever the rules change.

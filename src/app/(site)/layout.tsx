@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { preload } from "react-dom";
-import { Analytics } from "@vercel/analytics/next";
+import VercelAnalytics from "@/components/VercelAnalytics";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ADSENSE_CLIENT } from "@/lib/ads";
 import { GA_ID, gaInitScript } from "@/lib/analytics";
@@ -50,7 +50,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         {ADSENSE_CLIENT && (
           <script async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`} crossOrigin="anonymous" />
         )}
-        <Analytics />
+        <VercelAnalytics />
         <SpeedInsights />
       </body>
     </html>
