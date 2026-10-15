@@ -1,15 +1,15 @@
-import { Fragment, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { shortTitle, type Calculator } from "@/lib/calculators";
 import GmShell from "@/gm/GmShell";
 import cats from "@/gm/categories.json";
 import { trustHtml } from "@/gm/trust";
-import { calculatorJsonLd } from "@/gm/schema";
+import { SITE, calculatorJsonLd } from "@/gm/schema";
 import { embedCode, isEmbeddable } from "@/lib/embeds";
 import EmbedCode from "@/components/EmbedCode";
+import { Crumbs } from "@/components/ContentPage";
+import { homeCrumbs, type Crumb } from "@/lib/seo/home-links";
 import { LookProvider } from "./look";
-
-export type Crumb = { href: string; label: string };
 
 /** Topic names as the approved design writes them (e.g. "Mortgages & property"). */
 const TOPIC: Record<string, string> = Object.fromEntries(
@@ -49,16 +49,18 @@ export default function FlagshipPage({
   look?: "indus";
 }) {
   const path = breadcrumbs[breadcrumbs.length - 1].href;
+  const topic = TOPIC[breadcrumbs[1]?.href ?? ""] ?? breadcrumbs[1]?.label ?? "";
+  const crumbs = homeCrumbs(breadcrumbs.map((c, i) => (i === 1 ? { ...c, label: topic || c.label } : c)));
   const jsonLd = [
     calculatorJsonLd(path, title, lead),
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      itemListElement: breadcrumbs.map((c, i) => ({
+      itemListElement: crumbs.map((c, i) => ({
         "@type": "ListItem",
         position: i + 1,
         name: c.label,
-        item: `https://sumatlas.com${c.href}`,
+        item: `${SITE}${c.href}`,
       })),
     },
     {
@@ -71,25 +73,12 @@ export default function FlagshipPage({
       })),
     },
   ];
-  const topic = TOPIC[breadcrumbs[1]?.href ?? ""] ?? breadcrumbs[1]?.label ?? "";
-  const crumbs = breadcrumbs.map((c, i) => (i === 1 ? { ...c, label: topic || c.label } : c));
 
   return (
     <GmShell kind="calculator" country={path.startsWith("/us/") ? "us" : path.startsWith("/uk/") ? "uk" : undefined}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className={look ? `wrap gm-${look}-page` : "wrap"}>
-        <div className="crumb">
-          {crumbs.map((c, i) =>
-            i === crumbs.length - 1 ? (
-              <Fragment key={c.href}>{c.label}</Fragment>
-            ) : (
-              <Fragment key={c.href}>
-                <Link href={c.href}>{c.label}</Link>
-                <span>›</span>
-              </Fragment>
-            ),
-          )}
-        </div>
+        <Crumbs items={crumbs} />
         <div className="intro">
           {/* With a look, the title and lead sit inside the calculator card (Studio). */}
           {!look && (

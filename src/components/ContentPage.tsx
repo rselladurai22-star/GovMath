@@ -1,8 +1,7 @@
 import { Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import GmShell from "@/gm/GmShell";
-
-export type Crumb = { href: string; label: string };
+import { homeCrumbs, type Crumb } from "@/lib/seo/home-links";
 
 type ContentPageProps = {
   title: string;
@@ -16,16 +15,28 @@ type ContentPageProps = {
   children: ReactNode;
 };
 
-/** The design's flat breadcrumb: links separated by ›, the last item as text. */
+/**
+ * The design's flat breadcrumb: links separated by ›, the last item as text.
+ * "Home" goes to the page's own home page, never to "/" (see home-links.ts);
+ * on shared pages it is a plain link that CountrySwitch points at the
+ * visitor's country.
+ */
 export function Crumbs({ items }: { items: Crumb[] }) {
+  const crumbs = homeCrumbs(items);
   return (
     <div className="crumb">
-      {items.map((c, i) =>
-        i === items.length - 1 ? (
+      {crumbs.map((c, i) =>
+        i === crumbs.length - 1 ? (
           <Fragment key={c.href + i}>{c.label}</Fragment>
         ) : (
           <Fragment key={c.href + i}>
-            <Link href={c.href}>{c.label}</Link>
+            {c.shared ? (
+              <a href={c.href} data-home="">
+                {c.label}
+              </a>
+            ) : (
+              <Link href={c.href}>{c.label}</Link>
+            )}
             <span>›</span>
           </Fragment>
         ),

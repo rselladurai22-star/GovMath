@@ -29,7 +29,7 @@ const TOC: TocItem[] = [
 
 const SOURCES: Source[] = [
   { label: "GOV.UK — Salary sacrifice and the effects on employees", href: "https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" },
-  { label: "GOV.UK — Optional remuneration arrangements", href: "https://www.gov.uk/guidance/optional-remuneration-arrangements" },
+  { label: "HMRC — Optional remuneration arrangements (480: Appendix 12)", href: "https://www.gov.uk/guidance/optional-remuneration-arrangements-480-appendix-12" },
   { label: "GOV.UK — Cycle to Work scheme guidance", href: "https://www.gov.uk/government/publications/cycle-to-work-scheme-implementation-guidance" },
   { label: "GOV.UK — National Minimum Wage and salary sacrifice", href: "https://www.gov.uk/national-minimum-wage" },
   { label: "GOV.UK — Income Tax rates and allowances", href: "https://www.gov.uk/income-tax-rates" },

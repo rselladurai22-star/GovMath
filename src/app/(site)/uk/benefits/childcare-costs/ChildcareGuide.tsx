@@ -26,7 +26,7 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — Childcare Choices", href: "https://www.childcarechoices.gov.uk/" },
   { label: "GOV.UK — 30 hours free childcare", href: "https://www.gov.uk/30-hours-free-childcare" },
   { label: "GOV.UK — Tax-Free Childcare", href: "https://www.gov.uk/tax-free-childcare" },
-  { label: "GOV.UK — Universal Credit and childcare", href: "https://www.gov.uk/universal-credit-childcare-costs" },
+  { label: "GOV.UK — Universal Credit and childcare", href: "https://www.gov.uk/guidance/universal-credit-childcare-costs" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
 ];
 

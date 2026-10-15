@@ -28,7 +28,7 @@ const TOC: TocItem[] = [
 const SOURCES: Source[] = [
   { label: "GOV.UK — Tax on savings interest", href: "https://www.gov.uk/apply-tax-free-interest-on-savings" },
   { label: "GOV.UK — Individual Savings Accounts (ISAs)", href: "https://www.gov.uk/individual-savings-accounts" },
-  { label: "FSCS — Deposit protection limit", href: "https://www.fscs.org.uk/what-we-cover/banks-building-societies-credit-unions/deposit-limit-increase/" },
+  { label: "FSCS — Deposit protection limit", href: "https://www.fscs.org.uk/what-we-cover/banks-building-societies-credit-unions/" },
   { label: "ONS — Consumer price inflation", href: "https://www.ons.gov.uk/economy/inflationandpriceindices" },
   { label: "MoneyHelper — Savings accounts explained", href: "https://www.moneyhelper.org.uk/en/savings/types-of-savings" },
 ];

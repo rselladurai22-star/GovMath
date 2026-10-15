@@ -35,6 +35,9 @@ function show(code: string) {
     const note = menu.querySelector(".gm-country-note");
     if (note) note.textContent = c.live ? "Choose your country" : `${c.name}: coming soon. UK and US calculators are live now.`;
   });
+  // Shared pages' home links (logo, "Home" crumb) go to this country's home page, not "/".
+  const home = `/${c.live ? c.code : DEFAULT_COUNTRY}`;
+  document.querySelectorAll("a[data-home]").forEach((a) => a.setAttribute("href", home));
   document.documentElement.dataset.country = c.code;
 }
 

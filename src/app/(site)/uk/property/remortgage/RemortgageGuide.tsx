@@ -30,7 +30,7 @@ const TOC: TocItem[] = [
 const SOURCES: Source[] = [
   { label: "MoneyHelper — Remortgaging", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/remortgaging-to-cut-costs" },
   { label: "MoneyHelper — Early repayment charges", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/mortgage-fees-explained" },
-  { label: "FCA — Mortgages: your rights", href: "https://www.fca.org.uk/consumers/mortgages" },
+  { label: "FCA — Mortgage support and coming off a fixed rate", href: "https://www.fca.org.uk/consumers/financial-impact-rising-costs-living/support-mortgages-interest-rates" },
   { label: "Bank of England — Bank Rate", href: "https://www.bankofengland.co.uk/monetary-policy/the-interest-rate-bank-rate" },
 ];
 

@@ -32,7 +32,7 @@ const SOURCES: Source[] = [
   { label: "IRS: Publication 523, Selling your home", href: "https://www.irs.gov/publications/p523" },
   { label: "IRS: Topic 559, Net investment income tax", href: "https://www.irs.gov/taxtopics/tc559" },
   { label: "IRS: Revenue Procedure 2025-32 (2026 capital gains thresholds)", href: "https://www.irs.gov/pub/irs-drop/rp-25-32.pdf" },
-  { label: "National Association of Realtors: Practice changes from the settlement", href: "https://www.nar.realtor/newsroom/national-association-of-realtors-reminds-members-and-consumers-of-real-estate-practice-change" },
+  { label: "National Association of Realtors: Facts about the settlement practice changes", href: "https://www.nar.realtor/the-facts" },
   { label: "CFPB: Closing Disclosure explainer", href: "https://www.consumerfinance.gov/owning-a-home/closing-disclosure/" },
   { label: "CFPB: Mortgage closing scams", href: "https://www.consumerfinance.gov/about-us/blog/mortgage-closing-scams-how-protect-yourself-and-your-closing-funds/" },
 ];

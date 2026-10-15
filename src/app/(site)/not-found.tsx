@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import GmShell from "@/gm/GmShell";
 import cats from "@/gm/categories.json";
+import { homeFor } from "@/lib/seo/home-links";
 
 export const metadata: Metadata = { title: "Page not found" };
 
@@ -23,9 +24,10 @@ export default function NotFound() {
           ))}
         </nav>
         <div className="gm-actions">
-          <Link href="/" className="button">
+          {/* The default country's home; CountrySwitch points it at the visitor's (data-home). */}
+          <a href={homeFor("").href} data-home="" className="button">
             Back to the homepage
-          </Link>
+          </a>
           <Link href="/calculators" className="textbutton">
             Browse all calculators
           </Link>

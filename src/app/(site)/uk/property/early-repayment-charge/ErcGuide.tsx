@@ -31,7 +31,7 @@ const SOURCES: Source[] = [
   { label: "MoneyHelper — Mortgage fees explained", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/mortgage-fees-explained" },
   { label: "MoneyHelper — Should you pay off your mortgage early?", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/should-you-pay-off-your-mortgage-early" },
   { label: "FCA — Mortgage Conduct of Business sourcebook (MCOB 12: charges)", href: "https://www.handbook.fca.org.uk/handbook/MCOB/12/" },
-  { label: "FCA — Mortgages: your rights", href: "https://www.fca.org.uk/consumers/mortgages" },
+  { label: "FCA — Mortgage support and coming off a fixed rate", href: "https://www.fca.org.uk/consumers/financial-impact-rising-costs-living/support-mortgages-interest-rates" },
   { label: "MoneyHelper — Remortgaging", href: "https://www.moneyhelper.org.uk/en/homes/buying-a-home/remortgaging-to-cut-costs" },
 ];
 

@@ -36,7 +36,9 @@ export default function GmDocument({
   // Calculator lists are built from the live catalogue (see catalog.ts).
   const fill = (html: string) =>
     html.replace("<!--GM:CATEGORYGRID-->", () => categoryGridHtml()).replace("<!--GM:TOPIC-->", () => (topic ? topicMainHtml(topic) : ""))
-      .replace("<!--GM:TRUST-->", () => (trust ? trustHtml(trust.path, trust.sourcesId) : ""));
+      .replace("<!--GM:TRUST-->", () => (trust ? trustHtml(trust.path, trust.sourcesId) : ""))
+      // The breadcrumb's Home is the UK home page, never "/" (see src/lib/seo/home-links.ts).
+      .replace('<div class="crumb"><a href="/">', '<div class="crumb"><a href="/uk">');
   // Calculator pages describe themselves as web applications; topic pages list their calculators.
   const jsonLd = trust
     ? calculatorJsonLd(trust.path, page.title.replace(/ \| SumAtlas$/, ""), page.description)

@@ -38,7 +38,7 @@ const SOURCES: Source[] = [
   { label: "FDIC — National rates and rate caps", href: "https://www.fdic.gov/national-rates-and-rate-caps" },
   { label: "FDIC — Deposit insurance: understanding coverage", href: "https://www.fdic.gov/resources/deposit-insurance/understanding-deposit-insurance" },
   { label: "NCUA — Share insurance coverage", href: "https://ncua.gov/consumers/share-insurance-coverage" },
-  { label: "HelpWithMyBank.gov (OCC) — CD penalties", href: "https://www.helpwithmybank.gov/help-topics/bank-accounts/certificates-of-deposit/cd-penalties.html" },
+  { label: "HelpWithMyBank.gov (OCC) — CD early withdrawal penalties", href: "https://www.helpwithmybank.gov/help-topics/bank-accounts/certificates-of-deposit/cd-early-penalty.html" },
   { label: "Investor.gov — Certificates of deposit", href: "https://www.investor.gov/introduction-investing/investing-basics/investment-products/certificates-deposit-cds" },
   { label: "IRS — Topic 403, Interest received", href: "https://www.irs.gov/taxtopics/tc403" },
   { label: "TreasuryDirect — Treasury bills", href: "https://www.treasurydirect.gov/marketable-securities/treasury-bills/" },

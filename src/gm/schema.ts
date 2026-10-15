@@ -77,8 +77,8 @@ export function topicJsonLd(slug: CategorySlug, label: string) {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
-        { "@type": "ListItem", position: 2, name: label, item: `${SITE}/${slug}` },
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/uk` },
+        { "@type": "ListItem", position: 2, name: label, item: `${SITE}/uk/${slug}` },
       ],
     },
     {
