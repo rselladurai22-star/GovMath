@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { employerNI } from "@/lib/business/employer-ni";
 import {
   CLASS2_VOLUNTARY_WEEKLY,
@@ -40,15 +40,13 @@ export default function NIStudio({ initialIncome, initialMode, showResults }: { 
   const steps = 40;
   const curve = niCurve(top, steps);
 
-  useEffect(() => {
-    if (!ready) return;
-    const t = window.setTimeout(() => {
-      const q = new URLSearchParams({ income: String(income) });
-      if (!employee) q.set("mode", "self-employed");
-      window.history.replaceState(null, "", `${window.location.pathname}?${q}`);
-    }, 400);
-    return () => window.clearTimeout(t);
-  }, [ready, income, employee]);
+  // A link to these inputs, made only when the reader copies it: the address bar
+  // is not updated as they type, so their figures stay out of page addresses.
+  const link = () => {
+    const q = new URLSearchParams({ income: String(income) });
+    if (!employee) q.set("mode", "self-employed");
+    return `${window.location.pathname}?${q}`;
+  };
 
   const reset = () => {
     setIncome(DEFAULTS.income);
@@ -58,11 +56,12 @@ export default function NIStudio({ initialIncome, initialMode, showResults }: { 
   };
   const share = async () => {
     try {
-      await navigator.clipboard.writeText(window.location.href);
+      await navigator.clipboard.writeText(window.location.origin + link());
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      /* clipboard blocked — the URL is still in the address bar */
+      // Clipboard blocked: put the link in the address bar so it can be copied from there.
+      window.history.replaceState(null, "", link());
     }
   };
 

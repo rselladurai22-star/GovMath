@@ -29,9 +29,10 @@ export default function HowWeCheckPage() {
         Consumer Financial Protection Bureau.
       </p>
       <p>
-        A few figures are not published by any official body, or not in one place, such as average pump prices, each
-        US state&rsquo;s income tax brackets or average loan rates. For those we use an established independent source,
-        such as the RAC, the Tax Foundation or the Federal Reserve, and name it.
+        Some figures are not set by any authority, such as average loan rates and pump prices, and some are not
+        gathered in one official place, such as each US state&rsquo;s income tax brackets. For those we use an
+        established source, such as the Federal Reserve&rsquo;s consumer credit statistics, the RAC or the Tax
+        Foundation, and name it.
       </p>
       <p>
         Health and pregnancy calculators use published formulas and NHS and CDC guidance. They give estimates, not
@@ -39,14 +40,15 @@ export default function HowWeCheckPage() {
       </p>
       <p>
         Each calculator lists the pages it relies on in a <strong>Sources</strong>{" "}box at the end of its guide. The
-        &ldquo;Sources&rdquo; link under every calculator&rsquo;s title takes you straight there.
+        &ldquo;Sources&rdquo; link under every calculator&rsquo;s title takes you straight there. Our articles end
+        with a Sources list too.
       </p>
 
       <h2>2. One set of sums, tested before it goes live</h2>
       <p>
-        The rules for each topic are written once, as calculation code, and that code drives everything on the page:
-        the calculator, the charts, and every figure quoted in the guide and its worked examples. Figures in the guides
-        are produced by the code, not typed in by hand, so the guide and the calculator cannot disagree.
+        The rules for each topic are written once, as calculation code, and that code drives the calculator and its
+        charts. The figures quoted in the guide and its worked examples are worked out with the same code rather than
+        by hand, and worked out again whenever the rates change.
       </p>
       <p>
         The code is checked by hundreds of automated tests before any change is published. Where the government
@@ -92,8 +94,8 @@ export default function HowWeCheckPage() {
       <h2>5. How our guides are written</h2>
       <p>
         The SumAtlas team writes and maintains every page. We use software tools, including AI writing assistants, to
-        help draft and structure the explanations. Every figure still comes from the tested calculation code, and the
-        rules are checked against the official sources listed on each page before publication.
+        help draft and structure the explanations. Every figure is still worked out with the tested calculation code,
+        and the rules are checked against the sources listed on each page before publication.
       </p>
 
       <h2>6. Independent</h2>

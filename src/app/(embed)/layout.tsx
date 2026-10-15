@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { preload } from "react-dom";
-import { Analytics } from "@vercel/analytics/next";
+import VercelAnalytics from "@/components/VercelAnalytics";
 import { CALCULATOR_CSS, THEME_AFTER, THEME_BEFORE } from "@/gm/GmShell";
 
 /**
@@ -29,7 +29,7 @@ export default function EmbedLayout({ children }: Readonly<{ children: React.Rea
         <div className="gm-claret">
           <main className="gm-neutral">{children}</main>
         </div>
-        <Analytics />
+        <VercelAnalytics />
       </body>
     </html>
   );

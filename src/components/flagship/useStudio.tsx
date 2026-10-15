@@ -1,14 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 /**
  * Shared state for flagship calculators.
  *
  * Each calculator declares its inputs once as a schema (default value plus a
  * parser for the URL). The hook then handles the parts every calculator
- * needs: reading a shared link, keeping the URL in step once results show,
- * Reset, the Share button, and counting changed "More options" fields.
+ * needs: reading a shared link, Reset, the Share button (which copies a link
+ * holding the inputs), and counting changed "More options" fields.
  */
 
 export type Param<T> = { def: T; parse: (raw: string) => T | undefined; write?: (v: T) => string };
@@ -73,12 +73,9 @@ export function useStudio<T extends Record<string, unknown>>(schema: Schema<T>, 
   const [ready, setReady] = useState(initial.hasAny);
   const [copied, setCopied] = useState(false);
 
-  // Keep the address bar shareable once results are showing.
-  useEffect(() => {
-    if (!ready) return;
-    const t = window.setTimeout(() => window.history.replaceState(null, "", addressFor(schema, values)), 400);
-    return () => window.clearTimeout(t);
-  }, [ready, values, schema]);
+  // The address bar is not updated as people type (October 2026): page
+  // addresses reach our host, Google Analytics and AdSense, so the figures
+  // someone enters stay out of them unless they choose to copy a link.
 
   const set = <K extends keyof T>(key: K, value: T[K]) => setValues((prev) => ({ ...prev, [key]: value }));
 
@@ -114,14 +111,14 @@ export function useStudio<T extends Record<string, unknown>>(schema: Schema<T>, 
       // Copy a link to exactly these inputs, whether or not Calculate was pressed.
       // From an embedded calculator (/embed/…), share the full page instead.
       const link = window.location.origin + addressFor(schema, values).replace(/^\/embed(?=\/)/, "");
-      window.history.replaceState(null, "", addressFor(schema, values));
       setReady(true);
       try {
         await navigator.clipboard.writeText(link);
         setCopied(true);
         window.setTimeout(() => setCopied(false), 2000);
       } catch {
-        /* clipboard blocked — the link is still in the address bar */
+        // Clipboard blocked: put the link in the address bar so it can be copied from there.
+        window.history.replaceState(null, "", addressFor(schema, values));
       }
     },
   };

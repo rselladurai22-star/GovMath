@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { stampDuty, type BuyerType } from "@/lib/tax/sdlt-2025";
 import { acrossNations, additionalSurcharge, nearThreshold, sdltCurve } from "@/lib/tax/stamp-duty-insights";
 import Studio from "@/components/flagship/Studio";
@@ -46,15 +46,13 @@ export default function StampDutyStudio({
   const steps = 40;
   const curve = sdltCurve(top, steps);
 
-  useEffect(() => {
-    if (!ready) return;
-    const t = window.setTimeout(() => {
-      const q = new URLSearchParams({ price: String(price) });
-      if (buyer !== "standard") q.set("buyer", buyer);
-      window.history.replaceState(null, "", `${window.location.pathname}?${q}`);
-    }, 400);
-    return () => window.clearTimeout(t);
-  }, [ready, price, buyer]);
+  // A link to these inputs, made only when the reader copies it: the address bar
+  // is not updated as they type, so their figures stay out of page addresses.
+  const link = () => {
+    const q = new URLSearchParams({ price: String(price) });
+    if (buyer !== "standard") q.set("buyer", buyer);
+    return `${window.location.pathname}?${q}`;
+  };
 
   const reset = () => {
     setPrice(DEFAULTS.price);
@@ -64,11 +62,12 @@ export default function StampDutyStudio({
   };
   const share = async () => {
     try {
-      await navigator.clipboard.writeText(window.location.href);
+      await navigator.clipboard.writeText(window.location.origin + link());
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      /* clipboard blocked — the URL is still in the address bar */
+      // Clipboard blocked: put the link in the address bar so it can be copied from there.
+      window.history.replaceState(null, "", link());
     }
   };
 
