@@ -17,9 +17,13 @@ export const NEUTRAL = "var(--g-track)";
 export type TocItem = { id: string; title: string };
 export type Source = { label: string; href: string };
 
-const money = (n: number) => "£" + Math.round(n).toLocaleString("en-GB");
-const moneyShort = (n: number) =>
-  n >= 1000 && n % 1000 === 0 ? `£${n / 1000}k` : money(n);
+/** Currency symbol for guide charts: £ on UK pages, $ on US pages. */
+type Currency = "£" | "$";
+const moneyIn = (c: Currency) => (n: number) =>
+  c + Math.round(n).toLocaleString(c === "$" ? "en-US" : "en-GB");
+const moneyShortIn = (c: Currency) => (n: number) =>
+  n >= 1000 && n % 1000 === 0 ? `${c}${n / 1000}k` : moneyIn(c)(n);
+const money = moneyIn("£");
 
 /* ── Frame ─────────────────────────────────────────── */
 
@@ -282,11 +286,14 @@ export function Timeline({ items }: { items: { when: string; what: string; detai
 export function BandBar({
   bands,
   max,
+  currency = "£",
 }: {
   bands: { from: number; to: number; label: string; legend: string; color: string; light?: boolean }[];
   /** Right-hand end of the scale. The last band is drawn up to here. */
   max: number;
+  currency?: Currency;
 }) {
+  const moneyShort = moneyShortIn(currency);
   const ticks = [0, ...bands.map((b) => Math.min(b.to, max))];
   return (
     <div>
@@ -358,6 +365,7 @@ export function StepChart({
   color = SERIES[0],
   unit = "%",
   ariaLabel,
+  currency = "£",
 }: {
   steps: { from: number; to: number; value: number }[];
   max: number;
@@ -366,7 +374,10 @@ export function StepChart({
   color?: string;
   unit?: string;
   ariaLabel: string;
+  currency?: Currency;
 }) {
+  const money = moneyIn(currency);
+  const moneyShort = moneyShortIn(currency);
   const W = 640, H = 250, L = 40, R = 12, T = 22, B = 30;
   const x = (v: number) => L + (Math.min(v, max) / max) * (W - L - R);
   const y = (v: number) => T + (1 - v / yMax) * (H - T - B);

@@ -18,6 +18,532 @@ export type BlogPost = {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: "universal-credit-pay-rise-what-you-keep",
+    title: "Working more on Universal Credit: how much of a pay rise you really keep in 2026/27",
+    seoTitle: "Universal Credit Pay Rise: What You Keep 2026/27",
+    description:
+      "How the 55% taper, the work allowance, tax and National Insurance combine on Universal Credit in 2026/27, with worked examples of extra hours, pay rises and pensions.",
+    date: "2026-10-15",
+    dateLabel: "15 October 2026",
+    readingTime: "10 min read",
+    category: "Benefits",
+    body: (
+      <>
+        <p>
+          If you get Universal Credit and work, every extra pound you earn has to pass through up to four deductions:
+          Income Tax, National Insurance, your pension contribution and the Universal Credit taper. Depending on where
+          you are, you might keep every penny of a pay rise, 45p of each pound, or as little as 32p. Knowing which applies
+          to you makes it much easier to judge whether extra hours, a new job or a promotion is worth it.
+        </p>
+        <p>
+          This guide explains the rules for the 2026/27 tax year and works through real examples, all calculated with the
+          same engine as our{" "}
+          <Link href="/uk/benefits/universal-credit-taper">Universal Credit taper calculator</Link> and{" "}
+          <Link href="/uk/benefits/universal-credit">Universal Credit calculator</Link>. The examples assume pay at the
+          National Living Wage of £12.71 an hour, a worker aged 25 or over, and tax rules for England, Wales and Northern
+          Ireland.
+        </p>
+
+        <h2>The two rules: the work allowance and the 55% taper</h2>
+        <p>
+          Universal Credit is worked out each monthly assessment period. Your maximum award (the standard allowance plus
+          any elements for children, housing, disability or caring) is reduced by your earnings, in two steps:
+        </p>
+        <ul>
+          <li>
+            <strong>The work allowance.</strong>{" "}Some households can earn a set amount before their award falls at all:
+            £427 a month if Universal Credit helps with your housing costs, or £710 a month if it does not. You only get a
+            work allowance if you are responsible for a child or you (or your partner) have limited capability for work.
+          </li>
+          <li>
+            <strong>The taper.</strong>{" "}Above the work allowance (or from the first pound, if you do not have one), your
+            award falls by 55p for every £1 you earn.
+          </li>
+        </ul>
+        <p>
+          The taper applies to your <em>take-home</em> pay: earnings after Income Tax, National Insurance and pension
+          contributions. That detail matters, because it means the deductions stack rather than add up.
+        </p>
+
+        <h2>How the deductions stack</h2>
+        <p>
+          While your pay is below the Personal Allowance (£12,570 a year, about £1,048 a month), there is no Income Tax and
+          little or no National Insurance, so only the taper bites: you keep 45p of each extra pound. Once you pay tax and
+          National Insurance, each extra £1 of gross pay loses 20p in Income Tax and 8p in National Insurance first. That
+          leaves 72p, and the taper takes 55% of that (39.6p). You keep 32.4p.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Where your earnings are</th>
+              <th>Kept from an extra £100 a month</th>
+              <th>Where the rest goes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Below your work allowance</td><td>£100</td><td>Nothing</td></tr>
+            <tr><td>Above the work allowance, below the Personal Allowance</td><td>£45</td><td>£55 Universal Credit</td></tr>
+            <tr><td>Above the work allowance and paying tax and NI</td><td>£32.40</td><td>£20 tax, £8 NI, £39.60 Universal Credit</td></tr>
+            <tr><td>Universal Credit has stopped</td><td>£72</td><td>£20 tax, £8 NI</td></tr>
+          </tbody>
+        </table>
+        <p>
+          A 67.6% deduction on the next pound is higher than a higher-rate taxpayer pays. It is the main reason a pay rise
+          on Universal Credit can feel smaller than expected. But it is never more than 100%: working more always leaves
+          you better off, which was not always true under the older benefits Universal Credit replaced.
+        </p>
+
+        <h2>Example 1: a single person renting, no children</h2>
+        <p>
+          A single person aged 25 or over renting privately for £650 a month, with the full rent covered by the housing
+          element, has a maximum award of £1,074.90 a month (the £424.90 standard allowance plus £650 for rent). With no
+          children and no health condition, there is no work allowance, so the taper starts from the first pound.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Hours a week</th>
+              <th>Gross pay a month</th>
+              <th>Take-home</th>
+              <th>Universal Credit</th>
+              <th>Total income</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>£0</td><td>£0</td><td>£1,074.90</td><td>£1,074.90</td></tr>
+            <tr><td>16</td><td>£881.23</td><td>£881.23</td><td>£590.23</td><td>£1,471.45</td></tr>
+            <tr><td>30</td><td>£1,652.30</td><td>£1,482.96</td><td>£259.27</td><td>£1,742.23</td></tr>
+            <tr><td>37.5</td><td>£2,065.38</td><td>£1,780.37</td><td>£95.70</td><td>£1,876.07</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Going from no work to 16 hours a week raises their income by £396.55 a month. Going from 30 hours to full time
+          (7.5 more hours, £413.08 more gross pay) adds £133.84. Their Universal Credit stops once take-home pay reaches
+          about £1,954 a month.
+        </p>
+
+        <h2>Example 2: a single parent renting, one child</h2>
+        <p>
+          A single parent with one child born after April 2017, renting privately for £900 a month, has a maximum award of
+          £1,628.84. Because they are responsible for a child and get help with rent, their work allowance is £427 a
+          month.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Hours a week</th>
+              <th>Gross pay a month</th>
+              <th>Take-home</th>
+              <th>Universal Credit</th>
+              <th>Total income</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>£0</td><td>£0</td><td>£1,628.84</td><td>£1,628.84</td></tr>
+            <tr><td>16</td><td>£881.23</td><td>£881.23</td><td>£1,379.02</td><td>£2,260.24</td></tr>
+            <tr><td>30</td><td>£1,652.30</td><td>£1,482.96</td><td>£1,048.06</td><td>£2,531.02</td></tr>
+            <tr><td>37.5</td><td>£2,065.38</td><td>£1,780.37</td><td>£884.49</td><td>£2,664.86</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The first £427 of take-home pay each month is kept in full, so 16 hours a week adds £631.40 to their income:
+          about 72p for each pound earned. Above that, the familiar 45p and then 32.4p apply. Their award does not stop
+          until take-home pay reaches about £3,389 a month, so even a full-time job at the National Living Wage leaves
+          them with £884 of Universal Credit.
+        </p>
+        <p>
+          If the same parent owned their home outright (no housing element), their work allowance would be the higher
+          £710 a month, so more of the first hours would be kept in full.
+        </p>
+
+        <h2>One more hour a week: what is it worth?</h2>
+        <p>
+          An extra hour every week at £12.71 adds about £55.08 a month of gross pay. What you keep depends on where you
+          start:
+        </p>
+        <ul>
+          <li>Still within your work allowance: all £55.08.</li>
+          <li>Above the work allowance, not yet paying tax: £24.78.</li>
+          <li>Paying tax and National Insurance, still on Universal Credit: £17.84.</li>
+          <li>No longer on Universal Credit, paying tax and NI: £39.66.</li>
+        </ul>
+        <p>
+          In other words, an extra hour at the National Living Wage can be worth as little as £4.12 to you (about 32% of
+          the hourly rate). Costs of working that hour, such as travel or childcare, come out of that. Our{" "}
+          <Link href="/uk/benefits/universal-credit-taper">taper calculator</Link> shows the figure for your own household
+          and pay.
+        </p>
+
+        <h2>A pay rise or a new job</h2>
+        <p>
+          The same arithmetic applies to a pay rise. A rise from £12.71 to £13.50 an hour on 30 hours a week adds about
+          £102.70 a month of gross pay. For the single parent above, about £33 of that reaches their pocket. For the single
+          renter it is the same. That does not mean a rise is not worth having: it builds your pay for the time when you
+          no longer need Universal Credit, and it counts towards your pension and any future redundancy or maternity pay.
+          But it does mean comparing two job offers by their hourly rates alone can mislead. Our{" "}
+          <Link href="/uk/tax-and-salary/pay-rise">pay rise calculator</Link> shows the tax and NI side.
+        </p>
+
+        <h2>The pension surprise: saving costs you only about 32p per £1</h2>
+        <p>
+          The flip side of the stacked deductions is that paying into a pension is unusually cheap on Universal Credit.
+          Pension contributions come off your earnings before the taper is applied, so a contribution lowers your
+          take-home pay, but your award rises to make up part of it.
+        </p>
+        <p>
+          For the single renter on 30 hours a week, a 5% contribution through salary sacrifice puts £82.62 a month into
+          their pension. Their tax and NI fall by £23.13 and their Universal Credit rises by £32.72, so their total income
+          falls by just £26.77. Each £1 in the pension costs them about 32p. Under the older net pay arrangement, where
+          National Insurance is not saved, the cost is a little higher. Our{" "}
+          <Link href="/uk/tax-and-salary/salary-sacrifice">salary sacrifice calculator</Link> explains the difference.
+        </p>
+
+        <h2>The benefit cap and the 16-hour rule</h2>
+        <p>
+          The benefit cap limits the total benefits a working-age household can receive: £22,020 a year for a couple or a
+          family outside London (£1,835 a month) and £25,323 in London. It stops applying once your household earns at
+          least £881 a month after tax, which is 16 hours a week at the National Living Wage.
+        </p>
+        <p>
+          For a capped family this creates a very large gain at that point. Take a couple with three children renting
+          privately for £1,400 a month outside London. Their maximum award is £2,978.79, but the cap cuts it to £1,562.65.
+          If one of them takes a job of 16 hours a week at the National Living Wage (£881.23 a month), the cap is lifted:
+          their Universal Credit rises to £2,728.97 and their total income goes from £1,562.65 to £3,610.19, a gain of
+          £2,047.54 a month. Earning a few pounds less than the threshold gives up most of that, so check your pay against
+          it carefully. Our <Link href="/uk/benefits/benefit-cap">benefit cap calculator</Link> shows how close you are.
+        </p>
+
+        <h2>Childcare: 85% back</h2>
+        <p>
+          If you work and pay for registered childcare, Universal Credit can pay back 85% of the cost, up to £1,071.09 a
+          month for one child or £1,836.16 for two or more. The childcare element is part of your maximum award, so it
+          also raises the point at which your Universal Credit stops; the taper on your earnings works the same way. Free funded hours and
+          Tax-Free Childcare change the picture; our{" "}
+          <Link href="/uk/benefits/childcare-costs">childcare costs calculator</Link> compares them.
+        </p>
+
+        <h2>Paydays and assessment periods</h2>
+        <p>
+          Universal Credit looks at the pay you actually receive in each monthly assessment period, not your contract.
+          If you are paid weekly or every four weeks, some assessment periods will include an extra payday, and your award
+          for that month will be lower. It evens out over the year, but it can make a single month look as if a pay rise
+          cost you money. Overtime and bonuses count in the month they are paid.
+        </p>
+
+        <h2>If you are self-employed</h2>
+        <p>
+          Self-employed claimants report their profit each month instead of payslips. After a start-up period, many are
+          treated as earning at least a set amount (the minimum income floor) based on the National Living Wage for the
+          hours they are expected to work, even if they earn less. The taper then applies in the same way. Our{" "}
+          <Link href="/uk/business/sole-trader-tax">sole trader tax calculator</Link> covers the tax side.
+        </p>
+
+        <h2>Key numbers for 2026/27</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>2026/27</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Taper rate</td><td>55% of take-home pay</td></tr>
+            <tr><td>Work allowance with housing costs</td><td>£427 a month</td></tr>
+            <tr><td>Work allowance without housing costs</td><td>£710 a month</td></tr>
+            <tr><td>Standard allowance, single, 25 or over</td><td>£424.90 a month</td></tr>
+            <tr><td>Standard allowance, couple, either 25 or over</td><td>£666.97 a month</td></tr>
+            <tr><td>Child element</td><td>£303.94 a month (£351.88 for a first child born before 6 April 2017)</td></tr>
+            <tr><td>National Living Wage</td><td>£12.71 an hour (21 and over)</td></tr>
+            <tr><td>Benefit cap earnings exemption</td><td>£881 a month</td></tr>
+            <tr><td>Kept from £1 above the work allowance, paying tax and NI</td><td>32.4p</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The bottom line</h2>
+        <p>
+          On Universal Credit, work always pays, but by less than your payslip suggests. The first pounds within a work
+          allowance are kept in full; after that you keep 45p in each pound, falling to 32.4p once you pay tax and
+          National Insurance. Two points work in your favour: pension saving costs about a third of its face value, and
+          earning £881 a month can lift the benefit cap entirely. To see your own figures, use the{" "}
+          <Link href="/uk/benefits/universal-credit-taper">Universal Credit taper calculator</Link>. These are estimates
+          for 2026/27 and general guidance; your Universal Credit statement shows the figures DWP actually used.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "energy-bills-winter-2026",
+    title: "Energy bills this winter: the October 2026 price cap and the VAT cut on electricity",
+    seoTitle: "Energy Price Cap October 2026: What Bills Cost",
+    description:
+      "What the Ofgem price cap from 1 October 2026 means for low, typical and high users, what the 0% VAT on electricity saves, and what common appliances cost to run.",
+    date: "2026-10-15",
+    dateLabel: "15 October 2026",
+    readingTime: "10 min read",
+    category: "Property",
+    body: (
+      <>
+        <p>
+          The Ofgem price cap went up on 1 October 2026. A typical home paying by Direct Debit now pays at a rate of about
+          £1,723 a year for gas and electricity, up about £60 from £1,663 over the summer. At the same time electricity
+          stopped carrying VAT: from 1 October 2026 to 31 March 2027 the 5% VAT on household electricity is 0%, while gas
+          keeps its 5%. The result is a winter in which electricity costs about the same as in the summer and gas costs
+          more.
+        </p>
+        <p>
+          This guide sets out the new rates, what they mean for a small, typical and large home, how much the VAT cut is
+          worth, what the standing charges add before you use anything, and what everyday appliances cost to run this
+          winter. Every figure comes from the same engine as our{" "}
+          <Link href="/uk/property/energy-bill-calculator">energy bill calculator</Link> and{" "}
+          <Link href="/uk/property/appliance-running-cost">appliance running cost calculator</Link>, at the Great Britain
+          average rates for Direct Debit customers. Your own region and tariff will differ a little.
+        </p>
+
+        <h2>The new rates from 1 October 2026</h2>
+        <p>
+          The price cap does not limit your total bill. It limits the price per unit of energy (the unit rate, in pence
+          per kilowatt hour) and the fixed daily standing charge that suppliers can charge on a standard variable tariff.
+          Use more and you pay more. These are the average rates, with VAT included where it applies:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Rate (GB average, Direct Debit)</th>
+              <th>July to September 2026</th>
+              <th>October to December 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Electricity unit rate</td><td>26.11p per kWh</td><td>26.32p per kWh</td></tr>
+            <tr><td>Electricity standing charge</td><td>57.19p a day</td><td>54.83p a day</td></tr>
+            <tr><td>Gas unit rate</td><td>7.33p per kWh</td><td>7.97p per kWh</td></tr>
+            <tr><td>Gas standing charge</td><td>29.04p a day</td><td>29.68p a day</td></tr>
+            <tr><td>VAT on electricity</td><td>5%</td><td>0%</td></tr>
+            <tr><td>VAT on gas</td><td>5%</td><td>5%</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The electricity unit rate barely moved, from 26.11p to 26.32p, but that hides a real rise: without the VAT cut
+          the new rate would be about 27.64p and the standing charge about 57.57p a day. The gas unit rate rose by almost
+          9%, from 7.33p to 7.97p, with no VAT change to soften it.
+        </p>
+
+        <h2>What a year of energy costs at the new rates</h2>
+        <p>
+          Ofgem describes a typical home with three levels of use, updated in July 2026: a low user (1,600 kWh of
+          electricity and 6,000 kWh of gas a year, often a flat or a single person), a medium user (2,500 kWh and 9,500
+          kWh, the &ldquo;typical&rdquo; home) and a high user (3,800 kWh and 14,000 kWh, a larger or busier house). At
+          the October rates, kept for a whole year, they would pay:
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Home</th>
+              <th>Electricity</th>
+              <th>Gas</th>
+              <th>Year</th>
+              <th>Month</th>
+              <th>Change from summer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Low use</td><td>£621</td><td>£587</td><td>£1,208</td><td>£101</td><td>+£35</td></tr>
+            <tr><td>Medium use</td><td>£858</td><td>£865</td><td>£1,724</td><td>£144</td><td>+£60</td></tr>
+            <tr><td>High use</td><td>£1,200</td><td>£1,224</td><td>£2,424</td><td>£202</td><td>+£91</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Two things are worth knowing about these figures. First, they are yearly rates, not a forecast: the cap changes
+          every three months, and you use far more gas in January than in July, so your actual winter bills will be higher
+          than a twelfth of the yearly figure and your summer bills lower. Second, most of the rise is gas. For the medium
+          home, electricity costs £3 a year less than it would at the summer rates, while gas costs about £63 more.
+        </p>
+
+        <h2>How much the 0% VAT on electricity saves</h2>
+        <p>
+          VAT on household energy has been 5% for years. Removing it from electricity for six months saves a medium user
+          about £43 a year at the October rates, which is about £21 over the six months it lasts. A low user saves about
+          £31 a year (£16 over six months) and a high user about £60 a year (£30 over six months).
+        </p>
+        <p>
+          The saving is bigger for homes that heat with electricity. An all-electric home using 4,200 kWh a year pays
+          about £1,306 a year at the October rates; with 5% VAT it would be about £65 a year more. Homes on storage
+          heaters, heat pumps or electric boilers, which use far more than that in winter, gain the most, because the cut
+          covers exactly the months of heaviest use. You do not need to do anything to get it: suppliers apply the 0% rate
+          automatically.
+        </p>
+        <p>
+          The cut is due to end on 31 March 2027. Unless the government extends it, electricity bills will rise by 5% on
+          1 April 2027 on top of any change in the cap itself.
+        </p>
+
+        <h2>Standing charges: what you pay before you switch anything on</h2>
+        <p>
+          The standing charge covers the cost of keeping you connected, and you pay it every day whatever you use. At the
+          October rates it comes to about £200 a year for electricity and £108 a year for gas: £308 a year in total, or
+          about £26 a month, before a single kettle is boiled.
+        </p>
+        <p>
+          That is why low users feel the cap most heavily: for the low-use home above, the standing charges are a quarter
+          of the whole bill. It is also why some people with very little gas use (for example, a flat with an electric
+          hob and a combi boiler used only for hot water) look at whether keeping the gas supply is worth £108 a year.
+          Removing a gas meter is permanent and has its own costs, so check that carefully before acting.
+        </p>
+
+        <h2>Paying by Direct Debit, on receipt or by prepayment</h2>
+        <p>
+          The rates above are for Direct Debit. Ofgem&rsquo;s typical yearly bill for October to December is £1,723 by
+          Direct Debit, £1,861 if you pay on receipt of a bill (standard credit) and £1,678 on a prepayment meter. That
+          makes paying on receipt about £138 a year dearer for the same energy, and prepayment about £45 a year cheaper.
+          If you pay on receipt and can manage a monthly Direct Debit, switching is one of the easiest savings there is.
+        </p>
+
+        <h2>What appliances cost to run this winter</h2>
+        <p>
+          With no VAT on electricity, every figure below uses the cap&rsquo;s average rate of 26.32p per kWh. The cost of
+          any appliance is its power in kilowatts, times the hours it is on, times the price per kWh. Standing charges are
+          left out because you pay them anyway.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Appliance (typical use)</th>
+              <th>Each use</th>
+              <th>A year</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Kettle, 3 kW, 3 minutes, 4 times a day</td><td>4p</td><td>£58</td></tr>
+            <tr><td>Microwave, 1.2 kW, 5 minutes, twice a day</td><td>3p</td><td>£19</td></tr>
+            <tr><td>Air fryer, 1.5 kW, 20 minutes, once a day</td><td>13p</td><td>£48</td></tr>
+            <tr><td>Electric oven, 45 minutes, once a day</td><td>28p</td><td>£104</td></tr>
+            <tr><td>Washing machine at 40°C, 4 loads a week</td><td>20p</td><td>£41</td></tr>
+            <tr><td>Dishwasher, 5 runs a week</td><td>26p</td><td>£69</td></tr>
+            <tr><td>Tumble dryer (vented or condenser), 3 loads a week</td><td>82p</td><td>£129</td></tr>
+            <tr><td>Heat pump tumble dryer, 3 loads a week</td><td>42p</td><td>£66</td></tr>
+            <tr><td>Fridge freezer, always on</td><td>19p a day</td><td>£69</td></tr>
+            <tr><td>Electric shower, 9.5 kW, 8 minutes a day</td><td>33p</td><td>£122</td></tr>
+            <tr><td>Dehumidifier, 300 W, 8 hours a day</td><td>63p</td><td>£231</td></tr>
+            <tr><td>Electric blanket, 1 hour a night</td><td>3p</td><td>£10</td></tr>
+          </tbody>
+        </table>
+        <p>
+          The pattern is simple: anything that heats is expensive, and anything that heats for a long time is very
+          expensive. An air fryer costs about 13p for a 20-minute cook against about 28p for a 45-minute oven session, so
+          for small meals it really does save money. A heat pump tumble dryer halves the cost of each load. An electric
+          blanket at about 3p a night is one of the cheapest ways to stay warm in bed.
+        </p>
+
+        <h2>Is an electric heater cheaper than the central heating?</h2>
+        <p>
+          Usually not, in a home with gas central heating. A 2 kW fan or convector heater costs about 53p an hour at the
+          October rate. The same amount of heat from a gas boiler, allowing for a boiler that turns 90% of its gas into
+          heat, costs about 18p. Electricity is about 3.3 times the price of gas per kWh, and a plug-in heater turns
+          electricity into heat no more efficiently than a boiler does.
+        </p>
+        <p>
+          The case for a heater is narrower: heating one room for a short time instead of the whole house. If you are home
+          alone in one room for an evening, running a heater there can cost less than heating every radiator. An
+          oil-filled radiator, which cycles on and off once warm, costs about 24p an hour in typical use. Our{" "}
+          <Link href="/uk/property/appliance-running-cost">appliance running cost calculator</Link> shows the gas
+          comparison for any heater you choose.
+        </p>
+
+        <h2>Off-peak tariffs and electric cars</h2>
+        <p>
+          Time-of-use tariffs (Economy 7 and the newer smart tariffs) charge less at night. On an overnight rate of 8p per
+          kWh, a 7 kWh charge of an electric car costs about 56p, against about £1.84 at the cap&rsquo;s standard rate. A
+          home that can move its car charging, hot water cylinder or storage heaters overnight can save hundreds of pounds a
+          year. The trade-off is that the day rate on these tariffs is often higher than the cap rate, so they suit homes
+          that really can shift their use. Our{" "}
+          <Link href="/uk/vehicles/petrol-vs-ev-cost">petrol vs electric car calculator</Link> uses both rates.
+        </p>
+
+        <h2>Help with energy costs this winter</h2>
+        <ul>
+          <li>
+            <strong>Warm Home Discount:</strong>{" "}£150 off your electricity bill, usually paid automatically if you get a
+            qualifying means-tested benefit such as Universal Credit or Pension Credit.
+          </li>
+          <li>
+            <strong>Winter Fuel Payment:</strong>{" "}£200, or £300 if you are 80 or over, for people over State Pension age;
+            it is taken back through tax if your income is over £35,000.
+          </li>
+          <li>
+            <strong>Cold Weather Payments:</strong>{" "}£25 for each 7-day spell of very cold weather, for people on certain
+            benefits.
+          </li>
+          <li>
+            <strong>Your supplier:</strong>{" "}if you are behind, suppliers must offer an affordable repayment plan, and
+            many run hardship funds.
+          </li>
+        </ul>
+        <p>
+          Many people who qualify for these do not claim the benefit that unlocks them. Our{" "}
+          <Link href="/uk/benefits/benefits-checker">benefits checker</Link> and{" "}
+          <Link href="/uk/benefits/pension-credit">Pension Credit calculator</Link> show whether you might be entitled.
+        </p>
+
+        <h2>Ways to cut the bill that cost little or nothing</h2>
+        <ul>
+          <li>Turn the boiler&rsquo;s flow temperature down to about 55°C or lower on a combi boiler: it runs more efficiently and you rarely notice the difference.</li>
+          <li>Boil only the water you need: the kettle uses energy for every cup of water in it, not just the one you pour.</li>
+          <li>Dry clothes outside or on an unheated airer when you can; the tumble dryer is often the most expensive appliance after heating.</li>
+          <li>Wash at 30°C and run full loads in the washing machine and dishwasher.</li>
+          <li>Shorten showers: a minute less in an electric shower saves about 4p a day, around £15 a year.</li>
+          <li>Close curtains at dusk, fit draught excluders and bleed radiators so they heat fully.</li>
+          <li>Give a meter reading (or check your smart meter) so you pay for what you used, not an estimate.</li>
+        </ul>
+
+        <h2>Longer-term changes</h2>
+        <p>
+          Bigger savings come from changing how a home is heated and powered. Solar panels cut the electricity you buy
+          during the day and can earn a payment for what you export; a heat pump replaces a gas boiler, with a £7,500
+          Boiler Upgrade Scheme grant in England and Wales. Both have high upfront costs and payback periods that depend
+          on your home. Our{" "}
+          <Link href="/uk/property/solar-panel-calculator">solar panel calculator</Link> and{" "}
+          <Link href="/uk/property/heat-pump-vs-boiler">heat pump vs boiler calculator</Link> work through the numbers
+          for your home, region and energy use.
+        </p>
+
+        <h2>What happens next</h2>
+        <p>
+          Ofgem will announce the cap for 1 January to 31 March 2027 on 25 November 2026. Wholesale prices drive most of
+          the change, so it can go either way. The 0% VAT on electricity runs to 31 March 2027. We update the calculators
+          as soon as new rates are published.
+        </p>
+
+        <h2>Key numbers</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>October to December 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Typical yearly bill, Direct Debit</td><td>£1,723 (2,500 kWh electricity, 9,500 kWh gas)</td></tr>
+            <tr><td>Electricity</td><td>26.32p per kWh, 54.83p a day, no VAT</td></tr>
+            <tr><td>Gas</td><td>7.97p per kWh, 29.68p a day, 5% VAT</td></tr>
+            <tr><td>Standing charges for a year</td><td>About £308</td></tr>
+            <tr><td>VAT cut saving, typical home</td><td>About £21 over six months</td></tr>
+            <tr><td>Electricity VAT back to 5%</td><td>1 April 2027, unless extended</td></tr>
+            <tr><td>Next cap announcement</td><td>25 November 2026</td></tr>
+          </tbody>
+        </table>
+
+        <h2>The bottom line</h2>
+        <p>
+          This winter&rsquo;s rise is mostly in gas. Electricity costs about the same as in the summer only because its VAT
+          was removed, and that ends in March. The quickest savings come from paying by Direct Debit, heating the rooms you
+          use, and cutting the long-running heat appliances: tumble dryers, electric heaters and dehumidifiers. To see your
+          own figures, try the <Link href="/uk/property/energy-bill-calculator">energy bill calculator</Link>. All figures
+          are estimates at Great Britain average rates; your supplier&rsquo;s rates for your region are on your bill.
+        </p>
+      </>
+    ),
+  },
+  {
     slug: "salary-sacrifice-worth-it",
     title: "Is salary sacrifice worth it? What it really saves in 2026/27",
     seoTitle: "Is Salary Sacrifice Worth It? 2026/27 Figures",
