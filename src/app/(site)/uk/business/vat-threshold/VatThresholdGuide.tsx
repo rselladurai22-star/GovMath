@@ -29,7 +29,7 @@ const TOC: TocItem[] = [
 const SOURCES: Source[] = [
   { label: "GOV.UK — VAT registration: when to register", href: "https://www.gov.uk/register-for-vat" },
   { label: "GOV.UK — VAT registration thresholds", href: "https://www.gov.uk/vat-registration-thresholds" },
-  { label: "HMRC — VAT Notice 700/1: who should register", href: "https://www.gov.uk/guidance/vat-registration-notice-7001" },
+  { label: "HMRC — VAT Notice 700/1: who should register", href: "https://www.gov.uk/government/publications/vat-notice-7001-should-i-be-registered-for-vat" },
   { label: "GOV.UK — VAT Flat Rate Scheme", href: "https://www.gov.uk/vat-flat-rate-scheme" },
   { label: "GOV.UK — Making Tax Digital for VAT", href: "https://www.gov.uk/government/publications/making-tax-digital/overview-of-making-tax-digital" },
 ];

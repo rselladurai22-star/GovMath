@@ -52,11 +52,14 @@ export function categoryGridHtml(): string {
  * are moved into the logo row.
  */
 /**
- * The logo's link: the country's own home page inside its section (/uk, /us),
- * or "/" elsewhere, which src/proxy.ts sends to the visitor's country.
+ * The logo's link: the country's own home page inside its section (/uk, /us).
+ * Elsewhere it is the default country's, marked data-home so CountrySwitch
+ * points it at the visitor's country. Never "/", which redirects by
+ * location (see src/lib/seo/home-links.ts).
  */
 export function logoHomeHtml(html: string, country?: "uk" | "us"): string {
-  return country ? html.replace(/href="\/"(?= aria-label="SumAtlas home")/g, `href="/${country}"`) : html;
+  const href = country ? `href="/${country}"` : `href="/${DEFAULT_COUNTRY}" data-home=""`;
+  return html.replace(/href="\/"(?= aria-label="SumAtlas home")/g, href);
 }
 
 export function headerHtml(html: string, country?: "uk" | "us"): string {
@@ -171,7 +174,7 @@ export function topicMainHtml(slug: CategorySlug): string {
     )
     .join("");
   return (
-    `<div class="wrap"><div class="crumb"><a href="/">Home</a><span>›</span><a href="/uk">UK calculators</a><span>›</span>${c.label}</div>` +
+    `<div class="wrap"><div class="crumb"><a href="/uk">Home</a><span>›</span>${c.label}</div>` +
     `<section class="categoryhero"><h1>${c.heroTitle}</h1><p>${c.heroDesc}</p></section>` +
     `<nav class="categoryjump" aria-label="Calculator categories">${jump}</nav><div class="fullcategory">${items}</div>${amountLinksHtml(slug)}` +
     `<a class="backlink" href="/uk#categories">Back to all categories</a></div>`

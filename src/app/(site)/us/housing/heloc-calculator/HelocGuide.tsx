@@ -30,7 +30,7 @@ const TOC: TocItem[] = [
 
 const SOURCES: Source[] = [
   { label: "CFPB: What is a home equity line of credit (HELOC)?", href: "https://www.consumerfinance.gov/ask-cfpb/what-is-a-home-equity-line-of-credit-heloc-en-110/" },
-  { label: "Federal Reserve: What you should know about home equity lines of credit", href: "https://www.federalreserve.gov/pubs/HomeLine/" },
+  { label: "CFPB: What you should know about home equity lines of credit", href: "https://files.consumerfinance.gov/f/documents/cfpb_heloc-brochure.pdf" },
   { label: "Federal Reserve: FOMC statement, September 16, 2026", href: "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm" },
   { label: "Bankrate: Wall Street Journal prime rate", href: "https://www.bankrate.com/rates/interest-rates/wall-street-prime-rate/" },
   { label: "Bankrate: Current HELOC rates", href: "https://www.bankrate.com/home-equity/heloc-rates/" },

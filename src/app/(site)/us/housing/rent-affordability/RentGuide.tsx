@@ -35,7 +35,7 @@ const TOC: TocItem[] = [
 ];
 
 const SOURCES: Source[] = [
-  { label: "HUD User: Rental burdens, rethinking affordability measures", href: "https://www.huduser.gov/portal/pdredge/pdr-edge-featd-article-092214.html" },
+  { label: "HUD User: Rental burdens, rethinking affordability measures", href: "https://www.huduser.gov/portal/pdredge/pdr_edge_featd_article_092214.html" },
   { label: "CFPB: What is a debt-to-income ratio?", href: "https://www.consumerfinance.gov/ask-cfpb/what-is-a-debt-to-income-ratio-en-1791/" },
   { label: "HUD: Housing Choice Vouchers", href: "https://www.hud.gov/helping-americans/housing-choice-vouchers" },
   { label: "AnnualCreditReport.com: free credit reports", href: "https://www.annualcreditreport.com/" },

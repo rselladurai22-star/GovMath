@@ -26,7 +26,7 @@ const TOC: TocItem[] = [
 ];
 
 const SOURCES: Source[] = [
-  { label: "Student Finance Wales — Undergraduate students", href: "https://www.studentfinancewales.co.uk/undergraduate-students/" },
+  { label: "Student Finance Wales — Undergraduate finance", href: "https://www.studentfinancewales.co.uk/undergraduate-finance/" },
   { label: "Student Finance Wales — Notes for full-time students 2026/27 (PN1)", href: "https://studentfinancewales.co.uk/media/3qklw05b/sfw_pn1_notes_2627_e_o.pdf" },
   { label: "Student Finance Wales — Parents' guide 2026/27", href: "https://www.studentfinancewales.co.uk/media/rpwlr5nu/sfw_parents_guide_to_student_finance_2627_o_e.pdf" },
   { label: "GOV.UK — Repaying your student loan: Plan 2", href: "https://www.gov.uk/repaying-your-student-loan/what-you-pay" },

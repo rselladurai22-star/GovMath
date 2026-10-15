@@ -1,9 +1,9 @@
-import { Fragment, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import GmShell from "@/gm/GmShell";
 import { SITE } from "@/gm/schema";
-
-type Crumb = { href: string; label: string };
+import { Crumbs } from "@/components/ContentPage";
+import { homeCrumbs, type Crumb } from "@/lib/seo/home-links";
 
 /**
  * Page frame for the fixed-amount pages ("£30,000 after tax", "Stamp Duty on
@@ -33,7 +33,7 @@ export default function AmountPage({
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
-      itemListElement: breadcrumbs.map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.label, item: `${SITE}${c.href}` })),
+      itemListElement: homeCrumbs(breadcrumbs).map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.label, item: `${SITE}${c.href}` })),
     },
     ...(faqs.length
       ? [
@@ -49,18 +49,7 @@ export default function AmountPage({
     <GmShell kind="calculator">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="wrap">
-        <div className="crumb">
-          {breadcrumbs.map((c, i) =>
-            i === breadcrumbs.length - 1 ? (
-              <Fragment key={c.href}>{c.label}</Fragment>
-            ) : (
-              <Fragment key={c.href}>
-                <Link href={c.href}>{c.label}</Link>
-                <span>›</span>
-              </Fragment>
-            ),
-          )}
-        </div>
+        <Crumbs items={breadcrumbs} />
         <div className="intro">
           <h1>{title}</h1>
           <p>{lead}</p>

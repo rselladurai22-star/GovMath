@@ -28,7 +28,7 @@ const TOC: TocItem[] = [
 const SOURCES: Source[] = [
   { label: "GOV.UK — Junior Individual Savings Accounts (ISA)", href: "https://www.gov.uk/junior-individual-savings-accounts" },
   { label: "GOV.UK — Child Trust Fund", href: "https://www.gov.uk/child-trust-funds" },
-  { label: "GOV.UK — Tax on children's savings", href: "https://www.gov.uk/tax-on-savings-interest" },
+  { label: "GOV.UK — Interest on savings for children", href: "https://www.gov.uk/savings-for-children" },
   { label: "MoneyHelper — Junior ISAs", href: "https://www.moneyhelper.org.uk/en/family-and-care/becoming-a-parent/junior-isas" },
 ];
 

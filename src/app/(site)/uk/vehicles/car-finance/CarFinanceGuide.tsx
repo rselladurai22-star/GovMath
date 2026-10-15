@@ -29,7 +29,7 @@ const SOURCES: Source[] = [
   { label: "MoneyHelper — Car finance explained", href: "https://www.moneyhelper.org.uk/en/everyday-money/buying-and-running-a-car/car-finance-explained" },
   { label: "FCA — Motor finance redress scheme", href: "https://www.fca.org.uk/news/statements/fca-confirms-motor-finance-redress-scheme" },
   { label: "Legislation — Consumer Credit Act 1974, section 99 (termination)", href: "https://www.legislation.gov.uk/ukpga/1974/39/section/99" },
-  { label: "FCA — Consumer credit: your rights", href: "https://www.fca.org.uk/consumers/credit-loans" },
+  { label: "FCA — Car finance complaints and redress", href: "https://www.fca.org.uk/consumers/car-finance-complaints" },
 ];
 
 export default function CarFinanceGuide() {
