@@ -8,7 +8,7 @@ import VaGuide from "./VaGuide";
 export const metadata: Metadata = {
   title: "VA Loan Calculator with Funding Fee",
   description:
-    "Free VA loan calculator for 2026. Your payment with the VA funding fee, exemptions, no PMI and no down payment, plus a comparison with FHA and conventional loans.",
+    "Free VA loan calculator for 2026. Your payment with the VA funding fee, exemptions, no PMI and no down payment, compared with FHA and conventional loans.",
   alternates: { canonical: "/us/housing/va-loan-calculator" },
   openGraph: ogFor("/us/housing/va-loan-calculator"),
 };

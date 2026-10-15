@@ -169,6 +169,38 @@ function amountLinksHtml(slug: CategorySlug): string {
 }
 
 /** The whole <main> content of a topic page. */
+/**
+ * A short "where to start" note under each UK topic's calculator list, so the
+ * page explains what it covers instead of being a bare list. Figures match the
+ * engines in src/lib (2026/27); recheck them with the rates each April.
+ */
+const TOPIC_ABOUT: Record<CategorySlug, string> = {
+  "tax-and-salary":
+    `<p>Most people should start with the <a href="/uk/tax-and-salary/salary-calculator">salary calculator</a>: it shows Income Tax, National Insurance, pension and student loan on any salary for the 2026/27 tax year, with Scotland&rsquo;s own bands. If a payslip looks wrong, the <a href="/uk/tax-and-salary/tax-code-decoder">tax code checker</a> explains codes such as 1257L, BR and K codes, and the <a href="/uk/tax-and-salary/emergency-tax">emergency tax calculator</a> estimates any refund.</p>` +
+    `<p>Every calculator here uses the 2026/27 rules: a £12,570 Personal Allowance, 20%, 40% and 45% rates in England, Wales and Northern Ireland, and employee National Insurance of 8% and 2%. Each page lists its sources and what it assumes.</p>`,
+  property:
+    `<p>Buying a home? Work out the tax first: <a href="/uk/property/stamp-duty-england">Stamp Duty</a> in England and Northern Ireland, <a href="/uk/property/lbtt-scotland">LBTT</a> in Scotland and <a href="/uk/property/ltt-wales">LTT</a> in Wales have different bands and first-time buyer rules. Then check what you could borrow with the <a href="/uk/property/mortgage-affordability">affordability calculator</a> and what it costs each month with the <a href="/uk/property/mortgage-repayment">mortgage repayment calculator</a>.</p>` +
+    `<p>Renters can check whether a <a href="/uk/property/rent-increase">rent increase</a> follows the rules and what a <a href="/uk/property/deposit-return">deposit</a> should come back as. The energy calculators use the Ofgem price cap for October to December 2026.</p>`,
+  business:
+    `<p>Self-employed? The <a href="/uk/business/sole-trader-tax">sole trader tax calculator</a> works out Income Tax and Class 4 National Insurance (6% and 2%) on your profit, and the <a href="/uk/business/payment-on-account">payment on account estimator</a> shows what is due on 31 January and 31 July. The <a href="/uk/business/allowable-expenses">expenses checker</a> shows what you can claim.</p>` +
+    `<p>Limited company directors can compare salary and dividends with the <a href="/uk/business/dividend-vs-salary">dividend vs salary optimiser</a>, and estimate Corporation Tax at 19% on profits up to £50,000 and 25% above £250,000, with marginal relief between. The <a href="/uk/business/vat-threshold">VAT threshold checker</a> tracks your rolling turnover against the £90,000 limit.</p>`,
+  investing:
+    `<p>For retirement, start with the <a href="/uk/investing/workplace-pension">workplace pension calculator</a> and <a href="/uk/investing/pension-tax-relief">pension tax relief calculator</a>, then check when you can claim the State Pension with the <a href="/uk/investing/state-pension-age">State Pension age lookup</a>. The full new State Pension is £241.30 a week in 2026/27.</p>` +
+    `<p>For savings and investments, the <a href="/uk/investing/isa-vs-gia">ISA vs GIA comparison</a> shows what the £20,000 ISA allowance saves in tax, and the <a href="/uk/investing/dividend-tax">dividend tax</a> and <a href="/uk/investing/capital-gains-assets">capital gains</a> calculators use the £500 dividend allowance and £3,000 annual exempt amount. Growth figures are projections, not promises.</p>`,
+  benefits:
+    `<p>Not sure what you can claim? Start with the <a href="/uk/benefits/benefits-checker">benefits checker</a>, then use the <a href="/uk/benefits/universal-credit">Universal Credit calculator</a> for an estimate of your award and the <a href="/uk/benefits/universal-credit-taper">taper calculator</a> to see what extra hours or a pay rise are worth. Families can check <a href="/uk/benefits/child-benefit">Child Benefit</a>, <a href="/uk/benefits/free-childcare-hours">free childcare hours</a> and <a href="/uk/benefits/tax-free-childcare">Tax-Free Childcare</a>.</p>` +
+    `<p>All figures use the DWP&rsquo;s 2026/27 rates. They are estimates to help you decide whether to apply: the DWP, HMRC or your council makes the real decision, and you apply through GOV.UK or your council, never through this site.</p>`,
+  vehicles:
+    `<p>The <a href="/uk/vehicles/car-tax-ved">car tax calculator</a> shows VED for any car, and company car drivers can work out benefit-in-kind tax with the <a href="/uk/vehicles/benefit-in-kind">BIK calculator</a> or compare an <a href="/uk/vehicles/ev-salary-sacrifice">electric car through salary sacrifice</a>. Running costs are covered by the <a href="/uk/vehicles/fuel-cost-journey">fuel cost</a> and <a href="/uk/vehicles/petrol-vs-ev-cost">petrol vs electric</a> calculators.</p>` +
+    `<p>The MOT, SORN and licence tools work out dates and amounts only. To book an MOT, declare SORN or renew a licence, use the official DVLA and DVSA services on GOV.UK.</p>`,
+  students:
+    `<p>The <a href="/uk/students/student-loan-repayment">student loan repayment calculator</a> covers Plans 1, 2, 4 and 5 and the Postgraduate Loan: you repay 9% of income above your plan&rsquo;s threshold (£29,385 for Plan 2 and £25,000 for Plan 5 in 2026/27), and what is left is written off after 25 to 40 years. Before university, the <a href="/uk/students/maintenance-loan">maintenance loan estimator</a> shows support by household income.</p>` +
+    `<p>Students from Scotland and Wales have their own systems: use the <a href="/uk/students/saas-funding">SAAS</a> and <a href="/uk/students/welsh-student-finance">Welsh student finance</a> calculators. The <a href="/uk/students/student-budget">student budget calculator</a> checks whether your loan covers rent and living costs.</p>`,
+  life:
+    `<p>The <a href="/uk/life/inheritance-tax">inheritance tax calculator</a> uses the £325,000 nil-rate band and the £175,000 residence nil-rate band, and the <a href="/uk/life/probate-fees">probate fees calculator</a> shows the court fee. The <a href="/uk/life/care-home-means-test">care home means test</a> covers the rules in all four UK nations.</p>` +
+    `<p>For day-to-day sums, the <a href="/uk/life/pro-rata-rent">pro-rata rent calculator</a> splits rent for a part month and the <a href="/uk/life/bank-holidays">bank holidays calculator</a> counts working days in England and Wales, Scotland and Northern Ireland.</p>`,
+};
+
 export function topicMainHtml(slug: CategorySlug): string {
   const c = CATS.find((x) => x.slug === slug);
   if (!c) throw new Error(`Unknown category ${slug}`);
@@ -185,6 +217,7 @@ export function topicMainHtml(slug: CategorySlug): string {
     `<div class="wrap"><div class="crumb"><a href="/uk">Home</a><span>›</span>${c.label}</div>` +
     `<section class="categoryhero"><h1>${c.heroTitle}</h1><p>${c.heroDesc}</p></section>` +
     `<nav class="categoryjump" aria-label="Calculator categories">${jump}</nav><div class="fullcategory">${items}</div>${amountLinksHtml(slug)}` +
+    `<section class="gm-topicabout" aria-labelledby="topic-about"><h2 id="topic-about">Where to start</h2>${TOPIC_ABOUT[slug]}</section>` +
     `<a class="backlink" href="/uk#categories">Back to all categories</a></div>`
   );
 }

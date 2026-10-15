@@ -9,7 +9,7 @@ import { alternatesFor } from "@/lib/seo/hreflang";
 export const metadata: Metadata = {
   title: "Rental Property Calculator: Cash Flow and ROI",
   description:
-    "Free rental property calculator for 2026. Cash flow, NOI, cap rate, cash-on-cash return, DSCR, the 1% rule, depreciation and your return over the years you hold it.",
+    "Free rental property calculator for 2026. Cash flow, NOI, cap rate, cash-on-cash return, DSCR, the 1% rule, depreciation and your return over time.",
   alternates: alternatesFor("/us/housing/rental-property-calculator"),
   openGraph: ogFor("/us/housing/rental-property-calculator"),
 };

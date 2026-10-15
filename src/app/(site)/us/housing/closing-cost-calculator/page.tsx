@@ -10,7 +10,7 @@ const PATH = "/us/housing/closing-cost-calculator";
 export const metadata: Metadata = {
   title: "Closing Cost Calculator for Buyers: Cash to Close",
   description:
-    "Free closing cost calculator for 2026. Estimate lender fees, points, title, transfer taxes, prepaid interest and escrow deposits, and the cash you need to close.",
+    "Free closing cost calculator for 2026. Estimate lender fees, points, title, transfer taxes, prepaid interest and escrow, and the cash you need to close.",
   alternates: { canonical: PATH },
   openGraph: ogFor(PATH),
 };

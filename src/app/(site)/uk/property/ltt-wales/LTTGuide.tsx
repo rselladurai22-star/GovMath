@@ -16,7 +16,7 @@ import {
 
 const TOC: TocItem[] = [
   { id: "what", title: "What LTT is" },
-  { id: "main", title: "Main residential rates" },
+  { id: "main-rates", title: "Main residential rates" },
   { id: "example", title: "A worked example" },
   { id: "ftb", title: "First-time buyers in Wales" },
   { id: "higher", title: "Higher residential rates" },
@@ -78,7 +78,7 @@ export default function LTTGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="main" n={2} kicker="Rates" title="Main residential rates">
+      <GuideSection id="main-rates" n={2} kicker="Rates" title="Main residential rates">
         <p>
           The main rates apply when you buy your only home, or replace your main home and sell the old one first. LTT is a slice
           tax: each rate applies only to the part of the price inside its band.

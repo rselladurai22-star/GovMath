@@ -10,7 +10,7 @@ const PATH = "/us/housing/property-tax-calculator";
 export const metadata: Metadata = {
   title: "Property Tax Calculator by State with Exemptions",
   description:
-    "Free property tax calculator for 2026. Work out your bill from home value, state rate or mill rate, assessment ratio and homestead exemptions; compare all states.",
+    "Free property tax calculator for 2026. Your bill from home value, state rate or mill rate, assessment ratio and homestead exemptions; compare all states.",
   alternates: { canonical: PATH },
   openGraph: ogFor(PATH),
 };

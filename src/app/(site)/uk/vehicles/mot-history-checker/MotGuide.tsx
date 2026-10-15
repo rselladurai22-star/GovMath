@@ -7,7 +7,7 @@ const TOC: TocItem[] = [
   { id: "when", title: "When your MOT is due" },
   { id: "early", title: "Testing early and keeping your date" },
   { id: "history", title: "Checking a vehicle's MOT history" },
-  { id: "results", title: "What the results mean" },
+  { id: "test-results", title: "What the results mean" },
   { id: "cost", title: "How much an MOT costs" },
   { id: "fails", title: "Common reasons for failing" },
   { id: "after-fail", title: "If your car fails" },
@@ -87,7 +87,7 @@ export default function MotGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="results" n={5} kicker="Results" title="What the results mean">
+      <GuideSection id="test-results" n={5} kicker="Results" title="What the results mean">
         <CompareCards
           columns={[
             { name: "Pass", rows: [{ label: "Advisories", value: "Things to keep an eye on" }, { label: "Minor defects", value: "Fix soon; recorded on the certificate" }] },
