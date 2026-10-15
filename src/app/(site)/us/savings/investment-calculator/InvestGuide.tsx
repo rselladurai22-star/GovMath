@@ -128,7 +128,7 @@ export default function InvestGuide() {
           No calculator knows future returns. Over very long periods, broad US stock indexes have averaged roughly 10% a year before inflation,
           and high-quality bonds much less, but those averages include decades well above and well below them. Because a plan that only works in
           good markets is fragile, many planners use 5% to 7% a year for a portfolio of mostly stocks with some bonds, and lower figures for
-          more conservative mixes. To find the <a href="/everyday/average-calculator">average return</a>{" "}of your own past yearly returns, add them up and divide by the number of years.
+          more conservative mixes. To find the average return of your own past yearly returns, add them up and divide by the number of years.
         </p>
         <Callout title="Use the return before fees">
           Enter the return the investments themselves might earn; the calculator takes the fee off separately. A fund tracking an index that

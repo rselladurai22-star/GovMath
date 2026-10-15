@@ -75,7 +75,7 @@ export default function AgeStudio({ query }: { query: Query }) {
         <Answer eyebrow="Your age" value="Check the dates" sentence="Enter a date of birth that is on or before the date you want the age on." />
         <ResultCard title="Worth knowing">
           <Callout tone="warn" title="The date of birth is after the age date">
-            Age can only be counted forward from a birth date. Swap the dates, or use the <a href="/everyday/countdown">countdown calculator</a>{" "}for days until a future date.
+            Age can only be counted forward from a birth date. Swap the dates, or use the <a href="/everyday/date-calculator">date calculator</a>{" "}for days until a future date.
           </Callout>
         </ResultCard>
       </>,

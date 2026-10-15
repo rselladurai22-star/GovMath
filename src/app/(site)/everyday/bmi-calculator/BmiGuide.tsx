@@ -173,8 +173,6 @@ export default function BmiGuide() {
           The calculator converts US and UK units for you. One inch is 2.54 cm and one pound is about 0.454 kg. In the US weight is given in pounds;
           in the UK it is often given in stones and pounds, with 14 pounds in a stone. 5 ft 7 in and 159 lb is the same person as 5 ft 7 in and
           11 st 5 lb, with a healthy range of about 118 lb to 159 lb.
-          To switch between units on their own, use the <a href="/everyday/weight-converter">stone to kg converter</a> or the{" "}
-          <a href="/everyday/height-converter">feet to cm converter</a>.
         </p>
         <WorkedExample
           title="5 ft 7 in and 11 st 5 lb"

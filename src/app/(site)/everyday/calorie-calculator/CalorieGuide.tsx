@@ -293,7 +293,8 @@ export default function CalorieGuide() {
           <li>Weigh yourself once a week, at the same time of day.</li>
         </ul>
         <p>
-          Our <a href="/everyday/weight-converter">stone to kg converter</a>{" "}helps if your scales and your app use different units.
+          If your scales and your app use different units, enter your weight in either: this calculator and the{" "}
+          <a href="/everyday/bmi-calculator">BMI calculator</a>{" "}both accept kilograms, pounds or stones and pounds.
         </p>
       </GuideSection>
 
@@ -345,8 +346,7 @@ export default function CalorieGuide() {
       <GuideSection id="units" n={19} kicker="Any units" title="Using kg, pounds or stones">
         <p>
           Enter your height in centimetres or feet and inches, and your weight in kilograms, pounds or stones and pounds. The formulas work in
-          metric, so the calculator converts using exact definitions: 1 lb is 0.45359237 kg and 1 inch is 2.54 cm. To convert a height yourself, use
-          our <a href="/everyday/height-converter">feet to cm converter</a>.
+          metric, so the calculator converts using exact definitions: 1 lb is 0.45359237 kg and 1 inch is 2.54 cm, so 5 ft 7 in is 170.2 cm and 11 st 5 lb is 72.1 kg.
         </p>
       </GuideSection>
 

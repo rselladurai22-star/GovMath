@@ -259,8 +259,7 @@ export default function StudentLoanGuide() {
           to {usd(81_434)}. On RAP with AGI of {usd(70_000)}, the first payment is $350 and the loan is repaid after about 20 years.
         </p>
         <p>
-          Borrowing less is the surest saving. Many merit scholarships and graduate programs set a minimum{" "}
-          <a href="/everyday/gpa-calculator">GPA</a>, and families saving ahead can use a{" "}
+          Borrowing less is the surest saving. Many merit scholarships and graduate programs set a minimum GPA, and families saving ahead can use a{" "}
           <a href="/us/savings/529-plan-calculator">529 plan</a>{" "}to cover costs that would otherwise be borrowed.
         </p>
       </GuideSection>

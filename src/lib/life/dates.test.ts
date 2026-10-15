@@ -4,22 +4,11 @@ import {
   ageMilestones,
   ageOn,
   birthdayIn,
-  clockLabel,
-  countdown,
   dayOfYear,
-  decimalHours,
-  hhmm,
-  hoursMinutes,
   isIsoDate,
   isoWeek,
-  parseClock,
-  parseDuration,
-  presetDate,
   shiftDate,
   shiftWorkingDays,
-  splitSeconds,
-  sumDurations,
-  timeBetween,
   weekdayName,
   workingDaysBetween,
 } from "./dates";
@@ -117,90 +106,5 @@ describe("adding to dates", () => {
     const w = workingDaysBetween("2026-12-20", "2027-01-04", { kind: "uk", nation: "england-and-wales" });
     expect(w.working).toBe(7);
     expect(w.holidays.length).toBe(3);
-  });
-});
-
-describe("countdowns", () => {
-  const ew = { kind: "uk", nation: "england-and-wales" } as const;
-  it("finds preset dates", () => {
-    expect(presetDate("christmas", "2026-10-11", "england-and-wales").date).toBe("2026-12-25");
-    expect(presetDate("christmas", "2026-12-26", "england-and-wales").date).toBe("2027-12-25");
-    expect(presetDate("christmas", "2026-12-25", "england-and-wales").date).toBe("2026-12-25");
-    expect(presetDate("newyear", "2026-10-11", "england-and-wales").date).toBe("2027-01-01");
-    expect(presetDate("easter", "2026-10-11", "england-and-wales").date).toBe("2027-03-28");
-    expect(presetDate("bankholiday", "2026-10-11", "england-and-wales").date).toBe("2026-12-25");
-    expect(presetDate("bankholiday", "2026-10-11", "scotland").date).toBe("2026-11-30");
-  });
-  it("counts down to a date", () => {
-    const c = countdown("2026-10-11", "2026-12-25", ew);
-    expect(c.days).toBe(75);
-    expect([c.weeks, c.weekDays]).toEqual([10, 5]);
-    expect([c.months, c.monthDays]).toEqual([2, 14]);
-    expect(c.saturdays).toBe(10);
-    expect(c.working).toBe(54);
-    expect(c.past).toBe(false);
-  });
-  it("counts up from a past date", () => {
-    const c = countdown("2026-10-11", "2026-10-01", { kind: "weekdays" });
-    expect(c.past).toBe(true);
-    expect(c.days).toBe(10);
-  });
-  it("splits seconds", () => {
-    expect(splitSeconds(90_061)).toEqual({ d: 1, h: 1, m: 1, s: 1 });
-    expect(splitSeconds(-5)).toEqual({ d: 0, h: 0, m: 0, s: 0 });
-  });
-});
-
-describe("times", () => {
-  it("reads clock times", () => {
-    expect(parseClock("09:30")).toBe(570);
-    expect(parseClock("9.30")).toBe(570);
-    expect(parseClock("1730")).toBe(1050);
-    expect(parseClock("9:30pm")).toBe(1290);
-    expect(parseClock("12am")).toBe(0);
-    expect(parseClock("12pm")).toBe(720);
-    expect(parseClock("9")).toBe(540);
-    expect(parseClock("25:00")).toBeNaN();
-    expect(parseClock("9:75")).toBeNaN();
-    expect(parseClock("")).toBeNaN();
-  });
-  it("reads durations", () => {
-    expect(parseDuration("7:30")).toBe(450);
-    expect(parseDuration("7h 30m")).toBe(450);
-    expect(parseDuration("7.5")).toBe(450);
-    expect(parseDuration("45m")).toBe(45);
-    expect(parseDuration("90 min")).toBe(90);
-    expect(parseDuration("2h")).toBe(120);
-    expect(parseDuration("abc")).toBeNaN();
-    expect(parseDuration("1:75")).toBeNaN();
-  });
-  it("works out time between, across midnight", () => {
-    expect(timeBetween(540, 1050, 30)).toEqual({ gross: 510, net: 480, overnight: false, breakTooLong: false });
-    expect(timeBetween(1320, 360, 45)).toEqual({ gross: 480, net: 435, overnight: true, breakTooLong: false });
-    expect(timeBetween(NaN, 360).net).toBe(0);
-    expect(timeBetween(540, 600, 90).breakTooLong).toBe(true);
-  });
-  it("adds durations", () => {
-    const r = sumDurations([
-      { text: "7:30", sign: 1 },
-      { text: "8:15", sign: 1 },
-      { text: "0:45", sign: -1 },
-      { text: "", sign: 1 },
-      { text: "bad", sign: 1 },
-    ]);
-    expect(r.total).toBe(900);
-    expect(r.used).toBe(3);
-    expect(r.invalid).toEqual([4]);
-  });
-  it("formats", () => {
-    expect(hhmm(450)).toBe("7:30");
-    expect(hhmm(-75)).toBe("−1:15");
-    expect(hoursMinutes(450)).toBe("7 hours 30 minutes");
-    expect(hoursMinutes(60)).toBe("1 hour");
-    expect(hoursMinutes(0)).toBe("0 minutes");
-    expect(decimalHours(465)).toBe(7.75);
-    expect(decimalHours(NaN)).toBe(0);
-    expect(clockLabel(1290, "12h")).toBe("9:30pm");
-    expect(clockLabel(1500)).toBe("01:00");
   });
 });

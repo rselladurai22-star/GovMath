@@ -237,7 +237,7 @@ export default function AgeGuide() {
           half birthday is six months after a birthday, using the month-end rule above. For someone born on 15 June it is 15 December.
         </p>
         <p>
-          To count down the days to a birthday or any other date, use the <a href="/everyday/countdown">countdown calculator</a>.
+          To count down the days to a birthday or any other date, use the <a href="/uk/life/days-between-dates">days between dates calculator</a>.
         </p>
       </GuideSection>
 

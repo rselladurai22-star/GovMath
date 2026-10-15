@@ -228,7 +228,7 @@ export default function PercentGuide() {
             ["75%", "0.75", "3/4"],
           ]}
         />
-        <p>To turn a fraction into a percentage, divide the top by the bottom and multiply by 100. To turn a percentage into a decimal, divide by 100. To add, simplify or convert fractions, use the <a href="/everyday/fraction-calculator">fraction calculator</a>.</p>
+        <p>To turn a fraction into a percentage, divide the top by the bottom and multiply by 100. To turn a percentage into a decimal, divide by 100.</p>
       </GuideSection>
 
       <GuideSection id="marks" n={13} kicker="Education" title="Exam marks and grades">

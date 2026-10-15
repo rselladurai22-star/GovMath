@@ -75,7 +75,7 @@ const FAQS: { q: string; a: string }[] = [
 export default async function CaloriePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
   const related = CALCULATORS.filter((c) =>
-    ["/everyday/bmi-calculator", "/everyday/body-fat-calculator", "/everyday/weight-converter", "/everyday/height-converter", "/everyday/percentage-calculator"].includes(c.href),
+    ["/everyday/bmi-calculator", "/everyday/body-fat-calculator", "/everyday/percentage-calculator"].includes(c.href),
   );
   return (
     <FlagshipPage
