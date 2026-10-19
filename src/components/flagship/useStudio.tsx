@@ -130,8 +130,13 @@ export function useStudio<T extends Record<string, unknown>>(schema: Schema<T>, 
 /** The design's "Copy a link to these results" button in the results panel. */
 export function ShareButton({ copied, onClick }: { copied: boolean; onClick: () => void }) {
   return (
-    <button type="button" className="textbutton gm-share-link" onClick={onClick}>
-      {copied ? "Link copied" : "Copy a link to these results"}
-    </button>
+    <>
+      <button type="button" className="textbutton gm-share-link" onClick={onClick}>
+        {copied ? "Link copied" : "Copy a link to these results"}
+      </button>
+      <span className={`gm-toast${copied ? " is-on" : ""}`} role="status" aria-live="polite">
+        {copied ? "✓ Link copied. Paste it anywhere to share these results." : ""}
+      </span>
+    </>
   );
 }

@@ -20,6 +20,15 @@ function money2(n: number): string {
     : v.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
+/** Commas while typing: "35000" → "35,000"; with pence, "1234.5" → "1,234.5". */
+function liveFormat(raw: string, pence: boolean): string {
+  const cleaned = raw.replace(pence ? /[^\d.]/g : /[^\d]/g, "");
+  if (!cleaned) return "";
+  const [int, ...rest] = cleaned.split(".");
+  const grouped = (int.replace(/^0+(?=\d)/, "") || (rest.length ? "0" : "")).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return pence && rest.length ? `${grouped}.${rest.join("").slice(0, 2)}` : grouped;
+}
+
 const Optional = () => <span className="gm-optional">Optional</span>;
 
 /** A small (i) button beside a label that shows a short explanation. */
@@ -118,6 +127,7 @@ function Slider({
   onChange,
   label,
   ends,
+  format,
 }: {
   value: number;
   min: number;
@@ -126,21 +136,36 @@ function Slider({
   onChange: (n: number) => void;
   label: string;
   ends?: [string, string];
+  /** Shows the value in a bubble above the handle while it is dragged. */
+  format?: (n: number) => string;
 }) {
   const clamped = Math.min(Math.max(value, min), max);
   const fill = max > min ? ((clamped - min) / (max - min)) * 100 : 0;
+  const [live, setLive] = useState(false);
   return (
     <>
-      <input
-        type="range"
-        min={min}
-        max={max}
-        step={step}
-        value={clamped}
-        aria-label={`Adjust ${label.toLowerCase()}`}
-        onChange={(e) => onChange(Number(e.target.value))}
-        style={{ ["--fill" as string]: `${fill}%` }}
-      />
+      <div className="gm-range">
+        <input
+          type="range"
+          min={min}
+          max={max}
+          step={step}
+          value={clamped}
+          aria-label={`Adjust ${label.toLowerCase()}`}
+          onChange={(e) => onChange(Number(e.target.value))}
+          onPointerDown={() => setLive(true)}
+          onPointerUp={() => setLive(false)}
+          onPointerCancel={() => setLive(false)}
+          onKeyDown={() => setLive(true)}
+          onBlur={() => setLive(false)}
+          style={{ ["--fill" as string]: `${fill}%` }}
+        />
+        {format && (
+          <span className={`gm-bubble${live ? " is-on" : ""}`} aria-hidden="true" style={{ ["--fill" as string]: `${fill}` }}>
+            {format(clamped)}
+          </span>
+        )}
+      </div>
       {ends && (
         <div className="endpoints" aria-hidden="true">
           <span>{ends[0]}</span>
@@ -204,8 +229,25 @@ export function MoneyField({
           e.currentTarget.select();
         }}
         onChange={(e) => {
-          setDraft(e.target.value);
-          onChange(parse(e.target.value));
+          const el = e.target;
+          const raw = el.value;
+          const caret = el.selectionStart ?? raw.length;
+          const next = liveFormat(raw, !!pence);
+          setDraft(next);
+          onChange(parse(raw));
+          if (next !== raw) {
+            // Keep the cursor after the same digit once commas are added or removed.
+            const keep = raw.slice(0, caret).replace(/[^\d.]/g, "").length;
+            requestAnimationFrame(() => {
+              let seen = 0;
+              let pos = 0;
+              while (pos < next.length && seen < keep) {
+                if (/[\d.]/.test(next[pos])) seen++;
+                pos++;
+              }
+              el.setSelectionRange(pos, pos);
+            });
+          }
         }}
         onBlur={() => setDraft(null)}
       />
@@ -214,7 +256,7 @@ export function MoneyField({
   );
   return (
     <Field label={label} htmlFor={id} aside={aside} hint={hint} optional={optional} info={info} inline={box}>
-      {slider && <Slider value={value} onChange={onChange} label={label} {...slider} />}
+      {slider && <Slider value={value} onChange={onChange} label={label} format={(n) => `${symbol}${whole(n)}`} {...slider} />}
     </Field>
   );
 }
@@ -283,7 +325,7 @@ export function StepperField({
   );
   return (
     <Field label={label} htmlFor={id} hint={hint} aside={aside} optional={optional} info={info} inline={box}>
-      <Slider value={value} onChange={(n) => onChange(clamp(n))} label={label} min={min} max={max} step={step} ends={[withUnit(min, unit), withUnit(max, unit)]} />
+      <Slider value={value} onChange={(n) => onChange(clamp(n))} label={label} min={min} max={max} step={step} ends={[withUnit(min, unit), withUnit(max, unit)]} format={(n) => withUnit(n, unit)} />
     </Field>
   );
 }

@@ -7,6 +7,8 @@ import { initSalary } from "@/gm/scripts/salary.js";
 import { initMortgage } from "@/gm/scripts/mortgage.js";
 import { salaryResult, stampDuty } from "./engines";
 import CountrySwitch from "./CountrySwitch";
+import Enhance from "./Enhance";
+import CommandPalette from "./CommandPalette";
 import { initPackageDonut } from "./packageDonut";
 
 export type GmScript = "axis" | "salary" | "mortgage";
@@ -20,7 +22,7 @@ const RUN: Record<GmScript, () => void> = {
 /**
  * Runs the supplied design's scripts once, in the same order as the original
  * page: the header menu script, then each page script. Also mounts the
- * header's country menu.
+ * header's country menu, the motion and polish enhancements and quick search.
  */
 export default function GmScripts({ scripts }: { scripts: GmScript[] }) {
   useEffect(() => {
@@ -31,5 +33,11 @@ export default function GmScripts({ scripts }: { scripts: GmScript[] }) {
     scripts.forEach((name) => RUN[name]());
     initPackageDonut();
   }, [scripts]);
-  return <CountrySwitch />;
+  return (
+    <>
+      <CountrySwitch />
+      <Enhance />
+      <CommandPalette />
+    </>
+  );
 }

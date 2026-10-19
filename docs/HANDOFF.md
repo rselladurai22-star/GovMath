@@ -247,6 +247,15 @@ The order of phases 4 to 8 is flexible; ask the owner.
 
 **Known loose ends**
 
+- **Trial (19 October 2026, preview only, draft PR):** "motion and polish" for the whole site, owner's request for a premium feel. Files:
+  - `src/gm/Enhance.tsx` (mounted by `GmScripts`): sticky header that tightens on desktop and slides away on phones while scrolling down (`--gm-headh` keeps the other sticky parts clear), scroll reveals below the first screen, the guide reading progress bar, the "In this guide" highlight, back-to-top, home counters (`data-countup`), and the salary and mortgage figures rolling.
+  - `src/gm/CommandPalette.tsx`: Ctrl/⌘K quick search over `/gm/catalog.json`, with recently opened calculators in `localStorage` `sa-recent`.
+  - `src/components/flagship/AnimatedText.tsx`: calculator figures roll to new values and the row glows.
+  - `Studio`: the phone answer bar (`AnswerBar`, from the `dock` prop).
+  - `inputs.tsx`: slider value bubbles and commas while typing.
+  - `ShareButton`: "Link copied" toast.
+  - CSS: the "Motion and polish" block at the end of `govmath-theme.css` (view transitions, mega menu cascade, hero sheen, card lift, gauge draw-in, FAQ open animation, reduced-motion off switch).
+  - The Manrope font trial was reverted the same day. If the owner rejects this trial, reset the branch to main.
 - **Latest (15 October 2026, evening):** the owner **paused the daily "Guides" scheduled task** (it is not visible to cloud sessions' `list_triggers`; the owner manages it in the Claude app). The 7 open guide PRs (#35, #49, #61, #65, #73, #76, #79) stay open, unmerged, until Google indexing and AdSense approval; then publish one per topic (4 overlap on working on Universal Credit, 2 on winter energy bills). GovMath sweep: no page links to or names govmath.co.uk except the About page's "we were called GovMath" lines; the salary and mortgage CSV downloads were renamed `sumatlas-…csv`; internal stylesheet names (`govmath-*.css`) and the `GOVMATH_PUBLISHER` constant stay, as visitors never see them. The Search Console API answered 401 from this session (credentials no longer added by the proxy); ask the owner for Pages report numbers.
 - **Earlier (15 October 2026, after PR 82):** PR 82 merged and deployed (audit fixes, 7 Everyday utilities removed). The owner then completed the Search Console change of address, removed govmath.co.uk from AdSense, resubmitted the sitemap and added the US state regulations message. Waiting on: the AdSense review of sumatlas.com, Google indexing, and Bing Webmaster Tools verification. No new pages until indexing and approval (owner rule).
 - **Earlier (15 October 2026, night): full audit, owner's request ("no wrong information, no invalid links, no low-value calculators or guides").** Checked with a local crawl of all 260 sitemap pages at 1366 and 375px:
