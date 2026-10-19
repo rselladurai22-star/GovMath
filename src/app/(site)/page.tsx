@@ -83,7 +83,7 @@ export default function Home() {
           <div className="gm-cards">
             <Link href="/uk" className="gm-card">
               <small>United Kingdom · 2026/27 tax year</small>
-              <strong>{uk} UK calculators</strong>
+              <strong><span data-countup>{uk}</span> UK calculators</strong>
               <p>
                 Income Tax and take-home pay, Stamp Duty and mortgages, Universal Credit and other benefits, student loans, pensions and car tax.
               </p>
@@ -91,7 +91,7 @@ export default function Home() {
             </Link>
             <Link href="/us" className="gm-card">
               <small>United States · 2026</small>
-              <strong>{us} US calculators</strong>
+              <strong><span data-countup>{us}</span> US calculators</strong>
               <p>
                 Your paycheck with federal and state income tax, mortgages and home affordability, loans and credit cards, 401(k), IRAs and
                 Social Security.
@@ -100,7 +100,7 @@ export default function Home() {
             </Link>
             <Link href="/everyday" className="gm-card">
               <small>Anywhere</small>
-              <strong>{everyday} everyday calculators</strong>
+              <strong><span data-countup>{everyday}</span> everyday calculators</strong>
               <p>Percentages, ages and dates, hours and timesheets, discounts and fuel economy: sums that work the same wherever you live.</p>
               <span className="gm-go">Open everyday calculators</span>
             </Link>

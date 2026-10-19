@@ -1,6 +1,7 @@
 "use client";
 
-import { Children, Fragment, isValidElement, useEffect, useRef, useState, type ReactElement, type ReactNode } from "react";
+import { Children, Fragment, isValidElement, useEffect, useRef, useState, type ReactElement, type ReactNode, type RefObject } from "react";
+import AnimatedText from "./AnimatedText";
 import { gbp, usd } from "./format";
 import { Answer, ResultCard, SplitBar, soften, type Segment } from "./results";
 import { useLook } from "./look";
@@ -102,7 +103,9 @@ function Ring({ segments }: { segments: Segment[] }) {
           >
             <i style={{ background: soften(g.color) }} aria-hidden="true" />
             <span>{g.label}</span>
-            <b>{g.display}</b>
+            <b>
+              <AnimatedText text={g.display} />
+            </b>
             <em>{g.value > 0 ? share(g.value) : "0%"}</em>
           </li>
         ))}
@@ -165,7 +168,7 @@ function Gauge({ segments, answer }: { segments: Segment[] | null; answer?: Answ
           <div className="ind-row ind-row--answer">
             <span>{answer.eyebrow}</span>
             <b>
-              {answer.value}
+              <AnimatedText text={answer.value} />
               {answer.unit ? ` ${answer.unit}` : ""}
             </b>
           </div>
@@ -179,11 +182,60 @@ function Gauge({ segments, answer }: { segments: Segment[] | null; answer?: Answ
             onMouseLeave={() => setActive(null)}
           >
             <span>{g.label}</span>
-            <b>{g.display}</b>
+            <b>
+              <AnimatedText text={g.display} />
+            </b>
           </div>
         ))}
       </div>
     </>
+  );
+}
+
+/**
+ * Phones: a slim bar at the bottom of the screen keeps the headline answer in
+ * view while the visitor scrolls through the inputs. It shows only while the
+ * calculator is on screen and its results panel is not; tapping it scrolls to
+ * the results. Calculator pages only (embeds have no look and no bar).
+ */
+function AnswerBar({ dock, panel, studio }: { dock: { label: string; value: string }; panel: RefObject<HTMLDivElement | null>; studio: RefObject<HTMLElement | null> }) {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const p = panel.current;
+    const s = studio.current;
+    if (!p || !s || !("IntersectionObserver" in window)) return;
+    let panelSeen = true;
+    let studioSeen = true;
+    const update = () => setShow(studioSeen && !panelSeen && window.innerWidth <= 900);
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (e.target === p) panelSeen = e.isIntersecting;
+        if (e.target === s) studioSeen = e.isIntersecting;
+      }
+      update();
+    });
+    io.observe(p);
+    io.observe(s);
+    window.addEventListener("resize", update);
+    return () => {
+      io.disconnect();
+      window.removeEventListener("resize", update);
+    };
+  }, [panel, studio]);
+  return (
+    <button
+      type="button"
+      className={`gm-answerbar${show ? " is-on" : ""}`}
+      aria-hidden={!show}
+      tabIndex={show ? 0 : -1}
+      onClick={() => panel.current?.scrollIntoView({ behavior: "smooth", block: "start" })}
+    >
+      <span>{dock.label}</span>
+      <strong>
+        <AnimatedText text={dock.value} />
+      </strong>
+      <i aria-hidden="true">↓</i>
+    </button>
   );
 }
 
@@ -204,6 +256,7 @@ export default function Studio({
   calculateLabel = "Calculate",
   onReset,
   inputs,
+  dock,
   children,
 }: {
   /** Heading for the inputs, read by screen readers (not shown since the October 2026 redesign). */
@@ -221,6 +274,8 @@ export default function Studio({
   const look = useLook();
   const indus = look?.look === "indus";
   const details = useRef<HTMLElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
+  const studio = useRef<HTMLElement>(null);
   const jump = useRef(false);
 
   const blocks = topLevel(children);
@@ -254,7 +309,7 @@ export default function Studio({
 
   return (
     <>
-      <section className={indus ? "calculator gm-clear gm-indus" : "calculator gm-clear gm-modern"} id="calculator">
+      <section ref={studio} className={indus ? "calculator gm-clear gm-indus" : "calculator gm-clear gm-modern"} id="calculator">
         <div className="calcgrid">
           <form
             className="gm-form"
@@ -289,7 +344,7 @@ export default function Studio({
             </button>
           </form>
 
-          <div className="result ax-chartpanel" aria-live="polite">
+          <div ref={panel} className="result ax-chartpanel" aria-live="polite">
             <h2 className={indus ? "pg-step sr-only" : "pg-step"}>
               <span aria-hidden="true">2</span>Your results
             </h2>
@@ -299,7 +354,9 @@ export default function Studio({
               <div className="ax-paymentstrip">
                 <div>
                   <span>{a.eyebrow}</span>
-                  <strong>{a.value}</strong>
+                  <strong>
+                    <AnimatedText text={a.value} />
+                  </strong>
                   {a.unit && <small>{a.unit}</small>}
                 </div>
               </div>
@@ -317,6 +374,7 @@ export default function Studio({
           </div>
         </div>
       </section>
+      {look && <AnswerBar dock={dock} panel={panel} studio={studio} />}
 
       {grouped.length > 0 && (
         <section ref={details} className="section gm-details" id="results" aria-labelledby="results-title">
