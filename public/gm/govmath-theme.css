@@ -2463,3 +2463,72 @@ footer {
 .ax-header .ax-mega .ax-mega-title a.button {
   padding: 10px 16px;
 }
+
+/* ── Manrope trial (19 October 2026, owner's spec; preview only) ─────────
+   Manrope everywhere:
+     main headline (h1)          600, 58–64px
+     section headings (h2)       600, 36–40px (card titles and sidebars keep their size)
+     body text                   400, 14–16px
+     navigation and buttons      600, 12–14px
+     small uppercase labels      700, 10px, 2px letter spacing
+   Loaded last, so it wins over the Inter, Source Sans 3 (Indus) and package
+   rules above. To undo: delete this block and switch the layouts' font
+   preloads back to inter-400/inter-700. */
+@font-face { font-family: "Manrope"; font-style: normal; font-weight: 400; font-display: swap; src: url("/gm/fonts/manrope-400.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-style: normal; font-weight: 500; font-display: swap; src: url("/gm/fonts/manrope-500.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-style: normal; font-weight: 600; font-display: swap; src: url("/gm/fonts/manrope-600.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-style: normal; font-weight: 700; font-display: swap; src: url("/gm/fonts/manrope-700.woff2") format("woff2"); }
+
+/* One family for every element, including form controls and chart labels. */
+html, body, body *:not(code):not(pre):not(kbd) {
+  font-family: "Manrope", system-ui, -apple-system, "Segoe UI", Arial, sans-serif !important;
+}
+
+/* Body text: regular weight. */
+body p, body li, body td, body dd, body dt, body blockquote, body figcaption,
+body summary, .gm-prose, .g-article p, .q-faq p {
+  font-weight: 400 !important;
+}
+
+/* Main headline. */
+body h1 {
+  font-weight: 600 !important;
+  font-size: clamp(36px, 4.4vw, 62px) !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* Section headings, but not card titles (inside links), sidebars or result panels. */
+body h2:not(a h2):not(.pg-related h2):not(.pg-step):not(.ax-mega h2):not(.resultcard h2):not(.sr-only) {
+  font-weight: 600 !important;
+  font-size: clamp(28px, 3vw, 38px) !important;
+  line-height: 1.18 !important;
+  letter-spacing: -0.015em !important;
+}
+body a h2, .pg-related h2, .pg-step, body h3, body h4 { font-weight: 600 !important; }
+
+/* Navigation and buttons. */
+.ax-navbutton, .ax-mega-links a, .ax-mega .button, .gm-country button, .gm-countrybtn,
+.sectionnav a, .categoryjump a, .crumb, .crumb a, footer a, .footer a, .footerlinks a,
+body button:not(.gm-info-button):not(.ax-mobile-toggle), body .button, body a.button,
+.textbutton, .outline, .bank-calculate, .gm-radio, .ax-select-toggle, .herobutton {
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  letter-spacing: 0 !important;
+}
+.crumb, .crumb a, footer a, .footer a, .footerlinks a, .categoryjump a { font-size: 13px !important; }
+.ax-mobile-toggle { font-weight: 600 !important; font-size: 14px !important; }
+
+/* Small uppercase labels. */
+.eyebrow, [class*="kicker"], [class*="Kicker"], .gm-card small, .gm-rate-head, .gm-rate-head *,
+.ax-mega-feature > span, .rate-row strong {
+  font-weight: 700 !important;
+  font-size: 10px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+}
+
+/* Calculator form labels stay semi-bold, like the radio group titles beside them. */
+.gm-form label, .gm-form legend, .labelrow label, .field > label { font-weight: 600 !important; }
+/* Room between the big headline and the lead text under it. */
+body h1 { margin-bottom: 14px !important; }

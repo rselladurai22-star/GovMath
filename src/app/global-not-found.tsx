@@ -10,8 +10,8 @@ export const metadata: Metadata = { title: "Page not found | SumAtlas" };
  * <html> and the site's frame (through the site's not-found page).
  */
 export default function GlobalNotFound() {
-  preload("/gm/fonts/inter-400.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
-  preload("/gm/fonts/inter-700.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/gm/fonts/manrope-400.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/gm/fonts/manrope-600.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   return (
     <html lang="en-GB">
       <body>

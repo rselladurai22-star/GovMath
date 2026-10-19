@@ -11,3 +11,10 @@ October 2026 for clearer text at small sizes.
 By Adobe (Paul D. Hunt), from `@fontsource/source-sans-3` v5.1.0, Latin subset
 (about 16 KB a weight), SIL Open Font License 1.1. Used only by the "indus"
 calculator look (the US personal loan calculator trial, October 2026).
+
+# Manrope (400, 500, 600, 700)
+
+By Mikhail Sharanda, from `@fontsource/manrope` v5.3.0, Latin subset, SIL
+Open Font License 1.1. Added 19 October 2026 for a site-wide typography trial
+(owner's spec: Manrope everywhere; see the "Manrope trial" block at the end of
+govmath-theme.css).

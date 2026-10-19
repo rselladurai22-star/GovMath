@@ -34,8 +34,8 @@ export const viewport: Viewport = { themeColor: "#8c1d40" };
 // src/app/favicon.ico, icon.png and apple-icon.png (the round SumAtlas badge).
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   // Inter 400 and 700 are used on every page; fetch them before the CSS asks.
-  preload("/gm/fonts/inter-400.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
-  preload("/gm/fonts/inter-700.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/gm/fonts/manrope-400.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/gm/fonts/manrope-600.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   return (
     <html lang="en-GB">
       <body>

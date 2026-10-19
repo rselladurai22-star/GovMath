@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 const CSS = [...CALCULATOR_CSS, ...THEME_BEFORE, "govmath-site.css", ...THEME_AFTER];
 
 export default function EmbedLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  preload("/gm/fonts/inter-400.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
-  preload("/gm/fonts/inter-700.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/gm/fonts/manrope-400.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/gm/fonts/manrope-600.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   return (
     <html lang="en">
       <body className="gm-embedbody">
