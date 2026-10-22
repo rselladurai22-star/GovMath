@@ -6,19 +6,36 @@
 
 export type BmiCategory = "underweight" | "healthy" | "overweight" | "obese1" | "obese2" | "obese3";
 
+/**
+ * Each range starts at its threshold and runs up to, but not including, the next one (WHO and CDC: a healthy
+ * weight is 18.5 to less than 25), which the NHS writes as "18.5 to 24.9".
+ */
 const BMI_STANDARD = { under: 18.5, over: 25, obese: 30, obese2: 35, obese3: 40 } as const;
 /** Lower thresholds for people of South Asian, Chinese, other Asian, Middle Eastern, Black African or African-Caribbean family background. */
 const BMI_LOWER = { under: 18.5, over: 23, obese: 27.5, obese2: 32.5, obese3: 37.5 } as const;
 
+export type BmiThresholds = typeof BMI_STANDARD | typeof BMI_LOWER;
+
+/** One pound in kg (exact). Pass it as the step when weights are shown in pounds or in stones and pounds. */
+export const KG_PER_LB = 0.45359237;
+
 export type BmiResult = {
+  /** BMI, unrounded. */
   bmi: number;
+  /** BMI to one decimal place as it should be shown: see bmiShown(). */
+  bmiShown: number;
   category: BmiCategory;
   label: string;
+  /** Lowest weight with a healthy BMI, in whole steps (0.1 kg or a pound), rounded up so it is itself healthy. */
   healthyMinKg: number;
+  /** Highest weight with a healthy BMI, in whole steps, rounded down so it is itself healthy; one step more is not. */
   healthyMaxKg: number;
-  /** Change in kg to reach the healthy range (negative to lose, 0 if within). */
+  /**
+   * Change in kg to reach the healthy range shown (positive to gain, negative to lose), in whole steps rounded
+   * away from zero. 0 only when the BMI is in the healthy range, and at least one step otherwise.
+   */
   toHealthyKg: number;
-  thresholds: typeof BMI_STANDARD | typeof BMI_LOWER;
+  thresholds: BmiThresholds;
 };
 
 const LABELS: Record<BmiCategory, string> = {
@@ -30,18 +47,65 @@ const LABELS: Record<BmiCategory, string> = {
   obese3: "Severe obesity",
 };
 
-export function bmiAdult(heightCm: number, weightKg: number, lowerThresholds = false): BmiResult {
-  const m = Math.max(0.5, heightCm / 100);
+/** Drops floating-point noise, so a weight exactly on a boundary lands on it (64 kg at 160 cm is a BMI of 25, not 24.999999999999996). */
+const clean = (x: number) => Math.round(x * 1e9) / 1e9;
+const metres = (heightCm: number) => Math.max(0.5, heightCm / 100);
+const bmiAt = (kg: number, m: number) => clean(Math.max(0, kg) / (m * m));
+const stepWeight = (steps: number, stepKg: number) => clean(steps * stepKg);
+
+function categoryOf(bmi: number, t: BmiThresholds): BmiCategory {
+  return bmi < t.under ? "underweight" : bmi < t.over ? "healthy" : bmi < t.obese ? "overweight" : bmi < t.obese2 ? "obese1" : bmi < t.obese3 ? "obese2" : "obese3";
+}
+
+/** The fewest whole steps of `stepKg` whose weight has a BMI of `bmi` or more, checked with the same test that sets the category. */
+function firstStepAtOrAbove(m: number, bmi: number, stepKg: number): number {
+  let k = Math.max(0, Math.ceil(clean((bmi * m * m) / stepKg)));
+  while (k > 0 && bmiAt(stepWeight(k - 1, stepKg), m) >= bmi) k--;
+  while (bmiAt(stepWeight(k, stepKg), m) < bmi) k++;
+  return k;
+}
+
+/**
+ * The weights for a BMI range at this height, in whole steps of `stepKg` (0.1 kg, or KG_PER_LB when weights are
+ * shown in pounds or stones): `minKg` is the lowest with a BMI of `fromBmi` or more (rounded up), `maxKg` the
+ * highest with a BMI below `toBmi` (rounded down). Both are inside the range; one step outside either is not.
+ * `fromBmi` 0 gives a minimum of 0, and `toBmi` Infinity a maximum of Infinity.
+ */
+export function bmiWeightRange(heightCm: number, fromBmi: number, toBmi: number, stepKg = 0.1): { minKg: number; maxKg: number } {
+  const m = metres(heightCm);
+  const minKg = fromBmi > 0 ? stepWeight(firstStepAtOrAbove(m, fromBmi, stepKg), stepKg) : 0;
+  const maxKg = Number.isFinite(toBmi) ? stepWeight(firstStepAtOrAbove(m, toBmi, stepKg) - 1, stepKg) : Infinity;
+  return { minKg, maxKg };
+}
+
+/**
+ * BMI to one decimal place, as shown: rounded as usual, but never up into the next range. The ranges are
+ * written "18.5 to 24.9", "25 to 29.9" and so on, so a BMI of 24.96 (below 25, a healthy weight) shows as 24.9
+ * rather than 25.0, and 18.47 (underweight) as 18.4 rather than 18.5.
+ */
+export function bmiShown(bmi: number, t: BmiThresholds = BMI_STANDARD): number {
+  const rounded = Number(bmi.toFixed(1));
+  const next = Math.min(...Object.values(t).filter((x) => x > bmi));
+  return rounded >= next ? Math.floor(clean(bmi * 10)) / 10 : rounded;
+}
+
+/**
+ * Adult BMI. `stepKg` is the precision the healthy weights are shown to: 0.1 kg (the default), or KG_PER_LB
+ * for pounds and for stones and pounds. The limits are rounded inwards, so each one shown is itself a healthy
+ * weight.
+ */
+export function bmiAdult(heightCm: number, weightKg: number, lowerThresholds = false, stepKg = 0.1): BmiResult {
+  const m = metres(heightCm);
   const w = Math.max(0, weightKg);
-  const bmi = w / (m * m);
+  const bmi = bmiAt(w, m);
   const t = lowerThresholds ? BMI_LOWER : BMI_STANDARD;
-  const category: BmiCategory =
-    bmi < t.under ? "underweight" : bmi < t.over ? "healthy" : bmi < t.obese ? "overweight" : bmi < t.obese2 ? "obese1" : bmi < t.obese3 ? "obese2" : "obese3";
-  const healthyMinKg = t.under * m * m;
-  // The healthy range runs up to, but not including, the overweight threshold.
-  const healthyMaxKg = (t.over - 0.1) * m * m;
-  const toHealthyKg = w < healthyMinKg ? healthyMinKg - w : w > healthyMaxKg ? healthyMaxKg - w : 0;
-  return { bmi, category, label: LABELS[category], healthyMinKg, healthyMaxKg, toHealthyKg, thresholds: t };
+  const category = categoryOf(bmi, t);
+  const { minKg: healthyMinKg, maxKg: healthyMaxKg } = bmiWeightRange(heightCm, t.under, t.over, stepKg);
+  // At least one step whenever the BMI is outside the healthy range, so the change is never shown as 0.
+  const steps = (kg: number) => Math.max(1, Math.ceil(clean(kg / stepKg)));
+  const toHealthyKg =
+    category === "underweight" ? stepWeight(steps(healthyMinKg - w), stepKg) : category === "healthy" ? 0 : -stepWeight(steps(w - healthyMaxKg), stepKg);
+  return { bmi, bmiShown: bmiShown(bmi, t), category, label: LABELS[category], healthyMinKg, healthyMaxKg, toHealthyKg, thresholds: t };
 }
 
 export type WaistBand = "low" | "healthy" | "increased" | "high";
@@ -54,9 +118,9 @@ export function waistToHeight(waistCm: number, heightCm: number): { ratio: numbe
 }
 
 export const cmFromFtIn = (ft: number, inches: number) => (Math.max(0, ft) * 12 + Math.max(0, inches)) * 2.54;
-export const kgFromStLb = (st: number, lb: number) => (Math.max(0, st) * 14 + Math.max(0, lb)) * 0.45359237;
+export const kgFromStLb = (st: number, lb: number) => (Math.max(0, st) * 14 + Math.max(0, lb)) * KG_PER_LB;
 export function stLbFromKg(kg: number): { st: number; lb: number } {
-  const totalLb = Math.max(0, kg) / 0.45359237;
+  const totalLb = Math.max(0, kg) / KG_PER_LB;
   let st = Math.floor(totalLb / 14);
   let lb = Math.round(totalLb - st * 14);
   if (lb === 14) {

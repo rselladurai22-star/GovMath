@@ -45,7 +45,10 @@ export default function GmShell({
   children,
 }: {
   kind?: "base" | "calculator";
-  /** Whose topic menus the header shows (the UK's when unset) and where the logo goes (the site's home page, "/", when unset). */
+  /**
+   * The section the page belongs to: whose topic menus the header shows and where the logo goes. Unset on shared
+   * pages: the header then shows the visitor's country's menus (the UK's by default) and the logo goes to "/".
+   */
   country?: "uk" | "us";
   children: ReactNode;
 }) {

@@ -1199,3 +1199,23 @@ a.gm-card:hover {
 @media (min-width: 1100px) {
   .gm-home .gm-trustcards { grid-template-columns: repeat(4, 1fr); }
 }
+
+/* Guides articles (/blog/…, October 2026): the Sources box at the end of each
+   article, sized like the calculator guides' one (whose rules sit in
+   matching-mortgage.css, which content pages don't load). */
+.gm-prose .g-sources {
+  margin-top: 34px;
+  padding: 22px 0 28px;
+  border-top: 1px solid #dfe3e8;
+}
+.gm-prose.section .g-sources h2 {
+  font-size: 23px;
+  line-height: 29px;
+  padding: 0;
+  margin: 0 0 10px;
+}
+.gm-prose .g-sources p,
+.gm-prose .g-sources li {
+  font-size: 14px;
+  line-height: 1.7;
+}

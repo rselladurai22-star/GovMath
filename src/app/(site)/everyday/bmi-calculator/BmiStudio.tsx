@@ -1,6 +1,6 @@
 "use client";
 
-import { bmiAdult, cmFromFtIn, kgFromStLb, stLbFromKg, waistToHeight } from "@/lib/life/health";
+import { bmiAdult, bmiWeightRange, cmFromFtIn, KG_PER_LB, kgFromStLb, stLbFromKg, waistToHeight, type BmiCategory } from "@/lib/life/health";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, Segmented, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
@@ -22,16 +22,21 @@ const SCHEMA = {
 };
 const ADVANCED = ["lower", "waist", "age"] as const;
 
-const KG_PER_LB = 0.45359237;
 type Units = "metric" | "us" | "imperial";
 
-/** A weight in the visitor's units: kg, pounds (US) or stones and pounds (UK). */
+/**
+ * A weight in the visitor's units: kg, pounds (US) or stones and pounds (UK). The healthy limits and the change
+ * needed come from the engine already in whole steps of 0.1 kg or a pound, so this only formats them.
+ */
 const kgText = (kg: number, units: Units) => {
   if (units === "metric") return `${kg.toFixed(1)} kg`;
   if (units === "us") return `${Math.round(kg / KG_PER_LB)} lb`;
   const { st, lb } = stLbFromKg(kg);
-  return `${st} st ${lb} lb`;
+  return st > 0 ? `${st} st ${lb} lb` : `${lb} lb`;
 };
+
+/** BMI range as the guide writes it: "under 18.5", "18.5 to 24.9", "40 or more". */
+const rangeText = (from: number, to: number) => (from === 0 ? `under ${to}` : Number.isFinite(to) ? `${from} to ${(to - 0.1).toFixed(1)}` : `${from} or more`);
 
 export default function BmiStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
@@ -40,18 +45,20 @@ export default function BmiStudio({ query }: { query: Query }) {
   const feet = units !== "metric";
   const heightCm = feet ? cmFromFtIn(v.ft, v.inch) : v.cm;
   const weightKg = units === "imperial" ? kgFromStLb(v.st, v.lb) : units === "us" ? v.lbs * KG_PER_LB : v.kg;
-  const r = bmiAdult(heightCm, weightKg, v.lower);
+  // Healthy weights are shown to 0.1 kg, or to the pound in US and UK imperial units.
+  const stepKg = units === "metric" ? 0.1 : KG_PER_LB;
+  const r = bmiAdult(heightCm, weightKg, v.lower, stepKg);
+  const bmiText = r.bmiShown.toFixed(1);
   const w = v.waist > 0 ? waistToHeight(v.waist, heightCm) : null;
   const child = v.age < 18;
   const t = r.thresholds;
-  const bands = [
-    { label: "Underweight", from: 0, to: t.under },
-    { label: "Healthy weight", from: t.under, to: t.over },
-    { label: "Overweight", from: t.over, to: t.obese },
-    { label: "Obesity", from: t.obese, to: t.obese3 },
-    { label: "Severe obesity", from: t.obese3, to: 60 },
+  const bands: { label: string; from: number; to: number; categories: BmiCategory[] }[] = [
+    { label: "Underweight", from: 0, to: t.under, categories: ["underweight"] },
+    { label: "Healthy weight", from: t.under, to: t.over, categories: ["healthy"] },
+    { label: "Overweight", from: t.over, to: t.obese, categories: ["overweight"] },
+    { label: "Obesity", from: t.obese, to: t.obese3, categories: ["obese1", "obese2"] },
+    { label: "Severe obesity", from: t.obese3, to: Infinity, categories: ["obese3"] },
   ];
-  const m2 = (heightCm / 100) ** 2;
   const tone = r.category === "healthy" ? "good" : "warn";
 
   return (
@@ -61,7 +68,7 @@ export default function BmiStudio({ query }: { query: Query }) {
       onCalculate={st.calculate}
       calculateLabel="Calculate my BMI"
       onReset={st.reset}
-      dock={{ label: "Your BMI", value: r.bmi.toFixed(1) }}
+      dock={{ label: "Your BMI", value: bmiText }}
       inputs={
         <>
           <InputGroup title="Measurements">
@@ -111,7 +118,7 @@ export default function BmiStudio({ query }: { query: Query }) {
     >
       <Answer
         eyebrow="Your BMI"
-        value={r.bmi.toFixed(1)}
+        value={bmiText}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
           child ? (
@@ -121,9 +128,13 @@ export default function BmiStudio({ query }: { query: Query }) {
             </>
           ) : (
             <>
-              A BMI of <b>{r.bmi.toFixed(1)}</b>{" "}is in the <b>{r.label.toLowerCase()}</b>{" "}range. A healthy weight for your height is <b>{kgText(r.healthyMinKg, units)}</b>{" "}to{" "}
+              A BMI of <b>{bmiText}</b>{" "}is in the <b>{r.label.toLowerCase()}</b>{" "}range. A healthy weight for your height is <b>{kgText(r.healthyMinKg, units)}</b>{" "}to{" "}
               <b>{kgText(r.healthyMaxKg, units)}</b>.
-              {r.toHealthyKg < 0 ? <> That is <b>{kgText(-r.toHealthyKg, units)}</b>{" "}less than now.</> : r.toHealthyKg > 0 ? <> That is <b>{kgText(r.toHealthyKg, units)}</b>{" "}more than now.</> : null}
+              {r.category === "underweight" ? (
+                <> That is <b>{kgText(r.toHealthyKg, units)}</b>{" "}more than now.</>
+              ) : r.category !== "healthy" ? (
+                <> That is <b>{kgText(-r.toHealthyKg, units)}</b>{" "}less than now.</>
+              ) : null}
             </>
           )
         }
@@ -132,7 +143,7 @@ export default function BmiStudio({ query }: { query: Query }) {
 
       <Facts
         items={[
-          { label: "BMI", value: r.bmi.toFixed(1), tone },
+          { label: "BMI", value: bmiText, tone },
           { label: "Healthy from", value: kgText(r.healthyMinKg, units) },
           { label: "Healthy to", value: kgText(r.healthyMaxKg, units) },
           { label: "Waist to height", value: w ? w.ratio.toFixed(2) : "Not entered", tone: w ? (w.band === "healthy" ? "good" : w.band === "low" ? undefined : "warn") : undefined },
@@ -144,19 +155,23 @@ export default function BmiStudio({ query }: { query: Query }) {
           { label: "Height", value: `${heightCm.toFixed(1)} cm` },
           { label: "Weight", value: `${weightKg.toFixed(1)} kg` },
           { label: "Thresholds", value: `Overweight from ${t.over}, obesity from ${t.obese}` },
+          { label: "Healthy weights", value: units === "metric" ? "Rounded inwards to 0.1 kg" : "Rounded inwards to the pound" },
           { label: "For", value: "Adults 18 and over" },
         ]}
       />
 
-      <ResultCard title="BMI ranges for your height" sub="The weight at each boundary.">
+      <ResultCard title="BMI ranges for your height" sub="The weights in each range, rounded inwards.">
         <Compare
           head={["Range", "Weight"]}
-          rows={bands.map((b) => ({
-            label: `${b.label} (${b.from === 0 ? "under" : b.from}${b.to < 60 ? `${b.from === 0 ? " " : " to "}${b.to}` : "+"})`,
-            value: b.from === 0 ? `under ${kgText(b.to * m2, units)}` : b.to >= 60 ? `${kgText(b.from * m2, units)}+` : `${kgText(b.from * m2, units)} to ${kgText(b.to * m2, units)}`,
-            bar: Math.min(1, (b.from + b.to) / 2 / 45),
-            current: r.bmi >= b.from && r.bmi < b.to,
-          }))}
+          rows={bands.map((b) => {
+            const { minKg, maxKg } = bmiWeightRange(heightCm, b.from, b.to, stepKg);
+            return {
+              label: `${b.label} (${rangeText(b.from, b.to)})`,
+              value: b.from === 0 ? `up to ${kgText(maxKg, units)}` : Number.isFinite(b.to) ? `${kgText(minKg, units)} to ${kgText(maxKg, units)}` : `${kgText(minKg, units)} or more`,
+              bar: Math.min(1, (b.from + Math.min(b.to, 60)) / 2 / 45),
+              current: b.categories.includes(r.category),
+            };
+          })}
         />
       </ResultCard>
 
