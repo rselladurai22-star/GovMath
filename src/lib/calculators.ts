@@ -156,8 +156,8 @@ export const EVERYDAY = {
   title: "Everyday Calculators",
   menu: "Everyday",
   href: "/everyday",
-  tagline: "Ages and dates, pregnancy, health, maths, unit converters, money and hours.",
-  description: "Quick calculators for dates and ages, pregnancy, health, maths, unit conversions, money and hours.",
+  tagline: "Ages and dates, pregnancy, health, percentages, discounts, fuel and hours.",
+  description: "Quick calculators for dates and ages, pregnancy, health, percentages, discounts, fuel economy and hours.",
 };
 
 const live = (
