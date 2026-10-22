@@ -1,7 +1,7 @@
 # SumAtlas project memory (formerly GovMath)
 
 Read this at the start of every session. It records how we work, how the code is built, and what is still to do.
-Last updated: 22 October 2026 (**live review fixes merged (PR 87): inputs kept out of page addresses, in-site navigation no longer kills menus and the salary and mortgage calculators, blog sources, BMI, US menus on shared pages; see Latest; Google indexing check under Search Console**; **owner rule: no new pages (calculators or guides) until Google indexes the site and AdSense approves it; two finished guide drafts wait in commit 2be80f0; guide charts take a `currency` prop**; **AdSense readiness audit: real home page at `/`, coming-soon countries hidden, contact `hello@sumatlas.com`, trust pages cover UK, US and health; owner actions under Ads**; **AdSense turned down govmath.co.uk ("Low value content", "Site Behavior: Navigation"); no link points at `/` any more and 12 dead source links were replaced, see Ads**; related sidebar back on the right from 1200px; hreflang for 24 UK/US twins; Plan 1, Plan 4 and Postgraduate merged into `/uk/students/student-loan-repayment`; every calculator has 3+ in-guide links**, see Known loose ends; **next 25 tools proposed, waiting for the owner's go-ahead, see Known loose ends**; the "Indus" calculator look on every calculator, see Design; IndexNow blocked with 403 on Bing's side, see **IndexNow**; salary and mortgage package forms use the shared form rows; every calculator page has the two-group page structure (tool + related sidebar, then guide); IndexNow live; 22 embeddable widgets; 25 high-demand UK and Everyday calculators; 75 US calculators with state income and property tax; sumatlas.com live with `/` redirecting to the visitor's country; the 187 fixed-amount pages switched off until AdSense approval, see **SEO**; Search Console API notes under **Search Console**; `docs/SEO-PLAN.md` has the off-site plan).
+Last updated: 22 October 2026 (**live review fixes merged (PR 87) and verified on the live site: inputs kept out of page addresses, in-site navigation no longer kills menus and the salary and mortgage calculators, blog sources, BMI, US menus on shared pages; see Latest; Google indexing check under Search Console**; **owner rule: no new pages (calculators or guides) until Google indexes the site and AdSense approves it; two finished guide drafts wait in commit 2be80f0; guide charts take a `currency` prop**; **AdSense readiness audit: real home page at `/`, coming-soon countries hidden, contact `hello@sumatlas.com`, trust pages cover UK, US and health; owner actions under Ads**; **AdSense turned down govmath.co.uk ("Low value content", "Site Behavior: Navigation"); no link points at `/` any more and 12 dead source links were replaced, see Ads**; related sidebar back on the right from 1200px; hreflang for 24 UK/US twins; Plan 1, Plan 4 and Postgraduate merged into `/uk/students/student-loan-repayment`; every calculator has 3+ in-guide links**, see Known loose ends; **next 25 tools proposed, waiting for the owner's go-ahead, see Known loose ends**; the "Indus" calculator look on every calculator, see Design; IndexNow blocked with 403 on Bing's side, see **IndexNow**; salary and mortgage package forms use the shared form rows; every calculator page has the two-group page structure (tool + related sidebar, then guide); IndexNow live; 22 embeddable widgets; 25 high-demand UK and Everyday calculators; 75 US calculators with state income and property tax; sumatlas.com live with `/` redirecting to the visitor's country; the 187 fixed-amount pages switched off until AdSense approval, see **SEO**; Search Console API notes under **Search Console**; `docs/SEO-PLAN.md` has the off-site plan).
 
 ## Goal
 
@@ -83,6 +83,13 @@ Built one agent at a time (owner's rule for big batches). Brief: each page follo
 - **Release checks:**
   - Count each page's words as the `innerText` of `.g-article` plus the page FAQ (`.fullfaq`, with every `details` opened). The target is 2,000 or more (simple tools 1,000 to 1,500). **Drafts come in short:** a guide written "to about 1,800 words" measured about 1,100 to 1,500 in October 2026, so write 20 or more sections and 10 to 13 FAQs, then measure after a build. Two scratch helpers made topping up quick: one inserts sections before `key-numbers` and renumbers `n={…}`, one appends FAQs to `FAQS` (both are easy to recreate in Python).
   - Sweep every sitemap page at widths 375, 768, 1280, 1920 and 2560. Check for horizontal overflow, the text NaN, Infinity or undefined, and console errors (ignore "Failed to load resource"; on a local `next start`, also ignore "Refused to execute script from …/_vercel/insights/script.js" and `speed-insights`: those scripts only exist on Vercel, and `nosniff` makes the browser refuse the local 404 page). The page list must include `/` itself (it was once missed); take it from `/sitemap.xml`. The salary page's "no results" flag is a known false alarm. Also crawl for words joined after inline tags (see **JSX spaces**).
+  - **Client-navigation and privacy test** (since PR 87, run locally and again live after each deploy). Navigate by clicking links only, with no reloads:
+    - From `/`, click the Salary card, change `#salary` and check `#salaryMonthly` changes.
+    - From `/`, click the Mortgage card, change `#price` and check `#monthly` changes.
+    - Follow a breadcrumb, then open a header menu.
+    - In a React calculator, type and press Calculate: `location.search` must stay empty, and Share must copy a link that carries the inputs.
+    - With localStorage `sa-country=us`, `/about` must show the US menus and they must open, on desktop and through Menu at 390px.
+    - Also check the internal-link crawl against the live site (every internal link and schema item answers 200 with no redirect).
 
 ## How a flagship page is built
 
@@ -131,7 +138,7 @@ How they are built:
 - **Page data.** `src/gm/pages/*.json` holds each page's title, description, stylesheet order, script order and top-level body elements, converted from the supplied HTML. Links are site-relative with no trailing slash; images point to `/gm/`.
 - **Generated lists.** The homepage category grid (`<!--GM:CATEGORYGRID-->`) and each topic page's main (`<!--GM:TOPIC-->`) are built by `src/gm/catalog.ts` from `CALCULATORS`, in the package's markup, so every calculator is listed and counts are right. Labels, descriptions and icons come from `src/gm/categories.json`.
 - **Rendering.** `src/gm/GmDocument.tsx` renders the stylesheets as `<link precedence="gm">` in their original order, then each body element with its original tag, attributes and markup.
-- **Scripts.** The supplied scripts sit in `src/gm/scripts/*.js`, kept as delivered, wrapped in an exported `init…()` and excluded from ESLint. `src/gm/GmScripts.tsx` runs them once, in order.
+- **Scripts.** The supplied scripts sit in `src/gm/scripts/*.js`, kept as delivered, wrapped in an exported `init…()` and excluded from ESLint. `src/gm/GmScripts.tsx` runs them in order once per rendered page, including after a client-side (next/link) navigation; the page's `#ax-navigation[data-gm-init]` mark stops a second run. Running them once per browser load left menus and the salary and mortgage calculators dead after in-site navigation (fixed in PR 87).
 - **Engines.** The salary script's `salaryResult()` and the mortgage script's `stampDuty()` come from `src/gm/engines.ts` (site engines; tested in `engines.test.ts`).
 - **Catalogue.** `/gm/catalog.json` is built from `CALCULATORS` for the header code in `axis.js`.
 - **Hero image.** Removed on 7 October 2026 at the owner's request (it looked pasted on over the claret hero); the home hero is text only. The WebP copies were deleted (in git history).
@@ -270,6 +277,28 @@ The order of phases 4 to 8 is flexible; ask the owner.
   - **Header on shared pages:** `sharedNavHtml()` in catalog.ts puts the UK items (`gm-nav-uk`) and the US items (`gm-nav-us`, ids `mega-us-N`) in one nav. CSS on `html[data-country]` shows one set (UK by default). It is one nav because axis.js's Menu button opens only the first `.ax-navigation`. Tested in `src/lib/header-nav.test.ts`.
   - **Everyday hub:** no country (logo to /), new title, description and tagline, and an intro paragraph. AmountPage passes `country="uk"`.
   - **Client-navigation bug (found live, serious):** `GmScripts` ran the design scripts once per browser load (`window.__gmInit`). After any next/link navigation, the new page's header menus did nothing, and **the salary and mortgage calculators were dead when reached from the home page cards**. Now the scripts run once per rendered page (the mark is `#ax-navigation[data-gm-init]`). Reproduced live before the fix and re-tested after it (home → Salary and Mortgage cards, breadcrumb → header menu).
+  - **Verified live after the deploy (22 October 2026):**
+    - The browser test passes on sumatlas.com:
+      - home → Salary card responds (£2,288.30 → £3,634.78 at £60,000);
+      - home → Mortgage card responds;
+      - the header menu opens after a breadcrumb;
+      - the address bar stays empty after typing and Calculate on UC taper, NI and Stamp Duty;
+      - Share copies a link with the inputs;
+      - the US menus show and open on `/about` at 1440 and 390px;
+      - BMI's default has no "0.0 kg" line;
+      - blog posts show their Sources.
+    - A crawl of all 254 live pages found every internal link and schema item answering 200 with no redirect.
+    - Before the merge:
+      - a local Chromium sweep of all 253 sitemap pages at 390 and 1440px was clean;
+      - the changed pages were clean at 375, 768, 1280, 1920 and 2560px;
+      - the Vercel preview built.
+    - One page error, `Uncaught Error: int64`, appeared once in the first live run. It did not come back in two more full runs or 16 more page loads, and `int64` is nowhere in `src/`, so it most likely comes from Google's ad or consent scripts. If it recurs, log `e.stack` in the `pageerror` handler to name the script.
+    - A second, independent live check was still running when this note was written, and its findings are not recorded here. It used four agents, each trying to break one area:
+      - outbound requests, including GA's `dl` and the Vercel beacons, must carry no inputs;
+      - chains of 10+ client-side navigations;
+      - shared-page menus and the country switch;
+      - the content claims.
+      Rerun it if wanted.
   - **Still to do or decide:**
     - **Owner:** email deliverability for `hello@sumatlas.com`. SPF is `v=spf1 include:secureserver.net ~all` with no Zoho include, there is no DKIM at `zmail._domainkey`, and DMARC is p=quarantine. Add Zoho's SPF include and DKIM record from Zoho Mail admin, then send a test email.
     - Some calculator guides link to GOV.UK and IRS addresses that now redirect (Marriage Allowance eligibility, Tax-Free Childcare eligibility, simplified expenses vehicles, income over £100,000, MTD eligibility, and the IRS "One Big Beautiful Bill" pages, renamed "Working Families Tax Cuts"). They still work; update them to the final addresses when those guides are next touched.
