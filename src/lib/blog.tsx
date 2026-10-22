@@ -13,6 +13,8 @@ export type BlogPost = {
   dateLabel: string;
   readingTime: string;
   category: string;
+  /** The official pages behind the post's rules and figures, shown in a Sources box at the end. */
+  sources?: { label: string; href: string }[];
   body: ReactNode;
 };
 
@@ -27,6 +29,13 @@ export const BLOG_POSTS: BlogPost[] = [
     dateLabel: "7 October 2026",
     readingTime: "8 min read",
     category: "Tax & Salary",
+    sources: [
+      { label: "GOV.UK — Salary sacrifice and the effects on employees", href: "https://www.gov.uk/guidance/salary-sacrifice-and-the-effects-on-paye" },
+      { label: "HMRC — Optional remuneration arrangements (480: Appendix 12)", href: "https://www.gov.uk/guidance/optional-remuneration-arrangements-480-appendix-12" },
+      { label: "GOV.UK — Income Tax rates and Personal Allowances", href: "https://www.gov.uk/income-tax-rates" },
+      { label: "GOV.UK — Rates and thresholds for employers 2026 to 2027", href: "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2026-to-2027" },
+      { label: "GOV.UK — National Minimum Wage and National Living Wage rates", href: "https://www.gov.uk/national-minimum-wage-rates" },
+    ],
     body: (
       <>
         <p>
@@ -36,7 +45,7 @@ export const BLOG_POSTS: BlogPost[] = [
           contribution can cost you only £580 to £720 of take-home pay, and less still in some salary bands.
         </p>
         <p>
-          This guide works through real 2026/27 examples, all from the same engine as our{" "}
+          This guide works through real 2026/27 examples, all worked out with the same engine as our{" "}
           <Link href="/uk/tax-and-salary/salary-sacrifice">salary sacrifice calculator</Link>, and explains the catches:
           the minimum wage rule, the effect on mortgages and other benefits, and the National Insurance cap planned for
           2029.
@@ -185,6 +194,13 @@ export const BLOG_POSTS: BlogPost[] = [
     dateLabel: "7 October 2026",
     readingTime: "7 min read",
     category: "Tax & Salary",
+    sources: [
+      { label: "GOV.UK — Marriage Allowance", href: "https://www.gov.uk/marriage-allowance" },
+      { label: "HMRC — PAYE Manual: Marriage Allowance", href: "https://www.gov.uk/hmrc-internal-manuals/paye-manual/paye13112" },
+      { label: "GOV.UK — Income Tax rates and Personal Allowances", href: "https://www.gov.uk/income-tax-rates" },
+      { label: "GOV.UK — Scottish Income Tax", href: "https://www.gov.uk/scottish-income-tax" },
+      { label: "GOV.UK — Married Couple's Allowance", href: "https://www.gov.uk/married-couples-allowance" },
+    ],
     body: (
       <>
         <p>
@@ -194,7 +210,7 @@ export const BLOG_POSTS: BlogPost[] = [
           by up to <strong>£252 a year</strong>, and you can claim for up to four earlier years too.
         </p>
         <p>
-          This guide uses 2026/27 figures from the same engine as our{" "}
+          This guide uses 2026/27 figures worked out with the same engine as our{" "}
           <Link href="/uk/tax-and-salary/marriage-allowance">Marriage Allowance calculator</Link>, so you can check your own
           incomes there.
         </p>
@@ -303,6 +319,12 @@ export const BLOG_POSTS: BlogPost[] = [
     dateLabel: "20 May 2026",
     readingTime: "8 min read",
     category: "Tax & Salary",
+    sources: [
+      { label: "GOV.UK — Income Tax rates and Personal Allowances", href: "https://www.gov.uk/income-tax-rates" },
+      { label: "GOV.UK — National Insurance rates and categories", href: "https://www.gov.uk/national-insurance-rates-letters" },
+      { label: "GOV.UK — Rates and thresholds for employers 2026 to 2027", href: "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2026-to-2027" },
+      { label: "GOV.UK — Scottish Income Tax", href: "https://www.gov.uk/scottish-income-tax" },
+    ],
     body: (
       <>
         <p>
@@ -523,6 +545,13 @@ export const BLOG_POSTS: BlogPost[] = [
     dateLabel: "6 October 2026",
     readingTime: "9 min read",
     category: "Tax & Salary",
+    sources: [
+      { label: "GOV.UK — Income Tax rates and Personal Allowances", href: "https://www.gov.uk/income-tax-rates" },
+      { label: "GOV.UK — Tax relief on pension contributions", href: "https://www.gov.uk/tax-on-your-private-pension/pension-tax-relief" },
+      { label: "GOV.UK — Pension annual allowance", href: "https://www.gov.uk/tax-on-your-private-pension/annual-allowance" },
+      { label: "GOV.UK — Free childcare for working parents", href: "https://www.gov.uk/free-childcare-if-working" },
+      { label: "GOV.UK — Tax-Free Childcare", href: "https://www.gov.uk/tax-free-childcare" },
+    ],
     body: (
       <>
         <p>
@@ -534,7 +563,7 @@ export const BLOG_POSTS: BlogPost[] = [
         </p>
         <p>
           This guide explains where the trap comes from, what it costs in real pounds for 2026/27, and the legal, common
-          ways to step back out of it. Every figure here comes from the same engine as our{" "}
+          ways to step back out of it. Every figure here was worked out with the same engine as our{" "}
           <Link href="/uk/tax-and-salary/salary-calculator">Salary &amp; Take-Home Pay Calculator</Link>, so you can check
           your own numbers there.
         </p>
@@ -769,13 +798,19 @@ export const BLOG_POSTS: BlogPost[] = [
     dateLabel: "6 October 2026",
     readingTime: "9 min read",
     category: "Students",
+    sources: [
+      { label: "GOV.UK — Repaying your student loan: what you pay", href: "https://www.gov.uk/repaying-your-student-loan/what-you-pay" },
+      { label: "GOV.UK — Which repayment plan you are on", href: "https://www.gov.uk/repaying-your-student-loan/which-repayment-plan-you-are-on" },
+      { label: "GOV.UK — When your student loan gets written off or cancelled", href: "https://www.gov.uk/repaying-your-student-loan/when-your-student-loan-gets-written-off-or-cancelled" },
+      { label: "GOV.UK — Make extra repayments on your student loan", href: "https://www.gov.uk/repaying-your-student-loan/make-extra-repayments" },
+    ],
     body: (
       <>
         <p>
           If you started an undergraduate course in England from August 2023, your loan is on <strong>Plan 5</strong>.
           If you started between September 2012 and July 2023 (in England or Wales), you are on <strong>Plan 2</strong>.
           The two look similar on paper, but they behave very differently over a working life. This guide compares them
-          for 2026/27, using the same engine as our{" "}
+          for 2026/27; its figures were worked out with the same engine as our{" "}
           <Link href="/uk/students/plan-2-student-loan">Plan 2</Link> and{" "}
           <Link href="/uk/students/plan-5-student-loan">Plan 5</Link> calculators.
         </p>
@@ -1002,13 +1037,21 @@ export const BLOG_POSTS: BlogPost[] = [
     dateLabel: "6 October 2026",
     readingTime: "9 min read",
     category: "Property",
+    sources: [
+      { label: "GOV.UK — Stamp Duty Land Tax: residential property rates", href: "https://www.gov.uk/stamp-duty-land-tax/residential-property-rates" },
+      { label: "GOV.UK — SDLT relief for first-time buyers", href: "https://www.gov.uk/government/publications/stamp-duty-land-tax-relief-for-first-time-buyers" },
+      { label: "Revenue Scotland — LBTT residential rates and bands", href: "https://revenue.scot/taxes/land-buildings-transaction-tax/residential-property" },
+      { label: "GOV.WALES — Land Transaction Tax rates and bands", href: "https://www.gov.wales/land-transaction-tax-rates-and-bands" },
+      { label: "GOV.UK — Lifetime ISA", href: "https://www.gov.uk/lifetime-isa" },
+    ],
     body: (
       <>
         <p>
           The deposit is the number everyone focuses on, but it is only part of the cash you need to buy your first
           home. Stamp Duty, legal fees, a survey, a mortgage fee and the move itself all come on top. This guide walks
           through each cost for 2026/27, with a full worked example, so you can plan for the real total. The figures
-          use the same engines as our <Link href="/uk/property/first-time-buyer">first-time buyer calculator</Link> and{" "}
+          were worked out with the same engines as our{" "}
+          <Link href="/uk/property/first-time-buyer">first-time buyer calculator</Link> and{" "}
           <Link href="/uk/property/moving-house-budget">moving house budget calculator</Link>.
         </p>
 
@@ -1267,6 +1310,12 @@ export const BLOG_POSTS: BlogPost[] = [
     dateLabel: "8 October 2026",
     readingTime: "11 min read",
     category: "US Taxes",
+    sources: [
+      { label: "IRS — Working Families Tax Cuts: tax deductions for working Americans and seniors", href: "https://www.irs.gov/newsroom/working-families-tax-cuts-tax-deductions-for-working-americans-and-seniors" },
+      { label: "IRS — Working Families Tax Cuts (One, Big, Beautiful Bill) provisions", href: "https://www.irs.gov/newsroom/working-families-tax-cuts" },
+      { label: "IRS — 2026 inflation adjustments, including amendments from the One, Big, Beautiful Bill", href: "https://www.irs.gov/newsroom/irs-releases-tax-inflation-adjustments-for-tax-year-2026-including-amendments-from-the-one-big-beautiful-bill" },
+      { label: "IRS — Topic no. 761, Tips: withholding and reporting", href: "https://www.irs.gov/taxtopics/tc761" },
+    ],
     body: (
       <>
         <p>
@@ -1280,8 +1329,8 @@ export const BLOG_POSTS: BlogPost[] = [
         <p>
           This guide explains how both deductions work for the 2026 tax year, the return you file in early 2027, with
           worked examples for a warehouse worker, a married pair of nurses, a restaurant server, a bartender and higher
-          earners caught by the phase-out. Every dollar figure comes from the same 2026 federal tax engine as our{" "}
-          <Link href="/us/taxes/federal-income-tax">federal income tax calculator</Link>, using the 2026 brackets and
+          earners caught by the phase-out. Every dollar figure was worked out with the same 2026 federal tax engine as
+          our <Link href="/us/taxes/federal-income-tax">federal income tax calculator</Link>, using the 2026 brackets and
           standard deduction. The examples assume the standard deduction and no other income unless they say otherwise.
         </p>
 
@@ -1738,6 +1787,13 @@ export const BLOG_POSTS: BlogPost[] = [
     dateLabel: "8 October 2026",
     readingTime: "11 min read",
     category: "Business",
+    sources: [
+      { label: "GOV.UK — Expenses if you're self-employed", href: "https://www.gov.uk/expenses-if-youre-self-employed" },
+      { label: "GOV.UK — Simplified expenses if you're self-employed", href: "https://www.gov.uk/simpler-income-tax-simplified-expenses" },
+      { label: "GOV.UK — Tax-free allowances on property and trading income", href: "https://www.gov.uk/guidance/tax-free-allowances-on-property-and-trading-income" },
+      { label: "GOV.UK — Self-employed National Insurance rates", href: "https://www.gov.uk/self-employed-national-insurance-rates" },
+      { label: "GOV.UK — Find out if and when you need to use Making Tax Digital for Income Tax", href: "https://www.gov.uk/guidance/find-out-if-and-when-you-need-to-use-making-tax-digital-for-income-tax" },
+    ],
     body: (
       <>
         <p>
@@ -1749,8 +1805,8 @@ export const BLOG_POSTS: BlogPost[] = [
         <p>
           This guide sets out what HMRC lets you claim as a sole trader in the 2026/27 tax year (6 April 2026 to 5 April
           2027), the flat rates that save you working out the exact cost of using your car or your home, when the
-          £1,000 trading allowance beats your real expenses, and what all of it is worth in tax. Every figure comes from
-          the same engine as our{" "}
+          £1,000 trading allowance beats your real expenses, and what all of it is worth in tax. Every tax figure was
+          worked out with the same engine as our{" "}
           <Link href="/uk/business/allowable-expenses">self-employed expenses calculator</Link> and{" "}
           <Link href="/uk/business/sole-trader-tax">sole trader tax calculator</Link>. Limited companies follow different
           rules and are not covered here.

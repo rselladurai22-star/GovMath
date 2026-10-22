@@ -46,7 +46,7 @@ export default function AmountPage({
       : []),
   ];
   return (
-    <GmShell kind="calculator">
+    <GmShell kind="calculator" country="uk">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="wrap">
         <Crumbs items={breadcrumbs} />

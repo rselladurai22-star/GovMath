@@ -38,7 +38,9 @@ export function ToolGrid({ tools, icon }: { tools: Calculator[]; icon: string })
 /**
  * A topic or country hub page (US topics, /us, /everyday) in the same markup
  * as the UK topic pages built by catalog.ts: breadcrumb, claret hero, topic
- * links and calculator cards.
+ * links and calculator cards. `country` is the section the hub belongs to;
+ * leave it out for a shared hub (/everyday), whose header follows the
+ * visitor's country and whose logo goes to "/".
  */
 export default function TopicHub({
   country,
@@ -48,7 +50,7 @@ export default function TopicHub({
   jump,
   children,
 }: {
-  country: "uk" | "us";
+  country?: "uk" | "us";
   crumbs: { href: string; label: string }[];
   title: string;
   intro: string;
