@@ -50,9 +50,10 @@ const CATEGORY: Record<string, string> = {
   "/uk/vehicles/licence-at-70": "UtilitiesApplication",
 };
 
-/** A calculator page as a free web application. */
+/** A calculator page as a free web application. US pages are in US English and priced in dollars. */
 export function calculatorJsonLd(path: string, name: string, description: string) {
   const modified = updatedIso(path);
+  const us = path.startsWith("/us/");
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
@@ -62,9 +63,9 @@ export function calculatorJsonLd(path: string, name: string, description: string
     applicationCategory: CATEGORY[path] ?? "FinanceApplication",
     operatingSystem: "Any",
     browserRequirements: "Requires JavaScript",
-    inLanguage: "en-GB",
+    inLanguage: us ? "en-US" : "en-GB",
     isAccessibleForFree: true,
-    offers: { "@type": "Offer", price: "0", priceCurrency: "GBP" },
+    offers: { "@type": "Offer", price: "0", priceCurrency: us ? "USD" : "GBP" },
     ...(modified ? { dateModified: modified } : {}),
     publisher: { "@id": ORG_ID },
     isPartOf: { "@id": WEBSITE_ID },
