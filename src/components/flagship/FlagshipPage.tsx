@@ -78,7 +78,7 @@ export default function FlagshipPage({
   ];
 
   return (
-    <GmShell kind="calculator" country={path.startsWith("/us/") ? "us" : path.startsWith("/uk/") ? "uk" : undefined}>
+    <GmShell kind="calculator" country={path.startsWith("/uk/") ? "uk" : undefined}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className={look ? `wrap gm-${look}-page` : "wrap"}>
         <Crumbs items={crumbs} />

@@ -50,8 +50,8 @@ export default function EsaGuide() {
           <li>For the first 13 weeks you get <strong>£95.55 a week</strong> at 25 or over, or <strong>£75.65</strong> under 25.</li>
           <li>After the assessment, the <strong>work-related activity group</strong> gets £95.55 a week for up to 365 days.</li>
           <li>The <strong>support group</strong> gets <strong>£145.90 a week</strong> with no time limit.</li>
-          <li>You qualify through Class 1 <a href="/uk/tax-and-salary/national-insurance">National Insurance</a>{" "}in the two tax years before the year you claim.</li>
-          <li>Half of any private or <a href="/uk/investing/workplace-pension">workplace pension</a>{" "}over £85 a week is taken off.</li>
+          <li>You qualify through Class 1 National Insurance{" "}in the two tax years before the year you claim.</li>
+          <li>Half of any private or workplace pension{" "}over £85 a week is taken off.</li>
         </ul>
         <KeyStats
           items={[
@@ -70,7 +70,7 @@ export default function EsaGuide() {
         </p>
         <ul>
           <li>have an illness or disability that affects how much you can work;</li>
-          <li>are under <a href="/uk/investing/state-pension-age">State Pension age</a>;</li>
+          <li>are under State Pension age;</li>
           <li>are not getting Statutory Sick Pay (you can claim New Style ESA when it ends, or if you cannot get it);</li>
           <li>have paid enough Class 1 National Insurance as an employee, or have enough credits.</li>
         </ul>
@@ -272,7 +272,7 @@ export default function EsaGuide() {
         <p>
           Statutory Sick Pay lasts up to 28 weeks. You cannot get New Style ESA for the same days, but you can claim it up to 3 months before your
           sick pay ends so there is no gap. Weeks on Statutory Sick Pay also give you National Insurance credits, which help with the second
-          contribution condition. See the <a href="/uk/tax-and-salary/statutory-sick-pay">Statutory Sick Pay calculator</a>.
+          contribution condition.
         </p>
       </GuideSection>
 

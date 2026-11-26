@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/benefits", label: "Family & Benefits" },
+  { href: "/uk/benefits", label: "Benefits & family" },
   { href: "/uk/benefits/uc-advance", label: "UC Advance Repayment Calculator" },
 ];
 

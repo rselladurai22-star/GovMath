@@ -35,7 +35,7 @@ export default function JsaGuide() {
       title="New Style Jobseeker’s Allowance in 2026/27"
       intro={
         <>
-          New Style Jobseeker&rsquo;s Allowance is the benefit you build up through <a href="/uk/tax-and-salary/national-insurance">National Insurance</a>{" "}while you work. If you lose your job, it
+          New Style Jobseeker&rsquo;s Allowance is the benefit you build up through National Insurance{" "}while you work. If you lose your job, it
           pays a flat weekly amount for up to 26 weeks, whatever your savings and whatever your partner earns. This guide explains who qualifies,
           how much it pays in 2026/27, how it fits with Universal Credit and what you have to do to keep it.
         </>
@@ -91,8 +91,8 @@ export default function JsaGuide() {
         />
         <p>
           It is paid every two weeks into your bank account, in arrears. There are no extra amounts for a partner or children: help for them comes
-          through Universal Credit and Child Benefit. New Style JSA is taxable, but it is paid without tax taken off; it goes on your <a href="/uk/tax-and-salary/p45-p60-explainer">P45</a>{" "}or into
-          your <a href="/uk/tax-and-salary/tax-code-decoder">tax code</a>.
+          through Universal Credit and Child Benefit. New Style JSA is taxable, but it is paid without tax taken off; it goes on your P45{" "}or into
+          your tax code.
         </p>
       </GuideSection>
 
@@ -109,7 +109,7 @@ export default function JsaGuide() {
           </li>
         </ol>
         <p>
-          Credits count for the second test only. You get them automatically on Universal Credit, Carer&rsquo;s Allowance, <a href="/uk/tax-and-salary/statutory-sick-pay">Statutory Sick Pay</a>,
+          Credits count for the second test only. You get them automatically on Universal Credit, Carer&rsquo;s Allowance, Statutory Sick Pay,
           maternity pay and while getting <a href="/uk/benefits/child-benefit">Child Benefit</a>{" "}for a child under 12, among others. Check your record on GOV.UK: each year shows as full
           or with a gap.
         </p>
@@ -270,8 +270,7 @@ export default function JsaGuide() {
           earnings for the period they cover.
         </p>
         <p>
-          Claim straight away even if you have notice pay to come: the Jobcentre works out the start date. Check the{" "}
-          <a href="/uk/tax-and-salary/redundancy">redundancy pay calculator</a> to see what you are owed, and remember that the first
+          Claim straight away even if you have notice pay to come: the Jobcentre works out the start date. Check your redundancy pay with your employer, and remember that the first
           £30,000 of redundancy pay is usually tax-free.
         </p>
       </GuideSection>

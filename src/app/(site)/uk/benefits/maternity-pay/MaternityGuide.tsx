@@ -98,8 +98,8 @@ export default function MaternityGuide() {
 
       <GuideSection id="eligibility" n={3} kicker="Eligibility" title="Who qualifies for SMP">
         <p>
-          If you are <a href="/everyday/ovulation-calculator">planning a pregnancy</a>, these rules are worth checking early, because they count back from the week your
-          baby is due. An estimated <a href="/everyday/pregnancy-due-date">due date</a>{" "}tells you when the qualifying week falls.
+          If you are planning a pregnancy, these rules are worth checking early, because they count back from the week your
+          baby is due. An estimated due date{" "}tells you when the qualifying week falls.
         </p>
         <p>To get SMP you must:</p>
         <ul>
@@ -124,7 +124,7 @@ export default function MaternityGuide() {
         </p>
         <ul>
           <li>Overtime, commission and bonuses paid in that period count.</li>
-          <li>A <a href="/uk/tax-and-salary/pay-rise">pay rise</a>{" "}that takes effect at any time before the end of your SMP must be included, and SMP recalculated.</li>
+          <li>A pay rise{" "}that takes effect at any time before the end of your SMP must be included, and SMP recalculated.</li>
           <li>Salary sacrifice reduces the pay that counts, unless the scheme protects it.</li>
         </ul>
         <Callout tone="good" title="Timing a bonus or overtime">
@@ -224,7 +224,7 @@ export default function MaternityGuide() {
       <GuideSection id="during" n={9} kicker="Your rights" title="During your leave">
         <ul>
           <li>
-            <strong>Holiday:</strong> you keep accruing paid holiday for the whole 52 weeks, including <a href="/uk/life/bank-holidays">bank holidays</a>{" "}if your
+            <strong>Holiday:</strong> you keep accruing paid holiday for the whole 52 weeks, including bank holidays{" "}if your
             contract gives them.
           </li>
           <li>
@@ -244,7 +244,7 @@ export default function MaternityGuide() {
 
       <GuideSection id="tax" n={10} kicker="Interactions" title="Tax, pensions and benefits">
         <p>
-          SMP is paid through payroll and taxed like pay: Income Tax and <a href="/uk/tax-and-salary/national-insurance">National Insurance</a>{" "}come off. Because your pay falls,
+          SMP is paid through payroll and taxed like pay: Income Tax and National Insurance{" "}come off. Because your pay falls,
           you may pay less tax overall that year, and payroll often refunds some tax automatically.
         </p>
         <p>
@@ -261,8 +261,7 @@ export default function MaternityGuide() {
         <p>
           You can end your maternity leave early and share the rest with your partner as Shared Parental Leave. Up to 50 weeks of
           leave and 37 weeks of pay can be shared. Ending maternity leave before six weeks means losing the 90% weeks, because
-          shared parental pay is always at the flat rate or less. See the{" "}
-          <a href="/uk/benefits/shared-parental-leave">shared parental leave calculator</a>.
+          shared parental pay is always at the flat rate or less.
         </p>
       </GuideSection>
 

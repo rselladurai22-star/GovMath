@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { attendanceAllowance2026, PC_DEFAULT_INPUT as D, pcTariffIncome, pensionCredit2026 } from "./later-life";
+import { PC_DEFAULT_INPUT as D, pcTariffIncome, pensionCredit2026 } from "./later-life";
 
 describe("Pension Credit 2026/27", () => {
   it("tops a single person up to £238", () => {
@@ -30,22 +30,5 @@ describe("Pension Credit 2026/27", () => {
     expect(r.savingsCredit).toBeCloseTo(17.96 - 0.4 * 12, 6);
     // Gone at 238 + 17.96 / 0.4
     expect(pensionCredit2026({ ...D, statePension: 283, savingsCreditEligible: true }).savingsCredit).toBe(0);
-  });
-});
-
-describe("Attendance Allowance 2026/27", () => {
-  it("lower rate for day or night, higher for both", () => {
-    expect(attendanceAllowance2026({ dayNeeds: 2, nightNeeds: 0, terminallyIll: false, monthsNeeded: 12 }).weekly).toBe(76.7);
-    expect(attendanceAllowance2026({ dayNeeds: 2, nightNeeds: 1, terminallyIll: false, monthsNeeded: 12 }).weekly).toBe(114.6);
-  });
-  it("terminal illness gets the higher rate without waiting", () => {
-    const r = attendanceAllowance2026({ dayNeeds: 0, nightNeeds: 0, terminallyIll: true, monthsNeeded: 0 });
-    expect(r.rate).toBe("higher");
-    expect(r.waiting).toBe(false);
-  });
-  it("flags the six-month qualifying period", () => {
-    const r = attendanceAllowance2026({ dayNeeds: 1, nightNeeds: 0, terminallyIll: false, monthsNeeded: 2 });
-    expect(r.waiting).toBe(true);
-    expect(r.monthsToWait).toBe(4);
   });
 });

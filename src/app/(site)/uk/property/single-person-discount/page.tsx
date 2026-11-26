@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/property", label: "Mortgages & Property" },
+  { href: "/uk/property", label: "Renting & council tax" },
   { href: "/uk/property/single-person-discount", label: "Single Person Discount" },
 ];
 
@@ -36,7 +36,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function SPDPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/property/council-tax-bands", "/uk/benefits/council-tax-reduction", "/uk/benefits/universal-credit", "/uk/students/student-council-tax", "/uk/property/moving-house-budget", "/uk/benefits/pension-credit"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/property/council-tax-bands", "/uk/benefits/council-tax-reduction", "/uk/benefits/universal-credit", "/uk/students/student-council-tax", "/uk/benefits/pension-credit"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

@@ -185,7 +185,6 @@ export default function PcStudio({ query }: { query: Query }) {
         {v.sd === 0 && (
           <Callout title="Disability adds £86.05 a week">
             If you get Attendance Allowance, PIP daily living or DLA care, live alone and nobody gets Carer&apos;s Allowance for you, the guarantee rises by {gbp(PC_2026.severeDisability, true)} a week.
-            The <a href="/uk/benefits/attendance-allowance">Attendance Allowance calculator</a> checks this.
           </Callout>
         )}
         <Callout title="Claim and backdate">

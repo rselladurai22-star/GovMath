@@ -2,23 +2,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ContentPage from "@/components/ContentPage";
 import EmbedCode from "@/components/EmbedCode";
-import { CALCULATORS } from "@/lib/calculators";
+import { CALCULATORS, CATEGORIES, type CategorySlug } from "@/lib/calculators";
 import { EMBEDS, SITE_URL, embedCode } from "@/lib/embeds";
 
 export const metadata: Metadata = {
   title: "Free Calculator Widgets for Your Website",
   description:
-    "Free calculator widgets for your website: Universal Credit, student loans, council tax, redundancy, energy costs, age, due date, paycheck and mortgage.",
+    "Free UK calculator widgets for your website: Universal Credit, housing allowance, Child Benefit, childcare, student finance, council tax and rent.",
   alternates: { canonical: "/widgets" },
 };
 
 const LIST = EMBEDS.map((href) => CALCULATORS.find((c) => c.href === href)!);
 
-function Group({ title, country }: { title: string; country: "uk" | "us" | "global" }) {
+function Group({ title, category }: { title: string; category: CategorySlug }) {
   return (
     <>
       <h2>{title}</h2>
-      {LIST.filter((c) => c.country === country).map((c) => (
+      {LIST.filter((c) => c.category === category).map((c) => (
         <details key={c.href} className="gm-widget">
           <summary>
             <strong>{c.title}</strong> <span>{c.blurb}</span>
@@ -49,8 +49,7 @@ export default function WidgetsPage() {
         <li>That&rsquo;s it: the calculator fits your page&rsquo;s width and grows to its own height.</li>
       </ol>
       <p>
-        Each widget runs on our servers, so when a rate or threshold changes (every April in the UK, every January in the
-        US) your page shows the new figures without you doing anything. The widgets carry no ads and set no advertising
+        Each widget runs on our servers, so when a rate or threshold changes (most UK rates change each April) your page shows the new figures without you doing anything. The widgets carry no ads and set no advertising
         cookies.
       </p>
       <h2>The terms</h2>
@@ -64,9 +63,9 @@ export default function WidgetsPage() {
           Want a calculator that isn&rsquo;t listed, or a different default? <Link href="/contact">Tell us</Link>.
         </li>
       </ul>
-      <Group title="UK calculators" country="uk" />
-      <Group title="US calculators" country="us" />
-      <Group title="Everyday calculators (every country)" country="global" />
+      {CATEGORIES.map((c) => (
+        <Group key={c.slug} title={c.title} category={c.slug} />
+      ))}
     </ContentPage>
   );
 }

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/life", label: "Everyday Life" },
+  { href: "/uk/property", label: "Renting & council tax" },
   { href: "/uk/life/pro-rata-rent", label: "Pro-Rata Rent" },
 ];
 
@@ -32,7 +32,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function ProRataPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/life/right-to-rent", "/uk/life/days-between-dates", "/uk/benefits/local-housing-allowance", "/uk/property/rent-vs-buy", "/uk/property/rent-increase", "/uk/property/deposit-return"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/benefits/local-housing-allowance", "/uk/property/rent-increase", "/uk/property/deposit-return", "/uk/property/council-tax-bands", "/uk/property/single-person-discount"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

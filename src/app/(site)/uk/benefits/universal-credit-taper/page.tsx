@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/benefits", label: "Family & Benefits" },
+  { href: "/uk/benefits", label: "Benefits & family" },
   { href: "/uk/benefits/universal-credit-taper", label: "Universal Credit Taper" },
 ];
 
@@ -35,7 +35,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function UcTaperPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/benefits/universal-credit", "/uk/benefits/benefit-cap", "/uk/benefits/tax-free-childcare", "/uk/tax-and-salary/salary-calculator", "/uk/benefits/carers-earnings", "/uk/benefits/local-housing-allowance"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/benefits/universal-credit", "/uk/benefits/benefit-cap", "/uk/benefits/tax-free-childcare", "/uk/benefits/carers-earnings", "/uk/benefits/local-housing-allowance"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

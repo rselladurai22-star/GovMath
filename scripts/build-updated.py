@@ -13,13 +13,6 @@ import os
 import subprocess
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# Calculators built from the design package's pages.
-PACKAGE = {
-    "/uk/tax-and-salary/salary-calculator": "src/gm/pages/salary.json",
-    "/uk/property/mortgage-repayment": "src/gm/pages/mortgage.json",
-}
-
-
 # Commits that only moved or renamed pages (the October 2026 move to
 # sumatlas.com and /uk/) carry this marker and do not count as an update.
 MOVE_MARKER = "[site-move]"
@@ -44,18 +37,10 @@ APP = "src/app/(site)"
 for page in glob.glob(os.path.join(ROOT, APP, "uk/*/*/page.tsx")):
     folder = os.path.relpath(os.path.dirname(page), ROOT)
     url = "/" + os.path.relpath(folder, APP)
-    if "[" in url or url in PACKAGE:
+    if "[" in url:
         continue
     # Before October 2026 the UK pages lived at src/app/<topic>/<page>.
     dates[url] = last_change(folder, "src/app" + url, "src/app" + url.replace("/uk/", "/", 1))
-# US pages and the Everyday pages shared by every country.
-for pattern in ("us/*/*/page.tsx", "everyday/*/page.tsx"):
-    for page in glob.glob(os.path.join(ROOT, APP, pattern)):
-        folder = os.path.relpath(os.path.dirname(page), ROOT)
-        url = "/" + os.path.relpath(folder, APP)
-        dates[url] = last_change(folder, "src/app" + url)
-for url, path in PACKAGE.items():
-    dates[url] = last_change(path)
 
 with open(os.path.join(ROOT, "src/gm/updated.json"), "w") as f:
     json.dump(dict(sorted(dates.items())), f, indent=2)

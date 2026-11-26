@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { childBenefitFor, freeHours, hicbc, hicbcShare, maternityPay, paternityPay, sharedParental, taxFreeChildcarePlan } from "./family";
+import { childBenefitFor, freeHours, hicbc, hicbcShare, maternityPay, taxFreeChildcarePlan } from "./family";
 
 describe("Child Benefit", () => {
   it("two children", () => {
@@ -65,23 +65,5 @@ describe("maternity pay", () => {
   it("employer scheme tops up SMP", () => {
     const r = maternityPay({ awe: 600, service: true, fullPayWeeks: 6, halfPayWeeks: 12, leaveWeeks: 52 });
     expect(r.employerTopUp).toBeCloseTo(6 * 60 + 12 * (300 - 194.32), 6);
-  });
-});
-
-describe("paternity and shared parental pay", () => {
-  it("two weeks of SPP", () => {
-    const r = paternityPay({ awe: 700, service: true, weeks: 2, fullPayWeeks: 0 });
-    expect(r.total).toBeCloseTo(388.64, 6);
-  });
-  it("no pay without 26 weeks' service", () => {
-    expect(paternityPay({ awe: 700, service: false, weeks: 2, fullPayWeeks: 0 }).total).toBe(0);
-  });
-  it("splits the remaining 37 paid weeks", () => {
-    const r = sharedParental({ aweA: 600, aweB: 700, maternityWeeks: 20, partnerWeeks: 12, motherSharedWeeks: 0 });
-    expect(r.sharedLeaveAvailable).toBe(32);
-    expect(r.sharedPayAvailable).toBe(19);
-    expect(r.partnerPaidWeeks).toBe(12);
-    expect(r.partnerPay).toBeCloseTo(12 * 194.32, 6);
-    expect(r.unusedPay).toBe(7);
   });
 });

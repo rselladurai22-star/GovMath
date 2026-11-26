@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/investing", label: "Pensions & Investing" },
+  { href: "/uk/benefits", label: "Benefits & family" },
   { href: "/uk/investing/premium-bonds", label: "Premium Bonds" },
 ];
 
@@ -37,7 +37,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function PremiumBondsPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/investing/compound-interest", "/uk/investing/inflation-impact", "/uk/investing/isa-vs-gia", "/uk/tax-and-salary/savings-interest-tax"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/benefits/universal-credit", "/uk/benefits/pension-credit", "/uk/benefits/housing-benefit", "/uk/benefits/council-tax-reduction", "/uk/benefits/benefits-checker"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

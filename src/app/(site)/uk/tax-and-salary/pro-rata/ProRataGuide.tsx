@@ -132,7 +132,7 @@ export default function ProRataGuide() {
         <p>
           At higher salaries the effect can be much larger. Someone earning £110,000 full time who drops to 0.9 FTE
           (£99,000) gets their full Personal Allowance back and steps out of the 60% band. Their gross pay falls by
-          £11,000 but their take-home falls by only about £4,380. To work backwards, the <a href="/uk/tax-and-salary/reverse-take-home">reverse take-home calculator</a>{" "}finds the salary needed for a take-home figure.
+          £11,000 but their take-home falls by only about £4,380.
         </p>
         <Callout title="Very low hours">
           If your pay is under £12,570 a year you pay no Income Tax, and under £242 a week no National Insurance. Above
@@ -185,7 +185,7 @@ export default function ProRataGuide() {
         </p>
         <p>
           Payroll uses your tax code to give you a share of the allowance each month. If you had no income earlier in
-          the year and your new employer has your <a href="/uk/tax-and-salary/p45-p60-explainer">P45</a>, the tax should already be close to right. If you are on an
+          the year and your new employer has your P45, the tax should already be close to right. If you are on an
           emergency code, or you took time off between jobs, you may overpay. HMRC normally sorts this out
           automatically after the tax year ends, or you can claim a refund sooner.
         </p>
@@ -211,10 +211,10 @@ export default function ProRataGuide() {
           colleague, unless the employer can justify it. In practice that means:
         </p>
         <ul>
-          <li>The same hourly rate of pay, including <a href="/uk/tax-and-salary/overtime">overtime</a>{" "}once you work more than full-time hours.</li>
-          <li>Pro-rata holiday, sick pay, maternity and <a href="/uk/benefits/paternity-pay">paternity pay</a>{" "}and pension contributions.</li>
+          <li>The same hourly rate of pay, including overtime{" "}once you work more than full-time hours.</li>
+          <li>Pro-rata holiday, sick pay, maternity and paternity pay{" "}and pension contributions.</li>
           <li>The same access to training, promotion and career breaks.</li>
-          <li>Fair treatment in <a href="/uk/tax-and-salary/redundancy">redundancy</a>{" "}selection.</li>
+          <li>Fair treatment in redundancy{" "}selection.</li>
         </ul>
         <p>
           Since April 2024 you can ask for flexible working, including part-time hours, from your first day in a job,
@@ -279,7 +279,7 @@ export default function ProRataGuide() {
           Contributions are usually a percentage of your actual pay, so they are pro-rated automatically.
         </p>
         <p>
-          <strong><a href="/uk/tax-and-salary/statutory-sick-pay">Statutory Sick Pay</a>.</strong> From April 2026 SSP is paid from your first day off sick and there is no
+          <strong>Statutory Sick Pay.</strong> From April 2026 SSP is paid from your first day off sick and there is no
           minimum earnings level. It is the lower of 80% of your average weekly earnings or £123.25 a week, which helps
           many part-timers who previously earned too little to qualify.
         </p>
@@ -307,7 +307,7 @@ export default function ProRataGuide() {
         </p>
         <p>
           If you regularly work more than your contract says, ask your employer to update it. A higher contracted FTE
-          raises your <a href="/uk/tax-and-salary/holiday-entitlement">holiday entitlement</a>, your pension contributions and any statutory pay based on your earnings.
+          raises your holiday entitlement, your pension contributions and any statutory pay based on your earnings.
         </p>
       </GuideSection>
 

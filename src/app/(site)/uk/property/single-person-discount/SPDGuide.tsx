@@ -63,7 +63,7 @@ export default function SPDGuide() {
           <li>everyone else who lives with you is disregarded for council tax, such as children or <a href="/uk/students/student-council-tax">full-time students</a>.</li>
         </ul>
         <p>
-          It is your main home that matters. A partner who lives elsewhere, a <a href="/uk/property/rent-a-room">lodger</a>{" "}who has their own main home somewhere else,
+          It is your main home that matters. A partner who lives elsewhere, a lodger{" "}who has their own main home somewhere else,
           or family who stay for a short time do not normally count. A lodger who lives with you as their main home does count,
           and would end the discount.
         </p>

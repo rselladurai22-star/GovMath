@@ -179,7 +179,7 @@ export default function CouncilTaxGuide() {
         <p>
           Even when council tax is not due, other household bills are. Agree early how you will split energy, water, broadband and a TV licence
           if anyone watches live TV or BBC iPlayer. Some student lets include bills in the rent; others do not. Put the details in writing so
-          everyone knows what they owe. A <a href="/uk/students/student-budget">student budget</a> helps you plan your share.
+          everyone knows what they owe.
         </p>
         <p>
           If a non-student joins the household, the <a href="/uk/property/council-tax-bands">council tax bill</a>{" "}can appear mid-year. Decide in advance who pays it, since only the

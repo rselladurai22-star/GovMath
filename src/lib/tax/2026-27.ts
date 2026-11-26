@@ -116,31 +116,6 @@ export function nationalInsurance(gross: number): NIBreakdown {
   return { mainBand, upperBand, total: mainBand + upperBand };
 }
 
-/**
- * Class 4 self-employed NI on annual trading profits (2026/27).
- * Same thresholds as Class 1, lower rates (6% / 2%).
- * Class 2 was effectively abolished from April 2024 and is out of scope.
- */
-export function selfEmployedNI(profit: number): NIBreakdown {
-  const { primaryThreshold, upperEarningsLimit, class4Rates } =
-    TAX_YEAR_2026_27.ni;
-
-  if (profit <= primaryThreshold) {
-    return { mainBand: 0, upperBand: 0, total: 0 };
-  }
-
-  const mainBandWidth = Math.max(
-    0,
-    Math.min(profit, upperEarningsLimit) - primaryThreshold
-  );
-  const upperBandWidth = Math.max(0, profit - upperEarningsLimit);
-
-  const mainBand = mainBandWidth * class4Rates.main;
-  const upperBand = upperBandWidth * class4Rates.upper;
-
-  return { mainBand, upperBand, total: mainBand + upperBand };
-}
-
 export type TakeHomeResult = {
   gross: number;
   incomeTax: IncomeTaxBreakdown;

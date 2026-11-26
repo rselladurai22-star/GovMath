@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/benefits", label: "Family & Benefits" },
+  { href: "/uk/benefits", label: "Benefits & family" },
   { href: "/uk/benefits/tax-free-childcare", label: "Tax-Free Childcare" },
 ];
 
@@ -40,7 +40,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function TfcPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/benefits/free-childcare-hours", "/uk/benefits/universal-credit", "/uk/benefits/child-benefit", "/uk/benefits/high-income-child-benefit", "/uk/benefits/maternity-pay", "/uk/tax-and-salary/salary-calculator"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/benefits/free-childcare-hours", "/uk/benefits/universal-credit", "/uk/benefits/child-benefit", "/uk/benefits/high-income-child-benefit", "/uk/benefits/maternity-pay"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

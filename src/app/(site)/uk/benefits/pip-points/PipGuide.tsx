@@ -111,7 +111,7 @@ export default function PipGuide() {
 
       <GuideSection id="who" n={3} kicker="Eligibility" title="Who can get PIP">
         <ul>
-          <li>You are aged 16 or over and under <a href="/uk/investing/state-pension-age">State Pension age</a>{" "}when you claim.</li>
+          <li>You are aged 16 or over and under State Pension age{" "}when you claim.</li>
           <li>You have had difficulties for at least 3 months and expect them to last at least 9 more months.</li>
           <li>You normally live in England, Wales or Northern Ireland. In Scotland, Adult Disability Payment has replaced PIP.</li>
         </ul>
@@ -119,7 +119,7 @@ export default function PipGuide() {
           Your income, savings and whether you work make no difference. If you are terminally ill, with a life expectancy of 12 months or less,
           you can claim under special rules: you get the enhanced daily living rate straight away and the claim is fast-tracked. Children
           under 16 get Disability Living Allowance instead, and people over State Pension age claim{" "}
-          <a href="/uk/benefits/attendance-allowance">Attendance Allowance</a>.
+          Attendance Allowance.
         </p>
       </GuideSection>
 

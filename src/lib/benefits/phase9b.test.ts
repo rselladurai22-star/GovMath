@@ -2,7 +2,6 @@ import { describe, expect, it } from "vitest";
 import { contributionTest, newStyleEsa, newStyleJsa, relevantYears } from "./new-style";
 import { budgetingAdvanceMax, ucAdvance } from "./uc-advance";
 import { checkEligibility, type EligibilityInput } from "./eligibility";
-import { grossForTakeHome, takeHomeFor } from "../tax/reverse";
 
 describe("New Style JSA and ESA", () => {
   it("uses the last two complete tax years before the benefit year", () => {
@@ -47,18 +46,6 @@ describe("UC advance", () => {
     expect(big.overCap).toBe(true);
     expect(big.minMonthsForCap).toBe(19);
     expect(budgetingAdvanceMax(true, true)).toBe(812);
-  });
-});
-
-describe("Reverse take-home", () => {
-  it("finds the salary that gives a take-home", () => {
-    for (const target of [20_000, 30_000, 45_000, 70_000]) {
-      const g = grossForTakeHome({ target, region: "ruk", plan: "none", pensionPct: 0 });
-      expect(takeHomeFor(g, { region: "ruk", plan: "none", pensionPct: 0 })).toBeGreaterThanOrEqual(target - 0.01);
-      expect(takeHomeFor(g - 1, { region: "ruk", plan: "none", pensionPct: 0 })).toBeLessThan(target);
-    }
-    // Inside the Personal Allowance, gross equals take-home.
-    expect(grossForTakeHome({ target: 12_000, region: "ruk", plan: "none", pensionPct: 0 })).toBeCloseTo(12_000, 1);
   });
 });
 

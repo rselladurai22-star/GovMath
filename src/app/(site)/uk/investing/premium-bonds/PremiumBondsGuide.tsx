@@ -163,7 +163,7 @@ export default function PremiumBondsGuide() {
 
       <GuideSection id="tax" n={7} kicker="Tax" title="Tax-free prizes">
         <p>
-          Premium Bond prizes are free of income tax and capital gains tax, and do not count towards your <a href="/uk/investing/personal-savings-allowance">Personal Savings Allowance</a>. Savings
+          Premium Bond prizes are free of income tax and capital gains tax, and do not count towards your Personal Savings Allowance. Savings
           interest is taxed once it goes over your allowance: £1,000 for basic-rate taxpayers, £500 for higher-rate, and nothing for
           additional-rate taxpayers.
         </p>
@@ -179,7 +179,7 @@ export default function PremiumBondsGuide() {
         />
         <p>
           These figures compare against the average prize rate, not a typical year. For basic-rate taxpayers whose interest stays within the
-          £1,000 allowance, <a href="/uk/investing/savings-interest">savings interest</a>{" "}is effectively tax-free too, so the tax advantage disappears.
+          £1,000 allowance, savings interest{" "}is effectively tax-free too, so the tax advantage disappears.
         </p>
       </GuideSection>
 
@@ -207,7 +207,7 @@ export default function PremiumBondsGuide() {
           ]}
         />
         <p>
-          A cash <a href="/uk/investing/isa-vs-gia">ISA</a>{" "}gives tax-free interest too, with a guaranteed rate. If a cash ISA pays more than your typical Premium Bonds return, it is
+          A cash ISA{" "}gives tax-free interest too, with a guaranteed rate. If a cash ISA pays more than your typical Premium Bonds return, it is
           likely to be the better choice for most people. The calculator compares your holding with any savings rate you enter.
         </p>
       </GuideSection>
@@ -223,8 +223,7 @@ export default function PremiumBondsGuide() {
       <GuideSection id="inflation" n={10} kicker="Real value" title="Inflation and Premium Bonds">
         <p>
           Your Bonds keep their face value, but not their buying power. With CPI inflation at 3.1% in the year to August 2026, a typical return
-          of 3.5% only just keeps up, and a small holding that wins nothing loses about 3% of its value in a year. The{" "}
-          <a href="/uk/investing/inflation-impact">inflation calculator</a> shows the effect over time.
+          of 3.5% only just keeps up, and a small holding that wins nothing loses about 3% of its value in a year.
         </p>
       </GuideSection>
 

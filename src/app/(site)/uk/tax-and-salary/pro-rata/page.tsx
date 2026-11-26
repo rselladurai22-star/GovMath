@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/tax-and-salary", label: "Tax & Salary" },
+  { href: "/uk/benefits", label: "Benefits & family" },
   { href: "/uk/tax-and-salary/pro-rata", label: "Pro Rata" },
 ];
 
@@ -34,7 +34,7 @@ const FAQS: { q: string; a: string }[] = [
 export default async function ProRataPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
   const related = CALCULATORS.filter((c) =>
-    ["/uk/tax-and-salary/salary-calculator", "/uk/tax-and-salary/hourly-to-salary", "/uk/tax-and-salary/holiday-entitlement", "/uk/tax-and-salary/overtime", "/uk/benefits/universal-credit", "/uk/tax-and-salary/tax-code-decoder"].includes(c.href),
+    ["/uk/benefits/universal-credit", "/uk/benefits/universal-credit-taper", "/uk/benefits/maternity-pay", "/uk/benefits/carers-earnings", "/uk/benefits/tax-free-childcare"].includes(c.href),
   );
   return (
     <FlagshipPage

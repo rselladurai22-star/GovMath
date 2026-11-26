@@ -1,7 +1,7 @@
 "use client";
 
 import { Children, Fragment, isValidElement, useEffect, useRef, useState, type ReactElement, type ReactNode } from "react";
-import { gbp, usd } from "./format";
+import { gbp } from "./format";
 import { Answer, ResultCard, SplitBar, soften, type Segment } from "./results";
 import { useLook } from "./look";
 
@@ -38,9 +38,7 @@ function Ring({ segments }: { segments: Segment[] }) {
   const parts = segments.map((g, i) => ({ ...g, i })).filter((g) => g.value > 0);
   const total = parts.reduce((a, g) => a + g.value, 0);
   if (total <= 0) return null;
-  const pounds = segments.every((g) => /^-?£/.test(g.display.trim()));
-  const dollars = segments.every((g) => /^-?\$/.test(g.display.trim()));
-  const money = pounds || dollars;
+  const money = segments.every((g) => /^-?£/.test(g.display.trim()));
   const R = 78;
   const C = 2 * Math.PI * R;
   const gap = parts.length > 1 ? 3 : 0;
@@ -81,7 +79,7 @@ function Ring({ segments }: { segments: Segment[] }) {
           ) : money ? (
             <>
               <span>Total</span>
-              <strong>{dollars ? usd(total) : gbp(total)}</strong>
+              <strong>{gbp(total)}</strong>
               <small>Hover a slice for detail</small>
             </>
           ) : (

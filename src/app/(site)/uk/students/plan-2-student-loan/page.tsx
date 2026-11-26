@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/students", label: "Students & Graduates" },
+  { href: "/uk/students", label: "Students" },
   { href: "/uk/students/plan-2-student-loan", label: "Plan 2 Student Loan" },
 ];
 
@@ -32,7 +32,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function Plan2Page({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/students/plan-5-student-loan", "/uk/students/student-loan-repayment", "/uk/students/student-loan-repayment", "/uk/tax-and-salary/salary-calculator", "/uk/students/maintenance-loan", "/uk/students/student-council-tax"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/students/maintenance-loan", "/uk/students/student-council-tax", "/uk/students/saas-funding", "/uk/students/welsh-student-finance"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

@@ -21,22 +21,14 @@ export default function HowWeCheckPage() {
     >
       <h2>1. Official sources first</h2>
       <p>
-        Every rate, threshold, allowance and rule comes from the organisation that sets it. In the UK: GOV.UK, HM
-        Revenue &amp; Customs, the Department for Work and Pensions, the DVLA, Student Finance England, the Valuation
-        Office Agency, the Bank of England, the Office for National Statistics, legislation.gov.uk, and the Scottish,
-        Welsh and Northern Ireland governments. In the US: the Internal Revenue Service, the Social Security
-        Administration, the Treasury, the Department of Labor, the Bureau of Labor Statistics, the Census Bureau and the
-        Consumer Financial Protection Bureau.
+        Every rate, threshold, allowance and rule comes from the organisation that sets it: GOV.UK, the Department
+        for Work and Pensions, HM Revenue &amp; Customs, Student Finance England, the Student Awards Agency for
+        Scotland, Student Finance Wales, the Valuation Office Agency, NS&amp;I, the Office for National Statistics,
+        legislation.gov.uk, councils, and the Scottish, Welsh and Northern Ireland governments.
       </p>
       <p>
-        Some figures are not set by any authority, such as average loan rates and pump prices, and some are not
-        gathered in one official place, such as each US state&rsquo;s income tax brackets. For those we use an
-        established source, such as the Federal Reserve&rsquo;s consumer credit statistics, the RAC or the Tax
-        Foundation, and name it.
-      </p>
-      <p>
-        Health and pregnancy calculators use published formulas and NHS and CDC guidance. They give estimates, not
-        medical advice, and say so on the page.
+        Some figures are not gathered in one official place, such as each council&rsquo;s council tax for the year.
+        For those we use an established source and name it.
       </p>
       <p>
         Each calculator lists the pages it relies on in a <strong>Sources</strong>{" "}box at the end of its guide. The
@@ -59,22 +51,17 @@ export default function HowWeCheckPage() {
       <h2>3. When we recheck</h2>
       <ul>
         <li>
-          <strong>Every April</strong>, when the new tax year starts: Income Tax, National Insurance, benefit rates,
-          student loan thresholds, car tax and company car rates.
+          <strong>Every April</strong>, when the new tax year starts: benefit rates, Child Benefit and childcare
+          support, council tax, Income Tax and National Insurance (used for take-home pay) and student loan thresholds.
         </li>
         <li>
-          <strong>Every September</strong>: UK student loan interest rates.
+          <strong>Every September</strong>: student loan interest rates.
         </li>
         <li>
-          <strong>Every October and November</strong>: the next US tax year&rsquo;s IRS figures (tax brackets,
-          standard deduction and retirement plan limits) and Social Security&rsquo;s cost-of-living increase.
+          <strong>Each academic year</strong>: maintenance loans and grants in England, Scotland and Wales.
         </li>
         <li>
-          <strong>Every January</strong>: US state income tax changes.
-        </li>
-        <li>
-          <strong>Every quarter</strong>: the energy price cap and HMRC&rsquo;s advisory fuel rates; fuel prices more
-          often.
+          <strong>When NS&amp;I changes it</strong>: the Premium Bonds prize rate.
         </li>
         <li>
           <strong>Whenever the rules change</strong>: after a Budget, a new law or a change in official guidance.
@@ -100,7 +87,7 @@ export default function HowWeCheckPage() {
 
       <h2>6. Independent</h2>
       <p>
-        SumAtlas is not part of, or endorsed by, HM Government, HMRC, the DWP, the US government, the IRS or any other
+        SumAtlas is not part of, or endorsed by, HM Government, HMRC, the DWP, any council or any other
         public body. No bank, lender
         or financial firm pays to appear in our calculators or guides. The site is free to use and is funded by
         advertising, which never affects our figures.
@@ -113,7 +100,7 @@ export default function HowWeCheckPage() {
         the page&rsquo;s Updated date changes when the fix goes live.
       </p>
       <p>
-        Our calculators give estimates for general information, not financial, tax, legal or medical advice. See our{" "}
+        Our calculators give estimates for general information, not financial, tax, legal or benefits advice. See our{" "}
         <Link href="/disclaimer">disclaimer</Link>.
       </p>
     </ContentPage>

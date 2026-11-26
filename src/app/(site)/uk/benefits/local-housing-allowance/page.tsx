@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/benefits", label: "Family & Benefits" },
+  { href: "/uk/benefits", label: "Benefits & family" },
   { href: "/uk/benefits/local-housing-allowance", label: "Local Housing Allowance" },
 ];
 
@@ -35,7 +35,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function LhaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/benefits/universal-credit", "/uk/benefits/benefit-cap", "/uk/benefits/universal-credit-taper", "/uk/property/rent-vs-buy", "/uk/benefits/housing-benefit", "/uk/life/pro-rata-rent"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/benefits/universal-credit", "/uk/benefits/benefit-cap", "/uk/benefits/universal-credit-taper", "/uk/benefits/housing-benefit", "/uk/life/pro-rata-rent"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

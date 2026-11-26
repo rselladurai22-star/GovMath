@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/benefits", label: "Family & Benefits" },
+  { href: "/uk/benefits", label: "Benefits & family" },
   { href: "/uk/benefits/new-style-esa", label: "New Style ESA Calculator" },
 ];
 
@@ -39,7 +39,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function NewStyleEsaPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/benefits/new-style-jsa", "/uk/benefits/universal-credit", "/uk/benefits/pip-points", "/uk/benefits/benefits-checker", "/uk/tax-and-salary/statutory-sick-pay", "/uk/benefits/benefit-cap"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/benefits/new-style-jsa", "/uk/benefits/universal-credit", "/uk/benefits/pip-points", "/uk/benefits/benefits-checker", "/uk/benefits/benefit-cap"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

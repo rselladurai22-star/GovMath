@@ -14,20 +14,10 @@ export const EMBEDS = [
   "/uk/benefits/free-childcare-hours",
   "/uk/students/maintenance-loan",
   "/uk/students/plan-2-student-loan",
-  "/uk/students/plan-5-student-loan",
   "/uk/life/pro-rata-rent",
   "/uk/property/single-person-discount",
   "/uk/property/council-tax-bands",
   "/uk/investing/premium-bonds",
-  "/uk/tax-and-salary/bonus-tax",
-  "/uk/tax-and-salary/redundancy",
-  "/uk/property/appliance-running-cost",
-  "/us/taxes/paycheck-calculator",
-  "/us/housing/mortgage-calculator",
-  "/us/savings/compound-interest-calculator",
-  "/everyday/age-calculator",
-  "/everyday/pregnancy-due-date",
-  "/everyday/calorie-calculator",
 ] as const;
 
 export const SITE_URL = "https://sumatlas.com";

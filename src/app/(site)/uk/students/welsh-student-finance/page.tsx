@@ -39,7 +39,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function WelshFinancePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/students/plan-2-student-loan", "/uk/students/student-budget", "/uk/students/degree-cost", "/uk/students/saas-funding", "/uk/students/maintenance-loan", "/uk/students/student-council-tax"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/students/plan-2-student-loan", "/uk/students/saas-funding", "/uk/students/maintenance-loan", "/uk/students/student-council-tax"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

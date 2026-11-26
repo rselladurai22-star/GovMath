@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { degreeCost, saas2026, studentBudget, wales2026 } from "./nations";
+import { saas2026, wales2026 } from "./nations";
 
 describe("SAAS 2026/27", () => {
   it("matches the published young student bands", () => {
@@ -32,19 +32,5 @@ describe("Student Finance Wales 2026/27", () => {
       expect(Math.abs(wales2026(inc, "london").grant - l)).toBeLessThanOrEqual(0);
     }
     expect(wales2026(30_000, "home").loan + wales2026(30_000, "home").grant).toBe(10685);
-  });
-});
-
-describe("Degree cost and budget", () => {
-  it("adds up three years of loans with interest", () => {
-    const r = degreeCost({ years: 3, tuition: 9790, feeGrowth: 0, living: "away", income: 70_000, maintenance: true, rpi: 0.041, salary: 28_000, salaryGrowth: 0.03 });
-    expect(r.tuitionTotal).toBeCloseTo(29_370, 6);
-    expect(r.borrowed).toBeCloseTo(29_370 + 3 * 5048, 6);
-    expect(r.balanceAtGraduation).toBeGreaterThan(r.borrowed);
-  });
-  it("balances a student budget", () => {
-    const b = studentBudget({ loan: 10_830, grants: 0, parents: 0, jobHours: 10, jobRate: 12.71, jobWeeks: 30, rentWeekly: 180, rentWeeks: 44, livingWeekly: 100, livingWeeks: 39, course: 300 });
-    expect(b.job).toBeCloseTo(3813, 6);
-    expect(b.balance).toBeCloseTo(10_830 + 3813 - 7920 - 3900 - 300, 6);
   });
 });

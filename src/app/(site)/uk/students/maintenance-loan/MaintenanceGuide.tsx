@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Bars, Callout, CompareCards, DataTable, Figure, Guide, GuideSection, KeyStats, Timeline, WorkedExample, type Source, type TocItem } from "@/components/guide/Guide";
 
 /** Maintenance loan — the guide. Figures from src/lib/students/loans.ts. */
@@ -43,7 +44,7 @@ export default function MaintenanceGuide() {
       title="How much maintenance loan you can get in 2026/27"
       intro={
         <>
-          The maintenance loan helps full-time students from England pay for rent, food and other <a href="/uk/students/student-budget">living costs</a>. How much you get depends on
+          The maintenance loan helps full-time students from England pay for rent, food and other living costs. How much you get depends on
           where you live while studying and your household income. This guide explains the 2026/27 amounts, how income is assessed, and how
           to plan for the gap between the loan and what university life really costs.
         </>
@@ -73,9 +74,7 @@ export default function MaintenanceGuide() {
         <p>
           The maintenance loan is paid into your bank account to help with living costs: rent, food, travel, books and going out. It is repaid
           together with your tuition fee loan after you leave university, as part of your Plan 5 student loan, and only once you earn over
-          £25,000 a year. To see what the whole course could cost, fees and living costs together, try the{" "}
-          <a href="/uk/students/degree-cost">cost of a degree calculator</a>. Loan rules can change at a Budget: our{" "}
-          <a href="/uk/tax-and-salary/budget-tax-changes">Budget tax changes</a> page lists the announced measures.
+          £25,000 a year. Loan rules can change at a Budget, so check the latest figures on GOV.UK before you apply.
         </p>
       </GuideSection>
 
@@ -199,7 +198,8 @@ export default function MaintenanceGuide() {
       <GuideSection id="repaying" n={13} kicker="Repaying" title="Repaying the loan">
         <p>
           Your maintenance and tuition fee loans form one Plan 5 balance. You repay 9% of income above £25,000, with interest at RPI, and any
-          balance is written off after 40 years. The <a href="/uk/students/plan-5-student-loan">Plan 5 calculator</a> shows what you might repay.
+          balance is written off after 40 years. Our guide to{" "}
+          <Link href="/blog/plan-2-vs-plan-5-student-loans">Plan 2 vs Plan 5</Link> shows what that means over a working life.
         </p>
       </GuideSection>
 
