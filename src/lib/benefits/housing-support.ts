@@ -14,6 +14,15 @@
  * Reduction Schemes (Prescribed Requirements) (England) (Amendment)
  * Regulations 2026 (SI 2026/27), which set the scheme for pensioners in
  * England. Working-age schemes in England are set by each council.
+ *
+ * Checked against DWP "Proposed benefit and pension rates 2027 to 2028",
+ * which prints the 2026/27 column (November 2026): personal allowances,
+ * premiums, disregards and capital limits match; the Housing Benefit
+ * non-dependant income bands were out of date and were corrected.
+ *
+ * Not modelled: the family premium (only for claims made before May 2016),
+ * the second adult rebate in Council Tax Reduction, and Scotland's and
+ * Wales's own figures, which are close to these but set separately.
  */
 
 import { lhaWeekly, type LhaCategory } from "./lha-engine";
@@ -51,20 +60,30 @@ export const HB_2026 = {
   nonDependant: {
     notWorking: 20.4,
     bands: [
-      { below: 192, amount: 20.4 },
-      { below: 279, amount: 46.85 },
-      { below: 365, amount: 64.35 },
-      { below: 485, amount: 105.2 },
-      { below: 605, amount: 119.85 },
+      // Gross income bands from DWP's 2026/27 table: under £199, £199 to £289.99, £290 to £378.99, £379 to £503.99, £504 to £628.99, £629 and above.
+      { below: 199, amount: 20.4 },
+      { below: 290, amount: 46.85 },
+      { below: 379, amount: 64.35 },
+      { below: 504, amount: 105.2 },
+      { below: 629, amount: 119.85 },
       { below: Infinity, amount: 131.45 },
     ],
   },
+  /** Weekly amounts taken off for fuel included in the rent, when the landlord does not say what it costs (DWP 2026/27). */
+  fuel: { heating: 35.25, hotWater: 4.1, lighting: 2.85, cooking: 4.1 },
   /** Social-sector size criteria for working-age tenants. */
   spareRoom: { one: 0.14, twoOrMore: 0.25 },
 } as const;
 
 export const CTR_2026 = {
   taper: 0.2,
+  /**
+   * England's pensioner scheme: the second adult rebate (the "alternative
+   * maximum"), for a claimant who shares with an adult on a low income. A
+   * share of the bill by that adult's gross weekly income (SI 2012/2885
+   * Schedule 3, amounts from SI 2026/27).
+   */
+  secondAdult: { onBenefit: 0.25, lower: { below: 289, share: 0.15 }, upper: { below: 375, share: 0.075 } },
   /** Pensioner scheme in England (prescribed), also used here as the default elsewhere. */
   nonDependant: {
     notWorking: 5.2,
@@ -75,6 +94,19 @@ export const CTR_2026 = {
       { below: Infinity, amount: 15.95 },
     ],
   },
+} as const;
+
+/**
+ * Working-age schemes in England differ by council. For the range the
+ * calculator shows, "generous" is a scheme like the national pensioner one
+ * (up to 100% of the bill, 20p taper); "strict" is an illustration of a
+ * tighter scheme that makes every working-age household pay at least 30%
+ * and tapers at 25p. Neither is any one council's scheme: the reader's own
+ * council figures replace them.
+ */
+export const CTR_SCHEME_RANGE = {
+  generous: { maxShare: 1, taper: 0.2 },
+  strict: { maxShare: 0.7, taper: 0.25 },
 } as const;
 
 /* ── The shared means test ─────────────────────────────── */

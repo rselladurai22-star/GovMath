@@ -26,16 +26,27 @@ export function healthyStartEligible(q: HsQualify): boolean {
 }
 
 /**
+ * A claim that covers the pregnancy only, with nothing for children: a
+ * pregnant under-18 with no qualifying benefit, or someone on income-related
+ * ESA alone. NHS Healthy Start: under-18s "qualify until your baby is born",
+ * and an ESA claim made while pregnant "will end when your baby is born".
+ */
+export function healthyStartPregnancyOnly(q: HsQualify): boolean {
+  return q.pregnant && !q.ucLowEarnings && !q.otherBenefit && (q.esa || q.under18);
+}
+
+/**
  * Healthy Start money over the next `weeks` weeks.
  * childAgesMonths: each child's age now, in whole months.
  * pregnancyWeeks: weeks pregnant now (0 if not pregnant).
+ * pregnancyOnly: the claim covers the pregnancy alone (see healthyStartPregnancyOnly).
  */
-export function healthyStartOver(weeks: number, childAgesMonths: number[], pregnancyWeeks: number): { total: number; weekly: number[] } {
+export function healthyStartOver(weeks: number, childAgesMonths: number[], pregnancyWeeks: number, pregnancyOnly = false): { total: number; weekly: number[] } {
   const weekly: number[] = [];
   const WEEKS_PER_MONTH = 52 / 12;
   for (let w = 0; w < weeks; w++) {
     let amt = 0;
-    for (const a of childAgesMonths) {
+    for (const a of pregnancyOnly ? [] : childAgesMonths) {
       const months = a + w / WEEKS_PER_MONTH;
       if (months < 12) amt += HEALTHY_START.under1;
       else if (months < 48) amt += HEALTHY_START.age1to4;
@@ -44,7 +55,7 @@ export function healthyStartOver(weeks: number, childAgesMonths: number[], pregn
       const pw = pregnancyWeeks + w;
       // Pregnancy payments from week 10 until birth (taken as week 40), then the baby's under-1 rate.
       if (pw >= HEALTHY_START.pregnancyFromWeek && pw < 40) amt += HEALTHY_START.pregnancy;
-      else if (pw >= 40) {
+      else if (pw >= 40 && !pregnancyOnly) {
         const babyMonths = (pw - 40) / WEEKS_PER_MONTH;
         if (babyMonths < 12) amt += HEALTHY_START.under1;
         else if (babyMonths < 48) amt += HEALTHY_START.age1to4;

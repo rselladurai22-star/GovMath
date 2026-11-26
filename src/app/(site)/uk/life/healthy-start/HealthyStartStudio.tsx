@@ -1,14 +1,14 @@
 "use client";
 
-import { HEALTHY_START, healthyStartEligible, healthyStartOver } from "@/lib/life/health";
-import Studio from "@/components/flagship/Studio";
-import AreaChart from "@/components/flagship/AreaChart";
-import { AdvancedOptions, InputGroup, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Facts, ResultCard, Statement } from "@/components/flagship/results";
+import { HEALTHY_START, healthyStartEligible, healthyStartOver, healthyStartPregnancyOnly } from "@/lib/life/health";
+import { Caveat, Foot, Inputs, Tool } from "@/components/calc/kit";
+import { Mini, Pills } from "@/components/calc/fields";
+import { SelectField, Switch } from "@/components/flagship/inputs";
 import { gbp } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 
 type Benefit = "uc-low" | "uc-high" | "other" | "esa" | "none";
+type Main = "uc" | "other" | "esa" | "none";
 
 const SCHEMA = {
   benefit: oneOf<Benefit>("uc-low", ["uc-low", "uc-high", "other", "esa", "none"]),
@@ -20,161 +20,190 @@ const SCHEMA = {
   age3: num(30, 0, 59),
   age4: num(30, 0, 59),
   under18: bool(false),
+  scot: bool(false),
 };
-const ADVANCED = ["under18"] as const;
 const AGE_KEYS = ["age1", "age2", "age3", "age4"] as const;
+const LIMIT = HEALTHY_START.ucEarningsLimit;
+const p = (n: number) => gbp(n, true);
+const ageText = (months: number) => (months < 12 ? `${months} month${months === 1 ? "" : "s"}` : `${Math.floor(months / 12)} year${months >= 24 ? "s" : ""}${months % 12 ? ` ${months % 12} month${months % 12 === 1 ? "" : "s"}` : ""}`);
 
 export default function HealthyStartStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
-  const ages = AGE_KEYS.slice(0, v.kids).map((k) => v[k]);
+  const main: Main = v.benefit === "uc-low" || v.benefit === "uc-high" ? "uc" : v.benefit;
+  const ages = AGE_KEYS.slice(0, Math.round(v.kids)).map((k) => Math.round(v[k]));
   const under4 = ages.filter((a) => a < 48);
-  const pregnantWeeks = v.pregnant ? Math.max(1, v.weeks) : 0;
-  const eligible = healthyStartEligible({
+  const q = {
     ucLowEarnings: v.benefit === "uc-low",
     otherBenefit: v.benefit === "other",
     esa: v.benefit === "esa",
     under18: v.under18,
     pregnant: v.pregnant,
     hasChildUnder4: under4.length > 0,
-  });
-  const year = healthyStartOver(52, under4, pregnantWeeks);
+  };
+  const eligible = healthyStartEligible(q);
+  const pregOnly = healthyStartPregnancyOnly(q);
+  const pregWeeks = v.pregnant ? Math.max(1, Math.round(v.weeks)) : 0;
+  const year = healthyStartOver(52, under4, pregWeeks, pregOnly);
   const weekly = eligible ? year.weekly[0] : 0;
-  const total = eligible ? year.total : 0;
-  const nowUnder1 = under4.filter((a) => a < 12).length;
-  const now1to4 = under4.length - nowUnder1;
-  const pregNow = v.pregnant && v.weeks >= HEALTHY_START.pregnancyFromWeek && v.weeks < 40;
-  const waitWeeks = v.pregnant && v.weeks < HEALTHY_START.pregnancyFromWeek ? HEALTHY_START.pregnancyFromWeek - v.weeks : 0;
+  const changeAt = year.weekly.findIndex((w) => Math.abs(w - year.weekly[0]) > 0.005);
+  const changeWeek = pregWeeks + changeAt;
+  const changeReason =
+    v.pregnant && changeWeek === HEALTHY_START.pregnancyFromWeek
+      ? "when the pregnancy payments start"
+      : v.pregnant && changeWeek === 40
+        ? "when the baby is due"
+        : (() => {
+            // The same arithmetic as healthyStartOver: a child crosses 1 (or 4) in the first week where months reach 12 (or 48).
+            const at = (a: number, months: number) => Math.ceil(((months - a) * 52) / 12);
+            const i = under4.findIndex((a) => (a < 12 && at(a, 12) === changeAt) || at(a, 48) === changeAt);
+            const turns = i >= 0 && under4[i] < 12 && at(under4[i], 12) === changeAt ? 1 : 4;
+            return i >= 0 ? `when ${under4.length > 1 ? `child ${i + 1}` : "your child"} turns ${turns}` : "as a child has a birthday";
+          })();
+
+  const lines: { label: string; weekly: number }[] = [];
+  if (v.pregnant && pregWeeks >= HEALTHY_START.pregnancyFromWeek && pregWeeks < 40) lines.push({ label: "Your pregnancy", weekly: HEALTHY_START.pregnancy });
+  if (!pregOnly)
+    under4.forEach((a, i) => lines.push({ label: `Child ${i + 1}, ${ageText(a)}`, weekly: a < 12 ? HEALTHY_START.under1 : HEALTHY_START.age1to4 }));
+  const nobody = !v.pregnant && under4.length === 0;
+  const waitWeeks = v.pregnant && pregWeeks < HEALTHY_START.pregnancyFromWeek ? HEALTHY_START.pregnancyFromWeek - pregWeeks : 0;
+
+  const why = nobody
+    ? "Healthy Start is for people more than 10 weeks pregnant or with a child under 4."
+    : v.benefit === "uc-high"
+      ? `On Universal Credit, your family's take-home pay from work must be ${gbp(LIMIT)} a month or less.`
+      : v.benefit === "esa"
+        ? "Income-related ESA on its own only qualifies during pregnancy."
+        : "You need one of the qualifying benefits, unless you are pregnant and under 18.";
 
   return (
-    <Studio
-      title="Your family"
-      ready={st.ready}
-      onCalculate={st.calculate}
-      calculateLabel="Check Healthy Start"
-      onReset={st.reset}
-      dock={{ label: "Healthy Start a week", value: gbp(weekly, true) }}
-      inputs={
-        <>
-          <InputGroup title="Your benefits">
-            <SelectField
-              label="What you get"
-              value={v.benefit}
-              onChange={st.bind("benefit")}
+    <Tool label="Healthy Start calculator">
+      <div className="sa-hs">
+        <div className="sa-hs-inputs">
+          <Inputs tone="plain">
+            <Pills
+              label="Where you live"
+              value={v.scot ? "scot" : "ewni"}
+              onChange={(x) => st.set("scot", x === "scot")}
               options={[
-                { value: "uc-low", label: "Universal Credit, family take-home pay £408 a month or less" },
-                { value: "uc-high", label: "Universal Credit, family take-home pay over £408 a month" },
-                { value: "other", label: "Income Support, income-based JSA, or Pension Credit with a child addition" },
-                { value: "esa", label: "Income-related ESA only" },
-                { value: "none", label: "None of these" },
+                { value: "ewni", label: "England, Wales or NI" },
+                { value: "scot", label: "Scotland" },
               ]}
-              hint="Take-home pay means earnings after tax and National Insurance."
             />
-          </InputGroup>
-          <InputGroup title="Pregnancy and children">
-            <Switch label="Pregnant" checked={v.pregnant} onChange={st.bind("pregnant")} />
-            {v.pregnant && <StepperField label="Weeks pregnant" value={v.weeks} onChange={st.bind("weeks")} step={1} min={1} max={42} unit="weeks" dp={0} hint="Payments start from 10 weeks." />}
-            <StepperField label="Children under 4" value={v.kids} onChange={(n) => st.set("kids", Math.round(n))} step={1} min={0} max={4} unit="children" dp={0} />
-            {AGE_KEYS.slice(0, v.kids).map((k, i) => (
-              <StepperField key={k} label={`Child ${i + 1}: age in months`} value={v[k]} onChange={(n) => st.set(k, Math.round(n))} step={1} min={0} max={47} unit="months" dp={0} />
-            ))}
-          </InputGroup>
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            <Switch label="I am under 18" checked={v.under18} onChange={st.bind("under18")} optional hint="Pregnant under-18s qualify without any benefit." />
-          </AdvancedOptions>
-        </>
-      }
-    >
-      <Answer
-        eyebrow={eligible ? "Healthy Start a week" : "Healthy Start"}
-        value={gbp(weekly, true)}
-        actions={<ShareButton copied={st.copied} onClick={st.share} />}
-        sentence={
-          !v.pregnant && under4.length === 0 ? (
-            <>Healthy Start is for people at least 10 weeks pregnant or with a child under 4. Add a pregnancy or a child to check.</>
-          ) : !eligible ? (
+            <ol className="sa-hs-qs">
+              <li>
+                <p className="sa-hs-q">Are you pregnant, or do you have children under 4?</p>
+                <Switch label="I am pregnant" checked={v.pregnant} onChange={st.bind("pregnant")} />
+                <div className="sa-hs-fields">
+                  {v.pregnant && <Mini label="Weeks pregnant" value={v.weeks} onChange={(n) => st.set("weeks", Math.round(n))} min={1} max={42} stepper />}
+                  <Mini label="Children under 4" value={v.kids} onChange={(n) => st.set("kids", Math.round(n))} min={0} max={4} stepper />
+                </div>
+                {v.kids > 0 && (
+                  <div className="sa-hs-ages">
+                    {AGE_KEYS.slice(0, Math.round(v.kids)).map((k, i) => (
+                      <Mini key={k} label={`Child ${i + 1}, age in months`} value={v[k]} onChange={(n) => st.set(k, Math.round(n))} min={0} max={47} stepper />
+                    ))}
+                  </div>
+                )}
+                {v.pregnant && <Switch label="I am under 18" checked={v.under18} onChange={st.bind("under18")} hint="Pregnant under-18s qualify without a benefit, until the baby is born." />}
+              </li>
+              {!v.scot && (
+                <li>
+                  <p className="sa-hs-q">Which of these do you get?</p>
+                  <SelectField
+                    label="Benefit"
+                    value={main}
+                    onChange={(x) => st.set("benefit", x === "uc" ? (v.benefit === "uc-high" ? "uc-high" : "uc-low") : x)}
+                    options={[
+                      { value: "uc", label: "Universal Credit" },
+                      { value: "other", label: "Pension Credit with a child addition, Income Support or income-based JSA" },
+                      { value: "esa", label: "Income-related ESA only" },
+                      { value: "none", label: "None of these" },
+                    ]}
+                  />
+                </li>
+              )}
+              {!v.scot && main === "uc" && (
+                <li>
+                  <p className="sa-hs-q">Is your family&rsquo;s take-home pay from work {gbp(LIMIT)} a month or less?</p>
+                  <Pills
+                    label={`Take-home pay ${gbp(LIMIT)} a month or less`}
+                    hideLabel
+                    value={v.benefit === "uc-high" ? "no" : "yes"}
+                    onChange={(x) => st.set("benefit", x === "yes" ? "uc-low" : "uc-high")}
+                    options={[
+                      { value: "yes", label: `Yes, ${gbp(LIMIT)} or less` },
+                      { value: "no", label: "No, more" },
+                    ]}
+                  />
+                  <p className="sa-hs-hint">Earnings after tax and National Insurance, for you and your partner together, as shown on your Universal Credit statement. Benefits do not count.</p>
+                </li>
+              )}
+            </ol>
+          </Inputs>
+        </div>
+
+        <div className="sa-hs-result" aria-live="polite">
+          {v.scot ? (
+            <div className="sa-hs-card is-off">
+              <p className="sa-hs-cardtop">Scotland</p>
+              <p className="sa-hs-cardbig">Best Start Foods</p>
+              <p className="sa-hs-cardsub">Healthy Start does not run in Scotland. Social Security Scotland pays Best Start Foods instead, onto a similar card, with its own rules and rates.</p>
+              <a className="sa-hs-cardlink" href="https://www.mygov.scot/best-start-grant-best-start-foods" target="_blank" rel="noopener noreferrer">
+                Check Best Start Foods on mygov.scot
+              </a>
+            </div>
+          ) : eligible && weekly > 0 ? (
             <>
-              On these answers you would not qualify.{" "}
-              {v.benefit === "uc-high" ? "On Universal Credit, family take-home pay must be £408 a month or less." : v.benefit === "esa" ? "Income-related ESA only qualifies during pregnancy." : "You need one of the qualifying benefits, unless you are pregnant and under 18."}
+              <div className="sa-hs-card" role="group" aria-label={`Healthy Start card: ${p(weekly * 4)} added every 4 weeks`}>
+                <p className="sa-hs-cardtop">Your Healthy Start card</p>
+                <p className="sa-hs-cardbig">{p(weekly * 4)}</p>
+                <p className="sa-hs-cardsub">added every 4 weeks ({p(weekly)} a week)</p>
+                <ul className="sa-hs-lines">
+                  {lines.map((l) => (
+                    <li key={l.label}>
+                      <span>{l.label}</span>
+                      <b>{p(l.weekly * 4)}</b>
+                    </li>
+                  ))}
+                </ul>
+                <span className="sa-hs-chip" aria-hidden="true" />
+              </div>
+              <p className="sa-hs-year">
+                About <b>{gbp(year.total)}</b> over the next 12 months, plus free vitamins.
+                {changeAt > 0 && (
+                  <>
+                    {" "}
+                    In about {changeAt} weeks it {year.weekly[changeAt] > weekly ? "rises" : "falls"} to {p(year.weekly[changeAt] * 4)} every 4 weeks, {changeReason}.
+                  </>
+                )}
+                {pregOnly && " This claim covers the pregnancy only: it ends when the baby is born unless you then get a qualifying benefit, so reapply then."}
+              </p>
             </>
+          ) : eligible && waitWeeks > 0 ? (
+            <div className="sa-hs-card is-off">
+              <p className="sa-hs-cardtop">Your Healthy Start card</p>
+              <p className="sa-hs-cardbig">Not yet</p>
+              <p className="sa-hs-cardsub">
+                Pregnancy payments of {p(HEALTHY_START.pregnancy * 4)} every 4 weeks start from the 10th week, in {waitWeeks} {waitWeeks === 1 ? "week" : "weeks"}. You can apply now.
+              </p>
+            </div>
           ) : (
-            <>
-              You could get <b>{gbp(weekly, true)}</b> a week, paid onto a Healthy Start card every 4 weeks as <b>{gbp(weekly * 4, true)}</b>. Over the next year that adds up to about{" "}
-              <b>{gbp(total)}</b>, plus free vitamins.
-              {waitWeeks > 0 ? <> Pregnancy payments start in {waitWeeks} {waitWeeks === 1 ? "week" : "weeks"}.</> : null}
-            </>
-          )
-        }
-        badges={[eligible ? "Likely eligible" : "Not eligible on these answers", `${gbp(weekly * 4, true)} every 4 weeks`, "Free vitamins"]}
-      />
+            <div className="sa-hs-card is-off">
+              <p className="sa-hs-cardtop">Healthy Start</p>
+              <p className="sa-hs-cardbig">Not on these answers</p>
+              <p className="sa-hs-cardsub">{why}</p>
+            </div>
+          )}
+        </div>
 
-      <Facts
-        items={[
-          { label: "A week now", value: gbp(weekly, true) },
-          { label: "Every 4 weeks", value: gbp(weekly * 4, true) },
-          { label: "Next 12 months", value: gbp(total), tone: total > 0 ? "good" : undefined },
-          { label: "Vitamins", value: eligible ? "Free" : "—" },
-        ]}
-      />
-
-      <Assumptions
-        items={[
-          { label: "Rates", value: "From April 2026" },
-          { label: "Pregnancy", value: "From 10 weeks; birth taken as 40 weeks" },
-          { label: "Where", value: "England, Wales and Northern Ireland" },
-          { label: "Projection", value: "Children move to the lower rate at 1 and stop at 4" },
-        ]}
-      />
-
-      {eligible && (
-        <ResultCard title="What makes up your payment" sub="A week, now.">
-          <Statement
-            columns={["A week"]}
-            rows={[
-              ...(pregNow ? [{ label: "Pregnancy", values: [gbp(HEALTHY_START.pregnancy, true)] }] : []),
-              ...(nowUnder1 > 0 ? [{ label: `${nowUnder1} ${nowUnder1 === 1 ? "child" : "children"} under 1`, values: [gbp(nowUnder1 * HEALTHY_START.under1, true)] }] : []),
-              ...(now1to4 > 0 ? [{ label: `${now1to4} ${now1to4 === 1 ? "child" : "children"} aged 1 to 3`, values: [gbp(now1to4 * HEALTHY_START.age1to4, true)] }] : []),
-              { label: "Total", values: [gbp(weekly, true)], kind: "total" as const },
-            ]}
-          />
-        </ResultCard>
-      )}
-
-      {eligible && total > 0 && (
-        <ResultCard title="Your payments over the next year" sub="A week. Rates change as children have birthdays.">
-          <AreaChart
-            ariaLabel="Healthy Start each week for a year"
-            series={[{ key: "hs", label: "Healthy Start", color: "#16a34a", values: year.weekly, fill: true }]}
-            xLabel={(i) => `Wk ${i}`}
-            yFormat={(n) => gbp(n, true)}
-            initial={0}
-            hint="Drag across the chart, or use the arrow keys, to read any week."
-            readout={(i) => (
-              <>
-                In week <b>{i}</b>: <b>{gbp(year.weekly[i] ?? 0, true)}</b>.
-              </>
-            )}
-          />
-        </ResultCard>
-      )}
-
-      <ResultCard title="Worth knowing" sub="Using your card.">
-        <Callout title="What you can buy">
-          Plain cow&apos;s milk, fresh, frozen or tinned fruit and vegetables, fresh, dried and tinned pulses, and first infant formula, in any shop that takes Mastercard.
-        </Callout>
-        <Callout title="Free vitamins">
-          The scheme also gives free vitamins: pregnancy vitamins with folic acid and vitamin D, and vitamin drops for children from birth to 4.
-        </Callout>
-        {v.benefit === "none" && (
-          <Callout title="Check your benefits first">
-            Many families on low incomes are entitled to Universal Credit without knowing. The <a href="/uk/benefits/universal-credit">Universal Credit calculator</a> gives an estimate.
-          </Callout>
-        )}
-      </ResultCard>
-
-      <p className="footnote" style={{ textAlign: "center" }}>
-        April 2026 rates. Scotland has Best Start Foods instead. An estimate, not a decision.
-      </p>
-    </Studio>
+        <Foot>
+          <Caveat>
+            Exact card amounts at the rates from April 2026, for England, Wales and Northern Ireland. Ages are rounded to whole months, so a change can come a week or two either side. NHSBSA checks your benefits before paying.
+          </Caveat>
+          <ShareButton copied={st.copied} onClick={st.share} />
+        </Foot>
+      </div>
+    </Tool>
   );
 }
