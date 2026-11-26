@@ -95,7 +95,7 @@ Neutrals follow the reference's warm system:
 | ink | #222 | headings and values |
 | text | #4d4d4d | reading text, darker than the reference's #666 (8.4:1) |
 | text-2 | #666 | labels |
-| muted | #757575 | small print, the lightest text allowed (4.6:1) |
+| muted | #696969 | small print, the lightest text allowed (5.7:1 on white, 5.3:1 on the warm panel) |
 | line | #ddd | borders |
 | line-soft | #ebe8e0 | dividers |
 | surface | #f9f8f3 | warm panels |
