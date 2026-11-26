@@ -1,14 +1,17 @@
 "use client";
 
+import Link from "next/link";
 import { pcRates, pensionCredit2026, statePensionRates, type PensionCreditInput } from "@/lib/benefits/later-life";
+import { OTHER_HELP_2026 } from "@/lib/benefits/eligibility";
 import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
-import Studio from "@/components/flagship/Studio";
-import AreaChart from "@/components/flagship/AreaChart";
-import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField, Switch } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Facts, ResultCard, Statement } from "@/components/flagship/results";
+import { Caveat, Foot, Inputs, Rows, Tool, type Row } from "@/components/calc/kit";
+import { Mini, Pills } from "@/components/calc/fields";
+import { AdvancedOptions, Switch } from "@/components/flagship/inputs";
 import { gbp } from "@/components/flagship/format";
 import { bool, num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
+import PcLadder, { type LadderPart } from "./PcLadder";
 
+// Keys kept from the earlier calculator, so old share links still work.
 const SCHEMA = {
   couple: bool(false),
   sp: num(200, 0, 2_000),
@@ -25,17 +28,19 @@ const SCHEMA = {
   pre2016: bool(false),
   over75: bool(false),
   renting: bool(false),
+  mixed: bool(false),
   rates: ratesParam(),
 };
-const ADVANCED = ["earnings", "otherIncome", "sd", "carers", "children", "pre2017", "disLower", "disHigher", "pre2016", "over75", "renting"] as const;
-const POINTS = 41;
-const axis = (n: number) => gbp(Math.round(n));
+const MORE = ["earnings", "otherIncome", "sd", "carers", "children", "pre2017", "disLower", "disHigher"] as const;
+
+type Unlock = { key: string; name: string; state: "yes" | "no" | "info"; note: string };
 
 export default function PcStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
   const next = v.rates === "2027/28";
   const SP = statePensionRates(v.rates);
+  const P = pcRates(v.rates);
   const input: PensionCreditInput = {
     couple: v.couple,
     statePension: v.sp,
@@ -53,154 +58,169 @@ export default function PcStudio({ query }: { query: Query }) {
     year: v.rates,
   };
   const r = pensionCredit2026(input);
-  const top = Math.max(400, Math.ceil((r.minimumGuarantee + 60) / 50) * 50);
-  const levels = Array.from({ length: POINTS }, (_, i) => (top * i) / (POINTS - 1));
-  const curve = levels.map((x) => pensionCredit2026({ ...input, statePension: x, otherPensions: 0, earnings: 0, otherIncome: 0 }).weekly);
-  const getsAny = r.weekly > 0.005;
-  const gc = r.guaranteeCredit > 0.005;
-  const shortBy = r.income - r.minimumGuarantee;
+  const blocked = v.couple && v.mixed;
+  const weekly = blocked ? 0 : r.weekly;
+  const gc = !blocked && r.guaranteeCredit > 0.005;
+  const any = weekly > 0.005;
+  const m = (n: number) => gbp(n, true);
+  const counted = (n: number) => Math.max(0, n);
+
+  const parts: LadderPart[] = [
+    { key: "sp", label: "State Pension", amount: counted(v.sp), color: "#6880c8" },
+    { key: "other", label: "Other pensions", amount: counted(v.other), color: "#9fb0e0" },
+    { key: "earn", label: "Earnings counted", amount: counted(v.earnings - r.earningsDisregard), color: "#d8962a" },
+    { key: "oth", label: "Other income", amount: counted(v.otherIncome), color: "#e8c07d" },
+    { key: "sav", label: "Income from savings", amount: r.tariffIncome, color: "#a59f92" },
+  ];
+
+  const unlocks: Unlock[] = [
+    {
+      key: "ctr",
+      name: "Council Tax Reduction",
+      state: any ? "yes" : "no",
+      note: gc ? "With Guarantee Credit there is usually no council tax left to pay." : any ? "Your council works it out from your income." : "Still worth asking your council on a low income.",
+    },
+    {
+      key: "hb",
+      name: "Housing Benefit for your rent",
+      state: v.renting ? (any ? "yes" : "no") : "info",
+      note: v.renting ? (gc ? "Guarantee Credit gives the maximum, up to the limit for your home." : any ? "Worked out from your income by the council." : "Claim from the council if your income is low.") : "Only if you rent.",
+    },
+    {
+      key: "tv",
+      name: "Free TV licence",
+      state: any && v.over75 ? "yes" : "no",
+      note: v.over75 ? (any ? "At 75 or over with any Pension Credit." : "Needs Pension Credit as well as being 75.") : "From 75, with any Pension Credit. You can apply at 74.",
+    },
+    { key: "cwp", name: "Cold Weather Payments", state: any ? "yes" : "no", note: "Paid automatically in very cold spells." },
+    { key: "whd", name: "Warm Home Discount", state: any ? "yes" : "no", note: `${gbp(OTHER_HELP_2026.warmHome)} off your electricity bill each winter.` },
+    { key: "nhs", name: "Help with NHS dental treatment, glasses and travel to hospital", state: gc ? "yes" : "no", note: "Guarantee Credit only." },
+    { key: "wfp", name: "Winter Fuel Payment", state: "info", note: "Not tied to Pension Credit: paid if you were born on or before 27 June 1960, and taken back by HMRC if your own income is over £35,000." },
+  ];
+
+  const rows: Row[] = [
+    ...r.guaranteeLines.map((l) => ({ label: l.label, value: m(l.amount) })),
+    { label: "Your guarantee", value: m(r.minimumGuarantee), strong: true },
+    { label: "Income counted", note: r.tariffIncome > 0 ? `Includes ${gbp(r.tariffIncome)} from savings over ${gbp(P.capitalDisregard)}` : undefined, value: `−${m(r.income)}`, tone: "bad" },
+    { label: "Guarantee Credit", value: m(blocked ? 0 : r.guaranteeCredit) },
+    ...(v.pre2016 ? [{ label: "Savings Credit", value: m(blocked ? 0 : r.savingsCredit) }] : []),
+    { label: "Pension Credit a week", value: m(weekly), strong: true },
+  ];
 
   return (
-    <Studio
-      title="Your income and savings"
-      ready={st.ready}
-      onCalculate={st.calculate}
-      calculateLabel="Check my Pension Credit"
-      onReset={st.reset}
-      dock={{ label: "Pension Credit a week", value: gbp(r.weekly, true) }}
-      inputs={
-        <>
-          <InputGroup title="Your household">
-            <Segmented
+    <Tool label="Pension Credit calculator">
+      <div className="sa-pc">
+        <div className="sa-pc-answer" aria-live="polite">
+          <div className={`sa-pc-verdict${any ? " is-yes" : " is-no"}`}>
+            <p className="sa-pc-kicker">{blocked ? "Not as a mixed-age couple" : any ? `Pension Credit a week${next ? " from April 2027 (proposed)" : ""}` : "No Pension Credit on these figures"}</p>
+            <p className="sa-pc-amount">
+              <b>{m(weekly)}</b> <span>a week</span>
+            </p>
+            <p className="sa-pc-sub">
+              {blocked ? (
+                <>
+                  A couple where one of you is under State Pension age claims <Link href="/uk/benefits/universal-credit">Universal Credit</Link>{" "}instead, unless you already get
+                  pension-age Housing Benefit.
+                </>
+              ) : any ? (
+                <>
+                  {gbp(weekly * 52)} a year. {gc ? "It also unlocks the help below, which is often worth more." : "Even this small amount unlocks some of the help below."}
+                </>
+              ) : (
+                <>
+                  Your income counts as {m(r.income)}, {m(r.income - r.minimumGuarantee)} above your {m(r.minimumGuarantee)} guarantee. A disability, caring or rent can still
+                  change that.
+                </>
+              )}
+            </p>
+          </div>
+          <PcLadder parts={parts} guarantee={r.minimumGuarantee} guaranteeCredit={blocked ? 0 : r.guaranteeCredit} savingsCredit={blocked ? 0 : r.savingsCredit} money={m} />
+        </div>
+
+        <div className="sa-pc-inputs">
+          <Inputs tone="plain">
+            <Pills
               label="You are"
               value={v.couple ? "couple" : "single"}
               onChange={(x) => st.set("couple", x === "couple")}
               options={[
                 { value: "single", label: "Single" },
-                { value: "couple", label: "A couple", note: "Both of you must have reached State Pension age." },
+                { value: "couple", label: "A couple" },
               ]}
             />
+            <div className="sa-pc-fields">
+              <Mini label={v.couple ? "State Pension, both of you" : "State Pension"} value={v.sp} onChange={st.bind("sp")} prefix="£" suffix="a week" dp={2} step={5} max={2_000} wide hint={`Full new State Pension ${m(SP.newFull)}, full basic ${m(SP.basicFull)}.`} />
+              <Mini label="Private and workplace pensions" value={v.other} onChange={st.bind("other")} prefix="£" suffix="a week" dp={2} step={5} max={2_000} wide />
+              <Mini label="Savings and investments" value={v.savings} onChange={st.bind("savings")} prefix="£" max={2_000_000} step={500} wide hint={`The first ${gbp(P.capitalDisregard)} is ignored. No upper limit.`} />
+            </div>
+            <div className="sa-pc-ticks">
+              <label>
+                <input type="checkbox" checked={v.pre2016} onChange={(e) => st.set("pre2016", e.target.checked)} />
+                <span>{v.couple ? "One of us" : "I"} reached State Pension age before 6 April 2016</span>
+              </label>
+              <label>
+                <input type="checkbox" checked={v.over75} onChange={(e) => st.set("over75", e.target.checked)} />
+                <span>{v.couple ? "One of us is" : "I am"} 75 or over</span>
+              </label>
+              <label>
+                <input type="checkbox" checked={v.renting} onChange={(e) => st.set("renting", e.target.checked)} />
+                <span>{v.couple ? "We rent" : "I rent"} my home</span>
+              </label>
+              {v.couple && (
+                <label>
+                  <input type="checkbox" checked={v.mixed} onChange={(e) => st.set("mixed", e.target.checked)} />
+                  <span>One of us is still under State Pension age</span>
+                </label>
+              )}
+            </div>
+            <AdvancedOptions description="Earnings, other income, a disability, caring, children." changed={st.changed([...MORE])} onReset={() => st.resetKeys([...MORE])}>
+              <div className="sa-pc-more">
+                <Mini label="Earnings after tax and NI" value={v.earnings} onChange={st.bind("earnings")} prefix="£" suffix="a week" dp={2} step={5} max={2_000} hint={`${gbp(P.earningsDisregard.single)} ignored, ${gbp(P.earningsDisregard.couple)} for a couple, ${gbp(P.earningsDisregard.higher)} for carers.`} />
+                <Mini label="Other income" value={v.otherIncome} onChange={st.bind("otherIncome")} prefix="£" suffix="a week" dp={2} step={5} max={2_000} hint="Such as Carer's Allowance. PIP, DLA and Attendance Allowance are ignored." />
+                <Mini label="People with the severe disability addition" value={v.sd} onChange={(x) => st.set("sd", Math.round(x))} min={0} max={v.couple ? 2 : 1} stepper hint={`${m(P.severeDisability)} each. Gets Attendance Allowance, PIP daily living or DLA middle or high care.`} />
+                <Mini label="Carers getting or entitled to Carer's Allowance" value={v.carers} onChange={(x) => st.set("carers", Math.round(x))} min={0} max={v.couple ? 2 : 1} stepper hint={`${m(P.carer)} each.`} />
+                <Mini label="Children you look after" value={v.children} onChange={(x) => st.set("children", Math.round(x))} min={0} max={10} stepper />
+                {v.children > 0 && <Mini label="Disabled children, lower rate" value={v.disLower} onChange={(x) => st.set("disLower", Math.round(x))} min={0} max={10} stepper />}
+                {v.children > 0 && <Mini label="Disabled children, higher rate" value={v.disHigher} onChange={(x) => st.set("disHigher", Math.round(x))} min={0} max={10} stepper />}
+              </div>
+              {v.children > 0 && <Switch label="The eldest child was born before 6 April 2017" checked={v.pre2017} onChange={st.bind("pre2017")} />}
+            </AdvancedOptions>
             <RatesChoice value={v.rates} onChange={st.bind("rates")} />
-          </InputGroup>
-          <InputGroup title="Weekly income">
-            <MoneyField label="State Pension a week" value={v.sp} onChange={st.bind("sp")} pence hint={`The full new State Pension is ${gbp(SP.newFull, true)}, the full basic State Pension ${gbp(SP.basicFull, true)}.${v.couple ? " Add both together." : ""}`} />
-            <MoneyField label="Private and workplace pensions a week" value={v.other} onChange={st.bind("other")} pence />
-            <MoneyField label="Savings and investments" value={v.savings} onChange={st.bind("savings")} hint="The first £10,000 is ignored. There is no upper limit." />
-          </InputGroup>
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            <MoneyField label="Earnings a week, after tax and NI" value={v.earnings} onChange={st.bind("earnings")} pence optional hint="£5 is ignored for a single person, £10 for a couple, £20 for carers and some disabled people." />
-            <MoneyField label="Other income a week" value={v.otherIncome} onChange={st.bind("otherIncome")} pence optional hint="Such as Carer's Allowance. Attendance Allowance, PIP and DLA are ignored." />
-            <StepperField label="People getting the severe disability addition" value={v.sd} onChange={(n) => st.set("sd", Math.round(n))} step={1} min={0} max={v.couple ? 2 : 1} unit="people" dp={0} optional hint="Gets Attendance Allowance, PIP daily living or DLA middle or high care, lives alone, and nobody gets Carer's Allowance for them." />
-            <StepperField label="Carers in the household" value={v.carers} onChange={(n) => st.set("carers", Math.round(n))} step={1} min={0} max={v.couple ? 2 : 1} unit="people" dp={0} optional hint="Entitled to Carer's Allowance, even if not paid because of the State Pension." />
-            <StepperField label="Children you are responsible for" value={v.children} onChange={(n) => st.set("children", Math.round(n))} step={1} min={0} max={10} unit="children" dp={0} optional />
-            {v.children > 0 && <Switch label="Eldest child born before 6 April 2017" checked={v.pre2017} onChange={st.bind("pre2017")} optional />}
-            {v.children > 0 && <StepperField label="Disabled children (lower addition)" value={v.disLower} onChange={(n) => st.set("disLower", Math.round(n))} step={1} min={0} max={10} unit="children" dp={0} optional />}
-            {v.children > 0 && <StepperField label="Disabled children (higher addition)" value={v.disHigher} onChange={(n) => st.set("disHigher", Math.round(n))} step={1} min={0} max={10} unit="children" dp={0} optional />}
-            <Switch label={v.couple ? "One of us reached State Pension age before 6 April 2016" : "I reached State Pension age before 6 April 2016"} checked={v.pre2016} onChange={st.bind("pre2016")} optional hint="Only then can you get Savings Credit." />
-            <Switch label={v.couple ? "One of us is 75 or over" : "I am 75 or over"} checked={v.over75} onChange={st.bind("over75")} optional />
-            <Switch label="I rent my home" checked={v.renting} onChange={st.bind("renting")} optional />
-          </AdvancedOptions>
-        </>
-      }
-    >
-      <Answer
-        eyebrow={next ? "Pension Credit from 6 April 2027 (proposed)" : "Pension Credit"}
-        value={gbp(r.weekly, true)}
-        unit="a week"
-        actions={<ShareButton copied={st.copied} onClick={st.share} />}
-        sentence={
-          getsAny ? (
-            <>
-              Pension Credit tops your income up to <b>{gbp(r.minimumGuarantee, true)}</b> a week. Your income counts as <b>{gbp(r.income, true)}</b>, so you would get about{" "}
-              <b>{gbp(r.weekly, true)}</b> a week, or <b>{gbp(r.annual)}</b> a year.
-            </>
-          ) : (
-            <>
-              Your income of <b>{gbp(r.income, true)}</b> a week is <b>{gbp(shortBy, true)}</b> above the <b>{gbp(r.minimumGuarantee, true)}</b> Pension Credit guarantee
-              {v.pre2016 ? " and too high for Savings Credit" : ""}. Check the additions under More options: a disability or caring can raise the guarantee.
-            </>
-          )
-        }
-        badges={[`Guarantee ${gbp(r.minimumGuarantee, true)}`, gc ? "Guarantee Credit" : r.savingsCredit > 0 ? "Savings Credit only" : "No award", r.tariffIncome > 0 ? `${gbp(r.tariffIncome)} from savings` : "Savings ignored"]}
-      />
+          </Inputs>
+        </div>
 
-      <Facts
-        items={[
-          { label: "Guarantee", value: gbp(r.minimumGuarantee, true) },
-          { label: "Income counted", value: gbp(r.income, true) },
-          { label: "Guarantee Credit", value: gbp(r.guaranteeCredit, true), tone: gc ? "good" : undefined },
-          { label: "Savings Credit", value: v.pre2016 ? gbp(r.savingsCredit, true) : "Not eligible", tone: r.savingsCredit > 0 ? "good" : undefined },
-        ]}
-      />
+        <section className="sa-pc-unlocks" aria-labelledby="pc-unlocks">
+          <h2 id="pc-unlocks" className="sa-pc-h">
+            What Pension Credit unlocks
+          </h2>
+          <ul>
+            {unlocks.map((u) => (
+              <li key={u.key} className={`is-${u.state}`}>
+                <span className="sa-pc-mark" aria-hidden="true">
+                  {u.state === "yes" ? "✓" : u.state === "no" ? "–" : "i"}
+                </span>
+                <span>
+                  <b>{u.name}</b>
+                  <span className="sr-only">{u.state === "yes" ? ": yes, on these figures." : u.state === "no" ? ": not on these figures." : ":"}</span>
+                  <small>{u.note}</small>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-      <Assumptions
-        items={[
-          { label: "Rates", value: next ? "Proposed from 6 April 2027 (DWP), weekly. Enter your State Pension at its April 2027 rate too" : "2026/27, weekly" },
-          { label: "Savings", value: r.tariffIncome > 0 ? `£1 a week for each £500 over £10,000: ${gbp(r.tariffIncome)}` : "Under £10,000, ignored" },
-          { label: "Household", value: v.couple ? "Couple, both over State Pension age" : "Single" },
-          { label: "Housing costs", value: "Rent is covered by Housing Benefit, not here" },
-        ]}
-      />
+        <div className="sa-pc-sums">
+          <Rows caption="How your Pension Credit is worked out" rows={rows} />
+        </div>
 
-      <ResultCard title="How it is worked out" sub="A week.">
-        <Statement
-          columns={["A week"]}
-          rows={[
-            ...r.guaranteeLines.map((l) => ({ label: l.label, values: [gbp(l.amount, true)] })),
-            { label: "Minimum guarantee", values: [gbp(r.minimumGuarantee, true)], kind: "total" as const },
-            ...(v.sp > 0 ? [{ label: "State Pension", values: [`−${gbp(v.sp, true)}`], kind: "deduction" as const }] : []),
-            ...(v.other > 0 ? [{ label: "Other pensions", values: [`−${gbp(v.other, true)}`], kind: "deduction" as const }] : []),
-            ...(v.earnings - r.earningsDisregard > 0.005 ? [{ label: "Earnings after the disregard", values: [`−${gbp(v.earnings - r.earningsDisregard, true)}`], kind: "deduction" as const }] : []),
-            ...(v.otherIncome > 0 ? [{ label: "Other income", values: [`−${gbp(v.otherIncome, true)}`], kind: "deduction" as const }] : []),
-            ...(r.tariffIncome > 0 ? [{ label: "Assumed income from savings", values: [`−${gbp(r.tariffIncome, true)}`], kind: "deduction" as const }] : []),
-            { label: "Guarantee Credit", values: [gbp(r.guaranteeCredit, true)], kind: "total" as const },
-            ...(v.pre2016 ? [{ label: "Savings Credit", values: [gbp(r.savingsCredit, true)] }] : []),
-            { label: "Pension Credit", values: [gbp(r.weekly, true)], kind: "total" as const },
-          ]}
-        />
-      </ResultCard>
-
-      <ResultCard title="Pension Credit at different incomes" sub="Weekly income from pensions on the bottom axis.">
-        <AreaChart
-          ariaLabel="Pension Credit by weekly income"
-          series={[{ key: "pc", label: "Pension Credit", color: "#5b1e6e", values: curve, fill: true }]}
-          xLabel={(i) => gbp(Math.round(levels[i] ?? 0))}
-          yFormat={axis}
-          initial={Math.min(POINTS - 1, Math.round(((v.sp + v.other) / top) * (POINTS - 1)))}
-          hint="Drag across the chart, or use the arrow keys, to read any level of income."
-          readout={(i) => (
-            <>
-              Income <b>{gbp(levels[i] ?? 0, true)}</b> a week: Pension Credit <b>{gbp(curve[i] ?? 0, true)}</b>.
-            </>
-          )}
-        />
-      </ResultCard>
-
-      <ResultCard title="Worth knowing" sub="Pension Credit opens other doors.">
-        {gc && (
-          <Callout tone="good" title="Guarantee Credit unlocks more help">
-            Full help with rent through Housing Benefit{v.renting ? "" : " if you rent"}, Council Tax Reduction, Cold Weather Payments, help with NHS dental treatment and glasses, and the Warm Home Discount.
-            {v.over75 ? " At 75 or over you also get a free TV licence." : ""}
-          </Callout>
-        )}
-        {!gc && r.savingsCredit > 0 && (
-          <Callout tone="good" title="Even a little Savings Credit helps">
-            Any Pension Credit can bring a free TV licence at 75 or over, Cold Weather Payments and help from your council with Council Tax and rent.
-          </Callout>
-        )}
-        {v.sd === 0 && (
-          <Callout title="Disability adds £86.05 a week">
-            If you get Attendance Allowance, PIP daily living or DLA care, live alone and nobody gets Carer&apos;s Allowance for you, the guarantee rises by {gbp(pcRates(v.rates).severeDisability, true)} a week.
-          </Callout>
-        )}
-        <Callout title="Claim and backdate">
-          You can claim up to four months before you reach State Pension age, and a claim can be backdated by up to three months if you qualified then.
-        </Callout>
-      </ResultCard>
-
-      <p className="footnote" style={{ textAlign: "center" }}>
-        {next ? "Proposed 2027/28 rates, final once Parliament approves them." : "2026/27 rates."} An estimate, not a decision. Not financial advice.
-      </p>
-    </Studio>
+        <Foot>
+          <Caveat>
+            An estimate at {next ? "DWP’s proposed rates from 6 April 2027 (enter your State Pension at its April 2027 rate too)" : "2026/27 rates"}. It leaves out housing costs such as
+            ground rent and service charges, which can add to the guarantee.
+          </Caveat>
+          <ShareButton copied={st.copied} onClick={st.share} />
+        </Foot>
+      </div>
+    </Tool>
   );
 }

@@ -34,4 +34,20 @@ describe("Carer's Allowance earnings", () => {
     expect(carerEarnings({ ...base, grossWeekly: 204 }).withinLimit).toBe(true);
     expect(carerEarnings({ ...base, grossWeekly: 204.02 }).withinLimit).toBe(false);
   });
+  it("matches GOV.UK's care costs example: £100 earnings and £60 care costs allow £50", () => {
+    const r = carerEarnings({ ...base, grossWeekly: 100, careCostsWeekly: 60 });
+    expect(r.careAllowed).toBeCloseTo(50, 6);
+    expect(r.counted).toBeCloseTo(50, 6);
+  });
+  it("charges National Insurance on gross pay when a pension is paid from it", () => {
+    // £400 a week with £40 into a net pay pension: tax on £360, NI on £400.
+    const withPension = carerEarnings({ ...base, grossWeekly: 400, pensionWeekly: 40 });
+    const without = carerEarnings({ ...base, grossWeekly: 400 });
+    expect(withPension.ni).toBeCloseTo(without.ni, 6);
+    expect(withPension.tax).toBeLessThan(without.tax);
+  });
+  it("pays nothing in a week a one-off bonus takes earnings over the limit", () => {
+    expect(carerEarnings({ ...base, grossWeekly: 150 }).withinLimit).toBe(true);
+    expect(carerEarnings({ ...base, grossWeekly: 150 + 500 }).payable).toBe(0);
+  });
 });
