@@ -144,7 +144,7 @@ yellow.
   their donut. Rules aimed at the calculator page use
   `.gm-neutral:has(.calculator.gm-atlas)`, so React pages and package pages
   look the same.
-- Embeds keep the "modern" look, but take the new fonts and tokens.
+- Embeds (`/embed/…`) use the same "atlas" calculator look: the embed page wraps its studio in `LookProvider`.
 - **Rolling back:** remove `sumatlas-ds.css` from `THEME_AFTER`, set the
   `FlagshipPage` default back to `"indus"`, and change the two JSONs back to
   `gm-indus`. The Indus rules and Source Sans files are still in place for

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CALCULATORS } from "@/lib/calculators";
 import { EMBEDS, SITE_URL } from "@/lib/embeds";
 import type { Query } from "@/components/flagship/useStudio";
+import { LookProvider } from "@/components/flagship/look";
 import { STUDIOS } from "../studios";
 import EmbedHeight from "../EmbedHeight";
 
@@ -41,7 +42,10 @@ export default async function EmbedPage({ params, searchParams }: { params: Prom
           Full calculator and guide
         </a>
       </div>
-      <Studio query={query} />
+      {/* Embeds use the same calculator look as the site (SumAtlas design system). */}
+      <LookProvider value={{ look: "atlas", title: titleOf(href), lead: "" }}>
+        <Studio query={query} />
+      </LookProvider>
       <p className="gm-embedfoot">
         Free {titleOf(href).replace(/ Calculator$/, " calculator")} by{" "}
         <a href={full} target="_blank" rel="noopener">
