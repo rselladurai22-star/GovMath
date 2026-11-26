@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { bedroomEntitlement, childBedrooms, lhaHelp, lhaMonthly, lhaNation, lhaWeekly, LHA_AREAS, LHA_AREAS_BY_NATION } from "./lha-engine";
+import { bedroomEntitlement, bedroomPlan, childBedrooms, lhaHelp, lhaMonthly, lhaNation, lhaWeekly, LHA_AREAS, LHA_AREAS_BY_NATION } from "./lha-engine";
 
 const none = { boysUnder10: 0, girlsUnder10: 0, boys10to15: 0, girls10to15: 0 };
 const base = { couple: false, under35: false, sharedExempt: false, otherAdults: 0, children: none, overnightCarer: false, disabledChildrenOwnRoom: 0 };
@@ -25,6 +25,55 @@ describe("bedroom entitlement", () => {
   });
   it("disabled child who cannot share", () => {
     expect(bedroomEntitlement({ ...base, couple: true, children: { ...none, boysUnder10: 2 }, disabledChildrenOwnRoom: 1 }).rooms).toBe(3);
+  });
+});
+
+describe("edge cases from the page plan", () => {
+  it("single under 35 with no children gets the shared rate, at any age under 35", () => {
+    const r = bedroomEntitlement({ ...base, under35: true });
+    expect(r.sharedRate).toBe(true);
+    expect(r.rooms).toBe(1);
+    expect(bedroomEntitlement({ ...base, under35: false }).category).toBe("1");
+    // A couple, a parent, or someone with another adult at home is never on the shared rate.
+    expect(bedroomEntitlement({ ...base, under35: true, couple: true }).category).toBe("1");
+    expect(bedroomEntitlement({ ...base, under35: true, children: { ...none, girlsUnder10: 1 } }).category).toBe("2");
+    expect(bedroomEntitlement({ ...base, under35: true, otherAdults: 1 }).category).toBe("2");
+  });
+  it("an overnight carer adds a room and lifts the shared rate", () => {
+    expect(bedroomEntitlement({ ...base, overnightCarer: true }).category).toBe("2");
+    const young = bedroomEntitlement({ ...base, under35: true, overnightCarer: true });
+    expect(young.sharedRate).toBe(false);
+    expect(young.category).toBe("2");
+  });
+  it("a boy and a girl share until one of them is 10", () => {
+    expect(bedroomEntitlement({ ...base, children: { ...none, boysUnder10: 1, girlsUnder10: 1 } }).category).toBe("2");
+    expect(bedroomEntitlement({ ...base, children: { ...none, boys10to15: 1, girlsUnder10: 1 } }).category).toBe("3");
+    expect(bedroomEntitlement({ ...base, children: { ...none, boys10to15: 1, girls10to15: 1 } }).category).toBe("3");
+  });
+  it("five or more bedrooms are paid at the four-bedroom rate", () => {
+    const r = bedroomEntitlement({ ...base, couple: true, otherAdults: 1, children: { ...none, boys10to15: 1, girls10to15: 1, boysUnder10: 1, girlsUnder10: 2 }, overnightCarer: true });
+    expect(r.rooms).toBe(6);
+    expect(r.category).toBe("4");
+    expect(lhaMonthly("Bristol", r.category)).toBe(1850);
+  });
+  it("Northern Ireland uses weekly rates × 365 ÷ 84 for Universal Credit", () => {
+    expect(lhaNation("Belfast")).toBe("ni");
+    expect(lhaMonthly("Belfast", "2")).toBeCloseTo((lhaWeekly("Belfast", "2") * 365) / 84, 2);
+  });
+  it("the bedroom plan has one tile for each room", () => {
+    const cases = [
+      base,
+      { ...base, couple: true, children: { ...none, boys10to15: 1, girlsUnder10: 1 } },
+      { ...base, couple: true, otherAdults: 2, children: { boys10to15: 3, girls10to15: 1, boysUnder10: 2, girlsUnder10: 3 }, overnightCarer: true, disabledChildrenOwnRoom: 2 },
+      { ...base, children: { ...none, boysUnder10: 3, girlsUnder10: 1 } },
+      { ...base, children: { ...none, boysUnder10: 1, girlsUnder10: 3 }, disabledChildrenOwnRoom: 1 },
+    ];
+    for (const c of cases) expect(bedroomPlan(c).length).toBe(bedroomEntitlement(c).rooms);
+    expect(bedroomPlan({ ...base, couple: true, children: { ...none, boys10to15: 1, boysUnder10: 1, girlsUnder10: 1 } }).map((t) => t.who)).toEqual([
+      "You and your partner",
+      "Boy aged 10 to 15 and boy under 10",
+      "Girl under 10",
+    ]);
   });
 });
 

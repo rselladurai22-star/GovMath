@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { childBenefitFor, freeHours, hicbc, hicbcShare, maternityPay, taxFreeChildcarePlan } from "./family";
+import { childBenefitFor, freeHours, hicbc, hicbcPayer, hicbcShare, maternityPay, taxFreeChildcarePlan } from "./family";
 
 describe("Child Benefit", () => {
   it("two children", () => {
@@ -56,6 +56,49 @@ describe("HICBC", () => {
     expect(at(120_000).charge).toBe(2337);
     // Four children: £4,199.00 exactly, which must not be cut to £4,198 by floating point.
     expect(at(80_000, 4).charge).toBe(4199);
+  });
+});
+
+describe("HICBC edge cases from the page plan", () => {
+  const at = (income: number, more: Partial<Parameters<typeof hicbc>[0]> = {}) => hicbc({ children: 2, income, pension: 0, giftAid: 0, weeks: 52, ...more });
+  it("exactly £60,000 is not over the threshold; £60,199 still pays nothing", () => {
+    expect(at(60_000).charge).toBe(0);
+    expect(at(60_199).charge).toBe(0);
+    expect(at(60_199).band).toBe("none");
+  });
+  it("£60,200 pays 1%, in whole pounds", () => {
+    const r = at(60_200);
+    expect(r.share).toBeCloseTo(0.01, 9);
+    // 1% of £2,337 is £23.37, rounded down.
+    expect(r.charge).toBe(23);
+    expect(r.keep).toBeCloseTo(2314.4, 6);
+  });
+  it("£79,999 pays 99%; £80,000 pays it all", () => {
+    expect(at(79_999).share).toBeCloseTo(0.99, 9);
+    expect(at(79_999).charge).toBe(2313);
+    expect(at(80_000).share).toBe(1);
+    expect(at(80_000).keep).toBeCloseTo(0.4, 6);
+  });
+  it("Gift Aid and pension both come off before the test", () => {
+    const r = at(72_000, { pension: 8_000, giftAid: 1_250 });
+    expect(r.adjustedNetIncome).toBe(62_750);
+    expect(r.share).toBeCloseTo(0.13, 9);
+    expect(r.pensionToAvoid).toBe(2_750);
+  });
+  it("the higher earner pays", () => {
+    expect(hicbcPayer(58_000, 66_000)).toBe("partner");
+    expect(hicbcPayer(66_000, 58_000)).toBe("you");
+    expect(hicbcPayer(66_000, 66_000)).toBe("you");
+    // Two incomes of £59,000 are not added together.
+    expect(at(59_000).charge).toBe(0);
+  });
+  it("part-year: the charge is a share of the weeks actually paid", () => {
+    const r = at(70_000, { weeks: 26 });
+    expect(r.benefit).toBeCloseTo(1168.7, 6);
+    expect(r.charge).toBe(584);
+  });
+  it("proposed April 2027 rates", () => {
+    expect(at(70_000, { year: "2027/28" }).charge).toBe(1210);
   });
 });
 
