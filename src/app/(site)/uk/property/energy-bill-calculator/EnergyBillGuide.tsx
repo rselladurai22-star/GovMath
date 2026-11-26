@@ -4,12 +4,12 @@ import { Bars, Callout, CompareCards, DataTable, Guide, GuideSection, KeyStats, 
 
 const TOC: TocItem[] = [
   { id: "cap", title: "What the price cap is" },
-  { id: "rates", title: "Rates from 1 October 2026" },
-  { id: "typical-bill", title: "The typical bill: £1,723" },
+  { id: "rates", title: "Rates from 1 January 2027" },
+  { id: "typical-bill", title: "The typical bill: £2,166" },
   { id: "sum", title: "How your bill is worked out" },
   { id: "typical-use", title: "Typical use: low, medium and high" },
-  { id: "vat", title: "No VAT on electricity until April 2027" },
-  { id: "change", title: "What changed since July" },
+  { id: "vat", title: "No VAT on electricity until July 2027" },
+  { id: "change", title: "Why bills rose in January" },
   { id: "electric-only", title: "Homes with no gas" },
   { id: "standing", title: "Standing charges" },
   { id: "payment", title: "How you pay changes the price" },
@@ -22,6 +22,7 @@ const TOC: TocItem[] = [
   { id: "each-unit", title: "What each unit saved is worth" },
   { id: "next", title: "The next price cap" },
   { id: "help", title: "Help if you are struggling" },
+  { id: "energy-payment", title: "The £100 Household Energy Payment" },
   { id: "breakdown", title: "What makes up the cap" },
   { id: "quarter", title: "The cost of one quarter" },
   { id: "key-numbers", title: "Key numbers" },
@@ -42,11 +43,11 @@ export default function EnergyBillGuide() {
       title="Your gas and electricity bill at the price cap"
       intro={
         <>
-          Most homes in Great Britain pay for gas and electricity at, or close to, the Ofgem price cap. This guide explains the cap from 1 October to 31
-          December 2026, how a bill is worked out, what changed since the summer, and the things that make your own bill higher or lower.
+          Most homes in Great Britain pay for gas and electricity at, or close to, the Ofgem price cap. This guide explains the cap from 1 January to 31
+          March 2027, how a bill is worked out, why it rose from October, and the things that make your own bill higher or lower.
         </>
       }
-      meta={["October 2026", "12 min read", "Reviewed October 2026"]}
+      meta={["November 2026", "12 min read", "Reviewed November 2026"]}
       toc={TOC}
       sources={SOURCES}
     >
@@ -63,32 +64,32 @@ export default function EnergyBillGuide() {
       </GuideSection>
 
       <GuideSection id="rates" n={2} kicker="This quarter" title="Rates from 1 October 2026">
-        <p>From 1 October to 31 December 2026, the average price cap rates for a home paying by Direct Debit are:</p>
+        <p>From 1 January to 31 March 2027, the average price cap rates for a home paying by Direct Debit are:</p>
         <DataTable
           caption="Price cap averages, Great Britain, Direct Debit"
           head={["", "Unit rate", "Standing charge"]}
           numeric={[1, 2]}
           rows={[
-            ["Electricity (no VAT)", "26.32p per kWh", "54.83p a day"],
-            ["Gas (5% VAT included)", "7.97p per kWh", "29.68p a day"],
+            ["Electricity (no VAT)", "32.69p per kWh", "54.77p a day"],
+            ["Gas (5% VAT included)", "10.96p per kWh", "29.65p a day"],
           ]}
         />
         <p>
-          These are averages across Great Britain. The calculator uses them by default, and you can enter the rates from your own bill under More options.
+          From October to December 2026 they were 26.32p and 54.83p for electricity, and 7.97p and 29.68p for gas. These are averages across Great Britain. The calculator uses them by default, and you can enter the rates from your own bill under More options.
         </p>
       </GuideSection>
 
-      <GuideSection id="typical-bill" n={3} kicker="Headline" title="The typical bill: £1,723">
+      <GuideSection id="typical-bill" n={3} kicker="Headline" title="The typical bill: £2,166">
         <p>
-          Ofgem&rsquo;s headline figure is <strong>£1,723 a year</strong> for a typical home using gas and electricity and paying by Direct Debit, up from
-          £1,663 from July to September 2026. That is a rise of about 4%, or about £5 a month.
+          Ofgem&rsquo;s headline figure is <strong>£2,166 a year</strong> for a typical home using gas and electricity and paying by Direct Debit, up from
+          £1,723 from October to December 2026. That is a rise of 26%, or about £37 a month.
         </p>
         <KeyStats
           items={[
-            { value: "£1,723", label: "Typical yearly bill, October to December 2026" },
-            { value: "£143.63", label: "A month" },
-            { value: "£1,663", label: "July to September 2026" },
-            { value: "4%", label: "Rise" },
+            { value: "£2,166", label: "Typical yearly bill, January to March 2027" },
+            { value: "£180.55", label: "A month" },
+            { value: "£1,723", label: "October to December 2026" },
+            { value: "26%", label: "Rise" },
           ]}
         />
         <p>
@@ -99,18 +100,18 @@ export default function EnergyBillGuide() {
       <GuideSection id="sum" n={4} kicker="The method" title="How your bill is worked out">
         <p>Each fuel is worked out the same way: units used times the unit rate, plus the standing charge for each day. For a typical home:</p>
         <WorkedExample
-          title="Typical home, a year, October to December 2026 rates"
+          title="Typical home, a year, January to March 2027 rates"
           steps={[
-            { label: "Electricity used", note: "2,500 kWh × 26.32p", value: "£658.00" },
-            { label: "Electricity standing charge", note: "54.83p × 365 days", value: "£200.13" },
-            { label: "Gas used", note: "9,500 kWh × 7.97p", value: "£757.15" },
-            { label: "Gas standing charge", note: "29.68p × 365 days", value: "£108.33" },
+            { label: "Electricity used", note: "2,500 kWh × 32.69p", value: "£817.25" },
+            { label: "Electricity standing charge", note: "54.77p × 365 days", value: "£199.91" },
+            { label: "Gas used", note: "9,500 kWh × 10.96p", value: "£1,041.20" },
+            { label: "Gas standing charge", note: "29.65p × 365 days", value: "£108.22" },
           ]}
-          total={{ label: "A year", value: "£1,723.61" }}
+          total={{ label: "A year", value: "£2,166.58" }}
         />
         <p>
-          That matches Ofgem&rsquo;s £1,723 (Ofgem rounds its rates for publication). Split over 12 months it is about £143.63 a month: £71.51 for electricity
-          and £72.12 for gas.
+          That matches Ofgem&rsquo;s £2,166 (Ofgem rounds its rates for publication). Split over 12 months it is about £180.55 a month: £84.76 for electricity
+          and £95.79 for gas.
         </p>
       </GuideSection>
 
@@ -120,13 +121,13 @@ export default function EnergyBillGuide() {
           homes now use less energy than when they were last set in 2023: medium use fell from 2,700 to 2,500 kWh of electricity and from 11,500 to 9,500 kWh of gas.
         </p>
         <DataTable
-          caption="Typical yearly use from July 2026, and the bill at the October to December 2026 cap"
+          caption="Typical yearly use from July 2026, and the bill at the January to March 2027 cap"
           head={["Use", "Electricity", "Gas", "Bill a year", "A month"]}
           numeric={[1, 2, 3, 4]}
           rows={[
-            ["Low", "1,600 kWh", "6,000 kWh", "£1,207.78", "£100.65"],
-            ["Medium", "2,500 kWh", "9,500 kWh", "£1,723.61", "£143.63"],
-            ["High", "3,800 kWh", "14,000 kWh", "£2,424.42", "£202.04"],
+            ["Low", "1,600 kWh", "6,000 kWh", "£1,488.77", "£124.06"],
+            ["Medium", "2,500 kWh", "9,500 kWh", "£2,166.58", "£180.55"],
+            ["High", "3,800 kWh", "14,000 kWh", "£3,084.75", "£257.06"],
           ]}
         />
         <p>
@@ -135,39 +136,44 @@ export default function EnergyBillGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="vat" n={6} kicker="Tax" title="No VAT on electricity until April 2027">
+      <GuideSection id="vat" n={6} kicker="Tax" title="No VAT on electricity until July 2027">
         <p>
-          Household energy normally carries VAT at 5%. The government removed VAT from household electricity from <strong>1 October 2026 to 31 March 2027</strong>.
-          It applies to all electricity bills, including fixed tariffs, and suppliers apply it automatically. Gas keeps its 5% VAT.
+          Household energy normally carries VAT at 5%. The government removed VAT from household electricity from 1 October 2026, and the Budget on 28
+          October 2026 extended the cut, which was due to end on 31 March 2027, to <strong>30 June 2027</strong>. It applies to all electricity bills,
+          including fixed tariffs, and suppliers apply it automatically. Gas keeps its 5% VAT.
         </p>
         <p>
-          For a typical home using 2,500 kWh, the electricity bill is £858.13 a year. With 5% VAT added, it would be about £901.04: a saving of about
-          <strong> £42.91</strong>. Ofgem says that without the VAT cut, the October rise would have been about £45 higher.
+          For a typical home using 2,500 kWh, the electricity bill is £1,017.16 a year at the January cap. With 5% VAT added, it would be about £1,068.02: a
+          saving of about <strong>£50.86</strong>.
         </p>
       </GuideSection>
 
-      <GuideSection id="change" n={7} kicker="Since the summer" title="What changed since July">
-        <p>From July to September 2026, the cap rates were 26.11p per kWh for electricity (with VAT) and 7.33p for gas, with standing charges of 57.19p and 29.04p a day.</p>
+      <GuideSection id="change" n={7} kicker="Since the summer" title="Why bills rose in January">
+        <p>
+          The cap from 1 January 2027 is 26% higher than in the autumn. The main reason is <strong>higher wholesale gas prices</strong>. Gas is used to
+          heat most homes and to generate much of Great Britain&rsquo;s electricity, so dearer gas pushes up both fuels. The gas unit rate rose from 7.97p to
+          10.96p, and electricity from 26.32p to 32.69p. Standing charges barely moved.
+        </p>
         <CompareCards
           columns={[
-            { name: "July to September 2026", rows: [{ label: "Electricity", value: "£861.49" }, { label: "Gas", value: "£802.35" }, { label: "A year", value: "£1,663.84" }] },
             { name: "October to December 2026", rows: [{ label: "Electricity", value: "£858.13" }, { label: "Gas", value: "£865.48" }, { label: "A year", value: "£1,723.61" }] },
+            { name: "January to March 2027", rows: [{ label: "Electricity", value: "£1,017.16" }, { label: "Gas", value: "£1,149.42" }, { label: "A year", value: "£2,166.58" }] },
           ]}
         />
         <p>
-          For a typical home, gas rose by about £63.14 a year and electricity fell by about £3.36. Ofgem says wholesale costs drove the rise, with gas prices
-          pushed up by conflict and instability in the Middle East and by hot weather across Europe. The removal of VAT kept electricity broadly level.
+          For a typical home, gas rose by about £283.94 a year and electricity by about £159.03: £442.97 in all, or about £36.91 a month. The rise lands in the
+          coldest months, when most homes use the most gas.
         </p>
       </GuideSection>
 
       <GuideSection id="electric-only" n={8} kicker="No gas" title="Homes with no gas">
         <p>
-          Homes with no gas supply saw almost no change. At 2,500 kWh a year, electricity costs £858.13, about £3.36 less than in the summer. Ofgem says homes
-          without gas see a change of under 1%.
+          Homes with no gas supply see a smaller rise than dual fuel homes. At 2,500 kWh a year, electricity costs £1,017.16, about £159.03 (19%) more than
+          from October to December 2026.
         </p>
         <p>
           Homes heated by electricity use far more than 2,500 kWh, so choose &ldquo;Electricity only&rdquo; in the calculator and enter your own yearly use. At
-          3,800 kWh, the bill is £1,200.29 a year. To see where the units go, try our <a href="/uk/property/appliance-running-cost">appliance running cost calculator</a>.
+          3,800 kWh, the bill is £1,442.13 a year. To see where the units go, try our <a href="/uk/property/appliance-running-cost">appliance running cost calculator</a>.
         </p>
       </GuideSection>
 
@@ -177,32 +183,37 @@ export default function EnergyBillGuide() {
         </p>
         <Bars
           items={[
-            { label: "Electricity standing charge, a year", value: 200.13 },
-            { label: "Gas standing charge, a year", value: 108.33 },
+            { label: "Electricity standing charge, a year", value: 199.91 },
+            { label: "Gas standing charge, a year", value: 108.22 },
           ]}
           format={(n) => "£" + n.toFixed(2)}
         />
         <p>
-          Together that is £308.46 a year, about 17.9% of a typical bill, down from £314.74 in the summer. Low users feel standing charges most, because they make
-          up a bigger share of a small bill.
+          Together that is £308.13 a year, about 14.2% of a typical bill, almost the same as the £308.46 from October to December 2026. Low users feel standing
+          charges most, because they make up a bigger share of a small bill. The Budget on 28 October 2026 asked Ofgem to abolish gas standing charges, but no
+          date has been set.
         </p>
       </GuideSection>
 
       <GuideSection id="payment" n={10} kicker="Payment" title="How you pay changes the price">
-        <p>The cap is different for each payment method. Ofgem&rsquo;s typical yearly bills for October to December 2026 are:</p>
+        <p>
+          The cap is different for each payment method. Ofgem&rsquo;s typical yearly bills for October to December 2026, and the January to March 2027 Direct
+          Debit figure, are:
+        </p>
         <DataTable
-          caption="Typical yearly bill by payment method, October to December 2026"
-          head={["Payment method", "July to September", "October to December"]}
+          caption="Typical yearly bill by payment method"
+          head={["Payment method", "October to December 2026", "January to March 2027"]}
           numeric={[1, 2]}
           rows={[
-            ["Direct Debit", "£1,663", "£1,723"],
-            ["Pay on receipt of bill (standard credit)", "£1,796", "£1,861"],
-            ["Prepayment meter", "£1,620", "£1,678"],
+            ["Direct Debit", "£1,723", "£2,166"],
+            ["Pay on receipt of bill (standard credit)", "£1,861", "About £2,340 (our estimate)"],
+            ["Prepayment meter", "£1,678", "About £2,110 (our estimate)"],
           ]}
         />
         <p>
-          Paying when the bill arrives costs more because suppliers wait longer for the money and face more unpaid bills. Prepayment is the cheapest: Ofgem says
-          about £45 a year less than Direct Debit. The calculator estimates other payment methods by scaling with these typical bills.
+          Paying when the bill arrives costs more because suppliers wait longer for the money and face more unpaid bills. Prepayment is the cheapest. The
+          calculator estimates the other payment methods by scaling the Direct Debit bill in the same proportions as Ofgem&rsquo;s October to December 2026
+          typical bills, which puts prepayment about £57 a year below Direct Debit for a typical home. Check Ofgem&rsquo;s table for the exact figure in your region.
         </p>
       </GuideSection>
 
@@ -220,8 +231,8 @@ export default function EnergyBillGuide() {
       <GuideSection id="economy-7" n={12} kicker="Meters" title="Economy 7 meters">
         <p>
           Economy 7 meters record a cheaper night rate and a dearer day rate. Ofgem caps the average of the two, assuming 42% of use is at night, and uses a typical
-          3,400 kWh a year. On that basis the typical Economy 7 electricity bill paying by Direct Debit is <strong>£1,046</strong> a year from October 2026, up
-          about 1% from £1,039.
+          3,400 kWh a year. On that basis the typical Economy 7 electricity bill paying by Direct Debit was <strong>£1,046</strong> a year from October to
+          December 2026. Ofgem publishes a new figure with each cap, so check its table for January to March 2027.
         </p>
         <p>
           Your supplier can split the cap between day and night rates as it chooses. If you have Economy 7, enter your average unit rate in the calculator, or
@@ -236,7 +247,7 @@ export default function EnergyBillGuide() {
         </p>
         <p>
           To use your own rates, enter them under More options. For example, at 24p for electricity and 6.5p for gas, with the cap standing charges, a typical home
-          would pay £1,525.96 a year. Check any exit fees before switching.
+          would pay £1,525.63 a year. Check any exit fees before switching.
         </p>
       </GuideSection>
 
@@ -246,9 +257,9 @@ export default function EnergyBillGuide() {
           adjust it to clear a debt or reduce a credit on your account.
         </p>
         <p>
-          If you only know what you paid each month, choose &ldquo;Monthly payment&rdquo; in the calculator and enter what you paid from July to September. It works
-          back to your likely use, then prices that use at the new cap. For example, £140 a month before October suggests about 2,530 kWh of electricity and 9,614 kWh
-          of gas a year, which costs about <strong>£145.05 a month</strong> at the October cap.
+          If you only know what you paid each month, choose &ldquo;Monthly payment&rdquo; in the calculator and enter what you paid from October to December. It works
+          back to your likely use, then prices that use at the new cap. For example, £140 a month before January suggests about 2,423 kWh of electricity and 9,207 kWh
+          of gas a year, which costs about <strong>£175.78 a month</strong> at the January cap.
         </p>
       </GuideSection>
 
@@ -258,8 +269,8 @@ export default function EnergyBillGuide() {
           normal for your account to be in credit in autumn and to fall over the winter.
         </p>
         <p>
-          The price cap changes every three months, so a yearly figure at one quarter&rsquo;s rates is a guide, not a forecast. The October to December rates
-          apply to the heaviest months of the year only in part.
+          The price cap changes every three months, so a yearly figure at one quarter&rsquo;s rates is a guide, not a forecast. The January to March rates
+          apply to some of the heaviest months of the year for gas use.
         </p>
       </GuideSection>
 
@@ -275,8 +286,8 @@ export default function EnergyBillGuide() {
 
       <GuideSection id="each-unit" n={17} kicker="Saving" title="What each unit saved is worth">
         <p>
-          At the October to December 2026 cap, every 1,000 kWh of electricity you avoid saves about <strong>£263.20</strong>, and every 1,000 kWh of gas about{" "}
-          <strong>£79.70</strong>. Units of electricity are worth over three times as much to save as units of gas.
+          At the January to March 2027 cap, every 1,000 kWh of electricity you avoid saves about <strong>£326.90</strong>, and every 1,000 kWh of gas about{" "}
+          <strong>£109.60</strong>. Units of electricity are worth about three times as much to save as units of gas.
         </p>
         <p>
           Turning the heating down, draught-proofing and using less hot water cut gas use. Drying clothes without a tumble dryer, using smaller cooking appliances
@@ -288,12 +299,16 @@ export default function EnergyBillGuide() {
         <Timeline
           items={[
             { when: "1 October 2026", what: "Cap rises to £1,723 for a typical home", detail: "VAT on electricity removed." },
-            { when: "25 November 2026", what: "Ofgem announces the January to March 2027 cap" },
-            { when: "1 January 2027", what: "New cap rates start" },
-            { when: "31 March 2027", what: "Zero VAT on electricity is due to end", detail: "Unless the government extends it." },
+            { when: "1 January 2027", what: "Cap rises 26% to £2,166 for a typical home", detail: "£100 Household Energy Payment starts in England, bands A to D." },
+            { when: "Late February 2027", what: "Ofgem announces the April to June 2027 cap" },
+            { when: "1 April 2027", what: "New cap rates start" },
+            { when: "30 June 2027", what: "Zero VAT on electricity is due to end", detail: "Extended from 31 March 2027 in the October 2026 Budget." },
           ]}
         />
-        <p>When the January cap is announced, the calculator&rsquo;s figures will be updated. Until then, it shows the rates in force now.</p>
+        <p>
+          Ofgem is due to announce the cap for 1 April to 30 June 2027 in late February 2027. When it does, the calculator&rsquo;s figures will be updated.
+          Until then, it shows the rates in force now.
+        </p>
       </GuideSection>
 
       <GuideSection id="help" n={19} kicker="Support" title="Help if you are struggling">
@@ -312,10 +327,23 @@ export default function EnergyBillGuide() {
         </Callout>
       </GuideSection>
 
-      <GuideSection id="breakdown" n={20} kicker="Behind the price" title="What makes up the cap">
+      <GuideSection id="energy-payment" n={20} kicker="Support" title="The £100 Household Energy Payment">
         <p>
-          Ofgem builds the cap from several cost allowances. For a typical Direct Debit home from October to December 2026, wholesale energy is the biggest part,
-          and its share grew from 44% to 47% since the summer.
+          The Budget on 28 October 2026 announced a £2.6 billion Household Energy Payment. From January 2027, households in council tax bands A to D in England
+          get a <strong>£100 payment</strong>, delivered through the council tax system. Check your band with our{" "}
+          <a href="/uk/property/council-tax-bands">council tax bands calculator</a>.
+        </p>
+        <p>
+          The payment is not taken off the price cap and is not included in the calculator&rsquo;s figures. For a typical home, £100 covers a little under a
+          quarter of the £442.97 a year that the January rise adds. The payment is for England: the Scottish, Welsh and Northern Ireland governments get
+          funding through the Barnett formula instead.
+        </p>
+      </GuideSection>
+
+      <GuideSection id="breakdown" n={21} kicker="Behind the price" title="What makes up the cap">
+        <p>
+          Ofgem builds the cap from several cost allowances. For a typical Direct Debit home from October to December 2026, wholesale energy was the biggest
+          part, at 47%. The January 2027 rise came mainly from higher wholesale gas prices.
         </p>
         <Bars
           items={[
@@ -330,15 +358,16 @@ export default function EnergyBillGuide() {
         />
         <p>
           Wholesale costs move with gas and power markets, which is why the cap changes every quarter. Network costs pay for the wires and pipes, and are the main
-          reason prices differ between regions. Figures may not add to 100% because of rounding and smaller items, such as VAT on gas.
+          reason prices differ between regions. Figures may not add to 100% because of rounding and smaller items, such as VAT on gas. These shares are Ofgem&rsquo;s
+          for October to December 2026.
         </p>
       </GuideSection>
 
-      <GuideSection id="quarter" n={21} kicker="This quarter" title="The cost of one quarter">
+      <GuideSection id="quarter" n={22} kicker="This quarter" title="The cost of one quarter">
         <p>
-          The October to December 2026 rates last for 92 days. Over that time, a typical home using energy at an even rate through the year would pay about{" "}
-          <strong>£434.44</strong>. In practice, most homes use more gas in these months than in the summer, so the real cost of the quarter is usually higher,
-          and lower in spring and summer.
+          The January to March 2027 rates last for 90 days. Over that time, a typical home using energy at an even rate through the year would pay about{" "}
+          <strong>£534.23</strong>. In practice, most homes use far more gas in these winter months than in the summer, so the real cost of the quarter is
+          usually higher, and lower in spring and summer.
         </p>
         <p>
           This is why the calculator shows a yearly figure and a monthly average: it is the clearest way to compare one cap with another, and it matches how
@@ -346,15 +375,15 @@ export default function EnergyBillGuide() {
         </p>
       </GuideSection>
 
-      <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers">
+      <GuideSection id="key-numbers" n={23} kicker="Summary" title="Key numbers">
         <KeyStats
           items={[
-            { value: "26.32p", label: "Electricity per kWh, no VAT" },
-            { value: "54.83p", label: "Electricity standing charge a day" },
-            { value: "7.97p", label: "Gas per kWh, 5% VAT included" },
-            { value: "29.68p", label: "Gas standing charge a day" },
-            { value: "£1,723", label: "Typical yearly bill, Direct Debit" },
-            { value: "25 Nov 2026", label: "Next cap announced" },
+            { value: "32.69p", label: "Electricity per kWh, no VAT" },
+            { value: "54.77p", label: "Electricity standing charge a day" },
+            { value: "10.96p", label: "Gas per kWh, 5% VAT included" },
+            { value: "29.65p", label: "Gas standing charge a day" },
+            { value: "£2,166", label: "Typical yearly bill, Direct Debit" },
+            { value: "Late Feb 2027", label: "Next cap announced" },
           ]}
         />
       </GuideSection>

@@ -2,7 +2,7 @@
  * Home energy upgrades: solar panels, and a heat pump against a gas boiler.
  *
  * Energy prices come from the Ofgem price cap in ./costs (electricity VAT is
- * 0% from 1 October 2026 to 31 March 2027; gas keeps 5%). Every other figure
+ * 0% from 1 October 2026 to 30 June 2027; gas keeps 5%). Every other figure
  * here is a named constant with its source, and every input can be changed by
  * the user in the calculators.
  */

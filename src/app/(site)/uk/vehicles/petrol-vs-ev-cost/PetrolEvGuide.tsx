@@ -90,7 +90,7 @@ export default function PetrolEvGuide() {
           numeric={[1, 2]}
           rows={[
             ["Overnight EV tariff", "8p", "2.3p"],
-            ["Home, standard price cap", "26.32p", "7.5p"],
+            ["Home, standard price cap", "32.69p", "9.3p"],
             ["80% home tariff, 20% rapid", "21.4p average", "6.1p"],
             ["Rapid public charger", "75p", "21.4p"],
           ]}
@@ -103,7 +103,7 @@ export default function PetrolEvGuide() {
             items={[
               { label: "EV, all home tariff", value: 183 },
               { label: "EV, 80/20 home and rapid", value: 489 },
-              { label: "EV, all price cap", value: 602 },
+              { label: "EV, all price cap", value: 747 },
               { label: "Petrol", value: 1405 },
               { label: "EV, all rapid", value: 1714 },
             ]}
@@ -210,8 +210,8 @@ export default function PetrolEvGuide() {
           for the rest of the house, so check the whole household bill, not just the car.
         </p>
         <p>
-          If you work from home and use a lot of electricity in the day, a standard tariff at the 26.32p price cap may suit better. Even then,
-          charging costs about 7.5p a mile, well under half the cost of petrol.
+          If you work from home and use a lot of electricity in the day, a standard tariff at the 32.69p price cap may suit better. Even then,
+          charging costs about 9.3p a mile, a little over half the cost of petrol.
         </p>
       </GuideSection>
 
@@ -287,7 +287,7 @@ export default function PetrolEvGuide() {
         <KeyStats
           items={[
             { value: "173.8p", label: "Petrol a litre" },
-            { value: "26.32p", label: "Price cap a kWh" },
+            { value: "32.69p", label: "Price cap a kWh" },
             { value: "8p", label: "Typical EV tariff a kWh" },
             { value: "£1,405", label: "Petrol fuel, 8,000 miles" },
             { value: "£183", label: "Electricity, 8,000 miles at 8p" },
