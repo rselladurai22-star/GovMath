@@ -56,3 +56,39 @@ export function proRata(i: ProRataInput): ProRataResult {
     hourly: yourWeeklyHours > 0 ? salary / (yourWeeklyHours * 52) : 0,
   };
 }
+
+/* ── Statutory holiday and term-time pay (GOV.UK: Holiday entitlement) ─── */
+
+/** 5.6 weeks' paid holiday a year, capped at 28 days. */
+export const STATUTORY_WEEKS = 5.6;
+export const STATUTORY_CAP_DAYS = 28;
+/** Part-year and irregular-hours workers accrue 12.07% of hours worked (5.6 ÷ 46.4), from leave years starting 1 April 2024. */
+export const PART_YEAR_ACCRUAL = 0.1207;
+
+/** The legal minimum holiday in days for a regular week of `daysPerWeek` days. */
+export function statutoryHolidayDays(daysPerWeek: number): number {
+  return Math.min(STATUTORY_CAP_DAYS, STATUTORY_WEEKS * Math.max(0, daysPerWeek));
+}
+
+export type TermTimeResult = {
+  /** Weeks worked plus the holiday they earn: the weeks of pay a year. */
+  paidWeeks: number;
+  /** Holiday earned, in weeks, at the statutory 12.07% (or the contract's own figure). */
+  holidayWeeks: number;
+  /** Yearly salary for the weeks paid. */
+  salary: number;
+};
+
+/**
+ * Pay for a job worked only some weeks of the year (term-time only): the
+ * pro rata salary for the hours, then scaled by the weeks paid. A worker
+ * with no paid holiday of their own earns at least 12.07% of the weeks they
+ * work as holiday, so 39 working weeks bring about 43.7 paid weeks.
+ * `holidayWeeks`, when given, replaces that statutory minimum.
+ */
+export function termTime(proRataSalary: number, weeksWorked: number, holidayWeeks?: number): TermTimeResult {
+  const worked = Math.min(52, Math.max(0, weeksWorked));
+  const hol = holidayWeeks !== undefined ? Math.max(0, holidayWeeks) : worked * PART_YEAR_ACCRUAL;
+  const paidWeeks = Math.min(52, worked + hol);
+  return { paidWeeks, holidayWeeks: paidWeeks - worked, salary: Math.max(0, proRataSalary) * (paidWeeks / 52) };
+}

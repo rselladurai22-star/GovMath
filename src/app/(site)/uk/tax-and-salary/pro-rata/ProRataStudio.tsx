@@ -1,13 +1,14 @@
 "use client";
 
-import { proRata } from "@/lib/tax/pro-rata";
-import { computeTakeHome, STUDENT_PLANS } from "@/lib/tax/take-home-engine";
-import Studio from "@/components/flagship/Studio";
-import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Compare, DataTable, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, percent, per } from "@/components/flagship/format";
+import { useState } from "react";
+import { proRata, statutoryHolidayDays, termTime } from "@/lib/tax/pro-rata";
+import { computeTakeHome } from "@/lib/tax/take-home-engine";
+import { Caveat, Flag, Foot, Inputs, Tool } from "@/components/calc/kit";
+import { Mini, Pills } from "@/components/calc/fields";
+import { MoneyField } from "@/components/flagship/inputs";
+import { gbp, percent } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
-import { REGION_LABEL, TAX_KEYS, taxParams, TaxSituationFields } from "@/components/flagship/taxOptions";
+import { REGION_LABEL, taxParams, TaxSituationFields } from "@/components/flagship/taxOptions";
 
 type Basis = "hours" | "days";
 
@@ -20,62 +21,44 @@ const SCHEMA = {
   ftDays: num(5, 1, 7),
   months: num(12, 1, 12),
   holiday: num(33, 0, 60),
+  weeks: num(52, 1, 52),
   ...taxParams,
 };
-const ADVANCED = ["months", "holiday", ...TAX_KEYS] as const;
 
 const oneDp = (n: number) => (Math.round(n * 10) / 10).toLocaleString("en-GB");
+const DAY_PILLS = [1, 2, 3, 4] as const;
 
 export default function ProRataStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
   const byHours = v.basis === "hours";
-  const r = proRata({
-    fullTimeSalary: v.salary,
-    basis: v.basis,
-    hours: v.hours,
-    fullTimeHours: v.ftHours,
-    days: v.days,
-    fullTimeDays: v.ftDays,
-    months: v.months,
-    fullTimeHolidayDays: v.holiday,
-  });
+  const r = proRata({ fullTimeSalary: v.salary, basis: v.basis, hours: v.hours, fullTimeHours: v.ftHours, days: v.days, fullTimeDays: v.ftDays, months: v.months, fullTimeHolidayDays: v.holiday });
+  const termOn = v.weeks < 52;
+  const term = termTime(r.salary, v.weeks);
+  const yearly = termOn ? term.salary : r.salary;
   const tax = { pensionPct: v.pension, plan: v.plan, region: v.region, bonus: 0 };
-  const yours = computeTakeHome({ ...tax, gross: r.salary });
-  const full = computeTakeHome({ ...tax, gross: v.salary });
+  const yours = computeTakeHome({ ...tax, gross: yearly });
   const partYear = v.months < 12;
-  const yearSnap = computeTakeHome({ ...tax, gross: r.earnedThisYear });
-  const keepYou = yours.takeHome / Math.max(1, r.salary);
-  const keepFull = full.takeHome / Math.max(1, v.salary);
-  const shareWord = byHours ? `${oneDp(v.hours)} of ${oneDp(v.ftHours)} ${per(oneDp(v.ftHours), "hours")}` : `${v.days} of ${v.ftDays} ${per(v.ftDays, "days")}`;
+  const earned = yearly * (v.months / 12);
+  const yearSnap = computeTakeHome({ ...tax, gross: earned });
+  const [taxOpen, setTaxOpen] = useState(v.region !== "ruk" || v.plan !== "none" || v.pension > 0);
+  const [moreOpen, setMoreOpen] = useState(termOn || partYear || v.holiday !== 33);
 
-  const ladder = (byHours ? [16, 20, 22.5, 25, 30, 32.5] : [1, 2, 3, 4]).map((x) => {
-    const p = proRata({ fullTimeSalary: v.salary, basis: v.basis, hours: x, fullTimeHours: v.ftHours, days: x, fullTimeDays: v.ftDays });
-    const t = computeTakeHome({ ...tax, gross: p.salary });
-    return [byHours ? `${x} ${per(x, "hours")}` : `${x} day${x === 1 ? "" : "s"}`, percent(p.fte), gbp(p.salary), gbp(t.takeHome / 12)];
-  });
+  const yourDays = byHours ? (v.hours / v.ftHours) * v.ftDays : v.days;
+  const legalMin = statutoryHolidayDays(yourDays) * (v.months / 12);
+  // Pro-rated holiday, in days of the reader's own length (the same hours a day as full time).
+  const holidayOwn = r.holidayDays;
+  const belowMin = !termOn && holidayOwn + 0.05 < legalMin;
+  const fraction = byHours ? `${oneDp(v.hours)} of ${oneDp(v.ftHours)} hours` : `${oneDp(v.days)} of ${oneDp(v.ftDays)} days`;
 
   return (
-    <Studio
-      title="Your job"
-      ready={st.ready}
-      onCalculate={st.calculate}
-      calculateLabel="Work out my pro-rata pay"
-      onReset={st.reset}
-      dock={{ label: "Pro-rata salary", value: gbp(r.salary) }}
-      inputs={
-        <>
-          <InputGroup title="The job">
-            <MoneyField
-              label="Full-time salary"
-              value={v.salary}
-              onChange={st.bind("salary")}
-              big
-              slider={{ min: 0, max: 150_000, step: 500, ends: ["£0", "£150k"] }}
-              hint="The salary advertised for the full-time version of the job (FTE)."
-            />
-            <Segmented
-              label="Your part-time pattern is set in"
+    <Tool label="Pro rata salary calculator">
+      <div className="sa-pr">
+        <div className="sa-pr-inputs">
+          <Inputs title="The job and your hours">
+            <MoneyField label="Full-time salary" value={v.salary} onChange={st.bind("salary")} slider={{ min: 10_000, max: 150_000, step: 500, ends: ["£10,000", "£150,000"] }} hint="The advertised salary for the full-time role (FTE)." />
+            <Pills
+              label="Your pattern is set in"
               value={v.basis}
               onChange={st.bind("basis")}
               options={[
@@ -84,147 +67,119 @@ export default function ProRataStudio({ query }: { query: Query }) {
               ]}
             />
             {byHours ? (
-              <>
-                <StepperField label="Your hours a week" value={v.hours} onChange={st.bind("hours")} step={0.5} min={0} max={100} unit="hrs" dp={1} />
-                <StepperField label="Full-time hours a week" value={v.ftHours} onChange={st.bind("ftHours")} step={0.5} min={1} max={100} unit="hrs" dp={1} hint="Usually 35 to 40. Check the job advert or contract." />
-              </>
+              <div className="sa-pr-pair">
+                <Mini label="Your hours a week" value={v.hours} onChange={st.bind("hours")} step={0.5} dp={2} max={100} stepper />
+                <Mini label="Full-time hours" value={v.ftHours} onChange={st.bind("ftHours")} step={0.5} dp={2} min={1} max={100} stepper />
+              </div>
             ) : (
-              <>
-                <StepperField label="Your days a week" value={v.days} onChange={st.bind("days")} step={0.5} min={0} max={7} unit="days" dp={1} />
-                <StepperField label="Full-time days a week" value={v.ftDays} onChange={st.bind("ftDays")} step={1} min={1} max={7} unit="days" />
-              </>
+              <div className="sa-pr-days">
+                <div className="sa-pr-daypills" role="group" aria-label="Days a week">
+                  {DAY_PILLS.map((d) => (
+                    <button key={d} type="button" aria-pressed={v.days === d} onClick={() => st.set("days", d)}>
+                      {d} {d === 1 ? "day" : "days"}
+                    </button>
+                  ))}
+                </div>
+                <div className="sa-pr-pair">
+                  <Mini label="Your days a week" value={v.days} onChange={st.bind("days")} step={0.5} dp={1} max={7} stepper />
+                  <Mini label="Full-time days" value={v.ftDays} onChange={st.bind("ftDays")} step={1} min={1} max={7} stepper />
+                </div>
+              </div>
             )}
-          </InputGroup>
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            <StepperField
-              label="Months you work this tax year"
-              value={v.months}
-              onChange={st.bind("months")}
-              step={1}
-              min={1}
-              max={12}
-              unit="months"
-              optional
-              hint="Starting or leaving part-way through the year? Your tax-free allowance covers the whole year, so tax on a part year is lower."
-            />
-            <StepperField
-              label="Full-time holiday, including bank holidays"
-              value={v.holiday}
-              onChange={st.bind("holiday")}
-              step={1}
-              min={0}
-              max={60}
-              unit="days"
-              optional
-              hint="The legal minimum is 28 days for a five-day week. 25 days plus 8 bank holidays is 33."
-            />
-            <TaxSituationFields
-              region={v.region}
-              plan={v.plan}
-              pension={v.pension}
-              onRegion={st.bind("region")}
-              onPlan={st.bind("plan")}
-              onPension={st.bind("pension")}
-              pensionAside={`${gbp(yours.pensionContribution)} a year`}
-            />
-          </AdvancedOptions>
-        </>
-      }
-    >
-      <Answer
-        eyebrow="Your pro-rata salary"
-        value={gbp(r.salary)}
-        unit="a year before tax"
-        actions={<ShareButton copied={st.copied} onClick={st.share} />}
-        sentence={
-          v.salary <= 0 ? (
-            <>Enter the full-time salary to see your pro-rata pay.</>
-          ) : (
-            <>
-              Working <b>{shareWord}</b> is <b>{percent(r.fte)}</b> of full time, so you earn <b>{gbp(r.salary)}</b> a year. That is about{" "}
-              <b>{gbp(yours.takeHome / 12)}</b> a month after tax.
-            </>
-          )
-        }
-        badges={[`${percent(r.fte)} FTE`, `${gbp(r.hourly, true)} an hour`, REGION_LABEL[v.region]]}
-      />
+            <button type="button" className="sa-pr-toggle" aria-expanded={moreOpen} onClick={() => setMoreOpen((o) => !o)}>
+              Term-time, part of the year or holiday
+            </button>
+            {moreOpen && (
+              <div className="sa-pr-more">
+                <Mini label="Weeks you work a year" value={v.weeks} onChange={(x) => st.set("weeks", Math.max(1, Math.min(52, Math.round(x))))} min={1} max={52} suffix="of 52" stepper hint="Term-time only is usually 38 or 39." />
+                <Mini label="Months you work this tax year" value={v.months} onChange={(x) => st.set("months", Math.max(1, Math.min(12, Math.round(x))))} min={1} max={12} suffix="of 12" stepper hint="Starting or leaving part-way." />
+                <Mini label="Full-time holiday, with bank holidays" value={v.holiday} onChange={st.bind("holiday")} min={0} max={60} suffix="days" stepper hint="25 days plus 8 bank holidays is 33." />
+              </div>
+            )}
+          </Inputs>
+        </div>
 
-      <Facts
-        items={[
-          { label: "A month, before tax", value: gbp(r.salary / 12) },
-          { label: "Take-home a month", value: gbp(yours.takeHome / 12), tone: "good" },
-          { label: "Holiday a year", value: `${oneDp(r.holidayDays)} ${per(oneDp(r.holidayDays), "days")}`, note: `${oneDp(r.holidayHours)} ${per(oneDp(r.holidayHours), "hours")}` },
-          { label: "Share you keep", value: percent(keepYou), note: `vs ${percent(keepFull)} full time` },
-        ]}
-      />
+        <div className="sa-pr-result">
+          <figure className="sa-pr-pairs" role="img" aria-label={`Full time ${gbp(v.salary)} a year; ${fraction} is ${percent(r.fte, 1)}; your pro rata salary ${gbp(yearly)} a year`}>
+            <div className="sa-pr-side">
+              <span>Full time</span>
+              <b>{gbp(v.salary)}</b>
+              <small>{gbp(v.salary / 12)} a month</small>
+            </div>
+            <div className="sa-pr-join" aria-hidden="true">
+              <span className="sa-pr-frac">{fraction}</span>
+              <span className="sa-pr-pct">× {percent(r.fte, 1)}</span>
+              {termOn && <span className="sa-pr-frac">× {oneDp(term.paidWeeks)} of 52 weeks paid</span>}
+              <span className="sa-pr-meter">
+                <span style={{ width: `${Math.min(1, r.fte * (termOn ? term.paidWeeks / 52 : 1)) * 100}%` }} />
+              </span>
+            </div>
+            <div className="sa-pr-side is-yours" aria-live="polite">
+              <span>Your pro rata salary</span>
+              <b>{gbp(yearly)}</b>
+              <small>
+                <strong>{gbp(yearly / 12)}</strong> a month before tax
+              </small>
+            </div>
+          </figure>
 
-      <Assumptions
-        items={[
-          { label: "Tax year", value: "2026/27" },
-          { label: "Full time", value: byHours ? `${oneDp(v.ftHours)} ${per(oneDp(v.ftHours), "hours")} a week` : `${v.ftDays} ${per(v.ftDays, "days")} a week` },
-          { label: "Tax code", value: "1257L" },
-          { label: "Student loan", value: STUDENT_PLANS[v.plan].label },
-        ]}
-      />
+          <div className="sa-pr-facts">
+            <p>
+              <b>{gbp(yours.takeHome / 12)}</b>
+              <span>
+                a month take-home{" "}
+                <button type="button" className="sa-pr-link" aria-expanded={taxOpen} onClick={() => setTaxOpen((o) => !o)}>
+                  ({REGION_LABEL[v.region]}
+                  {v.plan !== "none" ? ", student loan" : ""}
+                  {v.pension > 0 ? `, ${v.pension}% pension` : ""})
+                </button>
+              </span>
+            </p>
+            <p>
+              <b>{termOn ? `${oneDp(term.holidayWeeks)} weeks` : `${oneDp(holidayOwn)} days`}</b>
+              <span>{termOn ? "paid holiday a year, at 12.07% of the weeks you work" : `holiday a year${partYear ? ` for ${v.months} months` : ""}, including bank holidays${byHours ? `: ${oneDp(r.holidayHours)} hours` : ""}`}</span>
+            </p>
+            <p>
+              <b>{gbp(r.hourly, true)}</b>
+              <span>an hour, the same as full time</span>
+            </p>
+          </div>
 
-      {v.salary > 0 && (
-        <ResultCard title="Your pay next to full time" sub="A month's pay for the full-time job and for your hours.">
-          <Statement
-            columns={["Full time", "Your hours"]}
-            rows={[
-              { label: "Gross pay", values: [gbp(v.salary / 12), gbp(r.salary / 12)] },
-              ...(v.pension > 0 ? [{ label: "Pension", values: [gbp(-full.pensionContribution / 12), gbp(-yours.pensionContribution / 12)], kind: "deduction" as const }] : []),
-              { label: "Income Tax", values: [gbp(-full.incomeTaxTotal / 12), gbp(-yours.incomeTaxTotal / 12)], kind: "deduction" },
-              { label: "National Insurance", values: [gbp(-full.ni.total / 12), gbp(-yours.ni.total / 12)], kind: "deduction" },
-              ...(v.plan !== "none" ? [{ label: "Student loan", values: [gbp(-full.studentLoan / 12), gbp(-yours.studentLoan / 12)], kind: "deduction" as const }] : []),
-              { label: "Take-home", values: [gbp(full.takeHome / 12), gbp(yours.takeHome / 12)], kind: "total" },
-            ]}
-          />
-        </ResultCard>
-      )}
+          {taxOpen && (
+            <Inputs tone="plain">
+              <div className="sa-pr-tax">
+                <TaxSituationFields
+                  region={v.region}
+                  plan={v.plan}
+                  pension={v.pension}
+                  onRegion={st.bind("region")}
+                  onPlan={st.bind("plan")}
+                  onPension={st.bind("pension")}
+                  pensionAside={`${gbp(yours.pensionContribution)} a year`}
+                />
+              </div>
+            </Inputs>
+          )}
 
-      {v.salary > 0 && r.fte < 1 && (
-        <ResultCard title="Fewer hours, less tax" sub="You give up a share of your pay, but a smaller share of your take-home.">
-          <Compare
-            head={["What changes", "Share of full time"]}
-            rows={[
-              { label: "Hours worked", value: percent(r.fte), bar: r.fte },
-              { label: "Gross pay", value: percent(r.fte), bar: r.fte },
-              { label: "Take-home pay", value: percent(full.takeHome > 0 ? yours.takeHome / full.takeHome : 0), bar: full.takeHome > 0 ? yours.takeHome / full.takeHome : 0, current: true },
-            ]}
-          />
-          <p className="footnote">
-            Your tax-free allowance and the lower tax bands cover a bigger share of a smaller salary, so you keep a higher proportion of what you earn.
-          </p>
-        </ResultCard>
-      )}
+          {partYear && (
+            <Flag title={`Working ${v.months} of 12 months this tax year`}>
+              You earn {gbp(earned)} by 5 April and keep about {gbp(yearSnap.takeHome)}. If you stop working part-way, payroll will have taxed you as if you earned all year, so with no other income HMRC usually refunds the extra after 5 April.
+            </Flag>
+          )}
+          {belowMin && (
+            <Flag tone="warn" title="Below the legal minimum">
+              On {oneDp(yourDays)} days a week the law gives at least {oneDp(legalMin)} days a year, including bank holidays. A full-time allowance of {v.holiday} days pro-rated falls short.
+            </Flag>
+          )}
 
-      {partYear && v.salary > 0 && (
-        <ResultCard title={`Working ${v.months} ${per(v.months, "months")} this tax year`} sub="What you earn between now and 5 April, and the tax on it.">
-          <Facts
-            items={[
-              { label: "Earned this tax year", value: gbp(r.earnedThisYear) },
-              { label: "Take-home this tax year", value: gbp(yearSnap.takeHome), tone: "good" },
-              { label: "Tax this tax year", value: gbp(yearSnap.incomeTaxTotal) },
-              { label: "Holiday this year", value: `${oneDp(r.holidayDays)} ${per(oneDp(r.holidayDays), "days")}` },
-            ]}
-          />
-          <Callout title="You may be due a tax refund">
-            Payroll taxes each month as if you earn it all year. If you only work part of the year and have no other income, you may have paid too much. HMRC
-            usually refunds it automatically after the tax year ends, or through your tax code.
-          </Callout>
-        </ResultCard>
-      )}
-
-      <DataTable
-        summary={byHours ? "The same job at different hours" : "The same job at different days"}
-        columns={[byHours ? "Hours a week" : "Days a week", "Share of full time", "Yearly pay", "Take-home a month"]}
-        rows={ladder}
-      />
-
-      <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 rates. Holiday is shown in full-time-length days; your employer may express it in hours.
-      </p>
-    </Studio>
+          <Foot>
+            <Caveat>
+              Exact pro rata arithmetic; take-home is an estimate at 2026/27 rates on tax code 1257L.{termOn ? " Term-time pay uses the statutory 12.07% holiday; your contract may give more." : ""}
+            </Caveat>
+            <ShareButton copied={st.copied} onClick={st.share} />
+          </Foot>
+        </div>
+      </div>
+    </Tool>
   );
 }

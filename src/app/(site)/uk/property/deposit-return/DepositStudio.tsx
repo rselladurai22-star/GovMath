@@ -1,14 +1,17 @@
 "use client";
 
-import Studio from "@/components/flagship/Studio";
-import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
+import { useState } from "react";
+import { Caveat, Flag, Foot, Hero, Inputs, Tool } from "@/components/calc/kit";
+import { Mini } from "@/components/calc/fields";
+import { SelectField, Switch } from "@/components/flagship/inputs";
 import { gbp, percent } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
-import { DEPOSIT_RULES, depositReturn, ITEM_LIFE, RENT_RULES, type DeductionClaim, type RentNation } from "@/lib/property/renting";
+import { DEPOSIT_RULES, depositReturn, ITEM_LIFE, type DeductionClaim, type RentNation } from "@/lib/property/renting";
 
 type Kind = keyof typeof ITEM_LIFE;
 const KINDS = Object.keys(ITEM_LIFE) as Kind[];
+type Slot = 1 | 2 | 3 | 4;
+const SLOTS: Slot[] = [1, 2, 3, 4];
 
 const SCHEMA = {
   nation: oneOf<RentNation>("england", ["england", "wales", "scotland", "ni"]),
@@ -18,177 +21,176 @@ const SCHEMA = {
   k1: oneOf<Kind>("carpet", KINDS),
   c1: num(900, 0, 50_000),
   a1: num(5, 0, 50),
+  l1: num(0, 0, 50),
   k2: oneOf<Kind>("cleaning", KINDS),
   c2: num(180, 0, 50_000),
   a2: num(0, 0, 50),
+  l2: num(0, 0, 50),
   k3: oneOf<Kind>("decoration", KINDS),
   c3: num(0, 0, 50_000),
   a3: num(3, 0, 50),
+  l3: num(0, 0, 50),
   k4: oneOf<Kind>("furniture", KINDS),
   c4: num(0, 0, 50_000),
   a4: num(2, 0, 50),
+  l4: num(0, 0, 50),
 };
-const ADVANCED = ["k3", "c3", "a3", "k4", "c4", "a4", "protectedOk"] as const;
-const KIND_OPTIONS = KINDS.map((k) => ({ value: k, label: ITEM_LIFE[k].years > 0 ? `${ITEM_LIFE[k].label} (lasts about ${ITEM_LIFE[k].years} years)` : ITEM_LIFE[k].label }));
+const KIND_OPTIONS = KINDS.map((k) => ({ value: k, label: ITEM_LIFE[k].label }));
 
 export default function DepositStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
-  const slot = (k: Kind, claimed: number, age: number): DeductionClaim => ({ kind: k, claimed, age, life: ITEM_LIFE[k].years });
-  const claims = [slot(v.k1, v.c1, v.a1), slot(v.k2, v.c2, v.a2), slot(v.k3, v.c3, v.a3), slot(v.k4, v.c4, v.a4)];
+  const lifeOf = (n: Slot) => {
+    const own = v[`l${n}`];
+    const std = ITEM_LIFE[v[`k${n}`]].years;
+    return std > 0 ? (own > 0 ? own : std) : 0;
+  };
+  const claims: DeductionClaim[] = SLOTS.map((n) => ({ kind: v[`k${n}`], claimed: v[`c${n}`], age: v[`a${n}`], life: lifeOf(n) }));
   const r = depositReturn({ nation: v.nation, deposit: v.deposit, monthlyRent: v.rent, claims, protectedInTime: v.protectedOk });
   const rules = DEPOSIT_RULES[v.nation];
-  const nationLabel = RENT_RULES[v.nation].label;
-
-  const item = (n: 1 | 2 | 3 | 4, optional = false) => {
-    const kKey = `k${n}` as const;
-    const cKey = `c${n}` as const;
-    const aKey = `a${n}` as const;
-    const kind = v[kKey];
-    return (
-      <>
-        <SelectField label={`Deduction ${n}: what for`} value={kind} onChange={st.bind(kKey)} options={KIND_OPTIONS} optional={optional} />
-        <MoneyField label={`Deduction ${n}: amount claimed`} value={v[cKey]} onChange={st.bind(cKey)} optional={optional} hint={n === 1 ? "What your landlord wants to keep. Leave at £0 if nothing." : undefined} />
-        {ITEM_LIFE[kind].years > 0 && v[cKey] > 0 && (
-          <StepperField label={`Deduction ${n}: age of the item`} value={v[aKey]} onChange={st.bind(aKey)} step={0.5} min={0} max={50} unit="years" dp={1} optional={optional} hint="How old it was when you moved out." />
-        )}
-      </>
-    );
-  };
+  const used = SLOTS.filter((n) => v[`c${n}`] > 0);
+  const [shown, setShown] = useState(() => Math.max(1, ...used));
+  const rows = SLOTS.slice(0, Math.max(shown, ...used, 1));
+  const capLabel = v.nation === "england" ? (v.rent * 12 >= 50_000 ? "6 weeks’ rent" : "5 weeks’ rent") : v.nation === "scotland" ? "2 months’ rent" : v.nation === "ni" ? "1 month’s rent" : "";
 
   return (
-    <Studio
-      title="Your deposit and the deductions"
-      ready={st.ready}
-      onCalculate={st.calculate}
-      calculateLabel="Work out my deposit return"
-      onReset={st.reset}
-      dock={{ label: "Fair amount back", value: gbp(r.back) }}
-      inputs={
-        <>
-          <InputGroup title="Your tenancy">
-            <Segmented
-              label="Country"
-              value={v.nation}
-              onChange={st.bind("nation")}
-              options={[
-                { value: "england", label: "England" },
-                { value: "wales", label: "Wales" },
-                { value: "scotland", label: "Scotland" },
-                { value: "ni", label: "Northern Ireland" },
-              ]}
+    <Tool label="Deposit return calculator">
+      <div className="sa-dep">
+        <div className="sa-dep-top">
+          <Inputs tone="plain">
+            <div className="sa-dep-basics">
+              <SelectField
+                label="Nation"
+                value={v.nation}
+                onChange={st.bind("nation")}
+                options={[
+                  { value: "england", label: "England" },
+                  { value: "wales", label: "Wales" },
+                  { value: "scotland", label: "Scotland" },
+                  { value: "ni", label: "Northern Ireland" },
+                ]}
+              />
+              <Mini label="Rent a month" value={v.rent} onChange={st.bind("rent")} prefix="£" max={50_000} wide />
+              <Mini label="Deposit you paid" value={v.deposit} onChange={st.bind("deposit")} prefix="£" max={100_000} wide />
+            </div>
+          </Inputs>
+          <div className={`sa-dep-cap${r.overCap > 0.5 ? " is-over" : ""}`}>
+            {r.cap === null ? (
+              <p>
+                <b>No fixed cap in Wales.</b> Welsh Ministers can set one by regulations but have not yet.
+              </p>
+            ) : r.overCap > 0.5 ? (
+              <p>
+                <b>{gbp(r.overCap, true)} over the legal limit.</b> The most a landlord can take is {capLabel}, {gbp(r.cap, true)}. Ask for the excess back now, whatever happens to the rest.
+              </p>
+            ) : (
+              <p>
+                <b>Within the legal limit.</b> The most a landlord can take is {capLabel}: {gbp(r.cap, true)}.
+              </p>
+            )}
+          </div>
+        </div>
+
+        <div className="sa-dep-main">
+          <section className="sa-dep-sheet" aria-labelledby="dep-sheet-h">
+            <h2 className="sa-h" id="dep-sheet-h">
+              What your landlord wants to keep
+            </h2>
+            <div className="sa-dep-cols" aria-hidden="true">
+              <span>Item</span>
+              <span>Claimed</span>
+              <span>Age when you left</span>
+              <span>Expected life</span>
+              <span>Fair</span>
+            </div>
+            <ol className="sa-dep-lines">
+              {rows.map((n) => {
+                const kind = v[`k${n}`];
+                const claimed = v[`c${n}`];
+                const life = lifeOf(n);
+                const ages = ITEM_LIFE[kind].years > 0;
+                const line = claims[n - 1];
+                const share = life > 0 ? Math.max(0, 1 - line.age / life) : 1;
+                const fair = Math.max(0, claimed) * share;
+                return (
+                  <li key={n} className="sa-dep-line">
+                    <div className="sa-dep-item">
+                      <SelectField label={`Deduction ${n}`} value={kind} onChange={st.bind(`k${n}`)} options={KIND_OPTIONS} />
+                    </div>
+                    <Mini label="Claimed" value={claimed} onChange={st.bind(`c${n}`)} prefix="£" max={50_000} />
+                    {ages ? (
+                      <>
+                        <Mini label="Age when you left" value={v[`a${n}`]} onChange={st.bind(`a${n}`)} suffix="yrs" step={0.5} dp={1} max={50} />
+                        <Mini label="Expected life" value={life} onChange={(x) => st.set(`l${n}`, x === ITEM_LIFE[kind].years ? 0 : x)} suffix="yrs" step={1} dp={1} min={1} max={50} />
+                      </>
+                    ) : (
+                      <p className="sa-dep-noage">Not reduced for age: the cost itself is what counts.</p>
+                    )}
+                    <div className="sa-dep-fair" aria-live="polite">
+                      <span className="sa-dep-life" role="img" aria-label={ages ? `${percent(share)} of its life left` : "Charged in full"}>
+                        <span style={{ width: `${share * 100}%` }} />
+                      </span>
+                      <b>{gbp(fair)}</b>
+                      <small>{claimed > 0 ? (ages ? `${percent(share)} of life left` : "in full if justified") : "nothing claimed"}</small>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+            {rows.length < 4 && (
+              <button type="button" className="sa-dep-add" onClick={() => setShown(rows.length + 1)}>
+                + Add a deduction
+              </button>
+            )}
+          </section>
+
+          <div className="sa-dep-answer">
+            <Hero
+              label="You should get back"
+              value={gbp(r.back)}
+              sub={
+                r.claimed > 0 ? (
+                  <>
+                    Of the <b>{gbp(r.claimed)}</b> claimed, about <b>{gbp(r.fair)}</b> is fair once wear and tear is allowed for. If every claim stood, you would get {gbp(r.backIfAccepted)}.
+                  </>
+                ) : (
+                  <>No deductions entered, so the whole deposit.</>
+                )
+              }
             />
-            <MoneyField label="Rent a month" value={v.rent} onChange={st.bind("rent")} />
-            <MoneyField label="Deposit you paid" value={v.deposit} onChange={st.bind("deposit")} />
-          </InputGroup>
-          <InputGroup title="What your landlord wants to deduct">
-            {item(1)}
-            {item(2)}
-          </InputGroup>
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            {item(3, true)}
-            {item(4, true)}
-            <Switch label="My deposit was protected in a scheme on time" checked={v.protectedOk} onChange={st.bind("protectedOk")} optional hint={`Within ${rules.protectDays} of paying it, with the required information given to you.`} />
-          </AdvancedOptions>
-        </>
-      }
-    >
-      <Answer
-        eyebrow="Fair amount back"
-        value={gbp(r.back)}
-        actions={<ShareButton copied={st.copied} onClick={st.share} />}
-        sentence={
-          r.claimed > 0 ? (
-            <>
-              Your landlord wants to keep <b>{gbp(r.claimed)}</b>. Allowing for fair wear and tear, a fair deduction is about <b>{gbp(r.fair)}</b>, so you should get back around{" "}
-              <b>{gbp(r.back)}</b> of your {gbp(v.deposit)} deposit, not {gbp(r.backIfAccepted)}.
-            </>
-          ) : (
-            <>
-              With no deductions claimed, you should get your whole <b>{gbp(v.deposit)}</b> deposit back.
-            </>
-          )
-        }
-        badges={[nationLabel, r.cap !== null ? `Cap ${gbp(r.cap, true)}` : "No fixed cap", v.protectedOk ? "Protected" : "Not protected"]}
-      />
-
-      <Facts
-        items={[
-          { label: "Claimed", value: gbp(r.claimed) },
-          { label: "Fair deductions", value: gbp(r.fair) },
-          { label: "You should get back", value: gbp(r.back), tone: "good" },
-          { label: "Legal cap", value: r.cap !== null ? gbp(r.cap, true) : "None set", tone: r.overCap > 0.5 ? "bad" : undefined },
-        ]}
-      />
-
-      <Assumptions
-        items={[
-          { label: "Fair wear and tear", value: "Charges cut by the share of the item's life already used" },
-          { label: "Item lives", value: "Typical figures, such as 8 years for a carpet and 5 for decorating" },
-          { label: "Cleaning and rent", value: "Not reduced for age" },
-          { label: "Rules", value: `${nationLabel}: protect within ${rules.protectDays}` },
-        ]}
-      />
-
-      {r.lines.length > 0 && (
-        <ResultCard title="Each deduction" sub="What was claimed and what is fair after wear and tear.">
-          <Statement
-            columns={["Claimed", "Fair"]}
-            rows={[
-              ...r.lines.map((l) => ({
-                label: ITEM_LIFE[l.kind].years > 0 ? `${ITEM_LIFE[l.kind].label}, ${l.age} of ${l.life} years used (${percent(l.share)} left)` : ITEM_LIFE[l.kind].label,
-                values: [gbp(l.claimed), gbp(l.fair)],
-              })),
-              { label: "Total", values: [gbp(r.claimed), gbp(r.fair)], kind: "total" as const },
-            ]}
-          />
-        </ResultCard>
-      )}
-
-      {v.deposit > 0 && (
-        <ResultCard title="Your deposit" sub={`${gbp(v.deposit)} paid.`}>
-          <SplitBar
-            segments={[
-              { label: "Back to you", value: r.back, display: gbp(r.back), color: "#5b1e6e" },
-              { label: "Fair deductions", value: Math.min(v.deposit, r.fair), display: gbp(Math.min(v.deposit, r.fair)), color: "#f59e0b" },
-            ]}
-          />
-        </ResultCard>
-      )}
-
-      <ResultCard title="What to do next" sub={`Your rights in ${nationLabel}.`}>
-        {r.overCap > 0.5 && (
-          <Callout tone="warn" title="Your deposit is more than the legal limit">
-            The most a landlord can take in {nationLabel} is {rules.cap}: {gbp(r.cap ?? 0, true)} here. You can ask for the {gbp(r.overCap, true)} extra back now.
-          </Callout>
-        )}
-        {r.penaltyRange && (
-          <Callout tone="warn" title="An unprotected deposit can mean compensation">
-            If your deposit was not protected in time, a court can order your landlord to pay you {rules.penalty}: {r.penaltyRange[0] > 0 ? `${gbp(r.penaltyRange[0])} to ` : "up to "}
-            {gbp(r.penaltyRange[1])} here, on top of the deposit.
-          </Callout>
-        )}
-        {r.claimed > r.fair + 0.5 && (
-          <Callout title="Use the free dispute service">
-            Your deposit scheme offers free adjudication. Send your check-in and check-out reports, photos and the age of each item. The landlord has to prove each deduction.
-          </Callout>
-        )}
-        <Callout title="When you should get it back">
-          {v.nation === "england" || v.nation === "wales"
-            ? "Your landlord must return the deposit within 10 days of you both agreeing the amount."
-            : v.nation === "scotland"
-              ? "Ask for the deposit back through the scheme as soon as the tenancy ends. Either side can raise a dispute if you cannot agree."
-              : "Ask your landlord and the scheme for repayment when the tenancy ends. The scheme can resolve a dispute."}
-        </Callout>
-        <Callout title="Moving to a new home?">
-          See what you might pay with our <a href="/uk/life/pro-rata-rent">pro-rata rent calculator</a>, and check a new rent rise with the <a href="/uk/property/rent-increase">rent increase checker</a>.
-        </Callout>
-      </ResultCard>
-
-      <p className="footnote" style={{ textAlign: "center" }}>
-        Based on the Tenant Fees Act 2019 and Housing Act 2004 (England), the Renting Homes (Wales) Act 2016, the Tenancy Deposit Schemes (Scotland) Regulations 2011 and the Private Tenancies
-        Act (Northern Ireland) 2022. General information, not legal advice.
-      </p>
-    </Studio>
+            <figure className="sa-dep-split" role="img" aria-label={`Deposit ${gbp(v.deposit)}: ${gbp(r.back)} back, ${gbp(Math.min(r.fair, v.deposit))} fair deductions, ${gbp(Math.max(0, Math.min(r.claimed, v.deposit) - Math.min(r.fair, v.deposit)))} claimed above fair`}>
+              <div aria-hidden="true">
+                <span className="is-back" style={{ flex: r.back }} />
+                <span className="is-fair" style={{ flex: Math.min(r.fair, v.deposit) }} />
+                <span className="is-extra" style={{ flex: Math.max(0, Math.min(r.claimed, v.deposit) - Math.min(r.fair, v.deposit)) }} />
+              </div>
+              <figcaption>
+                <span className="is-back">Back to you</span>
+                <span className="is-fair">Fair deductions</span>
+                <span className="is-extra">Claimed beyond fair</span>
+              </figcaption>
+            </figure>
+            <Switch
+              label="My deposit was protected in a scheme on time"
+              checked={v.protectedOk}
+              onChange={st.bind("protectedOk")}
+              hint={`Within ${rules.protectDays} of paying it, with the scheme’s details given to you.`}
+            />
+            {r.penaltyRange && (
+              <Flag tone="warn" title={r.penaltyRange[0] > 0 ? `A court can award ${gbp(r.penaltyRange[0])} to ${gbp(r.penaltyRange[1])}` : `A tribunal can award up to ${gbp(r.penaltyRange[1])}`}>
+                {v.nation === "scotland" ? "Apply to the First-tier Tribunal within 3 months of the tenancy ending." : "On top of getting the deposit itself back. Get advice from Shelter or Citizens Advice before you claim."}
+              </Flag>
+            )}
+            <Foot>
+              <Caveat>
+                An estimate of what a deposit scheme adjudicator is likely to allow: they look at evidence, item by item, and expected lives vary with quality. Unpaid rent and real cleaning
+                costs are charged in full.
+              </Caveat>
+              <ShareButton copied={st.copied} onClick={st.share} />
+            </Foot>
+          </div>
+        </div>
+      </div>
+    </Tool>
   );
 }
