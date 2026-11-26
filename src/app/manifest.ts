@@ -9,10 +9,10 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: "/",
     display: "browser",
     background_color: "#ffffff",
-    theme_color: "#8c1d40",
+    theme_color: "#212426",
     icons: [
-      { src: "/gm/sumatlas-icon-192.png", sizes: "192x192", type: "image/png" },
-      { src: "/gm/sumatlas-icon-512.png", sizes: "512x512", type: "image/png" },
+      { src: "/gm/sumatlas-icon-green-192.png", sizes: "192x192", type: "image/png" },
+      { src: "/gm/sumatlas-icon-green-512.png", sizes: "512x512", type: "image/png" },
     ],
   };
 }

@@ -104,21 +104,22 @@ export function ResultCard({
 }
 
 /**
- * Chart colours, kept apart from the claret brand colour so charts never
- * look like buttons or links: blue for what you keep or borrow, orange for
- * tax or interest, then aqua, violet, red, magenta, yellow and grey. Studios
+ * Chart colours, kept apart from the green brand colour so charts never
+ * look like buttons or links: the reference design's violet-blue (#6880c8)
+ * for what you keep or borrow, its gold (#d8962a) for tax or interest, then
+ * aqua, violet, red, magenta, yellow and grey. Studios
  * pass their own colours; the ring chart, split bars, area charts and
  * payslip swatches all map them the same way, so one series keeps one colour.
  */
 const DESIGN: Record<string, string> = {
-  "#0f9f6e": "#2a78d6",
-  "#16a34a": "#2a78d6",
-  "#10b981": "#2a78d6",
-  "#0a7a52": "#2a78d6",
-  "#22c55e": "#2a78d6",
-  "#73164c": "#2a78d6",
-  "#f59e0b": "#eb6834",
-  "#c79a4b": "#eb6834",
+  "#0f9f6e": "#6880c8",
+  "#16a34a": "#6880c8",
+  "#10b981": "#6880c8",
+  "#0a7a52": "#6880c8",
+  "#22c55e": "#6880c8",
+  "#73164c": "#6880c8",
+  "#f59e0b": "#d8962a",
+  "#c79a4b": "#d8962a",
   "#5b1e6e": "#1baf7a",
   "#ad7198": "#1baf7a",
   "#2e0a3a": "#4a3aa7",

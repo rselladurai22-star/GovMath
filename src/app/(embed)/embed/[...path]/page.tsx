@@ -36,7 +36,7 @@ export default async function EmbedPage({ params, searchParams }: { params: Prom
       <div className="gm-embedbar">
         <a href={full} target="_blank" rel="noopener" aria-label="SumAtlas: open the full calculator">
           {/* eslint-disable-next-line @next/next/no-img-element -- the site serves its own pre-sized logo files */}
-          <img src="/gm/sumatlas-logo-84.webp" alt="SumAtlas" width={94} height={28} />
+          <img src="/gm/sumatlas-logo-green-84.webp" alt="SumAtlas" width={94} height={28} />
         </a>
         <a href={full} target="_blank" rel="noopener" className="gm-embedfull">
           Full calculator and guide

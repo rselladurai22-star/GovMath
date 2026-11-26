@@ -135,16 +135,19 @@ def build(scope, mapping, files, skip, head, outfile):
     print(f"{outfile}: {len(seen)} rules written")
 
 
-# Brand colour trial: the dark wine becomes a brighter claret (#8c1d40),
-# across the whole page including the header and footer.
+# Brand colour: the package's dark wine becomes the SumAtlas brand, across the
+# whole page including the header and footer. Claret (#8c1d40) from October
+# 2026; green since the November 2026 design system (docs/DESIGN-SYSTEM.md):
+# #057a3c for text and links, #04703a for hover, #00a651 for fills and focus.
+# The ".gm-claret" class name is kept so no markup has to change.
 CLARET_FILES = ["axis-navigation.css", "reference-header.css", *FILES, "govmath-theme.css"]
 CLARET = {
-    "#510b38": "#8c1d40",
-    "#73164c": "#6e1632",
-    "#7d103f": "#6e1632",
-    "#8b2058": "#b8325f",
-    "rgba(81, 11, 56": "rgba(140, 29, 64",
-    "rgba(81,11,56": "rgba(140,29,64",
+    "#510b38": "#057a3c",
+    "#73164c": "#04703a",
+    "#7d103f": "#04703a",
+    "#8b2058": "#00a651",
+    "rgba(81, 11, 56": "rgba(5, 122, 60",
+    "rgba(81,11,56": "rgba(5,122,60",
 }
 
 
@@ -162,7 +165,7 @@ def main():
         CLARET,
         CLARET_FILES,
         None,
-        [".gm-claret {", "  display: contents;", "  --wine: #8c1d40;", "  --brand: #8c1d40;", "  --focus: #6e1632;", "  --pink: #b8325f;", "}"],
+        [".gm-claret {", "  display: contents;", "  --wine: #057a3c;", "  --brand: #057a3c;", "  --focus: #04703a;", "  --pink: #00a651;", "}"],
         "govmath-claret.css",
     )
 

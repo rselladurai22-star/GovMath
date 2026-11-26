@@ -11,7 +11,7 @@ export const metadata: Metadata = { title: "Page not found | SumAtlas" };
  */
 export default function GlobalNotFound() {
   preload("/gm/fonts/figtree-400.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
-  preload("/gm/fonts/hanken-grotesk-700.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/gm/fonts/cabinet-grotesk-700.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   return (
     <html lang="en-GB">
       <body>
