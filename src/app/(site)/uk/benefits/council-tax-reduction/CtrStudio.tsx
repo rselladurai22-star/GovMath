@@ -1,12 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { HouseholdFields, MEANS_ADVANCED, MEANS_SCHEMA, MeansAdvancedFields, meansFrom } from "@/components/benefits/MeansFields";
-import Studio from "@/components/flagship/Studio";
-import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp, percent } from "@/components/flagship/format";
+import MeansStatement, { type MeansStep } from "@/components/benefits/MeansStatement";
+import { Caveat, Flag, Foot, Inputs, Tool } from "@/components/calc/kit";
+import { Mini, Pills } from "@/components/calc/fields";
+import { AdvancedOptions } from "@/components/flagship/inputs";
+import { gbp } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
-import { councilTaxReduction, type CtrNation } from "@/lib/benefits/housing-support";
+import { CTR_2026, CTR_SCHEME_RANGE, HB_2026, councilTaxReduction, type CtrNation } from "@/lib/benefits/housing-support";
+import SchemeRange from "./SchemeRange";
 
 const SCHEMA = {
   ...MEANS_SCHEMA,
@@ -15,171 +18,153 @@ const SCHEMA = {
   maxPct: num(80, 0, 100),
   taperPct: num(20, 0, 100),
 };
-const ADVANCED = [...MEANS_ADVANCED, "maxPct", "taperPct"] as const;
+const MORE = [...MEANS_ADVANCED] as const;
 const NATION_LABEL: Record<CtrNation, string> = { england: "England", wales: "Wales", scotland: "Scotland" };
 
 export default function CtrStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
+  const pension = v.age === "pension";
   const input = { ...meansFrom(v), nation: v.nation, annualBill: v.bill, maxShare: v.maxPct / 100, taper: v.taperPct / 100 };
   const r = councilTaxReduction(input);
-  const pension = v.age === "pension";
-  const localScheme = !r.national;
+  const local = !r.national;
+  const best = councilTaxReduction({ ...input, maxShare: CTR_SCHEME_RANGE.generous.maxShare, taper: CTR_SCHEME_RANGE.generous.taper });
+  const worst = councilTaxReduction({ ...input, maxShare: CTR_SCHEME_RANGE.strict.maxShare, taper: CTR_SCHEME_RANGE.strict.taper });
+  const m = (n: number) => gbp(n);
+  const w = (n: number) => gbp(n, true);
+  const pct = (n: number) => `${Math.round(n * 100)}%`;
+  const guarantee = v.couple ? HB_2026.personal.pensionCouple : HB_2026.personal.pensionSingle;
+  const showPc = pension && !v.passport && !r.overCapital && r.income < guarantee;
+  const showSpd = !v.couple && v.nondeps === 0 && r.leftToPay > 0.5;
 
-  const steps = [0, 25, 50, 100, 150, 200].map((extra) => ({ extra, annual: councilTaxReduction({ ...input, otherIncome: input.otherIncome + extra }).annual }));
-  const maxStep = Math.max(1, ...steps.map((s) => s.annual));
+  const steps: MeansStep[] = [
+    { label: `The scheme pays up to ${pct(r.maxShare)} of the bill`, cut: r.weeklyBill * (1 - r.maxShare) },
+    { label: "For other adults living with you", note: `${Math.round(v.nondeps)} non-dependant deduction${v.nondeps === 1 ? "" : "s"}`, cut: Math.min(r.nonDepDeduction, r.weeklyBill * r.maxShare) },
+    { label: `${pct(r.taper)} of income above your applicable amount`, note: `Income ${w(r.income)} a week against ${w(r.applicableAmount)}`, cut: r.overCapital ? 0 : r.taperCut },
+    { label: "Savings over £16,000", note: "Without Guarantee Credit, nothing is paid", cut: r.overCapital ? r.maximum : 0 },
+  ];
 
   return (
-    <Studio
-      title="Your bill, household and income"
-      ready={st.ready}
-      onCalculate={st.calculate}
-      calculateLabel="Calculate my Council Tax Reduction"
-      onReset={st.reset}
-      dock={{ label: "Reduction a year", value: gbp(r.annual) }}
-      inputs={
-        <>
-          <InputGroup title="Your council tax">
-            <Segmented
-              label="Country"
-              value={v.nation}
-              onChange={st.bind("nation")}
-              options={[
-                { value: "england", label: "England", note: "Pensioners follow national rules. Each council sets its own scheme for working-age people." },
-                { value: "wales", label: "Wales", note: "One national scheme for everyone." },
-                { value: "scotland", label: "Scotland", note: "One national scheme for everyone." },
-              ]}
-            />
-            <MoneyField
-              label="Council tax bill for the year"
-              value={v.bill}
-              onChange={st.bind("bill")}
-              hint={
-                <>
-                  After any discount, such as the <a href="/uk/property/single-person-discount">25% single person discount</a>. Not sure? See{" "}
-                  <a href="/uk/property/council-tax-bands">council tax bands</a>.
-                </>
+    <Tool label="Council Tax Reduction calculator">
+      <div className="sa-ct">
+        <div className="sa-ct-route">
+          <Inputs tone="plain">
+            <div className="sa-ct-routeq">
+              <Pills
+                label="Who is claiming"
+                value={v.age}
+                onChange={st.bind("age")}
+                options={[
+                  { value: "pension", label: "State Pension age" },
+                  { value: "working", label: "Working age" },
+                ]}
+              />
+              <Pills
+                label="Where you live"
+                value={v.nation}
+                onChange={st.bind("nation")}
+                options={[
+                  { value: "england", label: "England" },
+                  { value: "wales", label: "Wales" },
+                  { value: "scotland", label: "Scotland" },
+                ]}
+              />
+              <Mini label="Council tax bill for the year" value={v.bill} onChange={st.bind("bill")} prefix="£" max={20_000} step={50} wide hint="After any discount, such as the 25% for living alone." />
+            </div>
+            <p className="sa-ct-routehint">
+              {pension
+                ? `Pensioners everywhere follow national rules: up to the whole bill, falling by ${pct(CTR_2026.taper)} of income above your needs.`
+                : local
+                  ? "In England each council sets its own working-age scheme, so the answer is a range until you enter your council's figures."
+                  : `${NATION_LABEL[v.nation]} has one national scheme for everyone, paying up to the whole bill.`}
+            </p>
+          </Inputs>
+        </div>
+
+        <div className="sa-ct-inputs">
+          <Inputs tone="plain">
+            <h2 className="sa-ct-h">You and your income</h2>
+            <HouseholdFields v={v} set={st.set} passportLabel={pension ? "I get Pension Credit Guarantee Credit" : "I get income-based JSA, income-related ESA or Income Support"} />
+            {local && (
+              <div className="sa-ct-dials">
+                <h2 className="sa-ct-h">Your council&rsquo;s scheme</h2>
+                <div className="sa-ct-dialrow">
+                  <Mini label="Most it pays" value={v.maxPct} onChange={(n) => st.set("maxPct", Math.round(n))} suffix="% of the bill" max={100} step={5} stepper />
+                  <Mini label="Taper" value={v.taperPct} onChange={(n) => st.set("taperPct", Math.round(n))} suffix="p per £1" max={100} step={1} stepper />
+                </div>
+                <p className="sa-ct-hint">Search &ldquo;council tax support scheme&rdquo; and your council&rsquo;s name: the scheme document states both. Some councils use income bands instead of a taper.</p>
+              </div>
+            )}
+            <AdvancedOptions description="Other adults at home, disability, carers and childcare." changed={st.changed([...MORE])} onReset={() => st.resetKeys([...MORE])}>
+              <MeansAdvancedFields v={v} set={st.set} />
+            </AdvancedOptions>
+          </Inputs>
+        </div>
+
+        <div className="sa-ct-result">
+          <div className={`sa-ct-answer${r.annual > 0.5 ? "" : " is-none"}`} aria-live="polite">
+            <p className="sa-ct-kicker">{local ? "Your council's scheme, as entered" : "Council Tax Reduction"}</p>
+            <p className="sa-ct-big">
+              <b>{m(r.annual)}</b> a year
+            </p>
+            <p className="sa-ct-sub">
+              {r.overCapital
+                ? "Savings over £16,000 rule you out, unless you get Pension Credit Guarantee Credit."
+                : r.annual > 0.5
+                  ? `${w(r.weekly)} a week off a ${m(v.bill)} bill. ${r.leftToPay > 0.5 ? `That leaves ${m(r.leftToPay)} to pay, about ${m(r.leftToPay / 12)} a month.` : "That covers the whole bill."}`
+                  : `Your income is ${w(r.excess)} a week above what the scheme says you need.`}
+            </p>
+            {local && !r.overCapital && (
+              <p className="sa-ct-range">
+                Across English schemes: <b>{m(worst.annual)}</b> to <b>{m(best.annual)}</b> a year
+              </p>
+            )}
+          </div>
+          {local ? (
+            <SchemeRange bill={v.bill} low={worst.annual} high={best.annual} yours={r.annual} money={m} />
+          ) : (
+            <MeansStatement
+              start={r.weeklyBill}
+              startLabel="Council tax a week"
+              steps={steps}
+              resultLabel="Council Tax Reduction a week"
+              money={w}
+              caption="How your Council Tax Reduction is worked out, week by week"
+              note={
+                v.passport
+                  ? "On Guarantee Credit or a passport benefit, income is not checked."
+                  : !r.overCapital && r.excess <= 0
+                    ? `Your income of ${w(r.income)} a week is within your applicable amount of ${w(r.applicableAmount)}, so nothing is tapered.`
+                    : undefined
               }
             />
-          </InputGroup>
-          <InputGroup title="You and your income">
-            <HouseholdFields v={v} set={st.set} />
-          </InputGroup>
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            <MeansAdvancedFields v={v} set={st.set} />
-            {localScheme && (
-              <>
-                <StepperField label="Most your council pays" value={v.maxPct} onChange={st.bind("maxPct")} step={5} min={0} max={100} unit="%" dp={0} optional hint="Many English councils cap working-age support below 100%. Check your council's scheme." />
-                <StepperField label="Your council's taper" value={v.taperPct} onChange={st.bind("taperPct")} step={1} min={0} max={100} unit="%" dp={0} optional hint="How much support falls for each £1 of income above your needs. 20% is the usual figure." />
-              </>
+          )}
+        </div>
+
+        {(showPc || showSpd) && (
+          <div className="sa-ct-flags">
+            {showPc && (
+              <Flag title="You may be missing Pension Credit">
+                Your income is under the {w(guarantee)} a week Guarantee Credit tops {v.couple ? "a couple" : "a single pensioner"} up to. If you qualify, it pays your whole council tax with no income check: try the{" "}
+                <Link href="/uk/benefits/pension-credit">Pension Credit calculator</Link>.
+              </Flag>
             )}
-          </AdvancedOptions>
-        </>
-      }
-    >
-      <Answer
-        eyebrow="Council Tax Reduction a year"
-        value={gbp(r.annual)}
-        actions={<ShareButton copied={st.copied} onClick={st.share} />}
-        sentence={
-          r.overCapital ? (
-            <>
-              Savings over <b>£16,000</b> usually rule you out, unless you get Pension Credit Guarantee Credit.
-            </>
-          ) : r.annual > 0.5 ? (
-            <>
-              You could get about <b>{gbp(r.annual)} a year</b> off your council tax ({gbp(r.weekly, true)} a week). That leaves <b>{gbp(r.leftToPay)}</b> to pay,
-              about {gbp(r.leftToPay / 12)} a month.
-            </>
-          ) : (
-            <>
-              On these figures your income is too high for a reduction: it is <b>{gbp(r.excess, true)} a week</b> above what the scheme says you need.
-            </>
-          )
-        }
-        badges={[NATION_LABEL[v.nation], pension ? "Pensioner scheme" : localScheme ? "Your council's scheme" : "National scheme", `Up to ${percent(r.maxShare)} of the bill`]}
-      />
-
-      <Facts
-        items={[
-          { label: "Reduction a year", value: gbp(r.annual), tone: "good" },
-          { label: "Left to pay a year", value: gbp(r.leftToPay), tone: r.leftToPay > 0.5 ? "warn" : undefined },
-          { label: "Applicable amount", value: gbp(r.applicableAmount, true), note: "What the scheme says you need a week" },
-          { label: "Income counted", value: v.passport ? "Not checked" : gbp(r.income, true) },
-        ]}
-      />
-
-      <Assumptions
-        items={[
-          { label: "Rules", value: r.national ? (pension ? "National pensioner scheme" : `${NATION_LABEL[v.nation]} national scheme`) : `Working-age scheme: up to ${v.maxPct}%, ${v.taperPct}% taper` },
-          { label: "Needs and income", value: "2026/27 Housing Benefit rates, which the schemes follow" },
-          { label: "Other adults", value: "England's 2026/27 pensioner deductions (£5.20 to £15.95 a week)" },
-          { label: "Weeks", value: "Yearly bill × 7 ÷ 365" },
-        ]}
-        note={localScheme ? "Working-age schemes in England vary by council. Check yours for the exact rules." : undefined}
-      />
-
-      <ResultCard title="How it is worked out" sub="Weekly figures, as councils use them.">
-        <Statement
-          columns={["A week"]}
-          rows={[
-            { label: "Council tax", values: [gbp(r.weeklyBill, true)] },
-            ...(r.maxShare < 1 ? [{ label: `Scheme pays up to ${percent(r.maxShare)}`, values: [gbp(r.weeklyBill * r.maxShare, true)] }] : []),
-            ...(r.nonDepDeduction > 0 ? [{ label: "Non-dependant deductions", values: [`−${gbp(r.nonDepDeduction, true)}`], kind: "deduction" as const }] : []),
-            { label: "Maximum reduction", values: [gbp(r.maximum, true)] },
-            ...(r.taperCut > 0 ? [{ label: `${percent(r.taper)} of income above ${gbp(r.applicableAmount, true)}`, values: [`−${gbp(r.taperCut, true)}`], kind: "deduction" as const }] : []),
-            { label: "Council Tax Reduction", values: [gbp(r.weekly, true)], kind: "total" as const },
-          ]}
-        />
-      </ResultCard>
-
-      {v.bill > 0 && (
-        <ResultCard title="Your bill" sub={`${gbp(v.bill)} a year.`}>
-          <SplitBar
-            segments={[
-              { label: "Reduction", value: r.annual, display: gbp(r.annual), color: "#5b1e6e" },
-              { label: "You pay", value: r.leftToPay, display: gbp(r.leftToPay), color: "#f59e0b" },
-            ]}
-          />
-        </ResultCard>
-      )}
-
-      {!r.overCapital && !v.passport && (
-        <ResultCard title="If your income went up" sub="Reduction a year with more weekly income.">
-          <Compare
-            head={["Extra income a week", "Reduction a year"]}
-            rows={steps.map((s) => ({ label: s.extra === 0 ? "As now" : `+${gbp(s.extra)}`, value: gbp(s.annual), bar: s.annual / maxStep, current: s.extra === 0 }))}
-          />
-        </ResultCard>
-      )}
-
-      <ResultCard title="Worth knowing" sub="About your claim.">
-        {localScheme && (
-          <Callout title="Your council's scheme may differ">
-            In England each council sets its own rules for working-age people. Some pay up to 100% of the bill, others less, and some use income bands instead of a taper. Search
-            &ldquo;council tax support&rdquo; and your council&rsquo;s name to check.
-          </Callout>
+            {showSpd && (
+              <Flag title="Living alone?">
+                Take off the <Link href="/uk/property/single-person-discount">25% single person discount</Link>{" "}first and enter the bill after it: you can have both.
+              </Flag>
+            )}
+          </div>
         )}
-        {v.bill > 0 && !v.couple && v.nondeps === 0 && (
-          <Callout title="Living alone? Check the single person discount">
-            If no other adult lives with you, you should also get <a href="/uk/property/single-person-discount">25% off your bill</a>. Apply that first, then enter the bill after
-            the discount.
-          </Callout>
-        )}
-        <Callout title="Claim Housing Benefit too">
-          If you rent and are over State Pension age, or live in supported housing, see our <a href="/uk/benefits/housing-benefit">Housing Benefit calculator</a>. Councils usually
-          deal with both claims together.
-        </Callout>
-        {pension && !v.passport && (
-          <Callout title="Pension Credit means a full reduction">
-            Pensioners on Pension Credit Guarantee Credit get their whole council tax paid. Check with the <a href="/uk/benefits/pension-credit">Pension Credit calculator</a>.
-          </Callout>
-        )}
-      </ResultCard>
 
-      <p className="footnote" style={{ textAlign: "center" }}>
-        Based on the Council Tax Reduction rules for 2026/27 and the DWP&rsquo;s Housing Benefit rates. An estimate, not a decision on your claim.
-      </p>
-    </Studio>
+        <Foot>
+          <Caveat>
+            An estimate for 2026/27 using the national means test and DWP&rsquo;s Housing Benefit rates.{" "}
+            {local ? "The range runs from a scheme like the pensioner one (100%, 20p) to a stricter one (70%, 25p); your council's scheme decides." : v.nation === "england" ? "Exact rules for England's pensioner scheme apart from rounding." : `${NATION_LABEL[v.nation]} sets its own figures, which are close to these.`}
+          </Caveat>
+          <ShareButton copied={st.copied} onClick={st.share} />
+        </Foot>
+      </div>
+    </Tool>
   );
 }

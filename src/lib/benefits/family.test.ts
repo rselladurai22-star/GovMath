@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { childBenefitFor, freeHours, hicbc, hicbcPayer, hicbcShare, maternityPay, taxFreeChildcarePlan } from "./family";
+import { childBenefitFor, fundedCost, hicbc, hicbcPayer, hicbcShare, maternityPay, taxFreeChildcarePlan } from "./family";
 
 describe("Child Benefit", () => {
   it("two children", () => {
@@ -103,15 +103,18 @@ describe("HICBC edge cases from the page plan", () => {
 });
 
 describe("free hours", () => {
-  it("working parents of a 3-year-old get 1,140 hours", () => {
-    const r = freeHours({ stage: "3-4", working: true, lowIncome: false, hoursUsed: 40, weeksUsed: 48, hourlyRate: 8, extrasWeekly: 0 });
+  it("30 hours a week are 1,140 hours a year", () => {
+    const r = fundedCost(30, { hoursUsed: 40, weeksUsed: 48, hourlyRate: 8, extrasWeekly: 0 });
     expect(r.annualHours).toBe(1140);
     expect(r.value).toBe(9120);
     expect(r.fullCost).toBe(15_360);
     expect(r.youPay).toBe(6240);
   });
-  it("no funded hours for a non-working 1-year-old", () => {
-    expect(freeHours({ stage: "9m-2", working: false, lowIncome: true, hoursUsed: 20, weeksUsed: 48, hourlyRate: 8, extrasWeekly: 0 }).hoursPerWeek).toBe(0);
+  it("cannot fund more hours than are used, and stretches over the weeks used", () => {
+    const r = fundedCost(30, { hoursUsed: 10, weeksUsed: 38, hourlyRate: 8, extrasWeekly: 5 });
+    expect(r.value).toBe(10 * 38 * 8);
+    expect(r.youPay).toBe(5 * 38);
+    expect(fundedCost(15, { hoursUsed: 20, weeksUsed: 51, hourlyRate: 8, extrasWeekly: 0 }).stretchedWeekly).toBeCloseTo(570 / 51, 6);
   });
 });
 
@@ -138,5 +141,83 @@ describe("maternity pay", () => {
   it("employer scheme tops up SMP", () => {
     const r = maternityPay({ awe: 600, service: true, fullPayWeeks: 6, halfPayWeeks: 12, leaveWeeks: 52 });
     expect(r.employerTopUp).toBeCloseTo(6 * 60 + 12 * (300 - 194.32), 6);
+  });
+});
+
+describe("working parent test (GOV.UK 2026/27 earnings floor)", () => {
+  const adult = { works: true, band: "national-living-wage" as const, over100k: false };
+  it("is 16 hours at each parent's minimum wage", async () => {
+    const { minimumWeeklyEarnings, minimumQuarterEarnings } = await import("./family");
+    expect(minimumWeeklyEarnings("national-living-wage")).toBe(203.36);
+    expect(minimumWeeklyEarnings("18-20")).toBe(173.6);
+    expect(minimumWeeklyEarnings("apprentice")).toBe(128);
+    expect(minimumQuarterEarnings("national-living-wage")).toBe(2_643.68);
+    expect(minimumQuarterEarnings("18-20")).toBe(2_256.8);
+    expect(minimumQuarterEarnings("16-17")).toBe(1_664);
+  });
+  it("passes at exactly the floor and fails a penny under", async () => {
+    const { workingParentTest } = await import("./family");
+    expect(workingParentTest([{ ...adult, weekly: 203.36 }]).passes).toBe(true);
+    expect(workingParentTest([{ ...adult, weekly: 203.35 }]).parents).toEqual(["low-earnings"]);
+    expect(workingParentTest([{ ...adult, weekly: 50, newlySelfEmployed: true }]).passes).toBe(true);
+  });
+  it("needs both parents in work, unless one is covered by a benefit or carer's leave", async () => {
+    const { workingParentTest } = await import("./family");
+    expect(workingParentTest([adult, { ...adult, works: false }]).parents).toEqual([null, "not-working"]);
+    expect(workingParentTest([adult, { ...adult, works: false, covered: true }]).passes).toBe(true);
+    expect(workingParentTest([{ ...adult, works: false, covered: true }]).passes).toBe(false);
+  });
+  it("rules out a household where either parent is over £100,000", async () => {
+    const { workingParentTest } = await import("./family");
+    expect(workingParentTest([adult, { ...adult, over100k: true }]).passes).toBe(false);
+  });
+});
+
+describe("Tax-Free Childcare edges", () => {
+  it("stops at £2,000 a child, £4,000 if disabled", () => {
+    expect(taxFreeChildcarePlan([{ cost: 10_000, disabled: false }]).topUp).toBe(2_000);
+    expect(taxFreeChildcarePlan([{ cost: 15_000, disabled: false }]).topUp).toBe(2_000);
+    expect(taxFreeChildcarePlan([{ cost: 15_000, disabled: true }]).topUp).toBe(3_000);
+    expect(taxFreeChildcarePlan([{ cost: 25_000, disabled: true }]).topUp).toBe(4_000);
+  });
+  it("gives each child their own limit", () => {
+    const r = taxFreeChildcarePlan([{ cost: 12_000, disabled: false }, { cost: 4_000, disabled: false }]);
+    expect(r.topUp).toBe(2_000 + 800);
+  });
+  it("compares with the Universal Credit ceiling of 85% up to the monthly maximum", async () => {
+    const { ucChildcareCeiling } = await import("./family");
+    expect(ucChildcareCeiling([{ cost: 6_000, disabled: false }]).annual).toBeCloseTo(5_100, 6);
+    expect(ucChildcareCeiling([{ cost: 20_000, disabled: false }]).annual).toBeCloseTo(1_071.09 * 12, 6);
+    expect(ucChildcareCeiling([{ cost: 20_000, disabled: false }, { cost: 20_000, disabled: false }]).annual).toBeCloseTo(1_836.16 * 12, 6);
+  });
+});
+
+describe("maternity dates and the April 2027 uprating", () => {
+  it("counts back from the expected week of childbirth", async () => {
+    const { maternityDates } = await import("./family");
+    // Monday 1 March 2027: the expected week starts Sunday 28 February.
+    const d = maternityDates("2027-03-01");
+    expect(d.ewcStart).toBe("2027-02-28");
+    expect(d.qwStart).toBe("2026-11-15");
+    expect(d.qwEnd).toBe("2026-11-21");
+    expect(d.noticeBy).toBe("2026-11-21");
+    expect(d.earliestStart).toBe("2026-12-13");
+  });
+  it("keeps the 2026/27 rate for weeks starting before 4 April 2027", () => {
+    const r = maternityPay({ awe: 600, service: true, fullPayWeeks: 0, halfPayWeeks: 0, leaveWeeks: 52, year: "2027/28", startIso: "2027-02-14", qualifyingYear: "2026/27" });
+    expect(r.weeks[6].statutory).toBe(194.32); // week 7 starts 28 March
+    expect(r.weeks[7].statutory).toBe(201.11); // week 8 starts 4 April
+    expect(r.threshold).toBe(129);
+  });
+  it("pays 90% for all 39 weeks when that is below the flat rate", () => {
+    const r = maternityPay({ awe: 200, service: true, fullPayWeeks: 0, halfPayWeeks: 0, leaveWeeks: 52 });
+    expect(r.weeks[38].statutory).toBeCloseTo(180, 6);
+    expect(r.weeks[39].statutory).toBe(0);
+    expect(r.statutoryTotal).toBeCloseTo(180 * 39, 6);
+  });
+  it("sends earnings under the threshold to Maternity Allowance", () => {
+    expect(maternityPay({ awe: 128.99, service: true, fullPayWeeks: 0, halfPayWeeks: 0, leaveWeeks: 39 }).route).toBe("ma");
+    expect(maternityPay({ awe: 129, service: true, fullPayWeeks: 0, halfPayWeeks: 0, leaveWeeks: 39 }).route).toBe("smp");
+    expect(maternityPay({ awe: 29.99, service: false, fullPayWeeks: 0, halfPayWeeks: 0, leaveWeeks: 39 }).route).toBe("none");
   });
 });
