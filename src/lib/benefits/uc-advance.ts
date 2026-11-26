@@ -70,7 +70,8 @@ export function ucAdvance(i: AdvanceInput): AdvanceResult {
   const advance = Math.min(max, Math.max(0, i.advance));
   const months = Math.min(ADVANCE_2026.maxMonths, Math.max(1, Math.round(i.months)));
   const monthly = advance / months;
-  const cap = UC_2026.standard[i.standard] * ADVANCE_2026.capShare;
+  // To the penny (£63.735 is £63.74; the small nudge keeps floating point from rounding it down).
+  const cap = Math.round((UC_2026.standard[i.standard] * ADVANCE_2026.capShare + 1e-9) * 100) / 100;
   const other = Math.max(0, i.otherDeductions);
   const totalDeductions = monthly + other;
   const room = cap - other;

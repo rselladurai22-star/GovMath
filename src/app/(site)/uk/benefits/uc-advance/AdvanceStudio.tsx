@@ -33,9 +33,11 @@ export default function AdvanceStudio({ query }: { query: Query }) {
         <div className="sa-adv-setup">
           <Inputs tone="plain">
             <div className="sa-adv-claim">
-              <Mini label="Your first payment (estimate)" value={v.estimate} onChange={st.bind("estimate")} prefix="£" suffix="a month" max={10_000} step={25} dp={2} wide hint="The most you can borrow. It is on the statement in your journal." />
-              <SelectField label="Claiming as" value={v.who} onChange={st.bind("who")} options={KEYS.map((k) => ({ value: k, label: STANDARD_LABEL[k] }))} />
-              <Mini label="Already taken off each month" value={v.other} onChange={st.bind("other")} prefix="£" max={1_000} step={5} dp={2} wide hint="An overpayment, an old advance, a fine. They share the cap." />
+              <Mini label="Your first payment (estimate)" value={v.estimate} onChange={st.bind("estimate")} prefix="£" suffix="a month" max={10_000} step={25} dp={2} wide hint="The most you can borrow." />
+              <Mini label="Already taken off each month" value={v.other} onChange={st.bind("other")} prefix="£" max={1_000} step={5} dp={2} wide hint="Overpayments, fines, an old advance." />
+              <div className="sa-adv-who">
+                <SelectField label="Claiming as" value={v.who} onChange={st.bind("who")} options={KEYS.map((k) => ({ value: k, label: STANDARD_LABEL[k] }))} hint="Sets your standard allowance, which the 15% cap is worked out on." />
+              </div>
             </div>
             <div className="sa-adv-sliders">
               <MoneyField label="Advance you ask for" value={Math.min(v.advance, r.max)} onChange={st.bind("advance")} big slider={{ min: 0, max: Math.max(100, Math.round(r.max)), step: 25, ends: ["£0", gbp(r.max)] }} />

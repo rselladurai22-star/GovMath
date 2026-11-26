@@ -167,7 +167,7 @@ export default function UcStudio({ query }: { query: Query }) {
   return (
     <Tool label="Universal Credit calculator">
       <div className="sa-uc">
-        <p className="sa-uc-topline" aria-hidden="true">
+        <p className="sa-uc-topline">
           <span>Universal Credit{next ? " from April 2027" : ""}</span>
           <b>{gbp(r.award, true)}</b>
           <span>a month</span>

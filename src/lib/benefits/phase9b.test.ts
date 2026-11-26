@@ -39,7 +39,7 @@ describe("UC advance", () => {
   it("repays over the chosen months and checks the 15% cap", () => {
     const r = ucAdvance({ estimate: 800, advance: 800, months: 24, standard: "single25", otherDeductions: 0 });
     expect(r.monthly).toBeCloseTo(33.33, 2);
-    expect(r.cap).toBeCloseTo(63.735, 3);
+    expect(r.cap).toBe(63.74);
     expect(r.overCap).toBe(false);
     const big = ucAdvance({ estimate: 1200, advance: 2000, months: 12, standard: "single25", otherDeductions: 0 });
     expect(big.advance).toBe(1200);
@@ -53,7 +53,7 @@ describe("UC advance", () => {
     expect(r.paymentAfter).toBeCloseTo(329.67, 2);
   });
   it("flags a repayment above the 15% cap and finds the months that fit", () => {
-    // Single 25 or over: 15% of £424.90 is £63.74 (£63.735 unrounded).
+    // Single 25 or over: 15% of £424.90 is £63.74.
     const r = ucAdvance({ estimate: 1125, advance: 1125, months: 12, standard: "single25", otherDeductions: 0 });
     expect(r.monthly).toBeCloseTo(93.75, 2);
     expect(r.overCap).toBe(true);
@@ -64,7 +64,7 @@ describe("UC advance", () => {
   });
   it("existing deductions share the same cap", () => {
     const r = ucAdvance({ estimate: 900, advance: 600, months: 24, standard: "couple25", otherDeductions: 80 });
-    expect(r.cap).toBeCloseTo(100.0455, 3);
+    expect(r.cap).toBe(100.05);
     expect(r.totalDeductions).toBeCloseTo(105, 6);
     expect(r.overCap).toBe(true);
     expect(r.minMonthsForCap).toBeNull();

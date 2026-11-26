@@ -2,19 +2,17 @@
 
 import { BENEFIT_CAP, UC_DEFAULT_INPUT, universalCredit2026, type Health, type UcInput } from "@/lib/benefits/uc-engine";
 import { childBenefitRates } from "@/lib/benefits/child-benefit";
-import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
 import { housingBenefitCap } from "@/lib/benefits/benefit-cap";
-import Studio from "@/components/flagship/Studio";
-import AreaChart from "@/components/flagship/AreaChart";
-import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort } from "@/components/flagship/format";
+import { NMW_2026 } from "@/lib/benefits/minimum-wage";
+import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
+import { Caveat, Foot, Inputs, Rows, Tool, type Row } from "@/components/calc/kit";
+import { Mini, Pills } from "@/components/calc/fields";
+import { AdvancedOptions, MoneyField, SelectField, Switch } from "@/components/flagship/inputs";
+import { gbp } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
+import CapBar, { type CapPart } from "./CapBar";
 
 type Route = "uc" | "hb";
-
-const axis = (n: number) => (n >= 10_000 ? gbpShort(n) : gbp(Math.round(n / 10) * 10));
-const neg = (n: number): string => (n > 0.005 ? `−${gbp(n, true)}` : gbp(0, true));
 
 const SCHEMA = {
   route: oneOf<Route>("uc", ["uc", "hb"]),
@@ -35,18 +33,23 @@ const SCHEMA = {
   hbHousing: num(180, 0, 2_000),
   rates: ratesParam(),
 };
-const ADVANCED = ["over25", "pre2017", "disLower", "health", "carer", "exemptBen", "grace", "newStyle"] as const;
-const POINTS = 41;
-const TOP = 2000;
+const MORE = ["over25", "pre2017", "disLower", "health", "carer", "newStyle"] as const;
+const LIMIT = BENEFIT_CAP.earningsExemption;
+const YESNO = [
+  { value: "no" as const, label: "No" },
+  { value: "yes" as const, label: "Yes" },
+];
+/** Hours a week at the National Living Wage that reach the earnings exemption. */
+const HOURS = Math.ceil(((LIMIT * 12) / 52 / NMW_2026["national-living-wage"].hourly) * 2) / 2;
 
 export default function CapStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
   const next = v.rates === "2027/28";
+  const isUc = v.route === "uc";
   const CB = childBenefitRates(v.rates);
   const family = v.couple || v.children > 0;
   const area = v.london ? "london" : "elsewhere";
-  const capAnnual = BENEFIT_CAP[area][family ? "family" : "single"];
 
   const household: UcInput = {
     ...UC_DEFAULT_INPUT,
@@ -67,246 +70,215 @@ export default function CapStudio({ query }: { query: Query }) {
     year: v.rates,
   };
   const r = universalCredit2026(household);
-  const uncapped = universalCredit2026({ ...household, capExemptBenefit: true });
   const cb = v.children > 0 ? ((CB.firstChildWeekly + (v.children - 1) * CB.additionalChildWeekly) * 52) / 12 : 0;
-  const counted = Math.max(0, r.beforeCap - r.childcareElement) + cb + v.newStyle;
-  const reason = v.grace && !r.capExemptReason?.startsWith("Household") ? "In the nine-month grace period" : r.capExemptReason;
-  const at881 = universalCredit2026({ ...household, earnings: Math.max(v.earnings, BENEFIT_CAP.earningsExemption) });
-  const levels = Array.from({ length: POINTS }, (_, i) => (TOP * i) / (POINTS - 1));
-  const curve = levels.map((e) => universalCredit2026({ ...household, earnings: e }));
-  const income = curve.map((c, i) => c.award + levels[i] + cb);
+  // What the cap will do once the nine months are up, with nothing else changed.
+  const afterGrace = universalCredit2026({ ...household, capExemptBenefit: v.exemptBen });
+  const at881 = universalCredit2026({ ...household, earnings: Math.max(v.earnings, LIMIT) });
+  const gainAt881 = at881.award + Math.max(v.earnings, LIMIT) - (r.award + v.earnings);
 
   const hb = housingBenefitCap({ household: family ? "family" : "single-no-children", location: area, weeklyBenefits: v.hbTotal, weeklyHousingBenefit: v.hbHousing });
-  const hbExempt = v.exemptBen || v.grace;
-  const hbCut = hbExempt ? 0 : hb.weeklyReduction;
 
-  const isUc = v.route === "uc";
-  const reduction = isUc ? r.capReduction : hbCut;
-  const headline = isUc ? gbp(reduction, true) : gbp(hbCut, true);
+  const earnsEnough = isUc && v.earnings >= LIMIT;
+  const inAward = isUc && (v.health === "lcwra-new" || v.health === "lcwra-protected" || v.carer);
+  const why = earnsEnough
+    ? `Your household earns ${gbp(LIMIT)} a month or more after tax.`
+    : v.exemptBen
+      ? "Someone in your household gets a disability or carer benefit."
+      : inAward
+        ? `Your Universal Credit includes the ${v.carer ? "carer" : "health"} element.`
+        : v.grace
+          ? "You are in the nine-month grace period."
+          : null;
+  const exempt = why !== null;
+  // In the grace period the sums still matter: they show what happens when it ends.
+  const showSums = !exempt || (v.grace && !earnsEnough && !v.exemptBen && !inAward);
+  const sums = v.grace ? afterGrace : r;
+
+  const ucParts: CapPart[] = [
+    { key: "cb", label: "Child Benefit", amount: cb, color: "#6880c8" },
+    { key: "ns", label: "New Style JSA or ESA", amount: v.newStyle, color: "#d8962a" },
+    { key: "uc", label: "Universal Credit", amount: Math.max(0, sums.beforeCap - sums.childcareElement), color: "var(--sa-brand-fill)" },
+  ];
+  const hbParts: CapPart[] = [
+    { key: "other", label: "Other benefits", amount: Math.max(0, v.hbTotal - Math.min(v.hbHousing, v.hbTotal)), color: "#6880c8" },
+    { key: "hb", label: "Housing Benefit", amount: Math.min(v.hbHousing, v.hbTotal), color: "var(--sa-brand-fill)" },
+  ];
+  const cut = isUc ? sums.capReduction : hb.weeklyReduction;
+  const per = isUc ? "a month" : "a week";
+  const m = (n: number) => gbp(n, true);
+  const capNow = isUc ? r.capMonthly : hb.weeklyCap;
+  const counted = (isUc ? ucParts : hbParts).reduce((a, p) => a + p.amount, 0);
+  const rows: Row[] = isUc
+    ? [
+        { label: "Universal Credit before the cap", value: m(sums.beforeCap) },
+        { label: "Taken off by the cap", value: cut > 0 ? `−${m(cut)}` : m(0), tone: cut > 0 ? "bad" : undefined },
+        { label: "Universal Credit you are paid", value: m(sums.award), strong: true },
+      ]
+    : [
+        { label: "Housing Benefit before the cap", value: m(Math.min(v.hbHousing, v.hbTotal)) },
+        { label: "Taken off by the cap", value: cut > 0 ? `−${m(cut)}` : m(0), tone: cut > 0 ? "bad" : undefined },
+        { label: "Housing Benefit you are paid", value: m(hb.housingBenefitAfter), strong: true },
+      ];
 
   return (
-    <Studio
-      title="Your household"
-      ready={st.ready}
-      onCalculate={st.calculate}
-      calculateLabel="Check the benefit cap"
-      onReset={st.reset}
-      dock={{ label: isUc ? "Cap takes off a month" : "Cap takes off a week", value: headline }}
-      inputs={
-        <>
-          <InputGroup title="Your claim">
-            <Segmented
-              label="Main benefit"
-              value={v.route}
-              onChange={st.bind("route")}
-              options={[
-                { value: "uc", label: "Universal Credit" },
-                { value: "hb", label: "Housing Benefit", note: "For households still on legacy benefits or tax credits." },
-              ]}
-            />
-            <Segmented
-              label="Household"
-              value={v.couple ? "couple" : "single"}
-              onChange={(x) => st.set("couple", x === "couple")}
-              options={[
-                { value: "single", label: "Single" },
-                { value: "couple", label: "Couple" },
-              ]}
-            />
-            <StepperField label="Children" value={v.children} onChange={(n) => st.set("children", Math.round(n))} step={1} min={0} max={12} unit="children" dp={0} />
-            <Switch label="Live in Greater London" checked={v.london} onChange={st.bind("london")} />
-            <RatesChoice value={v.rates} onChange={st.bind("rates")} universalCredit={isUc} />
-          </InputGroup>
-          {isUc ? (
-            <InputGroup title="Rent and work">
-              <MoneyField label="Rent covered by Universal Credit a month" value={v.rent} onChange={st.bind("rent")} hint="Your rent, or your Local Housing Allowance if that is lower." />
-              <MoneyField label="Household take-home pay a month" value={v.earnings} onChange={st.bind("earnings")} slider={{ min: 0, max: 2_000, step: 25, ends: ["£0", "£2k"] }} hint="£881 or more after tax removes the cap." />
-            </InputGroup>
+    <Tool label="Benefit cap calculator">
+      <div className="sa-cap">
+        <div className="sa-cap-check">
+          <Inputs tone="plain">
+            <div className="sa-cap-route">
+              <Pills
+                label="Your housing costs are paid through"
+                value={v.route}
+                onChange={st.bind("route")}
+                options={[
+                  { value: "uc", label: "Universal Credit" },
+                  { value: "hb", label: "Housing Benefit" },
+                ]}
+              />
+            </div>
+            <ol className="sa-cap-questions">
+              {isUc && (
+                <li className={earnsEnough ? "is-yes" : undefined}>
+                  <p>
+                    <b>Do you{v.couple ? " and your partner" : ""} take home {gbp(LIMIT)} a month or more from work?</b>
+                    <span>After tax and National Insurance. About {HOURS} hours a week at the minimum wage.</span>
+                  </p>
+                  <Pills label={`Earning ${gbp(LIMIT)} a month or more`} hideLabel value={earnsEnough ? "yes" : "no"} onChange={(x) => st.set("earnings", x === "yes" ? Math.max(v.earnings, LIMIT) : 0)} options={YESNO} />
+                </li>
+              )}
+              <li className={v.exemptBen ? "is-yes" : undefined}>
+                <p>
+                  <b>Does anyone in your household get a disability or carer benefit?</b>
+                  <span>PIP, DLA, Attendance Allowance, Carer&rsquo;s Allowance, the Scottish equivalents, a war pension or Guardian&rsquo;s Allowance, for you, your partner or a child.</span>
+                </p>
+                <Pills label="A disability or carer benefit in the household" hideLabel value={v.exemptBen ? "yes" : "no"} onChange={(x) => st.set("exemptBen", x === "yes")} options={YESNO} />
+              </li>
+              <li className={v.grace ? "is-yes" : undefined}>
+                <p>
+                  <b>Did you stop work, or lose pay, in the last nine months?</b>
+                  <span>
+                    {isUc
+                      ? `Only if you earned ${gbp(LIMIT)} a month or more in each of the 12 months before that.`
+                      : "Only if you had worked for 50 of the 52 weeks before, and were not on Income Support, JSA or ESA while you did."}
+                  </span>
+                </p>
+                <Pills label="Stopped work or lost pay in the last nine months" hideLabel value={v.grace ? "yes" : "no"} onChange={(x) => st.set("grace", x === "yes")} options={YESNO} />
+              </li>
+            </ol>
+          </Inputs>
+        </div>
+
+        <div className={`sa-cap-verdict${exempt ? " is-exempt" : cut > 0 ? " is-capped" : " is-under"}`} aria-live="polite">
+          {exempt ? (
+            <>
+              <p className="sa-cap-vhead">The cap does not apply to you</p>
+              <p className="sa-cap-vsub">
+                {why}
+                {showSums && (cut > 0 ? ` When it ends, you would lose ${m(cut)} ${per} unless something below changes.` : " When it ends you would still be under the limit.")}
+              </p>
+            </>
+          ) : cut > 0 ? (
+            <>
+              <p className="sa-cap-vhead">
+                You are capped: <b>{m(cut)}</b> {per} is taken off{next ? " from April 2027" : ""}
+              </p>
+              <p className="sa-cap-vsub">
+                Your benefits come to {m(counted)} against a limit of {m(capNow)}.
+                {isUc && gainAt881 > 0 && ` Taking home ${gbp(LIMIT)} a month would lift the cap and leave you ${m(gainAt881)} a month better off.`}
+                {!isUc && hb.unrecovered > 0.005 && ` Housing Benefit cannot go below 50p a week, so ${m(hb.unrecovered)} of the excess is not taken.`}
+              </p>
+            </>
           ) : (
-            <InputGroup title="Your benefits a week">
-              <MoneyField label="All capped benefits a week" value={v.hbTotal} onChange={st.bind("hbTotal")} pence hint="Housing Benefit, Child Benefit, Child Tax Credit, income-related ESA, JSA and Income Support." />
-              <MoneyField label="Of which Housing Benefit" value={v.hbHousing} onChange={st.bind("hbHousing")} pence hint="The cap is taken from this." />
-            </InputGroup>
+            <>
+              <p className="sa-cap-vhead">You are not capped</p>
+              <p className="sa-cap-vsub">
+                Your benefits come to {m(counted)} {per}, which is {m(Math.max(0, capNow - counted))} under your limit of {m(capNow)}.
+              </p>
+            </>
           )}
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            <Switch label="Someone gets PIP, DLA, Attendance Allowance or Carer's Allowance" checked={v.exemptBen} onChange={st.bind("exemptBen")} optional hint="Also War Pensions, Industrial Injuries Benefits, Guardian's Allowance, or support-group ESA." />
-            <Switch label="Lost a job in the last 9 months" checked={v.grace} onChange={st.bind("grace")} optional hint="If you earned at least £881 a month in each of the 12 months before, the cap waits nine months." />
-            {isUc && (
-              <>
-                <Switch label={v.couple ? "At least one of you is 25 or over" : "I am 25 or over"} checked={v.over25} onChange={st.bind("over25")} optional />
-                {v.children > 0 && <Switch label="Eldest child born before 6 April 2017" checked={v.pre2017} onChange={st.bind("pre2017")} optional />}
-                {v.children > 0 && <StepperField label="Disabled children (lower addition)" value={v.disLower} onChange={(n) => st.set("disLower", Math.round(n))} step={1} min={0} max={10} unit="children" dp={0} optional />}
-                <SelectField
-                  label="Health condition"
-                  value={v.health}
-                  onChange={st.bind("health")}
-                  optional
-                  options={[
-                    { value: "none", label: "None" },
-                    { value: "lcw", label: "Limited capability for work (LCW)" },
-                    { value: "lcwra-new", label: "LCWRA: exempt from the cap" },
-                    { value: "lcwra-protected", label: "LCWRA (protected rate): exempt from the cap" },
-                  ]}
-                />
-                <Switch label="Universal Credit includes the carer element" checked={v.carer} onChange={st.bind("carer")} optional hint="Exempt from the cap." />
-                <MoneyField label="New Style JSA or ESA a month" value={v.newStyle} onChange={st.bind("newStyle")} optional hint="Counted for the cap and taken off Universal Credit." />
-              </>
-            )}
-          </AdvancedOptions>
-        </>
-      }
-    >
-      {isUc ? (
-        <Answer
-          eyebrow={next ? "From April 2027 (proposed rates), the benefit cap takes off" : "The benefit cap takes off"}
-          value={gbp(r.capReduction, true)}
-          unit="a month"
-          actions={<ShareButton copied={st.copied} onClick={st.share} />}
-          sentence={
-            reason ? (
-              <>
-                You are <b>exempt</b> from the benefit cap: {reason.toLowerCase()}. Your Universal Credit is <b>{gbp(r.award, true)}</b> a month.
-              </>
-            ) : r.capReduction > 0 ? (
-              <>
-                Your benefits come to <b>{gbp(counted, true)}</b> a month, over the cap of <b>{gbp(r.capMonthly, true)}</b>. Universal Credit falls from <b>{gbp(r.beforeCap, true)}</b> to{" "}
-                <b>{gbp(r.award, true)}</b>, a loss of <b>{gbp(r.capReduction * 12)}</b> a year.
-              </>
-            ) : (
-              <>
-                Your benefits come to <b>{gbp(counted, true)}</b> a month, under the cap of <b>{gbp(r.capMonthly, true)}</b>, so nothing is taken off.
-              </>
-            )
-          }
-          badges={[`Cap ${gbp(capAnnual)} a year`, v.london ? "Greater London" : "Outside London", reason ? "Exempt" : r.capReduction > 0 ? "Capped" : "Under the cap"]}
-        />
-      ) : (
-        <Answer
-          eyebrow="The benefit cap takes off"
-          value={gbp(hbCut, true)}
-          unit="a week"
-          actions={<ShareButton copied={st.copied} onClick={st.share} />}
-          sentence={
-            hbExempt ? (
-              <>You are exempt from the benefit cap, so your Housing Benefit is not reduced.</>
-            ) : hbCut > 0 ? (
-              <>
-                Your benefits of <b>{gbp(v.hbTotal, true)}</b> a week are over the cap of <b>{gbp(hb.weeklyCap, true)}</b>. Housing Benefit falls to <b>{gbp(hb.housingBenefitAfter, true)}</b> a week,
-                a loss of <b>{gbp(hbCut * 52)}</b> a year.
-              </>
-            ) : (
-              <>
-                Your benefits of <b>{gbp(v.hbTotal, true)}</b> a week are under the cap of <b>{gbp(hb.weeklyCap, true)}</b>.
-              </>
-            )
-          }
-          badges={[`Cap ${gbp(hb.weeklyCap, true)} a week`, v.london ? "Greater London" : "Outside London"]}
-        />
-      )}
+        </div>
 
-      {isUc ? (
-        <Facts
-          items={[
-            { label: "Cap a month", value: gbp(r.capMonthly, true) },
-            { label: "Benefits counted", value: gbp(counted, true) },
-            { label: "Taken off", value: gbp(r.capReduction, true), tone: r.capReduction > 0 ? "warn" : undefined },
-            { label: "Universal Credit", value: gbp(r.award, true), tone: "good" },
-          ]}
-        />
-      ) : (
-        <Facts
-          items={[
-            { label: "Cap a week", value: gbp(hb.weeklyCap, true) },
-            { label: "Benefits counted", value: gbp(v.hbTotal, true) },
-            { label: "Taken off", value: gbp(hbCut, true), tone: hbCut > 0 ? "warn" : undefined },
-            { label: "Housing Benefit left", value: gbp(hbExempt ? v.hbHousing : hb.housingBenefitAfter, true), tone: "good" },
-          ]}
-        />
-      )}
-
-      <Assumptions
-        items={[
-          { label: "Cap", value: `${gbp(capAnnual)} a year, ${family ? "couple or family" : "single"}` },
-          { label: "Rates", value: next ? "Proposed 2027/28 Universal Credit and Child Benefit; the cap is frozen at the same level" : "2026/27" },
-          { label: "Child Benefit", value: isUc ? `${gbp(cb, true)} a month counted` : "Include it in your total" },
-          { label: "Childcare element", value: "Not capped" },
-        ]}
-      />
-
-      {isUc && (
-        <ResultCard title="What counts towards the cap" sub="A month, before the cap.">
-          <Statement
-            columns={["A month"]}
-            rows={[
-              { label: "Universal Credit before the cap", values: [gbp(r.beforeCap, true)] },
-              ...(r.childcareElement > 0 ? [{ label: "Less childcare element (not capped)", values: [neg(r.childcareElement)], kind: "deduction" as const }] : []),
-              ...(cb > 0 ? [{ label: "Child Benefit", values: [gbp(cb, true)] }] : []),
-              ...(v.newStyle > 0 ? [{ label: "New Style JSA or ESA", values: [gbp(v.newStyle, true)] }] : []),
-              { label: "Benefits counted", values: [gbp(counted, true)], kind: "total" as const },
-              { label: "Benefit cap", values: [gbp(r.capMonthly, true)] },
-              { label: "Reduction to Universal Credit", values: [reason ? "Exempt" : gbp(r.capReduction, true)], kind: "total" as const },
-            ]}
-          />
-          {!reason && r.capReduction > 0 && (
-            <SplitBar
-              segments={[
-                { label: "Paid", value: r.award + cb + v.newStyle, display: gbp(r.award + cb + v.newStyle, true), color: "#5b1e6e" },
-                { label: "Lost to the cap", value: r.capReduction, display: gbp(r.capReduction, true), color: "#f59e0b" },
-              ]}
-            />
-          )}
-        </ResultCard>
-      )}
-
-      {isUc && (
-        <ResultCard title="Income at different earnings" sub="Take-home pay, Universal Credit and Child Benefit a month.">
-          <AreaChart
-            ariaLabel="Household income by monthly take-home pay"
-            series={[{ key: "income", label: "Household income", color: "#5b1e6e", values: income, fill: true }]}
-            xLabel={(i) => gbpShort(levels[i] ?? 0)}
-            yFormat={axis}
-            initial={Math.min(POINTS - 1, Math.round((v.earnings / TOP) * (POINTS - 1)))}
-            hint="Drag across the chart, or use the arrow keys, to read any level of pay."
-            readout={(i) => {
-              const c = curve[i];
-              if (!c) return null;
-              return (
-                <>
-                  Take-home pay <b>{gbp(levels[i] ?? 0)}</b>: Universal Credit <b>{gbp(c.award, true)}</b>
-                  {c.capReduction > 0 ? <> after a cap of {gbp(c.capReduction, true)}</> : null}, total <b>{gbp(income[i] ?? 0, true)}</b>.
-                </>
-              );
-            }}
-          />
-        </ResultCard>
-      )}
-
-      <ResultCard title="Worth knowing" sub="Ways out of the cap.">
-        {isUc && r.capReduction > 0 && (
-          <Callout tone="good" title={`Earning ${gbp(BENEFIT_CAP.earningsExemption)} a month would lift the cap`}>
-            With take-home pay of {gbp(Math.max(v.earnings, BENEFIT_CAP.earningsExemption))}, your Universal Credit would be {gbp(at881.award, true)} a month instead of {gbp(r.award, true)}. That is about 16 hours a
-            week at the National Living Wage.
-          </Callout>
+        {showSums && (
+          <div className="sa-cap-sums">
+            <div className="sa-cap-household">
+              <h2 className="sa-cap-h">Your household</h2>
+              <Inputs tone="plain">
+                <div className="sa-cap-fields">
+                  <Pills
+                    label="Claiming as"
+                    value={v.couple ? "couple" : "single"}
+                    onChange={(x) => st.set("couple", x === "couple")}
+                    options={[
+                      { value: "single", label: "Single" },
+                      { value: "couple", label: "Couple" },
+                    ]}
+                  />
+                  <Pills
+                    label="Where you live"
+                    value={v.london ? "london" : "elsewhere"}
+                    onChange={(x) => st.set("london", x === "london")}
+                    options={[
+                      { value: "elsewhere", label: "Outside London" },
+                      { value: "london", label: "London" },
+                    ]}
+                  />
+                  <Mini label="Children" value={v.children} onChange={(n) => st.set("children", Math.round(n))} min={0} max={12} stepper />
+                  {isUc ? (
+                    <>
+                      <Mini label="Rent covered by Universal Credit" value={v.rent} onChange={st.bind("rent")} prefix="£" suffix="a month" max={10_000} step={25} wide hint="Your rent, or the Local Housing Allowance if that is lower." />
+                      <Mini label="Take-home pay" value={v.earnings} onChange={st.bind("earnings")} prefix="£" suffix="a month" max={20_000} step={25} wide hint={`Under ${gbp(LIMIT)} it lowers your Universal Credit but does not lift the cap.`} />
+                    </>
+                  ) : (
+                    <>
+                      <Mini label="All capped benefits" value={v.hbTotal} onChange={st.bind("hbTotal")} prefix="£" suffix="a week" max={3_000} step={5} dp={2} wide hint="Housing Benefit, Child Benefit, Child Tax Credit, Income Support, JSA and ESA." />
+                      <Mini label="Of which Housing Benefit" value={v.hbHousing} onChange={st.bind("hbHousing")} prefix="£" suffix="a week" max={2_000} step={5} dp={2} wide hint="The cap is taken from this." />
+                    </>
+                  )}
+                </div>
+                <RatesChoice value={v.rates} onChange={st.bind("rates")} universalCredit={isUc} />
+                {isUc && (
+                  <AdvancedOptions description="Age, a disabled child, health and carer elements, New Style benefits." changed={st.changed([...MORE])} onReset={() => st.resetKeys([...MORE])}>
+                    <Switch label={v.couple ? "At least one of you is 25 or over" : "I am 25 or over"} checked={v.over25} onChange={st.bind("over25")} />
+                    {v.children > 0 && <Switch label="The eldest child was born before 6 April 2017" checked={v.pre2017} onChange={st.bind("pre2017")} />}
+                    {v.children > 0 && (
+                      <div className="sa-cap-morecount">
+                        <Mini label="Children with the lower disabled child addition" value={v.disLower} onChange={(n) => st.set("disLower", Math.round(n))} min={0} max={10} stepper hint="If the child gets DLA or PIP, answer yes to the second question instead." />
+                      </div>
+                    )}
+                    <SelectField
+                      label="Health element"
+                      value={v.health}
+                      onChange={st.bind("health")}
+                      options={[
+                        { value: "none", label: "None" },
+                        { value: "lcw", label: "Limited capability for work (still capped)" },
+                        { value: "lcwra-new", label: "LCWRA, health claim from April 2026 (not capped)" },
+                        { value: "lcwra-protected", label: "LCWRA, earlier or protected rate (not capped)" },
+                      ]}
+                    />
+                    <Switch label="My Universal Credit includes the carer element" checked={v.carer} onChange={st.bind("carer")} hint="Lifts the cap." />
+                    <MoneyField label="New Style JSA or ESA a month" value={v.newStyle} onChange={st.bind("newStyle")} hint="It counts towards the cap and comes off your Universal Credit." />
+                  </AdvancedOptions>
+                )}
+              </Inputs>
+            </div>
+            <div className="sa-cap-result">
+              <h2 className="sa-cap-h">{exempt ? "When the nine months end" : `What counts against your ${m(capNow)} limit`}</h2>
+              <CapBar parts={isUc ? ucParts : hbParts} cap={capNow} money={m} per={per} />
+              <Rows caption={isUc ? "Universal Credit before and after the cap" : "Housing Benefit before and after the cap"} rows={rows} />
+            </div>
+          </div>
         )}
-        {isUc && uncapped.award - r.award > 0.005 && !reason && (
-          <Callout title="Check for exemptions">
-            If anyone in the household gets PIP, DLA, Attendance Allowance or Carer&apos;s Allowance, or a Work Capability Assessment finds you have limited capability for work and work-related activity, you
-            would get {gbp(uncapped.award - r.award, true)} a month more.
-          </Callout>
-        )}
-        {!isUc && hb.unrecovered > 0 && !hbExempt && (
-          <Callout title="Housing Benefit runs out first">
-            Housing Benefit cannot fall below 50p a week, so {gbp(hb.unrecovered, true)} a week of the excess is not taken.
-          </Callout>
-        )}
-        <Callout title="Discretionary Housing Payments">
-          Councils can top up rent for capped households with a Discretionary Housing Payment, usually for a limited time while you look for work or cheaper housing.
-        </Callout>
-      </ResultCard>
 
-      <p className="footnote" style={{ textAlign: "center" }}>
-        {next ? "Benefit cap frozen for 2027/28; proposed 2027/28 benefit rates, final once Parliament approves them." : "2026/27 benefit cap."} An estimate, not a decision on your claim.
-      </p>
-    </Studio>
+        <Foot>
+          <Caveat>
+            {isUc
+              ? `An estimate at ${next ? "DWP’s proposed 2027/28 Universal Credit rates; the cap itself is frozen" : "2026/27 rates"}. It takes the rent you enter as fully covered and leaves out Maternity Allowance and bereavement benefits, which also count.`
+              : "Exact for the weekly figures you enter, at the 2026/27 cap. The council applies it to your Housing Benefit."}
+          </Caveat>
+          <ShareButton copied={st.copied} onClick={st.share} />
+        </Foot>
+      </div>
+    </Tool>
   );
 }
