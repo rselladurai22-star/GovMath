@@ -53,11 +53,15 @@ export type CarerEarningsResult = {
   total: number;
 };
 
-/** Weekly Income Tax and NI on weekly gross pay, annualised. */
+/**
+ * Weekly Income Tax and NI on weekly gross pay, annualised. Pension
+ * contributions are taken as a net pay arrangement: they reduce the pay
+ * that is taxed, but National Insurance is still due on the full gross pay.
+ */
 function weeklyTaxNi(grossWeekly: number, pensionWeekly: number, scotland: boolean) {
-  const annual = Math.max(0, grossWeekly - pensionWeekly) * 52;
-  const tax = (scotland ? scottishIncomeTax(annual).total : incomeTax(annual).total) / 52;
-  const ni = nationalInsurance(annual).total / 52;
+  const taxable = Math.max(0, grossWeekly - pensionWeekly) * 52;
+  const tax = (scotland ? scottishIncomeTax(taxable).total : incomeTax(taxable).total) / 52;
+  const ni = nationalInsurance(Math.max(0, grossWeekly) * 52).total / 52;
   return { tax, ni };
 }
 

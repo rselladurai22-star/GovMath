@@ -76,7 +76,9 @@ export const LEL: Record<number, number> = { 2022: 123, 2023: 123, 2024: 123, 20
  * 2024/25.
  */
 export function relevantYears(claimDate: string): [number, number] {
-  const d = new Date(`${claimDate}T00:00:00Z`);
+  const parsed = new Date(`${claimDate}T00:00:00Z`);
+  // An unfinished date box falls back to today.
+  const d = Number.isNaN(parsed.getTime()) ? new Date() : parsed;
   const y = d.getUTCFullYear();
   // First Sunday of January in year y.
   const jan1 = new Date(Date.UTC(y, 0, 1));
@@ -96,6 +98,39 @@ export type ContributionInput = {
   /** Got National Insurance credits for the whole of the year (for example on Carer's Allowance or UC). */
   creditedEarlier: boolean;
   creditedLater: boolean;
+  /** Weeks of the year the pay was earned in (default 52: steady pay all year). */
+  weeksEarlier?: number;
+  weeksLater?: number;
+  /**
+   * New Style ESA only: self-employed all year with profits at or above the
+   * small profits threshold, so Class 2 contributions were paid or treated as
+   * paid for every week (JSA counts Class 1 only).
+   */
+  selfEmployedEarlier?: boolean;
+  selfEmployedLater?: boolean;
+  /** Which benefit: ESA also counts Class 2 contributions. Default "jsa". */
+  benefit?: "jsa" | "esa";
+};
+
+export type ContributionYear = {
+  /** "2024/25". */
+  label: string;
+  /** The year's Lower Earnings Limit a week. */
+  lel: number;
+  /** Condition A: earnings counted (each week capped at the LEL), Class 2 added for ESA. */
+  counted: number;
+  /** 26 × LEL. */
+  countedNeeded: number;
+  /** Condition B: earnings factor paid, treated as paid or credited. */
+  factor: number;
+  /** 50 × LEL. */
+  factorNeeded: number;
+  /** Condition A met by this year on its own. */
+  aOk: boolean;
+  /** Condition B met for this year. */
+  bOk: boolean;
+  /** Weekly pay was under the LEL, so no Class 1 counted at all. */
+  underLel: boolean;
 };
 
 export type ContributionResult = {
@@ -108,30 +143,61 @@ export type ContributionResult = {
   conditionB: boolean;
   /** Condition B, year by year. */
   yearOk: [boolean, boolean];
+  /** Each year's figures, earlier year first. */
+  detail: [ContributionYear, ContributionYear];
   met: boolean;
 };
 
+const lelFor = (start: number) => LEL[start] ?? LEL[Math.max(...Object.keys(LEL).map(Number))];
+
+function yearTest(start: number, earnings: number, weeks: number, credited: boolean, selfEmployed: boolean): ContributionYear {
+  const lel = lelFor(start);
+  const wk = Math.min(52, Math.max(1, Math.round(weeks)));
+  const pay = Math.max(0, earnings);
+  // Class 1 is only paid (or treated as paid) in weeks earning at least the
+  // LEL; for condition A each such week counts at most the LEL (Jobseekers
+  // Act 1995 s2(2B), Welfare Reform Act 2007 Sch 1 para 1(3A)).
+  const underLel = pay > 0 && pay / wk < lel;
+  const classOne = underLel ? 0 : pay;
+  const class2 = selfEmployed ? 52 * lel : 0;
+  const counted = (classOne > 0 ? Math.min(classOne, wk * lel) : 0) + class2;
+  const factor = credited ? Math.max(classOne + class2, 52 * lel) : classOne + class2;
+  return {
+    label: taxYearLabel(start),
+    lel,
+    counted,
+    countedNeeded: 26 * lel,
+    factor,
+    factorNeeded: 50 * lel,
+    aOk: counted > 0 && counted >= 26 * lel,
+    bOk: factor >= 50 * lel,
+    underLel,
+  };
+}
+
 /**
- * Contribution conditions, from yearly earnings. Class 1 is only "paid" on
- * earnings above the Lower Earnings Limit each week, so steady weekly pay is
- * assumed; irregular pay may give a different answer.
+ * The two contribution conditions, from each year's pay as an employee and
+ * the weeks it was earned in (steady pay within those weeks is assumed).
+ * Condition A: in one of the two years, Class 1 (or, for ESA, Class 2) paid
+ * on earnings of at least 26 × that year's Lower Earnings Limit, each week
+ * counting up to the LEL. Condition B: in each year, paid or credited
+ * earnings of at least 50 × LEL.
  */
 export function contributionTest(i: ContributionInput): ContributionResult {
   const [a, b] = relevantYears(i.claimDate);
-  const lelA = LEL[a] ?? 123;
-  const lelB = LEL[b] ?? 123;
-  const paidNeeded = 26 * Math.min(lelA, lelB);
-  const conditionA = (i.earningsEarlier >= 26 * lelA && i.earningsEarlier > 0) || (i.earningsLater >= 26 * lelB && i.earningsLater > 0);
-  const okA = i.creditedEarlier || i.earningsEarlier >= 50 * lelA;
-  const okB = i.creditedLater || i.earningsLater >= 50 * lelB;
+  const esa = i.benefit === "esa";
+  const ya = yearTest(a, i.earningsEarlier, i.weeksEarlier ?? 52, i.creditedEarlier, esa && !!i.selfEmployedEarlier);
+  const yb = yearTest(b, i.earningsLater, i.weeksLater ?? 52, i.creditedLater, esa && !!i.selfEmployedLater);
+  const conditionA = ya.aOk || yb.aOk;
   return {
-    years: [taxYearLabel(a), taxYearLabel(b)],
-    paidNeeded,
-    eachYearNeeded: [50 * lelA, 50 * lelB],
+    years: [ya.label, yb.label],
+    paidNeeded: 26 * Math.min(ya.lel, yb.lel),
+    eachYearNeeded: [ya.factorNeeded, yb.factorNeeded],
     conditionA,
-    conditionB: okA && okB,
-    yearOk: [okA, okB],
-    met: conditionA && okA && okB,
+    conditionB: ya.bOk && yb.bOk,
+    yearOk: [ya.bOk, yb.bOk],
+    detail: [ya, yb],
+    met: conditionA && ya.bOk && yb.bOk,
   };
 }
 
@@ -225,8 +291,10 @@ export function newStyleEsa(i: EsaInput): EsaResult {
     componentLabel = "Work-related activity component";
   }
   const pensionDeduction = Math.max(0, i.pension - r.pensionThreshold) / 2;
-  // Permitted work: under 16 hours and up to £203.50 a week (£211.50 from April 2027). Anything more ends ESA.
-  const permittedWorkOk = i.earnings <= 0 || (i.hours < 16 && i.earnings <= r.permittedWorkHigher);
+  // Permitted work (ESA Regulations 2008 reg 45): up to £20 a week at any hours,
+  // or under 16 hours and up to £203.50 a week (£211.50 from April 2027).
+  // Unpaid voluntary work is unlimited. Anything more ends ESA.
+  const permittedWorkOk = i.earnings <= 0 || i.earnings <= r.permittedWorkLower || (i.hours < 16 && i.earnings <= r.permittedWorkHigher);
   const weekly = permittedWorkOk ? round2(Math.max(0, basic + component - pensionDeduction)) : 0;
   return {
     basic,

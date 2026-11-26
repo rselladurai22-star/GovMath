@@ -1,169 +1,157 @@
 "use client";
 
-import Studio from "@/components/flagship/Studio";
-import { AdvancedOptions, InputGroup, MoneyField, RadioGroup, Segmented, StepperField, Switch } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
+import Link from "next/link";
+import { Caveat, Flag, Foot, Inputs, Rows, Tool, type Row } from "@/components/calc/kit";
+import { Mini, Pills } from "@/components/calc/fields";
+import { AdvancedOptions, Switch } from "@/components/flagship/inputs";
 import { gbp } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
-import { NiConditions, NiRecordFields, NI_SCHEMA, niTest } from "@/components/benefits/NiRecordFields";
-import { newStyleEsa, newStyleRates, type EsaGroup } from "@/lib/benefits/new-style";
+import { NI_SCHEMA, SE_SCHEMA, TaxYearCards, niTest, useToday } from "@/components/benefits/TaxYearCards";
 import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
+import { newStyleEsa, newStyleRates, type EsaGroup } from "@/lib/benefits/new-style";
+import EsaTimeline from "./EsaTimeline";
 
-const GROUP_LABEL: Record<EsaGroup, string> = {
-  assessment: "Assessment phase (first 13 weeks)",
-  wrag: "Work-related activity group",
-  support: "Support group",
-};
-
+// Keys kept from the earlier calculator, so old share links still work.
 const SCHEMA = {
   age: oneOf<"over25" | "under25">("over25", ["over25", "under25"]),
   group: oneOf<EsaGroup>("assessment", ["assessment", "wrag", "support"]),
   ...NI_SCHEMA,
+  ...SE_SCHEMA,
   pension: num(0, 0, 5_000),
   earnings: num(0, 0, 5_000),
   hours: num(0, 0, 60),
   pre2017: bool(false),
   rates: ratesParam(),
 };
-const ADVANCED = ["pension", "earnings", "hours", "pre2017"] as const;
+const MORE = ["pension", "earnings", "hours", "pre2017"] as const;
+const GROUP: Record<EsaGroup, string> = { assessment: "assessment phase", wrag: "work-related activity group", support: "support group" };
 
 export default function EsaStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
-  const t = niTest(v);
-  const over25 = v.age === "over25";
-  const r = newStyleEsa({ over25, group: v.group, pre2017: v.pre2017, pension: v.pension, earnings: v.earnings, hours: v.hours, year: v.rates });
-  const weekly = t.met ? r.weekly : 0;
+  const today = useToday();
+  const claimDate = v.claim || today;
+  const t = niTest(v, claimDate, "esa");
   const next = v.rates === "2027/28";
   const E = newStyleRates(v.rates).esa;
-  const groups = (["assessment", "wrag", "support"] as EsaGroup[]).map((g) => ({
-    g,
-    w: newStyleEsa({ over25, group: g, pre2017: v.pre2017, pension: v.pension, earnings: v.earnings, hours: v.hours, year: v.rates }).weekly,
-  }));
-  const maxW = Math.max(1, ...groups.map((x) => x.w));
+  const over25 = v.age === "over25";
+  const at = (group: EsaGroup) => newStyleEsa({ over25, group, pre2017: v.pre2017, pension: v.pension, earnings: v.earnings, hours: v.hours, year: v.rates });
+  const r = at(v.group);
+  const paid = t.met && r.permittedWorkOk;
+  const weekly = paid ? r.weekly : 0;
+  const m = (n: number) => gbp(n, true);
+  const short = t.detail.filter((y) => !y.bOk).map((y) => y.label);
+
+  const rows: Row[] = [
+    { label: v.group === "assessment" ? `Assessment rate${over25 ? "" : " (under 25)"}` : "Main phase rate", value: m(r.basic) },
+    ...(r.component > 0 ? [{ label: r.componentLabel ?? "Component", value: `+${m(r.component)}` }] : []),
+    ...(r.pensionDeduction > 0 ? [{ label: `Half of your pension over ${gbp(E.pensionThreshold)} a week`, value: `−${m(r.pensionDeduction)}`, tone: "bad" as const }] : []),
+    ...(!paid && r.weekly > 0 ? [{ label: t.met ? "Over the permitted work limits" : "National Insurance test not met", value: `−${m(r.weekly)}`, tone: "bad" as const }] : []),
+    { label: "New Style ESA a week", value: m(weekly), strong: true },
+  ];
 
   return (
-    <Studio
-      title="Your claim and National Insurance record"
-      ready={st.ready}
-      onCalculate={st.calculate}
-      calculateLabel="Check my New Style ESA"
-      onReset={st.reset}
-      dock={{ label: "ESA a week", value: gbp(weekly, true) }}
-      inputs={
-        <>
-          <InputGroup title="About you">
-            <Segmented
-              label="Your age"
-              value={v.age}
-              onChange={st.bind("age")}
-              options={[
-                { value: "over25", label: "25 or over" },
-                { value: "under25", label: "Under 25" },
-              ]}
-            />
-            <RadioGroup
-              label="Stage of your claim"
-              value={v.group}
-              onChange={st.bind("group")}
-              options={[
-                { value: "assessment", label: GROUP_LABEL.assessment },
-                { value: "wrag", label: "Work-related activity group (after assessment)" },
-                { value: "support", label: "Support group (after assessment)" },
-              ]}
-              info="After about 13 weeks, the Work Capability Assessment decides your group. The support group is for people who cannot do any work-related activity."
-            />
+    <Tool label="New Style ESA calculator">
+      <div className="sa-ns sa-esa">
+        <div className="sa-ns-top">
+          <div className={`sa-ns-verdict${paid ? " is-yes" : " is-no"}`} aria-live="polite">
+            <p className="sa-ns-kicker">{paid ? `You qualify${next ? " (April 2027 rates, proposed)" : ""}` : t.met ? "Your record qualifies, but nothing is paid" : "Not on this National Insurance record"}</p>
+            <p className="sa-ns-amount">
+              <b>{m(weekly)}</b> <span>a week</span>
+            </p>
+            <p className="sa-ns-sub">
+              {!t.met ? (
+                !t.conditionA ? (
+                  <>Neither year has enough paid National Insurance. You need at least 26 weeks of pay at {gbp(t.detail[1].lel)} a week or more in one of them.</>
+                ) : (
+                  <>
+                    {short.join(" and ")} {short.length === 1 ? "falls" : "fall"} short of the paid-or-credited test. Credits for sickness, caring or Universal Credit often fill a gap: check your record.
+                  </>
+                )
+              ) : !r.permittedWorkOk ? (
+                <>
+                  Your work is over the permitted work limits ({gbp(E.permittedWorkLower)} a week at any hours, or under 16 hours and up to {m(E.permittedWorkHigher)}), so ESA would stop.
+                </>
+              ) : weekly === 0 ? (
+                <>Your pension takes the whole amount, but you would still get National Insurance credits.</>
+              ) : (
+                <>
+                  Paid as {m(weekly * 2)} every two weeks in the {GROUP[v.group]}.{" "}
+                  {v.group === "assessment" ? `If the assessment puts you in the support group it rises to ${m(at("support").weekly)}.` : v.group === "support" ? "There is no time limit." : "It stops 365 days after your claim began."}
+                </>
+              )}
+            </p>
+            {!t.met && (
+              <p className="sa-ns-alt">
+                <Link href="/uk/benefits/universal-credit">Universal Credit</Link>{" "}does not depend on National Insurance and can include a health element.
+              </p>
+            )}
+          </div>
+
+          <div className="sa-ns-claim">
+            <Inputs tone="plain">
+              <div className="sa-ns-pills">
+                <Pills
+                  label="Your age"
+                  value={v.age}
+                  onChange={st.bind("age")}
+                  options={[
+                    { value: "under25", label: "Under 25" },
+                    { value: "over25", label: "25 or over" },
+                  ]}
+                />
+                <Pills
+                  label="Stage of your claim"
+                  value={v.group}
+                  onChange={st.bind("group")}
+                  options={[
+                    { value: "assessment", label: "Assessment" },
+                    { value: "wrag", label: "Work-related" },
+                    { value: "support", label: "Support" },
+                  ]}
+                />
+              </div>
+            </Inputs>
+            <EsaTimeline group={v.group} assessment={at("assessment").weekly} wrag={at("wrag").weekly} support={at("support").weekly} money={m} paid={paid} />
+          </div>
+        </div>
+
+        <h2 className="sa-ns-h">Your National Insurance record</h2>
+        <TaxYearCards v={v} set={(k, x) => st.set(k as keyof typeof SCHEMA, x as never)} t={t} claimDate={claimDate} benefit="esa" dateLabel="Date you became too ill to work" />
+
+        <div className="sa-ns-bottom">
+          <Inputs tone="plain">
+            <AdvancedOptions description="A pension, permitted work, a claim from before April 2017." changed={st.changed([...MORE])} onReset={() => st.resetKeys([...MORE])}>
+              <div className="sa-ns-more">
+                <Mini label="Private or workplace pension" value={v.pension} onChange={st.bind("pension")} prefix="£" suffix="a week" dp={2} step={5} wide hint={`Before tax. Half of anything over ${gbp(E.pensionThreshold)} comes off.`} />
+                <Mini label="Pay from permitted work" value={v.earnings} onChange={st.bind("earnings")} prefix="£" suffix="a week" dp={2} step={5} wide />
+                <Mini label="Hours of that work" value={v.hours} onChange={(x) => st.set("hours", x)} min={0} max={60} stepper suffix="a week" />
+              </div>
+              <Switch label="My claim started before 3 April 2017" checked={v.pre2017} onChange={st.bind("pre2017")} hint={`Older claims in the work-related activity group keep the ${m(E.wrac)} component.`} />
+            </AdvancedOptions>
             <RatesChoice value={v.rates} onChange={st.bind("rates")} />
-          </InputGroup>
-          <InputGroup title="Your National Insurance record">
-            <NiRecordFields v={v} set={(k, value) => st.set(k, value as never)} />
-          </InputGroup>
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            <MoneyField label="Private or workplace pension, a week" value={v.pension} onChange={st.bind("pension")} optional pence hint="Before tax. Half of anything over £85 a week is taken off ESA." />
-            <MoneyField label="Permitted work earnings, a week" value={v.earnings} onChange={st.bind("earnings")} optional pence hint={`You can earn up to ${gbp(E.permittedWorkHigher, true)} a week, working under 16 hours, without affecting ESA.`} />
-            <StepperField label="Hours of permitted work a week" value={v.hours} onChange={st.bind("hours")} step={1} min={0} max={60} unit="hours" dp={0} optional />
-            <Switch label="Claim started before 3 April 2017" checked={v.pre2017} onChange={st.bind("pre2017")} optional hint="Older claims in the work-related activity group keep the £37.95 component." />
-          </AdvancedOptions>
-        </>
-      }
-    >
-      <Answer
-        eyebrow={next ? "New Style ESA a week from 6 April 2027 (proposed)" : "New Style ESA a week"}
-        value={gbp(weekly, true)}
-        actions={<ShareButton copied={st.copied} onClick={st.share} />}
-        sentence={
-          !t.met ? (
-            <>
-              On these figures you do <b>not</b> meet the National Insurance conditions for {t.years[0]} and {t.years[1]}. Universal Credit, which depends on income and savings, can include a health element instead.
-            </>
-          ) : !r.permittedWorkOk ? (
-            <>Your work is above the permitted work limit (under 16 hours and up to {gbp(E.permittedWorkHigher, true)} a week), so New Style ESA would stop.</>
-          ) : (
-            <>
-              In the <b>{GROUP_LABEL[v.group].toLowerCase()}</b> you could get <b>{gbp(weekly, true)}</b> a week, or <b>{gbp(weekly * 2, true)}</b> every two weeks.{" "}
-              {v.group === "support" ? <>There is no time limit in the support group.</> : v.group === "wrag" ? <>It is paid for up to 365 days in this group.</> : <>After the assessment it may go up.</>}
-            </>
-          )
-        }
-        badges={[over25 ? "25 or over" : "Under 25", GROUP_LABEL[v.group].replace(" (first 13 weeks)", ""), t.met ? "NI conditions met" : "NI conditions not met"]}
-      />
+          </Inputs>
+          <div className="sa-ns-sums">
+            <Rows caption="How your weekly amount is worked out" rows={rows} />
+            {paid && (
+              <p className="sa-ns-uc">
+                Universal Credit counts it as {m(r.monthlyForUc)} a month of income.
+              </p>
+            )}
+          </div>
+        </div>
 
-      <Facts
-        items={[
-          { label: "Every two weeks", value: gbp(weekly * 2, true) },
-          { label: "Time limit", value: r.limitWeeks === null ? "None" : "365 days", tone: r.limitWeeks === null ? "good" : undefined },
-          { label: "Counted by UC a month", value: gbp((weekly * 52) / 12, true) },
-          { label: "NI conditions", value: t.met ? "Met" : "Not met", tone: t.met ? "good" : "bad" },
-        ]}
-      />
-
-      <Assumptions
-        items={[
-          { label: "Rates", value: `${next ? "Proposed from 6 April 2027" : "2026/27"}: ${gbp(E.main, true)} main rate, support component ${gbp(E.support, true)}` },
-          { label: "Tax years used", value: `${t.years[0]} and ${t.years[1]}, for a claim on this date` },
-          { label: "Fit note", value: "You have a fit note from your doctor and are under State Pension age" },
-          { label: "Pay", value: "Paid evenly through each year, as an employee" },
-        ]}
-      />
-
-      <ResultCard title="By stage of claim" sub="Weekly amount on your figures.">
-        <Compare head={["Stage", "A week"]} rows={groups.map((x) => ({ label: GROUP_LABEL[x.g], value: gbp(t.met ? x.w : 0, true), bar: x.w / maxW, current: x.g === v.group }))} />
-      </ResultCard>
-
-      <ResultCard title="How your weekly amount is worked out">
-        <Statement
-          columns={["A week"]}
-          rows={[
-            { label: v.group === "assessment" ? "Assessment rate" : "Main phase rate", values: [gbp(r.basic, true)] },
-            ...(r.component > 0 ? [{ label: r.componentLabel ?? "Component", values: [`+ ${gbp(r.component, true)}`] }] : []),
-            { label: `Half of pension over £${E.pensionThreshold} a week`, values: [`− ${gbp(r.pensionDeduction, true)}`], kind: "deduction" as const },
-            { label: "New Style ESA", values: [gbp(weekly, true)], kind: "total" as const },
-          ]}
-        />
-      </ResultCard>
-
-      <ResultCard title="National Insurance conditions" sub="You need all three.">
-        <NiConditions t={t} />
-      </ResultCard>
-
-      <ResultCard title="What to do next">
-        <Callout title="Claim Universal Credit too">
-          Universal Credit counts New Style ESA as income, but can add a health element and help with rent. You will usually have one Work Capability Assessment for both. Check with the{" "}
-          <a href="/uk/benefits/universal-credit">Universal Credit calculator</a>.
-        </Callout>
-        {v.group === "wrag" && (
-          <Callout tone="warn" title="365-day limit">
-            In the work-related activity group, New Style ESA stops after 365 days. If your condition gets worse, ask to be reassessed: the support group has no time limit.
-          </Callout>
+        {paid && v.group === "wrag" && (
+          <Flag title="The 365-day limit">If your condition gets worse, ask to be reassessed before the year runs out: the support group has no time limit.</Flag>
         )}
-        <Callout title="PIP is separate">
-          Personal Independence Payment helps with the extra costs of a condition and is not affected by ESA. Try the <a href="/uk/benefits/pip-points">PIP points self-check</a>.
-        </Callout>
-      </ResultCard>
 
-      <p className="footnote" style={{ textAlign: "center" }}>
-        {next ? "Proposed 2027/28 rates from the DWP, final once Parliament approves them." : "2026/27 rates from the DWP."} The National Insurance check is an estimate from yearly pay; the DWP decides from your actual record.
-      </p>
-    </Studio>
+        <Foot>
+          <Caveat>
+            An estimate at {next ? "DWP’s proposed rates from 6 April 2027" : "2026/27 rates"}. The National Insurance check assumes steady pay in the weeks you worked; DWP decides from your actual record, and the Work Capability Assessment decides the group.
+          </Caveat>
+          <ShareButton copied={st.copied} onClick={st.share} />
+        </Foot>
+      </div>
+    </Tool>
   );
 }

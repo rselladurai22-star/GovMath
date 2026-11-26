@@ -1,17 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
-import { PIP_ACTIVITIES, pipRates, pipScore, type PipBand } from "@/lib/benefits/pip-assessment";
-import Studio from "@/components/flagship/Studio";
-import { AdvancedOptions, InputGroup, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, per } from "@/components/flagship/format";
+import { PIP_ACTIVITIES, letterOf, pipRates, pipScore, resolveCode, type PipBand } from "@/lib/benefits/pip-assessment";
+import { Caveat, Flag, Foot, Inputs, Tool } from "@/components/calc/kit";
+import { Mini } from "@/components/calc/fields";
+import { AdvancedOptions, Switch } from "@/components/flagship/inputs";
+import { gbp } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
+import PipMeters from "./PipMeters";
 
 const CODES = ["a", "b", "c", "d", "e", "f", "g"] as const;
 type Code = (typeof CODES)[number];
 const pick = () => oneOf<Code>("a", CODES);
 
+// Keys kept from the earlier calculator, so old share links still work.
 const SCHEMA = {
   food: pick(),
   eating: pick(),
@@ -31,157 +34,126 @@ const SCHEMA = {
   rates: ratesParam(),
 };
 type ActivityKey = Exclude<keyof typeof SCHEMA, "terminal" | "monthsHad" | "carer" | "rates">;
-const ADVANCED = ["terminal", "monthsHad", "carer"] as const;
-
-const bandName = (b: PipBand) => (b === "enhanced" ? "Enhanced rate" : b === "standard" ? "Standard rate" : "No award");
+const MORE = ["terminal", "monthsHad"] as const;
 
 export default function PipStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
-  const choices = Object.fromEntries(PIP_ACTIVITIES.map((a) => [a.id, v[a.id as ActivityKey]]));
+  const [open, setOpen] = useState<Set<string>>(() => new Set());
   const next = v.rates === "2027/28";
+  const R = pipRates(v.rates);
+  const choices = Object.fromEntries(PIP_ACTIVITIES.map((a) => [a.id, v[a.id as ActivityKey]]));
   const sc = pipScore(choices, v.rates);
-  // Terminal illness: the enhanced daily living rate without an assessment of points.
+  // Special rules (nearing the end of life): the enhanced daily living rate without points.
   const dailyBand: PipBand = v.terminal ? "enhanced" : sc.dailyBand;
-  const dailyWeekly = dailyBand === "none" ? 0 : pipRates(v.rates).daily[dailyBand];
+  const dailyWeekly = dailyBand === "none" ? 0 : R.daily[dailyBand];
   const weekly = dailyWeekly + sc.mobilityWeekly;
-  const tooSoon = !v.terminal && v.monthsHad < 3;
-  const rows = PIP_ACTIVITIES.map((a) => {
-    const d = a.descriptors.find((x) => x.code === v[a.id as ActivityKey]) ?? a.descriptors[0];
-    return { a, d };
-  });
-  const select = (component: "daily" | "mobility") =>
-    PIP_ACTIVITIES.filter((a) => a.component === component).map((a) => (
-      <SelectField
-        key={a.id}
-        label={a.title}
-        value={v[a.id as ActivityKey]}
-        onChange={(x) => st.set(a.id as ActivityKey, x)}
-        options={a.descriptors.map((d) => ({ value: d.code as Code, label: `${d.points} pts: ${d.text}` }))}
-      />
-    ));
+  const m = (n: number) => gbp(n, true);
+  const tooSoon = !v.terminal && v.monthsHad < 3 && weekly > 0;
+  const toggle = (id: string) =>
+    setOpen((prev) => {
+      const s = new Set(prev);
+      if (s.has(id)) s.delete(id);
+      else s.add(id);
+      return s;
+    });
+  const allOpen = open.size === PIP_ACTIVITIES.length;
+
+  const group = (component: "daily" | "mobility", first: number) =>
+    PIP_ACTIVITIES.filter((a) => a.component === component).map((a, i) => {
+      const chosen = resolveCode(a.id, v[a.id as ActivityKey]);
+      const d = a.descriptors.find((x) => x.code === chosen) ?? a.descriptors[0];
+      const isOpen = open.has(a.id);
+      const n = first + i;
+      return (
+        <li key={a.id} className={`sa-pip-act${isOpen ? " is-open" : ""}${d.points > 0 ? " has-points" : ""}`}>
+          <h4>
+            <button type="button" id={`pip-${a.id}-head`} aria-expanded={isOpen} aria-controls={`pip-${a.id}-panel`} onClick={() => toggle(a.id)}>
+              <span className="sa-pip-num">{n}</span>
+              <span className="sa-pip-title">
+                {a.title}
+                <small>{d.points > 0 ? `${letterOf(d)}. ${d.text}` : "No difficulty chosen"}</small>
+              </span>
+              <span className="sa-pip-pts">
+                {d.points} <small>{d.points === 1 ? "pt" : "pts"}</small>
+              </span>
+            </button>
+          </h4>
+          <div id={`pip-${a.id}-panel`} role="region" aria-labelledby={`pip-${a.id}-head`} hidden={!isOpen}>
+            <fieldset className="sa-pip-choices">
+              <legend className="sr-only">{a.title}: the descriptor that applies on more than half of days</legend>
+              {a.descriptors.map((x) => (
+                <label key={x.code} className={x.code === d.code ? "is-on" : undefined}>
+                  <input type="radio" name={`pip-${a.id}`} value={x.code} checked={x.code === d.code} onChange={() => st.set(a.id as ActivityKey, x.code as Code)} />
+                  <span className="sa-pip-letter">{letterOf(x)}</span>
+                  <span className="sa-pip-text">{x.text}</span>
+                  <span className="sa-pip-p">{x.points}</span>
+                </label>
+              ))}
+            </fieldset>
+          </div>
+        </li>
+      );
+    });
 
   return (
-    <Studio
-      title="Your daily life"
-      ready={st.ready}
-      onCalculate={st.calculate}
-      calculateLabel="Check my PIP points"
-      onReset={st.reset}
-      dock={{ label: "PIP a week", value: gbp(weekly, true) }}
-      inputs={
-        <>
-          <InputGroup title="Daily living">{select("daily")}</InputGroup>
-          <InputGroup title="Mobility">{select("mobility")}</InputGroup>
-          <InputGroup title="Rates">
+    <Tool label="PIP points calculator">
+      <div className="sa-pip">
+        <aside className="sa-pip-panel" aria-label="Your PIP score">
+          <div className="sa-pip-total" aria-live="polite">
+            <p>PIP a week{next ? " from April 2027 (proposed)" : ""}</p>
+            <b>{m(weekly)}</b>
+            <span>{weekly > 0 ? `${m(weekly * 4)} every four weeks, ${gbp(weekly * 52)} a year` : "8 points in either part starts an award"}</span>
+          </div>
+          <PipMeters daily={sc.daily} mobility={sc.mobility} dailyBand={dailyBand} mobilityBand={sc.mobilityBand} dailyWeekly={dailyWeekly} mobilityWeekly={sc.mobilityWeekly} money={m} terminal={v.terminal} />
+          <ShareButton copied={st.copied} onClick={st.share} />
+        </aside>
+
+        <div className="sa-pip-main">
+          <div className="sa-pip-intro">
+            <p>
+              For each activity, choose the line that applies to you on <b>more than half of days</b>, and only count what you can do safely, to a good standard, as often as you
+              need to and in no more than twice the usual time.
+            </p>
+            <button type="button" className="textbutton gm-share-link" onClick={() => setOpen(allOpen ? new Set() : new Set(PIP_ACTIVITIES.map((a) => a.id)))}>
+              {allOpen ? "Close all activities" : "Open all activities"}
+            </button>
+          </div>
+
+          <h3 className="sa-pip-h">
+            Daily living <span>10 activities · {sc.daily} points</span>
+          </h3>
+          <ol className="sa-pip-list">{group("daily", 1)}</ol>
+          <h3 className="sa-pip-h">
+            Mobility <span>2 activities · {sc.mobility} points</span>
+          </h3>
+          <ol className="sa-pip-list">{group("mobility", 11)}</ol>
+
+          {tooSoon && (
+            <Flag tone="warn" title="The required period">
+              You normally need to have had these difficulties for 3 months and expect them to last at least 9 more. You can start a claim during the 3 months.
+            </Flag>
+          )}
+
+          <Inputs tone="plain">
+            <AdvancedOptions description="Nearing the end of life, and how long you have had these difficulties." changed={st.changed([...MORE])} onReset={() => st.resetKeys([...MORE])}>
+              <Switch label="I am nearing the end of life" checked={v.terminal} onChange={st.bind("terminal")} hint="Expected to live 12 months or less: the enhanced daily living rate is paid without an assessment." />
+              <div className="sa-pip-months">
+                <Mini label="Months you have had these difficulties" value={v.monthsHad} onChange={(x) => st.set("monthsHad", Math.round(x))} min={0} max={600} stepper />
+              </div>
+            </AdvancedOptions>
             <RatesChoice value={v.rates} onChange={st.bind("rates")} />
-          </InputGroup>
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            <Switch label="Terminally ill (life expectancy of 12 months or less)" checked={v.terminal} onChange={st.bind("terminal")} optional hint="Special rules: the enhanced daily living rate is paid without an assessment." />
-            <StepperField label="Months you have had these difficulties" value={v.monthsHad} onChange={st.bind("monthsHad")} step={1} min={0} max={600} unit="months" dp={0} optional hint="You normally need 3 months before and to expect 9 months after." />
-            <Switch label="Someone cares for you 35 hours a week or more" checked={v.carer} onChange={st.bind("carer")} optional />
-          </AdvancedOptions>
-        </>
-      }
-    >
-      <Answer
-        eyebrow={next ? "Personal Independence Payment from 6 April 2027 (proposed)" : "Personal Independence Payment"}
-        value={gbp(weekly, true)}
-        unit="a week"
-        actions={<ShareButton copied={st.copied} onClick={st.share} />}
-        sentence={
-          weekly > 0 ? (
-            <>
-              You score <b>{sc.daily} {per(sc.daily, "points")}</b> for daily living and <b>{sc.mobility}</b> for mobility. That points to <b>{gbp(weekly, true)}</b> a week, <b>{gbp(weekly * 4, true)}</b> every four weeks
-              or <b>{gbp(weekly * 52)}</b> a year.
-            </>
-          ) : (
-            <>
-              You score <b>{sc.daily} {per(sc.daily, "points")}</b> for daily living and <b>{sc.mobility}</b> for mobility. You need at least 8 points in one component for an award. Choose the descriptor that applies on most days
-              for each activity.
-            </>
-          )
-        }
-        badges={[`Daily living: ${bandName(dailyBand)}`, `Mobility: ${bandName(sc.mobilityBand)}`]}
-      />
+          </Inputs>
+        </div>
 
-      <Facts
-        items={[
-          { label: "Daily living points", value: v.terminal ? "Special rules" : String(sc.daily), note: bandName(dailyBand) },
-          { label: "Mobility points", value: String(sc.mobility), note: bandName(sc.mobilityBand) },
-          { label: "Every 4 weeks", value: gbp(weekly * 4, true) },
-          { label: "A year", value: gbp(weekly * 52), tone: weekly > 0 ? "good" : undefined },
-        ]}
-      />
-
-      <Assumptions
-        items={[
-          { label: "Rates", value: next ? "Proposed from 6 April 2027 (DWP), weekly" : "2026/27, weekly" },
-          { label: "Bands", value: "8 points standard, 12 enhanced" },
-          { label: "Descriptor", value: "Applies on more than half of days" },
-          { label: "Status", value: "A self-check, not a decision" },
-        ]}
-      />
-
-      <ResultCard title="Your award" sub="Each component is assessed separately.">
-        <Statement
-          columns={["Points", "A week"]}
-          rows={[
-            { label: `Daily living: ${bandName(dailyBand).toLowerCase()}`, values: [v.terminal ? "SR" : String(sc.daily), gbp(dailyWeekly, true)] },
-            { label: `Mobility: ${bandName(sc.mobilityBand).toLowerCase()}`, values: [String(sc.mobility), gbp(sc.mobilityWeekly, true)] },
-            { label: "Total", values: ["", gbp(weekly, true)], kind: "total" as const },
-          ]}
-        />
-      </ResultCard>
-
-      <ResultCard title="Points by activity" sub="The descriptor you chose in each.">
-        <Compare
-          head={["Activity", "Points"]}
-          rows={rows.map(({ a, d }) => ({
-            label: a.title,
-            value: String(d.points),
-            delta: a.component === "mobility" ? "Mobility" : undefined,
-            bar: d.points / 12,
-            current: d.points > 0,
-          }))}
-        />
-      </ResultCard>
-
-      <ResultCard title="Worth knowing" sub="What your score means.">
-        {!v.terminal && sc.dailyToNext > 0 && sc.daily > 0 && (
-          <Callout title={`${sc.dailyToNext} more daily living point${sc.dailyToNext === 1 ? "" : "s"} for the ${sc.dailyBand === "standard" ? "enhanced" : "standard"} rate`}>
-            Check each activity again. Needing prompting, supervision or an aid such as a perching stool or grab rail all score points.
-          </Callout>
-        )}
-        {sc.mobilityToNext > 0 && sc.mobility > 0 && (
-          <Callout title={`${sc.mobilityToNext} more mobility point${sc.mobilityToNext === 1 ? "" : "s"} for the ${sc.mobilityBand === "standard" ? "enhanced" : "standard"} rate`}>
-            How far you can walk reliably, safely, repeatedly and in a reasonable time is what counts, not the furthest you can manage on a good day.
-          </Callout>
-        )}
-        {sc.mobilityBand === "enhanced" && (
-          <Callout tone="good" title="The enhanced mobility rate unlocks more help">
-            You can use it to lease a car, scooter or powered wheelchair through the Motability Scheme, and you can claim a full exemption from vehicle tax.
-          </Callout>
-        )}
-        {(dailyBand !== "none" || v.carer) && (
-          <Callout title="Help for your carer and the benefit cap">
-            {dailyBand !== "none" ? "With the daily living component, someone caring for you for 35 hours a week can claim Carer's Allowance. " : ""}
-            Any PIP award also exempts your household from the benefit cap.
-          </Callout>
-        )}
-        {tooSoon && (
-          <Callout tone="warn" title="The required period">
-            You normally need to have had your difficulties for 3 months and expect them to last at least 9 more. You can start a claim during the 3 months.
-          </Callout>
-        )}
-        <Callout title="Reliably means safely, repeatedly and in good time">
-          A descriptor only counts as something you can do if you can do it safely, to an acceptable standard, as often as needed, and in no more than twice the time it would take someone without your condition.
-        </Callout>
-      </ResultCard>
-
-      <p className="footnote" style={{ textAlign: "center" }}>
-        {next ? "Proposed 2027/28 rates, final once Parliament approves them." : "2026/27 rates."} A self-check against the official descriptors. Only the Department for Work and Pensions can decide a claim.
-      </p>
-    </Studio>
+        <Foot>
+          <Caveat>
+            A self-check against the descriptors in the regulations, at {next ? "DWP’s proposed rates from 6 April 2027" : "2026/27 rates"}. Only DWP can decide a claim, from your form, evidence and
+            assessment.
+          </Caveat>
+          <ShareButton copied={st.copied} onClick={st.share} />
+        </Foot>
+      </div>
+    </Tool>
   );
 }

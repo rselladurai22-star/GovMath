@@ -52,6 +52,14 @@ export type EligibilityInput = {
   childcare: number;
   /** Highest earner's yearly income before tax (for the Child Benefit charge). */
   highestIncome: number;
+  /**
+   * A couple where one partner is over State Pension age and the other is
+   * not: they claim Universal Credit, not Pension Credit (unless already on
+   * pension-age Housing Benefit). Set with `pensionAge: false`.
+   */
+  mixedAge?: boolean;
+  /** "No recourse to public funds" on someone's visa: flagged, not assessed. */
+  nrpf?: boolean;
 };
 
 export type Status = "likely" | "check" | "unlikely";
@@ -76,6 +84,8 @@ export type EligibilityResult = {
   likelyOneOff: number;
   ucAward: number;
   pcWeekly: number;
+  /** The household has no recourse to public funds, so only contributory benefits were listed. */
+  nrpf: boolean;
 };
 
 const wk2m = (w: number) => (w * 52) / 12;
@@ -120,6 +130,16 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
           ? `Estimated from your household, ${renting ? "rent, " : ""}income and savings.`
           : "Your income is above the level where Universal Credit stops.",
     });
+    if (i.mixedAge && i.couple) {
+      items.push({
+        key: "pc",
+        name: "Pension Credit",
+        href: "/uk/benefits/pension-credit",
+        status: "unlikely",
+        monthly: null,
+        why: "Couples where one partner is under State Pension age claim Universal Credit instead, unless already on pension-age Housing Benefit.",
+      });
+    }
   } else {
     const pc = pensionCredit2026({
       ...PC_DEFAULT_INPUT,
@@ -149,8 +169,8 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
       name: "Housing Benefit",
       href: "/uk/benefits/housing-benefit",
       status: pcWeekly > 0 ? "likely" : "check",
-      monthly: pcWeekly > 0 ? i.rent : null,
-      why: pcWeekly > 0 ? "Guarantee Credit gives maximum Housing Benefit, up to the rent limit for your area." : "Pensioners who rent claim Housing Benefit from the council. It depends on income and savings.",
+      monthly: null,
+      why: pcWeekly > 0 ? "Pension Credit usually brings Housing Benefit for most or all of the rent, up to the limit for your area." : "Pensioners who rent claim Housing Benefit from the council. It depends on income and savings.",
     });
   }
 
@@ -247,8 +267,19 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
     items.push({ key: "wfp", name: "Winter Fuel Payment", href: null, status: "likely", monthly: null, oneOff: amount, why: "Paid automatically at State Pension age. Taken back through tax if your own income is over £35,000." });
   }
 
+  if (!i.pensionAge && i.mixedAge && i.couple) {
+    items.push({ key: "wfp", name: "Winter Fuel Payment", href: null, status: "check", monthly: null, why: "Paid for the partner born on or before 27 June 1960, without a claim." });
+  }
+
+  if (i.nrpf) {
+    // Contributory benefits are not "public funds"; everything else on the list is, or depends on one.
+    const kept = items.filter((x) => x.key === "jsa" || x.key === "esa");
+    return { items: kept, likelyMonthly: 0, likelyOneOff: 0, ucAward: 0, pcWeekly: 0, nrpf: true };
+  }
+
   const likely = items.filter((x) => x.status === "likely");
   return {
+    nrpf: false,
     items,
     likelyMonthly: likely.reduce((a, x) => a + (x.monthly ?? 0), 0),
     likelyOneOff: likely.reduce((a, x) => a + (x.oneOff ?? 0), 0),

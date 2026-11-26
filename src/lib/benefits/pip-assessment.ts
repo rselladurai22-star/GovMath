@@ -7,10 +7,25 @@
  * mobility: 8 to 11 points gives the standard rate, 12 or more the enhanced rate.
  */
 
-export type Descriptor = { code: string; text: string; points: number };
+/**
+ * `code` is this site's stable key (kept in share links); `letter` is the
+ * descriptor's letter in the regulations, where it differs.
+ */
+export type Descriptor = { code: string; text: string; points: number; letter?: string };
 export type Activity = { id: string; title: string; component: "daily" | "mobility"; descriptors: Descriptor[] };
 
-const d = (code: string, points: number, text: string): Descriptor => ({ code, text, points });
+const d = (code: string, points: number, text: string, letter?: string): Descriptor => ({ code, text, points, ...(letter ? { letter } : {}) });
+
+/** The descriptor's letter as printed in Schedule 1. */
+export const letterOf = (x: Descriptor) => x.letter ?? x.code;
+
+/**
+ * Codes that older share links used and now point elsewhere. Managing
+ * therapy once split descriptor 3b in two (aid for medication, and help with
+ * medication); the regulations have one 3b worth 1 point.
+ */
+const ALIASES: Record<string, Record<string, string>> = { therapy: { c: "b" } };
+export const resolveCode = (activity: string, code: string | undefined) => (code && ALIASES[activity]?.[code]) ?? code;
 
 export const PIP_ACTIVITIES: Activity[] = [
   {
@@ -41,16 +56,15 @@ export const PIP_ACTIVITIES: Activity[] = [
   },
   {
     id: "therapy",
-    title: "Managing treatments",
+    title: "Managing therapy or monitoring a health condition",
     component: "daily",
     descriptors: [
-      d("a", 0, "Needs no medication or therapy, or can manage it unaided"),
-      d("b", 1, "Needs an aid or appliance to manage medication"),
-      d("c", 1, "Needs supervision, prompting or help to manage medication"),
-      d("d", 2, "Needs supervision, prompting or help with therapy for up to 3.5 hours a week"),
-      d("e", 4, "Needs it for more than 3.5 and up to 7 hours a week"),
-      d("f", 6, "Needs it for more than 7 and up to 14 hours a week"),
-      d("g", 8, "Needs it for more than 14 hours a week"),
+      d("a", 0, "Does not need medication, therapy or monitoring, or can manage them unaided"),
+      d("b", 1, "Needs an aid or appliance, or supervision, prompting or help, to manage medication or monitor a health condition"),
+      d("d", 2, "Needs supervision, prompting or help to manage therapy that takes up to 3.5 hours a week", "c"),
+      d("e", 4, "Needs it for therapy that takes more than 3.5 and up to 7 hours a week", "d"),
+      d("f", 6, "Needs it for therapy that takes more than 7 and up to 14 hours a week", "e"),
+      d("g", 8, "Needs it for therapy that takes more than 14 hours a week", "f"),
     ],
   },
   {
@@ -59,7 +73,7 @@ export const PIP_ACTIVITIES: Activity[] = [
     component: "daily",
     descriptors: [
       d("a", 0, "Can wash and bathe unaided"),
-      d("b", 1, "Needs an aid or appliance to wash or bathe"),
+      d("b", 2, "Needs an aid or appliance to wash or bathe"),
       d("c", 2, "Needs supervision or prompting to wash or bathe"),
       d("d", 2, "Needs help to wash hair or the body below the waist"),
       d("e", 3, "Needs help to get in or out of a bath or shower"),
@@ -69,7 +83,7 @@ export const PIP_ACTIVITIES: Activity[] = [
   },
   {
     id: "toilet",
-    title: "Managing toilet needs",
+    title: "Managing toilet needs or incontinence",
     component: "daily",
     descriptors: [
       d("a", 0, "Can manage toilet needs or incontinence unaided"),
@@ -107,7 +121,7 @@ export const PIP_ACTIVITIES: Activity[] = [
   },
   {
     id: "reading",
-    title: "Reading signs, symbols and words",
+    title: "Reading and understanding signs, symbols and words",
     component: "daily",
     descriptors: [
       d("a", 0, "Can read and understand basic and complex written information unaided or with glasses"),
@@ -119,7 +133,7 @@ export const PIP_ACTIVITIES: Activity[] = [
   },
   {
     id: "people",
-    title: "Mixing with other people",
+    title: "Engaging with other people face to face",
     component: "daily",
     descriptors: [
       d("a", 0, "Can engage with other people unaided"),
@@ -203,12 +217,13 @@ export type PipScore = {
 };
 
 /** Score from the chosen descriptor code per activity id (missing means "a"). */
-export function pipScore(choices: Record<string, string>, year?: RatesYear): PipScore {
+export function pipScore(choices: Record<string, string | undefined>, year?: RatesYear): PipScore {
   const R = pipRates(year);
   let daily = 0;
   let mobility = 0;
   for (const a of PIP_ACTIVITIES) {
-    const pick = a.descriptors.find((x) => x.code === choices[a.id]) ?? a.descriptors[0];
+    const code = resolveCode(a.id, choices[a.id]);
+    const pick = a.descriptors.find((x) => x.code === code) ?? a.descriptors[0];
     if (a.component === "daily") daily += pick.points;
     else mobility += pick.points;
   }
