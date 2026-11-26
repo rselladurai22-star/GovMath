@@ -2,10 +2,12 @@
  * UK Council Tax — typical annual Band D bills × band ratio (2026/27).
  *
  * Council tax is set by each local authority, so figures here are NATIONAL AVERAGES
- * for Band D (April 2026) sourced from gov.uk / gov.scot / gov.wales:
- *  - England:    £2,392 (Band D average)
- *  - Wales:      £2,283 (Band D average)
- *  - Scotland:   £1,662 (Band D average) — different banding from £58,001
+ * for Band D in 2026/27, including all precepts:
+ *  - England:  £2,392 (MHCLG, Council Tax levels 2026 to 2027, 25 March 2026)
+ *  - Wales:    £2,283 (Welsh Government, Council Tax levels April 2026 to March 2027)
+ *  - Scotland: £1,653.44 (Scottish Government, Council Tax by band 2026-27,
+ *    excluding water and sewerage). This was £1,662 here until November 2026.
+ * Each council's own area average is in council-band-d-2026.ts.
  *
  * Multipliers (relative to Band D = 9/9):
  *   A 6/9, B 7/9, C 8/9, D 9/9, E 11/9, F 13/9, G 15/9, H 18/9 (England & Wales)
@@ -21,7 +23,7 @@ export type CtNation = "england" | "wales" | "scotland";
 const BAND_D_AVG: Record<CtNation, number> = {
   england: 2392,
   wales:   2283,
-  scotland: 1662,
+  scotland: 1653.44,
 };
 
 const EW_MULT: Record<CtBand, number> = {

@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import FlagshipPage from "@/components/flagship/FlagshipPage";
+import Link from "next/link";
+import CalcPage from "@/components/calc/CalcPage";
 import { CALCULATORS } from "@/lib/calculators";
+import { formatDate } from "@/lib/life/calendar";
+import { rentIncrease } from "@/lib/property/renting";
+import { gbp, percent } from "@/components/flagship/format";
 import RentIncreaseStudio from "./RentIncreaseStudio";
 import { ogFor } from "@/gm/og";
-import RentIncreaseGuide from "./RentIncreaseGuide";
 
 export const metadata: Metadata = {
   title: "Rent Increase Calculator: Is My Rent Rise Legal?",
@@ -19,35 +22,117 @@ const BREADCRUMBS = [
   { href: "/uk/property/rent-increase", label: "Rent Increase Checker" },
 ];
 
+// The worked example in the text, from the engine: £1,100 to £1,200 a month, notice received on 1 October 2026.
+const EX = { current: 1_100, proposed: 1_200, served: "2026-10-01", starts: "2026-12-01", lastChange: "2025-12-01", income: 0, market: 0 };
+const ENG = rentIncrease({ ...EX, nation: "england" });
+const SCO = rentIncrease({ ...EX, nation: "scotland" });
+const d = (iso: string) => formatDate(iso, "medium");
+
 const FAQS: { q: string; a: string }[] = [
-  { q: "How much notice must a landlord give for a rent increase?", a: "At least 2 months in England and Wales, and at least 3 months in Scotland and Northern Ireland, in writing." },
-  { q: "How often can my landlord put the rent up?", a: "Once a year. In England a new rent cannot start within 52 weeks of the last increase or the start of the tenancy; in Wales, Scotland and Northern Ireland, within 12 months." },
-  { q: "Is there a limit on how much my rent can go up?", a: "There is no fixed cap in England, Wales or Northern Ireland, but in England you can ask the First-tier Tribunal to set a market rent if you think the rise is too high. In Scotland, rent control areas can cap rises once councils designate them." },
-  { q: "Can I challenge a rent increase under the Renters' Rights Act?", a: "Yes. Apply to the First-tier Tribunal before the new rent starts. It cannot set a rent higher than your landlord asked for, and any increase only applies from its decision." },
-  { q: "Can my landlord use a rent review clause?", a: "Not in England since 1 May 2026. All private rent increases must use a section 13 notice." },
-  { q: "What percentage rent increase is reasonable?", a: "It depends on local rents. Compare the new rent with similar homes advertised nearby. A rise that takes your rent above the market rate can be challenged in England." },
-  { q: "Can my landlord increase the rent during a fixed term?", a: "In England fixed terms no longer exist for private tenancies: all are periodic, and rises use section 13 once a year." },
-  { q: "Does the rule apply to council and housing association homes?", a: "Social landlords have their own rent rules, usually a yearly rise in April set by government policy." },
-  { q: "What if I pay the new rent by mistake?", a: "Paying the new amount can be taken as accepting it. Get advice quickly if you think the notice was not valid." },
-  { q: "Can the landlord put the rent up when a new tenant moves in?", a: "Yes. The rules are about existing tenancies. A new tenancy can start at the advertised rent, and in England the Renters' Rights Act stops landlords accepting bids above it." },
+  {
+    q: "What if I have already paid the new rent?",
+    a: "Paying the higher rent for a while can be treated as agreeing to it, even if the notice was faulty. If you only just started, write to your landlord straight away saying you paid in error and do not accept the rise, and ask for the difference back. Get advice from Shelter or Citizens Advice if they refuse.",
+  },
+  {
+    q: "Can my landlord evict me for challenging a rent rise?",
+    a: "In England they can no longer use a no-fault section 21 notice, so they need a legal ground, such as selling the home or rent arrears, and a court order. Keep paying your current rent in full while a challenge goes on, because arrears are a ground for possession. In Scotland, eviction also needs a ground decided by the tribunal.",
+  },
+  {
+    q: "Is there a limit on how much my rent can go up?",
+    a: "Not in England, Wales or Northern Ireland: the protection is the market-rent challenge and the once-a-year rule. Scotland's temporary cap on rises ended in March 2025, and caps will only return in areas a council designates as rent control areas under the Housing (Scotland) Act 2025.",
+  },
+  {
+    q: "Do these rules apply to council or housing association homes?",
+    a: "No. Social landlords raise rents each April under the government's rent policy, and lodgers who live with their landlord have no statutory rent rules at all: the increase is whatever your agreement says, and you can leave if you do not accept it.",
+  },
+  {
+    q: "My landlord says the rent review clause in my contract allows the rise. Is that right?",
+    a: "Not in England any more. Since 1 May 2026 a rent review clause has no effect, and a rise agreed under one before then that would have started after 1 May does not apply. Every rise must use Form 4A. In Wales and Northern Ireland a review clause can still work during a fixed term.",
+  },
 ];
+
+const SOURCES = [
+  { label: "GOV.UK: assured periodic tenancies, rent increases", href: "https://www.gov.uk/assured-periodic-tenancies-tenants/rent-increases" },
+  { label: "Housing Act 1988, section 13 (as amended by the Renters’ Rights Act 2025)", href: "https://www.legislation.gov.uk/ukpga/1988/50/section/13" },
+  { label: "GOV.UK: private renting, rent disputes", href: "https://www.gov.uk/private-renting/rent-disputes" },
+  { label: "mygov.scot: rent increases in a private residential tenancy", href: "https://www.mygov.scot/tenant-rent-increase/private-residential-tenancy" },
+  { label: "nidirect: private rent and tenancies", href: "https://www.nidirect.gov.uk/articles/private-rent-and-tenancies" },
+  { label: "GOV.WALES: Renting homes, tenants", href: "https://www.gov.wales/renting-homes-tenants" },
+];
+
+function Notes() {
+  return (
+    <>
+      <h2>The three things that make a notice valid</h2>
+      <p>
+        <strong>The form.</strong>{" "}In England it must be Form 4A, the section 13 notice. In Wales it is form RHW12, and in Scotland the prescribed rent-increase notice. In Northern Ireland
+        any written notice will do, by email or text too, as long as it gives the new rent and the date it starts.
+      </p>
+      <p>
+        <strong>The notice period.</strong>{" "}At least 2 months in England and Wales and 3 months in Scotland and Northern Ireland, counted from when you received it. A notice you got on{" "}
+        {d(EX.served)} can raise the rent from {d(ENG.earliestByNotice)} in England, but not before {d(SCO.earliestByNotice)} in Scotland.
+      </p>
+      <p>
+        <strong>Once a year.</strong>{" "}No rise in the first year of the tenancy, and none within a year of the last one. England counts 52 weeks, which is a day short of a calendar year:
+        after a rise on {d(EX.lastChange)}, the next can start from {d(ENG.earliestByYear)}. The other nations count 12 months. In England the new rent must also start on a rent day, the
+        first day of a rent period.
+      </p>
+      <p>
+        If any of these fail, the rise has no legal effect. Keep paying your current rent and tell your landlord in writing why. They can serve a fresh, correct notice, and the clock starts
+        again from that one.
+      </p>
+
+      <h2>Is the new rent fair? Gather the evidence first</h2>
+      <p>
+        A valid notice still sets a rent you can challenge. Going from {gbp(EX.current)} to {gbp(EX.proposed)} is a {percent(ENG.share, 1)} rise, {gbp(ENG.yearly)} a year. Whether that is fair
+        depends on what similar homes let for now: save three to five current adverts for homes of the same size, type and condition within a mile or so. If yours needs repairs the others
+        do not, note that too. Average rents from the ONS are a useful check, but listings are what a tribunal or rent officer weighs.
+      </p>
+
+      <h2>How to challenge, nation by nation</h2>
+      <ul>
+        <li>
+          <strong>England:</strong>{" "}apply to the First-tier Tribunal (Property Chamber) before the new rent starts. It is free. The tribunal decides the open-market rent but cannot set more
+          than your landlord asked, and any rise only applies from its decision, so you will not owe back-rent for the months it takes.
+        </li>
+        <li>
+          <strong>Scotland:</strong>{" "}return part 3 of the notice to your landlord and apply to Rent Service Scotland within 21 days of getting it. A rent officer sets a market rent within
+          about 40 days, and it can come out <em>higher</em>{" "}than your landlord asked, so check the adverts before you refer it.
+        </li>
+        <li>
+          <strong>Wales:</strong>{" "}apply to the Residential Property Tribunal before the date in the RHW12 notice if you think the rent is above the market rate.
+        </li>
+        <li>
+          <strong>Northern Ireland:</strong>{" "}there is no tribunal for private rents. A rise that breaks the 3-month or 12-month rule has no effect; otherwise your options are to negotiate, or
+          get advice from Housing Rights.
+        </li>
+      </ul>
+
+      <h2>If you cannot afford the new rent</h2>
+      <p>
+        Tell your landlord early: many would rather agree a smaller rise than find a new tenant. If you claim Universal Credit or Housing Benefit, report the new rent from the day it starts,
+        but help with rent is capped at the <Link href="/uk/benefits/local-housing-allowance">Local Housing Allowance</Link>{" "}for your area, so a rise above it is yours to pay. The{" "}
+        <Link href="/uk/benefits/housing-benefit">Housing Benefit calculator</Link>{" "}shows what you could get, and if you decide to move, the{" "}
+        <Link href="/uk/property/deposit-return">deposit return calculator</Link>{" "}checks what your landlord can keep.
+      </p>
+    </>
+  );
+}
 
 export default async function RentIncreasePage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
   const related = CALCULATORS.filter((c) => ["/uk/property/deposit-return", "/uk/life/pro-rata-rent", "/uk/benefits/local-housing-allowance", "/uk/benefits/housing-benefit", "/uk/property/council-tax-bands"].includes(c.href));
   return (
-    <FlagshipPage
+    <CalcPage
       breadcrumbs={BREADCRUMBS}
-      eyebrow="2026 rules"
       title="Rent Increase Checker"
-      lead="Check whether a rent rise follows the rules on notice and timing, what it costs you, and how to challenge it."
-      points={["England, Wales, Scotland and NI", "Renters' Rights Act 2025", "Notice and once-a-year checks", "Free and private"]}
-      guide={<RentIncreaseGuide />}
+      lead="Whether your landlord's rent increase notice is valid on its form, notice period and once-a-year rule, what it costs, and the deadline to challenge it."
+      notes={<Notes />}
       faqs={FAQS}
+      sources={SOURCES}
       related={related}
-      note="General information about private tenancies, not legal advice."
     >
       <RentIncreaseStudio query={query} />
-    </FlagshipPage>
+    </CalcPage>
   );
 }

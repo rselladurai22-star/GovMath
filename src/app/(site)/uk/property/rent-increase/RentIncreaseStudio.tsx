@@ -1,12 +1,14 @@
 "use client";
 
-import Studio from "@/components/flagship/Studio";
-import { AdvancedOptions, DateField, InputGroup, MoneyField, Segmented } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Compare, Facts, ResultCard } from "@/components/flagship/results";
+import { Caveat, Flag, Foot, Inputs, Tool } from "@/components/calc/kit";
+import { Mini, Pills } from "@/components/calc/fields";
+import { DateField, MoneyField, SelectField, Switch } from "@/components/flagship/inputs";
 import { gbp, percent } from "@/components/flagship/format";
-import { date, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
+import { bool, date, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 import { formatDate } from "@/lib/life/calendar";
 import { RENT_RULES, rentIncrease, type RentNation } from "@/lib/property/renting";
+
+type FormAnswer = "yes" | "no" | "unsure";
 
 const SCHEMA = {
   nation: oneOf<RentNation>("england", ["england", "wales", "scotland", "ni"]),
@@ -15,10 +17,20 @@ const SCHEMA = {
   served: date("2026-10-01"),
   starts: date("2026-12-01"),
   last: date("2025-12-01"),
+  form: oneOf<FormAnswer>("yes", ["yes", "no", "unsure"]),
+  fixed: bool(false),
   income: num(0, 0, 100_000),
   market: num(0, 0, 50_000),
 };
-const ADVANCED = ["income", "market"] as const;
+
+const FORM_NAME: Record<RentNation, string> = {
+  england: "Form 4A (section 13 notice)",
+  wales: "Form RHW12",
+  scotland: "the rent-increase notice form",
+  ni: "a written notice with the new rent and its start date",
+};
+
+type Check = { name: string; ok: boolean | null; detail: string };
 
 export default function RentIncreaseStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
@@ -26,156 +38,200 @@ export default function RentIncreaseStudio({ query }: { query: Query }) {
   const rules = RENT_RULES[v.nation];
   const r = rentIncrease({ nation: v.nation, current: v.current, proposed: v.proposed, served: v.served, starts: v.starts, lastChange: v.last, income: v.income, market: v.market });
   const rising = r.monthly > 0;
+  const fixedTerm = v.fixed && (v.nation === "wales" || v.nation === "ni");
   const earliest = r.earliestByNotice > r.earliestByYear ? r.earliestByNotice : r.earliestByYear;
-  const years = [1, 2, 3, 5].map((y) => ({ y, rent: v.current * Math.pow(1 + Math.max(0, r.share), y) }));
-  const maxRent = Math.max(1, ...years.map((x) => x.rent));
+  const d = (iso: string) => formatDate(iso, "medium");
+
+  const checks: Check[] = [
+    {
+      name: "The right form",
+      ok: v.form === "yes" ? true : v.form === "no" ? false : null,
+      detail:
+        v.form === "yes"
+          ? `Given on ${FORM_NAME[v.nation]}.`
+          : v.form === "no"
+            ? `It must be ${FORM_NAME[v.nation]}${v.nation === "england" ? ". A letter, an email without the form, or a rent review clause does not count" : ""}.`
+            : `Look for ${FORM_NAME[v.nation]}. Without it the rise does not take effect.`,
+    },
+    {
+      name: `At least ${rules.noticeMonths} months’ notice`,
+      ok: r.noticeOk,
+      detail: r.noticeOk
+        ? `${r.daysToStart} days between getting the notice and the new rent: the earliest start was ${d(r.earliestByNotice)}.`
+        : `Only ${Math.max(0, r.daysToStart)} days. With this notice the new rent cannot start before ${d(r.earliestByNotice)}.`,
+    },
+    {
+      name: "Not within a year of the last rise",
+      ok: r.yearOk,
+      detail: r.yearOk
+        ? `${v.nation === "england" ? "52 weeks" : "12 months"} after ${d(v.last)} is ${d(r.earliestByYear)}, and the rise starts on or after it.`
+        : `${v.nation === "england" ? "52 weeks" : "12 months"} after ${d(v.last)} is ${d(r.earliestByYear)}. The rise is too early.`,
+    },
+    ...(r.rentDayOk !== null
+      ? [
+          {
+            name: "Starts on a rent day",
+            ok: r.rentDayOk,
+            detail: r.rentDayOk
+              ? "It starts on the day your rent period begins."
+              : `A section 13 rise must start at the beginning of a rent period. ${d(v.starts)} is not the same day of the month as ${d(v.last)}: check your rent day.`,
+          },
+        ]
+      : []),
+  ];
+  const failed = checks.filter((c) => c.ok === false);
+  const unsure = checks.some((c) => c.ok === null);
+  const verdict: "valid" | "invalid" | "check" | "flat" = !rising ? "flat" : fixedTerm || failed.length > 0 ? "invalid" : unsure ? "check" : "valid";
+
+  const headline =
+    verdict === "flat"
+      ? "This is not a rent rise"
+      : verdict === "valid"
+        ? "This notice looks valid"
+        : verdict === "check"
+          ? "Valid on timing: check the form"
+          : fixedTerm
+            ? "Not during a fixed term"
+            : failed.length === 1
+              ? `Not valid: ${failed[0].name.toLowerCase()}`
+              : `Not valid: ${failed.length} problems`;
 
   return (
-    <Studio
-      title="Your rent and the notice"
-      ready={st.ready}
-      onCalculate={st.calculate}
-      calculateLabel="Check my rent increase"
-      onReset={st.reset}
-      dock={{ label: "Increase a month", value: gbp(r.monthly) }}
-      inputs={
-        <>
-          <InputGroup title="Your tenancy">
-            <Segmented
-              label="Country"
+    <Tool label="Rent increase checker">
+      <div className="sa-ri">
+        <div className="sa-ri-inputs">
+          <Inputs title="Your notice">
+            <SelectField
+              label="Where the home is"
+              hint="For private tenancies: assured periodic in England, occupation contracts in Wales, private residential tenancies in Scotland."
               value={v.nation}
               onChange={st.bind("nation")}
               options={[
-                { value: "england", label: "England", note: "Private tenancies became assured periodic tenancies on 1 May 2026." },
-                { value: "wales", label: "Wales", note: "Occupation contracts under the Renting Homes (Wales) Act." },
-                { value: "scotland", label: "Scotland", note: "Private residential tenancies." },
-                { value: "ni", label: "Northern Ireland", note: "Private tenancies under the Private Tenancies Act 2022." },
+                { value: "england", label: "England" },
+                { value: "wales", label: "Wales" },
+                { value: "scotland", label: "Scotland" },
+                { value: "ni", label: "Northern Ireland" },
               ]}
             />
-            <MoneyField label="Rent now, a month" value={v.current} onChange={st.bind("current")} />
-            <MoneyField label="New rent proposed, a month" value={v.proposed} onChange={st.bind("proposed")} />
-          </InputGroup>
-          <InputGroup title="The dates">
-            <DateField label="Date you got the notice" value={v.served} onChange={st.bind("served")} />
-            <DateField label="Date the new rent starts" value={v.starts} onChange={st.bind("starts")} />
-            <DateField label="When the tenancy began or the rent last went up" value={v.last} onChange={st.bind("last")} hint="Whichever is later." />
-          </InputGroup>
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            <MoneyField label="Household take-home pay a month" value={v.income} onChange={st.bind("income")} optional hint="To see how much of your income the rent takes." />
-            <MoneyField label="Rent for similar homes nearby, a month" value={v.market} onChange={st.bind("market")} optional hint="From listings for the same size and type of home in your area." />
-          </AdvancedOptions>
-        </>
-      }
-    >
-      <Answer
-        eyebrow="Increase a month"
-        value={gbp(r.monthly)}
-        actions={<ShareButton copied={st.copied} onClick={st.share} />}
-        sentence={
-          !rising ? (
-            <>The new rent is not higher than your current rent.</>
-          ) : (
-            <>
-              Your rent would rise by <b>{percent(r.share, 1)}</b>, {gbp(r.yearly)} a year.{" "}
-              {r.valid ? (
-                <>
-                  On these dates the notice meets the {rules.label} timing rules, so the new rent can start on <b>{formatDate(v.starts, "medium")}</b> unless you challenge it.
-                </>
+            <div className="sa-ri-pair">
+              <Mini label="Rent now, a month" value={v.current} onChange={st.bind("current")} prefix="£" max={50_000} wide />
+              <Mini label="New rent, a month" value={v.proposed} onChange={st.bind("proposed")} prefix="£" max={50_000} wide />
+            </div>
+            <DateField label="Date you got the notice" value={v.served} onChange={(x) => x && st.set("served", x)} />
+            <DateField label="Date the new rent starts" value={v.starts} onChange={(x) => x && st.set("starts", x)} />
+            <DateField
+              label={v.nation === "england" ? "When the tenancy began or the rent last went up" : "When you moved in or the rent last went up"}
+              value={v.last}
+              onChange={(x) => x && st.set("last", x)}
+              hint="Whichever is later."
+            />
+            <Pills
+              label={v.nation === "ni" ? "Was it in writing, with the new rent and its start date?" : `Was it on ${FORM_NAME[v.nation]}?`}
+              value={v.form}
+              onChange={st.bind("form")}
+              options={[
+                { value: "yes", label: "Yes" },
+                { value: "no", label: "No" },
+                { value: "unsure", label: "Not sure" },
+              ]}
+            />
+            {(v.nation === "wales" || v.nation === "ni") && (
+              <Switch label="I am still in a fixed term" checked={v.fixed} onChange={st.bind("fixed")} hint="A fixed-term contract or tenancy agreement that has not yet ended." />
+            )}
+          </Inputs>
+        </div>
+
+        <div className="sa-ri-result">
+          <div className={`sa-ri-verdict is-${verdict}`} aria-live="polite">
+            <span className="sa-ri-mark" aria-hidden="true" />
+            <div>
+              <p className="sa-ri-kicker">{rules.label}</p>
+              <p className="sa-ri-headline">{headline}</p>
+              {rising && (verdict === "invalid" ? (
+                <p className="sa-ri-sub">
+                  {fixedTerm
+                    ? "The rent can only change in a fixed term if your agreement has a rent review term, or you agree. Keep paying the current rent."
+                    : failed.some((c) => c.name !== "The right form")
+                      ? <>Keep paying {gbp(v.current)}. On these dates the earliest a valid rise could start is <b>{d(earliest)}</b>, with a fresh notice.</>
+                      : <>Keep paying {gbp(v.current)} and ask your landlord for the correct form.</>}
+                </p>
               ) : (
-                <>
-                  On these dates the notice does <b>not</b> meet the {rules.label} timing rules. The earliest the new rent could start is <b>{formatDate(earliest, "medium")}</b>.
-                </>
-              )}
-            </>
-          )
-        }
-        badges={[rules.label, `${rules.noticeMonths} months' notice`, r.valid ? "Timing OK" : "Timing not OK"]}
-      />
+                <p className="sa-ri-sub">
+                  The new rent of {gbp(v.proposed)} can start on <b>{d(v.starts)}</b> unless you challenge it{r.challengeBy ? <> by <b>{d(r.challengeBy)}</b></> : null}.
+                </p>
+              ))}
+            </div>
+          </div>
 
-      <Facts
-        items={[
-          { label: "Increase a month", value: gbp(r.monthly) },
-          { label: "Increase a year", value: gbp(r.yearly) },
-          { label: "Rise", value: percent(r.share, 1), tone: r.share > 0.1 ? "warn" : undefined },
-          { label: "Notice given", value: `${r.daysToStart} days`, tone: r.noticeOk ? "good" : "bad" },
-        ]}
-      />
+          {rising && (
+            <ol className="sa-ri-checks" aria-label="Checks on the notice">
+              {checks.map((c) => (
+                <li key={c.name} className={c.ok === true ? "is-pass" : c.ok === false ? "is-fail" : "is-unsure"}>
+                  <span className="sa-ri-tick" aria-hidden="true" />
+                  <div>
+                    <b>
+                      {c.name}
+                      <span className="sr-only">: {c.ok === true ? "passes" : c.ok === false ? "fails" : "not known"}</span>
+                    </b>
+                    <span>{c.detail}</span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          )}
 
-      <Assumptions
-        items={[
-          { label: "Rules", value: `${rules.label}: ${rules.noticeMonths} months' notice, once a year` },
-          { label: "Once a year", value: v.nation === "england" ? "52 weeks from the last increase or the tenancy start" : "12 months from the last increase or the tenancy start" },
-          { label: "Notice", value: `Using ${rules.form}` },
-          { label: "Tenancy", value: "Private landlord. Social and regulated tenancies have different rules" },
-        ]}
-      />
+          {rising && (
+            <div className="sa-ri-cost">
+              <p>
+                <b>+{gbp(r.monthly)}</b>
+                <span>a month</span>
+              </p>
+              <p>
+                <b>+{gbp(r.yearly)}</b>
+                <span>a year</span>
+              </p>
+              <p>
+                <b>{percent(r.share, 1)}</b>
+                <span>rise</span>
+              </p>
+              <p className="sa-ri-deadline">
+                <b>{r.challengeBy ? d(r.challengeBy) : "No tribunal"}</b>
+                <span>{r.challengeBy ? `last day to ${v.nation === "scotland" ? "refer it to Rent Service Scotland" : "apply to the tribunal"}` : "get advice from Housing Rights"}</span>
+              </p>
+            </div>
+          )}
 
-      <ResultCard title="Timing checks" sub="Both must pass for the new rent to start on the date given.">
-        <Compare
-          head={["Rule", "Earliest start date"]}
-          rows={[
-            { label: `At least ${rules.noticeMonths} months' notice`, value: formatDate(r.earliestByNotice, "medium"), delta: r.noticeOk ? "Met" : "Not met", bar: r.noticeOk ? 1 : 0.35 },
-            { label: "No more than once a year", value: formatDate(r.earliestByYear, "medium"), delta: r.yearOk ? "Met" : "Not met", bar: r.yearOk ? 1 : 0.35 },
-          ]}
-        />
-      </ResultCard>
+          <details className="sa-ri-more" open={v.market > 0 || v.income > 0 || undefined}>
+            <summary>Compare with local rents and your income</summary>
+            <div className="sa-ri-pair">
+              <MoneyField label="Rent for similar homes nearby, a month" value={v.market} onChange={st.bind("market")} hint="From listings for the same size and type of home." />
+              <MoneyField label="Household take-home pay, a month" value={v.income} onChange={st.bind("income")} />
+            </div>
+            {r.aboveMarket !== null && (
+              <Flag tone={r.aboveMarket > 0 ? "warn" : "good"} title={r.aboveMarket > 0 ? `${gbp(r.aboveMarket)} a month above similar homes` : "In line with similar homes"}>
+                {r.aboveMarket > 0
+                  ? v.nation === "scotland"
+                    ? "Evidence for a rent officer, but they set a market rent and it can come out higher than your landlord asked."
+                    : "That is the evidence a tribunal looks at."
+                  : "A challenge is unlikely to bring the rent down much."}
+              </Flag>
+            )}
+            {r.burdenAfter !== null && (
+              <p className="sa-ri-burden">
+                Rent would take <b>{percent(r.burdenAfter)}</b> of your take-home pay, up from {percent(r.burdenBefore ?? 0)}.
+              </p>
+            )}
+          </details>
 
-      {rising && v.current > 0 && (
-        <ResultCard title="If it rose like this every year" sub={`Your rent with a ${percent(r.share, 1)} rise each year.`}>
-          <Compare
-            head={["After", "Rent a month"]}
-            rows={[{ y: 0, rent: v.current }, ...years].map((x) => ({ label: x.y === 0 ? "Now" : `${x.y} year${x.y === 1 ? "" : "s"}`, value: gbp(x.rent), bar: x.rent / maxRent, current: x.y === 1 }))}
-          />
-        </ResultCard>
-      )}
-
-      <ResultCard title="What you can do" sub={`Your options in ${rules.label}.`}>
-        {!r.valid && rising && (
-          <Callout tone="warn" title="The notice is too early">
-            {!r.noticeOk && <>You need at least {rules.noticeMonths} months&rsquo; notice. </>}
-            {!r.yearOk && <>The rent can only go up once a year. </>}A notice that breaks these rules is not valid: keep paying your current rent and tell your landlord in
-            writing. The earliest valid start date on these figures is {formatDate(earliest, "medium")}.
-          </Callout>
-        )}
-        {v.nation === "england" && (
-          <Callout title="Challenge it at the First-tier Tribunal">
-            If you think the new rent is above the market rate, apply to {rules.challenge} before {formatDate(v.starts, "medium")}. The tribunal decides the market rent but cannot set it higher than your
-            landlord asked for, and any increase only starts from its decision. Rent review clauses no longer count.
-          </Callout>
-        )}
-        {v.nation === "scotland" && (
-          <Callout title="Refer it to a rent officer">
-            You can ask {rules.challenge} to decide a fair rent within 21 days of getting the notice (30 days from 1 April 2027). Rent control areas, if your council has one, can cap rises.
-          </Callout>
-        )}
-        {v.nation === "wales" && (
-          <Callout title="Challenge it at the tribunal">
-            If you think the new rent is too high, you can apply to {rules.challenge} before the new rent starts.
-          </Callout>
-        )}
-        {v.nation === "ni" && (
-          <Callout title="Get advice">
-            A rise within 12 months of the last one has no legal effect, so you do not have to pay it. Contact Housing Rights or your council if your landlord insists.
-          </Callout>
-        )}
-        {r.aboveMarket !== null && (
-          <Callout tone={r.aboveMarket > 0 ? "warn" : "good"} title={r.aboveMarket > 0 ? "Above similar homes" : "In line with similar homes"}>
-            The new rent is {gbp(Math.abs(r.aboveMarket))} a month {r.aboveMarket > 0 ? "more" : "less"} than the rent you entered for similar homes nearby.
-            {r.aboveMarket > 0 && v.nation === "england" ? " That is the kind of evidence the tribunal looks at." : ""}
-          </Callout>
-        )}
-        {r.burdenAfter !== null && (
-          <Callout tone={r.burdenAfter > 0.4 ? "warn" : "info"} title={`Rent would take ${percent(r.burdenAfter)} of your income`}>
-            Up from {percent(r.burdenBefore ?? 0)}. If you are on a low income, check the <a href="/uk/benefits/universal-credit">Universal Credit</a> or{" "}
-            <a href="/uk/benefits/housing-benefit">Housing Benefit</a> calculators, and the <a href="/uk/benefits/local-housing-allowance">Local Housing Allowance</a> for your area.
-          </Callout>
-        )}
-      </ResultCard>
-
-      <p className="footnote" style={{ textAlign: "center" }}>
-        Based on the Renters&rsquo; Rights Act 2025 (England), the Renting Homes (Wales) Act 2016, the Private Housing (Tenancies) (Scotland) Act 2016 and the Private Tenancies Act (Northern
-        Ireland) 2022. General information, not legal advice.
-      </p>
-    </Studio>
+          <Foot>
+            <Caveat>
+              A check of the legal timing and form for private tenancies, on the dates you enter. It cannot tell you whether the new rent is fair, and social and regulated tenancies follow
+              other rules. General information, not legal advice.
+            </Caveat>
+            <ShareButton copied={st.copied} onClick={st.share} />
+          </Foot>
+        </div>
+      </div>
+    </Tool>
   );
 }

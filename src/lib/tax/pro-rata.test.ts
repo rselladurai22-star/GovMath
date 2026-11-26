@@ -27,3 +27,24 @@ describe("proRata", () => {
     expect(pt.hourly).toBeCloseTo(ft.hourly, 6);
   });
 });
+
+import { statutoryHolidayDays, termTime } from "./pro-rata";
+
+describe("statutory holiday and term-time (GOV.UK: Holiday entitlement)", () => {
+  it("5.6 weeks of your own days, capped at 28", () => {
+    expect(statutoryHolidayDays(3)).toBeCloseTo(16.8, 9);
+    expect(statutoryHolidayDays(5)).toBe(28);
+    expect(statutoryHolidayDays(6)).toBe(28);
+    expect(statutoryHolidayDays(0.5)).toBeCloseTo(2.8, 9);
+  });
+  it("term-time: 39 weeks plus 12.07% holiday", () => {
+    const t = termTime(32_000, 39);
+    expect(t.paidWeeks).toBeCloseTo(39 * 1.1207, 6);
+    expect(t.salary).toBeCloseTo(32_000 * (39 * 1.1207) / 52, 6);
+  });
+  it("never more than a full year, and the contract's holiday when given", () => {
+    expect(termTime(30_000, 50).paidWeeks).toBe(52);
+    expect(termTime(30_000, 39, 6).paidWeeks).toBe(45);
+    expect(termTime(30_000, 52).salary).toBe(30_000);
+  });
+});

@@ -1,136 +1,215 @@
 "use client";
 
-import { singlePersonDiscountForDays } from "@/lib/property/discounts";
-import Studio from "@/components/flagship/Studio";
-import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField, Switch } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Facts, ResultCard, SplitBar } from "@/components/flagship/results";
-import { gbp, per } from "@/components/flagship/format";
+import { householdBill, type Occupant } from "@/lib/property/discounts";
+import { Caveat, Flag, Foot, Hero, Inputs, Tool } from "@/components/calc/kit";
+import { Mini, Pills } from "@/components/calc/fields";
+import { MoneyField, SelectField } from "@/components/flagship/inputs";
+import { gbp } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
+
+type Me = Exclude<Occupant, "counts"> | "counts";
+const ME: { value: Me; label: string }[] = [
+  { value: "counts", label: "An adult who counts (most people)" },
+  { value: "student", label: "A full-time student" },
+  { value: "smi", label: "Severely mentally impaired" },
+  { value: "carer", label: "A live-in carer" },
+  { value: "apprentice", label: "An apprentice or trainee" },
+  { value: "other", label: "Another disregarded group" },
+];
 
 const SCHEMA = {
   bill: num(2_280, 0, 20_000),
+  // Other adults (18+) who live there. Older links paired this with
+  // `disregarded` ("they are all disregarded"); the groups below replace it.
   others: num(0, 0, 10),
   disregarded: bool(false),
+  me: oneOf<Me>("counts", ["counts", "student", "smi", "carer", "apprentice", "other"]),
+  ost: num(0, 0, 10),
+  osmi: num(0, 0, 10),
+  ocare: num(0, 0, 10),
+  oapp: num(0, 0, 10),
+  odis: num(0, 0, 10),
   days: num(365, 0, 365),
   months: oneOf<"10" | "12">("10", ["10", "12"]),
 };
-const ADVANCED = ["disregarded", "days", "months"] as const;
-const COLORS = { pay: "#5b1e6e", save: "#0f9f6e" };
+
+type GroupKey = "ost" | "osmi" | "ocare" | "oapp" | "odis";
+const GROUPS: { key: GroupKey; kind: Occupant; label: string; hint: string }[] = [
+  { key: "ost", kind: "student", label: "Full-time students", hint: "At college or university, or 18 or 19 and still at school or college" },
+  { key: "ocare", kind: "carer", label: "Live-in carers", hint: "Caring for someone who is not their partner or child under 18" },
+  { key: "oapp", kind: "apprentice", label: "Apprentices or trainees", hint: "On £195 a week or less, or under 25 and funded by the ESFA" },
+  { key: "osmi", kind: "smi", label: "Severely mentally impaired", hint: "With a doctor’s certificate and a qualifying benefit" },
+  { key: "odis", kind: "other", label: "Another disregarded group", hint: "Student nurse, foreign language assistant, diplomat and others" },
+];
+
+const TAG: Record<Occupant, string> = { counts: "Counts", student: "Student", smi: "SMI", carer: "Carer", apprentice: "Apprentice", other: "Disregarded" };
 
 export default function SPDStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
   const others = Math.round(v.others);
-  // Everyone else disregarded: one counted adult (you) gives 25%.
-  const qualifies = others === 0 || v.disregarded;
-  const r = singlePersonDiscountForDays({ annualBill: v.bill, daysAlone: qualifies ? v.days : 0 });
+  const groupTotal = GROUPS.reduce((a, g) => a + Math.round(v[g.key]), 0);
+  // An old link that said "they are all disregarded" without naming groups.
+  const legacyAll = v.disregarded && groupTotal === 0;
+
+  const people: Occupant[] = [v.me];
+  let left = others;
+  if (legacyAll) {
+    for (let i = 0; i < others; i++) people.push("other");
+    left = 0;
+  } else {
+    for (const g of GROUPS) {
+      const n = Math.min(left, Math.round(v[g.key]));
+      for (let i = 0; i < n; i++) people.push(g.kind);
+      left -= n;
+    }
+  }
+  for (let i = 0; i < left; i++) people.push("counts");
+
   const n = Number(v.months);
-  const fullYear = singlePersonDiscountForDays({ annualBill: v.bill, daysAlone: 365 }).discount;
+  const r = householdBill({ annualBill: v.bill, people, days: v.days, instalments: n });
+  const partYear = r.days < 365;
+  const pct = Math.round(r.rate * 100);
+  const monthBefore = r.fullBill / n;
+
+  const setOthers = (x: number) => {
+    const next = Math.max(0, Math.min(10, Math.round(x)));
+    st.set("others", next);
+    if (legacyAll) {
+      st.set("disregarded", false);
+      st.set("odis", next);
+    }
+  };
+  const setGroup = (key: GroupKey) => (x: number) => {
+    if (legacyAll) {
+      st.set("disregarded", false);
+      st.set("odis", 0);
+    }
+    st.set(key, Math.max(0, Math.round(x)));
+  };
+  const room = (key: GroupKey) => (legacyAll ? 0 : others - groupTotal + Math.round(v[key]));
+
+  const heroLabel =
+    r.status === "exempt" ? "Exempt: you save the whole bill" : r.rate > 0 ? `Your ${pct}% discount saves` : "No discount for this household";
+  const heroValue = r.status === "exempt" ? gbp(r.fullBill) : gbp(r.discount);
 
   return (
-    <Studio
-      title="Your household"
-      ready={st.ready}
-      onCalculate={st.calculate}
-      calculateLabel="Check my discount"
-      onReset={st.reset}
-      dock={{ label: "You save", value: gbp(r.discount) }}
-      inputs={
-        <>
-          <InputGroup title="Your bill and household">
-            <MoneyField label="Full council tax bill for the year" value={v.bill} onChange={st.bind("bill")} big slider={{ min: 500, max: 5_000, step: 10, ends: ["£500", "£5k"] }} hint="Before any discount. It is on your bill or council's website." />
-            <StepperField label="Other adults living with you" value={v.others} onChange={st.bind("others")} step={1} min={0} max={10} unit="" dp={0} hint="People aged 18 or over who live there as their main home." />
-          </InputGroup>
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            {others > 0 && (
-              <Switch
-                label="They are all disregarded"
-                checked={v.disregarded}
-                onChange={st.bind("disregarded")}
-                optional
-                hint="For example full-time students, apprentices, carers or someone severely mentally impaired."
-              />
-            )}
-            <StepperField label="Days this year you live alone" value={v.days} onChange={st.bind("days")} step={1} min={0} max={365} unit="days" dp={0} optional hint="If you started or stopped living alone part way through the year." />
-            <Segmented
-              label="Pay in"
-              value={v.months}
-              onChange={st.bind("months")}
-              optional
-              options={[
-                { value: "10", label: "10 instalments" },
-                { value: "12", label: "12 instalments" },
-              ]}
+    <Tool label="Single person discount calculator">
+      <div className="sa-spd">
+        <div className="sa-spd-inputs">
+          <Inputs title="Your bill and who lives with you">
+            <MoneyField
+              label="Full council tax bill for the year"
+              value={v.bill}
+              onChange={st.bind("bill")}
+              slider={{ min: 500, max: 5_000, step: 10, ends: ["£500", "£5,000"] }}
+              hint="Before any discount: the annual charge on your bill for your band. In Scotland include the water and waste water charges."
             />
-          </AdvancedOptions>
-        </>
-      }
-    >
-      <Answer
-        eyebrow={qualifies ? "Your single person discount" : "No single person discount"}
-        value={gbp(r.discount)}
-        unit={qualifies ? "off this year" : ""}
-        actions={<ShareButton copied={st.copied} onClick={st.share} />}
-        sentence={
-          qualifies ? (
-            <>
-              25% off a <b>{gbp(v.bill)}</b> bill{r.days < 365 && <> for {r.days} {per(r.days, "days")}</>} saves <b>{gbp(r.discount)}</b>. You pay <b>{gbp(r.payable)}</b>, or{" "}
-              <b>{gbp(r.payable / n, true)}</b> a month over {n} {per(n, "months")}.
-            </>
-          ) : (
-            <>
-              With {others} other {others === 1 ? "adult" : "adults"} counted, you do not qualify. If they are all disregarded, such as full-time students, you could save{" "}
-              <b>{gbp(fullYear)}</b> a year.
-            </>
-          )
-        }
-        badges={[qualifies ? "25% discount" : "Not eligible", `${gbp(r.payable)} to pay`, `${gbp(r.discount / 12, true)} a month saved`]}
-      />
+            <SelectField label="You are" value={v.me} onChange={st.bind("me")} options={ME} />
+            <Mini label="Other adults (18 or over) who live there" value={others} onChange={setOthers} min={0} max={10} stepper hint="Children under 18 never count, so leave them out." />
+            {others > 0 && (
+              <fieldset className="sa-spd-groups">
+                <legend>Are any of them disregarded?</legend>
+                {GROUPS.map((g) => (
+                  <div key={g.key} className="sa-spd-group">
+                    <span>
+                      <b>{g.label}</b>
+                      <small>{g.hint}</small>
+                    </span>
+                    <Mini label={`${g.label} among them`} value={legacyAll ? 0 : Math.round(v[g.key])} onChange={setGroup(g.key)} min={0} max={Math.max(0, room(g.key))} stepper />
+                  </div>
+                ))}
+                {legacyAll && <p className="sa-spd-legacy">This link says all {others} are disregarded. Choose their groups to be exact.</p>}
+              </fieldset>
+            )}
+            <div className="sa-spd-when">
+              <Mini label="Days of the year this applies" value={r.days} onChange={(x) => st.set("days", Math.max(0, Math.min(365, Math.round(x))))} min={0} max={365} suffix="of 365" hint="Fewer if someone moved in or out this year." />
+              <Pills
+                label="Instalments"
+                value={v.months}
+                onChange={st.bind("months")}
+                options={[
+                  { value: "10", label: "10" },
+                  { value: "12", label: "12" },
+                ]}
+              />
+            </div>
+          </Inputs>
+        </div>
 
-      <Facts
-        items={[
-          { label: "Discount", value: gbp(r.discount), tone: r.discount > 0 ? "good" : undefined },
-          { label: "Bill after discount", value: gbp(r.payable) },
-          { label: `Monthly (×${n})`, value: gbp(r.payable / n, true) },
-          { label: "Saved a month", value: gbp(r.discount / 12, true) },
-        ]}
-      />
+        <div className="sa-spd-result">
+          <ul className="sa-spd-people" aria-label={`Who lives there: ${people.map((p, i) => `${i === 0 ? "you" : "another adult"}, ${p === "counts" ? "counts" : TAG[p].toLowerCase()}`).join("; ")}`}>
+            {people.map((p, i) => (
+              <li key={i} className={p === "counts" ? "is-counted" : "is-disregarded"}>
+                <i aria-hidden="true" />
+                <span>{i === 0 ? "You" : `Adult ${i + 1}`}</span>
+                <b>{TAG[p]}</b>
+              </li>
+            ))}
+          </ul>
+          <p className="sa-spd-count">
+            {r.status === "exempt"
+              ? r.exemption === "students"
+                ? "Everyone is a full-time student, so the home is exempt."
+                : "Severely mentally impaired, living alone or only with other SMI adults or students: a 100% discount."
+              : r.counted === 0
+                ? "Nobody counts, so the bill is halved."
+                : `${r.counted} ${r.counted === 1 ? "adult counts" : "adults count"}. ${r.counted === 1 ? "One is the most you can have for the 25% discount." : "With two or more, there is no discount."}`}
+          </p>
 
-      <Assumptions
-        items={[
-          { label: "Bill", value: `${gbp(v.bill)} before discounts` },
-          { label: "Discount", value: "25% for one counted adult" },
-          { label: "Period", value: r.days === 365 ? "The full year" : `${r.days} ${per(r.days, "days")}` },
-          { label: "Year", value: "2026/27" },
-        ]}
-      />
-
-      {v.bill > 0 && (
-        <ResultCard title="Your bill with the discount" sub="What you pay and what you save.">
-          <SplitBar
-            segments={[
-              { label: "You pay", value: r.payable, display: gbp(r.payable), color: COLORS.pay },
-              { label: "Discount", value: r.discount, display: gbp(r.discount), color: COLORS.save },
-            ]}
+          <Hero
+            label={heroLabel}
+            value={heroValue}
+            unit={r.status === "exempt" || r.rate > 0 ? (partYear ? `for ${r.days} days` : "a year") : undefined}
+            tone={r.rate > 0 ? "brand" : "ink"}
+            sub={
+              r.rate > 0 ? (
+                <>
+                  You pay <b>{gbp(r.payable)}</b> this year: <b>{gbp(r.instalment, true)}</b> a month over {n} months, down from {gbp(monthBefore, true)}.
+                </>
+              ) : (
+                <>Two or more adults who count pay the full {gbp(r.fullBill)}: {gbp(r.instalment, true)} a month over {n} months.</>
+              )
+            }
           />
-        </ResultCard>
-      )}
 
-      <ResultCard title="Worth knowing" sub="How to claim and keep the discount.">
-        <Callout title="Apply to your council">
-          The discount is not automatic. Apply on your council&apos;s website. Most councils backdate it to when you started living alone, if you can show the date.
-        </Callout>
-        <Callout tone="warn" title="Tell the council if things change">
-          If someone moves in, you must tell the council within 21 days. Councils run regular checks against other records, and penalties can apply.
-        </Callout>
-        <Callout title="Other help">
-          You may also get Council Tax Reduction if you are on a low income, or a disabled band reduction if your home has been adapted.
-        </Callout>
-      </ResultCard>
+          <figure className="sa-spd-bills" role="img" aria-label={`Full bill ${gbp(r.fullBill)}, less ${gbp(r.discount)}, leaves ${gbp(r.payable)} to pay`}>
+            <div className="sa-spd-bill">
+              <span>Full bill</span>
+              <b>{gbp(r.fullBill)}</b>
+              <small>{gbp(monthBefore, true)} × {n}</small>
+            </div>
+            <div className={`sa-spd-gap${r.discount > 0 ? " is-on" : ""}`} aria-hidden="true">
+              <span>{r.discount > 0 ? `−${gbp(r.discount)}` : "No change"}</span>
+              <small>{r.status === "exempt" ? "Exempt" : r.rate > 0 ? `${pct}% off` : "0% off"}</small>
+            </div>
+            <div className={`sa-spd-bill is-after${r.discount > 0 ? " is-lower" : ""}`}>
+              <span>You pay</span>
+              <b>{gbp(r.payable)}</b>
+              <small>{gbp(r.instalment, true)} × {n}</small>
+            </div>
+          </figure>
 
-      <p className="footnote" style={{ textAlign: "center" }}>
-        The same 25% discount applies in England, Scotland and Wales. Northern Ireland has domestic rates instead of council tax.
-      </p>
-    </Studio>
+          {r.status === "none" && v.me === "counts" && (
+            <Flag title="Check each adult again">Anyone in the groups on the left does not count. If all but one of you are disregarded, the 25% applies.</Flag>
+          )}
+          {r.status === "exempt" && (
+            <Flag tone="good" title="Ask for an exemption, not a discount">
+              {r.exemption === "students"
+                ? "Send the council a student certificate from each college or university. Until it is applied, you will still get a bill."
+                : "You need a certificate from a doctor and proof of a qualifying benefit, such as PIP or Attendance Allowance. Ask the council for its form."}
+            </Flag>
+          )}
+
+          <Foot>
+            <Caveat>
+              Exact for the bill you enter, by day if you give fewer than 365. Your council decides whether each person is disregarded; this does not include Council Tax Reduction or the
+              disabled band reduction.
+            </Caveat>
+            <ShareButton copied={st.copied} onClick={st.share} />
+          </Foot>
+        </div>
+      </div>
+    </Tool>
   );
 }

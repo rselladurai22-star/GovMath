@@ -74,3 +74,50 @@ describe("deposits", () => {
     expect(r.overCap).toBeCloseTo(0, 6);
   });
 });
+
+describe("rent increase checks (GOV.UK, mygov.scot, gov.wales, nidirect)", () => {
+  const base = { nation: "england" as const, current: 1_000, proposed: 1_100, served: "2026-10-01", starts: "2026-12-01", lastChange: "2025-12-01", income: 0, market: 0 };
+  it("England: exactly two months' notice is enough, a day less is not", () => {
+    expect(rentIncrease({ ...base, served: "2026-10-01", starts: "2026-12-01" }).noticeOk).toBe(true);
+    expect(rentIncrease({ ...base, served: "2026-10-02", starts: "2026-12-01" }).noticeOk).toBe(false);
+  });
+  it("England: 52 weeks, not a calendar year, from the last rise", () => {
+    expect(rentIncrease({ ...base, lastChange: "2025-12-01" }).earliestByYear).toBe("2026-11-30");
+  });
+  it("England: the rise must start on a rent day", () => {
+    expect(rentIncrease(base).rentDayOk).toBe(true);
+    expect(rentIncrease({ ...base, starts: "2026-12-15" }).rentDayOk).toBe(false);
+    expect(rentIncrease({ ...base, lastChange: "2026-01-31", starts: "2027-02-28" }).rentDayOk).toBe(true);
+    expect(rentIncrease({ ...base, nation: "wales" }).rentDayOk).toBeNull();
+  });
+  it("Wales: 2 months; Scotland and Northern Ireland: 3 months, 12 months apart", () => {
+    expect(rentIncrease({ ...base, nation: "wales" }).valid).toBe(true);
+    expect(rentIncrease({ ...base, nation: "ni" }).noticeOk).toBe(false);
+    expect(rentIncrease({ ...base, nation: "ni", starts: "2027-01-01" }).valid).toBe(true);
+    expect(rentIncrease({ ...base, nation: "scotland", lastChange: "2026-01-15", starts: "2027-01-14" }).yearOk).toBe(false);
+  });
+  it("challenge deadlines", () => {
+    expect(rentIncrease(base).challengeBy).toBe("2026-11-30");
+    expect(rentIncrease({ ...base, nation: "scotland" }).challengeBy).toBe("2026-10-22");
+    expect(rentIncrease({ ...base, nation: "ni" }).challengeBy).toBeNull();
+  });
+});
+
+describe("deposit edge cases", () => {
+  it("an item past its life is nil, a new one is charged in full", () => {
+    expect(fairDeduction({ kind: "decoration", claimed: 400, age: 5, life: 5 }).fair).toBe(0);
+    expect(fairDeduction({ kind: "decoration", claimed: 400, age: 0, life: 5 }).fair).toBe(400);
+    expect(fairDeduction({ kind: "repair", claimed: 90, age: 6, life: 0 }).fair).toBe(90);
+  });
+  it("England's cap switches to 6 weeks at £50,000 a year", () => {
+    expect(depositCap("england", 4_166.66)).toBeCloseTo(((4_166.66 * 12) / 52) * 5, 6);
+    expect(depositCap("england", 50_000 / 12)).toBeCloseTo(((50_000 / 52) * 6), 6);
+  });
+  it("flags a deposit over the cap, and never returns less than nothing", () => {
+    const r = depositReturn({ nation: "ni", deposit: 1_500, monthlyRent: 1_000, protectedInTime: true, claims: [{ kind: "rent", claimed: 2_000, age: 0, life: 0 }] });
+    expect(r.overCap).toBe(500);
+    expect(r.back).toBe(0);
+    expect(r.penaltyRange).toBeNull();
+    expect(depositReturn({ nation: "scotland", deposit: 1_000, monthlyRent: 800, protectedInTime: false, claims: [] }).penaltyRange).toEqual([0, 3_000]);
+  });
+});

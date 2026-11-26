@@ -82,6 +82,14 @@ export type RentIncreaseResult = {
   burdenAfter: number | null;
   /** How far the proposed rent is above (+) or below (−) similar homes, a month. */
   aboveMarket: number | null;
+  /**
+   * England only: a section 13 rise must start at the beginning of a rent
+   * period. With monthly rent that is the same day of the month as the
+   * tenancy (or the last rise) started. Null where the rule does not apply.
+   */
+  rentDayOk: boolean | null;
+  /** The last day to challenge the rise, or null where there is no route (Northern Ireland). */
+  challengeBy: string | null;
 };
 
 export function rentIncrease(i: RentIncreaseInput): RentIncreaseResult {
@@ -105,7 +113,31 @@ export function rentIncrease(i: RentIncreaseInput): RentIncreaseResult {
     burdenBefore: i.income > 0 ? i.current / i.income : null,
     burdenAfter: i.income > 0 ? i.proposed / i.income : null,
     aboveMarket: i.market > 0 ? i.proposed - i.market : null,
+    rentDayOk: i.nation === "england" ? sameRentDay(i.lastChange, i.starts) : null,
+    challengeBy: challengeDeadline(i.nation, i.served, i.starts),
   };
+}
+
+/** Whether `b` falls on the same day of the month as `a` (a month-end date matches any month-end). */
+function sameRentDay(a: string, b: string): boolean {
+  const da = parse(a);
+  const db = parse(b);
+  const endOf = (d: Date) => new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + 1, 0)).getUTCDate();
+  if (da.getUTCDate() === db.getUTCDate()) return true;
+  return da.getUTCDate() >= endOf(db) && db.getUTCDate() === endOf(db);
+}
+
+/**
+ * The last day to challenge a rise. England (First-tier Tribunal) and Wales
+ * (Residential Property Tribunal): before the new rent starts, so the day
+ * before. Scotland (Rent Service Scotland): within 21 days of getting the
+ * notice, rising to 30 days for notices from 1 April 2027 (Housing (Scotland)
+ * Act 2025). Northern Ireland: no tribunal route.
+ */
+export function challengeDeadline(nation: RentNation, served: string, starts: string): string | null {
+  if (nation === "ni") return null;
+  if (nation === "scotland") return iso(new Date(parse(served).getTime() + (served >= "2027-04-01" ? 30 : 21) * DAY));
+  return iso(new Date(parse(starts).getTime() - DAY));
 }
 
 /* ── Deposits ──────────────────────────────────────────── */
@@ -144,6 +176,7 @@ export const ITEM_LIFE: Record<string, { label: string; years: number }> = {
   flooring: { label: "Hard flooring", years: 15 },
   cleaning: { label: "Cleaning", years: 0 },
   rent: { label: "Unpaid rent or bills", years: 0 },
+  repair: { label: "A repair (not a replacement)", years: 0 },
 };
 
 export type DeductionClaim = {
