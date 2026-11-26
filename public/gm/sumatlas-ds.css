@@ -1183,3 +1183,17 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
 .gm-claret .gm-neutral .categoryjump a:is(.active, [aria-current], .chosen):hover { color: var(--sa-white); }
 .gm-claret footer .footergrid > div p,
 .gm-claret footer .footergrid p { color: var(--sa-on-dark-2); }
+
+/* ── Read next: the Guides articles a calculator points to (src/lib/blog-links.ts). */
+.gm-claret .gm-neutral .gm-readnext { max-width: 840px; margin: 8px auto 0; padding: 0 0 8px; }
+.gm-claret .gm-neutral .gm-readnext h2 { font-family: var(--sa-head); font-size: 22px; line-height: 28px; font-weight: 800; color: var(--sa-ink); margin: 0 0 12px; }
+.gm-claret .gm-neutral .gm-readnext-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.gm-claret .gm-neutral .gm-readnext-card {
+  display: flex; flex-direction: column; gap: 4px;
+  background: var(--sa-white); border: 1px solid var(--sa-line); border-radius: var(--sa-r);
+  padding: 16px 18px; text-decoration: none; transition: box-shadow var(--sa-ease), border-color var(--sa-ease);
+}
+.gm-claret .gm-neutral .gm-readnext-card:hover { border-color: var(--sa-brand-fill); box-shadow: var(--sa-shadow-hover); }
+.gm-claret .gm-neutral .gm-readnext-kicker { font-size: 12px; line-height: 16px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--sa-brand); }
+.gm-claret .gm-neutral .gm-readnext-card strong { font-family: var(--sa-head); font-size: 18px; line-height: 24px; font-weight: 700; color: var(--sa-ink); }
+.gm-claret .gm-neutral .gm-readnext-card span:last-child { font-size: 14px; line-height: 20px; color: var(--sa-text-2); }

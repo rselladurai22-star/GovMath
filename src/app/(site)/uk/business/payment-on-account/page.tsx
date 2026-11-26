@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import PoaGuide from "./PoaGuide";
 
 export const metadata: Metadata = {
-  title: "Payment on Account Calculator 2026/27",
+  title: "Payment on Account Calculator: 31 January 2027",
   description:
-    "Free payments on account calculator for Self Assessment. See what you pay in January and July, the balancing payment, and when you can reduce them.",
+    "Free payments on account calculator: what you pay on 31 January and 31 July 2027, your 2025/26 balancing payment, and when you can ask to reduce them.",
   alternates: { canonical: "/uk/business/payment-on-account" },
   openGraph: ogFor("/uk/business/payment-on-account"),
 };
@@ -32,6 +32,8 @@ const FAQS: { q: string; a: string }[] = [
   { q: "Where can I see my payments on account?", a: "In your HMRC online account, under Self Assessment, along with every amount due and paid." },
   { q: "Do payments on account apply to Capital Gains Tax?", a: "No. Capital Gains Tax is paid with the balancing payment, or within 60 days for UK residential property, and never through payments on account." },
   { q: "What happens if I file my return late?", a: "Your payments on account are still due on 31 January and 31 July, and interest runs on anything paid late. You also get late filing penalties, and HMRC may estimate the tax you owe until your return arrives." },
+  { q: "What is due on 31 January 2027?", a: "The balancing payment for 2025/26 and, if your 2025/26 bill was £1,000 or more, the first payment on account for 2026/27 (half of the 2025/26 bill). The second payment on account, the other half, is due on 31 July 2027." },
+  { q: "Are payments on account changing?", a: "Yes, but not yet. Budget 2026 says that from April 2029 people who make payments on account will pay smaller, more regular amounts through the year instead of two lump sums. The details will follow a consultation." },
   { q: "Can I pay more than my payment on account?", a: "Yes. Any extra is held as a credit and used against your next payment, which can help if you know your bill is going up." },
 ];
 
