@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import MaternityGuide from "./MaternityGuide";
 
 export const metadata: Metadata = {
-  title: "Maternity Pay Calculator UK 2026/27 (SMP)",
+  title: "Maternity Pay & Leave Calculator UK 2026/27",
   description:
-    "Free Statutory Maternity Pay calculator for 2026/27. See 39 weeks of SMP week by week, the 90% first six weeks, key dates and Maternity Allowance.",
+    "Free maternity pay and leave calculator for 2026/27. See your Statutory Maternity Pay week by week, your leave dates from the due date, and Maternity Allowance.",
   alternates: { canonical: "/uk/benefits/maternity-pay" },
   openGraph: ogFor("/uk/benefits/maternity-pay"),
 };

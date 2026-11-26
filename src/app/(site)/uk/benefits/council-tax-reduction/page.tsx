@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import CtrGuide from "./CtrGuide";
 
 export const metadata: Metadata = {
-  title: "Council Tax Reduction Calculator 2026/27",
+  title: "Council Tax Reduction & Benefit Calculator",
   description:
-    "Free Council Tax Reduction (Council Tax Support) calculator for 2026/27. Estimate your discount from income, savings, household and non-dependants.",
+    "Free Council Tax Reduction calculator (once called Council Tax Benefit) for 2026/27. Estimate your discount from income, savings and who lives with you.",
   alternates: { canonical: "/uk/benefits/council-tax-reduction" },
   openGraph: ogFor("/uk/benefits/council-tax-reduction"),
 };

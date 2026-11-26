@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import ProRataGuide from "./ProRataGuide";
 
 export const metadata: Metadata = {
-  title: "Pro Rata Salary Calculator UK 2026/27",
+  title: "Pro Rata Calculator: Salary, Hours & Holiday",
   description:
-    "Free pro rata salary calculator. Convert a full-time salary to part-time hours or days, and see your pro rata take-home pay and holiday for 2026/27.",
+    "Free pro rata calculator for the UK. Convert a full-time salary to part-time hours or days, and see your pro rata take-home pay and holiday for 2026/27.",
   alternates: { canonical: "/uk/tax-and-salary/pro-rata" },
   openGraph: ogFor("/uk/tax-and-salary/pro-rata"),
 };

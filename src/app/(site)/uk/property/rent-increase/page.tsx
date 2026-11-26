@@ -6,7 +6,7 @@ import { ogFor } from "@/gm/og";
 import RentIncreaseGuide from "./RentIncreaseGuide";
 
 export const metadata: Metadata = {
-  title: "Rent Increase Calculator UK: Is It Legal?",
+  title: "Rent Increase Calculator: Is My Rent Rise Legal?",
   description:
     "Free rent increase checker for England, Scotland, Wales and Northern Ireland. Check the notice, the once-a-year rule and how to challenge a rise.",
   alternates: { canonical: "/uk/property/rent-increase" },

@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import DepositGuide from "./DepositGuide";
 
 export const metadata: Metadata = {
-  title: "Tenancy Deposit Calculator UK",
+  title: "Rental Deposit Calculator UK: Cap & Deductions",
   description:
-    "Free tenancy deposit calculator. Check the legal deposit cap, fair deductions with wear and tear apportioned, and how much you should get back.",
+    "Free rental deposit calculator. Check the legal deposit cap (5 or 6 weeks' rent in England), fair deductions with wear and tear, and what you should get back.",
   alternates: { canonical: "/uk/property/deposit-return" },
   openGraph: ogFor("/uk/property/deposit-return"),
 };

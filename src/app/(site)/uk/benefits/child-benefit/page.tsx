@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import ChildBenefitGuide from "./ChildBenefitGuide";
 
 export const metadata: Metadata = {
-  title: "Child Benefit Calculator 2026/27: How Much?",
+  title: "How Much Is Child Benefit? 2026/27 Calculator",
   description:
-    "Free Child Benefit calculator for 2026/27. See how much you get each week, month and year for each child, plus the High Income Child Benefit Charge.",
+    "Child Benefit is £27.05 a week for the eldest child and £17.90 for each other child in 2026/27. See the total for 1, 2, 3 or 4 children a week, month and year.",
   alternates: { canonical: "/uk/benefits/child-benefit" },
   openGraph: ogFor("/uk/benefits/child-benefit"),
 };

@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import CarersGuide from "./CarersGuide";
 
 export const metadata: Metadata = {
-  title: "Carer's Allowance Earnings Limit Calculator",
+  title: "Carer's Allowance: How Much Can I Earn?",
   description:
-    "Free Carer's Allowance earnings calculator for 2026/27. Check your earnings against the weekly limit after allowable deductions, and avoid an overpayment.",
+    "Free Carer's Allowance earnings limit calculator for 2026/27. Check how much you can earn a week after allowable deductions and keep your Carer's Allowance.",
   alternates: { canonical: "/uk/benefits/carers-earnings" },
   openGraph: ogFor("/uk/benefits/carers-earnings"),
 };

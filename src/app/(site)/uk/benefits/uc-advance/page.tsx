@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import AdvanceGuide from "./AdvanceGuide";
 
 export const metadata: Metadata = {
-  title: "Universal Credit Advance Calculator 2026/27",
+  title: "Universal Credit Advance: How Much Can I Get?",
   description:
-    "Free Universal Credit advance calculator. See your monthly repayments over up to 24 months, the 15% deductions cap and budgeting advance limits.",
+    "Free Universal Credit advance calculator. See how much you can borrow, your monthly repayments over up to 24 months, and the 15% deductions cap.",
   alternates: { canonical: "/uk/benefits/uc-advance" },
   openGraph: ogFor("/uk/benefits/uc-advance"),
 };

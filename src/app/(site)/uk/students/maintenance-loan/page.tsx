@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import MaintenanceGuide from "./MaintenanceGuide";
 
 export const metadata: Metadata = {
-  title: "Student Maintenance Loan Calculator 2026/27",
+  title: "Maintenance Loan Calculator 2026/27 (England)",
   description:
-    "Free student maintenance loan calculator for 2026/27 (Student Finance England). See how much you get by household income, at home, away or in London.",
+    "Free student maintenance loan calculator for 2026/27 (Student Finance England). See how much you get by household income, living at home, away or in London.",
   alternates: { canonical: "/uk/students/maintenance-loan" },
   openGraph: ogFor("/uk/students/maintenance-loan"),
 };

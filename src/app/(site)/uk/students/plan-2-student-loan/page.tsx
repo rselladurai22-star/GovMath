@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import Plan2Guide from "./Plan2Guide";
 
 export const metadata: Metadata = {
-  title: "Plan 2 Student Loan Calculator 2026/27",
+  title: "Student Loan Calculator: Plan 2 Repayments",
   description:
-    "Free Plan 2 student loan calculator for 2026/27. See monthly repayments, the sliding interest rate, total repaid and whether your loan will be written off.",
+    "Free Plan 2 student loan calculator for 2026/27. See your monthly repayments, the interest rate, the total you repay and whether your loan will be written off.",
   alternates: { canonical: "/uk/students/plan-2-student-loan" },
   openGraph: ogFor("/uk/students/plan-2-student-loan"),
 };

@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import PremiumBondsGuide from "./PremiumBondsGuide";
 
 export const metadata: Metadata = {
-  title: "Premium Bonds Calculator: Average Return 2026",
+  title: "Premium Bonds Calculator: Average Return",
   description:
-    "Free Premium Bonds calculator. See the average return at the current prize rate, what you could win in a typical, unlucky or lucky year, and savings after tax.",
+    "Free Premium Bonds calculator. See the average return at the current prize rate, and what you could win in a typical, unlucky or lucky year, up to £50,000.",
   alternates: { canonical: "/uk/investing/premium-bonds" },
   openGraph: ogFor("/uk/investing/premium-bonds"),
 };
