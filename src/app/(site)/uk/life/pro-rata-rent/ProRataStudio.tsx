@@ -1,158 +1,212 @@
 "use client";
 
-import { monthEnd, monthlyToWeeklyRent, monthStart, proRataRent, weeklyToMonthlyRent, type ProRataMethod } from "@/lib/life/everyday";
-import { formatDate } from "@/lib/life/calendar";
-import Studio from "@/components/flagship/Studio";
-import { AdvancedOptions, DateField, InputGroup, MoneyField, Segmented } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
-import { gbp, per } from "@/components/flagship/format";
+import { useId } from "react";
+import { monthEnd, monthlyToWeeklyRent, monthStart, proRataRent, weeklyToMonthlyRent, type ProRataMethod, type ProRataResult } from "@/lib/life/everyday";
+import { formatDate, parse } from "@/lib/life/calendar";
+import { Caveat, Flag, Foot, Inputs, Panel, Tool } from "@/components/calc/kit";
+import { Mini, Pills } from "@/components/calc/fields";
+import { DateField } from "@/components/flagship/inputs";
+import { gbp } from "@/components/flagship/format";
 import { date, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
+import RentCalendar from "./RentCalendar";
+import RentConverter from "./RentConverter";
 
 type Situation = "in" | "out" | "custom";
 
 const SCHEMA = {
   rent: num(1_200, 0, 100_000),
   period: oneOf<"month" | "week">("month", ["month", "week"]),
+  // "in" runs to the end of the first day's month and "out" from the 1st of the
+  // last day's month (older share links rely on this); picking both dates is "custom".
   situation: oneOf<Situation>("in", ["in", "out", "custom"]),
   from: date("2026-10-20"),
   to: date("2026-10-31"),
   method: oneOf<ProRataMethod>("annual", ["annual", "month"]),
 };
-const ADVANCED = ["method"] as const;
 
-const long = (iso: string) => formatDate(iso, "medium");
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const monthName = (iso: string) => MONTHS[parse(iso).getUTCMonth()];
+const days = (n: number) => `${n} ${n === 1 ? "day" : "days"}`;
+
+/** The sum behind a method's figure, as lines of phrasing content (it sits inside a label). */
+function Working({ r, monthly }: { r: ProRataResult; monthly: number }) {
+  if (r.days === 0) return null;
+  if (r.method === "annual") {
+    const mixedYears = r.parts.some((p) => p.periodDays !== r.periodDays);
+    return (
+      <span className="sa-rent-working">
+        <span>
+          {mixedYears ? (
+            <>
+              {gbp(monthly, true)} × 12 ÷ the days in each year, for {days(r.days)}
+            </>
+          ) : (
+            <>
+              {gbp(monthly, true)} × 12 ÷ {r.periodDays} = <b>{gbp(r.dailyRate, true)} a day</b>, × {days(r.days)}
+            </>
+          )}
+        </span>
+      </span>
+    );
+  }
+  return (
+    <span className="sa-rent-working">
+      {r.parts.map((p) => (
+        <span key={p.from}>
+          {p.days === p.periodDays ? (
+            <>
+              All of {monthName(p.from)}: {gbp(p.amount, true)}
+            </>
+          ) : (
+            <>
+              {monthName(p.from)}: {gbp(monthly, true)} ÷ {p.periodDays} = <b>{gbp(p.dailyRate, true)} a day</b>, × {days(p.days)}
+              {r.parts.length > 1 ? <> = {gbp(p.amount, true)}</> : null}
+            </>
+          )}
+        </span>
+      ))}
+    </span>
+  );
+}
 
 export default function ProRataStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
+  const group = useId();
   const monthly = v.period === "week" ? weeklyToMonthlyRent(v.rent) : v.rent;
-  const weekly = v.period === "week" ? v.rent : monthlyToWeeklyRent(v.rent);
   const from = v.situation === "out" ? monthStart(v.to) : v.from;
   const to = v.situation === "in" ? monthEnd(v.from) : v.to;
   const valid = from <= to;
-  const r = proRataRent(monthly, from, valid ? to : from, v.method);
-  const other = proRataRent(monthly, from, valid ? to : from, v.method === "annual" ? "month" : "annual");
-  const weeklyBased = (weekly / 7) * r.days;
-  const options = [
-    { label: "Annual daily rate (× 12 ÷ 365)", value: v.method === "annual" ? r.amount : other.amount, method: "annual" },
-    { label: "Days in the month", value: v.method === "month" ? r.amount : other.amount, method: "month" },
-    { label: "Weekly rent ÷ 7", value: weeklyBased, method: "week" },
+  const results: Record<ProRataMethod, ProRataResult> = {
+    annual: proRataRent(monthly, from, valid ? to : from, "annual"),
+    month: proRataRent(monthly, from, valid ? to : from, "month"),
+  };
+  const count = valid ? results.annual.days : 0;
+  const gap = results.annual.amount - results.month.amount;
+  const wholeMonth = valid && from === monthStart(from) && to === monthEnd(from);
+
+  const setFrom = (iso: string) => {
+    if (!iso) return;
+    // Pin the other end first, so changing one date never moves the other.
+    if (v.situation === "out") {
+      st.set("to", to);
+      st.set("situation", "custom");
+    }
+    st.set("from", iso);
+  };
+  const setTo = (iso: string) => {
+    if (!iso) return;
+    st.set("from", from);
+    st.set("to", iso);
+    st.set("situation", "custom");
+  };
+  const toMonthEnd = () => {
+    st.set("from", from);
+    st.set("situation", "in");
+  };
+  const fromMonthStart = () => {
+    st.set("to", to);
+    st.set("situation", "out");
+  };
+
+  const cards: { method: ProRataMethod; name: string; tag: string | null; blurb: string }[] = [
+    { method: "annual", name: "365-day method", tag: "What most agreements mean", blurb: "One daily rate all year, so a day costs the same in February as in August." },
+    { method: "month", name: "Calendar-month method", tag: null, blurb: "Each month’s rent is split over that month’s own days, so a whole month is exactly a month’s rent." },
   ];
-  const maxOpt = Math.max(1, ...options.map((o) => o.value));
-  const deposit = monthly * 12 < 50_000 ? weekly * 5 : weekly * 6;
 
   return (
-    <Studio
-      title="Rent and dates"
-      ready={st.ready}
-      onCalculate={st.calculate}
-      calculateLabel="Work out the rent"
-      onReset={st.reset}
-      dock={{ label: "Pro-rata rent", value: gbp(r.amount, true) }}
-      inputs={
-        <>
-          <InputGroup title="The rent">
-            <MoneyField label={v.period === "week" ? "Weekly rent" : "Monthly rent"} value={v.rent} onChange={st.bind("rent")} />
-            <Segmented
-              label="Paid"
-              value={v.period}
-              onChange={st.bind("period")}
-              options={[
-                { value: "month", label: "Monthly" },
-                { value: "week", label: "Weekly" },
-              ]}
-            />
-          </InputGroup>
-          <InputGroup title="The part period">
-            <Segmented
-              label="Situation"
-              value={v.situation}
-              onChange={st.bind("situation")}
-              options={[
-                { value: "in", label: "Moving in" },
-                { value: "out", label: "Moving out" },
-                { value: "custom", label: "Any dates" },
-              ]}
-            />
-            {v.situation !== "out" && <DateField label={v.situation === "in" ? "Move-in date" : "From"} value={v.from} onChange={st.bind("from")} />}
-            {v.situation !== "in" && <DateField label={v.situation === "out" ? "Last day of the tenancy" : "To (inclusive)"} value={v.to} onChange={st.bind("to")} />}
-          </InputGroup>
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            <Segmented
-              label="Daily rate method"
-              value={v.method}
-              onChange={st.bind("method")}
-              options={[
-                { value: "annual", label: "Annual", note: "Rent × 12 ÷ 365. Used by most agents." },
-                { value: "month", label: "Calendar month", note: "Rent ÷ days in that month." },
-              ]}
-            />
-          </AdvancedOptions>
-        </>
-      }
-    >
-      <Answer
-        eyebrow="Pro-rata rent"
-        value={gbp(r.amount, true)}
-        actions={<ShareButton copied={st.copied} onClick={st.share} />}
-        sentence={
-          !valid ? (
-            <>The end date is before the start date. Check the dates.</>
-          ) : (
-            <>
-              From <b>{long(from)}</b> to <b>{long(to)}</b> is <b>{r.days} {r.days === 1 ? "day" : "days"}</b>. At <b>{gbp(r.dailyRate, true)}</b> a day, the rent for that period is <b>{gbp(r.amount, true)}</b>.
-              The other method gives <b>{gbp(other.amount, true)}</b>.
-            </>
-          )
-        }
-        badges={[`${gbp(r.dailyRate, true)} a day`, `${r.days} ${per(r.days, "days")}`, v.method === "annual" ? "Annual method" : "Calendar month method"]}
-      />
+    <Tool label="Rent calculator for part of a month">
+      <div className="sa-rent">
+        <div className="sa-rent-inputs">
+          <Inputs title="The rent and the days">
+            <div className="sa-rent-rentrow">
+              <Mini label="Rent" value={v.rent} onChange={st.bind("rent")} prefix="£" dp={2} max={100_000} wide />
+              <Pills
+                label="Rent is charged"
+                hideLabel
+                value={v.period}
+                onChange={st.bind("period")}
+                options={[
+                  { value: "month", label: "a month" },
+                  { value: "week", label: "a week" },
+                ]}
+              />
+            </div>
+            {v.period === "week" && v.rent > 0 && (
+              <p className="sa-rent-weeknote">
+                {gbp(v.rent, true)} a week is {gbp(monthly, true)} a calendar month (× 52 ÷ 12).
+              </p>
+            )}
+            <DateField label="First day charged" value={from} onChange={setFrom} />
+            <DateField label="Last day charged" value={to} onChange={setTo} />
+            <div className="sa-rent-quick">
+              <button type="button" className="sa-rent-chip" aria-pressed={valid && to === monthEnd(from)} onClick={toMonthEnd}>
+                To month end
+              </button>
+              <button type="button" className="sa-rent-chip" aria-pressed={valid && from === monthStart(to)} onClick={fromMonthStart}>
+                From the 1st
+              </button>
+            </div>
+          </Inputs>
+        </div>
 
-      <Facts
-        items={[
-          { label: "Monthly rent", value: gbp(monthly, true) },
-          { label: "Weekly equivalent", value: gbp(weekly, true) },
-          { label: "Daily rate", value: gbp(r.dailyRate, true) },
-          { label: "Pro-rata rent", value: gbp(r.amount, true), tone: "good" },
-        ]}
-      />
+        <Panel className="sa-rent-calpanel">
+          <div className="sa-rent-count" aria-live="polite">
+            {valid ? (
+              <>
+                <p className="sa-rent-countn">
+                  <b>{count}</b> {count === 1 ? "day" : "days"} to pay for
+                </p>
+                <p className="sa-rent-range">
+                  {formatDate(from, "short")} to {formatDate(to, "short")} {parse(to).getUTCFullYear()}, counting both days
+                </p>
+              </>
+            ) : (
+              <Flag tone="warn" title="Check the dates">
+                The last day is before the first day.
+              </Flag>
+            )}
+          </div>
+          <RentCalendar from={from} to={to} days={count} />
+        </Panel>
 
-      <Assumptions
-        items={[
-          { label: "Dates", value: "Both the first and last day counted" },
-          { label: "Method", value: v.method === "annual" ? `× 12 ÷ ${r.periodDays}` : `÷ ${r.periodDays} ${per(r.periodDays, "days")} in the month` },
-          { label: "Weekly to monthly", value: "× 52 ÷ 12" },
-          { label: "Check", value: "Your tenancy agreement may set a method" },
-        ]}
-      />
+        <div className="sa-rent-methods" role="radiogroup" aria-label="How the daily rate is worked out">
+          {cards.map((c) => {
+            const r = results[c.method];
+            const on = v.method === c.method;
+            return (
+              <label key={c.method} className={`sa-rent-method${on ? " is-on" : ""}`}>
+                <input type="radio" name={group} value={c.method} checked={on} onChange={() => st.set("method", c.method)} />
+                <span className="sa-rent-methodhead">
+                  <span className="sa-rent-methodname">{c.name}</span>
+                  {c.tag && <span className="sa-rent-tag">{c.tag}</span>}
+                </span>
+                <span className="sa-rent-amount" aria-live={on ? "polite" : undefined}>
+                  {gbp(valid ? r.amount : 0, true)}
+                </span>
+                {valid && <Working r={r} monthly={monthly} />}
+                <span className="sa-rent-blurb">{c.blurb}</span>
+                <span className="sa-rent-pick">{on ? "The method you are using" : "Use this method"}</span>
+              </label>
+            );
+          })}
+        </div>
 
-      <ResultCard title="Three ways to work it out" sub={`For ${r.days} ${per(r.days, "days")}.`}>
-        <Compare head={["Method", "Rent"]} rows={options.map((o) => ({ label: o.label, value: gbp(o.value, true), bar: o.value / maxOpt, current: o.method === v.method }))} />
-      </ResultCard>
+        <Foot>
+          <Caveat>
+            {valid && Math.abs(gap) >= 0.005 ? (
+              <>
+                The 365-day method comes to {gbp(Math.abs(gap), true)} {gap > 0 ? "more" : "less"} here.{" "}
+              </>
+            ) : null}
+            {wholeMonth ? "This is a whole calendar month, which is normally just the month’s rent. " : ""}
+            Exact arithmetic for either method. Your tenancy agreement decides which one applies; if it says nothing, the 365-day method is the usual reading.
+          </Caveat>
+          <ShareButton copied={st.copied} onClick={st.share} />
+        </Foot>
+      </div>
 
-      <ResultCard title="The working" sub="Using your chosen method.">
-        <Statement
-          columns={["Amount"]}
-          rows={[
-            { label: v.method === "annual" ? `${gbp(monthly, true)} × 12` : `${gbp(monthly, true)} a month`, values: [gbp(v.method === "annual" ? monthly * 12 : monthly, true)] },
-            { label: `÷ ${r.periodDays} ${per(r.periodDays, "days")}`, values: [gbp(r.dailyRate, true)] },
-            { label: `× ${r.days} ${per(r.days, "days")}`, values: [gbp(r.amount, true)], kind: "total" as const },
-          ]}
-        />
-      </ResultCard>
-
-      <ResultCard title="Worth knowing" sub="Rent and deposits.">
-        <Callout title="Deposit cap">
-          In England, a tenancy deposit is capped at 5 weeks&apos; rent where annual rent is under £50,000. For this rent that is {gbp(deposit, true)}. A holding deposit is capped at 1 week&apos;s rent, {gbp(weekly, true)}.
-        </Callout>
-        <Callout title="Moving out mid-month">
-          You usually owe rent until the tenancy ends, not the day you leave. A tenancy that ends on the last day of a rent period avoids a part month.
-        </Callout>
-      </ResultCard>
-
-      <p className="footnote" style={{ textAlign: "center" }}>
-        Your tenancy agreement decides how part periods are charged.
-      </p>
-    </Studio>
+      <RentConverter startWeekly={v.period === "week" ? v.rent : monthlyToWeeklyRent(v.rent)} />
+    </Tool>
   );
 }
