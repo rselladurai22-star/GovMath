@@ -29,7 +29,7 @@ export const CALCULATOR_CSS = [
  * and their main content in .gm-neutral.
  */
 export const THEME_BEFORE = ["govmath-neutral.css", "govmath-claret.css"];
-export const THEME_AFTER = ["govmath-theme.css"];
+export const THEME_AFTER = ["govmath-theme.css", "sumatlas-ds.css"];
 
 type El = { tag: string; attrs: Record<string, string>; html: string };
 const PROP: Record<string, string> = { class: "className", for: "htmlFor", tabindex: "tabIndex" };

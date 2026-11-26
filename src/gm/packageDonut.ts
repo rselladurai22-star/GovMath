@@ -13,8 +13,8 @@ const R = 78;
 const C = 2 * Math.PI * R;
 
 export function initPackageDonut() {
-  const ring = document.querySelector<HTMLElement>(".calculator:is(.gm-modern, .gm-indus) .circle");
-  const rows = [...document.querySelectorAll<HTMLElement>(".calculator:is(.gm-modern, .gm-indus) .ax-chartlegend > div")];
+  const ring = document.querySelector<HTMLElement>(".calculator:is(.gm-modern, .gm-indus, .gm-atlas) .circle");
+  const rows = [...document.querySelectorAll<HTMLElement>(".calculator:is(.gm-modern, .gm-indus, .gm-atlas) .ax-chartlegend > div")];
   if (!ring || !rows.length) return;
   // The "indus" look (every calculator since 13 October 2026) shows a half-circle gauge in its own colours.
   const gauge = !!ring.closest(".gm-indus");
