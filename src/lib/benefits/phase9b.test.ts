@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { contributionTest, newStyleEsa, newStyleJsa, relevantYears } from "./new-style";
-import { budgetingAdvanceMax, ucAdvance } from "./uc-advance";
+import { budgetingAdvance, budgetingAdvanceMax, ucAdvance } from "./uc-advance";
 import { checkEligibility, type EligibilityInput } from "./eligibility";
 
 describe("New Style JSA and ESA", () => {
@@ -46,6 +46,39 @@ describe("UC advance", () => {
     expect(big.overCap).toBe(true);
     expect(big.minMonthsForCap).toBe(19);
     expect(budgetingAdvanceMax(true, true)).toBe(812);
+  });
+  it("matches GOV.UK's worked example: £344 over 24 months", () => {
+    const r = ucAdvance({ estimate: 344, advance: 344, months: 24, standard: "singleUnder25", otherDeductions: 0 });
+    expect(r.monthly).toBeCloseTo(14.33, 2);
+    expect(r.paymentAfter).toBeCloseTo(329.67, 2);
+  });
+  it("flags a repayment above the 15% cap and finds the months that fit", () => {
+    // Single 25 or over: 15% of £424.90 is £63.74 (£63.735 unrounded).
+    const r = ucAdvance({ estimate: 1125, advance: 1125, months: 12, standard: "single25", otherDeductions: 0 });
+    expect(r.monthly).toBeCloseTo(93.75, 2);
+    expect(r.overCap).toBe(true);
+    expect(r.minMonthsForCap).toBe(18);
+    expect(ucAdvance({ estimate: 1125, advance: 1125, months: 18, standard: "single25", otherDeductions: 0 }).overCap).toBe(false);
+    // Too large to fit even over 24 months.
+    expect(ucAdvance({ estimate: 2000, advance: 2000, months: 24, standard: "single25", otherDeductions: 0 }).minMonthsForCap).toBeNull();
+  });
+  it("existing deductions share the same cap", () => {
+    const r = ucAdvance({ estimate: 900, advance: 600, months: 24, standard: "couple25", otherDeductions: 80 });
+    expect(r.cap).toBeCloseTo(100.0455, 3);
+    expect(r.totalDeductions).toBeCloseTo(105, 6);
+    expect(r.overCap).toBe(true);
+    expect(r.minMonthsForCap).toBeNull();
+    expect(r.paymentAfter).toBeCloseTo(795, 6);
+    const smaller = ucAdvance({ estimate: 900, advance: 400, months: 24, standard: "couple25", otherDeductions: 80 });
+    expect(smaller.overCap).toBe(false);
+    expect(smaller.minMonthsForCap).toBe(20);
+  });
+  it("budgeting advance: limits, and earnings over £2,600 (£3,600 for couples) rule it out", () => {
+    expect(budgetingAdvance(false, false, 2600)).toEqual({ eligible: true, max: 348, min: 100, earningsLimit: 2600 });
+    expect(budgetingAdvance(false, false, 2600.01).eligible).toBe(false);
+    expect(budgetingAdvance(true, false, 3600).max).toBe(464);
+    expect(budgetingAdvance(true, false, 3601).eligible).toBe(false);
+    expect(budgetingAdvance(false, true, 0).max).toBe(812);
   });
 });
 

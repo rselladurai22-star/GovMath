@@ -1,14 +1,13 @@
 "use client";
 
-import { hicbc } from "@/lib/benefits/family";
-import { childBenefitRates } from "@/lib/benefits/child-benefit";
+import { hicbc, hicbcPayer } from "@/lib/benefits/family";
 import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
-import Studio from "@/components/flagship/Studio";
-import AreaChart from "@/components/flagship/AreaChart";
-import { AdvancedOptions, InputGroup, MoneyField, StepperField } from "@/components/flagship/inputs";
-import { Answer, Assumptions, Callout, Facts, ResultCard, SplitBar, Statement } from "@/components/flagship/results";
-import { gbp, gbpShort, percent, per } from "@/components/flagship/format";
+import { Caveat, Flag, Foot, Inputs, Rows, Tool } from "@/components/calc/kit";
+import { Mini } from "@/components/calc/fields";
+import { AdvancedOptions } from "@/components/flagship/inputs";
+import { gbp, percent } from "@/components/flagship/format";
 import { num, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
+import IncomeLine from "./IncomeLine";
 
 const SCHEMA = {
   children: num(2, 1, 15),
@@ -19,154 +18,132 @@ const SCHEMA = {
   weeks: num(52, 1, 52),
   rates: ratesParam(),
 };
-const ADVANCED = ["pension", "gift", "partner", "weeks"] as const;
-const COLORS = { keep: "#0f9f6e", charge: "#e11d48" };
-const POINTS = 31;
+const ADVANCED = ["gift", "partner", "weeks"] as const;
 
 export default function HicbcStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
   const year = v.rates;
   const next = year === "2027/28";
-  const CB = childBenefitRates(year);
-  // The charge falls on whichever partner has the higher adjusted net income.
-  const mine = hicbc({ children: v.children, income: v.income, pension: v.pension, giftAid: v.gift, weeks: v.weeks, year });
-  const partnerHigher = v.partner > mine.adjustedNetIncome;
-  const r = partnerHigher ? hicbc({ children: v.children, income: v.partner, pension: 0, giftAid: 0, weeks: v.weeks, year }) : mine;
-  const incomes = Array.from({ length: POINTS }, (_, i) => 55_000 + i * 1_000);
-  const keepLine = incomes.map((x) => hicbc({ children: v.children, income: x, pension: 0, giftAid: 0, weeks: v.weeks, year }).keep);
-  const pensionCost = mine.pensionToAvoid * 0.8;
+  const n = Math.max(1, Math.round(v.children));
+  const shared = { children: n, weeks: v.weeks, year };
+  const mine = hicbc({ ...shared, income: v.income, pension: v.pension, giftAid: v.gift });
+  // Where the income would sit with no pension contributions (Gift Aid still taken off).
+  const noPension = hicbc({ ...shared, income: v.income, pension: 0, giftAid: v.gift });
+  const partnerPays = hicbcPayer(mine.adjustedNetIncome, v.partner) === "partner";
+  const theirs = hicbc({ ...shared, income: v.partner, pension: 0, giftAid: 0 });
+  const r = partnerPays ? theirs : mine;
+  const saved = noPension.charge - mine.charge;
+  const partYear = v.weeks < 52;
+  const period = partYear ? `for ${v.weeks} ${v.weeks === 1 ? "week" : "weeks"}` : "for the year";
+
+  const setBefore = (x: number) => st.set("income", Math.max(0, x + v.gift));
+  const setAfter = (x: number) => st.set("pension", Math.max(0, Math.round(noPension.adjustedNetIncome - x)));
 
   return (
-    <Studio
-      title="Your income and family"
-      ready={st.ready}
-      onCalculate={st.calculate}
-      calculateLabel="Check my tax charge"
-      onReset={st.reset}
-      dock={{ label: "Tax charge", value: gbp(r.charge, true) }}
-      inputs={
-        <>
-          <InputGroup title="Your situation">
-            <StepperField label="Children you get Child Benefit for" value={v.children} onChange={(n) => st.set("children", Math.max(1, Math.round(n)))} step={1} min={1} max={15} unit="children" dp={0} />
-            <MoneyField label="Your total income a year" value={v.income} onChange={st.bind("income")} big slider={{ min: 50_000, max: 100_000, step: 500, ends: ["£50k", "£100k"] }} hint="Salary, bonus, self-employed profit, rent, savings interest and dividends, before tax. After any salary sacrifice." />
-            <RatesChoice value={v.rates} onChange={st.bind("rates")} />
-          </InputGroup>
-          <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
-            <MoneyField label="Personal pension contributions (gross)" value={v.pension} onChange={st.bind("pension")} optional hint="Paid from your take-home pay into a personal or workplace pension using relief at source, including the 20% tax relief." />
-            <MoneyField label="Gift Aid donations (gross)" value={v.gift} onChange={st.bind("gift")} optional hint="What you gave plus the 25% the charity claims." />
-            <MoneyField label="Partner's adjusted net income" value={v.partner} onChange={st.bind("partner")} optional hint="The charge is paid by whichever of you has the higher income." />
-            <StepperField label="Weeks of Child Benefit this tax year" value={v.weeks} onChange={(n) => st.set("weeks", Math.round(n))} step={1} min={1} max={52} unit="weeks" dp={0} optional />
-          </AdvancedOptions>
-        </>
-      }
-    >
-      <Answer
-        eyebrow={`${partnerHigher ? "Your partner's tax charge" : "Your tax charge"}${next ? " (Child Benefit from April 2027, proposed)" : ""}`}
-        value={gbp(r.charge, true)}
-        actions={<ShareButton copied={st.copied} onClick={st.share} />}
-        sentence={
-          r.band === "none" ? (
-            <>
-              Adjusted net income of <b>{gbp(r.adjustedNetIncome)}</b> is not over £60,000, so there is no charge. You keep all <b>{gbp(r.benefit, true)}</b> of Child Benefit.
-            </>
-          ) : r.band === "full" ? (
-            <>
-              Adjusted net income of <b>{gbp(r.adjustedNetIncome)}</b> is £80,000 or more, so the charge takes back all <b>{gbp(r.benefit, true)}</b> of Child Benefit.
-            </>
+    <Tool label="High Income Child Benefit Charge calculator">
+      <div className="sa-hicbc">
+        <div className="sa-hicbc-answer" aria-live="polite">
+          <p className="sa-hicbc-kicker">
+            {partnerPays ? "Your partner’s charge" : "Your charge"} {period}
+            {next ? ", at April 2027 rates (proposed)" : ""}
+          </p>
+          <p className="sa-hicbc-charge">
+            <b>{gbp(r.charge)}</b>
+            <span>
+              {r.band === "none" ? "nothing to pay back" : r.band === "full" ? "all of your Child Benefit" : `${percent(r.share, 0)} of your Child Benefit`}
+            </span>
+          </p>
+          <Rows
+            caption="Child Benefit received, the charge and what you keep"
+            rows={[
+              { label: `Child Benefit for ${n} ${n === 1 ? "child" : "children"}`, value: gbp(r.benefit, true) },
+              { label: "Charge", note: r.band === "partial" ? `${gbp(r.adjustedNetIncome - 60_000)} over £60,000, at 1% for every £200` : undefined, value: r.charge > 0 ? `−${gbp(r.charge)}` : gbp(0), tone: r.charge > 0 ? "bad" : undefined },
+              { label: "You keep", value: gbp(r.keep, true), strong: true, tone: "good" },
+            ]}
+          />
+          {partnerPays ? (
+            <Flag title="Your partner pays, not you">
+              Their {gbp(v.partner)} is higher than your {gbp(mine.adjustedNetIncome)}, so the charge is worked out on their income and goes on their tax bill. A pension contribution only helps if they make it.
+            </Flag>
           ) : (
             <>
-              Adjusted net income of <b>{gbp(r.adjustedNetIncome)}</b> is <b>{gbp(r.adjustedNetIncome - 60_000)}</b> over £60,000, so <b>{percent(r.share, 0)}</b> of your{" "}
-              <b>{gbp(r.benefit, true)}</b> Child Benefit is taken back. You keep <b>{gbp(r.keep, true)}</b>.
-            </>
-          )
-        }
-        badges={[`${percent(r.share, 0)} clawed back`, `${gbp(r.adjustedNetIncome)} adjusted net income`, partnerHigher ? "Partner pays" : "You pay"]}
-      />
-
-      <Facts
-        items={[
-          { label: "Child Benefit", value: gbp(r.benefit, true) },
-          { label: "Charge", value: gbp(r.charge, true), tone: r.charge > 0 ? "warn" : "good" },
-          { label: "You keep", value: gbp(r.keep, true), tone: "good" },
-          { label: "Tax on your next £1,000", value: percent(mine.marginalRate, 1), note: "Income Tax, NI and the charge" },
-        ]}
-      />
-
-      <Assumptions
-        items={[
-          { label: "Tax year", value: "2026/27" },
-          { label: "Child Benefit rates", value: `${next ? "Proposed from 6 April 2027" : "2026/27"}: ${gbp(CB.firstChildWeekly, true)} eldest, ${gbp(CB.additionalChildWeekly, true)} others` },
-          { label: "Employee", value: "Income Tax and NI at rUK rates" },
-          { label: "Charge", value: "1% for every £200 over £60,000" },
-          { label: "Child Benefit", value: `${v.weeks} ${per(v.weeks, "weeks")} for ${v.children} ${v.children === 1 ? "child" : "children"}` },
-        ]}
-      />
-
-      {r.benefit > 0 && (
-        <ResultCard title="Your Child Benefit after the charge" sub="What you keep and what goes back to HMRC.">
-          <SplitBar
-            segments={[
-              ...(r.keep > 0 ? [{ label: "You keep", value: r.keep, display: gbp(r.keep, true), color: COLORS.keep }] : []),
-              ...(r.charge > 0 ? [{ label: "Tax charge", value: r.charge, display: gbp(r.charge, true), color: COLORS.charge }] : []),
-            ]}
-          />
-          <Statement
-            columns={["A year"]}
-            rows={[
-              { label: "Total income", values: [gbp(v.income)] },
-              ...(v.pension > 0 ? [{ label: "Pension contributions", values: [`−${gbp(v.pension)}`], kind: "deduction" as const }] : []),
-              ...(v.gift > 0 ? [{ label: "Gift Aid", values: [`−${gbp(v.gift)}`], kind: "deduction" as const }] : []),
-              { label: "Your adjusted net income", values: [gbp(mine.adjustedNetIncome)], kind: "total" },
-              ...(partnerHigher ? [{ label: "Partner's adjusted net income (higher)", values: [gbp(v.partner)] }] : []),
-              { label: `Charge: ${percent(r.share, 0)} of ${gbp(r.benefit, true)}`, values: [gbp(r.charge, true)], kind: "total" },
-            ]}
-          />
-        </ResultCard>
-      )}
-
-      <ResultCard title="Child Benefit kept at each income" sub={`${v.children} ${v.children === 1 ? "child" : "children"}, a full year.`}>
-        <AreaChart
-          ariaLabel="Child Benefit kept after the charge, by adjusted net income"
-          series={[{ key: "keep", label: "Child Benefit kept", color: COLORS.keep, values: keepLine, fill: true }]}
-          xLabel={(i) => gbpShort(incomes[i] ?? 0)}
-          yFormat={gbpShort}
-          initial={Math.min(POINTS - 1, Math.max(0, Math.round((r.adjustedNetIncome - 55_000) / 1_000)))}
-          hint="Drag across the chart, or use the arrow keys, to read any income."
-          readout={(i) => (
-            <>
-              At <b>{gbp(incomes[i] ?? 0)}</b>: you keep <b>{gbp(keepLine[i] ?? 0, true)}</b>.
+              {saved > 0 && (
+                <Flag tone="good" title={`Your pension contributions save ${gbp(saved)}`}>
+                  Without them the charge would be {gbp(noPension.charge)}.
+                </Flag>
+              )}
+              {mine.band !== "none" && (
+                <div className="sa-hicbc-fix">
+                  <p>
+                    {gbp(mine.pensionToAvoid)} more into a pension would bring your income to £60,000 and remove the charge.
+                  </p>
+                  <button type="button" className="textbutton sa-hicbc-linkbutton" onClick={() => st.set("pension", Math.round(v.pension + mine.pensionToAvoid))}>
+                    Show me that
+                  </button>
+                </div>
+              )}
+              {mine.band === "partial" && (
+                <p className="sa-hicbc-margin">
+                  Your next £1,000 of pay costs <b>{gbp(mine.marginalRate * 1000)}</b> in Income Tax, National Insurance and extra charge.
+                </p>
+              )}
             </>
           )}
-        />
-      </ResultCard>
+        </div>
 
-      <ResultCard title="Worth knowing" sub="Ways to reduce or manage the charge.">
-        {!partnerHigher && mine.pensionToAvoid > 0 && mine.pensionToAvoid < 20_000 && (
-          <Callout tone="good" title={`A ${gbp(mine.pensionToAvoid)} pension contribution would remove the charge`}>
-            Paid into a personal pension from take-home pay, it costs you about {gbp(pensionCost)} after basic-rate relief, plus higher-rate relief through your tax return. It also saves the{" "}
-            {gbp(mine.charge, true)} charge. Salary sacrifice works too.
-          </Callout>
-        )}
-        {mine.adjustedNetIncome > 60_000 && mine.adjustedNetIncome < 80_000 && (
-          <Callout tone="warn" title={`Each extra £1,000 costs you ${gbp(mine.marginalRate * 1000)}`}>
-            Between £60,000 and £80,000 the charge adds to Income Tax and NI, so a pay rise or bonus is worth less than it looks.
-          </Callout>
-        )}
-        <Callout title="Register and pay">
-          If you have to pay the charge, register for Self Assessment, or ask HMRC to collect it through your tax code if you are employed. Register by 5 October after the end of the tax
-          year.
-        </Callout>
-        {r.band === "full" && (
-          <Callout title="Consider opting out of payments, not the claim">
-            You can stop the payments to avoid the charge but keep the claim, so the parent at home still gets National Insurance credits.
-          </Callout>
-        )}
-      </ResultCard>
+        <div className="sa-hicbc-main">
+          <h2 className="sa-hicbc-h">Where {partnerPays ? "your income sits" : "you sit"} between £60,000 and £80,000</h2>
+          <p className="sa-hicbc-hint">Drag your income along the line. Drag the green marker left to see what a pension contribution does.</p>
+          <IncomeLine
+            before={{ income: noPension.adjustedNetIncome, share: noPension.share, charge: noPension.charge }}
+            after={{ income: mine.adjustedNetIncome, share: mine.share, charge: mine.charge }}
+            onBefore={setBefore}
+            onAfter={setAfter}
+            partner={partnerPays ? v.partner : undefined}
+            whose="Your"
+          />
+          <Inputs tone="plain">
+            <div className="sa-hicbc-fields">
+              <Mini label="Children" value={n} onChange={(x) => st.set("children", Math.max(1, Math.round(x)))} min={1} max={15} stepper />
+              <Mini
+                label="Your income a year"
+                value={v.income}
+                onChange={st.bind("income")}
+                prefix="£"
+                step={500}
+                wide
+                hint="Before tax: pay after any salary sacrifice, profit, rent, interest and dividends."
+              />
+              <Mini
+                label="Pension contributions a year"
+                value={v.pension}
+                onChange={st.bind("pension")}
+                prefix="£"
+                step={500}
+                wide
+                hint="From your own pocket, plus the 20% your provider adds. Leave out salary sacrifice."
+              />
+            </div>
+            <RatesChoice value={v.rates} onChange={st.bind("rates")} />
+            <AdvancedOptions description="Gift Aid, your partner’s income and a part-year claim." changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
+              <div className="sa-hicbc-fields">
+                <Mini label="Gift Aid donations a year" value={v.gift} onChange={st.bind("gift")} prefix="£" step={100} wide hint="What you gave plus the 25% the charity claims." />
+                <Mini label="Partner’s adjusted net income" value={v.partner} onChange={st.bind("partner")} prefix="£" step={500} wide hint="Whoever has the higher income pays." />
+                <Mini label="Weeks of Child Benefit this tax year" value={v.weeks} onChange={(x) => st.set("weeks", Math.max(1, Math.round(x)))} min={1} max={52} suffix="of 52" stepper />
+              </div>
+            </AdvancedOptions>
+          </Inputs>
+        </div>
 
-      <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 tax rules{next ? ", with the proposed Child Benefit rates from 6 April 2027" : ""}. Not tax advice.
-      </p>
-    </Studio>
+        <Foot>
+          <Caveat>
+            Exact for the adjusted net income you enter: the law rounds the charge down to whole pounds. {next ? "Uses the proposed Child Benefit rates from 6 April 2027 (Budget 2026)." : "2026/27 Child Benefit rates."} It leaves out
+            trading losses and other less common reliefs.
+          </Caveat>
+          <ShareButton copied={st.copied} onClick={st.share} />
+        </Foot>
+      </div>
+    </Tool>
   );
 }

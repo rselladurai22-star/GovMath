@@ -109,6 +109,14 @@ export function hicbc(i: HicbcInput): HicbcResult {
   };
 }
 
+/**
+ * Who pays: the partner with the higher adjusted net income, whoever receives
+ * the Child Benefit (ITEPA 2003 s681B). With equal incomes it stays with you.
+ */
+export function hicbcPayer(yourAdjustedNetIncome: number, partnerAdjustedNetIncome: number): "you" | "partner" {
+  return partnerAdjustedNetIncome > yourAdjustedNetIncome ? "partner" : "you";
+}
+
 /* ── Funded childcare (England) ─────────────────────────────── */
 
 export type ChildStage = "under9m" | "9m-2" | "2" | "3-4";

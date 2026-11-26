@@ -77,7 +77,9 @@ export type BedroomResult = {
 export function bedroomEntitlement(i: BedroomInput): BedroomResult {
   const totalChildren = i.children.boysUnder10 + i.children.girlsUnder10 + i.children.boys10to15 + i.children.girls10to15;
   const disabledOwn = Math.min(Math.max(0, i.disabledChildrenOwnRoom), totalChildren);
-  const sharedRate = !i.couple && i.under35 && !i.sharedExempt && totalChildren === 0 && i.otherAdults === 0;
+  // A room for an overnight carer is only given to someone on a disability benefit that also lifts the shared rate
+  // (UC Regulations 2013, Schedule 4, paragraphs 12 and 29), so the two never apply together.
+  const sharedRate = !i.couple && i.under35 && !i.sharedExempt && !i.overnightCarer && totalChildren === 0 && i.otherAdults === 0;
   // A disabled child who cannot share takes their own room; the rest are paired as normal.
   const reduced = { ...i.children };
   let toRemove = disabledOwn;
@@ -94,6 +96,65 @@ export function bedroomEntitlement(i: BedroomInput): BedroomResult {
     sharedRate,
     overCap: rooms > 4,
   };
+}
+
+export type BedroomTile = { who: string; kind: "you" | "adult" | "children" | "carer" };
+
+/**
+ * Who sleeps where: one entry for each bedroom the size rules allow, in the
+ * same order and number as `bedroomEntitlement().rooms` (before the
+ * four-bedroom limit). Children are paired the way `childBedrooms` pairs them.
+ */
+export function bedroomPlan(i: BedroomInput): BedroomTile[] {
+  const n = (x: number) => Math.max(0, Math.floor(x));
+  const tiles: BedroomTile[] = [{ who: i.couple ? "You and your partner" : "You", kind: "you" }];
+  for (let a = 0; a < n(i.otherAdults); a++) tiles.push({ who: "Adult aged 16 or over", kind: "adult" });
+  const c = { boysUnder10: n(i.children.boysUnder10), girlsUnder10: n(i.children.girlsUnder10), boys10to15: n(i.children.boys10to15), girls10to15: n(i.children.girls10to15) };
+  const total = c.boysUnder10 + c.girlsUnder10 + c.boys10to15 + c.girls10to15;
+  let own = Math.min(n(i.disabledChildrenOwnRoom), total);
+  const ownTiles: BedroomTile[] = [];
+  for (const [key, label] of [["boys10to15", "Boy aged 10 to 15"], ["girls10to15", "Girl aged 10 to 15"], ["boysUnder10", "Boy under 10"], ["girlsUnder10", "Girl under 10"]] as const) {
+    while (own > 0 && c[key] > 0) {
+      c[key] -= 1;
+      own -= 1;
+      ownTiles.push({ who: `${label}, cannot share`, kind: "children" });
+    }
+  }
+  const kids = (who: string) => tiles.push({ who, kind: "children" });
+  for (let p = 0; p < Math.floor(c.boys10to15 / 2); p++) kids("Two boys aged 10 to 15");
+  for (let p = 0; p < Math.floor(c.girls10to15 / 2); p++) kids("Two girls aged 10 to 15");
+  let bu = c.boysUnder10;
+  let gu = c.girlsUnder10;
+  if (c.boys10to15 % 2) {
+    if (bu > 0) {
+      bu -= 1;
+      kids("Boy aged 10 to 15 and boy under 10");
+    } else kids("Boy aged 10 to 15");
+  }
+  if (c.girls10to15 % 2) {
+    if (gu > 0) {
+      gu -= 1;
+      kids("Girl aged 10 to 15 and girl under 10");
+    } else kids("Girl aged 10 to 15");
+  }
+  while (bu + gu >= 2) {
+    if (bu >= 2 && (bu > gu || gu === 0)) {
+      bu -= 2;
+      kids("Two boys under 10");
+    } else if (gu >= 2 && (gu > bu || bu === 0)) {
+      gu -= 2;
+      kids("Two girls under 10");
+    } else {
+      bu -= 1;
+      gu -= 1;
+      kids("Boy and girl under 10");
+    }
+  }
+  if (bu === 1) kids("Boy under 10");
+  if (gu === 1) kids("Girl under 10");
+  tiles.push(...ownTiles);
+  if (i.overnightCarer) tiles.push({ who: "Overnight carer", kind: "carer" });
+  return tiles;
 }
 
 export type LhaNation = "england" | "scotland" | "wales" | "ni";

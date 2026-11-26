@@ -8,16 +8,22 @@
  * third-party debts) is capped at 15% of the standard allowance.
  *
  * A budgeting advance is a smaller loan for one-off costs, for people who have
- * been on Universal Credit (or certain benefits) for 6 months.
+ * been on Universal Credit (or certain benefits) for 6 months. It is at least
+ * £100, usually repaid over 24 months, and refused if you earned more than
+ * £2,600 (£3,600 for couples) in the last 6 months.
+ *
+ * Source: gov.uk/universal-credit-advance-hardship-payment (checked 26 November 2026).
  */
 
 import { UC_2026 } from "./uc-engine";
 
 export const ADVANCE_2026 = {
   maxMonths: 24,
+  /** A new claim advance can be paused for up to this many months if you cannot afford it. */
+  deferMonths: 3,
   /** Overall deductions cap, share of the standard allowance. */
   capShare: 0.15,
-  budgeting: { single: 348, couple: 464, children: 812, months: 12, earningsSingle: 2_600, earningsCouple: 3_600 },
+  budgeting: { single: 348, couple: 464, children: 812, min: 100, months: 24, deferMonths: 6, earningsSingle: 2_600, earningsCouple: 3_600 },
 } as const;
 
 export type StandardKey = keyof typeof UC_2026.standard;
@@ -95,4 +101,13 @@ export function ucAdvance(i: AdvanceInput): AdvanceResult {
 export function budgetingAdvanceMax(couple: boolean, children: boolean): number {
   const b = ADVANCE_2026.budgeting;
   return children ? b.children : couple ? b.couple : b.single;
+}
+
+export type BudgetingAdvance = { eligible: boolean; max: number; min: number; earningsLimit: number };
+
+/** Budgeting advance: the limit for the household, and whether earnings in the last 6 months rule it out. */
+export function budgetingAdvance(couple: boolean, children: boolean, earningsLast6Months: number): BudgetingAdvance {
+  const b = ADVANCE_2026.budgeting;
+  const earningsLimit = couple ? b.earningsCouple : b.earningsSingle;
+  return { eligible: Math.max(0, earningsLast6Months) <= earningsLimit, max: budgetingAdvanceMax(couple, children), min: b.min, earningsLimit };
 }
