@@ -902,7 +902,6 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
 .gm-claret .gm-neutral :is(.categorytool, .gm-card, .gm-cards > a) p { font-size: 15px; line-height: 22px; color: var(--sa-text-2); }
 .gm-claret .gm-neutral .toolicon { background: var(--sa-brand-tint); color: var(--sa-brand); border-radius: var(--sa-r); border: 0; }
 .gm-claret .gm-neutral :is(.gm-go, .openlabel, .viewall, .categorycard .button) {
-  display: inline-flex;
   align-items: center;
   width: auto;
   font-size: 14px;
@@ -944,4 +943,93 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
 .gm-claret .gm-neutral :is(.gm-go, .openlabel, .viewall) { white-space: nowrap; }
 @media (max-width: 480px) {
   .gm-claret .gm-neutral :is(.gm-go, .openlabel) { font-size: 13px; padding: 4px 11px; }
+}
+
+/* ── Fixes from the independent design review (November 2026) ───────── */
+
+/* Guide bar charts: complete styles here (the salary page does not load the
+   stylesheet that drew them, so its fills measured 0px). */
+.gm-claret .gm-neutral .g-bars { display: grid; gap: 12px; margin: 20px 0; }
+.gm-claret .gm-neutral .g-barRow { display: grid; grid-template-columns: minmax(120px, 170px) minmax(0, 1fr); gap: 14px; align-items: center; }
+.gm-claret .gm-neutral .g-barName { font-size: 14px; line-height: 18px; font-weight: 600; color: var(--sa-ink); }
+.gm-claret .gm-neutral .g-barTrack { position: relative; display: block; height: 30px; background: #f3f1ea; border-radius: var(--sa-r-sm); overflow: hidden; }
+.gm-claret .gm-neutral .g-barFill { position: absolute; inset: 0 auto 0 0; display: block; background: #d99bb2; border-radius: var(--sa-r-sm) 0 0 var(--sa-r-sm); }
+.gm-claret .gm-neutral .g-barValue { position: relative; z-index: 1; display: block; line-height: 30px; padding-left: 10px; font-size: 13px; font-weight: 700; color: var(--sa-ink); white-space: nowrap; }
+
+/* One neutral family: the old cool greys become the warm panel. */
+.gm-claret .gm-neutral :is(.gm-insight, .gm-readout, .ax-guide-toc, details.ax-assumptions) { background: var(--sa-surface); border-color: var(--sa-line-soft); }
+.gm-claret .gm-neutral :is(.rate-row.current, tr.total td, tr.total th, tfoot td, tfoot th) { background: var(--sa-brand-tint); }
+.gm-claret .gm-neutral :is(.gm-legend em, .ax-chartlegend em) { background: #f3f1ea; color: var(--sa-text-2); }
+.gm-claret .gm-neutral .g-barTrack { background: #f3f1ea; }
+
+/* No coloured left-edge bars: one quiet panel style for notes and the answer. */
+.gm-claret .calculator.gm-atlas .ax-paymentstrip { border-left: 0; border: 1px solid var(--sa-brand-soft); }
+.gm-claret .gm-neutral :is(.gm-insight, .pg-next, .g-callout, .gm-callout, .q-note) { border-left-width: 1px; border-left-color: var(--sa-line-soft); }
+.gm-claret .gm-neutral :is(.g-callout, .gm-callout, .q-note) { background: var(--sa-surface); border: 1px solid var(--sa-line-soft); }
+.gm-claret .gm-neutral .g-article li { border-left: 0; }
+
+/* Package pages match the React pages. */
+.gm-claret .gm-neutral .pg-badge {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sa-brand);
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0 0 6px;
+}
+.gm-claret .gm-neutral #results { padding-left: 0; padding-right: 0; }
+.gm-claret .gm-neutral #results .sectionheading h2,
+.gm-claret .gm-neutral #results > h2 { font-family: var(--sa-head); font-size: 22px; line-height: 28px; font-weight: 700; color: var(--sa-ink); }
+.gm-claret .gm-neutral :is(.gm-legend i, .ax-chartlegend i) { border-radius: 50%; width: 10px; height: 10px; flex-basis: 10px; }
+.gm-claret .gm-neutral #results :is(h3, .resultcard h3, .gm-card h3) { font-family: var(--sa-head); font-size: 17px; line-height: 22px; font-weight: 700; color: var(--sa-ink); }
+.gm-claret .gm-neutral #results details > summary { font-family: var(--sa-head); font-size: 15px; line-height: 20px; font-weight: 700; }
+/* A lone card in a two-column row spans the row. */
+.gm-claret .gm-neutral .resultgrid > :last-child:nth-child(odd) { grid-column: 1 / -1; }
+/* Package guides: warm contents box; reading column centred. */
+.gm-claret .gm-neutral details.ax-guide-toc { border: 1px solid var(--sa-line-soft); border-radius: var(--sa-r-sm); }
+.gm-claret .gm-neutral details.ax-guide-toc > summary { font-family: var(--sa-head); font-weight: 700; color: var(--sa-ink); }
+
+/* Focus is always visible (WCAG 2.4.7): a 2px claret ring, no faint halos. */
+.gm-claret .calculator.gm-atlas .gm-form .number:focus-within { outline: 2px solid var(--sa-brand); outline-offset: 3px; box-shadow: none; }
+.gm-claret .calculator.gm-atlas .gm-form :is(.ax-select-toggle, input.gm-input, select):focus-visible,
+.gm-claret .ax-search.gm-headsearch:focus-within,
+.gm-claret .gm-neutral :is(.gm-legend li, .ax-chartlegend > div):focus-visible { outline: 2px solid var(--sa-brand); outline-offset: 2px; box-shadow: none; }
+
+/* Calculator intro: the trust line fits one row on desktop. */
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .intro { max-width: 1040px; }
+
+/* Card actions sit on one line at the bottom of each card. */
+.gm-claret .gm-neutral :is(.popularcard, .categorycard, .gm-card) { display: flex; flex-direction: column; }
+.gm-claret .gm-neutral :is(.popularcard .openlabel, .categorycard .viewall, .gm-card .gm-go) { margin-top: auto; align-self: flex-start; }
+.gm-claret .gm-neutral .categorytool > div { display: flex; flex-direction: column; }
+
+/* Hub hero: one heading size for / and /uk. */
+.gm-claret .gm-neutral .hero h1 { font-size: 44px; line-height: 50px; }
+
+/* Article tables: figures right-aligned in the last column. */
+.gm-claret .gm-neutral .gm-prose :is(td, th):last-child:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* Download buttons stay on one line. */
+.gm-claret .gm-neutral #results :is(.button, button) { white-space: nowrap; }
+
+@media (max-width: 600px) {
+  /* One level of boxes on phones: the form sits on the page, the results in one card. */
+  .gm-claret .calculator.gm-atlas { padding: 0; background: none; border: 0; }
+  .gm-claret .calculator.gm-atlas .result.ax-chartpanel { padding: 16px 14px; }
+  /* Left-aligned intro, as on the reference's phone pages. */
+  .gm-claret .gm-neutral:has(.calculator.gm-atlas) .intro { text-align: left; margin-bottom: 12px; }
+  .gm-claret .gm-neutral:has(.calculator.gm-atlas) .intro .gm-trust { justify-content: flex-start; }
+  .gm-claret .gm-neutral .gm-pkgradios,
+  .gm-claret .calculator.gm-atlas .gm-form .gm-radios { justify-content: flex-start; }
+  /* Long card lists: compact rows. */
+  .gm-claret .gm-neutral .categorytool { padding: 14px 14px; gap: 12px; }
+  .gm-claret .gm-neutral .categorytool p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 0; }
+  .gm-claret .gm-neutral .hero h1 { font-size: 32px; line-height: 38px; }
+  .gm-claret .gm-neutral .g-barRow { grid-template-columns: minmax(0, 1fr); gap: 4px; }
 }
