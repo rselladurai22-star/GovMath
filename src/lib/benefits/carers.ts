@@ -11,8 +11,16 @@
 
 import { incomeTax, nationalInsurance } from "../tax/2026-27";
 import { scottishIncomeTax } from "../tax/scottish-2026-27";
+import { forYear, type RatesYear } from "./rates-year";
 
 export const CA_2026 = { weekly: 86.45, earningsLimit: 204, hoursCaring: 35 } as const;
+/**
+ * Proposed from 6 April 2027: DWP "Proposed benefit and pension rates 2027 to
+ * 2028" (Carer's Allowance £89.50; earnings rules, Carer's Allowance £212).
+ */
+export const CA_2027 = { weekly: 89.5, earningsLimit: 212, hoursCaring: 35 } as const;
+export type CarerRates = { weekly: number; earningsLimit: number; hoursCaring: number };
+export const carerRates = (year?: RatesYear): CarerRates => forYear<CarerRates>(year, CA_2026, CA_2027);
 
 export type CarerEarningsInput = {
   /** Gross pay a week. */
@@ -24,6 +32,8 @@ export type CarerEarningsInput = {
   scotland: boolean;
   /** State Pension or other overlapping benefit a week. */
   overlapping: number;
+  /** Carer's Allowance rates to use (default 2026/27). Tax and NI stay at 2026/27 rules. */
+  year?: RatesYear;
 };
 
 export type CarerEarningsResult = {
@@ -52,6 +62,7 @@ function weeklyTaxNi(grossWeekly: number, pensionWeekly: number, scotland: boole
 }
 
 export function carerEarnings(i: CarerEarningsInput): CarerEarningsResult {
+  const C = carerRates(i.year);
   const gross = Math.max(0, i.grossWeekly);
   const pension = Math.min(gross, Math.max(0, i.pensionWeekly));
   const { tax, ni } = weeklyTaxNi(gross, pension, i.scotland);
@@ -60,9 +71,9 @@ export function carerEarnings(i: CarerEarningsInput): CarerEarningsResult {
   const afterPension = Math.max(0, net - pensionAllowed);
   const careAllowed = Math.min(Math.max(0, i.careCostsWeekly), afterPension / 2);
   const counted = Math.max(0, afterPension - careAllowed);
-  const withinLimit = counted <= CA_2026.earningsLimit;
+  const withinLimit = counted <= C.earningsLimit;
   const overlapping = Math.max(0, i.overlapping);
-  const entitlement = withinLimit ? CA_2026.weekly : 0;
+  const entitlement = withinLimit ? C.weekly : 0;
   const payable = Math.max(0, entitlement - overlapping);
   return {
     tax,
@@ -72,9 +83,9 @@ export function carerEarnings(i: CarerEarningsInput): CarerEarningsResult {
     careAllowed,
     counted,
     withinLimit,
-    headroom: CA_2026.earningsLimit - counted,
+    headroom: C.earningsLimit - counted,
     payable,
-    underlying: withinLimit && overlapping >= CA_2026.weekly,
+    underlying: withinLimit && overlapping >= C.weekly,
     total: Math.max(0, net - pension) + payable,
   };
 }

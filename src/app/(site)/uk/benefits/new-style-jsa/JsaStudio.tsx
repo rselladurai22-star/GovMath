@@ -6,7 +6,8 @@ import { Answer, Assumptions, Callout, Facts, ResultCard, Statement } from "@/co
 import { gbp } from "@/components/flagship/format";
 import { num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 import { NiConditions, NiRecordFields, NI_SCHEMA, niTest } from "@/components/benefits/NiRecordFields";
-import { NEW_STYLE_2026, newStyleJsa } from "@/lib/benefits/new-style";
+import { newStyleJsa, newStyleRates } from "@/lib/benefits/new-style";
+import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
 
 const SCHEMA = {
   age: oneOf<"over25" | "under25">("over25", ["over25", "under25"]),
@@ -14,6 +15,7 @@ const SCHEMA = {
   pension: num(0, 0, 5_000),
   earnings: num(0, 0, 5_000),
   hours: num(0, 0, 60),
+  rates: ratesParam(),
 };
 const ADVANCED = ["pension", "earnings", "hours"] as const;
 
@@ -21,9 +23,10 @@ export default function JsaStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
   const t = niTest(v);
-  const r = newStyleJsa({ over25: v.age === "over25", pension: v.pension, earnings: v.earnings, hours: v.hours });
+  const r = newStyleJsa({ over25: v.age === "over25", pension: v.pension, earnings: v.earnings, hours: v.hours, year: v.rates });
   const weekly = t.met ? r.weekly : 0;
-  const J = NEW_STYLE_2026.jsa;
+  const next = v.rates === "2027/28";
+  const J = newStyleRates(v.rates).jsa;
 
   return (
     <Studio
@@ -45,6 +48,7 @@ export default function JsaStudio({ query }: { query: Query }) {
                 { value: "under25", label: "Under 25" },
               ]}
             />
+            <RatesChoice value={v.rates} onChange={st.bind("rates")} />
           </InputGroup>
           <InputGroup title="Your National Insurance record">
             <NiRecordFields v={v} set={(k, value) => st.set(k, value as never)} />
@@ -58,7 +62,7 @@ export default function JsaStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow="New Style JSA a week"
+        eyebrow={next ? "New Style JSA a week from 6 April 2027 (proposed)" : "New Style JSA a week"}
         value={gbp(weekly, true)}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
@@ -92,7 +96,7 @@ export default function JsaStudio({ query }: { query: Query }) {
 
       <Assumptions
         items={[
-          { label: "Rates", value: `2026/27: ${gbp(J.over25, true)} a week at 25 or over, ${gbp(J.under25, true)} under 25` },
+          { label: "Rates", value: `${next ? "Proposed from 6 April 2027" : "2026/27"}: ${gbp(J.over25, true)} a week at 25 or over, ${gbp(J.under25, true)} under 25` },
           { label: "Tax years used", value: `${t.years[0]} and ${t.years[1]}, for a claim on this date` },
           { label: "Pay", value: "Paid evenly through each year, as an employee" },
           { label: "Work search", value: "You are available for and looking for work, as agreed in your Claimant Commitment" },
@@ -131,7 +135,7 @@ export default function JsaStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 rates from the DWP. The National Insurance check is an estimate from yearly pay; the DWP decides from your actual record.
+        {next ? "Proposed 2027/28 rates from the DWP, final once Parliament approves them." : "2026/27 rates from the DWP."} The National Insurance check is an estimate from yearly pay; the DWP decides from your actual record.
       </p>
     </Studio>
   );

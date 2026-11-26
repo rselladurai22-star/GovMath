@@ -13,6 +13,9 @@
  *
  * (Weekly equivalents are simply ÷ 52.)
  *
+ * 2027/28: frozen at the same levels. DWP "Proposed benefit and pension rates
+ * 2027 to 2028" shows identical figures for 2026/27 and 2027/28.
+ *
  * The cap is applied by reducing Universal Credit (or Housing Benefit, legacy).
  * Many households are exempt — see EXEMPTIONS.
  */

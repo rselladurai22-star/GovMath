@@ -1,7 +1,8 @@
 "use client";
 
-import { UC_2026, UC_DEFAULT_INPUT, type Health, type UcInput } from "@/lib/benefits/uc-engine";
+import { BENEFIT_CAP, ucRates, UC_DEFAULT_INPUT, type Health, type UcInput } from "@/lib/benefits/uc-engine";
 import { monthlyFromHours, workChange, workPoint } from "@/lib/benefits/uc-work";
+import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
@@ -26,6 +27,7 @@ const SCHEMA = {
   partnerNet: num(0, 0, 20_000),
   childcare: num(0, 0, 10_000),
   other: num(0, 0, 20_000),
+  rates: ratesParam(),
 };
 const ADVANCED = ["over25", "health", "pension", "scotland", "partnerNet", "childcare", "other"] as const;
 const HOURS = Array.from({ length: 26 }, (_, i) => i * 2);
@@ -36,6 +38,8 @@ const pence = (n: number) => `${Math.round(n * 100)}p`;
 export default function TaperStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
+  const next = v.rates === "2027/28";
+  const R = ucRates(v.rates);
   const household: UcInput = {
     ...UC_DEFAULT_INPUT,
     couple: v.couple,
@@ -48,6 +52,7 @@ export default function TaperStudio({ query }: { query: Query }) {
     otherIncome: v.other,
     // The cap is a separate question; this page is about the taper.
     capExemptBenefit: true,
+    year: v.rates,
   };
   const base = { pensionPct: v.pension, region: (v.scotland ? "scotland" : "ruk") as "scotland" | "ruk", partnerNet: v.partnerNet, household };
   const gross = monthlyFromHours(v.hourly, v.hours);
@@ -57,7 +62,7 @@ export default function TaperStudio({ query }: { query: Query }) {
   const curve = HOURS.map(at);
   const ladder = LADDER.map((h) => ({ h, p: at(h) }));
   const maxTotal = Math.max(1, ...ladder.map((x) => x.p.total));
-  const workAllowance = v.children > 0 || v.health !== "none" ? (v.rent > 0 ? UC_2026.workAllowance.withHousing : UC_2026.workAllowance.noHousing) : 0;
+  const workAllowance = v.children > 0 || v.health !== "none" ? (v.rent > 0 ? R.workAllowance.withHousing : R.workAllowance.noHousing) : 0;
   const hourGain = v.extra > 0 ? c.gain / v.extra / (52 / 12) : 0;
   const lostSegments = [
     { label: "You keep", value: Math.max(0, c.gain), display: gbp(c.gain, true), color: "#16a34a" },
@@ -87,7 +92,8 @@ export default function TaperStudio({ query }: { query: Query }) {
               ]}
             />
             <StepperField label="Children" value={v.children} onChange={(n) => st.set("children", Math.round(n))} step={1} min={0} max={12} unit="children" dp={0} hint="Children give you a work allowance." />
-            <MoneyField label="Rent covered by Universal Credit a month" value={v.rent} onChange={st.bind("rent")} hint="Leave at £0 if you own your home or have no rent. Any rent lowers the work allowance to £427." />
+            <RatesChoice value={v.rates} onChange={st.bind("rates")} universalCredit />
+            <MoneyField label="Rent covered by Universal Credit a month" value={v.rent} onChange={st.bind("rent")} hint={`Leave at £0 if you own your home or have no rent. Any rent lowers the work allowance to ${gbp(R.workAllowance.withHousing)}.`} />
           </InputGroup>
           <InputGroup title="Your work">
             <MoneyField label="Hourly pay" value={v.hourly} onChange={st.bind("hourly")} pence hint="The National Living Wage is £12.71 from April 2026." />
@@ -119,7 +125,7 @@ export default function TaperStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow="Extra hours make you better off by"
+        eyebrow={next ? "From April 2027 (proposed), extra hours make you better off by" : "Extra hours make you better off by"}
         value={gbp(c.gain, true)}
         unit="a month"
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
@@ -147,7 +153,7 @@ export default function TaperStudio({ query }: { query: Query }) {
 
       <Assumptions
         items={[
-          { label: "Rates", value: "2026/27 tax, NI and Universal Credit" },
+          { label: "Rates", value: next ? "Proposed 2027/28 Universal Credit (DWP), with 2026/27 tax and NI" : "2026/27 tax, NI and Universal Credit" },
           { label: "Pay", value: `${gbp(v.hourly, true)} an hour, ${v.hours} ${per(v.hours, "hours")} now` },
           { label: "Months", value: "52 weeks ÷ 12, paid monthly" },
           { label: "Benefit cap", value: "Not applied" },
@@ -235,7 +241,7 @@ export default function TaperStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 rates. Ignores the benefit cap, which earning £881 a month removes. Not financial advice.
+        {next ? "Proposed 2027/28 Universal Credit rates, final once Parliament approves them." : "2026/27 rates."} Ignores the benefit cap, which earning {gbp(BENEFIT_CAP.earningsExemption)} a month removes. Not financial advice.
       </p>
     </Studio>
   );

@@ -21,6 +21,7 @@ const BREADCRUMBS = [
 
 const FAQS: { q: string; a: string }[] = [
   { q: "When does the High Income Child Benefit Charge start?", a: "When either partner's adjusted net income is over £60,000. It takes back 1% of the Child Benefit for every £200 above that, and all of it at £80,000." },
+  { q: "Does the High Income Child Benefit Charge change in April 2027?", a: "The thresholds stay at £60,000 and £80,000, but Child Benefit rises to the proposed £28.00 a week for the eldest child and £18.55 for others from 6 April 2027. With two children and £70,000 of income, the charge would be £1,210.30 instead of £1,168.70. These are proposed rates, confirmed when Parliament approves the uprating order." },
   { q: "Who pays the charge?", a: "The partner with the higher adjusted net income, whoever receives the Child Benefit." },
   { q: "How can I reduce the charge?", a: "Pension contributions, Gift Aid and salary sacrifice all reduce adjusted net income, which reduces or removes the charge." },
   { q: "Is it based on household income?", a: "No. Only the higher individual income counts, so two earners on £55,000 each pay nothing." },

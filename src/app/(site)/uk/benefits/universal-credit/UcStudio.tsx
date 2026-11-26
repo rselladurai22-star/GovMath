@@ -1,9 +1,10 @@
 "use client";
 
-import { UC_2026, universalCredit2026, type CapArea, type Health, type Tenure, type UcInput } from "@/lib/benefits/uc-engine";
+import { BENEFIT_CAP, ucRates, universalCredit2026, type CapArea, type Health, type Tenure, type UcInput } from "@/lib/benefits/uc-engine";
 import { LHA_AREAS, LHA_AREAS_BY_NATION, LHA_DEFAULT_AREA, lhaMonthly, lhaNation, weeklyToMonthly, type LhaCategory } from "@/lib/benefits/lha-engine";
 import { SCOTLAND_AREA_COVERS } from "@/lib/benefits/lha-scotland-wales";
 import { NORTHERN_IRELAND_AREA_COVERS } from "@/lib/benefits/lha-northern-ireland";
+import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
@@ -38,6 +39,7 @@ const SCHEMA = {
   london: bool(false),
   capExempt: bool(false),
   otherBen: num(0, 0, 10_000),
+  rates: ratesParam(),
 };
 const ADVANCED = ["area", "lhaCat", "under35", "lhaManual", "pre2017", "disLower", "disHigher", "health", "carer", "spare", "nondeps", "childcare", "other", "capital", "london", "capExempt", "otherBen"] as const;
 const POINTS = 31;
@@ -50,6 +52,8 @@ function autoCategory(couple: boolean, children: number, under35: boolean): LhaC
 export default function UcStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
+  const next = v.rates === "2027/28";
+  const R = ucRates(v.rates);
   const category = v.lhaCat === "auto" ? autoCategory(v.couple, v.children, v.under35) : v.lhaCat;
   const areaKnown = LHA_AREAS.includes(v.area);
   const area = areaKnown ? v.area : "Bristol";
@@ -78,6 +82,7 @@ export default function UcStudio({ query }: { query: Query }) {
     capExemptBenefit: v.capExempt,
     otherCappedBenefits: v.otherBen,
     includeChildBenefit: true,
+    year: v.rates,
   };
   const r = universalCredit2026(input);
   const top = Math.max(3000, Math.ceil(r.breakEvenEarnings / 500) * 500 + 500);
@@ -107,6 +112,7 @@ export default function UcStudio({ query }: { query: Query }) {
             />
             <Switch label={v.couple ? "At least one of you is 25 or over" : "I am 25 or over"} checked={v.over25} onChange={st.bind("over25")} />
             <StepperField label="Children you are responsible for" value={v.children} onChange={(n) => st.set("children", Math.round(n))} step={1} min={0} max={12} unit="children" dp={0} hint="Under 16, or under 20 in approved education. Every child counts from April 2026." />
+            <RatesChoice value={v.rates} onChange={st.bind("rates")} universalCredit />
           </InputGroup>
           <InputGroup title="Housing and work">
             <SelectField
@@ -166,7 +172,7 @@ export default function UcStudio({ query }: { query: Query }) {
               </>
             )}
             {v.tenure === "social" && <StepperField label="Spare bedrooms" value={v.spare} onChange={(n) => st.set("spare", Math.round(n))} step={1} min={0} max={4} unit="rooms" dp={0} optional hint="The removal of the spare room subsidy cuts housing help by 14% for one, 25% for two or more." />}
-            {(v.tenure === "private" || v.tenure === "social") && <StepperField label="Other adults living with you" value={v.nondeps} onChange={(n) => st.set("nondeps", Math.round(n))} step={1} min={0} max={6} unit="adults" dp={0} optional hint={`Such as grown-up children. Each usually reduces housing help by ${gbp(UC_2026.nonDependant, true)} a month.`} />}
+            {(v.tenure === "private" || v.tenure === "social") && <StepperField label="Other adults living with you" value={v.nondeps} onChange={(n) => st.set("nondeps", Math.round(n))} step={1} min={0} max={6} unit="adults" dp={0} optional hint={`Such as grown-up children. Each usually reduces housing help by ${gbp(R.nonDependant, true)} a month.`} />}
             {v.children > 0 && <Switch label="Eldest child born before 6 April 2017" checked={v.pre2017} onChange={st.bind("pre2017")} optional hint="Gives a higher first-child rate." />}
             {v.children > 0 && <StepperField label="Children getting DLA or PIP (lower addition)" value={v.disLower} onChange={(n) => st.set("disLower", Math.round(n))} step={1} min={0} max={10} unit="children" dp={0} optional />}
             {v.children > 0 && <StepperField label="Children on the highest DLA care rate, enhanced PIP daily living, or blind" value={v.disHigher} onChange={(n) => st.set("disHigher", Math.round(n))} step={1} min={0} max={10} unit="children" dp={0} optional />}
@@ -193,7 +199,7 @@ export default function UcStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow="Universal Credit a month"
+        eyebrow={next ? "Universal Credit a month from April 2027 (proposed)" : "Universal Credit a month"}
         value={gbp(r.award, true)}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
@@ -226,10 +232,11 @@ export default function UcStudio({ query }: { query: Query }) {
 
       <Assumptions
         items={[
-          { label: "Rates", value: "2026/27, monthly" },
+          { label: "Rates", value: next ? "Proposed 2027/28, monthly, from the first assessment period starting on or after 6 April 2027" : "2026/27, monthly" },
           { label: "Housing", value: v.tenure === "private" ? (lhaMonthlyRate > 0 ? `LHA ${gbp(lhaMonthlyRate, true)} a month (${category === "shared" ? "shared" : `${category} bed`})` : "No LHA rate found") : v.tenure === "social" ? "Social rent" : "No housing costs" },
           { label: "Earnings", value: `${gbp(v.earnings)} a month after tax` },
           { label: "Child Benefit", value: "Counted towards the cap only" },
+          ...(next ? [{ label: "Not yet announced", value: "Local Housing Allowance rates for April 2027, so 2026/27 rates are used; the benefit cap is frozen" }] : []),
         ]}
       />
 
@@ -276,7 +283,7 @@ export default function UcStudio({ query }: { query: Query }) {
       <ResultCard title="Worth knowing" sub="Things that affect your claim.">
         {r.capApplies && (
           <Callout tone="warn" title={`The benefit cap reduces your award by ${gbp(r.capReduction, true)}`}>
-            The cap is {gbp(r.capMonthly, true)} a month for your household. Earning {gbp(881)} a month or more after tax, or someone getting a disability or carer&apos;s benefit, would
+            The cap is {gbp(r.capMonthly, true)} a month for your household. Earning {gbp(BENEFIT_CAP.earningsExemption)} a month or more after tax, or someone getting a disability or carer&apos;s benefit, would
             remove it.
           </Callout>
         )}
@@ -294,7 +301,7 @@ export default function UcStudio({ query }: { query: Query }) {
         )}
         {v.health === "lcwra-new" && (
           <Callout title="Lower health element for new claims">
-            From 6 April 2026, new claims get a health element of {gbp(UC_2026.lcwraNew, true)} a month. Claims assessed before then keep {gbp(UC_2026.lcwraProtected, true)}, as do people
+            From 6 April 2026, new claims get a health element of {gbp(R.lcwraNew, true)} a month. Claims assessed before then keep {gbp(R.lcwraProtected, true)}, as do people
             meeting the severe conditions criteria or who are terminally ill.
           </Callout>
         )}
@@ -312,7 +319,7 @@ export default function UcStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 rates. An estimate, not a decision on your claim. Not financial advice.
+        {next ? "Proposed 2027/28 rates (DWP), final once Parliament approves them." : "2026/27 rates."} An estimate, not a decision on your claim. Not financial advice.
       </p>
     </Studio>
   );

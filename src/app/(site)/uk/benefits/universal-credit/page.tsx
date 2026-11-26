@@ -21,6 +21,7 @@ const BREADCRUMBS = [
 
 const FAQS: { q: string; a: string }[] = [
   { q: "How much is Universal Credit in 2026/27?", a: "The standard allowance is £424.90 a month for a single person aged 25 or over and £666.97 for a couple. Children, rent, health conditions, caring and childcare add more." },
+  { q: "How much will Universal Credit be from April 2027?", a: "Under DWP's proposed 2027/28 rates, the standard allowance for a single person aged 25 or over rises from £424.90 to £443.21 a month (£18.31 more), and for a couple with one or both 25 or over from £666.97 to £695.71. Each child gets £314.58 (£364.20 for a first child born before 6 April 2017), and the work allowances rise to £735 and £442. The new rates apply from your first assessment period starting on or after 6 April 2027. These are proposed rates, confirmed when Parliament approves the uprating order." },
   { q: "Is there still a two-child limit?", a: "No. From April 2026 every child adds £303.94 a month, or £351.88 for an eldest child born before 6 April 2017." },
   { q: "How much can I earn on Universal Credit?", a: "There is no fixed limit. Above any work allowance of £427 or £710 a month, your award falls by 55p for each £1 of take-home pay until it reaches zero." },
   { q: "Can I get Universal Credit with savings?", a: "Yes, up to £16,000. Savings between £6,000 and £16,000 reduce your award by £4.35 a month for each £250." },

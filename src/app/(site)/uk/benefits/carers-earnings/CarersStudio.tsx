@@ -1,6 +1,7 @@
 "use client";
 
-import { CA_2026, carerEarnings } from "@/lib/benefits/carers";
+import { carerEarnings, carerRates } from "@/lib/benefits/carers";
+import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
@@ -18,6 +19,7 @@ const SCHEMA = {
   caring35: bool(true),
   qualifying: bool(true),
   student: bool(false),
+  rates: ratesParam(),
 };
 const ADVANCED = ["pensionPct", "care", "scotland", "statePension", "caring35", "qualifying", "student"] as const;
 const HOURS = Array.from({ length: 31 }, (_, i) => i);
@@ -27,9 +29,11 @@ const neg = (n: number): string => (n > 0.005 ? `−${gbp(n, true)}` : gbp(0, tr
 export default function CarersStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
+  const next = v.rates === "2027/28";
+  const CA = carerRates(v.rates);
   const eligible = v.caring35 && v.qualifying && !v.student;
   const gross = v.hourly * v.hours;
-  const at = (g: number) => carerEarnings({ grossWeekly: g, pensionWeekly: (g * v.pensionPct) / 100, careCostsWeekly: v.care, scotland: v.scotland, overlapping: v.statePension });
+  const at = (g: number) => carerEarnings({ grossWeekly: g, pensionWeekly: (g * v.pensionPct) / 100, careCostsWeekly: v.care, scotland: v.scotland, overlapping: v.statePension, year: v.rates });
   const r = at(gross);
   const payable = eligible ? r.payable : 0;
   // Highest gross pay within the limit, with pension as a share of pay.
@@ -61,6 +65,7 @@ export default function CarersStudio({ query }: { query: Query }) {
           <InputGroup title="Your job">
             <MoneyField label="Hourly pay" value={v.hourly} onChange={st.bind("hourly")} pence hint="The National Living Wage is £12.71 from April 2026." />
             <StepperField label="Hours a week" value={v.hours} onChange={st.bind("hours")} step={1} min={0} max={60} unit="hours" dp={1} hint="If your hours vary, use your average." />
+            <RatesChoice value={v.rates} onChange={st.bind("rates")} />
           </InputGroup>
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             <StepperField label="Pension contribution" value={v.pensionPct} onChange={st.bind("pensionPct")} step={1} min={0} max={50} unit="%" dp={1} optional hint="Half of what you pay is taken off your earnings." />
@@ -75,7 +80,7 @@ export default function CarersStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow="Carer's Allowance"
+        eyebrow={next ? "Carer's Allowance from 6 April 2027 (proposed)" : "Carer's Allowance"}
         value={gbp(payable, true)}
         unit="a week"
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
@@ -86,7 +91,7 @@ export default function CarersStudio({ query }: { query: Query }) {
             </>
           ) : r.withinLimit ? (
             <>
-              Your earnings count as <b>{gbp(r.counted, true)}</b> a week, <b>{gbp(r.headroom, true)}</b> under the {gbp(CA_2026.earningsLimit)} limit.{" "}
+              Your earnings count as <b>{gbp(r.counted, true)}</b> a week, <b>{gbp(r.headroom, true)}</b> under the {gbp(CA.earningsLimit)} limit.{" "}
               {r.underlying ? (
                 <>Your State Pension is paid instead, so you have underlying entitlement only.</>
               ) : (
@@ -97,12 +102,12 @@ export default function CarersStudio({ query }: { query: Query }) {
             </>
           ) : (
             <>
-              Your earnings count as <b>{gbp(r.counted, true)}</b> a week, <b>{gbp(-r.headroom, true)}</b> over the {gbp(CA_2026.earningsLimit)} limit, so you would lose the whole{" "}
-              <b>{gbp(CA_2026.weekly, true)}</b>. Working up to <b>{maxHours.toFixed(1)} {per(maxHours.toFixed(1), "hours")}</b> a week at this rate keeps you under.
+              Your earnings count as <b>{gbp(r.counted, true)}</b> a week, <b>{gbp(-r.headroom, true)}</b> over the {gbp(CA.earningsLimit)} limit, so you would lose the whole{" "}
+              <b>{gbp(CA.weekly, true)}</b>. Working up to <b>{maxHours.toFixed(1)} {per(maxHours.toFixed(1), "hours")}</b> a week at this rate keeps you under.
             </>
           )
         }
-        badges={[`Limit ${gbp(CA_2026.earningsLimit)} a week`, r.withinLimit ? "Within the limit" : "Over the limit", `Up to ${maxHours.toFixed(1)} ${per(maxHours.toFixed(1), "hours")}`]}
+        badges={[`Limit ${gbp(CA.earningsLimit)} a week`, r.withinLimit ? "Within the limit" : "Over the limit", `Up to ${maxHours.toFixed(1)} ${per(maxHours.toFixed(1), "hours")}`]}
       />
 
       <Facts
@@ -116,7 +121,7 @@ export default function CarersStudio({ query }: { query: Query }) {
 
       <Assumptions
         items={[
-          { label: "Rates", value: "2026/27" },
+          { label: "Rates", value: next ? `Proposed from 6 April 2027: ${gbp(CA.weekly, true)} a week, earnings limit ${gbp(CA.earningsLimit)}; 2026/27 tax and NI` : "2026/27" },
           { label: "Pay", value: `${gbp(v.hourly, true)} × ${v.hours} ${per(v.hours, "hours")} a week` },
           { label: "Tax and NI", value: "Annualised, standard tax code" },
           { label: "Pension", value: v.pensionPct > 0 ? `${v.pensionPct}% of pay, before tax` : "None" },
@@ -133,7 +138,7 @@ export default function CarersStudio({ query }: { query: Query }) {
             ...(pension > 0 ? [{ label: "Half of pension contributions", values: [neg(r.pensionAllowed)], kind: "deduction" as const }] : []),
             ...(v.care > 0 ? [{ label: "Care costs allowed", values: [neg(r.careAllowed)], kind: "deduction" as const }] : []),
             { label: "Earnings that count", values: [gbp(r.counted, true)], kind: "total" as const },
-            { label: "Earnings limit", values: [gbp(CA_2026.earningsLimit, true)] },
+            { label: "Earnings limit", values: [gbp(CA.earningsLimit, true)] },
           ]}
         />
       </ResultCard>
@@ -164,7 +169,7 @@ export default function CarersStudio({ query }: { query: Query }) {
       <ResultCard title="Worth knowing" sub="Staying within the rules.">
         {!r.withinLimit && eligible && (
           <Callout tone="warn" title="A cliff edge, not a taper">
-            Going a penny over {gbp(CA_2026.earningsLimit)} loses the whole {gbp(CA_2026.weekly, true)} for that week. Paying more into a pension, or claiming care costs, can bring your earnings back under.
+            Going a penny over {gbp(CA.earningsLimit)} loses the whole {gbp(CA.weekly, true)} for that week. Paying more into a pension, or claiming care costs, can bring your earnings back under.
           </Callout>
         )}
         {r.underlying && (
@@ -181,7 +186,7 @@ export default function CarersStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 rates. An estimate, not a decision. Not financial advice.
+        {next ? "Proposed 2027/28 rates, final once Parliament approves them." : "2026/27 rates."} An estimate, not a decision. Not financial advice.
       </p>
     </Studio>
   );

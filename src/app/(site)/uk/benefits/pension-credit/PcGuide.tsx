@@ -36,6 +36,7 @@ const TOC: TocItem[] = [
   { id: "documents", title: "What you need to claim" },
   { id: "state-pension", title: "Old and new State Pension" },
   { id: "deferring", title: "Deferring your State Pension" },
+  { id: "april-2027", title: "Rates from April 2027" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -44,6 +45,7 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — Pension Credit: what you'll get", href: "https://www.gov.uk/pension-credit/what-youll-get" },
   { label: "GOV.UK — Pension Credit: eligibility", href: "https://www.gov.uk/pension-credit/eligibility" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
+  { label: "GOV.UK — Proposed benefit and pension rates 2027 to 2028", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
   { label: "GOV.UK — Pension Credit calculator", href: "https://www.gov.uk/pension-credit-calculator" },
 ];
 
@@ -349,8 +351,34 @@ export default function PcGuide() {
           usually makes little sense if you would qualify for Pension Credit, because the increase you build up is counted as income later too.
         </p>
       </GuideSection>
+      <GuideSection id="april-2027" n={21} kicker="Next year" title="Rates from April 2027">
+        <p>
+          Pension Credit rises from 6 April 2027. The standard minimum guarantee, the extra amounts for severe disability, carers and children, and the Savings Credit threshold and maximum all go up. The first £10,000 of savings is still ignored.
+        </p>
+        <DataTable
+          caption="Pension Credit a week: 2026/27 and the proposed rates from 6 April 2027"
+          head={["", "2026/27", "From April 2027"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Standard minimum guarantee, single", "£238.00", "£247.30"],
+            ["Standard minimum guarantee, couple", "£363.25", "£377.40"],
+            ["Severe disability addition", "£86.05", "£89.05"],
+            ["Carer addition", "£48.15", "£49.85"],
+            ["Savings Credit threshold, single / couple", "£208.07 / £329.75", "£216.32 / £342.74"],
+            ["Savings Credit maximum, single / couple", "£17.96 / £20.10", "£18.59 / £20.80"],
+            ["Full new State Pension", "£241.30", "£250.70"],
+          ]}
+        />
+        <p>
+          The guarantee for a single person rises by £9.30 a week and for a couple by £14.15. A single person whose income stayed at £200 a week would get £47.30 of Guarantee Credit instead of £38.00, about £483.60 more a year, but most pensions rise in April too, so enter your income at its April 2027 level.
+        </p>
+        <p>
+          These are proposed rates. The Department for Work and Pensions published them on 11 November 2026, after the Budget, and they become final when Parliament approves the uprating order, usually early in the new year. Choose &ldquo;From April 2027 (proposed)&rdquo; in the calculator to see your own figures with them.
+        </p>
+      </GuideSection>
 
-      <GuideSection id="key-numbers" n={21} kicker="Summary" title="Key numbers for 2026/27">
+
+      <GuideSection id="key-numbers" n={22} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£238.00", label: "Single guarantee a week" },

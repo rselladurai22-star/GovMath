@@ -1,7 +1,8 @@
 "use client";
 
 import { BENEFIT_CAP, UC_DEFAULT_INPUT, universalCredit2026, type Health, type UcInput } from "@/lib/benefits/uc-engine";
-import { CHILD_BENEFIT_2026_27 } from "@/lib/benefits/child-benefit";
+import { childBenefitRates } from "@/lib/benefits/child-benefit";
+import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
 import { housingBenefitCap } from "@/lib/benefits/benefit-cap";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
@@ -32,6 +33,7 @@ const SCHEMA = {
   newStyle: num(0, 0, 5_000),
   hbTotal: num(480, 0, 3_000),
   hbHousing: num(180, 0, 2_000),
+  rates: ratesParam(),
 };
 const ADVANCED = ["over25", "pre2017", "disLower", "health", "carer", "exemptBen", "grace", "newStyle"] as const;
 const POINTS = 41;
@@ -40,6 +42,8 @@ const TOP = 2000;
 export default function CapStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
+  const next = v.rates === "2027/28";
+  const CB = childBenefitRates(v.rates);
   const family = v.couple || v.children > 0;
   const area = v.london ? "london" : "elsewhere";
   const capAnnual = BENEFIT_CAP[area][family ? "family" : "single"];
@@ -60,10 +64,11 @@ export default function CapStudio({ query }: { query: Query }) {
     otherCappedBenefits: v.newStyle,
     capArea: area,
     capExemptBenefit: v.exemptBen || v.grace,
+    year: v.rates,
   };
   const r = universalCredit2026(household);
   const uncapped = universalCredit2026({ ...household, capExemptBenefit: true });
-  const cb = v.children > 0 ? ((CHILD_BENEFIT_2026_27.firstChildWeekly + (v.children - 1) * CHILD_BENEFIT_2026_27.additionalChildWeekly) * 52) / 12 : 0;
+  const cb = v.children > 0 ? ((CB.firstChildWeekly + (v.children - 1) * CB.additionalChildWeekly) * 52) / 12 : 0;
   const counted = Math.max(0, r.beforeCap - r.childcareElement) + cb + v.newStyle;
   const reason = v.grace && !r.capExemptReason?.startsWith("Household") ? "In the nine-month grace period" : r.capExemptReason;
   const at881 = universalCredit2026({ ...household, earnings: Math.max(v.earnings, BENEFIT_CAP.earningsExemption) });
@@ -110,6 +115,7 @@ export default function CapStudio({ query }: { query: Query }) {
             />
             <StepperField label="Children" value={v.children} onChange={(n) => st.set("children", Math.round(n))} step={1} min={0} max={12} unit="children" dp={0} />
             <Switch label="Live in Greater London" checked={v.london} onChange={st.bind("london")} />
+            <RatesChoice value={v.rates} onChange={st.bind("rates")} universalCredit={isUc} />
           </InputGroup>
           {isUc ? (
             <InputGroup title="Rent and work">
@@ -152,7 +158,7 @@ export default function CapStudio({ query }: { query: Query }) {
     >
       {isUc ? (
         <Answer
-          eyebrow="The benefit cap takes off"
+          eyebrow={next ? "From April 2027 (proposed rates), the benefit cap takes off" : "The benefit cap takes off"}
           value={gbp(r.capReduction, true)}
           unit="a month"
           actions={<ShareButton copied={st.copied} onClick={st.share} />}
@@ -221,7 +227,7 @@ export default function CapStudio({ query }: { query: Query }) {
       <Assumptions
         items={[
           { label: "Cap", value: `${gbp(capAnnual)} a year, ${family ? "couple or family" : "single"}` },
-          { label: "Rates", value: "2026/27" },
+          { label: "Rates", value: next ? "Proposed 2027/28 Universal Credit and Child Benefit; the cap is frozen at the same level" : "2026/27" },
           { label: "Child Benefit", value: isUc ? `${gbp(cb, true)} a month counted` : "Include it in your total" },
           { label: "Childcare element", value: "Not capped" },
         ]}
@@ -299,7 +305,7 @@ export default function CapStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 benefit cap. An estimate, not a decision on your claim.
+        {next ? "Benefit cap frozen for 2027/28; proposed 2027/28 benefit rates, final once Parliament approves them." : "2026/27 benefit cap."} An estimate, not a decision on your claim.
       </p>
     </Studio>
   );

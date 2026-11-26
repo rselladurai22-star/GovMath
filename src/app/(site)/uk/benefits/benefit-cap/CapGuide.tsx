@@ -34,6 +34,7 @@ const TOC: TocItem[] = [
   { id: "exempt-example", title: "What an exemption is worth" },
   { id: "history", title: "How the cap has changed" },
   { id: "budget", title: "Budgeting on a capped award" },
+  { id: "april-2027", title: "The cap from April 2027" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -42,6 +43,7 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — Benefit cap amounts", href: "https://www.gov.uk/benefit-cap/benefit-cap-amounts" },
   { label: "GOV.UK — When you're not affected by the benefit cap", href: "https://www.gov.uk/benefit-cap/when-youre-not-affected" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
+  { label: "GOV.UK — Proposed benefit and pension rates 2027 to 2028", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
   { label: "GOV.UK — Discretionary Housing Payments", href: "https://www.gov.uk/government/publications/discretionary-housing-payments-guidance-manual" },
 ];
 
@@ -391,8 +393,31 @@ export default function CapGuide() {
           one-off costs such as cookers, beds or travel to a job interview.
         </p>
       </GuideSection>
+      <GuideSection id="april-2027" n={19} kicker="Next year" title="The cap from April 2027">
+        <p>
+          The benefit cap is frozen for 2027/28: DWP&rsquo;s proposed rates show the same levels as now. The benefits it limits do rise, with Universal Credit going up from the first assessment period starting on or after 6 April 2027 and Child Benefit from 6 April.
+        </p>
+        <DataTable
+          caption="Benefit cap a year: 2026/27 and 2027/28"
+          head={["", "2026/27", "From April 2027"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Couples and parents, outside London", "£22,020", "£22,020"],
+            ["Single, no children, outside London", "£14,753", "£14,753"],
+            ["Couples and parents, Greater London", "£25,323", "£25,323"],
+            ["Single, no children, Greater London", "£16,967", "£16,967"],
+          ]}
+        />
+        <p>
+          With the cap frozen, capped households gain nothing from the rise. A couple with three children renting at £1,100 a month with no earnings would see the cap take £1,186.55 a month instead of £1,116.14, and their Universal Credit fall from £1,562.65 to £1,552.90, because their Child Benefit rises and still counts towards the same cap. The earnings exemption is 16 hours at the National Living Wage; the April 2027 figure is not yet announced, so the calculator keeps £881 a month.
+        </p>
+        <p>
+          These are proposed rates. The Department for Work and Pensions published them on 11 November 2026, after the Budget, and they become final when Parliament approves the uprating order, usually early in the new year. Choose &ldquo;From April 2027 (proposed)&rdquo; in the calculator to see your own figures with them.
+        </p>
+      </GuideSection>
 
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers for 2026/27">
+
+      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£22,020", label: "Family cap a year outside London" },

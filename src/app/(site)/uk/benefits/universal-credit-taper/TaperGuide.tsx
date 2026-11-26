@@ -31,6 +31,7 @@ const TOC: TocItem[] = [
   { id: "pay-rise", title: "A pay rise or more hours" },
   { id: "second-earner-example", title: "A second earner in numbers" },
   { id: "plan", title: "Planning your hours" },
+  { id: "april-2027", title: "Rates from April 2027" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -38,6 +39,7 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — Universal Credit and earnings", href: "https://www.gov.uk/universal-credit/how-your-earnings-affect-your-payments" },
   { label: "GOV.UK — Universal Credit: what you'll get", href: "https://www.gov.uk/universal-credit/what-youll-get" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
+  { label: "GOV.UK — Proposed benefit and pension rates 2027 to 2028", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
   { label: "GOV.UK — Universal Credit and self-employment", href: "https://www.gov.uk/self-employment-and-universal-credit" },
   { label: "GOV.UK — Income Tax rates and Personal Allowances", href: "https://www.gov.uk/income-tax-rates" },
 ];
@@ -356,8 +358,32 @@ export default function TaperGuide() {
           <li>Think about the timing of paydays, especially if you are paid weekly or four-weekly.</li>
         </ol>
       </GuideSection>
+      <GuideSection id="april-2027" n={17} kicker="Next year" title="Rates from April 2027">
+        <p>
+          The taper itself does not change: Universal Credit still falls by 55p for each £1 of take-home pay above your work allowance. What changes from the first assessment period starting on or after 6 April 2027 is the size of the work allowance and the award the taper works on.
+        </p>
+        <DataTable
+          caption="Work allowances and the taper: 2026/27 and the proposed rates from April 2027"
+          head={["", "2026/27", "From April 2027"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Work allowance, no housing costs", "£710", "£735"],
+            ["Work allowance, with housing costs", "£427", "£442"],
+            ["Taper rate", "55%", "55%"],
+            ["Standard allowance, single 25 or over", "£424.90", "£443.21"],
+            ["Each child (other children)", "£303.94", "£314.58"],
+          ]}
+        />
+        <p>
+          A single parent of one child with no housing costs, earning £1,100 a month before tax (£1,085.30 take-home), would get £565.13 of Universal Credit instead of £522.42: about £42.71 a month more. Once your take-home pay is above the work allowance in both years, each extra pound you earn is still worth 45p after the taper, so the gain from extra hours is the same.
+        </p>
+        <p>
+          These are proposed rates. The Department for Work and Pensions published them on 11 November 2026, after the Budget, and they become final when Parliament approves the uprating order, usually early in the new year. Choose &ldquo;From April 2027 (proposed)&rdquo; in the calculator to see your own figures with them.
+        </p>
+      </GuideSection>
 
-      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers for 2026/27">
+
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "55%", label: "Taper on take-home pay" },

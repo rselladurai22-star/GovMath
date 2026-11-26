@@ -1,5 +1,6 @@
 /**
- * Universal Credit engine, 2026/27 (monthly).
+ * Universal Credit engine, 2026/27 (monthly), with DWP's proposed rates from
+ * April 2027 (pass `year: "2027/28"`).
  *
  * Source: DWP "Benefit and pension rates 2026/2027" (rates from April 2026).
  * The two-child limit was removed from 6 April 2026, so every child gets the
@@ -13,7 +14,8 @@
  *   then the benefit cap, unless the household is exempt.
  */
 
-import { CHILD_BENEFIT_2026_27 } from "./child-benefit";
+import { childBenefitRates } from "./child-benefit";
+import { forYear, type RatesYear } from "./rates-year";
 
 export const UC_2026 = {
   standard: { singleUnder25: 338.58, single25: 424.9, coupleUnder25: 528.34, couple25: 666.97 },
@@ -32,8 +34,57 @@ export const UC_2026 = {
   capital: { lower: 6000, upper: 16000, per250: 4.35 },
 } as const;
 
-export const UC_CHILDCARE = { share: 0.85, maxOne: 1071.09, maxTwoPlus: 1836.16 } as const;
+/**
+ * Proposed monthly rates from April 2027 (the first assessment period starting
+ * on or after 6 April 2027). Source: DWP "Proposed benefit and pension rates
+ * 2027 to 2028", Universal Credit (monthly rates). The limited capability for
+ * work amount, the new-claim health element (£217.26) and the capital rules
+ * are unchanged.
+ */
+export const UC_2027 = {
+  standard: { singleUnder25: 353.87, single25: 443.21, coupleUnder25: 551.11, couple25: 695.71 },
+  child: { firstPre2017: 364.2, each: 314.58 },
+  disabledChild: { lower: 170.56, higher: 532.72 },
+  lcw: 158.76,
+  lcwraNew: 217.26,
+  lcwraProtected: 441.41,
+  carer: 216.67,
+  workAllowance: { withHousing: 442, noHousing: 735 },
+  taper: 0.55,
+  nonDependant: 99.93,
+  capital: { lower: 6000, upper: 16000, per250: 4.35 },
+} as const;
 
+export type UcRates = {
+  standard: { singleUnder25: number; single25: number; coupleUnder25: number; couple25: number };
+  child: { firstPre2017: number; each: number };
+  disabledChild: { lower: number; higher: number };
+  lcw: number;
+  lcwraNew: number;
+  lcwraProtected: number;
+  carer: number;
+  workAllowance: { withHousing: number; noHousing: number };
+  taper: number;
+  nonDependant: number;
+  capital: { lower: number; upper: number; per250: number };
+};
+
+export const ucRates = (year?: RatesYear): UcRates => forYear<UcRates>(year, UC_2026, UC_2027);
+
+export const UC_CHILDCARE = { share: 0.85, maxOne: 1071.09, maxTwoPlus: 1836.16 } as const;
+/**
+ * Proposed from April 2027: the current maximums uprated. DWP says the
+ * two-or-more maximum will be replaced by one that rises with each extra child,
+ * and will update these figures when the regulations are laid.
+ */
+export const UC_CHILDCARE_2027 = { share: 0.85, maxOne: 1108.58, maxTwoPlus: 1900.43 } as const;
+export const ucChildcare = (year?: RatesYear) => forYear<{ share: number; maxOne: number; maxTwoPlus: number }>(year, UC_CHILDCARE, UC_CHILDCARE_2027);
+
+/**
+ * The cap is frozen for 2027/28: DWP's proposed rates table shows the same
+ * levels for 2026/27 and 2027/28. The earnings exemption is 16 hours at the
+ * National Living Wage; the April 2027 wage is not in DWP's table, so £881 is kept.
+ */
 export const BENEFIT_CAP = {
   /** Annual caps. */
   london: { single: 16967, family: 25323 },
@@ -81,6 +132,8 @@ export type UcInput = {
   otherCappedBenefits: number;
   /** Child Benefit received: counts towards the cap. */
   includeChildBenefit: boolean;
+  /** Rates to use (default 2026/27). */
+  year?: RatesYear;
 };
 
 export type UcElement = { key: string; label: string; amount: number };
@@ -110,15 +163,15 @@ export type UcResult = {
 };
 
 function standardAllowance(i: UcInput): number {
-  const s = UC_2026.standard;
+  const s = ucRates(i.year).standard;
   if (i.couple) return i.over25 ? s.couple25 : s.coupleUnder25;
   return i.over25 ? s.single25 : s.singleUnder25;
 }
 
-function childrenElement(children: number, firstBornPre2017: boolean): number {
+function childrenElement(children: number, firstBornPre2017: boolean, R: UcRates = UC_2026): number {
   const n = Math.max(0, Math.floor(children));
   if (n === 0) return 0;
-  return (firstBornPre2017 ? UC_2026.child.firstPre2017 : UC_2026.child.each) + (n - 1) * UC_2026.child.each;
+  return (firstBornPre2017 ? R.child.firstPre2017 : R.child.each) + (n - 1) * R.child.each;
 }
 
 export function capitalTariff(capital: number): { deduction: number; tooHigh: boolean } {
@@ -128,7 +181,7 @@ export function capitalTariff(capital: number): { deduction: number; tooHigh: bo
   return { deduction: Math.ceil((c - UC_2026.capital.lower) / 250) * UC_2026.capital.per250, tooHigh: false };
 }
 
-export function housingElement(i: Pick<UcInput, "tenure" | "rent" | "lhaMonthly" | "spareBedrooms" | "nonDependants">) {
+export function housingElement(i: Pick<UcInput, "tenure" | "rent" | "lhaMonthly" | "spareBedrooms" | "nonDependants" | "year">) {
   const rent = Math.max(0, i.rent);
   if (i.tenure === "none" || i.tenure === "mortgage" || rent === 0) return { eligibleRent: 0, reduction: 0, nonDep: 0, housing: 0, shortfall: rent };
   let eligibleRent = rent;
@@ -138,36 +191,38 @@ export function housingElement(i: Pick<UcInput, "tenure" | "rent" | "lhaMonthly"
     const spare = Math.max(0, Math.floor(i.spareBedrooms));
     reduction = rent * (spare >= 2 ? 0.25 : spare === 1 ? 0.14 : 0);
   }
-  const nonDep = Math.max(0, Math.floor(i.nonDependants)) * UC_2026.nonDependant;
+  const nonDep = Math.max(0, Math.floor(i.nonDependants)) * ucRates(i.year).nonDependant;
   const housing = Math.max(0, eligibleRent - reduction - nonDep);
   return { eligibleRent, reduction, nonDep, housing, shortfall: rent - housing };
 }
 
 export function universalCredit2026(i: UcInput): UcResult {
+  const R = ucRates(i.year);
+  const CC = ucChildcare(i.year);
   const elements: UcElement[] = [];
   const add = (key: string, label: string, amount: number) => {
     if (amount > 0) elements.push({ key, label, amount });
   };
   add("standard", "Standard allowance", standardAllowance(i));
-  add("child", `Child element (${i.children} ${i.children === 1 ? "child" : "children"})`, childrenElement(i.children, i.firstBornPre2017));
-  add("disabled-lower", "Disabled child addition (lower)", Math.max(0, i.disabledLower) * UC_2026.disabledChild.lower);
-  add("disabled-higher", "Disabled child addition (higher)", Math.max(0, i.disabledHigher) * UC_2026.disabledChild.higher);
-  const health = i.health === "lcw" ? UC_2026.lcw : i.health === "lcwra-new" ? UC_2026.lcwraNew : i.health === "lcwra-protected" ? UC_2026.lcwraProtected : 0;
+  add("child", `Child element (${i.children} ${i.children === 1 ? "child" : "children"})`, childrenElement(i.children, i.firstBornPre2017, R));
+  add("disabled-lower", "Disabled child addition (lower)", Math.max(0, i.disabledLower) * R.disabledChild.lower);
+  add("disabled-higher", "Disabled child addition (higher)", Math.max(0, i.disabledHigher) * R.disabledChild.higher);
+  const health = i.health === "lcw" ? R.lcw : i.health === "lcwra-new" ? R.lcwraNew : i.health === "lcwra-protected" ? R.lcwraProtected : 0;
   add("health", i.health === "lcw" ? "Limited capability for work" : "Health element (LCWRA)", health);
-  add("carer", "Carer element", i.carer ? UC_2026.carer : 0);
+  add("carer", "Carer element", i.carer ? R.carer : 0);
   const kidsInCare = i.children > 0 && i.childcare > 0;
-  const childcareCap = i.children >= 2 ? UC_CHILDCARE.maxTwoPlus : UC_CHILDCARE.maxOne;
+  const childcareCap = i.children >= 2 ? CC.maxTwoPlus : CC.maxOne;
   // Childcare costs are only met when every adult in the household is in paid work.
-  const childcareElement = kidsInCare && i.earnings > 0 ? Math.min(Math.max(0, i.childcare) * UC_CHILDCARE.share, childcareCap) : 0;
+  const childcareElement = kidsInCare && i.earnings > 0 ? Math.min(Math.max(0, i.childcare) * CC.share, childcareCap) : 0;
   add("childcare", "Childcare costs (85%)", childcareElement);
   const h = housingElement(i);
   add("housing", "Housing element", h.housing);
   const maximum = elements.reduce((a, e) => a + e.amount, 0);
 
   const hasWorkAllowance = i.children > 0 || i.health !== "none";
-  const workAllowance = hasWorkAllowance ? (h.housing > 0 ? UC_2026.workAllowance.withHousing : UC_2026.workAllowance.noHousing) : 0;
+  const workAllowance = hasWorkAllowance ? (h.housing > 0 ? R.workAllowance.withHousing : R.workAllowance.noHousing) : 0;
   const earnings = Math.max(0, i.earnings);
-  const earningsDeduction = Math.max(0, earnings - workAllowance) * UC_2026.taper;
+  const earningsDeduction = Math.max(0, earnings - workAllowance) * R.taper;
   const otherIncomeDeduction = Math.max(0, i.otherIncome);
   const cap = capitalTariff(i.capital);
   const beforeCap = cap.tooHigh ? 0 : Math.max(0, maximum - earningsDeduction - otherIncomeDeduction - cap.deduction);
@@ -181,7 +236,8 @@ export function universalCredit2026(i: UcInput): UcResult {
   else if (i.health === "lcwra-new" || i.health === "lcwra-protected") capExemptReason = "Health element (LCWRA) in the award";
   else if (i.carer) capExemptReason = "Carer element in the award";
   else if (i.capExemptBenefit) capExemptReason = "Someone gets a disability or carer's benefit";
-  const cb = i.includeChildBenefit && i.children > 0 ? ((CHILD_BENEFIT_2026_27.firstChildWeekly + (i.children - 1) * CHILD_BENEFIT_2026_27.additionalChildWeekly) * 52) / 12 : 0;
+  const cbr = childBenefitRates(i.year);
+  const cb = i.includeChildBenefit && i.children > 0 ? ((cbr.firstChildWeekly + (i.children - 1) * cbr.additionalChildWeekly) * 52) / 12 : 0;
   // The cap does not reduce the childcare costs element.
   const counted = Math.max(0, beforeCap - childcareElement) + cb + Math.max(0, i.otherCappedBenefits);
   const excess = capExemptReason ? 0 : Math.max(0, counted - capMonthly);
@@ -190,7 +246,7 @@ export function universalCredit2026(i: UcInput): UcResult {
 
   // Earnings at which the tapered award reaches zero (ignoring the cap).
   const room = maximum - otherIncomeDeduction - cap.deduction;
-  const breakEvenEarnings = room > 0 ? workAllowance + room / UC_2026.taper : 0;
+  const breakEvenEarnings = room > 0 ? workAllowance + room / R.taper : 0;
 
   return {
     elements,

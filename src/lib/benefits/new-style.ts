@@ -15,6 +15,8 @@
  *         − half of pension over £85 a week
  */
 
+import { forYear, type RatesYear } from "./rates-year";
+
 export const NEW_STYLE_2026 = {
   jsa: { under25: 75.65, over25: 95.55, weeks: 26, pensionThreshold: 50, earningsDisregard: 5, hoursLimit: 16 },
   esa: {
@@ -32,6 +34,34 @@ export const NEW_STYLE_2026 = {
   },
   waitingDays: 7,
 } as const;
+
+/**
+ * Proposed weekly rates from 6 April 2027: DWP "Proposed benefit and pension
+ * rates 2027 to 2028" (Jobseeker's Allowance personal rates; contributory ESA
+ * personal allowances and components; permitted work limits). The JSA pension
+ * threshold (£50), the £5 earnings disregard and the ESA pension threshold
+ * (£85) are unchanged.
+ */
+export const NEW_STYLE_2027 = {
+  jsa: { under25: 78.3, over25: 98.9, weeks: 26, pensionThreshold: 50, earningsDisregard: 5, hoursLimit: 16 },
+  esa: {
+    assessment: { under25: 78.3, over25: 98.9 },
+    main: 98.9,
+    wrac: 39.3,
+    support: 52.1,
+    assessmentWeeks: 13,
+    wragWeeks: 52,
+    pensionThreshold: 85,
+    permittedWorkHigher: 211.5,
+    permittedWorkLower: 20,
+  },
+  waitingDays: 7,
+} as const;
+
+type Widen<T> = { [K in keyof T]: T[K] extends number ? number : Widen<T[K]> };
+export type NewStyleRates = Widen<typeof NEW_STYLE_2026>;
+
+export const newStyleRates = (year?: RatesYear): NewStyleRates => forYear<NewStyleRates>(year, NEW_STYLE_2026, NEW_STYLE_2027);
 
 /**
  * Lower Earnings Limit a week for each tax year (the year it starts). The
@@ -115,6 +145,8 @@ export type JsaInput = {
   earnings: number;
   /** Hours of paid work a week. 16 or more ends JSA. */
   hours: number;
+  /** Rates to use (default 2026/27). */
+  year?: RatesYear;
 };
 
 export type JsaResult = {
@@ -131,7 +163,7 @@ export type JsaResult = {
 };
 
 export function newStyleJsa(i: JsaInput): JsaResult {
-  const r = NEW_STYLE_2026.jsa;
+  const r = newStyleRates(i.year).jsa;
   const personal = i.over25 ? r.over25 : r.under25;
   const tooManyHours = i.hours >= r.hoursLimit;
   const pensionDeduction = Math.max(0, i.pension - r.pensionThreshold);
@@ -163,6 +195,8 @@ export type EsaInput = {
   earnings: number;
   /** Hours of permitted work a week. */
   hours: number;
+  /** Rates to use (default 2026/27). */
+  year?: RatesYear;
 };
 
 export type EsaResult = {
@@ -179,7 +213,7 @@ export type EsaResult = {
 };
 
 export function newStyleEsa(i: EsaInput): EsaResult {
-  const r = NEW_STYLE_2026.esa;
+  const r = newStyleRates(i.year).esa;
   const basic = i.group === "assessment" ? (i.over25 ? r.assessment.over25 : r.assessment.under25) : r.main;
   let component = 0;
   let componentLabel: string | null = null;
@@ -191,7 +225,7 @@ export function newStyleEsa(i: EsaInput): EsaResult {
     componentLabel = "Work-related activity component";
   }
   const pensionDeduction = Math.max(0, i.pension - r.pensionThreshold) / 2;
-  // Permitted work: under 16 hours and up to £203.50 a week. Anything more ends ESA.
+  // Permitted work: under 16 hours and up to £203.50 a week (£211.50 from April 2027). Anything more ends ESA.
   const permittedWorkOk = i.earnings <= 0 || (i.hours < 16 && i.earnings <= r.permittedWorkHigher);
   const weekly = permittedWorkOk ? round2(Math.max(0, basic + component - pensionDeduction)) : 0;
   return {

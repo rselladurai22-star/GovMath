@@ -21,6 +21,7 @@ const BREADCRUMBS = [
 
 const FAQS: { q: string; a: string }[] = [
   { q: "How much is Pension Credit in 2026/27?", a: "It tops weekly income up to £238.00 for a single person and £363.25 for a couple, with more for disability, caring or children." },
+  { q: "How much will Pension Credit be from April 2027?", a: "Under DWP's proposed rates from 6 April 2027, the standard minimum guarantee rises from £238.00 to £247.30 a week for a single person and from £363.25 to £377.40 for a couple. The Savings Credit threshold rises to £216.32 (single) and £342.74 (couple). These are proposed rates, confirmed when Parliament approves the uprating order." },
   { q: "Is there a savings limit for Pension Credit?", a: "No. The first £10,000 is ignored, and each £500 above that counts as £1 a week of income." },
   { q: "Can I get Pension Credit if I own my home?", a: "Yes. The home you live in does not count." },
   { q: "How far back can Pension Credit be backdated?", a: "Up to three months, if you met the conditions during that time." },

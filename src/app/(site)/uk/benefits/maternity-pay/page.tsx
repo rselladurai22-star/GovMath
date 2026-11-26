@@ -21,6 +21,7 @@ const BREADCRUMBS = [
 
 const FAQS: { q: string; a: string }[] = [
   { q: "How much is Statutory Maternity Pay in 2026/27?", a: "90% of your average weekly earnings for the first 6 weeks, then £194.32 a week or 90% of earnings if lower for the next 33 weeks." },
+  { q: "How much will Statutory Maternity Pay be from April 2027?", a: "Under DWP's proposed rates from 6 April 2027, the flat rate of SMP and Maternity Allowance rises from £194.32 to £201.11 a week, and the earnings threshold for SMP from £129 to £133 a week. The first six weeks are still 90% of your average weekly earnings. These are proposed rates, confirmed when Parliament approves the uprating order." },
   { q: "Who qualifies for SMP?", a: "Employees with 26 weeks' continuous service by the 15th week before the due week, earning at least £129 a week on average." },
   { q: "What if I do not qualify for SMP?", a: "You may get Maternity Allowance: up to £194.32 a week for 39 weeks if you worked 26 of the 66 weeks before your due date." },
   { q: "Is maternity pay taxed?", a: "SMP and employer maternity pay are taxed through payroll. Maternity Allowance is not taxed." },
