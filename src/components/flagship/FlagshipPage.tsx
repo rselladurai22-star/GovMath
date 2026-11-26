@@ -10,6 +10,8 @@ import EmbedCode from "@/components/EmbedCode";
 import { Crumbs } from "@/components/ContentPage";
 import { homeCrumbs, type Crumb } from "@/lib/seo/home-links";
 import { LookProvider } from "./look";
+import { RELATED_POSTS } from "@/lib/blog-links";
+import { getPost } from "@/lib/blog";
 
 /** Topic names as the approved design writes them (e.g. "Mortgages & property"). */
 const TOPIC: Record<string, string> = Object.fromEntries(
@@ -49,6 +51,7 @@ export default function FlagshipPage({
   look?: "indus" | "atlas";
 }) {
   const path = breadcrumbs[breadcrumbs.length - 1].href;
+  const readNext = (RELATED_POSTS[path] ?? []).map(getPost).filter((p) => p !== undefined);
   const topic = TOPIC[breadcrumbs[1]?.href ?? ""] ?? breadcrumbs[1]?.label ?? "";
   const crumbs = homeCrumbs(breadcrumbs.map((c, i) => (i === 1 ? { ...c, label: topic || c.label } : c)));
   const jsonLd = [
@@ -158,6 +161,21 @@ export default function FlagshipPage({
               <p>{note}</p>
             </div>
           </section>
+
+          {readNext.length > 0 && (
+            <section className="section gm-readnext" aria-labelledby="readnext-title">
+              <h2 id="readnext-title">Read next</h2>
+              <div className="gm-readnext-list">
+                {readNext.map((p) => (
+                  <Link key={p.slug} href={`/blog/${p.slug}`} className="gm-readnext-card">
+                    <span className="gm-readnext-kicker">Guide · {p.readingTime}</span>
+                    <strong>{p.title}</strong>
+                    <span>{p.description}</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           {isEmbeddable(path) && (
             <section className="section gm-embedsection" id="embed">
