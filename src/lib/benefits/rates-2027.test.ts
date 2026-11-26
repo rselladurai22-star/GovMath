@@ -81,7 +81,7 @@ describe("worked results with 2027/28 rates", () => {
   it("High Income Child Benefit Charge at £70,000", () => {
     const h = hicbc({ children: 2, income: 70_000, pension: 0, giftAid: 0, weeks: 52, year: "2027/28" });
     expect(h.benefit).toBeCloseTo(2420.6, 2);
-    expect(h.charge).toBeCloseTo(1210.3, 2);
+    expect(h.charge).toBe(1210);
   });
   it("New Style JSA and ESA", () => {
     expect(newStyleJsa({ over25: true, pension: 0, earnings: 0, hours: 0, year: "2027/28" }).weekly).toBe(98.9);

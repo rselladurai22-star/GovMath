@@ -7,8 +7,10 @@ import type { ReactNode } from "react";
  * are in the "Calculator kit" block of public/gm/sumatlas-ds.css), and add
  * page-specific visuals (SVG charts, calendars, scales) beside them.
  *
- * Inputs come from components/flagship/inputs.tsx. Wrap them in <Inputs> so
- * they take the kit's field styling in any layout.
+ * Inputs come from components/flagship/inputs.tsx (full-width rows with
+ * sliders) and components/calc/fields.tsx (`Mini` number boxes and `Pills`,
+ * small enough to sit several to a line). Wrap them in <Inputs> so they take
+ * the kit's field styling in any layout.
  */
 
 /** The tool's outer element. `id="calculator"` keeps in-page links working. */
@@ -119,4 +121,9 @@ export function Flag({ children, tone = "info", title }: { children: ReactNode; 
       <span>{children}</span>
     </div>
   );
+}
+
+/** The line that closes a tool: the caveat on one side, the share link on the other. */
+export function Foot({ children }: { children: ReactNode }) {
+  return <div className="sa-foot">{children}</div>;
 }

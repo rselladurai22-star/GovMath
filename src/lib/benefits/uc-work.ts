@@ -87,3 +87,42 @@ export function workChange(i: WorkInput, extraGross: number): WorkChange {
 
 /** Gross monthly pay from an hourly rate and weekly hours. */
 export const monthlyFromHours = (hourly: number, hours: number) => (Math.max(0, hourly) * Math.max(0, hours) * 52) / 12;
+
+export type WorkLandmarks = {
+  /** Gross pay a month at which the taper starts to bite (0 with no work allowance); null if never within the range. */
+  taperStarts: number | null;
+  /** Gross pay a month at which Income Tax or National Insurance starts; null if never within the range. */
+  deductionsStart: number | null;
+  /** Gross pay a month at which Universal Credit reaches zero; null if it never does within the range, or there is none to lose. */
+  ucEnds: number | null;
+};
+
+/** Smallest gross pay in [0, max] at which `test` is true, for a test that stays true once it turns true. */
+function firstGross(max: number, test: (gross: number) => boolean): number | null {
+  if (test(0)) return 0;
+  if (max <= 0 || !test(max)) return null;
+  let lo = 0;
+  let hi = max;
+  for (let n = 0; n < 40; n++) {
+    const mid = (lo + hi) / 2;
+    if (test(mid)) hi = mid;
+    else lo = mid;
+  }
+  return hi;
+}
+
+/**
+ * Where the slope of income against pay changes, as gross pay a month up to
+ * `maxGross`: the work allowance running out, tax and NI starting, and
+ * Universal Credit ending.
+ */
+export function workLandmarks(i: Omit<WorkInput, "grossMonthly">, maxGross: number): WorkLandmarks {
+  const at = (grossMonthly: number) => workPoint({ ...i, grossMonthly });
+  const allowance = (gross: number) => universalCredit2026({ ...i.household, earnings: at(gross).ucEarnings }).workAllowance;
+  const hasUc = at(0).uc > 0 || at(1).uc > 0;
+  return {
+    taperStarts: hasUc ? firstGross(maxGross, (g) => at(g).ucEarnings >= allowance(g)) : null,
+    deductionsStart: firstGross(maxGross, (g) => at(g).tax + at(g).ni > 0.005),
+    ucEnds: hasUc ? firstGross(maxGross, (g) => g > 0 && at(g).uc <= 0.005) : null,
+  };
+}

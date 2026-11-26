@@ -86,11 +86,16 @@ export function hicbc(i: HicbcInput): HicbcResult {
   const benefit = childBenefitFor(i.children, i.weeks, i.year).forWeeks;
   const ani = Math.max(0, i.income - Math.max(0, i.pension) - Math.max(0, i.giftAid));
   const share = hicbcShare(ani);
-  const charge = benefit * share;
+  // ITEPA 2003 s681C(3): the Child Benefit total and the charge are each
+  // rounded down to whole pounds (pence are rounded first, so £4,199.00 held
+  // as 4198.999… is not cut to £4,198).
+  const pounds = (n: number) => Math.floor(Math.round(n * 100) / 100);
+  const chargeAt = (s: number) => pounds(pounds(benefit) * s);
+  const charge = chargeAt(share);
   // Marginal cost of £1,000 more salary: tax + employee NI + extra charge.
   const tax = (inc: number) => incomeTax(inc).total + nationalInsurance(inc).total;
   const extra = 1000;
-  const after = hicbcShare(ani + extra) * benefit;
+  const after = chargeAt(hicbcShare(ani + extra));
   const marginalRate = (tax(i.income + extra) - tax(i.income) + after - charge) / extra;
   return {
     benefit,

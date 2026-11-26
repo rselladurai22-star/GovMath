@@ -8,6 +8,24 @@ describe("Child Benefit", () => {
     expect(r.annual).toBeCloseTo(2337.4, 6);
     expect(r.fourWeekly).toBeCloseTo(179.8, 6);
   });
+  it("one child gets the eldest rate only (GOV.UK: £27.05 a week)", () => {
+    const r = childBenefitFor(1);
+    expect(r.weekly).toBeCloseTo(27.05, 6);
+    expect(r.fourWeekly).toBeCloseTo(108.2, 6);
+    expect(r.annual).toBeCloseTo(1406.6, 6);
+  });
+  it("eight children: no limit on the number of children", () => {
+    const r = childBenefitFor(8);
+    expect(r.weekly).toBeCloseTo(27.05 + 7 * 17.9, 6);
+    expect(r.annual).toBeCloseTo(7922.2, 6);
+  });
+  it("part of a year", () => {
+    expect(childBenefitFor(1, 30).forWeeks).toBeCloseTo(811.5, 6);
+  });
+  it("proposed rates from April 2027", () => {
+    expect(childBenefitFor(1, 52, "2027/28").weekly).toBeCloseTo(28, 6);
+    expect(childBenefitFor(3, 52, "2027/28").weekly).toBeCloseTo(65.1, 6);
+  });
 });
 
 describe("HICBC", () => {
@@ -24,8 +42,20 @@ describe("HICBC", () => {
   });
   it("half the benefit at £70,000", () => {
     const r = hicbc({ children: 2, income: 70_000, pension: 0, giftAid: 0, weeks: 52 });
-    expect(r.charge).toBeCloseTo(1168.7, 6);
+    // ITEPA 2003 s681C(3): £2,337.40 rounds down to £2,337; half is £1,168.50, rounded down again.
+    expect(r.charge).toBe(1168);
+    expect(r.keep).toBeCloseTo(1169.4, 6);
     expect(r.pensionToAvoid).toBe(10_000);
+  });
+  it("nothing at £60,000, everything (in whole pounds) at £80,000", () => {
+    const at = (income: number, children = 2) => hicbc({ children, income, pension: 0, giftAid: 0, weeks: 52 });
+    expect(at(60_000).charge).toBe(0);
+    expect(at(60_000).band).toBe("none");
+    expect(at(80_000).charge).toBe(2337);
+    expect(at(80_000).band).toBe("full");
+    expect(at(120_000).charge).toBe(2337);
+    // Four children: £4,199.00 exactly, which must not be cut to £4,198 by floating point.
+    expect(at(80_000, 4).charge).toBe(4199);
   });
 });
 
