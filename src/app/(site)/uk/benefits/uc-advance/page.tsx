@@ -37,11 +37,11 @@ const BUDGETING = [
 const FAQS: { q: string; a: string }[] = [
   {
     q: "How quickly is a Universal Credit advance decided?",
-    a: "Usually the same day. Apply through your journal, at the first Jobcentre interview or by phoning the Universal Credit helpline on 0800 328 5644. You will be asked why you need it, to confirm your identity and for bank details.",
+    a: "Usually the same day. Apply through your journal, through your work coach or by phoning the Universal Credit helpline on 0800 328 5644. You will be asked why you need it, to confirm your identity and for bank details.",
   },
   {
     q: "Do I have to take the full amount?",
-    a: "No. You can ask for any amount up to your first estimated payment, and only what you need is worth taking: every pound comes back out of later payments. You can ask for a second advance before your first payment if the first was not enough, up to the same overall limit.",
+    a: "No. You can ask for any amount up to your first estimated payment, and only what you need is worth taking: every pound comes back out of later payments.",
   },
   {
     q: "What happens to the advance if my Universal Credit stops?",
@@ -94,7 +94,7 @@ function Notes() {
               <tr key={k}>
                 <th scope="row">{STANDARD_LABEL[k]}</th>
                 <td>{m(UC_2026.standard[k])}</td>
-                <td>{m(UC_2026.standard[k] * ADVANCE_2026.capShare)}</td>
+                <td>{m(ucAdvance({ estimate: 0, advance: 0, months: 24, standard: k, otherDeductions: 0 }).cap)}</td>
               </tr>
             ))}
           </tbody>
@@ -108,7 +108,7 @@ function Notes() {
       <h2>If the repayments are too much</h2>
       <p>
         Ask through your journal, or by phone, for repayments to be paused. A new claim advance can be delayed for up to {ADVANCE_2026.deferMonths} months and a budgeting advance for up to{" "}
-        {B.deferMonths}. You can also ask for a financial hardship decision, which lowers what is taken for a time. Neither wipes the debt; the months are added to the end.
+        {B.deferMonths}. You can also ask for a financial hardship decision, which lowers what is taken for a time. Neither wipes the debt.
       </p>
 
       <h2>Budgeting advances are different</h2>

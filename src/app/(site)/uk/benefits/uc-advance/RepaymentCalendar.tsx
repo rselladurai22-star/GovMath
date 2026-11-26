@@ -39,7 +39,7 @@ export default function RepaymentCalendar({ months, monthly, other, cap, during,
           })}
         </div>
         {total > 0 && (
-          <div className={`sa-adv-end${months > 16 ? " is-right" : ""}`} style={{ left: `${(months / 24) * 100}%` }}>
+          <div className={`sa-adv-end${months > 13 ? " is-right" : ""}`} style={{ left: `${(months / 24) * 100}%` }}>
             <span>Paid off after month {months}</span>
           </div>
         )}
