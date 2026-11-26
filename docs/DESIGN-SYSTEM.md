@@ -63,51 +63,76 @@ studied, what was taken from it, what was changed and where the code lives.
 
 ## 3. Fonts
 
-The reference's font files are commercial (Proxima Nova) or were served from
-its own CDN, so none were used. Each candidate open-licence font was rendered
-beside the real one at the same size and text, and the closest pair chosen:
+- **Headings and figures: Cabinet Grotesk**, the reference's own heading
+  font, in weights 500, 700 and 800. It has been used since the owner chose
+  it on 26 November 2026; Hanken Grotesk stood in before that.
+  - It was downloaded unmodified from Fontshare, not from the reference's
+    CDN.
+  - Its licence is the ITF Free Font License 2.0, which allows commercial
+    use and self-hosting through `@font-face`.
+  - Don't subset or convert the files: the licence treats modified font
+    files as derivative work.
+- **Text: Figtree** (OFL), the closest free match to the reference's
+  Proxima Nova, which is commercial. It was chosen by rendering it beside the
+  real font against Mulish, Nunito Sans, Montserrat, Inter, Hanken Grotesk
+  and Instrument Sans.
+  - It comes from `@fontsource` 5.3.0 (Latin subset, about 11 KB a weight).
+  - Switching to the real Proxima Nova would need a paid web licence or an
+    Adobe Fonts plan.
 
-- **Text: Figtree** (OFL). Nearly the same width, x-height and letter shapes
-  as Proxima Nova at 16px. The others tried: Mulish, Nunito Sans,
-  Montserrat (too wide), Inter, Hanken Grotesk and Instrument Sans.
-- **Headings and figures: Hanken Grotesk** (OFL), weights 600, 700 and 800.
-  Its grotesk character is closest to Cabinet Grotesk's. The others tried:
-  Schibsted Grotesk (too heavy), Familjen Grotesk, Bricolage Grotesque,
-  Instrument Sans and Figtree.
+The root layouts preload Figtree 400 and Cabinet Grotesk 700. Inter stays in
+the font stack as a fallback.
 
-Both are self-hosted from `@fontsource` 5.3.0 (Latin, 11 to 14 KB a weight,
-smaller than Inter's 24 KB). The root layouts preload Figtree 400 and Hanken
-Grotesk 700. Inter stays in the font stack as a fallback. This replaces the
-handoff's "the font is Inter" rule at the owner's request.
+## 4. Colour
 
-## 4. Colour: three palettes compared
+**The first version (PR 90)** kept SumAtlas's claret and compared three
+palettes:
+- claret, the brand's own colour;
+- Oxford navy;
+- deep teal.
 
-| Palette | Primary | Accent | Verdict |
+**The owner then chose the reference's own colour system with a new green
+brand** (26 November 2026). Green in this design means a colour close to the
+reference's #00B852 but not the same. It takes three roles, each checked for
+contrast:
+
+| Token | Value | Use | Contrast |
 |---|---|---|---|
-| **A. Claret** (chosen) | #8c1d40 (9.5:1 on white) | amber #a8631a | The brand's own colour, used in the logo and favicon and already known to returning visitors. It reads as established and serious, like a UK institution, and nothing like the reference's green. |
-| B. Oxford navy | #1b3a6b | gold #b8860b | Authoritative, but generic for UK finance (banks, GOV.UK-like), and it would clash with the claret logo. |
-| C. Deep teal | #0f5c63 | coral #d0573a | Modern, but too close to the reference's green family, and it would also need a new logo. |
+| brand | #057a3c | links and green text | 5.4:1 on white, 5.1:1 on the warm panel |
+| brand-fill | #00a651 | slider fill, thumb ring, active bars, focus ring | 3.2:1, enough for graphics |
+| brand-btn | #06813f | buttons with white text | 5.0:1 |
+| brand-figure | #0a9a4c | large result figures (22px+ bold) | 3.7:1 |
+| dark | #212426 | header bar (the reference's --primary-black) | white text 15.6:1 |
+| footer | #222 | footer band | |
+| ink | #222 | headings and values | |
+| text-2 | #666 | labels and reading text (the reference's colour) | 5.7:1 |
+| muted | #696969 | small print | 5.7:1 on white, 5.3:1 on the warm panel |
+| line | #ddd | borders and table grids | |
+| surface | #f9f8f3 | calculator panel, listing-page band | |
 
-Neutrals follow the reference's warm system:
+Two of the reference's own values are **not** copied, because they fail WCAG
+AA:
+- its #00B852 green for text and button fills (2.6:1 on white);
+- its #9a9a9a grey for labels (2.8:1).
 
-| Token | Value | Use |
-|---|---|---|
-| ink | #222 | headings and values |
-| text | #4d4d4d | reading text, darker than the reference's #666 (8.4:1) |
-| text-2 | #666 | labels |
-| muted | #696969 | small print, the lightest text allowed (5.7:1 on white, 5.3:1 on the warm panel) |
-| line | #ddd | borders |
-| line-soft | #ebe8e0 | dividers |
-| surface | #f9f8f3 | warm panels |
+**Charts in results** use the reference's violet-blue #6880c8 (what you keep
+or borrow) and gold #d8962a (tax or interest).
+- This covers the donut, split bars and the salary and mortgage charts.
+- Guide charts keep the older blue and orange: their white labels need the
+  darker blue.
 
-Data colours keep the existing chart order: blue, orange, aqua, violet,
-yellow.
+**Logo:** the same mark, recoloured from claret to green #00a651.
+- `sumatlas-logo-dark-*.webp` has a white "Atlas" for the charcoal header
+  and footer.
+- `sumatlas-logo-green-*.webp` is for light backgrounds (embeds).
+- The green mark and icons are `sumatlas-mark-green-512.png` and
+  `sumatlas-icon-green-*.png`, plus the app icons and favicon.
 
 ## 5. Page-by-page mapping
 
 | SumAtlas page or section | Reference page | Reference component | Reproduced | Adapted for SumAtlas |
 |---|---|---|---|---|
-| Header (every page) | all pages | top bar | 66px height, 15 to 16px medium labels, flat with a hairline | white, not charcoal, so the claret logo stays legible; mega menus and search kept |
+| Header (every page) | all pages | top bar | charcoal #212426, 66px height, white 15 to 16px labels, green on hover | mega menus, search (on a dark field) and the country menu kept |
 | Breadcrumb | calculators | `.breadcrumb-list` | 14/20, links in the brand colour, › separators | — |
 | Calculator title and lead | SIP, EMI calculators | `section-title-md`, `section-subtitle` | centred h1 in the heading font, #666 lead | 30/36 (the reference's 28/32 was a little tight); trust line kept under it |
 | Calculator box | SIP, EMI calculators | `.calci-main__container` | warm #f9f8f3 box, 1px #ddd, radius 4, 32px padding, 22px box titles | form beside the results (two columns), not inputs across the top: SumAtlas forms have 3 to 15 fields plus More options |
@@ -116,18 +141,18 @@ yellow.
 | Dropdowns, dates | FD pages | deposit widget | white box, 1px #ddd border, radius 4 | 3+ options still use the custom dropdown (owner's rule) |
 | More options | calculator sidebars | `.misc-title` panel | white panel, radius 4, heading-font title | — |
 | Calculate button | FD page | "Compare & Invest" | solid brand pill | full width in the form |
-| Results card | EMI calculator | result list and donut | white card, 1px #ddd; headline row; donut; rows with dots, dashed dividers, 18px bold values | headline figure in a claret-tint band; share pills kept |
+| Results card | EMI calculator | result list and donut | white card, 1px #ddd; headline row (grey label, large green figure); donut in violet-blue and gold; rows with dots, dashed dividers, 18px bold values | share pills kept |
 | Results in detail | FD pages | highlight cards | white cards, 1px #ddd, radius 4; heading-font figures | — |
 | Related calculators | calculator pages | "Most Used Calculators" panel | white title bar over a warm list of brand links | blurb under each link; sidebar from 1200px, grid below it |
 | Guide | SIP calculator | `.sec-ques-ans` | centred "All you need to know" heading; sticky left menu with a right rule and a 4px brand bar; 22px titles; numbers and kickers hidden | text 16/26 #4d4d4d (the reference's 15/19 #666 is too tight for 2,000-word guides) |
-| Guide figures and examples | FD pages | highlights card | warm tiles; claret heading-font figures | callouts in amber, the second colour |
-| Tables | FD pages | rate tables | white, warm header row, 1px rules, 12px/16px padding, sentence-case headers | rules on rows only (lighter); the current row in a claret tint |
+| Guide figures and examples | FD pages | highlights card | warm tiles; green heading-font figures | callouts in amber, the second colour |
+| Tables | FD pages | rate tables | white, a full 1px #ddd grid, bold header row, 12px/16px padding | the current row in a green tint |
 | FAQ | SIP calculator | `.section-common-faq` | centred 840px column, 28px title, one ruled row per question, heading-font questions, round + button | questions not numbered |
-| Home hero (`/uk`, `/`) | home | hero | 52/58 extra-bold headline on a light band, solid pill button | last line in claret with a soft underline |
-| Topic, all-calculators and hub pages | tools-and-calculators | card grid | white title band; cards with radius 8 and a 0 0 4px shadow, no border; outlined pill actions; pill topic links | lift on hover; claret icon tiles |
+| Home hero (`/uk`, `/`) | home | hero | 52/58 extra-bold headline on a light band, solid pill button | last line in green with a soft underline |
+| Topic, all-calculators and hub pages | tools-and-calculators | card grid | white title band; cards with radius 8 and a 0 0 4px shadow, no border; outlined pill actions; pill topic links | lift on hover; green icon tiles; the cards sit on the warm band, the title band stays white |
 | Grey bands | listings | #f9f8f3 band | warm band | — |
 | Articles and content pages | learn | article body | heading font for titles; 17/28 text | — |
-| Footer | all pages | footer | flat band with a hairline | warm, not charcoal: the logo's dark wordmark and white Σ would vanish on charcoal |
+| Footer | all pages | footer | charcoal #222, white links, grey small print | logo in its white-wordmark version |
 
 ## 6. Where it lives
 
@@ -154,7 +179,7 @@ yellow.
 
 - Every text token meets WCAG AA on white and on the warm surface.
 - The reference's #9a9a9a labels were not copied.
-- Focus is visible everywhere: a 2px claret-pink ring, a halo on slider
+- Focus is visible everywhere: a 2px green ring, a halo on slider
   thumbs, a tint ring on boxes.
 - The site-wide contrast check (text under 4.5:1, or under 3:1 for large
   text) runs over every sitemap page at 1440px and 390px. Its results are in

@@ -5,10 +5,12 @@
    rules sit on top of the package stylesheets and govmath-theme.css.
    Type, spacing, controls and layout follow the reference design measured
    from etmoney.com's rendered pages (computed styles, November 2026; see
-   docs/DESIGN-SYSTEM.md). Colours are SumAtlas's own: claret brand, warm
-   neutrals. Fonts are open-licence matches to the reference's fonts:
-   Figtree for text (Proxima Nova's role) and Hanken Grotesk for headings
-   and figures (Cabinet Grotesk's role).
+   docs/DESIGN-SYSTEM.md). Colours follow the reference's system at the
+   owner's request: a green brand (close to, not the same as, the
+   reference's), charcoal header and footer, warm panels, #222/#666 text.
+   Headings and figures use Cabinet Grotesk (the reference's heading font,
+   self-hosted from Fontshare under the ITF Free Font License); text uses
+   Figtree (the closest free match to the reference's Proxima Nova).
    ══════════════════════════════════════════════════════════════════════ */
 
 /* ── Fonts ─────────────────────────────────────────────────────────── */
@@ -16,18 +18,22 @@
 @font-face { font-family: "Figtree"; font-style: normal; font-weight: 500; font-display: swap; src: url("/gm/fonts/figtree-500.woff2") format("woff2"); }
 @font-face { font-family: "Figtree"; font-style: normal; font-weight: 600; font-display: swap; src: url("/gm/fonts/figtree-600.woff2") format("woff2"); }
 @font-face { font-family: "Figtree"; font-style: normal; font-weight: 700; font-display: swap; src: url("/gm/fonts/figtree-700.woff2") format("woff2"); }
-@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 600; font-display: swap; src: url("/gm/fonts/hanken-grotesk-600.woff2") format("woff2"); }
-@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 700; font-display: swap; src: url("/gm/fonts/hanken-grotesk-700.woff2") format("woff2"); }
-@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 800; font-display: swap; src: url("/gm/fonts/hanken-grotesk-800.woff2") format("woff2"); }
+@font-face { font-family: "Cabinet Grotesk"; font-style: normal; font-weight: 500; font-display: swap; src: url("/gm/fonts/cabinet-grotesk-500.woff2") format("woff2"); }
+@font-face { font-family: "Cabinet Grotesk"; font-style: normal; font-weight: 600 700; font-display: swap; src: url("/gm/fonts/cabinet-grotesk-700.woff2") format("woff2"); }
+@font-face { font-family: "Cabinet Grotesk"; font-style: normal; font-weight: 800; font-display: swap; src: url("/gm/fonts/cabinet-grotesk-800.woff2") format("woff2"); }
 
 /* ── Tokens ────────────────────────────────────────────────────────── */
 :root {
-  /* Brand: claret (chosen over Oxford navy and deep teal, see the design doc). */
-  --sa-brand: #8c1d40;          /* links, slider fill, key figures, active marks: 9.5:1 on white */
-  --sa-brand-hover: #6e1632;
-  --sa-brand-focus: #b8325f;
-  --sa-brand-tint: #fbf3f6;     /* selected rows, light highlights */
-  --sa-brand-soft: #f2dde5;     /* chips, hovered cards */
+  /* Brand: green (owner's choice, November 2026; claret before). Three roles,
+     each checked for contrast: text needs 4.5:1, graphics 3:1. */
+  --sa-brand: #057a3c;          /* links and green text: 5.4:1 on white, 5.1:1 on the warm panel */
+  --sa-brand-hover: #04703a;
+  --sa-brand-fill: #00a651;     /* slider fill, thumb ring, active bars, focus ring: 3.2:1 (graphics) */
+  --sa-brand-btn: #06813f;      /* buttons with white text: 5.0:1 */
+  --sa-brand-figure: #0a9a4c;   /* large figures (22px+ bold): 3.7:1 */
+  --sa-brand-focus: #00a651;
+  --sa-brand-tint: #effaf3;     /* selected rows, light highlights (the reference's #f1fff0 role) */
+  --sa-brand-soft: #d4f2df;     /* chips, hovered cards */
   --sa-accent: #a8631a;         /* gold-amber second colour (5.0:1 on white) */
   --sa-accent-tint: #fdf6ec;
 
@@ -41,8 +47,11 @@
   --sa-surface: #f9f8f3;        /* warm panel (calculator box, bands) */
   --sa-surface-2: #f3f1e9;      /* hover on warm panels */
   --sa-white: #ffffff;
-  --sa-dark: #212426;           /* footer */
-  --sa-dark-2: #2f3136;
+  --sa-dark: #212426;           /* header bar (the reference's --primary-black) */
+  --sa-dark-2: #2f3136;         /* header search, raised dark surfaces */
+  --sa-footer: #222222;         /* footer band */
+  --sa-on-dark: #ffffff;        /* text on charcoal: 15.6:1 */
+  --sa-on-dark-2: #c9c9c9;      /* secondary text on charcoal: 9.4:1 */
 
   /* Data colours (charts, legends): one fixed order everywhere. */
   --sa-data-1: #2a78d6;
@@ -55,7 +64,7 @@
 
   /* Type */
   --sa-font: "Figtree", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --sa-head: "Hanken Grotesk", "Figtree", "Inter", system-ui, sans-serif;
+  --sa-head: "Cabinet Grotesk", "Figtree", "Inter", system-ui, sans-serif;
   --sa-fs-hero: 48px;  --sa-lh-hero: 56px;
   --sa-fs-h1: 28px;    --sa-lh-h1: 34px;
   --sa-fs-h2: 22px;    --sa-lh-h2: 28px;
@@ -268,7 +277,7 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
   cursor: pointer;
 }
 .gm-claret .calculator.gm-atlas .gm-form input[type="range"]:hover::-webkit-slider-thumb,
-.gm-claret .calculator.gm-atlas .gm-form input[type="range"]:focus-visible::-webkit-slider-thumb { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(140, 29, 64, 0.12); }
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"]:focus-visible::-webkit-slider-thumb { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(5, 122, 60, 0.12); }
 .gm-claret .calculator.gm-atlas .gm-form .endpoints { font-size: 12px; line-height: 16px; color: var(--sa-muted); }
 
 /* Dropdowns, dates and text boxes: white box, 1px border, radius 4 (the reference's FD widget). */
@@ -645,7 +654,7 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
 .gm-claret .gm-neutral .g-article :is(strong, b) { color: var(--sa-ink); font-weight: 700; }
 .gm-claret .gm-neutral .g-article a,
 .gm-claret .gm-neutral .gm-prose a,
-.gm-claret .gm-neutral .pg-links a { color: var(--sa-brand); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: rgba(140, 29, 64, 0.35); }
+.gm-claret .gm-neutral .pg-links a { color: var(--sa-brand); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: rgba(5, 122, 60, 0.35); }
 .gm-claret .gm-neutral .g-article a:hover,
 .gm-claret .gm-neutral .gm-prose a:hover { text-decoration-color: currentColor; }
 
@@ -851,7 +860,7 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
 /* The old claret hero forced claret text on its white button (!important). */
 .gm-claret .gm-neutral .hero .button.herobutton,
 .gm-claret .gm-neutral .hero .button.herobutton:hover { color: var(--sa-white) !important; }
-.gm-claret .gm-neutral .hero .herocopy h1 em { color: var(--sa-brand); text-decoration-color: rgba(140, 29, 64, 0.35); text-decoration-thickness: 4px; text-underline-offset: 8px; }
+.gm-claret .gm-neutral .hero .herocopy h1 em { color: var(--sa-brand); text-decoration-color: rgba(5, 122, 60, 0.35); text-decoration-thickness: 4px; text-underline-offset: 8px; }
 
 /* Section headings on listing pages: kicker, then a 28px title. */
 .gm-claret .gm-neutral .sectionheading h2,
@@ -953,7 +962,7 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
 .gm-claret .gm-neutral .g-barRow { display: grid; grid-template-columns: minmax(120px, 170px) minmax(0, 1fr); gap: 14px; align-items: center; }
 .gm-claret .gm-neutral .g-barName { font-size: 14px; line-height: 18px; font-weight: 600; color: var(--sa-ink); }
 .gm-claret .gm-neutral .g-barTrack { position: relative; display: block; height: 30px; background: #f3f1ea; border-radius: var(--sa-r-sm); overflow: hidden; }
-.gm-claret .gm-neutral .g-barFill { position: absolute; inset: 0 auto 0 0; display: block; background: #d99bb2; border-radius: var(--sa-r-sm) 0 0 var(--sa-r-sm); }
+.gm-claret .gm-neutral .g-barFill { position: absolute; inset: 0 auto 0 0; display: block; background: #9bd9b5; border-radius: var(--sa-r-sm) 0 0 var(--sa-r-sm); }
 .gm-claret .gm-neutral .g-barValue { position: relative; z-index: 1; display: block; line-height: 30px; padding-left: 10px; font-size: 13px; font-weight: 700; color: var(--sa-ink); white-space: nowrap; }
 
 /* One neutral family: the old cool greys become the warm panel. */
@@ -1038,3 +1047,139 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
 @media (max-width: 400px) {
   .gm-claret .gm-neutral .popularcard .openlabel { white-space: normal; padding: 4px 10px; }
 }
+
+/* ══════════════════════════════════════════════════════════════════════
+   The reference's colour system and finish (November 2026, owner's choice)
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Header: charcoal bar, white 16px labels, green on hover (reference:
+   header #212426, 66px, nav proxima 16px #fff) ─────────────────────── */
+.gm-claret header.ax-header { background: var(--sa-dark); border-bottom: 0; box-shadow: none; }
+.gm-claret header.ax-header .ax-navigation .ax-navbutton,
+.gm-claret header.ax-header .ax-navigation .homelink,
+.gm-claret header.ax-header .ax-navigation > a { color: var(--sa-on-dark); font-size: 15px; font-weight: 500; background: none; }
+.gm-claret header.ax-header .ax-navigation .ax-navbutton .chevron,
+.gm-claret header.ax-header .chevron { border-color: var(--sa-on-dark); color: var(--sa-on-dark); }
+.gm-claret header.ax-header .ax-navigation .ax-navbutton:hover,
+.gm-claret header.ax-header .ax-navigation .ax-navbutton[aria-expanded="true"] { color: var(--sa-brand-fill); background: none; }
+.gm-claret header.ax-header .ax-navigation .ax-navbutton[aria-expanded="true"] .chevron { border-color: var(--sa-brand-fill); }
+/* Search on charcoal */
+.gm-claret header.ax-header .ax-search.gm-headsearch { background: var(--sa-dark-2); border: 1px solid #3a3d42; }
+.gm-claret header.ax-header .ax-search.gm-headsearch :is(input, svg, span) { color: var(--sa-on-dark); fill: currentColor; }
+.gm-claret header.ax-header .ax-search.gm-headsearch input::placeholder { color: #aeb0b2; }
+.gm-claret header.ax-header .ax-search.gm-headsearch:focus-within { background: var(--sa-dark-2); border-color: var(--sa-brand-fill); box-shadow: none; outline: 2px solid var(--sa-brand-fill); outline-offset: 1px; }
+/* Search results and mega menus stay white panels under the bar. */
+.gm-claret header.ax-header #tool-search-results { background: var(--sa-white); color: var(--sa-ink); }
+.gm-claret header.ax-header .ax-mega { background: var(--sa-white); border-top: 3px solid var(--sa-brand-fill); }
+.gm-claret header.ax-header .ax-mega .ax-mega-links a { color: var(--sa-ink); }
+.gm-claret header.ax-header .ax-mega .ax-mega-links a:hover { color: var(--sa-brand); }
+/* Country menu and phone Menu button on charcoal */
+.gm-claret header.ax-header .gm-country-btn { color: var(--sa-on-dark); background: none; border-color: transparent; }
+.gm-claret header.ax-header .gm-country-btn :is(svg, path) { stroke: currentColor; }
+.gm-claret header.ax-header .gm-country-list { background: var(--sa-white); }
+.gm-claret header.ax-header .gm-country-list a { color: var(--sa-ink); }
+.gm-claret header.ax-header .ax-mobile-toggle { background: var(--sa-brand-btn); border: 1px solid var(--sa-brand-btn); color: var(--sa-on-dark); border-radius: var(--sa-r-sm); }
+@media (max-width: 850px) {
+  /* The phone menu opens as a charcoal sheet, like the bar. */
+  .gm-claret header.ax-header .ax-navigation.mobile-open { background: var(--sa-dark); }
+  .gm-claret header.ax-header .ax-navigation.mobile-open .ax-navbutton { border-bottom: 1px solid #34373c; }
+}
+
+/* ── Footer: charcoal band, white headings, light grey links ─────────── */
+.gm-claret footer { background: var(--sa-footer); border-top: 0; color: var(--sa-on-dark-2); }
+.gm-claret footer :is(p, span, div) { color: var(--sa-on-dark-2); }
+.gm-claret footer nav a,
+.gm-claret footer a:not(.logo) { color: var(--sa-on-dark); }
+.gm-claret footer nav a:hover { color: var(--sa-brand-fill); }
+.gm-claret footer .footerbottom { border-top: 1px solid #3a3a3a; color: #aeb0b2; }
+
+/* ── Green controls ──────────────────────────────────────────────────── */
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"] { background: linear-gradient(to right, var(--sa-brand-fill) 0 var(--fill, 0%), var(--sa-line) var(--fill, 0%) 100%); }
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"]::-webkit-slider-thumb { border-color: var(--sa-brand-fill); }
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"]::-moz-range-thumb { border-color: var(--sa-brand-fill); }
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"]:hover::-webkit-slider-thumb,
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"]:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 6px rgba(0, 166, 81, 0.16); }
+.gm-claret .calculator.gm-atlas .gm-form .gm-radio input { accent-color: var(--sa-brand-fill); }
+.gm-claret .calculator.gm-atlas .gm-form .gm-switch[aria-checked="true"] { background: var(--sa-brand-fill); border-color: var(--sa-brand-fill); }
+.gm-claret .calculator.gm-atlas .gm-form .number:focus-within { outline-color: var(--sa-brand-fill); }
+.gm-claret .calculator.gm-atlas .bank-calculate,
+.gm-claret .gm-neutral .hero :is(.button, a.button) {
+  background: var(--sa-brand-btn);
+  border-color: var(--sa-brand-btn);
+  color: var(--sa-white);
+}
+.gm-claret .calculator.gm-atlas .bank-calculate:hover,
+.gm-claret .gm-neutral .hero :is(.button, a.button):hover { background: var(--sa-brand-hover); border-color: var(--sa-brand-hover); }
+.gm-claret :focus-visible { outline-color: var(--sa-brand-fill); }
+
+/* ── Results: the reference's result list. The headline is a plain row
+   (grey label left, large green figure right), not a tinted box. ───── */
+.gm-claret .calculator.gm-atlas .ax-paymentstrip {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px dashed var(--sa-line);
+  border-radius: 0;
+  padding: 4px 0 14px;
+  margin: 0 0 12px;
+}
+.gm-claret .calculator.gm-atlas .ax-paymentstrip span { font-size: 16px; font-weight: 400; color: var(--sa-text-2); }
+.gm-claret .calculator.gm-atlas .ax-paymentstrip strong { font-size: 28px; line-height: 34px; font-weight: 800; color: var(--sa-brand-figure); }
+.gm-claret .calculator.gm-atlas .ax-paymentstrip small { color: var(--sa-text-2); }
+.gm-claret .calculator.gm-atlas .gm-legend li > span { font-size: 16px; color: var(--sa-text-2); }
+.gm-claret .calculator.gm-atlas .gm-legend li b { font-size: 18px; }
+.gm-claret .calculator.gm-atlas .result.ax-chartpanel { border-color: var(--sa-line); }
+.gm-claret .gm-neutral .pg-badge,
+.gm-claret .gm-neutral :is(.q-kicker, .pg-guidehead .pg-kicker) { color: var(--sa-brand); }
+
+/* ── Reading text: the reference's grey, a little more leading ──────── */
+.gm-claret .gm-neutral .g-article :is(p, li),
+.gm-claret .gm-neutral .q-faq :is(.q-faqBody, .q-faqBody p) { font-size: 15px; line-height: 23px; color: var(--sa-text-2); }
+.gm-claret .gm-neutral .g-article :is(strong, b) { color: var(--sa-ink); }
+.gm-claret .gm-neutral .guide-nav a { font-size: 17px; line-height: 22px; font-weight: 600; padding: 12px 18px 12px 0; }
+.gm-claret .gm-neutral .g-sectionHead h2,
+.gm-claret .gm-neutral .g-section > h2 { font-size: 20px; line-height: 24px; }
+.gm-claret .gm-neutral .g-statValue { color: var(--sa-brand-figure); }
+
+/* ── Tables: the reference's rate tables (a full 1px #ddd grid, bold header). */
+.gm-claret .gm-neutral table th,
+.gm-claret .gm-neutral table td,
+.gm-claret .gm-neutral table tbody tr th { border: 1px solid var(--sa-line); }
+.gm-claret .gm-neutral table thead th { background: var(--sa-white); font-size: 15px; }
+.gm-claret .gm-neutral :is(.g-tableWrap, .gm-tablewrap, .tablewrap) table { border-collapse: collapse; margin: -1px; width: calc(100% + 2px); }
+
+/* ── Listing pages sit on the warm band; the title band stays white. ── */
+.gm-claret main.gm-neutral:has(:is(.fullcategory, .categorygrid, .gm-hub)) { background: var(--sa-surface); }
+.gm-claret main.gm-neutral:has(:is(.fullcategory, .categorygrid, .gm-hub)) :is(.categoryhero, .hero) {
+  background: var(--sa-white);
+  box-shadow: 0 0 0 100vmax var(--sa-white);
+  clip-path: inset(0 -100vmax);
+}
+.gm-claret main.gm-neutral:has(:is(.fullcategory, .categorygrid, .gm-hub)) .crumb { position: relative; }
+.gm-claret .gm-neutral .hero { background: var(--sa-white); border-bottom: 0; }
+.gm-claret .gm-neutral .hero .herocopy h1 em { color: var(--sa-brand); text-decoration-color: rgba(0, 166, 81, 0.4); }
+.gm-claret .gm-neutral :is(.categorytool, .gm-card, .categorycard, .popularcard) { box-shadow: 0 0 4px rgba(0, 0, 0, 0.18); }
+.gm-claret .gm-neutral :is(.gm-go, .openlabel, .viewall) { color: var(--sa-brand); border-color: var(--sa-brand-fill); }
+.gm-claret .gm-neutral .categoryjump a:is(.active, [aria-current], .chosen) { background: var(--sa-brand-btn); border-color: var(--sa-brand-btn); }
+.gm-claret .gm-neutral .toolicon { background: var(--sa-brand-tint); color: var(--sa-brand); }
+.gm-claret .gm-neutral .categorytool:hover :is(h2, h3, strong) { color: var(--sa-brand); }
+
+/* ── Motion (reference: 0.2s colour and opacity, 0.5s accordion arrows) */
+.gm-claret .gm-neutral .q-faq summary::after { transition: transform 0.5s ease, background var(--sa-ease); }
+.gm-claret .gm-neutral .q-faq[open] summary::after { transform: rotate(45deg); }
+@keyframes sa-reveal { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+.gm-claret .gm-neutral :is(.q-faq[open] .q-faqBody, details.moreoptions[open] > :not(summary), details.ax-assumptions[open] > :not(summary)) { animation: sa-reveal 0.25s ease both; }
+.gm-claret header.ax-header .ax-mega:not([hidden]) { animation: sa-reveal 0.2s ease both; }
+.gm-claret .calculator.gm-atlas .gm-donut-arc { transition: stroke-width 0.2s ease, opacity 0.2s ease, stroke-dasharray 0.4s ease, stroke-dashoffset 0.4s ease; }
+@media (prefers-reduced-motion: reduce) {
+  .gm-claret *, .gm-claret *::before, .gm-claret *::after { animation: none !important; transition: none !important; }
+}
+/* A 66px bar, as on the reference: a 40px logo and tighter padding. */
+.gm-claret header.ax-header .wrap.header { padding-top: 10px; padding-bottom: 10px; min-height: 66px; }
+.gm-claret header.ax-header .logo img { height: 40px; width: auto; }
+@media (max-width: 850px) {
+  .gm-claret header.ax-header .logo img { height: 36px; }
+}
+.gm-claret .gm-neutral .categoryjump a:is(.active, [aria-current], .chosen),
+.gm-claret .gm-neutral .categoryjump a:is(.active, [aria-current], .chosen):hover { color: var(--sa-white); }
+.gm-claret footer .footergrid > div p,
+.gm-claret footer .footergrid p { color: var(--sa-on-dark-2); }

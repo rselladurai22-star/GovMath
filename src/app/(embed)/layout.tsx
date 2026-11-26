@@ -19,7 +19,7 @@ const CSS = [...CALCULATOR_CSS, ...THEME_BEFORE, "govmath-site.css", ...THEME_AF
 
 export default function EmbedLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   preload("/gm/fonts/figtree-400.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
-  preload("/gm/fonts/hanken-grotesk-700.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/gm/fonts/cabinet-grotesk-700.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   return (
     <html lang="en">
       <body className="gm-embedbody">

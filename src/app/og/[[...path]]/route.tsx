@@ -57,13 +57,13 @@ function card(path: string): { kicker: string; title: string; text: string } {
 export async function GET(_req: Request, { params }: { params: Promise<{ path?: string[] }> }) {
   const { path } = await params;
   const { kicker, title, text } = card(path?.length ? `/${path.join("/")}` : "/");
-  const badge = `data:image/png;base64,${(await readFile(join(process.cwd(), "public/gm/sumatlas-mark-512.png"))).toString("base64")}`;
+  const badge = `data:image/png;base64,${(await readFile(join(process.cwd(), "public/gm/sumatlas-mark-green-512.png"))).toString("base64")}`;
   return new ImageResponse(
     (
       <div style={{ height: "100%", width: "100%", display: "flex", flexDirection: "column", background: "#ffffff", color: "#282828" }}>
-        <div style={{ height: 18, width: "100%", background: "#8c1d40", display: "flex" }} />
+        <div style={{ height: 18, width: "100%", background: "#057a3c", display: "flex" }} />
         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 80px" }}>
-          <div style={{ fontSize: 30, color: "#8c1d40", fontWeight: 700, marginBottom: 22, display: "flex" }}>{kicker}</div>
+          <div style={{ fontSize: 30, color: "#057a3c", fontWeight: 700, marginBottom: 22, display: "flex" }}>{kicker}</div>
           <div style={{ fontSize: title.length > 40 ? 66 : 78, fontWeight: 800, lineHeight: 1.1, marginBottom: 28, display: "flex" }}>{title}</div>
           <div style={{ fontSize: 32, color: "#6e6e6e", lineHeight: 1.4, display: "flex" }}>{text.length > 120 ? `${text.slice(0, 117)}…` : text}</div>
         </div>
@@ -71,7 +71,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ path?: 
           <span style={{ display: "flex", alignItems: "center", gap: 18 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={badge} width={72} height={72} alt="" />
-            <span style={{ fontWeight: 800, color: "#8c1d40" }}>SumAtlas</span>
+            <span style={{ fontWeight: 800, color: "#057a3c" }}>SumAtlas</span>
           </span>
           <span style={{ color: "#6e6e6e" }}>sumatlas.com · Free, no sign-up · Independent</span>
         </div>

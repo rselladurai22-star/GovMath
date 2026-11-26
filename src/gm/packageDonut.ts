@@ -59,7 +59,7 @@ export function initPackageDonut() {
   };
 
   const draw = () => {
-    // The script writes conic-gradient(#2a78d6 0% 78.4%,#eb6834 0% 100%); browsers
+    // The script writes conic-gradient(#6880c8 0% 78.4%,#d8962a 0% 100%); browsers
     // read it back as rgb() colours with one position per stop. Group each run
     // of one colour and take its furthest position as the slice's end.
     const css = ring.style.background || "";

@@ -27,15 +27,15 @@ export const metadata: Metadata = {
   ...(ADSENSE_CLIENT ? { other: { "google-adsense-account": ADSENSE_CLIENT } } : {}),
 };
 
-// The browser bar on phones takes the site's claret.
-export const viewport: Viewport = { themeColor: "#8c1d40" };
+// The browser bar on phones matches the charcoal header (design system, November 2026).
+export const viewport: Viewport = { themeColor: "#212426" };
 
 // The tab icon, Google's favicon and home-screen icons come from the files
 // src/app/favicon.ico, icon.png and apple-icon.png (the round SumAtlas badge).
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   // Inter 400 and 700 are used on every page; fetch them before the CSS asks.
   preload("/gm/fonts/figtree-400.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
-  preload("/gm/fonts/hanken-grotesk-700.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
+  preload("/gm/fonts/cabinet-grotesk-700.woff2", { as: "font", type: "font/woff2", crossOrigin: "anonymous" });
   return (
     <html lang="en-GB">
       <body>
