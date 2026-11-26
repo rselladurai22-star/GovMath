@@ -35,7 +35,7 @@
   --sa-ink: #222222;            /* headings, values: 15.9:1 */
   --sa-text: #4d4d4d;           /* reading text: 8.4:1 (the reference uses #666) */
   --sa-text-2: #666666;         /* secondary text, labels: 5.7:1 */
-  --sa-muted: #757575;          /* small print, the lightest text allowed on white: 4.6:1 */
+  --sa-muted: #696969;          /* small print, the lightest text allowed: 5.7:1 on white, 5.3:1 on the warm panel */
   --sa-line: #dddddd;           /* borders, table rules */
   --sa-line-soft: #ebe8e0;      /* dividers on warm panels */
   --sa-surface: #f9f8f3;        /* warm panel (calculator box, bands) */
@@ -1032,4 +1032,9 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
   .gm-claret .gm-neutral .categorytool p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-bottom: 0; }
   .gm-claret .gm-neutral .hero h1 { font-size: 32px; line-height: 38px; }
   .gm-claret .gm-neutral .g-barRow { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+}
+.gm-claret .gm-neutral .gm-optional { background: #f3f1ea; color: var(--sa-text-2); }
+.gm-claret .gm-neutral :is(.popularcard, .categorycard, .gm-card) { min-width: 0; }
+@media (max-width: 400px) {
+  .gm-claret .gm-neutral .popularcard .openlabel { white-space: normal; padding: 4px 10px; }
 }
