@@ -61,6 +61,16 @@ function repayment(plan: Plan, salary: number, threshold = PLANS_2026[plan].thre
   return Math.max(0, salary - threshold) * p.rate;
 }
 
+/**
+ * What an employer takes from one month's pay. Payroll uses the published
+ * monthly threshold (the yearly one divided by 12 and rounded down) and
+ * rounds the 9% down to a whole pound, as in GOV.UK's worked examples.
+ */
+export function monthlyPayroll(plan: Plan, salary: number, threshold = PLANS_2026[plan].threshold): number {
+  const p = PLANS_2026[plan];
+  return Math.floor(Math.max(0, Math.max(0, salary) / 12 - Math.floor(threshold / 12)) * p.rate + 1e-9);
+}
+
 export type RepayInput = { salary: number; plans: Plan[] };
 
 export type RepayLine = { plan: Plan; threshold: number; rate: number; yearly: number; monthly: number; weekly: number };
@@ -119,7 +129,9 @@ export function projectLoan(i: ProjectionInput): ProjectionResult {
   let totalInterest = 0;
   let clearedIn: number | null = balance <= 0 ? 0 : null;
   for (let y = 1; y <= yearsLeft && balance > 0; y++) {
-    const rate = y === 1 ? interestRate(i.plan, salary) : interestRate(i.plan, salary, i.rpi, i.rpi + 1, 1);
+    // Plan 2's interest band moves with the repayment threshold, so later years compare salary to the uprated band.
+    const bandIncome = salary * (spec.threshold / threshold);
+    const rate = y === 1 ? interestRate(i.plan, salary) : interestRate(i.plan, bandIncome, i.rpi, i.rpi + 1, 1);
     const interest = balance * rate;
     const due = repayment(i.plan, salary, threshold) + Math.max(0, i.extraMonthly) * 12;
     const repaid = Math.min(balance + interest, due);
@@ -143,62 +155,155 @@ export function projectLoan(i: ProjectionInput): ProjectionResult {
 
 export type Living = "home" | "away" | "london" | "abroad";
 
+type LivingRates = {
+  label: string;
+  /** Full-year maximum (Education (Student Support) Regulations 2011, reg. 80A(2)). */
+  max: number;
+  /** Final-year maximum (reg. 80A(3)): the final year is shorter. */
+  finalMax: number;
+  /** The non-means-tested part (reg. 105(6A)), and in a final year (reg. 105(6B)). */
+  min: number;
+  finalMin: number;
+  /** £1 off for every complete £… of household income over £25,000. */
+  divisor: number;
+  /** Students who can claim benefits, such as lone parents (reg. 80B): a higher maximum, tapered faster up to £42,875. */
+  benefits: { max: number; finalMax: number; divisor: number; finalDivisor: number };
+  /** Long Courses Loan for each week beyond 30 weeks and 3 days (reg. 81(5)). */
+  longWeek: number;
+};
+
 /**
- * Maximum at £25,000 household income or less, falling in a straight line to
- * the minimum at `minAt`. The away-from-home figures are from the official
- * 2026/27 table; home and London minimums from published 2026/27 guides; the
- * abroad minimum and its income point are estimates.
+ * 2026/27 rates from S.I. 2026/130 (amending the Education (Student Support)
+ * Regulations 2011), matching Student Finance England's "How you're assessed
+ * and paid 2026 to 2027". Categories A to D in the regulations: with parents,
+ * London, abroad, elsewhere.
  */
-export const MAINTENANCE_2026: Record<Living, { max: number; min: number; minAt: number; label: string }> = {
-  home: { max: 9_118, min: 4_013, minAt: 58_347, label: "Living with parents" },
-  away: { max: 10_830, min: 5_048, minAt: 62_410, label: "Away from home, outside London" },
-  london: { max: 14_135, min: 7_039, minAt: 70_131, label: "Away from home, in London" },
-  abroad: { max: 12_403, min: 5_947, minAt: 66_770, label: "Studying abroad" },
+export const MAINTENANCE_2026: Record<Living, LivingRates> = {
+  home: { label: "Living with parents", max: 9_118, finalMax: 8_579, min: 4_013, finalMin: 3_687, divisor: 6.54, benefits: { max: 10_757, finalMax: 10_255, divisor: 4.088, finalDivisor: 4.054 }, longWeek: 77 },
+  away: { label: "Away from home, outside London", max: 10_830, finalMax: 10_242, min: 5_048, finalMin: 4_693, divisor: 6.47, benefits: { max: 12_345, finalMax: 11_800, divisor: 4.179, finalDivisor: 4.137 }, longWeek: 116 },
+  london: { label: "Away from home, in London", max: 14_135, finalMax: 13_096, min: 7_039, finalMin: 6_413, divisor: 6.36, benefits: { max: 15_415, finalMax: 14_447, divisor: 4.37, finalDivisor: 4.295 }, longWeek: 149 },
+  abroad: { label: "A year studying abroad", max: 12_403, finalMax: 11_103, min: 5_996, finalMin: 5_210, divisor: 6.41, benefits: { max: 13_806, finalMax: 12_597, divisor: 4.265, finalDivisor: 4.174 }, longWeek: 161 },
 };
 
 export const STUDENT_SUPPORT_2026 = {
   tuitionFee: 9_790,
   accelerated: 11_750,
   incomeThreshold: 25_000,
-  over60: 4_582,
-  parentsLearning: { max: 2_024, min: 50 },
-  childcareWeekly: { one: 199.62, two: 342.24 },
-  adultDependants: 3_545,
+  /** Where the faster taper for students who can claim benefits ends. */
+  benefitsKnee: 42_875,
+  /** Students aged 60 or over: a loan for living costs of up to £4,582, £1 off for every £4.16 over £25,000, nil below £50 (reg. 80C). */
+  over60: { max: 4_582, divisor: 4.16, floor: 50 },
+  /** Allowance taken off parents' income for each other dependent child. */
+  childAllowance: 1_130,
 } as const;
 
-export function maintenanceLoan2026(income: number, living: Living): { loan: number; max: number; min: number; reduction: number; perTerm: number } {
-  const b = MAINTENANCE_2026[living];
+export type MaintenanceOptions = {
+  /** The final year of the course (a shorter year, so lower rates). */
+  finalYear?: boolean;
+  /** Can claim benefits while studying, for example a lone parent or some disabled students. */
+  benefits?: boolean;
+  /** A care leaver: household income is not used, so the maximum is available (from 2026/27). */
+  careLeaver?: boolean;
+};
+
+export type MaintenanceResult = {
+  loan: number;
+  max: number;
+  min: number;
+  /** Taken off the maximum because of household income: the support families are expected to make up. */
+  reduction: number;
+  /** About a third of the loan, paid at the start of each term. */
+  perTerm: number;
+  /** Household income at which the loan reaches its minimum. */
+  minAt: number;
+};
+
+const complete = (amount: number, per: number) => Math.floor(Math.max(0, amount) / per + 1e-9);
+
+/** The 2026/27 Maintenance Loan for a full-time student who started on or after 1 August 2016. */
+export function maintenanceLoan2026(income: number, living: Living, opts: MaintenanceOptions = {}): MaintenanceResult {
+  const r = MAINTENANCE_2026[living];
+  const t = STUDENT_SUPPORT_2026.incomeThreshold;
+  const min = opts.finalYear ? r.finalMin : r.min;
   const x = Math.max(0, income);
-  let loan: number;
-  if (x <= STUDENT_SUPPORT_2026.incomeThreshold) loan = b.max;
-  else if (x >= b.minAt) loan = b.min;
-  else loan = b.max - ((b.max - b.min) * (x - STUDENT_SUPPORT_2026.incomeThreshold)) / (b.minAt - STUDENT_SUPPORT_2026.incomeThreshold);
-  // Student Finance England rounds the reduction down, so the loan rounds up.
-  loan = Math.ceil(loan - 1e-9);
-  return { loan, max: b.max, min: b.min, reduction: b.max - loan, perTerm: Math.round(loan / 3) };
+  let max: number;
+  let cut: number;
+  let minAt: number;
+  if (opts.benefits) {
+    const b = r.benefits;
+    max = opts.finalYear ? b.finalMax : b.max;
+    const d1 = opts.finalYear ? b.finalDivisor : b.divisor;
+    const knee = STUDENT_SUPPORT_2026.benefitsKnee;
+    cut = complete(Math.min(x, knee) - t, d1) + complete(x - knee, r.divisor);
+    const atKnee = complete(knee - t, d1);
+    minAt = max - atKnee <= min ? t + (max - min) * d1 : knee + (max - min - atKnee) * r.divisor;
+  } else {
+    max = opts.finalYear ? r.finalMax : r.max;
+    cut = complete(x - t, r.divisor);
+    minAt = t + (max - min) * r.divisor;
+  }
+  if (opts.careLeaver) cut = 0;
+  const loan = Math.max(min, max - cut);
+  return { loan, max, min, reduction: max - loan, perTerm: Math.round(loan / 3), minAt: Math.ceil(minAt) };
+}
+
+/** Students aged 60 or over on the first day of the course: a means-tested loan for living costs (reg. 80C). */
+export function over60Loan2026(income: number, careLeaver = false): number {
+  const o = STUDENT_SUPPORT_2026.over60;
+  const loan = careLeaver ? o.max : o.max - complete(income - STUDENT_SUPPORT_2026.incomeThreshold, o.divisor);
+  return loan < o.floor ? 0 : loan;
 }
 
 /* ── Council tax for students ──────────────────────────────────── */
 
+/**
+ * The adults (18 or over) in a student home, for council tax in England,
+ * Wales and Scotland:
+ * - student: a full-time student (a course of a year or more and 21+ hours a
+ *   week; or under 20 and studying up to A level for 12+ hours a week)
+ * - spouse: a student's husband, wife, civil partner or dependant who is not
+ *   a British citizen and whose visa bars them from paid work or benefits
+ * - leaver: a school or college leaver under 20 who finished after 30 April,
+ *   until 1 November
+ * - disregarded: anyone else who is not counted (an apprentice on £195 a week
+ *   or less, a student nurse, a live-in carer and others)
+ * - counts: anyone else, including part-time students and anyone working
+ * Sources: Council Tax (Exempt Dwellings) Order 1992, Class N; Local
+ * Government Finance Act 1992, Schedule 1; Council Tax (Additional Provisions
+ * for Discount Disregards) Regulations 1992, Classes C and E; GOV.UK.
+ */
+export type StudentHomePerson = "student" | "spouse" | "leaver" | "disregarded" | "counts";
+
 export type CouncilTaxInput = {
-  /** Full-time students (and others who are disregarded, such as student nurses and under-25 apprentices). */
-  students: number;
-  /** Adults who are not disregarded. */
-  others: number;
+  people: StudentHomePerson[];
   /** Full yearly bill for the property. */
   bill: number;
-  /** Months of the year the household is in this situation. */
+  /** Months of the year the household is like this. */
   months: number;
 };
 
-export type CouncilTaxResult = { kind: "exempt" | "discount" | "full"; pay: number; saving: number; perAdult: number; explanation: string };
+export type CouncilTaxResult = {
+  kind: "exempt" | "half" | "discount" | "full";
+  /** Share of the bill taken off. */
+  rate: number;
+  /** Adults who count. */
+  counted: number;
+  pay: number;
+  saving: number;
+  /** The bill split between the adults who count (who are the ones liable). */
+  perAdult: number;
+};
 
+/** Exempt when everyone is a student (or a non-British spouse or a school leaver); otherwise 50%, 25% or nothing off by how many adults count. */
 export function studentCouncilTax(i: CouncilTaxInput): CouncilTaxResult {
-  const s = Math.max(0, Math.floor(i.students));
-  const o = Math.max(0, Math.floor(i.others));
   const share = Math.max(0, Math.min(12, i.months)) / 12;
   const bill = Math.max(0, i.bill) * share;
-  if (o === 0 && s > 0) return { kind: "exempt", pay: 0, saving: bill, perAdult: 0, explanation: "Everyone living there is a full-time student or otherwise disregarded, so the home is exempt." };
-  if (o === 1) return { kind: "discount", pay: bill * 0.75, saving: bill * 0.25, perAdult: bill * 0.75, explanation: "Students are disregarded, so with one other adult the bill gets the 25% single person discount." };
-  return { kind: "full", pay: bill, saving: 0, perAdult: o > 0 ? bill / o : bill, explanation: "With two or more adults who are not students, the full bill is due." };
+  const people = i.people;
+  const counted = people.filter((p) => p === "counts").length;
+  const relevant = (p: StudentHomePerson) => p === "student" || p === "spouse" || p === "leaver";
+  const exempt = people.length > 0 && people.every(relevant) && people.some((p) => p === "student");
+  const rate = exempt ? 1 : counted === 0 && people.length > 0 ? 0.5 : counted === 1 ? 0.25 : 0;
+  const kind = exempt ? "exempt" : rate === 0.5 ? "half" : rate === 0.25 ? "discount" : "full";
+  const pay = bill * (1 - rate);
+  return { kind, rate, counted, pay, saving: bill - pay, perAdult: counted > 0 ? pay / counted : pay };
 }

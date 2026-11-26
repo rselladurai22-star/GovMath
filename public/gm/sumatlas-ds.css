@@ -2939,3 +2939,167 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
   .gm-claret .sa-pb-hist { padding: 14px; }
 }
 @media (prefers-reduced-motion: reduce) { .gm-claret .sa-pb-bars > span, .gm-claret .sa-pb-mark, .gm-claret .sa-pb-savings { transition: none; } }
+
+/* ── Page: /uk/students/maintenance-loan (the loan curve against household income, with the family's expected share shaded) ── */
+.gm-claret .sa-ml { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 24px 32px; align-items: start; }
+.gm-claret .sa-ml-inputs form { display: grid; gap: 14px; }
+.gm-claret .sa-ml-more { border-top: 1px solid var(--sa-line); padding-top: 10px; }
+.gm-claret .sa-ml-more > summary { cursor: pointer; font-size: 14px; line-height: 20px; font-weight: 600; color: var(--sa-brand); text-decoration: underline; text-underline-offset: 3px; }
+.gm-claret .sa-ml-more > summary:focus-visible { outline: 2px solid var(--sa-brand-focus); outline-offset: 2px; border-radius: 3px; }
+.gm-claret .sa-ml-moregrid { display: grid; gap: 12px; margin-top: 12px; }
+.gm-claret .sa-ml-main { display: grid; gap: 18px; min-width: 0; }
+.gm-claret .sa-ml-curve { margin: 0; padding: 16px 18px 12px 64px; border: 1px solid var(--sa-line); border-radius: 14px; background: var(--sa-white); }
+.gm-claret .sa-ml-plot { position: relative; height: 210px; border-bottom: 1px solid #b9b6ad; }
+.gm-claret .sa-ml-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.gm-claret .sa-ml-gap { fill: #f6e7d3; }
+.gm-claret .sa-ml-line { fill: none; stroke: var(--sa-brand-fill); stroke-width: 3; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.gm-claret .sa-ml-max { stroke: #8a8a8a; stroke-width: 1; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+.gm-claret .sa-ml-bracket { stroke: #a8631a; stroke-width: 3; vector-effect: non-scaling-stroke; }
+.gm-claret .sa-ml-ytick { position: absolute; left: -60px; width: 54px; transform: translateY(-50%); text-align: right; font-size: 12px; line-height: 16px; color: var(--sa-text-2); font-variant-numeric: tabular-nums; }
+.gm-claret .sa-ml-gaplabel { position: absolute; right: 8px; transform: translateY(-50%); max-width: 110px; text-align: right; font-size: 12px; line-height: 16px; font-weight: 600; color: #7a4a14; }
+.gm-claret .sa-ml-dot { position: absolute; transform: translate(-6px, calc(-100% + 6px)); display: grid; padding: 0 0 12px 14px; white-space: nowrap; transition: left var(--sa-ease), top var(--sa-ease); }
+.gm-claret .sa-ml-dot::before { content: ""; position: absolute; left: 0; bottom: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--sa-brand-btn); box-shadow: 0 0 0 3px var(--sa-white); }
+.gm-claret .sa-ml-dot b { font-family: var(--sa-head); font-size: 16px; line-height: 18px; color: var(--sa-ink); }
+.gm-claret .sa-ml-dot small { font-size: 12px; line-height: 16px; color: var(--sa-text-2); }
+.gm-claret .sa-ml-dot.is-right { padding: 0 14px 12px 0; transform: translate(calc(-100% + 6px), calc(-100% + 6px)); text-align: right; }
+.gm-claret .sa-ml-dot.is-right::before { left: auto; right: 0; }
+.gm-claret .sa-ml-axis { position: relative; height: 20px; font-size: 12px; line-height: 16px; color: var(--sa-text-2); font-variant-numeric: tabular-nums; }
+.gm-claret .sa-ml-axis span { position: absolute; top: 4px; transform: translateX(-50%); }
+.gm-claret .sa-ml-axis span:first-child { transform: none; }
+.gm-claret .sa-ml-axis span:last-child { transform: translateX(-100%); }
+.gm-claret .sa-ml-curve figcaption { margin-top: 2px; font-size: 13px; line-height: 18px; color: var(--sa-text-2); text-align: center; }
+.gm-claret .sa-ml-terms { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.gm-claret .sa-ml-terms li { margin: 0; padding: 10px 12px; border-radius: var(--sa-r); background: var(--sa-surface); border: 1px solid var(--sa-line-soft); display: grid; gap: 2px; }
+.gm-claret .sa-ml-terms span { font-size: 13px; line-height: 18px; color: var(--sa-text-2); }
+.gm-claret .sa-ml-terms b { font-family: var(--sa-head); font-size: 19px; line-height: 24px; color: var(--sa-ink); font-variant-numeric: tabular-nums; }
+.gm-claret .sa-ml-rent { margin: 0; font-size: 15px; line-height: 23px; color: var(--sa-text); }
+.gm-claret .sa-ml-rent b { color: var(--sa-ink); }
+@media (max-width: 960px) { .gm-claret .sa-ml { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) {
+  .gm-claret .sa-ml-curve { padding: 14px 12px 10px 52px; }
+  .gm-claret .sa-ml-ytick { left: -50px; width: 44px; }
+  .gm-claret .sa-ml-plot { height: 170px; }
+  .gm-claret .sa-ml-gaplabel { display: none; }
+  .gm-claret .sa-ml-terms b { font-size: 17px; }
+}
+@media (prefers-reduced-motion: reduce) { .gm-claret .sa-ml-dot { transition: none; } }
+
+/* ── Page: /uk/students/saas-funding (the four income bands as a stepped ladder, bursary and loan stacked in each step) ── */
+.gm-claret .sa-saas { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 24px 32px; align-items: start; }
+.gm-claret .sa-saas-inputs form { display: grid; gap: 14px; }
+.gm-claret .sa-saas-who { margin: -6px 0 0; font-size: 13px; line-height: 19px; color: var(--sa-text-2); }
+.gm-claret .sa-saas-main { display: grid; gap: 18px; min-width: 0; }
+.gm-claret .sa-saas-ladder { margin: 0; padding: 16px 18px 12px; border: 1px solid var(--sa-line); border-radius: 14px; background: var(--sa-white); }
+.gm-claret .sa-saas-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; align-items: end; height: 274px; }
+.gm-claret .sa-saas-step { position: relative; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; min-width: 0; padding-bottom: 54px; }
+.gm-claret .sa-saas-total { font-family: var(--sa-head); font-size: 16px; line-height: 20px; font-weight: 700; color: var(--sa-ink); text-align: center; margin-bottom: 4px; font-variant-numeric: tabular-nums; }
+.gm-claret .sa-saas-bar { display: flex; flex-direction: column; border-radius: 8px 8px 0 0; overflow: hidden; transition: height var(--sa-ease); max-height: calc(100% - 24px); }
+.gm-claret .sa-saas-bar > span { display: flex; align-items: center; justify-content: center; min-height: 0; flex-basis: 0; font-size: 13px; line-height: 16px; font-weight: 600; color: var(--sa-ink); font-variant-numeric: tabular-nums; overflow: hidden; }
+.gm-claret .sa-saas-bursary { background: #bfe6cc; }
+.gm-claret .sa-saas-loan { background: #d3d9ef; }
+.gm-claret .sa-saas-band { position: absolute; left: 0; right: 0; bottom: 0; height: 50px; padding-top: 6px; border-top: 1px solid #b9b6ad; font-size: 12px; line-height: 15px; color: var(--sa-text-2); text-align: center; }
+.gm-claret .sa-saas-band em { display: block; width: fit-content; margin: 4px auto 0; padding: 1px 8px; border-radius: var(--sa-r-pill); background: var(--sa-ink); color: var(--sa-white); font-style: normal; font-size: 11px; line-height: 15px; font-weight: 700; }
+.gm-claret .sa-saas-step.is-on .sa-saas-band { color: var(--sa-ink); font-weight: 700; border-top: 3px solid var(--sa-ink); }
+.gm-claret .sa-saas-step.is-on .sa-saas-bursary { background: var(--sa-brand-btn); color: var(--sa-white); }
+.gm-claret .sa-saas-step.is-on .sa-saas-loan { background: #4d62a8; color: var(--sa-white); }
+.gm-claret .sa-saas-ladder figcaption { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--sa-line-soft); font-size: 13px; line-height: 20px; color: var(--sa-text); }
+.gm-claret .sa-saas-ladder figcaption i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 7px; vertical-align: -1px; }
+.gm-claret .sa-saas-ladder figcaption .is-bursary { background: var(--sa-brand-btn); }
+.gm-claret .sa-saas-ladder figcaption .is-loan { background: #4d62a8; }
+.gm-claret :is(.sa-saas-fees, .sa-sfw-facts) { margin: 0; border-top: 1px solid var(--sa-line); }
+.gm-claret :is(.sa-saas-fees, .sa-sfw-facts) > div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 4px 16px; padding: 10px 0; border-bottom: 1px solid var(--sa-line-soft); }
+.gm-claret :is(.sa-saas-fees, .sa-sfw-facts) dt { margin: 0; font-size: 14px; line-height: 22px; font-weight: 700; color: var(--sa-ink); }
+.gm-claret :is(.sa-saas-fees, .sa-sfw-facts) dd { margin: 0; font-size: 15px; line-height: 22px; color: var(--sa-text); }
+.gm-claret :is(.sa-saas-fees, .sa-sfw-facts) dd b { color: var(--sa-ink); }
+@media (max-width: 960px) { .gm-claret .sa-saas { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) {
+  .gm-claret .sa-saas-ladder { padding: 14px 10px 10px; }
+  .gm-claret .sa-saas-steps { gap: 6px; height: 230px; }
+  .gm-claret .sa-saas-total { font-size: 14px; }
+  .gm-claret .sa-saas-bar > span { font-size: 11px; }
+  .gm-claret .sa-saas-band { font-size: 11px; line-height: 14px; }
+  .gm-claret :is(.sa-saas-fees, .sa-sfw-facts) > div { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { .gm-claret .sa-saas-bar { transition: none; } }
+
+/* ── Page: /uk/students/welsh-student-finance (one bar of fixed length; the grant and loan split slides with income) ── */
+.gm-claret .sa-sfw { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 24px 32px; align-items: start; }
+.gm-claret .sa-sfw-inputs form { display: grid; gap: 14px; }
+.gm-claret .sa-sfw-main { display: grid; gap: 18px; min-width: 0; }
+.gm-claret .sa-sfw-split { margin: 0; padding: 18px; border: 1px solid var(--sa-line); border-radius: 14px; background: var(--sa-white); }
+.gm-claret .sa-sfw-track { position: relative; height: 64px; border-radius: 10px; overflow: hidden; background: #4d62a8; }
+.gm-claret .sa-sfw-range { position: absolute; top: 0; bottom: 0; background: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0 6px, transparent 6px 12px); }
+.gm-claret .sa-sfw-grant { position: absolute; left: 0; top: 0; bottom: 0; background: var(--sa-brand-btn); box-shadow: 2px 0 0 var(--sa-white); transition: width var(--sa-ease); }
+.gm-claret :is(.sa-sfw-grant, .sa-sfw-loan) { display: flex; flex-direction: column; justify-content: center; padding: 0 12px; color: var(--sa-white); font-family: var(--sa-head); font-size: 18px; line-height: 22px; font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.gm-claret :is(.sa-sfw-grant, .sa-sfw-loan) b { font-family: var(--sa-font); font-size: 12px; line-height: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; }
+.gm-claret .sa-sfw-loan { position: absolute; right: 0; top: 0; bottom: 0; align-items: flex-end; transition: left var(--sa-ease); }
+.gm-claret .sa-sfw-scale { display: flex; justify-content: space-between; gap: 12px; margin-top: 8px; font-size: 13px; line-height: 18px; color: var(--sa-text-2); }
+.gm-claret .sa-sfw-scale span:last-child { text-align: right; }
+.gm-claret .sa-sfw-scale b { color: var(--sa-ink); }
+.gm-claret .sa-sfw-split figcaption { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--sa-line-soft); font-size: 13px; line-height: 19px; color: var(--sa-text); }
+.gm-claret .sa-sfw-band { margin: 0; font-size: 15px; line-height: 23px; color: var(--sa-text); }
+@media (max-width: 960px) { .gm-claret .sa-sfw { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) {
+  .gm-claret .sa-sfw-split { padding: 14px; }
+  .gm-claret :is(.sa-sfw-grant, .sa-sfw-loan) { font-size: 15px; padding: 0 8px; }
+}
+@media (prefers-reduced-motion: reduce) { .gm-claret :is(.sa-sfw-grant, .sa-sfw-loan) { transition: none; } }
+
+/* ── Page: /uk/students/student-council-tax (a household builder: add each adult, and the verdict follows) ── */
+.gm-claret .sa-sct { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 24px 32px; align-items: start; }
+.gm-claret .sa-sct-house { padding: 20px 22px; border: 1px solid var(--sa-line); border-radius: var(--sa-r); background: var(--sa-surface); }
+.gm-claret .sa-sct-help { margin: -6px 0 12px; font-size: 14px; line-height: 20px; color: var(--sa-text-2); }
+.gm-claret .sa-sct-people { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; min-height: 52px; }
+.gm-claret .sa-sct-people li { margin: 0; display: flex; align-items: center; gap: 6px; padding: 6px 6px 6px 12px; border-radius: 10px; background: var(--sa-white); border: 1px solid var(--sa-line); }
+.gm-claret .sa-sct-people li > span { display: grid; }
+.gm-claret .sa-sct-people b { font-size: 14px; line-height: 18px; color: var(--sa-ink); }
+.gm-claret .sa-sct-people small { font-size: 12px; line-height: 16px; color: var(--sa-text-2); }
+.gm-claret .sa-sct-people li.is-not { border-color: var(--sa-brand-soft); background: var(--sa-brand-tint); }
+.gm-claret .sa-sct-people li.is-not small { color: var(--sa-brand); font-weight: 600; }
+.gm-claret .sa-sct-people li.is-counts { border-color: #e7c9a4; background: var(--sa-accent-tint); }
+.gm-claret .sa-sct-people li.is-counts small { color: #7a4a14; font-weight: 600; }
+.gm-claret .sa-sct-people li.sa-sct-empty { padding: 12px; color: var(--sa-text-2); font-size: 14px; border-style: dashed; background: none; }
+.gm-claret .sa-tool .sa-sct-people button { width: 30px; height: 30px; padding: 0; margin: 0; border: 0; border-radius: 50%; background: none; color: var(--sa-text-2); font-size: 20px; line-height: 1; cursor: pointer; }
+.gm-claret .sa-tool .sa-sct-people button:hover { background: rgba(0, 0, 0, 0.06); color: var(--sa-ink); }
+.gm-claret .sa-sct-add { display: flex; flex-wrap: wrap; gap: 8px; }
+.gm-claret .sa-tool .sa-sct-add button { display: inline-flex; align-items: center; gap: 6px; height: 36px; padding: 0 12px; margin: 0; border: 1px solid #8f8f8f; border-radius: var(--sa-r-pill); background: var(--sa-white); color: var(--sa-ink); font-family: var(--sa-font); font-size: 14px; line-height: 20px; font-weight: 600; cursor: pointer; transition: background var(--sa-ease), border-color var(--sa-ease); }
+.gm-claret .sa-tool .sa-sct-add button span { color: var(--sa-brand); font-size: 17px; }
+.gm-claret .sa-tool .sa-sct-add button:hover:not(:disabled) { background: var(--sa-brand-tint); border-color: var(--sa-brand-fill); }
+.gm-claret .sa-tool .sa-sct-add button:disabled { opacity: 0.45; cursor: default; }
+.gm-claret .sa-tool :is(.sa-sct-add, .sa-sct-people) button:focus-visible { outline: 2px solid var(--sa-brand-focus); outline-offset: 2px; }
+.gm-claret .sa-sct-main { display: grid; gap: 18px; min-width: 0; }
+.gm-claret .sa-sct-bill { display: grid; gap: 12px; padding-top: 14px; border-top: 1px solid var(--sa-line); }
+.gm-claret .sa-sct-row { max-width: 220px; }
+@media (max-width: 960px) { .gm-claret .sa-sct { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .gm-claret .sa-sct-house { padding: 16px; } }
+@media (prefers-reduced-motion: reduce) { .gm-claret .sa-tool .sa-sct-add button { transition: none; } }
+
+/* ── Page: /uk/students/plan-2-student-loan (the balance to the write-off date, with the running total repaid) ── */
+.gm-claret .sa-p2 { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 24px 32px; align-items: start; }
+.gm-claret .sa-p2-inputs form { display: grid; gap: 14px; }
+.gm-claret .sa-p2-more { border-top: 1px solid var(--sa-line); padding-top: 10px; }
+.gm-claret .sa-p2-more > summary { cursor: pointer; font-size: 14px; line-height: 20px; font-weight: 600; color: var(--sa-brand); text-decoration: underline; text-underline-offset: 3px; }
+.gm-claret .sa-p2-more > summary:focus-visible { outline: 2px solid var(--sa-brand-focus); outline-offset: 2px; border-radius: 3px; }
+.gm-claret .sa-p2-moregrid { display: grid; gap: 12px; margin-top: 12px; }
+.gm-claret .sa-p2-main { display: grid; gap: 18px; min-width: 0; }
+.gm-claret .sa-p2-chart { margin: 0; padding: 16px 18px 12px 52px; border: 1px solid var(--sa-line); border-radius: 14px; background: var(--sa-white); }
+.gm-claret .sa-p2-plot { position: relative; height: 210px; border-bottom: 1px solid #b9b6ad; border-left: 1px solid #e3e0d8; }
+.gm-claret .sa-p2-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.gm-claret .sa-p2-area { fill: #dfe4f4; }
+.gm-claret .sa-p2-bal { fill: none; stroke: #4d62a8; stroke-width: 2.5; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.gm-claret .sa-p2-paid { fill: none; stroke: var(--sa-brand-fill); stroke-width: 2.5; stroke-dasharray: 6 4; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
+.gm-claret .sa-p2-end { stroke: var(--sa-ink); stroke-width: 2; vector-effect: non-scaling-stroke; }
+.gm-claret .sa-p2-ytick { position: absolute; left: -48px; width: 42px; transform: translateY(-50%); text-align: right; font-size: 12px; line-height: 16px; color: var(--sa-text-2); font-variant-numeric: tabular-nums; }
+.gm-claret .sa-p2-flag { position: absolute; right: 8px; transform: translateY(-50%); padding: 3px 8px; border-radius: 6px; background: var(--sa-ink); color: var(--sa-white); font-size: 12px; line-height: 16px; white-space: nowrap; }
+.gm-claret .sa-p2-flag b { font-family: var(--sa-head); font-size: 14px; }
+.gm-claret .sa-p2-flag.is-cleared { right: auto; transform: translate(-100%, -50%); background: var(--sa-brand-btn); }
+.gm-claret .sa-p2-flag.is-cleared.is-left { transform: translate(6px, -50%); }
+.gm-claret .sa-p2-axis { position: relative; height: 20px; font-size: 12px; line-height: 16px; color: var(--sa-text-2); font-variant-numeric: tabular-nums; }
+.gm-claret .sa-p2-axis span { position: absolute; top: 4px; transform: translateX(-50%); }
+.gm-claret .sa-p2-axis span:first-child { transform: none; }
+.gm-claret .sa-p2-axis span:last-child { transform: translateX(-100%); }
+.gm-claret .sa-p2-chart figcaption { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 6px; font-size: 13px; line-height: 20px; color: var(--sa-text); }
+.gm-claret .sa-p2-chart figcaption i { display: inline-block; width: 16px; height: 0; margin-right: 7px; vertical-align: 4px; border-top: 3px solid #4d62a8; }
+.gm-claret .sa-p2-chart figcaption .is-paid { border-top: 3px dashed var(--sa-brand-fill); }
+@media (max-width: 960px) { .gm-claret .sa-p2 { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 520px) { .gm-claret .sa-p2-chart { padding: 14px 12px 10px 46px; } .gm-claret .sa-p2-plot { height: 170px; } .gm-claret .sa-p2-ytick { left: -44px; width: 38px; } }
