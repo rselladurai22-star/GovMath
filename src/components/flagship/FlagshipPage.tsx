@@ -31,7 +31,7 @@ export default function FlagshipPage({
   faqs,
   related,
   note,
-  look = "indus",
+  look = "atlas",
 }: {
   breadcrumbs: Crumb[];
   /** Short label for the page (not shown since the October 2026 redesign; kept for every page's API). */
@@ -45,8 +45,8 @@ export default function FlagshipPage({
   faqs: { q: string; a: string }[];
   related: Calculator[];
   note: string;
-  /** Design variant for the calculator (see components/flagship/look.tsx); every page uses "indus" since 13 October 2026. */
-  look?: "indus";
+  /** Design variant for the calculator (see components/flagship/look.tsx); every page uses "atlas" since November 2026 ("indus" from 13 October 2026). */
+  look?: "indus" | "atlas";
 }) {
   const path = breadcrumbs[breadcrumbs.length - 1].href;
   const topic = TOPIC[breadcrumbs[1]?.href ?? ""] ?? breadcrumbs[1]?.label ?? "";
@@ -80,8 +80,8 @@ export default function FlagshipPage({
       <div className={look ? `wrap gm-${look}-page` : "wrap"}>
         <Crumbs items={crumbs} />
         <div className="intro">
-          {/* With a look, the title and lead sit inside the calculator card (Studio). */}
-          {!look && (
+          {/* With the "indus" look, the title and lead sit inside the calculator card (Studio). */}
+          {look !== "indus" && (
             <>
               <h1>{title}</h1>
               <p>{lead}</p>

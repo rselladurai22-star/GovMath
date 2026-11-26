@@ -1,0 +1,947 @@
+/* ══════════════════════════════════════════════════════════════════════
+   SumAtlas design system (November 2026)
+
+   Loaded last on every page (THEME_AFTER in src/gm/GmShell.tsx), so these
+   rules sit on top of the package stylesheets and govmath-theme.css.
+   Type, spacing, controls and layout follow the reference design measured
+   from etmoney.com's rendered pages (computed styles, November 2026; see
+   docs/DESIGN-SYSTEM.md). Colours are SumAtlas's own: claret brand, warm
+   neutrals. Fonts are open-licence matches to the reference's fonts:
+   Figtree for text (Proxima Nova's role) and Hanken Grotesk for headings
+   and figures (Cabinet Grotesk's role).
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Fonts ─────────────────────────────────────────────────────────── */
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 400; font-display: swap; src: url("/gm/fonts/figtree-400.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 500; font-display: swap; src: url("/gm/fonts/figtree-500.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 600; font-display: swap; src: url("/gm/fonts/figtree-600.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 700; font-display: swap; src: url("/gm/fonts/figtree-700.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 600; font-display: swap; src: url("/gm/fonts/hanken-grotesk-600.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 700; font-display: swap; src: url("/gm/fonts/hanken-grotesk-700.woff2") format("woff2"); }
+@font-face { font-family: "Hanken Grotesk"; font-style: normal; font-weight: 800; font-display: swap; src: url("/gm/fonts/hanken-grotesk-800.woff2") format("woff2"); }
+
+/* ── Tokens ────────────────────────────────────────────────────────── */
+:root {
+  /* Brand: claret (chosen over Oxford navy and deep teal, see the design doc). */
+  --sa-brand: #8c1d40;          /* links, slider fill, key figures, active marks: 9.5:1 on white */
+  --sa-brand-hover: #6e1632;
+  --sa-brand-focus: #b8325f;
+  --sa-brand-tint: #fbf3f6;     /* selected rows, light highlights */
+  --sa-brand-soft: #f2dde5;     /* chips, hovered cards */
+  --sa-accent: #a8631a;         /* gold-amber second colour (5.0:1 on white) */
+  --sa-accent-tint: #fdf6ec;
+
+  /* Neutrals (the reference's #222 / #666 / #ddd / #f9f8f3 system). */
+  --sa-ink: #222222;            /* headings, values: 15.9:1 */
+  --sa-text: #4d4d4d;           /* reading text: 8.4:1 (the reference uses #666) */
+  --sa-text-2: #666666;         /* secondary text, labels: 5.7:1 */
+  --sa-muted: #757575;          /* small print, the lightest text allowed on white: 4.6:1 */
+  --sa-line: #dddddd;           /* borders, table rules */
+  --sa-line-soft: #ebe8e0;      /* dividers on warm panels */
+  --sa-surface: #f9f8f3;        /* warm panel (calculator box, bands) */
+  --sa-surface-2: #f3f1e9;      /* hover on warm panels */
+  --sa-white: #ffffff;
+  --sa-dark: #212426;           /* footer */
+  --sa-dark-2: #2f3136;
+
+  /* Data colours (charts, legends): one fixed order everywhere. */
+  --sa-data-1: #2a78d6;
+  --sa-data-2: #eb6834;
+  --sa-data-3: #1baf7a;
+  --sa-data-4: #4a3aa7;
+  --sa-data-5: #eda100;
+  --sa-gain: #1a7f4b;           /* money gained (4.9:1) */
+  --sa-loss: #c0352b;           /* money lost (5.1:1) */
+
+  /* Type */
+  --sa-font: "Figtree", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --sa-head: "Hanken Grotesk", "Figtree", "Inter", system-ui, sans-serif;
+  --sa-fs-hero: 48px;  --sa-lh-hero: 56px;
+  --sa-fs-h1: 28px;    --sa-lh-h1: 34px;
+  --sa-fs-h2: 22px;    --sa-lh-h2: 28px;
+  --sa-fs-h3: 18px;    --sa-lh-h3: 24px;
+  --sa-fs-body: 16px;  --sa-lh-body: 24px;
+  --sa-fs-sm: 14px;    --sa-lh-sm: 20px;
+  --sa-fs-xs: 12px;    --sa-lh-xs: 16px;
+  --sa-fs-figure: 22px;
+
+  /* Space, shape, depth, motion */
+  --sa-s1: 4px; --sa-s2: 8px; --sa-s3: 12px; --sa-s4: 16px; --sa-s5: 20px; --sa-s6: 24px; --sa-s8: 32px; --sa-s10: 40px; --sa-s14: 56px;
+  --sa-r-sm: 4px;
+  --sa-r: 8px;
+  --sa-r-pill: 30px;
+  --sa-shadow-card: 0 0 4px rgba(0, 0, 0, 0.14);
+  --sa-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.10);
+  --sa-shadow-float: 0 10px 36px rgba(15, 23, 42, 0.08);
+  --sa-ease: 0.2s ease;
+  --sa-container: 1250px;
+  --sa-container-tool: 1100px;
+}
+
+/* ── Base ──────────────────────────────────────────────────────────── */
+html body,
+.gm-claret,
+.gm-claret :is(p, li, td, th, dd, dt, label, input, select, textarea, button, summary, small, span, a, legend, figcaption, blockquote) {
+  font-family: var(--sa-font);
+}
+body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+.gm-claret :is(h1, h2, h3, h4) { font-family: var(--sa-head); letter-spacing: 0; }
+/* Money and other figures line up in columns. */
+.gm-claret :is(strong, b, td, .number input, .ax-paymentstrip strong, .gm-legend b, .g-statValue) { font-variant-numeric: tabular-nums; }
+.gm-claret a { transition: color var(--sa-ease); }
+.gm-claret :focus-visible { outline: 2px solid var(--sa-brand-focus); outline-offset: 2px; }
+::selection { background: var(--sa-brand-soft); color: var(--sa-ink); }
+
+/* ── Header (reference: 66px bar, 16px nav labels, 6px gaps) ───────── */
+.gm-claret header.ax-header { background: var(--sa-white); border-bottom: 1px solid #ececec; box-shadow: none; }
+.gm-claret header.ax-header nav.ax-navigation { border: 0; background: none; box-shadow: none; }
+.gm-claret .ax-navigation .ax-navbutton,
+.gm-claret .ax-navigation .homelink {
+  font-family: var(--sa-font);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--sa-ink);
+  letter-spacing: 0;
+}
+.gm-claret .ax-navigation .ax-navbutton:hover,
+.gm-claret .ax-navigation .ax-navbutton[aria-expanded="true"] { color: var(--sa-brand); }
+.gm-claret .ax-mega { border-top: 1px solid #ececec; box-shadow: var(--sa-shadow-float); }
+.gm-claret .ax-mega .ax-mega-h,
+.gm-claret .ax-mega .ax-mega-title { font-family: var(--sa-head); font-weight: 700; color: var(--sa-ink); }
+.gm-claret .ax-mega .ax-mega-links a { font-size: 14px; line-height: 20px; color: var(--sa-text); }
+.gm-claret .ax-mega .ax-mega-links a:hover { color: var(--sa-brand); }
+.gm-claret .ax-search.gm-headsearch {
+  background: var(--sa-surface);
+  border: 1px solid var(--sa-line);
+  border-radius: var(--sa-r-pill);
+  transition: border-color var(--sa-ease), box-shadow var(--sa-ease), background var(--sa-ease);
+}
+.gm-claret .ax-search.gm-headsearch input { font-family: var(--sa-font); font-size: 14px; background: transparent; border: 0; box-shadow: none; color: var(--sa-ink); }
+.gm-claret .ax-search.gm-headsearch input::placeholder { color: var(--sa-muted); }
+.gm-claret .ax-search.gm-headsearch input:focus { outline: none; }
+.gm-claret .ax-search.gm-headsearch:focus-within { border-color: var(--sa-brand); background: var(--sa-white); box-shadow: 0 0 0 3px var(--sa-brand-tint); }
+
+/* ── Breadcrumb (reference: 14px/20, links in the brand colour, › separators) */
+.gm-claret .crumb { font-size: 14px; line-height: 20px; padding: 14px 0 6px; color: var(--sa-text-2); }
+.gm-claret .crumb a { color: var(--sa-brand); text-decoration: none; font-weight: 400; }
+.gm-claret .crumb a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+/* ── Page intro on calculators (reference: centred h1 28/32, subtitle 16/20 #666) */
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .intro { text-align: center; max-width: 880px; margin: 8px auto 20px; padding: 0; }
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .intro h1 {
+  font-family: var(--sa-head);
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 800;
+  color: var(--sa-ink);
+  margin: 0 0 8px;
+}
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .intro > p { font-size: 16px; line-height: 24px; color: var(--sa-text-2); margin: 0 auto 10px; max-width: 760px; }
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .intro .gm-trust { justify-content: center; font-size: 13px; color: var(--sa-muted); }
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .sectionnav { display: none; }
+
+/* ── Calculator: "atlas" look ──────────────────────────────────────────
+   Reference: the warm calculator box (#f9f8f3, 1px #ddd border, radius 4,
+   padding 32px) holding the fields, with a white results card inside it;
+   fields are a label on the left (16px #666) and the value on the right in
+   the heading font (18px bold) over a single bottom rule; sliders are a 4px
+   track with a brand fill and a 20px white thumb ringed in the brand colour;
+   results are rows of label (16px) and figure (22px bold), the first in the
+   brand colour, beside a donut. */
+.gm-claret .calculator.gm-atlas {
+  background: var(--sa-surface);
+  border: 1px solid var(--sa-line);
+  border-radius: var(--sa-r-sm);
+  box-shadow: none;
+  padding: 28px 32px 32px;
+  margin: 0;
+}
+.gm-claret .calculator.gm-atlas .calcgrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+}
+/* Step headings read as the reference's section-title-sm: 22/26 heading font. */
+.gm-claret .calculator.gm-atlas .pg-step {
+  display: block;
+  font-family: var(--sa-head);
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 700;
+  color: var(--sa-ink);
+  margin: 0 0 16px;
+  padding: 0;
+  border: 0;
+  background: none;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.gm-claret .calculator.gm-atlas .pg-step > span[aria-hidden="true"] { display: none; }
+.gm-claret .calculator.gm-atlas .formheading { display: flex; align-items: baseline; justify-content: space-between; margin: 0; padding: 0; border: 0; background: none; }
+.gm-claret .calculator.gm-atlas .formheading .textbutton { font-size: 14px; font-weight: 600; color: var(--sa-brand); background: none; border: 0; padding: 0; text-decoration: none; }
+.gm-claret .calculator.gm-atlas .formheading .textbutton:hover { text-decoration: underline; }
+.gm-claret .calculator.gm-atlas form.gm-form { background: none; border: 0; box-shadow: none; padding: 0; margin: 0; }
+
+/* Fields */
+.gm-claret .calculator.gm-atlas .gm-form .field,
+.gm-claret .calculator.gm-atlas .gm-form .ax-select-field {
+  border: 0;
+  border-bottom: 0;
+  padding: 10px 0 4px;
+  margin: 0;
+  background: none;
+}
+.gm-claret .calculator.gm-atlas .gm-form :is(.gm-label, .labelrow label, .gm-labelwrap > label, legend .gm-label) {
+  font-family: var(--sa-font);
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  color: var(--sa-text-2);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.gm-claret .calculator.gm-atlas .gm-form .labelrow { align-items: center; gap: 12px; }
+/* Value boxes: no box, just the figure over a rule (the reference's .form-ctrl). */
+.gm-claret .calculator.gm-atlas .gm-form .number {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--sa-line);
+  border-radius: 0;
+  box-shadow: none;
+  min-height: 0;
+  height: auto;
+  padding: 0 0 4px;
+  width: 150px;
+  max-width: 50%;
+  transition: border-color var(--sa-ease);
+}
+.gm-claret .calculator.gm-atlas .gm-form .number:focus-within { border-bottom-color: var(--sa-brand); box-shadow: 0 1px 0 0 var(--sa-brand); outline: none; }
+.gm-claret .calculator.gm-atlas .gm-form .number :is(input, span, small, b) {
+  font-family: var(--sa-head);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--sa-ink);
+  background: transparent;
+  caret-color: var(--sa-brand);
+}
+.gm-claret .calculator.gm-atlas .gm-form .number input { text-align: right; padding: 0; border: 0; box-shadow: none; height: auto; min-height: 0; }
+.gm-claret .calculator.gm-atlas .gm-form .number input:focus { outline: none; box-shadow: none; }
+/* Slider */
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 10px;
+  background: linear-gradient(to right, var(--sa-brand) 0 var(--fill, 0%), var(--sa-line) var(--fill, 0%) 100%);
+  margin: 14px 0 6px;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"]::-webkit-slider-runnable-track { height: 4px; background: transparent; border: 0; }
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: -8px;
+  border-radius: 50%;
+  background: var(--sa-white);
+  border: 2px solid var(--sa-brand);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+  transition: transform var(--sa-ease), box-shadow var(--sa-ease);
+}
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"]::-moz-range-track { height: 4px; background: transparent; border: 0; }
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--sa-white);
+  border: 2px solid var(--sa-brand);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.18);
+  cursor: pointer;
+}
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"]:hover::-webkit-slider-thumb,
+.gm-claret .calculator.gm-atlas .gm-form input[type="range"]:focus-visible::-webkit-slider-thumb { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(140, 29, 64, 0.12); }
+.gm-claret .calculator.gm-atlas .gm-form .endpoints { font-size: 12px; line-height: 16px; color: var(--sa-muted); }
+
+/* Dropdowns, dates and text boxes: white box, 1px border, radius 4 (the reference's FD widget). */
+.gm-claret .calculator.gm-atlas .gm-form :is(.ax-select-toggle, input.gm-input, select) {
+  font-family: var(--sa-font);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--sa-ink);
+  background: var(--sa-white);
+  border: 1px solid var(--sa-line);
+  border-radius: var(--sa-r-sm);
+  box-shadow: none;
+  min-height: 40px;
+}
+.gm-claret .calculator.gm-atlas .gm-form :is(.ax-select-toggle, input.gm-input, select):focus { border-color: var(--sa-brand); box-shadow: 0 0 0 3px var(--sa-brand-tint); outline: none; }
+.gm-claret .calculator.gm-atlas .gm-form .ax-options { border: 1px solid var(--sa-line); border-radius: var(--sa-r-sm); box-shadow: var(--sa-shadow-float); }
+.gm-claret .calculator.gm-atlas .gm-form .ax-option { font-size: 15px; color: var(--sa-ink); }
+.gm-claret .calculator.gm-atlas .gm-form .ax-option:is(:hover, [aria-selected="true"]) { background: var(--sa-brand-tint); color: var(--sa-brand); }
+
+/* Two choices: radios as the reference's "I know …" pair (20px ring, brand dot). */
+.gm-claret .calculator.gm-atlas .gm-form .gm-radios { gap: 8px 20px; }
+.gm-claret .calculator.gm-atlas .gm-form .gm-radio {
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--sa-ink);
+  background: none;
+  border: 0;
+  padding: 2px 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.gm-claret .calculator.gm-atlas .gm-form .gm-radio input { accent-color: var(--sa-brand); width: 18px; height: 18px; }
+.gm-claret .calculator.gm-atlas .gm-form .gm-switch[aria-checked="true"] { background: var(--sa-brand); border-color: var(--sa-brand); }
+.gm-claret .calculator.gm-atlas .gm-form .chips button { border-radius: var(--sa-r-pill); border: 1px solid var(--sa-line); background: var(--sa-white); color: var(--sa-ink); font-size: 14px; }
+.gm-claret .calculator.gm-atlas .gm-form .chips button[aria-pressed="true"] { border-color: var(--sa-brand); color: var(--sa-brand); background: var(--sa-brand-tint); }
+
+/* More options: the reference's collapsible panel title (white, radius 4, heading font 16px). */
+.gm-claret .calculator.gm-atlas .gm-form details.moreoptions {
+  background: var(--sa-white);
+  border: 1px solid var(--sa-line);
+  border-radius: var(--sa-r-sm);
+  box-shadow: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+.gm-claret .calculator.gm-atlas .gm-form details.moreoptions > summary {
+  font-family: var(--sa-head);
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  color: var(--sa-ink);
+  padding: 12px 16px;
+}
+.gm-claret .calculator.gm-atlas .gm-form details.moreoptions[open] > summary { border-bottom: 1px solid var(--sa-line-soft); }
+.gm-claret .calculator.gm-atlas .gm-form details.moreoptions > :not(summary) { padding-left: 16px; padding-right: 16px; }
+.gm-claret .calculator.gm-atlas .gm-form .gm-optional { font-size: 12px; color: var(--sa-muted); font-weight: 400; }
+.gm-claret .calculator.gm-atlas .gm-form .gm-info-button { color: var(--sa-muted); border-color: currentColor; }
+.gm-claret .calculator.gm-atlas .gm-form .gm-info-bubble { font-size: 14px; line-height: 20px; background: var(--sa-dark); color: #fff; border-radius: var(--sa-r-sm); }
+
+/* Calculate button: a solid brand pill (the reference's primary button). */
+.gm-claret .calculator.gm-atlas .bank-calculate {
+  font-family: var(--sa-font);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--sa-white);
+  background: var(--sa-brand);
+  border: 1px solid var(--sa-brand);
+  border-radius: var(--sa-r-pill);
+  box-shadow: none;
+  padding: 10px 28px;
+  min-height: 46px;
+  width: 100%;
+  margin-top: 16px;
+  transition: background var(--sa-ease), transform var(--sa-ease);
+}
+.gm-claret .calculator.gm-atlas .bank-calculate:hover { background: var(--sa-brand-hover); border-color: var(--sa-brand-hover); }
+.gm-claret .calculator.gm-atlas .bank-calculate:active { transform: translateY(1px); }
+.gm-claret .calculator.gm-atlas .footnote { font-size: 13px; line-height: 18px; color: var(--sa-muted); margin: 14px 0 0; }
+
+/* Results card: white, 1px border, radius 4, sticky beside the form. */
+.gm-claret .calculator.gm-atlas .result.ax-chartpanel {
+  background: var(--sa-white);
+  border: 1px solid var(--sa-line);
+  border-radius: var(--sa-r-sm);
+  box-shadow: none;
+  padding: 24px 24px 20px;
+  margin: 0;
+  color: var(--sa-ink);
+  position: sticky;
+  top: 16px;
+  text-align: left;
+}
+.gm-claret .calculator.gm-atlas .result .resultlabel { display: none; }
+/* Headline figure: the reference's "Total value ₹4.06 Lacs" row. */
+.gm-claret .calculator.gm-atlas .ax-paymentstrip {
+  background: var(--sa-brand-tint);
+  border: 0;
+  border-left: 4px solid var(--sa-brand);
+  border-radius: var(--sa-r-sm);
+  box-shadow: none;
+  padding: 14px 16px;
+  margin: 0 0 18px;
+  color: var(--sa-ink);
+}
+.gm-claret .calculator.gm-atlas .ax-paymentstrip > div { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 12px; }
+.gm-claret .calculator.gm-atlas .ax-paymentstrip span { font-size: 16px; line-height: 22px; font-weight: 500; color: var(--sa-text-2); text-transform: none; letter-spacing: 0; }
+.gm-claret .calculator.gm-atlas .ax-paymentstrip strong {
+  font-family: var(--sa-head);
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 800;
+  color: var(--sa-brand);
+  margin-left: auto;
+}
+.gm-claret .calculator.gm-atlas .ax-paymentstrip small { flex-basis: 100%; text-align: right; font-size: 13px; color: var(--sa-text-2); }
+/* Donut beside a row list (the reference's EMI result). */
+.gm-claret .calculator.gm-atlas .gm-donut { width: 180px; height: 180px; margin: 4px auto 14px; }
+.gm-claret .calculator.gm-atlas .gm-donut-track { stroke: #f0eee8; }
+.gm-claret .calculator.gm-atlas .gm-donut-centre span { font-size: 12px; color: var(--sa-text-2); }
+.gm-claret .calculator.gm-atlas .gm-donut-centre strong { font-family: var(--sa-head); font-size: 18px; font-weight: 800; color: var(--sa-ink); }
+.gm-claret .calculator.gm-atlas .gm-donut-centre small { font-size: 11px; color: var(--sa-muted); }
+.gm-claret .calculator.gm-atlas .gm-legend { margin: 0; padding: 0; border: 0; background: none; }
+.gm-claret .calculator.gm-atlas .gm-legend li {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 0;
+  border: 0;
+  border-bottom: 1px dashed var(--sa-line);
+  border-radius: 0;
+  background: none;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--sa-text-2);
+}
+.gm-claret .calculator.gm-atlas .gm-legend li:last-child { border-bottom: 0; }
+.gm-claret .calculator.gm-atlas .gm-legend li i { width: 10px; height: 10px; border-radius: 50%; }
+.gm-claret .calculator.gm-atlas .gm-legend li b { font-family: var(--sa-head); font-size: 18px; line-height: 22px; font-weight: 700; color: var(--sa-ink); text-align: right; }
+.gm-claret .calculator.gm-atlas .gm-legend li em { font-style: normal; font-size: 12px; font-weight: 600; color: var(--sa-text-2); background: #f3f1ea; border-radius: var(--sa-r-pill); padding: 1px 7px; min-width: 40px; text-align: center; }
+.gm-claret .calculator.gm-atlas .gm-legend li.is-on { background: var(--sa-surface); }
+.gm-claret .calculator.gm-atlas .gm-legend li > span { text-align: left; color: var(--sa-text-2); }
+.gm-claret .calculator.gm-atlas .loan-summary { font-size: 15px; line-height: 22px; color: var(--sa-text); margin: 14px 0 0; padding: 14px 0 0; border-top: 1px solid var(--sa-line-soft); }
+.gm-claret .calculator.gm-atlas .badges span { font-size: 13px; color: var(--sa-text-2); background: var(--sa-surface); border: 1px solid var(--sa-line-soft); border-radius: var(--sa-r-pill); padding: 3px 10px; }
+.gm-claret .calculator.gm-atlas .result :is(button, a).button:not(.bank-calculate),
+.gm-claret .calculator.gm-atlas .result .gm-share {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--sa-brand);
+  background: var(--sa-white);
+  border: 1px solid var(--sa-brand);
+  border-radius: var(--sa-r-pill);
+  padding: 6px 16px;
+  box-shadow: none;
+}
+.gm-claret .calculator.gm-atlas .result :is(button, a).button:not(.bank-calculate):hover { background: var(--sa-brand-tint); }
+
+@media (max-width: 991px) {
+  .gm-claret .calculator.gm-atlas { padding: 20px 16px; }
+  .gm-claret .calculator.gm-atlas .calcgrid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .gm-claret .calculator.gm-atlas .result.ax-chartpanel { position: static; padding: 18px 16px; }
+  .gm-claret .gm-neutral:has(.calculator.gm-atlas) .intro h1 { font-size: 24px; line-height: 30px; }
+  .gm-claret .gm-neutral:has(.calculator.gm-atlas) .intro > p { font-size: 15px; line-height: 22px; }
+}
+@media (max-width: 420px) {
+  .gm-claret .calculator.gm-atlas .gm-form .number { width: 130px; }
+  .gm-claret .calculator.gm-atlas .ax-paymentstrip strong { font-size: 26px; line-height: 32px; }
+}
+
+/* ── Calculator page frame ─────────────────────────────────────────────
+   The calculator box is the frame (no outer card); related calculators sit
+   in the reference's side panel: a white title bar over a warm list of
+   brand-coloured links. */
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-tool { border: 0; background: none; box-shadow: none; padding: 0; border-radius: 0; }
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-layout { gap: 28px; }
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-related {
+  background: var(--sa-surface);
+  border: 1px solid var(--sa-line);
+  border-radius: var(--sa-r-sm);
+  box-shadow: none;
+  padding: 0 0 8px;
+}
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-related > h2 {
+  font-family: var(--sa-head);
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  color: var(--sa-ink);
+  background: var(--sa-white);
+  border-bottom: 1px solid var(--sa-line);
+  border-radius: var(--sa-r-sm) var(--sa-r-sm) 0 0;
+  padding: 13px 18px;
+  margin: 0 0 4px;
+}
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-related nav { display: flex; flex-direction: column; gap: 0; padding: 0 18px; }
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-relcard {
+  display: block;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--sa-line-soft);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 11px 0;
+  text-decoration: none;
+}
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-relcard:last-child { border-bottom: 0; }
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-relcard strong { display: block; font-family: var(--sa-font); font-size: 15px; line-height: 20px; font-weight: 600; color: var(--sa-brand); }
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-relcard span { display: block; font-size: 13px; line-height: 18px; color: var(--sa-text-2); margin-top: 2px; }
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-relcard:hover { background: none; transform: none; box-shadow: none; }
+.gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-relcard:hover strong { text-decoration: underline; text-underline-offset: 2px; }
+@media (max-width: 1199px) {
+  .gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-related nav { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); column-gap: 24px; }
+  .gm-claret .gm-neutral:has(.calculator.gm-atlas) .pg-relcard:last-child { border-bottom: 1px solid var(--sa-line-soft); }
+}
+
+/* ── Results in detail ───────────────────────────────────────────────── */
+.gm-claret .gm-details { border-top: 0; padding-top: 28px; }
+.gm-claret .gm-details .pg-badge {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sa-brand);
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0 0 6px;
+}
+.gm-claret .gm-details .sectionheading h2 { font-family: var(--sa-head); font-size: 22px; line-height: 28px; font-weight: 700; color: var(--sa-ink); }
+.gm-claret .gm-neutral .facts > div,
+.gm-claret .gm-details .facts > div,
+.gm-claret .gm-details .resultgrid > *,
+.gm-claret .gm-details .gm-card {
+  background: var(--sa-white);
+  border: 1px solid var(--sa-line);
+  border-top: 1px solid var(--sa-line);
+  border-radius: var(--sa-r-sm);
+  box-shadow: none;
+}
+.gm-claret .gm-details .facts > div:hover,
+.gm-claret .gm-details .resultgrid > *:hover { box-shadow: var(--sa-shadow-card); transform: none; }
+.gm-claret .gm-neutral .facts span,
+.gm-claret .gm-details .facts span { font-size: 14px; line-height: 20px; color: var(--sa-text-2); }
+.gm-claret .gm-neutral .facts strong,
+.gm-claret .gm-details .facts strong { font-family: var(--sa-head); font-size: 22px; line-height: 28px; font-weight: 700; color: var(--sa-ink); }
+.gm-claret .gm-details details.ax-assumptions {
+  background: var(--sa-surface);
+  border: 1px solid var(--sa-line);
+  border-radius: var(--sa-r-sm);
+}
+.gm-claret .gm-details details.ax-assumptions > summary { font-family: var(--sa-head); font-size: 16px; font-weight: 700; color: var(--sa-ink); }
+
+/* ── Guide (reference: "All you need to know about …", a sticky question
+   menu on the left with a 1px rule and a 4px brand bar on the active item,
+   answers on the right: 20/24 heading-font titles over reading text) ── */
+.gm-claret .gm-neutral .pg-guide { border-top: 0; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--sa-line); }
+.gm-claret .gm-neutral .pg-guide::before { display: none; }
+.gm-claret .gm-neutral .pg-guidehead { display: block; text-align: center; margin: 0 auto 28px; max-width: 760px; padding: 0; border: 0; background: none; }
+.gm-claret .gm-neutral .pg-guidehead .pg-kicker {
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sa-brand);
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0 0 6px;
+}
+.gm-claret .gm-neutral .pg-guidehead .pg-guidelead { font-size: 16px; line-height: 24px; color: var(--sa-text-2); margin: 0; }
+.gm-claret .gm-neutral section.guideintro {
+  background: none;
+  border: 0;
+  border-left: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0 auto 32px;
+  max-width: 860px;
+  text-align: center;
+}
+.gm-claret .gm-neutral section.guideintro .eyebrow { display: none; }
+.gm-claret .gm-neutral section.guideintro h2 {
+  font-family: var(--sa-head);
+  font-size: 28px;
+  line-height: 34px;
+  font-weight: 800;
+  color: var(--sa-ink);
+  margin: 0 0 10px;
+}
+.gm-claret .gm-neutral section.guideintro p { font-size: 16px; line-height: 26px; color: var(--sa-text); margin: 0 auto; max-width: 760px; }
+
+.gm-claret .gm-neutral .guide-layout { display: grid; grid-template-columns: 290px minmax(0, 1fr); gap: 56px; align-items: start; }
+.gm-claret .gm-neutral aside.guide-nav {
+  position: sticky;
+  top: 16px;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  background: none;
+  border: 0;
+  border-right: 1px solid var(--sa-line);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+}
+.gm-claret .gm-neutral aside.guide-nav summary,
+.gm-claret .gm-neutral aside.guide-nav > p,
+.gm-claret .gm-neutral aside.guide-nav h2 {
+  font-family: var(--sa-head);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sa-text-2);
+  padding: 0 16px 8px 0;
+  margin: 0;
+}
+.gm-claret .gm-neutral .guide-nav a {
+  position: relative;
+  display: block;
+  font-family: var(--sa-font);
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+  color: var(--sa-ink);
+  text-decoration: none;
+  padding: 9px 18px 9px 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  border-radius: 0;
+  transition: color var(--sa-ease);
+}
+.gm-claret .gm-neutral .guide-nav a:hover { color: var(--sa-brand); background: none; }
+.gm-claret .gm-neutral .guide-nav a:is(.active, [aria-current="true"], [aria-current="location"])::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1px;
+  width: 4px;
+  height: 100%;
+  background: var(--sa-brand);
+}
+.gm-claret .gm-neutral .guide-nav a:is(.active, [aria-current="true"], [aria-current="location"]) { color: var(--sa-brand); }
+
+.gm-claret .gm-neutral article.g-article { max-width: 780px; }
+.gm-claret .gm-neutral .g-section { border: 0; border-top: 0; padding: 0; margin: 0 0 40px; background: none; box-shadow: none; }
+.gm-claret .gm-neutral .g-section + .g-section { padding-top: 0; border-top: 0; }
+.gm-claret .gm-neutral .g-sectionHead { display: block; margin: 0 0 12px; padding: 0; border: 0; }
+.gm-claret .gm-neutral .g-sectionHead .g-num,
+.gm-claret .gm-neutral .g-sectionHead .g-sectionKicker { display: none; }
+.gm-claret .gm-neutral .g-sectionHead h2,
+.gm-claret .gm-neutral .g-section > h2 {
+  font-family: var(--sa-head);
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 700;
+  color: var(--sa-ink);
+  margin: 0;
+}
+.gm-claret .gm-neutral .g-article h3 { font-family: var(--sa-head); font-size: 18px; line-height: 24px; font-weight: 700; color: var(--sa-ink); margin: 24px 0 8px; }
+.gm-claret .gm-neutral .g-article :is(p, li) { font-family: var(--sa-font); font-size: 16px; line-height: 26px; font-weight: 400; color: var(--sa-text); letter-spacing: 0; }
+.gm-claret .gm-neutral .g-article p { margin: 0 0 14px; }
+.gm-claret .gm-neutral .g-article :is(ul, ol) { padding-left: 22px; margin: 0 0 16px; }
+.gm-claret .gm-neutral .g-article li { margin: 0 0 8px; }
+.gm-claret .gm-neutral .g-article li::marker { color: var(--sa-brand); }
+.gm-claret .gm-neutral .g-article :is(strong, b) { color: var(--sa-ink); font-weight: 700; }
+.gm-claret .gm-neutral .g-article a,
+.gm-claret .gm-neutral .gm-prose a,
+.gm-claret .gm-neutral .pg-links a { color: var(--sa-brand); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: rgba(140, 29, 64, 0.35); }
+.gm-claret .gm-neutral .g-article a:hover,
+.gm-claret .gm-neutral .gm-prose a:hover { text-decoration-color: currentColor; }
+
+/* Key figures: warm tiles (the reference's highlight cards). */
+.gm-claret .gm-neutral .g-stats { gap: 12px; }
+.gm-claret .gm-neutral .g-stat {
+  background: var(--sa-surface);
+  border: 1px solid var(--sa-line-soft);
+  border-top: 1px solid var(--sa-line-soft);
+  border-radius: var(--sa-r-sm);
+  box-shadow: none;
+  padding: 16px 18px;
+}
+.gm-claret .gm-neutral .g-statValue { font-family: var(--sa-head); font-size: 26px; line-height: 32px; font-weight: 800; color: var(--sa-brand); }
+.gm-claret .gm-neutral .g-statLabel { font-size: 14px; line-height: 20px; color: var(--sa-text-2); }
+
+/* Worked examples, callouts, steps, comparisons */
+.gm-claret .gm-neutral .g-example {
+  background: var(--sa-white);
+  border: 1px solid var(--sa-line);
+  border-left: 1px solid var(--sa-line);
+  border-radius: var(--sa-r-sm);
+  box-shadow: none;
+}
+.gm-claret .gm-neutral .g-exampleHead { background: var(--sa-surface); border-bottom: 1px solid var(--sa-line); border-radius: var(--sa-r-sm) var(--sa-r-sm) 0 0; font-family: var(--sa-head); font-size: 16px; font-weight: 700; color: var(--sa-ink); }
+.gm-claret .gm-neutral .g-exampleHead::before { background: var(--sa-white); border: 1px solid var(--sa-line); color: var(--sa-text-2); }
+.gm-claret .gm-neutral .g-exampleTotal { background: var(--sa-brand-tint); border-top: 1px solid var(--sa-brand-soft); color: var(--sa-ink); }
+.gm-claret .gm-neutral .g-exampleTotal :is(strong, b) { color: var(--sa-brand); font-family: var(--sa-head); }
+.gm-claret .gm-neutral .g-callout,
+.gm-claret .gm-neutral .gm-callout {
+  background: var(--sa-accent-tint);
+  border: 1px solid #f1e2cc;
+  border-left: 4px solid var(--sa-accent);
+  border-radius: var(--sa-r-sm);
+  box-shadow: none;
+}
+.gm-claret .gm-neutral .g-calloutTitle { font-family: var(--sa-head); font-size: 16px; font-weight: 700; color: var(--sa-ink); }
+.gm-claret .gm-neutral .g-compareCol { background: var(--sa-white); border: 1px solid var(--sa-line); border-radius: var(--sa-r-sm); box-shadow: none; }
+.gm-claret .gm-neutral .g-compareHead { font-family: var(--sa-head); color: var(--sa-ink); border-bottom: 1px solid var(--sa-line-soft); }
+.gm-claret .gm-neutral .g-steps > * { background: var(--sa-white); border: 1px solid var(--sa-line); border-left: 1px solid var(--sa-line); border-radius: var(--sa-r-sm); box-shadow: none; }
+.gm-claret .gm-neutral .g-sources { background: var(--sa-surface); border: 1px solid var(--sa-line-soft); border-radius: var(--sa-r-sm); padding: 20px 24px; }
+.gm-claret .gm-neutral .g-sources :is(h2, h3) { font-family: var(--sa-head); font-size: 18px; color: var(--sa-ink); }
+.gm-claret .gm-neutral .g-sources :is(p, li) { font-size: 14px; line-height: 22px; }
+
+/* ── Tables (reference: FD rate tables, white with a 1px #ddd grid, a bold
+   header row on a warm band, 16px cells with 12px padding) ─────────── */
+.gm-claret .gm-neutral :is(.g-tableWrap, .gm-tablewrap, .tablewrap) { border: 1px solid var(--sa-line); border-radius: var(--sa-r-sm); box-shadow: none; overflow-x: auto; background: var(--sa-white); }
+.gm-claret .gm-neutral table { border-collapse: collapse; background: var(--sa-white); }
+.gm-claret .gm-neutral table caption { font-family: var(--sa-head); font-size: 15px; line-height: 20px; font-weight: 700; color: var(--sa-ink); text-align: left; padding: 12px 16px; caption-side: top; background: var(--sa-white); }
+.gm-claret .gm-neutral table th {
+  font-family: var(--sa-font);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--sa-ink);
+  background: var(--sa-surface);
+  border: 0;
+  border-bottom: 1px solid var(--sa-line);
+  padding: 12px 16px;
+}
+.gm-claret .gm-neutral table td {
+  font-size: 15px;
+  line-height: 22px;
+  color: var(--sa-text);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--sa-line-soft);
+  padding: 12px 16px;
+}
+.gm-claret .gm-neutral table tbody tr:nth-child(even) td { background: transparent; }
+.gm-claret .gm-neutral table tbody tr:hover td { background: #fcfbf8; }
+.gm-claret .gm-neutral table tbody tr:last-child td { border-bottom: 0; }
+.gm-claret .gm-neutral table tbody tr th,
+.gm-claret .gm-neutral .g-article table tbody tr:nth-child(n) th { background: transparent; font-weight: 600; border-bottom: 1px solid var(--sa-line-soft); }
+.gm-claret .gm-neutral table tr:is(.is-current, .is-you, .current, [aria-current]) td,
+.gm-claret .gm-neutral table tr:is(.is-current, .is-you, .current, [aria-current]) th { background: var(--sa-brand-tint); color: var(--sa-brand); }
+
+/* ── FAQ (reference: centred 810px column, 28px title, one bordered row
+   per question with the question in the heading font) ───────────────── */
+.gm-claret .gm-neutral section.fullfaq {
+  background: var(--sa-white);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 48px 0 24px;
+  margin: 24px 0 0;
+}
+.gm-claret .gm-neutral section.fullfaq > div { max-width: 840px; margin: 0 auto; }
+.gm-claret .gm-neutral section.fullfaq .q-kicker { display: block; text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sa-brand); }
+.gm-claret .gm-neutral section.fullfaq h2 { text-align: center; font-family: var(--sa-head); font-size: 28px; line-height: 34px; font-weight: 800; color: var(--sa-ink); margin: 6px 0 24px; }
+.gm-claret .gm-neutral .q-faqs { display: block; border-top: 1px solid var(--sa-line); }
+.gm-claret .gm-neutral .q-faq {
+  background: var(--sa-white);
+  border: 0;
+  border-bottom: 1px solid var(--sa-line);
+  border-radius: 0;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+}
+.gm-claret .gm-neutral .q-faq:hover { box-shadow: none; transform: none; background: var(--sa-white); }
+.gm-claret .gm-neutral .q-faq summary {
+  font-family: var(--sa-head);
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--sa-ink);
+  padding: 16px 44px 16px 0;
+  background: none;
+}
+.gm-claret .gm-neutral .q-faq summary > span:first-child::before { content: none; display: none; }
+.gm-claret .gm-neutral .q-faq summary:hover { color: var(--sa-brand); }
+.gm-claret .gm-neutral .q-faq .q-faqPlus { border: 0; background: none; }
+.gm-claret .gm-neutral .q-faq summary::after { color: var(--sa-brand); background: var(--sa-white); border: 1px solid var(--sa-line); border-radius: 50%; font-weight: 600; transition: transform var(--sa-ease), background var(--sa-ease); }
+.gm-claret .gm-neutral .q-faq summary:hover::after { background: var(--sa-brand-tint); border-color: var(--sa-brand-soft); }
+.gm-claret .gm-neutral .q-faq[open] summary { color: var(--sa-brand); }
+.gm-claret .gm-neutral .q-faq :is(.q-faqBody, .q-faqBody p) { font-size: 16px; line-height: 26px; color: var(--sa-text); }
+.gm-claret .gm-neutral .q-faq .q-faqBody { padding: 0 44px 18px 0; }
+.gm-claret .gm-neutral .q-note {
+  background: var(--sa-surface);
+  border: 1px solid var(--sa-line-soft);
+  border-left: 4px solid var(--sa-accent);
+  border-radius: var(--sa-r-sm);
+  box-shadow: none;
+  margin-top: 24px;
+}
+.gm-claret .gm-neutral .q-note :is(strong, b, h3) { font-family: var(--sa-head); color: var(--sa-ink); }
+.gm-claret .gm-neutral .q-note p { font-size: 15px; line-height: 22px; color: var(--sa-text); }
+
+/* ── Footer (warm band; the reference's footer is charcoal, kept light here
+   so the SumAtlas logo keeps its claret mark and dark wordmark) ───────── */
+.gm-claret footer {
+  background: var(--sa-surface);
+  border-top: 1px solid var(--sa-line);
+  color: var(--sa-text);
+  margin-top: 56px;
+}
+.gm-claret footer .footergrid p { font-size: 14px; color: var(--sa-text-2); }
+.gm-claret footer nav a { font-size: 14px; line-height: 20px; font-weight: 500; color: var(--sa-ink); text-decoration: none; }
+.gm-claret footer nav a:hover { color: var(--sa-brand); text-decoration: underline; text-underline-offset: 3px; }
+.gm-claret footer .footerbottom { font-size: 13px; line-height: 18px; color: var(--sa-text-2); border-top: 1px solid var(--sa-line); }
+
+@media (max-width: 991px) {
+  .gm-claret .gm-neutral .guide-layout { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .gm-claret .gm-neutral aside.guide-nav { position: static; max-height: none; border-right: 0; border: 1px solid var(--sa-line); border-radius: var(--sa-r-sm); padding: 4px 16px; }
+  .gm-claret .gm-neutral .guide-nav a { font-size: 15px; padding: 8px 0; border-bottom: 1px solid var(--sa-line-soft); }
+  .gm-claret .gm-neutral .guide-nav a:last-child { border-bottom: 0; }
+  .gm-claret .gm-neutral section.guideintro h2,
+  .gm-claret .gm-neutral section.fullfaq h2 { font-size: 24px; line-height: 30px; }
+  .gm-claret .gm-neutral .q-faq summary { font-size: 16px; line-height: 22px; }
+  .gm-claret .gm-neutral .g-article :is(p, li) { font-size: 15px; line-height: 24px; }
+}
+
+/* ── Listing pages: heroes, chips and cards ────────────────────────────
+   Reference: "All Financial Tools & Calculators": a white title band (h1
+   28/34 in the heading font), then white cards (radius 8, a 0 0 4px shadow,
+   no border) with an icon, a 22px title, a 16px #666 description and an
+   outlined pill action. Topic links are pills. */
+.gm-claret .gm-neutral .categoryhero,
+.gm-claret .gm-neutral .hero {
+  background: var(--sa-white);
+  color: var(--sa-ink);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+.gm-claret .gm-neutral .categoryhero { padding: 8px 0 20px; margin: 0 0 8px; border-bottom: 1px solid #ececec; }
+.gm-claret .gm-neutral .categoryhero::before,
+.gm-claret .gm-neutral .categoryhero::after,
+.gm-claret .gm-neutral .hero::before,
+.gm-claret .gm-neutral .hero::after { display: none; }
+.gm-claret .gm-neutral .categoryhero :is(h1, h2) {
+  font-family: var(--sa-head);
+  font-size: 32px;
+  line-height: 38px;
+  font-weight: 800;
+  color: var(--sa-ink);
+  margin: 0 0 8px;
+}
+.gm-claret .gm-neutral .categoryhero :is(p, span:not(.sr-only)) { font-size: 17px; line-height: 26px; color: var(--sa-text-2); }
+.gm-claret .gm-neutral .categoryhero a:not(.button) { color: var(--sa-brand); }
+/* Home heroes (reference: 54px extra-bold headline on a light band) */
+.gm-claret .gm-neutral .hero {
+  background: linear-gradient(180deg, var(--sa-surface) 0%, var(--sa-white) 100%);
+  border-bottom: 1px solid #efece4;
+}
+.gm-claret .gm-neutral .hero h1 { font-family: var(--sa-head); font-size: 52px; line-height: 58px; font-weight: 800; color: var(--sa-ink); letter-spacing: -0.5px; }
+.gm-claret .gm-neutral .hero h1 :is(span, em, mark, u) { color: var(--sa-brand); text-decoration-color: var(--sa-brand); }
+.gm-claret .gm-neutral .hero :is(p, li, span) { color: var(--sa-text); }
+.gm-claret .gm-neutral .hero > .wrap p,
+.gm-claret .gm-neutral .hero p { font-size: 18px; line-height: 28px; }
+.gm-claret .gm-neutral .hero :is(.button, a.button) {
+  background: var(--sa-brand);
+  border: 1px solid var(--sa-brand);
+  color: var(--sa-white);
+  border-radius: var(--sa-r-pill);
+  font-weight: 700;
+  box-shadow: none;
+}
+.gm-claret .gm-neutral .hero :is(.button, a.button):hover { background: var(--sa-brand-hover); }
+/* The old claret hero forced claret text on its white button (!important). */
+.gm-claret .gm-neutral .hero .button.herobutton,
+.gm-claret .gm-neutral .hero .button.herobutton:hover { color: var(--sa-white) !important; }
+.gm-claret .gm-neutral .hero .herocopy h1 em { color: var(--sa-brand); text-decoration-color: rgba(140, 29, 64, 0.35); text-decoration-thickness: 4px; text-underline-offset: 8px; }
+
+/* Section headings on listing pages: kicker, then a 28px title. */
+.gm-claret .gm-neutral .sectionheading h2,
+.gm-claret .gm-neutral .section > .wrap > h2,
+.gm-claret .gm-neutral .section > h2 { font-family: var(--sa-head); font-size: 28px; line-height: 34px; font-weight: 800; color: var(--sa-ink); }
+.gm-claret .gm-neutral :is(.eyebrow, .kicker, .sectionheading .eyebrow) { color: var(--sa-brand); font-weight: 700; }
+.gm-claret .gm-neutral .sectionheading :is(p, .textbutton) { color: var(--sa-text-2); }
+
+/* Topic pills */
+.gm-claret .gm-neutral .categoryjump { gap: 8px; }
+.gm-claret .gm-neutral .categoryjump a {
+  font-family: var(--sa-font);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--sa-ink);
+  background: var(--sa-white);
+  border: 1px solid var(--sa-line);
+  border-radius: var(--sa-r-pill);
+  padding: 7px 16px;
+  box-shadow: none;
+  transition: border-color var(--sa-ease), color var(--sa-ease), background var(--sa-ease);
+}
+.gm-claret .gm-neutral .categoryjump a:hover { border-color: var(--sa-brand); color: var(--sa-brand); }
+.gm-claret .gm-neutral .categoryjump a:is(.active, [aria-current]) { background: var(--sa-brand); border-color: var(--sa-brand); color: var(--sa-white); }
+
+/* Cards */
+.gm-claret .gm-neutral :is(.categorytool, .gm-card, .categorycard, .mostused a, .mostused article, .gm-cards > a, .gm-cards > article, .relatedgrid > a, .q-relatedCard) {
+  background: var(--sa-white);
+  border: 0;
+  border-radius: var(--sa-r);
+  box-shadow: var(--sa-shadow-card);
+  transition: box-shadow var(--sa-ease), transform var(--sa-ease);
+}
+.gm-claret .gm-neutral :is(.categorytool, .gm-card, .categorycard, .gm-cards > a, .relatedgrid > a, .q-relatedCard):hover {
+  box-shadow: var(--sa-shadow-hover);
+  transform: translateY(-2px);
+  border: 0;
+}
+.gm-claret .gm-neutral :is(.categorytool, .gm-card, .gm-cards > a, .q-relatedCard) :is(h2, h3, strong, .categorytitle) {
+  font-family: var(--sa-head);
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--sa-ink);
+}
+.gm-claret .gm-neutral .categorytool:hover :is(h2, h3, strong) { color: var(--sa-brand); }
+.gm-claret .gm-neutral :is(.categorytool, .gm-card, .gm-cards > a) p { font-size: 15px; line-height: 22px; color: var(--sa-text-2); }
+.gm-claret .gm-neutral .toolicon { background: var(--sa-brand-tint); color: var(--sa-brand); border-radius: var(--sa-r); border: 0; }
+.gm-claret .gm-neutral :is(.gm-go, .openlabel, .viewall, .categorycard .button) {
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  color: var(--sa-brand);
+  background: var(--sa-white);
+  border: 1px solid var(--sa-brand);
+  border-radius: var(--sa-r-pill);
+  padding: 5px 14px;
+  text-decoration: none;
+}
+.gm-claret .gm-neutral :is(.gm-go, .viewall):hover { background: var(--sa-brand-tint); }
+
+/* Grey bands become the reference's warm band. */
+.gm-claret .gm-neutral :is(.section.alt, .categories, .gm-band, .band, .browse, .gm-topicabout) { background: var(--sa-surface); }
+.gm-claret .gm-neutral .browse { border-top: 1px solid #efece4; }
+.gm-claret .gm-neutral .categorycard .toollist a { font-size: 15px; color: var(--sa-ink); border-bottom-color: var(--sa-line-soft); }
+.gm-claret .gm-neutral .categorycard .toollist a:hover { color: var(--sa-brand); background: var(--sa-brand-tint); }
+.gm-claret .gm-neutral .gm-topicabout { border: 1px solid var(--sa-line-soft); border-radius: var(--sa-r-sm); box-shadow: none; }
+.gm-claret .gm-neutral .gm-topicabout h2 { font-family: var(--sa-head); font-size: 22px; font-weight: 700; color: var(--sa-ink); }
+.gm-claret .gm-neutral .gm-topicabout p { font-size: 16px; line-height: 26px; color: var(--sa-text); }
+
+/* Article and content pages (about, privacy, blog posts) */
+.gm-claret .gm-neutral .gm-prose { font-size: 17px; line-height: 28px; color: var(--sa-text); }
+.gm-claret .gm-neutral .gm-prose :is(p, li) { font-size: 17px; line-height: 28px; color: var(--sa-text); }
+.gm-claret .gm-neutral .gm-prose h2 { font-family: var(--sa-head); font-size: 24px; line-height: 30px; font-weight: 800; color: var(--sa-ink); margin-top: 36px; }
+.gm-claret .gm-neutral .gm-prose h3 { font-family: var(--sa-head); font-size: 19px; line-height: 26px; font-weight: 700; color: var(--sa-ink); }
+.gm-claret .gm-neutral .gm-prose :is(strong, b) { color: var(--sa-ink); }
+
+@media (max-width: 767px) {
+  .gm-claret .gm-neutral .categoryhero :is(h1, h2) { font-size: 26px; line-height: 32px; }
+  .gm-claret .gm-neutral .hero h1 { font-size: 34px; line-height: 40px; letter-spacing: 0; }
+  .gm-claret .gm-neutral .hero p { font-size: 16px; line-height: 25px; }
+  .gm-claret .gm-neutral .sectionheading h2,
+  .gm-claret .gm-neutral .section > .wrap > h2 { font-size: 23px; line-height: 29px; }
+  .gm-claret .gm-neutral .gm-prose :is(p, li) { font-size: 16px; line-height: 26px; }
+}
+.gm-claret .gm-neutral :is(.gm-go, .openlabel, .viewall) { white-space: nowrap; }
+@media (max-width: 480px) {
+  .gm-claret .gm-neutral :is(.gm-go, .openlabel) { font-size: 13px; padding: 4px 11px; }
+}

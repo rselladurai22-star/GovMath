@@ -6,9 +6,12 @@ import { createContext, useContext, type ReactNode } from "react";
  * A page-level design variant for the calculator (owner's trial, October
  * 2026): "indus" draws the calculator as a white card on a full-width maroon
  * band with the page title inside it, a half-circle gauge and coloured
- * result rows. FlagshipPage provides it; Studio reads it.
+ * result rows. "atlas" (the SumAtlas design system, November 2026) keeps the
+ * title above the calculator and draws the form in a warm panel beside a
+ * white results card (answer, donut and a row list). FlagshipPage provides
+ * it; Studio reads it.
  */
-export type Look = { look: "indus"; title: string; lead: string } | null;
+export type Look = { look: "indus" | "atlas"; title: string; lead: string } | null;
 
 const LookContext = createContext<Look>(null);
 

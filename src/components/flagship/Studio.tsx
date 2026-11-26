@@ -220,6 +220,7 @@ export default function Studio({
 }) {
   const look = useLook();
   const indus = look?.look === "indus";
+  const atlas = look?.look === "atlas";
   const details = useRef<HTMLElement>(null);
   const jump = useRef(false);
 
@@ -254,7 +255,7 @@ export default function Studio({
 
   return (
     <>
-      <section className={indus ? "calculator gm-clear gm-indus" : "calculator gm-clear gm-modern"} id="calculator">
+      <section className={indus ? "calculator gm-clear gm-indus" : atlas ? "calculator gm-clear gm-atlas" : "calculator gm-clear gm-modern"} id="calculator">
         <div className="calcgrid">
           <form
             className="gm-form"
