@@ -21,6 +21,7 @@ const BREADCRUMBS = [
 
 const FAQS: { q: string; a: string }[] = [
   { q: "How much is Child Benefit in 2026/27?", a: "£27.05 a week for the eldest or only child and £17.90 a week for each other child, paid every four weeks." },
+  { q: "How much will Child Benefit be from April 2027?", a: "The proposed rates from 6 April 2027 are £28.00 a week for the eldest or only child and £18.55 for each other child (Budget 2026, Annex A). For two children that is £46.55 a week, or £2,420.60 a year: £83.20 more than in 2026/27. These are proposed rates, confirmed when Parliament approves the uprating order." },
   { q: "Is there a limit on how many children I can claim for?", a: "No. Every child after the eldest gets £17.90 a week." },
   { q: "Who can claim Child Benefit?", a: "Anyone responsible for a child under 16, or under 20 in approved education or training, who meets the residence rules. Only one person can claim for each child." },
   { q: "How far back can Child Benefit be backdated?", a: "Three months from the date of the claim, so claim soon after a birth." },

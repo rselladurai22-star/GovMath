@@ -18,12 +18,14 @@ const TOC: TocItem[] = [
   { id: "fit-notes", title: "Fit notes and evidence" },
   { id: "appeals", title: "Challenging a decision" },
   { id: "sick-pay", title: "Moving from Statutory Sick Pay" },
+  { id: "april-2027", title: "Rates from April 2027" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
 const SOURCES: Source[] = [
   { label: "GOV.UK — Employment and Support Allowance (ESA)", href: "https://www.gov.uk/employment-support-allowance" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
+  { label: "GOV.UK — Proposed benefit and pension rates 2027 to 2028", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
   { label: "GOV.UK — Check your National Insurance record", href: "https://www.gov.uk/check-national-insurance-record" },
   { label: "GOV.UK — Work Capability Assessment", href: "https://www.gov.uk/employment-support-allowance/your-esa-claim" },
   { label: "GOV.UK — Permitted work: working while on ESA", href: "https://www.gov.uk/employment-support-allowance/working-while-you-claim" },
@@ -275,8 +277,33 @@ export default function EsaGuide() {
           contribution condition.
         </p>
       </GuideSection>
+      <GuideSection id="april-2027" n={16} kicker="Next year" title="Rates from April 2027">
+        <p>
+          New Style ESA rises from 6 April 2027. The basic and main phase rates, the support component and the permitted work limit all go up. The pension threshold stays at £85 a week.
+        </p>
+        <DataTable
+          caption="New Style ESA a week: 2026/27 and the proposed rates from 6 April 2027"
+          head={["", "2026/27", "From April 2027"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Assessment phase, under 25", "£75.65", "£78.30"],
+            ["Assessment phase, 25 or over", "£95.55", "£98.90"],
+            ["Main phase rate", "£95.55", "£98.90"],
+            ["Support component", "£50.35", "£52.10"],
+            ["Work-related activity component (claims before 3 April 2017)", "£37.95", "£39.30"],
+            ["Permitted work limit", "£203.50", "£211.50"],
+          ]}
+        />
+        <p>
+          Someone in the support group with no pension will get £151.00 a week instead of £145.90: £5.10 a week, or £265.20 over a year, more. In the assessment phase at 25 or over it is £3.35 a week more.
+        </p>
+        <p>
+          These are proposed rates. The Department for Work and Pensions published them on 11 November 2026, after the Budget, and they become final when Parliament approves the uprating order, usually early in the new year. Choose &ldquo;From April 2027 (proposed)&rdquo; in the calculator to see your own figures with them.
+        </p>
+      </GuideSection>
 
-      <GuideSection id="key-numbers" n={16} kicker="Reference" title="Key numbers">
+
+      <GuideSection id="key-numbers" n={17} kicker="Reference" title="Key numbers">
         <DataTable
           caption="New Style ESA, 2026/27"
           head={["Item", "Amount"]}

@@ -21,6 +21,7 @@ const BREADCRUMBS = [
 
 const FAQS: { q: string; a: string }[] = [
   { q: "How much is New Style ESA in 2026/27?", a: "£95.55 a week at 25 or over (£75.65 under 25) in the 13-week assessment phase, then £95.55 in the work-related activity group or £145.90 in the support group." },
+  { q: "How much will New Style ESA be from April 2027?", a: "Under DWP's proposed rates from 6 April 2027, the main phase rate rises from £95.55 to £98.90 a week and the support component from £50.35 to £52.10, so the support group gets £151.00 a week instead of £145.90. The permitted work limit rises to £211.50. These are proposed rates, confirmed when Parliament approves the uprating order." },
   { q: "How long does New Style ESA last?", a: "365 days in the assessment phase and work-related activity group together. There is no time limit in the support group." },
   { q: "Do savings affect New Style ESA?", a: "No. It depends on your National Insurance record. Savings and a partner's income do not count." },
   { q: "Does a pension affect New Style ESA?", a: "Yes. Half of any private or workplace pension over £85 a week is taken off." },

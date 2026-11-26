@@ -21,6 +21,7 @@ const BREADCRUMBS = [
 
 const FAQS: { q: string; a: string }[] = [
   { q: "How much is New Style JSA in 2026/27?", a: "£95.55 a week if you are 25 or over and £75.65 if you are under 25, from April 2026. It is paid every two weeks." },
+  { q: "How much will New Style JSA be from April 2027?", a: "Under DWP's proposed rates from 6 April 2027, New Style JSA is £98.90 a week at 25 or over (now £95.55) and £78.30 under 25 (now £75.65). Over the full 26 weeks, that is £2,571.40 at 25 or over. These are proposed rates, confirmed when Parliament approves the uprating order." },
   { q: "How long is New Style JSA paid for?", a: "Up to 182 days, which is 26 weeks. After that you need to rely on Universal Credit if you are still out of work." },
   { q: "Do savings affect New Style JSA?", a: "No. New Style JSA depends on your National Insurance record, not your savings or your partner's income." },
   { q: "What National Insurance do I need?", a: "Class 1 contributions on earnings of at least 26 times the Lower Earnings Limit in one of the two tax years that count, and paid or credited contributions of 50 times it in both years." },

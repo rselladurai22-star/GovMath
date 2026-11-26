@@ -32,6 +32,7 @@ const TOC: TocItem[] = [
   { id: "young-people", title: "When a young person starts work or claims" },
   { id: "moving", title: "Moving to or from the UK" },
   { id: "checklist", title: "A checklist for new parents" },
+  { id: "april-2027", title: "Rates from April 2027" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -343,8 +344,32 @@ export default function ChildBenefitGuide() {
           <li>Diary the date your child turns 9 months, when working parent childcare hours can start.</li>
         </ol>
       </GuideSection>
+      <GuideSection id="april-2027" n={17} kicker="Next year" title="Rates from April 2027">
+        <p>
+          The government&rsquo;s Budget 2026 rates and allowances (Annex A) set Child Benefit for 2027/28: £28.00 a week for the eldest or only child and £18.55 for each other child, from 6 April 2027. The High Income Child Benefit Charge still starts at £60,000.
+        </p>
+        <DataTable
+          caption="Child Benefit: 2026/27 and the proposed rates from 6 April 2027"
+          head={["", "2026/27", "From April 2027"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Eldest or only child, a week", "£27.05", "£28.00"],
+            ["Each other child, a week", "£17.90", "£18.55"],
+            ["1 child, a year", "£1,406.60", "£1,456.00"],
+            ["2 children, a year", "£2,337.40", "£2,420.60"],
+            ["3 children, a year", "£3,268.20", "£3,385.20"],
+          ]}
+        />
+        <p>
+          A family with two children will get £46.55 a week instead of £44.95, which is £83.20 more over a full year. With one child it is £49.40 more a year, and with three children £117.00.
+        </p>
+        <p>
+          These are proposed rates, published with the 2026 Budget, and they become final when Parliament approves the uprating order, usually early in the new year. Choose &ldquo;From April 2027 (proposed)&rdquo; in the calculator to see your own figures with them.
+        </p>
+      </GuideSection>
 
-      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers for 2026/27">
+
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£27.05", label: "Eldest or only child, a week" },

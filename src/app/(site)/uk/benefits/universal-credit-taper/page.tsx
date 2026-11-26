@@ -21,6 +21,7 @@ const BREADCRUMBS = [
 
 const FAQS: { q: string; a: string }[] = [
   { q: "What is the Universal Credit taper rate?", a: "55%. Your award falls by 55p for every £1 of take-home pay above your work allowance." },
+  { q: "Does the Universal Credit taper change in April 2027?", a: "No: it stays at 55%. Under DWP's proposed 2027/28 rates the work allowances rise from £710 to £735 a month (no housing costs) and from £427 to £442 (with housing costs), from your first assessment period starting on or after 6 April 2027. These are proposed rates, confirmed when Parliament approves the uprating order." },
   { q: "What is the work allowance in 2026/27?", a: "£427 a month if your award includes help with rent, or £710 if it does not. Only households with children or a health condition get one." },
   { q: "How much of a pay rise do I keep on Universal Credit?", a: "Below the tax threshold you keep 45p of each extra pound. As a basic-rate taxpayer you keep about 32p, after 20% tax, 8% National Insurance and the 55% taper." },
   { q: "Do pension contributions increase Universal Credit?", a: "Yes. Universal Credit counts pay after pension contributions, so £100 into a pension costs a basic-rate taxpayer on the taper only about £32.40." },

@@ -167,10 +167,21 @@ export const PIP_ACTIVITIES: Activity[] = [
   },
 ];
 
+import { forYear, type RatesYear } from "./rates-year";
+
 export const PIP_2026 = {
   daily: { standard: 76.7, enhanced: 114.6 },
   mobility: { standard: 30.3, enhanced: 80.0 },
 } as const;
+
+/** Proposed weekly rates from 6 April 2027: DWP "Proposed benefit and pension rates 2027 to 2028". */
+export const PIP_2027 = {
+  daily: { standard: 79.4, enhanced: 118.6 },
+  mobility: { standard: 31.35, enhanced: 82.8 },
+} as const;
+
+export type PipRates = { daily: { standard: number; enhanced: number }; mobility: { standard: number; enhanced: number } };
+export const pipRates = (year?: RatesYear): PipRates => forYear<PipRates>(year, PIP_2026, PIP_2027);
 
 export type PipBand = "none" | "standard" | "enhanced";
 
@@ -192,7 +203,8 @@ export type PipScore = {
 };
 
 /** Score from the chosen descriptor code per activity id (missing means "a"). */
-export function pipScore(choices: Record<string, string>): PipScore {
+export function pipScore(choices: Record<string, string>, year?: RatesYear): PipScore {
+  const R = pipRates(year);
   let daily = 0;
   let mobility = 0;
   for (const a of PIP_ACTIVITIES) {
@@ -202,8 +214,8 @@ export function pipScore(choices: Record<string, string>): PipScore {
   }
   const dailyBand = pipBand(daily);
   const mobilityBand = pipBand(mobility);
-  const dailyWeekly = dailyBand === "none" ? 0 : PIP_2026.daily[dailyBand];
-  const mobilityWeekly = mobilityBand === "none" ? 0 : PIP_2026.mobility[mobilityBand];
+  const dailyWeekly = dailyBand === "none" ? 0 : R.daily[dailyBand];
+  const mobilityWeekly = mobilityBand === "none" ? 0 : R.mobility[mobilityBand];
   const weekly = dailyWeekly + mobilityWeekly;
   const toNext = (p: number) => (p >= 12 ? 0 : p >= 8 ? 12 - p : 8 - p);
   return {

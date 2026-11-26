@@ -1,6 +1,7 @@
 "use client";
 
-import { LOWER_EARNINGS_LIMIT_WEEKLY, maternityPay, STATUTORY_FLAT_RATE } from "@/lib/benefits/family";
+import { maternityPay, statutoryRates } from "@/lib/benefits/family";
+import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, DateField, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
@@ -16,6 +17,7 @@ const SCHEMA = {
   full: num(0, 0, 52),
   half: num(0, 0, 52),
   leave: num(52, 1, 52),
+  rates: ratesParam(),
 };
 const ADVANCED = ["awe", "full", "half", "leave"] as const;
 const COLORS = { statutory: "#5b1e6e", employer: "#0f9f6e", normal: "#94a3b8" };
@@ -30,8 +32,12 @@ function shift(iso: string, weeks: number): string {
 export default function MaternityStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
+  const next = v.rates === "2027/28";
+  const SR = statutoryRates(v.rates);
+  const STATUTORY_FLAT_RATE = SR.flatRate;
+  const LOWER_EARNINGS_LIMIT_WEEKLY = SR.lowerEarningsLimit;
   const awe = v.awe > 0 ? v.awe : v.salary / 52;
-  const r = maternityPay({ awe, service: v.service, fullPayWeeks: v.full, halfPayWeeks: v.half, leaveWeeks: v.leave });
+  const r = maternityPay({ awe, service: v.service, fullPayWeeks: v.full, halfPayWeeks: v.half, leaveWeeks: v.leave, year: v.rates });
   const scheme = v.full > 0 || v.half > 0;
   const statutoryName = r.route === "smp" ? "Statutory Maternity Pay" : r.route === "ma" ? "Maternity Allowance" : "No statutory pay";
   const drop = r.normalPay > 0 ? 1 - r.total / r.normalPay : 0;
@@ -50,6 +56,7 @@ export default function MaternityStudio({ query }: { query: Query }) {
             <MoneyField label="Salary a year, before tax" value={v.salary} onChange={st.bind("salary")} big slider={{ min: 0, max: 100_000, step: 500, ends: ["£0", "£100k"] }} hint="Your normal gross pay. We divide by 52 to estimate your average weekly earnings." />
             <DateField label="Baby's due date" value={v.due} onChange={st.bind("due")} />
             <Switch label="With my employer for 26 weeks by the qualifying week" checked={v.service} onChange={st.bind("service")} hint="Roughly, you started before you got pregnant. If not, you may get Maternity Allowance instead." />
+            <RatesChoice value={v.rates} onChange={st.bind("rates")} />
           </InputGroup>
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             <MoneyField label="Average weekly earnings, if you know them" value={v.awe} onChange={st.bind("awe")} pence optional hint="From the 8 weeks before the qualifying week. Includes overtime and bonuses paid then. Overrides the salary." />
@@ -61,7 +68,7 @@ export default function MaternityStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow={`${statutoryName}${scheme && r.route === "smp" ? " and employer pay" : ""}`}
+        eyebrow={`${statutoryName}${scheme && r.route === "smp" ? " and employer pay" : ""}${next ? " (proposed rates from April 2027)" : ""}`}
         value={gbp(r.total)}
         unit={`over ${v.leave} ${per(v.leave, "weeks")}`}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
@@ -91,7 +98,7 @@ export default function MaternityStudio({ query }: { query: Query }) {
 
       <Assumptions
         items={[
-          { label: "Rates", value: "2026/27: £194.32 a week" },
+          { label: "Rates", value: next ? `Proposed from 6 April 2027: ${gbp(SR.flatRate, true)} a week, earnings threshold £${SR.lowerEarningsLimit}, applied to every week` : "2026/27: £194.32 a week" },
           { label: "Earnings", value: v.awe > 0 ? "Average weekly earnings entered" : "Salary ÷ 52" },
           { label: "Employer scheme", value: scheme ? `${v.full} ${per(v.full, "weeks")} full, ${v.half} ${per(v.half, "weeks")} half pay` : "Statutory only" },
           { label: "Pay shown", value: "Before tax and NI" },
@@ -166,7 +173,7 @@ export default function MaternityStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 rates. Dates are approximate; check them with your employer. Not financial advice.
+        {next ? "Proposed 2027/28 rates (DWP), final once Parliament approves them; weeks paid before April 2027 use the 2026/27 rate." : "2026/27 rates."} Dates are approximate; check them with your employer. Not financial advice.
       </p>
     </Studio>
   );

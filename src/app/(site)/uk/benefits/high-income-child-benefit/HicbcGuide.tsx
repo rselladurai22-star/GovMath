@@ -32,6 +32,7 @@ const TOC: TocItem[] = [
   { id: "paye", title: "Paying through your tax code" },
   { id: "late", title: "If you have not paid it before" },
   { id: "decide", title: "Should you take the payments?" },
+  { id: "april-2027", title: "Rates from April 2027" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -365,8 +366,31 @@ export default function HicbcGuide() {
           can stop or restart payments at any time.
         </p>
       </GuideSection>
+      <GuideSection id="april-2027" n={17} kicker="Next year" title="Rates from April 2027">
+        <p>
+          Child Benefit rises from 6 April 2027 to £28.00 a week for the eldest child and £18.55 for each other child (Budget 2026, Annex A). The charge itself does not change: it starts at £60,000 of adjusted net income and takes back 1% for every £200, so it takes the lot at £80,000.
+        </p>
+        <DataTable
+          caption="Child Benefit and the charge: 2026/27 and the proposed rates from 6 April 2027"
+          head={["", "2026/27", "From April 2027"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Eldest or only child, a week", "£27.05", "£28.00"],
+            ["Each other child, a week", "£17.90", "£18.55"],
+            ["2 children, a year", "£2,337.40", "£2,420.60"],
+            ["Charge starts / takes it all", "£60,000 / £80,000", "£60,000 / £80,000"],
+          ]}
+        />
+        <p>
+          With two children and an income of £70,000, half the Child Benefit is taken back in both years: the charge rises from £1,168.70 to £1,210.30, £41.60 more, and you keep £41.60 more too.
+        </p>
+        <p>
+          These are proposed rates, published with the 2026 Budget, and they become final when Parliament approves the uprating order, usually early in the new year. Choose &ldquo;From April 2027 (proposed)&rdquo; in the calculator to see your own figures with them.
+        </p>
+      </GuideSection>
 
-      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers for 2026/27">
+
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£60,000", label: "Charge starts" },

@@ -21,6 +21,7 @@ const BREADCRUMBS = [
 
 const FAQS: { q: string; a: string }[] = [
   { q: "What is the Carer's Allowance earnings limit in 2026/27?", a: "£204 a week after Income Tax, National Insurance, half of your pension contributions and some care costs." },
+  { q: "What is the Carer's Allowance earnings limit from April 2027?", a: "Under DWP's proposed rates from 6 April 2027, the earnings limit rises from £204 to £212 a week, and Carer's Allowance from £86.45 to £89.50 a week (£4,654.00 a year). These are proposed rates, confirmed when Parliament approves the uprating order." },
   { q: "How much is Carer's Allowance in 2026/27?", a: "£86.45 a week, or £4,495.40 a year." },
   { q: "How many hours can I work on Carer's Allowance?", a: "About 16 hours a week at the £12.71 National Living Wage. At higher pay, fewer hours." },
   { q: "What happens if I earn over the limit?", a: "You lose the whole week's Carer's Allowance. There is no taper, so even a small amount over costs £86.45." },

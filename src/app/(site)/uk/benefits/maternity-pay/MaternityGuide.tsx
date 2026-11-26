@@ -32,6 +32,7 @@ const TOC: TocItem[] = [
   { id: "returning", title: "Returning to work" },
   { id: "uc", title: "Maternity pay and Universal Credit" },
   { id: "pregnancy-rights", title: "Your rights while pregnant" },
+  { id: "april-2027", title: "Rates from April 2027" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -40,6 +41,7 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — Maternity Allowance", href: "https://www.gov.uk/maternity-allowance" },
   { label: "GOV.UK — Statutory Maternity Pay: employer guide", href: "https://www.gov.uk/employers-maternity-pay-leave" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
+  { label: "GOV.UK — Proposed benefit and pension rates 2027 to 2028", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
   { label: "GOV.UK — Shared Parental Leave and Pay", href: "https://www.gov.uk/shared-parental-leave-and-pay" },
 ];
 
@@ -348,8 +350,31 @@ export default function MaternityGuide() {
           pay start automatically.
         </p>
       </GuideSection>
+      <GuideSection id="april-2027" n={17} kicker="Next year" title="Rates from April 2027">
+        <p>
+          The flat weekly rate of Statutory Maternity Pay, Maternity Allowance and the other statutory parental pay rises from 6 April 2027, and so does the earnings threshold you must reach to get SMP. The first six weeks are still 90% of your average weekly earnings, with no cap.
+        </p>
+        <DataTable
+          caption="Statutory pay: 2026/27 and the proposed rates from 6 April 2027"
+          head={["", "2026/27", "From April 2027"]}
+          numeric={[1, 2]}
+          rows={[
+            ["SMP and Maternity Allowance, weeks 7 to 39, up to", "£194.32", "£201.11"],
+            ["Earnings threshold for SMP", "£129", "£133"],
+            ["Maternity Allowance earnings test", "£30", "£30"],
+            ["Maternity Allowance, 39 weeks at the full rate", "£7,578.48", "£7,843.29"],
+          ]}
+        />
+        <p>
+          On a £36,000 salary, SMP over 39 weeks comes to £10,375.09 at the new rate instead of £10,151.02, £224.07 more, because the 33 weeks after the first six are paid at £201.11. Average weekly earnings of £129 to £132.99 qualify for SMP now but not at the new threshold, so check which tax year your qualifying week falls in.
+        </p>
+        <p>
+          These are proposed rates. The Department for Work and Pensions published them on 11 November 2026, after the Budget, and they become final when Parliament approves the uprating order, usually early in the new year. Choose &ldquo;From April 2027 (proposed)&rdquo; in the calculator to see your own figures with them.
+        </p>
+      </GuideSection>
 
-      <GuideSection id="key-numbers" n={17} kicker="Summary" title="Key numbers for 2026/27">
+
+      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "90%", label: "Of earnings for the first 6 weeks" },

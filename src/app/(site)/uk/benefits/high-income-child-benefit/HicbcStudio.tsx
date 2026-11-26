@@ -1,6 +1,8 @@
 "use client";
 
 import { hicbc } from "@/lib/benefits/family";
+import { childBenefitRates } from "@/lib/benefits/child-benefit";
+import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField } from "@/components/flagship/inputs";
@@ -15,6 +17,7 @@ const SCHEMA = {
   gift: num(0, 0, 10_000_000),
   partner: num(0, 0, 10_000_000),
   weeks: num(52, 1, 52),
+  rates: ratesParam(),
 };
 const ADVANCED = ["pension", "gift", "partner", "weeks"] as const;
 const COLORS = { keep: "#0f9f6e", charge: "#e11d48" };
@@ -23,12 +26,15 @@ const POINTS = 31;
 export default function HicbcStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
+  const year = v.rates;
+  const next = year === "2027/28";
+  const CB = childBenefitRates(year);
   // The charge falls on whichever partner has the higher adjusted net income.
-  const mine = hicbc({ children: v.children, income: v.income, pension: v.pension, giftAid: v.gift, weeks: v.weeks });
+  const mine = hicbc({ children: v.children, income: v.income, pension: v.pension, giftAid: v.gift, weeks: v.weeks, year });
   const partnerHigher = v.partner > mine.adjustedNetIncome;
-  const r = partnerHigher ? hicbc({ children: v.children, income: v.partner, pension: 0, giftAid: 0, weeks: v.weeks }) : mine;
+  const r = partnerHigher ? hicbc({ children: v.children, income: v.partner, pension: 0, giftAid: 0, weeks: v.weeks, year }) : mine;
   const incomes = Array.from({ length: POINTS }, (_, i) => 55_000 + i * 1_000);
-  const keepLine = incomes.map((x) => hicbc({ children: v.children, income: x, pension: 0, giftAid: 0, weeks: v.weeks }).keep);
+  const keepLine = incomes.map((x) => hicbc({ children: v.children, income: x, pension: 0, giftAid: 0, weeks: v.weeks, year }).keep);
   const pensionCost = mine.pensionToAvoid * 0.8;
 
   return (
@@ -44,6 +50,7 @@ export default function HicbcStudio({ query }: { query: Query }) {
           <InputGroup title="Your situation">
             <StepperField label="Children you get Child Benefit for" value={v.children} onChange={(n) => st.set("children", Math.max(1, Math.round(n)))} step={1} min={1} max={15} unit="children" dp={0} />
             <MoneyField label="Your total income a year" value={v.income} onChange={st.bind("income")} big slider={{ min: 50_000, max: 100_000, step: 500, ends: ["£50k", "£100k"] }} hint="Salary, bonus, self-employed profit, rent, savings interest and dividends, before tax. After any salary sacrifice." />
+            <RatesChoice value={v.rates} onChange={st.bind("rates")} />
           </InputGroup>
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             <MoneyField label="Personal pension contributions (gross)" value={v.pension} onChange={st.bind("pension")} optional hint="Paid from your take-home pay into a personal or workplace pension using relief at source, including the 20% tax relief." />
@@ -55,7 +62,7 @@ export default function HicbcStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow={partnerHigher ? "Your partner's tax charge" : "Your tax charge"}
+        eyebrow={`${partnerHigher ? "Your partner's tax charge" : "Your tax charge"}${next ? " (Child Benefit from April 2027, proposed)" : ""}`}
         value={gbp(r.charge, true)}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
@@ -89,6 +96,7 @@ export default function HicbcStudio({ query }: { query: Query }) {
       <Assumptions
         items={[
           { label: "Tax year", value: "2026/27" },
+          { label: "Child Benefit rates", value: `${next ? "Proposed from 6 April 2027" : "2026/27"}: ${gbp(CB.firstChildWeekly, true)} eldest, ${gbp(CB.additionalChildWeekly, true)} others` },
           { label: "Employee", value: "Income Tax and NI at rUK rates" },
           { label: "Charge", value: "1% for every £200 over £60,000" },
           { label: "Child Benefit", value: `${v.weeks} ${per(v.weeks, "weeks")} for ${v.children} ${v.children === 1 ? "child" : "children"}` },
@@ -157,7 +165,7 @@ export default function HicbcStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 rules. Not tax advice.
+        2026/27 tax rules{next ? ", with the proposed Child Benefit rates from 6 April 2027" : ""}. Not tax advice.
       </p>
     </Studio>
   );

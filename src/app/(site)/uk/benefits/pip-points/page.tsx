@@ -21,6 +21,7 @@ const BREADCRUMBS = [
 
 const FAQS: { q: string; a: string }[] = [
   { q: "How many points do I need for PIP?", a: "8 points in a component for the standard rate and 12 for the enhanced rate. Daily living and mobility are scored separately." },
+  { q: "How much will PIP be from April 2027?", a: "Under DWP's proposed rates from 6 April 2027, daily living is £79.40 (standard) or £118.60 (enhanced) a week, and mobility £31.35 or £82.80. Both enhanced rates together come to £201.40 a week, £6.80 more than now. The points needed do not change. These are proposed rates, confirmed when Parliament approves the uprating order." },
   { q: "How much is PIP in 2026/27?", a: "Daily living is £76.70 or £114.60 a week. Mobility is £30.30 or £80.00 a week. The most you can get is £194.60 a week." },
   { q: "Is PIP means-tested?", a: "No. Your income, savings and whether you work make no difference." },
   { q: "Which descriptor should I choose?", a: "The one that applies on more than half of days, judged on whether you can do the activity safely, well, repeatedly and in a reasonable time." },

@@ -1,6 +1,7 @@
 "use client";
 
-import { PC_2026, pensionCredit2026, STATE_PENSION_2026, type PensionCreditInput } from "@/lib/benefits/later-life";
+import { pcRates, pensionCredit2026, statePensionRates, type PensionCreditInput } from "@/lib/benefits/later-life";
+import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
 import Studio from "@/components/flagship/Studio";
 import AreaChart from "@/components/flagship/AreaChart";
 import { AdvancedOptions, InputGroup, MoneyField, Segmented, StepperField, Switch } from "@/components/flagship/inputs";
@@ -24,6 +25,7 @@ const SCHEMA = {
   pre2016: bool(false),
   over75: bool(false),
   renting: bool(false),
+  rates: ratesParam(),
 };
 const ADVANCED = ["earnings", "otherIncome", "sd", "carers", "children", "pre2017", "disLower", "disHigher", "pre2016", "over75", "renting"] as const;
 const POINTS = 41;
@@ -32,6 +34,8 @@ const axis = (n: number) => gbp(Math.round(n));
 export default function PcStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
+  const next = v.rates === "2027/28";
+  const SP = statePensionRates(v.rates);
   const input: PensionCreditInput = {
     couple: v.couple,
     statePension: v.sp,
@@ -46,6 +50,7 @@ export default function PcStudio({ query }: { query: Query }) {
     disabledChildrenLower: v.disLower,
     disabledChildrenHigher: v.disHigher,
     savingsCreditEligible: v.pre2016,
+    year: v.rates,
   };
   const r = pensionCredit2026(input);
   const top = Math.max(400, Math.ceil((r.minimumGuarantee + 60) / 50) * 50);
@@ -75,9 +80,10 @@ export default function PcStudio({ query }: { query: Query }) {
                 { value: "couple", label: "A couple", note: "Both of you must have reached State Pension age." },
               ]}
             />
+            <RatesChoice value={v.rates} onChange={st.bind("rates")} />
           </InputGroup>
           <InputGroup title="Weekly income">
-            <MoneyField label="State Pension a week" value={v.sp} onChange={st.bind("sp")} pence hint={`The full new State Pension is ${gbp(STATE_PENSION_2026.newFull, true)}, the full basic State Pension ${gbp(STATE_PENSION_2026.basicFull, true)}.${v.couple ? " Add both together." : ""}`} />
+            <MoneyField label="State Pension a week" value={v.sp} onChange={st.bind("sp")} pence hint={`The full new State Pension is ${gbp(SP.newFull, true)}, the full basic State Pension ${gbp(SP.basicFull, true)}.${v.couple ? " Add both together." : ""}`} />
             <MoneyField label="Private and workplace pensions a week" value={v.other} onChange={st.bind("other")} pence />
             <MoneyField label="Savings and investments" value={v.savings} onChange={st.bind("savings")} hint="The first £10,000 is ignored. There is no upper limit." />
           </InputGroup>
@@ -98,7 +104,7 @@ export default function PcStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow="Pension Credit"
+        eyebrow={next ? "Pension Credit from 6 April 2027 (proposed)" : "Pension Credit"}
         value={gbp(r.weekly, true)}
         unit="a week"
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
@@ -129,7 +135,7 @@ export default function PcStudio({ query }: { query: Query }) {
 
       <Assumptions
         items={[
-          { label: "Rates", value: "2026/27, weekly" },
+          { label: "Rates", value: next ? "Proposed from 6 April 2027 (DWP), weekly. Enter your State Pension at its April 2027 rate too" : "2026/27, weekly" },
           { label: "Savings", value: r.tariffIncome > 0 ? `£1 a week for each £500 over £10,000: ${gbp(r.tariffIncome)}` : "Under £10,000, ignored" },
           { label: "Household", value: v.couple ? "Couple, both over State Pension age" : "Single" },
           { label: "Housing costs", value: "Rent is covered by Housing Benefit, not here" },
@@ -184,7 +190,7 @@ export default function PcStudio({ query }: { query: Query }) {
         )}
         {v.sd === 0 && (
           <Callout title="Disability adds £86.05 a week">
-            If you get Attendance Allowance, PIP daily living or DLA care, live alone and nobody gets Carer&apos;s Allowance for you, the guarantee rises by {gbp(PC_2026.severeDisability, true)} a week.
+            If you get Attendance Allowance, PIP daily living or DLA care, live alone and nobody gets Carer&apos;s Allowance for you, the guarantee rises by {gbp(pcRates(v.rates).severeDisability, true)} a week.
           </Callout>
         )}
         <Callout title="Claim and backdate">
@@ -193,7 +199,7 @@ export default function PcStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 rates. An estimate, not a decision. Not financial advice.
+        {next ? "Proposed 2027/28 rates, final once Parliament approves them." : "2026/27 rates."} An estimate, not a decision. Not financial advice.
       </p>
     </Studio>
   );

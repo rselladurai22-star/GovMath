@@ -17,12 +17,14 @@ const TOC: TocItem[] = [
   { id: "compare", title: "New Style JSA or ESA?" },
   { id: "redundancy", title: "If you have been made redundant" },
   { id: "records", title: "Keeping your National Insurance record healthy" },
+  { id: "april-2027", title: "Rates from April 2027" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
 const SOURCES: Source[] = [
   { label: "GOV.UK — Jobseeker's Allowance (JSA)", href: "https://www.gov.uk/jobseekers-allowance" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
+  { label: "GOV.UK — Proposed benefit and pension rates 2027 to 2028", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
   { label: "GOV.UK — Check your National Insurance record", href: "https://www.gov.uk/check-national-insurance-record" },
   { label: "GOV.UK — National Insurance credits", href: "https://www.gov.uk/national-insurance-credits" },
   { label: "Legislation — Jobseekers Act 1995, section 2 (contribution conditions)", href: "https://www.legislation.gov.uk/ukpga/1995/18/section/2" },
@@ -283,8 +285,30 @@ export default function JsaGuide() {
           contributions.
         </p>
       </GuideSection>
+      <GuideSection id="april-2027" n={15} kicker="Next year" title="Rates from April 2027">
+        <p>
+          New Style JSA rises from 6 April 2027. The pension threshold (£50 a week) and the £5 earnings disregard do not change, and JSA is still paid for up to 26 weeks.
+        </p>
+        <DataTable
+          caption="New Style JSA a week: 2026/27 and the proposed rates from 6 April 2027"
+          head={["", "2026/27", "From April 2027"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Under 25", "£75.65", "£78.30"],
+            ["25 or over", "£95.55", "£98.90"],
+            ["25 or over, over 26 weeks", "£2,484.30", "£2,571.40"],
+          ]}
+        />
+        <p>
+          At 25 or over, with no pension or earnings, that is £3.35 a week more, or £87.10 more over the full 26 weeks.
+        </p>
+        <p>
+          These are proposed rates. The Department for Work and Pensions published them on 11 November 2026, after the Budget, and they become final when Parliament approves the uprating order, usually early in the new year. Choose &ldquo;From April 2027 (proposed)&rdquo; in the calculator to see your own figures with them.
+        </p>
+      </GuideSection>
 
-      <GuideSection id="key-numbers" n={15} kicker="Reference" title="Key numbers">
+
+      <GuideSection id="key-numbers" n={16} kicker="Reference" title="Key numbers">
         <DataTable
           caption="New Style JSA, 2026/27"
           head={["Item", "Amount"]}

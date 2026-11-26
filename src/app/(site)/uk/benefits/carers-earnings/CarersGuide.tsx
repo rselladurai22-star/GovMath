@@ -34,6 +34,7 @@ const TOC: TocItem[] = [
   { id: "other-help", title: "Other help for carers" },
   { id: "pay-rise", title: "Before you accept a pay rise" },
   { id: "two-jobs", title: "Two jobs, or work and self-employment" },
+  { id: "april-2027", title: "Rates from April 2027" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -42,6 +43,7 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — Carer's Allowance: eligibility", href: "https://www.gov.uk/carers-allowance/eligibility" },
   { label: "GOV.UK — Carer's Allowance: effect on other benefits", href: "https://www.gov.uk/carers-allowance/effect-on-other-benefits" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
+  { label: "GOV.UK — Proposed benefit and pension rates 2027 to 2028", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
   { label: "GOV.UK — Report a change to Carer's Allowance", href: "https://www.gov.uk/carers-allowance-report-change" },
 ];
 
@@ -352,8 +354,30 @@ export default function CarersGuide() {
           you can spot a problem before it becomes an overpayment.
         </p>
       </GuideSection>
+      <GuideSection id="april-2027" n={19} kicker="Next year" title="Rates from April 2027">
+        <p>
+          Carer&rsquo;s Allowance and its earnings limit both rise from 6 April 2027. You still lose the whole week&rsquo;s allowance if your earnings after deductions go even a penny over the limit.
+        </p>
+        <DataTable
+          caption="Carer’s Allowance: 2026/27 and the proposed rates from 6 April 2027"
+          head={["", "2026/27", "From April 2027"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Carer’s Allowance, a week", "£86.45", "£89.50"],
+            ["Earnings limit, a week", "£204", "£212"],
+            ["Carer’s Allowance, a year", "£4,495.40", "£4,654.00"],
+          ]}
+        />
+        <p>
+          That is £3.05 a week, or £158.60 a year, more. The limit rises by £8 a week, so 16 hours at £12.71 an hour (£203.36 counted) goes from 64p under the limit to £8.64 under it. If the National Living Wage rises in April 2027, check your hours again.
+        </p>
+        <p>
+          These are proposed rates. The Department for Work and Pensions published them on 11 November 2026, after the Budget, and they become final when Parliament approves the uprating order, usually early in the new year. Choose &ldquo;From April 2027 (proposed)&rdquo; in the calculator to see your own figures with them.
+        </p>
+      </GuideSection>
 
-      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers for 2026/27">
+
+      <GuideSection id="key-numbers" n={20} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£86.45", label: "Carer's Allowance a week" },

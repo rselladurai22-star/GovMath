@@ -6,7 +6,8 @@ import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } f
 import { gbp } from "@/components/flagship/format";
 import { bool, num, oneOf, ShareButton, useStudio, type Query } from "@/components/flagship/useStudio";
 import { NiConditions, NiRecordFields, NI_SCHEMA, niTest } from "@/components/benefits/NiRecordFields";
-import { NEW_STYLE_2026, newStyleEsa, type EsaGroup } from "@/lib/benefits/new-style";
+import { newStyleEsa, newStyleRates, type EsaGroup } from "@/lib/benefits/new-style";
+import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
 
 const GROUP_LABEL: Record<EsaGroup, string> = {
   assessment: "Assessment phase (first 13 weeks)",
@@ -22,6 +23,7 @@ const SCHEMA = {
   earnings: num(0, 0, 5_000),
   hours: num(0, 0, 60),
   pre2017: bool(false),
+  rates: ratesParam(),
 };
 const ADVANCED = ["pension", "earnings", "hours", "pre2017"] as const;
 
@@ -30,12 +32,13 @@ export default function EsaStudio({ query }: { query: Query }) {
   const v = st.values;
   const t = niTest(v);
   const over25 = v.age === "over25";
-  const r = newStyleEsa({ over25, group: v.group, pre2017: v.pre2017, pension: v.pension, earnings: v.earnings, hours: v.hours });
+  const r = newStyleEsa({ over25, group: v.group, pre2017: v.pre2017, pension: v.pension, earnings: v.earnings, hours: v.hours, year: v.rates });
   const weekly = t.met ? r.weekly : 0;
-  const E = NEW_STYLE_2026.esa;
+  const next = v.rates === "2027/28";
+  const E = newStyleRates(v.rates).esa;
   const groups = (["assessment", "wrag", "support"] as EsaGroup[]).map((g) => ({
     g,
-    w: newStyleEsa({ over25, group: g, pre2017: v.pre2017, pension: v.pension, earnings: v.earnings, hours: v.hours }).weekly,
+    w: newStyleEsa({ over25, group: g, pre2017: v.pre2017, pension: v.pension, earnings: v.earnings, hours: v.hours, year: v.rates }).weekly,
   }));
   const maxW = Math.max(1, ...groups.map((x) => x.w));
 
@@ -70,13 +73,14 @@ export default function EsaStudio({ query }: { query: Query }) {
               ]}
               info="After about 13 weeks, the Work Capability Assessment decides your group. The support group is for people who cannot do any work-related activity."
             />
+            <RatesChoice value={v.rates} onChange={st.bind("rates")} />
           </InputGroup>
           <InputGroup title="Your National Insurance record">
             <NiRecordFields v={v} set={(k, value) => st.set(k, value as never)} />
           </InputGroup>
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             <MoneyField label="Private or workplace pension, a week" value={v.pension} onChange={st.bind("pension")} optional pence hint="Before tax. Half of anything over £85 a week is taken off ESA." />
-            <MoneyField label="Permitted work earnings, a week" value={v.earnings} onChange={st.bind("earnings")} optional pence hint="You can earn up to £203.50 a week, working under 16 hours, without affecting ESA." />
+            <MoneyField label="Permitted work earnings, a week" value={v.earnings} onChange={st.bind("earnings")} optional pence hint={`You can earn up to ${gbp(E.permittedWorkHigher, true)} a week, working under 16 hours, without affecting ESA.`} />
             <StepperField label="Hours of permitted work a week" value={v.hours} onChange={st.bind("hours")} step={1} min={0} max={60} unit="hours" dp={0} optional />
             <Switch label="Claim started before 3 April 2017" checked={v.pre2017} onChange={st.bind("pre2017")} optional hint="Older claims in the work-related activity group keep the £37.95 component." />
           </AdvancedOptions>
@@ -84,7 +88,7 @@ export default function EsaStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow="New Style ESA a week"
+        eyebrow={next ? "New Style ESA a week from 6 April 2027 (proposed)" : "New Style ESA a week"}
         value={gbp(weekly, true)}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
@@ -93,7 +97,7 @@ export default function EsaStudio({ query }: { query: Query }) {
               On these figures you do <b>not</b> meet the National Insurance conditions for {t.years[0]} and {t.years[1]}. Universal Credit, which depends on income and savings, can include a health element instead.
             </>
           ) : !r.permittedWorkOk ? (
-            <>Your work is above the permitted work limit (under 16 hours and up to £203.50 a week), so New Style ESA would stop.</>
+            <>Your work is above the permitted work limit (under 16 hours and up to {gbp(E.permittedWorkHigher, true)} a week), so New Style ESA would stop.</>
           ) : (
             <>
               In the <b>{GROUP_LABEL[v.group].toLowerCase()}</b> you could get <b>{gbp(weekly, true)}</b> a week, or <b>{gbp(weekly * 2, true)}</b> every two weeks.{" "}
@@ -115,7 +119,7 @@ export default function EsaStudio({ query }: { query: Query }) {
 
       <Assumptions
         items={[
-          { label: "Rates", value: `2026/27: ${gbp(E.main, true)} main rate, support component ${gbp(E.support, true)}` },
+          { label: "Rates", value: `${next ? "Proposed from 6 April 2027" : "2026/27"}: ${gbp(E.main, true)} main rate, support component ${gbp(E.support, true)}` },
           { label: "Tax years used", value: `${t.years[0]} and ${t.years[1]}, for a claim on this date` },
           { label: "Fit note", value: "You have a fit note from your doctor and are under State Pension age" },
           { label: "Pay", value: "Paid evenly through each year, as an employee" },
@@ -158,7 +162,7 @@ export default function EsaStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 rates from the DWP. The National Insurance check is an estimate from yearly pay; the DWP decides from your actual record.
+        {next ? "Proposed 2027/28 rates from the DWP, final once Parliament approves them." : "2026/27 rates from the DWP."} The National Insurance check is an estimate from yearly pay; the DWP decides from your actual record.
       </p>
     </Studio>
   );

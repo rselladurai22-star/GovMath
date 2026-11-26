@@ -8,12 +8,24 @@
  */
 
 import { incomeTax, nationalInsurance } from "../tax/2026-27";
-import { CHILD_BENEFIT_2026_27 } from "./child-benefit";
+import { childBenefitRates } from "./child-benefit";
+import { forYear, type RatesYear } from "./rates-year";
 import { NMW_2026, type NMWBand } from "./minimum-wage";
 
 export const LOWER_EARNINGS_LIMIT_WEEKLY = 129;
 /** Statutory maternity, paternity, shared parental and adoption pay, and Maternity Allowance. */
 export const STATUTORY_FLAT_RATE = 194.32;
+
+/**
+ * Proposed from 6 April 2027 (DWP "Proposed benefit and pension rates 2027 to
+ * 2028"): SMP, SPP, ShPP, SAP and Maternity Allowance £201.11 a week, earnings
+ * threshold £133. The Maternity Allowance threshold stays £30.
+ */
+export const STATUTORY_2027_28 = { flatRate: 201.11, lowerEarningsLimit: 133, maThreshold: 30 } as const;
+export const STATUTORY_2026_27 = { flatRate: STATUTORY_FLAT_RATE, lowerEarningsLimit: LOWER_EARNINGS_LIMIT_WEEKLY, maThreshold: 30 } as const;
+
+export type StatutoryRates = { flatRate: number; lowerEarningsLimit: number; maThreshold: number };
+export const statutoryRates = (year?: RatesYear): StatutoryRates => forYear<StatutoryRates>(year, STATUTORY_2026_27, STATUTORY_2027_28);
 
 /* ── Child Benefit ─────────────────────────────── */
 
@@ -26,9 +38,9 @@ export type ChildBenefitPlan = {
   forWeeks: number;
 };
 
-export function childBenefitFor(children: number, weeks = 52): ChildBenefitPlan {
+export function childBenefitFor(children: number, weeks = 52, year?: RatesYear): ChildBenefitPlan {
   const n = Math.max(0, Math.floor(children));
-  const c = CHILD_BENEFIT_2026_27;
+  const c = childBenefitRates(year);
   const weekly = n === 0 ? 0 : c.firstChildWeekly + (n - 1) * c.additionalChildWeekly;
   const w = Math.min(52, Math.max(0, weeks));
   return { weekly, fourWeekly: weekly * 4, annual: weekly * 52, forWeeks: weekly * w };
@@ -44,6 +56,8 @@ export type HicbcInput = {
   giftAid: number;
   /** Weeks of Child Benefit in the tax year. */
   weeks: number;
+  /** Child Benefit rates to use (default 2026/27). The charge thresholds do not change. */
+  year?: RatesYear;
 };
 
 export type HicbcResult = {
@@ -62,14 +76,14 @@ export type HicbcResult = {
 
 /** The charge is 1% for every £200 above £60,000, rounded down to whole 1%. */
 export function hicbcShare(ani: number): number {
-  const c = CHILD_BENEFIT_2026_27;
+  const c = childBenefitRates();
   if (ani <= c.hicbcStart) return 0;
   if (ani >= c.hicbcEnd) return 1;
   return Math.floor((ani - c.hicbcStart) / 200) / 100;
 }
 
 export function hicbc(i: HicbcInput): HicbcResult {
-  const benefit = childBenefitFor(i.children, i.weeks).forWeeks;
+  const benefit = childBenefitFor(i.children, i.weeks, i.year).forWeeks;
   const ani = Math.max(0, i.income - Math.max(0, i.pension) - Math.max(0, i.giftAid));
   const share = hicbcShare(ani);
   const charge = benefit * share;
@@ -84,7 +98,7 @@ export function hicbc(i: HicbcInput): HicbcResult {
     share,
     charge,
     keep: benefit - charge,
-    pensionToAvoid: Math.max(0, ani - CHILD_BENEFIT_2026_27.hicbcStart),
+    pensionToAvoid: Math.max(0, ani - childBenefitRates(i.year).hicbcStart),
     marginalRate,
     band: share === 0 ? "none" : share >= 1 ? "full" : "partial",
   };
@@ -208,8 +222,8 @@ export function taxFreeChildcarePlan(children: TfcChild[]): TfcResult {
 /* ── Statutory maternity, paternity and shared parental pay ─────────────── */
 
 /** 90% of average weekly earnings, capped at the flat rate. */
-function cappedWeekly(awe: number): number {
-  return Math.min(STATUTORY_FLAT_RATE, 0.9 * Math.max(0, awe));
+function cappedWeekly(awe: number, flatRate = STATUTORY_FLAT_RATE): number {
+  return Math.min(flatRate, 0.9 * Math.max(0, awe));
 }
 
 export type PayWeek = { week: number; statutory: number; employer: number; total: number };
@@ -224,6 +238,8 @@ export type MaternityInput = {
   halfPayWeeks: number;
   /** Weeks of leave taken (up to 52). */
   leaveWeeks: number;
+  /** Statutory rates to use (default 2026/27). */
+  year?: RatesYear;
 };
 
 export type MaternityResult = {
@@ -241,11 +257,12 @@ export type MaternityResult = {
 /** SMP: 6 weeks at 90% of AWE, 33 weeks at the lower of £194.32 or 90%. Maternity Allowance: 39 weeks at the lower rate. */
 export function maternityPay(i: MaternityInput): MaternityResult {
   const awe = Math.max(0, i.awe);
-  const eligibleSmp = i.service && awe >= LOWER_EARNINGS_LIMIT_WEEKLY;
+  const rates = statutoryRates(i.year);
+  const eligibleSmp = i.service && awe >= rates.lowerEarningsLimit;
   // Maternity Allowance needs average earnings of at least £30 a week.
-  const route: MaternityResult["route"] = eligibleSmp ? "smp" : awe >= 30 ? "ma" : "none";
-  const firstSix = route === "smp" ? 0.9 * awe : route === "ma" ? cappedWeekly(awe) : 0;
-  const remaining = route === "none" ? 0 : cappedWeekly(awe);
+  const route: MaternityResult["route"] = eligibleSmp ? "smp" : awe >= rates.maThreshold ? "ma" : "none";
+  const firstSix = route === "smp" ? 0.9 * awe : route === "ma" ? cappedWeekly(awe, rates.flatRate) : 0;
+  const remaining = route === "none" ? 0 : cappedWeekly(awe, rates.flatRate);
   const leave = Math.min(52, Math.max(0, Math.round(i.leaveWeeks)));
   const weeks: PayWeek[] = [];
   for (let w = 1; w <= leave; w++) {

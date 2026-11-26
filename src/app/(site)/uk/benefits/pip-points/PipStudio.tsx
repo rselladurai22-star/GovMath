@@ -1,6 +1,7 @@
 "use client";
 
-import { PIP_2026, PIP_ACTIVITIES, pipScore, type PipBand } from "@/lib/benefits/pip-assessment";
+import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
+import { PIP_ACTIVITIES, pipRates, pipScore, type PipBand } from "@/lib/benefits/pip-assessment";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, SelectField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
@@ -27,8 +28,9 @@ const SCHEMA = {
   terminal: bool(false),
   monthsHad: num(6, 0, 600),
   carer: bool(false),
+  rates: ratesParam(),
 };
-type ActivityKey = Exclude<keyof typeof SCHEMA, "terminal" | "monthsHad" | "carer">;
+type ActivityKey = Exclude<keyof typeof SCHEMA, "terminal" | "monthsHad" | "carer" | "rates">;
 const ADVANCED = ["terminal", "monthsHad", "carer"] as const;
 
 const bandName = (b: PipBand) => (b === "enhanced" ? "Enhanced rate" : b === "standard" ? "Standard rate" : "No award");
@@ -37,10 +39,11 @@ export default function PipStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
   const choices = Object.fromEntries(PIP_ACTIVITIES.map((a) => [a.id, v[a.id as ActivityKey]]));
-  const sc = pipScore(choices);
+  const next = v.rates === "2027/28";
+  const sc = pipScore(choices, v.rates);
   // Terminal illness: the enhanced daily living rate without an assessment of points.
   const dailyBand: PipBand = v.terminal ? "enhanced" : sc.dailyBand;
-  const dailyWeekly = dailyBand === "none" ? 0 : PIP_2026.daily[dailyBand];
+  const dailyWeekly = dailyBand === "none" ? 0 : pipRates(v.rates).daily[dailyBand];
   const weekly = dailyWeekly + sc.mobilityWeekly;
   const tooSoon = !v.terminal && v.monthsHad < 3;
   const rows = PIP_ACTIVITIES.map((a) => {
@@ -70,6 +73,9 @@ export default function PipStudio({ query }: { query: Query }) {
         <>
           <InputGroup title="Daily living">{select("daily")}</InputGroup>
           <InputGroup title="Mobility">{select("mobility")}</InputGroup>
+          <InputGroup title="Rates">
+            <RatesChoice value={v.rates} onChange={st.bind("rates")} />
+          </InputGroup>
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             <Switch label="Terminally ill (life expectancy of 12 months or less)" checked={v.terminal} onChange={st.bind("terminal")} optional hint="Special rules: the enhanced daily living rate is paid without an assessment." />
             <StepperField label="Months you have had these difficulties" value={v.monthsHad} onChange={st.bind("monthsHad")} step={1} min={0} max={600} unit="months" dp={0} optional hint="You normally need 3 months before and to expect 9 months after." />
@@ -79,7 +85,7 @@ export default function PipStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow="Personal Independence Payment"
+        eyebrow={next ? "Personal Independence Payment from 6 April 2027 (proposed)" : "Personal Independence Payment"}
         value={gbp(weekly, true)}
         unit="a week"
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
@@ -110,7 +116,7 @@ export default function PipStudio({ query }: { query: Query }) {
 
       <Assumptions
         items={[
-          { label: "Rates", value: "2026/27, weekly" },
+          { label: "Rates", value: next ? "Proposed from 6 April 2027 (DWP), weekly" : "2026/27, weekly" },
           { label: "Bands", value: "8 points standard, 12 enhanced" },
           { label: "Descriptor", value: "Applies on more than half of days" },
           { label: "Status", value: "A self-check, not a decision" },
@@ -174,7 +180,7 @@ export default function PipStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 rates. A self-check against the official descriptors. Only the Department for Work and Pensions can decide a claim.
+        {next ? "Proposed 2027/28 rates, final once Parliament approves them." : "2026/27 rates."} A self-check against the official descriptors. Only the Department for Work and Pensions can decide a claim.
       </p>
     </Studio>
   );

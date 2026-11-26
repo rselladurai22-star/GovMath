@@ -33,6 +33,7 @@ const TOC: TocItem[] = [
   { id: "fluctuating", title: "Conditions that come and go" },
   { id: "mental-health", title: "Mental health and PIP" },
   { id: "reviews", title: "Award reviews" },
+  { id: "april-2027", title: "Rates from April 2027" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -41,6 +42,7 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — PIP assessment guide", href: "https://www.gov.uk/government/publications/personal-independence-payment-assessment-guide-for-assessment-providers" },
   { label: "Legislation.gov.uk — The Social Security (Personal Independence Payment) Regulations 2013", href: "https://www.legislation.gov.uk/uksi/2013/377/schedule/1" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
+  { label: "GOV.UK — Proposed benefit and pension rates 2027 to 2028", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
   { label: "GOV.UK — Challenge a benefit decision", href: "https://www.gov.uk/mandatory-reconsideration" },
 ];
 
@@ -368,8 +370,32 @@ export default function PipGuide() {
           light-touch review.
         </p>
       </GuideSection>
+      <GuideSection id="april-2027" n={18} kicker="Next year" title="Rates from April 2027">
+        <p>
+          PIP rises from 6 April 2027. The points you need do not change: 8 for the standard rate and 12 for the enhanced rate of each component.
+        </p>
+        <DataTable
+          caption="PIP a week: 2026/27 and the proposed rates from 6 April 2027"
+          head={["", "2026/27", "From April 2027"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Daily living, standard", "£76.70", "£79.40"],
+            ["Daily living, enhanced", "£114.60", "£118.60"],
+            ["Mobility, standard", "£30.30", "£31.35"],
+            ["Mobility, enhanced", "£80.00", "£82.80"],
+            ["Both enhanced rates", "£194.60", "£201.40"],
+          ]}
+        />
+        <p>
+          Someone on both enhanced rates will get £201.40 a week instead of £194.60: £6.80 a week, or £353.60 a year, more.
+        </p>
+        <p>
+          These are proposed rates. The Department for Work and Pensions published them on 11 November 2026, after the Budget, and they become final when Parliament approves the uprating order, usually early in the new year. Choose &ldquo;From April 2027 (proposed)&rdquo; in the calculator to see your own figures with them.
+        </p>
+      </GuideSection>
 
-      <GuideSection id="key-numbers" n={18} kicker="Summary" title="Key numbers for 2026/27">
+
+      <GuideSection id="key-numbers" n={19} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "8", label: "Points for the standard rate" },

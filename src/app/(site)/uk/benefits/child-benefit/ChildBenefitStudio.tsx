@@ -1,7 +1,8 @@
 "use client";
 
 import { childBenefitFor, hicbc } from "@/lib/benefits/family";
-import { CHILD_BENEFIT_2026_27 } from "@/lib/benefits/child-benefit";
+import { childBenefitRates } from "@/lib/benefits/child-benefit";
+import { RatesChoice, ratesParam } from "@/components/benefits/RatesChoice";
 import Studio from "@/components/flagship/Studio";
 import { AdvancedOptions, InputGroup, MoneyField, StepperField, Switch } from "@/components/flagship/inputs";
 import { Answer, Assumptions, Callout, Compare, Facts, ResultCard, Statement } from "@/components/flagship/results";
@@ -13,15 +14,19 @@ const SCHEMA = {
   weeks: num(52, 1, 52),
   income: num(0, 0, 10_000_000),
   stayHome: bool(false),
+  rates: ratesParam(),
 };
 const ADVANCED = ["weeks", "income", "stayHome"] as const;
 
 export default function ChildBenefitStudio({ query }: { query: Query }) {
   const st = useStudio(SCHEMA, query);
   const v = st.values;
-  const r = childBenefitFor(v.children, v.weeks);
-  const charge = v.income > 0 ? hicbc({ children: v.children, income: v.income, pension: 0, giftAid: 0, weeks: v.weeks }) : null;
-  const ladder = [1, 2, 3, 4, 5].map((n) => ({ n, b: childBenefitFor(n) }));
+  const year = v.rates;
+  const next = year === "2027/28";
+  const CB = childBenefitRates(year);
+  const r = childBenefitFor(v.children, v.weeks, year);
+  const charge = v.income > 0 ? hicbc({ children: v.children, income: v.income, pension: 0, giftAid: 0, weeks: v.weeks, year }) : null;
+  const ladder = [1, 2, 3, 4, 5].map((n) => ({ n, b: childBenefitFor(n, 52, year) }));
   const maxAnnual = Math.max(...ladder.map((l) => l.b.annual), 1);
 
   return (
@@ -36,6 +41,7 @@ export default function ChildBenefitStudio({ query }: { query: Query }) {
         <>
           <InputGroup title="Your children">
             <StepperField label="Children you claim for" value={v.children} onChange={(n) => st.set("children", Math.max(1, Math.round(n)))} step={1} min={1} max={15} unit="children" dp={0} hint="Under 16, or under 20 and in approved education or training." />
+            <RatesChoice value={v.rates} onChange={st.bind("rates")} />
           </InputGroup>
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             <StepperField label="Weeks you claim in this tax year" value={v.weeks} onChange={(n) => st.set("weeks", Math.round(n))} step={1} min={1} max={52} unit="weeks" dp={0} optional hint="Fewer if a baby is born, or a child leaves education, during the year." />
@@ -46,7 +52,7 @@ export default function ChildBenefitStudio({ query }: { query: Query }) {
       }
     >
       <Answer
-        eyebrow={v.weeks < 52 ? `Child Benefit for ${v.weeks} ${per(v.weeks, "weeks")}` : "Child Benefit a year"}
+        eyebrow={`${v.weeks < 52 ? `Child Benefit for ${v.weeks} ${per(v.weeks, "weeks")}` : "Child Benefit a year"}${next ? " (from April 2027, proposed)" : ""}`}
         value={gbp(r.forWeeks, true)}
         actions={<ShareButton copied={st.copied} onClick={st.share} />}
         sentence={
@@ -60,7 +66,7 @@ export default function ChildBenefitStudio({ query }: { query: Query }) {
             ) : null}
           </>
         }
-        badges={[`${gbp(CHILD_BENEFIT_2026_27.firstChildWeekly, true)} eldest`, `${gbp(CHILD_BENEFIT_2026_27.additionalChildWeekly, true)} each other child`, "Paid every 4 weeks"]}
+        badges={[`${gbp(CB.firstChildWeekly, true)} eldest`, `${gbp(CB.additionalChildWeekly, true)} each other child`, "Paid every 4 weeks"]}
       />
 
       <Facts
@@ -76,23 +82,23 @@ export default function ChildBenefitStudio({ query }: { query: Query }) {
 
       <Assumptions
         items={[
-          { label: "Tax year", value: "2026/27" },
-          { label: "Rates", value: "£27.05 eldest, £17.90 others" },
+          { label: "Tax year", value: next ? "2027/28 (proposed rates from 6 April 2027)" : "2026/27" },
+          { label: "Rates", value: `${gbp(CB.firstChildWeekly, true)} eldest, ${gbp(CB.additionalChildWeekly, true)} others` },
           { label: "Weeks", value: `${v.weeks} of 52` },
           { label: "Income", value: v.income > 0 ? gbp(v.income) : "Not entered" },
         ]}
       />
 
-      <ResultCard title="How it adds up" sub="Weekly rates for 2026/27.">
+      <ResultCard title="How it adds up" sub={next ? "Proposed weekly rates from 6 April 2027." : "Weekly rates for 2026/27."}>
         <Statement
           columns={["A week", "A year"]}
           rows={[
-            { label: "Eldest or only child", values: [gbp(CHILD_BENEFIT_2026_27.firstChildWeekly, true), gbp(CHILD_BENEFIT_2026_27.firstChildWeekly * 52, true)] },
+            { label: "Eldest or only child", values: [gbp(CB.firstChildWeekly, true), gbp(CB.firstChildWeekly * 52, true)] },
             ...(v.children > 1
               ? [
                   {
                     label: `${v.children - 1} other ${v.children - 1 === 1 ? "child" : "children"}`,
-                    values: [gbp(CHILD_BENEFIT_2026_27.additionalChildWeekly * (v.children - 1), true), gbp(CHILD_BENEFIT_2026_27.additionalChildWeekly * (v.children - 1) * 52, true)],
+                    values: [gbp(CB.additionalChildWeekly * (v.children - 1), true), gbp(CB.additionalChildWeekly * (v.children - 1) * 52, true)],
                   },
                 ]
               : []),
@@ -131,7 +137,7 @@ export default function ChildBenefitStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <p className="footnote" style={{ textAlign: "center" }}>
-        2026/27 rates. Not financial advice.
+        {next ? "Proposed rates from 6 April 2027 (Budget 2026), final once Parliament approves them." : "2026/27 rates."} Not financial advice.
       </p>
     </Studio>
   );

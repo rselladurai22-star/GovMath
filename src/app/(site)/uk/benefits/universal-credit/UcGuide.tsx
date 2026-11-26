@@ -30,6 +30,7 @@ const TOC: TocItem[] = [
   { id: "claiming", title: "How to claim" },
   { id: "commitments", title: "Your claimant commitment" },
   { id: "mistakes", title: "Mistakes that cost money" },
+  { id: "april-2027", title: "Rates from April 2027" },
   { id: "key-numbers", title: "Key numbers" },
 ];
 
@@ -37,6 +38,7 @@ const SOURCES: Source[] = [
   { label: "GOV.UK — Universal Credit", href: "https://www.gov.uk/universal-credit" },
   { label: "GOV.UK — Universal Credit: what you'll get", href: "https://www.gov.uk/universal-credit/what-youll-get" },
   { label: "GOV.UK — Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
+  { label: "GOV.UK — Proposed benefit and pension rates 2027 to 2028", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
   { label: "GOV.UK — Benefit cap", href: "https://www.gov.uk/benefit-cap" },
   { label: "GOV.UK — Universal Credit and childcare", href: "https://www.gov.uk/guidance/universal-credit-childcare-costs" },
 ];
@@ -384,8 +386,38 @@ export default function UcGuide() {
           </li>
         </ul>
       </GuideSection>
+      <GuideSection id="april-2027" n={15} kicker="Next year" title="Rates from April 2027">
+        <p>
+          Universal Credit rises from the first assessment period that starts on or after 6 April 2027. The standard allowance, the child and disabled child amounts, the carer element and both work allowances all go up. The new-claim health element stays at £217.26 a month, and the limited capability for work amount at £158.76.
+        </p>
+        <DataTable
+          caption="Universal Credit a month: 2026/27 and the proposed rates from April 2027"
+          head={["", "2026/27", "From April 2027"]}
+          numeric={[1, 2]}
+          rows={[
+            ["Single, under 25", "£338.58", "£353.87"],
+            ["Single, 25 or over", "£424.90", "£443.21"],
+            ["Couple, both under 25", "£528.34", "£551.11"],
+            ["Couple, one or both 25 or over", "£666.97", "£695.71"],
+            ["Each child (first child born before 6 April 2017)", "£351.88", "£364.20"],
+            ["Each child (other children)", "£303.94", "£314.58"],
+            ["Disabled child addition, lower / higher", "£164.79 / £514.71", "£170.56 / £532.72"],
+            ["Health element, claims before April 2026", "£429.80", "£441.41"],
+            ["Health element, new claims", "£217.26", "£217.26"],
+            ["Carer element", "£209.34", "£216.67"],
+            ["Work allowance, no housing / with housing", "£710 / £427", "£735 / £442"],
+          ]}
+        />
+        <p>
+          For a single person aged 25 or over with no other income, that is £18.31 a month more (£443.21 instead of £424.90). A lone parent of two children with no earnings or housing costs would get £1,072.37 instead of £1,032.78, £39.59 a month more. The benefit cap stays frozen at the same levels, and Local Housing Allowance rates for April 2027 have not been announced, so the calculator keeps the 2026/27 rates for them.
+        </p>
+        <p>
+          These are proposed rates. The Department for Work and Pensions published them on 11 November 2026, after the Budget, and they become final when Parliament approves the uprating order, usually early in the new year. Choose &ldquo;From April 2027 (proposed)&rdquo; in the calculator to see your own figures with them.
+        </p>
+      </GuideSection>
 
-      <GuideSection id="key-numbers" n={15} kicker="Summary" title="Key numbers for 2026/27">
+
+      <GuideSection id="key-numbers" n={16} kicker="Summary" title="Key numbers for 2026/27">
         <KeyStats
           items={[
             { value: "£424.90", label: "Single, 25 or over" },

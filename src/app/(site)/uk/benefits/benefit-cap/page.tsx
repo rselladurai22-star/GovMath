@@ -21,6 +21,7 @@ const BREADCRUMBS = [
 
 const FAQS: { q: string; a: string }[] = [
   { q: "What is the benefit cap in 2026/27?", a: "£22,020 a year for couples and families and £14,753 for single people outside London. In Greater London it is £25,323 and £16,967." },
+  { q: "Will the benefit cap go up in April 2027?", a: "No. DWP's proposed 2027/28 rates keep the cap frozen at £22,020 a year for couples and parents and £14,753 for single people outside London, and £25,323 and £16,967 in Greater London. Universal Credit and Child Benefit rise, so capped households lose more to the cap. These are proposed rates, confirmed when Parliament approves the uprating order." },
   { q: "How do I avoid the benefit cap?", a: "Earn at least £881 a month after tax as a household, or have someone in the household getting PIP, DLA, Attendance Allowance, Carer's Allowance, the LCWRA health element or the carer element." },
   { q: "Does Child Benefit count towards the cap?", a: "Yes. Child Benefit counts in full. The Universal Credit childcare element does not." },
   { q: "Is there a grace period?", a: "Yes. If you earned enough before losing your job, the cap does not apply for nine months." },
