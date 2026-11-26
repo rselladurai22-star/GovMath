@@ -11,7 +11,38 @@ describe("SAAS 2026/27", () => {
   });
 });
 
+describe("SAAS 2026/27 band edges and independent students (saas.gov.uk, April 2026)", () => {
+  it("young students change band at £21,000, £24,000 and £34,000", () => {
+    expect(saas2026(20_999, false)).toMatchObject({ bursary: 2_000, loan: 9_400, band: 0 });
+    expect(saas2026(21_000, false)).toMatchObject({ bursary: 1_125, loan: 9_400, band: 1 });
+    expect(saas2026(23_999, false).band).toBe(1);
+    expect(saas2026(24_000, false)).toMatchObject({ bursary: 500, loan: 9_400, band: 2 });
+    expect(saas2026(33_999, false).total).toBe(9_900);
+    expect(saas2026(34_000, false)).toMatchObject({ bursary: 0, loan: 8_400, band: 3 });
+    expect(saas2026(0, false).total).toBe(11_400);
+  });
+  it("independent students get a smaller bursary and a bigger loan", () => {
+    expect(saas2026(20_999, true)).toMatchObject({ bursary: 1_000, loan: 10_400, total: 11_400 });
+    expect(saas2026(21_000, true)).toMatchObject({ bursary: 0, loan: 10_400, total: 10_400 });
+    expect(saas2026(24_000, true)).toMatchObject({ bursary: 0, loan: 9_900, total: 9_900 });
+    expect(saas2026(60_000, true)).toMatchObject({ bursary: 0, loan: 8_400, total: 8_400 });
+  });
+});
+
 describe("Student Finance Wales 2026/27", () => {
+  it("everyone gets the same total; the grant never falls below £1,020", () => {
+    for (const living of ["home", "away", "london"] as const) {
+      for (const x of [0, 10_000, 18_370, 33_333, 59_200, 120_000]) {
+        const r = wales2026(x, living);
+        expect(r.grant + r.loan).toBe(r.total);
+        expect(r.grant).toBeGreaterThanOrEqual(1_020);
+      }
+    }
+    expect(wales2026(10_000, "away")).toMatchObject({ grant: 8_260, loan: 4_330, total: 12_590 });
+    expect(wales2026(120_000, "london")).toMatchObject({ grant: 1_020, loan: 14_700, total: 15_720 });
+    expect(wales2026(120_000, "home")).toMatchObject({ grant: 1_020, loan: 9_665, total: 10_685 });
+  });
+
   // Grant at each income in the published table (home, away, London).
   const table: [number, number, number, number][] = [
     [18_370, 7020, 8260, 10325],
