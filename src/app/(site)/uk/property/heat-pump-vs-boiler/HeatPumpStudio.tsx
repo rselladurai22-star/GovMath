@@ -1,6 +1,6 @@
 "use client";
 
-import { BOILER_EFFICIENCY, CAP_OCT_DEC_2026 as CAP } from "@/lib/energy/costs";
+import { BOILER_EFFICIENCY, CAP_JAN_MAR_2027 as CAP, ELEC_VAT_ZERO_UNTIL } from "@/lib/energy/costs";
 import {
   BOILER_COST_EXAMPLE,
   BUS_GRANT,
@@ -121,7 +121,7 @@ export default function HeatPumpStudio({ query }: { query: Query }) {
             <StepperField label="Gas boiler efficiency" value={v.eff} onChange={st.bind("eff")} step={1} min={50} max={100} unit="%" dp={0} optional info="New boilers in England must be rated at least 92%. Real homes often do a little worse; we assume 90%." />
             <StepperField label="Gas unit rate" value={v.gasUnit} onChange={st.bind("gasUnit")} step={0.1} min={0} max={100} unit="p/kWh" dp={2} optional info={`Price cap, ${CAP.label}: ${CAP.gasUnit}p, including 5% VAT.`} />
             <StepperField label="Gas standing charge" value={v.gasStanding} onChange={st.bind("gasStanding")} step={0.5} min={0} max={200} unit="p/day" dp={2} optional info={`Price cap: ${CAP.gasStanding}p a day. You stop paying it if you have the gas supply capped.`} />
-            <StepperField label="Electricity unit rate" value={v.elecUnit} onChange={st.bind("elecUnit")} step={0.5} min={0} max={200} unit="p/kWh" dp={2} optional info={`Price cap: ${CAP.elecUnit}p, with no VAT until 31 March 2027. Heat pump and time-of-use tariffs can be cheaper.`} />
+            <StepperField label="Electricity unit rate" value={v.elecUnit} onChange={st.bind("elecUnit")} step={0.5} min={0} max={200} unit="p/kWh" dp={2} optional info={`Price cap: ${CAP.elecUnit}p, with no VAT until ${ELEC_VAT_ZERO_UNTIL}. Heat pump and time-of-use tariffs can be cheaper.`} />
             <Switch label="Keep gas for cooking" checked={v.keepGas} onChange={st.bind("keepGas")} optional info="If you keep a gas hob, you keep paying the gas standing charge." />
             <StepperField label="Years to compare" value={v.years} onChange={st.bind("years")} step={1} min={1} max={30} unit="years" dp={0} optional info="Gas boilers and heat pumps both often last about 15 years or more." />
             <StepperField label="Yearly change in gas prices" value={v.gasRise} onChange={st.bind("gasRise")} step={0.5} min={-10} max={20} unit="%" dp={1} optional />

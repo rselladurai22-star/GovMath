@@ -1,9 +1,10 @@
 "use client";
 
 import {
-  CAP_JUL_SEP_2026 as PREV,
-  CAP_OCT_DEC_2026 as CAP,
+  CAP_OCT_DEC_2026 as PREV,
+  CAP_JAN_MAR_2027 as CAP,
   ELEC_VAT_ZERO_UNTIL,
+  HOUSEHOLD_ENERGY_PAYMENT,
   NEXT_CAP_ANNOUNCEMENT,
   TDCV_2026,
   energyBill,
@@ -231,11 +232,14 @@ export default function EnergyBillStudio({ query }: { query: Query }) {
       </ResultCard>
 
       <ResultCard title="Worth knowing" sub="What changes your bill.">
-        <Callout tone="good" title="No VAT on electricity until 31 March 2027">
+        <Callout tone="good" title={`No VAT on electricity until ${ELEC_VAT_ZERO_UNTIL}`}>
           VAT on household electricity is 0% until {ELEC_VAT_ZERO_UNTIL}. At 5% VAT, your electricity would cost about {gbp(vatSaved)} more a year. Gas keeps its 5% VAT.
         </Callout>
         <Callout title="The next price cap">
-          Ofgem is due to announce the cap for January to March 2027 on {NEXT_CAP_ANNOUNCEMENT}. Your Direct Debit may be reviewed when it changes.
+          Ofgem is due to announce the cap for April to June 2027 in {NEXT_CAP_ANNOUNCEMENT}. Your Direct Debit may be reviewed when it changes.
+        </Callout>
+        <Callout title={`A ${gbp(HOUSEHOLD_ENERGY_PAYMENT)} Household Energy Payment in England`}>
+          From January 2027, households in council tax bands A to D in England get a {gbp(HOUSEHOLD_ENERGY_PAYMENT)} payment through the council tax system. It is not taken off the bill above.
         </Callout>
         {fromSpend && (
           <Callout title="Worked out from your payment">

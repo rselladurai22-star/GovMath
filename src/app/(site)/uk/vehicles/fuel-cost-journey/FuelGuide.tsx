@@ -53,7 +53,7 @@ export default function FuelGuide() {
           items={[
             { value: "173.8p", label: "Petrol a litre, late Sept 2026" },
             { value: "198.9p", label: "Diesel a litre" },
-            { value: "26.32p", label: "Home electricity a kWh" },
+            { value: "32.69p", label: "Home electricity a kWh" },
             { value: "45p", label: "Tax-free business mileage" },
           ]}
         />
@@ -107,7 +107,7 @@ export default function FuelGuide() {
           <Bars
             items={[
               { label: "EV, 8p overnight", value: 5.49 },
-              { label: "EV, 26.32p home", value: 18.05 },
+              { label: "EV, 32.69p home", value: 22.42 },
               { label: "Diesel 55 mpg", value: 39.46 },
               { label: "Petrol 45 mpg", value: 42.14 },
               { label: "EV, 75p rapid", value: 51.43 },

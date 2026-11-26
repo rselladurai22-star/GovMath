@@ -185,7 +185,7 @@ export default function CommuteGuide() {
       <GuideSection id="electric" n={12} kicker="Electric" title="Commuting in an electric car">
         <p>
           An <a href="/uk/vehicles/petrol-vs-ev-cost">electric car</a>{" "}charged at home transforms the cost of driving to work. The example&rsquo;s 5,520 miles a year would cost about
-          £126 in electricity on an 8p overnight tariff, or £415 at the 26.32p price cap, against £969 in petrol. With parking at £6 a day and
+          £126 in electricity on an 8p overnight tariff, or £516 at the 32.69p price cap, against £969 in petrol. With parking at £6 a day and
           wear at 10p a mile, driving an electric car would cost about £2,058 a year, still a little less than the season ticket. Some
           workplaces offer free charging, which is not taxed as a benefit.
         </p>

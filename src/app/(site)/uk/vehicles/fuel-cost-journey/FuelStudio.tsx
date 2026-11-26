@@ -77,7 +77,7 @@ export default function FuelStudio({ query }: { query: Query }) {
             ) : (
               <StepperField label="Fuel use" value={v.l100} onChange={st.bind("l100")} step={0.1} min={1} max={30} unit="l/100km" dp={1} />
             )}
-            <StepperField label={electric ? "Electricity price" : "Fuel price"} value={v.price} onChange={st.bind("price")} step={electric ? 1 : 0.5} min={0} max={1_000} unit={electric ? "p/kWh" : "p/litre"} dp={electric ? 2 : 1} hint={electric ? "26.32p on the price cap; 7p to 10p on an overnight EV tariff." : "UK average in late September 2026."} />
+            <StepperField label={electric ? "Electricity price" : "Fuel price"} value={v.price} onChange={st.bind("price")} step={electric ? 1 : 0.5} min={0} max={1_000} unit={electric ? "p/kWh" : "p/litre"} dp={electric ? 2 : 1} hint={electric ? `${PRICES_2026.homeElectric}p on the price cap; 7p to 10p on an overnight EV tariff.` : "UK average in late September 2026."} />
           </InputGroup>
           <AdvancedOptions changed={st.changed([...ADVANCED])} onReset={() => st.resetKeys([...ADVANCED])}>
             {!electric && (

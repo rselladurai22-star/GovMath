@@ -50,7 +50,7 @@ export default function SolarGuide() {
           supplier. This guide explains how much a home system makes in each part of the UK, what it costs, how long it takes to pay back and what changes the answer.
         </>
       }
-      meta={["October 2026", "12 min read", "Reviewed October 2026"]}
+      meta={["November 2026", "12 min read", "Reviewed November 2026"]}
       toc={TOC}
       sources={SOURCES}
     >
@@ -62,8 +62,8 @@ export default function SolarGuide() {
         <p>The money comes from two places:</p>
         <ul>
           <li>
-            <strong>The bill saving.</strong> Every unit (kWh) you use from the panels is a unit you do not buy. At the October to December 2026 price cap,
-            that is worth 26.32p a unit.
+            <strong>The bill saving.</strong> Every unit (kWh) you use from the panels is a unit you do not buy. At the January to March 2027 price cap,
+            that is worth 32.69p a unit.
           </li>
           <li>
             <strong>The export income.</strong> Units you send to the grid earn money under the Smart Export Guarantee (SEG). The rate depends on your
@@ -71,7 +71,7 @@ export default function SolarGuide() {
           </li>
         </ul>
         <p>
-          Because a unit used at home is worth about twice as much as a unit exported, the share you use yourself matters almost as much as the size of
+          Because a unit used at home is worth about two and a half times as much as a unit exported, the share you use yourself matters almost as much as the size of
           the system. The calculator lets you set that share.
         </p>
       </GuideSection>
@@ -147,7 +147,7 @@ export default function SolarGuide() {
         </p>
         <p>
           The calculator takes off 10% for some shade (a chimney or a tree for part of the day) and 25% for heavy shade. With some shade, the 4 kWp example
-          makes 3,485 kWh instead of 3,872, and payback moves from 9.2 to 10.3 years. With heavy shade it makes 2,904 kWh and takes 12.4 years. An installer
+          makes 3,485 kWh instead of 3,872, and payback moves from 8.1 to 9.0 years. With heavy shade it makes 2,904 kWh and takes 10.8 years. An installer
           should check shade properly during the survey.
         </p>
       </GuideSection>
@@ -163,10 +163,10 @@ export default function SolarGuide() {
           head={["Used at home", "Bill saving", "Export income", "Total", "Payback"]}
           numeric={[1, 2, 3, 4]}
           rows={[
-            ["20%", "£204", "£400", "£603", "10.8 years"],
-            ["40%", "£408", "£300", "£707", "9.2 years"],
-            ["60%", "£611", "£200", "£811", "8.0 years"],
-            ["70% (all your use)", "£658", "£177", "£835", "7.7 years"],
+            ["20%", "£253", "£400", "£653", "10.0 years"],
+            ["40%", "£506", "£300", "£806", "8.1 years"],
+            ["60%", "£759", "£200", "£959", "6.7 years"],
+            ["70% (all your use)", "£817", "£177", "£994", "6.5 years"],
           ]}
         />
         <p>
@@ -187,9 +187,9 @@ export default function SolarGuide() {
         </p>
         <CompareCards
           columns={[
-            { name: "SEG at 4p", rows: [{ label: "Export income", value: "£93" }, { label: "First year", value: "£501" }, { label: "Payback", value: "13.1 years" }] },
-            { name: "SEG at 12.9p", rows: [{ label: "Export income", value: "£300" }, { label: "First year", value: "£707" }, { label: "Payback", value: "9.2 years" }] },
-            { name: "SEG at 15p", rows: [{ label: "Export income", value: "£348" }, { label: "First year", value: "£756" }, { label: "Payback", value: "8.6 years" }] },
+            { name: "SEG at 4p", rows: [{ label: "Export income", value: "£93" }, { label: "First year", value: "£599" }, { label: "Payback", value: "10.9 years" }] },
+            { name: "SEG at 12.9p", rows: [{ label: "Export income", value: "£300" }, { label: "First year", value: "£806" }, { label: "Payback", value: "8.1 years" }] },
+            { name: "SEG at 15p", rows: [{ label: "Export income", value: "£348" }, { label: "First year", value: "£855" }, { label: "Payback", value: "7.6 years" }] },
           ]}
         />
         <p>Shopping around for the export tariff is one of the easiest ways to shorten payback.</p>
@@ -198,19 +198,19 @@ export default function SolarGuide() {
       <GuideSection id="worked" n={8} kicker="Example" title="A worked example">
         <p>A 4 kWp system on a south-facing roof in Birmingham, no shade, no battery, in a home using 2,500 kWh a year.</p>
         <WorkedExample
-          title="4 kWp in the Midlands, October 2026 prices"
+          title="4 kWp in the Midlands, January 2027 prices"
           steps={[
             { label: "Yearly output", note: "4 kWp × 968 kWh", value: "3,872 kWh" },
             { label: "Used at home", note: "40% of output", value: "1,549 kWh" },
             { label: "Exported", note: "the rest", value: "2,323 kWh" },
-            { label: "Bill saving", note: "1,549 × 26.32p", value: "£408" },
+            { label: "Bill saving", note: "1,549 × 32.69p", value: "£506" },
             { label: "Export income", note: "2,323 × 12.9p", value: "£300" },
             { label: "Cost", note: "4 kWp × £1,595 median", value: "£6,380" },
           ]}
-          total={{ label: "Payback", value: "9.2 years" }}
+          total={{ label: "Payback", value: "8.1 years" }}
         />
         <p>
-          Over 25 years, allowing for 0.5% less output each year and today&rsquo;s prices, the panels bring in about £16,662, or £10,282 more than they cost.
+          Over 25 years, allowing for 0.5% less output each year and today&rsquo;s prices, the panels bring in about £18,986, or £12,606 more than they cost.
           They cover about 62% of the electricity this home uses.
         </p>
       </GuideSection>
@@ -222,18 +222,18 @@ export default function SolarGuide() {
           head={["Region", "Output a year", "First year", "Payback", "25-year return"]}
           numeric={[1, 2, 3, 4]}
           rows={[
-            ["South East England", "4,624 kWh", "£845", "7.7 years", "£13,518"],
-            ["South West England", "4,208 kWh", "£769", "8.5 years", "£11,728"],
-            ["South Wales", "4,168 kWh", "£761", "8.5 years", "£11,556"],
-            ["East of England", "4,120 kWh", "£753", "8.6 years", "£11,349"],
-            ["London", "4,076 kWh", "£745", "8.7 years", "£11,160"],
-            ["Midlands", "3,872 kWh", "£707", "9.2 years", "£10,282"],
-            ["Yorkshire and the Humber", "3,808 kWh", "£696", "9.4 years", "£10,006"],
-            ["North East England", "3,796 kWh", "£693", "9.4 years", "£9,955"],
-            ["Northern Ireland", "3,676 kWh", "£672", "9.7 years", "£9,438"],
-            ["Southern Scotland", "3,616 kWh", "£661", "9.9 years", "£9,180"],
-            ["North West England", "3,544 kWh", "£647", "10.1 years", "£8,870"],
-            ["Highlands", "3,244 kWh", "£593", "11.0 years", "£7,579"],
+            ["South East England", "4,624 kWh", "£963", "6.7 years", "£16,293"],
+            ["South West England", "4,208 kWh", "£876", "7.4 years", "£14,253"],
+            ["South Wales", "4,168 kWh", "£868", "7.5 years", "£14,057"],
+            ["East of England", "4,120 kWh", "£858", "7.6 years", "£13,822"],
+            ["London", "4,076 kWh", "£848", "7.6 years", "£13,606"],
+            ["Midlands", "3,872 kWh", "£806", "8.1 years", "£12,606"],
+            ["Yorkshire and the Humber", "3,808 kWh", "£793", "8.2 years", "£12,292"],
+            ["North East England", "3,796 kWh", "£790", "8.2 years", "£12,233"],
+            ["Northern Ireland", "3,676 kWh", "£765", "8.5 years", "£11,645"],
+            ["Southern Scotland", "3,616 kWh", "£753", "8.6 years", "£11,350"],
+            ["North West England", "3,544 kWh", "£738", "8.8 years", "£10,997"],
+            ["Highlands", "3,244 kWh", "£675", "9.7 years", "£9,526"],
           ]}
         />
         <p>
@@ -270,7 +270,7 @@ export default function SolarGuide() {
           is due to return to the reduced rate of 5%. On a £6,380 system that would add about £319.
         </p>
         <Callout title="Electricity VAT is 0% too, for now">
-          Household electricity also carries no VAT from 1 October 2026 to 31 March 2027. That lowers the unit rate, which slightly lowers the value of each
+          Household electricity also carries no VAT from 1 October 2026 to 30 June 2027. That lowers the unit rate, which slightly lowers the value of each
           unit your panels save. If VAT returns, each saved unit is worth about 5% more.
         </Callout>
       </GuideSection>
@@ -278,10 +278,10 @@ export default function SolarGuide() {
       <GuideSection id="battery" n={12} kicker="Storage" title="Is a battery worth it?">
         <p>
           A battery stores spare daytime output for the evening. In the example, raising the share used at home from 40% to 70% adds about{" "}
-          <strong>£128 a year</strong>, because each stored unit is worth 26.32p used rather than 12.9p exported.
+          <strong>£188 a year</strong>, because each stored unit is worth 32.69p used rather than 12.9p exported.
         </p>
         <p>
-          That means a battery costing more than about £1,280 would take over 10 years to repay itself on solar alone. Batteries become better value when you
+          That means a battery costing more than about £1,880 would take over 10 years to repay itself on solar alone. Batteries become better value when you
           also charge them from the grid at a cheap overnight rate and use that power at peak times. Put the battery&rsquo;s cost under More options to see
           the combined payback.
         </p>
@@ -305,10 +305,10 @@ export default function SolarGuide() {
         </p>
         <Timeline
           items={[
-            { when: "Year 1", what: "Installed", detail: "£6,380 spent; £707 back in the first year." },
-            { when: "Year 9", what: "Payback", detail: "Savings and income pass the cost after about 9.2 years." },
-            { when: "Year 10", what: "Ahead", detail: "About £536 ahead." },
-            { when: "Year 25", what: "End of the usual warranty", detail: "About £10,282 ahead, at today's prices." },
+            { when: "Year 1", what: "Installed", detail: "£6,380 spent; £806 back in the first year." },
+            { when: "Year 9", what: "Payback", detail: "Savings and income pass the cost after about 8.1 years." },
+            { when: "Year 10", what: "Ahead", detail: "About £1,501 ahead." },
+            { when: "Year 25", what: "End of the usual warranty", detail: "About £12,606 ahead, at today's prices." },
           ]}
         />
         <p>Many panels keep working well beyond 25 years, so the real return can be higher.</p>
@@ -317,11 +317,12 @@ export default function SolarGuide() {
       <GuideSection id="prices" n={15} kicker="Prices" title="If electricity prices change">
         <p>
           Nobody knows what electricity will cost in 10 or 20 years. The calculator starts with today&rsquo;s price cap and lets you add a yearly change. If
-          prices and export rates both rose 3% a year, the example would pay back in 8.2 years instead of 9.2, and the 25-year return would be £17,734
-          instead of £10,282.
+          prices and export rates both rose 3% a year, the example would pay back in 7.3 years instead of 8.1, and the 25-year return would be £21,097
+          instead of £12,606.
         </p>
         <p>
-          Ofgem announces the next cap, for January to March 2027, on 25 November 2026. Our <a href="/uk/property/energy-bill-calculator">energy bill calculator</a>{" "}
+          The cap rose 26% from 1 January 2027, mainly because of higher wholesale gas prices, which makes each unit your panels save worth more. Ofgem
+          announces the next cap, for April to June 2027, in late February 2027. Our <a href="/uk/property/energy-bill-calculator">energy bill calculator</a>{" "}
           shows your whole bill at the cap.
         </p>
       </GuideSection>
@@ -385,8 +386,8 @@ export default function SolarGuide() {
             { value: "811–1,156", label: "kWh a year per kWp across UK regions" },
             { value: "£1,595", label: "Median cost per kW, systems up to 4 kW, 2025/26" },
             { value: "12.9p", label: "Average SEG payment per kWh, 2024/25" },
-            { value: "26.32p", label: "Electricity unit rate, October to December 2026 cap" },
-            { value: "9.2 years", label: "Payback, 4 kWp in the Midlands" },
+            { value: "32.69p", label: "Electricity unit rate, January to March 2027 cap" },
+            { value: "8.1 years", label: "Payback, 4 kWp in the Midlands" },
             { value: "0% VAT", label: "On home solar until 31 March 2027" },
           ]}
         />

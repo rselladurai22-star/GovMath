@@ -26,8 +26,17 @@ export type CapPeriod = {
   elecVat: number;
   /** VAT rate included in the gas figures. */
   gasVat: number;
-  /** Ofgem's typical yearly dual fuel bill by payment method, at 2026 typical use. */
-  typical: { dd: number; sc: number; ppm: number; e7: number };
+  /**
+   * Ofgem's typical yearly dual fuel bill by payment method, at 2026 typical
+   * use. Only the Direct Debit figure is required: where the others are not
+   * held, `ratiosFrom` supplies the payment-method ratios.
+   */
+  typical: { dd: number; sc?: number; ppm?: number; e7?: number };
+  /**
+   * An earlier period whose standard credit and prepayment ratios to Direct
+   * Debit are used as an estimate when this period's own figures are not held.
+   */
+  ratiosFrom?: CapPeriod;
 };
 
 /**
@@ -35,18 +44,40 @@ export type CapPeriod = {
  * Source: Ofgem, "Changes to energy price cap between 1 October and
  * 31 December 2026" and "Energy price cap unit rates and standing charges"
  * (published 26 August 2026). Electricity carries no VAT from 1 October 2026
- * to 31 March 2027; gas keeps 5%. Typical bills: Ofgem letter "Energy price
+ * (to 30 June 2027 after the 28 October 2026 Budget); gas keeps 5%. Typical bills: Ofgem letter "Energy price
  * cap (default tariff) update from 1 October 2026", 26 August 2026.
  */
 export const CAP_OCT_DEC_2026: CapPeriod = {
   label: "October to December 2026",
-  elecUnit: PRICES_2026.homeElectric, // 26.32p, shared with the vehicle calculators
+  elecUnit: 26.32,
   elecStanding: 54.83,
   gasUnit: 7.97,
   gasStanding: 29.68,
   elecVat: 0,
   gasVat: 0.05,
   typical: { dd: 1723, sc: 1861, ppm: 1678, e7: 1046 },
+};
+
+/**
+ * 1 January to 31 March 2027, GB average, Direct Debit, rounded to two
+ * decimals. Source: Ofgem, "Energy price cap unit rates and standing charges"
+ * (checked 26 November 2026): typical dual fuel Direct Debit bill £2,166 a
+ * year, up 26% from £1,723. Includes 5% VAT on gas; "There is no VAT on
+ * electricity from 1 October 2026 to 30 June 2027." Ofgem's typical bills for
+ * standard credit, prepayment and Economy 7 for this period are not held here,
+ * so standard credit and prepayment are estimated with the October to
+ * December 2026 ratios to Direct Debit (`ratiosFrom`).
+ */
+export const CAP_JAN_MAR_2027: CapPeriod = {
+  label: "January to March 2027",
+  elecUnit: PRICES_2026.homeElectric, // 32.69p, shared with the vehicle calculators
+  elecStanding: 54.77,
+  gasUnit: 10.96,
+  gasStanding: 29.65,
+  elecVat: 0,
+  gasVat: 0.05,
+  typical: { dd: 2166 },
+  ratiosFrom: CAP_OCT_DEC_2026,
 };
 
 /**
@@ -65,10 +96,21 @@ export const CAP_JUL_SEP_2026: CapPeriod = {
   typical: { dd: 1663, sc: 1796, ppm: 1620, e7: 1039 },
 };
 
-/** The cap for 1 January to 31 March 2027 is due to be announced on this date (Ofgem). */
-export const NEXT_CAP_ANNOUNCEMENT = "25 November 2026";
-/** Electricity VAT is 0% from 1 October 2026 to 31 March 2027 (Ofgem, government decision). */
-export const ELEC_VAT_ZERO_UNTIL = "31 March 2027";
+/** Ofgem is due to announce the cap for 1 April to 30 June 2027 in late February 2027. */
+export const NEXT_CAP_ANNOUNCEMENT = "late February 2027";
+/**
+ * Electricity VAT is 0% from 1 October 2026 to 30 June 2027: extended from
+ * 31 March 2027 in the Budget of 28 October 2026 (Ofgem, "Energy price cap
+ * unit rates and standing charges").
+ */
+export const ELEC_VAT_ZERO_UNTIL = "30 June 2027";
+
+/**
+ * Budget 2026 (28 October 2026, GOV.UK): a £2.6 billion Household Energy
+ * Payment gives £100 from January 2027 to households in council tax bands A
+ * to D in England, through the council tax system.
+ */
+export const HOUSEHOLD_ENERGY_PAYMENT = 100;
 
 /**
  * Typical Domestic Consumption Values from 1 July 2026, kWh a year.
@@ -261,6 +303,19 @@ function fuel(kwh: number, unit: number, standing: number, vatRate: number, days
 }
 
 /**
+ * The ratio of a payment method's typical bill to Direct Debit's, from the
+ * period's own typical bills or, if not held, from `ratiosFrom`.
+ */
+export function paymentFactor(cap: CapPeriod, pay: Payment): number {
+  if (pay === "dd") return 1;
+  const own = cap.typical[pay];
+  if (own) return own / cap.typical.dd;
+  const src = cap.ratiosFrom;
+  const theirs = src?.typical[pay];
+  return src && theirs ? theirs / src.typical.dd : 1;
+}
+
+/**
  * A yearly bill at a cap period's rates. Standard credit and prepayment are
  * estimated by scaling with Ofgem's typical bills for each payment method,
  * since Ofgem publishes the average unit rates for Direct Debit only.
@@ -283,7 +338,7 @@ export function energyBill(input: {
   const gas = input.hasGas ? fuel(input.gasKwh, pick(o.gasUnit, c.gasUnit), pick(o.gasStanding, c.gasStanding), c.gasVat, days) : fuel(0, 0, 0, 0, days);
   const base = elec.total + gas.total;
   const pay = input.payment ?? "dd";
-  const factor = pay === "dd" ? 1 : c.typical[pay] / c.typical.dd;
+  const factor = paymentFactor(c, pay);
   const year = base * factor;
   return { elec, gas, paymentAdjust: year - base, year, month: year / 12, day: year / days };
 }

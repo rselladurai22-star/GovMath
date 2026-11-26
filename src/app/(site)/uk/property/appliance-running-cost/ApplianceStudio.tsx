@@ -3,7 +3,7 @@
 import {
   APPLIANCES,
   BOILER_EFFICIENCY,
-  CAP_OCT_DEC_2026 as CAP,
+  CAP_JAN_MAR_2027 as CAP,
   OFF_PEAK_EXAMPLE,
   TDCV_2026,
   applianceById,

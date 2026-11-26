@@ -1,6 +1,6 @@
 "use client";
 
-import { CAP_OCT_DEC_2026 as CAP, TDCV_2026 } from "@/lib/energy/costs";
+import { CAP_JAN_MAR_2027 as CAP, TDCV_2026 } from "@/lib/energy/costs";
 import {
   ORIENTATION,
   PANEL_WATTS,

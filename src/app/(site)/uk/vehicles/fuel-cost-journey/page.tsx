@@ -21,7 +21,7 @@ const BREADCRUMBS = [
 
 const FAQS: { q: string; a: string }[] = [
   { q: "How do I work out the fuel cost of a journey?", a: "Miles ÷ mpg × 4.546 gives litres. Multiply by the price per litre. 240 miles at 45 mpg and 173.8p costs about £42.14." },
-  { q: "How much does an electric car cost per mile?", a: "At 3.5 miles per kWh, about 2.3p a mile on an 8p overnight tariff, 7.5p at the 26.32p price cap, and over 21p on 75p rapid chargers." },
+  { q: "How much does an electric car cost per mile?", a: "At 3.5 miles per kWh, about 2.3p a mile on an 8p overnight tariff, 9.3p at the 32.69p price cap, and over 21p on 75p rapid chargers." },
   { q: "What is the business mileage rate?", a: "45p a mile for the first 10,000 business miles a year in your own car, then 25p, tax-free." },
   { q: "Is it legal to share fuel costs?", a: "Yes, as long as you do not make a profit from your passengers." },
   { q: "Why is my real mpg lower than the official figure?", a: "Official figures come from a standard laboratory test. Real driving, with cold starts, traffic, speed and heating, usually uses more fuel." },

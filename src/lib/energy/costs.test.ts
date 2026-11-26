@@ -1,11 +1,14 @@
 import { describe, expect, it } from "vitest";
 import {
   APPLIANCES,
+  CAP_JAN_MAR_2027,
   CAP_JUL_SEP_2026,
   CAP_OCT_DEC_2026,
+  ELEC_VAT_ZERO_UNTIL,
   TDCV_2026,
   applianceById,
   energyBill,
+  paymentFactor,
   gasHeatCost,
   runningCost,
   usageFromSpend,
@@ -13,22 +16,32 @@ import {
 
 describe("price cap figures", () => {
   it("reproduce Ofgem's typical Direct Debit bills at medium use", () => {
-    const now = energyBill({ elecKwh: TDCV_2026.elec.medium, gasKwh: TDCV_2026.gas.medium, hasGas: true, cap: CAP_OCT_DEC_2026 });
-    const before = energyBill({ elecKwh: TDCV_2026.elec.medium, gasKwh: TDCV_2026.gas.medium, hasGas: true, cap: CAP_JUL_SEP_2026 });
-    expect(Math.abs(now.year - CAP_OCT_DEC_2026.typical.dd)).toBeLessThan(2);
+    const use = { elecKwh: TDCV_2026.elec.medium, gasKwh: TDCV_2026.gas.medium, hasGas: true };
+    const now = energyBill({ ...use, cap: CAP_JAN_MAR_2027 });
+    const oct = energyBill({ ...use, cap: CAP_OCT_DEC_2026 });
+    const before = energyBill({ ...use, cap: CAP_JUL_SEP_2026 });
+    expect(Math.abs(now.year - CAP_JAN_MAR_2027.typical.dd)).toBeLessThan(2);
+    expect(Math.abs(oct.year - CAP_OCT_DEC_2026.typical.dd)).toBeLessThan(2);
     expect(Math.abs(before.year - CAP_JUL_SEP_2026.typical.dd)).toBeLessThan(2);
+    // Ofgem: up 26% from £1,723 to £2,166.
+    expect(Math.round((CAP_JAN_MAR_2027.typical.dd / CAP_OCT_DEC_2026.typical.dd - 1) * 100)).toBe(26);
+  });
+
+  it("keeps electricity VAT at 0% to 30 June 2027", () => {
+    expect(CAP_JAN_MAR_2027.elecVat).toBe(0);
+    expect(ELEC_VAT_ZERO_UNTIL).toBe("30 June 2027");
   });
 
   it("charges no VAT on electricity from October 2026 but 5% on gas", () => {
-    const b = energyBill({ elecKwh: 2500, gasKwh: 9500, hasGas: true, cap: CAP_OCT_DEC_2026 });
+    const b = energyBill({ elecKwh: 2500, gasKwh: 9500, hasGas: true, cap: CAP_JAN_MAR_2027 });
     expect(b.elec.vat).toBe(0);
     expect(b.gas.vat).toBeCloseTo(b.gas.total * (0.05 / 1.05), 6);
   });
 
   it("drops gas for an electricity-only home and keeps standing charges", () => {
-    const b = energyBill({ elecKwh: 0, gasKwh: 9500, hasGas: false, cap: CAP_OCT_DEC_2026 });
+    const b = energyBill({ elecKwh: 0, gasKwh: 9500, hasGas: false, cap: CAP_JAN_MAR_2027 });
     expect(b.gas.total).toBe(0);
-    expect(b.year).toBeCloseTo((54.83 * 365) / 100, 6);
+    expect(b.year).toBeCloseTo((54.77 * 365) / 100, 6);
   });
 
   it("scales standard credit and prepayment from the typical bills", () => {
@@ -38,14 +51,20 @@ describe("price cap figures", () => {
     expect(ppm.year).toBeLessThan(sc.year);
   });
 
+  it("borrows payment-method ratios when a period has only the Direct Debit bill", () => {
+    expect(paymentFactor(CAP_JAN_MAR_2027, "sc")).toBeCloseTo(1861 / 1723, 9);
+    expect(paymentFactor(CAP_JAN_MAR_2027, "ppm")).toBeCloseTo(1678 / 1723, 9);
+    expect(paymentFactor(CAP_JAN_MAR_2027, "dd")).toBe(1);
+  });
+
   it("uses own rates when given", () => {
     const b = energyBill({ elecKwh: 1000, gasKwh: 0, hasGas: false, cap: CAP_OCT_DEC_2026, own: { elecUnit: 20, elecStanding: 50 } });
     expect(b.year).toBeCloseTo(200 + 182.5, 6);
   });
 
   it("works back from a monthly payment", () => {
-    const bill = energyBill({ elecKwh: 2500, gasKwh: 9500, hasGas: true, cap: CAP_OCT_DEC_2026 });
-    const u = usageFromSpend(bill.month, CAP_OCT_DEC_2026, true);
+    const bill = energyBill({ elecKwh: 2500, gasKwh: 9500, hasGas: true, cap: CAP_JAN_MAR_2027 });
+    const u = usageFromSpend(bill.month, CAP_JAN_MAR_2027, true);
     expect(u.scale).toBeCloseTo(1, 6);
     expect(usageFromSpend(0, CAP_OCT_DEC_2026, true).scale).toBe(0);
   });

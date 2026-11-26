@@ -44,12 +44,12 @@ export default function HeatPumpGuide() {
       title="Heat pump or gas boiler: what it really costs"
       intro={
         <>
-          A heat pump turns one unit of electricity into about three units of heat, but electricity costs more than three times as much as gas. This guide
-          shows how the sums work at the October 2026 price cap, what decides whether a heat pump is cheaper to run, what it costs to fit after the £7,500
+          A heat pump turns one unit of electricity into about three units of heat, but electricity costs about three times as much as gas. This guide
+          shows how the sums work at the January 2027 price cap, what decides whether a heat pump is cheaper to run, what it costs to fit after the £7,500
           grant and how long it takes to pay back.
         </>
       }
-      meta={["October 2026", "12 min read", "Reviewed October 2026"]}
+      meta={["November 2026", "12 min read", "Reviewed November 2026"]}
       toc={TOC}
       sources={SOURCES}
     >
@@ -115,83 +115,86 @@ export default function HeatPumpGuide() {
       </GuideSection>
 
       <GuideSection id="prices" n={5} kicker="Prices" title="Gas and electricity prices">
-        <p>From 1 October to 31 December 2026, the Ofgem price cap for Great Britain, paying by Direct Debit, is:</p>
+        <p>From 1 January to 31 March 2027, the Ofgem price cap for Great Britain, paying by Direct Debit, is:</p>
         <DataTable
-          caption="Price cap, October to December 2026"
+          caption="Price cap, January to March 2027"
           head={["", "Unit rate", "Standing charge"]}
           rows={[
-            ["Electricity (no VAT until 31 March 2027)", "26.32p per kWh", "54.83p a day"],
-            ["Gas (5% VAT)", "7.97p per kWh", "29.68p a day"],
+            ["Electricity (no VAT until 30 June 2027)", "32.69p per kWh", "54.77p a day"],
+            ["Gas (5% VAT)", "10.96p per kWh", "29.65p a day"],
           ]}
         />
         <p>
-          Electricity costs about 3.3 times as much as gas per unit. Per unit of heat, gas in a 90% boiler costs about 8.86p, and electricity in a heat pump
-          with a SCOP of 2.8 about 9.40p. That gap is why the efficiency of the heat pump matters so much.
+          Electricity costs about 3 times as much as gas per unit. Per unit of heat, gas in a 90% boiler costs about 12.18p, and electricity in a heat pump
+          with a SCOP of 2.8 about 11.68p. The two are close, which is why the efficiency of the heat pump matters so much. From October to December 2026
+          the rates were 26.32p for electricity and 7.97p for gas: the January rise came mainly from higher wholesale gas prices, and gas rose by more, which
+          helps heat pumps.
         </p>
       </GuideSection>
 
       <GuideSection id="worked" n={6} kicker="Example" title="A worked example">
-        <p>A typical house using 9,500 kWh of gas, at the October 2026 cap, with a heat pump at the median SCOP of 2.8 and the gas supply capped.</p>
+        <p>A typical house using 9,500 kWh of gas, at the January 2027 cap, with a heat pump at the median SCOP of 2.8 and the gas supply capped.</p>
         <WorkedExample
           title="Running costs for a year"
           steps={[
             { label: "Heat needed", note: "9,500 kWh gas × 90%", value: "8,550 kWh" },
-            { label: "Gas boiler: gas", note: "9,500 × 7.97p", value: "£757" },
-            { label: "Gas boiler: standing charge", note: "29.68p × 365", value: "£108" },
-            { label: "Heat pump: electricity", note: "8,550 ÷ 2.8 = 3,054 kWh × 26.32p", value: "£804" },
+            { label: "Gas boiler: gas", note: "9,500 × 10.96p", value: "£1,041" },
+            { label: "Gas boiler: standing charge", note: "29.65p × 365", value: "£108" },
+            { label: "Heat pump: electricity", note: "8,550 ÷ 2.8 = 3,054 kWh × 32.69p", value: "£998" },
           ]}
-          total={{ label: "Heat pump saves", value: "£62 a year" }}
+          total={{ label: "Heat pump saves", value: "£151 a year" }}
         />
         <p>
-          The heat pump is cheaper to run only because leaving gas removes the £108 standing charge. Upfront, a median heat pump at £12,908 less the £7,500
-          grant costs £5,408, about £2,408 more than a £3,000 boiler. At £62 a year, that does not pay back within 15 years.
+          The heat pump uses a little less money in fuel, and leaving gas also removes the £108 standing charge. Upfront, a median heat pump at £12,908 less
+          the £7,500 grant costs £5,408, about £2,408 more than a £3,000 boiler. At £151 a year, that does not quite pay back within 15 years.
         </p>
       </GuideSection>
 
       <GuideSection id="sizes" n={7} kicker="Homes" title="Small, medium and large homes">
-        <p>At SCOP 2.8 and the October 2026 cap:</p>
+        <p>At SCOP 2.8 and the January 2027 cap:</p>
         <DataTable
           caption="Running cost a year at SCOP 2.8"
           head={["Home", "Gas boiler", "Heat pump", "Difference", "15 years: boiler", "15 years: heat pump"]}
           numeric={[1, 2, 3, 4, 5]}
           rows={[
-            ["Low use", "£587", "£508", "£79 cheaper", "£11,798", "£13,022"],
-            ["Medium use", "£865", "£804", "£62 cheaper", "£15,982", "£17,464"],
-            ["High use", "£1,224", "£1,184", "£40 cheaper", "£21,362", "£23,174"],
+            ["Low use", "£766", "£630", "£135 cheaper", "£14,487", "£14,865"],
+            ["Medium use", "£1,149", "£998", "£151 cheaper", "£20,241", "£20,381"],
+            ["High use", "£1,643", "£1,471", "£172 cheaper", "£27,639", "£27,474"],
           ]}
         />
         <p>
-          The 15-year totals include a £3,000 boiler or a £12,908 heat pump less the £7,500 grant. At the median efficiency, the boiler is cheaper overall.
-          The picture changes with a better SCOP or a cheaper electricity tariff.
+          The 15-year totals include a £3,000 boiler or a £12,908 heat pump less the £7,500 grant. At the median efficiency, the boiler is slightly cheaper overall
+          for the low and medium homes, and the heat pump for the high-use home, where it pays back in about 14 years. A better SCOP or a cheaper electricity
+          tariff tips the balance further.
         </p>
       </GuideSection>
 
       <GuideSection id="scop-matters" n={8} kicker="Efficiency" title="Why efficiency decides it">
-        <p>For the medium home, the heat pump&rsquo;s running cost a year at different SCOPs (the boiler costs £865):</p>
+        <p>For the medium home, the heat pump&rsquo;s running cost a year at different SCOPs (the boiler costs £1,149):</p>
         <Bars
           items={[
-            { label: "SCOP 2.5", value: 900.14 },
-            { label: "SCOP 2.8", value: 803.7 },
-            { label: "SCOP 3.0", value: 750.12 },
-            { label: "SCOP 3.5", value: 642.96 },
-            { label: "SCOP 4.0", value: 562.59 },
-            { label: "Gas boiler", value: 865.48 },
+            { label: "SCOP 2.5", value: 1118 },
+            { label: "SCOP 2.8", value: 998.21 },
+            { label: "SCOP 3.0", value: 931.66 },
+            { label: "SCOP 3.5", value: 798.57 },
+            { label: "SCOP 4.0", value: 698.75 },
+            { label: "Gas boiler", value: 1149.42 },
           ]}
         />
         <p>
-          At these prices, the heat pump matches the boiler at a SCOP of about 2.60. At 3.5 it saves £223 a year and pays back the extra upfront cost in
-          10.8 years; at 4.0 it saves £303 and pays back in 8.0 years. Ask installers what SCOP they design for, and how they will get there.
+          At these prices, the heat pump matches the boiler at a SCOP of about 2.43. At 3.5 it saves £351 a year and pays back the extra upfront cost in
+          6.9 years; at 4.0 it saves £451 and pays back in 5.3 years. Ask installers what SCOP they design for, and how they will get there.
         </p>
       </GuideSection>
 
       <GuideSection id="standing" n={9} kicker="Standing charge" title="The gas standing charge">
         <p>
-          If you switch fully to a heat pump and have the gas supply capped, you stop paying the gas standing charge: 29.68p a day, about £108 a year at
+          If you switch fully to a heat pump and have the gas supply capped, you stop paying the gas standing charge: 29.65p a day, about £108 a year at
           the cap. Your electricity standing charge stays the same either way.
         </p>
         <p>
-          If you keep gas for a hob, the standing charge stays. In the medium example, that turns a £62 saving into the heat pump costing £47 a year more,
-          and raises the break-even SCOP from 2.60 to 2.97. An induction hob costs little to run: see our{" "}
+          If you keep gas for a hob, the standing charge stays. In the medium example, that cuts the £151 saving to £43 a year, and raises the break-even
+          SCOP from 2.43 to 2.68. An induction hob costs little to run: see our{" "}
           <a href="/uk/property/appliance-running-cost">appliance running cost calculator</a>.
         </p>
       </GuideSection>
@@ -203,9 +206,9 @@ export default function HeatPumpGuide() {
         </p>
         <CompareCards
           columns={[
-            { name: "26.32p (price cap)", rows: [{ label: "Heat pump a year", value: "£804" }, { label: "Saving", value: "£62" }, { label: "Payback", value: "Over 15 years" }] },
-            { name: "Average 20p", rows: [{ label: "Heat pump a year", value: "£611" }, { label: "Saving", value: "£255" }, { label: "Payback", value: "9.5 years" }] },
-            { name: "Average 15p", rows: [{ label: "Heat pump a year", value: "£458" }, { label: "Saving", value: "£407" }, { label: "Payback", value: "5.9 years" }] },
+            { name: "32.69p (price cap)", rows: [{ label: "Heat pump a year", value: "£998" }, { label: "Saving", value: "£151" }, { label: "Payback", value: "Over 15 years" }] },
+            { name: "Average 20p", rows: [{ label: "Heat pump a year", value: "£611" }, { label: "Saving", value: "£539" }, { label: "Payback", value: "4.5 years" }] },
+            { name: "Average 15p", rows: [{ label: "Heat pump a year", value: "£458" }, { label: "Saving", value: "£691" }, { label: "Payback", value: "3.5 years" }] },
           ]}
         />
         <p>
@@ -253,8 +256,8 @@ export default function HeatPumpGuide() {
           return to 5%. On a £12,908 heat pump, that would add about £645.
         </p>
         <Callout title="Electricity VAT">
-          Household electricity also carries no VAT from 1 October 2026 to 31 March 2027, which lowers heat pump running costs. Gas keeps 5% VAT. If
-          electricity VAT returns at 5% in April 2027, heat pump running costs rise by about 5%.
+          Household electricity also carries no VAT from 1 October 2026 to 30 June 2027, which lowers heat pump running costs. Gas keeps 5% VAT. If
+          electricity VAT returns at 5% in July 2027, heat pump running costs rise by about 5%.
         </Callout>
       </GuideSection>
 
@@ -264,9 +267,9 @@ export default function HeatPumpGuide() {
           from day one. If it costs more to run, it never pays back.
         </p>
         <p>
-          A large home with a well-designed system (SCOP 3.5) saves £277 a year and pays back in 8.7 years; over 15 years it costs £19,621 against the
-          boiler&rsquo;s £21,362. Price changes matter too: if gas and electricity both rose 3% a year, the medium example&rsquo;s 15-year totals would be
-          £19,097 for the boiler and £20,356 for the heat pump.
+          A large home with a well-designed system (SCOP 3.5) saves £466 a year and pays back in 5.2 years; over 15 years it costs £23,061 against the
+          boiler&rsquo;s £27,639. Price changes matter too: if gas and electricity both rose 3% a year, the medium example&rsquo;s 15-year totals would be
+          £24,378 for the boiler and £23,974 for the heat pump.
         </p>
       </GuideSection>
 
@@ -323,7 +326,7 @@ export default function HeatPumpGuide() {
             { value: "£7,500", label: "Boiler Upgrade Scheme grant, air or ground source" },
             { value: "£12,908", label: "Median air source heat pump cost, April to June 2026" },
             { value: "2.8", label: "Median measured efficiency (SCOP) in UK homes" },
-            { value: "2.60", label: "SCOP where a heat pump matches gas at the October 2026 cap" },
+            { value: "2.43", label: "SCOP where a heat pump matches gas at the January 2027 cap" },
             { value: "£108", label: "Gas standing charge a year, saved if you cap the gas" },
             { value: "1.3 tonnes", label: "CO2e saved a year, typical house" },
           ]}

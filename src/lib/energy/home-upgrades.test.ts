@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BOILER_EFFICIENCY, CAP_OCT_DEC_2026 as CAP, TDCV_2026 } from "./costs";
+import { BOILER_EFFICIENCY, CAP_JAN_MAR_2027 as CAP, TDCV_2026 } from "./costs";
 import {
   BUS_GRANT,
   ELEC_CO2_KG,
@@ -101,15 +101,15 @@ describe("heat pump vs gas boiler", () => {
   it("costs the boiler with gas and standing charge, the heat pump with electricity", () => {
     const r = heatPumpVsBoiler(hp);
     expect(r.gasKwh).toBeCloseTo(9500, 6);
-    expect(r.boiler.total).toBeCloseTo(9500 * 0.0797 + 29.68 * 3.65, 6);
-    expect(r.heatPump.total).toBeCloseTo((8550 / 2.8) * 0.2632, 6);
+    expect(r.boiler.total).toBeCloseTo(9500 * 0.1096 + 29.65 * 3.65, 6);
+    expect(r.heatPump.total).toBeCloseTo((8550 / 2.8) * 0.3269, 6);
     expect(r.extraUpfront).toBeCloseTo(12908 - 7500 - 3000, 6);
     expect(r.years).toHaveLength(15);
   });
 
   it("keeps the gas standing charge if you keep gas", () => {
     const r = heatPumpVsBoiler({ ...hp, keepGas: true });
-    expect(r.heatPump.standing).toBeCloseTo(29.68 * 3.65, 6);
+    expect(r.heatPump.standing).toBeCloseTo(29.65 * 3.65, 6);
   });
 
   it("finds the break-even SCOP", () => {

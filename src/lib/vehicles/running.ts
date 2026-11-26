@@ -4,7 +4,7 @@
  * bike.
  *
  * Prices are defaults the user can change: RAC/Fuel Finder averages for late
- * September 2026 and the Ofgem price cap for October to December 2026.
+ * September 2026 and the Ofgem price cap for January to March 2027.
  */
 
 export const UK_GALLON = 4.54609;
@@ -13,8 +13,8 @@ export const PRICES_2026 = {
   /** Pence per litre, UK average, week ending 27 September 2026. */
   petrol: 173.8,
   diesel: 198.9,
-  /** Ofgem price cap electricity unit rate, 1 October to 31 December 2026, pence per kWh. */
-  homeElectric: 26.32,
+  /** Ofgem price cap electricity unit rate, 1 January to 31 March 2027, pence per kWh (GB average, Direct Debit, no VAT). */
+  homeElectric: 32.69,
   /** A typical overnight EV tariff, pence per kWh (example). */
   offPeak: 8,
   /** A typical public rapid charger, pence per kWh (example). */

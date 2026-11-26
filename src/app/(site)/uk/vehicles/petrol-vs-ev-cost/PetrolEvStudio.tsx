@@ -83,7 +83,7 @@ export default function PetrolEvStudio({ query }: { query: Query }) {
           <InputGroup title="Electric car">
             <MoneyField label="Price" value={v.evPrice} onChange={st.bind("evPrice")} hint="After any discount or grant." />
             <StepperField label="Efficiency" value={v.miPerKwh} onChange={st.bind("miPerKwh")} step={0.1} min={0.5} max={10} unit="miles/kWh" dp={1} />
-            <StepperField label="Home electricity price" value={v.homePrice} onChange={st.bind("homePrice")} step={0.5} min={0} max={200} unit="p/kWh" dp={2} hint="About 8p on an overnight EV tariff; 26.32p on the standard price cap." />
+            <StepperField label="Home electricity price" value={v.homePrice} onChange={st.bind("homePrice")} step={0.5} min={0} max={200} unit="p/kWh" dp={2} hint={`About 8p on an overnight EV tariff; ${PRICES_2026.homeElectric}p on the standard price cap.`} />
             <StepperField label="Share charged at public chargers" value={v.publicShare} onChange={st.bind("publicShare")} step={5} min={0} max={100} unit="%" dp={0} />
             {v.publicShare > 0 && <StepperField label="Public charging price" value={v.publicPrice} onChange={st.bind("publicPrice")} step={1} min={0} max={200} unit="p/kWh" dp={0} />}
           </InputGroup>
