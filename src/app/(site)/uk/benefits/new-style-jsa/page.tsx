@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import JsaGuide from "./JsaGuide";
 
 export const metadata: Metadata = {
-  title: "New Style JSA Calculator 2026/27",
+  title: "New Style JSA Calculator: How Much You Get",
   description:
-    "Free New Style JSA calculator for 2026/27. Check if your National Insurance record qualifies and see the weekly rate: £95.55 at 25 or over, for up to 26 weeks.",
+    "New Style JSA is £95.55 a week at 25 or over in 2026/27, for up to 26 weeks. Check if your National Insurance record qualifies and what you would get.",
   alternates: { canonical: "/uk/benefits/new-style-jsa" },
   openGraph: ogFor("/uk/benefits/new-style-jsa"),
 };

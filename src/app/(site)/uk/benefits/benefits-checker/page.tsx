@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import CheckerGuide from "./CheckerGuide";
 
 export const metadata: Metadata = {
-  title: "Benefits Calculator UK 2026/27: What Can I Get?",
+  title: "Benefits Calculator UK: What Can I Claim?",
   description:
-    "Free UK benefits checker for 2026/27. See which benefits you are likely to get, from Universal Credit and Pension Credit to PIP and Council Tax Reduction.",
+    "Free UK benefits calculator for 2026/27. Answer a few questions to see which benefits you are likely to get, from Universal Credit to PIP and Pension Credit.",
   alternates: { canonical: "/uk/benefits/benefits-checker" },
   openGraph: ogFor("/uk/benefits/benefits-checker"),
 };

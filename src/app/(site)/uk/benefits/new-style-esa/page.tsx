@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import EsaGuide from "./EsaGuide";
 
 export const metadata: Metadata = {
-  title: "New Style ESA Calculator 2026/27",
+  title: "How Much Is New Style ESA? 2026/27 Calculator",
   description:
-    "Free New Style ESA calculator for 2026/27. Check if your National Insurance record qualifies and see the weekly rate: £95.55, or £145.90 in the support group.",
+    "New Style ESA is £95.55 a week, or £145.90 in the support group, in 2026/27. Check if your National Insurance record qualifies and what you would get.",
   alternates: { canonical: "/uk/benefits/new-style-esa" },
   openGraph: ogFor("/uk/benefits/new-style-esa"),
 };

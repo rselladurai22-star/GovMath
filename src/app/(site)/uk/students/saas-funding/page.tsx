@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import SaasGuide from "./SaasGuide";
 
 export const metadata: Metadata = {
-  title: "SAAS Funding Calculator 2026/27 (Scotland)",
+  title: "SAAS Funding Calculator 2026/27: Loan & Bursary",
   description:
-    "Free SAAS calculator for Scottish students in 2026/27. See your bursary and student loan by household income, for young and independent students.",
+    "Free SAAS funding calculator for Scottish students in 2026/27. See your bursary and student loan by household income, for young and independent students.",
   alternates: { canonical: "/uk/students/saas-funding" },
   openGraph: ogFor("/uk/students/saas-funding"),
 };

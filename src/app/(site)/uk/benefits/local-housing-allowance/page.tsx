@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import LhaGuide from "./LhaGuide";
 
 export const metadata: Metadata = {
-  title: "LHA Calculator: Bedrooms and Housing Element",
+  title: "LHA Calculator 2026/27: Bedroom Rate & Rent",
   description:
-    "Free LHA and housing element calculator for 2026/27. See your bedroom entitlement and what Universal Credit or Housing Benefit pays towards rent in 200 areas.",
+    "Free LHA calculator for 2026/27. Find your bedroom entitlement and how much Universal Credit or Housing Benefit pays towards private rent in your area.",
   alternates: { canonical: "/uk/benefits/local-housing-allowance" },
   openGraph: ogFor("/uk/benefits/local-housing-allowance"),
 };

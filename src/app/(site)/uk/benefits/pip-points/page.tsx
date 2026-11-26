@@ -6,9 +6,9 @@ import { ogFor } from "@/gm/og";
 import PipGuide from "./PipGuide";
 
 export const metadata: Metadata = {
-  title: "PIP Points Calculator 2026/27",
+  title: "PIP Points Calculator: How Many Points Needed?",
   description:
-    "Free PIP points calculator for all 12 activities. See if your points reach the standard or enhanced rate for daily living and mobility, and the 2026/27 amount.",
+    "Free PIP points calculator for all 12 activities. See if your points reach the standard (8) or enhanced (12) rate for daily living and mobility in 2026/27.",
   alternates: { canonical: "/uk/benefits/pip-points" },
   openGraph: ogFor("/uk/benefits/pip-points"),
 };
