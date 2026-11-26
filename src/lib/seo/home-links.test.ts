@@ -6,9 +6,8 @@ const HOME = { href: "/", label: "Home" };
 describe("home links", () => {
   it("sends each section's pages to their own home and shared pages to the site's home", () => {
     expect(homeFor("/uk/benefits/universal-credit-taper")).toBe("/uk");
-    expect(homeFor("/us/taxes")).toBe("/us");
-    expect(homeFor("/us")).toBe("/us");
-    expect(homeFor("/everyday/bmi-calculator")).toBe("/");
+    expect(homeFor("/uk")).toBe("/uk");
+    expect(homeFor("/blog/100k-tax-trap")).toBe("/");
     expect(homeFor("")).toBe("/");
   });
 
@@ -24,15 +23,15 @@ describe("home links", () => {
 
   it("merges Home with the country hub that follows it", () => {
     expect(
-      homeCrumbs([HOME, { href: "/us", label: "US calculators" }, { href: "/us/taxes", label: "Taxes and pay" }]),
+      homeCrumbs([HOME, { href: "/uk", label: "UK calculators" }, { href: "/uk/students", label: "Students" }]),
     ).toEqual([
-      { href: "/us", label: "Home" },
-      { href: "/us/taxes", label: "Taxes and pay" },
+      { href: "/uk", label: "Home" },
+      { href: "/uk/students", label: "Students" },
     ]);
   });
 
   it("keeps the hub's own name on the hub page", () => {
-    expect(homeCrumbs([HOME, { href: "/us", label: "US calculators" }])).toEqual([{ href: "/us", label: "US calculators" }]);
+    expect(homeCrumbs([HOME, { href: "/uk", label: "UK calculators" }])).toEqual([{ href: "/uk", label: "UK calculators" }]);
   });
 
   it("keeps a shared page's Home on the site's home page", () => {
@@ -44,11 +43,11 @@ describe("home links", () => {
   });
 
   it("sends no country page's Home to the site's home page", () => {
-    expect(homeCrumbs([HOME, { href: "/uk", label: "UK" }, { href: "/uk/life", label: "Life" }]).some((c) => c.href === "/")).toBe(false);
+    expect(homeCrumbs([HOME, { href: "/uk", label: "UK" }, { href: "/uk/property", label: "Renting" }]).some((c) => c.href === "/")).toBe(false);
   });
 
   it("does nothing to a breadcrumb that has already been through it", () => {
-    const once = homeCrumbs([HOME, { href: "/us", label: "US calculators" }, { href: "/us/loans", label: "Loans" }]);
+    const once = homeCrumbs([HOME, { href: "/uk", label: "UK calculators" }, { href: "/uk/benefits", label: "Benefits" }]);
     expect(homeCrumbs(once)).toEqual(once);
   });
 });

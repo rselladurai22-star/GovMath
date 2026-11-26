@@ -5,7 +5,7 @@ import ContentPage from "@/components/ContentPage";
 export const metadata: Metadata = {
   title: "Terms of Use",
   description:
-    "The terms that apply when you use SumAtlas's free UK and US calculators, guides and content, including how you may share and link to our tools.",
+    "The terms that apply when you use SumAtlas's free UK calculators, guides and content, including how you may share and link to our tools.",
   alternates: { canonical: "/terms" },
 };
 
@@ -24,9 +24,9 @@ export default function TermsPage() {
 
       <h2>Use of the Site</h2>
       <p>
-        SumAtlas provides free calculators and educational content about tax,
-        pay, housing, benefits, loans and retirement rules in the UK and the US,
-        plus everyday calculators. You may use the Site for your own
+        SumAtlas provides free calculators and educational content about UK
+        benefits, family support, renting, council tax and student finance
+        rules. You may use the Site for your own
         information, at home or at work. You agree not to:
       </p>
       <ul>
@@ -46,9 +46,9 @@ export default function TermsPage() {
       <p>
         The calculators and content on SumAtlas are for general information only
         and are <strong>not</strong> financial, tax, legal, accounting or
-        medical advice. Results are estimates and may not reflect your personal
+        benefits advice. Results are estimates and may not reflect your personal
         circumstances. Always confirm figures with the relevant authority (such
-        as HMRC or the DWP in the UK, or the IRS in the US) or a qualified
+        as the DWP, HMRC, your council or your student finance body) or a qualified
         professional before making decisions. See our full{" "}
         <Link href="/disclaimer">Disclaimer</Link>.
       </p>

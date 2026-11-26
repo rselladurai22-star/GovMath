@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Bars, Callout, CompareCards, DataTable, Figure, Guide, GuideSection, KeyStats, Timeline, WorkedExample, type Source, type TocItem } from "@/components/guide/Guide";
 
 /** Plan 2 student loan — the guide. Figures from src/lib/students/loans.ts. */
@@ -77,8 +78,8 @@ export default function Plan2Guide() {
           <li>Students on Advanced Learner Loans.</li>
         </ul>
         <p>
-          English students starting from August 2023 are on Plan 5. Scottish students are on <a href="/uk/students/student-loan-repayment">Plan 4</a>, and older English and Welsh loans and
-          Northern Ireland loans are on <a href="/uk/students/student-loan-repayment">Plan 1</a>. Your online Student Loans Company account shows your plan.
+          English students starting from August 2023 are on Plan 5. Scottish students are on Plan 4, and older English and Welsh loans and
+          Northern Ireland loans are on Plan 1. Your online Student Loans Company account shows your plan.
         </p>
       </GuideSection>
 
@@ -190,8 +191,8 @@ export default function Plan2Guide() {
 
       <GuideSection id="self-employed" n={10} kicker="Other income" title="Self-employed and other income">
         <p>
-          If you are self-employed or have other income over £2,000, such as rent or <a href="/uk/investing/savings-interest">savings interest</a>, repayments are worked out through
-          Self Assessment along with your tax. They are due by 31 January after the tax year, and may be included in <a href="/uk/business/payment-on-account">payments on account</a>.
+          If you are self-employed or have other income over £2,000, such as rent or savings interest, repayments are worked out through
+          Self Assessment along with your tax. They are due by 31 January after the tax year, and may be included in payments on account.
         </p>
       </GuideSection>
 
@@ -228,7 +229,7 @@ export default function Plan2Guide() {
         </p>
         <p>
           Pension contributions through salary sacrifice reduce the pay used for repayments, so they save 9% on top of tax and National
-          Insurance. The <a href="/uk/tax-and-salary/salary-calculator">salary calculator</a> shows your full take-home pay including student loan.
+          Insurance.
         </p>
       </GuideSection>
 
@@ -243,7 +244,7 @@ export default function Plan2Guide() {
       <GuideSection id="checking" n={16} kicker="Records" title="Checking your balance and repayments">
         <ul>
           <li>Your online Student Loans Company account shows the balance, interest added and repayments received.</li>
-          <li>Your payslip shows the amount taken each pay period, and your <a href="/uk/tax-and-salary/p45-p60-explainer">P60</a>{" "}shows the total for the tax year.</li>
+          <li>Your payslip shows the amount taken each pay period, and your P60{" "}shows the total for the tax year.</li>
           <li>If the SLC records do not match your payslips, contact them with copies of your P60s.</li>
           <li>When you are close to clearing the loan, consider switching to Direct Debit to avoid overpaying through PAYE.</li>
         </ul>
@@ -258,7 +259,8 @@ export default function Plan2Guide() {
         />
         <p>
           Plan 5 borrowers start repaying at a lower income and for ten more years, so most will repay more in total than a Plan 2 borrower on
-          the same salary. See the <a href="/uk/students/plan-5-student-loan">Plan 5 calculator</a>.
+          the same salary. Our guide to{" "}
+          <Link href="/blog/plan-2-vs-plan-5-student-loans">Plan 2 vs Plan 5</Link> compares the two.
         </p>
       </GuideSection>
 
@@ -319,7 +321,7 @@ export default function Plan2Guide() {
           <li>Multiply what is left by 9%. That is your yearly repayment.</li>
           <li>Divide by 12 for a monthly figure.</li>
         </ol>
-        <p>The calculator does this for you, adds any <a href="/uk/students/student-loan-repayment">Postgraduate Loan</a>, and projects the balance over the years ahead.</p>
+        <p>The calculator does this for you, adds any Postgraduate Loan, and projects the balance over the years ahead.</p>
       </GuideSection>
 
       <GuideSection id="why-grows" n={23} kicker="Balance" title="Why your balance keeps growing">

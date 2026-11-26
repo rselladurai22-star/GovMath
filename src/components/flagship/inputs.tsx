@@ -288,29 +288,6 @@ export function StepperField({
   );
 }
 
-/** Quick-pick buttons; pressed when the value matches. */
-export function Chips<T extends string | number>({
-  label,
-  options,
-  value,
-  onChange,
-}: {
-  label: string;
-  options: { value: T; label: string }[];
-  value: T | null;
-  onChange: (v: T) => void;
-}) {
-  return (
-    <div className="chips" role="group" aria-label={label}>
-      {options.map((o) => (
-        <button key={String(o.value)} type="button" aria-pressed={value === o.value} onClick={() => onChange(o.value)}>
-          {o.label}
-        </button>
-      ))}
-    </div>
-  );
-}
-
 /** A choice between a few options (radio buttons for two, a dropdown for more). */
 export function Segmented<T extends string>({
   label,
@@ -592,45 +569,6 @@ export function DateField({
   return (
     <Field label={label} htmlFor={id} hint={hint} optional={optional}>
       <input className="gm-input" id={id} type="date" value={value} min={min} max={max} onChange={(e) => onChange(e.target.value)} />
-    </Field>
-  );
-}
-
-/** Short free-text field, such as a tax code. */
-export function TextField({
-  label,
-  value,
-  onChange,
-  placeholder,
-  hint,
-  optional,
-  maxLength = 20,
-  uppercase,
-}: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  placeholder?: string;
-  hint?: ReactNode;
-  optional?: boolean;
-  big?: boolean;
-  maxLength?: number;
-  uppercase?: boolean;
-}) {
-  const id = useId();
-  return (
-    <Field label={label} htmlFor={id} hint={hint} optional={optional}>
-      <input
-        className="gm-input"
-        id={id}
-        type="text"
-        autoComplete="off"
-        spellCheck={false}
-        maxLength={maxLength}
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => onChange(uppercase ? e.target.value.toUpperCase() : e.target.value)}
-      />
     </Field>
   );
 }

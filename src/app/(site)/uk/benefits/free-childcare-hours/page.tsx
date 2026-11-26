@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/benefits", label: "Family & Benefits" },
+  { href: "/uk/benefits", label: "Benefits & family" },
   { href: "/uk/benefits/free-childcare-hours", label: "Free Childcare Hours" },
 ];
 
@@ -37,7 +37,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function FreeHoursPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/benefits/tax-free-childcare", "/uk/benefits/child-benefit", "/uk/benefits/universal-credit", "/uk/benefits/maternity-pay", "/uk/benefits/shared-parental-leave", "/uk/benefits/high-income-child-benefit"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/benefits/tax-free-childcare", "/uk/benefits/child-benefit", "/uk/benefits/universal-credit", "/uk/benefits/maternity-pay", "/uk/benefits/high-income-child-benefit"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

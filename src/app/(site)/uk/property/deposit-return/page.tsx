@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/property", label: "Mortgages & Property" },
+  { href: "/uk/property", label: "Renting & council tax" },
   { href: "/uk/property/deposit-return", label: "Deposit Return" },
 ];
 
@@ -34,7 +34,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function DepositReturnPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/property/rent-increase", "/uk/life/pro-rata-rent", "/uk/life/right-to-rent", "/uk/property/moving-house-budget", "/uk/property/rent-vs-buy", "/uk/benefits/local-housing-allowance"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/property/rent-increase", "/uk/life/pro-rata-rent", "/uk/benefits/local-housing-allowance", "/uk/property/council-tax-bands", "/uk/property/single-person-discount"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

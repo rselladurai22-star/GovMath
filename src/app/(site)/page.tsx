@@ -3,22 +3,20 @@ import Link from "next/link";
 import GmShell from "@/gm/GmShell";
 import cats from "@/gm/categories.json";
 import { ogFor } from "@/gm/og";
-import { TOPIC_ICON, ToolGrid } from "@/components/TopicHub";
+import { ToolGrid } from "@/components/ToolGrid";
 import PostCard from "@/components/blog/PostCard";
-import { CALCULATORS, US_CATEGORIES, getCalculatorsByCategory, type CategorySlug } from "@/lib/calculators";
+import { CALCULATORS, getCalculatorsByCategory, type CategorySlug } from "@/lib/calculators";
 import { getAllPosts } from "@/lib/blog";
-import { POPULAR_EVERYDAY, POPULAR_UK, POPULAR_US, pick } from "@/lib/home-picks";
-import { alternatesFor } from "@/lib/seo/hreflang";
 
 export const metadata: Metadata = {
-  title: { absolute: "SumAtlas: Free UK and US Tax and Money Calculators" },
+  title: { absolute: "SumAtlas: UK Benefits, Family and Student Money Calculators" },
   description:
-    "Free tax, pay, mortgage, benefits, loan and retirement calculators for the UK and the US, with plain-English guides and figures checked against official rates.",
-  alternates: alternatesFor("/"),
+    "Free UK calculators for Universal Credit, housing support, Child Benefit, childcare, council tax, renting and student finance, with 2026/27 rates and guides.",
+  alternates: { canonical: "/" },
   openGraph: ogFor("/"),
 };
 
-type Cat = { slug: CategorySlug; label: string };
+type Cat = { slug: CategorySlug; label: string; desc: string; toolIcon: string };
 const CATS = cats as Cat[];
 
 function Heading({ id, eyebrow, title, link }: { id: string; eyebrow: string; title: string; link?: { href: string; label: string } }) {
@@ -40,7 +38,7 @@ function Heading({ id, eyebrow, title, link }: { id: string; eyebrow: string; ti
 const TRUST = [
   {
     title: "Official figures",
-    text: "Rates and rules come from the bodies that set them wherever we can: HMRC, the DWP and GOV.UK in the UK; the IRS and the Social Security Administration in the US. Every guide and article lists its sources.",
+    text: "Rates and rules come from the bodies that set them wherever we can: the DWP, HMRC, GOV.UK, the student finance bodies and councils. Every guide and article lists its sources.",
   },
   {
     title: "One set of sums, tested",
@@ -48,99 +46,52 @@ const TRUST = [
   },
   {
     title: "Checked and dated",
-    text: "Every calculator shows when its page last changed. We recheck the rates whenever they change: each April for UK tax and benefits, and each autumn for the next year's IRS figures.",
+    text: "Every calculator shows when its page last changed. We recheck the rates whenever they change: each April for benefits and council tax, and each year for student finance.",
   },
   {
     title: "Independent and free",
-    text: "SumAtlas is not part of any government, and no bank or lender pays to appear in our calculators. There is no sign-up and no account to create.",
+    text: "SumAtlas is not part of any government or council, and no bank or lender pays to appear in our calculators. There is no sign-up and no account to create.",
   },
 ];
 
 /**
- * The home page (sumatlas.com/). Since 15 October 2026 it is a real page
- * shown to everyone, not a redirect to /uk or /us by location: AdSense
- * reviewers and Google crawl from the US, and the address people type should
- * show the whole site. Visitors pick their country from the cards or the
- * header's country menu.
+ * The home page (sumatlas.com/). Since 26 November 2026 the site covers one
+ * sector, UK benefits, family, renting and student money: the page lists the
+ * three topics with all their calculators.
  */
 export default function Home() {
-  const uk = CALCULATORS.filter((c) => c.country === "uk").length;
-  const us = CALCULATORS.filter((c) => c.country === "us").length;
-  const everyday = getCalculatorsByCategory("everyday").length;
   return (
     <GmShell>
       <div className="wrap gm-hub gm-home">
         <section className="categoryhero">
-          <h1>Free calculators. Clear answers.</h1>
+          <h1>UK benefits, family, renting and student money calculators</h1>
           <p>
-            Work out your take-home pay, tax, mortgage, benefits, loans and retirement with calculators built on the official rules where you live.
-            Each one shows its working, says what it assumes, and comes with a plain-English guide.
+            Work out Universal Credit, help with rent and council tax, Child Benefit and childcare support, and student finance with{" "}
+            {CALCULATORS.length} free calculators built on the 2026/27 rules. Each one shows its working, says what it assumes, and comes with
+            a plain-English guide.
           </p>
         </section>
 
-        <section className="section" aria-labelledby="countries-title">
-          <Heading id="countries-title" eyebrow="START HERE" title="Choose your country" />
-          <div className="gm-cards">
-            <Link href="/uk" className="gm-card">
-              <small>United Kingdom · 2026/27 tax year</small>
-              <strong>{uk} UK calculators</strong>
-              <p>
-                Income Tax and take-home pay, Stamp Duty and mortgages, Universal Credit and other benefits, student loans, pensions and car tax.
-              </p>
-              <span className="gm-go">Open UK calculators</span>
-            </Link>
-            <Link href="/us" className="gm-card">
-              <small>United States · 2026</small>
-              <strong>{us} US calculators</strong>
-              <p>
-                Your paycheck with federal and state income tax, mortgages and home affordability, loans and credit cards, 401(k), IRAs and
-                Social Security.
-              </p>
-              <span className="gm-go">Open US calculators</span>
-            </Link>
-            <Link href="/everyday" className="gm-card">
-              <small>Anywhere</small>
-              <strong>{everyday} everyday calculators</strong>
-              <p>Percentages, ages and dates, hours and timesheets, discounts and fuel economy: sums that work the same wherever you live.</p>
-              <span className="gm-go">Open everyday calculators</span>
-            </Link>
-          </div>
+        <section className="section" aria-labelledby="popular-title">
+          <Heading id="popular-title" eyebrow="START HERE" title="Most used calculators" link={{ href: "/calculators", label: "All calculators" }} />
+          <ToolGrid tools={CALCULATORS.filter((c) => c.popular)} icon={CATS[0].toolIcon} />
         </section>
 
-        <section className="section" aria-labelledby="uk-title">
-          <Heading id="uk-title" eyebrow="UNITED KINGDOM" title="Popular UK calculators" link={{ href: "/uk", label: "All UK calculators" }} />
-          <ToolGrid tools={pick(POPULAR_UK)} icon={TOPIC_ICON.tax} />
-        </section>
-
-        <section className="section" aria-labelledby="us-title">
-          <Heading id="us-title" eyebrow="UNITED STATES" title="Popular US calculators" link={{ href: "/us", label: "All US calculators" }} />
-          <ToolGrid tools={pick(POPULAR_US)} icon={TOPIC_ICON.tax} />
-        </section>
-
-        <section className="section" aria-labelledby="topics-title">
-          <Heading id="topics-title" eyebrow="BROWSE" title="Browse by topic" link={{ href: "/calculators", label: "See all calculators" }} />
-          <p className="gm-topicgroup">United Kingdom</p>
-          <nav className="categoryjump" aria-label="UK topics">
-            {CATS.map((c) => (
-              <Link key={c.slug} href={`/uk/${c.slug}`}>
-                {c.label.replace(/&amp;/g, "&")} ({getCalculatorsByCategory(c.slug).filter((t) => t.country === "uk").length})
-              </Link>
-            ))}
-          </nav>
-          <p className="gm-topicgroup">United States</p>
-          <nav className="categoryjump" aria-label="US topics">
-            {US_CATEGORIES.map((c) => (
-              <Link key={c.slug} href={c.href}>
-                {c.title} ({getCalculatorsByCategory(c.slug).length})
-              </Link>
-            ))}
-          </nav>
-        </section>
-
-        <section className="section" aria-labelledby="everyday-title">
-          <Heading id="everyday-title" eyebrow="FOR EVERYONE" title="Everyday calculators" link={{ href: "/everyday", label: "See all" }} />
-          <ToolGrid tools={pick(POPULAR_EVERYDAY)} icon={TOPIC_ICON.everyday} />
-        </section>
+        {CATS.map((c) => {
+          const tools = getCalculatorsByCategory(c.slug);
+          return (
+            <section key={c.slug} className="section" aria-labelledby={`${c.slug}-title`}>
+              <Heading
+                id={`${c.slug}-title`}
+                eyebrow={`${tools.length} CALCULATORS`}
+                title={c.label.replace(/&amp;/g, "&")}
+                link={{ href: `/uk/${c.slug}`, label: "View topic" }}
+              />
+              <p>{c.desc.replace(/&amp;/g, "&")}</p>
+              <ToolGrid tools={tools} icon={c.toolIcon} />
+            </section>
+          );
+        })}
 
         <section className="section" aria-labelledby="trust-title">
           <Heading id="trust-title" eyebrow="HOW WE WORK" title="Why you can rely on the figures" link={{ href: "/how-we-check", label: "How we check" }} />
@@ -168,9 +119,10 @@ export default function Home() {
         <section className="section gm-prose" aria-labelledby="about-title">
           <h2 id="about-title">About SumAtlas</h2>
           <p>
-            SumAtlas is a free, independent calculator site for the UK and the US, written and maintained by the SumAtlas team. Every calculator
-            uses the current official rates for its country, shows the assumptions it makes, and comes with a guide that explains the rules in
-            plain English. Our calculators give estimates for general information, not financial, tax, legal or medical advice. Read{" "}
+            SumAtlas is a free, independent site of UK calculators for benefits, family support, renting, council tax and student finance,
+            written and maintained by the SumAtlas team. Every calculator uses the current official rates, shows the assumptions it makes, and
+            comes with a guide that explains the rules in plain English. Our calculators give estimates for general information, not financial,
+            tax, legal or benefits advice: the DWP, HMRC, your council or your student finance body makes the real decision. Read{" "}
             <Link href="/how-we-check">how we check our figures</Link> or <Link href="/about">more about us</Link>.
           </p>
         </section>

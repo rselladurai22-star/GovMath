@@ -54,7 +54,7 @@ export default function PcGuide() {
       title="Pension Credit in 2026/27"
       intro={
         <>
-          Pension Credit tops up the weekly income of people over <a href="/uk/investing/state-pension-age">State Pension age</a>{" "}who have a low income. It is worth claiming even for a small
+          Pension Credit tops up the weekly income of people over State Pension age{" "}who have a low income. It is worth claiming even for a small
           amount, because it unlocks help with rent, Council Tax, heating and more. Hundreds of thousands of eligible pensioners do not claim it.
           This guide explains how it is worked out, with 2026/27 rates and examples.
         </>
@@ -272,7 +272,7 @@ export default function PcGuide() {
       <GuideSection id="changes" n={12} kicker="Staying right" title="Changes and reviews">
         <p>
           Tell the Pension Service about changes in your income, savings, who lives with you, or time abroad. Most awards are reviewed from
-          time to time. Getting <a href="/uk/benefits/attendance-allowance">Attendance Allowance</a>{" "}after you start Pension Credit can increase your award, so report that too.
+          time to time. Getting Attendance Allowance{" "}after you start Pension Credit can increase your award, so report that too.
         </p>
       </GuideSection>
 
@@ -322,7 +322,7 @@ export default function PcGuide() {
 
       <GuideSection id="documents" n={18} kicker="Checklist" title="What you need to claim">
         <ul>
-          <li>Your <a href="/uk/tax-and-salary/national-insurance">National Insurance</a>{" "}number, and your partner&rsquo;s.</li>
+          <li>Your National Insurance{" "}number, and your partner&rsquo;s.</li>
           <li>Details of your State Pension and any other pensions.</li>
           <li>Bank statements and details of savings and investments.</li>
           <li>Details of any earnings, rent, service charges or mortgage.</li>

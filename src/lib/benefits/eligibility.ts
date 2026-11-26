@@ -186,7 +186,7 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
     items.push({
       key: "ssmg",
       name: "Sure Start Maternity Grant",
-      href: "/uk/benefits/sure-start-maternity-grant",
+      href: null,
       status: meansTested && first ? "likely" : meansTested ? "check" : "unlikely",
       monthly: null,
       oneOff: meansTested && first ? OTHER_HELP_2026.sureStart : undefined,
@@ -217,7 +217,7 @@ export function checkEligibility(i: EligibilityInput): EligibilityResult {
   // ── Disability and caring
   if (i.disability === "daily" || i.disability === "both") {
     if (i.pensionAge) {
-      items.push({ key: "aa", name: "Attendance Allowance", href: "/uk/benefits/attendance-allowance", status: "check", monthly: null, why: `Not means-tested. ${gbpWeek(AA_2026.lower)} or ${gbpWeek(AA_2026.higher)} a week if you need help with personal care.` });
+      items.push({ key: "aa", name: "Attendance Allowance", href: null, status: "check", monthly: null, why: `Not means-tested. ${gbpWeek(AA_2026.lower)} or ${gbpWeek(AA_2026.higher)} a week if you need help with personal care.` });
     } else {
       items.push({ key: "pip", name: "Personal Independence Payment", href: "/uk/benefits/pip-points", status: "check", monthly: null, why: `Not means-tested. From ${gbpWeek(PIP_2026.mobility.standard)} to ${gbpWeek(PIP_2026.daily.enhanced + PIP_2026.mobility.enhanced)} a week, decided by an assessment.` });
     }

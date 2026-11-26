@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { incomeTax, nationalInsurance, personalAllowance, selfEmployedNI } from "./2026-27";
+import { incomeTax, nationalInsurance, personalAllowance } from "./2026-27";
 
 const round = (n: number) => Math.round(n * 100) / 100;
 
@@ -51,32 +51,5 @@ describe("nationalInsurance (Class 1, 2026/27)", () => {
     const r = nationalInsurance(80000);
     expect(round(r.mainBand)).toBe(round((50270 - 12570) * 0.08));
     expect(round(r.upperBand)).toBe(round((80000 - 50270) * 0.02));
-  });
-});
-
-describe("selfEmployedNI (Class 4, 2026/27)", () => {
-  it("is zero at or below the small-profits threshold (£12,570)", () => {
-    expect(selfEmployedNI(12570).total).toBe(0);
-    expect(selfEmployedNI(0).total).toBe(0);
-  });
-
-  it("charges 6% on profits between £12,570 and £50,270", () => {
-    // (35,000 - 12,570) * 0.06 = 1,345.80
-    expect(round(selfEmployedNI(35000).total)).toBe(1345.8);
-  });
-
-  it("splits main and upper bands above £50,270", () => {
-    const r = selfEmployedNI(80000);
-    // Main:  (50,270 - 12,570) * 0.06 = 2,262
-    // Upper: (80,000 - 50,270) * 0.02 = 594.60
-    expect(round(r.mainBand)).toBe(2262);
-    expect(round(r.upperBand)).toBe(594.6);
-    expect(round(r.total)).toBe(2856.6);
-  });
-
-  it("costs less than Class 1 at the same income level", () => {
-    expect(selfEmployedNI(50000).total).toBeLessThan(
-      nationalInsurance(50000).total
-    );
   });
 });

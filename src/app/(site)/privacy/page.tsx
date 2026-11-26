@@ -15,7 +15,7 @@ export default function PrivacyPage() {
     <ContentPage
       title="Privacy Policy"
       intro="What we collect, what we don't, and the choices you have."
-      updated="15 October 2026"
+      updated="26 November 2026"
     >
       <p>
         This Privacy Policy explains how SumAtlas (&quot;we&quot;,
@@ -77,18 +77,6 @@ export default function PrivacyPage() {
         measure traffic and to serve advertising. You can block or delete
         cookies in your browser settings, though some features may not work as
         well.
-      </p>
-      <p>
-        <strong>Your country.</strong>{" "}To suggest calculators for where you
-        live, the country menu at the top of the page asks our host (Vercel)
-        which country your connection comes from. Our code reads only the
-        country code (such as &ldquo;GB&rdquo;) and keeps the result in your
-        browser&rsquo;s session storage until you close the tab, so it does not
-        ask again on every page. If you pick a country from the menu, your
-        choice is saved in your browser&rsquo;s local storage, so the menu
-        remembers it. Neither is sent to us.
-        You can clear the choice at any time by clearing your browser&rsquo;s
-        site data.
       </p>
 
       <h2>Advertising and Google AdSense</h2>
@@ -204,9 +192,10 @@ export default function PrivacyPage() {
         .
       </p>
 
-      <h2>Your rights in the US</h2>
+      <h2>If you visit from outside the UK</h2>
       <p>
-        Some US states, including California, give residents rights over their
+        Our calculators cover UK rules, but anyone can visit the site. Some US
+        states, including California, give residents rights over their
         personal information, such as the right to know what is collected, to
         have it deleted, and to opt out of its &ldquo;sale&rdquo; or
         &ldquo;sharing&rdquo; for targeted advertising. We do not sell personal

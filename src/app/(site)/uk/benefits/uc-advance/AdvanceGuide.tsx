@@ -38,7 +38,7 @@ export default function AdvanceGuide() {
       intro={
         <>
           Your first Universal Credit payment arrives about five weeks after you claim. If you cannot manage until then, you can ask for an
-          advance: an interest-free loan of up to one month&rsquo;s estimated payment. This guide explains <a href="/uk/property/mortgage-affordability">how much you can borrow</a>, how it is taken
+          advance: an interest-free loan of up to one month&rsquo;s estimated payment. This guide explains how much you can borrow, how it is taken
           back from later payments, the 15% cap on deductions and how to choose a repayment period you can live with.
         </>
       }
@@ -110,7 +110,7 @@ export default function AdvanceGuide() {
           ]}
         />
         <p>
-          A few deductions can go above the cap, such as payments for some fines and <a href="/uk/benefits/child-maintenance">child maintenance</a>. If a repayment would take you over it, the
+          A few deductions can go above the cap, such as payments for some fines and child maintenance. If a repayment would take you over it, the
           calculator shows the shortest period that would keep you within it.
         </p>
       </GuideSection>

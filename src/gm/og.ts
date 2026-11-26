@@ -6,7 +6,7 @@
 export function ogFor(path: string) {
   return {
     type: "website" as const,
-    locale: path.startsWith("/us") ? "en_US" : "en_GB",
+    locale: "en_GB",
     siteName: "SumAtlas",
     images: [{ url: `/og${path === "/" ? "" : path}`, width: 1200, height: 630 }],
   };

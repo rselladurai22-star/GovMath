@@ -1,16 +1,16 @@
 import { countryForPath } from "../countries";
 
 /**
- * Where "Home" links go (October 2026). Inside a country's section the home
- * page is that country's (/uk, /us), as the logo there already links; on
- * shared pages (about, Everyday, guides) it is the site's home page, "/".
+ * Where "Home" links go (October 2026). Inside the UK section the home page is
+ * /uk, as the logo there already links; on shared pages (about, guides) it is
+ * the site's home page, "/".
  * Until 15 October 2026 "/" had no page and redirected by location, which
  * AdSense flagged under "Site Behavior: Navigation"; it is a real page now.
  */
 
 export type Crumb = { href: string; label: string };
 
-/** The home page for a path: /uk or /us inside a section, else "/". */
+/** The home page for a path: /uk inside the UK section, else "/". */
 export function homeFor(path: string): string {
   const section = countryForPath(path);
   return section ? `/${section}` : "/";
@@ -18,7 +18,7 @@ export function homeFor(path: string): string {
 
 /**
  * A breadcrumb with "Home" (href "/") pointing at the page's own home page.
- * When the next crumb goes to the same place ("Home › US calculators › …"),
+ * When the next crumb goes to the same place ("Home › UK calculators › …"),
  * the two become one: "Home", or the page's own name when it is the last.
  */
 export function homeCrumbs(items: Crumb[]): Crumb[] {

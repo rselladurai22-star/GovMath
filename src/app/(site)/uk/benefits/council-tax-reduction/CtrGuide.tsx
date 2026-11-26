@@ -107,7 +107,7 @@ export default function CtrGuide() {
           ]}
         />
         <p>
-          You count as a pensioner if you, or both of you if a couple, have reached <a href="/uk/investing/state-pension-age">State Pension age</a>{" "}and you do not get Universal Credit. The
+          You count as a pensioner if you, or both of you if a couple, have reached State Pension age{" "}and you do not get Universal Credit. The
           calculator uses national rules where they apply, and lets you set your council&rsquo;s maximum and taper for working-age schemes in
           England.
         </p>
@@ -161,7 +161,7 @@ export default function CtrGuide() {
       <GuideSection id="income" n={6} kicker="Means test" title="Income and savings">
         <p>
           Income is counted much as it is for Housing Benefit. State Pension, private pensions, earnings after tax and Carer&rsquo;s Allowance
-          count. Child Benefit, <a href="/uk/benefits/child-maintenance">child maintenance</a>, PIP, DLA and Attendance Allowance are ignored. A small part of earnings is disregarded: £5 for
+          count. Child Benefit, child maintenance, PIP, DLA and Attendance Allowance are ignored. A small part of earnings is disregarded: £5 for
           a single person, £10 for a couple, £20 with a disability or carer premium and £25 for a lone parent.
         </p>
         <p>
@@ -188,7 +188,7 @@ export default function CtrGuide() {
           ]}
         />
         <p>
-          No deductions are made if you or your partner get <a href="/uk/benefits/attendance-allowance">Attendance Allowance</a>, PIP daily living or DLA care, or are registered blind. Councils&rsquo;
+          No deductions are made if you or your partner get Attendance Allowance, PIP daily living or DLA care, or are registered blind. Councils&rsquo;
           working-age schemes and the Welsh and Scottish schemes set their own amounts, often similar or lower.
         </p>
       </GuideSection>

@@ -1,28 +1,19 @@
 import { describe, expect, it } from "vitest";
-import { CALCULATORS, CATEGORIES, EVERYDAY, US_CATEGORIES, getCalculatorsByCategory, getCalculatorsByCountry } from "./calculators";
+import { CALCULATORS, CATEGORIES, getCalculatorsByCategory } from "./calculators";
 
 describe("calculator registry", () => {
-  it("has a unique address for every calculator, built from its country and topic", () => {
+  it("has 31 calculators, each with a unique address under /uk", () => {
+    expect(CALCULATORS).toHaveLength(31);
     expect(new Set(CALCULATORS.map((c) => c.href)).size).toBe(CALCULATORS.length);
-    for (const c of CALCULATORS) {
-      if (c.country === "uk") expect(c.href).toBe(`/uk/${c.category}/${c.slug}`);
-      if (c.country === "us") expect(c.href).toBe(`/us/${c.category.replace(/^us-/, "")}/${c.slug}`);
-      if (c.country === "global") expect(c.href).toBe(`/everyday/${c.slug}`);
+    for (const c of CALCULATORS) expect(c.href).toMatch(new RegExp(`^/uk/[a-z-]+/${c.slug}$`));
+  });
+
+  it("puts every calculator in one of the three topics, and every topic has some", () => {
+    expect(CATEGORIES.map((c) => c.slug)).toEqual(["benefits", "property", "students"]);
+    for (const cat of CATEGORIES) {
+      expect(cat.href).toBe(`/uk/${cat.slug}`);
+      expect(getCalculatorsByCategory(cat.slug).length).toBeGreaterThan(0);
     }
-  });
-
-  it("puts every calculator in a known topic, and every topic has some", () => {
-    const slugs = new Set<string>([...CATEGORIES.map((c) => c.slug), ...US_CATEGORIES.map((c) => c.slug), EVERYDAY.slug]);
-    expect(CALCULATORS.every((c) => slugs.has(c.category))).toBe(true);
-    for (const cat of [...CATEGORIES, ...US_CATEGORIES]) expect(getCalculatorsByCategory(cat.slug).length).toBeGreaterThan(0);
-    expect(US_CATEGORIES.every((c) => c.href === `/us/${c.slug.replace(/^us-/, "")}`)).toBe(true);
-  });
-
-  it("has 75 US calculators and lists the Everyday ones in the UK's Everyday Life topic", () => {
-    expect(getCalculatorsByCountry("us")).toHaveLength(75);
-    const everyday = getCalculatorsByCategory("everyday");
-    expect(everyday.length).toBeGreaterThan(0);
-    const life = getCalculatorsByCategory("life").map((c) => c.href);
-    for (const e of everyday) expect(life).toContain(e.href);
+    expect(getCalculatorsByCategory("benefits").length + getCalculatorsByCategory("property").length + getCalculatorsByCategory("students").length).toBe(31);
   });
 });

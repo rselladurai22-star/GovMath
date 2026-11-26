@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/students", label: "Students & Graduates" },
+  { href: "/uk/students", label: "Students" },
   { href: "/uk/students/student-council-tax", label: "Student Council Tax" },
 ];
 
@@ -33,7 +33,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function CouncilTaxPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/students/maintenance-loan", "/uk/students/plan-5-student-loan", "/uk/property/council-tax-bands", "/uk/property/single-person-discount", "/uk/life/pro-rata-rent", "/uk/students/plan-2-student-loan"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/students/maintenance-loan", "/uk/property/council-tax-bands", "/uk/property/single-person-discount", "/uk/life/pro-rata-rent", "/uk/students/plan-2-student-loan"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

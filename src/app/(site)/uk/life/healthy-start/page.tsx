@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/life", label: "Everyday Life" },
+  { href: "/uk/benefits", label: "Benefits & family" },
   { href: "/uk/life/healthy-start", label: "Healthy Start" },
 ];
 
@@ -35,7 +35,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function HealthyStartPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/benefits/universal-credit", "/uk/benefits/child-benefit", "/uk/benefits/maternity-pay", "/uk/life/nhs-prescription-saver", "/uk/benefits/free-childcare-hours"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/benefits/universal-credit", "/uk/benefits/child-benefit", "/uk/benefits/maternity-pay", "/uk/benefits/free-childcare-hours"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

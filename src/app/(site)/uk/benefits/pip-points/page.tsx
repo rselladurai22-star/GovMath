@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/benefits", label: "Family & Benefits" },
+  { href: "/uk/benefits", label: "Benefits & family" },
   { href: "/uk/benefits/pip-points", label: "PIP Points" },
 ];
 
@@ -35,7 +35,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function PipPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/benefits/attendance-allowance", "/uk/benefits/carers-earnings", "/uk/benefits/universal-credit", "/uk/benefits/benefit-cap", "/uk/vehicles/car-tax-ved"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/benefits/carers-earnings", "/uk/benefits/universal-credit", "/uk/benefits/benefit-cap", "/uk/benefits/new-style-esa", "/uk/benefits/benefits-checker"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

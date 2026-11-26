@@ -2,11 +2,9 @@ import { createElement } from "react";
 import { THEME_AFTER, THEME_BEFORE } from "./GmShell";
 import GmScripts, { type GmScript } from "./GmScripts";
 import { categoryGridHtml, categoryLabel, footerHtml, headerHtml, topicMainHtml } from "./catalog";
-import { calculatorJsonLd, topicJsonLd } from "./schema";
+import { topicJsonLd } from "./schema";
 import { ogFor } from "./og";
-import { trustHtml } from "./trust";
 import type { CategorySlug } from "@/lib/calculators";
-import { alternatesFor } from "@/lib/seo/hreflang";
 
 export type GmPage = {
   title: string;
@@ -26,25 +24,17 @@ const PROP: Record<string, string> = { class: "className", for: "htmlFor", tabin
 export default function GmDocument({
   page,
   topic,
-  trust,
 }: {
   page: GmPage;
   topic?: CategorySlug;
-  /** For the two package calculators: the page path and the id of its guide's Sources box. */
-  trust?: { path: string; sourcesId: string };
 }) {
   // Calculator lists are built from the live catalogue (see catalog.ts).
   const fill = (html: string) =>
     html.replace("<!--GM:CATEGORYGRID-->", () => categoryGridHtml()).replace("<!--GM:TOPIC-->", () => (topic ? topicMainHtml(topic) : ""))
-      .replace("<!--GM:TRUST-->", () => (trust ? trustHtml(trust.path, trust.sourcesId) : ""))
       // The breadcrumb's Home is the UK home page, never "/" (see src/lib/seo/home-links.ts).
       .replace('<div class="crumb"><a href="/">', '<div class="crumb"><a href="/uk">');
-  // Calculator pages describe themselves as web applications; topic pages list their calculators.
-  const jsonLd = trust
-    ? calculatorJsonLd(trust.path, page.title.replace(/ \| SumAtlas$/, ""), page.description)
-    : topic
-      ? topicJsonLd(topic, categoryLabel(topic))
-      : null;
+  // Topic pages list their calculators.
+  const jsonLd = topic ? topicJsonLd(topic, categoryLabel(topic)) : null;
   return (
     <>
       {jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />}
@@ -69,7 +59,7 @@ export function gmMetadata(page: GmPage, path: string) {
   return {
     title: { absolute: page.title },
     description: page.description,
-    alternates: alternatesFor(path),
+    alternates: { canonical: path },
     openGraph: ogFor(path),
   };
 }

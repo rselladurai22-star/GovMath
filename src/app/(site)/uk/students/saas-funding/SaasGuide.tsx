@@ -42,7 +42,7 @@ export default function SaasGuide() {
         <>
           Students from Scotland are funded by the Student Awards Agency Scotland (SAAS), not Student Finance England. Tuition at Scottish
           universities is free, and living costs are covered by a non-repayable bursary and a student loan, both based on your household
-          income. This guide explains the 2026/27 amounts, who counts as a young or independent student, and how a <a href="/uk/students/student-loan-repayment">Plan 4</a>{" "}loan is repaid.
+          income. This guide explains the 2026/27 amounts, who counts as a young or independent student, and how a Plan 4{" "}loan is repaid.
         </>
       }
       meta={["2026/27 figures", "10 min read", "Reviewed October 2026"]}
@@ -229,8 +229,8 @@ export default function SaasGuide() {
         <p>
           SAAS pays monthly, which makes budgeting easier than the termly payments in England and Wales. If you choose 12 monthly payments, a young student
           from a household on under £21,000 gets £950 a month; on the minimum £8,400 loan it is £700 a month. Rent in Scottish university cities often
-          takes £500 to £800 a month, so plan around it first. The <a href="/uk/students/student-budget">student budget calculator</a> helps you set a weekly
-          figure.
+          takes £500 to £800 a month, so plan around it first, then divide what is left by the weeks until the next
+          payment to get a weekly figure.
         </p>
       </GuideSection>
 
@@ -252,7 +252,7 @@ export default function SaasGuide() {
 
       <GuideSection id="part-time" n={17} kicker="Other courses" title="Part-time and postgraduate study">
         <p>
-          Part-time students in Scotland can get help with <a href="/uk/students/degree-cost">tuition fees</a>{" "}if their income is under £25,000, but no living-cost loan. Postgraduate students
+          Part-time students in Scotland can get help with tuition fees{" "}if their income is under £25,000, but no living-cost loan. Postgraduate students
           can get a SAAS postgraduate tuition fee loan and a living-cost loan for eligible master&rsquo;s courses. These have different amounts and
           rules from the undergraduate funding on this page.
         </p>
@@ -262,7 +262,7 @@ export default function SaasGuide() {
         <p>
           A Scottish student on a four-year degree at a Scottish university, from a household on £30,000, borrows £37,600 for living costs over the whole
           course and nothing for tuition. An English student on a three-year degree in England borrows around £30,000 for tuition alone, plus a
-          maintenance loan. Scottish graduates also start repaying at a higher threshold, £33,795 rather than £25,000 for English <a href="/uk/students/plan-5-student-loan">Plan 5</a>{" "}loans, so they
+          maintenance loan. Scottish graduates also start repaying at a higher threshold, £33,795 rather than £25,000 for English Plan 5{" "}loans, so they
           usually repay less each month for longer.
         </p>
       </GuideSection>

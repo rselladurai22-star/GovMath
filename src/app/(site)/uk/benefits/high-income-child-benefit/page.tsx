@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const BREADCRUMBS = [
   { href: "/", label: "Home" },
-  { href: "/uk/benefits", label: "Family & Benefits" },
+  { href: "/uk/benefits", label: "Benefits & family" },
   { href: "/uk/benefits/high-income-child-benefit", label: "High Income Child Benefit Charge" },
 ];
 
@@ -37,7 +37,7 @@ const FAQS: { q: string; a: string }[] = [
 
 export default async function HicbcPage({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const query = await searchParams;
-  const related = CALCULATORS.filter((c) => ["/uk/benefits/child-benefit", "/uk/investing/pension-tax-relief", "/uk/tax-and-salary/salary-calculator", "/uk/tax-and-salary/bonus-tax", "/uk/benefits/tax-free-childcare", "/uk/benefits/free-childcare-hours"].includes(c.href));
+  const related = CALCULATORS.filter((c) => ["/uk/benefits/child-benefit", "/uk/benefits/tax-free-childcare", "/uk/benefits/free-childcare-hours", "/uk/tax-and-salary/pro-rata"].includes(c.href));
   return (
     <FlagshipPage
       breadcrumbs={BREADCRUMBS}

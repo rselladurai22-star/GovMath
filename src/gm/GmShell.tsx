@@ -45,11 +45,8 @@ export default function GmShell({
   children,
 }: {
   kind?: "base" | "calculator";
-  /**
-   * The section the page belongs to: whose topic menus the header shows and where the logo goes. Unset on shared
-   * pages: the header then shows the visitor's country's menus (the UK's by default) and the logo goes to "/".
-   */
-  country?: "uk" | "us";
+  /** "uk" for pages inside /uk, whose logo goes to /uk. Unset on shared pages, whose logo goes to "/". */
+  country?: "uk";
   children: ReactNode;
 }) {
   // govmath-site.css adds, in the design's own language, the parts the package does not include.
@@ -69,8 +66,7 @@ export default function GmShell({
       {css.map((href) => (
         <link key={href} rel="stylesheet" href={`/gm/${href}?v=${process.env.GM_CSS_VERSION}`} precedence="gm" />
       ))}
-      {/* The site is en-GB (root <html>); US pages are written in American English. */}
-      <div className="gm-claret" lang={country === "us" ? "en-US" : undefined}>
+      <div className="gm-claret">
         {page}
       </div>
       <GmScripts scripts={["axis"]} />

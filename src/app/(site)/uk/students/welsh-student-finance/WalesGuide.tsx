@@ -177,7 +177,7 @@ export default function WalesGuide() {
           £29,385 a year from the April after you leave, through your payslip, and anything left is written off 30 years later. On £32,000 you would
           repay £235 a year, about £20 a month. Interest is RPI plus up to 3% depending on income, capped at 6% from September 2026. See the{" "}
           <a href="/uk/students/plan-2-student-loan">Plan 2 calculator</a>. Students from England on the same courses repay on a{" "}
-          <a href="/uk/students/plan-5-student-loan">Plan 5 loan</a> instead.
+          Plan 5 loan instead.
         </p>
       </GuideSection>
 
@@ -229,9 +229,6 @@ export default function WalesGuide() {
           <li>divide what is left by the weeks until the next payment to get a weekly budget;</li>
           <li>remember the April payment has to last until the autumn if your tenancy covers the summer.</li>
         </ul>
-        <p>
-          The <a href="/uk/students/student-budget">student budget calculator</a> works this out for you.
-        </p>
       </GuideSection>
 
       <GuideSection id="should-borrow" n={15} kicker="Choices" title="Should you take the full loan?">

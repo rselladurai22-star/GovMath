@@ -1,5 +1,6 @@
 /**
- * Pension Credit and Attendance Allowance, 2026/27.
+ * Pension Credit, 2026/27 (and the Attendance Allowance rates, which the
+ * benefits checker quotes).
  *
  * Rates: DWP "Benefit and pension rates 2026 to 2027".
  *
@@ -136,44 +137,3 @@ export const PC_DEFAULT_INPUT: PensionCreditInput = {
   disabledChildrenHigher: 0,
   savingsCreditEligible: false,
 };
-
-/* ── Attendance Allowance ─────────────────────────────── */
-
-export type AaNeeds = {
-  /** Number of daytime needs ticked (washing, dressing, eating, toilet, medication, supervision...). */
-  dayNeeds: number;
-  /** Help needed at night: repeated or prolonged help, or someone awake to watch over you. */
-  nightNeeds: number;
-  terminallyIll: boolean;
-  /** Months the needs have lasted. */
-  monthsNeeded: number;
-};
-
-export type AaRate = "none" | "lower" | "higher";
-
-export type AaResult = {
-  rate: AaRate;
-  weekly: number;
-  fourWeekly: number;
-  annual: number;
-  /** Needs have not yet lasted the six-month qualifying period. */
-  waiting: boolean;
-  monthsToWait: number;
-};
-
-export function attendanceAllowance2026(n: AaNeeds): AaResult {
-  let rate: AaRate = "none";
-  if (n.terminallyIll) rate = "higher";
-  else if (n.dayNeeds > 0 && n.nightNeeds > 0) rate = "higher";
-  else if (n.dayNeeds > 0 || n.nightNeeds > 0) rate = "lower";
-  const weekly = rate === "none" ? 0 : AA_2026[rate];
-  const waiting = !n.terminallyIll && rate !== "none" && n.monthsNeeded < 6;
-  return {
-    rate,
-    weekly,
-    fourWeekly: weekly * 4,
-    annual: weekly * 52,
-    waiting,
-    monthsToWait: waiting ? Math.max(0, 6 - Math.floor(n.monthsNeeded)) : 0,
-  };
-}

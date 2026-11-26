@@ -295,7 +295,7 @@ export default function HbGuide() {
           ]}
         />
         <p>
-          No deduction is made if you or your partner get <a href="/uk/benefits/attendance-allowance">Attendance Allowance</a>, the daily living part of PIP or the care part of DLA, or are
+          No deduction is made if you or your partner get Attendance Allowance, the daily living part of PIP or the care part of DLA, or are
           registered blind. There is also none for a non-dependant who is under 18, on Pension Credit, a full-time student, or under 25 and
           getting Universal Credit without earnings.
         </p>

@@ -78,7 +78,7 @@ export default function HealthyStartGuide() {
           <li>
             <strong>£4.65 a week</strong> for each child aged 1 to 3.
           </li>
-          <li>You usually need Universal Credit with family <a href="/uk/tax-and-salary/salary-calculator">take-home pay</a>{" "}of £408 a month or less, or certain other benefits.</li>
+          <li>You usually need Universal Credit with family take-home pay{" "}of £408 a month or less, or certain other benefits.</li>
           <li>Free vitamins for pregnancy and for children up to 4 are included.</li>
         </ul>
         <KeyStats
@@ -376,9 +376,6 @@ export default function HealthyStartGuide() {
           ]}
           total={{ label: "Paid every 4 weeks", value: "£55.80" }}
         />
-      <p>
-          For a quick check of adult weight against NHS ranges, use the <a href="/everyday/bmi-calculator">BMI calculator</a>.
-        </p>
       </GuideSection>
 
       <GuideSection id="key-numbers" n={25} kicker="Summary" title="Key numbers">

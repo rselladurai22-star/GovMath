@@ -20,7 +20,7 @@ export const siteJsonLd = [
     logo: `${SITE}/gm/sumatlas-mark-green-512.png`,
     email: "hello@sumatlas.com",
     description:
-      "An independent website of free tax, pay, mortgage, benefits, loan and retirement calculators for the UK and the US. Not part of any government.",
+      "An independent website of free UK benefits, family, renting and student money calculators. Not part of any government.",
   },
   {
     "@context": "https://schema.org",
@@ -28,8 +28,8 @@ export const siteJsonLd = [
     "@id": WEBSITE_ID,
     name: "SumAtlas",
     url: SITE,
-    inLanguage: ["en-GB", "en-US"],
-    description: "Free UK and US tax, pay, mortgage, benefits and retirement calculators in plain English.",
+    inLanguage: "en-GB",
+    description: "Free UK benefits, family, renting and student money calculators in plain English.",
     publisher: { "@id": ORG_ID },
   },
 ];
@@ -39,33 +39,21 @@ export function updatedIso(path: string): string | undefined {
   return (updated as Record<string, string>)[path];
 }
 
-/** Calculators that are not about money get a closer application category. */
-const CATEGORY: Record<string, string> = {
-  "/everyday/bmi-calculator": "HealthApplication",
-  "/uk/life/bank-holidays": "UtilitiesApplication",
-  "/uk/life/days-between-dates": "UtilitiesApplication",
-  "/everyday/percentage-calculator": "UtilitiesApplication",
-  "/everyday/timesheet-decimal": "UtilitiesApplication",
-  "/uk/vehicles/mot-history-checker": "UtilitiesApplication",
-  "/uk/vehicles/licence-at-70": "UtilitiesApplication",
-};
-
-/** A calculator page as a free web application. US pages are in US English and priced in dollars. */
+/** A calculator page as a free web application. */
 export function calculatorJsonLd(path: string, name: string, description: string) {
   const modified = updatedIso(path);
-  const us = path.startsWith("/us/");
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name,
     description,
     url: `${SITE}${path}`,
-    applicationCategory: CATEGORY[path] ?? "FinanceApplication",
+    applicationCategory: "FinanceApplication",
     operatingSystem: "Any",
     browserRequirements: "Requires JavaScript",
-    inLanguage: us ? "en-US" : "en-GB",
+    inLanguage: "en-GB",
     isAccessibleForFree: true,
-    offers: { "@type": "Offer", price: "0", priceCurrency: us ? "USD" : "GBP" },
+    offers: { "@type": "Offer", price: "0", priceCurrency: "GBP" },
     ...(modified ? { dateModified: modified } : {}),
     publisher: { "@id": ORG_ID },
     isPartOf: { "@id": WEBSITE_ID },
