@@ -58,6 +58,7 @@ const SOURCES = [
   { label: "mygov.scot: council tax discounts, exemptions and reductions", href: "https://www.mygov.scot/council-tax/discounts-exemptions-and-reductions" },
   { label: "Council Tax (Exempt Dwellings) Order 1992, Class N", href: "https://www.legislation.gov.uk/uksi/1992/558/article/3" },
   { label: "Council Tax (Additional Provisions for Discount Disregards) Regulations 1992", href: "https://www.legislation.gov.uk/uksi/1992/552/regulation/3" },
+  { label: "nidirect: rates on rental properties (who pays in Northern Ireland)", href: "https://www.nidirect.gov.uk/articles/rates-rental-properties" },
 ];
 
 function Notes() {

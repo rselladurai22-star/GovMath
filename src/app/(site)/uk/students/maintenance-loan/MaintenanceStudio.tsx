@@ -93,7 +93,7 @@ export default function MaintenanceStudio({ query }: { query: Query }) {
                 </>
               ) : (
                 <>
-                  Paid in three instalments of about <b>{gbp(terms[0])}</b>, one at the start of each term, {WHERE[v.living]}.{" "}
+                  Paid in three instalments, one at the start of each term, {WHERE[v.living]}: usually roughly equal, about <b>{gbp(terms[0])}</b>{" "}each, though your Notification of Entitlement gives the exact amounts.{" "}
                   {r.reduction > 0 ? (
                     <>
                       That is <b>{gbp(r.reduction)}</b> less than the {gbp(r.max)} maximum: the gap Student Finance England expects your household to help with.
@@ -117,7 +117,7 @@ export default function MaintenanceStudio({ query }: { query: Query }) {
                   { label: "Your loan", value: gbp(r.loan), strong: true },
                 ]}
               />
-              <ol className="sa-ml-terms" aria-label="Instalments">
+              <ol className="sa-ml-terms" aria-label="Instalments, if split equally">
                 {["Autumn term", "Spring term", "Summer term"].map((t, i) => (
                   <li key={t}>
                     <span>{t}</span>
