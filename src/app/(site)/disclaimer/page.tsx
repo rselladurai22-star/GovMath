@@ -27,7 +27,7 @@ export default function DisclaimerPage() {
 
       <h2>Estimates, not official figures</h2>
       <p>
-        Our calculators produce <strong>estimates</strong> based on the published
+        Our calculators produce <strong>estimates</strong>{" "}based on the published
         UK rates and a set of reasonable assumptions. Your actual entitlement,
         bill or outcome may differ because of factors a general calculator
         cannot capture — including your tax code, your council&apos;s own
