@@ -23,7 +23,7 @@ function money2(n: number): string {
 const Optional = () => <span className="gm-optional">Optional</span>;
 
 /** A small (i) button beside a label that shows a short explanation. */
-export function InfoTip({ label, children }: { label: string; children: ReactNode }) {
+function InfoTip({ label, children }: { label: string; children: ReactNode }) {
   const id = useId();
   const wrap = useRef<HTMLSpanElement>(null);
   const [open, setOpen] = useState(false);
@@ -52,18 +52,8 @@ export function InfoTip({ label, children }: { label: string; children: ReactNod
   );
 }
 
-/** A titled group of inputs (the title is for screen readers, as in the design). */
-export function InputGroup({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <fieldset className="gm-group">
-      <legend className="sr-only">{title}</legend>
-      {children}
-    </fieldset>
-  );
-}
-
 /** Label row + control + optional hint. `inline` sits at the right of the label row. */
-export function Field({
+function Field({
   label,
   htmlFor,
   aside,

@@ -19,7 +19,7 @@ const TOPIC: Record<string, string> = Object.fromEntries(
 export type CalcSource = { label: string; href: string };
 
 /**
- * Open page frame for a calculator (December 2026 redesign). It fixes only
+ * Open page frame for a calculator (November 2026 redesign). It fixes only
  * what every page shares: header and footer, breadcrumb, title, one-line
  * lead, trust line, sources, a short FAQ, related calculators and structured
  * data. Everything between is the page's own: `children` is the tool, laid
@@ -27,9 +27,6 @@ export type CalcSource = { label: string; href: string };
  * whatever sections that topic needs (no fixed guide template, no word
  * target). Parts to build with are in components/calc/kit.tsx and the
  * "Calculator kit" block of public/gm/sumatlas-ds.css.
- *
- * FlagshipPage + Studio (the fixed two-column frame) remain for pages not
- * yet redesigned.
  */
 export default function CalcPage({
   breadcrumbs,

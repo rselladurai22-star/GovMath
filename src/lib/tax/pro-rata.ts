@@ -60,10 +60,10 @@ export function proRata(i: ProRataInput): ProRataResult {
 /* ── Statutory holiday and term-time pay (GOV.UK: Holiday entitlement) ─── */
 
 /** 5.6 weeks' paid holiday a year, capped at 28 days. */
-export const STATUTORY_WEEKS = 5.6;
-export const STATUTORY_CAP_DAYS = 28;
+const STATUTORY_WEEKS = 5.6;
+const STATUTORY_CAP_DAYS = 28;
 /** Part-year and irregular-hours workers accrue 12.07% of hours worked (5.6 ÷ 46.4), from leave years starting 1 April 2024. */
-export const PART_YEAR_ACCRUAL = 0.1207;
+const PART_YEAR_ACCRUAL = 0.1207;
 
 /** The legal minimum holiday in days for a regular week of `daysPerWeek` days. */
 export function statutoryHolidayDays(daysPerWeek: number): number {

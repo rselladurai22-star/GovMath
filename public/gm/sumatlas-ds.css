@@ -395,32 +395,7 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
 }
 .gm-claret .calculator.gm-atlas .ax-paymentstrip small { flex-basis: 100%; text-align: right; font-size: 13px; color: var(--sa-text-2); }
 /* Donut beside a row list (the reference's EMI result). */
-.gm-claret .calculator.gm-atlas .gm-donut { width: 180px; height: 180px; margin: 4px auto 14px; }
-.gm-claret .calculator.gm-atlas .gm-donut-track { stroke: #f0eee8; }
-.gm-claret .calculator.gm-atlas .gm-donut-centre span { font-size: 12px; color: var(--sa-text-2); }
-.gm-claret .calculator.gm-atlas .gm-donut-centre strong { font-family: var(--sa-head); font-size: 18px; font-weight: 800; color: var(--sa-ink); }
-.gm-claret .calculator.gm-atlas .gm-donut-centre small { font-size: 11px; color: var(--sa-muted); }
-.gm-claret .calculator.gm-atlas .gm-legend { margin: 0; padding: 0; border: 0; background: none; }
-.gm-claret .calculator.gm-atlas .gm-legend li {
-  display: grid;
-  grid-template-columns: 10px minmax(0, 1fr) auto auto;
-  align-items: center;
-  gap: 10px;
-  padding: 11px 0;
-  border: 0;
-  border-bottom: 1px dashed var(--sa-line);
-  border-radius: 0;
-  background: none;
-  font-size: 16px;
-  line-height: 22px;
-  color: var(--sa-text-2);
-}
-.gm-claret .calculator.gm-atlas .gm-legend li:last-child { border-bottom: 0; }
-.gm-claret .calculator.gm-atlas .gm-legend li i { width: 10px; height: 10px; border-radius: 50%; }
-.gm-claret .calculator.gm-atlas .gm-legend li b { font-family: var(--sa-head); font-size: 18px; line-height: 22px; font-weight: 700; color: var(--sa-ink); text-align: right; }
-.gm-claret .calculator.gm-atlas .gm-legend li em { font-style: normal; font-size: 12px; font-weight: 600; color: var(--sa-text-2); background: #f3f1ea; border-radius: var(--sa-r-pill); padding: 1px 7px; min-width: 40px; text-align: center; }
-.gm-claret .calculator.gm-atlas .gm-legend li.is-on { background: var(--sa-surface); }
-.gm-claret .calculator.gm-atlas .gm-legend li > span { text-align: left; color: var(--sa-text-2); }
+
 .gm-claret .calculator.gm-atlas .loan-summary { font-size: 15px; line-height: 22px; color: var(--sa-text); margin: 14px 0 0; padding: 14px 0 0; border-top: 1px solid var(--sa-line-soft); }
 .gm-claret .calculator.gm-atlas .badges span { font-size: 13px; color: var(--sa-text-2); background: var(--sa-surface); border: 1px solid var(--sa-line-soft); border-radius: var(--sa-r-pill); padding: 3px 10px; }
 .gm-claret .calculator.gm-atlas .result :is(button, a).button:not(.bank-calculate),
@@ -1125,8 +1100,7 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
 .gm-claret .calculator.gm-atlas .ax-paymentstrip span { font-size: 16px; font-weight: 400; color: var(--sa-text-2); }
 .gm-claret .calculator.gm-atlas .ax-paymentstrip strong { font-size: 28px; line-height: 34px; font-weight: 800; color: var(--sa-brand-figure); }
 .gm-claret .calculator.gm-atlas .ax-paymentstrip small { color: var(--sa-text-2); }
-.gm-claret .calculator.gm-atlas .gm-legend li > span { font-size: 16px; color: var(--sa-text-2); }
-.gm-claret .calculator.gm-atlas .gm-legend li b { font-size: 18px; }
+
 .gm-claret .calculator.gm-atlas .result.ax-chartpanel { border-color: var(--sa-line); }
 .gm-claret .gm-neutral .pg-badge,
 .gm-claret .gm-neutral :is(.q-kicker, .pg-guidehead .pg-kicker) { color: var(--sa-brand); }
@@ -1169,7 +1143,7 @@ body { background: var(--sa-white); color: var(--sa-ink); -webkit-font-smoothing
 @keyframes sa-reveal { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 .gm-claret .gm-neutral :is(.q-faq[open] .q-faqBody, details.moreoptions[open] > :not(summary), details.ax-assumptions[open] > :not(summary)) { animation: sa-reveal 0.25s ease both; }
 .gm-claret header.ax-header .ax-mega:not([hidden]) { animation: sa-reveal 0.2s ease both; }
-.gm-claret .calculator.gm-atlas .gm-donut-arc { transition: stroke-width 0.2s ease, opacity 0.2s ease, stroke-dasharray 0.4s ease, stroke-dashoffset 0.4s ease; }
+
 @media (prefers-reduced-motion: reduce) {
   .gm-claret *, .gm-claret *::before, .gm-claret *::after { animation: none !important; transition: none !important; }
 }

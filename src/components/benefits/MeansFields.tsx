@@ -13,7 +13,7 @@ import { HB_2026, type MeansInput, type NonDepBand } from "@/lib/benefits/housin
  */
 
 /** "working" plus a gross weekly pay figure replaced the six fixed bands; the bands stay so older share links still work. */
-export const NONDEP_BANDS = ["exempt", "notworking", "working", "b1", "b2", "b3", "b4", "b5", "b6"] as const;
+const NONDEP_BANDS = ["exempt", "notworking", "working", "b1", "b2", "b3", "b4", "b5", "b6"] as const;
 type NonDepKey = (typeof NONDEP_BANDS)[number];
 
 export const MEANS_SCHEMA = {
@@ -69,7 +69,7 @@ export type MeansValues = {
 const BAND_VALUE: Record<"b1" | "b2" | "b3" | "b4" | "b5" | "b6", number> = { b1: 150, b2: 230, b3: 320, b4: 420, b5: 540, b6: 700 };
 
 /** The non-dependant situation as the deduction tables need it. */
-export function nonDepBand(v: Pick<MeansValues, "nondepBand" | "ndPay">): NonDepBand {
+function nonDepBand(v: Pick<MeansValues, "nondepBand" | "ndPay">): NonDepBand {
   if (v.nondepBand === "exempt") return "exempt";
   if (v.nondepBand === "notworking") return "not-working";
   if (v.nondepBand === "working") return Math.max(0, v.ndPay);
@@ -77,7 +77,7 @@ export function nonDepBand(v: Pick<MeansValues, "nondepBand" | "ndPay">): NonDep
 }
 
 /** Monthly amounts entered in the form become weekly figures for the means test. */
-export const toWeekly = (monthly: number) => (Math.max(0, monthly) * 12) / 52;
+const toWeekly = (monthly: number) => (Math.max(0, monthly) * 12) / 52;
 
 export function meansFrom(v: MeansValues): MeansInput & { nonDependants: NonDepBand[]; noNonDepDeductions: boolean } {
   return {
