@@ -22,7 +22,8 @@ const SCHEMA = {
 };
 const NATION_LABEL: Record<CtNation, string> = { england: "England", wales: "Wales", scotland: "Scotland" };
 const VALUED: Record<CtNation, string> = { england: "1 April 1991", wales: "1 April 2003", scotland: "1 April 1991" };
-const PREMIUM_MAX: Record<CtNation, number> = { england: 300, wales: 300, scotland: 100 };
+// Scotland lifted its 100% limit from 1 April 2026; the slider stops at 300% there too.
+const PREMIUM_MAX: Record<CtNation, number> = { england: 300, wales: 300, scotland: 300 };
 
 function rangeLabel(nation: CtNation, band: CtBand): string {
   const list = BAND_RANGES[nation];
@@ -131,7 +132,7 @@ export default function CouncilTaxStudio({ query }: { query: Query }) {
                   step={25}
                   suffix="%"
                   stepper
-                  hint={v.nation === "scotland" ? "Up to 100% in Scotland." : v.nation === "wales" ? "Up to 300% in Wales." : "England: up to 100% on second homes, 100% to 300% on homes empty a year or more."}
+                  hint={v.nation === "scotland" ? "Scotland's 100% limit ended in April 2026: each council sets its own." : v.nation === "wales" ? "Up to 300% in Wales." : "England: up to 100% on second homes, 100% to 300% on homes empty a year or more."}
                 />
               </div>
             </details>

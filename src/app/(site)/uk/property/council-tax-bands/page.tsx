@@ -66,6 +66,9 @@ const SOURCES = [
   { label: "GOV.UK: challenge your Council Tax band", href: "https://www.gov.uk/challenge-council-tax-band" },
   { label: "GOV.UK: second homes and empty properties", href: "https://www.gov.uk/council-tax/second-homes-and-empty-properties" },
   { label: "GOV.UK: Council Tax discounts for disabled people", href: "https://www.gov.uk/council-tax/discounts-for-disabled-people" },
+  { label: "mygov.scot: Council Tax for empty homes and second homes (no 100% limit from April 2026)", href: "https://www.mygov.scot/council-tax/empty-and-second-homes" },
+  { label: "mygov.scot: Council Tax discounts, exemptions and reductions (disability reduction)", href: "https://www.mygov.scot/council-tax/discounts-exemptions-and-reductions" },
+  { label: "Welsh Government: Council tax premiums for empty and second homes (up to 300%)", href: "https://www.gov.wales/council-tax-empty-and-second-homes-html" },
 ];
 
 function Notes() {
@@ -142,7 +145,7 @@ function Notes() {
         </li>
         <li>
           <strong>Second and empty homes.</strong>{" "}Councils in England can double the bill on second homes and homes empty for a year, triple it after 5 years and quadruple it after 10.
-          Wales allows up to 300% extra; Scotland up to 100%.
+          Wales allows up to 300% extra. Scotland capped premiums at 100% until 1 April 2026; now each council sets its own level.
         </li>
         <li>
           <strong>Students.</strong>{" "}A home where everyone is a full-time student pays nothing: see the <Link href="/uk/students/student-council-tax">student council tax calculator</Link>.

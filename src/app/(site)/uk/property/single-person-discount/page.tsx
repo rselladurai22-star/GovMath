@@ -57,7 +57,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Will the council check that I really live alone?",
-    a: "Yes. Councils regularly compare their discount lists with credit reference, electoral roll and benefit data, and send review forms. If a review finds someone else lives there, the council removes the discount from the date that person moved in and can add a penalty of up to £70 for not telling it.",
+    a: "Yes. Councils regularly compare their discount lists with credit reference, electoral roll and benefit data, and send review forms. If a review finds someone else lives there, the council removes the discount from the date that person moved in. In England and Wales it can also charge a £70 penalty for not telling it, and £280 more for each repeat.",
   },
 ];
 
@@ -67,6 +67,8 @@ const SOURCES = [
   { label: "GOV.UK: discounts for full-time students", href: "https://www.gov.uk/council-tax/discounts-for-full-time-students" },
   { label: "GOV.UK: discounts for disabled people and people who are severely mentally impaired", href: "https://www.gov.uk/council-tax/discounts-for-disabled-people" },
   { label: "Local Government Finance Act 1992, Schedule 1: persons disregarded", href: "https://www.legislation.gov.uk/ukpga/1992/14/schedule/1" },
+  { label: "Local Government Finance Act 1992, Schedule 3: penalties (£70 and £280)", href: "https://www.legislation.gov.uk/ukpga/1992/14/schedule/3" },
+  { label: "Citizens Advice Scotland: paying for water and sewerage (the discount applies to water charges)", href: "https://www.citizensadvice.org.uk/scotland/consumer/water/paying-for-water-and-sewerage-in-scotland-s/" },
 ];
 
 function Notes() {
