@@ -68,6 +68,7 @@ const SOURCES = [
   { label: "GOV.UK: Benefit cap amounts", href: "https://www.gov.uk/benefit-cap/benefit-cap-amounts" },
   { label: "GOV.UK: Benefit cap, when you're not affected", href: "https://www.gov.uk/benefit-cap/when-youre-not-affected" },
   { label: "GOV.UK: When the benefit cap affects your Universal Credit payments (the grace period)", href: "https://www.gov.uk/benefit-cap/when-benefit-cap-affects-universal-credit-payments" },
+  { label: "Housing Benefit Regulations 2006, regulation 75E (recent work)", href: "https://www.legislation.gov.uk/uksi/2006/213/regulation/75E" },
   { label: "DWP: Benefit and pension rates 2026 to 2027", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2026-to-2027" },
   { label: "DWP: Proposed benefit and pension rates 2027 to 2028", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028" },
   { label: "GOV.UK: National Minimum Wage and National Living Wage rates", href: "https://www.gov.uk/national-minimum-wage-rates" },
@@ -132,8 +133,13 @@ function Notes() {
       <h2>The nine-month grace period</h2>
       <p>
         If you had earned at least the threshold in each of the 12 months before your job ended or your pay fell, the cap waits nine months. Your partner&rsquo;s earnings count towards the
-        test. You have to report those 12 months of earnings when you claim to get it. It runs from the day after your last day at work, and keeps running if
-        you come off Universal Credit and claim again.
+        test. You have to report those 12 months of earnings when you claim to get it. On a new claim it runs from the day after your last day at work, or the payday
+        when your pay fell below the threshold; if you already claim, from the start of that assessment period. It keeps running if you come off Universal Credit and claim again.
+      </p>
+      <p>
+        Housing Benefit has its own version: 39 weeks free of the cap from the day after a job ends, if you or your partner worked for at least 50 of the 52 weeks before it and did not
+        get Income Support, Jobseeker&rsquo;s Allowance or Employment and Support Allowance during them (Housing Benefit Regulations 2006, regulation 75E). Weeks on maternity,
+        paternity, adoption or shared parental leave, or on Statutory Sick Pay, count as work.
       </p>
     </>
   );

@@ -44,6 +44,7 @@ const SOURCES = [
   { label: "GOV.UK: Pension Credit, what you'll get", href: "https://www.gov.uk/pension-credit/what-youll-get" },
   { label: "GOV.UK: Pension Credit eligibility (income, savings and partners)", href: "https://www.gov.uk/pension-credit/eligibility" },
   { label: "GOV.UK: How to claim Pension Credit (backdating)", href: "https://www.gov.uk/pension-credit/how-to-claim" },
+  { label: "State Pension Credit Regulations 2002, Schedule I paragraph 1 (severe disability)", href: "https://www.legislation.gov.uk/uksi/2002/1792/schedule/I/paragraph/1" },
   { label: "GOV.UK: Free TV licence at 75", href: "https://www.gov.uk/free-discount-tv-licence" },
   { label: "GOV.UK: Winter Fuel Payment", href: "https://www.gov.uk/winter-fuel-payment" },
   { label: "GOV.UK: Warm Home Discount", href: "https://www.gov.uk/the-warm-home-discount-scheme" },

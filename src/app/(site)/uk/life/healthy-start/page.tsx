@@ -62,6 +62,7 @@ const SOURCES = [
   { label: "NHS Healthy Start: your payments and how to shop", href: "https://www.healthystart.nhs.uk/what-youll-get-and-how-to-shop/" },
   { label: "NHS Healthy Start: scheme rules", href: "https://www.healthystart.nhs.uk/scheme-rules/" },
   { label: "NHS Healthy Start: getting vitamins", href: "https://www.healthystart.nhs.uk/getting-vitamins/" },
+  { label: "Healthy Start Scheme and Welfare Food (Amendment) Regulations 2005, regulation 3 (who qualifies)", href: "https://www.legislation.gov.uk/uksi/2005/3262/regulation/3" },
   { label: "mygov.scot: Best Start Grant and Best Start Foods", href: "https://www.mygov.scot/best-start-grant-best-start-foods" },
 ];
 

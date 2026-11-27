@@ -160,7 +160,11 @@ export default function CtrStudio({ query }: { query: Query }) {
         <Foot>
           <Caveat>
             An estimate for 2026/27 using the national means test and DWP&rsquo;s Housing Benefit rates.{" "}
-            {local ? "The range runs from a scheme like the pensioner one (100%, 20p) to a stricter one (70%, 25p); your council's scheme decides." : v.nation === "england" ? "Exact rules for England's pensioner scheme apart from rounding." : `${NATION_LABEL[v.nation]} sets its own figures, which are close to these.`}
+            {local
+              ? `The range runs from a scheme like the pensioner one (100%, 20p) to an illustrative stricter one (${Math.round(CTR_SCHEME_RANGE.strict.maxShare * 100)}%, ${Math.round(CTR_SCHEME_RANGE.strict.taper * 100)}p); your council's scheme decides.`
+              : v.nation === "england"
+                ? "Exact rules for England's pensioner scheme apart from rounding."
+                : `${NATION_LABEL[v.nation]}'s national scheme pays up to 100% with a 20p taper and a £16,000 savings limit, as here, but sets its own allowances each year; this uses England's, which are close.`}
           </Caveat>
           <ShareButton copied={st.copied} onClick={st.share} />
         </Foot>

@@ -78,7 +78,9 @@ export function bedroomEntitlement(i: BedroomInput): BedroomResult {
   const totalChildren = i.children.boysUnder10 + i.children.girlsUnder10 + i.children.boys10to15 + i.children.girls10to15;
   const disabledOwn = Math.min(Math.max(0, i.disabledChildrenOwnRoom), totalChildren);
   // A room for an overnight carer is only given to someone on a disability benefit that also lifts the shared rate
-  // (UC Regulations 2013, Schedule 4, paragraphs 12 and 29), so the two never apply together.
+  // (UC Regulations 2013, Schedule 4, paragraphs 12(3) and 29(5)); for Housing Benefit, a "person who requires
+  // overnight care" is excluded from "young individual" (HB Regulations 2006, reg. 2(1), para (g)). So the two never
+  // apply together.
   const sharedRate = !i.couple && i.under35 && !i.sharedExempt && !i.overnightCarer && totalChildren === 0 && i.otherAdults === 0;
   // A disabled child who cannot share takes their own room; the rest are paired as normal.
   const reduced = { ...i.children };

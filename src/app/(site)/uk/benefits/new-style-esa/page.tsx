@@ -65,6 +65,7 @@ const SOURCES = [
   { label: "DWP: Proposed benefit and pension rates 2027 to 2028 (with the 2026/27 rates)", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
   { label: "HMRC: Rates and thresholds for employers 2026 to 2027 (Lower Earnings Limit)", href: "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2026-to-2027" },
   { label: "GOV.UK: Check your National Insurance record", href: "https://www.gov.uk/check-national-insurance-record" },
+  { label: "GOV.UK: Self-employed National Insurance rates (Class 2 treated as paid)", href: "https://www.gov.uk/self-employed-national-insurance-rates" },
 ];
 
 function Notes() {
