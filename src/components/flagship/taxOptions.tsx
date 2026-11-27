@@ -11,7 +11,6 @@ export const taxParams = {
   plan: oneOf<StudentPlan>("none", STUDENT_PLAN_ORDER),
   pension: num(0, 0, 60),
 };
-export const TAX_KEYS = ["region", "plan", "pension"] as const;
 
 export const REGION_LABEL: Record<TaxRegion, string> = { ruk: "England, Wales or NI", scotland: "Scotland" };
 

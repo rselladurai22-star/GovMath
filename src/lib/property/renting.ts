@@ -135,7 +135,7 @@ function sameRentDay(a: string, b: string): boolean {
  * notice, rising to 30 days for notices from 1 April 2027 (Housing (Scotland)
  * Act 2025). Northern Ireland: no tribunal route.
  */
-export function challengeDeadline(nation: RentNation, served: string, starts: string): string | null {
+function challengeDeadline(nation: RentNation, served: string, starts: string): string | null {
   if (nation === "ni") return null;
   if (nation === "scotland") return iso(new Date(parse(served).getTime() + (served >= "2027-04-01" ? 30 : 21) * DAY));
   return iso(new Date(parse(starts).getTime() - DAY));

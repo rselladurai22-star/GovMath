@@ -5,7 +5,7 @@ import { formatDate } from "../lib/life/calendar";
  * The date a calculator page last changed (from scripts/build-updated.py):
  * "6 October 2026".
  */
-export function updatedOn(path: string): string | undefined {
+function updatedOn(path: string): string | undefined {
   const iso = (updated as Record<string, string>)[path];
   if (!iso) return undefined;
   return formatDate(iso, "medium");

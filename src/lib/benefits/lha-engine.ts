@@ -182,8 +182,6 @@ export const LHA_AREAS = [...LHA_AREAS_BY_NATION.england, ...LHA_AREAS_BY_NATION
 /** A sensible starting area in each nation. */
 export const LHA_DEFAULT_AREA: Record<LhaNation, string> = { england: "Bristol", scotland: "Greater Glasgow", wales: "Cardiff", ni: "Belfast" };
 
-export const LHA_NATION_LABEL: Record<LhaNation, string> = { england: "England", scotland: "Scotland", wales: "Wales", ni: "Northern Ireland" };
-
 /** The nation an area is in (England if it is not known). */
 export function lhaNation(area: string): LhaNation {
   if (LHA_AREAS_BY_NATION.scotland.includes(area)) return "scotland";
