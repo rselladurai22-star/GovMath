@@ -58,6 +58,7 @@ const SOURCES = [
   { label: "GOV.UK: private renting, deposits", href: "https://www.gov.uk/private-renting/deposits" },
   { label: "Deposit Protection Service: what makes a reasonable deposit claim", href: "https://www.depositprotection.com/claims-and-disputes/what-makes-a-reasonable-deposit-claim/" },
   { label: "mygov.scot: tenancy deposits", href: "https://www.mygov.scot/tenancy-deposits-tenants" },
+  { label: "mygov.scot: getting your deposit back (30 working days to reply)", href: "https://www.mygov.scot/tenant-deposits/get-deposit-back" },
   { label: "nidirect: tenancy deposit scheme, information for tenants", href: "https://www.nidirect.gov.uk/articles/tenancy-deposit-scheme-information-tenants" },
   { label: "Renting Homes (Fees etc.) (Wales) Act 2019, Schedule 1", href: "https://www.legislation.gov.uk/anaw/2019/2/schedule/1" },
 ];
@@ -88,8 +89,9 @@ function Notes() {
       <h2>Disputing a deduction</h2>
       <p>
         Do not accept a deduction you think is unfair just to get the rest back faster. Reply in writing, item by item, then raise a dispute with the scheme holding the deposit: the
-        Deposit Protection Service, mydeposits or the Tenancy Deposit Scheme in England and Wales, SafeDeposits Scotland, Letting Protection Service Scotland or MyDeposits Scotland, and TDS
-        or mydeposits in Northern Ireland. The service is free, the undisputed part is paid out first, and you usually need to raise it within 3 months of the tenancy ending.
+        Deposit Protection Service, mydeposits or the Tenancy Deposit Scheme in England and Wales, SafeDeposits Scotland, Letting Protection Service Scotland or mydeposits Scotland, and TDS
+        Northern Ireland or mydeposits Northern Ireland. The service is free and the undisputed part is paid out first. Time limits differ, so act quickly: in Scotland you have 30 working days to
+        reply once the scheme tells you about the landlord&rsquo;s deductions, and the Tenancy Deposit Scheme in England and Wales takes disputes up to 3 months after the tenancy ends.
       </p>
       <p>
         Send the check-in and check-out reports, dated photos, your emails reporting repairs, and any receipts. The adjudicator decides on the papers, and the landlord has to justify each

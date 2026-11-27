@@ -196,7 +196,7 @@ export default function RentIncreaseStudio({ query }: { query: Query }) {
               </p>
               <p className="sa-ri-deadline">
                 <b>{r.challengeBy ? d(r.challengeBy) : "No tribunal"}</b>
-                <span>{r.challengeBy ? `last day to ${v.nation === "scotland" ? "refer it to Rent Service Scotland" : "apply to the tribunal"}` : "get advice from Housing Rights"}</span>
+                <span>{r.challengeBy ? `last day to ${v.nation === "scotland" ? "refer it to Rent Service Scotland" : v.nation === "wales" ? "apply to the tribunal, for tenancies from before December 2022" : "apply to the tribunal"}` : "get advice from Housing Rights"}</span>
               </p>
             </div>
           )}
@@ -211,8 +211,10 @@ export default function RentIncreaseStudio({ query }: { query: Query }) {
               <Flag tone={r.aboveMarket > 0 ? "warn" : "good"} title={r.aboveMarket > 0 ? `${gbp(r.aboveMarket)} a month above similar homes` : "In line with similar homes"}>
                 {r.aboveMarket > 0
                   ? v.nation === "scotland"
-                    ? "Evidence for a rent officer, but they set a market rent and it can come out higher than your landlord asked."
-                    : "That is the evidence a tribunal looks at."
+                    ? "Evidence for a rent officer, but they set a market rent, and until 1 April 2027 it can come out higher than your landlord asked."
+                    : v.nation === "wales"
+                      ? "That is the evidence the tribunal looks at, if your tenancy began before 1 December 2022."
+                      : "That is the evidence a tribunal looks at."
                   : "A challenge is unlikely to bring the rent down much."}
               </Flag>
             )}

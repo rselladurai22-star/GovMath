@@ -39,7 +39,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Is there a limit on how much my rent can go up?",
-    a: "Not in England, Wales or Northern Ireland: the protection is the market-rent challenge and the once-a-year rule. Scotland's temporary cap on rises ended in March 2025, and caps will only return in areas a council designates as rent control areas under the Housing (Scotland) Act 2025.",
+    a: "Not in England, Wales or Northern Ireland: the protections are the notice rules, the once-a-year rule and, in England and for Welsh tenancies that began before December 2022, a market-rent challenge. Scotland's temporary cap on rises ended in March 2025, and caps will only return in areas a council designates as rent control areas under the Housing (Scotland) Act 2025.",
   },
   {
     q: "Do these rules apply to council or housing association homes?",
@@ -58,6 +58,8 @@ const SOURCES = [
   { label: "mygov.scot: rent increases in a private residential tenancy", href: "https://www.mygov.scot/tenant-rent-increase/private-residential-tenancy" },
   { label: "nidirect: private rent and tenancies", href: "https://www.nidirect.gov.uk/articles/private-rent-and-tenancies" },
   { label: "GOV.WALES: Renting homes, tenants", href: "https://www.gov.wales/renting-homes-tenants" },
+  { label: "Citizens Advice Wales: challenging a rent increase (converted and newer contracts)", href: "https://www.citizensadvice.org.uk/wales/housing/paying-rent/challenging-a-rent-increase-w/" },
+  { label: "Scottish Government: tenant rights and protections (rent adjudication from 1 April 2027)", href: "https://www.gov.scot/policies/private-renting/tenant-rights-and-protections/" },
 ];
 
 function Notes() {
@@ -97,10 +99,14 @@ function Notes() {
         </li>
         <li>
           <strong>Scotland:</strong>{" "}return part 3 of the notice to your landlord and apply to Rent Service Scotland within 21 days of getting it. A rent officer sets a market rent within
-          about 40 days, and it can come out <em>higher</em>{" "}than your landlord asked, so check the adverts before you refer it.
+          about 40 days, and for now it can come out <em>higher</em>{" "}than your landlord asked, so check the adverts before you refer it. From 1 April 2027 the Housing (Scotland)
+          Act 2025 gives you 30 days to apply, and the rent set can no longer be more than your landlord proposed.
         </li>
         <li>
-          <strong>Wales:</strong>{" "}apply to the Residential Property Tribunal before the date in the RHW12 notice if you think the rent is above the market rate.
+          <strong>Wales:</strong>{" "}it depends on when you started renting. If your tenancy began before 1 December 2022 (it is now a converted contract), you can apply to the
+          Residential Property Tribunal before the date in the notice if you think the rent is above the market rate; the tribunal must receive the form on a weekday before that date.
+          If your contract began on or after 1 December 2022 there is no tribunal route for the amount: you can only challenge a notice that is invalid, such as one on the wrong form
+          or with less than 2 months&rsquo; notice, and that goes to the county court.
         </li>
         <li>
           <strong>Northern Ireland:</strong>{" "}there is no tribunal for private rents. A rise that breaks the 3-month or 12-month rule has no effect; otherwise your options are to negotiate, or
