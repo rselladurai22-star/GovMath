@@ -4,7 +4,7 @@ import CalcPage from "@/components/calc/CalcPage";
 import { CALCULATORS } from "@/lib/calculators";
 import JsaStudio from "./JsaStudio";
 import { ogFor } from "@/gm/og";
-import { LEL, NEW_STYLE_2026, newStyleJsa, relevantYears, taxYearLabel } from "@/lib/benefits/new-style";
+import { LEL, NEW_STYLE_2026, NEW_STYLE_2027, newStyleJsa, relevantYears, taxYearLabel } from "@/lib/benefits/new-style";
 import { gbp } from "@/components/flagship/format";
 
 export const metadata: Metadata = {
@@ -23,6 +23,8 @@ const BREADCRUMBS = [
 
 // Every figure below comes from the engine, so it moves with the rates.
 const J = NEW_STYLE_2026.jsa;
+const J27 = NEW_STYLE_2027.jsa;
+const UNDER25 = newStyleJsa({ over25: false, pension: 0, earnings: 0, hours: 0 });
 const m = (n: number) => gbp(n, true);
 const yearsFor = (d: string) => relevantYears(d).map(taxYearLabel);
 const [nowA, nowB] = yearsFor("2026-11-26");
@@ -61,11 +63,46 @@ const SOURCES = [
   { label: "DWP: Proposed benefit and pension rates 2027 to 2028 (with the 2026/27 rates)", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
   { label: "HMRC: Rates and thresholds for employers 2026 to 2027 (Lower Earnings Limit)", href: "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2026-to-2027" },
   { label: "GOV.UK: Check your National Insurance record", href: "https://www.gov.uk/check-national-insurance-record" },
+  { label: "GOV.UK: Jobseeker's Allowance, your claim, Claimant Commitment and sanctions", href: "https://www.gov.uk/jobseekers-allowance/your-jsa-claim" },
+  { label: "GOV.UK: Taxable and tax-free state benefits", href: "https://www.gov.uk/income-tax/taxfree-and-taxable-state-benefits" },
 ];
 
 function Notes() {
   return (
     <>
+      <h2>How much it pays</h2>
+      <div className="sa-tablewrap">
+        <table>
+          <caption className="sr-only">New Style JSA weekly rates</caption>
+          <thead>
+            <tr>
+              <th scope="col">Age</th>
+              <th scope="col">2026/27, a week</th>
+              <th scope="col">Over 26 weeks</th>
+              <th scope="col">Proposed from April 2027</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Under 25</th>
+              <td>{m(J.under25)}</td>
+              <td>{gbp(UNDER25.total)}</td>
+              <td>{m(J27.under25)}</td>
+            </tr>
+            <tr>
+              <th scope="row">25 or over</th>
+              <td>{m(J.over25)}</td>
+              <td>{gbp(FULL.total)}</td>
+              <td>{m(J27.over25)}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        It is a personal allowance only: there is nothing extra for a partner, children or rent, which is where Universal Credit comes in. It is taxable, and while you get it you
+        also get National Insurance credits towards your State Pension.
+      </p>
+
       <h2>The two National Insurance tests</h2>
       <p>
         A claim made on or before 2 January 2027 looks at {nowA} and {nowB}; from 3 January 2027 it looks at {janA} and {janB}. Two tests apply to those years, and you need both.
@@ -94,6 +131,17 @@ function Notes() {
         Savings and your partner&rsquo;s income and savings make no difference, which is why New Style JSA is often paid when{" "}
         <Link href="/uk/benefits/universal-credit">Universal Credit</Link>{" "}is not. You can have both: Universal Credit counts the JSA as income and pays less, so check
         what the two come to together, and the <Link href="/uk/benefits/uc-advance">advance calculator</Link>{" "}if you need money before the first Universal Credit payment.
+      </p>
+
+      <h2>The Claimant Commitment</h2>
+      <p>
+        At your first Jobcentre interview you agree a Claimant Commitment with a work coach: what you will do to look for work, such as registering with agencies or updating
+        your CV, and how many hours a week you will spend on it, taking account of your health and caring responsibilities. Appointments then follow every one to two weeks, and
+        you show what you have done. Bring your P45 to the first one if you have it.
+      </p>
+      <p>
+        Missing an appointment, turning down a job or training without a good reason, or leaving your last job without one can lead to a sanction: payments reduced or stopped for
+        up to 26 weeks. If something gets in the way, tell the Jobcentre straight away, because a good reason given early can keep your payment.
       </p>
 
       <h2>After 26 weeks</h2>
