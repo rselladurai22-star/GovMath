@@ -67,6 +67,19 @@ const SOURCES = [
 function Notes() {
   return (
     <>
+      <h2>Who can get it</h2>
+      <p>
+        Carer&rsquo;s Allowance is {m(CA_2026.weekly)} a week in 2026/27, proposed to rise to {m(CA_2027.weekly)} from April 2027, with the earnings limit going from{" "}
+        {gbp(CA_2026.earningsLimit)} to {gbp(CA_2027.earningsLimit)} a week. You can get it if you are 16 or over, care for someone for at least {CA_2026.hoursCaring} hours a week,
+        are not in full-time education or studying 21 hours a week or more, and have lived in Great Britain for at least 2 of the last 3 years. The caring can include help with
+        washing and cooking, taking someone to appointments, and dealing with bills and shopping.
+      </p>
+      <p>
+        The person you care for must already get a qualifying benefit: PIP daily living, the middle or highest care rate of Disability Living Allowance, Attendance Allowance,
+        Armed Forces Independence Payment, or a Scottish equivalent such as Adult Disability Payment. Only one carer can be paid for each person. In Scotland, Carer Support
+        Payment has replaced Carer&rsquo;s Allowance.
+      </p>
+
       <h2>A cliff edge, not a taper</h2>
       <p>
         Most benefits fall gradually as you earn more. Carer&rsquo;s Allowance does not: earnings of {gbp(CA_2026.earningsLimit)} a week or less keep the full {m(CA_2026.weekly)},
@@ -99,6 +112,18 @@ function Notes() {
         {m(UC_2026.carer)} a month and lifts the <Link href="/uk/benefits/benefit-cap">benefit cap</Link>. Over State Pension age, even an entitlement that is not paid adds a carer
         amount to <Link href="/uk/benefits/pension-credit">Pension Credit</Link>. The person you care for needs a qualifying benefit first; the{" "}
         <Link href="/uk/benefits/pip-points">PIP points calculator</Link>{" "}shows whether their daily living score reaches it.
+      </p>
+      <p>
+        Check the other side too. The person you care for usually loses a severe disability premium, or the severe disability addition in Pension Credit, once you are paid
+        Carer&rsquo;s Allowance for looking after them, and may lose some Council Tax Reduction. Ask whoever pays their benefits before you claim, so the household as a whole
+        comes out ahead.
+      </p>
+
+      <h2>State Pension, credits and tax</h2>
+      <p>
+        Carer&rsquo;s Allowance overlaps with the State Pension: if your State Pension is {m(CA_2026.weekly)} a week or more, nothing is paid, though the entitlement still adds a
+        carer amount to Pension Credit. Each week you get it brings National Insurance credits towards your own State Pension. It is taxable if your total income is over the
+        Personal Allowance, and a claim can be backdated by up to 3 months.
       </p>
     </>
   );

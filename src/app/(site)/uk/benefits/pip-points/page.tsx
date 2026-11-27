@@ -55,11 +55,48 @@ const SOURCES = [
   { label: "GOV.UK: PIP, what it is for and how it is assessed", href: "https://www.gov.uk/pip" },
   { label: "GOV.UK: PIP eligibility", href: "https://www.gov.uk/pip/eligibility" },
   { label: "DWP: Proposed benefit and pension rates 2027 to 2028 (with the 2026/27 rates)", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
+  { label: "GOV.UK: PIP, how to claim and after you've applied", href: "https://www.gov.uk/pip/how-to-claim" },
+  { label: "GOV.UK: Challenge a benefit decision (mandatory reconsideration)", href: "https://www.gov.uk/mandatory-reconsideration" },
+  { label: "GOV.UK: PIP if you're nearing the end of life", href: "https://www.gov.uk/pip/claiming-end-of-life" },
 ];
 
 function Notes() {
   return (
     <>
+      <h2>Points, rates and who can claim</h2>
+      <p>
+        PIP has two parts, scored separately. In each part, 8 points gives the standard rate and 12 points the enhanced rate.
+      </p>
+      <div className="sa-tablewrap">
+        <table>
+          <caption className="sr-only">PIP weekly rates for 2026/27 by points</caption>
+          <thead>
+            <tr>
+              <th scope="col">Part</th>
+              <th scope="col">8 to 11 points</th>
+              <th scope="col">12 points or more</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Daily living</th>
+              <td>{m(PIP_2026.daily.standard)} a week</td>
+              <td>{m(PIP_2026.daily.enhanced)} a week</td>
+            </tr>
+            <tr>
+              <th scope="row">Mobility</th>
+              <td>{m(PIP_2026.mobility.standard)} a week</td>
+              <td>{m(PIP_2026.mobility.enhanced)} a week</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        It is paid every 4 weeks, whatever your income or savings, and whether or not you work. You can claim from age 16 if a long-term condition makes everyday tasks or getting
+        around harder and you expect the difficulties to last at least 12 months from when they started. New claims usually have to start before State Pension age; after that,
+        Attendance Allowance takes its place. In Scotland, Adult Disability Payment has replaced PIP for new claims.
+      </p>
+
       <h2>Reliably is what changes the answer</h2>
       <p>
         You only count as able to do something if you can do it safely, to an acceptable standard, as often as it needs doing, and in no more than twice the time it would take
@@ -87,6 +124,24 @@ function Notes() {
       <p>
         If someone will care for you, the <Link href="/uk/benefits/carers-earnings">Carer&rsquo;s Allowance calculator</Link>{" "}checks their earnings. On a low income, also
         look at <Link href="/uk/benefits/universal-credit">Universal Credit</Link>{" "}and, if you have recently stopped work, <Link href="/uk/benefits/new-style-esa">New Style ESA</Link>.
+      </p>
+
+      <h2>From claim to decision</h2>
+      <p>
+        After the first call or letter, DWP sends the &ldquo;How your disability affects you&rdquo; form, which you have a month to return; ask for more time if you need it. A health
+        professional may then assess you, at a centre, at home, by phone or by video, usually for about an hour, and you can bring someone with you. The decision letter gives the
+        points for each activity and an award of between 9 months and 10 years.
+      </p>
+      <p>
+        If the points look wrong, ask for a mandatory reconsideration within a month of the decision letter, saying which descriptors you think apply and why. If that does not
+        change it, you can appeal to an independent tribunal within a month of the reconsideration notice. Use the calculator with the decision letter beside you to see which
+        activities make the difference.
+      </p>
+
+      <h2>If you may have 12 months or less to live</h2>
+      <p>
+        Under the special rules for end of life there is no points test and no assessment. You get the enhanced daily living rate of {m(PIP_2026.daily.enhanced)} a week, and the
+        mobility part depends on your needs. Ask a doctor or nurse for form SR1, and call the PIP claim line to start a special rules claim; someone can do this for you.
       </p>
 
       <h2>The review of PIP</h2>

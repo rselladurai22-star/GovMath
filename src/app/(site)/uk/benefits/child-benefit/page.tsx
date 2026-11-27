@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CalcPage from "@/components/calc/CalcPage";
 import { CALCULATORS } from "@/lib/calculators";
-import { childBenefitFor } from "@/lib/benefits/family";
+import { childBenefitFor, hicbc } from "@/lib/benefits/family";
 import { childBenefitRates } from "@/lib/benefits/child-benefit";
 import { gbp } from "@/components/flagship/format";
 import ChildBenefitStudio from "./ChildBenefitStudio";
@@ -26,6 +26,9 @@ const BREADCRUMBS = [
 const NOW = childBenefitRates("2026/27");
 const NEXT = childBenefitRates("2027/28");
 const week = (n: number) => gbp(childBenefitFor(n).weekly, true);
+// The High Income Child Benefit Charge on two children at £70,000, and what a £5,000 pension contribution saves.
+const CHARGE_70 = hicbc({ children: 2, income: 70_000, pension: 0, giftAid: 0, weeks: 52 });
+const CHARGE_70P = hicbc({ children: 2, income: 70_000, pension: 5_000, giftAid: 0, weeks: 52 });
 const RATES = [1, 2, 3, 4, 5, 6].map((n) => ({ n, now: childBenefitFor(n), next: childBenefitFor(n, 52, "2027/28") }));
 
 const FAQS: { q: string; a: string }[] = [
@@ -54,6 +57,7 @@ const FAQS: { q: string; a: string }[] = [
 const SOURCES = [
   { label: "GOV.UK: Child Benefit, what you'll get", href: "https://www.gov.uk/child-benefit/what-youll-get" },
   { label: "GOV.UK: Child Benefit when your child turns 16", href: "https://www.gov.uk/child-benefit-16-19" },
+  { label: "GOV.UK: Child Benefit, who can get it", href: "https://www.gov.uk/child-benefit/eligibility" },
   { label: "GOV.UK: High Income Child Benefit Charge", href: "https://www.gov.uk/child-benefit-tax-charge" },
   { label: "Income Tax (Earnings and Pensions) Act 2003, section 681C: the amount of the charge", href: "https://www.legislation.gov.uk/ukpga/2003/1/section/681C" },
   { label: "HMRC: Budget 2026 overview of tax legislation and rates, Annex A (rates from April 2027)", href: "https://www.gov.uk/government/publications/budget-2026-overview-of-tax-legislation-and-rates-ootlar" },
@@ -91,13 +95,39 @@ function Notes() {
         The first three columns are the 2026/27 rates; the last is the proposed rate from 6 April 2027. Each child after the sixth adds another {gbp(NOW.additionalChildWeekly, true)} a week.
       </p>
 
+      <h2>Who can claim</h2>
+      <p>
+        You can claim if you are responsible for bringing up a child under 16, or under 20 in approved education or training, and you live in the UK. Being responsible usually
+        means the child lives with you, or you pay at least as much as the Child Benefit towards their keep, in money or in kind. Only one person can get it for each child: if two
+        of you could claim, agree between you who does, or HMRC decides. Foster carers can claim as long as the council is not paying towards the child&rsquo;s keep, and adopters
+        from the day the child comes to live with them.
+      </p>
+      <p>
+        Your income does not affect whether you can claim. It only affects how much you keep, through the charge below, and the charge never takes back more than you were paid.
+      </p>
+
+      <h2>The High Income Child Benefit Charge</h2>
+      <p>
+        If you or your partner has adjusted net income over {gbp(NOW.hicbcStart)}, the higher earner pays back 1% of the Child Benefit for every £200 above it, through Self
+        Assessment or their tax code, until it is all repaid at {gbp(NOW.hicbcEnd)}. On {gbp(70_000)} with two children, {Math.round(CHARGE_70.share * 100)}% is taken back:{" "}
+        {gbp(CHARGE_70.charge)} of the {gbp(CHARGE_70.benefit)} a year, leaving {gbp(CHARGE_70.keep)}. A {gbp(5_000)} pension contribution counts against adjusted net income,
+        cutting the charge to {gbp(CHARGE_70P.charge)}. The <Link href="/uk/benefits/high-income-child-benefit">High Income Child Benefit Charge calculator</Link>{" "}works out your
+        own figure.
+      </p>
+
       <h2>When it stops</h2>
       <p>
         On 31 August after your child&rsquo;s 16th birthday, unless you tell HMRC they are staying in approved education or training. It can then run until they turn 20, as long as they were
         accepted onto the course before 19.
       </p>
       <p>
-        A levels, T levels, Scottish Highers and NVQs up to level 3 count. University, an HNC and an apprenticeship do not.
+        Approved education is full-time, non-advanced study: more than 12 hours a week on average of supervised study. A levels, T levels, GCSEs, the International Baccalaureate,
+        Scottish Highers, NVQs up to level 3 and home education count. A degree, an HNC or HND, an access course and an apprenticeship do not, and nor does a course your child
+        does through an employer. Payments also stop if your child starts work of 24 hours or more a week, or claims Universal Credit in their own right.
+      </p>
+      <p>
+        If a 16 or 17-year-old leaves education and registers with a careers service or the armed forces, you can ask for Child Benefit to carry on for 20 weeks while they look
+        for work or training.
       </p>
 
       <h2>Claim it even if you will not keep it</h2>

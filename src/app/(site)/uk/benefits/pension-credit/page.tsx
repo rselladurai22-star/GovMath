@@ -32,6 +32,8 @@ const WITH_SD = pensionCredit2026({ ...PC_DEFAULT_INPUT, statePension: FULL_SP, 
 // Savings Credit: a pre-2016 pensioner with £230 a week, and where it runs out.
 const SC_EX = pensionCredit2026({ ...PC_DEFAULT_INPUT, statePension: 230, savingsCreditEligible: true });
 const SC_END = G.single + PC_2026.savingsMax.single / 0.4;
+// A couple: £320 a week of State Pension between them, £25 of workplace pension and £14,000 saved.
+const COUPLE = pensionCredit2026({ ...PC_DEFAULT_INPUT, couple: true, statePension: 320, otherPensions: 25, savings: 14_000 });
 
 const FAQS: { q: string; a: string }[] = [
   { q: "Can I get Pension Credit if I own my home?", a: "Yes. The home you live in is not counted as savings, and Pension Credit can include help with some housing costs, such as ground rent and service charges." },
@@ -62,7 +64,61 @@ function Notes() {
       </p>
       <p>
         Even a few pence a week counts, because of what it opens: <Link href="/uk/benefits/council-tax-reduction">Council Tax Reduction</Link>,{" "}
-        <Link href="/uk/benefits/housing-benefit">Housing Benefit</Link>{" "}if you rent, a free TV licence at 75 and Cold Weather Payments.
+        <Link href="/uk/benefits/housing-benefit">Housing Benefit</Link>{" "}if you rent, a free TV licence at 75, Cold Weather Payments (Winter Heating Payments in Scotland), the Warm Home Discount and, with the Guarantee Credit, help with NHS dental
+        treatment, glasses and travel to hospital.
+      </p>
+
+      <h2>What counts as income</h2>
+      <p>
+        State Pension, other pensions, earnings and most other benefits count, and so does a pension you could be drawing but have chosen not to claim. A little of your earnings
+        is ignored: {gbp(PC_2026.earningsDisregard.single)} a week if you are single, {gbp(PC_2026.earningsDisregard.couple)} for a couple and {gbp(PC_2026.earningsDisregard.higher)}{" "}
+        for carers and some disabled people. Attendance Allowance, PIP, Disability Living Allowance, Child Benefit, Housing Benefit, Council Tax Reduction and the Winter Fuel
+        Payment are all ignored.
+      </p>
+      <p>
+        A couple with {m(320)} a week of State Pension between them, {m(25)} from a workplace pension and {gbp(14_000)} saved have {m(COUPLE.tariffIncome)} a week added for their
+        savings, so {m(COUPLE.income)} counts against the {m(G.couple)} guarantee. Pension Credit pays {m(COUPLE.weekly)} a week, about {gbp(COUPLE.annual)} a year.
+      </p>
+
+      <h2>Extra amounts on top of the guarantee</h2>
+      <div className="sa-tablewrap">
+        <table>
+          <caption className="sr-only">Pension Credit additions a week, 2026/27</caption>
+          <thead>
+            <tr>
+              <th scope="col">Addition</th>
+              <th scope="col">A week</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Severe disability (for each person who qualifies)</th>
+              <td>{m(PC_2026.severeDisability)}</td>
+            </tr>
+            <tr>
+              <th scope="row">Carer (getting or entitled to Carer&rsquo;s Allowance)</th>
+              <td>{m(PC_2026.carer)}</td>
+            </tr>
+            <tr>
+              <th scope="row">Each child you are responsible for</th>
+              <td>{m(PC_2026.child.other)}</td>
+            </tr>
+            <tr>
+              <th scope="row">First child born before 6 April 2017</th>
+              <td>{m(PC_2026.child.firstPre2017)}</td>
+            </tr>
+            <tr>
+              <th scope="row">Disabled child, lower and higher rates</th>
+              <td>
+                {m(PC_2026.disabledChild.lower)} or {m(PC_2026.disabledChild.higher)}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        The severe disability addition needs Attendance Allowance, PIP daily living or the middle or highest DLA care rate, no other adult living with you apart from a partner,
+        and nobody paid Carer&rsquo;s Allowance for looking after you.
       </p>
 
       <h2>How savings count</h2>
@@ -87,7 +143,8 @@ function Notes() {
 
       <h2>Claim now: three months is the limit</h2>
       <p>
-        A claim can be backdated by up to three months, if you qualified then, so a late claim loses money for good. Have your income, savings and bank details for the date you
+        You can apply up to 4 months before you reach State Pension age, online once you have claimed your State Pension, or by phone. A claim can be backdated by up to
+        three months, if you qualified then, so a late claim loses money for good. Have your income, savings and bank details for the date you
         want to backdate to. If you look after someone, claim <Link href="/uk/benefits/carers-earnings">Carer&rsquo;s Allowance</Link>{" "}too: even when your State Pension
         means it is not paid, it adds {m(PC_2026.carer)} a week to your guarantee.
       </p>
