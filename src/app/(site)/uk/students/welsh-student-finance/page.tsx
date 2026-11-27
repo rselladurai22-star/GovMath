@@ -3,7 +3,7 @@ import Link from "next/link";
 import CalcPage from "@/components/calc/CalcPage";
 import { CALCULATORS } from "@/lib/calculators";
 import { WALES_2026, WALES_GRANT, wales2026 } from "@/lib/students/nations";
-import { interestRate, PLANS_2026, repayments2026 } from "@/lib/students/loans";
+import { interestRate, PLAN2_INTEREST, PLANS_2026, repayments2026 } from "@/lib/students/loans";
 import { gbp, percent } from "@/components/flagship/format";
 import WalesStudio from "./WalesStudio";
 import { ogFor } from "@/gm/og";
@@ -96,9 +96,11 @@ function Notes() {
 
       <h2>Paying back, and the £1,500 that is written off</h2>
       <p>
-        Welsh students are on {P2.label}, even those who started after 2023. You repay {Math.round(P2.rate * 100)}% of your income above {gbp(P2.threshold)} in 2026/27 (frozen there to April 2030, the Welsh Government confirmed in November 2026), through your pay,
+        Welsh students are on {P2.label}, even those who started after 2023. You repay {Math.round(P2.rate * 100)}% of your income above {gbp(P2.threshold)} in 2026/27, through your pay,
         from the April after you leave: on {gbp(32_000)} that is {gbp(REPAY_32.yearly)} a year. Interest from September 2026 runs from {percent(RATE_LOW, 1)} on lower incomes to a capped{" "}
-        {percent(RATE_CAP, 0)}, and anything left is written off after {P2.writeOffYears} years. The <Link href="/uk/students/plan-2-student-loan">Plan 2 student loan calculator</Link>{" "}
+        {percent(RATE_CAP, 0)}, and anything left is written off after {P2.writeOffYears} years. The Welsh Government confirmed on 11 November 2026 that the {gbp(P2.threshold)}{" "}
+        threshold, and the {gbp(PLAN2_INTEREST.lower)} to {gbp(PLAN2_INTEREST.upper)} band over which interest rises, stay frozen for Welsh borrowers for 2027/28 to 2029/30, as
+        they do in England, because the shared repayment system cannot run different thresholds. The <Link href="/uk/students/plan-2-student-loan">Plan 2 student loan calculator</Link>{" "}
         projects your own balance.
       </p>
       <p>

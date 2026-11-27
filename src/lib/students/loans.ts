@@ -35,7 +35,7 @@ export const PLANS_2026: Record<Plan, PlanSpec> = {
 };
 
 /** Plan 2 interest income thresholds for 2026/27. */
-const PLAN2_INTEREST = { lower: 29_385, upper: 52_885 } as const;
+export const PLAN2_INTEREST = { lower: 29_385, upper: 52_885 } as const;
 
 /** Interest rate for a plan at a given income, using RPI and the 2026/27 rules. */
 export function interestRate(plan: Plan, income: number, rpi = RPI_MARCH_2026, bankRatePlus1 = 0.0475, cap = INTEREST_CAP_2026, studying = false): number {
