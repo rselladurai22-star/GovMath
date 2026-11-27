@@ -73,6 +73,12 @@ describe("Plan 2 projection", () => {
     expect(r.path[4].threshold).toBeCloseTo(29_385 * 1.03, 6);
     expect(r.yearsLeft).toBe(30);
   });
+  it("keeps the interest band (£29,385 to £52,885) frozen with it, in England and Wales", () => {
+    const top = projectLoan({ plan: "plan2", balance: 200_000, salary: 52_885, salaryGrowth: 0, rpi: 0.03, yearsRepaying: 0, extraMonthly: 0 });
+    expect(top.path.slice(1, 4).map((p) => p.rate)).toEqual([0.06, 0.06, 0.06].map((x) => expect.closeTo(x, 9)));
+    // Once the threshold rises in 2030/31 the same salary sits below the top of the band.
+    expect(top.path[4].rate).toBeLessThan(0.06);
+  });
   it("below the threshold nothing is repaid and the whole balance is written off", () => {
     const r = projectLoan({ plan: "plan2", balance: 40_000, salary: 25_000, salaryGrowth: 0, rpi: 0.03, yearsRepaying: 0, extraMonthly: 0 });
     expect(r.totalRepaid).toBe(0);

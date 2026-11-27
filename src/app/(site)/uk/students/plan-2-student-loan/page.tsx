@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CalcPage from "@/components/calc/CalcPage";
 import { CALCULATORS } from "@/lib/calculators";
-import { interestRate, monthlyPayroll, PLANS_2026, projectLoan } from "@/lib/students/loans";
+import { interestRate, monthlyPayroll, PLAN2_INTEREST, PLANS_2026, projectLoan } from "@/lib/students/loans";
 import { gbp, percent } from "@/components/flagship/format";
 import Plan2Studio from "./Plan2Studio";
 import { ogFor } from "@/gm/og";
@@ -90,8 +90,9 @@ function Notes() {
 
       <h2>The threshold is frozen until 2030</h2>
       <p>
-        The threshold is {gbp(P2.threshold)} for 2026/27 and, after the November 2025 Budget, stays there for three more years, to April 2030. The Welsh Government confirmed on 11
-        November 2026 that Welsh borrowers get the same freeze, because the shared repayment system cannot run two thresholds. Pay rises in that time all count towards
+        The threshold is {gbp(P2.threshold)} for 2026/27 and, after the November 2025 Budget, stays there for three more years, to April 2030. The interest band, {gbp(PLAN2_INTEREST.lower)} to{" "}
+        {gbp(PLAN2_INTEREST.upper)}, is frozen with it. The Welsh Government confirmed on 11 November 2026 that Welsh borrowers get the same freeze, because the shared
+        repayment system cannot run two thresholds. Pay rises in that time all count towards
         repayments. If it had risen by 3% a year instead, it would be about {gbp(RISEN)} by 2029/30, so on any salary above that the freeze costs about {gbp(FREEZE_COST)} a year in extra
         repayments.
       </p>
