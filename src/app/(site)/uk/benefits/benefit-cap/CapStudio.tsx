@@ -159,7 +159,7 @@ export default function CapStudio({ query }: { query: Query }) {
                   <span>
                     {isUc
                       ? `Only if you earned ${gbp(LIMIT)} a month or more in each of the 12 months before that.`
-                      : "Only if you had worked for 50 of the 52 weeks before, and were not on Income Support, JSA or ESA while you did."}
+                      : "Housing Benefit waits 39 weeks after a job ends, if you or your partner had worked for 50 of the 52 weeks before and were not on Income Support, JSA or ESA while you did."}
                   </span>
                 </p>
                 <Pills label="Stopped work or lost pay in the last nine months" hideLabel value={v.grace ? "yes" : "no"} onChange={(x) => st.set("grace", x === "yes")} options={YESNO} />

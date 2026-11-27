@@ -77,7 +77,13 @@ const SOURCES = [
   { label: "legislation.gov.uk: Council Tax Reduction Schemes (Prescribed Requirements) (England) Regulations 2012", href: "https://www.legislation.gov.uk/uksi/2012/2885/contents" },
   { label: "legislation.gov.uk: Council Tax Reduction Schemes (Prescribed Requirements) (England) (Amendment) Regulations 2026 (the 2026/27 figures)", href: "https://www.legislation.gov.uk/uksi/2026/27/contents/made" },
   { label: "DWP: Proposed benefit and pension rates 2027 to 2028 (with the 2026/27 Housing Benefit rates the schemes follow)", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
-  { label: "Welsh Government: Council Tax discounts, exemptions and reductions", href: "https://www.gov.wales/council-tax-reduction" },
+  { label: "Welsh Government: Council Tax discounts, disregards, exemptions and reductions", href: "https://www.gov.wales/council-tax-discounts-disregards-exemptions-and-reductions" },
+  { label: "Council Tax Reduction Schemes (Default Scheme) (Wales) Regulations 2013 (20p taper, £16,000 limit)", href: "https://www.legislation.gov.uk/wsi/2013/3035/contents" },
+  { label: "Council Tax Reduction (Scotland) Regulations 2021", href: "https://www.legislation.gov.uk/ssi/2021/249/contents" },
+  { label: "Oxford City Council: Council Tax Reduction scheme 2026/27", href: "https://www.oxford.gov.uk/benefits-support/council-tax-reduction-scheme" },
+  { label: "Harborough District Council: Council Tax Support", href: "https://www.harborough.gov.uk/council-tax-support" },
+  { label: "Central Bedfordshire Council: Council Tax Support", href: "https://www.centralbedfordshire.gov.uk/benefits/council-tax-support" },
+  { label: "Tameside Council: Council Tax Support", href: "https://tameside.gov.uk/ctax/counciltaxsupport" },
   { label: "mygov.scot: Council Tax discounts, exemptions and reductions", href: "https://www.mygov.scot/council-tax/discounts-exemptions-and-reductions" },
 ];
 
@@ -88,7 +94,7 @@ function Notes() {
       <p>
         Council Tax Benefit was replaced in 2013 by local Council Tax Reduction schemes, sometimes called Council Tax Support. For people over State Pension age the rules are set
         nationally, and every council in England has to follow them: up to the whole bill, reduced by {pct(CTR_2026.taper)} of any income above your applicable amount, the same weekly
-        needs figure Housing Benefit uses. Wales and Scotland also run one national scheme for working-age people, with up to 100% of the bill.
+        needs figure Housing Benefit uses.
       </p>
       <p>
         A single pensioner with {w(300)} a week from pensions is {w(PEN.excess)} over the {w(PEN.applicableAmount)} applicable amount, so {w(PEN.taperCut)} a week comes off the
@@ -98,15 +104,24 @@ function Notes() {
 
       <h2>Why working-age help varies in England</h2>
       <p>
-        Every English council designs its own working-age scheme. Many make everyone pay a minimum share of the bill, from a few per cent to a third or more; some use a steeper taper
-        than 20p; others have moved to income bands, set a lower savings limit, or treat Universal Credit claimants differently. That is why the calculator shows a range, from a
-        scheme like the pensioner one to a stricter one paying at most {pct(CTR_SCHEME_RANGE.strict.maxShare)} with a {Math.round(CTR_SCHEME_RANGE.strict.taper * 100)}p taper.
+        Every English council designs its own working-age scheme, and the 2026/27 schemes show how far apart they are. Oxford uses income bands that still reach 100% of the bill
+        for the lowest incomes. Harborough makes every working-age claimant pay at least 15%. Central Bedfordshire pays at most 75%, in income bands that step down to 55%, 40% and
+        25%, and Tameside pays at most 75% of a Band A bill, whatever band the home is in. Others set a lower savings limit or count only two children.
       </p>
       <p>
-        The gap is real money. A lone parent with one child taking home {gbp(1_100)} a month, with a {gbp(BILL)} bill, could get {gbp(WA_HIGH.annual)} a year under a generous scheme
-        and {gbp(WA_LOW.annual)} under the stricter one. Even someone on income-based JSA, who gets the most a scheme allows, would pay {gbp(BILL - WA_PASS_LOW.annual)} a year under
-        a 70% scheme. Your council publishes its scheme each year: search for &ldquo;council tax support scheme&rdquo; with its name, and enter its maximum and taper in the
-        calculator.
+        That is why the calculator shows a range, from a scheme like the pensioner one to an illustrative stricter one paying at most {pct(CTR_SCHEME_RANGE.strict.maxShare)} with a{" "}
+        {Math.round(CTR_SCHEME_RANGE.strict.taper * 100)}p taper. The gap is real money. A lone parent with one child taking home {gbp(1_100)} a month, with a {gbp(BILL)} bill,
+        could get {gbp(WA_HIGH.annual)} a year under a generous scheme and {gbp(WA_LOW.annual)} under the stricter one. Even someone on income-based JSA, who gets the most a scheme
+        allows, would pay {gbp(BILL - WA_PASS_LOW.annual)} a year under a {pct(CTR_SCHEME_RANGE.strict.maxShare)} scheme. Your council publishes its scheme each year: search for
+        &ldquo;council tax support scheme&rdquo; with its name, and enter its maximum and taper in the calculator.
+      </p>
+
+      <h2>Scotland and Wales</h2>
+      <p>
+        Scotland and Wales each have one national scheme, for working-age people as well as pensioners. Both pay up to the whole bill, both take off 20p for each pound of income
+        above your applicable amount, and both exclude anyone with more than £16,000 of savings. Scotland adds extra help for homes in Bands E to H when income is low. Both
+        governments set their own allowances and premiums each year; the calculator uses England&rsquo;s figures, which are close, so treat a Scottish or Welsh result as a
+        good estimate rather than the council&rsquo;s exact figure.
       </p>
 
       <h2>Other adults in the home</h2>

@@ -100,13 +100,15 @@ export const CTR_2026 = {
  * Working-age schemes in England differ by council. For the range the
  * calculator shows, "generous" is a scheme like the national pensioner one
  * (up to 100% of the bill, 20p taper); "strict" is an illustration of a
- * tighter scheme that makes every working-age household pay at least 30%
- * and tapers at 25p. Neither is any one council's scheme: the reader's own
- * council figures replace them.
+ * tighter scheme that pays at most 75% of the bill (the maximum in, for
+ * example, Central Bedfordshire's and Tameside's 2026/27 schemes) and tapers
+ * at 25p (an illustrative figure, not taken from a particular council).
+ * Neither is any one council's scheme: the reader's own council figures
+ * replace them.
  */
 export const CTR_SCHEME_RANGE = {
   generous: { maxShare: 1, taper: 0.2 },
-  strict: { maxShare: 0.7, taper: 0.25 },
+  strict: { maxShare: 0.75, taper: 0.25 },
 } as const;
 
 /* ── The shared means test ─────────────────────────────── */

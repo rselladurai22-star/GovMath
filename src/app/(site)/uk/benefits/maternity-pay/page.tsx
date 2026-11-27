@@ -64,6 +64,8 @@ const SOURCES = [
   { label: "GOV.UK: Maternity Allowance", href: "https://www.gov.uk/maternity-allowance" },
   { label: "GOV.UK: Statutory Maternity Pay and Leave, employer guide (qualifying week, 26 weeks' service, notice)", href: "https://www.gov.uk/employers-maternity-pay-leave" },
   { label: "HMRC: Rates and thresholds for employers 2026 to 2027 (SMP from 5 April 2026)", href: "https://www.gov.uk/guidance/rates-and-thresholds-for-employers-2026-to-2027" },
+  { label: "Social Security Benefits Up-rating Order 2026 (SMP from 5 April, Maternity Allowance from 6 April)", href: "https://www.legislation.gov.uk/uksi/2026/148/contents/made" },
+  { label: "Universal Credit Regulations 2013, regulation 55(4) (SMP counts as earnings)", href: "https://www.legislation.gov.uk/uksi/2013/376/regulation/55" },
   { label: "DWP: Proposed benefit and pension rates 2027 to 2028 (SMP and Maternity Allowance)", href: "https://www.gov.uk/government/publications/benefit-and-pension-rates-2027-to-2028/proposed-benefit-and-pension-rates-2027-to-2028" },
   { label: "GOV.UK: Shared Parental Leave and Pay", href: "https://www.gov.uk/shared-parental-leave-and-pay" },
   { label: "GOV.UK: Sure Start Maternity Grant", href: "https://www.gov.uk/sure-start-maternity-grant" },
@@ -109,8 +111,9 @@ function Notes() {
       <h2>Leave that crosses April</h2>
       <p>
         Statutory pay rises each April. Under DWP&rsquo;s proposed rates the flat rate goes from {p(NOW.flatRate)} to {p(NEXT.flatRate)} a week and the earnings threshold from{" "}
-        {p(NOW.lowerEarningsLimit)} to {p(NEXT.lowerEarningsLimit)}. SMP changes from the first Sunday in April, so pay weeks that start on or after{" "}
-        {fmtDate(UPRATING_2027.smp)} get the new rate; Maternity Allowance follows from {fmtDate(UPRATING_2027.ma)}. Whether you qualify is fixed in the qualifying week, so a
+        {p(NOW.lowerEarningsLimit)} to {p(NEXT.lowerEarningsLimit)}. SMP changes from the first Sunday in April (it was 5 April in 2026), so pay weeks that start
+        on or after {fmtDate(UPRATING_2027.smp)} should get the new rate, with Maternity Allowance from {fmtDate(UPRATING_2027.ma)}; the 2027 up-rating order, made each spring,
+        confirms the dates. Whether you qualify is fixed in the qualifying week, so a
         baby due in spring 2027 is tested against the {p(NOW.lowerEarningsLimit)} threshold even if all the pay comes after April. Choose the April 2027 rates in the calculator to
         see the split.
       </p>
