@@ -63,6 +63,7 @@ const SOURCES = [
   { label: "Student Finance Wales: parents’ guide 2026/27", href: "https://www.studentfinancewales.co.uk/media/rpwlr5nu/sfw_parents_guide_to_student_finance_2627_o_e.pdf" },
   { label: "GOV.UK: Welsh partial loan cancellation", href: "https://www.gov.uk/guidance/welsh-partial-loan-cancellation" },
   { label: "GOV.UK: repaying your student loan, how much you repay", href: "https://www.gov.uk/repaying-your-student-loan/what-you-pay" },
+  { label: "Welsh Government: written statement on Plan 2 repayment thresholds (11 November 2026)", href: "https://www.gov.wales/written-statement-plan-2-student-loan-repayment-thresholds" },
 ];
 
 function Notes() {
@@ -95,7 +96,7 @@ function Notes() {
 
       <h2>Paying back, and the £1,500 that is written off</h2>
       <p>
-        Welsh students are on {P2.label}, even those who started after 2023. You repay {Math.round(P2.rate * 100)}% of your income above {gbp(P2.threshold)} in 2026/27, through your pay,
+        Welsh students are on {P2.label}, even those who started after 2023. You repay {Math.round(P2.rate * 100)}% of your income above {gbp(P2.threshold)} in 2026/27 (frozen there to April 2030, the Welsh Government confirmed in November 2026), through your pay,
         from the April after you leave: on {gbp(32_000)} that is {gbp(REPAY_32.yearly)} a year. Interest from September 2026 runs from {percent(RATE_LOW, 1)} on lower incomes to a capped{" "}
         {percent(RATE_CAP, 0)}, and anything left is written off after {P2.writeOffYears} years. The <Link href="/uk/students/plan-2-student-loan">Plan 2 student loan calculator</Link>{" "}
         projects your own balance.

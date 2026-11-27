@@ -93,7 +93,7 @@ export default function CouncilTaxStudio({ query }: { query: Query }) {
             tone={ni || r.kind === "full" ? "ink" : "brand"}
             sub={
               ni ? (
-                <>They follow different rules, and this checker does not cover them. In many rented homes the rates are included in the rent: check your tenancy agreement, or ask Land &amp; Property Services.</>
+                <>They follow different rules, and this checker does not cover them. In a shared house of three or more tenants from two or more families (an HMO), or a home with a capital value of £150,000 or less, the landlord pays the rates, so they are usually in the rent; in a dearer home the tenant pays unless the landlord agrees to. Check your tenancy agreement, or ask Land &amp; Property Services.</>
               ) : total === 0 ? undefined : r.kind === "exempt" ? (
                 <>
                   Everyone is a full-time student{people.some((p) => p.kind !== "student") ? ", or someone treated like one," : ""} so the home is exempt and saves the whole {gbp(r.saving)}. You still have to ask the

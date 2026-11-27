@@ -46,7 +46,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What happens to Premium Bonds when someone dies?",
-    a: "They stay in the draw for up to 24 months after the death, and any prizes are paid to the estate. The executor tells NS&I and can then cash them in, or leave them in until they are cashed in automatically. The Bonds count towards the estate for inheritance tax at their face value.",
+    a: "They can stay in the draw for up to 12 months after the death, in the holder's name. Prizes won after NS&I is told are paid by warrant to whoever is entitled to the money once the claim is complete, and any won before then are held and sent with it. After that the Bonds must be cashed in or repaid; they cannot be moved into someone else's name. For inheritance tax they count at their face value, the amount NS&I repays.",
   },
   {
     q: "How long does it take to cash in?",
@@ -63,6 +63,7 @@ const SOURCES = [
   { label: "NS&I: how we share out Premium Bonds prizes (monthly prize allocation)", href: "https://www.nsandi.com/get-to-know-us/monthly-prize-allocation" },
   { label: "NS&I: prize checker", href: "https://www.nsandi.com/prize-checker" },
   { label: "GOV.UK: tax on savings interest and the Personal Savings Allowance", href: "https://www.gov.uk/apply-tax-free-interest-on-savings" },
+  { label: "NS&I: what to do if an NS&I customer has died", href: "https://www.nsandi.com/help/manage-money-for-others/customers-who-have-died" },
 ];
 
 function Notes() {

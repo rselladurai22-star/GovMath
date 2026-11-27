@@ -63,6 +63,7 @@ const SOURCES = [
   { label: "GOV.UK: when your student loan gets written off or cancelled", href: "https://www.gov.uk/repaying-your-student-loan/when-your-student-loan-gets-written-off-or-cancelled" },
   { label: "GOV.UK: which repayment plan you are on", href: "https://www.gov.uk/repaying-your-student-loan/which-repayment-plan-you-are-on" },
   { label: "HM Treasury: Budget 2025, Plan 2 threshold frozen from April 2027", href: "https://www.gov.uk/government/publications/budget-2025-document/budget-2025-html" },
+  { label: "Welsh Government: written statement on Plan 2 repayment thresholds (11 November 2026)", href: "https://www.gov.wales/written-statement-plan-2-student-loan-repayment-thresholds" },
 ];
 
 function Notes() {
@@ -89,7 +90,8 @@ function Notes() {
 
       <h2>The threshold is frozen until 2030</h2>
       <p>
-        The threshold is {gbp(P2.threshold)} for 2026/27 and, after the November 2025 Budget, stays there for three more years, to April 2030. Pay rises in that time all count towards
+        The threshold is {gbp(P2.threshold)} for 2026/27 and, after the November 2025 Budget, stays there for three more years, to April 2030. The Welsh Government confirmed on 11
+        November 2026 that Welsh borrowers get the same freeze, because the shared repayment system cannot run two thresholds. Pay rises in that time all count towards
         repayments. If it had risen by 3% a year instead, it would be about {gbp(RISEN)} by 2029/30, so on any salary above that the freeze costs about {gbp(FREEZE_COST)} a year in extra
         repayments.
       </p>
