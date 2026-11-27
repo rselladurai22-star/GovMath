@@ -129,8 +129,9 @@ function sameRentDay(a: string, b: string): boolean {
 
 /**
  * The last day to challenge a rise. England (First-tier Tribunal) and Wales
- * (Residential Property Tribunal): before the new rent starts, so the day
- * before. Scotland (Rent Service Scotland): within 21 days of getting the
+ * (Residential Property Tribunal, converted contracts from before 1 December
+ * 2022 only; newer Welsh contracts have no tribunal route for the amount):
+ * before the new rent starts, so the day before. Scotland (Rent Service Scotland): within 21 days of getting the
  * notice, rising to 30 days for notices from 1 April 2027 (Housing (Scotland)
  * Act 2025). Northern Ireland: no tribunal route.
  */
